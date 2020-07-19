@@ -1,0 +1,24 @@
+{% include header.html %}
+
+<main>
+
+  <h2>{{ content }}</h2>
+
+  {% for video in site.videos reversed %}
+
+    <div class="card">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="{{ video.youtube_url }}" allowfullscreen></iframe>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{% if page.lang == "ca" %}{{ video.title_ca }}{% elsif page.lang == "en" %}{{ video.title_en }}{% elsif page.lang == "es" %}{{ video.title_es }}{% elsif page.lang == "ja" %}{{ video.title_ja }}{% endif %}</h5>
+        <p class="card-text">{% if page.lang == "ca" %}{{ video.desc_ca }}{% elsif page.lang == "en" %}{{ video.desc_en }}{% elsif page.lang == "es" %}{{ video.desc_es }}{% elsif page.lang == "ja" %}{{ video.desc_ja }}{% endif %}</p>
+        <p class="card-text"><small class="text-muted">{% include date.html date=video.date %}</small></p>
+      </div>
+    </div>
+
+  {% endfor %}
+
+</main>
+
+{% include footer.html %}

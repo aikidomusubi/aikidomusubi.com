@@ -1,0 +1,16 @@
+ca:
+  label: Català
+  language_code: ca
+  icon: 🏴
+en:
+  label: English
+  language_code: en
+  icon: 🇺🇸
+es:
+  label: Español
+  language_code: es
+  icon: 🇪🇸
+ja:
+  label: 日本語
+  language_code: ja
+  icon: 🇯🇵

@@ -1,0 +1,67 @@
+<div class="media">
+  <div class="media-body">
+    <h5 class="mt-0"><i class="fas fa-envelope"></i>{% if page.lang == 'ja' %}メール{% else %}Email{% endif %}</h5>
+    <a href="mailto:{{ site.email }}">
+      info@aikidomusubi.com
+    </a>
+  </div>
+</div>
+
+<div class="media">
+  <div class="media-body">
+    <h5 class="mt-0"><i class="fab fa-whatsapp"></i>WhatsApp</h5>
+    <a href="https://wa.me/{{ site.phone | to_integer }}">
+      +34.717.171.177
+    ‬</a>
+  </div>
+</div>
+
+<div class="media">
+  <div class="media-body">
+    <h5 class="mt-0"><i class="fas fa-phone-alt"></i>{% if page.lang == 'ca' %}Telèfon{% endif %}{% if page.lang == 'en' %}Phone{% endif %}{% if page.lang == 'es' %}Teléfono{% endif %}{% if page.lang == 'ja' %}電話{% endif %}</h5>
+    <a href="tel:+{{ site.phone | to_integer }}‬">
+      +34.717.171.177‬
+    </a>
+  </div>
+</div>
+
+<div class="media">
+  <div class="media-body">
+    <h5 class="mt-0"><i class="fab fa-facebook"></i>Facebook</h5>
+    <a href="https://www.facebook.com/{{ site.facebook_username }}/">
+      facebook.com/{{ site.facebook_username }}
+    </a>
+  </div>
+</div>
+
+<div class="media">
+  <div class="media-body">
+    <h5 class="mt-0"><i class="fab fa-instagram"></i>Instagram</h5>
+    <a href="https://www.instagram.com/{{ site.instagram_username}}/">
+      instagram.com/{{ site.instagram_username}}
+    </a>
+  </div>
+</div>
+
+<div class="media">
+  <div class="media-body">
+    <h5 class="mt-0"><i class="fab fa-youtube"></i>Youtube</h5>
+    <a href="https://www.youtube.com/user/{{ site.youtube_username }}/">
+      youtube.com/user/{{ site.youtube_username }}
+    </a>
+  </div>
+</div>
+
+<div class="media">
+  <div class="media-body">
+    <h5 class="mt-0"><i class="fas fa-torii-gate"></i>{% if page.lang == 'ca' %}Adreça{% endif %}{% if page.lang == 'en' %}Address{% endif %}{% if page.lang == 'es' %}Dirección{% endif %}{% if page.lang == 'ja' %}住所{% endif %}</h5>
+    <a href="https://g.page/aikidomusubi">
+      Av. d'Alfons XIII, 351<br>
+      08918 Badalona, Barcelona
+    </a>
+  </div>
+</div>
+
+<div class="map">
+  {% include map.html %}
+</div>

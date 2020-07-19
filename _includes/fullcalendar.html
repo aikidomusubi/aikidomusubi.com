@@ -1,0 +1,109 @@
+<script>
+
+  // vanilla JS window width and height
+  var w=window,
+  d=document,
+  e=d.documentElement,
+  g=d.getElementsByTagName('body')[0],
+  x=w.innerWidth||e.clientWidth||g.clientWidth,
+  y=w.innerHeight||e.clientHeight||g.clientHeight;
+
+  document.addEventListener('DOMContentLoaded', function() {
+
+    var calendarEl = document.getElementById('calendar');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+
+      plugins: [ 'bootstrap', 'dayGrid', 'list' ],
+      defaultView: x < 993 ? 'listWeek':'dayGridWeek',
+      customButtons: {
+        myCustomDayGridWeekButton: {
+          bootstrapFontAwesome: 'fa-th',
+          click: function() {
+            calendar.changeView('dayGridWeek');
+          }
+        },
+        myCustomListWeekButton: {
+          bootstrapFontAwesome: 'fa-bars',
+          click: function() {
+            calendar.changeView('listWeek');
+          }
+        },
+      },
+      //header: { left: 'myCustomListWeekButton,myCustomDayGridWeekButton', center: '', right: 'today prev,next' },
+      header: { left: '', center: 'myCustomListWeekButton,myCustomDayGridWeekButton', right: '' },
+
+      minTime: '09:15:00',
+      maxTime: '21:30:00',
+      timeFormat: 'HH:mm',
+      slotDuration: '00:30:00',
+
+      contentHeight: 'auto',
+      height: 'parent',
+      themeSystem: 'bootstrap',
+      bootstrapFontAwesome: {
+        close: 'fa-times',
+        prev: 'fa-chevron-left',
+        next: 'fa-chevron-right',
+        prevYear: 'fa-angle-double-left',
+        nextYear: 'fa-angle-double-right'
+      },
+      eventBackgroundColor: '#A9A9A9',
+      eventBorderColor: '#A9A9A9',
+      eventTextColor: '#121315',
+      displayEventTrue: true,
+      displayEventEnd: true,
+
+      eventTimeFormat: {
+        hour: '2-digit',
+        minute: '2-digit',
+        omitZeroMinute: false,
+        meridiem: false,
+        hour12: false
+      },
+
+      columnHeaderFormat: { weekday: 'long' },
+
+      views: {
+        dayGridWeek: {
+          allDaySlot: false,
+          //columnHeaderFormat: { weekday: 'short', month: '2-digit', day: '2-digit', omitCommas: true },
+          //columnHeaderFormat: { weekday: 'long' }
+        },
+        listWeek: {
+          allDaySlot: false,
+          listDayAltFormat: false
+        }
+      }
+
+      //events: '/training-schedule.json',
+
+    });
+
+    if (document.documentElement.getAttribute('lang') === 'ca') {
+      calendar.addEventSource('/training-schedule-ca.json');
+      calendar.setOption('columnHeaderFormat', { weekday: 'long' });
+      calendar.setOption('firstDay', 1);
+      calendar.setOption('locale', 'ca');
+    } else if (document.documentElement.getAttribute('lang') === 'en') {
+      calendar.addEventSource('/training-schedule-en.json');
+      calendar.setOption('columnHeaderFormat', { weekday: 'long' });
+      calendar.setOption('firstDay', 0);
+      calendar.setOption('locale', 'en');
+    } else if (document.documentElement.getAttribute('lang') === 'es') {
+      calendar.addEventSource('/training-schedule-es.json');
+      calendar.setOption('columnHeaderFormat', { weekday: 'long' });
+      calendar.setOption('firstDay', 1);
+      calendar.setOption('locale', 'es');
+    } else if (document.documentElement.getAttribute('lang') === 'ja') {
+      calendar.addEventSource('/training-schedule-ja.json');
+      calendar.setOption('columnHeaderFormat', { weekday: 'short' });
+      calendar.setOption('firstDay', 0);
+      calendar.setOption('locale', 'ja');
+    }
+
+    calendar.render();
+
+  });
+
+</script>

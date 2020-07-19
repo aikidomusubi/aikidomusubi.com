@@ -1,0 +1,52 @@
+
+The human, technology, and tools behind this site.
+-
+
+ABOUT
+Name: Asociación Cultural Musubi Aikido (Aikido Musubi)
+Location: 41.4364, 2.2248
+
+CONTACT
+Email: info@aikidomusubi.com
+
+SOCIAL
+Facebook: facebook.com/musubiaikidobdn
+GitHub: github.com/aikidomusubi
+Instagram: instagram.com/aikidomusubi
+Youtube: youtube.com/user/waterpete
+
+SUPPORT
+If you would like to visit or participate in training at Aikido Musubi, please contact us.
+
+TECHNOLOGY
+Bootstrap (getbootstrap.com)
+Cloudflare (cloudflare.com)
+FullCalendar (fullcalendar.io)
+GitHub (github.com)
+Google Maps (maps.google.com)
+Hover (hover.com)
+Jekyll (jekyllrb.com)
+jQuery (jquery.com)
+
+TOOLS
+Adobe Illustrator (adobe.com)
+Atom (atom.io)
+Colibri (colibri.opqr.co)
+Gulp (gulpjs.com)
+Hyper (hyper.is)
+
+FONTS
+Font Awesome (fontawesome.com)
+Futura (linotype.com/1212991/futura-family.html)
+M+ P Type-1 (mplus-fonts.osdn.jp)
+Noto (google.com/get/noto)
+
+GRAPHICS
+Logo and stamp (hanko) by Aikido Musubi
+Godzilla by Driv Loo for Kaiju Company
+
+IMAGES
+All images by Aikido Musubi and Alba Serra Ferrer
+
+LICENSE
+GNU General Public License v3.0 (github.com/aikidomusubi/aikidomusubi.com/blob/master/LICENSE)

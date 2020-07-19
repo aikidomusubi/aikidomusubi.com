@@ -1,0 +1,200 @@
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
+
+  <a class="navbar-brand" href="{% if page.lang == 'es' %}{{ site.url }}/{% else %}{{ site.url }}/{{ page.lang }}/{% endif %}" title="{% if page.lang == 'ja' %}合気道産靈 (あいきどうむすび){% else %}Aikido Musubi{% endif %}">
+    {% if page.lang == 'ca' %}{{ site.title }}{% endif %}
+    {% if page.lang == 'en' %}{{ site.title }}{% endif %}
+    {% if page.lang == 'es' %}{{ site.title }}{% endif %}
+    {% if page.lang == 'ja' %}合気道<ruby>産靈<rt>むすび</rt></ruby>{% endif %}
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {% if page.lang == 'ca' %}Classes i Horaris{% endif %}
+          {% if page.lang == 'en' %}Classes and Schedule{% endif %}
+          {% if page.lang == 'es' %}Clases y Horarios{% endif %}
+          {% if page.lang == 'ja' %}クラス・スケジュール{% endif %}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="
+            {% if page.lang == 'ca' %}{{ site.url }}/{{ page.lang }}/classes/{% endif %}
+            {% if page.lang == 'en' %}{{ site.url }}/{{ page.lang }}/classes/{% endif %}
+            {% if page.lang == 'es' %}{{ site.url }}/clases/{% endif %}
+            {% if page.lang == 'ja' %}{{ site.url }}/{{ page.lang }}/classes/{% endif %}
+          ">
+            {% if page.lang == 'ca' %}Classes{% endif %}
+            {% if page.lang == 'en' %}Classes{% endif %}
+            {% if page.lang == 'es' %}Clases{% endif %}
+            {% if page.lang == 'ja' %}各クラスの紹介{% endif %}
+          </a>
+          <a class="dropdown-item" href="
+            {% if page.lang == 'ca' %}{{ site.url }}/{{ page.lang }}/horaris/{% endif %}
+            {% if page.lang == 'en' %}{{ site.url }}/{{ page.lang }}/training-schedule/{% endif %}
+            {% if page.lang == 'es' %}{{ site.url }}/horarios/{% endif %}
+            {% if page.lang == 'ja' %}{{ site.url }}/{{ page.lang }}/training-schedule/{% endif %}
+          ">
+            {% if page.lang == 'ca' %}Horaris{% endif %}
+            {% if page.lang == 'en' %}Training Schedule{% endif %}
+            {% if page.lang == 'es' %}Horarios{% endif %}
+            {% if page.lang == 'ja' %}稽古時間{% endif %}
+          </a>
+          <a class="dropdown-item" href="
+            {% if page.lang == 'ca' %}{{ site.url }}/{{ page.lang }}/quotes/{% endif %}
+            {% if page.lang == 'en' %}{{ site.url }}/{{ page.lang }}/fees/{% endif %}
+            {% if page.lang == 'es' %}{{ site.url }}/cuotas/{% endif %}
+            {% if page.lang == 'ja' %}{{ site.url }}/{{ page.lang }}/fees/{% endif %}
+          ">
+            {% if page.lang == 'ca' %}Quotes{% endif %}
+            {% if page.lang == 'en' %}Fees{% endif %}
+            {% if page.lang == 'es' %}Cuotas{% endif %}
+            {% if page.lang == 'ja' %}月謝{% endif %}
+          </a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {% if page.lang == 'ca' %}Media{% endif %}
+          {% if page.lang == 'en' %}Media{% endif %}
+          {% if page.lang == 'es' %}Media{% endif %}
+          {% if page.lang == 'ja' %}メディア{% endif %}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="
+            {% if page.lang == 'ca' %}{{ site.url }}/{{ page.lang }}/fotos/{% endif %}
+            {% if page.lang == 'en' %}{{ site.url }}/{{ page.lang }}/photos/{% endif %}
+            {% if page.lang == 'es' %}{{ site.url }}/fotos/{% endif %}
+            {% if page.lang == 'ja' %}{{ site.url }}/{{ page.lang }}/photos/{% endif %}
+          ">
+            {% if page.lang == 'ca' %}Fotos{% endif %}
+            {% if page.lang == 'en' %}Photos{% endif %}
+            {% if page.lang == 'es' %}Fotos{% endif %}
+            {% if page.lang == 'ja' %}写真{% endif %}
+          </a>
+          <a class="dropdown-item" href="
+            {% if page.lang == 'ca' %}{{ site.url }}/{{ page.lang }}/videos/{% endif %}
+            {% if page.lang == 'en' %}{{ site.url }}/{{ page.lang }}/videos/{% endif %}
+            {% if page.lang == 'es' %}{{ site.url }}/videos/{% endif %}
+            {% if page.lang == 'ja' %}{{ site.url }}/{{ page.lang }}/videos/{% endif %}
+          ">
+            {% if page.lang == 'ca' %}Vídeos{% endif %}
+            {% if page.lang == 'en' %}Videos{% endif %}
+            {% if page.lang == 'es' %}Vídeos{% endif %}
+            {% if page.lang == 'ja' %}ビデオ{% endif %}
+          </a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="
+          {% if page.lang == 'ca' %}{{ site.url }}/{{ page.lang }}/cursos/{% endif %}
+          {% if page.lang == 'en' %}{{ site.url }}/{{ page.lang }}/courses/{% endif %}
+          {% if page.lang == 'es' %}{{ site.url }}/cursos/{% endif %}
+          {% if page.lang == 'ja' %}{{ site.url }}/{{ page.lang }}/courses/{% endif %}
+        ">
+          {% if page.lang == 'ca' %}Cursos{% endif %}
+          {% if page.lang == 'en' %}Courses{% endif %}
+          {% if page.lang == 'es' %}Cursos{% endif %}
+          {% if page.lang == 'ja' %}講習会{% endif %}
+        </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {% if page.lang == 'ca' %}Contacte i Accés{% endif %}
+          {% if page.lang == 'en' %}Contact and Access{% endif %}
+          {% if page.lang == 'es' %}Contacto y Acceso{% endif %}
+          {% if page.lang == 'ja' %}お問い合わせ・アクセス{% endif %}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="
+            {% if page.lang == 'ca' %}{{ site.url }}/{{ page.lang }}/acces/{% endif %}
+            {% if page.lang == 'en' %}{{ site.url }}/{{ page.lang }}/access-information/{% endif %}
+            {% if page.lang == 'es' %}{{ site.url }}/acceso/{% endif %}
+            {% if page.lang == 'ja' %}{{ site.url }}/{{ page.lang }}/access-information/{% endif %}
+          ">
+            {% if page.lang == 'ca' %}Accés{% endif %}
+            {% if page.lang == 'en' %}Access Information{% endif %}
+            {% if page.lang == 'es' %}Acceso{% endif %}
+            {% if page.lang == 'ja' %}アクセス{% endif %}
+          </a>
+          <a class="dropdown-item" href="
+            {% if page.lang == 'ca' %}{{ site.url }}/{{ page.lang }}/contacte/{% endif %}
+            {% if page.lang == 'en' %}{{ site.url }}/{{ page.lang }}/contact/{% endif %}
+            {% if page.lang == 'es' %}{{ site.url }}/contacto/{% endif %}
+            {% if page.lang == 'ja' %}{{ site.url }}/{{ page.lang }}/contact/{% endif %}
+          ">
+            {% if page.lang == 'ca' %}Contacte{% endif %}
+            {% if page.lang == 'en' %}Contact{% endif %}
+            {% if page.lang == 'es' %}Contacto{% endif %}
+            {% if page.lang == 'ja' %}お問合せ{% endif %}
+          </a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #da525d;">COVID-19</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="
+            {% if page.lang == 'ca' %}{{ site.url }}/files/covid-19-contingency-plan-es.pdf{% endif %}
+            {% if page.lang == 'en' %}{{ site.url }}/files/covid-19-contingency-plan-es.pdf{% endif %}
+            {% if page.lang == 'es' %}{{ site.url }}/files/covid-19-contingency-plan-es.pdf{% endif %}
+            {% if page.lang == 'ja' %}{{ site.url }}/files/covid-19-contingency-plan-es.pdf{% endif %}
+          " style="color: #da525d;">
+            {% if page.lang == 'ca' %}<i class="far fa-file-pdf" style="padding-right: .5rem;"></i>Pla de contingencia (26/6/2020){% endif %}
+            {% if page.lang == 'en' %}<i class="far fa-file-pdf" style="padding-right: .5rem;"></i>Contingency plan (6/26/2020){% endif %}
+            {% if page.lang == 'es' %}<i class="far fa-file-pdf" style="padding-right: .5rem;"></i>Plan de contingencia (26/06/2020){% endif %}
+            {% if page.lang == 'ja' %}<i class="far fa-file-pdf" style="padding-right: .5rem;"></i>緊急時対応計画 (2020年6月26日){% endif %}
+          </a>
+        </div>
+      </li>
+    </ul>
+
+    <div class="navbar-text">
+      {% include language-switcher.html %}
+    </div>
+  </div>
+</nav>
+
+{% if page.i18n-ref == 'index-8oGCaMDs' %}
+
+<nav id="index-8oGCaMDs-nav" class="nav justify-content-center">
+  <a class="nav-link active" href="#welcome">
+    {% if page.lang == 'ca' %}Benvinguts{% endif %}
+    {% if page.lang == 'en' %}Welcome{% endif %}
+    {% if page.lang == 'es' %}Bienvenidos{% endif %}
+    {% if page.lang == 'ja' %}ようこそ{% endif %}
+  </a>
+  <a class="nav-link" href="#our-dojo">
+    {% if page.lang == 'ca' %}El nostre dojo{% endif %}
+    {% if page.lang == 'en' %}Our dojo{% endif %}
+    {% if page.lang == 'es' %}Nuestro dojo{% endif %}
+    {% if page.lang == 'ja' %}道場について{% endif %}
+  </a>
+  <a class="nav-link" href="#aikido">
+    {% if page.lang == 'ca' %}Aikido{% endif %}
+    {% if page.lang == 'en' %}Aikido{% endif %}
+    {% if page.lang == 'es' %}Aikido{% endif %}
+    {% if page.lang == 'ja' %}合気道とは{% endif %}
+  </a>
+  <a class="nav-link" href="#instructors">
+    {% if page.lang == 'ca' %}Instructors{% endif %}
+    {% if page.lang == 'en' %}Instructors{% endif %}
+    {% if page.lang == 'es' %}Instructores{% endif %}
+    {% if page.lang == 'ja' %}指導者{% endif %}
+  </a>
+  <a class="nav-link" href="#association">
+    {% if page.lang == 'ca' %}Associació Cultural{% endif %}
+    {% if page.lang == 'en' %}Association{% endif %}
+    {% if page.lang == 'es' %}Asociación Cultural{% endif %}
+    {% if page.lang == 'ja' %}文化協会{% endif %}
+  </a>
+  <a class="nav-link" href="#links">
+    {% if page.lang == 'ca' %}Enllaços{% endif %}
+    {% if page.lang == 'en' %}Links{% endif %}
+    {% if page.lang == 'es' %}Enlaces{% endif %}
+    {% if page.lang == 'ja' %}リンク{% endif %}
+  </a>
+</nav>
+
+{% endif %}

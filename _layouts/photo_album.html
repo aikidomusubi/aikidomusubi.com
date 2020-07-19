@@ -1,0 +1,8 @@
+<ul>
+  {% assign num = page.photos.size %}
+    {% for i in (1..num) %}
+      <li>
+        <img class="img-fluid" src="{{ site.baseurl }}/photos/{{ page.photos.album }}/{{ page.photos.album }}-{{ i }}.jpg" alt="Photo {{ i }} from {{ page.photo.title }}">
+      </li>
+    {% endfor %}
+</ul>

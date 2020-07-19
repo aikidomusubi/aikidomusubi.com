@@ -1,0 +1,57 @@
+{% include header.html %}
+
+<main>
+
+  {{ content }}
+
+  {% capture now %}{{ 'now' | date: '%s' | plus: 0 }}{% endcapture %}
+  {% for course in site.courses reversed %}
+    <div class="card">
+      <div class="row no-gutters">
+        <div class="col-lg-4">
+          <img src="{{ site.url}}/images/{% if page.lang == 'ca' %}{{ course.image_ca }}{% elsif page.lang == 'en' %}{{ course.image_en }}{% elsif page.lang == 'es' %}{{ course.image_es }}{% elsif page.lang == 'ja' %}{{ course.image_ja }}{% endif %}" alt="{% if page.lang == 'ca' %}{{ course.title_ca }}{% elsif page.lang == 'en' %}{{ course.title_en }}{% elsif page.lang == 'es' %}{{ course.title_es }}{% elsif page.lang == 'ja' %}{{ course.title_ja }}{% endif %}">
+        </div>
+        <div class="col-lg-8">
+          <div class="card-body">
+            {% capture date %}{{ course.date_from | date: '%s' | plus: 0 }}{% endcapture %}
+              {% if date > now %}
+                <div class="alert alert-success text-center" role="alert">
+                  <i class="far fa-calendar-check"></i>{% if page.lang == "ca" %}{{ "Próximament" }}{% elsif page.lang == "en" %}{{ "Upcoming" }}{% elsif page.lang == "es" %}{{ "Próximamente" }}{% elsif page.lang == "ja" %}{{ "今度の講習会" }}{% endif %}
+                </div>
+              {% else %}
+                <div class="alert alert-secondary text-center" role="alert">
+                  <i class="far fa-calendar-times"></i>{% if page.lang == "ca" %}{{ "Passat" }}{% elsif page.lang == "en" %}{{ "Past" }}{% elsif page.lang == "es" %}{{ "Pasado" }}{% elsif page.lang == "ja" %}{{ "過去" }}{% endif %}
+                </div>
+              {% endif %}
+            <h5 class="card-title">
+              {% if page.lang == "ca" %}{{ course.title_ca }}{% elsif page.lang == "en" %}{{ course.title_en }}{% elsif page.lang == "es" %}{{ course.title_es }}{% elsif page.lang == "ja" %}{{ course.title_ja }}{% endif %}
+            </h5>
+            <p class="card-text">{% if page.lang == "ca" %}{{ course.desc_ca }}{% elsif page.lang == "en" %}{{ course.desc_en }}{% elsif page.lang == "es" %}{{ course.desc_es }}{% elsif page.lang == "ja" %}{{ course.desc_ja }}{% endif %}</p>
+            <p class="card-text">
+              <small class="text-muted">
+                {% unless course.date_to == "blank" %}
+                  <b>{% include date.html date=course.date_from %}</b> - <b>{% include date.html date=course.date_to %}</b>
+                {% else %}
+                  <b>{% include date.html date=course.date_from %}</b>
+                {% endunless %}
+              </small>
+            </p>
+            <p class="card-text">
+              <a href="{{ course.link }}" class="btn btn-primary btn-lg" role="button" aria-pressed="true">
+                <i class="fas fa-external-link-alt"></i>
+                {% if page.lang == "ca" %}{{ "Més informació" }}{% elsif page.lang == "en" %}{{ "More information" }}{% elsif page.lang == "es" %}{{ "Más información" }}{% elsif page.lang == "ja" %}{{ "詳細" }}{% endif %}
+              </a>
+              <a href="{{ site.url}}/files/{% if page.lang == 'ca' %}{{ course.file_ca }}{% elsif page.lang == 'en' %}{{ course.file_en }}{% elsif page.lang == 'es' %}{{ course.file_es }}{% elsif page.lang == 'ja' %}{{ course.file_ja }}{% endif %}" class="btn btn-secondary btn-lg" role="button" aria-pressed="true">
+                <i class="far fa-file-pdf"></i>
+                {% if page.lang == "ca" %}{{ "Descarregar PDF" }}{% elsif page.lang == "en" %}{{ "Download PDF" }}{% elsif page.lang == "es" %}{{ "Descargar PDF" }}{% elsif page.lang == "ja" %}{{ "PDF ダウンロード" }}{% endif %}
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+
+</main>
+
+{% include footer.html %}

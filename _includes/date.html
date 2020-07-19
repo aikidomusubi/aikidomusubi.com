@@ -1,0 +1,69 @@
+{% if page.lang == 'ca' %}
+  {{ include.date | date: "%-d" }} de
+  {% assign m = include.date | date: "%-m" %}
+  {% case m %}
+    {% when  '1' %}gener del
+    {% when  '2' %}febrer del
+    {% when  '3' %}març del
+    {% when  '4' %}abril del
+    {% when  '5' %}maig del
+    {% when  '6' %}juny del
+    {% when  '7' %}juliol del
+    {% when  '8' %}agost del
+    {% when  '9' %}setembre del
+    {% when '10' %}octubre del
+    {% when '11' %}novembre del
+    {% when '12' %}desembre del
+  {% endcase %}
+  {{ include.date | date: "%Y" }}
+{% endif %}
+
+{% if page.lang == 'en' %}
+  {% assign m = include.date | date: "%-m" %}
+  {% case m %}
+    {% when  '1' %}January
+    {% when  '2' %}February
+    {% when  '3' %}March
+    {% when  '4' %}April
+    {% when  '5' %}May
+    {% when  '6' %}June
+    {% when  '7' %}July
+    {% when  '8' %}August
+    {% when  '9' %}September
+    {% when '10' %}October
+    {% when '11' %}November
+    {% when '12' %}December
+  {% endcase %}
+  {% assign day = include.date | date: "%-d" %}
+  {% case day %}
+    {% when '1' or '21' or '31' %} {{ day }}st,
+    {% when '2' or '22' %} {{ day }}nd,
+    {% when '3' or '23' %} {{ day }}rd,
+    {% else %} {{ day }}th,
+  {% endcase %}
+  {{ include.date | date: "%Y" }}
+{% endif %}
+
+{% if page.lang == 'es' %}
+  {{ include.date | date: "%-d" }} de
+  {% assign m = include.date | date: "%-m" %}
+  {% case m %}
+    {% when  '1' %}enero de
+    {% when  '2' %}febrero de
+    {% when  '3' %}marzo de
+    {% when  '4' %}abril de
+    {% when  '5' %}mayo de
+    {% when  '6' %}junio de
+    {% when  '7' %}julio de
+    {% when  '8' %}agosto de
+    {% when  '9' %}septiembre de
+    {% when '10' %}octubre de
+    {% when '11' %}noviembre de
+    {% when '12' %}diciembre de
+  {% endcase %}
+  {{ include.date | date: "%Y" }}
+{% endif %}
+
+{% if page.lang == 'ja' %}
+  {{ include.date | date: "%y年%m月%d日" }}
+{% endif %}

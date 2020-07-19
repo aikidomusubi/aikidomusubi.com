@@ -1,0 +1,94 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+title: Aikido Musubi
+email: info@aikidomusubi.com
+phone: 34717171177‬
+description: >- # this means to ignore newlines until "baseurl:"
+  Aikido Musubi es una asociación cultural autogestionada y sin
+  ánimo de lucro que promueve el aikido en Badalona. よろしくお願いします！
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://dev.aikidomusubi.com" # the base hostname & protocol for your site, e.g. http://example.com
+github:
+  repo:  https://github.com/aikidomusubi/aikidomusubi.com
+timezone: Europe/Madrid
+
+facebook_username: aikidomusubibadalona
+github_username: aikidomusubi
+instagram_username: aikidomusubi
+youtube_username: musubiaikidobdn
+
+# Build settings
+markdown: kramdown
+
+kramdown:
+  auto_ids: false
+
+# permalink: /:title-:short_year:month:day
+plugins:
+  - jekyll-feed
+  - jekyll-redirect-from
+
+collections:
+  courses:
+    output: false
+    layout: "course"
+  photos:
+    output: true
+    layout: "photo"
+  videos:
+    output: false
+    layout: "video"
+
+defaults:
+  - scope:
+      path: "photos"
+      type: "photos"
+    values:
+      image: true
+
+# Exclude from processing.
+# The following items will not be processed, by default. Create a custom list
+# to override the default setting.
+exclude:
+  - _includes/cssrelpreload.js
+  - node_modules/
+  - scripts/bootstrap.bundle.js.map
+  - scripts/bootstrap.bundle.min.js.map
+  - scripts/bootstrap.js.map
+  - scripts/bootstrap.min.js.map
+  - scripts/all.js
+  - scripts/bootstrap.bundle.js
+  - scripts/bootstrap.bundle.min.js
+  - scripts/bootstrap.js
+  - scripts/bootstrap.min.js
+  - scripts/default.js
+#  - scripts/jquery-3.4.1.min.js
+  - styles/bootstrap-grid.css
+  - styles/bootstrap-grid.min.css
+  - styles/bootstrap-reboot.css
+  - styles/bootstrap-reboot.min.css
+  - styles/bootstrap.css
+  - styles/bootstrap-grid.css.map
+  - styles/bootstrap-reboot.css.map
+  - styles/bootstrap-reboot.min.css.map
+  - styles/bootstrap.css.map
+  - styles/base.less
+  - styles/default.less
+  - Gemfile
+  - Gemfile.lock
+  - gulpfile.js
+  - package-lock.json
+  - package.json
