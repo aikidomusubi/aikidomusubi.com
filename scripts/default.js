@@ -116,7 +116,7 @@
         var dataTargetName = $(this).attr('data-target-name');
 
         $(dataTarget).on('show.bs.modal', function(event) {
-          $(this).find('.modal-body').load('http://localhost:4000/photos/' + dataTargetName + '.html');
+          $(this).find('.modal-body').load('https://dev.aikidomusubi.com/photos/' + dataTargetName + '.html');
         });
     });
 
