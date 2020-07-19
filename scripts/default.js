@@ -119,10 +119,6 @@
           $(this).find('.modal-body').load('https://dev.aikidomusubi.com/photos/' + dataTargetName + '.html');
         });
     });
-
-    // $('.modal').on('show.bs.modal', function(event) {
-    //   $(this).find('.modal-body').load('');
-    // });
   }
 
 ////////////////////////////////////////////////////////////////
