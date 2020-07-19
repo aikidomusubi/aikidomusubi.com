@@ -21,5 +21,5 @@ facebook_url: "https://www.facebook.com/media/set/?set=a.930427583718779"
 
 photos:
     album: 2014-sant-adria-del-besos-2014
-    size: 38
+    size: 111
 ---
