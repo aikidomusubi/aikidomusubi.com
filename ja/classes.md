@@ -19,7 +19,7 @@ i18n-ref: classes-CJc2lhFv
   <img src="{{ site.url }}/images/classes-CJc2lhFv-27.jpg" class="img-fluid" alt="合気道産靈 一般クラス">
 </figure>
 
-Regular practice for all levels. Available to all members over 12 years old.
+すべてのレベルの方への定期的なクラス。12歳以上のすべての方が利用できます。
 
 __月__
 20:00 - 21:30
@@ -63,7 +63,7 @@ __土__
   </div>
 </div>
 
-Practice focuses on learning basic falls and movements. Recommended for beginners and intermediate level practitioners.
+基本的な転倒と動きを学ぶことに焦点を当てたクラス。初心者から中級レベルの方におすすめです
 
 __土__
 09:15 - 10:15
@@ -85,13 +85,13 @@ __土__
   </div>
 </div>
 
-Practice with wooden sword or 《木剣》, the short staff or 《杖》, and the wooden knife or 《短刀》.
+木剣あるいは杖、および短刀を使ったクラス。
 
 __水__
-20:00 - 21:30 (first half)
+20:00 - 21:30（前半）
 
 __木__
-20:00 - 21:30 (the first Thursday of the month)
+20:00 - 21:30 (一月の最初の木曜日)
 
 ## 子供クラス
 
@@ -122,16 +122,16 @@ __木__
   </div>
 </div>
 
-For boys and girls from 6 to 12 years old. Aikido strengthens not only the body but also the mind and spirit. Children gain a strong sense of concentration and self-confidence while practicing in a friendly environment. Instructors teach children to defend themselves without hurting others.
+6歳から12歳までの男の子と女の子向け。合気道は身体だけでなく、心と精神も強化します。子どもたちは、親しみやすい環境で練習しながら、強い集中力と自信を得ることができます。インストラクターは、他の人を傷つけることなく自分自身を守ることを子供たちに教えます。
 
 __月__
-17:30 - 18:30 (in english)
+17:30 - 18:30（英語）
 
 __火__
 19:00 - 20:00
 
 __水__
-17:30 - 18:30 (in english)
+17:30 - 18:30（英語）
 
 __木__
 19:00 - 20:00
@@ -153,7 +153,7 @@ __木__
   </div>
 </div>
 
-松濤館流 空手. For boys and girls from 6 to 12 years old.
+松濤館流空手。6歳から12歳までの男の子と女の子向け。
 
 __火__
 18:00 - 19:00
@@ -190,7 +190,7 @@ __金__
   </div>
 </div>
 
-弓道 is the Japanese art of archery. The バルセロナの弓道場協会 gather on weekends in our dojo and welcomes anyone who wishes to study this martial art.
+弓道とは日本のアーチェリーです。<b>バルセロナ弓道道場協会</b>は週末にこの道場に集まり、弓道を学びたい人を歓迎します。
 
 __土__
 10:15 - 14:15
@@ -198,14 +198,14 @@ __土__
 __日__
 10:15 - 14:15
 
-For more information about kyudo classes, contact the _Kyudo Dojo Association of Barcelona_ by the following means:
+弓道クラスの詳細については、以下の方法で<b>バルセロナ弓道道場協会</b>にお問い合わせください。
 
 メール: [infokyudobarcelona@gmail.com](mailto:infokyudobarcelona@gmail.com)<br>
 Facebook: [facebook.com/AssociacioKyudoDojoBarcelona](https://www.facebook.com/AssociacioKyudoDojoBarcelona/)
 
 ## ヨガクラス
 
-Yoga Hatha 《ヨガハタ》 and Therapeutic Yoga. Classes designed to balance, tone, and give flexibility. In addition, specific classes for the relief and rebalancing of different pathologies.
+ヨガハタとヨガセラピーのクラス。バランス、調子を整え、柔軟性を提供するように作られたクラス。さらに、さまざまな病状の緩和と調整に特化したクラス。
 
 __月__
 09:00 - 10:15<br>
@@ -221,7 +221,7 @@ __金__
 11:30 - 12:45<br>
 14:00 - 15:15
 
-For more information about Yoga Hatha and Therapeutic Yoga classes, contact through the following means:
+ヨガハタおよびヨガセラピークラスの詳細については、下記へお問い合わせください。
 
 メール: [riuyogabdn@gmail.com](mailto:riuyogabdn@gmail.com)<br>
 WhatsApp: [+34.619.827.123](https://wa.me/34619827123)
