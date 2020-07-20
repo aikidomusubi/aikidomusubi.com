@@ -20,7 +20,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   Aikido Musubi es una asociación cultural autogestionada y sin
   ánimo de lucro que promueve el aikido en Badalona. よろしくお願いします！
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://dev.aikidomusubi.com" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://aikidomusubi.com" # the base hostname & protocol for your site, e.g. http://example.com
 github:
   repo:  https://github.com/aikidomusubi/aikidomusubi.com
 timezone: Europe/Madrid

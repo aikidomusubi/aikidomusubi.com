@@ -139,7 +139,7 @@ this.tablist=this._getList().addClass("ui-tabs-nav ui-helper-reset ui-helper-cle
         var dataTargetName = $(this).attr('data-target-name');
 
         $(dataTarget).on('show.bs.modal', function(event) {
-          $(this).find('.modal-body').load('https://dev.aikidomusubi.com/photos/' + dataTargetName + '.html');
+          $(this).find('.modal-body').load('https://aikidomusubi.com/photos/' + dataTargetName + '.html');
         });
     });
   }
