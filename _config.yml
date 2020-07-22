@@ -94,3 +94,6 @@ exclude:
   - gulpfile.js
   - package-lock.json
   - package.json
+
+include:
+  - sitemap.xml
