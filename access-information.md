@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Acceso
-desc: Si quieres visitar nuestro dojo o entrenar con nosotros, contáctanos.
+description: Si quieres visitar nuestro dojo o entrenar con nosotros, contáctanos.
 permalink: /acceso/
 lang: es
 i18n-ref: access-information-NdxqmVbV

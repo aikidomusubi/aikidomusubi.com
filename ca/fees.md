@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Quotes
-desc: La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et donem 1 mes de prova sense compromís. Per a més informació sobre les diferents quotes i els mètodes de pagament, contacta'ns.
+description: La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et donem 1 mes de prova sense compromís. Per a més informació sobre les diferents quotes i els mètodes de pagament, contacta'ns.
 permalink: /ca/quotes/
 lang: ca
 i18n-ref: fees-UjbuGtGz

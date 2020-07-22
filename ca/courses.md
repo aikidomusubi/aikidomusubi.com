@@ -1,7 +1,7 @@
 ---
 layout: course
 title: Cursos
-desc: Cursos i esdeveniments que tenen lloc al nostre dojo. Per a més informació, visita la nostra pàgina de Facebook.
+description: Cursos i esdeveniments que tenen lloc al nostre dojo. Per a més informació, visita la nostra pàgina de Facebook.
 permalink: /ca/cursos/
 lang: ca
 i18n-ref: courses-hFZ2XXIp

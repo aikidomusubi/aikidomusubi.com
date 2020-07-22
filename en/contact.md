@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Contact
-desc: For more information, contact us by the following means.
+description: For more information, contact us by the following means.
 permalink: /en/contact/
 lang: en
 i18n-ref: contact-mu1FDiTN

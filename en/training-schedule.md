@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Training Schedule
-desc: Currently, we offer aikido classes (adults and children) from Monday to Saturday. In addition, we also offer classes in other Japanese martial arts.
+description: Currently, we offer aikido classes (adults and children) from Monday to Saturday. In addition, we also offer classes in other Japanese martial arts.
 permalink: /en/training-schedule/
 lang: en
 i18n-ref: training-schedule-IFMn5oCc

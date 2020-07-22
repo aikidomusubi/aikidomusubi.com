@@ -1,7 +1,7 @@
 ---
 layout: photo
 title: Fotos
-desc: Una selección de fotos. Si quieres ver más fotos, visita nuestra página de Facebook. A menos que se indique lo contrario, todas las fotos son de Aikido Musubi.
+description: Una selección de fotos. Si quieres ver más fotos, visita nuestra página de Facebook. A menos que se indique lo contrario, todas las fotos son de Aikido Musubi.
 permalink: /fotos/
 lang: es
 i18n-ref: photos-QDOJ1pyG

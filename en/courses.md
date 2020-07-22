@@ -1,7 +1,7 @@
 ---
 layout: course
 title: Courses
-desc: Courses and events that take place in our dojo. For more information, visit our Facebook page.
+description: Courses and events that take place in our dojo. For more information, visit our Facebook page.
 permalink: /en/courses/
 lang: en
 i18n-ref: courses-hFZ2XXIp

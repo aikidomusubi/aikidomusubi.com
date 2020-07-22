@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Access Information
-desc: If you wish to visit our dojo or train with us, contact us.
+description: If you wish to visit our dojo or train with us, contact us.
 permalink: /en/access-information/
 lang: en
 i18n-ref: access-information-NdxqmVbV

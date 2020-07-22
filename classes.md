@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Clases
-desc: Disponemos de un amplio horario de classes para acomodar a adultos y niños, y diferentes niveles de experiencia. Además, incluimos la práctica con armas (buki waza).
+description: Disponemos de un amplio horario de classes para acomodar a adultos y niños, y diferentes niveles de experiencia. Además, incluimos la práctica con armas (buki waza).
 permalink: /clases/
 lang: es
 i18n-ref: classes-CJc2lhFv

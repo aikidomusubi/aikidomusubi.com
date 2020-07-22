@@ -1,7 +1,7 @@
 ---
 layout: course
 title: 講習会
-desc: 私たちの道場で行われるコースとイベント。 詳細については、Facebookのページをご覧ください。
+description: 私たちの道場で行われるコースとイベント。 詳細については、Facebookのページをご覧ください。
 permalink: /ja/courses/
 lang: ja
 i18n-ref: courses-hFZ2XXIp

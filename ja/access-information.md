@@ -1,7 +1,7 @@
 ---
 layout: page
 title: アクセス
-desc: 道場を訪問したり、一緒に訓練したい場合は、お問い合わせ下さい。
+description: 道場を訪問したり、一緒に訓練したい場合は、お問い合わせ下さい。
 permalink: /ja/access-information/
 lang: ja
 i18n-ref: access-information-NdxqmVbV

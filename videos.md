@@ -1,7 +1,7 @@
 ---
 layout: video
 title: Vídeos
-desc: Una selección de vídeos. Si quieres ver más vídeos, visita nuestro canal de Youtube.　A menos que se indique lo contrario, todos los vídeos son de Aikido Musubi.
+description: Una selección de vídeos. Si quieres ver más vídeos, visita nuestro canal de Youtube.　A menos que se indique lo contrario, todos los vídeos son de Aikido Musubi.
 permalink: /videos/
 lang: es
 i18n-ref: videos-NuhYeNWr
