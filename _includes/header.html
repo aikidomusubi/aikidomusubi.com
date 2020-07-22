@@ -2,6 +2,7 @@
 <!doctype html>
 <html lang="{{ page.lang }}" xml:lang="{{ page.lang }}">
   <head>
+    {% include gtag.html %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% if page.i18n-ref == 'index-8oGCaMDs' %}{% if page.lang == 'ja' %}合気道産靈{% else %}{{ site.title }}{% endif %}{% else %}{% if page.lang == 'ja' %}合気道産靈 - {{ page.title }}{% else %}{{ site.title }} - {{ page.title }}{% endif %}{% endif %}</title>
@@ -42,7 +43,6 @@
       {% endif %}
       {% include fullcalendar.html %}
     {% endif %}
-    {% include gtag.html %}
   </head>
   <body class="{{ page.i18n-ref }} invisible">
     <div class="page">
