@@ -41,8 +41,6 @@ kramdown:
 plugins:
   - jekyll-feed
   - jekyll-redirect-from
-  - jekyll-sitemap
-
 
 collections:
   courses:
