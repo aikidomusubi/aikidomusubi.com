@@ -1,5 +1,6 @@
 ---
 layout: photo_album
+exclude: true
 
 title_ca: "Festa del Badiu @ Badalona, 2015"
 title_en: "Festa del Badiu @ Badalona, 2015"

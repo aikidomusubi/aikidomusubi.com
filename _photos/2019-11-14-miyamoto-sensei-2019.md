@@ -1,5 +1,6 @@
 ---
 layout: photo_album
+exclude: true
 
 title_ca: "Miyamoto Tsuruzo Shihan @ INEFC, 2019"
 title_en: "Miyamoto Tsuruzo Shihan @ INEFC, 2019"

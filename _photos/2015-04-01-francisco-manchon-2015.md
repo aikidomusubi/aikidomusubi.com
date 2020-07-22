@@ -1,5 +1,6 @@
 ---
 layout: photo_album
+exclude: true
 
 title_ca: "Francisco Manchón Sensei @ Aikido Musubi, 2015"
 title_en: "Francisco Manchón Sensei @ Aikido Musubi, 2015"

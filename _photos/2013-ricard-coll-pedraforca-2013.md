@@ -1,5 +1,6 @@
 ---
 layout: photo_album
+exclude: true
 
 title_ca: "Ricard Coll Sensei @ Pedraforca, 2013"
 title_en: "Ricard Coll Sensei @ Pedraforca, 2013"

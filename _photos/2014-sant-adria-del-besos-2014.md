@@ -1,5 +1,6 @@
 ---
 layout: photo_album
+exclude: true
 
 title_ca: "Aikido Musubi Exhibició @ Sant Andrià del Besós, 2014"
 title_en: "Aikido Musubi Exhibition @ Sant Andrià del Besós, 2014"

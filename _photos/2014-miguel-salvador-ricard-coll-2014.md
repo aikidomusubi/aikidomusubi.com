@@ -1,5 +1,6 @@
 ---
 layout: photo_album
+exclude: true
 
 title_ca: "Miguel Salvador Sensei, Ricard Coll Sensei @ Aikido Musubi, 2014"
 title_en: "Miguel Salvador Sensei, Ricard Coll Sensei @ Aikido Musubi, 2014"

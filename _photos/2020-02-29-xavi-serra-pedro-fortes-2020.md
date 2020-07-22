@@ -1,5 +1,6 @@
 ---
 layout: photo_album
+exclude: true
 
 title_ca: "Xavi Serra, Pedro Fortes @ Aikido Musubi, 2020"
 title_en: "Xavi Serra, Pedro Fortes @ Aikido Musubi, 2020"

@@ -1,5 +1,6 @@
 ---
 layout: photo_album
+exclude: true
 
 title_ca: "Aikido Musubi Exhibició @ Castelldefels, 2012"
 title_en: "Aikido Musubi Exhibition @ Castelldefels, 2012"

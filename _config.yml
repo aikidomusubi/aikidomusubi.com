@@ -65,23 +65,7 @@ defaults:
 # to override the default setting.
 exclude:
   - _includes/cssrelpreload.js
-  - assets/index.html
-  - assets/css/style.css
-  - ca/assets/index.html
-  - ca/files/index.html
-  - ca/fonts/index.html
-  - ca/graphics/index.html
-  - ca/icons/index.html
-  - ca/images/index.html
-  - ca/images/photos/index.html
-  - ca/plugins/index.html
-  - ca/plugins/fullcalendar-4.3.1/index.html
-  - ca/plugins/fullcalendar-4.3.1/examples/index.html
-  - ca/plugins/fullcalendar-4.3.1/packages/index.html
-  - ca/plugins/fullcalendar-4.3.1/vendor/index.html
-  - ca/politica-de-privacitat/index.html
-  - ca/scripts/index.html
-  - ca/styles/index.html
+  - assets/
   - node_modules/
   - scripts/bootstrap.bundle.js.map
   - scripts/bootstrap.bundle.min.js.map

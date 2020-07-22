@@ -1,5 +1,6 @@
 ---
 layout: photo_album
+exclude: true
 
 title_ca: "Aikido Musubi Exhibició @ Saló del Manga, 2012"
 title_en: "Aikido Musubi Exhibition @ Saló del Manga, 2012"

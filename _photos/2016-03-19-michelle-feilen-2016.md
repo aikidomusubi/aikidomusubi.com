@@ -1,5 +1,6 @@
 ---
 layout: photo_album
+exclude: true
 
 title_ca: "Michelle Feilen Sensei @ Aikido Musubi, 2016"
 title_en: "Michelle Feilen Sensei @ Aikido Musubi, 2016"

@@ -1,5 +1,6 @@
 ---
 layout: photo_album
+exclude: true
 
 title_ca: "Aikido Musubi i Aikidojo Terrasa @ Aikido Musubi, 2008"
 title_en: "Aikido Musubi and Aikidojo Terrasa @ Aikido Musubi, 2008"

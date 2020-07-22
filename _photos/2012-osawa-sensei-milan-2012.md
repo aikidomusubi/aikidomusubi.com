@@ -1,5 +1,6 @@
 ---
 layout: photo_album
+exclude: true
 
 title_ca: "Osawa H. Shihan @ Milà, 2012"
 title_en: "Osawa H. Shihan @ Milan, 2012"

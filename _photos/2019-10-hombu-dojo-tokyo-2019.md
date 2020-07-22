@@ -1,5 +1,6 @@
 ---
 layout: photo_album
+exclude: true
 
 title_ca: "Hombu Dojo @ Tòquio, 2019"
 title_en: "Hombu Dojo @ Tokyo, 2019"

@@ -1,5 +1,6 @@
 ---
 layout: photo_album
+exclude: true
 
 title_ca: "Osawa H. Shihan @ Brussel·les, 2013"
 title_en: "Osawa H. Shihan @ Brussels, 2013"

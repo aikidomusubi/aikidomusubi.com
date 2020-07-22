@@ -1,5 +1,6 @@
 ---
 layout: photo_album
+exclude: true
 
 title_ca: "Pablo Martín, Pedro Fortes, David Ballara @ Aikido Musubi, 2016"
 title_en: "Pablo Martín, Pedro Fortes, David Ballara @ Aikido Musubi, 2016"
