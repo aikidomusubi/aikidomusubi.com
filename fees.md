@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Cuotas
+desc: La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te damos 1 mes de prueba sin compromiso. Para más información sobre las diferentes cuotas y los métodos de pago, contáctanos.
 permalink: /cuotas/
 lang: es
 i18n-ref: fees-UjbuGtGz

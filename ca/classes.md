@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Classes
+desc: Disposem d'un ampli horari de classes per acomodar a adults i nens, i diferents nivells d'experiència. A més, incloem la pràctica amb armes (buki waza).
 permalink: /ca/classes/
 lang: ca
 i18n-ref: classes-CJc2lhFv

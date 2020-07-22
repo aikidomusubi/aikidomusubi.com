@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Fees
+desc: Registration is free of charge. We offer discounts for families. And we also give you 1 month free trial with no obligation. For more information about the different fees and payment methods, contact us.
 permalink: /en/fees/
 lang: en
 i18n-ref: fees-UjbuGtGz

@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Classes
+desc: We have a wide schedule of classes to accommodate adults and children, and different levels of experience. In addition, we include practice with weapons (buki waza).
 permalink: /en/classes/
 lang: en
 i18n-ref: classes-CJc2lhFv

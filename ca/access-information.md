@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Accés
+desc: Si vols visitar el nostre dojo o entrenar amb nosaltres, contacta'ns.
 permalink: /ca/acces/
 lang: ca
 i18n-ref: access-information-NdxqmVbV

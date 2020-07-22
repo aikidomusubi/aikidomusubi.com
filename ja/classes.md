@@ -1,6 +1,7 @@
 ---
 layout: page
 title: 各クラスの紹介
+desc: 一般の方を対象としたクラスの他にも、初心者に合わせたクラスのご用意もあります。さらに、武器技のクラスもございます。
 permalink: /ja/classes/
 lang: ja
 i18n-ref: classes-CJc2lhFv

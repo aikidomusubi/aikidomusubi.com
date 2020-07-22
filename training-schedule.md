@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Horarios
+desc: Actualmente, ofrecemos clases de Aikido (adultos e infantil) de lunes a sábado. Además, también ofrecemos clases de otras artes marciales de Japón.
 permalink: /horarios/
 lang: es
 i18n-ref: training-schedule-IFMn5oCc
