@@ -95,28 +95,28 @@ __Aikido Musubi__ se encuentra dentro de las instalaciones deportivas Badalona S
       </div>
     </div>
     <div class="col-lg-8">
-      <img src="{{ site.url }}/images/access-information-NdxqmVbV-{{ page.lang }}.jpg" alt="Mapa de las instalaciones deportivas Badalona Sur">
+      <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-{{ page.lang }}.jpg" class="img-fluid lazyload" alt="Mapa de las instalaciones deportivas Badalona Sur">
     </div>
   </div>
 </div>
 
 <div class="card-group">
   <div class="card">
-    <img src="{{ site.url }}/images/access-information-NdxqmVbV-a.jpg" class="card-img-top" alt="Instalaciones Deportivas Badalona Sur Acceso A">
+    <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-a.jpg" class="card-img-top lazyload" alt="Instalaciones Deportivas Badalona Sur Acceso A">
     <div class="card-body">
       <h5 class="card-title">Acceso <span>A</span></h5>
       <p class="card-text">Acceso a través de la calle Jumilla.</p>
     </div>
   </div>
   <div class="card">
-    <img src="{{ site.url }}/images/access-information-NdxqmVbV-b.jpg" class="card-img-top" alt="Instalaciones Deportivas Badalona Sur Acceso B">
+    <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-b.jpg" class="card-img-top lazyload" alt="Instalaciones Deportivas Badalona Sur Acceso B">
     <div class="card-body">
       <h5 class="card-title">Acceso <span>B</span></h5>
       <p class="card-text">Acceso a través de la entrada del parking en la calle Jumilla.</p>
     </div>
   </div>
   <div class="card">
-    <img src="{{ site.url }}/images/access-information-NdxqmVbV-c.jpg" class="card-img-top" alt="Instalaciones Deportivas Badalona Sur Acceso C">
+    <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-c.jpg" class="card-img-top lazyload" alt="Instalaciones Deportivas Badalona Sur Acceso C">
     <div class="card-body">
       <h5 class="card-title">Acceso <span>C</span></h5>
       <p class="card-text">Acceso a través de la puerta pequeña ubicada en el Passatge de la Ciudad de San Fernando.</p>

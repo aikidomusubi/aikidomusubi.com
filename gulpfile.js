@@ -31,7 +31,7 @@ gulp.task('optimize-html', gulp.series(function(done) {
 }));
 
 gulp.task('scripts', gulp.series(function(done) {
-  return gulp.src(['scripts/jquery-*.min.js', 'scripts/jquery-ui-*.min.js', 'scripts/bootstrap.min.js', 'scripts/default.js'])
+  return gulp.src(['scripts/jquery-*.min.js', 'scripts/jquery-ui-*.min.js', 'scripts/bootstrap.min.js', 'scripts/lazysizes.min.js', 'scripts/default.js'])
   .pipe(concat('all.js'))
   .pipe(gulp.dest('scripts'))
   .pipe(rename('all.min.js'))

@@ -17,7 +17,7 @@ i18n-ref: classes-CJc2lhFv
 ## 一般クラス
 
 <figure>
-  <img src="{{ site.url }}/images/classes-CJc2lhFv-27.jpg" class="img-fluid" alt="合気道産靈 一般クラス">
+  <img data-src="{{ site.url }}/images/classes-CJc2lhFv-27.jpg" class="img-fluid lazyload" alt="合気道産靈 一般クラス">
 </figure>
 
 すべてのレベルの方への定期的なクラス。12歳以上のすべての方が利用できます。
@@ -41,24 +41,24 @@ __土__
   <div class="row">
     <div class="col col-sm">
       <figure>
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-17.jpg" class="img-fluid" alt="合気道産靈 初心者クラス">
+        <img data-src="{{ site.url }}/images/classes-CJc2lhFv-17.jpg" class="img-fluid lazyload" alt="合気道産靈 初心者クラス">
       </figure>
     </div>
     <div class="col col-sm">
       <figure>
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-22.jpg" class="img-fluid" alt="合気道産靈 初心者クラス">
+        <img data-src="{{ site.url }}/images/classes-CJc2lhFv-22.jpg" class="img-fluid lazyload" alt="合気道産靈 初心者クラス">
       </figure>
     </div>
   </div>
   <div class="row">
     <div class="col col-sm">
       <figure>
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-00.jpg" class="img-fluid" alt="合気道産靈 初心者クラス">
+        <img data-src="{{ site.url }}/images/classes-CJc2lhFv-00.jpg" class="img-fluid lazyload" alt="合気道産靈 初心者クラス">
       </figure>
     </div>
     <div class="col col-sm">
       <figure>
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-01.jpg" class="img-fluid" alt="合気道産靈 初心者クラス">
+        <img data-src="{{ site.url }}/images/classes-CJc2lhFv-01.jpg" class="img-fluid lazyload" alt="合気道産靈 初心者クラス">
       </figure>
     </div>
   </div>
@@ -75,12 +75,12 @@ __土__
   <div class="row">
     <div class="col col-sm">
       <figure>
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-15.jpg" class="img-fluid" alt="合気道産靈 武器クラス">
+        <img data-src="{{ site.url }}/images/classes-CJc2lhFv-15.jpg" class="img-fluid lazyload" alt="合気道産靈 武器クラス">
       </figure>
     </div>
     <div class="col col-sm">
       <figure>
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-16.jpg" class="img-fluid" alt="合気道産靈 武器クラス">
+        <img data-src="{{ site.url }}/images/classes-CJc2lhFv-16.jpg" class="img-fluid lazyload" alt="合気道産靈 武器クラス">
       </figure>
     </div>
   </div>
@@ -100,24 +100,24 @@ __木__
   <div class="row">
     <div class="col col-sm">
       <figure>
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-30.jpg" class="img-fluid" alt="合気道産靈 子供クラス">
+        <img data-src="{{ site.url }}/images/classes-CJc2lhFv-30.jpg" class="img-fluid lazyload" alt="合気道産靈 子供クラス">
       </figure>
     </div>
     <div class="col col-sm">
       <figure>
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-31.jpg" class="img-fluid" alt="合気道産靈 子供クラス">
+        <img data-src="{{ site.url }}/images/classes-CJc2lhFv-31.jpg" class="img-fluid lazyload" alt="合気道産靈 子供クラス">
       </figure>
     </div>
   </div>
   <div class="row">
     <div class="col col-sm">
       <figure>
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-33.jpg" class="img-fluid" alt="合気道産靈 子供クラス">
+        <img data-src="{{ site.url }}/images/classes-CJc2lhFv-33.jpg" class="img-fluid lazyload" alt="合気道産靈 子供クラス">
       </figure>
     </div>
     <div class="col col-sm">
       <figure>
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-32.jpg" class="img-fluid" alt="合気道産靈 子供クラス">
+        <img data-src="{{ site.url }}/images/classes-CJc2lhFv-32.jpg" class="img-fluid lazyload" alt="合気道産靈 子供クラス">
       </figure>
     </div>
   </div>
@@ -143,12 +143,12 @@ __木__
   <div class="row">
     <div class="col col-sm">
       <figure>
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-14.jpg" class="img-fluid" alt="合気道産靈 子供の空手クラス">
+        <img data-src="{{ site.url }}/images/classes-CJc2lhFv-14.jpg" class="img-fluid lazyload" alt="合気道産靈 子供の空手クラス">
       </figure>
     </div>
     <div class="col col-sm">
       <figure>
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-13.jpg" class="img-fluid" alt="合気道産靈 子供の空手クラス">
+        <img data-src="{{ site.url }}/images/classes-CJc2lhFv-13.jpg" class="img-fluid lazyload" alt="合気道産靈 子供の空手クラス">
       </figure>
     </div>
   </div>
@@ -168,24 +168,24 @@ __金__
   <div class="row">
     <div class="col col-sm">
       <figure>
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-02.jpg" class="img-fluid" alt="合気道産靈 弓道クラス">
+        <img data-src="{{ site.url }}/images/classes-CJc2lhFv-02.jpg" class="img-fluid lazyload" alt="合気道産靈 弓道クラス">
       </figure>
     </div>
     <div class="col col-sm">
       <figure>
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-04.jpg" class="img-fluid" alt="合気道産靈 弓道クラス">
+        <img data-src="{{ site.url }}/images/classes-CJc2lhFv-04.jpg" class="img-fluid lazyload" alt="合気道産靈 弓道クラス">
       </figure>
     </div>
   </div>
   <div class="row">
     <div class="col col-sm">
       <figure>
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-03.jpg" class="img-fluid" alt="合気道産靈 弓道クラス">
+        <img data-src="{{ site.url }}/images/classes-CJc2lhFv-03.jpg" class="img-fluid lazyload" alt="合気道産靈 弓道クラス">
       </figure>
     </div>
     <div class="col col-sm">
       <figure>
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-07.jpg" class="img-fluid" alt="合気道産靈 弓道クラス">
+        <img data-src="{{ site.url }}/images/classes-CJc2lhFv-07.jpg" class="img-fluid lazyload" alt="合気道産靈 弓道クラス">
       </figure>
     </div>
   </div>

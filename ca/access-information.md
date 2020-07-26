@@ -95,28 +95,28 @@ __Aikido Musubi__ es troba dins de les instal·lacions esportives Badalona Sud. 
       </div>
     </div>
     <div class="col-lg-8">
-      <img src="{{ site.url }}/images/access-information-NdxqmVbV-{{ page.lang }}.jpg" alt="Mapa de les instal·lacions esportives Badalona Sud">
+      <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-{{ page.lang }}.jpg" class="img-fluid lazyload" alt="Mapa de les instal·lacions esportives Badalona Sud">
     </div>
   </div>
 </div>
 
 <div class="card-group">
   <div class="card">
-    <img src="{{ site.url }}/images/access-information-NdxqmVbV-a.jpg" class="card-img-top" alt="Instal·lacions esportives Badalona Sud Accés A">
+    <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-a.jpg" class="card-img-top lazyload" alt="Instal·lacions esportives Badalona Sud Accés A">
     <div class="card-body">
       <h5 class="card-title">Accés <span>A</span></h5>
       <p class="card-text">Accés a través del carrer Jumilla.</p>
     </div>
   </div>
   <div class="card">
-    <img src="{{ site.url }}/images/access-information-NdxqmVbV-b.jpg" class="card-img-top" alt="Instal·lacions esportives Badalona Sud Accés B">
+    <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-b.jpg" class="card-img-top lazyload" alt="Instal·lacions esportives Badalona Sud Accés B">
     <div class="card-body">
       <h5 class="card-title">Accés <span>B</span></h5>
       <p class="card-text">Accés a través de l'entrada del parking al carrer Jumilla.</p>
     </div>
   </div>
   <div class="card">
-    <img src="{{ site.url }}/images/access-information-NdxqmVbV-c.jpg" class="card-img-top" alt="Instal·lacions esportives Badalona Sud Accés C">
+    <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-c.jpg" class="card-img-top lazyload" alt="Instal·lacions esportives Badalona Sud Accés C">
     <div class="card-body">
       <h5 class="card-title">Accés <span>C</span></h5>
       <p class="card-text">Accés a través de la porta petita situada al Passatge de la Ciudad de San Fernando.</p>

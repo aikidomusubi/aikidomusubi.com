@@ -16,7 +16,7 @@ We have a wide schedule of classes to accommodate adults and children, and diffe
 ## Aikido classes
 
 <figure>
-  <img src="{{ site.url }}/images/classes-CJc2lhFv-27.jpg" class="img-fluid" alt="Aikido Musubi Aikido classes">
+  <img data-src="{{ site.url }}/images/classes-CJc2lhFv-27.jpg" class="img-fluid lazyload" alt="Aikido Musubi Aikido classes">
 </figure>
 
 Regular practice for all levels. Available to all members over 12 years old.
@@ -40,24 +40,24 @@ __Saturday__
   <div class="row">
     <div class="col col-sm">
       <figure>
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-17.jpg" class="img-fluid" alt="Aikido Musubi Aikido classes for beginners">
+        <img data-src="{{ site.url }}/images/classes-CJc2lhFv-17.jpg" class="img-fluid lazyload" alt="Aikido Musubi Aikido classes for beginners">
       </figure>
     </div>
     <div class="col col-sm">
       <figure>
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-22.jpg" class="img-fluid" alt="Aikido Musubi Aikido classes for beginners">
+        <img data-src="{{ site.url }}/images/classes-CJc2lhFv-22.jpg" class="img-fluid lazyload" alt="Aikido Musubi Aikido classes for beginners">
       </figure>
     </div>
   </div>
   <div class="row">
     <div class="col col-sm">
       <figure>
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-00.jpg" class="img-fluid" alt="Aikido Musubi Aikido classes for beginners">
+        <img data-src="{{ site.url }}/images/classes-CJc2lhFv-00.jpg" class="img-fluid lazyload" alt="Aikido Musubi Aikido classes for beginners">
       </figure>
     </div>
     <div class="col col-sm">
       <figure>
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-01.jpg" class="img-fluid" alt="Aikido Musubi Aikido classes for beginners">
+        <img data-src="{{ site.url }}/images/classes-CJc2lhFv-01.jpg" class="img-fluid lazyload" alt="Aikido Musubi Aikido classes for beginners">
       </figure>
     </div>
   </div>
@@ -74,12 +74,12 @@ __Saturday__
   <div class="row">
     <div class="col col-sm">
       <figure>
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-15.jpg" class="img-fluid" alt="Aikido Musubi Aikido weapons classes">
+        <img data-src="{{ site.url }}/images/classes-CJc2lhFv-15.jpg" class="img-fluid lazyload" alt="Aikido Musubi Aikido weapons classes">
       </figure>
     </div>
     <div class="col col-sm">
       <figure>
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-16.jpg" class="img-fluid" alt="Aikido Musubi Aikido weapons classes">
+        <img data-src="{{ site.url }}/images/classes-CJc2lhFv-16.jpg" class="img-fluid lazyload" alt="Aikido Musubi Aikido weapons classes">
       </figure>
     </div>
   </div>
@@ -99,24 +99,24 @@ __Thursday__
   <div class="row">
     <div class="col col-sm">
       <figure>
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-30.jpg" class="img-fluid" alt="Aikido Musubi Aikido classes for children">
+        <img data-src="{{ site.url }}/images/classes-CJc2lhFv-30.jpg" class="img-fluid lazyload" alt="Aikido Musubi Aikido classes for children">
       </figure>
     </div>
     <div class="col col-sm">
       <figure>
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-31.jpg" class="img-fluid" alt="Aikido Musubi Aikido classes for children">
+        <img data-src="{{ site.url }}/images/classes-CJc2lhFv-31.jpg" class="img-fluid lazyload" alt="Aikido Musubi Aikido classes for children">
       </figure>
     </div>
   </div>
   <div class="row">
     <div class="col col-sm">
       <figure>
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-33.jpg" class="img-fluid" alt="Aikido Musubi Aikido classes for children">
+        <img data-src="{{ site.url }}/images/classes-CJc2lhFv-33.jpg" class="img-fluid lazyload" alt="Aikido Musubi Aikido classes for children">
       </figure>
     </div>
     <div class="col col-sm">
       <figure>
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-32.jpg" class="img-fluid" alt="Aikido Musubi Aikido classes for children">
+        <img data-src="{{ site.url }}/images/classes-CJc2lhFv-32.jpg" class="img-fluid lazyload" alt="Aikido Musubi Aikido classes for children">
       </figure>
     </div>
   </div>
@@ -142,12 +142,12 @@ __Thursday__
   <div class="row">
     <div class="col col-sm">
       <figure>
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-14.jpg" class="img-fluid" alt="Aikido Musubi Karate classes for children">
+        <img data-src="{{ site.url }}/images/classes-CJc2lhFv-14.jpg" class="img-fluid lazyload" alt="Aikido Musubi Karate classes for children">
       </figure>
     </div>
     <div class="col col-sm">
       <figure>
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-13.jpg" class="img-fluid" alt="Aikido Musubi Karate classes for children">
+        <img data-src="{{ site.url }}/images/classes-CJc2lhFv-13.jpg" class="img-fluid lazyload" alt="Aikido Musubi Karate classes for children">
       </figure>
     </div>
   </div>
@@ -167,24 +167,24 @@ __Friday__
   <div class="row">
     <div class="col col-sm">
       <figure>
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-02.jpg" class="img-fluid" alt="Aikido Musubi Classes de kyudo">
+        <img data-src="{{ site.url }}/images/classes-CJc2lhFv-02.jpg" class="img-fluid lazyload" alt="Aikido Musubi Classes de kyudo">
       </figure>
     </div>
     <div class="col col-sm">
       <figure>
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-04.jpg" class="img-fluid" alt="Aikido Musubi Classes de kyudo">
+        <img data-src="{{ site.url }}/images/classes-CJc2lhFv-04.jpg" class="img-fluid lazyload" alt="Aikido Musubi Classes de kyudo">
       </figure>
     </div>
   </div>
   <div class="row">
     <div class="col col-sm">
       <figure>
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-03.jpg" class="img-fluid" alt="Aikido Musubi Classes de kyudo">
+        <img data-src="{{ site.url }}/images/classes-CJc2lhFv-03.jpg" class="img-fluid lazyload" alt="Aikido Musubi Classes de kyudo">
       </figure>
     </div>
     <div class="col col-sm">
       <figure>
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-07.jpg" class="img-fluid" alt="Aikido Musubi Classes de kyudo">
+        <img data-src="{{ site.url }}/images/classes-CJc2lhFv-07.jpg" class="img-fluid lazyload" alt="Aikido Musubi Classes de kyudo">
       </figure>
     </div>
   </div>

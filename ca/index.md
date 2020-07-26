@@ -10,7 +10,7 @@ i18n-ref: index-8oGCaMDs
 ## Benvinguts
 
 <figure>
-  <img src="{{ site.url }}/images/index-8oGCaMDs-01.jpg" class="img-fluid" alt="Aikido Musubi Benvinguts">
+  <img data-src="{{ site.url }}/images/index-8oGCaMDs-01.jpg" class="img-fluid lazyload" alt="Aikido Musubi Benvinguts">
 </figure>
 
 L'Associació Cultural Musubi Aikido (__Aikido Musubi__), fundada el 2008, és una associació autogestionada i sense ànim de lucre que promou l'aikido a Badalona. Oferim classes d'aikido per a adults i nens tots els dies al nostre dojo (_Av. D'Alfons XIII, 351 08918 Badalona, ​​Barcelona_).
@@ -28,7 +28,7 @@ Ens agrada compartir la nostra experiència i per això donem la benvinguda a to
 ## El nostre dojo
 
 <figure>
-  <img src="{{ site.url }}/images/index-8oGCaMDs-09.jpg" class="img-fluid" alt="Aikido Musubi El nostre dojo">
+  <img data-src="{{ site.url }}/images/index-8oGCaMDs-09.jpg" class="img-fluid lazyload" alt="Aikido Musubi El nostre dojo">
 </figure>
 
 La filosofia d'__Aikido Musubi__ es basa en els preceptes establerts pel fundador de l'aikido, Morihei Ueshiba, i heretada pel segon i tercer doshu, així com els mestres (_shihan_) de la seu mundial de l'aikido, el [Hombu Dojo](http://www.aikikai.or.jp/).
@@ -44,7 +44,7 @@ El dojo és un lloc ideal per aprofundir en l'estudi i la comprensió de les art
 ## Aikido
 
 <figure>
-  <img src="{{ site.url }}/images/index-8oGCaMDs-02.jpg" class="img-fluid" alt="Aikido Musubi Aikido">
+  <img data-src="{{ site.url }}/images/index-8oGCaMDs-02.jpg" class="img-fluid lazyload" alt="Aikido Musubi Aikido">
 </figure>
 
 L'aikido és un art marcial japonès no competitiu desenvolupat a principis de segle XX per Morihei Ueshiba (1883-1969). Es basa en altres arts marcials tradicionals del Japó, principalment _Daitō-ryū Aiki-jūjutsu_, i utilitza moviments flexibles, naturals, i altament efectius per evadir, redirigir o neutralitzar els atacs utilitzant la força de l'oponent.
@@ -63,24 +63,24 @@ A __Aikido Musubi__, oferim classes que són adequades per a persones sense expe
   <div class="row">
     <div class="col col-sm">
       <figure>
-        <img src="{{ site.url }}/images/index-8oGCaMDs-04.jpg" class="img-fluid" alt="Aikido Musubi Pablo Martín">
+        <img data-src="{{ site.url }}/images/index-8oGCaMDs-04.jpg" class="img-fluid lazyload" alt="Aikido Musubi Pablo Martín">
       </figure>
     </div>
     <div class="col col-sm">
       <figure>
-        <img src="{{ site.url }}/images/index-8oGCaMDs-06.jpg" class="img-fluid" alt="Aikido Musubi Pablo Martín">
+        <img data-src="{{ site.url }}/images/index-8oGCaMDs-06.jpg" class="img-fluid lazyload" alt="Aikido Musubi Pablo Martín">
       </figure>
     </div>
   </div>
   <div class="row">
     <div class="col col-sm">
       <figure>
-        <img src="{{ site.url }}/images/index-8oGCaMDs-07.jpg" class="img-fluid" alt="Aikido Musubi Pablo Martín">
+        <img data-src="{{ site.url }}/images/index-8oGCaMDs-07.jpg" class="img-fluid lazyload" alt="Aikido Musubi Pablo Martín">
       </figure>
     </div>
     <div class="col col-sm">
       <figure>
-        <img src="{{ site.url }}/images/index-8oGCaMDs-08.jpg" class="img-fluid" alt="Aikido Musubi Pablo Martín">
+        <img data-src="{{ site.url }}/images/index-8oGCaMDs-08.jpg" class="img-fluid lazyload" alt="Aikido Musubi Pablo Martín">
       </figure>
     </div>
   </div>
@@ -100,12 +100,12 @@ Actualment, té el grau de 3r Dan, atorgat per l'Aikido Doshu Ueshiba Moriteru i
   <div class="row">
     <div class="col col-sm">
       <figure>
-        <img src="{{ site.url }}/images/index-8oGCaMDs-12.jpg" class="img-fluid" alt="Aikido Musubi Associació Cultural">
+        <img data-src="{{ site.url }}/images/index-8oGCaMDs-12.jpg" class="img-fluid lazyload" alt="Aikido Musubi Associació Cultural">
       </figure>
     </div>
     <div class="col col-sm">
       <figure>
-        <img src="{{ site.url }}/images/index-8oGCaMDs-11.jpg" class="img-fluid" alt="Aikido Musubi Associació Cultural">
+        <img data-src="{{ site.url }}/images/index-8oGCaMDs-11.jpg" class="img-fluid lazyload" alt="Aikido Musubi Associació Cultural">
       </figure>
     </div>
   </div>

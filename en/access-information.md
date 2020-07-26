@@ -95,28 +95,28 @@ __Aikido Musubi__ is located within the Badalona Sud sports facilities. The dojo
       </div>
     </div>
     <div class="col-lg-8">
-      <img src="{{ site.url }}/images/access-information-NdxqmVbV-{{ page.lang }}.jpg" alt="Map of Badalona Sud Sports Facilities">
+      <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-{{ page.lang }}.jpg" class="img-fluid lazyload" alt="Map of Badalona Sud Sports Facilities">
     </div>
   </div>
 </div>
 
 <div class="card-group">
   <div class="card">
-    <img src="{{ site.url }}/images/access-information-NdxqmVbV-a.jpg" class="card-img-top" alt="Badalona Sud Sports Facilities Access A">
+    <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-a.jpg" class="card-img-top lazyload" alt="Badalona Sud Sports Facilities Access A">
     <div class="card-body">
       <h5 class="card-title">Access <span>A</span></h5>
       <p class="card-text">Access via Jumilla St.</p>
     </div>
   </div>
   <div class="card">
-    <img src="{{ site.url }}/images/access-information-NdxqmVbV-b.jpg" class="card-img-top" alt="Badalona Sud Sports Facilities Access B">
+    <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-b.jpg" class="card-img-top lazyload" alt="Badalona Sud Sports Facilities Access B">
     <div class="card-body">
       <h5 class="card-title">Access <span>B</span></h5>
       <p class="card-text">Access via parking area on Jumilla St.</p>
     </div>
   </div>
   <div class="card">
-    <img src="{{ site.url }}/images/access-information-NdxqmVbV-c.jpg" class="card-img-top" alt="Badalona Sud Sports Facilities Access C">
+    <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-c.jpg" class="card-img-top lazyload" alt="Badalona Sud Sports Facilities Access C">
     <div class="card-body">
       <h5 class="card-title">Access <span>C</span></h5>
       <p class="card-text">Access through the small door located in Passatge de la Ciudad de San Fernando.</p>
