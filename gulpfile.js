@@ -6,14 +6,6 @@ var minifyHTML = require('gulp-minify-html');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 
-gulp.task('cssrelpreload', gulp.series(function(done) {
-  return gulp.src('_includes/cssrelpreload.js')
-  .pipe(rename('cssrelpreload.min.js'))
-  .pipe(uglify())
-  .pipe(gulp.dest('_includes'));
-  done();
-}));
-
 gulp.task('lint', gulp.series(function(done) {
   return gulp.src(['scripts/default.js'])
   .pipe(jshint())
@@ -40,6 +32,6 @@ gulp.task('scripts', gulp.series(function(done) {
   done();
 }));
 
-gulp.task('default', gulp.series('cssrelpreload', 'lint', 'scripts', 'optimize-html', function(done) {
+gulp.task('default', gulp.series('lint', 'scripts', 'optimize-html', function(done) {
   done();
 }));
