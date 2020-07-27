@@ -8,13 +8,13 @@ title_es: "Ricard Coll Sensei @ Aikido Musubi, 2015"
 title_ja: "リカルド・コール先生 @ 合気道産靈 2015年"
 
 desc_ca: >-
-  Buit
+  …
 desc_en: >-
-  Empty
+  …
 desc_es: >-
-  Vacío
+  …
 desc_ja: >-
-  空
+  …
 
 date: 20150101
 

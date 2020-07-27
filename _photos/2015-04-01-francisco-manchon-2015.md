@@ -8,13 +8,13 @@ title_es: "Francisco Manchón Sensei @ Aikido Musubi, 2015"
 title_ja: "フランシスコ・マンチョン先生 @ 合気道産靈 2015年"
 
 desc_ca: >-
-  Buit
+  …
 desc_en: >-
-  Empty
+  …
 desc_es: >-
-  Vacío
+  …
 desc_ja: >-
-  空
+  …
 
 date: 20150401
 

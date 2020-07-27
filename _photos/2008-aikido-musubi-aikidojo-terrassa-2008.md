@@ -8,13 +8,13 @@ title_es: "Aikido Musubi y Aikidojo Terrasa @ Aikido Musubi, 2008"
 title_ja: "合気道産靈と合気道場タラサ @ 合気道産靈 2008年"
 
 desc_ca: >-
-  Buit
+  …
 desc_en: >-
-  Empty
+  …
 desc_es: >-
-  Vacío
+  …
 desc_ja: >-
-  空
+  …
 
 date: 20080101
 

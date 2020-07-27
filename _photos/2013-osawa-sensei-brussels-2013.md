@@ -8,13 +8,13 @@ title_es: "Osawa H. Shihan @ Bruselas, 2013"
 title_ja: "大澤勇人師範 @ ブリュッセル 2013年"
 
 desc_ca: >-
-  Buit
+  …
 desc_en: >-
-  Empty
+  …
 desc_es: >-
-  Vacío
+  …
 desc_ja: >-
-  空
+  …
 
 date: 20130101
 

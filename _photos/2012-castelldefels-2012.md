@@ -8,13 +8,13 @@ title_es: "Aikido Musubi Exhibición @ Castelldefels, 2012"
 title_ja: "合気道産靈の演武 @ カステイダフェルス 2012年"
 
 desc_ca: >-
-  Buit
+  …
 desc_en: >-
-  Empty
+  …
 desc_es: >-
-  Vacío
+  …
 desc_ja: >-
-  空
+  …
 
 date: 20120101
 

@@ -8,13 +8,13 @@ title_es: "Miguel Salvador Sensei, Ricard Coll Sensei @ Aikido Musubi, 2014"
 title_ja: "ミグエル・サルバドル先生、リカルド・コール先生 @ 合気道産靈 2014年"
 
 desc_ca: >-
-  Buit
+  …
 desc_en: >-
-  Empty
+  …
 desc_es: >-
-  Vacío
+  …
 desc_ja: >-
-  空
+  …
 
 date: 20140101
 

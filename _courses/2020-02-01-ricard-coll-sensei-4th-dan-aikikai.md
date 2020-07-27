@@ -13,10 +13,10 @@ desc_es: >-
 desc_ja: >-
   ２月１日（土）に合気道産靈の道場でリカルド・コール（四段）を歓迎します。道場で会いましょう！
 
-image_ca: "courses-hFZ2XXIp-2020-02-01-ricard-coll-sensei-4th-dan-aikikai-ca.jpg"
-image_en: "courses-hFZ2XXIp-2020-02-01-ricard-coll-sensei-4th-dan-aikikai-ca.jpg"
-image_es: "courses-hFZ2XXIp-2020-02-01-ricard-coll-sensei-4th-dan-aikikai-ca.jpg"
-image_ja: "courses-hFZ2XXIp-2020-02-01-ricard-coll-sensei-4th-dan-aikikai-ca.jpg"
+image_ca: "courses-hFZ2XXIp-2020-02-01-ricard-coll-sensei-4th-dan-aikikai-ca"
+image_en: "courses-hFZ2XXIp-2020-02-01-ricard-coll-sensei-4th-dan-aikikai-ca"
+image_es: "courses-hFZ2XXIp-2020-02-01-ricard-coll-sensei-4th-dan-aikikai-ca"
+image_ja: "courses-hFZ2XXIp-2020-02-01-ricard-coll-sensei-4th-dan-aikikai-ca"
 
 file_ca: "courses-hFZ2XXIp-2020-02-01-ricard-coll-sensei-4th-dan-aikikai-ca.pdf"
 file_en: "courses-hFZ2XXIp-2020-02-01-ricard-coll-sensei-4th-dan-aikikai-ca.pdf"

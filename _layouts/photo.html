@@ -14,7 +14,11 @@
 
           <a href="#" role="button" data-toggle="modal" data-target="#modal{{ photo.photos.album }}" data-target-name="{{ photo.photos.album }}">
             <div class="hover hover-2 text-white">
-              <img data-src="{{ site.url }}/photos/{{ photo.photos.album }}/{{ photo.photos.album }}-0.jpg" class="img-fluid lazyload" alt="{% if page.lang == "ca" %}{{ photo.title_ca }}{% elsif page.lang == "en" %}{{ photo.title_en }}{% elsif page.lang == "es" %}{{ photo.title_es }}{% elsif page.lang == "ja" %}{{ photo.title_ja }}{% endif %}">
+              <picture>
+                <source type="image/webp" srcset="{{ site.url }}/photos/{{ photo.photos.album }}/{{ photo.photos.album }}-0.webp">
+                <source type="image/jpeg" srcset="{{ site.url }}/photos/{{ photo.photos.album }}/{{ photo.photos.album }}-0.jpg">
+                <img data-src="{{ site.url }}/photos/{{ photo.photos.album }}/{{ photo.photos.album }}-0.jpg" class="img-fluid lazyload" alt="{% if page.lang == "ca" %}{{ photo.title_ca }}{% elsif page.lang == "en" %}{{ photo.title_en }}{% elsif page.lang == "es" %}{{ photo.title_es }}{% elsif page.lang == "ja" %}{{ photo.title_ja }}{% endif %}">
+                </picture>
               <div class="hover-overlay"></div>
               <div class="hover-2-content px-5 py-4">
                 <h3 class="hover-2-title text-uppercase">{% if page.lang == "ca" %}{{ photo.title_ca }}{% elsif page.lang == "en" %}{{ photo.title_en }}{% elsif page.lang == "es" %}{{ photo.title_es }}{% elsif page.lang == "ja" %}{{ photo.title_ja }}{% endif %}</h3>
@@ -32,7 +36,9 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div class="modal-body"></div>
+                <div class="modal-body">
+
+                </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">{% if page.lang == "ca" %}Tancar{% elsif page.lang == "en" %}Close{% elsif page.lang == "es" %}Cerrar{% elsif page.lang == "ja" %}戻る{% endif %}</button>
                 </div>

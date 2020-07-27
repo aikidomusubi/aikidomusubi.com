@@ -13,10 +13,10 @@ desc_es: >-
 desc_ja: >-
   マイク・フリン師範 (七段) の週末の講習会には合気道産靈の道場と嵐グループの道場で開催されています。合気道産靈：２月１５日 (朝)、嵐グループの道場：２月１５ (夜) - ２月１６日 (朝)。
 
-image_ca: "courses-hFZ2XXIp-2020-02-15-mike-flynn-shihan-7th-dan-aikikai-es.jpg"
-image_en: "courses-hFZ2XXIp-2020-02-15-mike-flynn-shihan-7th-dan-aikikai-en.jpg"
-image_es: "courses-hFZ2XXIp-2020-02-15-mike-flynn-shihan-7th-dan-aikikai-es.jpg"
-image_ja: "courses-hFZ2XXIp-2020-02-15-mike-flynn-shihan-7th-dan-aikikai-en.jpg"
+image_ca: "courses-hFZ2XXIp-2020-02-15-mike-flynn-shihan-7th-dan-aikikai-es"
+image_en: "courses-hFZ2XXIp-2020-02-15-mike-flynn-shihan-7th-dan-aikikai-en"
+image_es: "courses-hFZ2XXIp-2020-02-15-mike-flynn-shihan-7th-dan-aikikai-es"
+image_ja: "courses-hFZ2XXIp-2020-02-15-mike-flynn-shihan-7th-dan-aikikai-en"
 
 file_ca: "courses-hFZ2XXIp-2020-02-15-mike-flynn-shihan-7th-dan-aikikai-es.pdf"
 file_en: "courses-hFZ2XXIp-2020-02-15-mike-flynn-shihan-7th-dan-aikikai-en.pdf"

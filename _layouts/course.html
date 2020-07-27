@@ -9,7 +9,11 @@
     <div class="card">
       <div class="row no-gutters">
         <div class="col-lg-4">
-          <img data-src="{{ site.url}}/images/{% if page.lang == 'ca' %}{{ course.image_ca }}{% elsif page.lang == 'en' %}{{ course.image_en }}{% elsif page.lang == 'es' %}{{ course.image_es }}{% elsif page.lang == 'ja' %}{{ course.image_ja }}{% endif %}" class="img-fluid lazyload" alt="{% if page.lang == 'ca' %}{{ course.title_ca }}{% elsif page.lang == 'en' %}{{ course.title_en }}{% elsif page.lang == 'es' %}{{ course.title_es }}{% elsif page.lang == 'ja' %}{{ course.title_ja }}{% endif %}">
+          <picture>
+            <source type="image/webp" srcset="{{ site.url}}/images/{% if page.lang == 'ca' %}{{ course.image_ca }}{% elsif page.lang == 'en' %}{{ course.image_en }}{% elsif page.lang == 'es' %}{{ course.image_es }}{% elsif page.lang == 'ja' %}{{ course.image_ja }}{% endif %}.webp">
+            <source type="image/jpeg" srcset="{{ site.url}}/images/{% if page.lang == 'ca' %}{{ course.image_ca }}{% elsif page.lang == 'en' %}{{ course.image_en }}{% elsif page.lang == 'es' %}{{ course.image_es }}{% elsif page.lang == 'ja' %}{{ course.image_ja }}{% endif %}.jpg">
+            <img data-src="{{ site.url}}/images/{% if page.lang == 'ca' %}{{ course.image_ca }}{% elsif page.lang == 'en' %}{{ course.image_en }}{% elsif page.lang == 'es' %}{{ course.image_es }}{% elsif page.lang == 'ja' %}{{ course.image_ja }}{% endif %}" class="img-fluid lazyload" alt="{% if page.lang == 'ca' %}{{ course.title_ca }}{% elsif page.lang == 'en' %}{{ course.title_en }}{% elsif page.lang == 'es' %}{{ course.title_es }}{% elsif page.lang == 'ja' %}{{ course.title_ja }}{% endif %}">
+          </picture>
         </div>
         <div class="col-lg-8">
           <div class="card-body">

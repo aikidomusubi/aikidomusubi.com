@@ -8,13 +8,13 @@ title_es: "Festa del Badiu @ Badalona, 2012"
 title_ja: "フェスタ・デル・バディウ @ バダロナ 2012"
 
 desc_ca: >-
-  Buit
+  …
 desc_en: >-
-  Empty
+  …
 desc_es: >-
-  Vacío
+  …
 desc_ja: >-
-  空
+  …
 
 date: 20120101
 

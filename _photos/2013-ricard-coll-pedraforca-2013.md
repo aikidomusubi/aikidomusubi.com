@@ -8,13 +8,13 @@ title_es: "Ricard Coll Sensei @ Pedraforca, 2013"
 title_ja: "リカルド・コール先生 @ ペドラフォルカ 2013年"
 
 desc_ca: >-
-  Buit
+  …
 desc_en: >-
-  Empty
+  …
 desc_es: >-
-  Vacío
+  …
 desc_ja: >-
-  空
+  …
 
 date: 20130101
 

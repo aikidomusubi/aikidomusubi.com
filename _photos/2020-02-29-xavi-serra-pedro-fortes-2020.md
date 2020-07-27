@@ -8,13 +8,13 @@ title_es: "Xavi Serra, Pedro Fortes @ Aikido Musubi, 2020"
 title_ja: "チャビ・セッラ、ペドロ・フォルテス @ 合気道産靈 2020年"
 
 desc_ca: >-
-  Buit
+  …
 desc_en: >-
-  Empty
+  …
 desc_es: >-
-  Vacío
+  …
 desc_ja: >-
-  空
+  …
 
 date: 20200229
 

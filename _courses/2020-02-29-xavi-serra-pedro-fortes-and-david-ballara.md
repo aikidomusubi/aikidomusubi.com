@@ -13,10 +13,10 @@ desc_es: >-
 desc_ja: >-
   ２月２９日（土）に合気道産靈の道場でチャビ・セッラ（五段）とペドロ・フォルテス（参段）とダヴィド・バヤラ（参段）の待ちに待った稽古が行われます。
 
-image_ca: "courses-hFZ2XXIp-2020-02-29-xavi-serra-pedro-fortes-and-david-ballara-es.jpg"
-image_en: "courses-hFZ2XXIp-2020-02-29-xavi-serra-pedro-fortes-and-david-ballara-es.jpg"
-image_es: "courses-hFZ2XXIp-2020-02-29-xavi-serra-pedro-fortes-and-david-ballara-es.jpg"
-image_ja: "courses-hFZ2XXIp-2020-02-29-xavi-serra-pedro-fortes-and-david-ballara-es.jpg"
+image_ca: "courses-hFZ2XXIp-2020-02-29-xavi-serra-pedro-fortes-and-david-ballara-es"
+image_en: "courses-hFZ2XXIp-2020-02-29-xavi-serra-pedro-fortes-and-david-ballara-es"
+image_es: "courses-hFZ2XXIp-2020-02-29-xavi-serra-pedro-fortes-and-david-ballara-es"
+image_ja: "courses-hFZ2XXIp-2020-02-29-xavi-serra-pedro-fortes-and-david-ballara-es"
 
 file_ca: "courses-hFZ2XXIp-2020-02-29-xavi-serra-pedro-fortes-and-david-ballara-es.pdf"
 file_en: "courses-hFZ2XXIp-2020-02-29-xavi-serra-pedro-fortes-and-david-ballara-es.pdf"
