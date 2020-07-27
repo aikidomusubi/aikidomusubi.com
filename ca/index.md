@@ -10,8 +10,8 @@ i18n-ref: index-8oGCaMDs
 ## Benvinguts
 
 <picture>
-  <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-01.webp">
-  <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-01.jpg">
+  <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-01.webp" class="img-fluid lazyload">
+  <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-01.jpg" class="img-fluid lazyload">
   <img data-src="{{ site.url }}/images/index-8oGCaMDs-01.jpg" class="img-fluid lazyload" alt="Aikido Musubi Benvinguts">
 </picture>
 
@@ -30,8 +30,8 @@ Ens agrada compartir la nostra experiència i per això donem la benvinguda a to
 ## El nostre dojo
 
 <picture>
-  <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-09.webp">
-  <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-09.jpg">
+  <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-09.webp" class="img-fluid lazyload">
+  <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-09.jpg" class="img-fluid lazyload">
   <img data-src="{{ site.url }}/images/index-8oGCaMDs-09.jpg" class="img-fluid lazyload" alt="Aikido Musubi El nostre dojo">
 </picture>
 
@@ -48,8 +48,8 @@ El dojo és un lloc ideal per aprofundir en l'estudi i la comprensió de les art
 ## Aikido
 
 <picture>
-  <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-02.webp">
-  <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-02.jpg">
+  <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-02.webp" class="img-fluid lazyload">
+  <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-02.jpg" class="img-fluid lazyload">
   <img data-src="{{ site.url }}/images/index-8oGCaMDs-02.jpg" class="img-fluid lazyload" alt="Aikido Musubi Aikido">
 </picture>
 
@@ -69,15 +69,15 @@ A __Aikido Musubi__, oferim classes que són adequades per a persones sense expe
   <div class="row">
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-04.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-04.jpg">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-04.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-04.jpg" class="img-fluid lazyload">
         <img data-src="{{ site.url }}/images/index-8oGCaMDs-04.jpg" class="img-fluid lazyload" alt="Aikido Musubi Pablo Martín">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-06.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-06.jpg">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-06.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-06.jpg" class="img-fluid lazyload">
         <img data-src="{{ site.url }}/images/index-8oGCaMDs-06.jpg" class="img-fluid lazyload" alt="Aikido Musubi Pablo Martín">
       </picture>
     </div>
@@ -85,15 +85,15 @@ A __Aikido Musubi__, oferim classes que són adequades per a persones sense expe
   <div class="row">
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-07.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-07.jpg">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-07.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-07.jpg" class="img-fluid lazyload">
         <img data-src="{{ site.url }}/images/index-8oGCaMDs-07.jpg" class="img-fluid lazyload" alt="Aikido Musubi Pablo Martín">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-08.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-08.jpg">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-08.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-08.jpg" class="img-fluid lazyload">
         <img data-src="{{ site.url }}/images/index-8oGCaMDs-08.jpg" class="img-fluid lazyload" alt="Aikido Musubi Pablo Martín">
       </picture>
     </div>
@@ -114,15 +114,15 @@ Actualment, té el grau de 3r Dan, atorgat per l'Aikido Doshu Ueshiba Moriteru i
   <div class="row">
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-12.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-12.jpg">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-12.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-12.jpg" class="img-fluid lazyload">
         <img data-src="{{ site.url }}/images/index-8oGCaMDs-12.jpg" class="img-fluid lazyload" alt="Aikido Musubi Associació Cultural">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-11.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-11.jpg">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-11.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-11.jpg" class="img-fluid lazyload">
         <img data-src="{{ site.url }}/images/index-8oGCaMDs-11.jpg" class="img-fluid lazyload" alt="Aikido Musubi Associació Cultural">
       </picture>
     </div>

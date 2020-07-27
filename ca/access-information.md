@@ -96,8 +96,8 @@ __Aikido Musubi__ es troba dins de les instal·lacions esportives Badalona Sud. 
     </div>
     <div class="col-lg-8">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-{{ page.lang }}.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-{{ page.lang }}.jpg">
+        <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-{{ page.lang }}.webp" class="card-img-top lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-{{ page.lang }}.jpg" class="card-img-top lazyload">
         <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-{{ page.lang }}.jpg" class="img-fluid lazyload" alt="Mapa de les instal·lacions esportives Badalona Sud">
       </picture>
     </div>
@@ -107,8 +107,8 @@ __Aikido Musubi__ es troba dins de les instal·lacions esportives Badalona Sud. 
 <div class="card-group">
   <div class="card">
     <picture>
-      <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-a.webp">
-      <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-a.jpg">
+      <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-a.webp" class="card-img-top lazyload">
+      <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-a.jpg" class="card-img-top lazyload">
       <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-a.jpg" class="card-img-top lazyload" alt="Instal·lacions esportives Badalona Sud Accés A">
     </picture>
     <div class="card-body">
@@ -118,8 +118,8 @@ __Aikido Musubi__ es troba dins de les instal·lacions esportives Badalona Sud. 
   </div>
   <div class="card">
     <picture>
-      <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-b.webp">
-      <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-b.jpg">
+      <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-b.webp" class="card-img-top lazyload">
+      <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-b.jpg" class="card-img-top lazyload">
       <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-b.jpg" class="card-img-top lazyload" alt="Instal·lacions esportives Badalona Sud Accés B">
     </picture>
     <div class="card-body">
@@ -129,8 +129,8 @@ __Aikido Musubi__ es troba dins de les instal·lacions esportives Badalona Sud. 
   </div>
   <div class="card">
     <picture>
-      <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-c.webp">
-      <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-c.jpg">
+      <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-c.webp" class="card-img-top lazyload">
+      <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-c.jpg" class="card-img-top lazyload">
       <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-c.jpg" class="card-img-top lazyload" alt="Instal·lacions esportives Badalona Sud Accés C">
     </picture>
     <div class="card-body">
