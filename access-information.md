@@ -17,7 +17,7 @@ Si quieres visitar nuestro dojo o entrenar con nosotros, [contáctanos]({{ site.
   <div class="row no-gutters">
     <div class="col-lg-4">
       <div class="card-body">
-        <h5 class="card-title" style="background-image: url('{{ site.url }}/images/logo-bg-white.png');"><!-- Aikido Musubi --></h5>
+        <h5 class="card-title"><!-- Aikido Musubi --></h5>
         <p class="card-text">
           Av. d'Alfons XIII, 351<br>
           08918 Badalona, Barcelona
@@ -95,28 +95,44 @@ __Aikido Musubi__ se encuentra dentro de las instalaciones deportivas Badalona S
       </div>
     </div>
     <div class="col-lg-8">
-      <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-{{ page.lang }}.jpg" class="img-fluid lazyload" alt="Mapa de las instalaciones deportivas Badalona Sur">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-{{ page.lang }}.webp">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-{{ page.lang }}.jpg">
+        <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-{{ page.lang }}.jpg" class="img-fluid lazyload" alt="Mapa de las instalaciones deportivas Badalona Sur">
+      </picture>
     </div>
   </div>
 </div>
 
 <div class="card-group">
   <div class="card">
-    <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-a.jpg" class="card-img-top lazyload" alt="Instalaciones Deportivas Badalona Sur Acceso A">
+    <picture>
+      <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-a.webp">
+      <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-a.jpg">
+      <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-a.jpg" class="card-img-top lazyload" alt="Instalaciones Deportivas Badalona Sur Acceso A">
+      </picture>
     <div class="card-body">
       <h5 class="card-title">Acceso <span>A</span></h5>
       <p class="card-text">Acceso a través de la calle Jumilla.</p>
     </div>
   </div>
   <div class="card">
-    <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-b.jpg" class="card-img-top lazyload" alt="Instalaciones Deportivas Badalona Sur Acceso B">
+    <picture>
+      <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-b.webp">
+      <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-b.jpg">
+      <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-b.jpg" class="card-img-top lazyload" alt="Instalaciones Deportivas Badalona Sur Acceso B">
+      </picture>
     <div class="card-body">
       <h5 class="card-title">Acceso <span>B</span></h5>
       <p class="card-text">Acceso a través de la entrada del parking en la calle Jumilla.</p>
     </div>
   </div>
   <div class="card">
-    <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-c.jpg" class="card-img-top lazyload" alt="Instalaciones Deportivas Badalona Sur Acceso C">
+    <picture>
+      <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-c.webp">
+      <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-c.jpg">
+      <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-c.jpg" class="card-img-top lazyload" alt="Instalaciones Deportivas Badalona Sur Acceso C">
+    </picture>
     <div class="card-body">
       <h5 class="card-title">Acceso <span>C</span></h5>
       <p class="card-text">Acceso a través de la puerta pequeña ubicada en el Passatge de la Ciudad de San Fernando.</p>

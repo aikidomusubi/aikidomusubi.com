@@ -9,9 +9,11 @@ i18n-ref: index-8oGCaMDs
 
 ## Benvinguts
 
-<figure>
+<picture>
+  <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-01.webp">
+  <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-01.jpg">
   <img data-src="{{ site.url }}/images/index-8oGCaMDs-01.jpg" class="img-fluid lazyload" alt="Aikido Musubi Benvinguts">
-</figure>
+</picture>
 
 L'Associació Cultural Musubi Aikido (__Aikido Musubi__), fundada el 2008, és una associació autogestionada i sense ànim de lucre que promou l'aikido a Badalona. Oferim classes d'aikido per a adults i nens tots els dies al nostre dojo (_Av. D'Alfons XIII, 351 08918 Badalona, ​​Barcelona_).
 
@@ -27,9 +29,11 @@ Ens agrada compartir la nostra experiència i per això donem la benvinguda a to
 
 ## El nostre dojo
 
-<figure>
+<picture>
+  <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-09.webp">
+  <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-09.jpg">
   <img data-src="{{ site.url }}/images/index-8oGCaMDs-09.jpg" class="img-fluid lazyload" alt="Aikido Musubi El nostre dojo">
-</figure>
+</picture>
 
 La filosofia d'__Aikido Musubi__ es basa en els preceptes establerts pel fundador de l'aikido, Morihei Ueshiba, i heretada pel segon i tercer doshu, així com els mestres (_shihan_) de la seu mundial de l'aikido, el [Hombu Dojo](http://www.aikikai.or.jp/).
 
@@ -43,9 +47,11 @@ El dojo és un lloc ideal per aprofundir en l'estudi i la comprensió de les art
 
 ## Aikido
 
-<figure>
+<picture>
+  <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-02.webp">
+  <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-02.jpg">
   <img data-src="{{ site.url }}/images/index-8oGCaMDs-02.jpg" class="img-fluid lazyload" alt="Aikido Musubi Aikido">
-</figure>
+</picture>
 
 L'aikido és un art marcial japonès no competitiu desenvolupat a principis de segle XX per Morihei Ueshiba (1883-1969). Es basa en altres arts marcials tradicionals del Japó, principalment _Daitō-ryū Aiki-jūjutsu_, i utilitza moviments flexibles, naturals, i altament efectius per evadir, redirigir o neutralitzar els atacs utilitzant la força de l'oponent.
 
@@ -62,26 +68,34 @@ A __Aikido Musubi__, oferim classes que són adequades per a persones sense expe
 <div id="index-8oGCaMDs-instructors" class="container">
   <div class="row">
     <div class="col col-sm">
-      <figure>
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-04.webp">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-04.jpg">
         <img data-src="{{ site.url }}/images/index-8oGCaMDs-04.jpg" class="img-fluid lazyload" alt="Aikido Musubi Pablo Martín">
-      </figure>
+      </picture>
     </div>
     <div class="col col-sm">
-      <figure>
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-06.webp">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-06.jpg">
         <img data-src="{{ site.url }}/images/index-8oGCaMDs-06.jpg" class="img-fluid lazyload" alt="Aikido Musubi Pablo Martín">
-      </figure>
+      </picture>
     </div>
   </div>
   <div class="row">
     <div class="col col-sm">
-      <figure>
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-07.webp">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-07.jpg">
         <img data-src="{{ site.url }}/images/index-8oGCaMDs-07.jpg" class="img-fluid lazyload" alt="Aikido Musubi Pablo Martín">
-      </figure>
+      </picture>
     </div>
     <div class="col col-sm">
-      <figure>
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-08.webp">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-08.jpg">
         <img data-src="{{ site.url }}/images/index-8oGCaMDs-08.jpg" class="img-fluid lazyload" alt="Aikido Musubi Pablo Martín">
-      </figure>
+      </picture>
     </div>
   </div>
 </div>
@@ -99,14 +113,18 @@ Actualment, té el grau de 3r Dan, atorgat per l'Aikido Doshu Ueshiba Moriteru i
 <div id="index-8oGCaMDs-cultural-association" class="container">
   <div class="row">
     <div class="col col-sm">
-      <figure>
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-12.webp">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-12.jpg">
         <img data-src="{{ site.url }}/images/index-8oGCaMDs-12.jpg" class="img-fluid lazyload" alt="Aikido Musubi Associació Cultural">
-      </figure>
+      </picture>
     </div>
     <div class="col col-sm">
-      <figure>
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-11.webp">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-11.jpg">
         <img data-src="{{ site.url }}/images/index-8oGCaMDs-11.jpg" class="img-fluid lazyload" alt="Aikido Musubi Associació Cultural">
-      </figure>
+      </picture>
     </div>
   </div>
 </div>

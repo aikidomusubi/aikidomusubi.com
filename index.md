@@ -9,9 +9,11 @@ i18n-ref: index-8oGCaMDs
 
 ## Bienvenidos
 
-<figure>
+<picture>
+  <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-01.webp">
+  <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-01.jpg">
   <img data-src="{{ site.url }}/images/index-8oGCaMDs-01.jpg" class="img-fluid lazyload" alt="Aikido Musubi Bienvenidos">
-</figure>
+</picture>
 
 La Asociación Cultural Musubi Aikido (__Aikido Musubi__), fundada en 2008, es una asociación autogestionada y sin ánimo de lucro que promueve el aikido en Badalona. Ofrecemos clases de aikido para adultos y niños todos los días en nuestro dojo (_Av. d’Alfons XIII, 351 08918 Badalona, Barcelona_).
 
@@ -27,9 +29,11 @@ Nos gusta compartir nuestra experiencia y por eso damos la bienvenida a todo el 
 
 ## Nuestro dojo
 
-<figure>
+<picture>
+  <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-09.webp">
+  <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-09.jpg">
   <img data-src="{{ site.url }}/images/index-8oGCaMDs-09.jpg" class="img-fluid lazyload" alt="Aikido Musubi Nuestro dojo">
-</figure>
+</picture>
 
 La filosofía de __Aikido Musubi__ se basa en los preceptos establecidos por el fundador del aikido, Morihei Ueshiba, y heredada por el segundo y tercer doshu, así como los maestros (_shihan_) de la sede mundial del aikido, el [Hombu Dojo](http://www.aikikai.or.jp/).
 
@@ -43,9 +47,11 @@ El dojo es un lugar ideal para profundizar en el estudio y la comprensión las a
 
 ## Aikido
 
-<figure>
+<picture>
+  <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-02.webp">
+  <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-02.jpg">
   <img data-src="{{ site.url }}/images/index-8oGCaMDs-02.jpg" class="img-fluid lazyload" alt="Aikido Musubi Aikido">
-</figure>
+</picture>
 
 El aikido es un arte marcial japonés no competitivo desarrollado a principios del siglo XX por Morihei Ueshiba (1883-1969). Se basa en otras artes marciales tradicionales de japón, principalmente _Daitō-ryū Aiki-jūjutsu_, y utiliza movimientos flexibles, naturales, y altamente efectivos para evadir, redirigir o neutralizar los ataques utilizando la fuerza del oponente.
 
@@ -62,26 +68,34 @@ En __Aikido Musubi__, ofrecemos clases que son adecuadas para personas sin exper
 <div id="index-8oGCaMDs-instructors" class="container">
   <div class="row">
     <div class="col col-sm">
-      <figure>
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-04.webp">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-04.jpg">
         <img data-src="{{ site.url }}/images/index-8oGCaMDs-04.jpg" class="img-fluid lazyload" alt="Aikido Musubi Pablo Martín">
-      </figure>
+      </picture>
     </div>
     <div class="col col-sm">
-      <figure>
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-06.webp">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-06.jpg">
         <img data-src="{{ site.url }}/images/index-8oGCaMDs-06.jpg" class="img-fluid lazyload" alt="Aikido Musubi Pablo Martín">
-      </figure>
+      </picture>
     </div>
   </div>
   <div class="row">
     <div class="col col-sm">
-      <figure>
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-07.webp">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-07.jpg">
         <img data-src="{{ site.url }}/images/index-8oGCaMDs-07.jpg" class="img-fluid lazyload" alt="Aikido Musubi Pablo Martín">
-      </figure>
+      </picture>
     </div>
     <div class="col col-sm">
-      <figure>
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-08.webp">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-08.jpg">
         <img data-src="{{ site.url }}/images/index-8oGCaMDs-08.jpg" class="img-fluid lazyload" alt="Aikido Musubi Pablo Martín">
-      </figure>
+      </picture>
     </div>
   </div>
 </div>
@@ -99,14 +113,18 @@ Actualmente, tiene el grado de 3.er Dan, otorgado por Aikido Doshu Ueshiba Morit
 <div id="index-8oGCaMDs-cultural-association" class="container">
   <div class="row">
     <div class="col col-sm">
-      <figure>
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-12.webp">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-12.jpg">
         <img data-src="{{ site.url }}/images/index-8oGCaMDs-12.jpg" class="img-fluid lazyload" alt="Aikido Musubi Asociación Cultural">
-      </figure>
+      </picture>
     </div>
     <div class="col col-sm">
-      <figure>
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-11.webp">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-11.jpg">
         <img data-src="{{ site.url }}/images/index-8oGCaMDs-11.jpg" class="img-fluid lazyload" alt="Aikido Musubi Asociación Cultural">
-      </figure>
+      </picture>
     </div>
   </div>
 </div>

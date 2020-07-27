@@ -17,7 +17,7 @@ i18n-ref: access-information-NdxqmVbV
   <div class="row no-gutters">
     <div class="col-lg-4">
       <div class="card-body">
-        <h5 class="card-title" style="background-image: url('{{ site.url }}/images/logo-bg-white.png');"><!-- Aikido Musubi --></h5>
+        <h5 class="card-title"><!-- Aikido Musubi --></h5>
         <p class="card-text">
           〒08918<br>
           カタルーニャ州バルセロナ県バダロナ<br>
@@ -96,28 +96,44 @@ __合気道産靈__ は南バダロナサッカー球技場内にあります。
       </div>
     </div>
     <div class="col-lg-8">
-      <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-{{ page.lang }}.jpg" class="img-fluid lazyload" alt="南バダロナサッカー球技場の地図">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-{{ page.lang }}.webp">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-{{ page.lang }}.jpg">
+        <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-{{ page.lang }}.jpg" class="img-fluid lazyload" alt="南バダロナサッカー球技場の地図">
+      </picture>
     </div>
   </div>
 </div>
 
 <div class="card-group">
   <div class="card">
-    <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-a.jpg" class="card-img-top lazyload" alt="南バダロナサッカー球技場の地図 入口 A">
+    <picture>
+      <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-a.webp">
+      <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-a.jpg">
+      <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-a.jpg" class="card-img-top lazyload" alt="南バダロナサッカー球技場の地図 入口 A">
+    </picture>
     <div class="card-body">
       <h5 class="card-title">入口 <span>A</span></h5>
       <p class="card-text">ジュミリャ通り（Jumilla St.）からアクセス</p>
     </div>
   </div>
   <div class="card">
-    <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-b.jpg" class="card-img-top lazyload" alt="南バダロナサッカー球技場の地図 入口 B">
+    <picture>
+      <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-b.webp">
+      <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-b.jpg">
+      <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-b.jpg" class="card-img-top lazyload" alt="南バダロナサッカー球技場の地図 入口 B">
+    </picture>
     <div class="card-body">
       <h5 class="card-title">入口 <span>B</span></h5>
       <p class="card-text">ジュミリャ通り（Jumilla St.）の駐車場入口からアクセス</p>
     </div>
   </div>
   <div class="card">
-    <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-c.jpg" class="card-img-top lazyload" alt="南バダロナサッカー球技場の地図 入口 C">
+    <picture>
+      <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-c.webp">
+      <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-c.jpg">
+      <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-c.jpg" class="card-img-top lazyload" alt="南バダロナサッカー球技場の地図 入口 C">
+    </picture>
     <div class="card-body">
       <h5 class="card-title">入口 <span>C</span></h5>
       <p class="card-text">パサジェ・デ・ラ・シウター・デ・サン・フェルナンド（Passatge de la Ciudad de San Fernando）にある小さなドアからアクセス</p>
