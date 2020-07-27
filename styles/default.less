@@ -758,71 +758,6 @@ body.index-8oGCaMDs {
 
   .page {
 
-    // > header {
-    //   position: relative;
-    //
-    //   @fixedHeadHeight: 320px;
-    //   @navbarHeight: 50px;
-    //
-    //   &.fixedHead {
-    //     .show;
-    //     background-attachment: scroll;
-    //     background-image: url('../images/index-8oGCaMDs-00.jpg');
-    //     background-position: 50% -215px;
-    //     background-repeat: no-repeat;
-    //     background-size: auto;
-    //     height: @fixedHeadHeight; width: 100%;
-    //     position: relative;
-    //     z-index: 999;
-    //
-    //     .fixedHead-content {
-    //       margin: 0;
-    //       position: absolute;
-    //       top: 50%; left: 50%;
-    //       transform: translate(-50%, -50%);
-    //       -ms-transform: translate(-50%, -50%);
-    //
-    //       h1 {
-    //         .show;
-    //         .Futura; .bold;
-    //         color: @White;
-    //         font-size: 2rem;
-    //         letter-spacing: 1px;
-    //         text-transform: uppercase;
-    //         margin-bottom: 0;
-    //         opacity: .8;
-    //
-    //         svg {
-    //           height: 192px; width: auto;
-    //         }
-    //       }
-    //     }
-    //
-    //     .shadower {
-    //       background: @Dark;
-    //       height: 100%; width: 100%;
-    //       opacity: 0;
-    //       position: absolute;
-    //       z-index: 99;
-    //     }
-    //
-    //     .falseHeader {
-    //       .show;
-    //       height: auto; width: 100%;
-    //       position: relative;
-    //       top: @fixedHeadHeight;
-    //       transition: height 0.4s cubic-bezier(0.55, 0, 0.1, 1);
-    //       z-index: 9;
-    //
-    //       &.clipped {
-    //         height: @navbarHeight;
-    //         position: fixed;
-    //         top: 0;
-    //       }
-    //     }
-    //   }
-    // }
-
     .container {
 
       > main {
@@ -1722,32 +1657,32 @@ body.index-8oGCaMDs {
 
   .page {
 
-    > header {
-
-      @fixedHeadHeight: 480px;
-
-      &.fixedHead {
-        background-attachment: scroll;
-        background-position: 50% -215px;
-        background-repeat: no-repeat;
-        background-size: auto;
-        height: @fixedHeadHeight; width: 100%;
-
-        .fixedHead-content {
-
-          h1 {
-
-            svg {
-              height: 256px;
-            }
-          }
-        }
-
-        .falseHeader {
-          top: @fixedHeadHeight;
-        }
-      }
-    }
+    // > header {
+    //
+    //   @fixedHeadHeight: 480px;
+    //
+    //   &.fixedHead {
+    //     background-attachment: scroll;
+    //     background-position: 50% -215px;
+    //     background-repeat: no-repeat;
+    //     background-size: auto;
+    //     height: @fixedHeadHeight; width: 100%;
+    //
+    //     .fixedHead-content {
+    //
+    //       h1 {
+    //
+    //         svg {
+    //           height: 256px;
+    //         }
+    //       }
+    //     }
+    //
+    //     .falseHeader {
+    //       top: @fixedHeadHeight;
+    //     }
+    //   }
+    // }
 
     .container {
 
@@ -2016,32 +1951,32 @@ body.index-8oGCaMDs {
 
   .page {
 
-    > header {
-
-      @fixedHeadHeight: 480px;
-
-      &.fixedHead {
-        background-attachment: fixed;
-        background-position: 50% -215px;
-        background-repeat: no-repeat;
-        background-size: cover;
-        height: @fixedHeadHeight; width: 100%;
-
-        .fixedHead-content {
-
-          h1 {
-
-            svg {
-              height: 256px;
-            }
-          }
-        }
-
-        .falseHeader {
-          top: @fixedHeadHeight;
-        }
-      }
-    }
+    // > header {
+    //
+    //   @fixedHeadHeight: 480px;
+    //
+    //   &.fixedHead {
+    //     background-attachment: fixed;
+    //     background-position: 50% -215px;
+    //     background-repeat: no-repeat;
+    //     background-size: cover;
+    //     height: @fixedHeadHeight; width: 100%;
+    //
+    //     .fixedHead-content {
+    //
+    //       h1 {
+    //
+    //         svg {
+    //           height: 256px;
+    //         }
+    //       }
+    //     }
+    //
+    //     .falseHeader {
+    //       top: @fixedHeadHeight;
+    //     }
+    //   }
+    // }
 
     .container {
 
@@ -2384,7 +2319,7 @@ html[lang="ja"] {
           .fixedHead-content {
 
             h1 {
-              .Futura; .bold;
+              .MPlus1p; .black;
             }
           }
         }
@@ -3347,8 +3282,8 @@ body.index-8oGCaMDs {
         .show;
         background-color: @Dark;
         background-attachment: scroll;
-        background-image: url('../images/index-8oGCaMDs-00.jpg');
-        background-position: 50% -215px;
+        background-image: url('../images/index-8oGCaMDs-00-1200.jpg');
+        background-position: 50% 0;
         background-repeat: no-repeat;
         background-size: auto;
         height: @fixedHeadHeight; width: 100%;
@@ -3418,7 +3353,11 @@ body.index-8oGCaMDs {
 
       > header {
 
+        @fixedHeadHeight: 100vh;
+        @navbarHeight: 50px;
+
         &.fixedHead {
+          height: @fixedHeadHeight; width: 100%;
 
           .fixedHead-content {
 
@@ -3427,6 +3366,14 @@ body.index-8oGCaMDs {
               svg {
                 height: 256px;
               }
+            }
+          }
+
+          .falseHeader {
+            top: @fixedHeadHeight;
+
+            &.clipped {
+              height: @navbarHeight;
             }
           }
         }
@@ -3473,6 +3420,29 @@ body.index-8oGCaMDs {
 /////////////////////////////////////////////// MIN_WIDTH: 992PX
 
 @media (min-width: 992px) {
+
+  body.index-8oGCaMDs {
+
+    .page {
+
+      > header {
+
+        @fixedHeadHeight: 50vh;
+        @navbarHeight: 50px;
+
+        &.fixedHead {
+
+          .falseHeader {
+            top: @fixedHeadHeight;
+
+            &.clipped {
+              height: @navbarHeight;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 ////////////////////////////////////////////////////////////////
@@ -3487,39 +3457,18 @@ body.index-8oGCaMDs {
     .page {
 
       > header {
-        position: relative;
 
         @fixedHeadHeight: 50vh;
         @navbarHeight: 50px;
 
         &.fixedHead {
-          .show;
-          background-color: @Dark;
-          background-attachment: scroll;
           background-image: url('../images/index-8oGCaMDs-00-1920.jpg');
           background-position: 50% -215px;
-          background-repeat: no-repeat;
-          background-size: auto;
           height: @fixedHeadHeight; width: 100%;
-          position: relative;
-          z-index: 999;
 
           .fixedHead-content {
-            margin: 0;
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            -ms-transform: translate(-50%, -50%);
 
             h1 {
-              .show;
-              .Futura; .bold;
-              color: @White;
-              font-size: 2rem;
-              letter-spacing: 1px;
-              text-transform: uppercase;
-              margin-bottom: 0;
-              opacity: .8;
 
               svg {
                 height: 192px; width: auto;
@@ -3527,26 +3476,11 @@ body.index-8oGCaMDs {
             }
           }
 
-          .shadower {
-            background: @Dark;
-            height: 100%; width: 100%;
-            opacity: 0;
-            position: absolute;
-            z-index: 99;
-          }
-
           .falseHeader {
-            .show;
-            height: auto; width: 100%;
-            position: relative;
             top: @fixedHeadHeight;
-            transition: height 0.4s cubic-bezier(0.55, 0, 0.1, 1);
-            z-index: 9;
 
             &.clipped {
               height: @navbarHeight;
-              position: fixed;
-              top: 0;
             }
           }
         }
@@ -3568,6 +3502,9 @@ body.index-8oGCaMDs {
 
       > header {
 
+        @fixedHeadHeight: 50vh;
+        @navbarHeight: 50px;
+
         &.fixedHead {
           background-image: url('../images/index-8oGCaMDs-00-2560.jpg');
           background-position: 50% -430px;
@@ -3579,6 +3516,14 @@ body.index-8oGCaMDs {
               svg {
                 height: 256px; width: auto;
               }
+            }
+          }
+
+          .falseHeader {
+            top: @fixedHeadHeight;
+
+            &.clipped {
+              height: @navbarHeight;
             }
           }
         }
@@ -3600,6 +3545,9 @@ body.index-8oGCaMDs {
 
       > header {
 
+        @fixedHeadHeight: 50vh;
+        @navbarHeight: 50px;
+
         &.fixedHead {
           background-image: url('../images/index-8oGCaMDs-00-2880.jpg');
 
@@ -3610,6 +3558,14 @@ body.index-8oGCaMDs {
               svg {
                 height: 384px; width: auto;
               }
+            }
+          }
+
+          .falseHeader {
+            top: @fixedHeadHeight;
+
+            &.clipped {
+              height: @navbarHeight;
             }
           }
         }
