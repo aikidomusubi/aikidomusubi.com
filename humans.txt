@@ -36,7 +36,6 @@ Gulp (gulpjs.com)
 Hyper (hyper.is)
 
 FONTS
-Font Awesome (fontawesome.com)
 Futura (linotype.com/1212991/futura-family.html)
 M+ P Type-1 (mplus-fonts.osdn.jp)
 Noto (google.com/get/noto)
@@ -44,6 +43,7 @@ Noto (google.com/get/noto)
 GRAPHICS
 Logo and stamp (hanko) by Aikido Musubi
 Godzilla by Driv Loo for Kaiju Company
+Icons by Font Awesome
 
 IMAGES
 All images by Aikido Musubi and Alba Serra Ferrer

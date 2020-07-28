@@ -1,8 +1,5 @@
 // out: all.min.css, sourcemap: false, compress: true
 
-@import url('fontawesome.min.css');
-@import url('brands.min.css');
-@import url('solid.min.css');
 @import url('base.less');
 
 ////////////////////////////////////////////////////////////////
@@ -246,7 +243,12 @@ html {
             float: right;
 
             a {
-              padding: 0 .5rem / 2.5;
+              padding: 0 .125rem;
+
+              > svg {
+                height: 1rem; width: auto;
+                vertical-align: sub;
+              }
             }
           }
         }
@@ -276,62 +278,13 @@ html {
 
 .navbar {
 
-  &.bg-dark {
-    background-color: @Dark !important;
+  svg {
+    height: .9rem; width: auto;
+    vertical-align: sub;
   }
 
-  em, i {
-    .NotoSans; .italic;
-
-    &.fa {
-    }
-
-    &.fab {
-      font-family: "Font Awesome 5 Brands";
-
-      -webkit-font-smoothing: antialiased;
-      display: inline-block;
-      font-style: normal;
-      font-variant: normal;
-      line-height: 1;
-      text-rendering: auto;
-    }
-
-    &.fad {
-    }
-
-    &.fal {
-      font-family: "Font Awesome 5 Free";
-
-      -webkit-font-smoothing: antialiased;
-      display: inline-block;
-      font-style: normal;
-      font-variant: normal;
-      line-height: 1;
-      text-rendering: auto;
-    }
-
-    &.far {
-      font-family: "Font Awesome 5 Free";
-
-      -webkit-font-smoothing: antialiased;
-      display: inline-block;
-      font-style: normal;
-      font-variant: normal;
-      line-height: 1;
-      text-rendering: auto;
-    }
-
-    &.fas {
-      font-family: "Font Awesome 5 Free";
-
-      -webkit-font-smoothing: antialiased;
-      display: inline-block;
-      font-style: normal;
-      font-variant: normal;
-      line-height: 1;
-      text-rendering: auto;
-    }
+  &.bg-dark {
+    background-color: @Dark !important;
   }
 
   .navbar-brand {
@@ -527,6 +480,10 @@ body {
             h4 {
               font-size: 2rem;
               margin-bottom: 1rem;
+
+              svg {
+                height: 2rem; width: auto;
+              }
             }
 
             hr {
@@ -537,6 +494,11 @@ body {
 
             p {
               font-size: .9rem;
+
+              svg {
+                height: .9rem; width: auto;
+                vertical-align: sub;
+              }
             }
 
             &.alert-danger {
@@ -760,17 +722,12 @@ body.index-8oGCaMDs {
           > .list-group-item {
             border: 1px solid fadeout(@Black, 90%);
             text-decoration: none !important;
-            // border-radius: 0;
-            //
-            // &:first-child {
-            //   border-radius: 0;
-            // }
 
             &:focus,
             &:hover {
               background-color: transparent !important;
 
-              > div > small > i {
+              > div > small > svg {
                 color: darken(@Blue, 0%);
               }
             }
@@ -785,8 +742,9 @@ body.index-8oGCaMDs {
 
               > small {
 
-                > i {
+                > svg {
                   color: darken(@Blue, 5%);
+                  height: auto; width: .9rem;
                 }
               }
             }
@@ -875,6 +833,15 @@ body.training-schedule-IFMn5oCc {
 
   #calendar {
     margin-bottom: 1.5rem * 2;
+
+    .fc-myCustomListWeekButton-button.btn.btn-primary,
+    .fc-myCustomDayGridWeekButton-button.btn.btn-primary {
+
+      svg {
+        height: 1rem; width: auto;
+        vertical-align: sub;
+      }
+    }
 
     .fc-toolbar {
       .hide;
@@ -1182,8 +1149,10 @@ body.videos-NuhYeNWr {
               font-size: .9rem;
               margin-bottom: 1rem;
 
-              > i {
-                padding-right: .5rem;
+              > svg {
+                padding-right: .4rem;
+                height: .9rem;; width: auto;
+                vertical-align: sub;
               }
             }
 
@@ -1217,8 +1186,10 @@ body.videos-NuhYeNWr {
                   margin-bottom: .5rem;
                 }
 
-                > i {
-                  padding-right: .5rem;
+                > svg {
+                  padding-right: .4rem;
+                  height: .9rem;; width: auto;
+                  vertical-align: sub;
                 }
 
                 &.btn-primary {
@@ -1286,13 +1257,12 @@ body.contact-mu1FDiTN {
           margin: 4rem 0 2rem 0 !important;
           text-align: center;
 
-          > i.fab,
-          > i.fas {
-            background-color: @White;
+          > svg {
             color: @Black;
             font-size: 1rem;
             margin-right: .25rem;
             padding: .25rem 1rem 1rem 0;
+            height: 1rem; width: auto;
           }
 
           .media-body {
@@ -1301,9 +1271,10 @@ body.contact-mu1FDiTN {
               .bold;
               text-transform: uppercase;
 
-              > i.fab,
-              > i.fas {
+              > svg {
                 margin-right: .5rem;
+                height: 1.25rem; width: auto;
+                vertical-align: sub;
               }
             }
           }
@@ -1343,10 +1314,17 @@ body.access-information-NdxqmVbV {
         > .media {
           margin: 4rem 0 2rem 0 !important;
 
-          > i.fas {
-            background-color: @White;
+          // > i.fas {
+          //   background-color: @White;
+          //   color: @Black;
+          //   font-size: 1rem;
+          //   margin-right: .25rem;
+          //   padding: .25rem 1rem 1rem 0;
+          // }
+
+          > svg {
+            height: auto; width: 2rem;
             color: @Black;
-            font-size: 1rem;
             margin-right: .25rem;
             padding: .25rem 1rem 1rem 0;
           }
@@ -1366,6 +1344,10 @@ body.access-information-NdxqmVbV {
 
         > .card {
           text-align: center;
+
+          picture {
+            margin-bottom: 0;
+          }
 
           &:nth-of-type(1) {
 
@@ -1409,6 +1391,7 @@ body.access-information-NdxqmVbV {
             text-align: center;
 
             > picture {
+              margin-bottom: 0;
 
               > img {
                 opacity: .9;
@@ -2528,7 +2511,7 @@ html[lang="ja"] {
               &:focus,
               &:hover {
 
-                > div > small > i {
+                > div > small > svg {
                   color: darken(@Blue, 0%);
                 }
               }
@@ -2537,7 +2520,7 @@ html[lang="ja"] {
 
                 > small {
 
-                  > i {
+                  > svg {
                     color: darken(@Blue, 5%);
                   }
                 }
@@ -2713,9 +2696,7 @@ html[lang="ja"] {
 
           > .media {
 
-            > i.fab,
-            > i.fas {
-              background-color: @White;
+            > svg {
               color: @Black;
             }
           }
@@ -2735,7 +2716,6 @@ html[lang="ja"] {
           > .media {
 
             > i.fas {
-              background-color: @White;
               color: @Black;
             }
           }
@@ -2959,7 +2939,7 @@ html[lang="ja"] {
               &:focus,
               &:hover {
 
-                > div > small > i {
+                > div > small > svg {
                   color: darken(@Blue, 0%);
                 }
               }
@@ -2968,8 +2948,9 @@ html[lang="ja"] {
 
                 > small {
 
-                  > i {
+                  > svg {
                     color: darken(@Blue, 5%);
+                    height: auto; width: .9rem;
                   }
                 }
               }
@@ -3144,9 +3125,7 @@ html[lang="ja"] {
 
           > .media {
 
-            > i.fab,
-            > i.fas {
-              background-color: @White;
+            > svg {
               color: @Black;
             }
           }
@@ -3166,7 +3145,6 @@ html[lang="ja"] {
           > .media {
 
             > i.fas {
-              background-color: @White;
               color: @Black;
             }
           }
