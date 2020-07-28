@@ -96,9 +96,9 @@ __Aikido Musubi__ is located within the Badalona Sud sports facilities. The dojo
     </div>
     <div class="col-lg-8">
       <picture>
-        <source type="image/webp" data-srcset="{{ site.url }}/images/access-information-NdxqmVbV-{{ page.lang }}.webp" class="card-img-top lazyload">
-        <source type="image/jpeg" data-srcset="{{ site.url }}/images/access-information-NdxqmVbV-{{ page.lang }}.jpg" class="card-img-top lazyload">
-        <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-{{ page.lang }}.jpg" class="card-img-top lazyload" alt="Map of Badalona Sud Sports Facilities">
+        <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-{{ page.lang }}.webp" class="card-img-top lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-{{ page.lang }}.jpg" class="card-img-top lazyload">
+        <img src="{{ site.url }}/images/access-information-NdxqmVbV-{{ page.lang }}.jpg" class="card-img-top lazyload" alt="Map of Badalona Sud Sports Facilities">
       </picture>
     </div>
   </div>
@@ -107,9 +107,9 @@ __Aikido Musubi__ is located within the Badalona Sud sports facilities. The dojo
 <div class="card-group">
   <div class="card">
     <picture>
-      <source type="image/webp" data-srcset="{{ site.url }}/images/access-information-NdxqmVbV-a.webp" class="card-img-top lazyload">
-      <source type="image/jpeg" data-srcset="{{ site.url }}/images/access-information-NdxqmVbV-a.jpg" class="card-img-top lazyload">
-      <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-a.jpg" class="card-img-top lazyload" alt="Badalona Sud Sports Facilities Access A">
+      <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-a.webp" class="card-img-top lazyload">
+      <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-a.jpg" class="card-img-top lazyload">
+      <img src="{{ site.url }}/images/access-information-NdxqmVbV-a.jpg" class="card-img-top lazyload" alt="Badalona Sud Sports Facilities Access A">
     </picture>
     <div class="card-body">
       <h5 class="card-title">Access <span>A</span></h5>
@@ -118,9 +118,9 @@ __Aikido Musubi__ is located within the Badalona Sud sports facilities. The dojo
   </div>
   <div class="card">
     <picture>
-      <source type="image/webp" data-srcset="{{ site.url }}/images/access-information-NdxqmVbV-b.webp" class="card-img-top lazyload">
-      <source type="image/jpeg" data-srcset="{{ site.url }}/images/access-information-NdxqmVbV-b.jpg" class="card-img-top lazyload">
-      <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-b.jpg" class="card-img-top lazyload" alt="Badalona Sud Sports Facilities Access B">
+      <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-b.webp" class="card-img-top lazyload">
+      <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-b.jpg" class="card-img-top lazyload">
+      <img src="{{ site.url }}/images/access-information-NdxqmVbV-b.jpg" class="card-img-top lazyload" alt="Badalona Sud Sports Facilities Access B">
     </picture>
     <div class="card-body">
       <h5 class="card-title">Access <span>B</span></h5>
@@ -129,9 +129,9 @@ __Aikido Musubi__ is located within the Badalona Sud sports facilities. The dojo
   </div>
   <div class="card">
     <picture>
-      <source type="image/webp" data-srcset="{{ site.url }}/images/access-information-NdxqmVbV-c.webp" class="card-img-top lazyload">
-      <source type="image/jpeg" data-srcset="{{ site.url }}/images/access-information-NdxqmVbV-c.jpg" class="card-img-top lazyload">
-      <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-c.jpg" class="card-img-top lazyload" alt="Badalona Sud Sports Facilities Access C">
+      <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-c.webp" class="card-img-top lazyload">
+      <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-c.jpg" class="card-img-top lazyload">
+      <img src="{{ site.url }}/images/access-information-NdxqmVbV-c.jpg" class="card-img-top lazyload" alt="Badalona Sud Sports Facilities Access C">
     </picture>
     <div class="card-body">
       <h5 class="card-title">Access <span>C</span></h5>

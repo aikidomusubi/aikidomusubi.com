@@ -15,9 +15,9 @@
           <a href="#" role="button" data-toggle="modal" data-target="#modal{{ photo.photos.album }}" data-target-name="{{ photo.photos.album }}">
             <div class="hover hover-2 text-white">
               <picture>
-                <source type="image/webp" data-srcset="{{ site.url }}/photos/{{ photo.photos.album }}/{{ photo.photos.album }}-0.webp" class="img-fluid lazyload">
-                <source type="image/jpeg" data-srcset="{{ site.url }}/photos/{{ photo.photos.album }}/{{ photo.photos.album }}-0.jpg" class="img-fluid lazyload">
-                <img data-src="{{ site.url }}/photos/{{ photo.photos.album }}/{{ photo.photos.album }}-0.jpg" class="img-fluid lazyload" alt="{% if page.lang == "ca" %}{{ photo.title_ca }}{% elsif page.lang == "en" %}{{ photo.title_en }}{% elsif page.lang == "es" %}{{ photo.title_es }}{% elsif page.lang == "ja" %}{{ photo.title_ja }}{% endif %}">
+                <source type="image/webp" srcset="{{ site.url }}/photos/{{ photo.photos.album }}/{{ photo.photos.album }}-0.webp" class="img-fluid lazyload">
+                <source type="image/jpeg" srcset="{{ site.url }}/photos/{{ photo.photos.album }}/{{ photo.photos.album }}-0.jpg" class="img-fluid lazyload">
+                <img src="{{ site.url }}/photos/{{ photo.photos.album }}/{{ photo.photos.album }}-0.jpg" class="img-fluid lazyload" alt="{% if page.lang == "ca" %}{{ photo.title_ca }}{% elsif page.lang == "en" %}{{ photo.title_en }}{% elsif page.lang == "es" %}{{ photo.title_es }}{% elsif page.lang == "ja" %}{{ photo.title_ja }}{% endif %}">
                 </picture>
               <div class="hover-overlay"></div>
               <div class="hover-2-content px-5 py-4">

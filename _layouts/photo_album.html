@@ -3,9 +3,9 @@
     {% for i in (1..num) %}
       <li>
         <picture>
-          <source type="image/webp" data-srcset="{{ site.url }}/photos/{{ page.photos.album }}/{{ page.photos.album }}-{{ i }}.webp" class="img-fluid lazyload">
-          <source type="image/jpeg" data-srcset="{{ site.url }}/photos/{{ page.photos.album }}/{{ page.photos.album }}-{{ i }}.jpg" class="img-fluid lazyload">
-          <img data-src="{{ site.baseurl }}/photos/{{ page.photos.album }}/{{ page.photos.album }}-{{ i }}.jpg" class="img-fluid lazyload" alt="Photo {{ i }} from {{ page.title }}">
+          <source type="image/webp" srcset="{{ site.url }}/photos/{{ page.photos.album }}/{{ page.photos.album }}-{{ i }}.webp" class="img-fluid lazyload">
+          <source type="image/jpeg" srcset="{{ site.url }}/photos/{{ page.photos.album }}/{{ page.photos.album }}-{{ i }}.jpg" class="img-fluid lazyload">
+          <img src="{{ site.baseurl }}/photos/{{ page.photos.album }}/{{ page.photos.album }}-{{ i }}.jpg" class="img-fluid lazyload" alt="Photo {{ i }} from {{ page.title }}">
         </picture>
       </li>
     {% endfor %}

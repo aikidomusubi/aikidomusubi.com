@@ -97,9 +97,9 @@ __合気道産靈__ は南バダロナサッカー球技場内にあります。
     </div>
     <div class="col-lg-8">
       <picture>
-        <source type="image/webp" data-srcset="{{ site.url }}/images/access-information-NdxqmVbV-{{ page.lang }}.webp" class="card-img-top lazyload">
-        <source type="image/jpeg" data-srcset="{{ site.url }}/images/access-information-NdxqmVbV-{{ page.lang }}.jpg" class="card-img-top lazyload">
-        <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-{{ page.lang }}.jpg" class="card-img-top lazyload" alt="南バダロナサッカー球技場の地図">
+        <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-{{ page.lang }}.webp" class="card-img-top lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-{{ page.lang }}.jpg" class="card-img-top lazyload">
+        <img src="{{ site.url }}/images/access-information-NdxqmVbV-{{ page.lang }}.jpg" class="card-img-top lazyload" alt="南バダロナサッカー球技場の地図">
       </picture>
     </div>
   </div>
@@ -108,9 +108,9 @@ __合気道産靈__ は南バダロナサッカー球技場内にあります。
 <div class="card-group">
   <div class="card">
     <picture>
-      <source type="image/webp" data-srcset="{{ site.url }}/images/access-information-NdxqmVbV-a.webp" class="card-img-top lazyload">
-      <source type="image/jpeg" data-srcset="{{ site.url }}/images/access-information-NdxqmVbV-a.jpg" class="card-img-top lazyload">
-      <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-a.jpg" class="card-img-top lazyload" alt="南バダロナサッカー球技場の地図 入口 A">
+      <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-a.webp" class="card-img-top lazyload">
+      <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-a.jpg" class="card-img-top lazyload">
+      <img src="{{ site.url }}/images/access-information-NdxqmVbV-a.jpg" class="card-img-top lazyload" alt="南バダロナサッカー球技場の地図 入口 A">
     </picture>
     <div class="card-body">
       <h5 class="card-title">入口 <span>A</span></h5>
@@ -119,9 +119,9 @@ __合気道産靈__ は南バダロナサッカー球技場内にあります。
   </div>
   <div class="card">
     <picture>
-      <source type="image/webp" data-srcset="{{ site.url }}/images/access-information-NdxqmVbV-b.webp" class="card-img-top lazyload">
-      <source type="image/jpeg" data-srcset="{{ site.url }}/images/access-information-NdxqmVbV-b.jpg" class="card-img-top lazyload">
-      <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-b.jpg" class="card-img-top lazyload" alt="南バダロナサッカー球技場の地図 入口 B">
+      <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-b.webp" class="card-img-top lazyload">
+      <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-b.jpg" class="card-img-top lazyload">
+      <img src="{{ site.url }}/images/access-information-NdxqmVbV-b.jpg" class="card-img-top lazyload" alt="南バダロナサッカー球技場の地図 入口 B">
     </picture>
     <div class="card-body">
       <h5 class="card-title">入口 <span>B</span></h5>
@@ -130,9 +130,9 @@ __合気道産靈__ は南バダロナサッカー球技場内にあります。
   </div>
   <div class="card">
     <picture>
-      <source type="image/webp" data-srcset="{{ site.url }}/images/access-information-NdxqmVbV-c.webp" class="card-img-top lazyload">
-      <source type="image/jpeg" data-srcset="{{ site.url }}/images/access-information-NdxqmVbV-c.jpg" class="card-img-top lazyload">
-      <img data-src="{{ site.url }}/images/access-information-NdxqmVbV-c.jpg" class="card-img-top lazyload" alt="南バダロナサッカー球技場の地図 入口 C">
+      <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-c.webp" class="card-img-top lazyload">
+      <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-c.jpg" class="card-img-top lazyload">
+      <img src="{{ site.url }}/images/access-information-NdxqmVbV-c.jpg" class="card-img-top lazyload" alt="南バダロナサッカー球技場の地図 入口 C">
     </picture>
     <div class="card-body">
       <h5 class="card-title">入口 <span>C</span></h5>
