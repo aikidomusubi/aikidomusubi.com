@@ -4,6 +4,6 @@ _site
 .sass-cache
 /node_modules
 site_links
-obsolete_links
+site_links_outdated
 package.json
 package-lock.json
