@@ -9,6 +9,16 @@ Disallow: /novedades/
 Disallow: /tag/
 Disallow: /videos-y-fotos/
 
+Disallow: /assets/
+Disallow: /files/
+Disallow: /fonts/
+Disallow: /graphics/
+Disallow: /icons/
+Disallow: /images/
+Disallow: /plugins/
+Disallow: /scripts/
+Disallow: /styles/
+
 Disallow: /cursos/10o-aniversario-de-musubi-terrassa
 Disallow: /cursos/curso-de-ricard-coll-a-motokukan
 Disallow: /cursos/curso-de-ricard-coll-en-dojo-musubi-2016
