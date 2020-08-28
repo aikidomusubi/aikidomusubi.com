@@ -24,17 +24,13 @@ Disponemos de un amplio horario de classes para acomodar a adultos y niños, y d
 Práctica regular para todos los niveles. Disponible para todos los miembros mayores de 12 años.
 
 __Lunes__
-20:00 - 21:30
+20:00 - 21:00
 __Martes__
-20:00 - 21:30
+20:00 - 21:00
 __Miércoles__
-20:00 - 21:30
+20:00 - 21:00
 __Jueves__
-20:00 - 21:30
-__Viernes__
-19:00 - 20:00
-__Sábado__
-09:15 - 10:15
+20:00 - 21:00
 
 ## Clases de aikido para principiantes
 
@@ -75,8 +71,8 @@ __Sábado__
 
 Se centra en el aprendizaje de las caídas y movimientos básicos. Recomendado para principiantes y practicantes de nivel intermedio.
 
-__Sábado__
-09:15 - 10:15
+__Martes__
+20:00 - 21:00
 
 ## Clases de aikido con armas
 
@@ -102,10 +98,10 @@ __Sábado__
 Práctica con sable de madera o _bokken_, el bastón medio de madera o _jō_, y el cuchillo de madera o _tantō_.
 
 __Miércoles__
-20:00 - 21:30 (primera mitad de la clase)
+20:00 - 21:00
 
 __Jueves__
-20:00 - 21:30 (el primer jueves del mes)
+20:00 - 21:00 (el primer jueves del mes)
 
 ## Clases de aikido para niños y niñas
 
@@ -146,17 +142,7 @@ __Jueves__
 
 Para niños y niñas a partir de los 6 hasta los 12 años. El aikido fortalece no solo el cuerpo sino también la mente y el espíritu. Los niños adquieren un fuerte sentido de concentración y confianza en sí mismos, mientras practican en un ambiente amigable. Los instructores enseñan a los niños a defenderse sin lastimar a los demás.
 
-__Lunes__
-17:30 - 18:30 (en inglés)
-
-__Martes__
-19:00 - 20:00
-
-__Miércoles__
-17:30 - 18:30 (en inglés)
-
-__Jueves__
-19:00 - 20:00
+_Debido a la expansión del virus COVID-19, las clases de aikido para niños y niñas están temporalmente suspendidas._
 
 ## Clases de karate para niños y niñas
 
@@ -181,11 +167,7 @@ __Jueves__
 
 Karate _Shōtōkan_. Para niños y niñas a partir de los 6 hasta los 12 años.
 
-__Martes__
-18:00 - 19:00
-
-__Viernes__
-18:00 - 19:00
+_Debido a la expansión del virus COVID-19, las clases de karate para niños y niñas están temporalmente suspendidas._
 
 ## Clases de kyudo
 

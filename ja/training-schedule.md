@@ -22,6 +22,6 @@ i18n-ref: training-schedule-IFMn5oCc
 
 <div id='calendar'></div>
 
-2019-20年の稽古時間をダウンロード：
+2020-21年の稽古時間をダウンロード：
 
-* [合気道産靈 - 2019-20年の稽古時間]({{ site.url }}/files/training-schedule-IFMn5oCc-training-schedule-1920-{{ page.lang }}.pdf)
+* [合気道産靈 - 2020-21年の稽古時間]({{ site.url }}/files/training-schedule-IFMn5oCc-training-schedule-2021-{{ page.lang }}.pdf)

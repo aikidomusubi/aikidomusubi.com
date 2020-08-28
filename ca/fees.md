@@ -374,5 +374,5 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
 
 Descarregar la informació sobre quotes per a l'any 2019-20:
 
-* [Aikido Musubi - Quotes 2019-20 (detall)]({{ site.url }}/files/fees-UjbuGtGz-fees-1920-detail-{{page.lang}}.pdf)
-* [Aikido Musubi - Quotes 2019-20 (resum)]({{ site.url }}/files/fees-UjbuGtGz-fees-1920-summary-{{page.lang}}.pdf)
+* [Aikido Musubi - Quotes 2020-21 (detall)]({{ site.url }}/files/fees-UjbuGtGz-fees-2021-detail-{{page.lang}}.pdf)
+* [Aikido Musubi - Quotes 2020-21 (resum)]({{ site.url }}/files/fees-UjbuGtGz-fees-2021-summary-{{page.lang}}.pdf)

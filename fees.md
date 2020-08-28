@@ -374,5 +374,5 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
 
 Descargar la información sobre cuotas para el año 2019-20:
 
-* [Aikido Musubi - Cuotas 2019-20 (detalle)]({{ site.url }}/files/fees-UjbuGtGz-fees-1920-detail-{{ page.lang }}.pdf)
-* [Aikido Musubi - Cuotas 2019-20 (resumen)]({{ site.url }}/files/fees-UjbuGtGz-fees-1920-summary-{{ page.lang }}.pdf)
+* [Aikido Musubi - Cuotas 2020-21 (detalle)]({{ site.url }}/files/fees-UjbuGtGz-fees-2021-detail-{{ page.lang }}.pdf)
+* [Aikido Musubi - Cuotas 2020-21 (resumen)]({{ site.url }}/files/fees-UjbuGtGz-fees-2021-summary-{{ page.lang }}.pdf)

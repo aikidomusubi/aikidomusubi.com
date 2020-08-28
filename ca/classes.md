@@ -24,17 +24,13 @@ Disposem d'un ampli horari de classes per acomodar a adults i nens, i diferents 
 Pràctica regular per a tots els nivells. Disponible per a tots els membres majors de 12 anys.
 
 __Dilluns__
-20:00 - 21:30
+20:00 - 21:00
 __Dimarts__
-20:00 - 21:30
+20:00 - 21:00
 __Dimecres__
-20:00 - 21:30
+20:00 - 21:00
 __Dijous__
-20:00 - 21:30
-__Divendres__
-19:00 - 20:00
-__Dissabte__
-09:15 - 10:15
+20:00 - 21:00
 
 ## Classes d'aikido per a principiants
 
@@ -75,8 +71,8 @@ __Dissabte__
 
 Se centra en l'aprenentatge de les caigudes i moviments bàsics. Recomanat per a principiants i practicants de nivell intermedi.
 
-__Dissabte__
-09:15 - 10:15
+__Dimarts__
+20:00 - 21:00
 
 ## Classes d'aikido amb armes
 
@@ -102,10 +98,10 @@ __Dissabte__
 Pràctica amb sabre de fusta o _bokken_, el bastó mitjà de fusta o _jō_, i el ganivet de fusta o _tantō_.
 
 __Dimecres__
-20:00 - 21:30 (primera meitat de la classe)
+20:00 - 21:00
 
 __Dijous__
-20:00 - 21:30 (el primer dijous del mes)
+20:00 - 21:00 (el primer dijous del mes)
 
 ## Classes d'aikido per a nens i nenes
 
@@ -146,17 +142,7 @@ __Dijous__
 
 Per a nens i nenes a partir dels 6 fins als 12 anys. L'aikido enforteix no només el cos sinó també la ment i l'esperit. Els nens adquireixen un fort sentit de concentració i confiança en si mateixos, mentre practiquen en un ambient amigable. Els instructors ensenyen als nens a defensar-se sense fer mal als altres.
 
-__Dilluns__
-17:30 - 18:30 (en anglès)
-
-__Dimarts__
-19:00 - 20:00
-
-__Dimecres__
-17:30 - 18:30 (en anglès)
-
-__Dijous__
-19:00 - 20:00
+_A causa de l'expansió del COVID-19, les classes d'aikido per a nens i nenes estan temporalment suspeses._
 
 ## Classes de karate per a nens i nenes
 
@@ -181,11 +167,7 @@ __Dijous__
 
 Karate _Shōtōkan_. Per a nens i nenes a partir dels 6 fins als 12 anys.
 
-__Dimarts__
-18:00 - 19:00
-
-__Divendres__
-18:00 - 19:00
+_A causa de l'expansió del COVID-19, les classes de karate per a nens i nenes estan temporalment suspeses._
 
 ## Classes de kyudo
 

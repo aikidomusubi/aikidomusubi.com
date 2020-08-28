@@ -374,5 +374,5 @@ Registration is free of charge. We offer discounts for families. And we also giv
 
 Download the fees chart for the 2019-20 year:
 
-* [Aikido Musubi - Fees 2019-20 (detail)]({{ site.url }}/files/fees-UjbuGtGz-fees-1920-detail-{{ page.lang }}.pdf)
-* [Aikido Musubi - Fees 2019-20 (summary)]({{ site.url }}/files/fees-UjbuGtGz-fees-1920-summary-{{ page.lang }}.pdf)
+* [Aikido Musubi - Fees 2020-21 (detail)]({{ site.url }}/files/fees-UjbuGtGz-fees-2021-detail-{{ page.lang }}.pdf)
+* [Aikido Musubi - Fees 2020-21 (summary)]({{ site.url }}/files/fees-UjbuGtGz-fees-2021-summary-{{ page.lang }}.pdf)

@@ -374,5 +374,5 @@ i18n-ref: fees-UjbuGtGz
 
 2019-20年の料金表をダウンロード：
 
-* [合気道産靈 - 2019-20年の料金 (詳細)]({{ site.url }}/files/fees-UjbuGtGz-fees-1920-detail-{{ page.lang }}.pdf)
-* [合気道産靈 - 2019-20年の料金 (要約)]({{ site.url }}/files/fees-UjbuGtGz-fees-1920-summary-{{ page.lang }}.pdf)
+* [合気道産靈 - 2020-21年の料金 (詳細)]({{ site.url }}/files/fees-UjbuGtGz-fees-2021-detail-{{ page.lang }}.pdf)
+* [合気道産靈 - 2020-21年の料金 (要約)]({{ site.url }}/files/fees-UjbuGtGz-fees-2021-summary-{{ page.lang }}.pdf)

@@ -24,17 +24,13 @@ We have a wide schedule of classes to accommodate adults and children, and diffe
 Regular practice for all levels. Available to all members over 12 years old.
 
 __Monday__
-20:00 - 21:30
+20:00 - 21:00
 __Tuesday__
-20:00 - 21:30
+20:00 - 21:00
 __Wednesday__
-20:00 - 21:30
+20:00 - 21:00
 __Thursday__
-20:00 - 21:30
-__Friday__
-19:00 - 20:00
-__Saturday__
-09:15 - 10:15
+20:00 - 21:00
 
 ## Aikido classes for beginners
 
@@ -75,8 +71,8 @@ __Saturday__
 
 Practice focuses on learning basic falls and movements. Recommended for beginners and intermediate level practitioners.
 
-__Saturday__
-09:15 - 10:15
+__Tuesday__
+20:00 - 21:00
 
 ## Aikido weapons classes
 
@@ -102,10 +98,10 @@ __Saturday__
 Practice with wooden sword or _bokken_, the short staff or _jō_, and the wooden knife or _tantō_.
 
 __Wednesday__
-20:00 - 21:30 (first half)
+20:00 - 21:00
 
 __Thursday__
-20:00 - 21:30 (the first Thursday of the month)
+20:00 - 21:00 (the first Thursday of the month)
 
 ## Aikido classes for children
 
@@ -146,17 +142,7 @@ __Thursday__
 
 For boys and girls from 6 to 12 years old. Aikido strengthens not only the body but also the mind and spirit. Children gain a strong sense of concentration and self-confidence while practicing in a friendly environment. Instructors teach children to defend themselves without hurting others.
 
-__Monday__
-17:30 - 18:30 (in english)
-
-__Tuesday__
-19:00 - 20:00
-
-__Wednesday__
-17:30 - 18:30 (in english)
-
-__Thursday__
-19:00 - 20:00
+_Due to the spread of the coronavirus disease (COVID-19), aikido classes for children are temporarily suspended._
 
 ## Karate classes for children
 
@@ -179,13 +165,7 @@ __Thursday__
   </div>
 </div>
 
-Karate _Shōtōkan_. For boys and girls from 6 to 12 years old.
-
-__Tuesday__
-18:00 - 19:00
-
-__Friday__
-18:00 - 19:00
+_Due to the spread of the coronavirus disease (COVID-19), karate classes for children are temporarily suspended._
 
 ## Kyudo classes
 
