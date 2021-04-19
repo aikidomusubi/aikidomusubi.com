@@ -41,5 +41,5 @@ desc_ja: >-
 
 date: 20210301
 
-youtube_url: "https://www.youtube.com/watch?v=PYAWHo6cBT8"
+youtube_url: "https://www.youtube.com/embed/PYAWHo6cBT8"
 ---
