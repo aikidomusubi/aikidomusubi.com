@@ -24,13 +24,13 @@ Disponemos de un amplio horario de classes para acomodar a adultos y niños, y d
 Práctica regular para todos los niveles. Disponible para todos los miembros mayores de 12 años.
 
 __Lunes__
-20:00 - 21:00
+19:30 - 20:30
 __Martes__
-20:00 - 21:00
+19:30 - 20:30
 __Miércoles__
-20:00 - 21:00
+19:30 - 20:30
 __Jueves__
-20:00 - 21:00
+19:30 - 20:30
 
 ## Clases de aikido para principiantes
 
@@ -72,7 +72,7 @@ __Jueves__
 Se centra en el aprendizaje de las caídas y movimientos básicos. Recomendado para principiantes y practicantes de nivel intermedio.
 
 __Martes__
-20:00 - 21:00
+19:30 - 20:30
 
 ## Clases de aikido con armas
 
@@ -98,10 +98,10 @@ __Martes__
 Práctica con sable de madera o _bokken_, el bastón medio de madera o _jō_, y el cuchillo de madera o _tantō_.
 
 __Miércoles__
-20:00 - 21:00
+19:30 - 20:30
 
 __Jueves__
-20:00 - 21:00 (el primer jueves del mes)
+19:30 - 20:30 (el primer jueves del mes)
 
 ## Clases de aikido para niños y niñas
 
@@ -169,6 +169,13 @@ Karate _Shōtōkan_. Para niños y niñas a partir de los 6 hasta los 12 años.
 
 _Debido a la expansión del virus COVID-19, las clases de karate para niños y niñas están temporalmente suspendidas._
 
+## Clases de iaijutsu
+
+_Iaijutsu_ es el arte de desenvaine y corte simultáneo. Este arte de desenvaine de la espada japonesa (_katana_) es una de las disciplinas básicas en la educación clásica de los samurai. _Ryūshin Shouchi-ryū_ es una escuela de kobudō (arte marcial antiguo) especializada en iaijutsu. Este sistema se basa en la esgrima tradicional originada en el área de Kanto, extendida posteriormente a Kyushu y otras áreas de Japón. Está compuesto por 60 kata de Iai, kumitachi de Kenjutsu, kumitachi de Iai, tachitori y tantōtori. Las formas transmitidas por este estilo, destilan la sabiduría, la disciplina y la determinación de muchos maestros y consumados practicantes durante cientos de años, y ha sido un gran reto de vital importancia transmitir estas formas correctamente generación tras generación.
+
+__Sábado__
+11:00 - 13:00 (el segundo sábado del mes)
+
 ## Clases de kyudo
 
 <div id="classes-CJc2lhFv-kyudo" class="container">
@@ -219,25 +226,20 @@ Para más información sobre las clases de kyudo, contacta con la _Asociación d
 Email: [infokyudobarcelona@gmail.com](mailto:infokyudobarcelona@gmail.com)<br>
 Facebook: [facebook.com/AssociacioKyudoDojoBarcelona](https://www.facebook.com/AssociacioKyudoDojoBarcelona/)
 
-## Clases de Yoga
+## Clases de judo
 
-Yoga _Hatha_ y Yoga Terapéutico. Classes diseñadas para equilibrar, tonificar, y dar flexibilidad. Además, classes específicas para el alivio y reequilibrio de diferentes patologías.
+El judo es un arte marcial de Japón, creado hace 150 años por el maestro Jigoro Kano. Judo significa «el camino de la suavidad», y se basa en un conjunto de técnicas de defensa de pie (proyecciones) y técnicas de defensa en el suelo (inmovilizaciones, luxaciones, y estrangulaciones).
+
+Jigoro Kano tuvo como objetivo principal la educación y la formación de los jóvenes. Adaptó al ámbito educativo las técnicas más efectivas y menos lesivas de varias escuelas tradicionales de artes marciales de Japón; todo ello sin perder la esencia y los valores del budo para crear una escuela donde se compaginaba la educación académica y la práctica del judo.
+
+Jigoro Kano definió el judo como "ayuda y prosperidad mutua", y "la utilización óptima de la energía". El código moral del judo se resume en: cortesía, coraje, sinceridad, honor, modestia, respeto, autocontrol, y amistad.
+
+El judo tiene una vertiente competitiva que se convirtió en deporte olímpico en los Juegos Olímpicos de Tokio 1964.
 
 __Lunes__
-09:00 - 10:15<br>
-11:30 - 12:45
+18:15 - 19:25
 
 __Miércoles__
-12:15 - 13:30<br>
-14:00 - 15:15<br>
-15:30 - 16:45
+18:15 - 19:25
 
-__Viernes__
-10:00 - 11:15<br>
-11:30 - 12:45<br>
-14:00 - 15:15
-
-Para más información sobre las clases de Yoga _Hatha_ y Yoga Terapéutico, contacta a través de los siguientes medios:
-
-Email: [riuyogabdn@gmail.com](mailto:riuyogabdn@gmail.com)<br>
-WhatsApp: [+34.619.827.123](https://wa.me/34619827123)
+Para más información sobre las clases de judo, contacta a través de la dirección de email: [judomusubi@gmail.com](mailto:judomusubi@gmail.com)

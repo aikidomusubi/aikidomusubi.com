@@ -24,13 +24,13 @@ We have a wide schedule of classes to accommodate adults and children, and diffe
 Regular practice for all levels. Available to all members over 12 years old.
 
 __Monday__
-20:00 - 21:00
+19:30 - 20:30
 __Tuesday__
-20:00 - 21:00
+19:30 - 20:30
 __Wednesday__
-20:00 - 21:00
+19:30 - 20:30
 __Thursday__
-20:00 - 21:00
+19:30 - 20:30
 
 ## Aikido classes for beginners
 
@@ -72,7 +72,7 @@ __Thursday__
 Practice focuses on learning basic falls and movements. Recommended for beginners and intermediate level practitioners.
 
 __Tuesday__
-20:00 - 21:00
+19:30 - 20:30
 
 ## Aikido weapons classes
 
@@ -98,10 +98,10 @@ __Tuesday__
 Practice with wooden sword or _bokken_, the short staff or _jō_, and the wooden knife or _tantō_.
 
 __Wednesday__
-20:00 - 21:00
+19:30 - 20:30
 
 __Thursday__
-20:00 - 21:00 (the first Thursday of the month)
+19:30 - 20:30 (the first Thursday of the month)
 
 ## Aikido classes for children
 
@@ -167,6 +167,13 @@ _Due to the spread of the coronavirus disease (COVID-19), aikido classes for chi
 
 _Due to the spread of the coronavirus disease (COVID-19), karate classes for children are temporarily suspended._
 
+## Iaijutsu classes
+
+_Iaijutsu_ is a combative quick-draw sword technique. This art of drawing the Japanese sword (_katana_) is one of the Japanese basic martial art disciplines in the education of the classical samurai. _Ryūshin Shouchi-ryū_ is a kobudō (ancient martial art) school specialized in iaijutsu. This system is based on the traditional fencing originated in the Kanto area, later extended to Kyushu and other areas of Japan. It is composed of 60 kata of Iai, kumitachi of Kenjutsu, kumitachi of Iai, tachitori and tantōtori. The forms passed down by this style exude the wisdom, discipline, and determination of many masters and accomplished practitioners for hundreds of years, and it has been a major challenge of great importance to transmit these forms correctly generation after generation.
+
+__Saturday__
+11:00 - 13:00 (the second Saturday of the month)
+
 ## Kyudo classes
 
 <div id="classes-CJc2lhFv-kyudo" class="container">
@@ -212,30 +219,25 @@ __Saturday__
 __Sunday__
 10:15 - 14:15
 
-For more information about kyudo classes, contact the _Kyudo Dojo Association of Barcelona_ by the following means:
+For further information about kyudo classes, contact the _Kyudo Dojo Association of Barcelona_ by the following means:
 
 Email: [infokyudobarcelona@gmail.com](mailto:infokyudobarcelona@gmail.com)<br>
 Facebook: [facebook.com/AssociacioKyudoDojoBarcelona](https://www.facebook.com/AssociacioKyudoDojoBarcelona/)
 
-## Yoga classes
+## Judo classes
 
-Yoga _Hatha_ and Therapeutic Yoga. Classes designed to balance, tone, and give flexibility. In addition, specific classes for the relief and rebalancing of different pathologies.
+Judo is a martial art from Japan, created 150 years ago by master Jigoro Kano. Judo means "the way of softness", and it is based on a set of stand-up self-defense techniques (throws) and ground grappling self-defense techniques (immobilisations, dislocations, and strangulations).
+
+Jigoro Kano's main objective was the education and training of young people. He adapted the most effective and least harmful techniques from various traditional Japanese martial arts to an educational environment; all this without losing the essence and values ​​of budo to create a school where academic education and the practice of judo were combined.
+
+Jigoro Kano defined judo as "mutual aid and prosperity", and "the optimal use of energy". The moral code of judo is summarised in: courtesy, courage, sincerity, honor, modesty, respect, self-control, and friendship.
+
+Judo has a competitive side that became an Olympic sport at the 1964 Tokyo Olympics.
 
 __Monday__
-09:00 - 10:15<br>
-11:30 - 12:45
+18:15 - 19:25
 
 __Wednesday__
-12:15 - 13:30<br>
-14:00 - 15:15<br>
-15:30 - 16:45
+18:15 - 19:25
 
-__Friday__
-10:00 - 11:15<br>
-11:30 - 12:45<br>
-14:00 - 15:15
-
-For more information about Yoga _Hatha_ and Therapeutic Yoga classes, contact through the following means:
-
-Email: [riuyogabdn@gmail.com](mailto:riuyogabdn@gmail.com)<br>
-WhatsApp: [+34.619.827.123](https://wa.me/34619827123)
+For further information about judo classes, contact by email: [judomusubi@gmail.com](mailto:judomusubi@gmail.com)

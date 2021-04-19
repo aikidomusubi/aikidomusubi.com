@@ -24,13 +24,13 @@ Disposem d'un ampli horari de classes per acomodar a adults i nens, i diferents 
 Pràctica regular per a tots els nivells. Disponible per a tots els membres majors de 12 anys.
 
 __Dilluns__
-20:00 - 21:00
+19:30 - 20:30
 __Dimarts__
-20:00 - 21:00
+19:30 - 20:30
 __Dimecres__
-20:00 - 21:00
+19:30 - 20:30
 __Dijous__
-20:00 - 21:00
+19:30 - 20:30
 
 ## Classes d'aikido per a principiants
 
@@ -72,7 +72,7 @@ __Dijous__
 Se centra en l'aprenentatge de les caigudes i moviments bàsics. Recomanat per a principiants i practicants de nivell intermedi.
 
 __Dimarts__
-20:00 - 21:00
+19:30 - 20:30
 
 ## Classes d'aikido amb armes
 
@@ -98,10 +98,10 @@ __Dimarts__
 Pràctica amb sabre de fusta o _bokken_, el bastó mitjà de fusta o _jō_, i el ganivet de fusta o _tantō_.
 
 __Dimecres__
-20:00 - 21:00
+19:30 - 20:30
 
 __Dijous__
-20:00 - 21:00 (el primer dijous del mes)
+19:30 - 20:30 (el primer dijous del mes)
 
 ## Classes d'aikido per a nens i nenes
 
@@ -169,6 +169,13 @@ Karate _Shōtōkan_. Per a nens i nenes a partir dels 6 fins als 12 anys.
 
 _A causa de l'expansió del COVID-19, les classes de karate per a nens i nenes estan temporalment suspeses._
 
+## Clases de iaijutsu
+
+_Iaijutsu_ és l'art de desembeinar i tall simultani. Aquest art de desembeinar de l'espasa japonesa (_katana_) és una de les disciplines bàsiques en l'educació clàssica dels samurai. _Ryūshin Shouchi-ryū_ és una escola de kobudō (art marcial antic) especialitzada en iaijutsu. Aquest sistema es basa en l'esgrima tradicional originada a l'àrea de Kanto, estesa posteriorment a Kyushu i altres àrees de Japó. Està compost per 60 kata de Iai, Kumitachi de Kenjutsu, Kumitachi de Iai, tachitori i tantōtori. Les formes transmeses per aquest estil, destil·len la saviesa, la disciplina i la determinació de molts mestres i consumats practicants durant centenars d'anys, i ha estat un gran repte de vital importància transmetre aquestes formes correctament generació rere generació.
+
+__Dissabte__
+11:00 - 13:00 (el segon dissabte del mes)
+
 ## Classes de kyudo
 
 <div id="classes-CJc2lhFv-kyudo" class="container">
@@ -219,25 +226,20 @@ Per a més informació sobre les classes de kyudo, contacta amb l'_Associació d
 Email: [infokyudobarcelona@gmail.com](mailto:infokyudobarcelona@gmail.com)<br>
 Facebook: [facebook.com/AssociacioKyudoDojoBarcelona](https://www.facebook.com/AssociacioKyudoDojoBarcelona/)
 
-## Classes de Ioga
+## Classes de judo
 
-Ioga _Hatha_ i Ioga Terapèutic. Classes dissenyades per equilibrar, tonificar, i donar flexibilitat. A més, classes específiques per a l'alleugeriment i reequilibri de diferents patologies.
+El judo és un art marcial del Japó, creat fa 150 anys pel mestre Jigoro Kano. Judo significa «el camí de la suavitat», i es basa en un conjunt de tècniques de defensa de peu (projeccions) i tècniques de defensa a terra (immobilitzacions, luxacions, i estrangulacions).
+
+Jigoro Kano va tenir com a objectiu principal l'educació i la formació dels joves. Va adaptar a l'àmbit educatiu les tècniques més efectives i menys lesives de diverses escoles tradicionals d'arts marcials del Japó; tot plegat sense perdre l'essència i els valors del budo per crear una escola on es compaginava l'educació acadèmica i la pràctica del judo.
+
+Jigoro Kano va definir el judo com "l'ajuda i prosperitat mútua", i "la utilització òptima de l'energia". El codi moral del judo es resumeix en: cortesia, coratge, sinceritat, honor, modèstia, respecte, autocontrol, i amistat.
+
+El judo té una vessant competitiva que es va convertir en esport olímpic en els Jocs Olímpics de Tòquio 1964.
 
 __Dilluns__
-09:00 - 10:15<br>
-11:30 - 12:45
+18:15 - 19:25
 
 __Dimecres__
-12:15 - 13:30<br>
-14:00 - 15:15<br>
-15:30 - 16:45
+18:15 - 19:25
 
-__Divendres__
-10:00 - 11:15<br>
-11:30 - 12:45<br>
-14:00 - 15:15
-
-Per a més informació sobre les classes de Ioga _Hatha_ i Ioga Terapèutic, contacta a través dels següents mitjans:
-
-Email: [riuyogabdn@gmail.com](mailto:riuyogabdn@gmail.com)<br>
-WhatsApp: [+34.619.827.123](https://wa.me/34619827123)
+Per a més informació sobre les classes de judo, contacta a través de l'adreça electrònica: [judomusubi@gmail.com](mailto:judomusubi@gmail.com)
