@@ -24,13 +24,14 @@ Disposem d'un ampli horari de classes per acomodar a adults i nens, i diferents 
 Pràctica regular per a tots els nivells. Disponible per a tots els membres majors de 12 anys.
 
 __Dilluns__
-19:30 - 20:30
+20:00 - 21:30
 __Dimarts__
-19:30 - 20:30
+20:00 - 21:30
 __Dimecres__
-19:30 - 20:30
+20:00 - 21:30
 __Dijous__
-19:30 - 20:30
+19:30 - 20:30<br>
+20:30 - 21:30
 
 ## Classes d'aikido per a principiants
 
@@ -72,7 +73,7 @@ __Dijous__
 Se centra en l'aprenentatge de les caigudes i moviments bàsics. Recomanat per a principiants i practicants de nivell intermedi.
 
 __Dimarts__
-19:30 - 20:30
+20:00 - 21:30
 
 ## Classes d'aikido amb armes
 
@@ -97,11 +98,8 @@ __Dimarts__
 
 Pràctica amb sabre de fusta o _bokken_, el bastó mitjà de fusta o _jō_, i el ganivet de fusta o _tantō_.
 
-__Dimecres__
-19:30 - 20:30
-
 __Dijous__
-19:30 - 20:30 (el primer dijous del mes)
+19:30 - 20:30
 
 ## Classes d'aikido per a nens i nenes
 

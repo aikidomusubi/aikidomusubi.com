@@ -24,13 +24,14 @@ Disponemos de un amplio horario de classes para acomodar a adultos y niños, y d
 Práctica regular para todos los niveles. Disponible para todos los miembros mayores de 12 años.
 
 __Lunes__
-19:30 - 20:30
+20:00 - 21:30
 __Martes__
-19:30 - 20:30
+20:00 - 21:30
 __Miércoles__
-19:30 - 20:30
+20:00 - 21:30
 __Jueves__
-19:30 - 20:30
+19:30 - 20:30<br>
+20:30 - 21:30
 
 ## Clases de aikido para principiantes
 
@@ -72,7 +73,7 @@ __Jueves__
 Se centra en el aprendizaje de las caídas y movimientos básicos. Recomendado para principiantes y practicantes de nivel intermedio.
 
 __Martes__
-19:30 - 20:30
+20:00 - 21:30
 
 ## Clases de aikido con armas
 
@@ -97,11 +98,8 @@ __Martes__
 
 Práctica con sable de madera o _bokken_, el bastón medio de madera o _jō_, y el cuchillo de madera o _tantō_.
 
-__Miércoles__
-19:30 - 20:30
-
 __Jueves__
-19:30 - 20:30 (el primer jueves del mes)
+19:30 - 20:30
 
 ## Clases de aikido para niños y niñas
 

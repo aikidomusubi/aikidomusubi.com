@@ -24,13 +24,14 @@ We have a wide schedule of classes to accommodate adults and children, and diffe
 Regular practice for all levels. Available to all members over 12 years old.
 
 __Monday__
-19:30 - 20:30
+20:00 - 21:30
 __Tuesday__
-19:30 - 20:30
+20:00 - 21:30
 __Wednesday__
-19:30 - 20:30
+20:00 - 21:30
 __Thursday__
-19:30 - 20:30
+19:30 - 20:30<br>
+20:30 - 21:30
 
 ## Aikido classes for beginners
 
@@ -72,7 +73,7 @@ __Thursday__
 Practice focuses on learning basic falls and movements. Recommended for beginners and intermediate level practitioners.
 
 __Tuesday__
-19:30 - 20:30
+20:00 - 21:30
 
 ## Aikido weapons classes
 
@@ -97,11 +98,8 @@ __Tuesday__
 
 Practice with wooden sword or _bokken_, the short staff or _jō_, and the wooden knife or _tantō_.
 
-__Wednesday__
-19:30 - 20:30
-
 __Thursday__
-19:30 - 20:30 (the first Thursday of the month)
+19:30 - 20:30
 
 ## Aikido classes for children
 
