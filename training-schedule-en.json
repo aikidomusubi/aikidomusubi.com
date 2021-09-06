@@ -5,7 +5,7 @@
       "startTime": "20:00",
       "endTime": "21:30",
       "startRecur": "2020-08-01",
-      "endRecur": "2021-08-31",
+      "endRecur": "2022-08-31",
       "backgroundColor": "#FF7E79",
       "borderColor": "#FF7E79"
     },
@@ -15,7 +15,7 @@
       "startTime": "20:30",
       "endTime": "21:30",
       "startRecur": "2020-08-01",
-      "endRecur": "2021-08-31",
+      "endRecur": "2022-08-31",
       "backgroundColor": "#FF7E79",
       "borderColor": "#FF7E79"
     },
@@ -25,7 +25,7 @@
       "startTime": "20:00",
       "endTime": "21:30",
       "startRecur": "2020-08-01",
-      "endRecur": "2021-08-31",
+      "endRecur": "2022-08-31",
       "backgroundColor": "#FF7E79",
       "borderColor": "#FF7E79"
     },
@@ -35,7 +35,7 @@
       "startTime": "19:30",
       "endTime": "20:30",
       "startRecur": "2020-08-01",
-      "endRecur": "2021-08-31",
+      "endRecur": "2022-08-31",
       "backgroundColor": "#FF7E79",
       "borderColor": "#FF7E79"
     },
@@ -45,7 +45,7 @@
       "startTime": "10:15",
       "endTime": "14:15",
       "startRecur": "2020-08-01",
-      "endRecur": "2021-08-31",
+      "endRecur": "2022-08-31",
       "backgroundColor": "#ffe600",
       "borderColor": "#ffe600"
     },
@@ -55,7 +55,7 @@
       "startTime": "11:00",
       "endTime": "13:00",
       "startRecur": "2020-08-01",
-      "endRecur": "2021-08-31",
+      "endRecur": "2022-08-31",
       "backgroundColor": "#94ff94",
       "borderColor": "#94ff94"
     },
@@ -65,7 +65,7 @@
       "startTime": "18:15",
       "endTime": "19:20",
       "startRecur": "2020-08-01",
-      "endRecur": "2021-08-31",
+      "endRecur": "2022-08-31",
       "backgroundColor": "#76D6FF",
       "borderColor": "#76D6FF"
     }
