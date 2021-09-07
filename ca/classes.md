@@ -235,9 +235,9 @@ Jigoro Kano va definir el judo com "l'ajuda i prosperitat mútua", i "la utilitz
 El judo té una vessant competitiva que es va convertir en esport olímpic en els Jocs Olímpics de Tòquio 1964.
 
 __Dilluns__
-18:15 - 19:25
+18:30 - 20:00
 
 __Dimecres__
-18:15 - 19:25
+18:30 - 20:00
 
 Per a més informació sobre les classes de judo, contacta a través de l'adreça electrònica: [judomusubi@gmail.com](mailto:judomusubi@gmail.com)

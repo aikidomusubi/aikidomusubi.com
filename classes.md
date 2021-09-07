@@ -235,9 +235,9 @@ Jigoro Kano definió el judo como "ayuda y prosperidad mutua", y "la utilizació
 El judo tiene una vertiente competitiva que se convirtió en deporte olímpico en los Juegos Olímpicos de Tokio 1964.
 
 __Lunes__
-18:15 - 19:25
+18:30 - 20:00
 
 __Miércoles__
-18:15 - 19:25
+18:30 - 20:00
 
 Para más información sobre las clases de judo, contacta a través de la dirección de email: [judomusubi@gmail.com](mailto:judomusubi@gmail.com)

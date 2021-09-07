@@ -226,10 +226,10 @@ Facebook: [facebook.com/AssociacioKyudoDojoBarcelona](https://www.facebook.com/A
 ## 柔道クラス
 
 __月__
-18:15 - 19:25
+18:30 - 20:00
 
 __水__
-18:15 - 19:25
+18:30 - 20:00
 
 柔道クラスの詳細については、メールにてお問い合わせください。<br>
 メール: [judomusubi@gmail.com](mailto:judomusubi@gmail.com)

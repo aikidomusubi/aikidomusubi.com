@@ -233,9 +233,9 @@ Jigoro Kano defined judo as "mutual aid and prosperity", and "the optimal use of
 Judo has a competitive side that became an Olympic sport at the 1964 Tokyo Olympics.
 
 __Monday__
-18:15 - 19:25
+18:30 - 20:00
 
 __Wednesday__
-18:15 - 19:25
+18:30 - 20:00
 
 For further information about judo classes, contact by email: [judomusubi@gmail.com](mailto:judomusubi@gmail.com)
