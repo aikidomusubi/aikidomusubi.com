@@ -372,7 +372,16 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
 
 </div><!-- /#pills-tabContent -->
 
-Descarregar la informació sobre quotes per a l'any 2019-20:
+Descarregar la informació sobre quotes per a l'any 2020-21:
 
 * [Aikido Musubi - Quotes 2020-21 (detall)]({{ site.url }}/files/fees-UjbuGtGz-fees-2021-detail-{{page.lang}}.pdf)
 * [Aikido Musubi - Quotes 2020-21 (resum)]({{ site.url }}/files/fees-UjbuGtGz-fees-2021-summary-{{page.lang}}.pdf)
+
+<hr>
+
+Per a més informació sobre les classes de kyudo, contacta amb l’_Associació de Kyudo Dojo de Barcelona_ a través dels següents mitjans:
+
+Email: [infokyudobarcelona@gmail.com](mailto:infokyudobarcelona@gmail.com)<br>
+Facebook: [facebook.com/AssociacioKyudoDojoBarcelona](facebook.com/AssociacioKyudoDojoBarcelona)
+
+Per a més informació sobre les classes de judo, contacta amb _Judo Musubi_ a través de l’adreça electrònica: [judomusubi@gmail.com](mailto:judomusubi@gmail.com)

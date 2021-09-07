@@ -372,7 +372,16 @@ Registration is free of charge. We offer discounts for families. And we also giv
 
 </div><!-- /#pills-tabContent -->
 
-Download the fees chart for the 2019-20 year:
+Download the fees chart for the 2020-21 year:
 
 * [Aikido Musubi - Fees 2020-21 (detail)]({{ site.url }}/files/fees-UjbuGtGz-fees-2021-detail-{{ page.lang }}.pdf)
 * [Aikido Musubi - Fees 2020-21 (summary)]({{ site.url }}/files/fees-UjbuGtGz-fees-2021-summary-{{ page.lang }}.pdf)
+
+<hr>
+
+The fees listed above are for Aikido classes only. For further information about fees for Kyudo, contact the _Kyudo Dojo Association of Barcelona_ by the following means:
+
+Email: [infokyudobarcelona@gmail.com](mailto:infokyudobarcelona@gmail.com)<br>
+Facebook: [facebook.com/AssociacioKyudoDojoBarcelona](facebook.com/AssociacioKyudoDojoBarcelona)
+
+For further information about judo classes, contact _Judo Musubi_ by email: [judomusubi@gmail.com](mailto:judomusubi@gmail.com)
