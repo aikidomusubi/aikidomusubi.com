@@ -140,7 +140,10 @@ __Jueves__
 
 Para niños y niñas a partir de los 6 hasta los 12 años. El aikido fortalece no solo el cuerpo sino también la mente y el espíritu. Los niños adquieren un fuerte sentido de concentración y confianza en sí mismos, mientras practican en un ambiente amigable. Los instructores enseñan a los niños a defenderse sin lastimar a los demás.
 
-_Debido a la expansión del virus COVID-19, las clases de aikido para niños y niñas están temporalmente suspendidas._
+__Martes__
+18:30 - 19:30
+__Jueves__
+18:30 - 19:30
 
 ## Clases de karate para niños y niñas
 

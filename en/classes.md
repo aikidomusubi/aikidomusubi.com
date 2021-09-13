@@ -140,7 +140,10 @@ __Thursday__
 
 For boys and girls from 6 to 12 years old. Aikido strengthens not only the body but also the mind and spirit. Children gain a strong sense of concentration and self-confidence while practicing in a friendly environment. Instructors teach children to defend themselves without hurting others.
 
-_Due to the spread of the coronavirus disease (COVID-19), aikido classes for children are temporarily suspended._
+__Tuesday__
+18:30 - 19:30
+__Thursday__
+18:30 - 19:30
 
 ## Karate classes for children
 

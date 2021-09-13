@@ -30,6 +30,16 @@
       "borderColor": "#FF7E79"
     },
     {
+      "title": "合気道\n子供\n\n",
+      "daysOfWeek": "2,4",
+      "startTime": "18:30",
+      "endTime": "19:30",
+      "startRecur": "2020-08-01",
+      "endRecur": "2022-08-31",
+      "backgroundColor": "#FF7E79",
+      "borderColor": "#FF7E79"
+    },
+    {
       "title": "合気道\n武器\n\n",
       "daysOfWeek": "4",
       "startTime": "19:30",

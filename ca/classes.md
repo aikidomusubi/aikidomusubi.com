@@ -140,7 +140,10 @@ __Dijous__
 
 Per a nens i nenes a partir dels 6 fins als 12 anys. L'aikido enforteix no només el cos sinó també la ment i l'esperit. Els nens adquireixen un fort sentit de concentració i confiança en si mateixos, mentre practiquen en un ambient amigable. Els instructors ensenyen als nens a defensar-se sense fer mal als altres.
 
-_A causa de l'expansió del COVID-19, les classes d'aikido per a nens i nenes estan temporalment suspeses._
+__Dimarts__
+18:30 - 19:30
+__Dijous__
+18:30 - 19:30
 
 ## Classes de karate per a nens i nenes
 
