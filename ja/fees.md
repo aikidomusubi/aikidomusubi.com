@@ -42,7 +42,7 @@ i18n-ref: fees-UjbuGtGz
             <h4 class="my-0 font-weight-normal">成人<br><small>12歳以上<br>&nbsp;</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">32€ <small class="text-muted">/ 月</small></h1>
+            <h1 class="card-title pricing-card-title">35€ <small class="text-muted">/ 月</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
               <li>~</li>
               <li>~</li>

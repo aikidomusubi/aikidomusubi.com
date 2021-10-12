@@ -42,7 +42,7 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
             <h4 class="my-0 font-weight-normal">Adults<br><small>Majors de 12 anys<br>&nbsp;</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">32€ <small class="text-muted">/ mes</small></h1>
+            <h1 class="card-title pricing-card-title">35€ <small class="text-muted">/ mes</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
               <li>~</li>
               <li>~</li>

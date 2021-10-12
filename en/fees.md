@@ -42,7 +42,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
             <h4 class="my-0 font-weight-normal">Adults<br><small>For ages 12 and up<br>&nbsp;</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">32€ <small class="text-muted">/ month</small></h1>
+            <h1 class="card-title pricing-card-title">35€ <small class="text-muted">/ month</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
               <li>~</li>
               <li>~</li>
