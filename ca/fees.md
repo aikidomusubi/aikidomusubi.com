@@ -80,9 +80,9 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
             <h4 class="my-0 font-weight-normal">Familiar<br><small>Majors de 12 anys<br>del mateix nucli familiar</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">50€ <small class="text-muted">/ mes</small></h1>
+            <h1 class="card-title pricing-card-title">55€ <small class="text-muted">/ mes</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>Estalvia 14€</b></li>
+              <li><b>Estalvia 15€</b></li>
               <li><b>22% de descompte</b></li>
               <li>Inscripció gratuïta</li>
               <li>1 mes de prova</li>
@@ -127,10 +127,10 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
             <h4 class="my-0 font-weight-normal">Adults<br><small>Majors de 12 anys<br>&nbsp;</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">80€ <small class="text-muted">/ trimestre</small></h1>
+            <h1 class="card-title pricing-card-title">85€ <small class="text-muted">/ trimestre</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>Estalvia 16€</b></li>
-              <li><b>17% de descompte</b></li>
+              <li><b>Estalvia 20€</b></li>
+              <li><b>19% de descompte</b></li>
               <li>Inscripció gratuïta</li>
               <li>1 mes de prova</li>
             </ul>
@@ -165,10 +165,10 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
             <h4 class="my-0 font-weight-normal">Familiar<br><small>Majors de 12 anys<br>del mateix nucli familiar</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">125€ <small class="text-muted">/ trimestre</small></h1>
+            <h1 class="card-title pricing-card-title">165€ <small class="text-muted">/ trimestre</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>Estalvia 25€</b></li>
-              <li><b>17% de descompte</b></li>
+              <li><b>Estalvia 45€</b></li>
+              <li><b>22% de descompte</b></li>
               <li>Inscripció gratuïta</li>
               <li>1 mes de prova</li>
             </ul>
@@ -184,10 +184,10 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
             <h4 class="my-0 font-weight-normal">Familiar Infantil<br><small>Menors de 12 anys<br>del mateix nucli familiar</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">100€ <small class="text-muted">/ trimestre</small></h1>
+            <h1 class="card-title pricing-card-title">110€ <small class="text-muted">/ trimestre</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>Estalvia 20€</b></li>
-              <li><b>17% de descompte</b></li>
+              <li><b>Estalvia 40€</b></li>
+              <li><b>27% de descompte</b></li>
               <li>Inscripció gratuïta</li>
               <li>1 mes de prova</li>
             </ul>
@@ -212,10 +212,10 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
             <h4 class="my-0 font-weight-normal">Adults<br><small>Majors de 12 anys<br>&nbsp;</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">140€ <small class="text-muted">/ semestre</small></h1>
+            <h1 class="card-title pricing-card-title">160€ <small class="text-muted">/ semestre</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>Estalvia 52€</b></li>
-              <li><b>27% de descompte</b></li>
+              <li><b>Estalvia 50€</b></li>
+              <li><b>24% de descompte</b></li>
               <li>Inscripció gratuïta</li>
               <li>1 mes de prova</li>
             </ul>
@@ -250,10 +250,10 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
             <h4 class="my-0 font-weight-normal">Familiar<br><small>Majors de 12 anys<br>del mateix nucli familiar</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">240€ <small class="text-muted">/ semestre</small></h1>
+            <h1 class="card-title pricing-card-title">310€ <small class="text-muted">/ semestre</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>Estalvia 60€</b></li>
-              <li><b>20% de descompte</b></li>
+              <li><b>Estalvia 110€</b></li>
+              <li><b>27% de descompte</b></li>
               <li>Inscripció gratuïta</li>
               <li>1 mes de prova</li>
             </ul>
@@ -269,10 +269,10 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
             <h4 class="my-0 font-weight-normal">Familiar Infantil<br><small>Menors de 12 anys<br>del mateix nucli familiar</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">190€ <small class="text-muted">/ semestre</small></h1>
+            <h1 class="card-title pricing-card-title">200€ <small class="text-muted">/ semestre</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>Estalvia 50€</b></li>
-              <li><b>20% de descompte</b></li>
+              <li><b>Estalvia 100€</b></li>
+              <li><b>34% de descompte</b></li>
               <li>Inscripció gratuïta</li>
               <li>1 mes de prova</li>
             </ul>
@@ -297,10 +297,10 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
             <h4 class="my-0 font-weight-normal">Adults<br><small>Majors de 12 anys<br>&nbsp;</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">250€ <small class="text-muted">/ any</small></h1>
+            <h1 class="card-title pricing-card-title">290€ <small class="text-muted">/ any</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>Estalvia 134€</b></li>
-              <li><b>35% de descompte</b></li>
+              <li><b>Estalvia 130€</b></li>
+              <li><b>31% de descompte</b></li>
               <li>Inscripció gratuïta</li>
               <li>1 mes de prova</li>
             </ul>
@@ -316,10 +316,10 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
             <h4 class="my-0 font-weight-normal">Infantil<br><small>Menors de 12 anys<br>&nbsp;</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">200€ <small class="text-muted">/ any</small></h1>
+            <h1 class="card-title pricing-card-title">180€ <small class="text-muted">/ any</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>Estalvia 100€</b></li>
-              <li><b>33% de descompte</b></li>
+              <li><b>Estalvia 70€</b></li>
+              <li><b>28% de descompte</b></li>
               <li>Inscripció gratuïta</li>
               <li>1 mes de prova</li>
             </ul>
@@ -335,10 +335,10 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
             <h4 class="my-0 font-weight-normal">Familiar<br><small>Majors de 12 anys<br>del mateix nucli familiar</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">400€ <small class="text-muted">/ any</small></h1>
+            <h1 class="card-title pricing-card-title">500€ <small class="text-muted">/ any</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>Estalvia 200€</b></li>
-              <li><b>33% de descompte</b></li>
+              <li><b>Estalvia 340€</b></li>
+              <li><b>41% de descompte</b></li>
               <li>Inscripció gratuïta</li>
               <li>1 mes de prova</li>
             </ul>
@@ -354,10 +354,10 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
             <h4 class="my-0 font-weight-normal">Familiar Infantil<br><small>Menors de 12 anys<br>del mateix nucli familiar</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">320€ <small class="text-muted">/ any</small></h1>
+            <h1 class="card-title pricing-card-title">325€ <small class="text-muted">/ any</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>Estalvia 160€</b></li>
-              <li><b>33% de descompte</b></li>
+              <li><b>Estalvia 175€</b></li>
+              <li><b>35% de descompte</b></li>
               <li>Inscripció gratuïta</li>
               <li>1 mes de prova</li>
             </ul>
@@ -372,10 +372,10 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
 
 </div><!-- /#pills-tabContent -->
 
-Descarregar la informació sobre quotes per a l'any 2020-21:
+Descarregar la informació sobre quotes per a l'any 2021-22:
 
-* [Aikido Musubi - Quotes 2020-21 (detall)]({{ site.url }}/files/fees-UjbuGtGz-fees-2021-detail-{{page.lang}}.pdf)
-* [Aikido Musubi - Quotes 2020-21 (resum)]({{ site.url }}/files/fees-UjbuGtGz-fees-2021-summary-{{page.lang}}.pdf)
+* [Aikido Musubi - Quotes 2021-22 (detall)]({{ site.url }}/files/fees-UjbuGtGz-fees-2022-detail-{{page.lang}}.pdf)
+* [Aikido Musubi - Quotes 2021-22 (resum)]({{ site.url }}/files/fees-UjbuGtGz-fees-2022-summary-{{page.lang}}.pdf)
 
 <hr>
 

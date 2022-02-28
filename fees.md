@@ -80,9 +80,9 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
             <h4 class="my-0 font-weight-normal">Familiar<br><small>Mayores de 12 años<br>del mismo núcleo familiar</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">50€ <small class="text-muted">/ mes</small></h1>
+            <h1 class="card-title pricing-card-title">55€ <small class="text-muted">/ mes</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>Ahorra 14€</b></li>
+              <li><b>Ahorra 15€</b></li>
               <li><b>22% de descuento</b></li>
               <li>Inscripción grauita</li>
               <li>1 mes de prueba</li>
@@ -127,10 +127,10 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
             <h4 class="my-0 font-weight-normal">Adultos<br><small>Mayores de 12 años<br>&nbsp;</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">80€ <small class="text-muted">/ trimestre</small></h1>
+            <h1 class="card-title pricing-card-title">85€ <small class="text-muted">/ trimestre</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>Ahorra 16€</b></li>
-              <li><b>17% de descuento</b></li>
+              <li><b>Ahorra 20€</b></li>
+              <li><b>19% de descuento</b></li>
               <li>Inscripción grauita</li>
               <li>1 mes de prueba</li>
             </ul>
@@ -165,10 +165,10 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
             <h4 class="my-0 font-weight-normal">Familiar<br><small>Mayores de 12 años<br>del mismo núcleo familiar</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">125€ <small class="text-muted">/ trimestre</small></h1>
+            <h1 class="card-title pricing-card-title">165€ <small class="text-muted">/ trimestre</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>Ahorra 25€</b></li>
-              <li><b>17% de descuento</b></li>
+              <li><b>Ahorra 45€</b></li>
+              <li><b>22% de descuento</b></li>
               <li>Inscripción grauita</li>
               <li>1 mes de prueba</li>
             </ul>
@@ -184,10 +184,10 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
             <h4 class="my-0 font-weight-normal">Familiar Infantil<br><small>Menores de 12 años<br>del mismo núcleo familiar</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">100€ <small class="text-muted">/ trimestre</small></h1>
+            <h1 class="card-title pricing-card-title">110€ <small class="text-muted">/ trimestre</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>Ahorra 20€</b></li>
-              <li><b>17% de descuento</b></li>
+              <li><b>Ahorra 40€</b></li>
+              <li><b>27% de descuento</b></li>
               <li>Inscripción grauita</li>
               <li>1 mes de prueba</li>
             </ul>
@@ -212,10 +212,10 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
             <h4 class="my-0 font-weight-normal">Adultos<br><small>Mayores de 12 años<br>&nbsp;</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">140€ <small class="text-muted">/ semestre</small></h1>
+            <h1 class="card-title pricing-card-title">160€ <small class="text-muted">/ semestre</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>Ahorra 52€</b></li>
-              <li><b>27% de descuento</b></li>
+              <li><b>Ahorra 50€</b></li>
+              <li><b>24% de descuento</b></li>
               <li>Inscripción grauita</li>
               <li>1 mes de prueba</li>
             </ul>
@@ -250,10 +250,10 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
             <h4 class="my-0 font-weight-normal">Familiar<br><small>Mayores de 12 años<br>del mismo núcleo familiar</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">240€ <small class="text-muted">/ semestre</small></h1>
+            <h1 class="card-title pricing-card-title">310€ <small class="text-muted">/ semestre</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>Ahorra 60€</b></li>
-              <li><b>20% de descuento</b></li>
+              <li><b>Ahorra 110€</b></li>
+              <li><b>27% de descuento</b></li>
               <li>Inscripción grauita</li>
               <li>1 mes de prueba</li>
             </ul>
@@ -269,10 +269,10 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
             <h4 class="my-0 font-weight-normal">Familiar Infantil<br><small>Menores de 12 años<br>del mismo núcleo familiar</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">190€ <small class="text-muted">/ semestre</small></h1>
+            <h1 class="card-title pricing-card-title">200€ <small class="text-muted">/ semestre</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>Ahorra 50€</b></li>
-              <li><b>20% de descuento</b></li>
+              <li><b>Ahorra 100€</b></li>
+              <li><b>34% de descuento</b></li>
               <li>Inscripción grauita</li>
               <li>1 mes de prueba</li>
             </ul>
@@ -297,10 +297,10 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
             <h4 class="my-0 font-weight-normal">Adultos<br><small>Mayores de 12 años<br>&nbsp;</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">250€ <small class="text-muted">/ año</small></h1>
+            <h1 class="card-title pricing-card-title">290€ <small class="text-muted">/ año</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>Ahorra 134€</b></li>
-              <li><b>35% de descuento</b></li>
+              <li><b>Ahorra 130€</b></li>
+              <li><b>31% de descuento</b></li>
               <li>Inscripción grauita</li>
               <li>1 mes de prueba</li>
             </ul>
@@ -316,10 +316,10 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
             <h4 class="my-0 font-weight-normal">Infantil<br><small>Menores de 12 años<br>&nbsp;</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">200€ <small class="text-muted">/ año</small></h1>
+            <h1 class="card-title pricing-card-title">180€ <small class="text-muted">/ año</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>Ahorra 100€</b></li>
-              <li><b>33% de descuento</b></li>
+              <li><b>Ahorra 70€</b></li>
+              <li><b>28% de descuento</b></li>
               <li>Inscripción grauita</li>
               <li>1 mes de prueba</li>
             </ul>
@@ -335,10 +335,10 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
             <h4 class="my-0 font-weight-normal">Familiar<br><small>Mayores de 12 años<br>del mismo núcleo familiar</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">400€ <small class="text-muted">/ año</small></h1>
+            <h1 class="card-title pricing-card-title">500€ <small class="text-muted">/ año</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>Ahorra 200€</b></li>
-              <li><b>33% de descuento</b></li>
+              <li><b>Ahorra 340€</b></li>
+              <li><b>41% de descuento</b></li>
               <li>Inscripción grauita</li>
               <li>1 mes de prueba</li>
             </ul>
@@ -354,10 +354,10 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
             <h4 class="my-0 font-weight-normal">Familiar Infantil<br><small>Menores de 12 años<br>del mismo núcleo familiar</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">320€ <small class="text-muted">/ año</small></h1>
+            <h1 class="card-title pricing-card-title">325€ <small class="text-muted">/ año</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>Ahorra 160€</b></li>
-              <li><b>33% de descuento</b></li>
+              <li><b>Ahorra 175€</b></li>
+              <li><b>35% de descuento</b></li>
               <li>Inscripción grauita</li>
               <li>1 mes de prueba</li>
             </ul>
@@ -372,10 +372,10 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
 
 </div><!-- /#pills-tabContent -->
 
-Descargar la información sobre cuotas para el año 2020-21:
+Descargar la información sobre cuotas para el año 2021-22:
 
-* [Aikido Musubi - Cuotas 2020-21 (detalle)]({{ site.url }}/files/fees-UjbuGtGz-fees-2021-detail-{{ page.lang }}.pdf)
-* [Aikido Musubi - Cuotas 2020-21 (resumen)]({{ site.url }}/files/fees-UjbuGtGz-fees-2021-summary-{{ page.lang }}.pdf)
+* [Aikido Musubi - Cuotas 2021-22 (detalle)]({{ site.url }}/files/fees-UjbuGtGz-fees-2022-detail-{{ page.lang }}.pdf)
+* [Aikido Musubi - Cuotas 2021-22 (resumen)]({{ site.url }}/files/fees-UjbuGtGz-fees-2022-summary-{{ page.lang }}.pdf)
 
 <hr>
 

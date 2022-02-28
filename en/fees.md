@@ -80,9 +80,9 @@ Registration is free of charge. We offer discounts for families. And we also giv
             <h4 class="my-0 font-weight-normal">Family<br><small>For ages 12 and up<br>of the same family</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">50€ <small class="text-muted">/ month</small></h1>
+            <h1 class="card-title pricing-card-title">55€ <small class="text-muted">/ month</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>Save 14€</b></li>
+              <li><b>Save 15€</b></li>
               <li><b>22% discount</b></li>
               <li>Free registration</li>
               <li>Try for 1 month</li>
@@ -127,10 +127,10 @@ Registration is free of charge. We offer discounts for families. And we also giv
             <h4 class="my-0 font-weight-normal">Adults<br><small>For ages 12 and up<br>&nbsp;</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">80€ <small class="text-muted">/ quarter</small></h1>
+            <h1 class="card-title pricing-card-title">85€ <small class="text-muted">/ quarter</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>Save 16€</b></li>
-              <li><b>17% discount</b></li>
+              <li><b>Save 20€</b></li>
+              <li><b>19% discount</b></li>
               <li>Free registration</li>
               <li>Try for 1 month</li>
             </ul>
@@ -165,10 +165,10 @@ Registration is free of charge. We offer discounts for families. And we also giv
             <h4 class="my-0 font-weight-normal">Family<br><small>For ages 12 and up<br>of the same family</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">125€ <small class="text-muted">/ quarter</small></h1>
+            <h1 class="card-title pricing-card-title">165€ <small class="text-muted">/ quarter</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>Save 25€</b></li>
-              <li><b>17% discount</b></li>
+              <li><b>Save 45€</b></li>
+              <li><b>22% discount</b></li>
               <li>Free registration</li>
               <li>Try for 1 month</li>
             </ul>
@@ -184,10 +184,10 @@ Registration is free of charge. We offer discounts for families. And we also giv
             <h4 class="my-0 font-weight-normal">Family children<br><small>For children under 12 years<br>of the same family</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">100€ <small class="text-muted">/ quarter</small></h1>
+            <h1 class="card-title pricing-card-title">110€ <small class="text-muted">/ quarter</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>Save 20€</b></li>
-              <li><b>17% discount</b></li>
+              <li><b>Save 40€</b></li>
+              <li><b>27% discount</b></li>
               <li>Free registration</li>
               <li>Try for 1 month</li>
             </ul>
@@ -212,10 +212,10 @@ Registration is free of charge. We offer discounts for families. And we also giv
             <h4 class="my-0 font-weight-normal">Adults<br><small>For ages 12 and up<br>&nbsp;</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">140€ <small class="text-muted">/ semester</small></h1>
+            <h1 class="card-title pricing-card-title">160€ <small class="text-muted">/ semester</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>Save 52€</b></li>
-              <li><b>27% discount</b></li>
+              <li><b>Save 50€</b></li>
+              <li><b>24% discount</b></li>
               <li>Free registration</li>
               <li>Try for 1 month</li>
             </ul>
@@ -250,10 +250,10 @@ Registration is free of charge. We offer discounts for families. And we also giv
             <h4 class="my-0 font-weight-normal">Family<br><small>For ages 12 and up<br>of the same family</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">240€ <small class="text-muted">/ semester</small></h1>
+            <h1 class="card-title pricing-card-title">310€ <small class="text-muted">/ semester</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>Save 60€</b></li>
-              <li><b>20% discount</b></li>
+              <li><b>Save 110€</b></li>
+              <li><b>27% discount</b></li>
               <li>Free registration</li>
               <li>Try for 1 month</li>
             </ul>
@@ -269,10 +269,10 @@ Registration is free of charge. We offer discounts for families. And we also giv
             <h4 class="my-0 font-weight-normal">Family children<br><small>For children under 12 years<br>of the same family</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">190€ <small class="text-muted">/ semester</small></h1>
+            <h1 class="card-title pricing-card-title">200€ <small class="text-muted">/ semester</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>Save 50€</b></li>
-              <li><b>20% discount</b></li>
+              <li><b>Save 100€</b></li>
+              <li><b>34% discount</b></li>
               <li>Free registration</li>
               <li>Try for 1 month</li>
             </ul>
@@ -297,10 +297,10 @@ Registration is free of charge. We offer discounts for families. And we also giv
             <h4 class="my-0 font-weight-normal">Adults<br><small>For ages 12 and up<br>&nbsp;</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">250€ <small class="text-muted">/ year</small></h1>
+            <h1 class="card-title pricing-card-title">290€ <small class="text-muted">/ year</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>Save 134€</b></li>
-              <li><b>35% discount</b></li>
+              <li><b>Save 130€</b></li>
+              <li><b>31% discount</b></li>
               <li>Free registration</li>
               <li>Try for 1 month</li>
             </ul>
@@ -316,10 +316,10 @@ Registration is free of charge. We offer discounts for families. And we also giv
             <h4 class="my-0 font-weight-normal">Children<br><small>For children under 12 years<br>&nbsp;</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">200€ <small class="text-muted">/ year</small></h1>
+            <h1 class="card-title pricing-card-title">180€ <small class="text-muted">/ year</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>Save 100€</b></li>
-              <li><b>33% discount</b></li>
+              <li><b>Save 70€</b></li>
+              <li><b>28% discount</b></li>
               <li>Free registration</li>
               <li>Try for 1 month</li>
             </ul>
@@ -335,10 +335,10 @@ Registration is free of charge. We offer discounts for families. And we also giv
             <h4 class="my-0 font-weight-normal">Family<br><small>For ages 12 and up<br>of the same family</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">400€ <small class="text-muted">/ year</small></h1>
+            <h1 class="card-title pricing-card-title">500€ <small class="text-muted">/ year</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>Save 200€</b></li>
-              <li><b>33% discount</b></li>
+              <li><b>Save 340€</b></li>
+              <li><b>41% discount</b></li>
               <li>Free registration</li>
               <li>Try for 1 month</li>
             </ul>
@@ -354,10 +354,10 @@ Registration is free of charge. We offer discounts for families. And we also giv
             <h4 class="my-0 font-weight-normal">Family children<br><small>For children under 12 years<br>of the same family</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">320€ <small class="text-muted">/ year</small></h1>
+            <h1 class="card-title pricing-card-title">325€ <small class="text-muted">/ year</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>Save 160€</b></li>
-              <li><b>33% discount</b></li>
+              <li><b>Save 175€</b></li>
+              <li><b>35% discount</b></li>
               <li>Free registration</li>
               <li>Try for 1 month</li>
             </ul>
@@ -372,10 +372,10 @@ Registration is free of charge. We offer discounts for families. And we also giv
 
 </div><!-- /#pills-tabContent -->
 
-Download the fees chart for the 2020-21 year:
+Download the fees chart for the 2021-22 year:
 
-* [Aikido Musubi - Fees 2020-21 (detail)]({{ site.url }}/files/fees-UjbuGtGz-fees-2021-detail-{{ page.lang }}.pdf)
-* [Aikido Musubi - Fees 2020-21 (summary)]({{ site.url }}/files/fees-UjbuGtGz-fees-2021-summary-{{ page.lang }}.pdf)
+* [Aikido Musubi - Fees 2021-22 (detail)]({{ site.url }}/files/fees-UjbuGtGz-fees-2022-detail-{{ page.lang }}.pdf)
+* [Aikido Musubi - Fees 2021-22 (summary)]({{ site.url }}/files/fees-UjbuGtGz-fees-2022-summary-{{ page.lang }}.pdf)
 
 <hr>
 

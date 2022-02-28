@@ -80,9 +80,9 @@ i18n-ref: fees-UjbuGtGz
             <h4 class="my-0 font-weight-normal">家族<br><small>家族の中で<br>12歳以上</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">50€ <small class="text-muted">/ 月</small></h1>
+            <h1 class="card-title pricing-card-title">55€ <small class="text-muted">/ 月</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>14€ 割引</b></li>
+              <li><b>15€ 割引</b></li>
               <li><b>22% 割引</b></li>
               <li>無料登録</li>
               <li>初月無料</li>
@@ -127,10 +127,10 @@ i18n-ref: fees-UjbuGtGz
             <h4 class="my-0 font-weight-normal">成人<br><small>12歳以上<br>&nbsp;</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">80€ <small class="text-muted">/ 3ヶ月</small></h1>
+            <h1 class="card-title pricing-card-title">85€ <small class="text-muted">/ 3ヶ月</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>16€ 割引</b></li>
-              <li><b>17% 割引</b></li>
+              <li><b>20€ 割引</b></li>
+              <li><b>19% 割引</b></li>
               <li>無料登録</li>
               <li>初月無料</li>
             </ul>
@@ -165,10 +165,10 @@ i18n-ref: fees-UjbuGtGz
             <h4 class="my-0 font-weight-normal">家族<br><small>家族の中で<br>12歳以上</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">125€ <small class="text-muted">/ 3ヶ月</small></h1>
+            <h1 class="card-title pricing-card-title">165€ <small class="text-muted">/ 3ヶ月</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>25€ 割引</b></li>
-              <li><b>17% 割引</b></li>
+              <li><b>45€ 割引</b></li>
+              <li><b>22% 割引</b></li>
               <li>無料登録</li>
               <li>初月無料</li>
             </ul>
@@ -184,10 +184,10 @@ i18n-ref: fees-UjbuGtGz
             <h4 class="my-0 font-weight-normal">家族内の子供<br><small>家族の中で<br>12歳未満のお子様向け</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">100€ <small class="text-muted">/ 3ヶ月</small></h1>
+            <h1 class="card-title pricing-card-title">110€ <small class="text-muted">/ 3ヶ月</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>20€ 割引</b></li>
-              <li><b>17% 割引</b></li>
+              <li><b>40€ 割引</b></li>
+              <li><b>27% 割引</b></li>
               <li>無料登録</li>
               <li>初月無料</li>
             </ul>
@@ -212,10 +212,10 @@ i18n-ref: fees-UjbuGtGz
             <h4 class="my-0 font-weight-normal">成人<br><small>12歳以上<br>&nbsp;</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">140€ <small class="text-muted">/ 6ヶ月</small></h1>
+            <h1 class="card-title pricing-card-title">160€ <small class="text-muted">/ 6ヶ月</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>52€ 割引</b></li>
-              <li><b>27% 割引</b></li>
+              <li><b>50€ 割引</b></li>
+              <li><b>24% 割引</b></li>
               <li>無料登録</li>
               <li>初月無料</li>
             </ul>
@@ -250,10 +250,10 @@ i18n-ref: fees-UjbuGtGz
             <h4 class="my-0 font-weight-normal">家族<br><small>家族の中で<br>12歳以上</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">240€ <small class="text-muted">/ 6ヶ月</small></h1>
+            <h1 class="card-title pricing-card-title">310€ <small class="text-muted">/ 6ヶ月</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>60€ 割引</b></li>
-              <li><b>20% 割引</b></li>
+              <li><b>110€ 割引</b></li>
+              <li><b>27% 割引</b></li>
               <li>無料登録</li>
               <li>初月無料</li>
             </ul>
@@ -269,10 +269,10 @@ i18n-ref: fees-UjbuGtGz
             <h4 class="my-0 font-weight-normal">家族内の子供<br><small>家族の中で<br>12歳未満のお子様向け</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">190€ <small class="text-muted">/ 6ヶ月</small></h1>
+            <h1 class="card-title pricing-card-title">200€ <small class="text-muted">/ 6ヶ月</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>50€ 割引</b></li>
-              <li><b>20% 割引</b></li>
+              <li><b>100€ 割引</b></li>
+              <li><b>34% 割引</b></li>
               <li>無料登録</li>
               <li>初月無料</li>
             </ul>
@@ -297,10 +297,10 @@ i18n-ref: fees-UjbuGtGz
             <h4 class="my-0 font-weight-normal">成人<br><small>12歳以上<br>&nbsp;</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">250€ <small class="text-muted">/ 年</small></h1>
+            <h1 class="card-title pricing-card-title">290€ <small class="text-muted">/ 年</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>134€ 割引</b></li>
-              <li><b>35% 割引</b></li>
+              <li><b>130€ 割引</b></li>
+              <li><b>31% 割引</b></li>
               <li>無料登録</li>
               <li>初月無料</li>
             </ul>
@@ -316,10 +316,10 @@ i18n-ref: fees-UjbuGtGz
             <h4 class="my-0 font-weight-normal">子供<br><small>12歳未満のお子様向け<br>&nbsp;</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">200€ <small class="text-muted">/ 年</small></h1>
+            <h1 class="card-title pricing-card-title">180€ <small class="text-muted">/ 年</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>100€ 割引</b></li>
-              <li><b>33% 割引</b></li>
+              <li><b>70€ 割引</b></li>
+              <li><b>28% 割引</b></li>
               <li>無料登録</li>
               <li>初月無料</li>
             </ul>
@@ -335,10 +335,10 @@ i18n-ref: fees-UjbuGtGz
             <h4 class="my-0 font-weight-normal">家族<br><small>家族の中で<br>12歳以上</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">400€ <small class="text-muted">/ 年</small></h1>
+            <h1 class="card-title pricing-card-title">500€ <small class="text-muted">/ 年</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>200€ 割引</b></li>
-              <li><b>33% 割引</b></li>
+              <li><b>340€ 割引</b></li>
+              <li><b>41% 割引</b></li>
               <li>無料登録</li>
               <li>初月無料</li>
             </ul>
@@ -354,10 +354,10 @@ i18n-ref: fees-UjbuGtGz
             <h4 class="my-0 font-weight-normal">家族内の子供<br><small>家族の中で<br>12歳未満のお子様向け</small></h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">320€ <small class="text-muted">/ 年</small></h1>
+            <h1 class="card-title pricing-card-title">325€ <small class="text-muted">/ 年</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li><b>160€ 割引</b></li>
-              <li><b>33% 割引</b></li>
+              <li><b>175€ 割引</b></li>
+              <li><b>35% 割引</b></li>
               <li>無料登録</li>
               <li>初月無料</li>
             </ul>
@@ -372,10 +372,10 @@ i18n-ref: fees-UjbuGtGz
 
 </div><!-- /#pills-tabContent -->
 
-2020-21年の料金表をダウンロード：
+2021-22年の料金表をダウンロード：
 
-* [合気道産靈 - 2020-21年の料金 (詳細)]({{ site.url }}/files/fees-UjbuGtGz-fees-2021-detail-{{ page.lang }}.pdf)
-* [合気道産靈 - 2020-21年の料金 (要約)]({{ site.url }}/files/fees-UjbuGtGz-fees-2021-summary-{{ page.lang }}.pdf)
+* [合気道産靈 - 2021-22年の料金 (詳細)]({{ site.url }}/files/fees-UjbuGtGz-fees-2022-detail-{{ page.lang }}.pdf)
+* [合気道産靈 - 2021-22年の料金 (要約)]({{ site.url }}/files/fees-UjbuGtGz-fees-2022-summary-{{ page.lang }}.pdf)
 
 <hr>
 
