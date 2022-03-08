@@ -186,7 +186,7 @@ _Les classes de karate per a nens i nenes estan temporalment suspeses._
       <picture>
         <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-35.webp" class="img-fluid lazyload">
         <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-35.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-35.jpg" class="img-fluid lazyload" alt="Aikido Musubi Classes de iaijutsu>
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-35.jpg" class="img-fluid lazyload" alt="Aikido Musubi Classes de iaijutsu">
       </picture>
     </div>
   </div>
