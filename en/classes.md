@@ -26,7 +26,8 @@ Regular practice for all levels. Available to all members over 12 years old.
 __Monday__
 20:00 - 21:30
 __Tuesday__
-20:00 - 21:30
+19:30 - 20:30<br>
+20:30 - 21:30
 __Wednesday__
 20:00 - 21:30
 __Thursday__
@@ -73,7 +74,7 @@ __Thursday__
 Practice focuses on learning basic falls and movements. Recommended for beginners and intermediate level practitioners.
 
 __Tuesday__
-20:00 - 21:30
+19:30 - 20:30
 
 ## Aikido weapons classes
 
@@ -166,9 +167,44 @@ __Thursday__
   </div>
 </div>
 
-_Due to the spread of the coronavirus disease (COVID-19), karate classes for children are temporarily suspended._
+_Karate classes for children are temporarily suspended._
 
 ## Iaijutsu classes
+
+<div id="classes-CJc2lhFv-iaijutsu" class="container">
+  <div class="row">
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-34.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-34.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-34.jpg" class="img-fluid lazyload" alt="Aikido Musubi Iaijutsu classes">
+      </picture>
+    </div>
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-35.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-35.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-35.jpg" class="img-fluid lazyload" alt="Aikido Musubi Iaijutsu classes">
+      </picture>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-36.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-36.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-36.jpg" class="img-fluid lazyload" alt="Aikido Musubi Iaijutsu classes">
+      </picture>
+    </div>
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-37.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-37.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-37.jpg" class="img-fluid lazyload" alt="Aikido Musubi Iaijutsu classes">
+      </picture>
+    </div>
+  </div>
+</div>
 
 _Iaijutsu_ is a combative quick-draw sword technique. This art of drawing the Japanese sword (_katana_) is one of the Japanese basic martial art disciplines in the education of the classical samurai. _Ryūshin Shouchi-ryū_ is a kobudō (ancient martial art) school specialized in iaijutsu. This system is based on the traditional fencing originated in the Kanto area, later extended to Kyushu and other areas of Japan. It is composed of 60 kata of Iai, kumitachi of Kenjutsu, kumitachi of Iai, tachitori and tantōtori. The forms passed down by this style exude the wisdom, discipline, and determination of many masters and accomplished practitioners for hundreds of years, and it has been a major challenge of great importance to transmit these forms correctly generation after generation.
 
@@ -183,14 +219,14 @@ __Saturday__
       <picture>
         <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-02.webp" class="img-fluid lazyload">
         <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-02.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-02.jpg" class="img-fluid lazyload" alt="Aikido Musubi Classes de kyudo">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-02.jpg" class="img-fluid lazyload" alt="Aikido Musubi Kyudo classes">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
         <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-04.webp" class="img-fluid lazyload">
         <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-04.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-04.jpg" class="img-fluid lazyload" alt="Aikido Musubi Classes de kyudo">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-04.jpg" class="img-fluid lazyload" alt="Aikido Musubi Kyudo classes">
       </picture>
     </div>
   </div>
@@ -199,14 +235,14 @@ __Saturday__
       <picture>
         <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-03.webp" class="img-fluid lazyload">
         <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-03.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-03.jpg" class="img-fluid lazyload" alt="Aikido Musubi Classes de kyudo">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-03.jpg" class="img-fluid lazyload" alt="Aikido Musubi Kyudo classes">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
         <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-07.webp" class="img-fluid lazyload">
         <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-07.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-07.jpg" class="img-fluid lazyload" alt="Aikido Musubi Classes de kyudo">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-07.jpg" class="img-fluid lazyload" alt="Aikido Musubi Kyudo classes">
       </picture>
     </div>
   </div>
@@ -226,6 +262,41 @@ Email: [infokyudobarcelona@gmail.com](mailto:infokyudobarcelona@gmail.com)<br>
 Facebook: [facebook.com/AssociacioKyudoDojoBarcelona](https://www.facebook.com/AssociacioKyudoDojoBarcelona/)
 
 ## Judo classes
+
+<div id="classes-CJc2lhFv-judo" class="container">
+  <div class="row">
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-38.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-38.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-38.jpg" class="img-fluid lazyload" alt="Aikido Musubi Judo classes">
+      </picture>
+    </div>
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-39.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-39.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-39.jpg" class="img-fluid lazyload" alt="Aikido Musubi Judo classes">
+      </picture>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-40.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-40.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-40.jpg" class="img-fluid lazyload" alt="Aikido Musubi Judo classes">
+      </picture>
+    </div>
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-41.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-41.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-41.jpg" class="img-fluid lazyload" alt="Aikido Musubi Judo classes">
+      </picture>
+    </div>
+  </div>
+</div>
 
 Judo is a martial art from Japan, created 150 years ago by master Jigoro Kano. Judo means "the way of softness", and it is based on a set of stand-up self-defense techniques (throws) and ground grappling self-defense techniques (immobilisations, dislocations, and strangulations).
 

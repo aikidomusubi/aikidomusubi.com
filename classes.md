@@ -26,7 +26,8 @@ Práctica regular para todos los niveles. Disponible para todos los miembros may
 __Lunes__
 20:00 - 21:30
 __Martes__
-20:00 - 21:30
+19:30 - 20:30<br>
+20:30 - 21:30
 __Miércoles__
 20:00 - 21:30
 __Jueves__
@@ -73,7 +74,7 @@ __Jueves__
 Se centra en el aprendizaje de las caídas y movimientos básicos. Recomendado para principiantes y practicantes de nivel intermedio.
 
 __Martes__
-20:00 - 21:30
+19:30 - 20:30
 
 ## Clases de aikido con armas
 
@@ -168,9 +169,44 @@ __Jueves__
 
 Karate _Shōtōkan_. Para niños y niñas a partir de los 6 hasta los 12 años.
 
-_Debido a la expansión del virus COVID-19, las clases de karate para niños y niñas están temporalmente suspendidas._
+_Las clases de karate para niños y niñas están temporalmente suspendidas._
 
 ## Clases de iaijutsu
+
+<div id="classes-CJc2lhFv-iaijutsu" class="container">
+  <div class="row">
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-34.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-34.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-34.jpg" class="img-fluid lazyload" alt="Aikido Musubi Clases de iaijutsu">
+      </picture>
+    </div>
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-35.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-35.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-35.jpg" class="img-fluid lazyload" alt="Aikido Musubi Clases de iaijutsu">
+      </picture>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-36.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-36.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-36.jpg" class="img-fluid lazyload" alt="Aikido Musubi Clases de iaijutsu">
+      </picture>
+    </div>
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-37.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-37.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-37.jpg" class="img-fluid lazyload" alt="Aikido Musubi Clases de iaijutsu">
+      </picture>
+    </div>
+  </div>
+</div>
 
 _Iaijutsu_ es el arte de desenvaine y corte simultáneo. Este arte de desenvaine de la espada japonesa (_katana_) es una de las disciplinas básicas en la educación clásica de los samurai. _Ryūshin Shouchi-ryū_ es una escuela de kobudō (arte marcial antiguo) especializada en iaijutsu. Este sistema se basa en la esgrima tradicional originada en el área de Kanto, extendida posteriormente a Kyushu y otras áreas de Japón. Está compuesto por 60 kata de Iai, kumitachi de Kenjutsu, kumitachi de Iai, tachitori y tantōtori. Las formas transmitidas por este estilo, destilan la sabiduría, la disciplina y la determinación de muchos maestros y consumados practicantes durante cientos de años, y ha sido un gran reto de vital importancia transmitir estas formas correctamente generación tras generación.
 
@@ -228,6 +264,41 @@ Email: [infokyudobarcelona@gmail.com](mailto:infokyudobarcelona@gmail.com)<br>
 Facebook: [facebook.com/AssociacioKyudoDojoBarcelona](https://www.facebook.com/AssociacioKyudoDojoBarcelona/)
 
 ## Clases de judo
+
+<div id="classes-CJc2lhFv-judo" class="container">
+  <div class="row">
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-38.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-38.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-38.jpg" class="img-fluid lazyload" alt="Aikido Musubi Clases de judo">
+      </picture>
+    </div>
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-39.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-39.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-39.jpg" class="img-fluid lazyload" alt="Aikido Musubi Clases de judo">
+      </picture>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-40.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-40.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-40.jpg" class="img-fluid lazyload" alt="Aikido Musubi Clases de judo">
+      </picture>
+    </div>
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-41.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-41.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-41.jpg" class="img-fluid lazyload" alt="Aikido Musubi Clases de judo">
+      </picture>
+    </div>
+  </div>
+</div>
 
 El judo es un arte marcial de Japón, creado hace 150 años por el maestro Jigoro Kano. Judo significa «el camino de la suavidad», y se basa en un conjunto de técnicas de defensa de pie (proyecciones) y técnicas de defensa en el suelo (inmovilizaciones, luxaciones, y estrangulaciones).
 

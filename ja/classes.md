@@ -27,7 +27,8 @@ i18n-ref: classes-CJc2lhFv
 __月__
 20:00 - 21:30
 __火__
-20:00 - 21:30
+19:30 - 20:30<br>
+20:30 - 21:30
 __水__
 20:00 - 21:30
 __木__
@@ -74,7 +75,7 @@ __木__
 基本的な転倒と動きを学ぶことに焦点を当てたクラス。初心者から中級レベルの方におすすめです
 
 __火__
-20:00 - 21:30
+19:30 - 20:30
 
 ## 武器クラス
 
@@ -169,9 +170,44 @@ __木__
 
 松濤館流空手。6歳から12歳までの男の子と女の子向け。
 
-_この度の新型コロナウイルス（COVID-19）感染拡大に鑑み、子供の空手クラスを一時的に休止させていただきます。_
+_子供の空手クラスを一時的に休止させていただきます。_
 
 ## 居合術クラス
+
+<div id="classes-CJc2lhFv-iaijutsu" class="container">
+  <div class="row">
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-34.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-34.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-34.jpg" class="img-fluid lazyload" alt="合気道産靈 居合術クラス">
+      </picture>
+    </div>
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-35.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-35.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-35.jpg" class="img-fluid lazyload" alt="合気道産靈 居合術クラス">
+      </picture>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-36.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-36.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-36.jpg" class="img-fluid lazyload" alt="合気道産靈 居合術クラス">
+      </picture>
+    </div>
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-37.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-37.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-37.jpg" class="img-fluid lazyload" alt="合気道産靈 居合術クラス">
+      </picture>
+    </div>
+  </div>
+</div>
 
 __土__
 11:00 - 13:00 (一月の第２土曜日)
@@ -227,6 +263,41 @@ __日__
 Facebook: [facebook.com/AssociacioKyudoDojoBarcelona](https://www.facebook.com/AssociacioKyudoDojoBarcelona/)
 
 ## 柔道クラス
+
+<div id="classes-CJc2lhFv-judo" class="container">
+  <div class="row">
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-38.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-38.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-38.jpg" class="img-fluid lazyload" alt="合気道産靈 柔道クラス">
+      </picture>
+    </div>
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-39.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-39.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-39.jpg" class="img-fluid lazyload" alt="合気道産靈 柔道クラス">
+      </picture>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-40.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-40.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-40.jpg" class="img-fluid lazyload" alt="合気道産靈 柔道クラス">
+      </picture>
+    </div>
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-41.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-41.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-41.jpg" class="img-fluid lazyload" alt="合気道産靈 柔道クラス">
+      </picture>
+    </div>
+  </div>
+</div>
 
 __月__
 18:30 - 20:00
