@@ -11,7 +11,7 @@
     },
     {
       "title": "Aikido\nTots els nivells\n\n",
-      "daysOfWeek": "4",
+      "daysOfWeek": "2,4",
       "startTime": "20:30",
       "endTime": "21:30",
       "startRecur": "2020-08-01",
@@ -20,10 +20,20 @@
       "borderColor": "#FF7E79"
     },
     {
+      "title": "Aikido\nTots els nivells\n\n",
+      "daysOfWeek": "5",
+      "startTime": "19:00",
+      "endTime": "20:00",
+      "startRecur": "2020-08-01",
+      "endRecur": "2022-08-31",
+      "backgroundColor": "#FF7E79",
+      "borderColor": "#FF7E79"
+    },
+    {
       "title": "Aikido\nPrincipiants\n\n",
       "daysOfWeek": "2",
-      "startTime": "20:00",
-      "endTime": "21:30",
+      "startTime": "19:30",
+      "endTime": "20:30",
       "startRecur": "2020-08-01",
       "endRecur": "2022-08-31",
       "backgroundColor": "#FF7E79",

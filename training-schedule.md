@@ -22,6 +22,6 @@ Actualmente, ofrecemos clases de Aikido (adultos e infantil) de lunes a sábado.
 
 <div id='calendar'></div>
 
-Descargar los horarios para el año 2020-21:
+Descargar los horarios para el año 2021-22:
 
-* [Aikido Musubi - Horarios 2020-21]({{ site.url }}/files/training-schedule-IFMn5oCc-training-schedule-2021-{{ page.lang }}.pdf)
+* [Aikido Musubi - Horarios 2021-22]({{ site.url }}/files/training-schedule-IFMn5oCc-training-schedule-2022-{{ page.lang }}.pdf)
