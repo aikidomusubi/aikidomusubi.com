@@ -37,7 +37,7 @@ Ens agrada compartir la nostra experiència i per això donem la benvinguda a to
 
 La filosofia d'__Aikido Musubi__ es basa en els preceptes establerts pel fundador de l'aikido, Morihei Ueshiba, i heretada pel segon i tercer doshu, així com els mestres (_shihan_) de la seu mundial de l'aikido, el [Hombu Dojo](http://www.aikikai.or.jp/).
 
-__Aikido Musubi__ forma part d'[Aikido Arashi Group](http://aikidoarashigroup.com/), que manté un vincle directe amb el Hombu Dojo a través del mestre Miyamoto Tsuruzo (8è Dan). A més, participem en cursos i seminaris d'aikido per Europa i el món impartits per mestres de reconegut prestigi; i viatgem regularment a Tòquio per visitar i entrenar al Hombu Dojo.
+__Aikido Musubi__ forma part d'[Aikido Arashi Group](http://aikidoarashigroup.com/), que manté un vincle directe amb el Hombu Dojo a través del mestre Miyamoto Tsuruzo (8è dan). A més, participem en cursos i seminaris d'aikido per Europa i el món impartits per mestres de reconegut prestigi; i viatgem regularment a Tòquio per visitar i entrenar al Hombu Dojo.
 
 El nostre dojo és un espai gran i diàfan destinat exclusivament a la pràctica i l'ensenyament de les arts marcials. Està supervisat i gestionat pel director tècnic i els instructors de l'associació; però sent responsabilitat de tothom (no només dels instructors o del professor), el mantenen i el cuiden els estudiants.
 

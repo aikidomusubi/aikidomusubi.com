@@ -6,17 +6,17 @@ title_ja: "弐段の審査 - マイク・フリン師範 @ 合気道産靈 2019�
 
 desc_ca: >-
   Examen de Nidan a Aikido Musubi Badalona (Barcelona)<br>
-  Examinador: Mike Flynn Shihan (7è Dan)<br>
+  Examinador: Mike Flynn Shihan (7è dan)<br>
   Examinands: Taron Hamkhiyan, José Luis Zafra, José Gómez, y Alberto Sancho<br>
   Organitzador: Arashi Group
 desc_en: >-
   Nidan Exam at Aikido Musubi Badalona (Barcelona, Spain)<br>
-  Examiner: Mike Flynn Shihan (7th Dan)<br>
+  Examiner: Mike Flynn Shihan (7th dan)<br>
   Examinees: Taron Hamkhiyan, José Luis Zafra, José Gómez, y Alberto Sancho<br>
   Organiser: Arashi Group
 desc_es: >-
   Examen de Nidan en Aikido Musubi Badalona (Barcelona)<br>
-  Examinador: Mike Flynn Shihan (7º Dan)<br>
+  Examinador: Mike Flynn Shihan (7º dan)<br>
   Examinantes: Taron Hamkhiyan, José Luis Zafra, José Gómez, y Alberto Sancho<br>
   Organizador: Arashi Group
 desc_ja: >-

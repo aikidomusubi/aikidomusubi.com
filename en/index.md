@@ -37,7 +37,7 @@ We love to share our experience and that is why we welcome everyone who wants to
 
 The philosophy of __Aikido Musubi__ is based on the precepts established by the founder of aikido, Morihei Ueshiba, and inherited by the second and third doshu, as well as the masters (_shihan_) of the Aikido World Headquarters, the [Hombu Dojo](http://www.aikikai.or.jp/).
 
-__Aikido Musubi__ is part of [Aikido Arashi Group](http://aikidoarashigroup.com/), which maintains a direct link with the Hombu Dojo through the master Miyamoto Tsuruzo (8th Dan). In addition, we participate in aikido courses and seminars throughout Europe and the world conducted by renowned teachers; and we regularly travel to Tokyo to visit and train at the Hombu Dojo.
+__Aikido Musubi__ is part of [Aikido Arashi Group](http://aikidoarashigroup.com/), which maintains a direct link with the Hombu Dojo through the master Miyamoto Tsuruzo (8th dan). In addition, we participate in aikido courses and seminars throughout Europe and the world conducted by renowned teachers; and we regularly travel to Tokyo to visit and train at the Hombu Dojo.
 
 Our dojo is a large and open space dedicated exclusively to the practice and teaching of martial arts. It is supervised and managed by the technical director and instructors of the association; but being the responsibility of everyone (not just the instructors or the teacher), it is maintained and cared for by the students.
 

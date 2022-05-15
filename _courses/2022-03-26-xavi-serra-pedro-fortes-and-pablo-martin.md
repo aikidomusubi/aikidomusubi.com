@@ -5,11 +5,11 @@ title_es: "Xavi Serra, Pedro Fortes, y Pablo Martín"
 title_ja: "チャビ・セッラ、ペドロ・フォルテス、パブロ・マルティン"
 
 desc_ca: >-
-  El proper dissabte 26 de març tenim el plaer d'acollir en el nostre dojo la molt esperada classe especial a càrrec de Xavi Serra (5è Dan Aikikai), Pedro Fortes (4t Dan Aikikai), i Pablo Martín (3r Dan Aikikai).
+  El proper dissabte 26 de març tenim el plaer d'acollir en el nostre dojo la molt esperada classe especial a càrrec de Xavi Serra (5è dan Aikikai), Pedro Fortes (4t dan Aikikai), i Pablo Martín (3r dan Aikikai).
 desc_en: >-
-  Next Saturday, March 26th, we are pleased to host the long awaited special class at our dojo by Xavi Serra (5th Dan Aikikai), Pedro Fortes (4th Dan Aikikai), and Pablo Martín (3rd Dan Aikikai).
+  Next Saturday, March 26th, we are pleased to host the long awaited special class at our dojo by Xavi Serra (5th dan Aikikai), Pedro Fortes (4th dan Aikikai), and Pablo Martín (3rd dan Aikikai).
 desc_es: >-
-  El próximo sábado 26 de marzo tenemos el placer de acoger en nuestro dojo la muy esperada clase especial a cargo de Xavi Serra (5º Dan Aikikai), Pedro Fortes (4º Dan Aikikai), y Pablo Martín (3er Dan Aikikai).
+  El próximo sábado 26 de marzo tenemos el placer de acoger en nuestro dojo la muy esperada clase especial a cargo de Xavi Serra (5º dan Aikikai), Pedro Fortes (4º dan Aikikai), y Pablo Martín (3er dan Aikikai).
 desc_ja: >-
   ３月２６日（土）に合気道産靈の道場でチャビ・セッラ（五段）とペドロ・フォルテス（四段）とパブロ・マルティン（参段）の待ちに待った稽古が行われます。
 
