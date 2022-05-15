@@ -100,7 +100,7 @@ __Dimarts__
 Pràctica amb sabre de fusta o _bokken_, el bastó mitjà de fusta o _jō_, i el ganivet de fusta o _tantō_.
 
 __Dijous__
-19:30 - 20:30
+19:30 - 20:30 (P. Martín, Dojo-cho)
 
 ## Classes d'aikido per a nens i nenes
 

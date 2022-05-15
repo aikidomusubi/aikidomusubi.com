@@ -24,15 +24,17 @@ We have a wide schedule of classes to accommodate adults and children, and diffe
 Regular practice for all levels. Available to all members over 12 years old.
 
 __Monday__
-20:00 - 21:30
+20:00 - 21:30 (J.L. Zafra)
 __Tuesday__
 19:30 - 20:30<br>
-20:30 - 21:30
+20:30 - 21:30 (P. Martín, Dojo-cho)
 __Wednesday__
-20:00 - 21:30
+20:00 - 21:30 (T. Hamkhiyan)
 __Thursday__
-19:30 - 20:30<br>
-20:30 - 21:30
+19:30 - 20:30 (P. Martín, Dojo-cho)<br>
+20:30 - 21:30 (P. Martín, Dojo-cho)
+__Friday__
+19:00 - 20:00 (P. Fortes)
 
 ## Aikido classes for beginners
 

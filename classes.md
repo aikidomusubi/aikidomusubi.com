@@ -24,15 +24,17 @@ Disponemos de un amplio horario de classes para acomodar a adultos y niños, y d
 Práctica regular para todos los niveles. Disponible para todos los miembros mayores de 12 años.
 
 __Lunes__
-20:00 - 21:30
+20:00 - 21:30 (J.L. Zafra)
 __Martes__
 19:30 - 20:30<br>
-20:30 - 21:30
+20:30 - 21:30 (P. Martín, Dojo-cho)
 __Miércoles__
-20:00 - 21:30
+20:00 - 21:30 (T. Hamkhiyan)
 __Jueves__
-19:30 - 20:30<br>
-20:30 - 21:30
+19:30 - 20:30 (P. Martín, Dojo-cho)<br>
+20:30 - 21:30 (P. Martín, Dojo-cho)
+__Viernes__
+19:00 - 20:00 (P. Fortes)
 
 ## Clases de aikido para principiantes
 
