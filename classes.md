@@ -102,7 +102,7 @@ __Martes__
 Práctica con sable de madera o _bokken_, el bastón medio de madera o _jō_, y el cuchillo de madera o _tantō_.
 
 __Jueves__
-19:30 - 20:30
+19:30 - 20:30 (P. Martín, Dojo-cho)
 
 ## Clases de aikido para niños y niñas
 

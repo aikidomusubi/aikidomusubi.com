@@ -102,7 +102,7 @@ __Tuesday__
 Practice with wooden sword or _bokken_, the short staff or _jō_, and the wooden knife or _tantō_.
 
 __Thursday__
-19:30 - 20:30
+19:30 - 20:30 (P. Martín, Dojo-cho)
 
 ## Aikido classes for children
 
@@ -144,9 +144,9 @@ __Thursday__
 For boys and girls from 6 to 12 years old. Aikido strengthens not only the body but also the mind and spirit. Children gain a strong sense of concentration and self-confidence while practicing in a friendly environment. Instructors teach children to defend themselves without hurting others.
 
 __Tuesday__
-18:30 - 19:30
+18:30 - 19:30 (A. Sancho)
 __Thursday__
-18:30 - 19:30
+18:30 - 19:30 (A. Sancho)
 
 ## Karate classes for children
 
