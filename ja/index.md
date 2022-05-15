@@ -69,36 +69,38 @@ i18n-ref: index-8oGCaMDs
   <div class="row">
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-04.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-04.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-04.jpg" class="img-fluid lazyload" alt="合気道産靈 パブロ・マルティン">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-05_.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-05_.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/index-8oGCaMDs-04.jpg" class="img-fluid lazyload" alt="Aikido Musubi Pablo Martín">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-06.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-06.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-06.jpg" class="img-fluid lazyload" alt="合気道産靈 パブロ・マルティン">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-06_.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-06_.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/index-8oGCaMDs-06.jpg" class="img-fluid lazyload" alt="Aikido Musubi Pablo Martín">
       </picture>
     </div>
   </div>
   <div class="row">
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-07.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-07.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-07.jpg" class="img-fluid lazyload" alt="合気道産靈 パブロ・マルティン">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-07_.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-07_.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/index-8oGCaMDs-07.jpg" class="img-fluid lazyload" alt="Aikido Musubi Pablo Martín">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-08.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-08.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-08.jpg" class="img-fluid lazyload" alt="合気道産靈 パブロ・マルティン">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-08_.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-08_.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/index-8oGCaMDs-08.jpg" class="img-fluid lazyload" alt="Aikido Musubi Pablo Martín">
       </picture>
     </div>
   </div>
 </div>
+
+### 道場長：パブロ•マルティン（参段）
 
 パブロ•マルティン（1977年、バダロナ生まれ）で1999年にリカルド•コール先生（四段）と共に合気道を練習し始めました。 その後、彼は<b>合気道産靈</b>のインストラクターであると同時に自主練習を続けました。彼のキャリアを通して、彼は、有名な教師（取り分け山田嘉光師範、菅野誠一師範、柴田一郎師範、マイク・フリン師範、ドノバン・ウェイト師範、ピーター・バーナース師範）による数多くのコースやセミナーに参加していました。彼はまた、本部道場にて師範（取り分け、植芝守央道主、宮本鶴蔵師範、横田愛明師範、大滞勇人師範、栗林孝典師範、金沢威師範、鈴木俊雄師範）の元で練習する為に日本を訪れました。
 
