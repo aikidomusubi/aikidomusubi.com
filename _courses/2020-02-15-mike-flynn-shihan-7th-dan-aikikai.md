@@ -1,7 +1,7 @@
 ---
 title_ca: "Mike Flynn Shihan 7è dan Aikikai"
 title_en: "Mike Flynn Shihan 7th dan Aikikai"
-title_es: "Mike Flynn Shihan 7º dan Aikikai"
+title_es: "Mike Flynn Shihan 7.º dan Aikikai"
 title_ja: "マイク・フリン師範 七段"
 
 desc_ca: >-

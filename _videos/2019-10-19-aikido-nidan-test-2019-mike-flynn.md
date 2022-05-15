@@ -16,7 +16,7 @@ desc_en: >-
   Organiser: Arashi Group
 desc_es: >-
   Examen de Nidan en Aikido Musubi Badalona (Barcelona)<br>
-  Examinador: Mike Flynn Shihan (7º dan)<br>
+  Examinador: Mike Flynn Shihan (7.º dan)<br>
   Examinantes: Taron Hamkhiyan, José Luis Zafra, José Gómez, y Alberto Sancho<br>
   Organizador: Arashi Group
 desc_ja: >-

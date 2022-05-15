@@ -16,7 +16,7 @@ desc_en: >-
   Organiser: Arashi Group
 desc_es: >-
   Examen de Shodan en Aikido Musubi Badalona (Barcelona)<br>
-  Examinador: Mike Flynn Shihan (7º dan)<br>
+  Examinador: Mike Flynn Shihan (7.º dan)<br>
   Examinantes: Joan Manel Molina Caler<br>
   Organizador: Arashi Group
 desc_ja: >-

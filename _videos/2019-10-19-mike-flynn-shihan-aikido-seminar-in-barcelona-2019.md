@@ -13,7 +13,7 @@ desc_en: >-
   The course was produced by <a href="http://aikidoarashigroup.com/">Arashi Group</a>.<br>
   The video was recordad at Aikido Musubi.
 desc_es: >-
-  Curso de Mike Flynn Shihan (7º dan) que tuvo lugar en Barcelona en octubre del 2019.<br>
+  Curso de Mike Flynn Shihan (7.º dan) que tuvo lugar en Barcelona en octubre del 2019.<br>
   El curso fue organizado por <a href="http://aikidoarashigroup.com/">Arashi Group</a>.<br>
   El vídeo fue grabado en Aikido Musubi.
 desc_ja: >-

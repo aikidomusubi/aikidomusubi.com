@@ -9,7 +9,7 @@ desc_ca: >-
 desc_en: >-
   Next Saturday, March 26th, we are pleased to host the long awaited special class at our dojo by Xavi Serra (5th dan Aikikai), Pedro Fortes (4th dan Aikikai), and Pablo Martín (3rd dan Aikikai).
 desc_es: >-
-  El próximo sábado 26 de marzo tenemos el placer de acoger en nuestro dojo la muy esperada clase especial a cargo de Xavi Serra (5º dan Aikikai), Pedro Fortes (4º dan Aikikai), y Pablo Martín (3er dan Aikikai).
+  El próximo sábado 26 de marzo tenemos el placer de acoger en nuestro dojo la muy esperada clase especial a cargo de Xavi Serra (5.º dan Aikikai), Pedro Fortes (4.º dan Aikikai), y Pablo Martín (3.er dan Aikikai).
 desc_ja: >-
   ３月２６日（土）に合気道産靈の道場でチャビ・セッラ（五段）とペドロ・フォルテス（四段）とパブロ・マルティン（参段）の待ちに待った稽古が行われます。
 

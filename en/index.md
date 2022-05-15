@@ -100,11 +100,11 @@ At __Aikido Musubi__, we offer classes that are suitable for inexperienced peopl
   </div>
 </div>
 
-Pablo Martín (Badalona, ​​1977) began practicing aikido in Badalona in 1999 with Ricard Coll (4th Dan). Afterwards, he continued his practice at the same time as he is an instructor in __Aikido Musubi__. Throughout his career, he has participated in numerous courses and seminars by renowned teachers such as: Yamada Y. Shihan, Sugano S. Shihan, Shibata I. Shihan, M. Flynn Shihan, D. Waite Shihan, P. Bernath Shihan, among others. He has also traveled to Japan to train at the Aikido World Headquarters, the Hombu Dojo, under the teachings of: Ueshiba Moriteru Doshu, Miyamoto T. Shihan, Yokota Y. Shihan, Osawa Hayato Shihan, Kuribayashi T. Shihan, Kanazawa T. Shihan, Suzuki T. Shihan, among others.
+Pablo Martín (Badalona, ​​1977) began practicing aikido in Badalona in 1999 with Ricard Coll (4th dan). Afterwards, he continued his practice at the same time as he is an instructor in __Aikido Musubi__. Throughout his career, he has participated in numerous courses and seminars by renowned teachers such as: Yamada Y. Shihan, Sugano S. Shihan, Shibata I. Shihan, M. Flynn Shihan, D. Waite Shihan, P. Bernath Shihan, among others. He has also traveled to Japan to train at the Aikido World Headquarters, the Hombu Dojo, under the teachings of: Ueshiba Moriteru Doshu, Miyamoto T. Shihan, Yokota Y. Shihan, Osawa Hayato Shihan, Kuribayashi T. Shihan, Kanazawa T. Shihan, Suzuki T. Shihan, among others.
 
 In order to promote aikido in Badalona, ​​he established the Musubi Aikido Cultural Association (__Aikido Musubi__), in 2008, and later assumed the roles of president and technical director (chief instructor).
 
-Currently, he holds a 3rd Dan degree, awarded by Aikido Doshu Ueshiba Moriteru and recognized worldwide by the _Aikikai Foundation_ and the _International Aikido Federation_.
+Currently, he holds a 3rd dan degree, awarded by Aikido Doshu Ueshiba Moriteru and recognized worldwide by the _Aikikai Foundation_ and the _International Aikido Federation_.
 
 <hr id="association" class="anchor">
 
