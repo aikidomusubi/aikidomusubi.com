@@ -26,11 +26,13 @@ Práctica regular para todos los niveles. Disponible para todos los miembros may
 __Lunes__
 20:00 - 21:30 (J.L. Zafra)
 __Martes__
+18:30 - 19:30 (A. Sancho)<br>
 19:30 - 20:30<br>
 20:30 - 21:30 (P. Martín, Dojo-cho)
 __Miércoles__
 20:00 - 21:30 (T. Hamkhiyan)
 __Jueves__
+18:30 - 19:30 (A. Sancho)<br>
 19:30 - 20:30 (P. Martín, Dojo-cho)<br>
 20:30 - 21:30 (P. Martín, Dojo-cho)
 __Viernes__
@@ -143,10 +145,8 @@ __Jueves__
 
 Para niños y niñas a partir de los 6 hasta los 12 años. El aikido fortalece no solo el cuerpo sino también la mente y el espíritu. Los niños adquieren un fuerte sentido de concentración y confianza en sí mismos, mientras practican en un ambiente amigable. Los instructores enseñan a los niños a defenderse sin lastimar a los demás.
 
-__Martes__
-18:30 - 19:30
-__Jueves__
-18:30 - 19:30
+_Las clases de aikido para niños y niñas están temporalmente suspendidas._
+
 
 ## Clases de karate para niños y niñas
 

@@ -26,11 +26,13 @@ Regular practice for all levels. Available to all members over 12 years old.
 __Monday__
 20:00 - 21:30 (J.L. Zafra)
 __Tuesday__
+18:30 - 19:30 (A. Sancho)<br>
 19:30 - 20:30<br>
 20:30 - 21:30 (P. Martín, Dojo-cho)
 __Wednesday__
 20:00 - 21:30 (T. Hamkhiyan)
 __Thursday__
+18:30 - 19:30 (A. Sancho)<br>
 19:30 - 20:30 (P. Martín, Dojo-cho)<br>
 20:30 - 21:30 (P. Martín, Dojo-cho)
 __Friday__
@@ -143,10 +145,8 @@ __Thursday__
 
 For boys and girls from 6 to 12 years old. Aikido strengthens not only the body but also the mind and spirit. Children gain a strong sense of concentration and self-confidence while practicing in a friendly environment. Instructors teach children to defend themselves without hurting others.
 
-__Tuesday__
-18:30 - 19:30 (A. Sancho)
-__Thursday__
-18:30 - 19:30 (A. Sancho)
+_Aikido classes for children are temporarily suspended._
+
 
 ## Karate classes for children
 

@@ -26,11 +26,13 @@ Pràctica regular per a tots els nivells. Disponible per a tots els membres majo
 __Dilluns__
 20:00 - 21:30 (J.L. Zafra)
 __Dimarts__
+18:30 - 19:30 (A. Sancho)<br>
 19:30 - 20:30<br>
 20:30 - 21:30 (P. Martín, Dojo-cho)
 __Dimecres__
 20:00 - 21:30 (T. Hamkhiyan)
 __Dijous__
+18:30 - 19:30 (A. Sancho)<br>
 19:30 - 20:30 (P. Martín, Dojo-cho)<br>
 20:30 - 21:30 (P. Martín, Dojo-cho)
 __Divendres__
@@ -143,10 +145,8 @@ __Dijous__
 
 Per a nens i nenes a partir dels 6 fins als 12 anys. L'aikido enforteix no només el cos sinó també la ment i l'esperit. Els nens adquireixen un fort sentit de concentració i confiança en si mateixos, mentre practiquen en un ambient amigable. Els instructors ensenyen als nens a defensar-se sense fer mal als altres.
 
-__Dimarts__
-18:30 - 19:30 (A. Sancho)
-__Dijous__
-18:30 - 19:30 (A. Sancho)
+_Les classes d'aikido per a nens i nenes estan temporalment suspeses._
+
 
 ## Classes de karate per a nens i nenes
 
