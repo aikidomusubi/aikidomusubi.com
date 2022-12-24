@@ -30,7 +30,7 @@ __Dimarts__
 19:30 - 20:30<br>
 20:30 - 21:30 (P. Martín, Dojo-cho)
 __Dimecres__
-20:00 - 21:30 (T. Hamkhiyan)
+20:00 - 21:30 (J. Pérez)
 __Dijous__
 18:30 - 19:30 (A. Sancho)<br>
 19:30 - 20:30 (P. Martín, Dojo-cho)<br>
