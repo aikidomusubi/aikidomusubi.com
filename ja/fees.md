@@ -372,10 +372,10 @@ i18n-ref: fees-UjbuGtGz
 
 </div><!-- /#pills-tabContent -->
 
-2021-22年の料金表をダウンロード：
+2022-23年の料金表をダウンロード：
 
-* [合気道産靈 - 2021-22年の料金 (詳細)]({{ site.url }}/files/fees-UjbuGtGz-fees-2022-detail-{{ page.lang }}.pdf)
-* [合気道産靈 - 2021-22年の料金 (要約)]({{ site.url }}/files/fees-UjbuGtGz-fees-2022-summary-{{ page.lang }}.pdf)
+* [合気道産靈 - 2022-23年の料金 (詳細)]({{ site.url }}/files/fees-UjbuGtGz-fees-2023-detail-{{ page.lang }}.pdf)
+* [合気道産靈 - 2022-23年の料金 (要約)]({{ site.url }}/files/fees-UjbuGtGz-fees-2023-summary-{{ page.lang }}.pdf)
 
 <hr>
 

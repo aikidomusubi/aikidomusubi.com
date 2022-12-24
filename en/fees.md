@@ -372,10 +372,10 @@ Registration is free of charge. We offer discounts for families. And we also giv
 
 </div><!-- /#pills-tabContent -->
 
-Download the fees chart for the 2021-22 year:
+Download the fees chart for the 2022-23 year:
 
-* [Aikido Musubi - Fees 2021-22 (detail)]({{ site.url }}/files/fees-UjbuGtGz-fees-2022-detail-{{ page.lang }}.pdf)
-* [Aikido Musubi - Fees 2021-22 (summary)]({{ site.url }}/files/fees-UjbuGtGz-fees-2022-summary-{{ page.lang }}.pdf)
+* [Aikido Musubi - Fees 2022-23 (detail)]({{ site.url }}/files/fees-UjbuGtGz-fees-2023-detail-{{ page.lang }}.pdf)
+* [Aikido Musubi - Fees 2022-23 (summary)]({{ site.url }}/files/fees-UjbuGtGz-fees-2023-summary-{{ page.lang }}.pdf)
 
 <hr>
 
