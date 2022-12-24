@@ -108,6 +108,55 @@ i18n-ref: index-8oGCaMDs
 
 現在、彼は四段の証書と指導員の証書を合気道道主植芝守央より直接頂きました。公益財団法人合気会および国際合気道連盟（IAF）により世界的に認められています。
 
+### アシスタント・指導者
+
+<div id="index-8oGCaMDs-instructors" class="container">
+  <div class="row">
+    <div class="col-4 col-sm-4">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/placeholder.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/placeholder.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/placeholder.jpg" class="img-fluid lazyload" alt="Aikido Musubi Pedro Fortes">
+      </picture>
+      <span>ペドロ・フォルテス・フダス<em>（四段）</em></span>
+    </div>
+    <div class="col-4 col-sm-4">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/placeholder.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/placeholder.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/placeholder.jpg" class="img-fluid lazyload" alt="Aikido Musubi Taron Hamkhiyan">
+      </picture>
+      <span>タロン・ハムキヤン<em>（参段）</em></span>
+    </div>
+    <div class="col-4 col-sm-4">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/placeholder.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/placeholder.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/placeholder.jpg" class="img-fluid lazyload" alt="Aikido Musubi José Luis Zafra">
+      </picture>
+      <span>ホセ・ルイス・ザフラ<em>（参段）</em></span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4 col-sm-4">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/placeholder.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/placeholder.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/placeholder.jpg" class="img-fluid lazyload" alt="Aikido Musubi José Luis Zafra">
+      </picture>
+      <span>アルベルト・サンチョ・バルディビエソ<em>（参段）</em></span>
+    </div>
+    <div class="col-4 col-sm-4">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/placeholder.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/placeholder.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/placeholder.jpg" class="img-fluid lazyload" alt="Aikido Musubi Juanma Pérez">
+      </picture>
+      <span>フアンマ・ペレス・ラバスコ<em>（弐段）</em></span>
+    </div>
+  </div>
+</div>
+
 <hr id="association" class="anchor">
 
 ## 文化協会
@@ -139,13 +188,15 @@ i18n-ref: index-8oGCaMDs
 - <b>合気道産靈</b>のカリキュラムと稽古について監督、推奨、決定を行います。級の審査委員会を編成し、成績を処理します。協会内のインストラクターの育成をサポートし、道場間の交流を促進します。
 - 数ある決定事項の中でも特に、<b>合気道産靈</b>プログラムと、計画、財務、資源管などの管理／運用ポリシーを確立、実行、レビューします。
 
+<b>タロン・ハムキヤン</b>（副会長）
+- 道場のポリシーについて助言および推奨します。協会内のコース、イベント、セミナーを計画し、推進します。会員の個人的な成長をサポートし、持続させます。<b>合気道産靈</b>のオンライン上でのコミュニケーションを担当してます。
+
 <b>ホセ・ルイス・ザフラ・ガルシア</b>（秘書）
 - 道場のポリシーに助言し、推奨します。優れた稽古と正しいカリキュラムを組みます。
 - すべての活動を監督して、利他的主義な性質や、<b>合気道産靈</b>のポリシーに従って活動が行われるようにします。
 
-<b>タロン・ハムキヤン</b>（会計）
-- 道場のポリシーについて助言および推奨します。協会内のコース、イベント、セミナーを計画し、推進します。会員の個人的な成長をサポートし、持続させます。
-- 資金源を指揮および管理し、収入と支出を監視します。 協会の経済的利益とその基金の管理に関して、会長とともに実施しています。日常の管理業務を調整し、協会のメンバーになるためのアプリを管理し、<b>合気道産靈</b>のオンライン上でのコミュニケーションを担当してます。
+<b>アルベルト・サンチョ・バルディビエソ</b>（会計）
+- 資金源を指揮および管理し、収入と支出を監視します。 協会の経済的利益とその基金の管理に関して、会長とともに実施しています。日常の管理業務を調整し、協会のメンバーになるためのアプリを管理してます。
 
 <b>合気道産靈</b>は年齢、民族、性別、出身国、障害、人種、宗教、性的指向、または社会経済的背景に基づく違法な差別を提唱、支持、または実行しません。
 

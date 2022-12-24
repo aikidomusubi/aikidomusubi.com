@@ -108,6 +108,55 @@ In order to promote aikido in Badalona, ​​he established the Musubi Aikido C
 
 Currently, he holds a 4th dan degree and the title of _shidoin_ (qualified instructor), awarded by Aikido Doshu Ueshiba Moriteru and recognized worldwide by the _Aikikai Foundation_ and the _International Aikido Federation_.
 
+### Assistant instructors and technical directors
+
+<div id="index-8oGCaMDs-instructors" class="container">
+  <div class="row">
+    <div class="col-4 col-sm-4">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/placeholder.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/placeholder.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/placeholder.jpg" class="img-fluid lazyload" alt="Aikido Musubi Pedro Fortes">
+      </picture>
+      <span>Pedro Fortes Judas <em>(4th dan)</em></span>
+    </div>
+    <div class="col-4 col-sm-4">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/placeholder.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/placeholder.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/placeholder.jpg" class="img-fluid lazyload" alt="Aikido Musubi Taron Hamkhiyan">
+      </picture>
+      <span>Taron Hamkhiyan <em>(3rd dan)</em></span>
+    </div>
+    <div class="col-4 col-sm-4">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/placeholder.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/placeholder.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/placeholder.jpg" class="img-fluid lazyload" alt="Aikido Musubi José Luis Zafra">
+      </picture>
+      <span>José Luis Zafra <em>(3rd dan)</em></span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4 col-sm-4">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/placeholder.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/placeholder.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/placeholder.jpg" class="img-fluid lazyload" alt="Aikido Musubi José Luis Zafra">
+      </picture>
+      <span>Alberto Sancho Valdivieso <em>(3rd dan)</em></span>
+    </div>
+    <div class="col-4 col-sm-4">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/placeholder.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/placeholder.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/placeholder.jpg" class="img-fluid lazyload" alt="Aikido Musubi Juanma Pérez">
+      </picture>
+      <span>Juanma Pérez Rabasco <em>(2nd dan)</em></span>
+    </div>
+  </div>
+</div>
+
 <hr id="association" class="anchor">
 
 ## Association
@@ -139,13 +188,15 @@ __Pablo Martín Martín__ (President)
 - Oversees, recommends, and makes decisions about the curriculum and practice for __Aikido Musubi__. Form the _kyū_ exam committee and process grades. Supports the development of instructors within the association, and promotes interaction between dojos.
 - Establishes, executes, and reviews __Aikido Musubi__ programs and administrative/operational policies, including planning, finances, and resource management, among other decisions.
 
+__Taron Hamkhiyan__ (Vice president)
+- Advise and recommend on dojo policies. Plan and promote courses, events, and seminars within the association. Offers support and sustain the personal growth of __Aikido Musubi__ members. Supervises the communication and online presence of __Aikido Musubi__.
+
 __José Luís Zafra García__ (Secretary)
 - Advise and recommend on dojo policies. Ensures good practices and the correct implementation of the curriculum.
 - Supervises all activities to ensure that they are carried out in accordance with the altruistic nature and according to the policies of __Aikido Musubi__.
 
-__Taron Hamkhiyan__ (Treasurer)
-- Advise and recommend on dojo policies. Plan and promote courses, events, and seminars within the association. Offers support and sustain the personal growth of __Aikido Musubi__ members.
-- Directs and manages the Treasury and monitors income and expenses. It acts, together with the President, regarding the economic interests of the association and the management of its funds. Manages the day-to-day administrative tasks, processes the applications to become a member of the association, supervises the communication and online presence of __Aikido Musubi__.
+__Alberto Sancho Valdivieso__ (Treasurer)
+- Directs and manages the Treasury and monitors income and expenses. It acts, together with the President, regarding the economic interests of the association and the management of its funds. Manages the day-to-day administrative tasks, processes the applications to become a member of the association.
 
 __Aikido Musubi__ does not advocate, support, or practice unlawful discrimination based on age, ethnicity, gender, national origin, disability, race, religion, sexual orientation, or socioeconomic background.
 
