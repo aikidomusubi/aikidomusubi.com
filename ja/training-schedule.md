@@ -22,6 +22,6 @@ i18n-ref: training-schedule-IFMn5oCc
 
 <div id='calendar'></div>
 
-2021-22年の稽古時間をダウンロード：
+2022-23年の稽古時間をダウンロード：
 
-* [合気道産靈 - 2021-22年の稽古時間]({{ site.url }}/files/training-schedule-IFMn5oCc-training-schedule-2022-{{ page.lang }}.pdf)
+* [合気道産靈 - 2022-23年の稽古時間]({{ site.url }}/files/training-schedule-IFMn5oCc-training-schedule-2023-{{ page.lang }}.pdf)
