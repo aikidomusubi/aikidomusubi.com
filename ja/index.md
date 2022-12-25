@@ -114,25 +114,25 @@ i18n-ref: index-8oGCaMDs
   <div class="row">
     <div class="col-4 col-sm-4">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/placeholder.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/placeholder.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/placeholder.jpg" class="img-fluid lazyload" alt="Aikido Musubi Pedro Fortes">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-13.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-13.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/index-8oGCaMDs-13.jpg" class="img-fluid lazyload" alt="合気道産靈 ペドロ・フォルテス">
       </picture>
-      <span>ペドロ・フォルテス・フダス<em>（四段）</em></span>
+      <span>ペドロ・フォルテス<em>（四段）</em></span>
     </div>
     <div class="col-4 col-sm-4">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/placeholder.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/placeholder.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/placeholder.jpg" class="img-fluid lazyload" alt="Aikido Musubi Taron Hamkhiyan">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-14.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-14.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/index-8oGCaMDs-14.jpg" class="img-fluid lazyload" alt="合気道産靈 タロン・ハムキヤン">
       </picture>
       <span>タロン・ハムキヤン<em>（参段）</em></span>
     </div>
     <div class="col-4 col-sm-4">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/placeholder.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/placeholder.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/placeholder.jpg" class="img-fluid lazyload" alt="Aikido Musubi José Luis Zafra">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-15.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-15.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/index-8oGCaMDs-15.jpg" class="img-fluid lazyload" alt="合気道産靈 ホセ・ルイス・ザフラ">
       </picture>
       <span>ホセ・ルイス・ザフラ<em>（参段）</em></span>
     </div>
@@ -140,19 +140,19 @@ i18n-ref: index-8oGCaMDs
   <div class="row">
     <div class="col-4 col-sm-4">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/placeholder.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/placeholder.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/placeholder.jpg" class="img-fluid lazyload" alt="Aikido Musubi José Luis Zafra">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-16.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-16.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/index-8oGCaMDs-16.jpg" class="img-fluid lazyload" alt="合気道産靈 アルベルト・サンチョ">
       </picture>
-      <span>アルベルト・サンチョ・バルディビエソ<em>（参段）</em></span>
+      <span>アルベルト・サンチョ<em>（参段）</em></span>
     </div>
     <div class="col-4 col-sm-4">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/placeholder.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/placeholder.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/placeholder.jpg" class="img-fluid lazyload" alt="Aikido Musubi Juanma Pérez">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-17.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-17.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/index-8oGCaMDs-17.jpg" class="img-fluid lazyload" alt="合気道産靈 フアンマ・ペレス">
       </picture>
-      <span>フアンマ・ペレス・ラバスコ<em>（弐段）</em></span>
+      <span>フアンマ・ペレス<em>（弐段）</em></span>
     </div>
   </div>
 </div>
@@ -184,18 +184,18 @@ i18n-ref: index-8oGCaMDs
 
 取締役会は会長と秘書、および会計で構成されており、会長は技術指導者、秘書と会計はインストラクターの役割をそれぞれ引き受けています。彼らは、総会で選出された協会内での重要な経験を持つアクティブな文化協会の創設メンバーです。
 
-<b>パブロ・マルティン・マルティン</b>（会長）
+<b>パブロ・マルティン</b>（会長）
 - <b>合気道産靈</b>のカリキュラムと稽古について監督、推奨、決定を行います。級の審査委員会を編成し、成績を処理します。協会内のインストラクターの育成をサポートし、道場間の交流を促進します。
 - 数ある決定事項の中でも特に、<b>合気道産靈</b>プログラムと、計画、財務、資源管などの管理／運用ポリシーを確立、実行、レビューします。
 
 <b>タロン・ハムキヤン</b>（副会長）
 - 道場のポリシーについて助言および推奨します。協会内のコース、イベント、セミナーを計画し、推進します。会員の個人的な成長をサポートし、持続させます。<b>合気道産靈</b>のオンライン上でのコミュニケーションを担当してます。
 
-<b>ホセ・ルイス・ザフラ・ガルシア</b>（秘書）
+<b>ホセ・ルイス・ザフラ</b>（秘書）
 - 道場のポリシーに助言し、推奨します。優れた稽古と正しいカリキュラムを組みます。
 - すべての活動を監督して、利他的主義な性質や、<b>合気道産靈</b>のポリシーに従って活動が行われるようにします。
 
-<b>アルベルト・サンチョ・バルディビエソ</b>（会計）
+<b>アルベルト・サンチョ</b>（会計）
 - 資金源を指揮および管理し、収入と支出を監視します。 協会の経済的利益とその基金の管理に関して、会長とともに実施しています。日常の管理業務を調整し、協会のメンバーになるためのアプリを管理してます。
 
 <b>合気道産靈</b>は年齢、民族、性別、出身国、障害、人種、宗教、性的指向、または社会経済的背景に基づく違法な差別を提唱、支持、または実行しません。
