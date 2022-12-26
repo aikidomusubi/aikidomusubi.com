@@ -52,9 +52,9 @@ Si vols visitar el nostre dojo o entrenar amb nosaltres, [contacta'ns]({{site.ur
   <div class="media-body">
     <h5 class="mt-0">Bus</h5>
     <p>
-      <b>Sentit Badalona:</b> <i>Av. Alfons XIII - Jumella</i> (B25, H10, M26, M30, y N11)<br>
+      <b>Sentit Badalona:</b> <i>Av. Alfons XIII - Jumella</i> (B25, H10, M26, M30, i N11)<br>
       <b>Sentit Badalona:</b> <i>Av. Alfons XIII - Av. del Maresme</i> (B25, C-10, H10, M26, M30, N11)<br>
-      <b>Sentit Barcelona:</b> <i>Av. Alfons XIII - Juan Valera</i> (B25, M26, M30, y N11)<br>
+      <b>Sentit Barcelona:</b> <i>Av. Alfons XIII - Juan Valera</i> (B25, M26, M30, i N11)<br>
       <b>Sentit Barcelona:</b> <i>Av. Alfons XIII - Andrés Segovia</i> (B25, C-10, H10, M26, M30, N11)
     </p>
   </div>

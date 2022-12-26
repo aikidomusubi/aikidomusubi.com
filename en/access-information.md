@@ -52,9 +52,9 @@ If you wish to visit our dojo or train with us, [contact us]({{ site.url }}/{{ p
   <div class="media-body">
     <h5 class="mt-0">Bus</h5>
     <p>
-      <b>To Badalona:</b> <i>Av. Alfons XIII - Jumella</i> (B25, H10, M26, M30, y N11)<br>
+      <b>To Badalona:</b> <i>Av. Alfons XIII - Jumella</i> (B25, H10, M26, M30, and N11)<br>
       <b>To Badalona:</b> <i>Av. Alfons XIII - Av. del Maresme</i> (B25, C-10, H10, M26, M30, N11)<br>
-      <b>To Barcelona:</b> <i>Av. Alfons XIII - Juan Valera</i> (B25, M26, M30, y N11)<br>
+      <b>To Barcelona:</b> <i>Av. Alfons XIII - Juan Valera</i> (B25, M26, M30, and N11)<br>
       <b>To Barcelona:</b> <i>Av. Alfons XIII - Andrés Segovia</i> (B25, C-10, H10, M26, M30, N11)
     </p>
   </div>
