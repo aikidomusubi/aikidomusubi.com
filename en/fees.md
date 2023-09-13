@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Fees
-description: Registration is free of charge. We offer discounts for families. And we also give you 1 month free trial with no obligation. For more information about the different fees and payment methods, contact us.
+description: Registration is free of charge. We offer discounts for families. And we also give you 2 classes free trial with no obligation. For more information about the different fees and payment methods, contact us.
 permalink: /en/fees/
 lang: en
 i18n-ref: fees-UjbuGtGz
@@ -9,7 +9,7 @@ i18n-ref: fees-UjbuGtGz
 
 # Fees
 
-Registration is free of charge. We offer discounts for families. And we also give you 1 month free trial with no obligation. For more information about the different fees and payment methods, [contact us]({{ site.url }}/{{ page.lang }}/contact/).
+Registration is free of charge. We offer discounts for families. And we also give you 2 classes free trial with no obligation. For more information about the different fees and payment methods, [contact us]({{ site.url }}/{{ page.lang }}/contact/).
 
 <hr>
 
@@ -47,7 +47,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li>~</li>
               <li>~</li>
               <li>Free registration</li>
-              <li>Try for 1 month</li>
+              <li>Try for 2 classes</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">Sign up!</a>
           </div>
@@ -66,7 +66,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li>~</li>
               <li>~</li>
               <li>Free registration</li>
-              <li>Try for 1 month</li>
+              <li>Try for 2 classes</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">Sign up!</a>
           </div>
@@ -85,7 +85,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li><b>Save 15€</b></li>
               <li><b>22% discount</b></li>
               <li>Free registration</li>
-              <li>Try for 1 month</li>
+              <li>Try for 2 classes</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">Sign up!</a>
           </div>
@@ -104,7 +104,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li><b>Save 10€</b></li>
               <li><b>20% discount</b></li>
               <li>Free registration</li>
-              <li>Try for 1 month</li>
+              <li>Try for 2 classes</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">Sign up!</a>
           </div>
@@ -132,7 +132,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li><b>Save 20€</b></li>
               <li><b>19% discount</b></li>
               <li>Free registration</li>
-              <li>Try for 1 month</li>
+              <li>Try for 2 classes</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">Sign up!</a>
           </div>
@@ -151,7 +151,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li><b>Save 15€</b></li>
               <li><b>20% discount</b></li>
               <li>Free registration</li>
-              <li>Try for 1 month</li>
+              <li>Try for 2 classes</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">Sign up!</a>
           </div>
@@ -170,7 +170,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li><b>Save 45€</b></li>
               <li><b>22% discount</b></li>
               <li>Free registration</li>
-              <li>Try for 1 month</li>
+              <li>Try for 2 classes</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">Sign up!</a>
           </div>
@@ -189,7 +189,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li><b>Save 40€</b></li>
               <li><b>27% discount</b></li>
               <li>Free registration</li>
-              <li>Try for 1 month</li>
+              <li>Try for 2 classes</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">Sign up!</a>
           </div>
@@ -217,7 +217,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li><b>Save 50€</b></li>
               <li><b>24% discount</b></li>
               <li>Free registration</li>
-              <li>Try for 1 month</li>
+              <li>Try for 2 classes</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">Sign up!</a>
           </div>
@@ -236,7 +236,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li><b>Save 40€</b></li>
               <li><b>27% discount</b></li>
               <li>Free registration</li>
-              <li>Try for 1 month</li>
+              <li>Try for 2 classes</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">Sign up!</a>
           </div>
@@ -255,7 +255,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li><b>Save 110€</b></li>
               <li><b>27% discount</b></li>
               <li>Free registration</li>
-              <li>Try for 1 month</li>
+              <li>Try for 2 classes</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">Sign up!</a>
           </div>
@@ -274,7 +274,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li><b>Save 100€</b></li>
               <li><b>34% discount</b></li>
               <li>Free registration</li>
-              <li>Try for 1 month</li>
+              <li>Try for 2 classes</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">Sign up!</a>
           </div>
@@ -302,7 +302,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li><b>Save 130€</b></li>
               <li><b>31% discount</b></li>
               <li>Free registration</li>
-              <li>Try for 1 month</li>
+              <li>Try for 2 classes</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">Sign up!</a>
           </div>
@@ -321,7 +321,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li><b>Save 70€</b></li>
               <li><b>28% discount</b></li>
               <li>Free registration</li>
-              <li>Try for 1 month</li>
+              <li>Try for 2 classes</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">Sign up!</a>
           </div>
@@ -340,7 +340,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li><b>Save 340€</b></li>
               <li><b>41% discount</b></li>
               <li>Free registration</li>
-              <li>Try for 1 month</li>
+              <li>Try for 2 classes</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">Sign up!</a>
           </div>
@@ -359,7 +359,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li><b>Save 175€</b></li>
               <li><b>35% discount</b></li>
               <li>Free registration</li>
-              <li>Try for 1 month</li>
+              <li>Try for 2 classes</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">Sign up!</a>
           </div>

@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Quotes
-description: La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et donem 1 mes de prova sense compromís. Per a més informació sobre les diferents quotes i els mètodes de pagament, contacta'ns.
+description: La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et donem 2 classes de prova sense compromís. Per a més informació sobre les diferents quotes i els mètodes de pagament, contacta'ns.
 permalink: /ca/quotes/
 lang: ca
 i18n-ref: fees-UjbuGtGz
@@ -9,7 +9,7 @@ i18n-ref: fees-UjbuGtGz
 
 # Quotes
 
-La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et donem 1 mes de prova sense compromís. Per a més informació sobre les diferents quotes i els mètodes de pagament, [contacta'ns]({{ site.url }}/{{ page.lang }}/contacte/).
+La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et donem 2 classes de prova sense compromís. Per a més informació sobre les diferents quotes i els mètodes de pagament, [contacta'ns]({{ site.url }}/{{ page.lang }}/contacte/).
 
 <hr>
 
@@ -47,7 +47,7 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
               <li>~</li>
               <li>~</li>
               <li>Inscripció gratuïta</li>
-              <li>1 mes de prova</li>
+              <li>2 classes de prova</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contacte/" class="btn btn-lg btn-block btn-primary" role="button">Inscriu-te!</a>
           </div>
@@ -66,7 +66,7 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
               <li>~</li>
               <li>~</li>
               <li>Inscripció gratuïta</li>
-              <li>1 mes de prova</li>
+              <li>2 classes de prova</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contacte/" class="btn btn-lg btn-block btn-primary" role="button">Inscriu-te!</a>
           </div>
@@ -85,7 +85,7 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
               <li><b>Estalvia 15€</b></li>
               <li><b>22% de descompte</b></li>
               <li>Inscripció gratuïta</li>
-              <li>1 mes de prova</li>
+              <li>2 classes de prova</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contacte/" class="btn btn-lg btn-block btn-primary" role="button">Inscriu-te!</a>
           </div>
@@ -104,7 +104,7 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
               <li><b>Estalvia 10€</b></li>
               <li><b>20% de descompte</b></li>
               <li>Inscripció gratuïta</li>
-              <li>1 mes de prova</li>
+              <li>2 classes de prova</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contacte/" class="btn btn-lg btn-block btn-primary" role="button">Inscriu-te!</a>
           </div>
@@ -132,7 +132,7 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
               <li><b>Estalvia 20€</b></li>
               <li><b>19% de descompte</b></li>
               <li>Inscripció gratuïta</li>
-              <li>1 mes de prova</li>
+              <li>2 classes de prova</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contacte/" class="btn btn-lg btn-block btn-primary" role="button">Inscriu-te!</a>
           </div>
@@ -151,7 +151,7 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
               <li><b>Estalvia 15€</b></li>
               <li><b>20% de descompte</b></li>
               <li>Inscripció gratuïta</li>
-              <li>1 mes de prova</li>
+              <li>2 classes de prova</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contacte/" class="btn btn-lg btn-block btn-primary" role="button">Inscriu-te!</a>
           </div>
@@ -170,7 +170,7 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
               <li><b>Estalvia 45€</b></li>
               <li><b>22% de descompte</b></li>
               <li>Inscripció gratuïta</li>
-              <li>1 mes de prova</li>
+              <li>2 classes de prova</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contacte/" class="btn btn-lg btn-block btn-primary" role="button">Inscriu-te!</a>
           </div>
@@ -189,7 +189,7 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
               <li><b>Estalvia 40€</b></li>
               <li><b>27% de descompte</b></li>
               <li>Inscripció gratuïta</li>
-              <li>1 mes de prova</li>
+              <li>2 classes de prova</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contacte/" class="btn btn-lg btn-block btn-primary" role="button">Inscriu-te!</a>
           </div>
@@ -217,7 +217,7 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
               <li><b>Estalvia 50€</b></li>
               <li><b>24% de descompte</b></li>
               <li>Inscripció gratuïta</li>
-              <li>1 mes de prova</li>
+              <li>2 classes de prova</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contacte/" class="btn btn-lg btn-block btn-primary" role="button">Inscriu-te!</a>
           </div>
@@ -236,7 +236,7 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
               <li><b>Estalvia 40€</b></li>
               <li><b>27% de descompte</b></li>
               <li>Inscripció gratuïta</li>
-              <li>1 mes de prova</li>
+              <li>2 classes de prova</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contacte/" class="btn btn-lg btn-block btn-primary" role="button">Inscriu-te!</a>
           </div>
@@ -255,7 +255,7 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
               <li><b>Estalvia 110€</b></li>
               <li><b>27% de descompte</b></li>
               <li>Inscripció gratuïta</li>
-              <li>1 mes de prova</li>
+              <li>2 classes de prova</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contacte/" class="btn btn-lg btn-block btn-primary" role="button">Inscriu-te!</a>
           </div>
@@ -274,7 +274,7 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
               <li><b>Estalvia 100€</b></li>
               <li><b>34% de descompte</b></li>
               <li>Inscripció gratuïta</li>
-              <li>1 mes de prova</li>
+              <li>2 classes de prova</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contacte/" class="btn btn-lg btn-block btn-primary" role="button">Inscriu-te!</a>
           </div>
@@ -302,7 +302,7 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
               <li><b>Estalvia 130€</b></li>
               <li><b>31% de descompte</b></li>
               <li>Inscripció gratuïta</li>
-              <li>1 mes de prova</li>
+              <li>2 classes de prova</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contacte/" class="btn btn-lg btn-block btn-primary" role="button">Inscriu-te!</a>
           </div>
@@ -321,7 +321,7 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
               <li><b>Estalvia 70€</b></li>
               <li><b>28% de descompte</b></li>
               <li>Inscripció gratuïta</li>
-              <li>1 mes de prova</li>
+              <li>2 classes de prova</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contacte/" class="btn btn-lg btn-block btn-primary" role="button">Inscriu-te!</a>
           </div>
@@ -340,7 +340,7 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
               <li><b>Estalvia 340€</b></li>
               <li><b>41% de descompte</b></li>
               <li>Inscripció gratuïta</li>
-              <li>1 mes de prova</li>
+              <li>2 classes de prova</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contacte/" class="btn btn-lg btn-block btn-primary" role="button">Inscriu-te!</a>
           </div>
@@ -359,7 +359,7 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
               <li><b>Estalvia 175€</b></li>
               <li><b>35% de descompte</b></li>
               <li>Inscripció gratuïta</li>
-              <li>1 mes de prova</li>
+              <li>2 classes de prova</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contacte/" class="btn btn-lg btn-block btn-primary" role="button">Inscriu-te!</a>
           </div>

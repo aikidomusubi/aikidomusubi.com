@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Cuotas
-description: La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te damos 1 mes de prueba sin compromiso. Para más información sobre las diferentes cuotas y los métodos de pago, contáctanos.
+description: La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te damos 2 clases de prueba sin compromiso. Para más información sobre las diferentes cuotas y los métodos de pago, contáctanos.
 permalink: /cuotas/
 lang: es
 i18n-ref: fees-UjbuGtGz
@@ -9,7 +9,7 @@ i18n-ref: fees-UjbuGtGz
 
 # Cuotas
 
-La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te damos 1 mes de prueba sin compromiso. Para más información sobre las diferentes cuotas y los métodos de pago, [contáctanos]({{ site.url }}/contacto/).
+La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te damos 2 clases de prueba sin compromiso. Para más información sobre las diferentes cuotas y los métodos de pago, [contáctanos]({{ site.url }}/contacto/).
 
 <hr>
 
@@ -47,7 +47,7 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
               <li>~</li>
               <li>~</li>
               <li>Inscripción grauita</li>
-              <li>1 mes de prueba</li>
+              <li>2 clases de prueba</li>
             </ul>
             <a href="{{ site.url }}/contacto/" class="btn btn-lg btn-block btn-primary" role="button">¡Apúntate!</a>
           </div>
@@ -66,7 +66,7 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
               <li>~</li>
               <li>~</li>
               <li>Inscripción grauita</li>
-              <li>1 mes de prueba</li>
+              <li>2 clases de prueba</li>
             </ul>
             <a href="{{ site.url }}/contacto/" class="btn btn-lg btn-block btn-primary" role="button">¡Apúntate!</a>
           </div>
@@ -85,7 +85,7 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
               <li><b>Ahorra 15€</b></li>
               <li><b>22% de descuento</b></li>
               <li>Inscripción grauita</li>
-              <li>1 mes de prueba</li>
+              <li>2 clases de prueba</li>
             </ul>
             <a href="{{ site.url }}/contacto/" class="btn btn-lg btn-block btn-primary" role="button">¡Apúntate!</a>
           </div>
@@ -104,7 +104,7 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
               <li><b>Ahorra 10€</b></li>
               <li><b>20% de descuento</b></li>
               <li>Inscripción grauita</li>
-              <li>1 mes de prueba</li>
+              <li>2 clases de prueba</li>
             </ul>
             <a href="{{ site.url }}/contacto/" class="btn btn-lg btn-block btn-primary" role="button">¡Apúntate!</a>
           </div>
@@ -132,7 +132,7 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
               <li><b>Ahorra 20€</b></li>
               <li><b>19% de descuento</b></li>
               <li>Inscripción grauita</li>
-              <li>1 mes de prueba</li>
+              <li>2 clases de prueba</li>
             </ul>
             <a href="{{ site.url }}/contacto/" class="btn btn-lg btn-block btn-primary" role="button">¡Apúntate!</a>
           </div>
@@ -151,7 +151,7 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
               <li><b>Ahorra 15€</b></li>
               <li><b>20% de descuento</b></li>
               <li>Inscripción grauita</li>
-              <li>1 mes de prueba</li>
+              <li>2 clases de prueba</li>
             </ul>
             <a href="{{ site.url }}/contacto/" class="btn btn-lg btn-block btn-primary" role="button">¡Apúntate!</a>
           </div>
@@ -170,7 +170,7 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
               <li><b>Ahorra 45€</b></li>
               <li><b>22% de descuento</b></li>
               <li>Inscripción grauita</li>
-              <li>1 mes de prueba</li>
+              <li>2 clases de prueba</li>
             </ul>
             <a href="{{ site.url }}/contacto/" class="btn btn-lg btn-block btn-primary" role="button">¡Apúntate!</a>
           </div>
@@ -189,7 +189,7 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
               <li><b>Ahorra 40€</b></li>
               <li><b>27% de descuento</b></li>
               <li>Inscripción grauita</li>
-              <li>1 mes de prueba</li>
+              <li>2 clases de prueba</li>
             </ul>
             <a href="{{ site.url }}/contacto/" class="btn btn-lg btn-block btn-primary" role="button">¡Apúntate!</a>
           </div>
@@ -217,7 +217,7 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
               <li><b>Ahorra 50€</b></li>
               <li><b>24% de descuento</b></li>
               <li>Inscripción grauita</li>
-              <li>1 mes de prueba</li>
+              <li>2 clases de prueba</li>
             </ul>
             <a href="{{ site.url }}/contacto/" class="btn btn-lg btn-block btn-primary" role="button">¡Apúntate!</a>
           </div>
@@ -236,7 +236,7 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
               <li><b>Ahorra 40€</b></li>
               <li><b>27% de descuento</b></li>
               <li>Inscripción grauita</li>
-              <li>1 mes de prueba</li>
+              <li>2 clases de prueba</li>
             </ul>
             <a href="{{ site.url }}/contacto/" class="btn btn-lg btn-block btn-primary" role="button">¡Apúntate!</a>
           </div>
@@ -255,7 +255,7 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
               <li><b>Ahorra 110€</b></li>
               <li><b>27% de descuento</b></li>
               <li>Inscripción grauita</li>
-              <li>1 mes de prueba</li>
+              <li>2 clases de prueba</li>
             </ul>
             <a href="{{ site.url }}/contacto/" class="btn btn-lg btn-block btn-primary" role="button">¡Apúntate!</a>
           </div>
@@ -274,7 +274,7 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
               <li><b>Ahorra 100€</b></li>
               <li><b>34% de descuento</b></li>
               <li>Inscripción grauita</li>
-              <li>1 mes de prueba</li>
+              <li>2 clases de prueba</li>
             </ul>
             <a href="{{ site.url }}/contacto/" class="btn btn-lg btn-block btn-primary" role="button">¡Apúntate!</a>
           </div>
@@ -302,7 +302,7 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
               <li><b>Ahorra 130€</b></li>
               <li><b>31% de descuento</b></li>
               <li>Inscripción grauita</li>
-              <li>1 mes de prueba</li>
+              <li>2 clases de prueba</li>
             </ul>
             <a href="{{ site.url }}/contacto/" class="btn btn-lg btn-block btn-primary" role="button">¡Apúntate!</a>
           </div>
@@ -321,7 +321,7 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
               <li><b>Ahorra 70€</b></li>
               <li><b>28% de descuento</b></li>
               <li>Inscripción grauita</li>
-              <li>1 mes de prueba</li>
+              <li>2 clases de prueba</li>
             </ul>
             <a href="{{ site.url }}/contacto/" class="btn btn-lg btn-block btn-primary" role="button">¡Apúntate!</a>
           </div>
@@ -340,7 +340,7 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
               <li><b>Ahorra 340€</b></li>
               <li><b>41% de descuento</b></li>
               <li>Inscripción grauita</li>
-              <li>1 mes de prueba</li>
+              <li>2 clases de prueba</li>
             </ul>
             <a href="{{ site.url }}/contacto/" class="btn btn-lg btn-block btn-primary" role="button">¡Apúntate!</a>
           </div>
@@ -359,7 +359,7 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
               <li><b>Ahorra 175€</b></li>
               <li><b>35% de descuento</b></li>
               <li>Inscripción grauita</li>
-              <li>1 mes de prueba</li>
+              <li>2 clases de prueba</li>
             </ul>
             <a href="{{ site.url }}/contacto/" class="btn btn-lg btn-block btn-primary" role="button">¡Apúntate!</a>
           </div>

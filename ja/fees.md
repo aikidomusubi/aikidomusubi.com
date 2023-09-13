@@ -1,7 +1,7 @@
 ---
 layout: page
 title: 月謝
-description: 登録料は無料です。 家族向け割引あり。 また、1か月間無料でお試しいただけます。 さまざまな手数料と支払い方法の詳細については、お問い合わせください。
+description: 登録料は無料です。 家族向け割引あり。 また、2クラス無料でお試しいただけます。 さまざまな手数料と支払い方法の詳細については、お問い合わせください。
 permalink: /ja/fees/
 lang: ja
 i18n-ref: fees-UjbuGtGz
@@ -9,7 +9,7 @@ i18n-ref: fees-UjbuGtGz
 
 # 月謝
 
-登録料は無料です。 家族向け割引あり。 また、1か月間無料でお試しいただけます。 さまざまな手数料と支払い方法の詳細については、[お問い合わせください]({{ site.url }}/{{ page.lang }}/contact/)。
+登録料は無料です。 家族向け割引あり。 また、2クラス無料でお試しいただけます。 さまざまな手数料と支払い方法の詳細については、[お問い合わせください]({{ site.url }}/{{ page.lang }}/contact/)。
 
 <hr>
 
@@ -47,7 +47,7 @@ i18n-ref: fees-UjbuGtGz
               <li>~</li>
               <li>~</li>
               <li>無料登録</li>
-              <li>初月無料</li>
+              <li>2クラス</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">新規入会はこちら！</a>
           </div>
@@ -66,7 +66,7 @@ i18n-ref: fees-UjbuGtGz
               <li>~</li>
               <li>~</li>
               <li>無料登録</li>
-              <li>初月無料</li>
+              <li>2クラス</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">新規入会はこちら！</a>
           </div>
@@ -85,7 +85,7 @@ i18n-ref: fees-UjbuGtGz
               <li><b>15€ 割引</b></li>
               <li><b>22% 割引</b></li>
               <li>無料登録</li>
-              <li>初月無料</li>
+              <li>2クラス</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">新規入会はこちら！</a>
           </div>
@@ -104,7 +104,7 @@ i18n-ref: fees-UjbuGtGz
               <li><b>10€ 割引</b></li>
               <li><b>20% 割引</b></li>
               <li>無料登録</li>
-              <li>初月無料</li>
+              <li>2クラス</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">新規入会はこちら！</a>
           </div>
@@ -132,7 +132,7 @@ i18n-ref: fees-UjbuGtGz
               <li><b>20€ 割引</b></li>
               <li><b>19% 割引</b></li>
               <li>無料登録</li>
-              <li>初月無料</li>
+              <li>2クラス</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">新規入会はこちら！</a>
           </div>
@@ -151,7 +151,7 @@ i18n-ref: fees-UjbuGtGz
               <li><b>15€ 割引</b></li>
               <li><b>20% 割引</b></li>
               <li>無料登録</li>
-              <li>初月無料</li>
+              <li>2クラス</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">新規入会はこちら！</a>
           </div>
@@ -170,7 +170,7 @@ i18n-ref: fees-UjbuGtGz
               <li><b>45€ 割引</b></li>
               <li><b>22% 割引</b></li>
               <li>無料登録</li>
-              <li>初月無料</li>
+              <li>2クラス</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">新規入会はこちら！</a>
           </div>
@@ -189,7 +189,7 @@ i18n-ref: fees-UjbuGtGz
               <li><b>40€ 割引</b></li>
               <li><b>27% 割引</b></li>
               <li>無料登録</li>
-              <li>初月無料</li>
+              <li>2クラス</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">新規入会はこちら！</a>
           </div>
@@ -217,7 +217,7 @@ i18n-ref: fees-UjbuGtGz
               <li><b>50€ 割引</b></li>
               <li><b>24% 割引</b></li>
               <li>無料登録</li>
-              <li>初月無料</li>
+              <li>2クラス</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">新規入会はこちら！</a>
           </div>
@@ -236,7 +236,7 @@ i18n-ref: fees-UjbuGtGz
               <li><b>40€ 割引</b></li>
               <li><b>27% 割引</b></li>
               <li>無料登録</li>
-              <li>初月無料</li>
+              <li>2クラス</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">新規入会はこちら！</a>
           </div>
@@ -255,7 +255,7 @@ i18n-ref: fees-UjbuGtGz
               <li><b>110€ 割引</b></li>
               <li><b>27% 割引</b></li>
               <li>無料登録</li>
-              <li>初月無料</li>
+              <li>2クラス</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">新規入会はこちら！</a>
           </div>
@@ -274,7 +274,7 @@ i18n-ref: fees-UjbuGtGz
               <li><b>100€ 割引</b></li>
               <li><b>34% 割引</b></li>
               <li>無料登録</li>
-              <li>初月無料</li>
+              <li>2クラス</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">新規入会はこちら！</a>
           </div>
@@ -302,7 +302,7 @@ i18n-ref: fees-UjbuGtGz
               <li><b>130€ 割引</b></li>
               <li><b>31% 割引</b></li>
               <li>無料登録</li>
-              <li>初月無料</li>
+              <li>2クラス</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">新規入会はこちら！</a>
           </div>
@@ -321,7 +321,7 @@ i18n-ref: fees-UjbuGtGz
               <li><b>70€ 割引</b></li>
               <li><b>28% 割引</b></li>
               <li>無料登録</li>
-              <li>初月無料</li>
+              <li>2クラス</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">新規入会はこちら！</a>
           </div>
@@ -340,7 +340,7 @@ i18n-ref: fees-UjbuGtGz
               <li><b>340€ 割引</b></li>
               <li><b>41% 割引</b></li>
               <li>無料登録</li>
-              <li>初月無料</li>
+              <li>2クラス</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">新規入会はこちら！</a>
           </div>
@@ -359,7 +359,7 @@ i18n-ref: fees-UjbuGtGz
               <li><b>175€ 割引</b></li>
               <li><b>35% 割引</b></li>
               <li>無料登録</li>
-              <li>初月無料</li>
+              <li>2クラス</li>
             </ul>
             <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">新規入会はこちら！</a>
           </div>
