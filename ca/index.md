@@ -152,7 +152,7 @@ Actualment, té el grau de 4t dan i el títol de _fukushidoin_ (instructor quali
         <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-17.jpg" class="img-fluid lazyload">
         <img src="{{ site.url }}/images/index-8oGCaMDs-17.jpg" class="img-fluid lazyload" alt="Aikido Musubi Juanma Pérez">
       </picture>
-      <span>Juanma Pérez <em>(2n dan)</em></span>
+      <span>Juanma Pérez <em>(3r dan)</em></span>
     </div>
   </div>
 </div>

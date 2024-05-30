@@ -152,7 +152,7 @@ i18n-ref: index-8oGCaMDs
         <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-17.jpg" class="img-fluid lazyload">
         <img src="{{ site.url }}/images/index-8oGCaMDs-17.jpg" class="img-fluid lazyload" alt="合気道産靈 フアンマ・ペレス">
       </picture>
-      <span>フアンマ・ペレス<em>（弐段）</em></span>
+      <span>フアンマ・ペレス<em>（参段）</em></span>
     </div>
   </div>
 </div>
