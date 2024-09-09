@@ -372,10 +372,10 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
 
 </div><!-- /#pills-tabContent -->
 
-Descarregar la informació sobre quotes per a l'any 2022-23:
+Descarregar la informació sobre quotes per a l'any 2024-25:
 
-* [Aikido Musubi - Quotes 2022-23 (detall)]({{ site.url }}/files/fees-UjbuGtGz-fees-2023-detail-{{page.lang}}.pdf)
-* [Aikido Musubi - Quotes 2022-23 (resum)]({{ site.url }}/files/fees-UjbuGtGz-fees-2023-summary-{{page.lang}}.pdf)
+* [Aikido Musubi - Quotes 2024-25 (detall)]({{ site.url }}/files/fees-UjbuGtGz-fees-2025-detail-{{page.lang}}.pdf)
+* [Aikido Musubi - Quotes 2024-25 (resum)]({{ site.url }}/files/fees-UjbuGtGz-fees-2025-summary-{{page.lang}}.pdf)
 
 <hr>
 

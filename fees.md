@@ -372,10 +372,10 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
 
 </div><!-- /#pills-tabContent -->
 
-Descargar la información sobre cuotas para el año 2022-23:
+Descargar la información sobre cuotas para el año 2024-25:
 
-* [Aikido Musubi - Cuotas 2022-23 (detalle)]({{ site.url }}/files/fees-UjbuGtGz-fees-2023-detail-{{ page.lang }}.pdf)
-* [Aikido Musubi - Cuotas 2022-23 (resumen)]({{ site.url }}/files/fees-UjbuGtGz-fees-2023-summary-{{ page.lang }}.pdf)
+* [Aikido Musubi - Cuotas 2024-25 (detalle)]({{ site.url }}/files/fees-UjbuGtGz-fees-2025-detail-{{ page.lang }}.pdf)
+* [Aikido Musubi - Cuotas 2024-25 (resumen)]({{ site.url }}/files/fees-UjbuGtGz-fees-2025-summary-{{ page.lang }}.pdf)
 
 <hr>
 
