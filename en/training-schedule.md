@@ -15,6 +15,6 @@ Currently, we offer aikido classes (adults and children) from Monday to Saturday
 
 <div id='calendar'></div>
 
-Download the training schedule for the year 2022-23:
+Download the training schedule for the year 2024-25:
 
-* [Aikido Musubi - Training Schedule 2022-23]({{ site.url }}/files/training-schedule-IFMn5oCc-training-schedule-2023-{{ page.lang }}.pdf)
+* [Aikido Musubi - Training Schedule 2024-25]({{ site.url }}/files/training-schedule-IFMn5oCc-training-schedule-2025-{{ page.lang }}.pdf)
