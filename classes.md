@@ -27,10 +27,10 @@ __Lunes__
 20:00 - 21:30 (J.L. Zafra)
 __Martes__
 18:30 - 19:30 (A. Sancho)<br>
-19:30 - 20:30<br>
-20:30 - 21:30 (P. Martín, Dojo-cho)
+19:30 - 20:30 (P. Martín, Dojo-cho)<br>
+20:30 - 21:30
 __Miércoles__
-20:00 - 21:30 (J. Pérez)
+20:00 - 21:30 (J.M. Pérez)
 __Jueves__
 18:30 - 19:30 (A. Sancho)<br>
 19:30 - 20:30 (P. Martín, Dojo-cho)<br>
@@ -147,31 +147,7 @@ Para niños y niñas a partir de los 6 hasta los 12 años. El aikido fortalece n
 
 _Las clases de aikido para niños y niñas están temporalmente suspendidas._
 
-
-## Clases de karate para niños y niñas
-
-<div id="classes-CJc2lhFv-karate" class="container">
-  <div class="row">
-    <div class="col col-sm">
-      <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-14.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-14.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-14.jpg" class="img-fluid lazyload" alt="Aikido Musubi Clases de karate para niños y niñas">
-      </picture>
-    </div>
-    <div class="col col-sm">
-      <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-13.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-13.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-13.jpg" class="img-fluid lazyload" alt="Aikido Musubi Clases de karate para niños y niñas">
-      </picture>
-    </div>
-  </div>
-</div>
-
-Karate _Shōtōkan_. Para niños y niñas a partir de los 6 hasta los 12 años.
-
-_Las clases de karate para niños y niñas están temporalmente suspendidas._
+<hr id="iaijutsu" class="anchor">
 
 ## Clases de iaijutsu
 

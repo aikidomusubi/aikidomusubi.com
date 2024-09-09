@@ -27,8 +27,8 @@ __月__
 20:00 - 21:30 (ホセ・ルイス・ザフラ)
 __火__
 18:30 - 19:30 (アルベルト・サンチョ)<br>
-19:30 - 20:30<br>
-20:30 - 21:30 (パブロ•マルティン 道場長)
+19:30 - 20:30 (パブロ•マルティン 道場長)<br>
+20:30 - 21:30
 __水__
 20:00 - 21:30 (フアンマ・ペレス)
 __木__
@@ -147,31 +147,7 @@ __木__
 
 _子供クラスを一時的に休止させていただきます。_
 
-
-## 子供の空手クラス
-
-<div id="classes-CJc2lhFv-karate" class="container">
-  <div class="row">
-    <div class="col col-sm">
-      <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-14.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-14.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-14.jpg" class="img-fluid lazyload" alt="合気道産靈 子供の空手クラス">
-      </picture>
-    </div>
-    <div class="col col-sm">
-      <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-13.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-13.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-13.jpg" class="img-fluid lazyload" alt="合気道産靈 子供の空手クラス">
-      </picture>
-    </div>
-  </div>
-</div>
-
-松濤館流空手。6歳から12歳までの男の子と女の子向け。
-
-_子供の空手クラスを一時的に休止させていただきます。_
+<hr id="iaijutsu" class="anchor">
 
 ## 居合術クラス
 

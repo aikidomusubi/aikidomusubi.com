@@ -27,10 +27,10 @@ __Dilluns__
 20:00 - 21:30 (J.L. Zafra)
 __Dimarts__
 18:30 - 19:30 (A. Sancho)<br>
-19:30 - 20:30<br>
-20:30 - 21:30 (P. Martín, Dojo-cho)
+19:30 - 20:30 (P. Martín, Dojo-cho)<br>
+20:30 - 21:30
 __Dimecres__
-20:00 - 21:30 (J. Pérez)
+20:00 - 21:30 (J.M. Pérez)
 __Dijous__
 18:30 - 19:30 (A. Sancho)<br>
 19:30 - 20:30 (P. Martín, Dojo-cho)<br>
@@ -147,31 +147,7 @@ Per a nens i nenes a partir dels 6 fins als 12 anys. L'aikido enforteix no nomé
 
 _Les classes d'aikido per a nens i nenes estan temporalment suspeses._
 
-
-## Classes de karate per a nens i nenes
-
-<div id="classes-CJc2lhFv-karate" class="container">
-  <div class="row">
-    <div class="col col-sm">
-      <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-14.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-14.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-14.jpg" class="img-fluid lazyload" alt="Aikido Musubi Classes de karate per a nens i nenes">
-      </picture>
-    </div>
-    <div class="col col-sm">
-      <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-13.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-13.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-13.jpg" class="img-fluid lazyload" alt="Aikido Musubi Classes de karate per a nens i nenes">
-      </picture>
-    </div>
-  </div>
-</div>
-
-Karate _Shōtōkan_. Per a nens i nenes a partir dels 6 fins als 12 anys.
-
-_Les classes de karate per a nens i nenes estan temporalment suspeses._
+<hr id="iaijutsu" class="anchor">
 
 ## Classes de iaijutsu
 

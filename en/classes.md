@@ -27,10 +27,10 @@ __Monday__
 20:00 - 21:30 (J.L. Zafra)
 __Tuesday__
 18:30 - 19:30 (A. Sancho)<br>
-19:30 - 20:30<br>
-20:30 - 21:30 (P. Martín, Dojo-cho)
+19:30 - 20:30 (P. Martín, Dojo-cho)<br>
+20:30 - 21:30
 __Wednesday__
-20:00 - 21:30 (J. Pérez)
+20:00 - 21:30 (J.M. Pérez)
 __Thursday__
 18:30 - 19:30 (A. Sancho)<br>
 19:30 - 20:30 (P. Martín, Dojo-cho)<br>
@@ -147,29 +147,7 @@ For boys and girls from 6 to 12 years old. Aikido strengthens not only the body 
 
 _Aikido classes for children are temporarily suspended._
 
-
-## Karate classes for children
-
-<div id="classes-CJc2lhFv-karate" class="container">
-  <div class="row">
-    <div class="col col-sm">
-      <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-14.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-14.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-14.jpg" class="img-fluid lazyload" alt="Aikido Musubi Karate classes for children">
-      </picture>
-    </div>
-    <div class="col col-sm">
-      <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-13.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-13.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-13.jpg" class="img-fluid lazyload" alt="Aikido Musubi Karate classes for children">
-      </picture>
-    </div>
-  </div>
-</div>
-
-_Karate classes for children are temporarily suspended._
+<hr id="iaijutsu" class="anchor">
 
 ## Iaijutsu classes
 
