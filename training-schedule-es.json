@@ -30,6 +30,16 @@
       "borderColor": "#FF7E79"
     },
     {
+      "title": "Aikido\nTodos los niveles\n\n",
+      "daysOfWeek": "6",
+      "startTime": "8:00",
+      "endTime": "9:00",
+      "startRecur": "2024-09-01",
+      "endRecur": "2025-08-31",
+      "backgroundColor": "#FF7E79",
+      "borderColor": "#FF7E79"
+    },
+    {
       "title": "Aikido\nPrincipiantes\n\n",
       "daysOfWeek": "2",
       "startTime": "19:30",

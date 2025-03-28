@@ -37,6 +37,8 @@ __Jueves__
 20:30 - 21:30 (P. Martín, Dojo-cho)
 __Viernes__
 19:00 - 20:00 (P. Fortes)
+__Sábado__
+8:00 - 9:00 (A. Villar)
 
 ## Clases de aikido para principiantes
 

@@ -37,6 +37,8 @@ __Thursday__
 20:30 - 21:30 (P. Martín, Dojo-cho)
 __Friday__
 19:00 - 20:00 (P. Fortes)
+__Saturday__
+8:00 - 9:00 (A. Villar)
 
 ## Aikido classes for beginners
 
