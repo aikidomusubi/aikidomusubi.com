@@ -379,9 +379,4 @@ Descarregar la informació sobre quotes per a l'any 2024-25:
 
 <hr>
 
-Per a més informació sobre les classes de kyudo, contacta amb l’_Associació de Kyudo Dojo de Barcelona_ a través dels següents mitjans:
-
-Email: [infokyudobarcelona@gmail.com](mailto:infokyudobarcelona@gmail.com)<br>
-Facebook: [facebook.com/AssociacioKyudoDojoBarcelona](facebook.com/AssociacioKyudoDojoBarcelona)
-
 Per a més informació sobre les classes de judo, contacta amb _Judo Musubi_ a través de l’adreça electrònica: [judomusubi@gmail.com](mailto:judomusubi@gmail.com)

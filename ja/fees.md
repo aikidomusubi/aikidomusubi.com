@@ -379,11 +379,6 @@ i18n-ref: fees-UjbuGtGz
 
 <hr>
 
-上記の料金表は合気道クラスのみです。弓道クラスの詳細については、以下の方法で<b>バルセロナ弓道道場協会</b>にお問い合わせください。
-
-メール: [infokyudobarcelona@gmail.com](mailto:infokyudobarcelona@gmail.com)<br>
-Facebook: [facebook.com/AssociacioKyudoDojoBarcelona](facebook.com/AssociacioKyudoDojoBarcelona)
-
-柔道クラスの詳細については、以下の方法で<b>柔道産靈</b>にお問い合わせください。
+上記の料金表は合気道クラスのみです。柔道クラスの詳細については、以下の方法で<b>柔道産靈</b>にお問い合わせください。
 
 メール: [judomusubi@gmail.com](mailto:judomusubi@gmail.com)

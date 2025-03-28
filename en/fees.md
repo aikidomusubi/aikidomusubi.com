@@ -379,9 +379,4 @@ Download the fees chart for the 2024-25 year:
 
 <hr>
 
-The fees listed above are for Aikido classes only. For further information about fees for Kyudo, contact the _Kyudo Dojo Association of Barcelona_ by the following means:
-
-Email: [infokyudobarcelona@gmail.com](mailto:infokyudobarcelona@gmail.com)<br>
-Facebook: [facebook.com/AssociacioKyudoDojoBarcelona](facebook.com/AssociacioKyudoDojoBarcelona)
-
-For further information about judo classes, contact _Judo Musubi_ by email: [judomusubi@gmail.com](mailto:judomusubi@gmail.com)
+The fees listed above are for Aikido classes only. For further information about judo classes, contact _Judo Musubi_ by email: [judomusubi@gmail.com](mailto:judomusubi@gmail.com)

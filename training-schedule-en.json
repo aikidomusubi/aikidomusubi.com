@@ -60,16 +60,6 @@
       "borderColor": "#FF7E79"
     },
     {
-      "title": "Kyudo\nAll levels\n\n",
-      "daysOfWeek": "6,0",
-      "startTime": "10:15",
-      "endTime": "14:15",
-      "startRecur": "2024-09-01",
-      "endRecur": "2025-08-31",
-      "backgroundColor": "#ffe600",
-      "borderColor": "#ffe600"
-    },
-    {
       "title": "Iaijutsu\nAll levels\n\n",
       "daysOfWeek": "6",
       "startTime": "11:00",
