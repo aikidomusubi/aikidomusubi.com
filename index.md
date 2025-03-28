@@ -106,7 +106,7 @@ Pablo Martín (Badalona, 1977) empezó a practicar aikido en Badalona en el año
 
 Con el propósito de promover el aikido en Badalona, estableció la Asociación Cultural Musubi Aikido (__Aikido Musubi__), en el año 2008, y más tarde asumió los roles de presidente de la asociación y director técnico (instructor jefe).
 
-Actualmente, tiene el grado de 4.º dan y el título de _fukushidoin_ (instructor cualificado), otorgado por Aikido Doshu Ueshiba Moriteru y reconocido a nivel mundial por la _Aikikai Foundation_ y la _International Aikido Federation_.
+Actualmente, tiene el grado de 4.º dan y el título de _shidoin_ (instructor cualificado), otorgado por Aikido Doshu Ueshiba Moriteru y reconocido a nivel mundial por la _Aikikai Foundation_ y la _International Aikido Federation_.
 
 ### Instructores asistentes
 
