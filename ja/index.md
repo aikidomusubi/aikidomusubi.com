@@ -126,7 +126,7 @@ i18n-ref: index-8oGCaMDs
         <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-14.jpg" class="img-fluid lazyload">
         <img src="{{ site.url }}/images/index-8oGCaMDs-14.jpg" class="img-fluid lazyload" alt="合気道産靈 タロン・ハムキヤン">
       </picture>
-      <span>タロン・ハムキヤン<em>（参段）</em></span>
+      <span>タロン・ハムキヤン<em>（四段）</em></span>
     </div>
     <div class="col-4 col-sm-4">
       <picture>
