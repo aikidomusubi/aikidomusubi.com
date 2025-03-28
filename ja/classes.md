@@ -189,55 +189,7 @@ _子供クラスを一時的に休止させていただきます。_
 __土__
 11:00 - 13:00 (一月の第２土曜日)
 
-## 弓道クラス
-
-<div id="classes-CJc2lhFv-kyudo" class="container">
-  <div class="row">
-    <div class="col col-sm">
-      <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-02.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-02.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-02.jpg" class="img-fluid lazyload" alt="合気道産靈 弓道クラス">
-      </picture>
-    </div>
-    <div class="col col-sm">
-      <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-04.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-04.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-04.jpg" class="img-fluid lazyload" alt="合気道産靈 弓道クラス">
-      </picture>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col col-sm">
-      <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-03.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-03.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-03.jpg" class="img-fluid lazyload" alt="合気道産靈 弓道クラス">
-      </picture>
-    </div>
-    <div class="col col-sm">
-      <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-07.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-07.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-07.jpg" class="img-fluid lazyload" alt="合気道産靈 弓道クラス">
-      </picture>
-    </div>
-  </div>
-</div>
-
-弓道とは日本のアーチェリーです。<b>バルセロナ弓道道場協会</b>は週末にこの道場に集まり、弓道を学びたい人を歓迎します。
-
-__土__
-10:15 - 14:15
-
-__日__
-10:15 - 14:15
-
-弓道クラスの詳細については、以下の方法で<b>バルセロナ弓道道場協会</b>にお問い合わせください。
-
-メール: [infokyudobarcelona@gmail.com](mailto:infokyudobarcelona@gmail.com)<br>
-Facebook: [facebook.com/AssociacioKyudoDojoBarcelona](https://www.facebook.com/AssociacioKyudoDojoBarcelona/)
+<hr id="judo" class="anchor">
 
 ## 柔道クラス
 

@@ -191,55 +191,7 @@ _Iaijutsu_ és l'art de desembeinar i tall simultani. Aquest art de desembeinar 
 __Dissabte__
 11:00 - 13:00 (el segon dissabte del mes)
 
-## Classes de kyudo
-
-<div id="classes-CJc2lhFv-kyudo" class="container">
-  <div class="row">
-    <div class="col col-sm">
-      <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-02.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-02.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-02.jpg" class="img-fluid lazyload" alt="Aikido Musubi Classes de kyudo">
-      </picture>
-    </div>
-    <div class="col col-sm">
-      <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-04.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-04.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-04.jpg" class="img-fluid lazyload" alt="Aikido Musubi Classes de kyudo">
-      </picture>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col col-sm">
-      <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-03.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-03.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-03.jpg" class="img-fluid lazyload" alt="Aikido Musubi Classes de kyudo">
-      </picture>
-    </div>
-    <div class="col col-sm">
-      <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-07.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-07.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-07.jpg" class="img-fluid lazyload" alt="Aikido Musubi Classes de kyudo">
-      </picture>
-    </div>
-  </div>
-</div>
-
-_Kyūdō_ és l'art japonès de l'arquería. L'_Associació de Kyudo Dojo de Barcelona_ es reuneix els caps de setmana al nostre dojo i dóna la benvinguda a qualsevol persona que vulgui estudiar aquest art marcial.
-
-__Dissabte__
-10:15 - 14:15
-
-__Diumenge__
-10:15 - 14:15
-
-Per a més informació sobre les classes de kyudo, contacta amb l'_Associació de Kyudo Dojo de Barcelona_ a través dels següents mitjans:
-
-Email: [infokyudobarcelona@gmail.com](mailto:infokyudobarcelona@gmail.com)<br>
-Facebook: [facebook.com/AssociacioKyudoDojoBarcelona](https://www.facebook.com/AssociacioKyudoDojoBarcelona/)
+<hr id="judo" class="anchor">
 
 ## Classes de judo
 

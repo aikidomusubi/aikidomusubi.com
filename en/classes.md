@@ -191,55 +191,7 @@ _Iaijutsu_ is a combative quick-draw sword technique. This art of drawing the Ja
 __Saturday__
 11:00 - 13:00 (the second Saturday of the month)
 
-## Kyudo classes
-
-<div id="classes-CJc2lhFv-kyudo" class="container">
-  <div class="row">
-    <div class="col col-sm">
-      <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-02.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-02.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-02.jpg" class="img-fluid lazyload" alt="Aikido Musubi Kyudo classes">
-      </picture>
-    </div>
-    <div class="col col-sm">
-      <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-04.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-04.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-04.jpg" class="img-fluid lazyload" alt="Aikido Musubi Kyudo classes">
-      </picture>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col col-sm">
-      <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-03.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-03.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-03.jpg" class="img-fluid lazyload" alt="Aikido Musubi Kyudo classes">
-      </picture>
-    </div>
-    <div class="col col-sm">
-      <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-07.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-07.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-07.jpg" class="img-fluid lazyload" alt="Aikido Musubi Kyudo classes">
-      </picture>
-    </div>
-  </div>
-</div>
-
-_Kyūdō_ is the Japanese art of archery. The _Kyudo Dojo Association of Barcelona_ gather on weekends in our dojo and welcomes anyone who wishes to study this martial art.
-
-__Saturday__
-10:15 - 14:15
-
-__Sunday__
-10:15 - 14:15
-
-For further information about kyudo classes, contact the _Kyudo Dojo Association of Barcelona_ by the following means:
-
-Email: [infokyudobarcelona@gmail.com](mailto:infokyudobarcelona@gmail.com)<br>
-Facebook: [facebook.com/AssociacioKyudoDojoBarcelona](https://www.facebook.com/AssociacioKyudoDojoBarcelona/)
+<hr id="judo" class="anchor">
 
 ## Judo classes
 
