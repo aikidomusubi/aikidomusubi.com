@@ -154,6 +154,14 @@ Actualment, té el grau de 4t dan i el títol de _shidoin_ (instructor qualifica
       </picture>
       <span>Juanma Pérez <em>(3r dan)</em></span>
     </div>
+    <div class="col-4 col-sm-4">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-18.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-18.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/index-8oGCaMDs-18.jpg" class="img-fluid lazyload" alt="Aikido Musubi Andreu Villar">
+      </picture>
+      <span>Andreu Villar <em>(3r dan)</em></span>
+    </div>
   </div>
 </div>
 
