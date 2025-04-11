@@ -126,7 +126,7 @@ Actualmente, tiene el grado de 4.º dan y el título de _shidoin_ (instructor cu
         <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-14.jpg" class="img-fluid lazyload">
         <img src="{{ site.url }}/images/index-8oGCaMDs-14.jpg" class="img-fluid lazyload" alt="Aikido Musubi Taron Hamkhiyan">
       </picture>
-      <span>Taron Hamkhiyan <em>(4.er dan)</em></span>
+      <span>Taron Hamkhiyan <em>(4.º dan)</em></span>
     </div>
     <div class="col-4 col-sm-4">
       <picture>
