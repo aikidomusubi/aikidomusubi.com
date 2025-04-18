@@ -32,6 +32,11 @@ gulp.task('optimize-html', gulp.series(function(done) {
   done();
 }));
 
+gulp.task('watch', function () {
+  gulp.watch('scripts/**/*.js', gulp.series('scripts')); // Watch JavaScript files
+  gulp.watch('_site/**/*.html', gulp.series('optimize-html')); // Watch HTML files
+});
+
 gulp.task('default', gulp.series('lint', 'scripts', 'optimize-html', function(done) {
   done();
 }));
