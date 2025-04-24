@@ -9,7 +9,7 @@ desc_ca: >-
 desc_en: >-
   Next Saturday, July 27th, we have the pleasure of hosting the long-awaited special Aikido class at our dojo, led by Arturo Fernández, 4th dan Aikikai.
 desc_es: >-
-  El próximo sábado 27 de julio tenemos el placer de acoger en nuestro dojo las tan esperadas clases especiales de Aikido a cargo de Arturo Fernández, 4º dan Aikikai.
+  El próximo sábado 27 de julio tenemos el placer de acoger en nuestro dojo las tan esperadas clases especiales de Aikido a cargo de Arturo Fernández, 4.º dan Aikikai.
 desc_ja: >-
   ７月２７日（土）に私たちの道場で、待ちに待ったアルトゥーロ・フェルナンデス（四段）による特別稽古が行われます。
 

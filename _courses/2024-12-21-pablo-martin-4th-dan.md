@@ -5,13 +5,14 @@ title_es: "Pablo Martín 4.º Dan Aikikai"
 title_ja: "パブロ・マルティン 四段 合気会"
 
 desc_ca: >-
-  Aquest dissabte 25 de gener, no et perdis aquesta classe especial al nostre dojo amb Francisco Manchón, 6è Dan Aikikai.<br><br>Aquesta sessió està oberta a tothom que vulgui participar. No t’ho perdis!<br><br>T’hi esperem!
+  El proper dissabte 21 de desembre tenim el plaer d'acollir al nostre dojo les molt esperades jornades d'Aikido a càrrec de Pablo Martín, 4t dan Aikikai.
 desc_en: >-
-  This Saturday, January 25th, don't miss out on this special class at our dojo with Francisco Manchón, 6th Dan Aikikai.<br><br>This session is open to everyone who wants to participate. Don't miss it!<br><br>We look forward to seeing you there!
+  Next Saturday, December 21st, we have the pleasure of hosting the long-awaited special Aikido class at our dojo, led by Pablo Martín, 4th dan Aikikai.
 desc_es: >-
-  Este sábado 25 de enero, no te pierdas esta clase especial en nuestro dojo con Francisco Manchón, 6º Dan Aikikai.<br><br>Esta sesión está abierta a todos los que quieran participar. ¡No te lo pierdas!<br><br>¡Te esperamos!
+  El próximo sábado 21 de diciembre tenemos el placer de acoger en nuestro dojo las tan esperadas clases especiales de Aikido a cargo de Pablo Martín, 4.º dan Aikikai.
 desc_ja: >-
-  １月２５日（土）、私たちの道場でフランシスコ・マンチョン（六段）による特別稽古をお見逃しなく！<br><br>このセッションは参加希望の方すべてに開放されています。お見逃しなく！<br><br>お待ちしています！
+  １２月２１日（土）に私たちの道場で、待ちに待ったパブロ・マルティン（四段）による特別稽古が行われます。
+
 
 image_ca: "courses-hFZ2XXIp-2024-12-21-pablo-martin-4th-dan-ca"
 image_en: "courses-hFZ2XXIp-2024-12-21-pablo-martin-4th-dan-ca"

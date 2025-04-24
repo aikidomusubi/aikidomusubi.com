@@ -1,5 +1,5 @@
 ---
-title_ca: "Francisco Manchón Shihan 6é Dan Aikikai"
+title_ca: "Francisco Manchón Shihan 6è Dan Aikikai"
 title_en: "Francisco Manchón Shihan 6th Dan Aikikai"
 title_es: "Francisco Manchón Shihan 6.º Dan Aikikai"
 title_ja: "フランシスコ・マンチョン 師範 六段 合気会"
@@ -9,7 +9,7 @@ desc_ca: >-
 desc_en: >-
   This Saturday, January 25th, don't miss out on this special class at our dojo with Francisco Manchón, 6th Dan Aikikai.<br><br>This session is open to everyone who wants to participate. Don't miss it!<br><br>We look forward to seeing you there!
 desc_es: >-
-  Este sábado 25 de enero, no te pierdas esta clase especial en nuestro dojo con Francisco Manchón, 6º Dan Aikikai.<br><br>Esta sesión está abierta a todos los que quieran participar. ¡No te lo pierdas!<br><br>¡Te esperamos!
+  Este sábado 25 de enero, no te pierdas esta clase especial en nuestro dojo con Francisco Manchón, 6.º Dan Aikikai.<br><br>Esta sesión está abierta a todos los que quieran participar. ¡No te lo pierdas!<br><br>¡Te esperamos!
 desc_ja: >-
   １月２５日（土）、私たちの道場でフランシスコ・マンチョン（六段）による特別稽古をお見逃しなく！<br><br>このセッションは参加希望の方すべてに開放されています。お見逃しなく！<br><br>お待ちしています！
 

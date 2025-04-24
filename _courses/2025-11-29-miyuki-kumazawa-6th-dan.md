@@ -1,5 +1,5 @@
 ---
-title_ca: "Miyuki Kumazawa 6é Dan Aikikai"
+title_ca: "Miyuki Kumazawa 6è Dan Aikikai"
 title_en: "Miyuki Kumazawa 6th Dan Aikikai"
 title_es: "Miyuki Kumazawa 6.º Dan Aikikai"
 title_ja: "熊澤 美裕紀 六段 合気会"

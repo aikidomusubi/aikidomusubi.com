@@ -1,5 +1,5 @@
 ---
-title_ca: "Laura Benevelli 5é Dan Aikikai"
+title_ca: "Laura Benevelli 5è Dan Aikikai"
 title_en: "Laura Benevelli 5th Dan Aikikai"
 title_es: "Laura Benevelli 5.º Dan Aikikai"
 title_ja: "ラウラ・ベネヴェッリ 五段 合気会"

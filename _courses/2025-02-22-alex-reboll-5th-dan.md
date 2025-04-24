@@ -1,5 +1,5 @@
 ---
-title_ca: "Àlex Reboll 5é Dan Aikikai"
+title_ca: "Àlex Reboll 5è Dan Aikikai"
 title_en: "Àlex Reboll 5th Dan Aikikai"
 title_es: "Àlex Reboll 5.º Dan Aikikai"
 title_ja: "アレックス・レボイ 五段 合気会"
@@ -9,7 +9,7 @@ desc_ca: >-
 desc_en: >-
   This Saturday, January 25th, don't miss out on this special class at our dojo with Àlex Reboll, 5th Dan Aikikai.<br><br>This session is open to everyone who wants to participate. Don't miss it!<br><br>We look forward to seeing you there!
 desc_es: >-
-  Este sábado 25 de enero, no te pierdas esta clase especial en nuestro dojo con Àlex Reboll, 5º Dan Aikikai.<br><br>Esta sesión está abierta a todos los que quieran participar. ¡No te lo pierdas!<br><br>¡Te esperamos!
+  Este sábado 25 de enero, no te pierdas esta clase especial en nuestro dojo con Àlex Reboll, 5.º Dan Aikikai.<br><br>Esta sesión está abierta a todos los que quieran participar. ¡No te lo pierdas!<br><br>¡Te esperamos!
 desc_ja: >-
   １月２５日（土）、私たちの道場でアレックス・レボール（五段）による特別稽古をお見逃しなく！<br><br>このセッションは参加希望の方すべてに開放されています。お見逃しなく！<br><br>お待ちしています！
 

@@ -1,5 +1,5 @@
 ---
-title_ca: "Joshua Layton 5é Dan Aikikai"
+title_ca: "Joshua Layton 5è Dan Aikikai"
 title_en: "Joshua Layton 5th Dan Aikikai"
 title_es: "Joshua Layton 5.º Dan Aikikai"
 title_ja: "ヨシュア・レイトン 五段 合気会"

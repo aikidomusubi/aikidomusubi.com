@@ -1,5 +1,5 @@
 ---
-title_ca: "Emilio Cardia 6é Dan Aikikai"
+title_ca: "Emilio Cardia 6è Dan Aikikai"
 title_en: "Emilio Cardia 6th Dan Aikikai"
 title_es: "Emilio Cardia 6.º Dan Aikikai"
 title_ja: "エミリオ・カルディア 六段 合気会"
