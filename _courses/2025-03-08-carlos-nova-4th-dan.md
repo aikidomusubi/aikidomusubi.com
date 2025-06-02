@@ -5,7 +5,7 @@ title_es: "Carlos Nova 4.º Dan Aikikai"
 title_ja: "カルロス・ノバ 四段 合気会"
 
 desc_ca: >-
-  Aquest dissabte 8 de març, no et perdis aquesta classe especial al nostre dojo amb el Carlos Nova, 4t Dan Aikikai.<br><br>Aquesta sessió està oberta a tothom que vulgui participar. No t’ho perdis!<br><br>T’hi esperem!
+  Aquest dissabte 8 de març, no et perdis aquesta classe especial al nostre dojo amb Carlos Nova, 4t Dan Aikikai.<br><br>Aquesta sessió està oberta a tothom que vulgui participar. No t’ho perdis!<br><br>T’hi esperem!
 desc_en: >-
   This Saturday, March 8th, don't miss out on this special class at our dojo with Carlos Nova, 4th Dan Aikikai.<br><br>This session is open to everyone who wants to participate. Don't miss it!<br><br>We look forward to seeing you there!
 desc_es: >-

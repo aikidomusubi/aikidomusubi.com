@@ -5,7 +5,7 @@ title_es: "Ricard Coll 4.º Dan Aikikai"
 title_ja: "リカルド・コール 四段 合気会"
 
 desc_ca: >-
-  El proper dissabte 1 de febrer tenim el plaer de rebre al nostre dojo al Ricard Coll (4t dan Aikikai). Animeu-vos!
+  El proper dissabte 1 de febrer tenim el plaer de rebre al nostre dojo a Ricard Coll (4t dan Aikikai). Animeu-vos!
 desc_en: >-
   Next Saturday, February 1st, we are pleased to welcome Ricard Coll (4th dan Aikikai) to our dojo. See you on the mat!
 desc_es: >-

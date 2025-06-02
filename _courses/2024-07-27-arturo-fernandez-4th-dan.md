@@ -5,7 +5,7 @@ title_es: "Arturo Fernández 4.º Dan Aikikai"
 title_ja: "アルトゥーロ・フェルナンデス 四段 合気会"
 
 desc_ca: >-
-  El proper dissabte 27 de juliol tenim el plaer d'acollir al nostre dojo les molt esperades jornades d'Aikido a càrrec de Arturo Fernández 4rt dan Aikikai.
+  El proper dissabte 27 de juliol tenim el plaer d'acollir al nostre dojo les molt esperades jornades d'Aikido a càrrec d'Arturo Fernández 4rt dan Aikikai.
 desc_en: >-
   Next Saturday, July 27th, we have the pleasure of hosting the long-awaited special Aikido class at our dojo, led by Arturo Fernández, 4th dan Aikikai.
 desc_es: >-

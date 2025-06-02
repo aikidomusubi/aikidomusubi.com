@@ -5,7 +5,7 @@ title_es: "Emilio Cardia 6.º Dan Aikikai"
 title_ja: "エミリオ・カルディア 六段 合気会"
 
 desc_ca: >-
-  Tenim l'honor de rebre a Emilio Cardia Sensei al nostre dojo per a una classe magistral d'Aikido el 13 d'octubre a les 19:30, abans del seu curs d'Aikido organitzat per Arashi Group a Barcelona els dies 14 i 15 d'octubre.<br><br>Les places són limitades i s'assignaran per rigorós ordre d'inscripció.
+  Tenim l'honor de rebre a Emilio Cardia Sensei al nostre dojo per a una masterclass d'Aikido el 13 d'octubre a les 19:30, abans del seu curs d'Aikido organitzat per Arashi Group a Barcelona els dies 14 i 15 d'octubre.<br><br>Les places són limitades i s'assignaran per rigorós ordre d'inscripció.
 desc_en: >-
   We are honoured to have Emilio Cardia Sensei in our dojo for an Aikido Masterclass on Oct 13th at 19:30 prior to his Aikido Course organised by Arashi Group in Barcelona on Oct 14th and 15th.<br><br>The limited number of places will be allocated in strict order of registration.
 desc_es: >-
