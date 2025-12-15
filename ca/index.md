@@ -122,30 +122,22 @@ Actualment, té el grau de 4t dan i el títol de _shidoin_ (instructor qualifica
     </div>
     <div class="col-4 col-sm-4">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-14.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-14.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-14.jpg" class="img-fluid lazyload" alt="Aikido Musubi Taron Hamkhiyan">
-      </picture>
-      <span>Taron Hamkhiyan <em>(4t dan)</em></span>
-    </div>
-    <div class="col-4 col-sm-4">
-      <picture>
         <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-15.webp" class="img-fluid lazyload">
         <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-15.jpg" class="img-fluid lazyload">
         <img src="{{ site.url }}/images/index-8oGCaMDs-15.jpg" class="img-fluid lazyload" alt="Aikido Musubi José Luis Zafra">
       </picture>
-      <span>José Luis Zafra <em>(3r dan)</em></span>
+      <span>José Luis Zafra <em>(4t dan)</em></span>
     </div>
-  </div>
-  <div class="row">
     <div class="col-4 col-sm-4">
       <picture>
         <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-16.webp" class="img-fluid lazyload">
         <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-16.jpg" class="img-fluid lazyload">
         <img src="{{ site.url }}/images/index-8oGCaMDs-16.jpg" class="img-fluid lazyload" alt="Aikido Musubi Alberto Sancho">
       </picture>
-      <span>Alberto Sancho <em>(3r dan)</em></span>
+      <span>Alberto Sancho <em>(4t dan)</em></span>
     </div>
+  </div>
+  <div class="row">
     <div class="col-4 col-sm-4">
       <picture>
         <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-17.webp" class="img-fluid lazyload">
@@ -191,20 +183,6 @@ Actualment, té el grau de 4t dan i el títol de _shidoin_ (instructor qualifica
 __Aikido Musubi__ (CIF: G-64799554) és una associació cultural fundada el 2008. És la primera associació a Badalona autogestionada i sense ànim de lucre l'objectiu de la qual és promoure la pràctica de l'aikido i els valors de les arts marcials tradicionals del Japó. Fa més de {{ site.time | date: '%Y' | minus: 2008 }} anys que som un actor principal en la ciutat de Badalona oferint un espai 100% dedicat a les arts marcials i la cultura japonesa.
 
 La Junta Directiva està constituïda pel President, el Secretari, i el Tresorer que al seu torn assumeixen el paper de director tècnic i instructors respectivament. Són membres fundadors actius amb experiència significativa dins de l'associació que han estat elegits per l'Assemblea General, composta per tots els membres de l'associació.
-
-__Pablo Martín__ (President)
-- Supervisa, recomana, i pren decisions sobre el currículum i la pràctica d'__Aikido Musubi__. Forma el comitè dels exàmens de _kyu_ i processa els graus. Dóna suport al desenvolupament d'instructors dins de l'associació, i promou la interacció entre dojos.
-- Estableix, executa, i revisa programes i polítiques administratives/operacionals d'__Aikido Musubi__, incloent la planificació, les finances, i la gestió dels recursos, entre d'altres decisions.
-
-__Taron Hamkhiyan__ (Vicepresident)
-- Assessora i recomana sobre les polítiques per al dojo. Planifica i promociona cursos, esdeveniments, i seminaris dins de l'associació. Recolza i dóna suport al creixement personal dels membres d'__Aikido Musubi__. Supervisa la comunicació i la presència online d'__Aikido Musubi__.
-
-__José Luís Zafra__ (Secretari)
-- Assessora i recomana sobre les polítiques per al dojo. Vetlla per les bones pràctiques i la correcta implementació del currículum.
-- Supervisa totes les activitats per assegurar que es duen a terme d'acord amb el caràcter altruista i amb les polítiques d'__Aikido Musubi__.
-
-__Alberto Sancho__ (Tresorer)
-- Dirigeix ​​i gestiona la Tresoreria i vigila els ingressos i despeses. Actua, juntament amb el President, al respecte dels interessos econòmics de l'associació i el maneig dels seus fons. Gestiona les tasques administratives del dia a dia, processa les sol·licituds per ser membre de l'associació.
 
 __Aikido Musubi__ no advoca, dóna suport ni practica la discriminació il·legal basada en l'edat, l'origen ètnic, el gènere, l'origen nacional, la discapacitat, la raça, la religió, l'orientació sexual o els antecedents socioeconòmics.
 
