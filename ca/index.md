@@ -102,7 +102,7 @@ A __Aikido Musubi__, oferim classes que són adequades per a persones sense expe
 
 ### Dojo-cho: Pablo Martín (4t dan)
 
-Pablo Martín (Badalona, 1977) va començar a practicar aikido a Badalona l'any 1999 amb Ricard Coll (4t dan). Després, ha continuat la seva pràctica al mateix temps que exerceix com a instructor a __Aikido Musubi__. Al llarg de la seva trajectòria, ha participat en nombrosos cursos i seminaris de mestres reputats com: Yamada Y. Shihan, Sugano S. Shihan, Shibata I. Shihan, M. Flynn Shihan, D. Waite Shihan, P. Bernath Shihan, entre d'altres. També ha viatjat al Japó per entrenar a la seu mundial de l'aikido, el Hombu Dojo, amb: Ueshiba Moriteru Doshu, Miyamoto T. Shihan, Yokota Y. Shihan, Osawa Hayato Shihan, Kuribayashi T. Shihan, Kanazawa T. Shihan, Suzuki T. Shihan, entre d'altres.
+Pablo Martín (Badalona, 1977) va començar a practicar aikido a Badalona l'any 1999 amb Ricard Coll. Després, ha continuat la seva pràctica al mateix temps que exerceix com a instructor a __Aikido Musubi__. Al llarg de la seva trajectòria, ha participat en nombrosos cursos i seminaris de mestres reputats com: Yamada Y. Shihan, Sugano S. Shihan, Shibata I. Shihan, M. Flynn Shihan, D. Waite Shihan, P. Bernath Shihan, entre d'altres. També ha viatjat al Japó per entrenar a la seu mundial de l'aikido, el Hombu Dojo, amb: Ueshiba Moriteru Doshu, Miyamoto T. Shihan, Yokota Y. Shihan, Osawa Hayato Shihan, Kuribayashi T. Shihan, Kanazawa T. Shihan, Suzuki T. Shihan, entre d'altres.
 
 Amb el propòsit de promoure l'aikido a Badalona, ​​va establir l'Associació Cultural Musubi Aikido (__Aikido Musubi__), l'any 2008, i més endavant va assumir els rols de president de l'associació i director tècnic (instructor cap).
 
