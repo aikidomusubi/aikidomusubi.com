@@ -11,7 +11,7 @@ desc_en: >-
 desc_es: >-
   El próximo 6 y 7 de abril de 2024 estaremos en la Japan Weekend Barcelona ofreciendo clases de Aikido abiertas para todos los visitantes. ¡No te lo pierdas y ven a disfrutar de esta actividad!
 desc_ja: >-
-  ２０２４年４月６日と７日、ジャパンウィークエンドバルセロナにて、すべての来場者向けに合気道のオープンクラスを開催します。この機会をお見逃しなく、ぜひご参加ください！
+  ２０２４年４月６日と７日、「Japan Weekend Barcelona」にて、すべての来場者向けに合気道のオープンクラスを開催します。この機会をお見逃しなく、ぜひご参加ください！
 
 image_ca: "courses-hFZ2XXIp-2024-04-06-aikido-musubi-x-japan-weekend-barcelona-2024-es"
 image_en: "courses-hFZ2XXIp-2024-04-06-aikido-musubi-x-japan-weekend-barcelona-2024-es"

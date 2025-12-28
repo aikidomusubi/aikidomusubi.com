@@ -11,7 +11,7 @@ desc_en: >-
 desc_es: >-
   El próximo 15 de marzo de 2025 estaremos en la Japan Weekend Barcelona ofreciendo clases de Aikido abiertas para todos los visitantes. ¡No te lo pierdas y ven a disfrutar de esta actividad!
 desc_ja: >-
-  ２０２５年３月１５日、ジャパンウィークエンドバルセロナにて、すべての来場者向けに合気道のオープンクラスを開催します。この機会をお見逃しなく、ぜひご参加ください！
+  ２０２５年３月１５日、「Japan Weekend Barcelona」にて、すべての来場者向けに合気道のオープンクラスを開催します。この機会をお見逃しなく、ぜひご参加ください！
 
 image_ca: "courses-hFZ2XXIp-2025-03-15-aikido-musubi-x-japan-weekend-barcelona-2025-es"
 image_en: "courses-hFZ2XXIp-2025-03-15-aikido-musubi-x-japan-weekend-barcelona-2025-es"
