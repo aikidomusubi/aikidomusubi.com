@@ -1,5 +1,5 @@
 ---
-title_ca: "Ricard Coll Sensei 4t Dan Aikikai"
+title_ca: "Ricard Coll 4t Dan Aikikai"
 title_en: "Ricard Coll 4th Dan Aikikai"
 title_es: "Ricard Coll 4.º Dan Aikikai"
 title_ja: "リカルド・コール 四段 合気会"
