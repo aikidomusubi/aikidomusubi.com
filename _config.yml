@@ -95,6 +95,7 @@ exclude:
   - gulpfile.js
   - package-lock.json
   - package.json
+  - ".well-known"
 
 include:
   - sitemap.xml

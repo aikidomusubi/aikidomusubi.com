@@ -9,9 +9,14 @@ i18n-ref: access-information-NdxqmVbV
 
 # アクセス
 
-道場を訪問したり、一緒に訓練したい場合は、[お問い合わせ下さい]({{ site.url }}/{{ page.lang }}/contact/))。
+合気道産靈はバルセロナ県内に2つの道場があります：__合気道産靈__（バダロナ）、そして __合気道産靈 サント・アドリアー・ダ・バゾス__。私たちの道場を訪れたい方や一緒に稽古したい方は、[お問い合わせください]({{ site.url }}/{{ page.lang }}/contact/)。所在地や稽古時間の詳細をご案内します。
 
 <hr>
+
+
+<hr id="aikido-musubi" class="anchor">
+
+## 合気道産靈
 
 <div class="card mb-3">
   <div class="row no-gutters">
@@ -20,7 +25,7 @@ i18n-ref: access-information-NdxqmVbV
         <h5 class="card-title"><!-- Aikido Musubi --></h5>
         <p class="card-text">
           〒08918<br>
-          カタルーニャ州バルセロナ県バダロナ<br>
+          カタルーニャ州バルセロナ県バダロナ市<br>
           351 アルフォンス・XIII通り
         </p>
         <p class="card-text">
@@ -34,45 +39,11 @@ i18n-ref: access-information-NdxqmVbV
     </div>
     <div class="col-lg-8">
       <div class="map">
-        {% include map.html %}
+        {% include map.html section="aikido_musubi" %}
       </div>
     </div>
   </div>
 </div>
-
-<div class="media">
-  <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="subway" class="svg-inline--fa fa-subway fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M448 96v256c0 51.815-61.624 96-130.022 96l62.98 49.721C386.905 502.417 383.562 512 376 512H72c-7.578 0-10.892-9.594-4.957-14.279L130.022 448C61.82 448 0 403.954 0 352V96C0 42.981 64 0 128 0h192c65 0 128 42.981 128 96zM200 232V120c0-13.255-10.745-24-24-24H72c-13.255 0-24 10.745-24 24v112c0 13.255 10.745 24 24 24h104c13.255 0 24-10.745 24-24zm200 0V120c0-13.255-10.745-24-24-24H272c-13.255 0-24 10.745-24 24v112c0 13.255 10.745 24 24 24h104c13.255 0 24-10.745 24-24zm-48 56c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm-256 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"></path></svg>
-  <div class="media-body">
-    <h5 class="mt-0">地下鉄</h5>
-    <p>Artigues | Sant Adrià（L2）、Sant Roc（L2）</p>
-  </div>
-</div>
-
-<div class="media">
-  <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bus" class="svg-inline--fa fa-bus fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M488 128h-8V80c0-44.8-99.2-80-224-80S32 35.2 32 80v48h-8c-13.25 0-24 10.74-24 24v80c0 13.25 10.75 24 24 24h8v160c0 17.67 14.33 32 32 32v32c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32v-32h192v32c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32v-32h6.4c16 0 25.6-12.8 25.6-25.6V256h8c13.25 0 24-10.75 24-24v-80c0-13.26-10.75-24-24-24zM112 400c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32zm16-112c-17.67 0-32-14.33-32-32V128c0-17.67 14.33-32 32-32h256c17.67 0 32 14.33 32 32v128c0 17.67-14.33 32-32 32H128zm272 112c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32z"></path></svg>
-  <div class="media-body">
-    <h5 class="mt-0">バス</h5>
-    <p>
-      <b>バダロナ行き：</b>Av. Alfons XIII - Jumella（B25、H10、M26、M30、N11）<br>
-      <b>バダロナ行き：</b>Av. Alfons XIII - Av. del Maresme（B25、C-10、H10、M26、M30、N11）<br>
-      <b>バルセロナ行き：</b>Av. Alfons XIII - Juan Valera（B25、M26、M30、N11）<br>
-      <b>バルセロナ行き：</b>Av. Alfons XIII - Andrés Segovia（B25、C-10、H10、M26、M30、N11）
-    </p>
-  </div>
-</div>
-
-<div class="media">
-  <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="car" class="svg-inline--fa fa-car fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M499.99 176h-59.87l-16.64-41.6C406.38 91.63 365.57 64 319.5 64h-127c-46.06 0-86.88 27.63-103.99 70.4L71.87 176H12.01C4.2 176-1.53 183.34.37 190.91l6 24C7.7 220.25 12.5 224 18.01 224h20.07C24.65 235.73 16 252.78 16 272v48c0 16.12 6.16 30.67 16 41.93V416c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32v-32h256v32c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32v-54.07c9.84-11.25 16-25.8 16-41.93v-48c0-19.22-8.65-36.27-22.07-48H494c5.51 0 10.31-3.75 11.64-9.09l6-24c1.89-7.57-3.84-14.91-11.65-14.91zm-352.06-17.83c7.29-18.22 24.94-30.17 44.57-30.17h127c19.63 0 37.28 11.95 44.57 30.17L384 208H128l19.93-49.83zM96 319.8c-19.2 0-32-12.76-32-31.9S76.8 256 96 256s48 28.71 48 47.85-28.8 15.95-48 15.95zm320 0c-19.2 0-48 3.19-48-15.95S396.8 256 416 256s32 12.76 32 31.9-12.8 31.9-32 31.9z"></path></svg>
-  <div class="media-body">
-    <h5 class="mt-0">車</h5>
-    <p>
-      <b>バダロナ行き：</b> C-31号の高速道路, 出口 210（Sant Adrià del B./Badalona Sud）<br>
-      <b>バルセロナ行き：</b> C-31号の高速道路, 出口 211（Sant Adrià del B./Badalona Sud）
-    </p>
-  </div>
-</div>
-
-<hr>
 
 __合気道産靈__ は南バダロナサッカー球技場内にあります。道場の路地は見つけにくいので、地図を参考に、お時間には余裕を持って、お越し下さい。
 
@@ -91,15 +62,15 @@ __合気道産靈__ は南バダロナサッカー球技場内にあります。
         </p>
         <p class="card-text">
           <b>入口 <span>C</span></b><br>
-          パサジェ・デ・ラ・シウター・デ・サン・フェルナンド（Passatge de la Ciutat de San Fernando）
+          パサジェ・デ・ラ・シウター・デ・サン・フェルナンド<（Passatge de la Ciutat de San Fernando）
         </p>
       </div>
     </div>
     <div class="col-lg-8">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-{{ page.lang }}.webp" class="card-img-top lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-{{ page.lang }}.jpg" class="card-img-top lazyload">
-        <img src="{{ site.url }}/images/access-information-NdxqmVbV-{{ page.lang }}.jpg" class="card-img-top lazyload" alt="南バダロナサッカー球技場の地図">
+        <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-00-{{ page.lang }}.webp" class="card-img-top lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-00-{{ page.lang }}.jpg" class="card-img-top lazyload">
+        <img src="{{ site.url }}/images/access-information-NdxqmVbV-00-{{ page.lang }}.jpg" class="card-img-top lazyload" alt="南バダロナサッカー球技場の地図">
       </picture>
     </div>
   </div>
@@ -108,9 +79,9 @@ __合気道産靈__ は南バダロナサッカー球技場内にあります。
 <div class="card-group">
   <div class="card">
     <picture>
-      <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-a.webp" class="card-img-top lazyload">
-      <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-a.jpg" class="card-img-top lazyload">
-      <img src="{{ site.url }}/images/access-information-NdxqmVbV-a.jpg" class="card-img-top lazyload" alt="南バダロナサッカー球技場の地図 入口 A">
+      <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-00-a.webp" class="card-img-top lazyload">
+      <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-00-a.jpg" class="card-img-top lazyload">
+      <img src="{{ site.url }}/images/access-information-NdxqmVbV-00-a.jpg" class="card-img-top lazyload" alt="南バダロナサッカー球技場の地図 入口 A">
     </picture>
     <div class="card-body">
       <h5 class="card-title">入口 <span>A</span></h5>
@@ -119,9 +90,9 @@ __合気道産靈__ は南バダロナサッカー球技場内にあります。
   </div>
   <div class="card">
     <picture>
-      <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-b.webp" class="card-img-top lazyload">
-      <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-b.jpg" class="card-img-top lazyload">
-      <img src="{{ site.url }}/images/access-information-NdxqmVbV-b.jpg" class="card-img-top lazyload" alt="南バダロナサッカー球技場の地図 入口 B">
+      <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-00-b.webp" class="card-img-top lazyload">
+      <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-00-b.jpg" class="card-img-top lazyload">
+      <img src="{{ site.url }}/images/access-information-NdxqmVbV-00-b.jpg" class="card-img-top lazyload" alt="南バダロナサッカー球技場の地図 入口 B">
     </picture>
     <div class="card-body">
       <h5 class="card-title">入口 <span>B</span></h5>
@@ -130,13 +101,100 @@ __合気道産靈__ は南バダロナサッカー球技場内にあります。
   </div>
   <div class="card">
     <picture>
-      <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-c.webp" class="card-img-top lazyload">
-      <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-c.jpg" class="card-img-top lazyload">
-      <img src="{{ site.url }}/images/access-information-NdxqmVbV-c.jpg" class="card-img-top lazyload" alt="南バダロナサッカー球技場の地図 入口 C">
+      <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-00-c.webp" class="card-img-top lazyload">
+      <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-00-c.jpg" class="card-img-top lazyload">
+      <img src="{{ site.url }}/images/access-information-NdxqmVbV-00-c.jpg" class="card-img-top lazyload" alt="南バダロナサッカー球技場の地図 入口 C">
     </picture>
     <div class="card-body">
       <h5 class="card-title">入口 <span>C</span></h5>
       <p class="card-text">パサジェ・デ・ラ・シウター・デ・サン・フェルナンド（Passatge de la Ciudad de San Fernando）にある小さなドアからアクセス</p>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<hr id="sant-adria-de-besos" class="anchor">
+
+## サント・アドリアー・ダ・バゾス
+
+<div class="card mb-3">
+  <div class="row no-gutters">
+    <div class="col-lg-4">
+      <div class="card-body">
+        <h5 class="card-title"><!-- Aikido Musubi - Sant Adrià de Besòs --></h5>
+        <h4>サント・アドリアー・ダ・バゾス</h4>
+        <p class="card-text">
+          〒08930<br>
+          カタルーニャ州バルセロナ県<br>
+          サント・アドリアー・ダ・バゾス市<br>
+          ドロレス・イバルリ・パシオナリア通り
+        </p>
+        <p class="card-text">
+          <small class="text-muted">
+            駐車場無料<br>
+            月と水営業<br>
+            <a href="{{ site.url }}/{{ page.lang }}/training-schedule/?location=sant-adria-de-besos">稽古時間の詳細はこちら</a>
+          </small>
+        </p>
+      </div>
+    </div>
+    <div class="col-lg-8">
+      <div class="map">
+        {% include map.html section="sant_adria_de_besos" %}
+      </div>
+    </div>
+  </div>
+</div>
+
+__合気道産靈 サント・アドリアー__ はマリナ・ベソス市立スポーツセンターの施設内にあります。道場の路地は見つけにくいので、地図を参考に、お時間には余裕を持って、お越し下さい。
+
+<div class="card mb-3">
+  <div class="row no-gutters">
+    <div class="col-lg-4">
+      <div class="card-body">
+        <h5 class="card-title">Polideportivo Municipal<br>Marina-Besòs</h5>
+        <p class="card-text">
+          <b>入口 <span>A</span></b><br>
+          ドロレス・イバルリ・パシオナリア通り（Dolores Ibarruri Pasionaria St.）
+        </p>
+        <p class="card-text">
+          <b>入口 <span>B</span></b><br>
+          ドロレス・イバルリ・パシオナリア通り（Dolores Ibarruri Pasionaria St.）<br>（駐車場入口）
+        </p>
+      </div>
+    </div>
+    <div class="col-lg-8">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-01-{{ page.lang }}.webp" class="card-img-top lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-01-{{ page.lang }}.jpg" class="card-img-top lazyload">
+        <img src="{{ site.url }}/images/access-information-NdxqmVbV-01-{{ page.lang }}.jpg" class="card-img-top lazyload" alt="マリナ・ベソス市立スポーツセンターの地図">
+      </picture>
+    </div>
+  </div>
+</div>
+
+<div class="card-group">
+  <div class="card">
+    <picture>
+      <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-01-a.webp" class="card-img-top lazyload">
+      <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-01-a.jpg" class="card-img-top lazyload">
+      <img src="{{ site.url }}/images/access-information-NdxqmVbV-01-a.jpg" class="card-img-top lazyload" alt="マリナ・ベソス市立スポーツセンターの地図 入口 A">
+      </picture>
+    <div class="card-body">
+      <h5 class="card-title">Acceso <span>A</span></h5>
+      <p class="card-text">ドロレス・イバルリ・パシオナリア通り（Dolores Ibarruri Pasionaria St.）からアクセス</p>
+    </div>
+  </div>
+  <div class="card">
+    <picture>
+      <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-01-b.webp" class="card-img-top lazyload">
+      <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-01-b.jpg" class="card-img-top lazyload">
+      <img src="{{ site.url }}/images/access-information-NdxqmVbV-01-b.jpg" class="card-img-top lazyload" alt="マリナ・ベソス市立スポーツセンターの地図 入口 B">
+      </picture>
+    <div class="card-body">
+      <h5 class="card-title">Acceso <span>B</span></h5>
+      <p class="card-text">ドロレス・イバルリ・パシオナリア通り（Dolores Ibarruri Pasionaria St.）からの駐車場へのアクセス</p>
     </div>
   </div>
 </div>

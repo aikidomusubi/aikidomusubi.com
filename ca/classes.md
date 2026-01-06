@@ -13,6 +13,9 @@ Disposem d'un ampli horari de classes per acomodar a adults i nens, i diferents 
 
 <hr>
 
+
+<hr id="aikido" class="anchor">
+
 ## Classes d'aikido
 
 <picture>
@@ -24,17 +27,18 @@ Disposem d'un ampli horari de classes per acomodar a adults i nens, i diferents 
 Pràctica regular per a tots els nivells. Disponible per a tots els membres majors de 12 anys.
 
 __Dilluns__
-20:00 - 21:30 (J.L. Zafra)
+20:00 - 20:45 (J.L. Zafra)
 __Dimarts__
 18:30 - 19:30 (A. Sancho)<br>
-19:30 - 20:30 (P. Martín, Dojo-cho)<br>
+19:30 - 20:30 (P. Martín, Dōjō-chō)<br>
 20:30 - 21:30
 __Dimecres__
-20:00 - 21:30 (J.M. Pérez)
+20:00 - 20:45 (J.M. Pérez)<br>
+20:45 - 21:30 (J.M. Pérez)
 __Dijous__
 18:30 - 19:30 (A. Sancho)<br>
-19:30 - 20:30 (P. Martín, Dojo-cho)<br>
-20:30 - 21:30 (P. Martín, Dojo-cho)
+19:30 - 20:30 (P. Martín, Dōjō-chō)<br>
+20:30 - 21:30 (P. Martín, Dōjō-chō)
 __Divendres__
 19:00 - 20:00 (P. Fortes)
 __Dissabte__
@@ -80,7 +84,10 @@ __Dissabte__
 Se centra en l'aprenentatge de les caigudes i moviments bàsics. Recomanat per a principiants i practicants de nivell intermedi.
 
 __Dimarts__
-19:30 - 20:30
+19:30 - 20:30 (P. Martín, Dōjō-chō)
+
+__Dimecres__
+20:00 - 20:45 (J.M. Pérez)
 
 ## Classes d'aikido amb armes
 
@@ -106,7 +113,7 @@ __Dimarts__
 Pràctica amb sabre de fusta o _bokken_, el bastó mitjà de fusta o _jō_, i el ganivet de fusta o _tantō_.
 
 __Dijous__
-19:30 - 20:30 (P. Martín, Dojo-cho)
+19:30 - 20:30 (P. Martín, Dōjō-chō)
 
 ## Classes d'aikido per a nens i nenes
 
@@ -188,10 +195,15 @@ _Les classes d'aikido per a nens i nenes estan temporalment suspeses._
   </div>
 </div>
 
-_Iaijutsu_ és l'art de desembeinar i tall simultani. Aquest art de desembeinar de l'espasa japonesa (_katana_) és una de les disciplines bàsiques en l'educació clàssica dels samurai. _Ryūshin Shouchi-ryū_ és una escola de kobudō (art marcial antic) especialitzada en iaijutsu. Aquest sistema es basa en l'esgrima tradicional originada a l'àrea de Kanto, estesa posteriorment a Kyushu i altres àrees de Japó. Està compost per 60 kata de Iai, Kumitachi de Kenjutsu, Kumitachi de Iai, tachitori i tantōtori. Les formes transmeses per aquest estil, destil·len la saviesa, la disciplina i la determinació de molts mestres i consumats practicants durant centenars d'anys, i ha estat un gran repte de vital importància transmetre aquestes formes correctament generació rere generació.
+_Iaijutsu_ és l’art de desenvaine i tall simultani amb l’espasa japonesa o _katana_. És una disciplina fonamental en la formació clàssica dels samurái, centrada en la precisió, la rapidesa i la coordinació.
+
+L’escola _Ryūshin Shōchi-ryū_ s’especialitza en iaijutsu, basada en l’esgrima tradicional originària de la regió de Kanto i estesa posteriorment a altres zones del Japó.
+
+__Dilluns__
+20:00 - 20:45 (J.L. Zafra)
 
 __Dissabte__
-11:00 - 13:00 (el segon dissabte del mes)
+08:30 - 10:00 (X. Serra)
 
 <hr id="judo" class="anchor">
 
@@ -232,18 +244,78 @@ __Dissabte__
   </div>
 </div>
 
-El judo és un art marcial del Japó, creat fa 150 anys pel mestre Jigoro Kano. Judo significa «el camí de la suavitat», i es basa en un conjunt de tècniques de defensa de peu (projeccions) i tècniques de defensa a terra (immobilitzacions, luxacions, i estrangulacions).
+El Judo és un art marcial japonès creat per Jigorō Kanō a finals del segle XIX. El seu nom significa «_el camí de la suavitat_» i es basa a aprofitar la força de l’adversari mitjançant l’equilibri, la tècnica i el control.
 
-Jigoro Kano va tenir com a objectiu principal l'educació i la formació dels joves. Va adaptar a l'àmbit educatiu les tècniques més efectives i menys lesives de diverses escoles tradicionals d'arts marcials del Japó; tot plegat sense perdre l'essència i els valors del budo per crear una escola on es compaginava l'educació acadèmica i la pràctica del judo.
+La pràctica del judo inclou tècniques de peu (projeccions) i tècniques de terra (immobilitzacions, luxacions i estrangulacions), sempre des d’un enfocament segur i respectuós.
 
-Jigoro Kano va definir el judo com "l'ajuda i prosperitat mútua", i "la utilització òptima de l'energia". El codi moral del judo es resumeix en: cortesia, coratge, sinceritat, honor, modèstia, respecte, autocontrol, i amistat.
+Des dels seus orígens, el judo va ser concebut com una eina educativa, orientada al desenvolupament físic i personal. Els seus principis fonamentals són la màxima eficàcia amb el mínim esforç i el benefici mutu, acompanyats de valors com el respecte, la disciplina i l’autocontrol.
 
-El judo té una vessant competitiva que es va convertir en esport olímpic en els Jocs Olímpics de Tòquio 1964.
+El judo també té una vessant esportiva i és disciplina olímpica des dels Jocs Olímpics de Tòquio 1964.
 
 __Dilluns__
-18:30 - 20:00
+18:30 - 20:00 (A. Molina)
 
 __Dimecres__
-18:30 - 20:00
+18:30 - 20:00 (A. Molina)
 
 Per a més informació sobre les classes de judo, contacta a través de l'adreça electrònica: [judomusubi@gmail.com](mailto:judomusubi@gmail.com)
+
+<hr id="karate" class="anchor">
+
+## Clases de karate
+
+<div id="classes-CJc2lhFv-judo" class="container">
+  <div class="row">
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-42.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-42.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-42.jpg" class="img-fluid lazyload" alt="Aikido Musubi Classes de karate">
+      </picture>
+    </div>
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-43.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-43.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-43.jpg" class="img-fluid lazyload" alt="Aikido Musubi Classes de karate">
+      </picture>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-44.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-44.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-44.jpg" class="img-fluid lazyload" alt="Aikido Musubi Classes de karate">
+      </picture>
+    </div>
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-45.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-45.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-45.jpg" class="img-fluid lazyload" alt="Aikido Musubi Classes de karate">
+      </picture>
+    </div>
+  </div>
+</div>
+
+El Karate Kyokushin és un art marcial tradicional de contacte complet, creat per Masutatsu Ōyama, que va més enllà de la pràctica esportiva. El seu entrenament proposa un camí de desenvolupament personal, en el qual s’enforteixen el cos, la ment i l’esperit a través de la disciplina, el respecte i la superació constant.
+
+Les classes estan impartides per Pep Llorens, instructor amb una àmplia trajectòria i reconeixement a nivell nacional i internacional:
+
+- Campió d’Europa 1999 (pes lleuger, Hongria)
+- Subcampió d’Europa 2001 (pes mitjà, Badalona)
+- Múltiple campió nacional i internacional
+
+Sota la seva guia, els practicants treballen tècnica, combat i els valors tradicionals del karate, en un entorn exigent però accessible, adequat tant per a persones que s’inicien com per a alumnes amb experiència prèvia.
+
+__Dimarts__
+21:30 - 22:30 (P. Llorens)
+
+__Divendres__
+20:00 - 21:30 (P. Llorens)
+
+__Dissabtes__
+11:00 - 13:00 (P. Llorens)
+
+Per a més informació sobre les classes de karate, pots contactar a través del correu electrònic: [pepllorensinstructor@gmail.com](mailto:pepllorensinstructor@gmail.com), per telèfon o whatsapp al [+34646764213](https://wa.me/+34646764213), o presencialment a: [https://maps.app.goo.gl/F5sn2KhkDkw674Pb7](https://maps.app.goo.gl/F5sn2KhkDkw674Pb7)

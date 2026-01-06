@@ -13,6 +13,9 @@ Disponemos de un amplio horario de classes para acomodar a adultos y niños, y d
 
 <hr>
 
+
+<hr id="aikido" class="anchor">
+
 ## Clases de aikido
 
 <picture>
@@ -24,17 +27,18 @@ Disponemos de un amplio horario de classes para acomodar a adultos y niños, y d
 Práctica regular para todos los niveles. Disponible para todos los miembros mayores de 12 años.
 
 __Lunes__
-20:00 - 21:30 (J.L. Zafra)
+20:00 - 20:45 (J.L. Zafra)
 __Martes__
 18:30 - 19:30 (A. Sancho)<br>
-19:30 - 20:30 (P. Martín, Dojo-cho)<br>
+19:30 - 20:30 (P. Martín, Dōjō-chō)<br>
 20:30 - 21:30
 __Miércoles__
-20:00 - 21:30 (J.M. Pérez)
+20:00 - 20:45 (J.M. Pérez)<br>
+20:45 - 21:30 (J.M. Pérez)
 __Jueves__
 18:30 - 19:30 (A. Sancho)<br>
-19:30 - 20:30 (P. Martín, Dojo-cho)<br>
-20:30 - 21:30 (P. Martín, Dojo-cho)
+19:30 - 20:30 (P. Martín, Dōjō-chō)<br>
+20:30 - 21:30 (P. Martín, Dōjō-chō)
 __Viernes__
 19:00 - 20:00 (P. Fortes)
 __Sábado__
@@ -80,7 +84,10 @@ __Sábado__
 Se centra en el aprendizaje de las caídas y movimientos básicos. Recomendado para principiantes y practicantes de nivel intermedio.
 
 __Martes__
-19:30 - 20:30
+19:30 - 20:30 (P. Martín, Dōjō-chō)
+
+__Miércoles__
+20:00 - 20:45 (J.M. Pérez)
 
 ## Clases de aikido con armas
 
@@ -106,7 +113,7 @@ __Martes__
 Práctica con sable de madera o _bokken_, el bastón medio de madera o _jō_, y el cuchillo de madera o _tantō_.
 
 __Jueves__
-19:30 - 20:30 (P. Martín, Dojo-cho)
+19:30 - 20:30 (P. Martín, Dōjō-chō)
 
 ## Clases de aikido para niños y niñas
 
@@ -188,10 +195,15 @@ _Las clases de aikido para niños y niñas están temporalmente suspendidas._
   </div>
 </div>
 
-_Iaijutsu_ es el arte de desenvaine y corte simultáneo. Este arte de desenvaine de la espada japonesa (_katana_) es una de las disciplinas básicas en la educación clásica de los samurai. _Ryūshin Shouchi-ryū_ es una escuela de kobudō (arte marcial antiguo) especializada en iaijutsu. Este sistema se basa en la esgrima tradicional originada en el área de Kanto, extendida posteriormente a Kyushu y otras áreas de Japón. Está compuesto por 60 kata de Iai, kumitachi de Kenjutsu, kumitachi de Iai, tachitori y tantōtori. Las formas transmitidas por este estilo, destilan la sabiduría, la disciplina y la determinación de muchos maestros y consumados practicantes durante cientos de años, y ha sido un gran reto de vital importancia transmitir estas formas correctamente generación tras generación.
+_Iaijutsu_ es el arte de desenvaine y corte simultáneo con la espada japonesa o _katana_. Se trata de una disciplina fundamental en la formación clásica de los samurái, centrada en la precisión, la rapidez y la coordinación.
+
+La escuela _Ryūshin Shōchi-ryū_ se especializa en iaijutsu, basada en la esgrima tradicional originaria de la región de Kanto y posteriormente extendida a otras zonas de Japón.
+
+__Lunes__
+20:00 - 20:45 (J.L. Zafra)
 
 __Sábado__
-11:00 - 13:00 (el segundo sábado del mes)
+08:30 - 10:00 (X. Serra)
 
 <hr id="judo" class="anchor">
 
@@ -232,18 +244,78 @@ __Sábado__
   </div>
 </div>
 
-El judo es un arte marcial de Japón, creado hace 150 años por el maestro Jigoro Kano. Judo significa «el camino de la suavidad», y se basa en un conjunto de técnicas de defensa de pie (proyecciones) y técnicas de defensa en el suelo (inmovilizaciones, luxaciones, y estrangulaciones).
+El Judo es un arte marcial japonés creado por Jigorō Kanō a finales del siglo XIX. Su nombre significa «_el camino de la suavidad_» y se basa en aprovechar la fuerza del oponente mediante el equilibrio, la técnica y el control.
 
-Jigoro Kano tuvo como objetivo principal la educación y la formación de los jóvenes. Adaptó al ámbito educativo las técnicas más efectivas y menos lesivas de varias escuelas tradicionales de artes marciales de Japón; todo ello sin perder la esencia y los valores del budo para crear una escuela donde se compaginaba la educación académica y la práctica del judo.
+La práctica del judo incluye técnicas de pie (proyecciones) y técnicas de suelo (inmovilizaciones, luxaciones y estrangulaciones), siempre desde un enfoque seguro y respetuoso.
 
-Jigoro Kano definió el judo como "ayuda y prosperidad mutua", y "la utilización óptima de la energía". El código moral del judo se resume en: cortesía, coraje, sinceridad, honor, modestia, respeto, autocontrol, y amistad.
+Desde sus orígenes, el judo fue concebido como una herramienta educativa, orientada al desarrollo físico y personal. Sus principios fundamentales son la máxima eficacia con el mínimo esfuerzo y el beneficio mutuo, acompañados de valores como el respeto, la disciplina y el autocontrol.
 
-El judo tiene una vertiente competitiva que se convirtió en deporte olímpico en los Juegos Olímpicos de Tokio 1964.
+El judo también tiene una vertiente deportiva, y es disciplina olímpica desde los Juegos Olímpicos de Tokio 1964.
 
 __Lunes__
-18:30 - 20:00
+18:30 - 20:00 (A. Molina)
 
 __Miércoles__
-18:30 - 20:00
+18:30 - 20:00 (A. Molina)
 
 Para más información sobre las clases de judo, contacta a través de la dirección de email: [judomusubi@gmail.com](mailto:judomusubi@gmail.com)
+
+<hr id="karate" class="anchor">
+
+## Clases de karate
+
+<div id="classes-CJc2lhFv-judo" class="container">
+  <div class="row">
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-42.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-42.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-42.jpg" class="img-fluid lazyload" alt="Aikido Musubi Clases de karate">
+      </picture>
+    </div>
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-43.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-43.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-43.jpg" class="img-fluid lazyload" alt="Aikido Musubi Clases de karate">
+      </picture>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-44.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-44.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-44.jpg" class="img-fluid lazyload" alt="Aikido Musubi Clases de karate">
+      </picture>
+    </div>
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-45.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-45.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-45.jpg" class="img-fluid lazyload" alt="Aikido Musubi Clases de karate">
+      </picture>
+    </div>
+  </div>
+</div>
+
+El Karate Kyokushin es un arte marcial tradicional de contacto completo, creado por Masutatsu Ōyama, que va más allá de la práctica deportiva. Su entrenamiento propone un camino de desarrollo personal, en el que se fortalecen el cuerpo, la mente y el espíritu a través de la disciplina, el respeto y la superación constante.
+
+Las clases están impartidas por Pep Llorens, instructor con una extensa trayectoria y reconocimiento a nivel nacional e internacional:
+
+- Campeón de Europa 1999 (peso ligero, Hungría)
+- Subcampeón de Europa 2001 (peso medio, Badalona)
+- Múltiple campeón nacional e internacional
+
+Bajo su guía, los practicantes trabajan técnica, combate y valores tradicionales del karate, en un entorno exigente pero accesible, adecuado tanto para quienes se inician como para alumnos con experiencia previa.
+
+__Martes__
+21:30 - 22:30 (P. Llorens)
+
+__Viernes__
+20:00 - 21:30 (P. Llorens)
+
+__Sábados__
+11:00 - 13:00 (P. Llorens)
+
+Para más información sobre las clases de karate, contacta a través de la dirección de email: [pepllorensinstructor@gmail.com](mailto:pepllorensinstructor@gmail.com), por teléfono o whatsapp en el [+34646764213](https://wa.me/+34646764213), o presencialmente en: [https://maps.app.goo.gl/F5sn2KhkDkw674Pb7](https://maps.app.goo.gl/F5sn2KhkDkw674Pb7)

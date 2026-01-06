@@ -1,109 +1,348 @@
 <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const calendarEl = document.getElementById('calendar');
+  const allCategories = new Map();
+  const allLocations = new Map();
+  let activeCategory = null;
 
-  // vanilla JS window width and height
-  var w=window,
-  d=document,
-  e=d.documentElement,
-  g=d.getElementsByTagName('body')[0],
-  x=w.innerWidth||e.clientWidth||g.clientWidth,
-  y=w.innerHeight||e.clientHeight||g.clientHeight;
+  // === TRANSLATIONS & language detection ===
+  const lang = document.documentElement.getAttribute('lang') || 'en';
 
-  document.addEventListener('DOMContentLoaded', function() {
+  // Set locale-specific default location
+  let activeLocation = "Aikido Musubi"; // fallback default
+  if (lang === 'ja') {
+    activeLocation = "合気道産靈";
+  }
 
-    var calendarEl = document.getElementById('calendar');
+  const translations = {
+    ca: { filter: 'Filtrar Activitats', showAll: 'Mostrar-ho Tot' },
+    en: { filter: 'Filter Activities', showAll: 'Show All' },
+    es: { filter: 'Filtrar Actividades', showAll: 'Mostrar Todo' },
+    ja: { filter: 'アクティビティを絞り込む', showAll: 'すべて表示' }
+  };
+  const t = translations[lang] || translations.en;
 
-    var calendar = new FullCalendar.Calendar(calendarEl, {
+  // === SLUG HELPERS ===
+  function slugify(text) {
+    return text.toString().toLowerCase()
+      .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+      .replace(/\s+/g, '-')
+      .replace(/[^a-z0-9\-]/g, '')
+      .replace(/\-+/g, '-')
+      .replace(/^-+|-+$/g, '');
+  }
 
-      plugins: [ 'bootstrap', 'dayGrid', 'list' ],
-      defaultView: x < 993 ? 'listWeek':'dayGridWeek',
-      customButtons: {
-        myCustomDayGridWeekButton: {
-          bootstrapFontAwesome: 'fa-th',
-          click: function() {
-            calendar.changeView('dayGridWeek');
-          }
-        },
-        myCustomListWeekButton: {
-          bootstrapFontAwesome: 'fa-bars',
-          click: function() {
-            calendar.changeView('listWeek');
-          }
-        },
+  // === Responsive helper ===
+  const getViewportWidth = () =>
+    window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+
+  // === FullCalendar initialization ===
+  const calendar = new FullCalendar.Calendar(calendarEl, {
+    plugins: ['bootstrap', 'dayGrid', 'list'],
+    defaultView: getViewportWidth() < 993 ? 'listWeek' : 'dayGridWeek',
+
+    customButtons: {
+      myCustomDayGridWeekButton: {
+        bootstrapFontAwesome: 'fa-th',
+        click: () => calendar.changeView('dayGridWeek')
       },
-      //header: { left: 'myCustomListWeekButton,myCustomDayGridWeekButton', center: '', right: 'today prev,next' },
-      header: { left: '', center: 'myCustomListWeekButton,myCustomDayGridWeekButton', right: '' },
+      myCustomListWeekButton: {
+        bootstrapFontAwesome: 'fa-bars',
+        click: () => calendar.changeView('listWeek')
+      }
+    },
+    header: { left: '', center: 'myCustomListWeekButton,myCustomDayGridWeekButton', right: '' },
 
-      minTime: '09:15:00',
-      maxTime: '21:30:00',
-      timeFormat: 'HH:mm',
-      slotDuration: '00:30:00',
+    minTime: '09:15:00',
+    maxTime: '21:30:00',
+    slotDuration: '00:30:00',
+    contentHeight: 'auto',
+    height: 'parent',
+    themeSystem: 'bootstrap',
 
-      contentHeight: 'auto',
-      height: 'parent',
-      themeSystem: 'bootstrap',
-      bootstrapFontAwesome: {
-        close: 'fa-times',
-        prev: 'fa-chevron-left',
-        next: 'fa-chevron-right',
-        prevYear: 'fa-angle-double-left',
-        nextYear: 'fa-angle-double-right'
-      },
-      eventBackgroundColor: '#A9A9A9',
-      eventBorderColor: '#A9A9A9',
-      eventTextColor: '#121315',
-      displayEventTrue: true,
-      displayEventEnd: true,
+    eventBackgroundColor: '#A9A9A9',
+    eventBorderColor: '#A9A9A9',
+    eventTextColor: '#121315',
+    displayEventTime: true,
+    displayEventEnd: true,
+    eventTimeFormat: { hour: '2-digit', minute: '2-digit', meridiem: false, hour12: false },
+    columnHeaderFormat: { weekday: 'long' },
+    views: {
+      dayGridWeek: { allDaySlot: false },
+      listWeek: { allDaySlot: false, listDayAltFormat: false }
+    },
 
-      eventTimeFormat: {
-        hour: '2-digit',
-        minute: '2-digit',
-        omitZeroMinute: false,
-        meridiem: false,
-        hour12: false
-      },
+    // === Event render ===
+    eventRender(info) {
+      const props = info.event.extendedProps || {};
+      const category = props.category;
+      const location = props.location;
+      const isListView = info.view.type.startsWith('list');
 
-      columnHeaderFormat: { weekday: 'long' },
+      // Use full location in list/mobile view, abbreviated in grid view
+      const displayLocation = isListView
+        ? location
+        : (props.location_abbr || location);
+      const customStyle = props.customStyle || '';
 
-      views: {
-        dayGridWeek: {
-          allDaySlot: false,
-          //columnHeaderFormat: { weekday: 'short', month: '2-digit', day: '2-digit', omitCommas: true },
-          //columnHeaderFormat: { weekday: 'long' }
-        },
-        listWeek: {
-          allDaySlot: false,
-          listDayAltFormat: false
-        }
+      const showLoc = location === activeLocation;
+      info.el.style.display = showLoc ? '' : 'none';
+      info.el.style.opacity = (!activeCategory || category === activeCategory) ? 1 : 0.4;
+      info.el.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+      info.el.style.transform = showLoc ? 'translateY(0)' : 'translateY(20px)';
+
+      if (customStyle) {
+        const currentStyle = info.el.getAttribute('style') || '';
+        info.el.setAttribute('style', currentStyle + ';' + customStyle);
       }
 
-      //events: '/training-schedule.json',
+      let start = info.event.start;
+      let end = info.event.end;
+      if (!end) {
+        const timeEl = info.el.querySelector('.fc-time');
+        if (timeEl) {
+          const times = timeEl.innerText.split('-').map(t => t.trim());
+          if (times.length === 2) {
+            const [sh, sm] = times[0].split(':').map(Number);
+            const [eh, em] = times[1].split(':').map(Number);
+            end = new Date(start);
+            end.setHours(eh, em || 0, 0, 0);
+          }
+        }
+      }
+      if (end) {
+        const duration = Math.round((end - start) / 60000);
+        const rounded = Math.round(duration / 30) * 30;
+        info.el.classList.add('duration-' + rounded);
+      }
 
-    });
-
-    if (document.documentElement.getAttribute('lang') === 'ca') {
-      calendar.addEventSource('/training-schedule-ca.json');
-      calendar.setOption('columnHeaderFormat', { weekday: 'long' });
-      calendar.setOption('firstDay', 1);
-      calendar.setOption('locale', 'ca');
-    } else if (document.documentElement.getAttribute('lang') === 'en') {
-      calendar.addEventSource('/training-schedule-en.json');
-      calendar.setOption('columnHeaderFormat', { weekday: 'long' });
-      calendar.setOption('firstDay', 0);
-      calendar.setOption('locale', 'en');
-    } else if (document.documentElement.getAttribute('lang') === 'es') {
-      calendar.addEventSource('/training-schedule-es.json');
-      calendar.setOption('columnHeaderFormat', { weekday: 'long' });
-      calendar.setOption('firstDay', 1);
-      calendar.setOption('locale', 'es');
-    } else if (document.documentElement.getAttribute('lang') === 'ja') {
-      calendar.addEventSource('/training-schedule-ja.json');
-      calendar.setOption('columnHeaderFormat', { weekday: 'short' });
-      calendar.setOption('firstDay', 0);
-      calendar.setOption('locale', 'ja');
+      if (location) {
+        const contentEl =
+          info.el.querySelector('.fc-content') ||
+          info.el.querySelector('.fc-list-item-title');
+        if (contentEl) {
+          let locSpan = contentEl.querySelector('.fc-location');
+          if (!locSpan) {
+            locSpan = document.createElement('span');
+            locSpan.className = 'fc-location';
+            contentEl.appendChild(locSpan);
+          }
+          locSpan.textContent = displayLocation;
+          locSpan.title = location; // optional tooltip
+        }
+      }
     }
-
-    calendar.render();
-
   });
 
+  // === Locale setup ===
+  let locale = 'en', firstDay = 0, jsonFile = '/training-schedule-en.json';
+  if (lang === 'ca') { locale = 'ca'; firstDay = 1; jsonFile = '/training-schedule-ca.json'; }
+  else if (lang === 'es') { locale = 'es'; firstDay = 1; jsonFile = '/training-schedule-es.json'; }
+  else if (lang === 'ja') { locale = 'ja'; firstDay = 0; jsonFile = '/training-schedule-ja.json'; }
+
+  // === Load data ===
+  fetch(jsonFile).then(r => r.json()).then(data => {
+
+    // Build categories and locations
+    const allLocationsSlugs = new Map(); // location -> slug
+    data.forEach(ev => {
+      if (ev.category && !allCategories.has(ev.category)) {
+        allCategories.set(ev.category, {
+          color: ev.backgroundColor || randomColor(ev.category),
+          disabled: ev.disabledByDefault || false
+        });
+      }
+      if (ev.location) {
+        if (!allLocations.has(ev.location)) allLocations.set(ev.location, 0);
+        allLocations.set(ev.location, allLocations.get(ev.location) + 1);
+        if (ev.slug) allLocationsSlugs.set(ev.location, ev.slug);
+        else allLocationsSlugs.set(ev.location, slugify(ev.location)); // fallback
+      }
+    });
+
+    // Check URL location slug
+    const urlParams = new URLSearchParams(window.location.search);
+    const hashParams = new URLSearchParams(window.location.hash.replace(/^#/, ''));
+    const locationParam = urlParams.get('location') || hashParams.get('location');
+    if (locationParam) {
+      const match = [...allLocationsSlugs.entries()].find(([loc, slug]) => slug === locationParam);
+      if (match) activeLocation = match[0];
+    }
+
+    calendar.addEventSource(data);
+    calendar.setOption('locale', locale);
+    calendar.setOption('firstDay', firstDay);
+    calendar.render();
+
+    addCategoryDropdown();
+    addLocationDropdown();
+
+    // === Location dropdown with slug integration ===
+    function addLocationDropdown() {
+      const toolbarRight = calendarEl.querySelector('.fc-toolbar .fc-right');
+      if (!toolbarRight || allLocations.size === 0) return;
+
+      const dropdown = document.createElement('div');
+      dropdown.className = 'dropdown d-inline-block';
+      const toggle = document.createElement('button');
+      toggle.className = 'btn btn-outline-primary btn-sm dropdown-toggle';
+      toggle.type = 'button';
+      toggle.textContent = activeLocation;
+      toggle.setAttribute('aria-expanded', 'false');
+      dropdown.appendChild(toggle);
+
+      const menu = document.createElement('ul');
+      menu.className = 'dropdown-menu';
+      menu.style.minWidth = '14rem';
+      dropdown.appendChild(menu);
+
+      allLocations.forEach((count, name) => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = '#';
+        a.className = 'dropdown-item';
+        a.textContent = name;
+        li.appendChild(a);
+        menu.appendChild(li);
+        if (name === activeLocation) a.classList.add('active');
+
+        a.addEventListener('click', e => {
+          e.preventDefault();
+          activeLocation = name;
+          menu.querySelectorAll('a').forEach(el => el.classList.remove('active'));
+          a.classList.add('active');
+          toggle.textContent = activeLocation;
+
+          // Use slug in URL
+          const slug = allLocationsSlugs.get(name);
+          const newUrl = new URL(window.location);
+          newUrl.searchParams.set('location', slug);
+          window.history.replaceState({}, '', newUrl);
+
+          calendar.rerenderEvents();
+          closeMenu();
+        });
+      });
+
+      toolbarRight.appendChild(dropdown);
+      toggle.addEventListener('click', e => {
+        e.stopPropagation();
+        menu.classList.toggle('show');
+        toggle.setAttribute('aria-expanded', menu.classList.contains('show'));
+      });
+      document.addEventListener('click', e => { if (!dropdown.contains(e.target)) closeMenu(); });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+      function closeMenu() { menu.classList.remove('show'); toggle.setAttribute('aria-expanded', 'false'); }
+    }
+
+    // === Category dropdown (unchanged) ===
+    function addCategoryDropdown() {
+      const toolbarLeft = calendarEl.querySelector('.fc-toolbar .fc-left');
+      if (!toolbarLeft || allCategories.size === 0) return;
+
+      const dropdown = document.createElement('div');
+      dropdown.className = 'dropdown d-inline-block me-2';
+      const toggle = document.createElement('button');
+      toggle.className = 'btn btn-outline-primary btn-sm dropdown-toggle';
+      toggle.type = 'button';
+      toggle.textContent = t.filter;
+      toggle.setAttribute('aria-expanded', 'false');
+      dropdown.appendChild(toggle);
+
+      const menu = document.createElement('ul');
+      menu.className = 'dropdown-menu';
+      menu.style.minWidth = '12rem';
+      dropdown.appendChild(menu);
+
+      const liAll = document.createElement('li');
+      const aAll = document.createElement('a');
+      aAll.href = '#';
+      aAll.className = 'dropdown-item active fw-bold';
+      aAll.textContent = t.showAll;
+      liAll.appendChild(aAll);
+      menu.appendChild(liAll);
+
+      aAll.addEventListener('click', e => {
+        e.preventDefault();
+        activeCategory = null;
+        aAll.classList.add('active');
+        menu.querySelectorAll('a[data-category]').forEach(a => a.classList.remove('active'));
+        toggle.textContent = t.filter;
+        calendar.rerenderEvents();
+        closeMenu();
+      });
+
+      allCategories.forEach((obj, name) => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = '#';
+        a.className = 'dropdown-item d-flex align-items-center';
+        a.setAttribute('data-category', name);
+        if (obj.disabled) a.classList.add('text-muted');
+        a.innerHTML = `<span style="width:12px;height:12px;border-radius:50%;background:${obj.color};display:inline-block;margin-right:8px;"></span><span>${name}</span>`;
+        li.appendChild(a);
+        menu.appendChild(li);
+
+        a.addEventListener('click', e => {
+          e.preventDefault();
+          activeCategory = name;
+          menu.querySelectorAll('a').forEach(el => el.classList.remove('active'));
+          a.classList.add('active');
+          aAll.classList.remove('active');
+          toggle.textContent = name;
+          calendar.rerenderEvents();
+          closeMenu();
+        });
+      });
+
+      toolbarLeft.appendChild(dropdown);
+      toggle.addEventListener('click', e => {
+        e.stopPropagation();
+        menu.classList.toggle('show');
+        toggle.setAttribute('aria-expanded', menu.classList.contains('show'));
+      });
+      document.addEventListener('click', e => { if (!dropdown.contains(e.target)) closeMenu(); });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+      function closeMenu() { menu.classList.remove('show'); toggle.setAttribute('aria-expanded', 'false'); }
+    }
+
+    // === Random color generator ===
+    function randomColor(str) {
+      let hash = 0;
+      for (let i = 0; i < str.length; i++)
+        hash = str.charCodeAt(i) + ((hash << 5) - hash);
+      let c = (hash & 0x00FFFFFF).toString(16).toUpperCase();
+      return "#" + "00000".substring(0, 6 - c.length) + c;
+    }
+
+    // === Auto-close dropdowns ===
+    calendar.on('viewSkeletonRender', () => {
+      const menus = calendarEl.querySelectorAll('.dropdown-menu.show');
+      menus.forEach(menu => {
+        menu.classList.remove('show');
+        const toggle = menu.closest('.dropdown').querySelector('.dropdown-toggle');
+        if (toggle) toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // === Responsive view switching ===
+    function handleResponsiveView() {
+      if (!calendar || !calendar.view) return;
+      const width = getViewportWidth();
+      const currentView = calendar.view.type;
+      if (width < 993 && currentView !== 'listWeek') {
+        calendar.changeView('listWeek');
+      } else if (width >= 993 && currentView !== 'dayGridWeek') {
+        calendar.changeView('dayGridWeek');
+      }
+    }
+    let resizeTimeout;
+    const debouncedResize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(handleResponsiveView, 200);
+    };
+    window.addEventListener('resize', debouncedResize);
+    window.addEventListener('orientationchange', handleResponsiveView);
+  });
+});
 </script>

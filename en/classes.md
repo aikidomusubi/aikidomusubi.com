@@ -13,6 +13,9 @@ We have a wide schedule of classes to accommodate adults and children, and diffe
 
 <hr>
 
+
+<hr id="aikido" class="anchor">
+
 ## Aikido classes
 
 <picture>
@@ -24,17 +27,18 @@ We have a wide schedule of classes to accommodate adults and children, and diffe
 Regular practice for all levels. Available to all members over 12 years old.
 
 __Monday__
-20:00 - 21:30 (J.L. Zafra)
+20:00 - 20:45 (J.L. Zafra)
 __Tuesday__
 18:30 - 19:30 (A. Sancho)<br>
-19:30 - 20:30 (P. Martín, Dojo-cho)<br>
+19:30 - 20:30 (P. Martín, Dōjō-chō)<br>
 20:30 - 21:30
 __Wednesday__
-20:00 - 21:30 (J.M. Pérez)
+20:00 - 20:45 (J.M. Pérez)<br>
+20:45 - 21:30 (J.M. Pérez)
 __Thursday__
 18:30 - 19:30 (A. Sancho)<br>
-19:30 - 20:30 (P. Martín, Dojo-cho)<br>
-20:30 - 21:30 (P. Martín, Dojo-cho)
+19:30 - 20:30 (P. Martín, Dōjō-chō)<br>
+20:30 - 21:30 (P. Martín, Dōjō-chō)
 __Friday__
 19:00 - 20:00 (P. Fortes)
 __Saturday__
@@ -80,7 +84,10 @@ __Saturday__
 Practice focuses on learning basic falls and movements. Recommended for beginners and intermediate level practitioners.
 
 __Tuesday__
-19:30 - 20:30
+19:30 - 20:30 (P. Martín, Dōjō-chō)
+
+__Wednesday__
+20:00 - 20:45 (J.M. Pérez)
 
 ## Aikido weapons classes
 
@@ -106,7 +113,7 @@ __Tuesday__
 Practice with wooden sword or _bokken_, the short staff or _jō_, and the wooden knife or _tantō_.
 
 __Thursday__
-19:30 - 20:30 (P. Martín, Dojo-cho)
+19:30 - 20:30 (P. Martín, Dōjō-chō)
 
 ## Aikido classes for children
 
@@ -188,10 +195,15 @@ _Aikido classes for children are temporarily suspended._
   </div>
 </div>
 
-_Iaijutsu_ is a combative quick-draw sword technique. This art of drawing the Japanese sword (_katana_) is one of the Japanese basic martial art disciplines in the education of the classical samurai. _Ryūshin Shouchi-ryū_ is a kobudō (ancient martial art) school specialized in iaijutsu. This system is based on the traditional fencing originated in the Kanto area, later extended to Kyushu and other areas of Japan. It is composed of 60 kata of Iai, kumitachi of Kenjutsu, kumitachi of Iai, tachitori and tantōtori. The forms passed down by this style exude the wisdom, discipline, and determination of many masters and accomplished practitioners for hundreds of years, and it has been a major challenge of great importance to transmit these forms correctly generation after generation.
+_Iaijutsu_ is the art of drawing and cutting simultaneously with the Japanese sword or _katana_. It is a fundamental discipline in the classical training of the samurai, focused on precision, speed, and coordination.
+
+The school _Ryūshin Shōchi-ryū_ specializes in iaijutsu, based on the traditional swordsmanship originating in the Kanto region and later extended to other areas of Japan.
+
+__Monday__
+20:00 - 20:45 (J.L. Zafra)
 
 __Saturday__
-11:00 - 13:00 (the second Saturday of the month)
+08:30 - 10:00 (X. Serra)
 
 <hr id="judo" class="anchor">
 
@@ -232,18 +244,78 @@ __Saturday__
   </div>
 </div>
 
-Judo is a martial art from Japan, created 150 years ago by master Jigoro Kano. Judo means "the way of softness", and it is based on a set of stand-up self-defense techniques (throws) and ground grappling self-defense techniques (immobilisations, dislocations, and strangulations).
+Judo is a Japanese martial art created by Jigorō Kanō in the late 19th century. Its name means “_the gentle way_” and it is based on using the opponent’s strength through balance, technique, and control.
 
-Jigoro Kano's main objective was the education and training of young people. He adapted the most effective and least harmful techniques from various traditional Japanese martial arts to an educational environment; all this without losing the essence and values ​​of budo to create a school where academic education and the practice of judo were combined.
+Judo practice includes standing techniques (throws) and ground techniques (pins, joint locks, and strangles), always with a safe and respectful approach.
 
-Jigoro Kano defined judo as "mutual aid and prosperity", and "the optimal use of energy". The moral code of judo is summarised in: courtesy, courage, sincerity, honor, modesty, respect, self-control, and friendship.
+From its origins, judo was conceived as an educational discipline, focused on physical and personal development. Its fundamental principles are maximum efficiency with minimum effort and mutual benefit, together with values such as respect, discipline, and self-control.
 
-Judo has a competitive side that became an Olympic sport at the 1964 Tokyo Olympics.
+Judo also has a sporting dimension and has been an Olympic discipline since the Tokyo 1964 Olympic Games.
 
 __Monday__
-18:30 - 20:00
+18:30 - 20:00 (A. Molina)
 
 __Wednesday__
-18:30 - 20:00
+18:30 - 20:00 (A. Molina)
 
 For further information about judo classes, contact by email: [judomusubi@gmail.com](mailto:judomusubi@gmail.com)
+
+<hr id="karate" class="anchor">
+
+## Clases de karate
+
+<div id="classes-CJc2lhFv-judo" class="container">
+  <div class="row">
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-42.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-42.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-42.jpg" class="img-fluid lazyload" alt="Aikido Musubi Karate Classes">
+      </picture>
+    </div>
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-43.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-43.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-43.jpg" class="img-fluid lazyload" alt="Aikido Musubi Karate Classes">
+      </picture>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-44.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-44.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-44.jpg" class="img-fluid lazyload" alt="Aikido Musubi Karate Classes">
+      </picture>
+    </div>
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-45.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-45.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-45.jpg" class="img-fluid lazyload" alt="Aikido Musubi Karate Classes">
+      </picture>
+    </div>
+  </div>
+</div>
+
+Kyokushin Karate is a traditional full-contact martial art founded by Masutatsu Ōyama. It goes beyond sport practice, offering a path of personal development in which body, mind, and spirit are strengthened through discipline, respect, and constant self-improvement.
+
+Classes are taught by Pep Llorens, an instructor with extensive experience and national and international recognition:
+
+- European Champion 1999 (Lightweight, Hungary)
+- European Vice Champion 2001 (Middleweight, Badalona)
+- Multiple national and international champion
+
+Under his guidance, practitioners train technique, combat, and traditional karate values in a demanding yet accessible environment, suitable both for beginners and for students with prior experience.
+
+__Tuesday__
+21:30 - 22:30
+
+__Friday__
+20:00 - 21:30
+
+__Saturday__
+11:00 - 13:00
+
+For more information about karate classes, please contact us by email at [pepllorensinstructor@gmail.com](mailto:pepllorensinstructor@gmail.com), by phone or whatsapp at [+34646764213](https://wa.me/+34646764213), or visit us at: [https://maps.app.goo.gl/F5sn2KhkDkw674Pb7](https://maps.app.goo.gl/F5sn2KhkDkw674Pb7)

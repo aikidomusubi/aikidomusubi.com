@@ -13,6 +13,9 @@ i18n-ref: classes-CJc2lhFv
 
 <hr>
 
+
+<hr id="aikido" class="anchor">
+
 ## 一般クラス
 
 <picture>
@@ -24,13 +27,14 @@ i18n-ref: classes-CJc2lhFv
 すべてのレベルの方への定期的なクラス。12歳以上のすべての方が利用できます。
 
 __月__
-20:00 - 21:30 (ホセ・ルイス・ザフラ)
+20:00 - 20:45 (ホセ・ルイス・ザフラ)
 __火__
 18:30 - 19:30 (アルベルト・サンチョ)<br>
 19:30 - 20:30 (パブロ•マルティン 道場長)<br>
 20:30 - 21:30
 __水__
-20:00 - 21:30 (フアンマ・ペレス)
+20:00 - 20:45 (フアンマ・ペレス)<br>
+20:45 - 21:30 (フアンマ・ペレス)
 __木__
 18:30 - 19:30 (アルベルト・サンチョ)<br>
 19:30 - 20:30 (パブロ•マルティン 道場長)<br>
@@ -80,7 +84,10 @@ __土__
 基本的な転倒と動きを学ぶことに焦点を当てたクラス。初心者から中級レベルの方におすすめです
 
 __火__
-19:30 - 20:30
+19:30 - 20:30 (パブロ•マルティン 道場長)
+
+__水__
+20:00 - 20:45 (フアンマ・ペレス)
 
 ## 武器クラス
 
@@ -188,8 +195,15 @@ _子供クラスを一時的に休止させていただきます。_
   </div>
 </div>
 
+居合術は、日本刀による抜刀と斬撃を同時に行う技術の武道です。侍の古典的な修行において、正確さ、速さ、そして協調性を養う基本的な科目です。
+
+柳心照智流は居合術を専門としており、関東地方に起源を持ち、その後日本の他地域にも広がった伝統的な剣術に基づいています。
+
+__月__
+20:00 - 20:45 (ホセ・ルイス・ザフラ)
+
 __土__
-11:00 - 13:00 (一月の第２土曜日)
+08:30 - 10:00 (チャビ・セッラ)
 
 <hr id="judo" class="anchor">
 
@@ -230,11 +244,82 @@ __土__
   </div>
 </div>
 
+柔道は、19世紀末に嘉納治五郎によって創始された日本の武道です。
+その名称は「柔の道」を意味し、相手の力をバランス・技術・コントロールによって有効に活用することを基本としています。
+
+柔道の稽古には、立ち技（投げ技）と寝技（抑え込み技、関節技、絞め技）があり、安全性と礼節を重んじて行われます。
+
+柔道は創始当初から、心身の成長を目的とした教育的な武道として位置づけられてきました。その基本理念は「精力善用」と「自他共栄」であり、尊重、規律、自己制御といった価値観を大切にしています。
+
+また、柔道には競技としての側面もあり、1964年東京オリンピックより正式なオリンピック競技となっています。
+
 __月__
-18:30 - 20:00
+18:30 - 20:00 (アルベルト・モリナ)
 
 __水__
-18:30 - 20:00
+18:30 - 20:00 (アルベルト・モリナ)
 
 柔道クラスの詳細については、メールにてお問い合わせください。<br>
 メール: [judomusubi@gmail.com](mailto:judomusubi@gmail.com)
+
+<hr id="karate" class="anchor">
+
+## Clases de karate
+
+<div id="classes-CJc2lhFv-judo" class="container">
+  <div class="row">
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-42.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-42.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-42.jpg" class="img-fluid lazyload" alt="合気道産靈 空手クラス">
+      </picture>
+    </div>
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-43.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-43.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-43.jpg" class="img-fluid lazyload" alt="合気道産靈 空手クラス">
+      </picture>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-44.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-44.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-44.jpg" class="img-fluid lazyload" alt="合気道産靈 空手クラス">
+      </picture>
+    </div>
+    <div class="col col-sm">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-45.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-45.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/classes-CJc2lhFv-45.jpg" class="img-fluid lazyload" alt="合気道産靈 空手クラス">
+      </picture>
+    </div>
+  </div>
+</div>
+
+極真空手は、大山倍達によって創始された、伝統的なフルコンタクト空手です。競技としての枠を超え、稽古を通じて身体・精神・心を鍛え、規律、敬意、そして不断の向上心を育む人間形成の道を示します。
+
+クラスは、国内外で高い評価を受ける指導者 ペップ・リョレンス によって指導されています。
+
+- 1999年 ヨーロッパ選手権 優勝（軽量級・ハンガリー）
+
+- 2001年 ヨーロッパ選手権 準優勝（中量級・バダロナ）
+
+- 国内外における多数の優勝・入賞実績
+
+指導のもと、稽古では基本、組手、そして空手の伝統的な価値観を学びます。厳しさの中にも配慮のある環境で、初心者から経験者まで、それぞれのレベルに応じて取り組むことができます。
+
+__火曜日__
+21:30 - 22:30 (ペップ・リュレンス)
+
+__金曜日__
+20:00 - 21:30 (ペップ・リュレンス)
+
+__土曜日__
+11:00 - 13:00 (ペップ・リュレンス)
+
+空手クラスに関する詳細は、メール：[pepllorensinstructor@gmail.com](mailto:pepllorensinstructor@gmail.com)、電話またはwhatsapp：[+34646764213](https://wa.me/+34646764213)、または道場所在地：[https://maps.app.goo.gl/F5sn2KhkDkw674Pb7](https://maps.app.goo.gl/F5sn2KhkDkw674Pb7)

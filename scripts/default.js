@@ -1,3 +1,5 @@
+/* jshint esversion: 6 */
+
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
@@ -93,20 +95,40 @@
     });
   }
 
-  function smoothScrolling() {
+  function stickySection() {
+    var $stickyBar = $('.stickyBar:visible').first();
+    if (!$stickyBar.length) return;
 
-    $('#index-8oGCaMDs-nav a[href*=\\#]:not([href=\\#])').click(function() {
-      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-        var target = $(this.hash);
-        target = target.length ? target : $('[id=' + this.hash.slice(1) +']');
-        if (target.length) {
-          $('html,body').animate({
-            scrollTop: target.offset().top - 126
-          }, 1000);
-          return false;
-        }
+    var stickyOffset = $stickyBar.offset().top - 50;
+
+    function updateSticky() {
+      if ($(window).scrollTop() > stickyOffset) {
+        $stickyBar.addClass('stickyIsFixed');
+      } else {
+        $stickyBar.removeClass('stickyIsFixed');
       }
+    }
+
+    $(window).on('scroll resize', updateSticky);
+    updateSticky();
+  }
+
+  function smoothScrolling() {
+    $('.stickyBar a[href^="#"]').on('click', function(e) {
+      e.preventDefault();
+      const target = $($(this).attr('href'));
+      if (!target.length) return;
+
+      $('.stickyBar .nav-link').removeClass('active');
+      $(this).addClass('active');
+
+      $('html, body').animate({
+        scrollTop: target.offset().top - 120
+      }, 600);
     });
+  }
+
+  function activeLinkSwitch() {
   }
 
   function modalContent() {
@@ -139,12 +161,24 @@ jQuery(document).ready(function($) {
 
   hiddenCode();
   revealContent();
-  smoothScrolling();
-  modalContent();
-  fullCalendarChangeIcons();
 
   if (document.body.classList.contains('index-8oGCaMDs')) {
     parallaxHeader();
+    smoothScrolling();
+  }
+
+  if (document.body.classList.contains('training-schedule-IFMn5oCc')) {
+    fullCalendarChangeIcons();
+  }
+
+  if (document.body.classList.contains('photos-QDOJ1pyG')) {
+    modalContent();
+  }
+
+  if (document.body.classList.contains('index-8oGCaMDs') || document.body.classList.contains('classes-CJc2lhFv') || document.body.classList.contains('materials-uStNjtHz') || document.body.classList.contains('access-information-NdxqmVbV')) {
+    activeLinkSwitch();
+    stickySection();
+    smoothScrolling();
   }
 
   console.log('↑ ↑ ↓ ↓ ← → ← → b a');
