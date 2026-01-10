@@ -15,6 +15,6 @@ Actualmente, ofrecemos clases de Aikido (adultos e infantil) de lunes a sábado.
 
 <div id='calendar'></div>
 
-Descargar los horarios para el año 2025-2026:
+Descargar los horarios para el año 2026:
 
-* [Aikido Musubi - Horarios 2025-2026]({{ site.url }}/files/training-schedule-IFMn5oCc-training-schedule-2025-2026-{{ page.lang }}.pdf)
+* [Aikido Musubi - Horarios 2026]({{ site.url }}/files/training-schedule-IFMn5oCc-training-schedule-2026-{{ page.lang }}.pdf)
