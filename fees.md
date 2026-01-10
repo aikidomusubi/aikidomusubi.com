@@ -372,11 +372,11 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
 
 </div><!-- /#pills-tabContent -->
 
-Descargar la información sobre cuotas para el año 2025-2026:
+Descargar la información sobre cuotas para el año 2026:
 
-* [Aikido Musubi - Cuotas 2025-2026 (detalle)]({{ site.url }}/files/fees-UjbuGtGz-fees-2025-2026-detail-{{ page.lang }}.pdf)
-* [Aikido Musubi - Cuotas 2025-2026 (resumen)]({{ site.url }}/files/fees-UjbuGtGz-fees-2025-2026-summary-{{ page.lang }}.pdf)
+* [Aikido Musubi - Cuotas 2026 (detalle)]({{ site.url }}/files/fees-UjbuGtGz-fees-2026-detail-{{ page.lang }}.pdf)
+* [Aikido Musubi - Cuotas 2026 (resumen)]({{ site.url }}/files/fees-UjbuGtGz-fees-2026-summary-{{ page.lang }}.pdf)
 
 <hr>
 
-Para más información sobre las clases de judo, contacta con _Judo Musubi_ a través de la dirección de email: [judomusubi@gmail.com](mailto:judomusubi@gmail.com)
+Las cuotas indicadas arriba son únicamente para las clases de Aikido.

@@ -372,11 +372,11 @@ Registration is free of charge. We offer discounts for families. And we also giv
 
 </div><!-- /#pills-tabContent -->
 
-Download the fees chart for the 2025-2026 year:
+Download the fees chart for the 2026 year:
 
-* [Aikido Musubi - Fees 2025-2026 (detail)]({{ site.url }}/files/fees-UjbuGtGz-fees-2025-2026-detail-{{ page.lang }}.pdf)
-* [Aikido Musubi - Fees 2025-2026 (summary)]({{ site.url }}/files/fees-UjbuGtGz-fees-2025-2026-summary-{{ page.lang }}.pdf)
+* [Aikido Musubi - Fees 2026 (detail)]({{ site.url }}/files/fees-UjbuGtGz-fees-2026-detail-{{ page.lang }}.pdf)
+* [Aikido Musubi - Fees 2026 (summary)]({{ site.url }}/files/fees-UjbuGtGz-fees-2026-summary-{{ page.lang }}.pdf)
 
 <hr>
 
-The fees listed above are for Aikido classes only. For further information about judo classes, contact _Judo Musubi_ by email: [judomusubi@gmail.com](mailto:judomusubi@gmail.com)
+The fees listed above are for Aikido classes only.

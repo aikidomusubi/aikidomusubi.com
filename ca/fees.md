@@ -372,11 +372,11 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
 
 </div><!-- /#pills-tabContent -->
 
-Descarregar la informació sobre quotes per a l'any 2025-2026:
+Descarregar la informació sobre quotes per a l'any 2026:
 
-* [Aikido Musubi - Quotes 2025-2026 (detall)]({{ site.url }}/files/fees-UjbuGtGz-fees-2025-2026-detail-{{page.lang}}.pdf)
-* [Aikido Musubi - Quotes 2025-2026 (resum)]({{ site.url }}/files/fees-UjbuGtGz-fees-2025-2026-summary-{{page.lang}}.pdf)
+* [Aikido Musubi - Quotes 2026 (detall)]({{ site.url }}/files/fees-UjbuGtGz-fees-2026-detail-{{page.lang}}.pdf)
+* [Aikido Musubi - Quotes 2026 (resum)]({{ site.url }}/files/fees-UjbuGtGz-fees-2026-summary-{{page.lang}}.pdf)
 
 <hr>
 
-Per a més informació sobre les classes de judo, contacta amb _Judo Musubi_ a través de l’adreça electrònica: [judomusubi@gmail.com](mailto:judomusubi@gmail.com)
+Les quotes indicades més amunt són únicament per a les classes d’Aikido.

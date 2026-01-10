@@ -372,13 +372,11 @@ i18n-ref: fees-UjbuGtGz
 
 </div><!-- /#pills-tabContent -->
 
-2025-2026年の料金表をダウンロード：
+2026年の料金表をダウンロード：
 
-* [合気道産靈 - 2025-2026年の料金 (詳細)]({{ site.url }}/files/fees-UjbuGtGz-fees-2025-2026-detail-{{ page.lang }}.pdf)
-* [合気道産靈 - 2025-2026年の料金 (要約)]({{ site.url }}/files/fees-UjbuGtGz-fees-2025-2026-summary-{{ page.lang }}.pdf)
+* [合気道産靈 - 2026年の料金 (詳細)]({{ site.url }}/files/fees-UjbuGtGz-fees-2026-detail-{{ page.lang }}.pdf)
+* [合気道産靈 - 2026年の料金 (要約)]({{ site.url }}/files/fees-UjbuGtGz-fees-2026-summary-{{ page.lang }}.pdf)
 
 <hr>
 
-上記の料金表は合気道クラスのみです。柔道クラスの詳細については、以下の方法で<b>柔道産靈</b>にお問い合わせください。
-
-メール: [judomusubi@gmail.com](mailto:judomusubi@gmail.com)
+上記の料金表は合気道クラスのみです。
