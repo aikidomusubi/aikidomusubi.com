@@ -13,6 +13,7 @@ We have a wide schedule of classes to accommodate adults and children, and diffe
 
 <hr>
 
+{% include stickyBar.html %}
 
 <hr id="aikido" class="anchor">
 

@@ -122,33 +122,95 @@ this.tablist=this._getList().addClass("ui-tabs-nav ui-helper-reset ui-helper-cle
     var $stickyBar = $('.stickyBar:visible').first();
     if (!$stickyBar.length) return;
 
-    var stickyOffset = $stickyBar.offset().top - 50;
+    // Create or reuse placeholder
+    var $placeholder = $stickyBar.next('.sticky-placeholder');
+    if (!$placeholder.length) {
+      $placeholder = $('<div class="sticky-placeholder"></div>');
+      $stickyBar.after($placeholder);
+    }
 
-    function updateSticky() {
-      if ($(window).scrollTop() > stickyOffset) {
-        $stickyBar.addClass('stickyIsFixed');
+    var stickyTop = null;
+    var ticking = false;
+
+    function calculate() {
+      var mainNavHeight = $('.navbar.sticky-top').outerHeight() || 0;
+
+      // Reset state to measure correctly
+      $stickyBar.removeClass('stickyIsFixed');
+      $placeholder.hide().height(0);
+
+      // Measure height including padding and borders
+      var barHeight = $stickyBar.outerHeight(true);
+
+      // Adjust stickyTop considering top navbar
+      stickyTop = Math.round($stickyBar.offset().top - mainNavHeight);
+
+      // Set placeholder height exactly to stickybar height
+      $placeholder.height(barHeight).hide();
+    }
+
+    function update(scrollTop) {
+      if (stickyTop === null) return;
+
+      if (scrollTop >= stickyTop - 1) { // iOS-safe comparison
+        if (!$stickyBar.hasClass('stickyIsFixed')) {
+          $stickyBar.addClass('stickyIsFixed');
+          $placeholder.show();
+        }
       } else {
-        $stickyBar.removeClass('stickyIsFixed');
+        if ($stickyBar.hasClass('stickyIsFixed')) {
+          $stickyBar.removeClass('stickyIsFixed');
+          $placeholder.hide();
+        }
       }
     }
 
-    $(window).on('scroll resize', updateSticky);
-    updateSticky();
+    function onScroll() {
+      var scrollTop = Math.round($(window).scrollTop());
+
+      if (!ticking) {
+        window.requestAnimationFrame(function() {
+          update(scrollTop);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+
+    // Initial calculation after layout is ready
+    setTimeout(function() {
+      calculate();
+      update(Math.round($(window).scrollTop()));
+    }, 50); // 50ms delay ensures CSS & images are loaded
+
+    $(window).on('scroll', onScroll);
+
+    $(window).on('resize orientationchange', function() {
+      calculate();
+      update(Math.round($(window).scrollTop()));
+    });
   }
 
   function smoothScrolling() {
-    $('.stickyBar a[href^="#"]').on('click', function(e) {
-      e.preventDefault();
-      const target = $($(this).attr('href'));
-      if (!target.length) return;
+    $('.stickyBar')
+      .off('click', 'a[href^="#"]')
+      .on('click', 'a[href^="#"]', function(e) {
+        e.preventDefault();
 
-      $('.stickyBar .nav-link').removeClass('active');
-      $(this).addClass('active');
+        const target = $($(this).attr('href'));
+        if (!target.length) return;
 
-      $('html, body').animate({
-        scrollTop: target.offset().top - 120
-      }, 600);
-    });
+        $('.stickyBar .nav-link').removeClass('active');
+        $(this).addClass('active');
+
+        const offset =
+          ($('.navbar.sticky-top').outerHeight() || 0) +
+          ($('.stickyBar').outerHeight() || 0);
+
+        $('html, body').animate({
+          scrollTop: target.offset().top - offset
+        }, 600);
+      });
   }
 
   function activeLinkSwitch() {

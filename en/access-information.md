@@ -13,6 +13,7 @@ Currently, Aikido Musubi has two centers in the province of Barcelona: __Aikido 
 
 <hr>
 
+{% include stickyBar.html %}
 
 <hr id="aikido-musubi" class="anchor">
 

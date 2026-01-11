@@ -13,6 +13,7 @@ i18n-ref: access-information-NdxqmVbV
 
 <hr>
 
+{% include stickyBar.html %}
 
 <hr id="aikido-musubi" class="anchor">
 

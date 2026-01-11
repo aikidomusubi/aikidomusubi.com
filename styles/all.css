@@ -139,6 +139,28 @@
   -ms-transform: scale(1, -1);
   transform: scale(1, -1);
 }
+.stickyBar {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 2rem 0;
+  position: relative;
+  z-index: 1000;
+}
+.stickyBar.stickyIsFixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin-top: 50px;
+  margin-bottom: 0;
+  z-index: 1000;
+}
+.sticky-placeholder {
+  display: block;
+  width: 100%;
+  height: 0;
+}
 @media (min-width: 320px) {
   html body .page .container > main {
     padding: 2rem;
@@ -278,7 +300,7 @@ html body .page .container > main h2 {
   font-family: 'Noto Sans', sans-serif;
   font-weight: 700;
   font-size: 1.5rem;
-  margin: 4rem 0 2rem 0;
+  margin: 3rem 0 2rem 0;
   text-transform: none;
 }
 html body .page .container > main h3 {
@@ -473,8 +495,8 @@ html body .page footer aside:nth-of-type(4) a > svg {
   border-radius: 0;
 }
 .map {
+  height: 100%;
   width: 100%;
-  aspect-ratio: 16 / 9;
 }
 .map iframe {
   width: 100%;
@@ -831,14 +853,10 @@ body.index-8oGCaMDs #index-8oGCaMDs-nav.stickyIsFixed {
   height: auto;
   width: 100%;
   margin-top: 50px;
-  margin-bottom: 96px;
-  padding: calc(2rem / 2) 2rem;
+  padding: calc(2rem / 2) 4rem;
   position: fixed;
   top: 0;
   left: 0;
-}
-body.index-8oGCaMDs #index-8oGCaMDs-nav.stickyIsFixed + hr + h2 {
-  margin-top: calc((16 * 4) + 96px);
 }
 body.index-8oGCaMDs #index-8oGCaMDs-instructors.container {
   margin-bottom: -4rem;
@@ -902,14 +920,10 @@ body.materials-uStNjtHz #materials-uStNjtHz-nav.stickyIsFixed {
   height: auto;
   width: 100%;
   margin-top: 50px;
-  margin-bottom: 96px;
-  padding: calc(2rem / 2) 2rem;
+  padding: calc(2rem / 2) 4rem;
   position: fixed;
   top: 0;
   left: 0;
-}
-body.materials-uStNjtHz #materials-uStNjtHz-nav.stickyIsFixed + hr + h2 {
-  margin-top: calc((16 * 4) + 96px);
 }
 body.classes-CJc2lhFv .page .container > main h2:not(:first-of-type) {
   margin-top: 8rem !important;
@@ -943,14 +957,10 @@ body.classes-CJc2lhFv #classes-CJc2lhFv-nav.stickyIsFixed {
   height: auto;
   width: 100%;
   margin-top: 50px;
-  margin-bottom: 64px;
-  padding: calc(2rem / 2) 2rem;
+  padding: calc(2rem / 2) 4rem;
   position: fixed;
   top: 0;
   left: 0;
-}
-body.classes-CJc2lhFv #classes-CJc2lhFv-nav.stickyIsFixed + hr + h2 {
-  margin-top: calc((16 * 4) + 64px);
 }
 body.classes-CJc2lhFv .page .container > main > p > strong {
   display: block;
@@ -1281,6 +1291,129 @@ body.courses-hFZ2XXIp .page .container > main .card picture,
 body.videos-NuhYeNWr .page .container > main .card picture,
 body.materials-uStNjtHz .page .container > main .card picture {
   margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+body.courses-hFZ2XXIp .page .container > main .card picture.file-audio,
+body.videos-NuhYeNWr .page .container > main .card picture.file-audio,
+body.materials-uStNjtHz .page .container > main .card picture.file-audio {
+  background-color: rgba(244, 162, 97, 0.5);
+}
+body.courses-hFZ2XXIp .page .container > main .card picture.file-audio svg,
+body.videos-NuhYeNWr .page .container > main .card picture.file-audio svg,
+body.materials-uStNjtHz .page .container > main .card picture.file-audio svg {
+  color: #f4a261;
+}
+body.courses-hFZ2XXIp .page .container > main .card picture.file-code,
+body.videos-NuhYeNWr .page .container > main .card picture.file-code,
+body.materials-uStNjtHz .page .container > main .card picture.file-code {
+  background-color: rgba(102, 126, 234, 0.5);
+}
+body.courses-hFZ2XXIp .page .container > main .card picture.file-code svg,
+body.videos-NuhYeNWr .page .container > main .card picture.file-code svg,
+body.materials-uStNjtHz .page .container > main .card picture.file-code svg {
+  color: #667eea;
+}
+body.courses-hFZ2XXIp .page .container > main .card picture.file-excel,
+body.videos-NuhYeNWr .page .container > main .card picture.file-excel,
+body.materials-uStNjtHz .page .container > main .card picture.file-excel {
+  background-color: rgba(38, 166, 154, 0.5);
+}
+body.courses-hFZ2XXIp .page .container > main .card picture.file-excel svg,
+body.videos-NuhYeNWr .page .container > main .card picture.file-excel svg,
+body.materials-uStNjtHz .page .container > main .card picture.file-excel svg {
+  color: #26a69a;
+}
+body.courses-hFZ2XXIp .page .container > main .card picture.file-image,
+body.videos-NuhYeNWr .page .container > main .card picture.file-image,
+body.materials-uStNjtHz .page .container > main .card picture.file-image {
+  background-color: rgba(255, 203, 5, 0.5);
+}
+body.courses-hFZ2XXIp .page .container > main .card picture.file-image svg,
+body.videos-NuhYeNWr .page .container > main .card picture.file-image svg,
+body.materials-uStNjtHz .page .container > main .card picture.file-image svg {
+  color: #ffcb05;
+}
+body.courses-hFZ2XXIp .page .container > main .card picture.file-lines,
+body.videos-NuhYeNWr .page .container > main .card picture.file-lines,
+body.materials-uStNjtHz .page .container > main .card picture.file-lines {
+  background-color: rgba(156, 39, 176, 0.5);
+}
+body.courses-hFZ2XXIp .page .container > main .card picture.file-lines svg,
+body.videos-NuhYeNWr .page .container > main .card picture.file-lines svg,
+body.materials-uStNjtHz .page .container > main .card picture.file-lines svg {
+  color: #9c27b0;
+}
+body.courses-hFZ2XXIp .page .container > main .card picture.file-pdf,
+body.videos-NuhYeNWr .page .container > main .card picture.file-pdf,
+body.materials-uStNjtHz .page .container > main .card picture.file-pdf {
+  background-color: rgba(201, 48, 62, 0.5);
+}
+body.courses-hFZ2XXIp .page .container > main .card picture.file-pdf svg,
+body.videos-NuhYeNWr .page .container > main .card picture.file-pdf svg,
+body.materials-uStNjtHz .page .container > main .card picture.file-pdf svg {
+  color: #c9303e;
+}
+body.courses-hFZ2XXIp .page .container > main .card picture.file-powerpoint,
+body.videos-NuhYeNWr .page .container > main .card picture.file-powerpoint,
+body.materials-uStNjtHz .page .container > main .card picture.file-powerpoint {
+  background-color: rgba(239, 108, 0, 0.5);
+}
+body.courses-hFZ2XXIp .page .container > main .card picture.file-powerpoint svg,
+body.videos-NuhYeNWr .page .container > main .card picture.file-powerpoint svg,
+body.materials-uStNjtHz .page .container > main .card picture.file-powerpoint svg {
+  color: #ef6c00;
+}
+body.courses-hFZ2XXIp .page .container > main .card picture.file-video,
+body.videos-NuhYeNWr .page .container > main .card picture.file-video,
+body.materials-uStNjtHz .page .container > main .card picture.file-video {
+  background-color: rgba(41, 182, 246, 0.5);
+}
+body.courses-hFZ2XXIp .page .container > main .card picture.file-video svg,
+body.videos-NuhYeNWr .page .container > main .card picture.file-video svg,
+body.materials-uStNjtHz .page .container > main .card picture.file-video svg {
+  color: #29b6f6;
+}
+body.courses-hFZ2XXIp .page .container > main .card picture.file-word,
+body.videos-NuhYeNWr .page .container > main .card picture.file-word,
+body.materials-uStNjtHz .page .container > main .card picture.file-word {
+  background-color: rgba(13, 71, 161, 0.5);
+}
+body.courses-hFZ2XXIp .page .container > main .card picture.file-word svg,
+body.videos-NuhYeNWr .page .container > main .card picture.file-word svg,
+body.materials-uStNjtHz .page .container > main .card picture.file-word svg {
+  color: #0d47a1;
+}
+body.courses-hFZ2XXIp .page .container > main .card picture.file-zipper,
+body.videos-NuhYeNWr .page .container > main .card picture.file-zipper,
+body.materials-uStNjtHz .page .container > main .card picture.file-zipper {
+  background-color: rgba(121, 85, 72, 0.5);
+}
+body.courses-hFZ2XXIp .page .container > main .card picture.file-zipper svg,
+body.videos-NuhYeNWr .page .container > main .card picture.file-zipper svg,
+body.materials-uStNjtHz .page .container > main .card picture.file-zipper svg {
+  color: #795548;
+}
+body.courses-hFZ2XXIp .page .container > main .card picture.file-undefined,
+body.videos-NuhYeNWr .page .container > main .card picture.file-undefined,
+body.materials-uStNjtHz .page .container > main .card picture.file-undefined {
+  background-color: rgba(158, 158, 158, 0.5);
+}
+body.courses-hFZ2XXIp .page .container > main .card picture.file-undefined svg,
+body.videos-NuhYeNWr .page .container > main .card picture.file-undefined svg,
+body.materials-uStNjtHz .page .container > main .card picture.file-undefined svg {
+  color: #9e9e9e;
+}
+body.courses-hFZ2XXIp .page .container > main .card picture svg,
+body.videos-NuhYeNWr .page .container > main .card picture svg,
+body.materials-uStNjtHz .page .container > main .card picture svg {
+  max-width: 100%;
+  max-height: 100%;
+  width: 24%;
+  height: 24%;
 }
 body.courses-hFZ2XXIp .page .container > main .card .card-body,
 body.videos-NuhYeNWr .page .container > main .card .card-body,
@@ -1452,14 +1585,10 @@ body.access-information-NdxqmVbV .page .container > main #access-information-Ndx
   height: auto;
   width: 100%;
   margin-top: 50px;
-  margin-bottom: 96px;
-  padding: calc(2rem / 2) 2rem;
+  padding: calc(2rem / 2) 4rem;
   position: fixed;
   top: 0;
   left: 0;
-}
-body.access-information-NdxqmVbV .page .container > main #access-information-NdxqmVbV-nav.stickyIsFixed + hr + h2 {
-  margin-top: calc((16 * 4) + 96px);
 }
 body.access-information-NdxqmVbV .page .container > main > p {
   display: block;
@@ -1603,7 +1732,7 @@ body.access-information-NdxqmVbV .page .container > main .card-group > .card .ca
     height: auto;
     width: 100%;
     position: absolute;
-    text-align: center;
+    text-align: left;
   }
   body.access-information-NdxqmVbV .page .container > main .anchor + .card .card-title {
     background-position: 56% center;
@@ -1663,14 +1792,10 @@ body.access-information-NdxqmVbV .page .container > main .card-group > .card .ca
     height: auto;
     width: 100%;
     margin-top: 50px;
-    margin-bottom: 104px;
     padding: 2rem 0;
     position: fixed;
     top: 0;
     left: 0;
-  }
-  body.materials-uStNjtHz #materials-uStNjtHz-nav.stickyIsFixed + hr + h2 {
-    margin-top: calc((16 * 4) + 104px);
   }
   body.classes-CJc2lhFv .page .container > main h2:not(:first-of-type) {
     margin-top: 8rem !important;
@@ -1707,17 +1832,13 @@ body.access-information-NdxqmVbV .page .container > main .card-group > .card .ca
     height: auto;
     width: 100%;
     margin-top: 50px;
-    margin-bottom: 104px;
     padding: 2rem 0;
     position: fixed;
     top: 0;
     left: 0;
   }
-  body.classes-CJc2lhFv #classes-CJc2lhFv-nav.stickyIsFixed + hr + h2 {
-    margin-top: calc((16 * 4) + 104px);
-  }
   body.index-8oGCaMDs .page .container > main {
-    padding-top: 9rem;
+    padding-top: 6rem;
   }
   body.index-8oGCaMDs .page .container > main h2:not(:first-of-type) {
     margin-top: 8rem !important;
@@ -1754,14 +1875,10 @@ body.access-information-NdxqmVbV .page .container > main .card-group > .card .ca
     height: auto;
     width: 100%;
     margin-top: 50px;
-    margin-bottom: 104px;
     padding: 2rem;
     position: fixed;
     top: 0;
     left: 0;
-  }
-  body.index-8oGCaMDs #index-8oGCaMDs-nav.stickyIsFixed + hr + h2 {
-    margin-top: 104px;
   }
   body.index-8oGCaMDs #index-8oGCaMDs-instructors.container {
     margin-bottom: -4rem;
@@ -1804,14 +1921,10 @@ body.access-information-NdxqmVbV .page .container > main .card-group > .card .ca
     height: auto;
     width: 100%;
     margin-top: 50px;
-    margin-bottom: 104px;
     padding: 2rem 0;
     position: fixed;
     top: 0;
     left: 0;
-  }
-  body.access-information-NdxqmVbV .page .container > main #access-information-NdxqmVbV-nav.stickyIsFixed + hr + h2 {
-    margin-top: calc((16 * 4) + 104px);
   }
   body.access-information-NdxqmVbV .page .container > main .anchor + .card .card-title {
     background-position: 53% center;

@@ -13,6 +13,7 @@ Disposem d'un ampli horari de classes per acomodar a adults i nens, i diferents 
 
 <hr>
 
+{% include stickyBar.html %}
 
 <hr id="aikido" class="anchor">
 

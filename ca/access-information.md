@@ -13,6 +13,7 @@ Actualment, Aikido Musubi compta amb dos centres a la província de Barcelona: _
 
 <hr>
 
+{% include stickyBar.html %}
 
 <hr id="aikido-musubi" class="anchor">
 

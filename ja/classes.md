@@ -13,6 +13,7 @@ i18n-ref: classes-CJc2lhFv
 
 <hr>
 
+{% include stickyBar.html %}
 
 <hr id="aikido" class="anchor">
 

@@ -13,6 +13,7 @@ Disponemos de un amplio horario de classes para acomodar a adultos y niños, y d
 
 <hr>
 
+{% include stickyBar.html %}
 
 <hr id="aikido" class="anchor">
 

@@ -1,11 +1,11 @@
 ---
-title_ca: "Shugyō TALKS: Budo en espanyol Part 2"
-title_en: "Shugyō TALKS: Budo in Spanish Part 2"
-title_es: "Shugyō TALKS: Budo en español Parte 2"
-title_ja: "「Shugyō TALKS」：スペイン語での武道 パート2"
+title_ca: "Shugyō TALKS: Budo en espanyol Part 3"
+title_en: "Shugyō TALKS: Budo in Spanish Part 3"
+title_es: "Shugyō TALKS: Budo en español Parte 3"
+title_ja: "「Shugyō TALKS」：スペイン語での武道 パート3"
 
 desc_ca: >-
-  La segona part de Shugyō en català discuteix els canvis que ha provocat la pandèmia en la pràctica de les arts marcials tradicionals, els seus avantatges i desavantatges, i el paper de les xarxes socials com a promotores d’aspectes positius i negatius del Budo.<br>
+  La tercera i última part de Shugyō en català tracta sobre l'actitud correcta en el Budo. Una sessió d'anècdotes i records sobre la pràctica d'arts marcials tradicionals japoneses.<br>
   <br>
   Amb la participació de:<br>
   - José Cifuentes (Karate 8è dan / Madrid, Espanya)<br>
@@ -17,7 +17,7 @@ desc_ca: >-
   Budo cool, 2021
 
 desc_en: >-
-  The second part of Shugyō in English discusses the changes caused by the pandemic in the practice of traditional martial arts, their advantages and disadvantages, and the role of social media as promoters of both positive and negative aspects of Budo.<br>
+  The third and final part of Shugyō in English discusses the correct attitude in Budo. A session of anecdotes and memories about the practice of traditional Japanese martial arts.<br>
   <br>
   Featuring:<br>
   - José Cifuentes (Karate 8th dan / Madrid, Spain)<br>
@@ -29,7 +29,7 @@ desc_en: >-
   Budo cool, 2021
 
 desc_es: >-
-  La segunda parte de Shugyō en español discute los cambios que ha provocado la pandemia en la práctica de las artes marciales tradicionales, sus ventajas y desventajas, y el rol de las redes sociales como promotoras de aspectos positivos y negativos del Budo.<br>
+  La tercera y ultima parte de Shugyō en español discutimos sobre la actitud correcta en el Budo. Una sesion de anécdotas y memorias sobre la práctica de artes marciales tradicionales japonesas.<br>
   <br>
   Con la participación de:<br>
   - José Cifuentes (Karate 8.º dan / Madrid, España)<br>
@@ -41,7 +41,7 @@ desc_es: >-
   Budo cool, 2021
 
 desc_ja: >-
-  「Shugyō」の第2部では、パンデミックが伝統武道の実践に及ぼした変化、その利点と欠点、そして武道のポジティブおよびネガティブな側面を促進する手段としてのソーシャルメディアの役割について解説します。<br>
+  「Shugyō」の第3部、最終章では、武道における正しい姿勢について解説します。日本の伝統武道の実践に関する逸話や思い出を交えたセッションです。<br>
   <br>
   参加者：<br>
   - ホセ・シフエンテス（空手 8段 / マドリード、スペイン）<br>
@@ -52,7 +52,7 @@ desc_ja: >-
   <br>
   Budo cool, 2021
 
-date: 20210304
+date: 20210319
 
-youtube_url: "https://www.youtube.com/embed/4ldsBG3O7s0"
+youtube_url: "https://www.youtube.com/embed/T4ktx-gE0sg"
 ---

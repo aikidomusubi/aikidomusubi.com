@@ -5,6 +5,8 @@ lang: ca
 i18n-ref: index-8oGCaMDs
 ---
 
+{% include stickyBar.html %}
+
 <hr id="welcome" class="anchor">
 
 ## Benvinguts

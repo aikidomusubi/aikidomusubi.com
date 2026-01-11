@@ -10,7 +10,7 @@ desc_ca: >-
   <br>
   Budo cool, 2021
 desc_en: >-
-  Although the pandemic has affected the life of Pablo Martin the founder of @aikidomusubi, his love and connection with Aikido can’t be stopped.<br>
+  Although the pandemic has affected the life of Pablo Martin the founder of Aikido Musubi, his love and connection with Aikido can’t be stopped.<br>
   Based in Badalona, Barcelona, Pablo shares his solo training, with the hope and power of Budo, that the darkest days are behind us soon.<br>
   <br>
   Budo cool, 2021
@@ -20,7 +20,10 @@ desc_es: >-
   <br>
   Budo cool, 2021
 desc_ja: >-
-
+  パンデミックは合気道産靈の創設者パブロ・マルティンの生活に影響を与えましたが、彼の合気道への愛とつながりは止められません。<br>
+  バルセロナ・バダロナを拠点に、パブロは自身の一人稽古を通して、武道の希望と力を共有し、最も暗い日々もすぐに過ぎ去ることを信じています。<br>
+  <br>
+  Budo cool, 2021
 
 date: 20210121
 
