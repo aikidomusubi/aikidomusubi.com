@@ -30,5 +30,6 @@ file_ja: "courses-hFZ2XXIp-2024-10-18-emilio-cardia-shihan-6th-dan-en.pdf"
 date_from: 2024-10-18
 date_to: "blank"
 
-link: "https://www.facebook.com/events/1236366530745916"
+event_link: "https://www.facebook.com/events/1236366530745916"
+registration_link:
 ---

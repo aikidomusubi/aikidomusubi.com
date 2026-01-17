@@ -26,5 +26,6 @@ file_ja: "courses-hFZ2XXIp-2020-02-29-xavi-serra-pedro-fortes-and-david-ballara-
 date_from: 2020-02-29
 date_to: "blank"
 
-link: "https://www.facebook.com/events/2641945132703640/"
+event_link: "https://www.facebook.com/events/2641945132703640/"
+registration_link:
 ---

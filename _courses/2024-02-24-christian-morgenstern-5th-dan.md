@@ -26,5 +26,6 @@ file_ja: "courses-hFZ2XXIp-2024-02-24-christian-morgenstern-5th-dan-ca.pdf"
 date_from: 2024-02-24
 date_to: "blank"
 
-link: "https://www.facebook.com/events/926593938870249"
+event_link: "https://www.facebook.com/events/926593938870249"
+registration_link:
 ---

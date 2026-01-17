@@ -26,5 +26,6 @@ file_ja: "courses-hFZ2XXIp-2022-03-26-xavi-serra-pedro-fortes-and-pablo-martin-c
 date_from: 2022-03-26
 date_to: "blank"
 
-link: "https://www.facebook.com/events/798591744864972"
+event_link: "https://www.facebook.com/events/798591744864972"
+registration_link:
 ---

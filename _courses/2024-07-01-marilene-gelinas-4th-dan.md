@@ -26,5 +26,6 @@ file_ja: "courses-hFZ2XXIp-2024-07-01-marilene-gelinas-4th-dan-en.pdf"
 date_from: 2024-07-01
 date_to: "blank"
 
-link: "https://www.facebook.com/events/1107384033666335"
+event_link: "https://www.facebook.com/events/1107384033666335"
+registration_link:
 ---

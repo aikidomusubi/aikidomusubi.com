@@ -26,5 +26,6 @@ file_ja: "courses-hFZ2XXIp-2023-11-11-toni-jurado-5th-dan-ca.pdf"
 date_from: 2023-11-11
 date_to: "blank"
 
-link: "https://www.facebook.com/events/857368359377890"
+event_link: "https://www.facebook.com/events/857368359377890"
+registration_link:
 ---

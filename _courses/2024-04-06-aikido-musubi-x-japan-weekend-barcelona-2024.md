@@ -26,5 +26,6 @@ file_ja: "courses-hFZ2XXIp-2024-04-06-aikido-musubi-x-japan-weekend-barcelona-20
 date_from: 2024-04-06
 date_to: 2024-04-07
 
-link: "https://www.japanweekend.com/barcelona/"
+event_link: "https://www.japanweekend.com/barcelona/"
+registration_link:
 ---

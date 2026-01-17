@@ -237,6 +237,35 @@ this.tablist=this._getList().addClass("ui-tabs-nav ui-helper-reset ui-helper-cle
     $('.fc-myCustomDayGridWeekButton-button.btn.btn-primary').html(svgIconTh);
   }
 
+  function initPhotoFilter(navSelector, cardSelector) {
+    const navLinks = document.querySelectorAll(`${navSelector} .nav-link`);
+    const cards = document.querySelectorAll(cardSelector);
+
+    if (!navLinks.length || !cards.length) return;
+
+    navLinks.forEach(link => {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        // Remove 'active' from all links
+        navLinks.forEach(l => l.classList.remove("active"));
+        // Add 'active' to clicked link
+        this.classList.add("active");
+
+        const filter = this.dataset.filter;
+
+        // Show/hide cards
+        cards.forEach(card => {
+          if (filter === "all") {
+            card.style.display = "";
+          } else {
+            card.style.display = card.classList.contains(filter) ? "" : "none";
+          }
+        });
+      });
+    });
+  }
+
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
@@ -258,6 +287,16 @@ jQuery(document).ready(function($) {
 
   if (document.body.classList.contains('photos-QDOJ1pyG')) {
     modalContent();
+    initPhotoFilter("#photos-QDOJ1pyG-nav", ".photos-QDOJ1pyG-container .col");
+  }
+
+  if (document.body.classList.contains('courses-hFZ2XXIp')) {
+    document.querySelectorAll('.page .container>main .card .card-body').forEach(cardBody => {
+      const lastCardText = cardBody.querySelector('.card-text:last-of-type');
+      if (lastCardText && lastCardText.children.length === 3) {
+        cardBody.classList.add('has-3-links');
+      }
+    });
   }
 
   if (document.body.classList.contains('index-8oGCaMDs') || document.body.classList.contains('classes-CJc2lhFv') || document.body.classList.contains('materials-uStNjtHz') || document.body.classList.contains('access-information-NdxqmVbV')) {

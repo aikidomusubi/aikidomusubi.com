@@ -26,5 +26,6 @@ file_ja: "courses-hFZ2XXIp-2025-12-05-aikido-musubi-x-manga-barcelona-2025-ca-es
 date_from: 2025-12-05
 date_to: 2025-12-08
 
-link: "https://www.manga-barcelona.com/"
+event_link: "https://www.manga-barcelona.com/"
+registration_link:
 ---

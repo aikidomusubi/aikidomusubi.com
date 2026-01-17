@@ -161,6 +161,20 @@
   width: 100%;
   height: 0;
 }
+.course-lightbox {
+  display: block;
+  overflow: hidden;
+}
+.course-lightbox img {
+  cursor: zoom-in;
+  transform: scale(1);
+  transition: transform 0.35s ease;
+  will-change: transform;
+}
+.course-lightbox:focus img,
+.course-lightbox:hover img {
+  transform: scale(1.025);
+}
 @media (min-width: 320px) {
   html body .page .container > main {
     padding: 2rem;
@@ -655,6 +669,40 @@ body.contact-mu1FDiTN .page .container > main > p:nth-of-type(1) {
   padding: 0;
   text-align: center;
 }
+body.photos-QDOJ1pyG #photos-QDOJ1pyG-nav.nav {
+  display: flex;
+  background-color: #ffffff;
+  margin-top: -4rem;
+  padding: calc(2rem / 2) 0;
+  z-index: 99;
+}
+body.photos-QDOJ1pyG #photos-QDOJ1pyG-nav.nav a {
+  color: #808c98;
+  font-size: 0.8rem;
+  padding: calc(.5rem / 2) calc(1rem / 2);
+  text-decoration: none;
+}
+body.photos-QDOJ1pyG #photos-QDOJ1pyG-nav.nav a:focus,
+body.photos-QDOJ1pyG #photos-QDOJ1pyG-nav.nav a:hover {
+  background-color: transparent;
+  color: #464e57;
+  text-decoration: none;
+}
+body.photos-QDOJ1pyG #photos-QDOJ1pyG-nav.nav a.active {
+  color: #464e57;
+}
+body.photos-QDOJ1pyG #photos-QDOJ1pyG-nav.stickyBar {
+  position: relative;
+}
+body.photos-QDOJ1pyG #photos-QDOJ1pyG-nav.stickyIsFixed {
+  height: auto;
+  width: 100%;
+  margin-top: 50px;
+  padding: calc(2rem / 2) 4rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
 body.photos-QDOJ1pyG .photos-QDOJ1pyG-container .row .col {
   margin-bottom: 1rem;
   padding-left: calc(1rem / 2);
@@ -695,6 +743,31 @@ body.photos-QDOJ1pyG .photos-QDOJ1pyG-container .row .col > a[role="button"] .ho
 }
 body.photos-QDOJ1pyG .photos-QDOJ1pyG-container .row .col > a[role="button"] .hover-2 .hover-overlay {
   background: linear-gradient(to top, rgba(52, 58, 64, 0.4), rgba(52, 58, 64, 0.1));
+}
+body.photos-QDOJ1pyG .photos-QDOJ1pyG-container .row .col > a[role="button"] .album-size-badge {
+  color: White;
+  background-color: #084f6f;
+  font-size: 0.75rem;
+  font-weight: 600;
+  opacity: 0.9;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 1rem;
+  /* space for icon */
+  border-radius: 1rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1rem 1rem 0 0;
+  /* background SVG icon */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 640'%3E%3Cpath fill='%23fff' d='M128 160C128 124.7 156.7 96 192 96L512 96C547.3 96 576 124.7 576 160L576 416C576 451.3 547.3 480 512 480L192 480C156.7 480 128 451.3 128 416L128 160zM56 192C69.3 192 80 202.7 80 216L80 512C80 520.8 87.2 528 96 528L456 528C469.3 528 480 538.7 480 552C480 565.3 469.3 576 456 576L96 576C60.7 576 32 547.3 32 512L32 216C32 202.7 42.7 192 56 192zM224 224C241.7 224 256 209.7 256 192C256 174.3 241.7 160 224 160C206.3 160 192 174.3 192 192C192 209.7 206.3 224 224 224zM420.5 235.5C416.1 228.4 408.4 224 400 224C391.6 224 383.9 228.4 379.5 235.5L323.2 327.6L298.7 297C294.1 291.3 287.3 288 280 288C272.7 288 265.8 291.3 261.3 297L197.3 377C191.5 384.2 190.4 394.1 194.4 402.4C198.4 410.7 206.8 416 216 416L488 416C496.7 416 504.7 411.3 508.9 403.7C513.1 396.1 513 386.9 508.4 379.4L420.4 235.4z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 1rem 1rem;
+  background-position: 0.75rem center;
+  padding: 0.1rem 0.75rem 0.1rem 2rem;
+  /* left padding for icon */
 }
 body.photos-QDOJ1pyG .photos-QDOJ1pyG-container .row .col > a[role="button"] .hover-2-title {
   font-family: 'Noto Sans', sans-serif;
@@ -1473,16 +1546,32 @@ body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .b
 }
 body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn:nth-of-type(1),
 body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn:nth-of-type(1),
-body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn:nth-of-type(1) {
+body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn:nth-of-type(1),
+body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn:nth-of-type(2),
+body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn:nth-of-type(2),
+body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn:nth-of-type(2) {
   margin-bottom: 0.5rem;
 }
 body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn > svg,
 body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn > svg,
 body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn > svg {
-  padding-right: 0.4rem;
-  height: 0.9rem;
+  height: 1.25rem;
   width: auto;
-  vertical-align: sub;
+  margin-top: -0.15rem;
+}
+body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn.register-btn,
+body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn.register-btn,
+body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn.register-btn {
+  background-color: #da525d !important;
+  border-color: #da525d !important;
+}
+body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn.register-btn.disabled,
+body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn.register-btn.disabled,
+body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn.register-btn.disabled {
+  background-color: #084f6f !important;
+  border-color: #084f6f !important;
+  pointer-events: auto;
+  cursor: not-allowed !important;
 }
 body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn.btn-primary,
 body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn.btn-primary,
@@ -1750,6 +1839,40 @@ body.access-information-NdxqmVbV .page .container > main .card-group > .card .ca
   }
   body .page .container > main > ul {
     padding: 0 3rem !important;
+  }
+  body.photos-QDOJ1pyG #photos-QDOJ1pyG-nav.nav {
+    display: flex;
+    background-color: #ffffff;
+    padding: 2rem;
+    margin-top: -4rem;
+    z-index: 99;
+  }
+  body.photos-QDOJ1pyG #photos-QDOJ1pyG-nav.nav a {
+    color: #808c98;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+  }
+  body.photos-QDOJ1pyG #photos-QDOJ1pyG-nav.nav a:focus,
+  body.photos-QDOJ1pyG #photos-QDOJ1pyG-nav.nav a:hover {
+    background-color: transparent;
+    color: #464e57;
+    text-decoration: none;
+  }
+  body.photos-QDOJ1pyG #photos-QDOJ1pyG-nav.nav a.active {
+    color: #464e57;
+  }
+  body.photos-QDOJ1pyG #photos-QDOJ1pyG-nav.stickyBar {
+    position: relative;
+  }
+  body.photos-QDOJ1pyG #photos-QDOJ1pyG-nav.stickyIsFixed {
+    height: auto;
+    width: 100%;
+    margin-top: 50px;
+    padding: 2rem 0;
+    position: fixed;
+    top: 0;
+    left: 0;
   }
   body.photos-QDOJ1pyG .photos-QDOJ1pyG-container .row .col > a[role="button"] .hover-2-title {
     font-size: 1rem;
@@ -2336,6 +2459,28 @@ html[lang="ja"] footer p > ruby > rt {
   body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn,
   body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn {
     color: #ffffff;
+  }
+  body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn:nth-of-type(1),
+  body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn:nth-of-type(1),
+  body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn:nth-of-type(1),
+  body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn:nth-of-type(2),
+  body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn:nth-of-type(2),
+  body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn:nth-of-type(2) {
+    margin-bottom: 0.5rem;
+  }
+  body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn.register-btn,
+  body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn.register-btn,
+  body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn.register-btn {
+    background-color: #da525d !important;
+    border-color: #da525d !important;
+  }
+  body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn.register-btn.disabled,
+  body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn.register-btn.disabled,
+  body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn.register-btn.disabled {
+    background-color: #084f6f !important;
+    border-color: #084f6f !important;
+    pointer-events: auto;
+    cursor: not-allowed !important;
   }
   body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn.btn-primary,
   body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn.btn-primary,

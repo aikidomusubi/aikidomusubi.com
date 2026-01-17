@@ -26,5 +26,6 @@ file_ja: "courses-hFZ2XXIp-2020-02-15-mike-flynn-shihan-7th-dan-en.pdf"
 date_from: 2020-02-15
 date_to: 2020-02-16
 
-link: "https://www.facebook.com/events/2629834983914110/"
+event_link: "https://www.facebook.com/events/2629834983914110/"
+registration_link:
 ---

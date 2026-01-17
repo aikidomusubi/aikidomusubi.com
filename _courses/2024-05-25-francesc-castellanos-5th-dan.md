@@ -26,5 +26,6 @@ file_ja: "courses-hFZ2XXIp-2024-05-25-francesc-castellanos-5th-dan-ca.pdf"
 date_from: 2024-05-25
 date_to: "blank"
 
-link: "https://www.facebook.com/events/712054124274337"
+event_link: "https://www.facebook.com/events/712054124274337"
+registration_link:
 ---

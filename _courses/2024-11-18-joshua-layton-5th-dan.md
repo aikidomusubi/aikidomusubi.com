@@ -26,5 +26,6 @@ file_ja: "courses-hFZ2XXIp-2024-11-18-joshua-layton-5th-dan-en.pdf"
 date_from: 2024-11-18
 date_to: "blank"
 
-link: "https://www.facebook.com/events/1491302618129059"
+event_link: "https://www.facebook.com/events/1491302618129059"
+registration_link:
 ---

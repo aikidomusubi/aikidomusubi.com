@@ -26,5 +26,6 @@ file_ja: "courses-hFZ2XXIp-2025-12-20-pablo-martin-4th-dan-ca.pdf"
 date_from: 2025-12-20
 date_to: "blank"
 
-link: "https://fb.me/e/3sm8kM8NA"
+event_link: "https://fb.me/e/3sm8kM8NA"
+registration_link:
 ---

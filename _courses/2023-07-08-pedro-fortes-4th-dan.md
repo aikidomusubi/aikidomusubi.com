@@ -26,5 +26,6 @@ file_ja: "courses-hFZ2XXIp-2023-07-08-pedro-fortes-4th-dan-ca.pdf"
 date_from: 2023-07-08
 date_to: "blank"
 
-link: "https://www.facebook.com/events/219431171051112"
+event_link: "https://www.facebook.com/events/219431171051112"
+registration_link:
 ---

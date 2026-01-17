@@ -26,5 +26,6 @@ file_ja: "courses-hFZ2XXIp-2024-06-28-laura-benevelli-5th-dan-en.pdf"
 date_from: 2024-06-28
 date_to: "blank"
 
-link: "https://www.facebook.com/events/1593908201461644"
+event_link: "https://www.facebook.com/events/1593908201461644"
+registration_link:
 ---

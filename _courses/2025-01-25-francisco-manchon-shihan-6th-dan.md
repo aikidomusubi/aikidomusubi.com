@@ -26,5 +26,6 @@ file_ja: "courses-hFZ2XXIp-2025-01-25-francisco-manchon-shihan-6th-dan-ca.pdf"
 date_from: 2025-01-25
 date_to: "blank"
 
-link: "https://www.facebook.com/events/495655606490498"
+event_link: "https://www.facebook.com/events/495655606490498"
+registration_link:
 ---

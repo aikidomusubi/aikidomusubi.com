@@ -26,5 +26,6 @@ file_ja: "courses-hFZ2XXIp-2025-03-08-carlos-nova-4th-dan-ca.pdf"
 date_from: 2025-03-08
 date_to: "blank"
 
-link: "https://www.facebook.com/events/825092063140840"
+event_link: "https://www.facebook.com/events/825092063140840"
+registration_link:
 ---

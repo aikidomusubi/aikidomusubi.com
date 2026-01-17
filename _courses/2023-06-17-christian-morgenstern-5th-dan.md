@@ -26,5 +26,6 @@ file_ja: "courses-hFZ2XXIp-2023-06-17-christian-morgenstern-5th-dan-ca.pdf"
 date_from: 2023-06-17
 date_to: "blank"
 
-link: "https://www.facebook.com/events/649632450388105"
+event_link: "https://www.facebook.com/events/649632450388105"
+registration_link:
 ---

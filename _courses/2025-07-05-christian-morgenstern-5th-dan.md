@@ -26,5 +26,6 @@ file_ja: "courses-hFZ2XXIp-2025-07-05-christian-morgenstern-5th-dan-ca.pdf"
 date_from: 2025-07-05
 date_to: "blank"
 
-link: "https://fb.me/e/2SsFJsf63"
+event_link: "https://fb.me/e/2SsFJsf63"
+registration_link:
 ---

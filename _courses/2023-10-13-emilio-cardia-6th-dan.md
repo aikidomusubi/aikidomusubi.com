@@ -26,5 +26,6 @@ file_ja: "courses-hFZ2XXIp-2023-10-13-emilio-cardia-6th-dan-en.pdf"
 date_from: 2023-10-13
 date_to: "blank"
 
-link: "https://www.facebook.com/events/214670154779105"
+event_link: "https://www.facebook.com/events/214670154779105"
+registration_link:
 ---

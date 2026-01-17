@@ -26,5 +26,6 @@ file_ja: "courses-hFZ2XXIp-2023-05-06-francisco-manchon-shihan-6th-dan-ca.pdf"
 date_from: 2023-05-06
 date_to: "blank"
 
-link: "https://www.facebook.com/events/764489961738417"
+event_link: "https://www.facebook.com/events/764489961738417"
+registration_link:
 ---

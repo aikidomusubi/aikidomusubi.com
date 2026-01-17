@@ -42,6 +42,9 @@
       {% endif %}
       {% include fullcalendar.html %}
     {% endif %}
+    {% if page.i18n-ref == 'courses-hFZ2XXIp' %}
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+    {% endif %}
     <script src="{{ site.url }}/scripts/modernizr.min.js"></script>
   </head>
   <body class="{{ page.i18n-ref }} invisible">

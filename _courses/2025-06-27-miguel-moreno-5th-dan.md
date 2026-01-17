@@ -26,5 +26,6 @@ file_ja: "courses-hFZ2XXIp-2025-06-27-miguel-moreno-5th-dan-en.pdf"
 date_from: 2025-06-27
 date_to: 2025-06-29
 
-link: "https://fb.me/e/JJDW6bgQZ"
+event_link: "https://fb.me/e/JJDW6bgQZ"
+registration_link:
 ---

@@ -27,5 +27,6 @@ file_ja: "courses-hFZ2XXIp-2025-04-26-xavi-serra-5th-dan-ca.pdf"
 date_from: 2025-04-26
 date_to: "blank"
 
-link: "https://www.facebook.com/events/9901967903210989"
+event_link: "https://www.facebook.com/events/9901967903210989"
+registration_link:
 ---

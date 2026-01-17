@@ -26,5 +26,6 @@ file_ja: "courses-hFZ2XXIp-2020-02-01-ricard-coll-4th-dan-ca.pdf"
 date_from: 2020-02-01
 date_to: "blank"
 
-link: "https://www.facebook.com/events/2734322126804991/"
+event_link: "https://www.facebook.com/events/2734322126804991/"
+registration_link:
 ---

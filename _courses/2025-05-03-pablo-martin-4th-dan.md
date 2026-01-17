@@ -26,5 +26,6 @@ file_ja: "courses-hFZ2XXIp-2025-05-03-pablo-martin-4th-dan-it.pdf"
 date_from: 2025-05-03
 date_to: 2025-05-04
 
-link: "https://aikido.palestrafujiyama.com"
+event_link: "https://aikido.palestrafujiyama.com"
+registration_link:
 ---
