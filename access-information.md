@@ -9,7 +9,7 @@ i18n-ref: access-information-NdxqmVbV
 
 # Acceso
 
-Actualmente, Aikido Musubi cuenta con dos centros en la provincia de Barcelona: __Aikido Musubi__ (Badalona), y __Aikido Musubi Sant Adrià de Besòs__. Si quieres visitar nuestro dojo o entrenar con nosotros, [contáctanos]({{ site.url }}/contacto/) para más información sobre ubicaciones y horarios.
+Actualmente, tenemos dos centros en la provincia de Barcelona: __Aikido Musubi__ (Badalona), y __Aikido Musubi Sant Adrià de Besòs__. Si quieres visitar nuestro dojo o entrenar con nosotros, [contáctanos]({{ site.url }}/contacto/) para más información sobre ubicaciones y horarios.
 
 <hr>
 

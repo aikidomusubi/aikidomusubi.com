@@ -44,13 +44,35 @@
     {% if page.lang == 'ja' %}合気道{% else %}Aikido{% endif %}
   </a>
   <a class="nav-link" href="#iaijutsu">
-    {% if page.lang == 'ja' %}柳心照智流 居合術{% else %}Iaijutsu{% endif %}
+    {% if page.lang == 'ja' %}居合術{% else %}Iaijutsu{% endif %}
   </a>
   <a class="nav-link" href="#judo">
     {% if page.lang == 'ja' %}柔道{% else %}Judo{% endif %}
   </a>
   <a class="nav-link" href="#karate">
     {% if page.lang == 'ja' %}空手{% else %}Karate{% endif %}
+  </a>
+</nav>
+{% endif %}
+{% if page.i18n-ref == 'courses-hFZ2XXIp' %}
+<nav id="courses-hFZ2XXIp-nav" class="nav justify-content-center stickyBar">
+  <a class="nav-link active" href="#show-all" data-filter="all">
+    {% if page.lang == 'ca' %}Tots els cursos{% endif %}
+    {% if page.lang == 'en' %}All courses{% endif %}
+    {% if page.lang == 'es' %}Todos los cursos{% endif %}
+    {% if page.lang == 'ja' %}すべて{% endif %}
+  </a>
+  <a class="nav-link" href="#upcoming" data-filter="upcoming">
+    {% if page.lang == 'ca' %}Properament{% endif %}
+    {% if page.lang == 'en' %}Upcoming{% endif %}
+    {% if page.lang == 'es' %}Próximamente{% endif %}
+    {% if page.lang == 'ja' %}今度の講習会{% endif %}
+  </a>
+  <a class="nav-link" href="#ended" data-filter="ended">
+    {% if page.lang == 'ca' %}Finalitzat{% endif %}
+    {% if page.lang == 'en' %}Ended{% endif %}
+    {% if page.lang == 'es' %}Finalizado{% endif %}
+    {% if page.lang == 'ja' %}終了{% endif %}
   </a>
 </nav>
 {% endif %}

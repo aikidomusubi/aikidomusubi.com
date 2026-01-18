@@ -1,7 +1,7 @@
 ---
 layout: video
 title: Videos
-description: A selection of videos. If you want to see more videos, visit our YouTube channel. Unless otherwise noted, all videos by Aikido Musubi.
+description: A selection of videos. Unless otherwise noted, all videos by Aikido Musubi.
 permalink: /en/videos/
 lang: en
 i18n-ref: videos-NuhYeNWr

@@ -175,6 +175,12 @@
 .course-lightbox:hover img {
   transform: scale(1.025);
 }
+#glightbox-body .gbtn {
+  background-color: transparent;
+}
+#glightbox-body .gbtn:focus {
+  outline: 0;
+}
 @media (min-width: 320px) {
   html body .page .container > main {
     padding: 2rem;
@@ -552,9 +558,10 @@ body.training-schedule-IFMn5oCc .page .container > main .alert,
 body.fees-UjbuGtGz .page .container > main .alert,
 body.courses-hFZ2XXIp .page .container > main .alert,
 body.videos-NuhYeNWr .page .container > main .alert,
-body.materials-uStNjtHz .page .container > main .alert,
+body.resources-uStNjtHz .page .container > main .alert,
 body.access-information-NdxqmVbV .page .container > main .alert,
-body.contact-mu1FDiTN .page .container > main .alert {
+body.contact-mu1FDiTN .page .container > main .alert,
+body.visitors-Smz3N4U0 .page .container > main .alert {
   border-radius: 0;
   margin-bottom: 2rem;
   text-align: center;
@@ -565,17 +572,19 @@ body.training-schedule-IFMn5oCc .page .container > main .alert a:focus,
 body.fees-UjbuGtGz .page .container > main .alert a:focus,
 body.courses-hFZ2XXIp .page .container > main .alert a:focus,
 body.videos-NuhYeNWr .page .container > main .alert a:focus,
-body.materials-uStNjtHz .page .container > main .alert a:focus,
+body.resources-uStNjtHz .page .container > main .alert a:focus,
 body.access-information-NdxqmVbV .page .container > main .alert a:focus,
 body.contact-mu1FDiTN .page .container > main .alert a:focus,
+body.visitors-Smz3N4U0 .page .container > main .alert a:focus,
 body.classes-CJc2lhFv .page .container > main .alert a:hover,
 body.training-schedule-IFMn5oCc .page .container > main .alert a:hover,
 body.fees-UjbuGtGz .page .container > main .alert a:hover,
 body.courses-hFZ2XXIp .page .container > main .alert a:hover,
 body.videos-NuhYeNWr .page .container > main .alert a:hover,
-body.materials-uStNjtHz .page .container > main .alert a:hover,
+body.resources-uStNjtHz .page .container > main .alert a:hover,
 body.access-information-NdxqmVbV .page .container > main .alert a:hover,
-body.contact-mu1FDiTN .page .container > main .alert a:hover {
+body.contact-mu1FDiTN .page .container > main .alert a:hover,
+body.visitors-Smz3N4U0 .page .container > main .alert a:hover {
   background-color: transparent;
 }
 body.classes-CJc2lhFv .page .container > main .alert h4,
@@ -583,9 +592,10 @@ body.training-schedule-IFMn5oCc .page .container > main .alert h4,
 body.fees-UjbuGtGz .page .container > main .alert h4,
 body.courses-hFZ2XXIp .page .container > main .alert h4,
 body.videos-NuhYeNWr .page .container > main .alert h4,
-body.materials-uStNjtHz .page .container > main .alert h4,
+body.resources-uStNjtHz .page .container > main .alert h4,
 body.access-information-NdxqmVbV .page .container > main .alert h4,
-body.contact-mu1FDiTN .page .container > main .alert h4 {
+body.contact-mu1FDiTN .page .container > main .alert h4,
+body.visitors-Smz3N4U0 .page .container > main .alert h4 {
   font-size: 2rem;
   margin-bottom: 1rem;
 }
@@ -594,9 +604,10 @@ body.training-schedule-IFMn5oCc .page .container > main .alert h4 svg,
 body.fees-UjbuGtGz .page .container > main .alert h4 svg,
 body.courses-hFZ2XXIp .page .container > main .alert h4 svg,
 body.videos-NuhYeNWr .page .container > main .alert h4 svg,
-body.materials-uStNjtHz .page .container > main .alert h4 svg,
+body.resources-uStNjtHz .page .container > main .alert h4 svg,
 body.access-information-NdxqmVbV .page .container > main .alert h4 svg,
-body.contact-mu1FDiTN .page .container > main .alert h4 svg {
+body.contact-mu1FDiTN .page .container > main .alert h4 svg,
+body.visitors-Smz3N4U0 .page .container > main .alert h4 svg {
   height: 2rem;
   width: auto;
 }
@@ -605,9 +616,10 @@ body.training-schedule-IFMn5oCc .page .container > main .alert hr,
 body.fees-UjbuGtGz .page .container > main .alert hr,
 body.courses-hFZ2XXIp .page .container > main .alert hr,
 body.videos-NuhYeNWr .page .container > main .alert hr,
-body.materials-uStNjtHz .page .container > main .alert hr,
+body.resources-uStNjtHz .page .container > main .alert hr,
 body.access-information-NdxqmVbV .page .container > main .alert hr,
-body.contact-mu1FDiTN .page .container > main .alert hr {
+body.contact-mu1FDiTN .page .container > main .alert hr,
+body.visitors-Smz3N4U0 .page .container > main .alert hr {
   border-top-color: rgba(218, 82, 93, 0.08);
   margin: 1rem auto;
   width: 90%;
@@ -617,9 +629,10 @@ body.training-schedule-IFMn5oCc .page .container > main .alert p,
 body.fees-UjbuGtGz .page .container > main .alert p,
 body.courses-hFZ2XXIp .page .container > main .alert p,
 body.videos-NuhYeNWr .page .container > main .alert p,
-body.materials-uStNjtHz .page .container > main .alert p,
+body.resources-uStNjtHz .page .container > main .alert p,
 body.access-information-NdxqmVbV .page .container > main .alert p,
-body.contact-mu1FDiTN .page .container > main .alert p {
+body.contact-mu1FDiTN .page .container > main .alert p,
+body.visitors-Smz3N4U0 .page .container > main .alert p {
   font-size: 0.9rem;
 }
 body.classes-CJc2lhFv .page .container > main .alert p svg,
@@ -627,9 +640,10 @@ body.training-schedule-IFMn5oCc .page .container > main .alert p svg,
 body.fees-UjbuGtGz .page .container > main .alert p svg,
 body.courses-hFZ2XXIp .page .container > main .alert p svg,
 body.videos-NuhYeNWr .page .container > main .alert p svg,
-body.materials-uStNjtHz .page .container > main .alert p svg,
+body.resources-uStNjtHz .page .container > main .alert p svg,
 body.access-information-NdxqmVbV .page .container > main .alert p svg,
-body.contact-mu1FDiTN .page .container > main .alert p svg {
+body.contact-mu1FDiTN .page .container > main .alert p svg,
+body.visitors-Smz3N4U0 .page .container > main .alert p svg {
   height: 0.9rem;
   width: auto;
   vertical-align: sub;
@@ -639,9 +653,10 @@ body.training-schedule-IFMn5oCc .page .container > main .alert.alert-danger,
 body.fees-UjbuGtGz .page .container > main .alert.alert-danger,
 body.courses-hFZ2XXIp .page .container > main .alert.alert-danger,
 body.videos-NuhYeNWr .page .container > main .alert.alert-danger,
-body.materials-uStNjtHz .page .container > main .alert.alert-danger,
+body.resources-uStNjtHz .page .container > main .alert.alert-danger,
 body.access-information-NdxqmVbV .page .container > main .alert.alert-danger,
-body.contact-mu1FDiTN .page .container > main .alert.alert-danger {
+body.contact-mu1FDiTN .page .container > main .alert.alert-danger,
+body.visitors-Smz3N4U0 .page .container > main .alert.alert-danger {
   color: #da525d;
   background-color: rgba(218, 82, 93, 0.16);
   border-color: rgba(218, 82, 93, 0.32);
@@ -651,9 +666,10 @@ body.training-schedule-IFMn5oCc .page .container > main .alert.alert-danger a,
 body.fees-UjbuGtGz .page .container > main .alert.alert-danger a,
 body.courses-hFZ2XXIp .page .container > main .alert.alert-danger a,
 body.videos-NuhYeNWr .page .container > main .alert.alert-danger a,
-body.materials-uStNjtHz .page .container > main .alert.alert-danger a,
+body.resources-uStNjtHz .page .container > main .alert.alert-danger a,
 body.access-information-NdxqmVbV .page .container > main .alert.alert-danger a,
-body.contact-mu1FDiTN .page .container > main .alert.alert-danger a {
+body.contact-mu1FDiTN .page .container > main .alert.alert-danger a,
+body.visitors-Smz3N4U0 .page .container > main .alert.alert-danger a {
   color: #da525d;
 }
 body.classes-CJc2lhFv .page .container > main > p:nth-of-type(1),
@@ -661,13 +677,48 @@ body.training-schedule-IFMn5oCc .page .container > main > p:nth-of-type(1),
 body.fees-UjbuGtGz .page .container > main > p:nth-of-type(1),
 body.courses-hFZ2XXIp .page .container > main > p:nth-of-type(1),
 body.videos-NuhYeNWr .page .container > main > p:nth-of-type(1),
-body.materials-uStNjtHz .page .container > main > p:nth-of-type(1),
+body.resources-uStNjtHz .page .container > main > p:nth-of-type(1),
 body.access-information-NdxqmVbV .page .container > main > p:nth-of-type(1),
-body.contact-mu1FDiTN .page .container > main > p:nth-of-type(1) {
+body.contact-mu1FDiTN .page .container > main > p:nth-of-type(1),
+body.visitors-Smz3N4U0 .page .container > main > p:nth-of-type(1) {
   margin: 0;
   margin-bottom: 2rem;
   padding: 0;
   text-align: center;
+}
+body.courses-hFZ2XXIp #courses-hFZ2XXIp-nav.nav {
+  display: flex;
+  background-color: #ffffff;
+  margin-top: -4rem;
+  padding: calc(2rem / 2) 0;
+  z-index: 99;
+}
+body.courses-hFZ2XXIp #courses-hFZ2XXIp-nav.nav a {
+  color: #808c98;
+  font-size: 0.8rem;
+  padding: calc(.5rem / 2) calc(1rem / 2);
+  text-decoration: none;
+}
+body.courses-hFZ2XXIp #courses-hFZ2XXIp-nav.nav a:focus,
+body.courses-hFZ2XXIp #courses-hFZ2XXIp-nav.nav a:hover {
+  background-color: transparent;
+  color: #464e57;
+  text-decoration: none;
+}
+body.courses-hFZ2XXIp #courses-hFZ2XXIp-nav.nav a.active {
+  color: #464e57;
+}
+body.courses-hFZ2XXIp #courses-hFZ2XXIp-nav.stickyBar {
+  position: relative;
+}
+body.courses-hFZ2XXIp #courses-hFZ2XXIp-nav.stickyIsFixed {
+  height: auto;
+  width: 100%;
+  margin-top: 50px;
+  padding: calc(2rem / 2) 4rem;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 body.photos-QDOJ1pyG #photos-QDOJ1pyG-nav.nav {
   display: flex;
@@ -961,35 +1012,35 @@ body.index-8oGCaMDs #index-8oGCaMDs-instructors.container span > em {
   font-style: normal;
   white-space: nowrap;
 }
-body.materials-uStNjtHz .page .container > main h2:not(:first-of-type) {
+body.resources-uStNjtHz .page .container > main h2:not(:first-of-type) {
   margin-top: 8rem !important;
 }
-body.materials-uStNjtHz #materials-uStNjtHz-nav.nav {
+body.resources-uStNjtHz #resources-uStNjtHz-nav.nav {
   display: flex;
   background-color: #ffffff;
   margin-top: -4rem;
   padding: calc(2rem / 2) 0;
   z-index: 99;
 }
-body.materials-uStNjtHz #materials-uStNjtHz-nav.nav a {
+body.resources-uStNjtHz #resources-uStNjtHz-nav.nav a {
   color: #808c98;
   font-size: 0.8rem;
   padding: calc(.5rem / 2) calc(1rem / 2);
   text-decoration: none;
 }
-body.materials-uStNjtHz #materials-uStNjtHz-nav.nav a:focus,
-body.materials-uStNjtHz #materials-uStNjtHz-nav.nav a:hover {
+body.resources-uStNjtHz #resources-uStNjtHz-nav.nav a:focus,
+body.resources-uStNjtHz #resources-uStNjtHz-nav.nav a:hover {
   background-color: transparent;
   color: #464e57;
   text-decoration: none;
 }
-body.materials-uStNjtHz #materials-uStNjtHz-nav.nav a.active {
+body.resources-uStNjtHz #resources-uStNjtHz-nav.nav a.active {
   color: #464e57;
 }
-body.materials-uStNjtHz #materials-uStNjtHz-nav.stickyBar {
+body.resources-uStNjtHz #resources-uStNjtHz-nav.stickyBar {
   position: relative;
 }
-body.materials-uStNjtHz #materials-uStNjtHz-nav.stickyIsFixed {
+body.resources-uStNjtHz #resources-uStNjtHz-nav.stickyIsFixed {
   height: auto;
   width: 100%;
   margin-top: 50px;
@@ -1357,12 +1408,12 @@ body.fees-UjbuGtGz #pills-tabContent > .tab-pane > .row .card > .card-body > .bt
 }
 body.courses-hFZ2XXIp .page .container > main .card,
 body.videos-NuhYeNWr .page .container > main .card,
-body.materials-uStNjtHz .page .container > main .card {
+body.resources-uStNjtHz .page .container > main .card {
   margin-bottom: 2rem !important;
 }
 body.courses-hFZ2XXIp .page .container > main .card picture,
 body.videos-NuhYeNWr .page .container > main .card picture,
-body.materials-uStNjtHz .page .container > main .card picture {
+body.resources-uStNjtHz .page .container > main .card picture {
   margin-bottom: 0;
   display: flex;
   align-items: center;
@@ -1372,117 +1423,117 @@ body.materials-uStNjtHz .page .container > main .card picture {
 }
 body.courses-hFZ2XXIp .page .container > main .card picture.file-audio,
 body.videos-NuhYeNWr .page .container > main .card picture.file-audio,
-body.materials-uStNjtHz .page .container > main .card picture.file-audio {
+body.resources-uStNjtHz .page .container > main .card picture.file-audio {
   background-color: rgba(244, 162, 97, 0.5);
 }
 body.courses-hFZ2XXIp .page .container > main .card picture.file-audio svg,
 body.videos-NuhYeNWr .page .container > main .card picture.file-audio svg,
-body.materials-uStNjtHz .page .container > main .card picture.file-audio svg {
+body.resources-uStNjtHz .page .container > main .card picture.file-audio svg {
   color: #f4a261;
 }
 body.courses-hFZ2XXIp .page .container > main .card picture.file-code,
 body.videos-NuhYeNWr .page .container > main .card picture.file-code,
-body.materials-uStNjtHz .page .container > main .card picture.file-code {
+body.resources-uStNjtHz .page .container > main .card picture.file-code {
   background-color: rgba(102, 126, 234, 0.5);
 }
 body.courses-hFZ2XXIp .page .container > main .card picture.file-code svg,
 body.videos-NuhYeNWr .page .container > main .card picture.file-code svg,
-body.materials-uStNjtHz .page .container > main .card picture.file-code svg {
+body.resources-uStNjtHz .page .container > main .card picture.file-code svg {
   color: #667eea;
 }
 body.courses-hFZ2XXIp .page .container > main .card picture.file-excel,
 body.videos-NuhYeNWr .page .container > main .card picture.file-excel,
-body.materials-uStNjtHz .page .container > main .card picture.file-excel {
+body.resources-uStNjtHz .page .container > main .card picture.file-excel {
   background-color: rgba(38, 166, 154, 0.5);
 }
 body.courses-hFZ2XXIp .page .container > main .card picture.file-excel svg,
 body.videos-NuhYeNWr .page .container > main .card picture.file-excel svg,
-body.materials-uStNjtHz .page .container > main .card picture.file-excel svg {
+body.resources-uStNjtHz .page .container > main .card picture.file-excel svg {
   color: #26a69a;
 }
 body.courses-hFZ2XXIp .page .container > main .card picture.file-image,
 body.videos-NuhYeNWr .page .container > main .card picture.file-image,
-body.materials-uStNjtHz .page .container > main .card picture.file-image {
+body.resources-uStNjtHz .page .container > main .card picture.file-image {
   background-color: rgba(255, 203, 5, 0.5);
 }
 body.courses-hFZ2XXIp .page .container > main .card picture.file-image svg,
 body.videos-NuhYeNWr .page .container > main .card picture.file-image svg,
-body.materials-uStNjtHz .page .container > main .card picture.file-image svg {
+body.resources-uStNjtHz .page .container > main .card picture.file-image svg {
   color: #ffcb05;
 }
 body.courses-hFZ2XXIp .page .container > main .card picture.file-lines,
 body.videos-NuhYeNWr .page .container > main .card picture.file-lines,
-body.materials-uStNjtHz .page .container > main .card picture.file-lines {
+body.resources-uStNjtHz .page .container > main .card picture.file-lines {
   background-color: rgba(156, 39, 176, 0.5);
 }
 body.courses-hFZ2XXIp .page .container > main .card picture.file-lines svg,
 body.videos-NuhYeNWr .page .container > main .card picture.file-lines svg,
-body.materials-uStNjtHz .page .container > main .card picture.file-lines svg {
+body.resources-uStNjtHz .page .container > main .card picture.file-lines svg {
   color: #9c27b0;
 }
 body.courses-hFZ2XXIp .page .container > main .card picture.file-pdf,
 body.videos-NuhYeNWr .page .container > main .card picture.file-pdf,
-body.materials-uStNjtHz .page .container > main .card picture.file-pdf {
+body.resources-uStNjtHz .page .container > main .card picture.file-pdf {
   background-color: rgba(201, 48, 62, 0.5);
 }
 body.courses-hFZ2XXIp .page .container > main .card picture.file-pdf svg,
 body.videos-NuhYeNWr .page .container > main .card picture.file-pdf svg,
-body.materials-uStNjtHz .page .container > main .card picture.file-pdf svg {
+body.resources-uStNjtHz .page .container > main .card picture.file-pdf svg {
   color: #c9303e;
 }
 body.courses-hFZ2XXIp .page .container > main .card picture.file-powerpoint,
 body.videos-NuhYeNWr .page .container > main .card picture.file-powerpoint,
-body.materials-uStNjtHz .page .container > main .card picture.file-powerpoint {
+body.resources-uStNjtHz .page .container > main .card picture.file-powerpoint {
   background-color: rgba(239, 108, 0, 0.5);
 }
 body.courses-hFZ2XXIp .page .container > main .card picture.file-powerpoint svg,
 body.videos-NuhYeNWr .page .container > main .card picture.file-powerpoint svg,
-body.materials-uStNjtHz .page .container > main .card picture.file-powerpoint svg {
+body.resources-uStNjtHz .page .container > main .card picture.file-powerpoint svg {
   color: #ef6c00;
 }
 body.courses-hFZ2XXIp .page .container > main .card picture.file-video,
 body.videos-NuhYeNWr .page .container > main .card picture.file-video,
-body.materials-uStNjtHz .page .container > main .card picture.file-video {
+body.resources-uStNjtHz .page .container > main .card picture.file-video {
   background-color: rgba(41, 182, 246, 0.5);
 }
 body.courses-hFZ2XXIp .page .container > main .card picture.file-video svg,
 body.videos-NuhYeNWr .page .container > main .card picture.file-video svg,
-body.materials-uStNjtHz .page .container > main .card picture.file-video svg {
+body.resources-uStNjtHz .page .container > main .card picture.file-video svg {
   color: #29b6f6;
 }
 body.courses-hFZ2XXIp .page .container > main .card picture.file-word,
 body.videos-NuhYeNWr .page .container > main .card picture.file-word,
-body.materials-uStNjtHz .page .container > main .card picture.file-word {
+body.resources-uStNjtHz .page .container > main .card picture.file-word {
   background-color: rgba(13, 71, 161, 0.5);
 }
 body.courses-hFZ2XXIp .page .container > main .card picture.file-word svg,
 body.videos-NuhYeNWr .page .container > main .card picture.file-word svg,
-body.materials-uStNjtHz .page .container > main .card picture.file-word svg {
+body.resources-uStNjtHz .page .container > main .card picture.file-word svg {
   color: #0d47a1;
 }
 body.courses-hFZ2XXIp .page .container > main .card picture.file-zipper,
 body.videos-NuhYeNWr .page .container > main .card picture.file-zipper,
-body.materials-uStNjtHz .page .container > main .card picture.file-zipper {
+body.resources-uStNjtHz .page .container > main .card picture.file-zipper {
   background-color: rgba(121, 85, 72, 0.5);
 }
 body.courses-hFZ2XXIp .page .container > main .card picture.file-zipper svg,
 body.videos-NuhYeNWr .page .container > main .card picture.file-zipper svg,
-body.materials-uStNjtHz .page .container > main .card picture.file-zipper svg {
+body.resources-uStNjtHz .page .container > main .card picture.file-zipper svg {
   color: #795548;
 }
 body.courses-hFZ2XXIp .page .container > main .card picture.file-undefined,
 body.videos-NuhYeNWr .page .container > main .card picture.file-undefined,
-body.materials-uStNjtHz .page .container > main .card picture.file-undefined {
+body.resources-uStNjtHz .page .container > main .card picture.file-undefined {
   background-color: rgba(158, 158, 158, 0.5);
 }
 body.courses-hFZ2XXIp .page .container > main .card picture.file-undefined svg,
 body.videos-NuhYeNWr .page .container > main .card picture.file-undefined svg,
-body.materials-uStNjtHz .page .container > main .card picture.file-undefined svg {
+body.resources-uStNjtHz .page .container > main .card picture.file-undefined svg {
   color: #9e9e9e;
 }
 body.courses-hFZ2XXIp .page .container > main .card picture svg,
 body.videos-NuhYeNWr .page .container > main .card picture svg,
-body.materials-uStNjtHz .page .container > main .card picture svg {
+body.resources-uStNjtHz .page .container > main .card picture svg {
   max-width: 100%;
   max-height: 100%;
   width: 24%;
@@ -1490,22 +1541,27 @@ body.materials-uStNjtHz .page .container > main .card picture svg {
 }
 body.courses-hFZ2XXIp .page .container > main .card .card-body,
 body.videos-NuhYeNWr .page .container > main .card .card-body,
-body.materials-uStNjtHz .page .container > main .card .card-body {
+body.resources-uStNjtHz .page .container > main .card .card-body {
   height: 100%;
   width: auto;
   padding-bottom: 8rem;
   position: relative;
 }
+body.courses-hFZ2XXIp .page .container > main .card .card-body.has-3-links,
+body.videos-NuhYeNWr .page .container > main .card .card-body.has-3-links,
+body.resources-uStNjtHz .page .container > main .card .card-body.has-3-links {
+  padding-bottom: 10rem;
+}
 body.courses-hFZ2XXIp .page .container > main .card .card-body > .alert,
 body.videos-NuhYeNWr .page .container > main .card .card-body > .alert,
-body.materials-uStNjtHz .page .container > main .card .card-body > .alert {
+body.resources-uStNjtHz .page .container > main .card .card-body > .alert {
   font-weight: 700;
   font-size: 0.9rem;
   margin-bottom: 1rem;
 }
 body.courses-hFZ2XXIp .page .container > main .card .card-body > .alert > svg,
 body.videos-NuhYeNWr .page .container > main .card .card-body > .alert > svg,
-body.materials-uStNjtHz .page .container > main .card .card-body > .alert > svg {
+body.resources-uStNjtHz .page .container > main .card .card-body > .alert > svg {
   padding-right: 0.4rem;
   height: 0.9rem;
   width: auto;
@@ -1513,7 +1569,7 @@ body.materials-uStNjtHz .page .container > main .card .card-body > .alert > svg 
 }
 body.courses-hFZ2XXIp .page .container > main .card .card-body .card-title,
 body.videos-NuhYeNWr .page .container > main .card .card-body .card-title,
-body.materials-uStNjtHz .page .container > main .card .card-body .card-title {
+body.resources-uStNjtHz .page .container > main .card .card-body .card-title {
   font-weight: 700;
   font-size: 1rem;
   line-height: 1.5rem;
@@ -1522,7 +1578,7 @@ body.materials-uStNjtHz .page .container > main .card .card-body .card-title {
 }
 body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text,
 body.videos-NuhYeNWr .page .container > main .card .card-body .card-text,
-body.materials-uStNjtHz .page .container > main .card .card-body .card-text {
+body.resources-uStNjtHz .page .container > main .card .card-body .card-text {
   display: block;
   height: auto;
   width: 100%;
@@ -1532,12 +1588,12 @@ body.materials-uStNjtHz .page .container > main .card .card-body .card-text {
 }
 body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > small,
 body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > small,
-body.materials-uStNjtHz .page .container > main .card .card-body .card-text > small {
+body.resources-uStNjtHz .page .container > main .card .card-body .card-text > small {
   text-align: left;
 }
 body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn,
 body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn,
-body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn {
+body.resources-uStNjtHz .page .container > main .card .card-body .card-text > .btn {
   display: block;
   color: #ffffff;
   font-size: 0.9rem;
@@ -1546,28 +1602,33 @@ body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .b
 }
 body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn:nth-of-type(1),
 body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn:nth-of-type(1),
-body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn:nth-of-type(1),
+body.resources-uStNjtHz .page .container > main .card .card-body .card-text > .btn:nth-of-type(1),
 body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn:nth-of-type(2),
 body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn:nth-of-type(2),
-body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn:nth-of-type(2) {
+body.resources-uStNjtHz .page .container > main .card .card-body .card-text > .btn:nth-of-type(2) {
   margin-bottom: 0.5rem;
+}
+body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn:last-of-type,
+body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn:last-of-type,
+body.resources-uStNjtHz .page .container > main .card .card-body .card-text > .btn:last-of-type {
+  margin-bottom: 0;
 }
 body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn > svg,
 body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn > svg,
-body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn > svg {
+body.resources-uStNjtHz .page .container > main .card .card-body .card-text > .btn > svg {
   height: 1.25rem;
   width: auto;
   margin-top: -0.15rem;
 }
 body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn.register-btn,
 body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn.register-btn,
-body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn.register-btn {
+body.resources-uStNjtHz .page .container > main .card .card-body .card-text > .btn.register-btn {
   background-color: #da525d !important;
   border-color: #da525d !important;
 }
 body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn.register-btn.disabled,
 body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn.register-btn.disabled,
-body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn.register-btn.disabled {
+body.resources-uStNjtHz .page .container > main .card .card-body .card-text > .btn.register-btn.disabled {
   background-color: #084f6f !important;
   border-color: #084f6f !important;
   pointer-events: auto;
@@ -1575,37 +1636,37 @@ body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .b
 }
 body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn.btn-primary,
 body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn.btn-primary,
-body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn.btn-primary {
+body.resources-uStNjtHz .page .container > main .card .card-body .card-text > .btn.btn-primary {
   background-color: #084f6f;
   border-color: #084f6f;
 }
 body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn.btn-primary:focus,
 body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn.btn-primary:focus,
-body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn.btn-primary:focus,
+body.resources-uStNjtHz .page .container > main .card .card-body .card-text > .btn.btn-primary:focus,
 body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn.btn-primary:hover,
 body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn.btn-primary:hover,
-body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn.btn-primary:hover {
+body.resources-uStNjtHz .page .container > main .card .card-body .card-text > .btn.btn-primary:hover {
   background-color: #063e57;
   border-color: #063e57;
 }
 body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn.btn-secondary,
 body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn.btn-secondary,
-body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn.btn-secondary {
+body.resources-uStNjtHz .page .container > main .card .card-body .card-text > .btn.btn-secondary {
   background-color: #084f6f;
   border-color: #084f6f;
 }
 body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn.btn-secondary:focus,
 body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn.btn-secondary:focus,
-body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn.btn-secondary:focus,
+body.resources-uStNjtHz .page .container > main .card .card-body .card-text > .btn.btn-secondary:focus,
 body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn.btn-secondary:hover,
 body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn.btn-secondary:hover,
-body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn.btn-secondary:hover {
+body.resources-uStNjtHz .page .container > main .card .card-body .card-text > .btn.btn-secondary:hover {
   background-color: #063e57;
   border-color: #063e57;
 }
 body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text:nth-last-of-type(1),
 body.videos-NuhYeNWr .page .container > main .card .card-body .card-text:nth-last-of-type(1),
-body.materials-uStNjtHz .page .container > main .card .card-body .card-text:nth-last-of-type(1) {
+body.resources-uStNjtHz .page .container > main .card .card-body .card-text:nth-last-of-type(1) {
   display: block;
   height: auto;
   width: 100%;
@@ -1614,17 +1675,13 @@ body.materials-uStNjtHz .page .container > main .card .card-body .card-text:nth-
   left: 0;
   padding: 1.25rem;
 }
-body.contact-mu1FDiTN .page .container > main p a {
-  font-size: 1rem;
-}
-body.contact-mu1FDiTN .page .container > main p a > i {
-  font-size: 1.25rem;
-}
-body.contact-mu1FDiTN .page .container > main > .media {
+body.contact-mu1FDiTN .page .container > main > .media,
+body.visitors-Smz3N4U0 .page .container > main > .media {
   margin: 4rem 0 2rem 0 !important;
   text-align: center;
 }
-body.contact-mu1FDiTN .page .container > main > .media > svg {
+body.contact-mu1FDiTN .page .container > main > .media > svg,
+body.visitors-Smz3N4U0 .page .container > main > .media > svg {
   color: #121315;
   font-size: 1rem;
   margin-right: 0.25rem;
@@ -1632,11 +1689,13 @@ body.contact-mu1FDiTN .page .container > main > .media > svg {
   height: 1rem;
   width: auto;
 }
-body.contact-mu1FDiTN .page .container > main > .media .media-body h5 {
+body.contact-mu1FDiTN .page .container > main > .media .media-body h5,
+body.visitors-Smz3N4U0 .page .container > main > .media .media-body h5 {
   font-weight: 700;
   text-transform: uppercase;
 }
-body.contact-mu1FDiTN .page .container > main > .media .media-body h5 > svg {
+body.contact-mu1FDiTN .page .container > main > .media .media-body h5 > svg,
+body.visitors-Smz3N4U0 .page .container > main > .media .media-body h5 > svg {
   margin-right: 0.5rem;
   height: 1.25rem;
   width: auto;
@@ -1679,7 +1738,7 @@ body.access-information-NdxqmVbV .page .container > main #access-information-Ndx
   top: 0;
   left: 0;
 }
-body.access-information-NdxqmVbV .page .container > main > p {
+body.access-information-NdxqmVbV .page .container > main > p:not(:first-of-type) {
   display: block;
   margin: 1rem 0 4rem 0 !important;
   text-align: left;
@@ -1795,10 +1854,14 @@ body.access-information-NdxqmVbV .page .container > main .card-group > .card .ca
     font-size: 1rem;
     padding: 0.5rem 1rem;
   }
+  body.courses-hFZ2XXIp .page .container > main .card .card-body.has-3-links {
+    padding-bottom: 0;
+  }
   body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn {
     display: inline-block;
   }
-  body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn:nth-of-type(1) {
+  body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn:nth-of-type(1),
+  body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn:nth-of-type(2) {
     margin-bottom: 0;
   }
   body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text:nth-last-of-type(1) {
@@ -1809,13 +1872,13 @@ body.access-information-NdxqmVbV .page .container > main .card-group > .card .ca
     position: absolute;
     text-align: center;
   }
-  body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn {
+  body.resources-uStNjtHz .page .container > main .card .card-body .card-text > .btn {
     display: inline-block;
   }
-  body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn:nth-of-type(1) {
+  body.resources-uStNjtHz .page .container > main .card .card-body .card-text > .btn:nth-of-type(1) {
     margin-bottom: 0;
   }
-  body.materials-uStNjtHz .page .container > main .card .card-body .card-text:nth-last-of-type(1) {
+  body.resources-uStNjtHz .page .container > main .card .card-body .card-text:nth-last-of-type(1) {
     display: block;
     display: inline-block;
     height: auto;
@@ -1839,6 +1902,40 @@ body.access-information-NdxqmVbV .page .container > main .card-group > .card .ca
   }
   body .page .container > main > ul {
     padding: 0 3rem !important;
+  }
+  body.courses-hFZ2XXIp #courses-hFZ2XXIp-nav.nav {
+    display: flex;
+    background-color: #ffffff;
+    padding: 2rem;
+    margin-top: -4rem;
+    z-index: 99;
+  }
+  body.courses-hFZ2XXIp #courses-hFZ2XXIp-nav.nav a {
+    color: #808c98;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+  }
+  body.courses-hFZ2XXIp #courses-hFZ2XXIp-nav.nav a:focus,
+  body.courses-hFZ2XXIp #courses-hFZ2XXIp-nav.nav a:hover {
+    background-color: transparent;
+    color: #464e57;
+    text-decoration: none;
+  }
+  body.courses-hFZ2XXIp #courses-hFZ2XXIp-nav.nav a.active {
+    color: #464e57;
+  }
+  body.courses-hFZ2XXIp #courses-hFZ2XXIp-nav.stickyBar {
+    position: relative;
+  }
+  body.courses-hFZ2XXIp #courses-hFZ2XXIp-nav.stickyIsFixed {
+    height: auto;
+    width: 100%;
+    margin-top: 50px;
+    padding: 2rem 0;
+    position: fixed;
+    top: 0;
+    left: 0;
   }
   body.photos-QDOJ1pyG #photos-QDOJ1pyG-nav.nav {
     display: flex;
@@ -1880,38 +1977,38 @@ body.access-information-NdxqmVbV .page .container > main .card-group > .card .ca
   body.photos-QDOJ1pyG .photos-QDOJ1pyG-container .row .col > a[role="button"] .hover-2-description {
     font-size: 0.75rem;
   }
-  body.materials-uStNjtHz .page .container > main h2:not(:first-of-type) {
+  body.resources-uStNjtHz .page .container > main h2:not(:first-of-type) {
     margin-top: 8rem !important;
   }
-  body.materials-uStNjtHz .page .container > main > p:nth-of-type(1) {
+  body.resources-uStNjtHz .page .container > main > p:nth-of-type(1) {
     padding: 0 3rem !important;
   }
-  body.materials-uStNjtHz #materials-uStNjtHz-nav.nav {
+  body.resources-uStNjtHz #resources-uStNjtHz-nav.nav {
     display: flex;
     background-color: #ffffff;
     padding: 2rem;
     margin-top: -4rem;
     z-index: 99;
   }
-  body.materials-uStNjtHz #materials-uStNjtHz-nav.nav a {
+  body.resources-uStNjtHz #resources-uStNjtHz-nav.nav a {
     color: #808c98;
     font-size: 0.9rem;
     padding: 0.5rem 1rem;
     text-decoration: none;
   }
-  body.materials-uStNjtHz #materials-uStNjtHz-nav.nav a:focus,
-  body.materials-uStNjtHz #materials-uStNjtHz-nav.nav a:hover {
+  body.resources-uStNjtHz #resources-uStNjtHz-nav.nav a:focus,
+  body.resources-uStNjtHz #resources-uStNjtHz-nav.nav a:hover {
     background-color: transparent;
     color: #464e57;
     text-decoration: none;
   }
-  body.materials-uStNjtHz #materials-uStNjtHz-nav.nav a.active {
+  body.resources-uStNjtHz #resources-uStNjtHz-nav.nav a.active {
     color: #464e57;
   }
-  body.materials-uStNjtHz #materials-uStNjtHz-nav.stickyBar {
+  body.resources-uStNjtHz #resources-uStNjtHz-nav.stickyBar {
     position: relative;
   }
-  body.materials-uStNjtHz #materials-uStNjtHz-nav.stickyIsFixed {
+  body.resources-uStNjtHz #resources-uStNjtHz-nav.stickyIsFixed {
     height: auto;
     width: 100%;
     margin-top: 50px;
@@ -2457,26 +2554,18 @@ html[lang="ja"] footer p > ruby > rt {
   }
   body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn,
   body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn,
-  body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn {
+  body.resources-uStNjtHz .page .container > main .card .card-body .card-text > .btn {
     color: #ffffff;
-  }
-  body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn:nth-of-type(1),
-  body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn:nth-of-type(1),
-  body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn:nth-of-type(1),
-  body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn:nth-of-type(2),
-  body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn:nth-of-type(2),
-  body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn:nth-of-type(2) {
-    margin-bottom: 0.5rem;
   }
   body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn.register-btn,
   body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn.register-btn,
-  body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn.register-btn {
+  body.resources-uStNjtHz .page .container > main .card .card-body .card-text > .btn.register-btn {
     background-color: #da525d !important;
     border-color: #da525d !important;
   }
   body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn.register-btn.disabled,
   body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn.register-btn.disabled,
-  body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn.register-btn.disabled {
+  body.resources-uStNjtHz .page .container > main .card .card-body .card-text > .btn.register-btn.disabled {
     background-color: #084f6f !important;
     border-color: #084f6f !important;
     pointer-events: auto;
@@ -2484,35 +2573,36 @@ html[lang="ja"] footer p > ruby > rt {
   }
   body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn.btn-primary,
   body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn.btn-primary,
-  body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn.btn-primary {
+  body.resources-uStNjtHz .page .container > main .card .card-body .card-text > .btn.btn-primary {
     background-color: #084f6f;
     border-color: #084f6f;
   }
   body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn.btn-primary:focus,
   body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn.btn-primary:focus,
-  body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn.btn-primary:focus,
+  body.resources-uStNjtHz .page .container > main .card .card-body .card-text > .btn.btn-primary:focus,
   body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn.btn-primary:hover,
   body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn.btn-primary:hover,
-  body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn.btn-primary:hover {
+  body.resources-uStNjtHz .page .container > main .card .card-body .card-text > .btn.btn-primary:hover {
     background-color: #063e57;
     border-color: #063e57;
   }
   body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn.btn-secondary,
   body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn.btn-secondary,
-  body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn.btn-secondary {
+  body.resources-uStNjtHz .page .container > main .card .card-body .card-text > .btn.btn-secondary {
     background-color: #084f6f;
     border-color: #084f6f;
   }
   body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn.btn-secondary:focus,
   body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn.btn-secondary:focus,
-  body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn.btn-secondary:focus,
+  body.resources-uStNjtHz .page .container > main .card .card-body .card-text > .btn.btn-secondary:focus,
   body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn.btn-secondary:hover,
   body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn.btn-secondary:hover,
-  body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn.btn-secondary:hover {
+  body.resources-uStNjtHz .page .container > main .card .card-body .card-text > .btn.btn-secondary:hover {
     background-color: #063e57;
     border-color: #063e57;
   }
-  body.contact-mu1FDiTN .page .container > main > .media > svg {
+  body.contact-mu1FDiTN .page .container > main > .media > svg,
+  body.visitors-Smz3N4U0 .page .container > main > .media > svg {
     color: #121315;
   }
   body.access-information-NdxqmVbV .page .container > main > .media > i.fas {
@@ -2656,40 +2746,41 @@ html[lang="ja"] footer p > ruby > rt {
   }
   body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn,
   body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn,
-  body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn {
+  body.resources-uStNjtHz .page .container > main .card .card-body .card-text > .btn {
     color: #ffffff;
   }
   body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn.btn-primary,
   body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn.btn-primary,
-  body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn.btn-primary {
+  body.resources-uStNjtHz .page .container > main .card .card-body .card-text > .btn.btn-primary {
     background-color: #084f6f;
     border-color: #084f6f;
   }
   body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn.btn-primary:focus,
   body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn.btn-primary:focus,
-  body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn.btn-primary:focus,
+  body.resources-uStNjtHz .page .container > main .card .card-body .card-text > .btn.btn-primary:focus,
   body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn.btn-primary:hover,
   body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn.btn-primary:hover,
-  body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn.btn-primary:hover {
+  body.resources-uStNjtHz .page .container > main .card .card-body .card-text > .btn.btn-primary:hover {
     background-color: #063e57;
     border-color: #063e57;
   }
   body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn.btn-secondary,
   body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn.btn-secondary,
-  body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn.btn-secondary {
+  body.resources-uStNjtHz .page .container > main .card .card-body .card-text > .btn.btn-secondary {
     background-color: #084f6f;
     border-color: #084f6f;
   }
   body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn.btn-secondary:focus,
   body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn.btn-secondary:focus,
-  body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn.btn-secondary:focus,
+  body.resources-uStNjtHz .page .container > main .card .card-body .card-text > .btn.btn-secondary:focus,
   body.courses-hFZ2XXIp .page .container > main .card .card-body .card-text > .btn.btn-secondary:hover,
   body.videos-NuhYeNWr .page .container > main .card .card-body .card-text > .btn.btn-secondary:hover,
-  body.materials-uStNjtHz .page .container > main .card .card-body .card-text > .btn.btn-secondary:hover {
+  body.resources-uStNjtHz .page .container > main .card .card-body .card-text > .btn.btn-secondary:hover {
     background-color: #063e57;
     border-color: #063e57;
   }
-  body.contact-mu1FDiTN .page .container > main > .media > svg {
+  body.contact-mu1FDiTN .page .container > main > .media > svg,
+  body.visitors-Smz3N4U0 .page .container > main > .media > svg {
     color: #121315;
   }
   body.access-information-NdxqmVbV .page .container > main > .media > i.fas {

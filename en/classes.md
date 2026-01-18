@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Classes
-description: We have a wide schedule of classes to accommodate adults and children, and different levels of experience. In addition, we include practice with weapons (buki waza).
+description: We have a wide schedule of classes to accommodate adults and children, and different levels of experience.
 permalink: /en/classes/
 lang: en
 i18n-ref: classes-CJc2lhFv
@@ -319,4 +319,4 @@ __Friday__
 __Saturday__
 11:00 - 13:00
 
-For more information about karate classes, please contact us by email at [pepllorensinstructor@gmail.com](mailto:pepllorensinstructor@gmail.com), by phone or whatsapp at [+34646764213](https://wa.me/+34646764213), or visit us at: [https://maps.app.goo.gl/F5sn2KhkDkw674Pb7](https://maps.app.goo.gl/F5sn2KhkDkw674Pb7)
+For more information about karate classes, please contact us by email at [pepllorensinstructor@gmail.com](mailto:pepllorensinstructor@gmail.com), by phone or whatsapp at [+34646764213](https://wa.me/+34646764213).

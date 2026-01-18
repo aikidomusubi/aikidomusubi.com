@@ -268,6 +268,8 @@ jQuery(document).ready(function($) {
   }
 
   if (document.body.classList.contains('courses-hFZ2XXIp')) {
+    initPhotoFilter("#courses-hFZ2XXIp-nav", ".courses-hFZ2XXIp-container .card");
+
     document.querySelectorAll('.page .container>main .card .card-body').forEach(cardBody => {
       const lastCardText = cardBody.querySelector('.card-text:last-of-type');
       if (lastCardText && lastCardText.children.length === 3) {
@@ -276,7 +278,7 @@ jQuery(document).ready(function($) {
     });
   }
 
-  if (document.body.classList.contains('index-8oGCaMDs') || document.body.classList.contains('classes-CJc2lhFv') || document.body.classList.contains('materials-uStNjtHz') || document.body.classList.contains('access-information-NdxqmVbV')) {
+  if (document.body.classList.contains('index-8oGCaMDs') || document.body.classList.contains('classes-CJc2lhFv') || document.body.classList.contains('resources-uStNjtHz') || document.body.classList.contains('photos-QDOJ1pyG') || document.body.classList.contains('courses-hFZ2XXIp') || document.body.classList.contains('access-information-NdxqmVbV')) {
     activeLinkSwitch();
     stickySection();
     smoothScrolling();

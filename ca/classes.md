@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Classes
-description: Disposem d'un ampli horari de classes per acomodar a adults i nens, i diferents nivells d'experiència. A més, incloem la pràctica amb armes (buki waza).
+description: Disposem d'un ampli horari de classes per acomodar a adults i nens, i diferents nivells d'experiència.
 permalink: /ca/classes/
 lang: ca
 i18n-ref: classes-CJc2lhFv
@@ -319,4 +319,4 @@ __Divendres__
 __Dissabtes__
 11:00 - 13:00 (P. Llorens)
 
-Per a més informació sobre les classes de karate, pots contactar a través del correu electrònic: [pepllorensinstructor@gmail.com](mailto:pepllorensinstructor@gmail.com), per telèfon o whatsapp al [+34646764213](https://wa.me/+34646764213), o presencialment a: [https://maps.app.goo.gl/F5sn2KhkDkw674Pb7](https://maps.app.goo.gl/F5sn2KhkDkw674Pb7)
+Per a més informació sobre les classes de karate, pots contactar a través del correu electrònic: [pepllorensinstructor@gmail.com](mailto:pepllorensinstructor@gmail.com), per telèfon o whatsapp al [+34646764213](https://wa.me/+34646764213).

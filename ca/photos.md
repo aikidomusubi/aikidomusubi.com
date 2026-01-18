@@ -1,7 +1,7 @@
 ---
 layout: photo
 title: Fotos
-description: Una selecció de fotos. Si vols veure'n més, visita la nostra pàgina de Facebook. Tret que s’indiqui el contrari, totes les fotos són d’Aikido Musubi.
+description: Una selecció de fotos. Tret que s’indiqui el contrari, totes les fotos són d’Aikido Musubi.
 permalink: /ca/fotos/
 lang: ca
 i18n-ref: photos-QDOJ1pyG

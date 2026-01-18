@@ -1,7 +1,7 @@
 ---
 layout: page
 title: 各クラスの紹介
-description: 一般の方を対象としたクラスの他にも、初心者に合わせたクラスのご用意もあります。さらに、武器技のクラスもございます。
+description: 一般の方を対象としたクラスの他にも、初心者に合わせたクラスのご用意もあります。
 permalink: /ja/classes/
 lang: ja
 i18n-ref: classes-CJc2lhFv
@@ -323,4 +323,4 @@ __金曜日__
 __土曜日__
 11:00 - 13:00 (ペップ・リュレンス)
 
-空手クラスに関する詳細は、メール：[pepllorensinstructor@gmail.com](mailto:pepllorensinstructor@gmail.com)、電話またはwhatsapp：[+34646764213](https://wa.me/+34646764213)、または道場所在地：[https://maps.app.goo.gl/F5sn2KhkDkw674Pb7](https://maps.app.goo.gl/F5sn2KhkDkw674Pb7)
+空手クラスに関する詳細は、メール：[pepllorensinstructor@gmail.com](mailto:pepllorensinstructor@gmail.com)、電話またはwhatsapp：[+34646764213](https://wa.me/+34646764213)。

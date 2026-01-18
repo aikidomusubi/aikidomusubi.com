@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Access Information
-description: If you wish to visit our dojo or train with us, contact us.
+description: If you wish to visit our dojo or train with us, contact us for more information about locations and schedules.
 permalink: /en/access-information/
 lang: en
 i18n-ref: access-information-NdxqmVbV
@@ -9,7 +9,7 @@ i18n-ref: access-information-NdxqmVbV
 
 # Access Information
 
-Currently, Aikido Musubi has two centers in the province of Barcelona: __Aikido Musubi__ (Badalona), and __Aikido Musubi Sant Adrià de Besòs__. If you’d like to visit our dojo or train with us, [contact us]({{ site.url }}/{{ page.lang }}/contact/) for more information about locations and schedules.
+Currently, we operate two centers in the province of Barcelona: __Aikido Musubi__ (Badalona), and __Aikido Musubi Sant Adrià de Besòs__. If you’d like to visit our dojo or train with us, [contact us]({{ site.url }}/{{ page.lang }}/contact/) for more information about locations and schedules.
 
 <hr>
 

@@ -55,6 +55,19 @@
           </a>
         </div>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="
+          {% if page.lang == 'ca' %}{{ site.url }}/{{ page.lang }}/cursos/{% endif %}
+          {% if page.lang == 'en' %}{{ site.url }}/{{ page.lang }}/courses/{% endif %}
+          {% if page.lang == 'es' %}{{ site.url }}/cursos/{% endif %}
+          {% if page.lang == 'ja' %}{{ site.url }}/{{ page.lang }}/courses/{% endif %}
+        ">
+          {% if page.lang == 'ca' %}Cursos{% endif %}
+          {% if page.lang == 'en' %}Courses{% endif %}
+          {% if page.lang == 'es' %}Cursos{% endif %}
+          {% if page.lang == 'ja' %}講習会{% endif %}
+        </a>
+      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           {% if page.lang == 'ca' %}Media{% endif %}
@@ -89,15 +102,7 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="
-          {% if page.lang == 'ca' %}{{ site.url }}/{{ page.lang }}/cursos/{% endif %}
-          {% if page.lang == 'en' %}{{ site.url }}/{{ page.lang }}/courses/{% endif %}
-          {% if page.lang == 'es' %}{{ site.url }}/cursos/{% endif %}
-          {% if page.lang == 'ja' %}{{ site.url }}/{{ page.lang }}/courses/{% endif %}
         ">
-          {% if page.lang == 'ca' %}Cursos{% endif %}
-          {% if page.lang == 'en' %}Courses{% endif %}
-          {% if page.lang == 'es' %}Cursos{% endif %}
-          {% if page.lang == 'ja' %}講習会{% endif %}
         </a>
       </li>
       <li class="nav-item dropdown">
@@ -108,6 +113,17 @@
           {% if page.lang == 'ja' %}お問い合わせ・アクセス{% endif %}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="
+            {% if page.lang == 'ca' %}{{ site.url }}/{{ page.lang }}/visitants/{% endif %}
+            {% if page.lang == 'en' %}{{ site.url }}/{{ page.lang }}/visitors/{% endif %}
+            {% if page.lang == 'es' %}{{ site.url }}/visitantes/{% endif %}
+            {% if page.lang == 'ja' %}{{ site.url }}/{{ page.lang }}/visitors/{% endif %}
+          ">
+            {% if page.lang == 'ca' %}Visitants{% endif %}
+            {% if page.lang == 'en' %}Visitors{% endif %}
+            {% if page.lang == 'es' %}Visitantes{% endif %}
+            {% if page.lang == 'ja' %}...{% endif %}
+          </a>
           <a class="dropdown-item" href="
             {% if page.lang == 'ca' %}{{ site.url }}/{{ page.lang }}/acces/{% endif %}
             {% if page.lang == 'en' %}{{ site.url }}/{{ page.lang }}/access-information/{% endif %}
