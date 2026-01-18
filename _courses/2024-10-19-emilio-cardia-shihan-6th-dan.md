@@ -31,5 +31,5 @@ date_from: 2024-10-19
 date_to: 2024-10-20
 
 event_link: "https://www.facebook.com/events/702193068594840"
-registration_link:
+registration_link: "https://forms.gle/uYcfwS11cGuHCG7q9"
 ---

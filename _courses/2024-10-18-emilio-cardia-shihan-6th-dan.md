@@ -31,5 +31,5 @@ date_from: 2024-10-18
 date_to: "blank"
 
 event_link: "https://www.facebook.com/events/1236366530745916"
-registration_link:
+registration_link: "https://forms.gle/uYcfwS11cGuHCG7q9"
 ---
