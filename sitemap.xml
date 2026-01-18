@@ -858,7 +858,7 @@
   </url>
   <url>
     <loc>https://aikidomusubi.com/ca/cursos/</loc>
-    <lastmod>2025-12-28</lastmod>
+    <lastmod>2026-01-18</lastmod>
     <image:image>
       <image:loc>https://aikidomusubi.com/images/courses-hFZ2XXIp-2020-02-01-ricard-coll-4th-dan-ca.jpg</image:loc>
       <image:title>Ricard Coll 4t Dan Aikikai</image:title>
@@ -1006,7 +1006,7 @@
   </url>
   <url>
     <loc>https://aikidomusubi.com/en/courses/</loc>
-    <lastmod>2025-12-28</lastmod>
+    <lastmod>2026-01-18</lastmod>
     <image:image>
       <image:loc>https://aikidomusubi.com/images/courses-hFZ2XXIp-2020-02-01-ricard-coll-4th-dan-ca.jpg</image:loc>
       <image:title>Ricard Coll 4th Dan Aikikai</image:title>
@@ -1154,7 +1154,7 @@
   </url>
   <url>
     <loc>https://aikidomusubi.com/cursos/</loc>
-    <lastmod>2025-12-28</lastmod>
+    <lastmod>2026-01-18</lastmod>
     <image:image>
       <image:loc>https://aikidomusubi.com/images/courses-hFZ2XXIp-2020-02-01-ricard-coll-4th-dan-ca.jpg</image:loc>
       <image:title>Ricard Coll 4.º Dan Aikikai</image:title>
@@ -1302,7 +1302,7 @@
   </url>
   <url>
     <loc>https://aikidomusubi.com/ja/courses/</loc>
-    <lastmod>2025-12-28</lastmod>
+    <lastmod>2026-01-18</lastmod>
     <image:image>
       <image:loc>https://aikidomusubi.com/images/courses-hFZ2XXIp-2020-02-01-ricard-coll-4th-dan-ca.jpg</image:loc>
       <image:title>リカルド・コール 四段 合気会</image:title>
@@ -1978,7 +1978,7 @@
   </url>
   <url>
     <loc>https://aikidomusubi.com/ca/videos/</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-18</lastmod>
     <xhtml:link rel="alternate" hreflang="ca" href="https://aikidomusubi.com/ca/videos/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/videos/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/videos/"></xhtml:link>
@@ -1986,7 +1986,7 @@
   </url>
   <url>
     <loc>https://aikidomusubi.com/en/videos/</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-18</lastmod>
     <xhtml:link rel="alternate" hreflang="ca" href="https://aikidomusubi.com/ca/videos/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/videos/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/videos/"></xhtml:link>
@@ -1994,7 +1994,7 @@
   </url>
   <url>
     <loc>https://aikidomusubi.com/videos/</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-18</lastmod>
     <xhtml:link rel="alternate" hreflang="ca" href="https://aikidomusubi.com/ca/videos/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/videos/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/videos/"></xhtml:link>
@@ -2002,10 +2002,42 @@
   </url>
   <url>
     <loc>https://aikidomusubi.com/ja/videos/</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-18</lastmod>
     <xhtml:link rel="alternate" hreflang="ca" href="https://aikidomusubi.com/ca/videos/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/videos/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/videos/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/videos/"></xhtml:link>
+  </url>
+  <url>
+    <loc>https://aikidomusubi.com/ca/visitants/</loc>
+    <lastmod>2026-01-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://aikidomusubi.com/ca/visitants/"></xhtml:link>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/visitors/"></xhtml:link>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/visitantes/"></xhtml:link>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/visitors/"></xhtml:link>
+  </url>
+  <url>
+    <loc>https://aikidomusubi.com/en/visitors/</loc>
+    <lastmod>2026-01-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://aikidomusubi.com/ca/visitants/"></xhtml:link>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/visitors/"></xhtml:link>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/visitantes/"></xhtml:link>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/visitors/"></xhtml:link>
+  </url>
+  <url>
+    <loc>https://aikidomusubi.com/visitantes/</loc>
+    <lastmod>2026-01-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://aikidomusubi.com/ca/visitants/"></xhtml:link>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/visitors/"></xhtml:link>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/visitantes/"></xhtml:link>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/visitors/"></xhtml:link>
+  </url>
+  <url>
+    <loc>https://aikidomusubi.com/ja/visitors/</loc>
+    <lastmod>2026-01-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://aikidomusubi.com/ca/visitants/"></xhtml:link>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/visitors/"></xhtml:link>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/visitantes/"></xhtml:link>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/visitors/"></xhtml:link>
   </url>
 </urlset>
