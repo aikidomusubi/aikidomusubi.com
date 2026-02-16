@@ -11,7 +11,7 @@ desc_en: >-
 desc_es: >-
   ¡Estamos emocionados de anunciar una masterclass de Aikido exclusiva a cargo de Laura Benevelli Sensei de Aikikai Milano! Únete a nosotros el viernes 28 de junio en Aikido Musubi (Av. d'Alfons XIII, 351 08918 Badalona, Barcelona).
 desc_ja: >-
-  イタリアのアイキカイ・ミラノからラウラ・ベネヴェッリ先生を迎え、特別合気道マスタークラスを開催することをお知らせします！６月２８日（金）にアイキドー・ムスビ（バルセロナ、バダロナのアルフォンソ１３世通り３５１番地）でお会いしましょう。
+  イタリアのアイキカイ・ミラノからラウラ・ベネヴェッリ先生を迎え、特別合気道マスタークラスを開催することをお知らせします！６月２８日（金）に合気道産靈（バルセロナ、バダロナのアルフォンソ１３世通り３５１番地）でお会いしましょう。
 
 image_ca: "courses-hFZ2XXIp-2024-06-28-laura-benevelli-5th-dan-en"
 image_en: "courses-hFZ2XXIp-2024-06-28-laura-benevelli-5th-dan-en"

@@ -15,7 +15,7 @@ desc_es: >-
   <br>No te pierdas este evento especial el viernes 18 de octubre en Aikido Musubi (Av. d'Alfons XIII, 351 08918 Badalona, Barcelona).
 desc_ja: >-
   アイキカイ・コルシコのエミリオ・カルディア先生を迎え、１０月１９日・２０日のバダロナでのセミナーに先立ち、特別合気道マスタークラスを開催することをお知らせします！<br>
-  <br>１０月１８日（金）にアイキドー・ムスビ（バルセロナ、バダロナのアルフォンソ１３世通り３５１番地）でお会いしましょう。
+  <br>１０月１８日（金）に合気道産靈（バルセロナ、バダロナのアルフォンソ１３世通り３５１番地）でお会いしましょう。
 
 image_ca: "courses-hFZ2XXIp-2024-10-18-emilio-cardia-shihan-6th-dan-ca"
 image_en: "courses-hFZ2XXIp-2024-10-18-emilio-cardia-shihan-6th-dan-en"

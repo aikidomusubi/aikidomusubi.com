@@ -11,7 +11,7 @@ desc_en: >-
 desc_es: >-
   ¡Ya están abiertas las inscripciones para el seminario de Kumazawa Sensei en Barcelona los días 28, 29 y 30 de noviembre de 2025!<br><br>La sesión del viernes 28 tendrá lugar en Aikido Musubi (Av. d'Alfons XIII, 351, 08918 Badalona), y las sesiones de los días 29 y 30 en la escuela Jesuïtes Sarrià - Sant Ignasi.<br><br>¡Las plazas son limitadas, así que reserva tu lugar hoy mismo!
 desc_ja: >-
-  熊澤先生（合気会六段）によるセミナーが、２０２５年１１月２８日・２９日・３０日にバルセロナで開催されます！<br><br>１１月２８日（金）の稽古はアイキドー・ムスビ道場（Av. d'Alfons XIII, 351, 08918 Badalona）で、２９日（土）と３０日（日）はジェズイタス・サリア＝サン・イグナシ校で行われます。<br><br>定員に限りがありますので、お早めにお申し込みください！
+  熊澤先生（合気会六段）によるセミナーが、２０２５年１１月２８日・２９日・３０日にバルセロナで開催されます！<br><br>１１月２８日（金）の稽古は合気道産靈（Av. d'Alfons XIII, 351, 08918 Badalona）で、２９日（土）と３０日（日）はジェズイタス・サリア＝サン・イグナシ校で行われます。<br><br>定員に限りがありますので、お早めにお申し込みください！
 
 image_ca: "courses-hFZ2XXIp-2025-11-29-miyuki-kumazawa-6th-dan-en"
 image_en: "courses-hFZ2XXIp-2025-11-29-miyuki-kumazawa-6th-dan-en"

@@ -11,7 +11,7 @@ desc_en: >-
 desc_es: >-
   ¡Estamos muy emocionados de presentar una masterclass de Aikido única con Joshua Layton Sensei de Montérégie Aikikai! No te pierdas este evento especial el lunes 18 de noviembre en Aikido Musubi (Av. d'Alfons XIII, 351 08918 Badalona, Barcelona).
 desc_ja: >-
-  モンテレジーアイキカイのジョシュア・レイトン先生を迎え、ユニークな合気道マスタークラスを開催することをお知らせします！１１月１８日（月）にアイキドー・ムスビ（バルセロナ、バダロナのアルフォンソ１３世通り３５１番地）でお会いしましょう。
+  モンテレジーアイキカイのジョシュア・レイトン先生を迎え、ユニークな合気道マスタークラスを開催することをお知らせします！１１月１８日（月）に合気道産靈（バルセロナ、バダロナのアルフォンソ１３世通り３５１番地）でお会いしましょう。
 
 image_ca: "courses-hFZ2XXIp-2024-11-18-joshua-layton-5th-dan-en"
 image_en: "courses-hFZ2XXIp-2024-11-18-joshua-layton-5th-dan-en"
