@@ -156,6 +156,14 @@ i18n-ref: index-8oGCaMDs
       </picture>
       <span>アンドレウ・ビリャル<em>（参段）</em></span>
     </div>
+    <div class="col-4 col-sm-4">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-19.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-19.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/index-8oGCaMDs-19.jpg" class="img-fluid lazyload" alt="合気道産靈 チェン・グァンロン">
+      </picture>
+      <span>チェン・グァンロン<em>（参段）</em></span>
+    </div>
   </div>
 </div>
 

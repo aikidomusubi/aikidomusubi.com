@@ -156,6 +156,14 @@ Currently, he holds a 4th dan degree and the title of _shidoin_ (qualified instr
       </picture>
       <span>Andreu Villar <em>(3rd dan)</em></span>
     </div>
+    <div class="col-4 col-sm-4">
+      <picture>
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-19.webp" class="img-fluid lazyload">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-19.jpg" class="img-fluid lazyload">
+        <img src="{{ site.url }}/images/index-8oGCaMDs-19.jpg" class="img-fluid lazyload" alt="Aikido Musubi Guanlong Zheng">
+      </picture>
+      <span>Guanlong Zheng <em>(3rd dan)</em></span>
+    </div>
   </div>
 </div>
 
