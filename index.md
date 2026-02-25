@@ -184,7 +184,7 @@ Actualmente, tiene el grado de 4.º dan y el título de _shidoin_ (instructor cu
 
 __Aikido Musubi__ (CIF: G-64799554) es una asociación cultural fundada en 2008. Es la primera asociación en Badalona autogestionada y sin ánimo de lucro cuyo objetivo es promover la práctica del aikido y los valores de las artes marciales tradicionales de Japón. Hace más de {{ site.time | date: '%Y' | minus: 2008 }} años que somos un actor principal en la ciudad de Badalona ofreciendo un espacio 100% dedicado a las artes marciales y la cultura japonesa.
 
-La Junta Directiva está constituida por el Presidente, el Vicepresidente, el Secretario, y el Tesorero que a su vez asumen el rol de director técnico e instructores respectivamente. Son miembros fundadores activos con experiencia significativa dentro de la asociación que han sido elegidos por la Asamblea General, compuesta por todos los miembros de la asociación.
+La Junta Directiva está constituida por el Presidente, el Secretario, y el Tesorero que a su vez asumen el rol de director técnico e instructores respectivamente. Son miembros fundadores activos con experiencia significativa dentro de la asociación que han sido elegidos por la Asamblea General, compuesta por todos los miembros de la asociación.
 
 __Aikido Musubi__ no aboga, apoya ni practica la discriminación ilegal basada en la edad, el origen étnico, el género, el origen nacional, la discapacidad, la raza, la religión, la orientación sexual o los antecedentes socioeconómicos.
 
