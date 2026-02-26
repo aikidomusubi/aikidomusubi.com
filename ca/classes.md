@@ -28,22 +28,31 @@ Disposem d'un ampli horari de classes per acomodar a adults i nens, i diferents 
 Pràctica regular per a tots els nivells. Disponible per a tots els membres majors de 12 anys.
 
 __Dilluns__
-20:00 - 20:45 (J.L. Zafra)
+20:00 - 20:45 (J.L. Zafra, Aikido Musubi)<br>
+20:00 - 21:00 (G. Zheng, Sant Adrià de B.)<br>
+19:00 - 20:00 (P. Martín, Universitat de Barcelona)
+
 __Dimarts__
-18:30 - 19:30 (A. Sancho)<br>
-19:30 - 20:30 (P. Martín, Dōjō-chō)<br>
-20:30 - 21:30
+18:30 - 19:30 (A. Sancho, Aikido Musubi)<br>
+19:30 - 20:30 (P. Martín, Aikido Musubi)<br>
+20:30 - 21:30 (instructor en formació, Aikido Musubi)
+
 __Dimecres__
-20:00 - 20:45 (J.M. Pérez)<br>
-20:45 - 21:30 (J.M. Pérez)
+20:00 - 20:45 (J.M. Pérez, Aikido Musubi)<br>
+20:45 - 21:30 (J.M. Pérez, Aikido Musubi)<br>
+20:15 - 21:15 (G. Zheng, Sant Adrià de B.)<br>
+19:00 - 20:00 (P. Martín, Universitat de Barcelona)
+
 __Dijous__
-18:30 - 19:30 (A. Sancho)<br>
-19:30 - 20:30 (P. Martín, Dōjō-chō)<br>
-20:30 - 21:30 (P. Martín, Dōjō-chō)
+18:30 - 19:30 (A. Sancho, Aikido Musubi)<br>
+19:30 - 20:30 (P. Martín, Aikido Musubi)<br>
+20:30 - 21:30 (P. Martín, Aikido Musubi)
+
 __Divendres__
-19:00 - 20:00 (P. Fortes)
+19:00 - 20:00 (P. Fortes, Aikido Musubi)
+
 __Dissabte__
-8:00 - 9:00 (A. Villar)
+8:00 - 9:00 (A. Villar, Aikido Musubi)
 
 ## Classes d'aikido per a principiants
 
@@ -84,11 +93,15 @@ __Dissabte__
 
 Se centra en l'aprenentatge de les caigudes i moviments bàsics. Recomanat per a principiants i practicants de nivell intermedi.
 
+__Dilluns__
+19:00 - 20:00 (P. Martín, Universitat de Barcelona)
+
 __Dimarts__
-19:30 - 20:30 (P. Martín, Dōjō-chō)
+19:30 - 20:30 (P. Martín, Aikido Musubi)
 
 __Dimecres__
-20:00 - 20:45 (J.M. Pérez)
+20:00 - 20:45 (J.M. Pérez, Aikido Musubi)<br>
+19:00 - 20:00 (P. Martín, Universitat de Barcelona)
 
 ## Classes d'aikido amb armes
 
@@ -114,7 +127,7 @@ __Dimecres__
 Pràctica amb sabre de fusta o _bokken_, el bastó mitjà de fusta o _jō_, i el ganivet de fusta o _tantō_.
 
 __Dijous__
-19:30 - 20:30 (P. Martín, Dōjō-chō)
+19:30 - 20:30 (P. Martín, Aikido Musubi)
 
 ## Classes d'aikido per a nens i nenes
 
@@ -204,7 +217,7 @@ __Dilluns__
 20:00 - 20:45 (J.L. Zafra)
 
 __Dissabte__
-08:30 - 10:00 (X. Serra)
+08:30 - 10:30 (X. Serra)
 
 <hr id="judo" class="anchor">
 

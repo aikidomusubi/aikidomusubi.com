@@ -9,7 +9,7 @@ i18n-ref: access-information-NdxqmVbV
 
 # アクセス
 
-合気道産靈はバルセロナ県内に2つの道場があります：__合気道産靈__（バダロナ）、そして __合気道産靈 サント・アドリアー・ダ・バゾス__。私たちの道場を訪れたい方や一緒に稽古したい方は、[お問い合わせください]({{ site.url }}/{{ page.lang }}/contact/)。所在地や稽古時間の詳細をご案内します。
+合気道産靈はバルセロナ県内に3つの道場があります：__合気道産靈__（バダロナ）、 __合気道産靈 サント・アドリアー・ダ・バゾス__、そして __バルセロナ大学法学部__。私たちの道場を訪れたい方や一緒に稽古したい方は、[お問い合わせください]({{ site.url }}/{{ page.lang }}/contact/)。所在地や稽古時間の詳細をご案内します。
 
 <hr>
 
@@ -199,3 +199,41 @@ __合気道産靈 サント・アドリアー__ はマリナ・ベソス市立�
     </div>
   </div>
 </div>
+
+<hr>
+
+<hr id="university-of-barcelona" class="anchor">
+
+## バルセロナ大学
+
+<div class="card mb-3">
+  <div class="row no-gutters">
+    <div class="col-lg-4">
+      <div class="card-body">
+        <h5 class="card-title" style="
+          background-image: url('{{ site.url }}/graphics/Logotip_UB.svg');
+          background-position: center;
+          background-size: 90%;
+        "><!-- University of Barcelona --></h5>
+        <h4>バルセロナ大学法学部</h4>
+        <p class="card-text">
+          Av. Diagonal, 684, Les Corts,<br>
+          08034 Barcelona
+        </p>
+        <p class="card-text">
+          <small class="text-muted">
+            月と水営業<br>
+            <a href="{{ site.url }}/{{ page.lang }}/training-schedule/?location=university-of-barcelona">稽古時間の詳細はこちら</a>
+          </small>
+        </p>
+      </div>
+    </div>
+    <div class="col-lg-8">
+      <div class="map">
+        {% include map.html section="university_of_barcelona" %}
+      </div>
+    </div>
+  </div>
+</div>
+
+稽古は __バルセロナ大学法学部__ の多目的室「ラ・カペヤ」にて行われます。

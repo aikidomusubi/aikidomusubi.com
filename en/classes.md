@@ -28,22 +28,31 @@ We have a wide schedule of classes to accommodate adults and children, and diffe
 Regular practice for all levels. Available to all members over 12 years old.
 
 __Monday__
-20:00 - 20:45 (J.L. Zafra)
+20:00 - 20:45 (J.L. Zafra, Aikido Musubi)<br>
+20:00 - 21:00 (G. Zheng, Sant Adrià de B.)<br>
+19:00 - 20:00 (P. Martín, University of Barcelona)
+
 __Tuesday__
-18:30 - 19:30 (A. Sancho)<br>
-19:30 - 20:30 (P. Martín, Dōjō-chō)<br>
-20:30 - 21:30
+18:30 - 19:30 (A. Sancho, Aikido Musubi)<br>
+19:30 - 20:30 (P. Martín, Aikido Musubi)<br>
+20:30 - 21:30 (instructor-in-training, Aikido Musubi)
+
 __Wednesday__
-20:00 - 20:45 (J.M. Pérez)<br>
-20:45 - 21:30 (J.M. Pérez)
+20:00 - 20:45 (J.M. Pérez, Aikido Musubi)<br>
+20:45 - 21:30 (J.M. Pérez, Aikido Musubi)<br>
+20:15 - 21:15 (G. Zheng, Sant Adrià de B.)<br>
+19:00 - 20:00 (P. Martín, University of Barcelona)
+
 __Thursday__
-18:30 - 19:30 (A. Sancho)<br>
-19:30 - 20:30 (P. Martín, Dōjō-chō)<br>
-20:30 - 21:30 (P. Martín, Dōjō-chō)
-__Friday__
-19:00 - 20:00 (P. Fortes)
+18:30 - 19:30 (A. Sancho, Aikido Musubi)<br>
+19:30 - 20:30 (P. Martín, Aikido Musubi)<br>
+20:30 - 21:30 (P. Martín, Aikido Musubi)
+
+__Fridy__
+19:00 - 20:00 (P. Fortes, Aikido Musubi)
+
 __Saturday__
-8:00 - 9:00 (A. Villar)
+8:00 - 9:00 (A. Villar, Aikido Musubi)
 
 ## Aikido classes for beginners
 
@@ -84,11 +93,15 @@ __Saturday__
 
 Practice focuses on learning basic falls and movements. Recommended for beginners and intermediate level practitioners.
 
+__Monday__
+19:00 - 20:00 (P. Martín, University of Barcelona)
+
 __Tuesday__
-19:30 - 20:30 (P. Martín, Dōjō-chō)
+19:30 - 20:30 (P. Martín, Aikido Musubi)
 
 __Wednesday__
-20:00 - 20:45 (J.M. Pérez)
+20:00 - 20:45 (J.M. Pérez, Aikido Musubi)<br>
+19:00 - 20:00 (P. Martín, University of Barcelona)
 
 ## Aikido weapons classes
 
@@ -114,7 +127,7 @@ __Wednesday__
 Practice with wooden sword or _bokken_, the short staff or _jō_, and the wooden knife or _tantō_.
 
 __Thursday__
-19:30 - 20:30 (P. Martín, Dōjō-chō)
+19:30 - 20:30 (P. Martín, Aikido Musubi)
 
 ## Aikido classes for children
 
@@ -204,7 +217,7 @@ __Monday__
 20:00 - 20:45 (J.L. Zafra)
 
 __Saturday__
-08:30 - 10:00 (X. Serra)
+08:30 - 10:30 (X. Serra)
 
 <hr id="judo" class="anchor">
 

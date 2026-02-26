@@ -9,7 +9,7 @@ i18n-ref: access-information-NdxqmVbV
 
 # Access Information
 
-Currently, we operate two centers in the province of Barcelona: __Aikido Musubi__ (Badalona), and __Aikido Musubi Sant Adrià de Besòs__. If you’d like to visit our dojo or train with us, [contact us]({{ site.url }}/{{ page.lang }}/contact/) for more information about locations and schedules.
+Currently, we operate three centers in the province of Barcelona: __Aikido Musubi__ (Badalona), __Aikido Musubi Sant Adrià de Besòs__, and the __Faculty of Law at the University of Barcelona__. If you’d like to visit our dojo or train with us, [contact us]({{ site.url }}/{{ page.lang }}/contact/) for more information about locations and schedules.
 
 <hr>
 
@@ -32,7 +32,7 @@ Currently, we operate two centers in the province of Barcelona: __Aikido Musubi_
           <small class="text-muted">
             Free parking<br>
             Open Monday to Saturday<br>
-            <a href="{{ site.url }}/{{ page.lang }}/training-schedule/">Check the training schedule</a>
+            <a href="{{ site.url }}/{{ page.lang }}/training-schedule/?location=aikido-musubi">Check the training schedule</a>
           </small>
         </p>
       </div>
@@ -196,3 +196,41 @@ __Aikido Musubi Sant Adrià__ is located within the facilities of the Marina-Bes
     </div>
   </div>
 </div>
+
+<hr>
+
+<hr id="university-of-barcelona" class="anchor">
+
+## University of Barcelona
+
+<div class="card mb-3">
+  <div class="row no-gutters">
+    <div class="col-lg-4">
+      <div class="card-body">
+        <h5 class="card-title" style="
+          background-image: url('{{ site.url }}/graphics/Logotip_UB.svg');
+          background-position: center;
+          background-size: 90%;
+        "><!-- University of Barcelona --></h5>
+        <h4>Faculty of Law at the University of Barcelona</h4>
+        <p class="card-text">
+          Av. Diagonal, 684, Les Corts,<br>
+          08034 Barcelona
+        </p>
+        <p class="card-text">
+          <small class="text-muted">
+            Open Monday and Wednesday<br>
+            <a href="{{ site.url }}/{{ page.lang }}/training-schedule/?location=university-of-barcelona">Check the training schedule</a>
+          </small>
+        </p>
+      </div>
+    </div>
+    <div class="col-lg-8">
+      <div class="map">
+        {% include map.html section="university_of_barcelona" %}
+      </div>
+    </div>
+  </div>
+</div>
+
+All classes will be held at the __Faculty of Law of the University of Barcelona__, in the multipurpose room “La Capella.”

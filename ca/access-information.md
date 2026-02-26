@@ -9,7 +9,7 @@ i18n-ref: access-information-NdxqmVbV
 
 # Accés
 
-Actualment, comptem amb dos centres a la província de Barcelona: __Aikido Musubi__ (Badalona), i __Aikido Musubi Sant Adrià de Besòs__. Si vols visitar el nostre dojo o entrenar amb nosaltres, [contacta'ns]({{site.url}}/{{ page.lang }}/contacte/) per obtenir més informació sobre les ubicacions i els horaris.
+Actualment, comptem amb tres centres a la província de Barcelona: __Aikido Musubi__ (Badalona), __Aikido Musubi Sant Adrià de Besòs__ i la __Facultat de Dret de la Univesitat de Barcelona__. Si vols visitar el nostre dojo o entrenar amb nosaltres, [contacta'ns]({{site.url}}/{{ page.lang }}/contacte/) per obtenir més informació sobre les ubicacions i els horaris.
 
 <hr>
 
@@ -196,3 +196,41 @@ __Aikido Musubi Sant Adrià__ es troba dins de les instal·lacions del Poliespor
     </div>
   </div>
 </div>
+
+<hr>
+
+<hr id="university-of-barcelona" class="anchor">
+
+## Universitat de Barcelona
+
+<div class="card mb-3">
+  <div class="row no-gutters">
+    <div class="col-lg-4">
+      <div class="card-body">
+        <h5 class="card-title" style="
+          background-image: url('{{ site.url }}/graphics/Logotip_UB.svg');
+          background-position: center;
+          background-size: 90%;
+        "><!-- University of Barcelona --></h5>
+        <h4>Facultat de Dret de la Universitat de Barcelona</h4>
+        <p class="card-text">
+          Av. Diagonal, 684, Les Corts,<br>
+          08034 Barcelona
+        </p>
+        <p class="card-text">
+          <small class="text-muted">
+            Obert dilluns i dimecres<br>
+            <a href="{{ site.url }}/{{ page.lang }}/horaris/?location=university-of-barcelona">Consulta els horaris</a>
+          </small>
+        </p>
+      </div>
+    </div>
+    <div class="col-lg-8">
+      <div class="map">
+        {% include map.html section="university_of_barcelona" %}
+      </div>
+    </div>
+  </div>
+</div>
+
+Totes les classes se celebraran a la __Facultat de Dret de la Universitat de Barcelona__, a la sala polivalent «La Capella».

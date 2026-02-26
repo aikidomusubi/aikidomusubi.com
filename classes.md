@@ -28,22 +28,31 @@ Disponemos de un amplio horario de classes para acomodar a adultos y niños, y d
 Práctica regular para todos los niveles. Disponible para todos los miembros mayores de 12 años.
 
 __Lunes__
-20:00 - 20:45 (J.L. Zafra)
+20:00 - 20:45 (J.L. Zafra, Aikido Musubi)<br>
+20:00 - 21:00 (G. Zheng, Sant Adrià de B.)<br>
+19:00 - 20:00 (P. Martín, Universidad de Barcelona)
+
 __Martes__
-18:30 - 19:30 (A. Sancho)<br>
-19:30 - 20:30 (P. Martín, Dōjō-chō)<br>
-20:30 - 21:30
+18:30 - 19:30 (A. Sancho, Aikido Musubi)<br>
+19:30 - 20:30 (P. Martín, Aikido Musubi)<br>
+20:30 - 21:30 (instructor en formación, Aikido Musubi)
+
 __Miércoles__
-20:00 - 20:45 (J.M. Pérez)<br>
-20:45 - 21:30 (J.M. Pérez)
+20:00 - 20:45 (J.M. Pérez, Aikido Musubi)<br>
+20:45 - 21:30 (J.M. Pérez, Aikido Musubi)<br>
+20:15 - 21:15 (G. Zheng, Sant Adrià de B.)<br>
+19:00 - 20:00 (P. Martín, Universidad de Barcelona)
+
 __Jueves__
-18:30 - 19:30 (A. Sancho)<br>
-19:30 - 20:30 (P. Martín, Dōjō-chō)<br>
-20:30 - 21:30 (P. Martín, Dōjō-chō)
+18:30 - 19:30 (A. Sancho, Aikido Musubi)<br>
+19:30 - 20:30 (P. Martín, Aikido Musubi)<br>
+20:30 - 21:30 (P. Martín, Aikido Musubi)
+
 __Viernes__
-19:00 - 20:00 (P. Fortes)
+19:00 - 20:00 (P. Fortes, Aikido Musubi)
+
 __Sábado__
-8:00 - 9:00 (A. Villar)
+8:00 - 9:00 (A. Villar, Aikido Musubi)
 
 ## Clases de aikido para principiantes
 
@@ -84,11 +93,15 @@ __Sábado__
 
 Se centra en el aprendizaje de las caídas y movimientos básicos. Recomendado para principiantes y practicantes de nivel intermedio.
 
+__Lunes__
+19:00 - 20:00 (P. Martín, Universidad de Barcelona)
+
 __Martes__
-19:30 - 20:30 (P. Martín, Dōjō-chō)
+19:30 - 20:30 (P. Martín, Aikido Musubi)
 
 __Miércoles__
-20:00 - 20:45 (J.M. Pérez)
+20:00 - 20:45 (J.M. Pérez, Aikido Musubi)<br>
+19:00 - 20:00 (P. Martín, Universidad de Barcelona)
 
 ## Clases de aikido con armas
 
@@ -114,7 +127,7 @@ __Miércoles__
 Práctica con sable de madera o _bokken_, el bastón medio de madera o _jō_, y el cuchillo de madera o _tantō_.
 
 __Jueves__
-19:30 - 20:30 (P. Martín, Dōjō-chō)
+19:30 - 20:30 (P. Martín, Aikido Musubi)
 
 ## Clases de aikido para niños y niñas
 
@@ -204,7 +217,7 @@ __Lunes__
 20:00 - 20:45 (J.L. Zafra)
 
 __Sábado__
-08:30 - 10:00 (X. Serra)
+08:30 - 10:30 (X. Serra)
 
 <hr id="judo" class="anchor">
 

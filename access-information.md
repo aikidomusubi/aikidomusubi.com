@@ -9,7 +9,7 @@ i18n-ref: access-information-NdxqmVbV
 
 # Acceso
 
-Actualmente, tenemos dos centros en la provincia de Barcelona: __Aikido Musubi__ (Badalona), y __Aikido Musubi Sant Adrià de Besòs__. Si quieres visitar nuestro dojo o entrenar con nosotros, [contáctanos]({{ site.url }}/contacto/) para más información sobre ubicaciones y horarios.
+Actualmente, tenemos tres centros en la provincia de Barcelona: __Aikido Musubi__ (Badalona), __Aikido Musubi Sant Adrià de Besòs__ y __La Facultad de Derecho de la Universidad de Barcelona__. Si quieres visitar nuestro dojo o entrenar con nosotros, [contáctanos]({{ site.url }}/contacto/) para más información sobre ubicaciones y horarios.
 
 <hr>
 
@@ -196,3 +196,41 @@ __Aikido Musubi Sant Adrià__ se encuentra dentro de las instalaciones del Polid
     </div>
   </div>
 </div>
+
+<hr>
+
+<hr id="university-of-barcelona" class="anchor">
+
+## Universidad de Barcelona
+
+<div class="card mb-3">
+  <div class="row no-gutters">
+    <div class="col-lg-4">
+      <div class="card-body">
+        <h5 class="card-title" style="
+          background-image: url('{{ site.url }}/graphics/Logotip_UB.svg');
+          background-position: center;
+          background-size: 90%;
+        "><!-- University of Barcelona --></h5>
+        <h4>Facultad de Derecho de la Universidad de Barcelona</h4>
+        <p class="card-text">
+          Av. Diagonal, 684, Les Corts,<br>
+          08034 Barcelona
+        </p>
+        <p class="card-text">
+          <small class="text-muted">
+            Abierto lunes y miércoles<br>
+            <a href="{{ site.url }}/horarios/?location=university-of-barcelona">Consulta los horarios</a>
+          </small>
+        </p>
+      </div>
+    </div>
+    <div class="col-lg-8">
+      <div class="map">
+        {% include map.html section="university_of_barcelona" %}
+      </div>
+    </div>
+  </div>
+</div>
+
+Todas las clases se celebrarán en la __Facultad de Derecho de la Universidad de Barcelona__, en la sala polivalente «La Capella».
