@@ -17,7 +17,7 @@ i18n-ref: index-8oGCaMDs
   <img src="{{ site.url }}/images/index-8oGCaMDs-01.jpg" class="img-fluid lazyload" alt="Aikido Musubi Benvinguts">
 </picture>
 
-L'Associació Cultural Musubi Aikido (__Aikido Musubi__), fundada el 2008, és una associació autogestionada i sense ànim de lucre que promou l'aikido a Badalona. Oferim classes d'aikido per a adults i nens tots els dies al nostre dojo (_Av. D'Alfons XIII, 351 08918 Badalona, ​​Barcelona_).
+L'Associació Cultural Musubi Aikido (__Aikido Musubi__), fundada el 2008, és una associació autogestionada i sense ànim de lucre que promou l'aikido a Barcelona i els voltants. Oferim classes d'aikido per a adults i nens tots els dies al nostre dojo (_Av. D'Alfons XIII, 351 08918 Badalona, ​​Barcelona_).
 
 __Aikido Musubi__ té com a objectiu promocionar l'aikido com un camí de millora i perfeccionament personal a través d'una pràctica sincera i constant basada en el respecte als altres. A través de les tècniques, contribuïm a el desenvolupament físic, mental, i espiritual a més de la confiança en un mateix i la compassió cap als oponents.
 
@@ -44,6 +44,10 @@ __Aikido Musubi__ forma part d'[Aikido Arashi Group](http://aikidoarashigroup.co
 El nostre dojo és un espai gran i diàfan destinat exclusivament a la pràctica i l'ensenyament de les arts marcials. Està supervisat i gestionat pel director tècnic i els instructors de l'associació; però sent responsabilitat de tothom (no només dels instructors o del professor), el mantenen i el cuiden els estudiants.
 
 El dojo és un lloc ideal per aprofundir en l'estudi i la comprensió de les arts marcials, i per conèixer tot tipus de persones independentment de la seva edat, sexe i ocupació.
+
+A més de la nostra activitat al dojo, __Aikido Musubi__ també ofereix classes en altres espais de Barcelona i els seus voltants. Actualment impartim classes a les instal·lacions del [Poliesportiu Municipal Marina-Besòs](https://marinabesos.net/) i a la [Facultat de Dret de la Universitat de Barcelona](https://web.ub.edu/web/facultat-dret/), apropant la pràctica de l’aikido a nous entorns i comunitats.
+
+Així mateix, participem i oferim classes obertes i gratuïtes en esdeveniments d’arts marcials i en trobades vinculades a la cultura japonesa, com la [Japan Weekend](https://www.japanweekend.com/) o el [Manga Barcelona](https://www.manga-barcelona.com/ca/), contribuint a la difusió de l’aikido entre el públic general.
 
 <hr id="aikido" class="anchor">
 
@@ -106,7 +110,7 @@ A __Aikido Musubi__, oferim classes que són adequades per a persones sense expe
 
 Pablo Martín (Badalona, 1977) va començar a practicar aikido a Badalona l'any 1999 amb Ricard Coll. Després, ha continuat la seva pràctica al mateix temps que exerceix com a instructor a __Aikido Musubi__. Al llarg de la seva trajectòria, ha participat en nombrosos cursos i seminaris de mestres reputats com: Yamada Y. Shihan, Sugano S. Shihan, Shibata I. Shihan, M. Flynn Shihan, D. Waite Shihan, P. Bernath Shihan, entre d'altres. També ha viatjat al Japó per entrenar a la seu mundial de l'aikido, el Hombu Dojo, amb: Ueshiba Moriteru Doshu, Miyamoto T. Shihan, Yokota Y. Shihan, Osawa Hayato Shihan, Kuribayashi T. Shihan, Kanazawa T. Shihan, Suzuki T. Shihan, entre d'altres.
 
-Amb el propòsit de promoure l'aikido a Badalona, ​​va establir l'Associació Cultural Musubi Aikido (__Aikido Musubi__), l'any 2008, i més endavant va assumir els rols de president de l'associació i director tècnic (instructor cap).
+Amb el propòsit de promoure l'aikido a Barcelona i el seu entorn, ​​va establir l'Associació Cultural Musubi Aikido (__Aikido Musubi__), l'any 2008, i més endavant va assumir els rols de president de l'associació i director tècnic (instructor cap).
 
 Actualment, té el grau de 4t dan i el títol de _shidoin_ (instructor qualificat), atorgat per l'Aikido Doshu Ueshiba Moriteru i reconegut a nivell mundial per la _Aikikai Foundation_ i la _International Aikido Federation_.
 
@@ -190,7 +194,7 @@ Actualment, té el grau de 4t dan i el títol de _shidoin_ (instructor qualifica
   </div>
 </div>
 
-__Aikido Musubi__ (CIF: G-64799554) és una associació cultural fundada el 2008. És la primera associació a Badalona autogestionada i sense ànim de lucre l'objectiu de la qual és promoure la pràctica de l'aikido i els valors de les arts marcials tradicionals del Japó. Fa més de {{ site.time | date: '%Y' | minus: 2008 }} anys que som un actor principal en la ciutat de Badalona oferint un espai 100% dedicat a les arts marcials i la cultura japonesa.
+__Aikido Musubi__ (CIF: G-64799554) és una associació cultural fundada el 2008. És la primera associació a Barcelona autogestionada i sense ànim de lucre l'objectiu de la qual és promoure la pràctica de l'aikido i els valors de les arts marcials tradicionals del Japó. Fa més de {{ site.time | date: '%Y' | minus: 2008 }} anys que som un actor principal a l'àrea metropolitana de Barcelona oferint un espai 100% dedicat a les arts marcials i la cultura japonesa.
 
 La Junta Directiva està constituïda pel President, el Secretari, i el Tresorer que al seu torn assumeixen el paper de director tècnic i instructors respectivament. Són membres fundadors actius amb experiència significativa dins de l'associació que han estat elegits per l'Assemblea General, composta per tots els membres de l'associació.
 

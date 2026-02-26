@@ -17,7 +17,7 @@ i18n-ref: index-8oGCaMDs
   <img src="{{ site.url }}/images/index-8oGCaMDs-01.jpg" class="img-fluid lazyload" alt="Aikido Musubi Welcome">
 </picture>
 
-Musubi Aikido Cultural Association (__Aikido Musubi__), founded in 2008, is a self-managed, non-profit association that promotes aikido in Badalona. We offer aikido classes for adults and children every day in our dojo (_Av. D’Alfons XIII, 351 08918 Badalona, ​​Barcelona_).
+Musubi Aikido Cultural Association (__Aikido Musubi__), founded in 2008, is a self-managed, non-profit association that promotes aikido in Barcelona and surrounding areas. We offer aikido classes for adults and children every day in our dojo (_Av. D’Alfons XIII, 351 08918 Badalona, ​​Barcelona_).
 
 __Aikido Musubi__ aims to promote aikido as a way of improvement and self-development through a sincere and constant practice based on respect for others. Through techniques, we contribute to physical, mental, and spiritual development in addition to self-confidence and compassion for opponents.
 
@@ -44,6 +44,10 @@ __Aikido Musubi__ is part of [Aikido Arashi Group](http://aikidoarashigroup.com/
 Our dojo is a large and open space dedicated exclusively to the practice and teaching of martial arts. It is supervised and managed by the technical director and instructors of the association; but being the responsibility of everyone (not just the instructors or the teacher), it is maintained and cared for by the students.
 
 The dojo is an ideal place to deepen the study and understanding of martial arts, and to meet all kinds of people regardless of age, sex and occupation.
+
+In addition to our activity at the dojo, __Aikido Musubi__ also offers classes in other venues in Barcelona and surrounding areas. We currently teach at the [Marina-Besòs Municipal Sports Centre](https://marinabesos.net/) and at the [Faculty of Law of the University of Barcelona](https://web.ub.edu/en/web/facultat-dret/), bringing the practice of aikido to new environments and communities.
+
+We also take part in and offer open and free classes at martial arts events and gatherings related to Japanese culture, such as [Japan Weekend](https://www.japanweekend.com/) and [Manga Barcelona](https://www.manga-barcelona.com/en/), contributing to the promotion of aikido among the general public.
 
 <hr id="aikido" class="anchor">
 
@@ -106,7 +110,7 @@ At __Aikido Musubi__, we offer classes that are suitable for inexperienced peopl
 
 Pablo Martín (Badalona, ​​1977) began practicing aikido in Badalona in 1999 with Ricard Coll. Afterwards, he continued his practice at the same time as he is an instructor in __Aikido Musubi__. Throughout his career, he has participated in numerous courses and seminars by renowned teachers such as: Yamada Y. Shihan, Sugano S. Shihan, Shibata I. Shihan, M. Flynn Shihan, D. Waite Shihan, P. Bernath Shihan, among others. He has also traveled to Japan to train at the Aikido World Headquarters, the Hombu Dojo, under the teachings of: Ueshiba Moriteru Doshu, Miyamoto T. Shihan, Yokota Y. Shihan, Osawa Hayato Shihan, Kuribayashi T. Shihan, Kanazawa T. Shihan, Suzuki T. Shihan, among others.
 
-In order to promote aikido in Badalona, ​​he established the Musubi Aikido Cultural Association (__Aikido Musubi__), in 2008, and later assumed the roles of president and technical director (chief instructor).
+In order to promote aikido in Barcelona and its surroundings, ​​he established the Musubi Aikido Cultural Association (__Aikido Musubi__), in 2008, and later assumed the roles of president and technical director (chief instructor).
 
 Currently, he holds a 4th dan degree and the title of _shidoin_ (qualified instructor), awarded by Aikido Doshu Ueshiba Moriteru and recognized worldwide by the _Aikikai Foundation_ and the _International Aikido Federation_.
 
@@ -190,7 +194,7 @@ Currently, he holds a 4th dan degree and the title of _shidoin_ (qualified instr
   </div>
 </div>
 
-__Aikido Musubi__ (CIF: G-64799554) is a cultural association founded in 2008. It is the first self-managed and non-profit association in Badalona whose objective is to promote the practice of aikido and the values ​​of traditional martial arts of Japan. For more than {{ site.time | date: '%Y' | minus: 2008 }} years we have been a main actor in the city of Badalona, ​​offering a space 100% dedicated to martial arts and Japanese culture.
+__Aikido Musubi__ (CIF: G-64799554) is a cultural association founded in 2008. It is the first self-managed and non-profit association in Barcelona whose objective is to promote the practice of aikido and the values ​​of traditional martial arts of Japan. For more than {{ site.time | date: '%Y' | minus: 2008 }} years we have been a main actor in the Barcelona Metropolitan Area, ​​offering a space 100% dedicated to martial arts and Japanese culture.
 
 The Board of Directors is made up of the President, the Secretary, and the Treasurer, who in turn assume the role of technical director and instructors respectively. They are active founding members with significant experience within the association who have been elected by the General Assembly, made up of all members of the association.
 
