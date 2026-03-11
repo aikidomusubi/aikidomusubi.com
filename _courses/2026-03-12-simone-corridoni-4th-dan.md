@@ -26,6 +26,6 @@ file_ja: "courses-hFZ2XXIp-2026-03-12-simone-corridoni-4th-dan-en.pdf"
 date_from: 2026-03-12
 date_to: "blank"
 
-event_link: ""
+event_link: "https://fb.me/e/46U1MKNZY"
 registration_link:
 ---

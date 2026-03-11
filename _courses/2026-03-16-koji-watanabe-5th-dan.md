@@ -26,6 +26,6 @@ file_ja: "courses-hFZ2XXIp-2026-03-16-koji-watanabe-5th-dan-en.pdf"
 date_from: 2026-03-16
 date_to: "blank"
 
-event_link: ""
+event_link: "https://fb.me/e/jOTkZh6aS"
 registration_link:
 ---
