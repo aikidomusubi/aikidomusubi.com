@@ -95,6 +95,7 @@ exclude:
   - package-lock.json
   - package.json
   - ".well-known"
+  - CLAUDE.md
 
 include:
   - sitemap.xml
