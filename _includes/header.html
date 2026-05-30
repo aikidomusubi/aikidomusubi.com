@@ -7,8 +7,21 @@
     <meta name="yandex-verification" content="7648b927834719e6" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{% if page.i18n-ref == 'index-8oGCaMDs' %}{% if page.lang == 'ja' %}合気道産靈{% else %}{{ site.title }}{% endif %}{% else %}{% if page.lang == 'ja' %}合気道産靈 - {{ page.title }}{% else %}{{ site.title }} - {{ page.title }}{% endif %}{% endif %}</title>
+    {% capture og_title %}{% if page.i18n-ref == 'index-8oGCaMDs' %}{% if page.lang == 'ja' %}合気道産靈{% else %}{{ site.title }}{% endif %}{% else %}{% if page.lang == 'ja' %}合気道産靈 - {{ page.title }}{% else %}{{ site.title }} - {{ page.title }}{% endif %}{% endif %}{% endcapture %}
+    <title>{{ og_title }}</title>
     <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{% if page.lang == 'ca' %}Aikido Musubi és una associació cultural autogestionada i sense ànim de lucre que promou l'aikido a Badalona. よろしくお願いします！{% endif %}{% if page.lang == 'en' %}Aikido Musubi is a self-managed, non-profit cultural association that promotes aikido in Badalona. よろしくお願いします！{% endif %}{% if page.lang == 'es' %}Aikido Musubi es una asociación cultural autogestionada y sin ánimo de lucro que promueve el aikido en Badalona. よろしくお願いします！{% endif %}{% if page.lang == 'ja' %}合気道産靈 (合気道むすび) は、バダロナで設立された、合気道を推進する自己管理の非営利団体です。 よろしくお願いします！{% endif %}{% endif %}">
+    {% capture og_description %}{% if page.description %}{{ page.description }}{% elsif page.lang == 'ca' %}Aikido Musubi és una associació cultural autogestionada i sense ànim de lucre que promou l'aikido a Badalona.{% elsif page.lang == 'en' %}Aikido Musubi is a self-managed, non-profit cultural association that promotes aikido in Badalona, Barcelona.{% elsif page.lang == 'ja' %}合気道産靈は、バダロナで設立された、合気道を推進する自己管理の非営利団体です。{% else %}Aikido Musubi es una asociación cultural autogestionada y sin ánimo de lucro que promueve el aikido en Badalona, Barcelona.{% endif %}{% endcapture %}
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="{{ site.title }}">
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+    <meta property="og:title" content="{{ og_title }}">
+    <meta property="og:description" content="{{ og_description }}">
+    <meta property="og:image" content="{{ site.url }}/images/index-8oGCaMDs-01.jpg">
+    <meta property="og:locale" content="{% if page.lang == 'ca' %}ca_ES{% elsif page.lang == 'en' %}en_US{% elsif page.lang == 'ja' %}ja_JP{% else %}es_ES{% endif %}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ og_title }}">
+    <meta name="twitter:description" content="{{ og_description }}">
+    <meta name="twitter:image" content="{{ site.url }}/images/index-8oGCaMDs-01.jpg">
     <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
     {% assign posts=site.posts | where:"i18n-ref", page.i18n-ref | sort: 'lang' %}
     {% for post in posts %}
@@ -25,6 +38,7 @@
     {% include preload.html %}
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@900&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <link href="{{ site.url }}/styles/all.min.css?v=3" rel="stylesheet">
+    <noscript><style>body.invisible { visibility: visible !important; }</style></noscript>
     {% include icons.html %}
     {% if page.i18n-ref == 'training-schedule-IFMn5oCc' %}
       <link href='{{ site.url }}/plugins/fullcalendar-4.3.1/packages/core/main.css' rel='stylesheet' />
@@ -50,6 +64,37 @@
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
     {% endif %}
     <script src="{{ site.url }}/scripts/modernizr.min.js"></script>
+    {% if page.i18n-ref == 'index-8oGCaMDs' %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsClub",
+      "name": "Aikido Musubi",
+      "alternateName": "Asociación Cultural Musubi Aikido",
+      "url": "{{ site.url }}",
+      "logo": "{{ site.url }}/images/logo-bg-white.png",
+      "image": "{{ site.url }}/images/index-8oGCaMDs-01.jpg",
+      "description": "Aikido Musubi is a self-managed, non-profit cultural association that promotes aikido in Badalona, Barcelona.",
+      "sport": "Aikido",
+      "foundingDate": "2008",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Av. d'Alfons XIII, 351",
+        "addressLocality": "Badalona",
+        "addressRegion": "Barcelona",
+        "postalCode": "08918",
+        "addressCountry": "ES"
+      },
+      "telephone": "+{{ site.phone }}",
+      "email": "{{ site.email }}",
+      "sameAs": [
+        "https://www.facebook.com/{{ site.facebook_username }}/",
+        "https://www.instagram.com/{{ site.instagram_username }}/",
+        "https://www.youtube.com/user/{{ site.youtube_username }}/"
+      ]
+    }
+    </script>
+    {% endif %}
   </head>
   <body class="{{ page.i18n-ref }} invisible">
     <!-- Google Tag Manager (noscript) -->
