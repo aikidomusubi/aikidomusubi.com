@@ -116,7 +116,7 @@ Actualmente, tiene el grado de 4.º dan y el título de _shidoin_ (instructor cu
 
 ### Instructores asistentes
 
-<div id="index-8oGCaMDs-instructors" class="container">
+<div id="index-8oGCaMDs-assistant-instructors" class="container">
   <div class="row">
     <div class="col-4 col-sm-4">
       <picture>

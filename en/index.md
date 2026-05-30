@@ -116,7 +116,7 @@ Currently, he holds a 4th dan degree and the title of _shidoin_ (qualified instr
 
 ### Assistant instructors
 
-<div id="index-8oGCaMDs-instructors" class="container">
+<div id="index-8oGCaMDs-assistant-instructors" class="container">
   <div class="row">
     <div class="col-4 col-sm-4">
       <picture>

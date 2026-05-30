@@ -13,13 +13,13 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown-classes" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           {% if page.lang == 'ca' %}Classes i Horaris{% endif %}
           {% if page.lang == 'en' %}Classes and Schedule{% endif %}
           {% if page.lang == 'es' %}Clases y Horarios{% endif %}
           {% if page.lang == 'ja' %}クラス・スケジュール{% endif %}
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown-classes">
           <a class="dropdown-item" href="
             {% if page.lang == 'ca' %}{{ site.url }}/{{ page.lang }}/classes/{% endif %}
             {% if page.lang == 'en' %}{{ site.url }}/{{ page.lang }}/classes/{% endif %}
@@ -69,13 +69,13 @@
         </a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown-media" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           {% if page.lang == 'ca' %}Media{% endif %}
           {% if page.lang == 'en' %}Media{% endif %}
           {% if page.lang == 'es' %}Media{% endif %}
           {% if page.lang == 'ja' %}メディア{% endif %}
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown-media">
           <a class="dropdown-item" href="
             {% if page.lang == 'ca' %}{{ site.url }}/{{ page.lang }}/fotos/{% endif %}
             {% if page.lang == 'en' %}{{ site.url }}/{{ page.lang }}/photos/{% endif %}
@@ -100,14 +100,27 @@
           </a>
         </div>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="
+          {% if page.lang == 'ca' %}{{ site.url }}/{{ page.lang }}/recursos/{% endif %}
+          {% if page.lang == 'en' %}{{ site.url }}/{{ page.lang }}/resources/{% endif %}
+          {% if page.lang == 'es' %}{{ site.url }}/recursos/{% endif %}
+          {% if page.lang == 'ja' %}{{ site.url }}/{{ page.lang }}/resources/{% endif %}
+        ">
+          {% if page.lang == 'ca' %}Recursos{% endif %}
+          {% if page.lang == 'en' %}Resources{% endif %}
+          {% if page.lang == 'es' %}Recursos{% endif %}
+          {% if page.lang == 'ja' %}資料{% endif %}
+        </a>
+      </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown-contact" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           {% if page.lang == 'ca' %}Contacte i Accés{% endif %}
           {% if page.lang == 'en' %}Contact and Access{% endif %}
           {% if page.lang == 'es' %}Contacto y Acceso{% endif %}
           {% if page.lang == 'ja' %}お問い合わせ・アクセス{% endif %}
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown-contact">
           <a class="dropdown-item" href="
             {% if page.lang == 'ca' %}{{ site.url }}/{{ page.lang }}/visitants/{% endif %}
             {% if page.lang == 'en' %}{{ site.url }}/{{ page.lang }}/visitors/{% endif %}

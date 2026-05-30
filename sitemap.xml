@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://aikidomusubi.com/ca/</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-05-31</lastmod>
     <image:image>
       <image:loc>https://aikidomusubi.com/images/index-8oGCaMDs-01.jpg</image:loc>
       <image:title>Aikido Musubi Benvinguts</image:title>
@@ -67,10 +67,11 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/en/</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-05-31</lastmod>
     <image:image>
       <image:loc>https://aikidomusubi.com/images/index-8oGCaMDs-01.jpg</image:loc>
       <image:title>Aikido Musubi Welcome</image:title>
@@ -135,10 +136,11 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-05-31</lastmod>
     <image:image>
       <image:loc>https://aikidomusubi.com/images/index-8oGCaMDs-01.jpg</image:loc>
       <image:title>Aikido Musubi Bienvenidos</image:title>
@@ -203,10 +205,11 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/ja/</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-05-31</lastmod>
     <image:image>
       <image:loc>https://aikidomusubi.com/images/index-8oGCaMDs-01.jpg</image:loc>
       <image:title>合気道産靈 ようこそ</image:title>
@@ -271,6 +274,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/ca/acces/</loc>
@@ -307,6 +311,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/access-information/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/acceso/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/access-information/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/acceso/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/en/access-information/</loc>
@@ -343,6 +348,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/access-information/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/acceso/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/access-information/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/acceso/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/acceso/</loc>
@@ -379,6 +385,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/access-information/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/acceso/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/access-information/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/acceso/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/ja/access-information/</loc>
@@ -415,6 +422,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/access-information/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/acceso/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/access-information/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/acceso/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/ca/classes/</loc>
@@ -515,6 +523,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/classes/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/clases/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/classes/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/clases/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/en/classes/</loc>
@@ -623,6 +632,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/classes/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/clases/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/classes/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/clases/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/clases/</loc>
@@ -731,6 +741,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/classes/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/clases/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/classes/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/clases/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/ja/classes/</loc>
@@ -839,6 +850,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/classes/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/clases/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/classes/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/clases/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/ca/contacte/</loc>
@@ -847,6 +859,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/contact/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/contacto/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/contact/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/contacto/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/en/contact/</loc>
@@ -855,6 +868,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/contact/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/contacto/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/contact/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/contacto/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/contacto/</loc>
@@ -863,6 +877,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/contact/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/contacto/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/contact/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/contacto/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/ja/contact/</loc>
@@ -871,6 +886,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/contact/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/contacto/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/contact/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/contacto/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/ca/cursos/</loc>
@@ -1031,6 +1047,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/courses/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/cursos/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/courses/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/cursos/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/en/courses/</loc>
@@ -1191,6 +1208,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/courses/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/cursos/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/courses/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/cursos/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/cursos/</loc>
@@ -1351,6 +1369,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/courses/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/cursos/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/courses/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/cursos/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/ja/courses/</loc>
@@ -1511,6 +1530,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/courses/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/cursos/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/courses/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/cursos/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/ca/quotes/</loc>
@@ -1519,6 +1539,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/fees/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/cuotas/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/fees/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/cuotas/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/en/fees/</loc>
@@ -1527,6 +1548,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/fees/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/cuotas/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/fees/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/cuotas/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/cuotas/</loc>
@@ -1535,6 +1557,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/fees/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/cuotas/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/fees/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/cuotas/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/ja/fees/</loc>
@@ -1543,6 +1566,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/fees/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/cuotas/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/fees/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/cuotas/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/ca/fotos/</loc>
@@ -1659,6 +1683,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/photos/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/fotos/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/photos/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/fotos/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/fotos/</loc>
@@ -1775,6 +1800,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/photos/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/fotos/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/photos/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/fotos/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/en/photos/</loc>
@@ -1891,6 +1917,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/photos/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/fotos/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/photos/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/fotos/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/ja/photos/</loc>
@@ -2007,6 +2034,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/photos/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/fotos/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/photos/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/fotos/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/ca/horaris/</loc>
@@ -2015,6 +2043,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/training-schedule/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/horarios/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/training-schedule/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/horarios/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/en/training-schedule/</loc>
@@ -2023,6 +2052,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/training-schedule/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/horarios/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/training-schedule/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/horarios/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/horarios/</loc>
@@ -2031,6 +2061,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/training-schedule/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/horarios/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/training-schedule/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/horarios/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/ja/training-schedule/</loc>
@@ -2039,6 +2070,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/training-schedule/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/horarios/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/training-schedule/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/horarios/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/ca/videos/</loc>
@@ -2047,6 +2079,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/videos/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/videos/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/videos/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/videos/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/en/videos/</loc>
@@ -2055,6 +2088,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/videos/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/videos/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/videos/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/videos/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/videos/</loc>
@@ -2063,6 +2097,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/videos/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/videos/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/videos/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/videos/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/ja/videos/</loc>
@@ -2071,6 +2106,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/videos/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/videos/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/videos/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/videos/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/ca/visitants/</loc>
@@ -2079,6 +2115,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/visitors/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/visitantes/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/visitors/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/visitantes/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/en/visitors/</loc>
@@ -2087,6 +2124,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/visitors/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/visitantes/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/visitors/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/visitantes/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/visitantes/</loc>
@@ -2095,6 +2133,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/visitors/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/visitantes/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/visitors/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/visitantes/"></xhtml:link>
   </url>
   <url>
     <loc>https://aikidomusubi.com/ja/visitors/</loc>
@@ -2103,5 +2142,6 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aikidomusubi.com/en/visitors/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="es" href="https://aikidomusubi.com/visitantes/"></xhtml:link>
     <xhtml:link rel="alternate" hreflang="ja" href="https://aikidomusubi.com/ja/visitors/"></xhtml:link>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://aikidomusubi.com/visitantes/"></xhtml:link>
   </url>
 </urlset>

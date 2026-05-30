@@ -116,7 +116,7 @@ i18n-ref: index-8oGCaMDs
 
 ### アシスタント・指導者
 
-<div id="index-8oGCaMDs-instructors" class="container">
+<div id="index-8oGCaMDs-assistant-instructors" class="container">
   <div class="row">
     <div class="col-4 col-sm-4">
       <picture>

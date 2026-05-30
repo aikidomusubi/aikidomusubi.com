@@ -116,7 +116,7 @@ Actualment, té el grau de 4t dan i el títol de _shidoin_ (instructor qualifica
 
 ### Instructors assistents
 
-<div id="index-8oGCaMDs-instructors" class="container">
+<div id="index-8oGCaMDs-assistant-instructors" class="container">
   <div class="row">
     <div class="col-4 col-sm-4">
       <picture>
