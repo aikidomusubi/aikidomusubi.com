@@ -12,9 +12,9 @@ i18n-ref: index-8oGCaMDs
 ## Benvinguts
 
 <picture>
-  <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-01.webp" class="img-fluid lazyload">
-  <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-01.jpg" class="img-fluid lazyload">
-  <img src="{{ site.url }}/images/index-8oGCaMDs-01.jpg" class="img-fluid lazyload" alt="Aikido Musubi Benvinguts">
+  <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-01.webp">
+  <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-01.jpg">
+  <img src="{{ site.url }}/images/index-8oGCaMDs-01.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Benvinguts">
 </picture>
 
 L'Associació Cultural Musubi Aikido (__Aikido Musubi__), fundada el 2008, és una associació autogestionada i sense ànim de lucre que promou l'aikido a Barcelona i els voltants. Oferim classes d'aikido per a adults i nens tots els dies al nostre dojo (_Av. D'Alfons XIII, 351 08918 Badalona, ​​Barcelona_).
@@ -32,9 +32,9 @@ Ens agrada compartir la nostra experiència i per això donem la benvinguda a to
 ## El nostre dojo
 
 <picture>
-  <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-09.webp" class="img-fluid lazyload">
-  <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-09.jpg" class="img-fluid lazyload">
-  <img src="{{ site.url }}/images/index-8oGCaMDs-09.jpg" class="img-fluid lazyload" alt="Aikido Musubi El nostre dojo">
+  <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-09.webp">
+  <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-09.jpg">
+  <img src="{{ site.url }}/images/index-8oGCaMDs-09.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi El nostre dojo">
 </picture>
 
 La filosofia d'__Aikido Musubi__ es basa en els preceptes establerts pel fundador de l'aikido, Morihei Ueshiba, i heretada pel segon i tercer doshu, així com els mestres (_shihan_) de la seu mundial de l'aikido, el [Hombu Dojo](http://www.aikikai.or.jp/).
@@ -54,9 +54,9 @@ Així mateix, participem i oferim classes obertes i gratuïtes en esdeveniments 
 ## Aikido
 
 <picture>
-  <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-02.webp" class="img-fluid lazyload">
-  <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-02.jpg" class="img-fluid lazyload">
-  <img src="{{ site.url }}/images/index-8oGCaMDs-02.jpg" class="img-fluid lazyload" alt="Aikido Musubi Aikido">
+  <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-02.webp">
+  <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-02.jpg">
+  <img src="{{ site.url }}/images/index-8oGCaMDs-02.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Aikido">
 </picture>
 
 L'aikido és un art marcial japonès no competitiu desenvolupat a principis de segle XX per Morihei Ueshiba (1883-1969). Es basa en altres arts marcials tradicionals del Japó, principalment _Daitō-ryū Aiki-jūjutsu_, i utilitza moviments flexibles, naturals, i altament efectius per evadir, redirigir o neutralitzar els atacs utilitzant la força de l'oponent.
@@ -75,32 +75,32 @@ A __Aikido Musubi__, oferim classes que són adequades per a persones sense expe
   <div class="row">
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-05_.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-05_.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-04.jpg" class="img-fluid lazyload" alt="Aikido Musubi Pablo Martín">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-05_.webp">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-05_.jpg">
+        <img src="{{ site.url }}/images/index-8oGCaMDs-04.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Pablo Martín">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-06_.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-06_.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-06.jpg" class="img-fluid lazyload" alt="Aikido Musubi Pablo Martín">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-06_.webp">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-06_.jpg">
+        <img src="{{ site.url }}/images/index-8oGCaMDs-06.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Pablo Martín">
       </picture>
     </div>
   </div>
   <div class="row">
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-07_.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-07_.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-07.jpg" class="img-fluid lazyload" alt="Aikido Musubi Pablo Martín">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-07_.webp">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-07_.jpg">
+        <img src="{{ site.url }}/images/index-8oGCaMDs-07.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Pablo Martín">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-08_.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-08_.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-08.jpg" class="img-fluid lazyload" alt="Aikido Musubi Pablo Martín">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-08_.webp">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-08_.jpg">
+        <img src="{{ site.url }}/images/index-8oGCaMDs-08.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Pablo Martín">
       </picture>
     </div>
   </div>
@@ -120,25 +120,25 @@ Actualment, té el grau de 4t dan i el títol de _shidoin_ (instructor qualifica
   <div class="row">
     <div class="col-4 col-sm-4">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-13.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-13.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-13.jpg" class="img-fluid lazyload" alt="Aikido Musubi Pedro Fortes">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-13.webp">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-13.jpg">
+        <img src="{{ site.url }}/images/index-8oGCaMDs-13.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Pedro Fortes">
       </picture>
       <span>Pedro Fortes <em>(4t dan)</em></span>
     </div>
     <div class="col-4 col-sm-4">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-15.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-15.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-15.jpg" class="img-fluid lazyload" alt="Aikido Musubi José Luis Zafra">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-15.webp">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-15.jpg">
+        <img src="{{ site.url }}/images/index-8oGCaMDs-15.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi José Luis Zafra">
       </picture>
       <span>José Luis Zafra <em>(4t dan)</em></span>
     </div>
     <div class="col-4 col-sm-4">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-16.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-16.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-16.jpg" class="img-fluid lazyload" alt="Aikido Musubi Alberto Sancho">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-16.webp">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-16.jpg">
+        <img src="{{ site.url }}/images/index-8oGCaMDs-16.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Alberto Sancho">
       </picture>
       <span>Alberto Sancho <em>(4t dan)</em></span>
     </div>
@@ -146,25 +146,25 @@ Actualment, té el grau de 4t dan i el títol de _shidoin_ (instructor qualifica
   <div class="row">
     <div class="col-4 col-sm-4">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-17.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-17.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-17.jpg" class="img-fluid lazyload" alt="Aikido Musubi Juanma Pérez">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-17.webp">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-17.jpg">
+        <img src="{{ site.url }}/images/index-8oGCaMDs-17.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Juanma Pérez">
       </picture>
       <span>Juanma Pérez <em>(3r dan)</em></span>
     </div>
     <div class="col-4 col-sm-4">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-18.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-18.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-18.jpg" class="img-fluid lazyload" alt="Aikido Musubi Andreu Villar">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-18.webp">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-18.jpg">
+        <img src="{{ site.url }}/images/index-8oGCaMDs-18.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Andreu Villar">
       </picture>
       <span>Andreu Villar <em>(3r dan)</em></span>
     </div>
     <div class="col-4 col-sm-4">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-19.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-19.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-19.jpg" class="img-fluid lazyload" alt="Aikido Musubi Guanlong Zheng">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-19.webp">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-19.jpg">
+        <img src="{{ site.url }}/images/index-8oGCaMDs-19.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Guanlong Zheng">
       </picture>
       <span>Guanlong Zheng <em>(3r dan)</em></span>
     </div>
@@ -179,16 +179,16 @@ Actualment, té el grau de 4t dan i el títol de _shidoin_ (instructor qualifica
   <div class="row">
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-12.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-12.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-12.jpg" class="img-fluid lazyload" alt="Aikido Musubi Associació Cultural">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-12.webp">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-12.jpg">
+        <img src="{{ site.url }}/images/index-8oGCaMDs-12.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Associació Cultural">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-11.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-11.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-11.jpg" class="img-fluid lazyload" alt="Aikido Musubi Associació Cultural">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-11.webp">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-11.jpg">
+        <img src="{{ site.url }}/images/index-8oGCaMDs-11.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Associació Cultural">
       </picture>
     </div>
   </div>

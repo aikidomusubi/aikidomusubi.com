@@ -70,7 +70,7 @@ __Aikido Musubi__ es troba dins de les instal·lacions esportives Badalona Sud. 
       <picture>
         <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-00-{{ page.lang }}.webp" class="card-img-top lazyload">
         <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-00-{{ page.lang }}.jpg" class="card-img-top lazyload">
-        <img src="{{ site.url }}/images/access-information-NdxqmVbV-00-{{ page.lang }}.jpg" class="img-fluid lazyload" alt="Mapa de les instal·lacions esportives Badalona Sud">
+        <img src="{{ site.url }}/images/access-information-NdxqmVbV-00-{{ page.lang }}.jpg" class="img-fluid" loading="lazy" alt="Mapa de les instal·lacions esportives Badalona Sud">
       </picture>
     </div>
   </div>

@@ -51,15 +51,7 @@
 
 .fadeIn {
   .visible;
-
-  -webkit-animation-name: fadeIn;
-          animation-name: fadeIn;
-
-  -webkit-animation-duration: .5s;
-          animation-duration: .5s;
-
-  -webkit-animation-timing-function: ease;
-          animation-timing-function: ease;
+  animation: fadeIn .5s ease;
 }
 
 @keyframes fadeIn {
@@ -67,30 +59,12 @@
   100% { opacity: 1; }
 }
 
-@-webkit-keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
-
 .fadeOut {
   .invisible;
-
-  -webkit-animation-name: fadeOut;
-          animation-name: fadeOut;
-
-  -webkit-animation-duration: .5s;
-          animation-duration: .5s;
-
-  -webkit-animation-timing-function: ease;
-          animation-timing-function: ease;
+  animation: fadeOut .5s ease;
 }
 
 @keyframes fadeOut {
-  0% { opacity: 1; }
-  100% { opacity: 0; }
-}
-
-@-webkit-keyframes fadeOut {
   0% { opacity: 1; }
   100% { opacity: 0; }
 }
@@ -110,9 +84,7 @@
 .vertical-align {
   position: relative;
   top: 50%;
-  -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 .visible {
@@ -120,17 +92,9 @@
 }
 
 .flipH {
-  -moz-transform: scale(-1, 1);
-  -webkit-transform: scale(-1, 1);
-  -o-transform: scale(-1, 1);
-  -ms-transform: scale(-1, 1);
-      transform: scale(-1, 1)
+  transform: scale(-1, 1);
 }
 
 .flipV {
-  -moz-transform: scale(1, -1);
-  -webkit-transform: scale(1, -1);
-  -o-transform: scale(1, -1);
-  -ms-transform: scale(1, -1);
-      transform: scale(1, -1);
+  transform: scale(1, -1);
 }

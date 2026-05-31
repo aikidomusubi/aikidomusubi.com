@@ -12,9 +12,9 @@ i18n-ref: index-8oGCaMDs
 ## ようこそ
 
 <picture>
-  <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-01.webp" class="img-fluid lazyload">
-  <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-01.jpg" class="img-fluid lazyload">
-  <img src="{{ site.url }}/images/index-8oGCaMDs-01.jpg" class="img-fluid lazyload" alt="合気道産靈 ようこそ">
+  <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-01.webp">
+  <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-01.jpg">
+  <img src="{{ site.url }}/images/index-8oGCaMDs-01.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 ようこそ">
 </picture>
 
 <ruby>産霊<rt>むすび</rt></ruby>合気道文化協会（<b>合気道産靈</b>）は2008年にバルセロナで設立された、合気道を推進する自己管理の非営利団体です。私たちは道場（住所：〒08918 カタルーニャ州バルセロナ県バダロナ 351 アルフォンス・XIII通り）で毎日大人と子供に合気道クラスを提供しています。
@@ -32,9 +32,9 @@ i18n-ref: index-8oGCaMDs
 ## 道場について
 
 <picture>
-  <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-09.webp" class="img-fluid lazyload">
-  <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-09.jpg" class="img-fluid lazyload">
-  <img src="{{ site.url }}/images/index-8oGCaMDs-09.jpg" class="img-fluid lazyload" alt="合気道産靈 道場につして">
+  <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-09.webp">
+  <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-09.jpg">
+  <img src="{{ site.url }}/images/index-8oGCaMDs-09.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 道場につして">
 </picture>
 
 <b>合気道産靈</b>の哲学は、合気道開祖・植芝盛平翁によって確立された教訓に基づいており、二代目道主と三代目道主、また[本部道場](http://www.aikikai.or.jp/)の師範によって継承されます。
@@ -54,9 +54,9 @@ i18n-ref: index-8oGCaMDs
 ## 合気道とは
 
 <picture>
-  <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-02.webp" class="img-fluid lazyload">
-  <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-02.jpg" class="img-fluid lazyload">
-  <img src="{{ site.url }}/images/index-8oGCaMDs-02.jpg" class="img-fluid lazyload" alt="合気道産靈 合気道とは">
+  <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-02.webp">
+  <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-02.jpg">
+  <img src="{{ site.url }}/images/index-8oGCaMDs-02.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 合気道とは">
 </picture>
 
 合気道は、20世紀初頭に植芝盛平（1883-1969）によって開発された非競争的な日本の武道です。これは、他の日本の伝統的な武術（主に大東流合気柔術）に基づいており、柔軟で自然で非常に効果的な動きを使用して、敵の力を使って攻撃を回避、リダイレクト、または無効化します。
@@ -75,32 +75,32 @@ i18n-ref: index-8oGCaMDs
   <div class="row">
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-05_.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-05_.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-04.jpg" class="img-fluid lazyload" alt="Aikido Musubi Pablo Martín">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-05_.webp">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-05_.jpg">
+        <img src="{{ site.url }}/images/index-8oGCaMDs-04.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Pablo Martín">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-06_.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-06_.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-06.jpg" class="img-fluid lazyload" alt="Aikido Musubi Pablo Martín">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-06_.webp">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-06_.jpg">
+        <img src="{{ site.url }}/images/index-8oGCaMDs-06.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Pablo Martín">
       </picture>
     </div>
   </div>
   <div class="row">
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-07_.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-07_.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-07.jpg" class="img-fluid lazyload" alt="Aikido Musubi Pablo Martín">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-07_.webp">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-07_.jpg">
+        <img src="{{ site.url }}/images/index-8oGCaMDs-07.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Pablo Martín">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-08_.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-08_.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-08.jpg" class="img-fluid lazyload" alt="Aikido Musubi Pablo Martín">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-08_.webp">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-08_.jpg">
+        <img src="{{ site.url }}/images/index-8oGCaMDs-08.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Pablo Martín">
       </picture>
     </div>
   </div>
@@ -120,25 +120,25 @@ i18n-ref: index-8oGCaMDs
   <div class="row">
     <div class="col-4 col-sm-4">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-13.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-13.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-13.jpg" class="img-fluid lazyload" alt="合気道産靈 ペドロ・フォルテス">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-13.webp">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-13.jpg">
+        <img src="{{ site.url }}/images/index-8oGCaMDs-13.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 ペドロ・フォルテス">
       </picture>
       <span>ペドロ・フォルテス<em>（四段）</em></span>
     </div>
     <div class="col-4 col-sm-4">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-15.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-15.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-15.jpg" class="img-fluid lazyload" alt="合気道産靈 ホセ・ルイス・ザフラ">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-15.webp">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-15.jpg">
+        <img src="{{ site.url }}/images/index-8oGCaMDs-15.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 ホセ・ルイス・ザフラ">
       </picture>
       <span>ホセ・ルイス・ザフラ<em>（四段）</em></span>
     </div>
     <div class="col-4 col-sm-4">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-16.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-16.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-16.jpg" class="img-fluid lazyload" alt="合気道産靈 アルベルト・サンチョ">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-16.webp">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-16.jpg">
+        <img src="{{ site.url }}/images/index-8oGCaMDs-16.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 アルベルト・サンチョ">
       </picture>
       <span>アルベルト・サンチョ<em>（四段）</em></span>
     </div>
@@ -146,25 +146,25 @@ i18n-ref: index-8oGCaMDs
   <div class="row">
     <div class="col-4 col-sm-4">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-17.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-17.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-17.jpg" class="img-fluid lazyload" alt="合気道産靈 フアンマ・ペレス">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-17.webp">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-17.jpg">
+        <img src="{{ site.url }}/images/index-8oGCaMDs-17.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 フアンマ・ペレス">
       </picture>
       <span>フアンマ・ペレス<em>（参段）</em></span>
     </div>
     <div class="col-4 col-sm-4">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-18.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-18.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-18.jpg" class="img-fluid lazyload" alt="合気道産靈 アンドレウ・ビリャル">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-18.webp">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-18.jpg">
+        <img src="{{ site.url }}/images/index-8oGCaMDs-18.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 アンドレウ・ビリャル">
       </picture>
       <span>アンドレウ・ビリャル<em>（参段）</em></span>
     </div>
     <div class="col-4 col-sm-4">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-19.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-19.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-19.jpg" class="img-fluid lazyload" alt="合気道産靈 チェン・グァンロン">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-19.webp">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-19.jpg">
+        <img src="{{ site.url }}/images/index-8oGCaMDs-19.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 チェン・グァンロン">
       </picture>
       <span>チェン・グァンロン<em>（参段）</em></span>
     </div>
@@ -179,16 +179,16 @@ i18n-ref: index-8oGCaMDs
   <div class="row">
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-12.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-12.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-12.jpg" class="img-fluid lazyload" alt="合気道産靈 文化協会">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-12.webp">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-12.jpg">
+        <img src="{{ site.url }}/images/index-8oGCaMDs-12.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 文化協会">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-11.webp" class="img-fluid lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-11.jpg" class="img-fluid lazyload">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-11.jpg" class="img-fluid lazyload" alt="合気道産靈 文化協会">
+        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-11.webp">
+        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-11.jpg">
+        <img src="{{ site.url }}/images/index-8oGCaMDs-11.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 文化協会">
       </picture>
     </div>
   </div>

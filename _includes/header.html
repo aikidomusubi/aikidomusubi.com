@@ -37,7 +37,7 @@
     {% endif %}
     {% include preload.html %}
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@900&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <link href="{{ site.url }}/styles/all.min.css?v=3" rel="stylesheet">
+    <link href="{{ site.url }}/styles/all.min.css?v=4" rel="stylesheet">
     <noscript><style>body.invisible { visibility: visible !important; }</style></noscript>
     {% include icons.html %}
     {% if page.i18n-ref == 'training-schedule-IFMn5oCc' %}
@@ -61,9 +61,8 @@
       {% include fullcalendar.html %}
     {% endif %}
     {% if page.i18n-ref == 'courses-hFZ2XXIp' %}
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+      <link rel="stylesheet" href="{{ site.url }}/styles/glightbox.min.css">
     {% endif %}
-    <script src="{{ site.url }}/scripts/modernizr.min.js"></script>
     {% if page.i18n-ref == 'index-8oGCaMDs' %}
     <script type="application/ld+json">
     {

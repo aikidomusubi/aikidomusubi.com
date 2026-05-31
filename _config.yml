@@ -46,6 +46,9 @@ collections:
   courses:
     output: false
     layout: "course"
+  resources:
+    output: false
+    layout: "resource"
   photos:
     output: true
     layout: "photo"
@@ -77,7 +80,34 @@ exclude:
   - scripts/bootstrap.js
   - scripts/bootstrap.min.js
   - scripts/default.js
-#  - scripts/jquery-3.4.1.min.js
+  - scripts/jquery-3.4.1.min.js
+  - scripts/jquery-ui.1.11.4.min.js
+  - scripts/lazysizes.min.js
+  - scripts/modernizr.min.js
+  - scripts/brands.js
+  - scripts/brands.min.js
+  - scripts/fontawesome.js
+  - scripts/fontawesome.min.js
+  - scripts/regular.js
+  - scripts/regular.min.js
+  - scripts/solid.js
+  - scripts/solid.min.js
+  - scripts/v4-shims.js
+  - scripts/v4-shims.min.js
+  - scripts/conflict-detection.js
+  - scripts/conflict-detection.min.js
+  - styles/brands.css
+  - styles/brands.min.css
+  - styles/fontawesome.css
+  - styles/fontawesome.min.css
+  - styles/regular.css
+  - styles/regular.min.css
+  - styles/solid.css
+  - styles/solid.min.css
+  - styles/svg-with-js.css
+  - styles/svg-with-js.min.css
+  - styles/v4-shims.css
+  - styles/v4-shims.min.css
   - styles/bootstrap-grid.css
   - styles/bootstrap-grid.min.css
   - styles/bootstrap-reboot.css
