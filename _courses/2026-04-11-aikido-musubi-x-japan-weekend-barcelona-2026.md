@@ -5,25 +5,25 @@ title_es: "Aikido Musubi ✕ Japan Weekend Barcelona 2026"
 title_ja: "合気道産靈 ✕ Japan Weekend Barcelona 2026"
 
 desc_ca: >-
-  El 15 de març de 2026 vam estar a la Japan Weekend Barcelona oferint classes d'Aikido obertes a tots els visitants. Una gran oportunitat per descobrir l'aikido en un ambient festiu!
+  El proper 11 d'abril de 2026 estarem a la Japan Weekend Barcelona oferint classes d'Aikido obertes a tots els visitants. Una gran oportunitat per descobrir l'aikido!
 desc_en: >-
-  On March 15th, 2026, we were at Japan Weekend Barcelona offering open Aikido classes for all visitors. A great opportunity to discover aikido in a festive atmosphere!
+  On April 11th, 2026, we will be at Japan Weekend Barcelona offering open Aikido classes for all visitors. A great opportunity to discover aikido!
 desc_es: >-
-  El 15 de marzo de 2026 estuvimos en la Japan Weekend Barcelona ofreciendo clases de Aikido abiertas para todos los visitantes. ¡Una gran oportunidad para descubrir el aikido en un ambiente festivo!
+  El próximo 11 de abril de 2026 estaremos en la Japan Weekend Barcelona ofreciendo clases de Aikido abiertas para todos los visitantes. ¡Una gran oportunidad para descubrir el aikido!
 desc_ja: >-
-  ２０２６年３月１５日、「Japan Weekend Barcelona」にて、すべての来場者向けに合気道のオープンクラスを開催しました。お祭り気分の中で合気道を体験する素晴らしい機会となりました！
+  ２０２６年４月１１日、「Japan Weekend Barcelona」にて、すべての来場者向けに合気道のオープンクラスを開催します。合気道を体験する絶好の機会です！
 
-image_ca: "courses-hFZ2XXIp-2026-03-15-aikido-musubi-x-japan-weekend-barcelona-2026-es"
-image_en: "courses-hFZ2XXIp-2026-03-15-aikido-musubi-x-japan-weekend-barcelona-2026-es"
-image_es: "courses-hFZ2XXIp-2026-03-15-aikido-musubi-x-japan-weekend-barcelona-2026-es"
-image_ja: "courses-hFZ2XXIp-2026-03-15-aikido-musubi-x-japan-weekend-barcelona-2026-es"
+image_ca: "courses-hFZ2XXIp-2026-04-11-aikido-musubi-x-japan-weekend-barcelona-2026-en"
+image_en: "courses-hFZ2XXIp-2026-04-11-aikido-musubi-x-japan-weekend-barcelona-2026-en"
+image_es: "courses-hFZ2XXIp-2026-04-11-aikido-musubi-x-japan-weekend-barcelona-2026-en"
+image_ja: "courses-hFZ2XXIp-2026-04-11-aikido-musubi-x-japan-weekend-barcelona-2026-en"
 
-file_ca: "courses-hFZ2XXIp-2026-03-15-aikido-musubi-x-japan-weekend-barcelona-2026-es.pdf"
-file_en: "courses-hFZ2XXIp-2026-03-15-aikido-musubi-x-japan-weekend-barcelona-2026-es.pdf"
-file_es: "courses-hFZ2XXIp-2026-03-15-aikido-musubi-x-japan-weekend-barcelona-2026-es.pdf"
-file_ja: "courses-hFZ2XXIp-2026-03-15-aikido-musubi-x-japan-weekend-barcelona-2026-es.pdf"
+file_ca: "courses-hFZ2XXIp-2026-04-11-aikido-musubi-x-japan-weekend-barcelona-2026-en.pdf"
+file_en: "courses-hFZ2XXIp-2026-04-11-aikido-musubi-x-japan-weekend-barcelona-2026-en.pdf"
+file_es: "courses-hFZ2XXIp-2026-04-11-aikido-musubi-x-japan-weekend-barcelona-2026-en.pdf"
+file_ja: "courses-hFZ2XXIp-2026-04-11-aikido-musubi-x-japan-weekend-barcelona-2026-en.pdf"
 
-date_from: 2026-03-15
+date_from: 2026-04-11
 date_to: "blank"
 
 event_link: "https://www.japanweekend.com/barcelona/"
