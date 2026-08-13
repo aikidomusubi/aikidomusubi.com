@@ -63,59 +63,29 @@ defaults:
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
+# Only two asset files are actually served: styles/all.min.css and
+# scripts/all.min.js. Everything Gulp consumes to build them is excluded
+# here, as are the build/tooling files. glightbox.* is deliberately NOT
+# excluded — the courses page loads it directly rather than via the bundle.
 exclude:
+  # Gulp inputs, bundled into all.min.js / all.min.css
+  - scripts/default.js
+  - scripts/jquery-3.7.1.min.js
+  - scripts/bootstrap.bundle.min.js
+  - scripts/bootstrap.bundle.min.js.map
+  - styles/base.less
+  - styles/default.less
+  - styles/bootstrap.min.css
+  - styles/bootstrap.min.css.map
+  # Unminified build output, kept locally for debugging only
+  - scripts/all.js
+  - styles/all.css
+  - styles/all.css.map
+  # Tooling and repo files
+  - _config_dev.yml
   - _includes/cssrelpreload.js
   - assets/
   - node_modules/
-  - scripts/bootstrap.bundle.js.map
-  - scripts/bootstrap.bundle.min.js.map
-  - scripts/bootstrap.js.map
-  - scripts/bootstrap.min.js.map
-  - scripts/all.js
-  - scripts/bootstrap.bundle.js
-  - scripts/bootstrap.bundle.min.js
-  - scripts/bootstrap.js
-  - scripts/bootstrap.min.js
-  - scripts/default.js
-  - scripts/jquery-3.4.1.min.js
-  - scripts/jquery-ui.1.11.4.min.js
-  - scripts/lazysizes.min.js
-  - scripts/modernizr.min.js
-  - scripts/brands.js
-  - scripts/brands.min.js
-  - scripts/fontawesome.js
-  - scripts/fontawesome.min.js
-  - scripts/regular.js
-  - scripts/regular.min.js
-  - scripts/solid.js
-  - scripts/solid.min.js
-  - scripts/v4-shims.js
-  - scripts/v4-shims.min.js
-  - scripts/conflict-detection.js
-  - scripts/conflict-detection.min.js
-  - styles/brands.css
-  - styles/brands.min.css
-  - styles/fontawesome.css
-  - styles/fontawesome.min.css
-  - styles/regular.css
-  - styles/regular.min.css
-  - styles/solid.css
-  - styles/solid.min.css
-  - styles/svg-with-js.css
-  - styles/svg-with-js.min.css
-  - styles/v4-shims.css
-  - styles/v4-shims.min.css
-  - styles/bootstrap-grid.css
-  - styles/bootstrap-grid.min.css
-  - styles/bootstrap-reboot.css
-  - styles/bootstrap-reboot.min.css
-  - styles/bootstrap.css
-  - styles/bootstrap-grid.css.map
-  - styles/bootstrap-reboot.css.map
-  - styles/bootstrap-reboot.min.css.map
-  - styles/bootstrap.css.map
-  - styles/base.less
-  - styles/default.less
   - Gemfile
   - Gemfile.lock
   - gulpfile.js
