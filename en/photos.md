@@ -5,6 +5,7 @@ description: A selection of photos. Unless otherwise noted, all photos by Aikido
 permalink: /en/photos/
 lang: en
 i18n-ref: photos-QDOJ1pyG
+last_modified: 2020-08-28
 ---
 
 # Photos

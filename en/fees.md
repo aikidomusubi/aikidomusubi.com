@@ -5,6 +5,7 @@ description: Registration is free of charge. We offer discounts for families. An
 permalink: /en/fees/
 lang: en
 i18n-ref: fees-UjbuGtGz
+last_modified: 2026-01-10
 ---
 
 # Fees

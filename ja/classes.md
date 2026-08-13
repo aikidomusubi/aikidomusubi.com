@@ -5,6 +5,7 @@ description: 一般の方を対象としたクラスの他にも、初心者に�
 permalink: /ja/classes/
 lang: ja
 i18n-ref: classes-CJc2lhFv
+last_modified: 2026-02-26
 ---
 
 # 各クラスの紹介

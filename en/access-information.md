@@ -5,6 +5,7 @@ description: If you wish to visit our dojo or train with us, contact us for more
 permalink: /en/access-information/
 lang: en
 i18n-ref: access-information-NdxqmVbV
+last_modified: 2026-02-26
 ---
 
 # Access Information

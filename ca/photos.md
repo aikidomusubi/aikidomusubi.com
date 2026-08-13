@@ -5,6 +5,7 @@ description: Una selecció de fotos. Tret que s’indiqui el contrari, totes les
 permalink: /ca/fotos/
 lang: ca
 i18n-ref: photos-QDOJ1pyG
+last_modified: 2020-08-28
 ---
 
 # Fotos

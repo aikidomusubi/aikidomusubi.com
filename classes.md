@@ -5,6 +5,7 @@ description: Disponemos de un amplio horario de clases para acomodar a adultos y
 permalink: /clases/
 lang: es
 i18n-ref: classes-CJc2lhFv
+last_modified: 2026-02-26
 ---
 
 # Clases

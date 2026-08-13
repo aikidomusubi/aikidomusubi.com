@@ -5,6 +5,7 @@ description: Si quieres visitar nuestro dojo o entrenar con nosotros, contáctan
 permalink: /acceso/
 lang: es
 i18n-ref: access-information-NdxqmVbV
+last_modified: 2026-02-26
 ---
 
 # Acceso

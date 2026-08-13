@@ -5,6 +5,7 @@ description: We welcome aikido practitioners from around the world who are visit
 permalink: /en/visitors/
 lang: en
 i18n-ref: visitors-Smz3N4U0
+last_modified: 2026-01-18
 ---
 
 # Visitors

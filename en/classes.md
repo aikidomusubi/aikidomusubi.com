@@ -5,6 +5,7 @@ description: We have a wide schedule of classes to accommodate adults and childr
 permalink: /en/classes/
 lang: en
 i18n-ref: classes-CJc2lhFv
+last_modified: 2026-02-26
 ---
 
 # Classes

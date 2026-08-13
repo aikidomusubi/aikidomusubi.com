@@ -5,6 +5,7 @@ description: Disposem d'un ampli horari de classes per acomodar a adults i nens,
 permalink: /ca/classes/
 lang: ca
 i18n-ref: classes-CJc2lhFv
+last_modified: 2026-02-26
 ---
 
 # Classes

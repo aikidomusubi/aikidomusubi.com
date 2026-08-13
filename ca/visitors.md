@@ -5,6 +5,7 @@ description: Donem la benvinguda als practicants d’aikido de tot el món que v
 permalink: /ca/visitants/
 lang: ca
 i18n-ref: visitors-Smz3N4U0
+last_modified: 2026-01-18
 ---
 
 # Visitants

@@ -5,6 +5,7 @@ description: 動画のセレクション。特に明記しない限り、すべ�
 permalink: /ja/videos/
 lang: ja
 i18n-ref: videos-NuhYeNWr
+last_modified: 2026-02-26
 ---
 
 # ビデオ

@@ -5,6 +5,7 @@ description: 道場を訪問したり、一緒に訓練したい場合は、お�
 permalink: /ja/access-information/
 lang: ja
 i18n-ref: access-information-NdxqmVbV
+last_modified: 2026-02-26
 ---
 
 # アクセス

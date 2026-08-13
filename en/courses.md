@@ -5,6 +5,7 @@ description: Courses and events that take place in our dojo.
 permalink: /en/courses/
 lang: en
 i18n-ref: courses-hFZ2XXIp
+last_modified: 2026-05-31
 ---
 
 # Courses

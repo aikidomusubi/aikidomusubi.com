@@ -5,6 +5,7 @@ description: 登録料は無料です。 家族向け割引あり。 また、2�
 permalink: /ja/fees/
 lang: ja
 i18n-ref: fees-UjbuGtGz
+last_modified: 2026-01-10
 ---
 
 # 月謝

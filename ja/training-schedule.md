@@ -5,6 +5,7 @@ description: 今、月曜日から土曜日まで合気道クラス(一般クラ
 permalink: /ja/training-schedule/
 lang: ja
 i18n-ref: training-schedule-IFMn5oCc
+last_modified: 2026-02-26
 ---
 
 # 稽古時間

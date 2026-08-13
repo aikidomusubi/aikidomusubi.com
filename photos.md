@@ -5,6 +5,7 @@ description: Una selección de fotos. A menos que se indique lo contrario, todas
 permalink: /fotos/
 lang: es
 i18n-ref: photos-QDOJ1pyG
+last_modified: 2020-08-28
 ---
 
 # Fotos

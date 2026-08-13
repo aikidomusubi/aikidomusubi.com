@@ -5,6 +5,7 @@ description: バルセロナを訪れ、当道場で稽古を希望される合�
 permalink: /ja/visitors/
 lang: ja
 i18n-ref: visitors-Smz3N4U0
+last_modified: 2026-01-18
 ---
 
 # 見学者

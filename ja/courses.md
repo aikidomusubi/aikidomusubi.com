@@ -5,6 +5,7 @@ description: 私たちの道場で行われるコースとイベント。
 permalink: /ja/courses/
 lang: ja
 i18n-ref: courses-hFZ2XXIp
+last_modified: 2026-05-31
 ---
 
 # 講習会
