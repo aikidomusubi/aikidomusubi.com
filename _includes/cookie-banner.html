@@ -1,0 +1,134 @@
+{%- comment -%}
+  Cookie consent banner (AEPD / GDPR).
+
+  Google Tag Manager is NOT in the <head>. It is injected by this script and
+  only after the visitor accepts, which is the whole point: no non-essential
+  cookies before consent. If you ever put the GTM snippet back in the head,
+  this banner becomes decorative and the site is non-compliant again.
+
+  Accept and Reject are deliberately identical in weight — the AEPD requires
+  refusing to be exactly as easy as accepting, so there is no "X" to dismiss
+  it and no styling that favours one choice.
+
+  Language and the policy link come from page.lang, so every page gets the
+  right copy with no per-page configuration.
+{%- endcomment -%}
+{%- case page.lang -%}
+  {%- when 'ca' -%}
+    {%- assign cb_text = "Utilitzem galetes analítiques per millorar el lloc. Només s'activen si les acceptes." -%}
+    {%- assign cb_accept = "Acceptar-les totes" -%}
+    {%- assign cb_reject = "Rebutjar-les totes" -%}
+    {%- assign cb_info = "Més informació" -%}
+    {%- assign cb_policy = "/ca/politica-galetes/" -%}
+    {%- assign cb_label = "Galetes" -%}
+  {%- when 'en' -%}
+    {%- assign cb_text = "We use analytics cookies to improve the site. They are only enabled if you accept." -%}
+    {%- assign cb_accept = "Accept all" -%}
+    {%- assign cb_reject = "Reject all" -%}
+    {%- assign cb_info = "More information" -%}
+    {%- assign cb_policy = "/en/cookie-policy/" -%}
+    {%- assign cb_label = "Cookies" -%}
+  {%- when 'ja' -%}
+    {%- assign cb_text = "サイト改善のため分析クッキーを使用します。承諾された場合にのみ有効になります。" -%}
+    {%- assign cb_accept = "すべて承諾" -%}
+    {%- assign cb_reject = "すべて拒否" -%}
+    {%- assign cb_info = "詳細情報" -%}
+    {%- assign cb_policy = "/ja/cookie-policy/" -%}
+    {%- assign cb_label = "クッキー" -%}
+  {%- else -%}
+    {%- assign cb_text = "Utilizamos cookies analíticas para mejorar el sitio. Solo se activan si las aceptas." -%}
+    {%- assign cb_accept = "Aceptar todas" -%}
+    {%- assign cb_reject = "Rechazar todas" -%}
+    {%- assign cb_info = "Más información" -%}
+    {%- assign cb_policy = "/politica-cookies/" -%}
+    {%- assign cb_label = "Cookies" -%}
+{%- endcase -%}
+
+<div id="cookieBanner" class="cookie-banner" role="dialog" aria-modal="false" aria-label="{{ cb_label }}" hidden>
+  <p class="cookie-banner-text">{{ cb_text }}</p>
+  <div class="cookie-banner-actions">
+    <button type="button" class="btn btn-primary cookie-accept">{{ cb_accept }}</button>
+    <button type="button" class="btn btn-primary cookie-reject">{{ cb_reject }}</button>
+    <a class="cookie-info" href="{{ cb_policy }}">{{ cb_info }}</a>
+  </div>
+</div>
+
+<script>
+(function () {
+  var GTM_ID   = 'GTM-KZ62VP5';
+  var COOKIE   = 'aikidomusubi_cookie_consent';
+  var MONTHS   = 12;
+
+  var banner = document.getElementById('cookieBanner');
+  if (!banner) return;
+
+  function setChoice(value) {
+    var d = new Date();
+    d.setMonth(d.getMonth() + MONTHS);
+    document.cookie = COOKIE + '=' + value + ';expires=' + d.toUTCString() + ';path=/;SameSite=Lax';
+  }
+
+  function getChoice() {
+    var m = document.cookie.match(new RegExp('(?:^|; )' + COOKIE + '=([^;]*)'));
+    return m ? m[1] : null;
+  }
+
+  // Someone who accepted and later changes their mind still has Google's
+  // cookies sitting in the browser, so clear them rather than just stopping
+  // future ones. Tries the bare domain too, which is where _ga is scoped.
+  function clearAnalyticsCookies() {
+    var host = location.hostname;
+    var domains = ['', host, '.' + host, '.' + host.split('.').slice(-2).join('.')];
+    document.cookie.split('; ').forEach(function (pair) {
+      var name = pair.split('=')[0];
+      if (!/^(_ga|_gid|_gat|_gcl)/.test(name)) return;
+      domains.forEach(function (d) {
+        document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/' + (d ? ';domain=' + d : '');
+      });
+    });
+  }
+
+  function loadGTM() {
+    if (window.__amGtmLoaded) return;
+    window.__amGtmLoaded = true;
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+    var first = document.getElementsByTagName('script')[0];
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtm.js?id=' + GTM_ID;
+    first.parentNode.insertBefore(s, first);
+  }
+
+  function open()  { banner.hidden = false; banner.classList.add('is-open'); }
+  function close() { banner.classList.remove('is-open'); banner.hidden = true; }
+
+  banner.querySelector('.cookie-accept').addEventListener('click', function () {
+    setChoice('accepted');
+    close();
+    loadGTM();
+  });
+
+  banner.querySelector('.cookie-reject').addEventListener('click', function () {
+    setChoice('rejected');
+    close();
+    clearAnalyticsCookies();
+  });
+
+  var choice = getChoice();
+  if (choice === 'accepted') {
+    loadGTM();
+  } else if (choice !== 'rejected') {
+    open();
+  }
+
+  // Withdrawing consent has to be as available as giving it, so the footer
+  // button reopens this panel on every page. Bound here rather than with an
+  // inline onclick so it survives a future Content-Security-Policy.
+  document.querySelectorAll('.footer-cookie-settings').forEach(function (btn) {
+    btn.addEventListener('click', open);
+  });
+
+  window.amCookies = { open: open };
+})();
+</script>

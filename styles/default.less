@@ -31,6 +31,85 @@
   height: 0;                  // dynamically set in JS
 }
 
+// ---------------------------------------------------------------------------
+// Cookie consent banner
+//
+// Sits directly above the fixed footer rather than over it, and deliberately
+// does not use a backdrop: the AEPD does not require blocking the page, and a
+// modal over a dojo timetable is a worse experience than a corner panel. On
+// desktop it is a constrained card in the bottom-left; below 768px it spans
+// the width because a card that narrow reads as an advert.
+//
+// Accept and Reject share one identical rule — refusing must be exactly as
+// easy as accepting, so neither may be styled to look like the default.
+// ---------------------------------------------------------------------------
+.cookie-banner {
+  position: fixed;
+  z-index: 1030; // above the fixed footer, below Bootstrap's modal (1055)
+  left: 0; right: 0;
+  bottom: var(--footer-height);
+  background-color: @Dark;
+  color: darken(@White, 15%);
+  padding: 1rem;
+  font-size: .875rem;
+  line-height: 1.5;
+  box-shadow: 0 -2px 12px fadeout(@Black, 70%);
+
+  transform: translateY(1rem);
+  opacity: 0;
+  transition: transform .25s ease, opacity .25s ease;
+
+  &.is-open {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .cookie-banner-text {
+    margin: 0 0 .75rem;
+  }
+
+  .cookie-banner-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .5rem;
+  }
+
+  // Identical weight for both choices — this is a legal requirement, not a
+  // stylistic preference. Do not make one of them a secondary button.
+  .cookie-accept,
+  .cookie-reject {
+    font-size: .875rem;
+    padding: .375rem 1rem;
+  }
+
+  .cookie-info {
+    color: darken(@White, 30%);
+    margin-left: auto;
+    text-decoration: underline;
+
+    &:focus,
+    &:hover {
+      color: @White;
+    }
+  }
+
+  @media (min-width: 768px) {
+    right: auto;
+    left: 1rem;
+    bottom: calc(var(--footer-height) + 1rem);
+    max-width: 30rem;
+    border-radius: .25rem;
+    padding: 1.25rem;
+  }
+
+  // Users who ask for reduced motion get the panel without the slide.
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+    transform: none;
+  }
+}
+
 .course-lightbox {
   display: block;
   overflow: hidden;
@@ -78,7 +157,7 @@ html {
       z-index: 2;
 
       .container {
-        padding-bottom: 41.7px; // footer height
+        padding-bottom: var(--footer-height);
         padding-right: 0; padding-left: 0;
 
         > main {
@@ -292,8 +371,37 @@ html {
             }
           }
 
+          // Legal links get their own row rather than sharing the centre with
+          // the brand block, which does render here despite the nth-of-type(1)
+          // rule above. clear:both drops this below the floated glyph and
+          // social icons instead of squeezing between them.
           &:nth-of-type(3) {
-            .hide;
+            display: block;
+            clear: both;
+            font-size: 12px;
+            letter-spacing: 0;
+            padding-top: .15rem;
+
+            > a,
+            > button {
+              padding: 0 .35rem;
+
+              // The cookie item reopens the banner, so it has to be a button
+              // for keyboard and screen-reader users. Stripped back to look
+              // like its sibling links.
+              &.footer-cookie-settings {
+                background: none;
+                border: 0;
+                color: inherit;
+                font: inherit;
+                cursor: pointer;
+
+                &:focus,
+                &:hover {
+                  color: darken(@White, 10%);
+                }
+              }
+            }
           }
 
           &:nth-of-type(4) {

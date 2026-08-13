@@ -26,6 +26,13 @@ permalink: /sitemap.xml
 {%- endcomment -%}
 {%- assign known_langs = "ca,en,es,ja,it" | split: "," -%}
 {%- assign hero_variants = "-1200,-1920,-2560,-2880" | split: "," -%}
+{%- comment -%}
+  Narrow the static-file list ONCE here rather than re-testing all ~2,800
+  files inside every page's loop. /photos/ alone holds the large majority of
+  them and can never match, so hoisting this out is the difference between
+  roughly 170,000 Liquid iterations per build and roughly 18,000.
+{%- endcomment -%}
+{%- assign content_images = site.static_files | where: "extname", ".jpg" | where_exp: "f", "f.path contains '/images/'" -%}
 {%- assign indexable = site.pages | where_exp: "p", "p.i18n-ref" | where_exp: "p", "p.sitemap != false" -%}
 {%- assign refs = indexable | map: "i18n-ref" | uniq | sort -%}
 <?xml version="1.0" encoding="UTF-8"?>
@@ -97,9 +104,7 @@ permalink: /sitemap.xml
       {%- endfor -%}
     {%- else -%}
       {%- assign prefix = ref | append: "-" -%}
-      {%- for f in site.static_files -%}
-        {%- unless f.extname == '.jpg' %}{% continue %}{% endunless -%}
-        {%- unless f.path contains '/images/' %}{% continue %}{% endunless -%}
+      {%- for f in content_images -%}
         {%- unless f.basename contains prefix %}{% continue %}{% endunless -%}
         {%- assign skip = false -%}
         {%- comment -%}

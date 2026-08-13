@@ -52,12 +52,30 @@
   --color-blue:   @Blue;
   --color-yellow: @Yellow;
 
+  // The footer is fixed to the bottom, so the page has to reserve exactly its
+  // height as padding or the last line of content hides behind it. Keeping
+  // that measurement in one token means the two can never drift apart — and
+  // the cookie banner uses it to sit directly above the footer.
+  // Row one is the existing glyph / brand / social icons; row two is the legal
+  // links, which Art. 10 LSSI-CE requires on every page. 41.7px was the
+  // single-row height before those links existed.
+  --footer-height: 64px;
+
   --font-sans:       'Noto Sans', sans-serif;
   --font-sans-jp:    'Noto Sans JP', sans-serif;
   --font-serif:      'Noto Serif', sans-serif;
   --font-serif-jp:   'Noto Serif JP', sans-serif;
   --font-display:    Futura, Trebuchet MS, Arial, sans-serif;
   --font-display-jp: 'M PLUS 1p', sans-serif;
+}
+
+// Below 768px the four legal links cannot share a line with the glyph and the
+// social icons, so the footer becomes two rows. Redefining the one token grows
+// the bar and the page's bottom padding together — they cannot drift apart.
+@media (max-width: 767.98px) {
+  :root {
+    --footer-height: 92px;
+  }
 }
 
 ////////////////////////////////////////////////////////////////

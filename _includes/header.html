@@ -2,7 +2,12 @@
 <!doctype html>
 <html lang="{{ page.lang }}" xml:lang="{{ page.lang }}" class="no-js">
   <head>
-    {% include gtag.html %}
+    {%- comment -%}
+      Google Tag Manager is intentionally NOT loaded here. It is injected by
+      _includes/cookie-banner.html only after the visitor accepts, because
+      analytics cookies may not be set before consent. Re-adding a GTM or
+      gtag snippet to this <head> would make the consent banner meaningless.
+    {%- endcomment -%}
     <meta name="msvalidate.01" content="BD3972A9B5BD4E8973D71103B6A5B7E7" />
     <meta name="yandex-verification" content="7648b927834719e6" />
     <meta charset="utf-8">
@@ -96,10 +101,12 @@
     {% endif %}
   </head>
   <body class="{{ page.i18n-ref }} invisible">
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KZ62VP5"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+    {%- comment -%}
+      The GTM <noscript> iframe was removed with the head snippet. It fires
+      unconditionally and cannot be gated by the consent banner, which is
+      JavaScript — so leaving it in would track exactly the visitors who
+      never get the chance to refuse.
+    {%- endcomment -%}
     <div class="page">
       {% if page.i18n-ref == 'index-8oGCaMDs' %}
 
