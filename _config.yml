@@ -46,9 +46,6 @@ collections:
   courses:
     output: false
     layout: "course"
-  resources:
-    output: false
-    layout: "resource"
   photos:
     output: true
     layout: "photo"
