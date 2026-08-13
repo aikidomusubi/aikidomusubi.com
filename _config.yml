@@ -78,8 +78,6 @@ exclude:
   - styles/bootstrap.min.css.map
   # Unminified build output, kept locally for debugging only
   - scripts/all.js
-  - styles/all.css
-  - styles/all.css.map
   # Tooling and repo files
   - _config_dev.yml
   - _includes/cssrelpreload.js

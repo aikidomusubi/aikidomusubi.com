@@ -7,7 +7,6 @@ var rename     = require('gulp-rename');
 var newer      = require('gulp-newer');
 var less       = require('gulp-less');
 var cleanCSS   = require('gulp-clean-css');
-var sourcemaps = require('gulp-sourcemaps');
 var postcss    = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 var { spawn }  = require('child_process');
@@ -41,19 +40,17 @@ gulp.task('scripts', gulp.series(function(done) {
 // -------------------
 // Compile LESS to CSS
 // -------------------
+// Emits styles/all.min.css only.
+//
+// This task used to build an unminified styles/all.css alongside it through
+// a second stream wrapped in gulp-sourcemaps. That stream had been failing
+// silently — all.css was months stale, still carrying vendor prefixes that
+// had already been deleted from the source — because gulp-sourcemaps 2.x
+// does not work under Gulp 5. Nothing consumed the file (it is not served
+// and it is excluded from the Jekyll build), so the second stream is gone
+// rather than repaired, which also drops two unmaintained dependencies.
 gulp.task('styles', function() {
-  var uncompressed = gulp.src('styles/default.less')
-    .pipe(sourcemaps.init())
-    .pipe(less().on('error', function(err) {
-      console.error(err.message);
-      this.emit('end');
-    }))
-    .pipe(postcss([autoprefixer()]))
-    .pipe(rename('all.css'))
-    .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('styles'));
-
-  var compressed = gulp.src('styles/default.less')
+  return gulp.src('styles/default.less')
     .pipe(less().on('error', function(err) {
       console.error(err.message);
       this.emit('end');
@@ -62,8 +59,6 @@ gulp.task('styles', function() {
     .pipe(cleanCSS())
     .pipe(rename('all.min.css'))
     .pipe(gulp.dest('styles'));
-
-  return require('merge-stream')(uncompressed, compressed);
 });
 
 // -------------------

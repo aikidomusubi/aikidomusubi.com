@@ -28,6 +28,10 @@
 .italic { font-style: italic; }
 .normal { font-style: normal; }
 
+// The palette lives here as LESS variables because most of the stylesheet
+// consumes it through compile-time colour maths — darken(), lighten() and
+// fadeout() account for roughly two thirds of all palette references, and
+// none of those can operate on a CSS custom property.
 @Black: #121315;
 @White: #ffffff;
 
@@ -36,6 +40,25 @@
 @Red: #da525d;
 @Blue: #084f6f;
 @Yellow: #fff200;
+
+// The same values published as custom properties, interpolated from the
+// variables above so there is still exactly one place to change a colour.
+// These are what new CSS, inline styles and DevTools should reach for.
+:root {
+  --color-black:  @Black;
+  --color-white:  @White;
+  --color-dark:   @Dark;
+  --color-red:    @Red;
+  --color-blue:   @Blue;
+  --color-yellow: @Yellow;
+
+  --font-sans:       'Noto Sans', sans-serif;
+  --font-sans-jp:    'Noto Sans JP', sans-serif;
+  --font-serif:      'Noto Serif', sans-serif;
+  --font-serif-jp:   'Noto Serif JP', sans-serif;
+  --font-display:    Futura, Trebuchet MS, Arial, sans-serif;
+  --font-display-jp: 'M PLUS 1p', sans-serif;
+}
 
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////

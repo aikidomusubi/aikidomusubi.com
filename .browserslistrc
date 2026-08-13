@@ -1,0 +1,13 @@
+# Browser targets for Autoprefixer (styles) and any future JS transpilation.
+#
+# These four lines are the exact expansion of browserslist's "defaults"
+# query, which is what the build was already using implicitly. Writing them
+# out changes nothing about the current output — it just means the targets
+# are reviewable and the build stays reproducible when the default query
+# itself changes upstream.
+#
+# Check what this resolves to at any time with:  npx browserslist
+> 0.5%
+last 2 versions
+Firefox ESR
+not dead
