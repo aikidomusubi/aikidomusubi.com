@@ -13,9 +13,9 @@ last_modified: 2026-05-31
 ## Welcome
 
 <picture>
-  <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-01.webp">
-  <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-01.jpg">
-  <img src="{{ site.url }}/images/index-8oGCaMDs-01.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Welcome">
+  <source type="image/webp" srcset="/images/index-8oGCaMDs-01.webp">
+  <source type="image/jpeg" srcset="/images/index-8oGCaMDs-01.jpg">
+  <img src="/images/index-8oGCaMDs-01.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Welcome">
 </picture>
 
 Musubi Aikido Cultural Association (__Aikido Musubi__), founded in 2008, is a self-managed, non-profit association that promotes aikido in Barcelona and surrounding areas. We offer aikido classes for adults and children every day in our dojo (_Av. D’Alfons XIII, 351 08918 Badalona, ​​Barcelona_).
@@ -24,7 +24,7 @@ __Aikido Musubi__ aims to promote aikido as a way of improvement and self-develo
 
 It is our wish that those who practice at __Aikido Musubi__ can experience the depth and enjoyment of aikido through daily training in an appropriate environment (dojo) shared by students and other fellow aikidoka.
 
-If you want to start training aikido, [contact us]({{ site.url }}/{{ page.lang }}/contact/) or [visit our dojo]({{ site.url }}/{{ page.lang }}/access-information/). Registration is free and is open all year.
+If you want to start training aikido, [contact us](/{{ page.lang }}/contact/) or [visit our dojo](/{{ page.lang }}/access-information/). Registration is free and is open all year.
 
 We love to share our experience and that is why we welcome everyone who wants to join our association.
 
@@ -33,9 +33,9 @@ We love to share our experience and that is why we welcome everyone who wants to
 ## Our dojo
 
 <picture>
-  <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-09.webp">
-  <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-09.jpg">
-  <img src="{{ site.url }}/images/index-8oGCaMDs-09.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Our dojo">
+  <source type="image/webp" srcset="/images/index-8oGCaMDs-09.webp">
+  <source type="image/jpeg" srcset="/images/index-8oGCaMDs-09.jpg">
+  <img src="/images/index-8oGCaMDs-09.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Our dojo">
 </picture>
 
 The philosophy of __Aikido Musubi__ is based on the precepts established by the founder of aikido, Morihei Ueshiba, and inherited by the second and third doshu, as well as the masters (_shihan_) of the Aikido World Headquarters, the [Hombu Dojo](http://www.aikikai.or.jp/).
@@ -55,9 +55,9 @@ We also take part in and offer open and free classes at martial arts events and 
 ## Aikido
 
 <picture>
-  <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-02.webp">
-  <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-02.jpg">
-  <img src="{{ site.url }}/images/index-8oGCaMDs-02.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Aikido">
+  <source type="image/webp" srcset="/images/index-8oGCaMDs-02.webp">
+  <source type="image/jpeg" srcset="/images/index-8oGCaMDs-02.jpg">
+  <img src="/images/index-8oGCaMDs-02.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Aikido">
 </picture>
 
 Aikido is a non-competitive Japanese martial art developed in the early 20th century by Morihei Ueshiba (1883-1969). It is based on other traditional Japanese martial arts, mainly _Daitō-ryū Aiki-jūjutsu_, and uses flexible, natural, and highly effective movements to evade, redirect, or neutralise attacks using the opponent's force.
@@ -76,32 +76,32 @@ At __Aikido Musubi__, we offer classes that are suitable for inexperienced peopl
   <div class="row">
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-05_.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-05_.jpg">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-04.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Pablo Martín">
+        <source type="image/webp" srcset="/images/index-8oGCaMDs-05_.webp">
+        <source type="image/jpeg" srcset="/images/index-8oGCaMDs-05_.jpg">
+        <img src="/images/index-8oGCaMDs-04.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Pablo Martín">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-06_.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-06_.jpg">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-06.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Pablo Martín">
+        <source type="image/webp" srcset="/images/index-8oGCaMDs-06_.webp">
+        <source type="image/jpeg" srcset="/images/index-8oGCaMDs-06_.jpg">
+        <img src="/images/index-8oGCaMDs-06.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Pablo Martín">
       </picture>
     </div>
   </div>
   <div class="row">
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-07_.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-07_.jpg">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-07.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Pablo Martín">
+        <source type="image/webp" srcset="/images/index-8oGCaMDs-07_.webp">
+        <source type="image/jpeg" srcset="/images/index-8oGCaMDs-07_.jpg">
+        <img src="/images/index-8oGCaMDs-07.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Pablo Martín">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-08_.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-08_.jpg">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-08.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Pablo Martín">
+        <source type="image/webp" srcset="/images/index-8oGCaMDs-08_.webp">
+        <source type="image/jpeg" srcset="/images/index-8oGCaMDs-08_.jpg">
+        <img src="/images/index-8oGCaMDs-08.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Pablo Martín">
       </picture>
     </div>
   </div>
@@ -121,25 +121,25 @@ Currently, he holds a 4th dan degree and the title of _shidoin_ (qualified instr
   <div class="row">
     <div class="col-4 col-sm-4">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-13.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-13.jpg">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-13.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Pedro Fortes">
+        <source type="image/webp" srcset="/images/index-8oGCaMDs-13.webp">
+        <source type="image/jpeg" srcset="/images/index-8oGCaMDs-13.jpg">
+        <img src="/images/index-8oGCaMDs-13.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Pedro Fortes">
       </picture>
       <span>Pedro Fortes <em>(4th dan)</em></span>
     </div>
     <div class="col-4 col-sm-4">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-15.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-15.jpg">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-15.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi José Luis Zafra">
+        <source type="image/webp" srcset="/images/index-8oGCaMDs-15.webp">
+        <source type="image/jpeg" srcset="/images/index-8oGCaMDs-15.jpg">
+        <img src="/images/index-8oGCaMDs-15.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi José Luis Zafra">
       </picture>
       <span>José Luis Zafra <em>(4th dan)</em></span>
     </div>
     <div class="col-4 col-sm-4">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-16.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-16.jpg">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-16.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Alberto Sancho">
+        <source type="image/webp" srcset="/images/index-8oGCaMDs-16.webp">
+        <source type="image/jpeg" srcset="/images/index-8oGCaMDs-16.jpg">
+        <img src="/images/index-8oGCaMDs-16.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Alberto Sancho">
       </picture>
       <span>Alberto Sancho <em>(4th dan)</em></span>
     </div>
@@ -147,25 +147,25 @@ Currently, he holds a 4th dan degree and the title of _shidoin_ (qualified instr
   <div class="row">
     <div class="col-4 col-sm-4">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-17.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-17.jpg">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-17.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Juanma Pérez">
+        <source type="image/webp" srcset="/images/index-8oGCaMDs-17.webp">
+        <source type="image/jpeg" srcset="/images/index-8oGCaMDs-17.jpg">
+        <img src="/images/index-8oGCaMDs-17.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Juanma Pérez">
       </picture>
       <span>Juanma Pérez <em>(3rd dan)</em></span>
     </div>
     <div class="col-4 col-sm-4">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-18.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-18.jpg">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-18.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Andreu Villar">
+        <source type="image/webp" srcset="/images/index-8oGCaMDs-18.webp">
+        <source type="image/jpeg" srcset="/images/index-8oGCaMDs-18.jpg">
+        <img src="/images/index-8oGCaMDs-18.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Andreu Villar">
       </picture>
       <span>Andreu Villar <em>(3rd dan)</em></span>
     </div>
     <div class="col-4 col-sm-4">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-19.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-19.jpg">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-19.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Guanlong Zheng">
+        <source type="image/webp" srcset="/images/index-8oGCaMDs-19.webp">
+        <source type="image/jpeg" srcset="/images/index-8oGCaMDs-19.jpg">
+        <img src="/images/index-8oGCaMDs-19.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Guanlong Zheng">
       </picture>
       <span>Guanlong Zheng <em>(3rd dan)</em></span>
     </div>
@@ -180,16 +180,16 @@ Currently, he holds a 4th dan degree and the title of _shidoin_ (qualified instr
   <div class="row">
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-12.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-12.jpg">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-12.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Association">
+        <source type="image/webp" srcset="/images/index-8oGCaMDs-12.webp">
+        <source type="image/jpeg" srcset="/images/index-8oGCaMDs-12.jpg">
+        <img src="/images/index-8oGCaMDs-12.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Association">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/index-8oGCaMDs-11.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/index-8oGCaMDs-11.jpg">
-        <img src="{{ site.url }}/images/index-8oGCaMDs-11.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Association">
+        <source type="image/webp" srcset="/images/index-8oGCaMDs-11.webp">
+        <source type="image/jpeg" srcset="/images/index-8oGCaMDs-11.jpg">
+        <img src="/images/index-8oGCaMDs-11.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Association">
       </picture>
     </div>
   </div>

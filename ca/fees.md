@@ -10,7 +10,7 @@ last_modified: 2026-01-10
 
 # Quotes
 
-La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et donem 2 classes de prova sense compromís. Per a més informació sobre les diferents quotes i els mètodes de pagament, [contacta'ns]({{ site.url }}/{{ page.lang }}/contacte/).
+La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et donem 2 classes de prova sense compromís. Per a més informació sobre les diferents quotes i els mètodes de pagament, [contacta'ns](/{{ page.lang }}/contacte/).
 
 <hr>
 
@@ -50,7 +50,7 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
               <li>Inscripció gratuïta</li>
               <li>2 classes de prova</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contacte/" class="btn btn-lg btn-primary w-100" role="button">Inscriu-te!</a>
+            <a href="/{{ page.lang }}/contacte/" class="btn btn-lg btn-primary w-100" role="button">Inscriu-te!</a>
           </div>
         </div>
       </div>
@@ -69,7 +69,7 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
               <li>Inscripció gratuïta</li>
               <li>2 classes de prova</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contacte/" class="btn btn-lg btn-primary w-100" role="button">Inscriu-te!</a>
+            <a href="/{{ page.lang }}/contacte/" class="btn btn-lg btn-primary w-100" role="button">Inscriu-te!</a>
           </div>
         </div>
       </div>
@@ -88,7 +88,7 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
               <li>Inscripció gratuïta</li>
               <li>2 classes de prova</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contacte/" class="btn btn-lg btn-primary w-100" role="button">Inscriu-te!</a>
+            <a href="/{{ page.lang }}/contacte/" class="btn btn-lg btn-primary w-100" role="button">Inscriu-te!</a>
           </div>
         </div>
       </div>
@@ -107,7 +107,7 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
               <li>Inscripció gratuïta</li>
               <li>2 classes de prova</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contacte/" class="btn btn-lg btn-primary w-100" role="button">Inscriu-te!</a>
+            <a href="/{{ page.lang }}/contacte/" class="btn btn-lg btn-primary w-100" role="button">Inscriu-te!</a>
           </div>
         </div>
       </div>
@@ -135,7 +135,7 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
               <li>Inscripció gratuïta</li>
               <li>2 classes de prova</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contacte/" class="btn btn-lg btn-primary w-100" role="button">Inscriu-te!</a>
+            <a href="/{{ page.lang }}/contacte/" class="btn btn-lg btn-primary w-100" role="button">Inscriu-te!</a>
           </div>
         </div>
       </div>
@@ -154,7 +154,7 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
               <li>Inscripció gratuïta</li>
               <li>2 classes de prova</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contacte/" class="btn btn-lg btn-primary w-100" role="button">Inscriu-te!</a>
+            <a href="/{{ page.lang }}/contacte/" class="btn btn-lg btn-primary w-100" role="button">Inscriu-te!</a>
           </div>
         </div>
       </div>
@@ -173,7 +173,7 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
               <li>Inscripció gratuïta</li>
               <li>2 classes de prova</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contacte/" class="btn btn-lg btn-primary w-100" role="button">Inscriu-te!</a>
+            <a href="/{{ page.lang }}/contacte/" class="btn btn-lg btn-primary w-100" role="button">Inscriu-te!</a>
           </div>
         </div>
       </div>
@@ -192,7 +192,7 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
               <li>Inscripció gratuïta</li>
               <li>2 classes de prova</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contacte/" class="btn btn-lg btn-primary w-100" role="button">Inscriu-te!</a>
+            <a href="/{{ page.lang }}/contacte/" class="btn btn-lg btn-primary w-100" role="button">Inscriu-te!</a>
           </div>
         </div>
       </div>
@@ -220,7 +220,7 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
               <li>Inscripció gratuïta</li>
               <li>2 classes de prova</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contacte/" class="btn btn-lg btn-primary w-100" role="button">Inscriu-te!</a>
+            <a href="/{{ page.lang }}/contacte/" class="btn btn-lg btn-primary w-100" role="button">Inscriu-te!</a>
           </div>
         </div>
       </div>
@@ -239,7 +239,7 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
               <li>Inscripció gratuïta</li>
               <li>2 classes de prova</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contacte/" class="btn btn-lg btn-primary w-100" role="button">Inscriu-te!</a>
+            <a href="/{{ page.lang }}/contacte/" class="btn btn-lg btn-primary w-100" role="button">Inscriu-te!</a>
           </div>
         </div>
       </div>
@@ -258,7 +258,7 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
               <li>Inscripció gratuïta</li>
               <li>2 classes de prova</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contacte/" class="btn btn-lg btn-primary w-100" role="button">Inscriu-te!</a>
+            <a href="/{{ page.lang }}/contacte/" class="btn btn-lg btn-primary w-100" role="button">Inscriu-te!</a>
           </div>
         </div>
       </div>
@@ -277,7 +277,7 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
               <li>Inscripció gratuïta</li>
               <li>2 classes de prova</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contacte/" class="btn btn-lg btn-primary w-100" role="button">Inscriu-te!</a>
+            <a href="/{{ page.lang }}/contacte/" class="btn btn-lg btn-primary w-100" role="button">Inscriu-te!</a>
           </div>
         </div>
       </div>
@@ -305,7 +305,7 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
               <li>Inscripció gratuïta</li>
               <li>2 classes de prova</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contacte/" class="btn btn-lg btn-primary w-100" role="button">Inscriu-te!</a>
+            <a href="/{{ page.lang }}/contacte/" class="btn btn-lg btn-primary w-100" role="button">Inscriu-te!</a>
           </div>
         </div>
       </div>
@@ -324,7 +324,7 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
               <li>Inscripció gratuïta</li>
               <li>2 classes de prova</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contacte/" class="btn btn-lg btn-primary w-100" role="button">Inscriu-te!</a>
+            <a href="/{{ page.lang }}/contacte/" class="btn btn-lg btn-primary w-100" role="button">Inscriu-te!</a>
           </div>
         </div>
       </div>
@@ -343,7 +343,7 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
               <li>Inscripció gratuïta</li>
               <li>2 classes de prova</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contacte/" class="btn btn-lg btn-primary w-100" role="button">Inscriu-te!</a>
+            <a href="/{{ page.lang }}/contacte/" class="btn btn-lg btn-primary w-100" role="button">Inscriu-te!</a>
           </div>
         </div>
       </div>
@@ -362,7 +362,7 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
               <li>Inscripció gratuïta</li>
               <li>2 classes de prova</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contacte/" class="btn btn-lg btn-primary w-100" role="button">Inscriu-te!</a>
+            <a href="/{{ page.lang }}/contacte/" class="btn btn-lg btn-primary w-100" role="button">Inscriu-te!</a>
           </div>
         </div>
       </div>
@@ -375,8 +375,8 @@ La inscripció és gratuïta. Oferim descomptes per a famílies. I a més et don
 
 Descarregar la informació sobre quotes per a l'any 2026:
 
-* [Aikido Musubi - Quotes 2026 (detall)]({{ site.url }}/files/fees-UjbuGtGz-fees-2026-detail-{{page.lang}}.pdf)
-* [Aikido Musubi - Quotes 2026 (resum)]({{ site.url }}/files/fees-UjbuGtGz-fees-2026-summary-{{page.lang}}.pdf)
+* [Aikido Musubi - Quotes 2026 (detall)](/files/fees-UjbuGtGz-fees-2026-detail-{{page.lang}}.pdf)
+* [Aikido Musubi - Quotes 2026 (resum)](/files/fees-UjbuGtGz-fees-2026-summary-{{page.lang}}.pdf)
 
 <hr>
 

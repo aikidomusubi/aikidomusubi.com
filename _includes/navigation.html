@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
 
-  <a class="navbar-brand" href="{% if page.lang == 'es' %}{{ site.url }}/{% else %}{{ site.url }}/{{ page.lang }}/{% endif %}" title="{% if page.lang == 'ja' %}合気道産靈 (あいきどうむすび){% else %}Aikido Musubi{% endif %}">
+  <a class="navbar-brand" href="{% if page.lang == 'es' %}/{% else %}/{{ page.lang }}/{% endif %}" title="{% if page.lang == 'ja' %}合気道産靈 (あいきどうむすび){% else %}Aikido Musubi{% endif %}">
     {% if page.lang == 'ca' %}{{ site.title }}{% endif %}
     {% if page.lang == 'en' %}{{ site.title }}{% endif %}
     {% if page.lang == 'es' %}{{ site.title }}{% endif %}
@@ -21,10 +21,10 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown-classes">
           <a class="dropdown-item" href="
-            {% if page.lang == 'ca' %}{{ site.url }}/{{ page.lang }}/classes/{% endif %}
-            {% if page.lang == 'en' %}{{ site.url }}/{{ page.lang }}/classes/{% endif %}
-            {% if page.lang == 'es' %}{{ site.url }}/clases/{% endif %}
-            {% if page.lang == 'ja' %}{{ site.url }}/{{ page.lang }}/classes/{% endif %}
+            {% if page.lang == 'ca' %}/{{ page.lang }}/classes/{% endif %}
+            {% if page.lang == 'en' %}/{{ page.lang }}/classes/{% endif %}
+            {% if page.lang == 'es' %}/clases/{% endif %}
+            {% if page.lang == 'ja' %}/{{ page.lang }}/classes/{% endif %}
           ">
             {% if page.lang == 'ca' %}Classes{% endif %}
             {% if page.lang == 'en' %}Classes{% endif %}
@@ -32,10 +32,10 @@
             {% if page.lang == 'ja' %}各クラスの紹介{% endif %}
           </a>
           <a class="dropdown-item" href="
-            {% if page.lang == 'ca' %}{{ site.url }}/{{ page.lang }}/horaris/{% endif %}
-            {% if page.lang == 'en' %}{{ site.url }}/{{ page.lang }}/training-schedule/{% endif %}
-            {% if page.lang == 'es' %}{{ site.url }}/horarios/{% endif %}
-            {% if page.lang == 'ja' %}{{ site.url }}/{{ page.lang }}/training-schedule/{% endif %}
+            {% if page.lang == 'ca' %}/{{ page.lang }}/horaris/{% endif %}
+            {% if page.lang == 'en' %}/{{ page.lang }}/training-schedule/{% endif %}
+            {% if page.lang == 'es' %}/horarios/{% endif %}
+            {% if page.lang == 'ja' %}/{{ page.lang }}/training-schedule/{% endif %}
           ">
             {% if page.lang == 'ca' %}Horaris{% endif %}
             {% if page.lang == 'en' %}Training Schedule{% endif %}
@@ -43,10 +43,10 @@
             {% if page.lang == 'ja' %}稽古時間{% endif %}
           </a>
           <a class="dropdown-item" href="
-            {% if page.lang == 'ca' %}{{ site.url }}/{{ page.lang }}/quotes/{% endif %}
-            {% if page.lang == 'en' %}{{ site.url }}/{{ page.lang }}/fees/{% endif %}
-            {% if page.lang == 'es' %}{{ site.url }}/cuotas/{% endif %}
-            {% if page.lang == 'ja' %}{{ site.url }}/{{ page.lang }}/fees/{% endif %}
+            {% if page.lang == 'ca' %}/{{ page.lang }}/quotes/{% endif %}
+            {% if page.lang == 'en' %}/{{ page.lang }}/fees/{% endif %}
+            {% if page.lang == 'es' %}/cuotas/{% endif %}
+            {% if page.lang == 'ja' %}/{{ page.lang }}/fees/{% endif %}
           ">
             {% if page.lang == 'ca' %}Quotes{% endif %}
             {% if page.lang == 'en' %}Fees{% endif %}
@@ -57,10 +57,10 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="
-          {% if page.lang == 'ca' %}{{ site.url }}/{{ page.lang }}/cursos/{% endif %}
-          {% if page.lang == 'en' %}{{ site.url }}/{{ page.lang }}/courses/{% endif %}
-          {% if page.lang == 'es' %}{{ site.url }}/cursos/{% endif %}
-          {% if page.lang == 'ja' %}{{ site.url }}/{{ page.lang }}/courses/{% endif %}
+          {% if page.lang == 'ca' %}/{{ page.lang }}/cursos/{% endif %}
+          {% if page.lang == 'en' %}/{{ page.lang }}/courses/{% endif %}
+          {% if page.lang == 'es' %}/cursos/{% endif %}
+          {% if page.lang == 'ja' %}/{{ page.lang }}/courses/{% endif %}
         ">
           {% if page.lang == 'ca' %}Cursos{% endif %}
           {% if page.lang == 'en' %}Courses{% endif %}
@@ -77,10 +77,10 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown-media">
           <a class="dropdown-item" href="
-            {% if page.lang == 'ca' %}{{ site.url }}/{{ page.lang }}/fotos/{% endif %}
-            {% if page.lang == 'en' %}{{ site.url }}/{{ page.lang }}/photos/{% endif %}
-            {% if page.lang == 'es' %}{{ site.url }}/fotos/{% endif %}
-            {% if page.lang == 'ja' %}{{ site.url }}/{{ page.lang }}/photos/{% endif %}
+            {% if page.lang == 'ca' %}/{{ page.lang }}/fotos/{% endif %}
+            {% if page.lang == 'en' %}/{{ page.lang }}/photos/{% endif %}
+            {% if page.lang == 'es' %}/fotos/{% endif %}
+            {% if page.lang == 'ja' %}/{{ page.lang }}/photos/{% endif %}
           ">
             {% if page.lang == 'ca' %}Fotos{% endif %}
             {% if page.lang == 'en' %}Photos{% endif %}
@@ -88,10 +88,10 @@
             {% if page.lang == 'ja' %}写真{% endif %}
           </a>
           <a class="dropdown-item" href="
-            {% if page.lang == 'ca' %}{{ site.url }}/{{ page.lang }}/videos/{% endif %}
-            {% if page.lang == 'en' %}{{ site.url }}/{{ page.lang }}/videos/{% endif %}
-            {% if page.lang == 'es' %}{{ site.url }}/videos/{% endif %}
-            {% if page.lang == 'ja' %}{{ site.url }}/{{ page.lang }}/videos/{% endif %}
+            {% if page.lang == 'ca' %}/{{ page.lang }}/videos/{% endif %}
+            {% if page.lang == 'en' %}/{{ page.lang }}/videos/{% endif %}
+            {% if page.lang == 'es' %}/videos/{% endif %}
+            {% if page.lang == 'ja' %}/{{ page.lang }}/videos/{% endif %}
           ">
             {% if page.lang == 'ca' %}Vídeos{% endif %}
             {% if page.lang == 'en' %}Videos{% endif %}
@@ -109,10 +109,10 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown-contact">
           <a class="dropdown-item" href="
-            {% if page.lang == 'ca' %}{{ site.url }}/{{ page.lang }}/visitants/{% endif %}
-            {% if page.lang == 'en' %}{{ site.url }}/{{ page.lang }}/visitors/{% endif %}
-            {% if page.lang == 'es' %}{{ site.url }}/visitantes/{% endif %}
-            {% if page.lang == 'ja' %}{{ site.url }}/{{ page.lang }}/visitors/{% endif %}
+            {% if page.lang == 'ca' %}/{{ page.lang }}/visitants/{% endif %}
+            {% if page.lang == 'en' %}/{{ page.lang }}/visitors/{% endif %}
+            {% if page.lang == 'es' %}/visitantes/{% endif %}
+            {% if page.lang == 'ja' %}/{{ page.lang }}/visitors/{% endif %}
           ">
             {% if page.lang == 'ca' %}Visitants{% endif %}
             {% if page.lang == 'en' %}Visitors{% endif %}
@@ -120,10 +120,10 @@
             {% if page.lang == 'ja' %}見学者{% endif %}
           </a>
           <a class="dropdown-item" href="
-            {% if page.lang == 'ca' %}{{ site.url }}/{{ page.lang }}/acces/{% endif %}
-            {% if page.lang == 'en' %}{{ site.url }}/{{ page.lang }}/access-information/{% endif %}
-            {% if page.lang == 'es' %}{{ site.url }}/acceso/{% endif %}
-            {% if page.lang == 'ja' %}{{ site.url }}/{{ page.lang }}/access-information/{% endif %}
+            {% if page.lang == 'ca' %}/{{ page.lang }}/acces/{% endif %}
+            {% if page.lang == 'en' %}/{{ page.lang }}/access-information/{% endif %}
+            {% if page.lang == 'es' %}/acceso/{% endif %}
+            {% if page.lang == 'ja' %}/{{ page.lang }}/access-information/{% endif %}
           ">
             {% if page.lang == 'ca' %}Accés{% endif %}
             {% if page.lang == 'en' %}Access Information{% endif %}
@@ -131,10 +131,10 @@
             {% if page.lang == 'ja' %}アクセス{% endif %}
           </a>
           <a class="dropdown-item" href="
-            {% if page.lang == 'ca' %}{{ site.url }}/{{ page.lang }}/contacte/{% endif %}
-            {% if page.lang == 'en' %}{{ site.url }}/{{ page.lang }}/contact/{% endif %}
-            {% if page.lang == 'es' %}{{ site.url }}/contacto/{% endif %}
-            {% if page.lang == 'ja' %}{{ site.url }}/{{ page.lang }}/contact/{% endif %}
+            {% if page.lang == 'ca' %}/{{ page.lang }}/contacte/{% endif %}
+            {% if page.lang == 'en' %}/{{ page.lang }}/contact/{% endif %}
+            {% if page.lang == 'es' %}/contacto/{% endif %}
+            {% if page.lang == 'ja' %}/{{ page.lang }}/contact/{% endif %}
           ">
             {% if page.lang == 'ca' %}Contacte{% endif %}
             {% if page.lang == 'en' %}Contact{% endif %}

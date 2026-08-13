@@ -10,7 +10,7 @@ last_modified: 2026-02-26
 
 # Access Information
 
-Currently, we operate three centers in the province of Barcelona: __Aikido Musubi__ (Badalona), __Aikido Musubi Sant Adrià de Besòs__, and the __Faculty of Law at the University of Barcelona__. If you’d like to visit our dojo or train with us, [contact us]({{ site.url }}/{{ page.lang }}/contact/) for more information about locations and schedules.
+Currently, we operate three centers in the province of Barcelona: __Aikido Musubi__ (Badalona), __Aikido Musubi Sant Adrià de Besòs__, and the __Faculty of Law at the University of Barcelona__. If you’d like to visit our dojo or train with us, [contact us](/{{ page.lang }}/contact/) for more information about locations and schedules.
 
 <hr>
 
@@ -33,7 +33,7 @@ Currently, we operate three centers in the province of Barcelona: __Aikido Musub
           <small class="text-muted">
             Free parking<br>
             Open Monday to Saturday<br>
-            <a href="{{ site.url }}/{{ page.lang }}/training-schedule/?location=aikido-musubi">Check the training schedule</a>
+            <a href="/{{ page.lang }}/training-schedule/?location=aikido-musubi">Check the training schedule</a>
           </small>
         </p>
       </div>
@@ -69,9 +69,9 @@ __Aikido Musubi__ is located within the Badalona Sud sports facilities. The dojo
     </div>
     <div class="col-lg-8">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-00-{{ page.lang }}.webp" class="card-img-top lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-00-{{ page.lang }}.jpg" class="card-img-top lazyload">
-        <img src="{{ site.url }}/images/access-information-NdxqmVbV-00-{{ page.lang }}.jpg" class="card-img-top lazyload" alt="Map of Badalona Sud Sports Facilities">
+        <source type="image/webp" srcset="/images/access-information-NdxqmVbV-00-{{ page.lang }}.webp" class="card-img-top lazyload">
+        <source type="image/jpeg" srcset="/images/access-information-NdxqmVbV-00-{{ page.lang }}.jpg" class="card-img-top lazyload">
+        <img src="/images/access-information-NdxqmVbV-00-{{ page.lang }}.jpg" class="card-img-top lazyload" alt="Map of Badalona Sud Sports Facilities">
       </picture>
     </div>
   </div>
@@ -80,9 +80,9 @@ __Aikido Musubi__ is located within the Badalona Sud sports facilities. The dojo
 <div class="card-group">
   <div class="card">
     <picture>
-      <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-00-a.webp" class="card-img-top lazyload">
-      <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-00-a.jpg" class="card-img-top lazyload">
-      <img src="{{ site.url }}/images/access-information-NdxqmVbV-00-a.jpg" class="card-img-top lazyload" alt="Badalona Sud Sports Facilities Access A">
+      <source type="image/webp" srcset="/images/access-information-NdxqmVbV-00-a.webp" class="card-img-top lazyload">
+      <source type="image/jpeg" srcset="/images/access-information-NdxqmVbV-00-a.jpg" class="card-img-top lazyload">
+      <img src="/images/access-information-NdxqmVbV-00-a.jpg" class="card-img-top lazyload" alt="Badalona Sud Sports Facilities Access A">
     </picture>
     <div class="card-body">
       <h5 class="card-title">Access <span>A</span></h5>
@@ -91,9 +91,9 @@ __Aikido Musubi__ is located within the Badalona Sud sports facilities. The dojo
   </div>
   <div class="card">
     <picture>
-      <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-00-b.webp" class="card-img-top lazyload">
-      <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-00-b.jpg" class="card-img-top lazyload">
-      <img src="{{ site.url }}/images/access-information-NdxqmVbV-00-b.jpg" class="card-img-top lazyload" alt="Badalona Sud Sports Facilities Access B">
+      <source type="image/webp" srcset="/images/access-information-NdxqmVbV-00-b.webp" class="card-img-top lazyload">
+      <source type="image/jpeg" srcset="/images/access-information-NdxqmVbV-00-b.jpg" class="card-img-top lazyload">
+      <img src="/images/access-information-NdxqmVbV-00-b.jpg" class="card-img-top lazyload" alt="Badalona Sud Sports Facilities Access B">
     </picture>
     <div class="card-body">
       <h5 class="card-title">Access <span>B</span></h5>
@@ -102,9 +102,9 @@ __Aikido Musubi__ is located within the Badalona Sud sports facilities. The dojo
   </div>
   <div class="card">
     <picture>
-      <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-00-c.webp" class="card-img-top lazyload">
-      <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-00-c.jpg" class="card-img-top lazyload">
-      <img src="{{ site.url }}/images/access-information-NdxqmVbV-00-c.jpg" class="card-img-top lazyload" alt="Badalona Sud Sports Facilities Access C">
+      <source type="image/webp" srcset="/images/access-information-NdxqmVbV-00-c.webp" class="card-img-top lazyload">
+      <source type="image/jpeg" srcset="/images/access-information-NdxqmVbV-00-c.jpg" class="card-img-top lazyload">
+      <img src="/images/access-information-NdxqmVbV-00-c.jpg" class="card-img-top lazyload" alt="Badalona Sud Sports Facilities Access C">
     </picture>
     <div class="card-body">
       <h5 class="card-title">Access <span>C</span></h5>
@@ -133,7 +133,7 @@ __Aikido Musubi__ is located within the Badalona Sud sports facilities. The dojo
           <small class="text-muted">
             Free parking<br>
             Open Monday and Wednesday<br>
-            <a href="{{ site.url }}/{{ page.lang }}/training-schedule/?location=sant-adria-de-besos">Check the training schedule</a>
+            <a href="/{{ page.lang }}/training-schedule/?location=sant-adria-de-besos">Check the training schedule</a>
           </small>
         </p>
       </div>
@@ -165,9 +165,9 @@ __Aikido Musubi Sant Adrià__ is located within the facilities of the Marina-Bes
     </div>
     <div class="col-lg-8">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-01-{{ page.lang }}.webp" class="card-img-top lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-01-{{ page.lang }}.jpg" class="card-img-top lazyload">
-        <img src="{{ site.url }}/images/access-information-NdxqmVbV-01-{{ page.lang }}.jpg" class="card-img-top lazyload" alt="Map of Marina-Besòs Municipal Sports Center">
+        <source type="image/webp" srcset="/images/access-information-NdxqmVbV-01-{{ page.lang }}.webp" class="card-img-top lazyload">
+        <source type="image/jpeg" srcset="/images/access-information-NdxqmVbV-01-{{ page.lang }}.jpg" class="card-img-top lazyload">
+        <img src="/images/access-information-NdxqmVbV-01-{{ page.lang }}.jpg" class="card-img-top lazyload" alt="Map of Marina-Besòs Municipal Sports Center">
       </picture>
     </div>
   </div>
@@ -176,9 +176,9 @@ __Aikido Musubi Sant Adrià__ is located within the facilities of the Marina-Bes
 <div class="card-group">
   <div class="card">
     <picture>
-      <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-01-a.webp" class="card-img-top lazyload">
-      <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-01-a.jpg" class="card-img-top lazyload">
-      <img src="{{ site.url }}/images/access-information-NdxqmVbV-01-a.jpg" class="card-img-top lazyload" alt="Marina-Besòs Municipal Sports Center Access A">
+      <source type="image/webp" srcset="/images/access-information-NdxqmVbV-01-a.webp" class="card-img-top lazyload">
+      <source type="image/jpeg" srcset="/images/access-information-NdxqmVbV-01-a.jpg" class="card-img-top lazyload">
+      <img src="/images/access-information-NdxqmVbV-01-a.jpg" class="card-img-top lazyload" alt="Marina-Besòs Municipal Sports Center Access A">
       </picture>
     <div class="card-body">
       <h5 class="card-title">Access <span>A</span></h5>
@@ -187,9 +187,9 @@ __Aikido Musubi Sant Adrià__ is located within the facilities of the Marina-Bes
   </div>
   <div class="card">
     <picture>
-      <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-01-b.webp" class="card-img-top lazyload">
-      <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-01-b.jpg" class="card-img-top lazyload">
-      <img src="{{ site.url }}/images/access-information-NdxqmVbV-01-b.jpg" class="card-img-top lazyload" alt="Marina-Besòs Municipal Sports Center Access B">
+      <source type="image/webp" srcset="/images/access-information-NdxqmVbV-01-b.webp" class="card-img-top lazyload">
+      <source type="image/jpeg" srcset="/images/access-information-NdxqmVbV-01-b.jpg" class="card-img-top lazyload">
+      <img src="/images/access-information-NdxqmVbV-01-b.jpg" class="card-img-top lazyload" alt="Marina-Besòs Municipal Sports Center Access B">
       </picture>
     <div class="card-body">
       <h5 class="card-title">Access <span>B</span></h5>
@@ -209,7 +209,7 @@ __Aikido Musubi Sant Adrià__ is located within the facilities of the Marina-Bes
     <div class="col-lg-4">
       <div class="card-body">
         <h5 class="card-title" style="
-          background-image: url('{{ site.url }}/graphics/Logotip_UB.svg');
+          background-image: url('/graphics/Logotip_UB.svg');
           background-position: center;
           background-size: 90%;
         "><!-- University of Barcelona --></h5>
@@ -221,7 +221,7 @@ __Aikido Musubi Sant Adrià__ is located within the facilities of the Marina-Bes
         <p class="card-text">
           <small class="text-muted">
             Open Monday and Wednesday<br>
-            <a href="{{ site.url }}/{{ page.lang }}/training-schedule/?location=university-of-barcelona">Check the training schedule</a>
+            <a href="/{{ page.lang }}/training-schedule/?location=university-of-barcelona">Check the training schedule</a>
           </small>
         </p>
       </div>

@@ -10,7 +10,7 @@ last_modified: 2026-02-26
 
 # 稽古時間
 
-今、月曜日から土曜日まで合気道クラス(一般クラスと子供クラス)を実施してます。さらに、他の日本の武道のクラスも実施しています。[クラスの詳細はこちら]({{ site.url }}/{{ page.lang }}/classes/)。
+今、月曜日から土曜日まで合気道クラス(一般クラスと子供クラス)を実施してます。さらに、他の日本の武道のクラスも実施しています。[クラスの詳細はこちら](/{{ page.lang }}/classes/)。
 
 <hr>
 
@@ -18,4 +18,4 @@ last_modified: 2026-02-26
 
 2026年の稽古時間をダウンロード：
 
-* [合気道産靈 - 2026年の稽古時間]({{ site.url }}/files/training-schedule-IFMn5oCc-training-schedule-2026-{{ page.lang }}.pdf)
+* [合気道産靈 - 2026年の稽古時間](/files/training-schedule-IFMn5oCc-training-schedule-2026-{{ page.lang }}.pdf)

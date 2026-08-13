@@ -10,7 +10,7 @@ last_modified: 2026-01-18
 
 # Visitants
 
-Donem la benvinguda als practicants d’aikido de tot el món que visiteu Barcelona i desitgeu entrenar amb nosaltres. Tant si veniu per una estada curta com si esteu considerant unir-vos al nostre dojo, ens complau rebre-us. Si vols visitar el nostre dojo o entrenar amb nosaltres, [contacta'ns]({{site.url}}/{{ page.lang }}/contacte/) per obtenir més informació sobre les ubicacions i els horaris.
+Donem la benvinguda als practicants d’aikido de tot el món que visiteu Barcelona i desitgeu entrenar amb nosaltres. Tant si veniu per una estada curta com si esteu considerant unir-vos al nostre dojo, ens complau rebre-us. Si vols visitar el nostre dojo o entrenar amb nosaltres, [contacta'ns](/{{ page.lang }}/contacte/) per obtenir més informació sobre les ubicacions i els horaris.
 
 <hr>
 
@@ -20,7 +20,7 @@ Totes les persones són benvingudes.
 
 Si voleu participar en l’entrenament, si us plau, contacteu-nos amb antelació. Si voleu visitar amb un grup, si us plau, contacteu-nos amb almenys __dues setmanes d’antelació__.
 
-Abans de contactar-nos, si us plau, consulteu el nostre [horari d’entrenament]({{ site.url }}/{{ page.lang }}/horaris/) per veure quines classes estan disponibles durant la vostra estada.
+Abans de contactar-nos, si us plau, consulteu el nostre [horari d’entrenament](/{{ page.lang }}/horaris/) per veure quines classes estan disponibles durant la vostra estada.
 
 Quan ens contacteu, si us plau, incloeu la següent informació:
 
@@ -48,7 +48,7 @@ Les classes per a principiants se centren en moviments bàsics, etiqueta i segur
 
 Un cop hàgiu assistit a una classe, si us plau, feu-nos saber el dia en què voleu començar a entrenar. Podeu fer-ho __en persona al dojo__ o __per correu electrònic__.
 
-Recomanem consultar la nostra [informació sobre quotes]({{ site.url }}/{{ page.lang }}/quotes/) abans d’unir-vos. __La inscripció és gratuïta__. Oferim descomptes per a famílies i també 2 classes de prova gratuïtes sense cap compromís.
+Recomanem consultar la nostra [informació sobre quotes](/{{ page.lang }}/quotes/) abans d’unir-vos. __La inscripció és gratuïta__. Oferim descomptes per a famílies i també 2 classes de prova gratuïtes sense cap compromís.
 
 __Practicants d’altres dojos__<br>
 Si ja practiqueu a aikido en un altre dojo i voleu unir-vos a __Aikido Musubi__, si us plau, feu-nos saber:
@@ -59,4 +59,4 @@ Si ja practiqueu a aikido en un altre dojo i voleu unir-vos a __Aikido Musubi__,
 - El nom del vostre instructor
 - La data i les classes en què voleu començar a entrenar
 
-També podeu triar __observar una classe__ o __entrenar com a visitant__ abans d’unir-vos. Consulteu la nostra [informació sobre quotes]({{ site.url }}/{{ page.lang }}/quotes/) per a més detalls. __No hi ha quota d’inscripció__.
+També podeu triar __observar una classe__ o __entrenar com a visitant__ abans d’unir-vos. Consulteu la nostra [informació sobre quotes](/{{ page.lang }}/quotes/) per a més detalls. __No hi ha quota d’inscripció__.

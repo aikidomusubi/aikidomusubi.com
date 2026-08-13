@@ -82,23 +82,38 @@
     var fixedHead = document.querySelector('.fixedHead');
     if (!falseHeader || !shadower || !fixedHead) return;
 
-    var x = window.innerWidth || document.documentElement.clientWidth;
-    var y = window.innerHeight || document.documentElement.clientHeight;
-    var stickyHeight = offsetTop(falseHeader);
+    var base = null;
+    var stickyHeight = 0;
 
     // Where the header art sits vertically at this viewport size. null means
     // the viewport is too small to offset it at all.
-    function baseOffset() {
+    function baseOffset(x, y) {
       if (x >= 992 && x <= 1919) return -215;
       if (x >= 1920 && y <= 1199) return -430;
       if (x >= 1920 && y >= 1200) return -512;
       return null;
     }
 
-    var base = baseOffset();
-    if (base !== null) {
-      fixedHead.style.backgroundPosition = '50% ' + base + 'px';
+    // Viewport size was previously read once at load and never again, so
+    // resizing across a breakpoint left the header positioned for the old
+    // size until the page was reloaded. Re-measured on resize instead.
+    function measure() {
+      var x = window.innerWidth || document.documentElement.clientWidth;
+      var y = window.innerHeight || document.documentElement.clientHeight;
+
+      base = baseOffset(x, y);
+      stickyHeight = offsetTop(falseHeader);
+
+      // Clear the inline value when no offset applies at this size, so the
+      // stylesheet's own background-position takes over again.
+      if (base === null) {
+        fixedHead.style.backgroundPosition = '';
+      } else {
+        fixedHead.style.backgroundPosition = '50% ' + (base - window.pageYOffset / 2) + 'px';
+      }
     }
+
+    measure();
 
     // Unthrottled scroll handlers writing to style are the classic cause of
     // jank; coalescing to one write per frame keeps the parallax smooth.
@@ -113,6 +128,9 @@
 
       falseHeader.classList.toggle('clipped', scrolled >= stickyHeight);
     }), { passive: true });
+
+    window.addEventListener('resize', onAnimationFrame(measure));
+    window.addEventListener('orientationchange', onAnimationFrame(measure));
   }
 
   function stickySection() {

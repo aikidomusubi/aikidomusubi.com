@@ -10,7 +10,7 @@ last_modified: 2026-02-26
 
 # Horaris
 
-Actualment, oferim classes d'aikido (adults i infantil) de dilluns a dissabte. A més, també oferim classes d'altres arts marcials del Japó. [Més informació sobre les classes]({{ site.url }}/{{ page.lang }}/classes/).
+Actualment, oferim classes d'aikido (adults i infantil) de dilluns a dissabte. A més, també oferim classes d'altres arts marcials del Japó. [Més informació sobre les classes](/{{ page.lang }}/classes/).
 
 <hr>
 
@@ -18,4 +18,4 @@ Actualment, oferim classes d'aikido (adults i infantil) de dilluns a dissabte. A
 
 Descarregar els horaris per a l'any 2026:
 
-* [Aikido Musubi - Horaris 2026]({{ site.url }}/files/training-schedule-IFMn5oCc-training-schedule-2026-{{page.lang}}.pdf)
+* [Aikido Musubi - Horaris 2026](/files/training-schedule-IFMn5oCc-training-schedule-2026-{{page.lang}}.pdf)

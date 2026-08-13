@@ -10,7 +10,7 @@ last_modified: 2026-01-10
 
 # 月謝
 
-登録料は無料です。 家族向け割引あり。 また、2クラス無料でお試しいただけます。さまざまな手数料と支払い方法の詳細については、[お問い合わせください]({{ site.url }}/{{ page.lang }}/contact/)。
+登録料は無料です。 家族向け割引あり。 また、2クラス無料でお試しいただけます。さまざまな手数料と支払い方法の詳細については、[お問い合わせください](/{{ page.lang }}/contact/)。
 
 <hr>
 
@@ -50,7 +50,7 @@ last_modified: 2026-01-10
               <li>無料登録</li>
               <li>2クラス</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
+            <a href="/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
           </div>
         </div>
       </div>
@@ -69,7 +69,7 @@ last_modified: 2026-01-10
               <li>無料登録</li>
               <li>2クラス</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
+            <a href="/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
           </div>
         </div>
       </div>
@@ -88,7 +88,7 @@ last_modified: 2026-01-10
               <li>無料登録</li>
               <li>2クラス</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
+            <a href="/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
           </div>
         </div>
       </div>
@@ -107,7 +107,7 @@ last_modified: 2026-01-10
               <li>無料登録</li>
               <li>2クラス</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
+            <a href="/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
           </div>
         </div>
       </div>
@@ -135,7 +135,7 @@ last_modified: 2026-01-10
               <li>無料登録</li>
               <li>2クラス</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
+            <a href="/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
           </div>
         </div>
       </div>
@@ -154,7 +154,7 @@ last_modified: 2026-01-10
               <li>無料登録</li>
               <li>2クラス</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
+            <a href="/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
           </div>
         </div>
       </div>
@@ -173,7 +173,7 @@ last_modified: 2026-01-10
               <li>無料登録</li>
               <li>2クラス</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
+            <a href="/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
           </div>
         </div>
       </div>
@@ -192,7 +192,7 @@ last_modified: 2026-01-10
               <li>無料登録</li>
               <li>2クラス</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
+            <a href="/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
           </div>
         </div>
       </div>
@@ -220,7 +220,7 @@ last_modified: 2026-01-10
               <li>無料登録</li>
               <li>2クラス</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
+            <a href="/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
           </div>
         </div>
       </div>
@@ -239,7 +239,7 @@ last_modified: 2026-01-10
               <li>無料登録</li>
               <li>2クラス</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
+            <a href="/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
           </div>
         </div>
       </div>
@@ -258,7 +258,7 @@ last_modified: 2026-01-10
               <li>無料登録</li>
               <li>2クラス</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
+            <a href="/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
           </div>
         </div>
       </div>
@@ -277,7 +277,7 @@ last_modified: 2026-01-10
               <li>無料登録</li>
               <li>2クラス</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
+            <a href="/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
           </div>
         </div>
       </div>
@@ -305,7 +305,7 @@ last_modified: 2026-01-10
               <li>無料登録</li>
               <li>2クラス</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
+            <a href="/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
           </div>
         </div>
       </div>
@@ -324,7 +324,7 @@ last_modified: 2026-01-10
               <li>無料登録</li>
               <li>2クラス</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
+            <a href="/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
           </div>
         </div>
       </div>
@@ -343,7 +343,7 @@ last_modified: 2026-01-10
               <li>無料登録</li>
               <li>2クラス</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
+            <a href="/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
           </div>
         </div>
       </div>
@@ -362,7 +362,7 @@ last_modified: 2026-01-10
               <li>無料登録</li>
               <li>2クラス</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
+            <a href="/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
           </div>
         </div>
       </div>
@@ -375,8 +375,8 @@ last_modified: 2026-01-10
 
 2026年の料金表をダウンロード：
 
-* [合気道産靈 - 2026年の料金 (詳細)]({{ site.url }}/files/fees-UjbuGtGz-fees-2026-detail-{{ page.lang }}.pdf)
-* [合気道産靈 - 2026年の料金 (要約)]({{ site.url }}/files/fees-UjbuGtGz-fees-2026-summary-{{ page.lang }}.pdf)
+* [合気道産靈 - 2026年の料金 (詳細)](/files/fees-UjbuGtGz-fees-2026-detail-{{ page.lang }}.pdf)
+* [合気道産靈 - 2026年の料金 (要約)](/files/fees-UjbuGtGz-fees-2026-summary-{{ page.lang }}.pdf)
 
 <hr>
 

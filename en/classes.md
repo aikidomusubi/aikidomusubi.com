@@ -10,7 +10,7 @@ last_modified: 2026-02-26
 
 # Classes
 
-We have a wide schedule of classes to accommodate adults and children, and different levels of experience. In addition, we include practice with weapons (_buki waza_). [More information about training schedule]({{ site.url }}/{{ page.lang }}/training-schedule/).
+We have a wide schedule of classes to accommodate adults and children, and different levels of experience. In addition, we include practice with weapons (_buki waza_). [More information about training schedule](/{{ page.lang }}/training-schedule/).
 
 <hr>
 
@@ -21,9 +21,9 @@ We have a wide schedule of classes to accommodate adults and children, and diffe
 ## Aikido classes
 
 <picture>
-  <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-27.webp">
-  <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-27.jpg">
-  <img src="{{ site.url }}/images/classes-CJc2lhFv-27.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Aikido classes">
+  <source type="image/webp" srcset="/images/classes-CJc2lhFv-27.webp">
+  <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-27.jpg">
+  <img src="/images/classes-CJc2lhFv-27.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Aikido classes">
 </picture>
 
 Regular practice for all levels. Available to all members over 12 years old.
@@ -61,32 +61,32 @@ __Saturday__
   <div class="row">
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-17.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-17.jpg">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-17.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Aikido classes for beginners">
+        <source type="image/webp" srcset="/images/classes-CJc2lhFv-17.webp">
+        <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-17.jpg">
+        <img src="/images/classes-CJc2lhFv-17.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Aikido classes for beginners">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-22.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-22.jpg">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-22.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Aikido classes for beginners">
+        <source type="image/webp" srcset="/images/classes-CJc2lhFv-22.webp">
+        <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-22.jpg">
+        <img src="/images/classes-CJc2lhFv-22.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Aikido classes for beginners">
       </picture>
     </div>
   </div>
   <div class="row">
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-00.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-00.jpg">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-00.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Aikido classes for beginners">
+        <source type="image/webp" srcset="/images/classes-CJc2lhFv-00.webp">
+        <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-00.jpg">
+        <img src="/images/classes-CJc2lhFv-00.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Aikido classes for beginners">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-01.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-01.jpg">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-01.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Aikido classes for beginners">
+        <source type="image/webp" srcset="/images/classes-CJc2lhFv-01.webp">
+        <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-01.jpg">
+        <img src="/images/classes-CJc2lhFv-01.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Aikido classes for beginners">
       </picture>
     </div>
   </div>
@@ -110,16 +110,16 @@ __Wednesday__
   <div class="row">
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-15.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-15.jpg">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-15.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Aikido weapons classes">
+        <source type="image/webp" srcset="/images/classes-CJc2lhFv-15.webp">
+        <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-15.jpg">
+        <img src="/images/classes-CJc2lhFv-15.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Aikido weapons classes">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-16.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-16.jpg">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-16.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Aikido weapons classes">
+        <source type="image/webp" srcset="/images/classes-CJc2lhFv-16.webp">
+        <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-16.jpg">
+        <img src="/images/classes-CJc2lhFv-16.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Aikido weapons classes">
       </picture>
     </div>
   </div>
@@ -136,32 +136,32 @@ __Thursday__
   <div class="row">
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-30.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-30.jpg">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-30.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Aikido classes for children">
+        <source type="image/webp" srcset="/images/classes-CJc2lhFv-30.webp">
+        <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-30.jpg">
+        <img src="/images/classes-CJc2lhFv-30.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Aikido classes for children">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-31.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-31.jpg">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-31.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Aikido classes for children">
+        <source type="image/webp" srcset="/images/classes-CJc2lhFv-31.webp">
+        <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-31.jpg">
+        <img src="/images/classes-CJc2lhFv-31.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Aikido classes for children">
       </picture>
     </div>
   </div>
   <div class="row">
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-33.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-33.jpg">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-33.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Aikido classes for children">
+        <source type="image/webp" srcset="/images/classes-CJc2lhFv-33.webp">
+        <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-33.jpg">
+        <img src="/images/classes-CJc2lhFv-33.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Aikido classes for children">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-32.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-32.jpg">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-32.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Aikido classes for children">
+        <source type="image/webp" srcset="/images/classes-CJc2lhFv-32.webp">
+        <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-32.jpg">
+        <img src="/images/classes-CJc2lhFv-32.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Aikido classes for children">
       </picture>
     </div>
   </div>
@@ -179,32 +179,32 @@ _Aikido classes for children are temporarily suspended._
   <div class="row">
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-34.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-34.jpg">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-34.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Iaijutsu classes">
+        <source type="image/webp" srcset="/images/classes-CJc2lhFv-34.webp">
+        <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-34.jpg">
+        <img src="/images/classes-CJc2lhFv-34.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Iaijutsu classes">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-35.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-35.jpg">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-35.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Iaijutsu classes">
+        <source type="image/webp" srcset="/images/classes-CJc2lhFv-35.webp">
+        <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-35.jpg">
+        <img src="/images/classes-CJc2lhFv-35.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Iaijutsu classes">
       </picture>
     </div>
   </div>
   <div class="row">
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-36.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-36.jpg">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-36.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Iaijutsu classes">
+        <source type="image/webp" srcset="/images/classes-CJc2lhFv-36.webp">
+        <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-36.jpg">
+        <img src="/images/classes-CJc2lhFv-36.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Iaijutsu classes">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-37.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-37.jpg">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-37.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Iaijutsu classes">
+        <source type="image/webp" srcset="/images/classes-CJc2lhFv-37.webp">
+        <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-37.jpg">
+        <img src="/images/classes-CJc2lhFv-37.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Iaijutsu classes">
       </picture>
     </div>
   </div>
@@ -228,32 +228,32 @@ __Saturday__
   <div class="row">
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-38.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-38.jpg">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-38.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Judo classes">
+        <source type="image/webp" srcset="/images/classes-CJc2lhFv-38.webp">
+        <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-38.jpg">
+        <img src="/images/classes-CJc2lhFv-38.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Judo classes">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-39.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-39.jpg">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-39.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Judo classes">
+        <source type="image/webp" srcset="/images/classes-CJc2lhFv-39.webp">
+        <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-39.jpg">
+        <img src="/images/classes-CJc2lhFv-39.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Judo classes">
       </picture>
     </div>
   </div>
   <div class="row">
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-40.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-40.jpg">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-40.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Judo classes">
+        <source type="image/webp" srcset="/images/classes-CJc2lhFv-40.webp">
+        <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-40.jpg">
+        <img src="/images/classes-CJc2lhFv-40.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Judo classes">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-41.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-41.jpg">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-41.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Judo classes">
+        <source type="image/webp" srcset="/images/classes-CJc2lhFv-41.webp">
+        <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-41.jpg">
+        <img src="/images/classes-CJc2lhFv-41.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Judo classes">
       </picture>
     </div>
   </div>
@@ -283,32 +283,32 @@ For further information about judo classes, contact by email: [judomusubi@gmail.
   <div class="row">
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-42.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-42.jpg">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-42.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Karate Classes">
+        <source type="image/webp" srcset="/images/classes-CJc2lhFv-42.webp">
+        <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-42.jpg">
+        <img src="/images/classes-CJc2lhFv-42.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Karate Classes">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-43.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-43.jpg">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-43.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Karate Classes">
+        <source type="image/webp" srcset="/images/classes-CJc2lhFv-43.webp">
+        <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-43.jpg">
+        <img src="/images/classes-CJc2lhFv-43.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Karate Classes">
       </picture>
     </div>
   </div>
   <div class="row">
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-44.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-44.jpg">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-44.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Karate Classes">
+        <source type="image/webp" srcset="/images/classes-CJc2lhFv-44.webp">
+        <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-44.jpg">
+        <img src="/images/classes-CJc2lhFv-44.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Karate Classes">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/classes-CJc2lhFv-45.webp">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/classes-CJc2lhFv-45.jpg">
-        <img src="{{ site.url }}/images/classes-CJc2lhFv-45.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Karate Classes">
+        <source type="image/webp" srcset="/images/classes-CJc2lhFv-45.webp">
+        <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-45.jpg">
+        <img src="/images/classes-CJc2lhFv-45.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Karate Classes">
       </picture>
     </div>
   </div>

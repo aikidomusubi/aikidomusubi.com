@@ -10,7 +10,7 @@ last_modified: 2026-01-10
 
 # Cuotas
 
-La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te damos 2 clases de prueba sin compromiso. Para más información sobre las diferentes cuotas y los métodos de pago, [contáctanos]({{ site.url }}/contacto/).
+La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te damos 2 clases de prueba sin compromiso. Para más información sobre las diferentes cuotas y los métodos de pago, [contáctanos](/contacto/).
 
 <hr>
 
@@ -50,7 +50,7 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
               <li>Inscripción grauita</li>
               <li>2 clases de prueba</li>
             </ul>
-            <a href="{{ site.url }}/contacto/" class="btn btn-lg btn-primary w-100" role="button">¡Apúntate!</a>
+            <a href="/contacto/" class="btn btn-lg btn-primary w-100" role="button">¡Apúntate!</a>
           </div>
         </div>
       </div>
@@ -69,7 +69,7 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
               <li>Inscripción grauita</li>
               <li>2 clases de prueba</li>
             </ul>
-            <a href="{{ site.url }}/contacto/" class="btn btn-lg btn-primary w-100" role="button">¡Apúntate!</a>
+            <a href="/contacto/" class="btn btn-lg btn-primary w-100" role="button">¡Apúntate!</a>
           </div>
         </div>
       </div>
@@ -88,7 +88,7 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
               <li>Inscripción grauita</li>
               <li>2 clases de prueba</li>
             </ul>
-            <a href="{{ site.url }}/contacto/" class="btn btn-lg btn-primary w-100" role="button">¡Apúntate!</a>
+            <a href="/contacto/" class="btn btn-lg btn-primary w-100" role="button">¡Apúntate!</a>
           </div>
         </div>
       </div>
@@ -107,7 +107,7 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
               <li>Inscripción grauita</li>
               <li>2 clases de prueba</li>
             </ul>
-            <a href="{{ site.url }}/contacto/" class="btn btn-lg btn-primary w-100" role="button">¡Apúntate!</a>
+            <a href="/contacto/" class="btn btn-lg btn-primary w-100" role="button">¡Apúntate!</a>
           </div>
         </div>
       </div>
@@ -135,7 +135,7 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
               <li>Inscripción grauita</li>
               <li>2 clases de prueba</li>
             </ul>
-            <a href="{{ site.url }}/contacto/" class="btn btn-lg btn-primary w-100" role="button">¡Apúntate!</a>
+            <a href="/contacto/" class="btn btn-lg btn-primary w-100" role="button">¡Apúntate!</a>
           </div>
         </div>
       </div>
@@ -154,7 +154,7 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
               <li>Inscripción grauita</li>
               <li>2 clases de prueba</li>
             </ul>
-            <a href="{{ site.url }}/contacto/" class="btn btn-lg btn-primary w-100" role="button">¡Apúntate!</a>
+            <a href="/contacto/" class="btn btn-lg btn-primary w-100" role="button">¡Apúntate!</a>
           </div>
         </div>
       </div>
@@ -173,7 +173,7 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
               <li>Inscripción grauita</li>
               <li>2 clases de prueba</li>
             </ul>
-            <a href="{{ site.url }}/contacto/" class="btn btn-lg btn-primary w-100" role="button">¡Apúntate!</a>
+            <a href="/contacto/" class="btn btn-lg btn-primary w-100" role="button">¡Apúntate!</a>
           </div>
         </div>
       </div>
@@ -192,7 +192,7 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
               <li>Inscripción grauita</li>
               <li>2 clases de prueba</li>
             </ul>
-            <a href="{{ site.url }}/contacto/" class="btn btn-lg btn-primary w-100" role="button">¡Apúntate!</a>
+            <a href="/contacto/" class="btn btn-lg btn-primary w-100" role="button">¡Apúntate!</a>
           </div>
         </div>
       </div>
@@ -220,7 +220,7 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
               <li>Inscripción grauita</li>
               <li>2 clases de prueba</li>
             </ul>
-            <a href="{{ site.url }}/contacto/" class="btn btn-lg btn-primary w-100" role="button">¡Apúntate!</a>
+            <a href="/contacto/" class="btn btn-lg btn-primary w-100" role="button">¡Apúntate!</a>
           </div>
         </div>
       </div>
@@ -239,7 +239,7 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
               <li>Inscripción grauita</li>
               <li>2 clases de prueba</li>
             </ul>
-            <a href="{{ site.url }}/contacto/" class="btn btn-lg btn-primary w-100" role="button">¡Apúntate!</a>
+            <a href="/contacto/" class="btn btn-lg btn-primary w-100" role="button">¡Apúntate!</a>
           </div>
         </div>
       </div>
@@ -258,7 +258,7 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
               <li>Inscripción grauita</li>
               <li>2 clases de prueba</li>
             </ul>
-            <a href="{{ site.url }}/contacto/" class="btn btn-lg btn-primary w-100" role="button">¡Apúntate!</a>
+            <a href="/contacto/" class="btn btn-lg btn-primary w-100" role="button">¡Apúntate!</a>
           </div>
         </div>
       </div>
@@ -277,7 +277,7 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
               <li>Inscripción grauita</li>
               <li>2 clases de prueba</li>
             </ul>
-            <a href="{{ site.url }}/contacto/" class="btn btn-lg btn-primary w-100" role="button">¡Apúntate!</a>
+            <a href="/contacto/" class="btn btn-lg btn-primary w-100" role="button">¡Apúntate!</a>
           </div>
         </div>
       </div>
@@ -305,7 +305,7 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
               <li>Inscripción grauita</li>
               <li>2 clases de prueba</li>
             </ul>
-            <a href="{{ site.url }}/contacto/" class="btn btn-lg btn-primary w-100" role="button">¡Apúntate!</a>
+            <a href="/contacto/" class="btn btn-lg btn-primary w-100" role="button">¡Apúntate!</a>
           </div>
         </div>
       </div>
@@ -324,7 +324,7 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
               <li>Inscripción grauita</li>
               <li>2 clases de prueba</li>
             </ul>
-            <a href="{{ site.url }}/contacto/" class="btn btn-lg btn-primary w-100" role="button">¡Apúntate!</a>
+            <a href="/contacto/" class="btn btn-lg btn-primary w-100" role="button">¡Apúntate!</a>
           </div>
         </div>
       </div>
@@ -343,7 +343,7 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
               <li>Inscripción grauita</li>
               <li>2 clases de prueba</li>
             </ul>
-            <a href="{{ site.url }}/contacto/" class="btn btn-lg btn-primary w-100" role="button">¡Apúntate!</a>
+            <a href="/contacto/" class="btn btn-lg btn-primary w-100" role="button">¡Apúntate!</a>
           </div>
         </div>
       </div>
@@ -362,7 +362,7 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
               <li>Inscripción grauita</li>
               <li>2 clases de prueba</li>
             </ul>
-            <a href="{{ site.url }}/contacto/" class="btn btn-lg btn-primary w-100" role="button">¡Apúntate!</a>
+            <a href="/contacto/" class="btn btn-lg btn-primary w-100" role="button">¡Apúntate!</a>
           </div>
         </div>
       </div>
@@ -375,8 +375,8 @@ La inscripción es gratuita. Ofrecemos descuentos para familias. Y además te da
 
 Descargar la información sobre cuotas para el año 2026:
 
-* [Aikido Musubi - Cuotas 2026 (detalle)]({{ site.url }}/files/fees-UjbuGtGz-fees-2026-detail-{{ page.lang }}.pdf)
-* [Aikido Musubi - Cuotas 2026 (resumen)]({{ site.url }}/files/fees-UjbuGtGz-fees-2026-summary-{{ page.lang }}.pdf)
+* [Aikido Musubi - Cuotas 2026 (detalle)](/files/fees-UjbuGtGz-fees-2026-detail-{{ page.lang }}.pdf)
+* [Aikido Musubi - Cuotas 2026 (resumen)](/files/fees-UjbuGtGz-fees-2026-summary-{{ page.lang }}.pdf)
 
 <hr>
 

@@ -79,7 +79,6 @@ exclude:
   # Unminified build output, kept locally for debugging only
   - scripts/all.js
   # Tooling and repo files
-  - _config_dev.yml
   - _includes/cssrelpreload.js
   - assets/
   - node_modules/

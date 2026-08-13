@@ -10,7 +10,7 @@ last_modified: 2026-01-10
 
 # Fees
 
-Registration is free of charge. We offer discounts for families. And we also give you 2 classes free trial with no obligation. For more information about the different fees and payment methods, [contact us]({{ site.url }}/{{ page.lang }}/contact/).
+Registration is free of charge. We offer discounts for families. And we also give you 2 classes free trial with no obligation. For more information about the different fees and payment methods, [contact us](/{{ page.lang }}/contact/).
 
 <hr>
 
@@ -50,7 +50,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li>Free registration</li>
               <li>Try for 2 classes</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
+            <a href="/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
           </div>
         </div>
       </div>
@@ -69,7 +69,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li>Free registration</li>
               <li>Try for 2 classes</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
+            <a href="/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
           </div>
         </div>
       </div>
@@ -88,7 +88,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li>Free registration</li>
               <li>Try for 2 classes</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
+            <a href="/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
           </div>
         </div>
       </div>
@@ -107,7 +107,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li>Free registration</li>
               <li>Try for 2 classes</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
+            <a href="/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
           </div>
         </div>
       </div>
@@ -135,7 +135,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li>Free registration</li>
               <li>Try for 2 classes</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
+            <a href="/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
           </div>
         </div>
       </div>
@@ -154,7 +154,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li>Free registration</li>
               <li>Try for 2 classes</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
+            <a href="/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
           </div>
         </div>
       </div>
@@ -173,7 +173,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li>Free registration</li>
               <li>Try for 2 classes</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
+            <a href="/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
           </div>
         </div>
       </div>
@@ -192,7 +192,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li>Free registration</li>
               <li>Try for 2 classes</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
+            <a href="/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
           </div>
         </div>
       </div>
@@ -220,7 +220,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li>Free registration</li>
               <li>Try for 2 classes</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
+            <a href="/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
           </div>
         </div>
       </div>
@@ -239,7 +239,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li>Free registration</li>
               <li>Try for 2 classes</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
+            <a href="/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
           </div>
         </div>
       </div>
@@ -258,7 +258,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li>Free registration</li>
               <li>Try for 2 classes</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
+            <a href="/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
           </div>
         </div>
       </div>
@@ -277,7 +277,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li>Free registration</li>
               <li>Try for 2 classes</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
+            <a href="/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
           </div>
         </div>
       </div>
@@ -305,7 +305,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li>Free registration</li>
               <li>Try for 2 classes</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
+            <a href="/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
           </div>
         </div>
       </div>
@@ -324,7 +324,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li>Free registration</li>
               <li>Try for 2 classes</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
+            <a href="/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
           </div>
         </div>
       </div>
@@ -343,7 +343,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li>Free registration</li>
               <li>Try for 2 classes</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
+            <a href="/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
           </div>
         </div>
       </div>
@@ -362,7 +362,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li>Free registration</li>
               <li>Try for 2 classes</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
+            <a href="/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
           </div>
         </div>
       </div>
@@ -375,8 +375,8 @@ Registration is free of charge. We offer discounts for families. And we also giv
 
 Download the fees chart for the 2026 year:
 
-* [Aikido Musubi - Fees 2026 (detail)]({{ site.url }}/files/fees-UjbuGtGz-fees-2026-detail-{{ page.lang }}.pdf)
-* [Aikido Musubi - Fees 2026 (summary)]({{ site.url }}/files/fees-UjbuGtGz-fees-2026-summary-{{ page.lang }}.pdf)
+* [Aikido Musubi - Fees 2026 (detail)](/files/fees-UjbuGtGz-fees-2026-detail-{{ page.lang }}.pdf)
+* [Aikido Musubi - Fees 2026 (summary)](/files/fees-UjbuGtGz-fees-2026-summary-{{ page.lang }}.pdf)
 
 <hr>
 

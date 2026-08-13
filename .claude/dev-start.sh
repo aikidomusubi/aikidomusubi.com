@@ -9,9 +9,7 @@ PROJECT="/Applications/MAMP/htdocs/aikidomusubi.com"
 
 # RUBYOPT: the shell has an empty LANG, so without this the Sass converter
 #   treats files as US-ASCII and the build dies on non-ASCII characters.
-# --config: _config_dev.yml overrides site.url to localhost, otherwise the
-#   locally served pages load their CSS/JS/images from the live site.
-JEKYLL_CMD="cd '$PROJECT' && RUBYOPT='-E utf-8:utf-8' bundle exec jekyll serve --config _config.yml,_config_dev.yml"
+JEKYLL_CMD="cd '$PROJECT' && RUBYOPT='-E utf-8:utf-8' bundle exec jekyll serve"
 GULP_CMD="cd '$PROJECT' && npx gulp watch"
 
 osascript << APPLESCRIPT

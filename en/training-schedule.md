@@ -10,7 +10,7 @@ last_modified: 2026-02-26
 
 # Training Schedule
 
-Currently, we offer aikido classes (adults and children) from Monday to Saturday. In addition, we also offer classes in other Japanese martial arts. [More information about classes]({{ site.url }}/{{ page.lang }}/classes/).
+Currently, we offer aikido classes (adults and children) from Monday to Saturday. In addition, we also offer classes in other Japanese martial arts. [More information about classes](/{{ page.lang }}/classes/).
 
 <hr>
 
@@ -18,4 +18,4 @@ Currently, we offer aikido classes (adults and children) from Monday to Saturday
 
 Download the training schedule for the year 2026:
 
-* [Aikido Musubi - Training Schedule 2026]({{ site.url }}/files/training-schedule-IFMn5oCc-training-schedule-2026-{{ page.lang }}.pdf)
+* [Aikido Musubi - Training Schedule 2026](/files/training-schedule-IFMn5oCc-training-schedule-2026-{{ page.lang }}.pdf)

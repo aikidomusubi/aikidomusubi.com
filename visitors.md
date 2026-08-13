@@ -10,7 +10,7 @@ last_modified: 2026-01-18
 
 # Visitantes
 
-Damos la bienvenida a los practicantes de aikido de todo el mundo que visitáis Barcelona y deseáis entrenar con nosotros. Tanto si venís por una estancia corta como si estáis considerando uniros a nuestro dojo, nos alegra recibiros. Si quieres visitar nuestro dojo o entrenar con nosotros, [contáctanos]({{ site.url }}/contacto/) para más información sobre ubicaciones y horarios.
+Damos la bienvenida a los practicantes de aikido de todo el mundo que visitáis Barcelona y deseáis entrenar con nosotros. Tanto si venís por una estancia corta como si estáis considerando uniros a nuestro dojo, nos alegra recibiros. Si quieres visitar nuestro dojo o entrenar con nosotros, [contáctanos](/contacto/) para más información sobre ubicaciones y horarios.
 
 <hr>
 
@@ -20,7 +20,7 @@ Todas las personas son bienvenidas.
 
 Si queréis participar en el entrenamiento, por favor contactadnos con antelación. Si queréis visitar con un grupo, por favor contactadnos con al menos __dos semanas de antelación__.
 
-Antes de contactarnos, por favor, consultad nuestro [horario de entrenamientos]({{ site.url }}/horarios/) para ver qué clases están disponibles durante vuestra estancia.
+Antes de contactarnos, por favor, consultad nuestro [horario de entrenamientos](/horarios/) para ver qué clases están disponibles durante vuestra estancia.
 
 Al contactarnos, por favor incluid la siguiente información:
 
@@ -48,7 +48,7 @@ Las clases para principiantes se centran en movimientos básicos, etiqueta y seg
 
 Una vez que hayáis practicado una clase, por favor, avisadnos del día en que deseáis comenzar a entrenar. Podéis hacerlo __en persona en el dojo__ o __por correo electrónico__.
 
-Recomendamos revisar nuestra [información sobre tarifas]({{ site.url }}/cuotas/) antes de uniros. __La inscripción es gratuita__. Ofrecemos descuentos para familias y también damos 2 clases de prueba gratuitas sin compromiso.
+Recomendamos revisar nuestra [información sobre tarifas](/cuotas/) antes de uniros. __La inscripción es gratuita__. Ofrecemos descuentos para familias y también damos 2 clases de prueba gratuitas sin compromiso.
 
 __Practicantes de otros dojos__<br>
 Si ya practicáis aikido en otro dojo y queréis uniros a __Aikido Musubi__, por favor hacédnoslo saber:
@@ -59,4 +59,4 @@ Si ya practicáis aikido en otro dojo y queréis uniros a __Aikido Musubi__, por
 - El nombre de vuestro instructor
 - La fecha(s) y clase(s) en las que deseáis comenzar a entrenar
 
-También podéis elegir __observar una clase__ o __entrenar como visitante__ antes de uniros. Consultad nuestra [información sobre tarifas]({{ site.url }}/cuotas/) para más detalles. __No hay cuota de inscripción__.
+También podéis elegir __observar una clase__ o __entrenar como visitante__ antes de uniros. Consultad nuestra [información sobre tarifas](/cuotas/) para más detalles. __No hay cuota de inscripción__.

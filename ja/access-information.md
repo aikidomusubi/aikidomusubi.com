@@ -10,7 +10,7 @@ last_modified: 2026-02-26
 
 # アクセス
 
-合気道産靈はバルセロナ県内に3つの道場があります：__合気道産靈__（バダロナ）、 __合気道産靈 サント・アドリアー・ダ・バゾス__、そして __バルセロナ大学法学部__。私たちの道場を訪れたい方や一緒に稽古したい方は、[お問い合わせください]({{ site.url }}/{{ page.lang }}/contact/)。所在地や稽古時間の詳細をご案内します。
+合気道産靈はバルセロナ県内に3つの道場があります：__合気道産靈__（バダロナ）、 __合気道産靈 サント・アドリアー・ダ・バゾス__、そして __バルセロナ大学法学部__。私たちの道場を訪れたい方や一緒に稽古したい方は、[お問い合わせください](/{{ page.lang }}/contact/)。所在地や稽古時間の詳細をご案内します。
 
 <hr>
 
@@ -34,7 +34,7 @@ last_modified: 2026-02-26
           <small class="text-muted">
             駐車場無料<br>
             月～土営業<br>
-            <a href="{{ site.url }}/{{ page.lang }}/training-schedule/">稽古時間の詳細はこちら</a>
+            <a href="/{{ page.lang }}/training-schedule/">稽古時間の詳細はこちら</a>
           </small>
         </p>
       </div>
@@ -70,9 +70,9 @@ __合気道産靈__ は南バダロナサッカー球技場内にあります。
     </div>
     <div class="col-lg-8">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-00-{{ page.lang }}.webp" class="card-img-top lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-00-{{ page.lang }}.jpg" class="card-img-top lazyload">
-        <img src="{{ site.url }}/images/access-information-NdxqmVbV-00-{{ page.lang }}.jpg" class="card-img-top lazyload" alt="南バダロナサッカー球技場の地図">
+        <source type="image/webp" srcset="/images/access-information-NdxqmVbV-00-{{ page.lang }}.webp" class="card-img-top lazyload">
+        <source type="image/jpeg" srcset="/images/access-information-NdxqmVbV-00-{{ page.lang }}.jpg" class="card-img-top lazyload">
+        <img src="/images/access-information-NdxqmVbV-00-{{ page.lang }}.jpg" class="card-img-top lazyload" alt="南バダロナサッカー球技場の地図">
       </picture>
     </div>
   </div>
@@ -81,9 +81,9 @@ __合気道産靈__ は南バダロナサッカー球技場内にあります。
 <div class="card-group">
   <div class="card">
     <picture>
-      <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-00-a.webp" class="card-img-top lazyload">
-      <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-00-a.jpg" class="card-img-top lazyload">
-      <img src="{{ site.url }}/images/access-information-NdxqmVbV-00-a.jpg" class="card-img-top lazyload" alt="南バダロナサッカー球技場の地図 入口 A">
+      <source type="image/webp" srcset="/images/access-information-NdxqmVbV-00-a.webp" class="card-img-top lazyload">
+      <source type="image/jpeg" srcset="/images/access-information-NdxqmVbV-00-a.jpg" class="card-img-top lazyload">
+      <img src="/images/access-information-NdxqmVbV-00-a.jpg" class="card-img-top lazyload" alt="南バダロナサッカー球技場の地図 入口 A">
     </picture>
     <div class="card-body">
       <h5 class="card-title">入口 <span>A</span></h5>
@@ -92,9 +92,9 @@ __合気道産靈__ は南バダロナサッカー球技場内にあります。
   </div>
   <div class="card">
     <picture>
-      <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-00-b.webp" class="card-img-top lazyload">
-      <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-00-b.jpg" class="card-img-top lazyload">
-      <img src="{{ site.url }}/images/access-information-NdxqmVbV-00-b.jpg" class="card-img-top lazyload" alt="南バダロナサッカー球技場の地図 入口 B">
+      <source type="image/webp" srcset="/images/access-information-NdxqmVbV-00-b.webp" class="card-img-top lazyload">
+      <source type="image/jpeg" srcset="/images/access-information-NdxqmVbV-00-b.jpg" class="card-img-top lazyload">
+      <img src="/images/access-information-NdxqmVbV-00-b.jpg" class="card-img-top lazyload" alt="南バダロナサッカー球技場の地図 入口 B">
     </picture>
     <div class="card-body">
       <h5 class="card-title">入口 <span>B</span></h5>
@@ -103,9 +103,9 @@ __合気道産靈__ は南バダロナサッカー球技場内にあります。
   </div>
   <div class="card">
     <picture>
-      <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-00-c.webp" class="card-img-top lazyload">
-      <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-00-c.jpg" class="card-img-top lazyload">
-      <img src="{{ site.url }}/images/access-information-NdxqmVbV-00-c.jpg" class="card-img-top lazyload" alt="南バダロナサッカー球技場の地図 入口 C">
+      <source type="image/webp" srcset="/images/access-information-NdxqmVbV-00-c.webp" class="card-img-top lazyload">
+      <source type="image/jpeg" srcset="/images/access-information-NdxqmVbV-00-c.jpg" class="card-img-top lazyload">
+      <img src="/images/access-information-NdxqmVbV-00-c.jpg" class="card-img-top lazyload" alt="南バダロナサッカー球技場の地図 入口 C">
     </picture>
     <div class="card-body">
       <h5 class="card-title">入口 <span>C</span></h5>
@@ -136,7 +136,7 @@ __合気道産靈__ は南バダロナサッカー球技場内にあります。
           <small class="text-muted">
             駐車場無料<br>
             月と水営業<br>
-            <a href="{{ site.url }}/{{ page.lang }}/training-schedule/?location=sant-adria-de-besos">稽古時間の詳細はこちら</a>
+            <a href="/{{ page.lang }}/training-schedule/?location=sant-adria-de-besos">稽古時間の詳細はこちら</a>
           </small>
         </p>
       </div>
@@ -168,9 +168,9 @@ __合気道産靈 サント・アドリアー__ はマリナ・ベソス市立�
     </div>
     <div class="col-lg-8">
       <picture>
-        <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-01-{{ page.lang }}.webp" class="card-img-top lazyload">
-        <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-01-{{ page.lang }}.jpg" class="card-img-top lazyload">
-        <img src="{{ site.url }}/images/access-information-NdxqmVbV-01-{{ page.lang }}.jpg" class="card-img-top lazyload" alt="マリナ・ベソス市立スポーツセンターの地図">
+        <source type="image/webp" srcset="/images/access-information-NdxqmVbV-01-{{ page.lang }}.webp" class="card-img-top lazyload">
+        <source type="image/jpeg" srcset="/images/access-information-NdxqmVbV-01-{{ page.lang }}.jpg" class="card-img-top lazyload">
+        <img src="/images/access-information-NdxqmVbV-01-{{ page.lang }}.jpg" class="card-img-top lazyload" alt="マリナ・ベソス市立スポーツセンターの地図">
       </picture>
     </div>
   </div>
@@ -179,9 +179,9 @@ __合気道産靈 サント・アドリアー__ はマリナ・ベソス市立�
 <div class="card-group">
   <div class="card">
     <picture>
-      <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-01-a.webp" class="card-img-top lazyload">
-      <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-01-a.jpg" class="card-img-top lazyload">
-      <img src="{{ site.url }}/images/access-information-NdxqmVbV-01-a.jpg" class="card-img-top lazyload" alt="マリナ・ベソス市立スポーツセンターの地図 入口 A">
+      <source type="image/webp" srcset="/images/access-information-NdxqmVbV-01-a.webp" class="card-img-top lazyload">
+      <source type="image/jpeg" srcset="/images/access-information-NdxqmVbV-01-a.jpg" class="card-img-top lazyload">
+      <img src="/images/access-information-NdxqmVbV-01-a.jpg" class="card-img-top lazyload" alt="マリナ・ベソス市立スポーツセンターの地図 入口 A">
       </picture>
     <div class="card-body">
       <h5 class="card-title">Acceso <span>A</span></h5>
@@ -190,9 +190,9 @@ __合気道産靈 サント・アドリアー__ はマリナ・ベソス市立�
   </div>
   <div class="card">
     <picture>
-      <source type="image/webp" srcset="{{ site.url }}/images/access-information-NdxqmVbV-01-b.webp" class="card-img-top lazyload">
-      <source type="image/jpeg" srcset="{{ site.url }}/images/access-information-NdxqmVbV-01-b.jpg" class="card-img-top lazyload">
-      <img src="{{ site.url }}/images/access-information-NdxqmVbV-01-b.jpg" class="card-img-top lazyload" alt="マリナ・ベソス市立スポーツセンターの地図 入口 B">
+      <source type="image/webp" srcset="/images/access-information-NdxqmVbV-01-b.webp" class="card-img-top lazyload">
+      <source type="image/jpeg" srcset="/images/access-information-NdxqmVbV-01-b.jpg" class="card-img-top lazyload">
+      <img src="/images/access-information-NdxqmVbV-01-b.jpg" class="card-img-top lazyload" alt="マリナ・ベソス市立スポーツセンターの地図 入口 B">
       </picture>
     <div class="card-body">
       <h5 class="card-title">Acceso <span>B</span></h5>
@@ -212,7 +212,7 @@ __合気道産靈 サント・アドリアー__ はマリナ・ベソス市立�
     <div class="col-lg-4">
       <div class="card-body">
         <h5 class="card-title" style="
-          background-image: url('{{ site.url }}/graphics/Logotip_UB.svg');
+          background-image: url('/graphics/Logotip_UB.svg');
           background-position: center;
           background-size: 90%;
         "><!-- University of Barcelona --></h5>
@@ -224,7 +224,7 @@ __合気道産靈 サント・アドリアー__ はマリナ・ベソス市立�
         <p class="card-text">
           <small class="text-muted">
             月と水営業<br>
-            <a href="{{ site.url }}/{{ page.lang }}/training-schedule/?location=university-of-barcelona">稽古時間の詳細はこちら</a>
+            <a href="/{{ page.lang }}/training-schedule/?location=university-of-barcelona">稽古時間の詳細はこちら</a>
           </small>
         </p>
       </div>
