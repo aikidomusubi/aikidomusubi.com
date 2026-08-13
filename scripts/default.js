@@ -5,18 +5,58 @@
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
 
+  // Document-relative top of an element, the equivalent of jQuery's
+  // .offset().top. getBoundingClientRect() is viewport-relative, so the
+  // current scroll offset has to be added back in.
+  function offsetTop(el) {
+    return el.getBoundingClientRect().top + window.pageYOffset;
+  }
+
+  // jQuery's .outerHeight(true) — border box plus vertical margins.
+  function outerHeight(el, includeMargins) {
+    var height = el.offsetHeight;
+    if (includeMargins) {
+      var cs = window.getComputedStyle(el);
+      height += parseFloat(cs.marginTop) + parseFloat(cs.marginBottom);
+    }
+    return height;
+  }
+
+  // Runs fn at most once per animation frame.
+  function onAnimationFrame(fn) {
+    var ticking = false;
+    return function() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(function() {
+        ticking = false;
+        fn();
+      });
+    };
+  }
+
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+
   function hiddenCode() {
 
-    var kkeys = [];
-    var konami = '38,38,40,40,37,39,37,39,66,65'; // up, up, down, down, left, right, left, right, b, a
+    var konami = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+    var pressed = [];
 
-    ////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////
+    document.addEventListener('keydown', function(e) {
+      pressed.push(e.key);
 
-    $(document).keydown(function(e) {
-      kkeys.push(e.keyCode);
-      if (kkeys.toString().indexOf(konami) >= 0) {
-        kkeys = [];
+      // Only the tail matters, so the buffer never grows past the code.
+      if (pressed.length > konami.length) {
+        pressed = pressed.slice(-konami.length);
+      }
+
+      var hit = pressed.length === konami.length && konami.every(function(key, i) {
+        return pressed[i] === key;
+      });
+
+      if (hit) {
+        pressed = [];
         window.location.href = 'https://youtu.be/UzdDAd9EBOI';
       }
     });
@@ -24,173 +64,149 @@
 
   function revealContent() {
 
-    $('body').removeClass('invisible').addClass('fadeIn');
+    document.body.classList.remove('invisible');
+    document.body.classList.add('fadeIn');
   }
 
   function parallaxHeader() { // https://codepen.io/theaftermath87/pen/mJqywj
 
-    var w=window,
-    d=document,
-    e=d.documentElement,
-    g=d.getElementsByTagName('body')[0],
-    x=w.innerWidth||e.clientWidth||g.clientWidth,
-    y=w.innerHeight||e.clientHeight||g.clientHeight;
+    var falseHeader = document.querySelector('.falseHeader');
+    var shadower = document.querySelector('.shadower');
+    var fixedHead = document.querySelector('.fixedHead');
+    if (!falseHeader || !shadower || !fixedHead) return;
 
-    var $falseHeader = $('.falseHeader');
-    var $shadower = $('.shadower');
-    var $fixedHead = $('.fixedHead');
-    var stickyHeight = $falseHeader.offset().top;
+    var x = window.innerWidth || document.documentElement.clientWidth;
+    var y = window.innerHeight || document.documentElement.clientHeight;
+    var stickyHeight = offsetTop(falseHeader);
 
-    if (x >= 992 && x <= 1919 ) {
-
-      $fixedHead.css({
-        backgroundPosition: '50% -215' + 'px'
-      });
-    } else if (x >= 1920 && y <= 1199 ) {
-
-      $fixedHead.css({
-        backgroundPosition: '50% -430' + 'px'
-      });
-    } else if (x >= 1920 && y >= 1200 ) {
-
-      $fixedHead.css({
-        backgroundPosition: '50% -512' + 'px'
-      });
+    // Where the header art sits vertically at this viewport size. null means
+    // the viewport is too small to offset it at all.
+    function baseOffset() {
+      if (x >= 992 && x <= 1919) return -215;
+      if (x >= 1920 && y <= 1199) return -430;
+      if (x >= 1920 && y >= 1200) return -512;
+      return null;
     }
 
-    $(window).scroll(function() {
+    var base = baseOffset();
+    if (base !== null) {
+      fixedHead.style.backgroundPosition = '50% ' + base + 'px';
+    }
 
-      var wScroll = $(this).scrollTop();
-      var headScroll = (-wScroll / 2);
-      var faderScroll = (wScroll / 400);
-      var fadeToColor = Math.min(faderScroll, 1);
+    // Unthrottled scroll handlers writing to style are the classic cause of
+    // jank; coalescing to one write per frame keeps the parallax smooth.
+    window.addEventListener('scroll', onAnimationFrame(function() {
+      var scrolled = window.pageYOffset;
 
-      $shadower.css({
-        opacity: fadeToColor
-      });
+      shadower.style.opacity = Math.min(scrolled / 400, 1);
 
-      if (x >= 992 && x <= 1919 ) {
-
-        $fixedHead.css({
-          backgroundPosition: '50%' + (-215 + headScroll) + 'px'
-        });
-      } else if (x >= 1920 && y <= 1199 ) {
-
-        $fixedHead.css({
-          backgroundPosition: '50%' + (-430 + headScroll) + 'px'
-        });
-      } else if (x >= 1920 && y >= 1200 ) {
-
-        $fixedHead.css({
-          backgroundPosition: '50%' + (-512 + headScroll) + 'px'
-        });
+      if (base !== null) {
+        fixedHead.style.backgroundPosition = '50% ' + (base - scrolled / 2) + 'px';
       }
 
-      if (wScroll >= stickyHeight) {
-        $falseHeader.addClass('clipped');
-      } else {
-        $falseHeader.removeClass('clipped');
-      }
-
-    });
+      falseHeader.classList.toggle('clipped', scrolled >= stickyHeight);
+    }), { passive: true });
   }
 
   function stickySection() {
-    var $stickyBar = $('.stickyBar:visible').first();
-    if (!$stickyBar.length) return;
 
-    // Create or reuse placeholder
-    var $placeholder = $stickyBar.next('.sticky-placeholder');
-    if (!$placeholder.length) {
-      $placeholder = $('<div class="sticky-placeholder"></div>');
-      $stickyBar.after($placeholder);
+    var bars = document.querySelectorAll('.stickyBar');
+    var stickyBar = null;
+    for (var i = 0; i < bars.length; i++) {
+      if (bars[i].offsetHeight > 0) { stickyBar = bars[i]; break; }
+    }
+    if (!stickyBar) return;
+
+    // A placeholder holds the bar's space open once it goes fixed, so the
+    // page does not jump by the bar's height at the moment it detaches.
+    var placeholder = stickyBar.nextElementSibling;
+    if (!placeholder || !placeholder.classList.contains('sticky-placeholder')) {
+      placeholder = document.createElement('div');
+      placeholder.className = 'sticky-placeholder';
+      stickyBar.parentNode.insertBefore(placeholder, stickyBar.nextSibling);
     }
 
     var stickyTop = null;
-    var ticking = false;
 
     function calculate() {
-      var mainNavHeight = $('.navbar.sticky-top').outerHeight() || 0;
+      var navbar = document.querySelector('.navbar.sticky-top');
+      var mainNavHeight = navbar ? outerHeight(navbar) : 0;
 
-      // Reset state to measure correctly
-      $stickyBar.removeClass('stickyIsFixed');
-      $placeholder.hide().height(0);
+      // Measure in the un-fixed state, otherwise the bar is out of flow and
+      // reports the wrong document position.
+      stickyBar.classList.remove('stickyIsFixed');
+      placeholder.style.display = 'none';
+      placeholder.style.height = '0px';
 
-      // Measure height including padding and borders
-      var barHeight = $stickyBar.outerHeight(true);
+      var barHeight = outerHeight(stickyBar, true);
+      stickyTop = Math.round(offsetTop(stickyBar) - mainNavHeight);
 
-      // Adjust stickyTop considering top navbar
-      stickyTop = Math.round($stickyBar.offset().top - mainNavHeight);
-
-      // Set placeholder height exactly to stickybar height
-      $placeholder.height(barHeight).hide();
+      placeholder.style.height = barHeight + 'px';
+      placeholder.style.display = 'none';
     }
 
-    function update(scrollTop) {
+    function update() {
       if (stickyTop === null) return;
+      var scrollTop = Math.round(window.pageYOffset);
 
-      if (scrollTop >= stickyTop - 1) { // iOS-safe comparison
-        if (!$stickyBar.hasClass('stickyIsFixed')) {
-          $stickyBar.addClass('stickyIsFixed');
-          $placeholder.show();
+      // -1 keeps iOS rubber-band scrolling from flickering at the boundary.
+      if (scrollTop >= stickyTop - 1) {
+        if (!stickyBar.classList.contains('stickyIsFixed')) {
+          stickyBar.classList.add('stickyIsFixed');
+          placeholder.style.display = 'block';
         }
-      } else {
-        if ($stickyBar.hasClass('stickyIsFixed')) {
-          $stickyBar.removeClass('stickyIsFixed');
-          $placeholder.hide();
-        }
+      } else if (stickyBar.classList.contains('stickyIsFixed')) {
+        stickyBar.classList.remove('stickyIsFixed');
+        placeholder.style.display = 'none';
       }
     }
 
-    function onScroll() {
-      var scrollTop = Math.round($(window).scrollTop());
-
-      if (!ticking) {
-        window.requestAnimationFrame(function() {
-          update(scrollTop);
-          ticking = false;
-        });
-        ticking = true;
-      }
-    }
-
-    // Initial calculation after layout is ready
+    // Deferred so fonts and images have settled and the measurement is real.
     setTimeout(function() {
       calculate();
-      update(Math.round($(window).scrollTop()));
-    }, 50); // 50ms delay ensures CSS & images are loaded
+      update();
+    }, 50);
 
-    $(window).on('scroll', onScroll);
+    window.addEventListener('scroll', onAnimationFrame(update), { passive: true });
 
-    $(window).on('resize orientationchange', function() {
+    var recalculate = onAnimationFrame(function() {
       calculate();
-      update(Math.round($(window).scrollTop()));
+      update();
     });
+    window.addEventListener('resize', recalculate);
+    window.addEventListener('orientationchange', recalculate);
   }
 
   function smoothScrolling() {
-    $('.stickyBar')
-      .off('click', 'a[href^="#"]')
-      .on('click', 'a[href^="#"]', function(e) {
-        e.preventDefault();
 
-        const target = $($(this).attr('href'));
-        if (!target.length) return;
+    // Called from more than one branch below, and delegated from the document,
+    // so guard against binding the same handler twice.
+    if (document.body.dataset.smoothScrollBound === 'true') return;
+    document.body.dataset.smoothScrollBound = 'true';
 
-        $('.stickyBar .nav-link').removeClass('active');
-        $(this).addClass('active');
+    document.addEventListener('click', function(e) {
+      var link = e.target.closest('.stickyBar a[href^="#"]');
+      if (!link) return;
 
-        const offset =
-          ($('.navbar.sticky-top').outerHeight() || 0) +
-          ($('.stickyBar').outerHeight() || 0);
+      var target = document.querySelector(link.getAttribute('href'));
+      if (!target) return;
 
-        $('html, body').animate({
-          scrollTop: target.offset().top - offset
-        }, 600);
+      e.preventDefault();
+
+      document.querySelectorAll('.stickyBar .nav-link').forEach(function(l) {
+        l.classList.remove('active');
       });
-  }
+      link.classList.add('active');
 
-  function activeLinkSwitch() {
+      var navbar = document.querySelector('.navbar.sticky-top');
+      var bar = document.querySelector('.stickyBar');
+      var offset = (navbar ? outerHeight(navbar) : 0) + (bar ? outerHeight(bar) : 0);
+
+      window.scrollTo({
+        top: offsetTop(target) - offset,
+        behavior: 'smooth'
+      });
+    });
   }
 
   function modalContent() {
@@ -233,8 +249,12 @@
     var svgIconTh = '<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="th" class="svg-inline--fa fa-th fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M149.333 56v80c0 13.255-10.745 24-24 24H24c-13.255 0-24-10.745-24-24V56c0-13.255 10.745-24 24-24h101.333c13.255 0 24 10.745 24 24zm181.334 240v-80c0-13.255-10.745-24-24-24H205.333c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24h101.333c13.256 0 24.001-10.745 24.001-24zm32-240v80c0 13.255 10.745 24 24 24H488c13.255 0 24-10.745 24-24V56c0-13.255-10.745-24-24-24H386.667c-13.255 0-24 10.745-24 24zm-32 80V56c0-13.255-10.745-24-24-24H205.333c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24h101.333c13.256 0 24.001-10.745 24.001-24zm-205.334 56H24c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24h101.333c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24zM0 376v80c0 13.255 10.745 24 24 24h101.333c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H24c-13.255 0-24 10.745-24 24zm386.667-56H488c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H386.667c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24zm0 160H488c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H386.667c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24zM181.333 376v80c0 13.255 10.745 24 24 24h101.333c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H205.333c-13.255 0-24 10.745-24 24z"></path></svg>';
     var svgIconBars = '<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" class="svg-inline--fa fa-bars fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path></svg>';
 
-    $('.fc-myCustomListWeekButton-button.btn.btn-primary').html(svgIconBars);
-    $('.fc-myCustomDayGridWeekButton-button.btn.btn-primary').html(svgIconTh);
+    document.querySelectorAll('.fc-myCustomListWeekButton-button.btn.btn-primary').forEach(function(btn) {
+      btn.innerHTML = svgIconBars;
+    });
+    document.querySelectorAll('.fc-myCustomDayGridWeekButton-button.btn.btn-primary').forEach(function(btn) {
+      btn.innerHTML = svgIconTh;
+    });
   }
 
   function initPhotoFilter(navSelector, cardSelector) {
@@ -244,22 +264,19 @@
     if (!navLinks.length || !cards.length) return;
 
     navLinks.forEach(link => {
-      link.addEventListener("click", function (e) {
+      link.addEventListener('click', function(e) {
         e.preventDefault();
 
-        // Remove 'active' from all links
-        navLinks.forEach(l => l.classList.remove("active"));
-        // Add 'active' to clicked link
-        this.classList.add("active");
+        navLinks.forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
 
         const filter = this.dataset.filter;
 
-        // Show/hide cards
         cards.forEach(card => {
-          if (filter === "all") {
-            card.style.display = "";
+          if (filter === 'all') {
+            card.style.display = '';
           } else {
-            card.style.display = card.classList.contains(filter) ? "" : "none";
+            card.style.display = card.classList.contains(filter) ? '' : 'none';
           }
         });
       });
@@ -271,27 +288,38 @@
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
 
-jQuery(document).ready(function($) {
+function init() {
+
+  const page = document.body.classList;
+
+  // Pages that carry an in-page anchor bar.
+  const STICKY_PAGES = [
+    'index-8oGCaMDs',
+    'classes-CJc2lhFv',
+    'resources-uStNjtHz',
+    'photos-QDOJ1pyG',
+    'courses-hFZ2XXIp',
+    'access-information-NdxqmVbV'
+  ];
 
   hiddenCode();
   revealContent();
 
-  if (document.body.classList.contains('index-8oGCaMDs')) {
+  if (page.contains('index-8oGCaMDs')) {
     parallaxHeader();
-    smoothScrolling();
   }
 
-  if (document.body.classList.contains('training-schedule-IFMn5oCc')) {
+  if (page.contains('training-schedule-IFMn5oCc')) {
     fullCalendarChangeIcons();
   }
 
-  if (document.body.classList.contains('photos-QDOJ1pyG')) {
+  if (page.contains('photos-QDOJ1pyG')) {
     modalContent();
-    initPhotoFilter("#photos-QDOJ1pyG-nav", ".photos-QDOJ1pyG-container .col");
+    initPhotoFilter('#photos-QDOJ1pyG-nav', '.photos-QDOJ1pyG-container .col');
   }
 
-  if (document.body.classList.contains('courses-hFZ2XXIp')) {
-    initPhotoFilter("#courses-hFZ2XXIp-nav", ".courses-hFZ2XXIp-container .card");
+  if (page.contains('courses-hFZ2XXIp')) {
+    initPhotoFilter('#courses-hFZ2XXIp-nav', '.courses-hFZ2XXIp-container .card');
 
     document.querySelectorAll('.page .container>main .card .card-body').forEach(cardBody => {
       const lastCardText = cardBody.querySelector('.card-text:last-of-type');
@@ -301,14 +329,21 @@ jQuery(document).ready(function($) {
     });
   }
 
-  if (document.body.classList.contains('index-8oGCaMDs') || document.body.classList.contains('classes-CJc2lhFv') || document.body.classList.contains('resources-uStNjtHz') || document.body.classList.contains('photos-QDOJ1pyG') || document.body.classList.contains('courses-hFZ2XXIp') || document.body.classList.contains('access-information-NdxqmVbV')) {
-    activeLinkSwitch();
+  if (STICKY_PAGES.some(cls => page.contains(cls))) {
     stickySection();
     smoothScrolling();
   }
 
   console.log('↑ ↑ ↓ ↓ ← → ← → b a');
-});
+}
+
+// The bundle is loaded at the end of <body>, so the document may already be
+// parsed by the time this runs and DOMContentLoaded would never fire.
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
 
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////

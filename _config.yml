@@ -70,7 +70,6 @@ defaults:
 exclude:
   # Gulp inputs, bundled into all.min.js / all.min.css
   - scripts/default.js
-  - scripts/jquery-3.7.1.min.js
   - scripts/bootstrap.bundle.min.js
   - scripts/bootstrap.bundle.min.js.map
   - styles/base.less
