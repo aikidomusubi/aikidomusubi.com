@@ -28,7 +28,7 @@ gulp.task('lint', gulp.series(function(done) {
 gulp.task('scripts', gulp.series(function(done) {
   return gulp.src([
       'scripts/jquery-3.7.1.min.js',
-      'scripts/bootstrap.min.js',
+      'scripts/bootstrap.bundle.min.js',
       'scripts/default.js'
     ])
     .pipe(concat('all.js'))

@@ -21,7 +21,7 @@ Actualment, comptem amb tres centres a la província de Barcelona: __Aikido Musu
 ## Aikido Musubi
 
 <div class="card mb-3">
-  <div class="row no-gutters">
+  <div class="row g-0">
     <div class="col-lg-4">
       <div class="card-body">
         <h5 class="card-title"><!-- Aikido Musubi --></h5>
@@ -49,7 +49,7 @@ Actualment, comptem amb tres centres a la província de Barcelona: __Aikido Musu
 __Aikido Musubi__ es troba dins de les instal·lacions esportives Badalona Sud. El dojo pot ser difícil de trobar, així que si us plau reviseu molt bé el mapa i preneu-vos el temps suficient quan visiteu el dojo per primera vegada.
 
 <div class="card mb-3">
-  <div class="row no-gutters">
+  <div class="row g-0">
     <div class="col-lg-4">
       <div class="card-body">
         <h5 class="card-title">Instal·lacions Esportives<br>Badalona Sud</h5>
@@ -120,7 +120,7 @@ __Aikido Musubi__ es troba dins de les instal·lacions esportives Badalona Sud. 
 ## Sant Adrià de Besòs
 
 <div class="card mb-3">
-  <div class="row no-gutters">
+  <div class="row g-0">
     <div class="col-lg-4">
       <div class="card-body">
         <h5 class="card-title"><!-- Aikido Musubi - Sant Adrià de Besòs --></h5>
@@ -149,7 +149,7 @@ __Aikido Musubi__ es troba dins de les instal·lacions esportives Badalona Sud. 
 __Aikido Musubi Sant Adrià__ es troba dins de les instal·lacions del Poliesportiu Municipal Marina-Besòs. El dojo pot ser difícil de trobar, així que si us plau reviseu molt bé el mapa i preneu-vos el temps suficient quan visiteu el dojo per primera vegada.
 
 <div class="card mb-3">
-  <div class="row no-gutters">
+  <div class="row g-0">
     <div class="col-lg-4">
       <div class="card-body">
         <h5 class="card-title">Poliesportiu Municipal<br>Marina-Besòs</h5>
@@ -205,7 +205,7 @@ __Aikido Musubi Sant Adrià__ es troba dins de les instal·lacions del Poliespor
 ## Universitat de Barcelona
 
 <div class="card mb-3">
-  <div class="row no-gutters">
+  <div class="row g-0">
     <div class="col-lg-4">
       <div class="card-body">
         <h5 class="card-title" style="

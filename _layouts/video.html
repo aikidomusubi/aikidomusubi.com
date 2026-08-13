@@ -7,8 +7,8 @@
   {% for video in site.videos reversed %}
 
     <div class="card">
-      <div class="embed-responsive embed-responsive-16by9">
-        <iframe class="embed-responsive-item" src="{{ video.youtube_url }}" allowfullscreen></iframe>
+      <div class="ratio ratio-16x9">
+        <iframe src="{{ video.youtube_url }}" allowfullscreen></iframe>
       </div>
       <div class="card-body">
         <h5 class="card-title">{% if page.lang == "ca" %}{{ video.title_ca }}{% elsif page.lang == "en" %}{{ video.title_en }}{% elsif page.lang == "es" %}{{ video.title_es }}{% elsif page.lang == "ja" %}{{ video.title_ja }}{% endif %}</h5>

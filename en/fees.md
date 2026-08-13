@@ -16,16 +16,16 @@ Registration is free of charge. We offer discounts for families. And we also giv
 
 <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" id="pills-fees-monthly-tab" data-toggle="pill" href="#pills-fees-monthly" role="tab" aria-controls="pills-fees-monthly" aria-selected="true">Monthly</a>
+    <a class="nav-link active" id="pills-fees-monthly-tab" data-bs-toggle="pill" href="#pills-fees-monthly" role="tab" aria-controls="pills-fees-monthly" aria-selected="true">Monthly</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="pills-fees-quarterly-tab" data-toggle="pill" href="#pills-fees-quarterly" role="tab" aria-controls="pills-fees-quarterly" aria-selected="false">Quarterly</a>
+    <a class="nav-link" id="pills-fees-quarterly-tab" data-bs-toggle="pill" href="#pills-fees-quarterly" role="tab" aria-controls="pills-fees-quarterly" aria-selected="false">Quarterly</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="pills-fees-biannual-tab" data-toggle="pill" href="#pills-fees-biannual" role="tab" aria-controls="pills-fees-biannual" aria-selected="false">Biannual</a>
+    <a class="nav-link" id="pills-fees-biannual-tab" data-bs-toggle="pill" href="#pills-fees-biannual" role="tab" aria-controls="pills-fees-biannual" aria-selected="false">Biannual</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="pills-fees-annual-tab" data-toggle="pill" href="#pills-fees-annual" role="tab" aria-controls="pills-fees-annual" aria-selected="false">Annual</a>
+    <a class="nav-link" id="pills-fees-annual-tab" data-bs-toggle="pill" href="#pills-fees-annual" role="tab" aria-controls="pills-fees-annual" aria-selected="false">Annual</a>
   </li>
 </ul>
 
@@ -40,7 +40,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
       <div class="col-12 col-md-6 col-xl-3 mb-4">
         <div class="card mb-4 shadow-sm">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Adults<br><small>For ages 12 and up<br>&nbsp;</small></h4>
+            <h4 class="my-0 fw-normal">Adults<br><small>For ages 12 and up<br>&nbsp;</small></h4>
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">35€ <small class="text-muted">/ month</small></h1>
@@ -50,7 +50,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li>Free registration</li>
               <li>Try for 2 classes</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">Sign up!</a>
+            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
           </div>
         </div>
       </div>
@@ -59,7 +59,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
       <div class="col-12 col-md-6 col-xl-3 mb-4">
         <div class="card mb-4 shadow-sm">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Children<br><small>For children under 12 years<br>&nbsp;</small></h4>
+            <h4 class="my-0 fw-normal">Children<br><small>For children under 12 years<br>&nbsp;</small></h4>
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">25€ <small class="text-muted">/ month</small></h1>
@@ -69,7 +69,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li>Free registration</li>
               <li>Try for 2 classes</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">Sign up!</a>
+            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
           </div>
         </div>
       </div>
@@ -78,7 +78,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
       <div class="col-12 col-md-6 col-xl-3 mb-4">
         <div class="card mb-4 shadow-sm">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Family<br><small>For ages 12 and up<br>of the same family</small></h4>
+            <h4 class="my-0 fw-normal">Family<br><small>For ages 12 and up<br>of the same family</small></h4>
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">55€ <small class="text-muted">/ month</small></h1>
@@ -88,7 +88,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li>Free registration</li>
               <li>Try for 2 classes</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">Sign up!</a>
+            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
           </div>
         </div>
       </div>
@@ -97,7 +97,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
       <div class="col-12 col-md-6 col-xl-3 mb-4">
         <div class="card mb-4 shadow-sm">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Family children<br><small>For children under 12 years<br>of the same family</small></h4>
+            <h4 class="my-0 fw-normal">Family children<br><small>For children under 12 years<br>of the same family</small></h4>
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">40€ <small class="text-muted">/ month</small></h1>
@@ -107,12 +107,12 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li>Free registration</li>
               <li>Try for 2 classes</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">Sign up!</a>
+            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
           </div>
         </div>
       </div>
 
-    </div><!-- /.card-deck -->
+    </div>
 
   </div><!-- /#pills-fees-monthly -->
 
@@ -125,7 +125,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
       <div class="col-12 col-md-6 col-xl-3 mb-4">
         <div class="card mb-4 shadow-sm">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Adults<br><small>For ages 12 and up<br>&nbsp;</small></h4>
+            <h4 class="my-0 fw-normal">Adults<br><small>For ages 12 and up<br>&nbsp;</small></h4>
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">85€ <small class="text-muted">/ quarter</small></h1>
@@ -135,7 +135,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li>Free registration</li>
               <li>Try for 2 classes</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">Sign up!</a>
+            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
           </div>
         </div>
       </div>
@@ -144,7 +144,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
       <div class="col-12 col-md-6 col-xl-3 mb-4">
         <div class="card mb-4 shadow-sm">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Children<br><small>For children under 12 years<br>&nbsp;</small></h4>
+            <h4 class="my-0 fw-normal">Children<br><small>For children under 12 years<br>&nbsp;</small></h4>
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">60€ <small class="text-muted">/ quarter</small></h1>
@@ -154,7 +154,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li>Free registration</li>
               <li>Try for 2 classes</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">Sign up!</a>
+            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
           </div>
         </div>
       </div>
@@ -163,7 +163,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
       <div class="col-12 col-md-6 col-xl-3 mb-4">
         <div class="card mb-4 shadow-sm">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Family<br><small>For ages 12 and up<br>of the same family</small></h4>
+            <h4 class="my-0 fw-normal">Family<br><small>For ages 12 and up<br>of the same family</small></h4>
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">165€ <small class="text-muted">/ quarter</small></h1>
@@ -173,7 +173,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li>Free registration</li>
               <li>Try for 2 classes</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">Sign up!</a>
+            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
           </div>
         </div>
       </div>
@@ -182,7 +182,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
       <div class="col-12 col-md-6 col-xl-3 mb-4">
         <div class="card mb-4 shadow-sm">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Family children<br><small>For children under 12 years<br>of the same family</small></h4>
+            <h4 class="my-0 fw-normal">Family children<br><small>For children under 12 years<br>of the same family</small></h4>
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">110€ <small class="text-muted">/ quarter</small></h1>
@@ -192,12 +192,12 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li>Free registration</li>
               <li>Try for 2 classes</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">Sign up!</a>
+            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
           </div>
         </div>
       </div>
 
-    </div><!-- /.card-deck -->
+    </div>
 
   </div>
 
@@ -210,7 +210,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
       <div class="col-12 col-md-6 col-xl-3 mb-4">
         <div class="card mb-4 shadow-sm">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Adults<br><small>For ages 12 and up<br>&nbsp;</small></h4>
+            <h4 class="my-0 fw-normal">Adults<br><small>For ages 12 and up<br>&nbsp;</small></h4>
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">160€ <small class="text-muted">/ semester</small></h1>
@@ -220,7 +220,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li>Free registration</li>
               <li>Try for 2 classes</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">Sign up!</a>
+            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
           </div>
         </div>
       </div>
@@ -229,7 +229,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
       <div class="col-12 col-md-6 col-xl-3 mb-4">
         <div class="card mb-4 shadow-sm">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Children<br><small>For children under 12 years<br>&nbsp;</small></h4>
+            <h4 class="my-0 fw-normal">Children<br><small>For children under 12 years<br>&nbsp;</small></h4>
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">110€ <small class="text-muted">/ semester</small></h1>
@@ -239,7 +239,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li>Free registration</li>
               <li>Try for 2 classes</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">Sign up!</a>
+            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
           </div>
         </div>
       </div>
@@ -248,7 +248,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
       <div class="col-12 col-md-6 col-xl-3 mb-4">
         <div class="card mb-4 shadow-sm">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Family<br><small>For ages 12 and up<br>of the same family</small></h4>
+            <h4 class="my-0 fw-normal">Family<br><small>For ages 12 and up<br>of the same family</small></h4>
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">310€ <small class="text-muted">/ semester</small></h1>
@@ -258,7 +258,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li>Free registration</li>
               <li>Try for 2 classes</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">Sign up!</a>
+            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
           </div>
         </div>
       </div>
@@ -267,7 +267,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
       <div class="col-12 col-md-6 col-xl-3 mb-4">
         <div class="card mb-4 shadow-sm">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Family children<br><small>For children under 12 years<br>of the same family</small></h4>
+            <h4 class="my-0 fw-normal">Family children<br><small>For children under 12 years<br>of the same family</small></h4>
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">200€ <small class="text-muted">/ semester</small></h1>
@@ -277,12 +277,12 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li>Free registration</li>
               <li>Try for 2 classes</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">Sign up!</a>
+            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
           </div>
         </div>
       </div>
 
-    </div><!-- /.card-deck -->
+    </div>
 
   </div>
 
@@ -295,7 +295,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
       <div class="col-12 col-md-6 col-xl-3 mb-4">
         <div class="card mb-4 shadow-sm">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Adults<br><small>For ages 12 and up<br>&nbsp;</small></h4>
+            <h4 class="my-0 fw-normal">Adults<br><small>For ages 12 and up<br>&nbsp;</small></h4>
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">290€ <small class="text-muted">/ year</small></h1>
@@ -305,7 +305,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li>Free registration</li>
               <li>Try for 2 classes</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">Sign up!</a>
+            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
           </div>
         </div>
       </div>
@@ -314,7 +314,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
       <div class="col-12 col-md-6 col-xl-3 mb-4">
         <div class="card mb-4 shadow-sm">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Children<br><small>For children under 12 years<br>&nbsp;</small></h4>
+            <h4 class="my-0 fw-normal">Children<br><small>For children under 12 years<br>&nbsp;</small></h4>
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">180€ <small class="text-muted">/ year</small></h1>
@@ -324,7 +324,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li>Free registration</li>
               <li>Try for 2 classes</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">Sign up!</a>
+            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
           </div>
         </div>
       </div>
@@ -333,7 +333,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
       <div class="col-12 col-md-6 col-xl-3 mb-4">
         <div class="card mb-4 shadow-sm">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Family<br><small>For ages 12 and up<br>of the same family</small></h4>
+            <h4 class="my-0 fw-normal">Family<br><small>For ages 12 and up<br>of the same family</small></h4>
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">500€ <small class="text-muted">/ year</small></h1>
@@ -343,7 +343,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li>Free registration</li>
               <li>Try for 2 classes</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">Sign up!</a>
+            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
           </div>
         </div>
       </div>
@@ -352,7 +352,7 @@ Registration is free of charge. We offer discounts for families. And we also giv
       <div class="col-12 col-md-6 col-xl-3 mb-4">
         <div class="card mb-4 shadow-sm">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Family children<br><small>For children under 12 years<br>of the same family</small></h4>
+            <h4 class="my-0 fw-normal">Family children<br><small>For children under 12 years<br>of the same family</small></h4>
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">325€ <small class="text-muted">/ year</small></h1>
@@ -362,12 +362,12 @@ Registration is free of charge. We offer discounts for families. And we also giv
               <li>Free registration</li>
               <li>Try for 2 classes</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">Sign up!</a>
+            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">Sign up!</a>
           </div>
         </div>
       </div>
 
-    </div><!-- /.card-deck -->
+    </div>
 
   </div>
 

@@ -16,16 +16,16 @@ last_modified: 2026-01-10
 
 <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" id="pills-fees-monthly-tab" data-toggle="pill" href="#pills-fees-monthly" role="tab" aria-controls="pills-fees-monthly" aria-selected="true">毎月</a>
+    <a class="nav-link active" id="pills-fees-monthly-tab" data-bs-toggle="pill" href="#pills-fees-monthly" role="tab" aria-controls="pills-fees-monthly" aria-selected="true">毎月</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="pills-fees-quarterly-tab" data-toggle="pill" href="#pills-fees-quarterly" role="tab" aria-controls="pills-fees-quarterly" aria-selected="false">3ヶ月</a>
+    <a class="nav-link" id="pills-fees-quarterly-tab" data-bs-toggle="pill" href="#pills-fees-quarterly" role="tab" aria-controls="pills-fees-quarterly" aria-selected="false">3ヶ月</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="pills-fees-biannual-tab" data-toggle="pill" href="#pills-fees-biannual" role="tab" aria-controls="pills-fees-biannual" aria-selected="false">年2回</a>
+    <a class="nav-link" id="pills-fees-biannual-tab" data-bs-toggle="pill" href="#pills-fees-biannual" role="tab" aria-controls="pills-fees-biannual" aria-selected="false">年2回</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="pills-fees-annual-tab" data-toggle="pill" href="#pills-fees-annual" role="tab" aria-controls="pills-fees-annual" aria-selected="false">年1回</a>
+    <a class="nav-link" id="pills-fees-annual-tab" data-bs-toggle="pill" href="#pills-fees-annual" role="tab" aria-controls="pills-fees-annual" aria-selected="false">年1回</a>
   </li>
 </ul>
 
@@ -40,7 +40,7 @@ last_modified: 2026-01-10
       <div class="col-12 col-md-6 col-xl-3 mb-4">
         <div class="card mb-4 shadow-sm">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal">成人<br><small>12歳以上<br>&nbsp;</small></h4>
+            <h4 class="my-0 fw-normal">成人<br><small>12歳以上<br>&nbsp;</small></h4>
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">35€ <small class="text-muted">/ 月</small></h1>
@@ -50,7 +50,7 @@ last_modified: 2026-01-10
               <li>無料登録</li>
               <li>2クラス</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">新規入会はこちら！</a>
+            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
           </div>
         </div>
       </div>
@@ -59,7 +59,7 @@ last_modified: 2026-01-10
       <div class="col-12 col-md-6 col-xl-3 mb-4">
         <div class="card mb-4 shadow-sm">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal">子供<br><small>12歳未満のお子様向け<br>&nbsp;</small></h4>
+            <h4 class="my-0 fw-normal">子供<br><small>12歳未満のお子様向け<br>&nbsp;</small></h4>
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">25€ <small class="text-muted">/ 月</small></h1>
@@ -69,7 +69,7 @@ last_modified: 2026-01-10
               <li>無料登録</li>
               <li>2クラス</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">新規入会はこちら！</a>
+            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
           </div>
         </div>
       </div>
@@ -78,7 +78,7 @@ last_modified: 2026-01-10
       <div class="col-12 col-md-6 col-xl-3 mb-4">
         <div class="card mb-4 shadow-sm">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal">家族<br><small>家族の中で<br>12歳以上</small></h4>
+            <h4 class="my-0 fw-normal">家族<br><small>家族の中で<br>12歳以上</small></h4>
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">55€ <small class="text-muted">/ 月</small></h1>
@@ -88,7 +88,7 @@ last_modified: 2026-01-10
               <li>無料登録</li>
               <li>2クラス</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">新規入会はこちら！</a>
+            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
           </div>
         </div>
       </div>
@@ -97,7 +97,7 @@ last_modified: 2026-01-10
       <div class="col-12 col-md-6 col-xl-3 mb-4">
         <div class="card mb-4 shadow-sm">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal">家族内の子供<br><small>家族の中で<br>12歳未満のお子様向け</small></h4>
+            <h4 class="my-0 fw-normal">家族内の子供<br><small>家族の中で<br>12歳未満のお子様向け</small></h4>
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">40€ <small class="text-muted">/ 月</small></h1>
@@ -107,12 +107,12 @@ last_modified: 2026-01-10
               <li>無料登録</li>
               <li>2クラス</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">新規入会はこちら！</a>
+            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
           </div>
         </div>
       </div>
 
-    </div><!-- /.card-deck -->
+    </div>
 
   </div><!-- /#pills-fees-monthly -->
 
@@ -125,7 +125,7 @@ last_modified: 2026-01-10
       <div class="col-12 col-md-6 col-xl-3 mb-4">
         <div class="card mb-4 shadow-sm">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal">成人<br><small>12歳以上<br>&nbsp;</small></h4>
+            <h4 class="my-0 fw-normal">成人<br><small>12歳以上<br>&nbsp;</small></h4>
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">85€ <small class="text-muted">/ 3ヶ月</small></h1>
@@ -135,7 +135,7 @@ last_modified: 2026-01-10
               <li>無料登録</li>
               <li>2クラス</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">新規入会はこちら！</a>
+            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
           </div>
         </div>
       </div>
@@ -144,7 +144,7 @@ last_modified: 2026-01-10
       <div class="col-12 col-md-6 col-xl-3 mb-4">
         <div class="card mb-4 shadow-sm">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal">子供<br><small>12歳未満のお子様向け<br>&nbsp;</small></h4>
+            <h4 class="my-0 fw-normal">子供<br><small>12歳未満のお子様向け<br>&nbsp;</small></h4>
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">60€ <small class="text-muted">/ 3ヶ月</small></h1>
@@ -154,7 +154,7 @@ last_modified: 2026-01-10
               <li>無料登録</li>
               <li>2クラス</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">新規入会はこちら！</a>
+            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
           </div>
         </div>
       </div>
@@ -163,7 +163,7 @@ last_modified: 2026-01-10
       <div class="col-12 col-md-6 col-xl-3 mb-4">
         <div class="card mb-4 shadow-sm">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal">家族<br><small>家族の中で<br>12歳以上</small></h4>
+            <h4 class="my-0 fw-normal">家族<br><small>家族の中で<br>12歳以上</small></h4>
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">165€ <small class="text-muted">/ 3ヶ月</small></h1>
@@ -173,7 +173,7 @@ last_modified: 2026-01-10
               <li>無料登録</li>
               <li>2クラス</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">新規入会はこちら！</a>
+            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
           </div>
         </div>
       </div>
@@ -182,7 +182,7 @@ last_modified: 2026-01-10
       <div class="col-12 col-md-6 col-xl-3 mb-4">
         <div class="card mb-4 shadow-sm">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal">家族内の子供<br><small>家族の中で<br>12歳未満のお子様向け</small></h4>
+            <h4 class="my-0 fw-normal">家族内の子供<br><small>家族の中で<br>12歳未満のお子様向け</small></h4>
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">110€ <small class="text-muted">/ 3ヶ月</small></h1>
@@ -192,12 +192,12 @@ last_modified: 2026-01-10
               <li>無料登録</li>
               <li>2クラス</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">新規入会はこちら！</a>
+            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
           </div>
         </div>
       </div>
 
-    </div><!-- /.card-deck -->
+    </div>
 
   </div>
 
@@ -210,7 +210,7 @@ last_modified: 2026-01-10
       <div class="col-12 col-md-6 col-xl-3 mb-4">
         <div class="card mb-4 shadow-sm">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal">成人<br><small>12歳以上<br>&nbsp;</small></h4>
+            <h4 class="my-0 fw-normal">成人<br><small>12歳以上<br>&nbsp;</small></h4>
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">160€ <small class="text-muted">/ 6ヶ月</small></h1>
@@ -220,7 +220,7 @@ last_modified: 2026-01-10
               <li>無料登録</li>
               <li>2クラス</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">新規入会はこちら！</a>
+            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
           </div>
         </div>
       </div>
@@ -229,7 +229,7 @@ last_modified: 2026-01-10
       <div class="col-12 col-md-6 col-xl-3 mb-4">
         <div class="card mb-4 shadow-sm">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal">子供<br><small>12歳未満のお子様向け<br>&nbsp;</small></h4>
+            <h4 class="my-0 fw-normal">子供<br><small>12歳未満のお子様向け<br>&nbsp;</small></h4>
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">110€ <small class="text-muted">/ 6ヶ月</small></h1>
@@ -239,7 +239,7 @@ last_modified: 2026-01-10
               <li>無料登録</li>
               <li>2クラス</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">新規入会はこちら！</a>
+            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
           </div>
         </div>
       </div>
@@ -248,7 +248,7 @@ last_modified: 2026-01-10
       <div class="col-12 col-md-6 col-xl-3 mb-4">
         <div class="card mb-4 shadow-sm">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal">家族<br><small>家族の中で<br>12歳以上</small></h4>
+            <h4 class="my-0 fw-normal">家族<br><small>家族の中で<br>12歳以上</small></h4>
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">310€ <small class="text-muted">/ 6ヶ月</small></h1>
@@ -258,7 +258,7 @@ last_modified: 2026-01-10
               <li>無料登録</li>
               <li>2クラス</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">新規入会はこちら！</a>
+            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
           </div>
         </div>
       </div>
@@ -267,7 +267,7 @@ last_modified: 2026-01-10
       <div class="col-12 col-md-6 col-xl-3 mb-4">
         <div class="card mb-4 shadow-sm">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal">家族内の子供<br><small>家族の中で<br>12歳未満のお子様向け</small></h4>
+            <h4 class="my-0 fw-normal">家族内の子供<br><small>家族の中で<br>12歳未満のお子様向け</small></h4>
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">200€ <small class="text-muted">/ 6ヶ月</small></h1>
@@ -277,12 +277,12 @@ last_modified: 2026-01-10
               <li>無料登録</li>
               <li>2クラス</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">新規入会はこちら！</a>
+            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
           </div>
         </div>
       </div>
 
-    </div><!-- /.card-deck -->
+    </div>
 
   </div>
 
@@ -295,7 +295,7 @@ last_modified: 2026-01-10
       <div class="col-12 col-md-6 col-xl-3 mb-4">
         <div class="card mb-4 shadow-sm">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal">成人<br><small>12歳以上<br>&nbsp;</small></h4>
+            <h4 class="my-0 fw-normal">成人<br><small>12歳以上<br>&nbsp;</small></h4>
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">290€ <small class="text-muted">/ 年</small></h1>
@@ -305,7 +305,7 @@ last_modified: 2026-01-10
               <li>無料登録</li>
               <li>2クラス</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">新規入会はこちら！</a>
+            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
           </div>
         </div>
       </div>
@@ -314,7 +314,7 @@ last_modified: 2026-01-10
       <div class="col-12 col-md-6 col-xl-3 mb-4">
         <div class="card mb-4 shadow-sm">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal">子供<br><small>12歳未満のお子様向け<br>&nbsp;</small></h4>
+            <h4 class="my-0 fw-normal">子供<br><small>12歳未満のお子様向け<br>&nbsp;</small></h4>
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">180€ <small class="text-muted">/ 年</small></h1>
@@ -324,7 +324,7 @@ last_modified: 2026-01-10
               <li>無料登録</li>
               <li>2クラス</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">新規入会はこちら！</a>
+            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
           </div>
         </div>
       </div>
@@ -333,7 +333,7 @@ last_modified: 2026-01-10
       <div class="col-12 col-md-6 col-xl-3 mb-4">
         <div class="card mb-4 shadow-sm">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal">家族<br><small>家族の中で<br>12歳以上</small></h4>
+            <h4 class="my-0 fw-normal">家族<br><small>家族の中で<br>12歳以上</small></h4>
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">500€ <small class="text-muted">/ 年</small></h1>
@@ -343,7 +343,7 @@ last_modified: 2026-01-10
               <li>無料登録</li>
               <li>2クラス</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">新規入会はこちら！</a>
+            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
           </div>
         </div>
       </div>
@@ -352,7 +352,7 @@ last_modified: 2026-01-10
       <div class="col-12 col-md-6 col-xl-3 mb-4">
         <div class="card mb-4 shadow-sm">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal">家族内の子供<br><small>家族の中で<br>12歳未満のお子様向け</small></h4>
+            <h4 class="my-0 fw-normal">家族内の子供<br><small>家族の中で<br>12歳未満のお子様向け</small></h4>
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">325€ <small class="text-muted">/ 年</small></h1>
@@ -362,12 +362,12 @@ last_modified: 2026-01-10
               <li>無料登録</li>
               <li>2クラス</li>
             </ul>
-            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-block btn-primary" role="button">新規入会はこちら！</a>
+            <a href="{{ site.url }}/{{ page.lang }}/contact/" class="btn btn-lg btn-primary w-100" role="button">新規入会はこちら！</a>
           </div>
         </div>
       </div>
 
-    </div><!-- /.card-deck -->
+    </div>
 
   </div>
 

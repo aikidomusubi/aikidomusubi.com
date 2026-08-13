@@ -335,6 +335,13 @@ html {
 
 .navbar {
 
+  // Bootstrap 4 gave .navbar `padding: .5rem 1rem`. Bootstrap 5 zeroes the
+  // horizontal padding because it expects a .container child to provide it.
+  // This navbar has no container (the LESS below targets its children
+  // directly), so restore the inline padding via the component's own token
+  // rather than reshaping the DOM.
+  --bs-navbar-padding-x: 1rem;
+
   svg {
     height: .9rem; width: auto;
     vertical-align: sub;
@@ -829,8 +836,17 @@ body.photos-QDOJ1pyG {
 
                 button {
 
-                  &.close {
-                    color: @Black;
+                  // Bootstrap 5 renamed .close to .btn-close and made it a
+                  // background-image glyph, so it takes a filter rather than
+                  // a color. Default is already near-black; opacity gives the
+                  // same visual weight the old color: @Black rule did.
+                  &.btn-close {
+                    opacity: .75;
+
+                    &:hover,
+                    &:focus {
+                      opacity: 1;
+                    }
                   }
                 }
               }

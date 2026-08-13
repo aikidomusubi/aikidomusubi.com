@@ -21,7 +21,7 @@ last_modified: 2026-02-26
 ## 合気道産靈
 
 <div class="card mb-3">
-  <div class="row no-gutters">
+  <div class="row g-0">
     <div class="col-lg-4">
       <div class="card-body">
         <h5 class="card-title"><!-- Aikido Musubi --></h5>
@@ -50,7 +50,7 @@ last_modified: 2026-02-26
 __合気道産靈__ は南バダロナサッカー球技場内にあります。道場の路地は見つけにくいので、地図を参考に、お時間には余裕を持って、お越し下さい。
 
 <div class="card mb-3">
-  <div class="row no-gutters">
+  <div class="row g-0">
     <div class="col-lg-4">
       <div class="card-body">
         <h5 class="card-title">南バダロナ<br>サッカー球技場</h5>
@@ -121,7 +121,7 @@ __合気道産靈__ は南バダロナサッカー球技場内にあります。
 ## サント・アドリアー・ダ・バゾス
 
 <div class="card mb-3">
-  <div class="row no-gutters">
+  <div class="row g-0">
     <div class="col-lg-4">
       <div class="card-body">
         <h5 class="card-title"><!-- Aikido Musubi - Sant Adrià de Besòs --></h5>
@@ -152,7 +152,7 @@ __合気道産靈__ は南バダロナサッカー球技場内にあります。
 __合気道産靈 サント・アドリアー__ はマリナ・ベソス市立スポーツセンターの施設内にあります。道場の路地は見つけにくいので、地図を参考に、お時間には余裕を持って、お越し下さい。
 
 <div class="card mb-3">
-  <div class="row no-gutters">
+  <div class="row g-0">
     <div class="col-lg-4">
       <div class="card-body">
         <h5 class="card-title">Polideportivo Municipal<br>Marina-Besòs</h5>
@@ -208,7 +208,7 @@ __合気道産靈 サント・アドリアー__ はマリナ・ベソス市立�
 ## バルセロナ大学
 
 <div class="card mb-3">
-  <div class="row no-gutters">
+  <div class="row g-0">
     <div class="col-lg-4">
       <div class="card-body">
         <h5 class="card-title" style="

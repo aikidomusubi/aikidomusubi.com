@@ -21,7 +21,7 @@ Actualmente, tenemos tres centros en la provincia de Barcelona: __Aikido Musubi_
 ## Aikido Musubi
 
 <div class="card mb-3">
-  <div class="row no-gutters">
+  <div class="row g-0">
     <div class="col-lg-4">
       <div class="card-body">
         <h5 class="card-title"><!-- Aikido Musubi --></h5>
@@ -49,7 +49,7 @@ Actualmente, tenemos tres centros en la provincia de Barcelona: __Aikido Musubi_
 __Aikido Musubi__ se encuentra dentro de las instalaciones deportivas Badalona Sur. El dojo puede ser difícil de encontrar, así que por favor revisad el mapa cuidadosamente y tomaos el tiempo suficiente cuando visitéis el dojo por primera vez.
 
 <div class="card mb-3">
-  <div class="row no-gutters">
+  <div class="row g-0">
     <div class="col-lg-4">
       <div class="card-body">
         <h5 class="card-title">Instalaciones Deportivas<br>Badalona Sur</h5>
@@ -120,7 +120,7 @@ __Aikido Musubi__ se encuentra dentro de las instalaciones deportivas Badalona S
 ## Sant Adrià de Besòs
 
 <div class="card mb-3">
-  <div class="row no-gutters">
+  <div class="row g-0">
     <div class="col-lg-4">
       <div class="card-body">
         <h5 class="card-title"><!-- Aikido Musubi - Sant Adrià de Besòs --></h5>
@@ -149,7 +149,7 @@ __Aikido Musubi__ se encuentra dentro de las instalaciones deportivas Badalona S
 __Aikido Musubi Sant Adrià__ se encuentra dentro de las instalaciones del Polideportivo Municipal Marina-Besòs. El dojo puede ser difícil de encontrar, así que por favor revisad el mapa cuidadosamente y tomaos el tiempo suficiente cuando visitéis el dojo por primera vez.
 
 <div class="card mb-3">
-  <div class="row no-gutters">
+  <div class="row g-0">
     <div class="col-lg-4">
       <div class="card-body">
         <h5 class="card-title">Polideportivo Municipal<br>Marina-Besòs</h5>
@@ -205,7 +205,7 @@ __Aikido Musubi Sant Adrià__ se encuentra dentro de las instalaciones del Polid
 ## Universidad de Barcelona
 
 <div class="card mb-3">
-  <div class="row no-gutters">
+  <div class="row g-0">
     <div class="col-lg-4">
       <div class="card-body">
         <h5 class="card-title" style="

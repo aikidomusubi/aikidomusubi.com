@@ -195,13 +195,36 @@
 
   function modalContent() {
 
-    $('a[data-toggle="modal"]').click(function() {
-        var dataTarget = $(this).attr('data-target');
-        var dataTargetName = $(this).attr('data-target-name');
+    // Bootstrap 5 fires native CustomEvents whose type is the whole string
+    // "show.bs.modal". jQuery would read ".bs.modal" as a namespace on a
+    // "show" event and never match, so this listens natively.
+    document.querySelectorAll('a[data-bs-toggle="modal"]').forEach(function(trigger) {
+      var selector = trigger.getAttribute('data-bs-target');
+      var album = trigger.getAttribute('data-target-name');
+      if (!selector || !album) return;
 
-        $(dataTarget).on('show.bs.modal', function(event) {
-          $(this).find('.modal-body').load('https://aikidomusubi.com/photos/' + dataTargetName + '.html');
-        });
+      var modal = document.querySelector(selector);
+      if (!modal) return;
+
+      // Bound once at init rather than on every click, so repeated opens
+      // do not stack duplicate listeners, and fetched once per album.
+      modal.addEventListener('show.bs.modal', function() {
+        var body = modal.querySelector('.modal-body');
+        if (!body || body.dataset.loaded === 'true') return;
+
+        fetch('/photos/' + album + '.html')
+          .then(function(res) {
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            return res.text();
+          })
+          .then(function(html) {
+            body.innerHTML = html;
+            body.dataset.loaded = 'true';
+          })
+          .catch(function(err) {
+            console.error('Could not load album "' + album + '":', err);
+          });
+      });
     });
   }
 

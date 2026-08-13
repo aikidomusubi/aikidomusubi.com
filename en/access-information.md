@@ -21,7 +21,7 @@ Currently, we operate three centers in the province of Barcelona: __Aikido Musub
 ## Aikido Musubi
 
 <div class="card mb-3">
-  <div class="row no-gutters">
+  <div class="row g-0">
     <div class="col-lg-4">
       <div class="card-body">
         <h5 class="card-title"><!-- Aikido Musubi --></h5>
@@ -49,7 +49,7 @@ Currently, we operate three centers in the province of Barcelona: __Aikido Musub
 __Aikido Musubi__ is located within the Badalona Sud sports facilities. The dojo can be difficult to find, so please review the map carefully and take plenty of time when visiting the dojo for the first time.
 
 <div class="card mb-3">
-  <div class="row no-gutters">
+  <div class="row g-0">
     <div class="col-lg-4">
       <div class="card-body">
         <h5 class="card-title">Badalona Sud<br>Sports Facilities</h5>
@@ -120,7 +120,7 @@ __Aikido Musubi__ is located within the Badalona Sud sports facilities. The dojo
 ## Sant Adrià de Besòs
 
 <div class="card mb-3">
-  <div class="row no-gutters">
+  <div class="row g-0">
     <div class="col-lg-4">
       <div class="card-body">
         <h5 class="card-title"><!-- Aikido Musubi - Sant Adrià de Besòs --></h5>
@@ -149,7 +149,7 @@ __Aikido Musubi__ is located within the Badalona Sud sports facilities. The dojo
 __Aikido Musubi Sant Adrià__ is located within the facilities of the Marina-Besòs Municipal Sports Center. The dojo can be difficult to find, so please review the map carefully and take plenty of time when visiting the dojo for the first time.
 
 <div class="card mb-3">
-  <div class="row no-gutters">
+  <div class="row g-0">
     <div class="col-lg-4">
       <div class="card-body">
         <h5 class="card-title">Marina-Besòs<br>Municipal Sports Center</h5>
@@ -205,7 +205,7 @@ __Aikido Musubi Sant Adrià__ is located within the facilities of the Marina-Bes
 ## University of Barcelona
 
 <div class="card mb-3">
-  <div class="row no-gutters">
+  <div class="row g-0">
     <div class="col-lg-4">
       <div class="card-body">
         <h5 class="card-title" style="

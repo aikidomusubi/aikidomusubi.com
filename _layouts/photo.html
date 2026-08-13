@@ -11,7 +11,7 @@
 
         <div class="col col-12 col-sm-12 col-md-6">
 
-          <a href="#" role="button" data-toggle="modal" data-target="#modal{{ photo.photos.album }}" data-target-name="{{ photo.photos.album }}">
+          <a href="#" role="button" data-bs-toggle="modal" data-bs-target="#modal{{ photo.photos.album }}" data-target-name="{{ photo.photos.album }}">
             <div class="hover hover-2 text-white">
               <picture>
                 <source type="image/webp" srcset="{{ site.url }}/photos/{{ photo.photos.album }}/{{ photo.photos.album }}-0.webp">
@@ -26,20 +26,18 @@
             </div>
           </a>
 
-          <div class="modal" id="modal{{ photo.photos.album }}" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal" id="modal{{ photo.photos.album }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="staticBackdropLabel">{% if page.lang == "ca" %}{{ photo.title_ca }}{% elsif page.lang == "en" %}{{ photo.title_en }}{% elsif page.lang == "es" %}{{ photo.title_es }}{% elsif page.lang == "ja" %}{{ photo.title_ja }}{% endif %}</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
 
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">{% if page.lang == "ca" %}Tancar{% elsif page.lang == "en" %}Close{% elsif page.lang == "es" %}Cerrar{% elsif page.lang == "ja" %}戻る{% endif %}</button>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% if page.lang == "ca" %}Tancar{% elsif page.lang == "en" %}Close{% elsif page.lang == "es" %}Cerrar{% elsif page.lang == "ja" %}戻る{% endif %}</button>
                 </div>
               </div>
             </div>

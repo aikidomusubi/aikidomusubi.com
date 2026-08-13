@@ -49,6 +49,16 @@
   text-shadow: 0 1px 0 rgba(0,0,0,0.01);
 }
 
+// Bootstrap 5's Reboot underlines every link; Bootstrap 4's did not. The
+// design underlines links deliberately where it wants them (prose, abbr)
+// and relies on the bare default everywhere else — navbar, language
+// switcher, cards, buttons. Restoring the old baseline here keeps those
+// explicit rules winning on specificity and leaves the rest undecorated,
+// which is exactly how the site looked under Bootstrap 4.
+a {
+  text-decoration: none;
+}
+
 .fadeIn {
   .visible;
   animation: fadeIn .5s ease;
@@ -89,6 +99,19 @@
 
 .visible {
   visibility: visible;
+}
+
+// Bootstrap 5 dropped the media object. The contact page markup and eight
+// rules in default.less still key off these two classes, so we keep the
+// names and restore Bootstrap 4's definitions here rather than rewriting
+// both the markup and the selectors that target it.
+.media {
+  display: flex;
+  align-items: flex-start;
+}
+
+.media-body {
+  flex: 1 1 auto;
 }
 
 .flipH {

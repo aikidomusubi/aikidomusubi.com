@@ -10,7 +10,7 @@
       {% for course in site.courses reversed %}
         {% capture date %}{{ course.date_from | date: '%s' | plus: 0 }}{% endcapture %}
         <div class="card {% if date > now %}upcoming{% else %}ended{% endif %}">
-          <div class="row no-gutters">
+          <div class="row g-0">
             <div class="col-lg-4">
               <a href="{{ site.url }}/images/{% if page.lang == 'ca' %}{{ course.image_ca }}{% elsif page.lang == 'en' %}{{ course.image_en }}{% elsif page.lang == 'es' %}{{ course.image_es }}{% elsif page.lang == 'ja' %}{{ course.image_ja }}{% endif %}.jpg" class="course-lightbox" aria-label="Open image">
                 <picture>
