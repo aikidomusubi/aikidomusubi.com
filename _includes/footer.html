@@ -12,8 +12,7 @@
         {%- comment -%}
           Legal links. Art. 10 LSSI-CE requires these to be reachable from
           anywhere on the site, which is why they live in the fixed footer
-          rather than on a single page. The "cookies" item reopens the consent
-          banner so a choice can always be revisited.
+          rather than on a single page.
         {%- endcomment -%}
         <aside class="footer-legal">
           {%- case page.lang -%}
@@ -21,22 +20,18 @@
               <a href="/ca/avis-legal/">Avís Legal</a>
               <a href="/ca/politica-privadesa/">Privadesa</a>
               <a href="/ca/politica-galetes/">Galetes</a>
-              <button type="button" class="footer-cookie-settings">Configurar<span class="footer-legal-long"> galetes</span></button>
             {%- when 'en' -%}
               <a href="/en/legal-notice/">Legal Notice</a>
               <a href="/en/privacy-policy/">Privacy</a>
               <a href="/en/cookie-policy/">Cookies</a>
-              <button type="button" class="footer-cookie-settings"><span class="footer-legal-long">Cookie </span>Settings</button>
             {%- when 'ja' -%}
               <a href="/ja/legal-notice/">法的通知</a>
               <a href="/ja/privacy-policy/">プライバシー</a>
               <a href="/ja/cookie-policy/">クッキー</a>
-              <button type="button" class="footer-cookie-settings">クッキー設定</button>
             {%- else -%}
               <a href="/aviso-legal/">Aviso Legal</a>
               <a href="/politica-privacidad/">Privacidad</a>
               <a href="/politica-cookies/">Cookies</a>
-              <button type="button" class="footer-cookie-settings">Configurar<span class="footer-legal-long"> cookies</span></button>
           {%- endcase -%}
         </aside>
         <aside></aside>

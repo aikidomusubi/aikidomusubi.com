@@ -122,13 +122,10 @@
     open();
   }
 
-  // Withdrawing consent has to be as available as giving it, so the footer
-  // button reopens this panel on every page. Bound here rather than with an
-  // inline onclick so it survives a future Content-Security-Policy.
-  document.querySelectorAll('.footer-cookie-settings').forEach(function (btn) {
-    btn.addEventListener('click', open);
-  });
-
+  // No on-site control reopens this panel: the footer link was removed by
+  // request. Consent is withdrawn through the browser's own cookie settings,
+  // which the cookie policy documents. Kept as a small API so the panel can
+  // still be reopened from the console or a future control.
   window.amCookies = { open: open };
 })();
 </script>

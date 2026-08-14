@@ -5,14 +5,18 @@ description: Identifying details of the website owner, conditions of use, intell
 permalink: /en/legal-notice/
 lang: en
 i18n-ref: legal-notice-Up6gBHvn
-last_modified: 2026-08-13
+last_modified: 2026-08-14
 ---
 
 # Legal Notice
 
+Identifying details of the website owner, conditions of use, intellectual property and applicable law.
+
 **Last updated: 13 August 2026**
 
 > This English version is provided for convenience. In the event of any discrepancy, the Spanish version prevails, as this website is operated under Spanish law.
+
+<hr>
 
 ## 1. Identification details of the owner
 

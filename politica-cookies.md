@@ -1,18 +1,22 @@
 ---
 layout: page
 title: Política de Cookies
-description: Qué cookies utiliza este sitio web, para qué sirven y cómo aceptarlas, rechazarlas o cambiar su elección.
+description: Qué cookies utiliza este sitio web, para qué sirven y cómo aceptarlas o rechazarlas.
 permalink: /politica-cookies/
 lang: es
 i18n-ref: cookie-policy-67RmRt6B
-last_modified: 2026-08-13
+last_modified: 2026-08-14
 ---
 
 # Política de Cookies
 
+Qué cookies utiliza este sitio web, para qué sirven y cómo aceptarlas o rechazarlas.
+
 **Última actualización: 13 de agosto de 2026**
 
 Este sitio web, **aikidomusubi.com**, titularidad de Aikido Musubi, utiliza cookies y tecnologías similares. Esta Política de Cookies se ha elaborado siguiendo la *Guía sobre el uso de las cookies* de la Agencia Española de Protección de Datos (AEPD).
+
+<hr>
 
 ## 1. ¿Qué son las cookies?
 
@@ -21,7 +25,7 @@ Una cookie es un pequeño archivo de texto que un sitio web almacena en el naveg
 ## 2. Tipos de cookies que utilizamos
 
 ### a) Cookies técnicas o necesarias (no requieren consentimiento)
-Son imprescindibles para el funcionamiento del sitio web y para recordar sus preferencias de configuración de cookies. No recaban información con fines publicitarios ni de seguimiento.
+Son imprescindibles para el funcionamiento del sitio web y para recordar su elección sobre las cookies. No recaban información con fines publicitarios ni de seguimiento.
 
 | Cookie | Finalidad | Duración |
 |--------|-----------|----------|
@@ -46,13 +50,11 @@ Si el sitio web incrusta contenido de plataformas externas (por ejemplo, **víde
 
 ## 3. Consentimiento
 
-Al acceder por primera vez al sitio web, se le muestra un **panel de configuración de cookies** que le permite **aceptar todas**, **rechazar todas** o **configurar** las cookies no necesarias. Las cookies analíticas y de terceros **no se activan hasta que usted presta su consentimiento**. Rechazar es tan sencillo como aceptar.
+Al acceder por primera vez al sitio web, se le muestra un **aviso de cookies** que le permite **aceptar todas** o **rechazar todas** las cookies no necesarias. Las cookies analíticas y de terceros **no se activan hasta que usted presta su consentimiento**. Rechazar es tan sencillo como aceptar.
 
 ## 4. ¿Cómo puede gestionar o retirar su consentimiento?
 
-Puede cambiar su elección en cualquier momento a través del enlace **"Configuración de cookies"** disponible en el pie de página del sitio web.
-
-Asimismo, puede permitir, bloquear o eliminar las cookies instaladas en su dispositivo mediante la configuración de las opciones de su navegador:
+Puede permitir, bloquear o eliminar las cookies instaladas en su dispositivo mediante la configuración de las opciones de su navegador:
 
 - [Google Chrome](https://support.google.com/chrome/answer/95647)
 - [Mozilla Firefox](https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias)

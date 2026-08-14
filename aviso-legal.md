@@ -5,12 +5,16 @@ description: Datos identificativos del titular del sitio web, condiciones de uso
 permalink: /aviso-legal/
 lang: es
 i18n-ref: legal-notice-Up6gBHvn
-last_modified: 2026-08-13
+last_modified: 2026-08-14
 ---
 
 # Aviso Legal
 
+Datos identificativos del titular del sitio web, condiciones de uso, propiedad intelectual y legislación aplicable.
+
 **Última actualización: 13 de agosto de 2026**
+
+<hr>
 
 ## 1. Datos identificativos del titular
 

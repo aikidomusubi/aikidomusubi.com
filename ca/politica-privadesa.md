@@ -5,14 +5,18 @@ description: Quines dades personals tractem, amb quina finalitat i base legal, d
 permalink: /ca/politica-privadesa/
 lang: ca
 i18n-ref: privacy-policy-EgFc1Qem
-last_modified: 2026-08-13
+last_modified: 2026-08-14
 ---
 
 # Política de Privadesa
 
+Quines dades personals tractem, amb quina finalitat i base legal, durant quant temps i com exercir els seus drets.
+
 **Última actualització: 13 d'agost de 2026**
 
 Aikido Musubi es compromet a protegir la privadesa dels usuaris del seu lloc web, dels seus socis, alumnes i de qualsevol persona les dades personals de la qual tracti. Aquesta Política de Privadesa s'ha redactat de conformitat amb el Reglament (UE) 2016/679 (Reglament General de Protecció de Dades, "RGPD") i la Llei Orgànica 3/2018, de 5 de desembre, de Protecció de Dades Personals i garantia dels drets digitals (LOPDGDD).
+
+<hr>
 
 ## 1. Responsable del tractament
 
@@ -49,7 +53,7 @@ Per a la inscripció de menors de 14 anys, és imprescindible el **consentiment 
 ### e) Navegació i galetes
 - **Dades:** dades de navegació i identificadors de dispositiu, tractats a través de galetes i tecnologies similars (per exemple, Google Analytics a través de Google Tag Manager).
 - **Finalitat:** analitzar l'ús del lloc web i elaborar estadístiques.
-- **Base jurídica:** el vostre consentiment, prestat a través del tauler de configuració de galetes. Consulteu la [Política de Galetes](/ca/politica-galetes/) per a més informació.
+- **Base jurídica:** el vostre consentiment, prestat a través de l'avís de galetes. Consulteu la [Política de Galetes](/ca/politica-galetes/) per a més informació.
 
 ## 3. Durant quant de temps conservem les dades?
 

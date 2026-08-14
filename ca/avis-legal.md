@@ -5,12 +5,16 @@ description: Dades identificatives del titular del lloc web, condicions d'ús, p
 permalink: /ca/avis-legal/
 lang: ca
 i18n-ref: legal-notice-Up6gBHvn
-last_modified: 2026-08-13
+last_modified: 2026-08-14
 ---
 
 # Avís Legal
 
+Dades identificatives del titular del lloc web, condicions d'ús, propietat intel·lectual i legislació aplicable.
+
 **Última actualització: 13 d'agost de 2026**
+
+<hr>
 
 ## 1. Dades identificatives del titular
 

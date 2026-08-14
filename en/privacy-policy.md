@@ -5,16 +5,20 @@ description: What personal data we process, for what purpose and legal basis, fo
 permalink: /en/privacy-policy/
 lang: en
 i18n-ref: privacy-policy-EgFc1Qem
-last_modified: 2026-08-13
+last_modified: 2026-08-14
 ---
 
 # Privacy Policy
+
+What personal data we process, for what purpose and legal basis, for how long, and how to exercise your rights.
 
 **Last updated: 13 August 2026**
 
 > This English version is provided for convenience. In the event of any discrepancy, the Spanish version prevails, as this website is operated under Spanish law.
 
 Aikido Musubi is committed to protecting the privacy of the users of its website, its members, students and anyone whose personal data it processes. This Privacy Policy has been drafted in accordance with Regulation (EU) 2016/679 (General Data Protection Regulation, "GDPR") and Spanish Organic Law 3/2018, of 5 December, on the Protection of Personal Data and the guarantee of digital rights (LOPDGDD).
+
+<hr>
 
 ## 1. Data controller
 
@@ -51,7 +55,7 @@ For the registration of minors under 14 years of age, the **consent of the paren
 ### e) Browsing and cookies
 - **Data:** browsing data and device identifiers, processed through cookies and similar technologies (for example, Google Analytics via Google Tag Manager).
 - **Purpose:** to analyse the use of the website and produce statistics.
-- **Legal basis:** your consent, given through the cookie settings panel. See the [Cookie Policy](/en/cookie-policy/) for more information.
+- **Legal basis:** your consent, given through the cookie notice. See the [Cookie Policy](/en/cookie-policy/) for more information.
 
 ## 3. How long do we keep the data?
 

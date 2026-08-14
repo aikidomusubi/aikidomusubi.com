@@ -1,18 +1,22 @@
 ---
 layout: page
 title: Política de Galetes
-description: Quines galetes utilitza aquest lloc web, per a què serveixen i com acceptar-les, rebutjar-les o canviar la seva elecció.
+description: Quines galetes utilitza aquest lloc web, per a què serveixen i com acceptar-les o rebutjar-les.
 permalink: /ca/politica-galetes/
 lang: ca
 i18n-ref: cookie-policy-67RmRt6B
-last_modified: 2026-08-13
+last_modified: 2026-08-14
 ---
 
 # Política de Galetes (Cookies)
 
+Quines galetes utilitza aquest lloc web, per a què serveixen i com acceptar-les o rebutjar-les.
+
 **Última actualització: 13 d'agost de 2026**
 
 Aquest lloc web, **aikidomusubi.com**, titularitat d'Aikido Musubi, utilitza galetes (cookies) i tecnologies similars. Aquesta Política de Galetes s'ha elaborat seguint la *Guia sobre l'ús de les galetes* de l'Agència Espanyola de Protecció de Dades (AEPD).
+
+<hr>
 
 ## 1. Què són les galetes?
 
@@ -21,7 +25,7 @@ Una galeta és un petit fitxer de text que un lloc web emmagatzema al navegador 
 ## 2. Tipus de galetes que utilitzem
 
 ### a) Galetes tècniques o necessàries (no requereixen consentiment)
-Són imprescindibles per al funcionament del lloc web i per recordar les vostres preferències de configuració de galetes. No recapten informació amb finalitats publicitàries ni de seguiment.
+Són imprescindibles per al funcionament del lloc web i per recordar la vostra elecció sobre les galetes. No recapten informació amb finalitats publicitàries ni de seguiment.
 
 | Galeta | Finalitat | Durada |
 |--------|-----------|--------|
@@ -46,13 +50,11 @@ Si el lloc web incrusta contingut de plataformes externes (per exemple, **vídeo
 
 ## 3. Consentiment
 
-En accedir per primera vegada al lloc web, se us mostra un **tauler de configuració de galetes** que us permet **acceptar-les totes**, **rebutjar-les totes** o **configurar** les galetes no necessàries. Les galetes analítiques i de tercers **no s'activen fins que presteu el vostre consentiment**. Rebutjar és tan senzill com acceptar.
+En accedir per primera vegada al lloc web, se us mostra un **avís de galetes** que us permet **acceptar-les totes** o **rebutjar-les totes**. Les galetes analítiques i de tercers **no s'activen fins que presteu el vostre consentiment**. Rebutjar és tan senzill com acceptar.
 
 ## 4. Com podeu gestionar o retirar el vostre consentiment?
 
-Podeu canviar la vostra elecció en qualsevol moment a través de l'enllaç **"Configuració de galetes"** disponible al peu de pàgina del lloc web.
-
-Així mateix, podeu permetre, bloquejar o eliminar les galetes instal·lades al vostre dispositiu mitjançant la configuració de les opcions del vostre navegador:
+Podeu permetre, bloquejar o eliminar les galetes instal·lades al vostre dispositiu mitjançant la configuració de les opcions del vostre navegador:
 
 - [Google Chrome](https://support.google.com/chrome/answer/95647)
 - [Mozilla Firefox](https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias)

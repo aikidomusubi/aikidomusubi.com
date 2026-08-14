@@ -335,7 +335,7 @@ html {
         background-color: @Dark;
         color: darken(@White, 50%);
         overflow: auto;
-        padding: .5rem;
+        padding: .65rem 1rem;
         text-align: center;
 
         a {
@@ -364,25 +364,13 @@ html {
             font-size: 12px;
             letter-spacing: 0;
 
-            > a,
-            > button {
+            // Matches the height of the floated social icons opposite, so the
+            // two sides sit on the same optical line rather than the links
+            // hugging the top of the row.
+            line-height: 1rem;
+
+            > a {
               padding: 0 .35rem 0 0;
-
-              // Reopens the consent banner, so it has to be a real button for
-              // keyboard and screen-reader users; stripped back to match the
-              // links beside it.
-              &.footer-cookie-settings {
-                background: none;
-                border: 0;
-                color: inherit;
-                font: inherit;
-                cursor: pointer;
-
-                &:focus,
-                &:hover {
-                  color: darken(@White, 10%);
-                }
-              }
             }
 
             // Below 768px the four items cannot share the row with the social
@@ -391,8 +379,7 @@ html {
             @media (max-width: 767.98px) {
               font-size: 10px;
 
-              > a,
-              > button {
+              > a {
                 padding: 0 .2rem 0 0;
               }
 
@@ -2994,7 +2981,10 @@ footer {
         text-align: center;
         text-transform: uppercase;
 
+        // The year sits under the wordmark and reads as a caption, so it
+        // opts out of the .bold inherited from the <p> above.
         > small {
+          .regular;
           letter-spacing: 0;
         }
       }

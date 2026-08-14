@@ -1,20 +1,24 @@
 ---
 layout: page
 title: Cookie Policy
-description: Which cookies this website uses, what they do, and how to accept, reject or change your choice.
+description: Which cookies this website uses, what they do, and how to accept or reject them.
 permalink: /en/cookie-policy/
 lang: en
 i18n-ref: cookie-policy-67RmRt6B
-last_modified: 2026-08-13
+last_modified: 2026-08-14
 ---
 
 # Cookie Policy
+
+Which cookies this website uses, what they do, and how to accept or reject them.
 
 **Last updated: 13 August 2026**
 
 > This English version is provided for convenience. In the event of any discrepancy, the Spanish version prevails, as this website is operated under Spanish law.
 
 This website, **aikidomusubi.com**, owned by Aikido Musubi, uses cookies and similar technologies. This Cookie Policy has been prepared in line with the *Guide on the use of cookies* of the Spanish Data Protection Agency (AEPD).
+
+<hr>
 
 ## 1. What are cookies?
 
@@ -48,13 +52,11 @@ If the website embeds content from external platforms (for example, **YouTube vi
 
 ## 3. Consent
 
-When you first access the website, a **cookie settings panel** is displayed that allows you to **accept all**, **reject all** or **configure** the non-necessary cookies. Analytics and third-party cookies **are not activated until you give your consent**. Rejecting is as easy as accepting.
+When you first access the website, a **cookie notice** is displayed that allows you to **accept all** or **reject all** non-necessary cookies. Analytics and third-party cookies **are not activated until you give your consent**. Rejecting is as easy as accepting.
 
 ## 4. How can you manage or withdraw your consent?
 
-You can change your choice at any time via the **"Cookie settings"** link available in the footer of the website.
-
-You can also allow, block or delete the cookies installed on your device through your browser settings:
+You can allow, block or delete the cookies installed on your device through your browser settings:
 
 - [Google Chrome](https://support.google.com/chrome/answer/95647)
 - [Mozilla Firefox](https://support.mozilla.org/en-US/kb/enhanced-tracking-protection-firefox-desktop)
