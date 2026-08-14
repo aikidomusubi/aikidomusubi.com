@@ -492,17 +492,28 @@ html {
           letter-spacing: 0;
           text-align: left;
 
+          // A flex row with a real gap rather than links separated by right
+          // padding: Lighthouse measures the gap between adjacent targets as
+          // well as their size, and trailing padding on the last link also
+          // pushed the row off-centre.
+          display: flex;
+          align-items: center;
+          gap: .5rem;
+
+          // 12px text gives a ~15px tall link, under the 24px minimum. The
+          // padding is vertical only — widening these would eat the row on
+          // narrow screens, and the text is already wider than 24px.
           > a {
-            padding: 0 .5rem 0 0;
+            display: inline-flex;
+            align-items: center;
+            min-height: 24px;
+            padding: 0 .125rem;
             white-space: nowrap;
           }
 
           @media (max-width: 767.98px) {
             font-size: 11px;
-
-            > a {
-              padding: 0 .35rem 0 0;
-            }
+            gap: .35rem;
           }
         }
 

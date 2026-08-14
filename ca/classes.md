@@ -23,7 +23,7 @@ Disposem d'un ampli horari de classes per acomodar a adults i nens, i diferents 
 <picture>
   <source type="image/webp" srcset="/images/classes-CJc2lhFv-27.webp">
   <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-27.jpg">
-  <img src="/images/classes-CJc2lhFv-27.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Classes de aikido" width="948" height="758">
+  <img src="/images/classes-CJc2lhFv-27.jpg" class="img-fluid" fetchpriority="high" alt="Aikido Musubi Classes de aikido" width="948" height="758">
 </picture>
 
 Pràctica regular per a tots els nivells. Disponible per a tots els membres majors de 12 anys.

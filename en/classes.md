@@ -23,7 +23,7 @@ We have a wide schedule of classes to accommodate adults and children, and diffe
 <picture>
   <source type="image/webp" srcset="/images/classes-CJc2lhFv-27.webp">
   <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-27.jpg">
-  <img src="/images/classes-CJc2lhFv-27.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Aikido classes" width="948" height="758">
+  <img src="/images/classes-CJc2lhFv-27.jpg" class="img-fluid" fetchpriority="high" alt="Aikido Musubi Aikido classes" width="948" height="758">
 </picture>
 
 Regular practice for all levels. Available to all members over 12 years old.

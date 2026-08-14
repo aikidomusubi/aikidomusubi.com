@@ -23,7 +23,7 @@ last_modified: 2026-02-26
 <picture>
   <source type="image/webp" srcset="/images/classes-CJc2lhFv-27.webp">
   <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-27.jpg">
-  <img src="/images/classes-CJc2lhFv-27.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 一般クラス" width="948" height="758">
+  <img src="/images/classes-CJc2lhFv-27.jpg" class="img-fluid" fetchpriority="high" alt="合気道産靈 一般クラス" width="948" height="758">
 </picture>
 
 すべてのレベルの方への定期的なクラス。12歳以上のすべての方が利用できます。

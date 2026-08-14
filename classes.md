@@ -23,7 +23,7 @@ Disponemos de un amplio horario de classes para acomodar a adultos y niños, y d
 <picture>
   <source type="image/webp" srcset="/images/classes-CJc2lhFv-27.webp">
   <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-27.jpg">
-  <img src="/images/classes-CJc2lhFv-27.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Clases de aikido" width="948" height="758">
+  <img src="/images/classes-CJc2lhFv-27.jpg" class="img-fluid" fetchpriority="high" alt="Aikido Musubi Clases de aikido" width="948" height="758">
 </picture>
 
 Práctica regular para todos los niveles. Disponible para todos los miembros mayores de 12 años.
