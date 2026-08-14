@@ -32,6 +32,68 @@
 }
 
 // ---------------------------------------------------------------------------
+// Focus rings — removed by request
+//
+// Bootstrap 5 does not draw focus with an outline; it paints a .25rem
+// box-shadow ring (and a 2px one on .navbar-toggler, which is the border that
+// prompted this). Browsers then add their own outline on top. Both are
+// cancelled here.
+//
+// Two mechanisms, because one is not enough. Zeroing the custom properties
+// kills the ring at its source, which matters for the compound selectors —
+// `.btn-check:checked + .btn:focus-visible` is four classes deep and would
+// outrank anything reasonable written below. The selector block then catches
+// the browser's own outline and any component whose ring is hard-coded rather
+// than driven by a variable.
+//
+// Worth knowing: this removes the only visible indication of keyboard focus,
+// so the site no longer satisfies WCAG 2.4.7. Mouse users never saw these
+// rings — :focus-visible already withheld them — so what is given up is
+// specifically a keyboard user's ability to tell where they are on the page.
+// A subtle branded indicator could replace them without the Bootstrap look.
+// ---------------------------------------------------------------------------
+:root {
+  --bs-focus-ring-width: 0;
+  --bs-focus-ring-opacity: 0;
+  --bs-focus-ring-color: transparent;
+}
+
+.navbar {
+  --bs-navbar-toggler-focus-width: 0;
+}
+
+.btn,
+.btn-close {
+  --bs-btn-focus-box-shadow: none;
+  --bs-btn-close-focus-shadow: none;
+}
+
+a,
+button,
+input,
+select,
+textarea,
+summary,
+[tabindex],
+.btn,
+.btn-close,
+.nav-link,
+.dropdown-item,
+.dropdown-toggle,
+.navbar-toggler,
+.page-link,
+.form-control,
+.form-select,
+.form-check-input {
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Cookie consent banner
 //
 // Styled as a card, matching the pricing cards on the fees page: light
@@ -225,6 +287,16 @@ html {
         padding-bottom: var(--footer-height);
         padding-right: 0; padding-left: 0;
 
+        // Bootstrap 4 had no xxl tier, so .container topped out at 1140px and
+        // every page on this site was laid out around that measure. Bootstrap
+        // 5 added a 1400px breakpoint that widens it to 1320px, which silently
+        // stretched the content column on large screens during the upgrade —
+        // most visibly on the training schedule, where the calendar simply got
+        // wider. Capped back to the width the design was built for.
+        @media (min-width: 1400px) {
+          max-width: 1140px;
+        }
+
         > main {
           .NotoSans;
           .show;
@@ -247,7 +319,17 @@ html {
           // auto layout giving wildly uneven columns. Styled here rather than
           // by rewriting the Markdown as HTML, so every language and any
           // future table is covered by one rule.
-          table {
+          //
+          // The child combinator is load-bearing, not tidiness. FullCalendar
+          // builds its entire grid out of tables and supplies its own metrics,
+          // and a descendant selector here reached every one of them — the
+          // 1.5rem margin split the header off the body, border-collapse and
+          // border-bottom fought .table-bordered, and .5rem/.75rem padding
+          // pushed every day cell out of shape. Kramdown always emits its
+          // tables as direct children of <main>; FullCalendar injects its own
+          // at runtime, several levels down inside .fc. Only the first can
+          // ever match this.
+          > table {
             width: 100%;
             border-collapse: collapse;
             font-size: .875rem;
@@ -678,14 +760,22 @@ html {
               margin-top: 0; margin-bottom: 1rem;
               padding: 0;
 
+              // The menu is transparent over the dark navbar, so these sit on
+              // #343a40 exactly like the nav links above them. They were
+              // darken(@White, 50%) — #808080, 2.91:1, the same failure the
+              // language switcher had. Matched to the rest of the dark
+              // furniture: white at .9, full white on hover, same fade.
               a.dropdown-item {
-                color: darken(@White, 50%);
+                color: @White;
+                opacity: .9;
+                transition: opacity .2s ease;
                 padding: .5rem 1.5rem;
 
                 &:focus,
                 &:hover {
                   background-color: transparent;
-                  color: darken(@White, 10%);
+                  color: @White;
+                  opacity: 1;
                 }
               }
             }
@@ -1732,6 +1822,45 @@ body.training-schedule-IFMn5oCc {
 
             &.table-bordered {
               border: 1px solid fadeout(@Black, 90%);
+
+              // The calendar grid itself.
+              //
+              // Bootstrap 4 painted every bordered-table cell with
+              //   .table-bordered td, .table-bordered th { border: 1px solid #dee2e6 }
+              // and those cell borders ARE the grid — the week columns and the
+              // rule under the day names are nothing else. Bootstrap 5 replaced
+              // that with `.table-bordered > :not(caption) > * { border-width }`,
+              // which sets a width but takes its colour from --bs-border-color,
+              // and that variable is only defined on `.table`. FullCalendar's
+              // tables carry .table-bordered without .table, so the colour
+              // resolved to transparent and the entire grid became invisible in
+              // the upgrade — 1px borders drawn in nothing.
+              //
+              // Restoring Bootstrap 4's own value rather than the project token,
+              // because this has to match what the live site draws: @Black
+              // faded 90% lands on #e7e7e8, a shade lighter than #dee2e6.
+              //
+              // Descendant selectors, not child, and that is the whole trick.
+              // FullCalendar nests a table per row inside the outer one, so
+              // .fc-day-header and .fc-day are never the outer table's own
+              // cells — a child combinator reaches only td.fc-head-container
+              // and leaves the actual grid transparent. Bootstrap 4's rules
+              // were descendants and swept the whole nest; these match it.
+              th,
+              td {
+                border-color: #dee2e6;
+              }
+
+              // Bootstrap 4 also shipped
+              //   .table-bordered thead td, .table-bordered thead th
+              //     { border-bottom-width: 2px }
+              // which is what weighted the day-name row against the grid below
+              // it. Both td and th, because the row is wrapped in a
+              // td.fc-head-container as well as carrying th.fc-day-header.
+              thead th,
+              thead td {
+                border-bottom-width: 2px;
+              }
 
               > thead {
 
@@ -3861,11 +3990,14 @@ html[lang="ja"] {
 
                 a.dropdown-item {
 
-                  color: darken(@White, 50%);
+                  color: @White;
+                  opacity: .9;
+                  transition: opacity .2s ease;
 
                   &:focus,
                   &:hover {
-                    color: darken(@White, 10%);
+                    color: @White;
+                    opacity: 1;
                   }
                 }
               }
@@ -4293,11 +4425,14 @@ html[lang="ja"] {
 
                 a.dropdown-item {
 
-                  color: darken(@White, 50%);
+                  color: @White;
+                  opacity: .9;
+                  transition: opacity .2s ease;
 
                   &:focus,
                   &:hover {
-                    color: darken(@White, 10%);
+                    color: @White;
+                    opacity: 1;
                   }
                 }
               }
