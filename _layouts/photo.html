@@ -9,17 +9,18 @@
 
       {% for photo in site.photos reversed %}
 
-        <div class="col col-12 col-sm-12 col-md-6">
+        <div class="col col-12 col-sm-12 col-md-6 {{ photo.photos.category }}">
 
           <a href="#" role="button" data-bs-toggle="modal" data-bs-target="#modal{{ photo.photos.album }}" data-target-name="{{ photo.photos.album }}">
             <div class="hover hover-2 text-white">
               <picture>
                 <source type="image/webp" srcset="/photos/{{ photo.photos.album }}/{{ photo.photos.album }}-0.webp">
                 <source type="image/jpeg" srcset="/photos/{{ photo.photos.album }}/{{ photo.photos.album }}-0.jpg">
-                <img src="/photos/{{ photo.photos.album }}/{{ photo.photos.album }}-0.jpg" class="img-fluid" loading="lazy" alt="{% if page.lang == "ca" %}{{ photo.title_ca }}{% elsif page.lang == "en" %}{{ photo.title_en }}{% elsif page.lang == "es" %}{{ photo.title_es }}{% elsif page.lang == "ja" %}{{ photo.title_ja }}{% endif %}">
+                <img src="/photos/{{ photo.photos.album }}/{{ photo.photos.album }}-0.jpg" class="img-fluid" loading="lazy" width="640" height="480" alt="{% if page.lang == "ca" %}{{ photo.title_ca }}{% elsif page.lang == "en" %}{{ photo.title_en }}{% elsif page.lang == "es" %}{{ photo.title_es }}{% elsif page.lang == "ja" %}{{ photo.title_ja }}{% endif %}">
                 </picture>
               <div class="hover-overlay"></div>
               <div class="hover-2-content px-5 py-4">
+                <span class="album-size-badge">{{ photo.photos.size }}</span>
                 <h3 class="hover-2-title text-uppercase">{% if page.lang == "ca" %}{{ photo.title_ca }}{% elsif page.lang == "en" %}{{ photo.title_en }}{% elsif page.lang == "es" %}{{ photo.title_es }}{% elsif page.lang == "ja" %}{{ photo.title_ja }}{% endif %}</h3>
                 <p class="hover-2-description text-uppercase">{% if page.lang == "ca" %}Obrir{% elsif page.lang == "en" %}Open{% elsif page.lang == "es" %}Abrir{% elsif page.lang == "ja" %}開く{% endif %}</p>
               </div>

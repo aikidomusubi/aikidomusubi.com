@@ -15,7 +15,7 @@ last_modified: 2026-05-31
 <picture>
   <source type="image/webp" srcset="/images/index-8oGCaMDs-01.webp">
   <source type="image/jpeg" srcset="/images/index-8oGCaMDs-01.jpg">
-  <img src="/images/index-8oGCaMDs-01.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Benvinguts">
+  <img src="/images/index-8oGCaMDs-01.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Benvinguts" width="948" height="632">
 </picture>
 
 L'Associació Cultural Musubi Aikido (__Aikido Musubi__), fundada el 2008, és una associació autogestionada i sense ànim de lucre que promou l'aikido a Barcelona i els voltants. Oferim classes d'aikido per a adults i nens tots els dies al nostre dojo (_Av. D'Alfons XIII, 351 08918 Badalona, ​​Barcelona_).
@@ -35,7 +35,7 @@ Ens agrada compartir la nostra experiència i per això donem la benvinguda a to
 <picture>
   <source type="image/webp" srcset="/images/index-8oGCaMDs-09.webp">
   <source type="image/jpeg" srcset="/images/index-8oGCaMDs-09.jpg">
-  <img src="/images/index-8oGCaMDs-09.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi El nostre dojo">
+  <img src="/images/index-8oGCaMDs-09.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi El nostre dojo" width="948" height="632">
 </picture>
 
 La filosofia d'__Aikido Musubi__ es basa en els preceptes establerts pel fundador de l'aikido, Morihei Ueshiba, i heretada pel segon i tercer doshu, així com els mestres (_shihan_) de la seu mundial de l'aikido, el [Hombu Dojo](http://www.aikikai.or.jp/).
@@ -57,7 +57,7 @@ Així mateix, participem i oferim classes obertes i gratuïtes en esdeveniments 
 <picture>
   <source type="image/webp" srcset="/images/index-8oGCaMDs-02.webp">
   <source type="image/jpeg" srcset="/images/index-8oGCaMDs-02.jpg">
-  <img src="/images/index-8oGCaMDs-02.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Aikido">
+  <img src="/images/index-8oGCaMDs-02.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Aikido" width="948" height="711">
 </picture>
 
 L'aikido és un art marcial japonès no competitiu desenvolupat a principis de segle XX per Morihei Ueshiba (1883-1969). Es basa en altres arts marcials tradicionals del Japó, principalment _Daitō-ryū Aiki-jūjutsu_, i utilitza moviments flexibles, naturals, i altament efectius per evadir, redirigir o neutralitzar els atacs utilitzant la força de l'oponent.
@@ -78,14 +78,14 @@ A __Aikido Musubi__, oferim classes que són adequades per a persones sense expe
       <picture>
         <source type="image/webp" srcset="/images/index-8oGCaMDs-05_.webp">
         <source type="image/jpeg" srcset="/images/index-8oGCaMDs-05_.jpg">
-        <img src="/images/index-8oGCaMDs-04.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Pablo Martín">
+        <img src="/images/index-8oGCaMDs-04.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Pablo Martín" width="948" height="632">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
         <source type="image/webp" srcset="/images/index-8oGCaMDs-06_.webp">
         <source type="image/jpeg" srcset="/images/index-8oGCaMDs-06_.jpg">
-        <img src="/images/index-8oGCaMDs-06.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Pablo Martín">
+        <img src="/images/index-8oGCaMDs-06.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Pablo Martín" width="948" height="632">
       </picture>
     </div>
   </div>
@@ -94,14 +94,14 @@ A __Aikido Musubi__, oferim classes que són adequades per a persones sense expe
       <picture>
         <source type="image/webp" srcset="/images/index-8oGCaMDs-07_.webp">
         <source type="image/jpeg" srcset="/images/index-8oGCaMDs-07_.jpg">
-        <img src="/images/index-8oGCaMDs-07.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Pablo Martín">
+        <img src="/images/index-8oGCaMDs-07.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Pablo Martín" width="948" height="632">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
         <source type="image/webp" srcset="/images/index-8oGCaMDs-08_.webp">
         <source type="image/jpeg" srcset="/images/index-8oGCaMDs-08_.jpg">
-        <img src="/images/index-8oGCaMDs-08.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Pablo Martín">
+        <img src="/images/index-8oGCaMDs-08.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Pablo Martín" width="948" height="632">
       </picture>
     </div>
   </div>
@@ -123,7 +123,7 @@ Actualment, té el grau de 4t dan i el títol de _shidoin_ (instructor qualifica
       <picture>
         <source type="image/webp" srcset="/images/index-8oGCaMDs-13.webp">
         <source type="image/jpeg" srcset="/images/index-8oGCaMDs-13.jpg">
-        <img src="/images/index-8oGCaMDs-13.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Pedro Fortes">
+        <img src="/images/index-8oGCaMDs-13.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Pedro Fortes" width="320" height="320">
       </picture>
       <span>Pedro Fortes <em>(4t dan)</em></span>
     </div>
@@ -131,7 +131,7 @@ Actualment, té el grau de 4t dan i el títol de _shidoin_ (instructor qualifica
       <picture>
         <source type="image/webp" srcset="/images/index-8oGCaMDs-15.webp">
         <source type="image/jpeg" srcset="/images/index-8oGCaMDs-15.jpg">
-        <img src="/images/index-8oGCaMDs-15.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi José Luis Zafra">
+        <img src="/images/index-8oGCaMDs-15.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi José Luis Zafra" width="346" height="346">
       </picture>
       <span>José Luis Zafra <em>(4t dan)</em></span>
     </div>
@@ -139,7 +139,7 @@ Actualment, té el grau de 4t dan i el títol de _shidoin_ (instructor qualifica
       <picture>
         <source type="image/webp" srcset="/images/index-8oGCaMDs-16.webp">
         <source type="image/jpeg" srcset="/images/index-8oGCaMDs-16.jpg">
-        <img src="/images/index-8oGCaMDs-16.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Alberto Sancho">
+        <img src="/images/index-8oGCaMDs-16.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Alberto Sancho" width="320" height="320">
       </picture>
       <span>Alberto Sancho <em>(4t dan)</em></span>
     </div>
@@ -149,7 +149,7 @@ Actualment, té el grau de 4t dan i el títol de _shidoin_ (instructor qualifica
       <picture>
         <source type="image/webp" srcset="/images/index-8oGCaMDs-17.webp">
         <source type="image/jpeg" srcset="/images/index-8oGCaMDs-17.jpg">
-        <img src="/images/index-8oGCaMDs-17.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Juanma Pérez">
+        <img src="/images/index-8oGCaMDs-17.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Juanma Pérez" width="320" height="320">
       </picture>
       <span>Juanma Pérez <em>(3r dan)</em></span>
     </div>
@@ -157,7 +157,7 @@ Actualment, té el grau de 4t dan i el títol de _shidoin_ (instructor qualifica
       <picture>
         <source type="image/webp" srcset="/images/index-8oGCaMDs-18.webp">
         <source type="image/jpeg" srcset="/images/index-8oGCaMDs-18.jpg">
-        <img src="/images/index-8oGCaMDs-18.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Andreu Villar">
+        <img src="/images/index-8oGCaMDs-18.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Andreu Villar" width="320" height="320">
       </picture>
       <span>Andreu Villar <em>(3r dan)</em></span>
     </div>
@@ -165,7 +165,7 @@ Actualment, té el grau de 4t dan i el títol de _shidoin_ (instructor qualifica
       <picture>
         <source type="image/webp" srcset="/images/index-8oGCaMDs-19.webp">
         <source type="image/jpeg" srcset="/images/index-8oGCaMDs-19.jpg">
-        <img src="/images/index-8oGCaMDs-19.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Guanlong Zheng">
+        <img src="/images/index-8oGCaMDs-19.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Guanlong Zheng" width="320" height="320">
       </picture>
       <span>Guanlong Zheng <em>(3r dan)</em></span>
     </div>
@@ -182,14 +182,14 @@ Actualment, té el grau de 4t dan i el títol de _shidoin_ (instructor qualifica
       <picture>
         <source type="image/webp" srcset="/images/index-8oGCaMDs-12.webp">
         <source type="image/jpeg" srcset="/images/index-8oGCaMDs-12.jpg">
-        <img src="/images/index-8oGCaMDs-12.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Associació Cultural">
+        <img src="/images/index-8oGCaMDs-12.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Associació Cultural" width="640" height="428">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
         <source type="image/webp" srcset="/images/index-8oGCaMDs-11.webp">
         <source type="image/jpeg" srcset="/images/index-8oGCaMDs-11.jpg">
-        <img src="/images/index-8oGCaMDs-11.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Associació Cultural">
+        <img src="/images/index-8oGCaMDs-11.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Associació Cultural" width="640" height="428">
       </picture>
     </div>
   </div>

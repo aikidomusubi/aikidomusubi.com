@@ -15,7 +15,7 @@ last_modified: 2026-05-31
 <picture>
   <source type="image/webp" srcset="/images/index-8oGCaMDs-01.webp">
   <source type="image/jpeg" srcset="/images/index-8oGCaMDs-01.jpg">
-  <img src="/images/index-8oGCaMDs-01.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 ようこそ">
+  <img src="/images/index-8oGCaMDs-01.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 ようこそ" width="948" height="632">
 </picture>
 
 <ruby>産霊<rt>むすび</rt></ruby>合気道文化協会（<b>合気道産靈</b>）は2008年にバルセロナで設立された、合気道を推進する自己管理の非営利団体です。私たちは道場（住所：〒08918 カタルーニャ州バルセロナ県バダロナ 351 アルフォンス・XIII通り）で毎日大人と子供に合気道クラスを提供しています。
@@ -35,7 +35,7 @@ last_modified: 2026-05-31
 <picture>
   <source type="image/webp" srcset="/images/index-8oGCaMDs-09.webp">
   <source type="image/jpeg" srcset="/images/index-8oGCaMDs-09.jpg">
-  <img src="/images/index-8oGCaMDs-09.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 道場につして">
+  <img src="/images/index-8oGCaMDs-09.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 道場につして" width="948" height="632">
 </picture>
 
 <b>合気道産靈</b>の哲学は、合気道開祖・植芝盛平翁によって確立された教訓に基づいており、二代目道主と三代目道主、また[本部道場](http://www.aikikai.or.jp/)の師範によって継承されます。
@@ -57,7 +57,7 @@ last_modified: 2026-05-31
 <picture>
   <source type="image/webp" srcset="/images/index-8oGCaMDs-02.webp">
   <source type="image/jpeg" srcset="/images/index-8oGCaMDs-02.jpg">
-  <img src="/images/index-8oGCaMDs-02.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 合気道とは">
+  <img src="/images/index-8oGCaMDs-02.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 合気道とは" width="948" height="711">
 </picture>
 
 合気道は、20世紀初頭に植芝盛平（1883-1969）によって開発された非競争的な日本の武道です。これは、他の日本の伝統的な武術（主に大東流合気柔術）に基づいており、柔軟で自然で非常に効果的な動きを使用して、敵の力を使って攻撃を回避、リダイレクト、または無効化します。
@@ -78,14 +78,14 @@ last_modified: 2026-05-31
       <picture>
         <source type="image/webp" srcset="/images/index-8oGCaMDs-05_.webp">
         <source type="image/jpeg" srcset="/images/index-8oGCaMDs-05_.jpg">
-        <img src="/images/index-8oGCaMDs-04.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Pablo Martín">
+        <img src="/images/index-8oGCaMDs-04.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Pablo Martín" width="948" height="632">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
         <source type="image/webp" srcset="/images/index-8oGCaMDs-06_.webp">
         <source type="image/jpeg" srcset="/images/index-8oGCaMDs-06_.jpg">
-        <img src="/images/index-8oGCaMDs-06.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Pablo Martín">
+        <img src="/images/index-8oGCaMDs-06.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Pablo Martín" width="948" height="632">
       </picture>
     </div>
   </div>
@@ -94,14 +94,14 @@ last_modified: 2026-05-31
       <picture>
         <source type="image/webp" srcset="/images/index-8oGCaMDs-07_.webp">
         <source type="image/jpeg" srcset="/images/index-8oGCaMDs-07_.jpg">
-        <img src="/images/index-8oGCaMDs-07.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Pablo Martín">
+        <img src="/images/index-8oGCaMDs-07.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Pablo Martín" width="948" height="632">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
         <source type="image/webp" srcset="/images/index-8oGCaMDs-08_.webp">
         <source type="image/jpeg" srcset="/images/index-8oGCaMDs-08_.jpg">
-        <img src="/images/index-8oGCaMDs-08.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Pablo Martín">
+        <img src="/images/index-8oGCaMDs-08.jpg" class="img-fluid" loading="lazy" alt="Aikido Musubi Pablo Martín" width="948" height="632">
       </picture>
     </div>
   </div>
@@ -123,7 +123,7 @@ last_modified: 2026-05-31
       <picture>
         <source type="image/webp" srcset="/images/index-8oGCaMDs-13.webp">
         <source type="image/jpeg" srcset="/images/index-8oGCaMDs-13.jpg">
-        <img src="/images/index-8oGCaMDs-13.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 ペドロ・フォルテス">
+        <img src="/images/index-8oGCaMDs-13.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 ペドロ・フォルテス" width="320" height="320">
       </picture>
       <span>ペドロ・フォルテス<em>（四段）</em></span>
     </div>
@@ -131,7 +131,7 @@ last_modified: 2026-05-31
       <picture>
         <source type="image/webp" srcset="/images/index-8oGCaMDs-15.webp">
         <source type="image/jpeg" srcset="/images/index-8oGCaMDs-15.jpg">
-        <img src="/images/index-8oGCaMDs-15.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 ホセ・ルイス・ザフラ">
+        <img src="/images/index-8oGCaMDs-15.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 ホセ・ルイス・ザフラ" width="346" height="346">
       </picture>
       <span>ホセ・ルイス・ザフラ<em>（四段）</em></span>
     </div>
@@ -139,7 +139,7 @@ last_modified: 2026-05-31
       <picture>
         <source type="image/webp" srcset="/images/index-8oGCaMDs-16.webp">
         <source type="image/jpeg" srcset="/images/index-8oGCaMDs-16.jpg">
-        <img src="/images/index-8oGCaMDs-16.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 アルベルト・サンチョ">
+        <img src="/images/index-8oGCaMDs-16.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 アルベルト・サンチョ" width="320" height="320">
       </picture>
       <span>アルベルト・サンチョ<em>（四段）</em></span>
     </div>
@@ -149,7 +149,7 @@ last_modified: 2026-05-31
       <picture>
         <source type="image/webp" srcset="/images/index-8oGCaMDs-17.webp">
         <source type="image/jpeg" srcset="/images/index-8oGCaMDs-17.jpg">
-        <img src="/images/index-8oGCaMDs-17.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 フアンマ・ペレス">
+        <img src="/images/index-8oGCaMDs-17.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 フアンマ・ペレス" width="320" height="320">
       </picture>
       <span>フアンマ・ペレス<em>（参段）</em></span>
     </div>
@@ -157,7 +157,7 @@ last_modified: 2026-05-31
       <picture>
         <source type="image/webp" srcset="/images/index-8oGCaMDs-18.webp">
         <source type="image/jpeg" srcset="/images/index-8oGCaMDs-18.jpg">
-        <img src="/images/index-8oGCaMDs-18.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 アンドレウ・ビリャル">
+        <img src="/images/index-8oGCaMDs-18.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 アンドレウ・ビリャル" width="320" height="320">
       </picture>
       <span>アンドレウ・ビリャル<em>（参段）</em></span>
     </div>
@@ -165,7 +165,7 @@ last_modified: 2026-05-31
       <picture>
         <source type="image/webp" srcset="/images/index-8oGCaMDs-19.webp">
         <source type="image/jpeg" srcset="/images/index-8oGCaMDs-19.jpg">
-        <img src="/images/index-8oGCaMDs-19.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 チェン・グァンロン">
+        <img src="/images/index-8oGCaMDs-19.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 チェン・グァンロン" width="320" height="320">
       </picture>
       <span>チェン・グァンロン<em>（参段）</em></span>
     </div>
@@ -182,14 +182,14 @@ last_modified: 2026-05-31
       <picture>
         <source type="image/webp" srcset="/images/index-8oGCaMDs-12.webp">
         <source type="image/jpeg" srcset="/images/index-8oGCaMDs-12.jpg">
-        <img src="/images/index-8oGCaMDs-12.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 文化協会">
+        <img src="/images/index-8oGCaMDs-12.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 文化協会" width="640" height="428">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
         <source type="image/webp" srcset="/images/index-8oGCaMDs-11.webp">
         <source type="image/jpeg" srcset="/images/index-8oGCaMDs-11.jpg">
-        <img src="/images/index-8oGCaMDs-11.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 文化協会">
+        <img src="/images/index-8oGCaMDs-11.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 文化協会" width="640" height="428">
       </picture>
     </div>
   </div>

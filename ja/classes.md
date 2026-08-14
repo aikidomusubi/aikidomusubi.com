@@ -23,7 +23,7 @@ last_modified: 2026-02-26
 <picture>
   <source type="image/webp" srcset="/images/classes-CJc2lhFv-27.webp">
   <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-27.jpg">
-  <img src="/images/classes-CJc2lhFv-27.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 一般クラス">
+  <img src="/images/classes-CJc2lhFv-27.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 一般クラス" width="948" height="758">
 </picture>
 
 すべてのレベルの方への定期的なクラス。12歳以上のすべての方が利用できます。
@@ -63,14 +63,14 @@ __土__
       <picture>
         <source type="image/webp" srcset="/images/classes-CJc2lhFv-17.webp">
         <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-17.jpg">
-        <img src="/images/classes-CJc2lhFv-17.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 初心者クラス">
+        <img src="/images/classes-CJc2lhFv-17.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 初心者クラス" width="948" height="632">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
         <source type="image/webp" srcset="/images/classes-CJc2lhFv-22.webp">
         <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-22.jpg">
-        <img src="/images/classes-CJc2lhFv-22.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 初心者クラス">
+        <img src="/images/classes-CJc2lhFv-22.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 初心者クラス" width="948" height="632">
       </picture>
     </div>
   </div>
@@ -79,14 +79,14 @@ __土__
       <picture>
         <source type="image/webp" srcset="/images/classes-CJc2lhFv-00.webp">
         <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-00.jpg">
-        <img src="/images/classes-CJc2lhFv-00.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 初心者クラス">
+        <img src="/images/classes-CJc2lhFv-00.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 初心者クラス" width="948" height="632">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
         <source type="image/webp" srcset="/images/classes-CJc2lhFv-01.webp">
         <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-01.jpg">
-        <img src="/images/classes-CJc2lhFv-01.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 初心者クラス">
+        <img src="/images/classes-CJc2lhFv-01.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 初心者クラス" width="948" height="632">
       </picture>
     </div>
   </div>
@@ -112,14 +112,14 @@ __水__
       <picture>
         <source type="image/webp" srcset="/images/classes-CJc2lhFv-15.webp">
         <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-15.jpg">
-        <img src="/images/classes-CJc2lhFv-15.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 武器クラス">
+        <img src="/images/classes-CJc2lhFv-15.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 武器クラス" width="640" height="512">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
         <source type="image/webp" srcset="/images/classes-CJc2lhFv-16.webp">
         <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-16.jpg">
-        <img src="/images/classes-CJc2lhFv-16.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 武器クラス">
+        <img src="/images/classes-CJc2lhFv-16.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 武器クラス" width="640" height="512">
       </picture>
     </div>
   </div>
@@ -138,14 +138,14 @@ __木__
       <picture>
         <source type="image/webp" srcset="/images/classes-CJc2lhFv-30.webp">
         <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-30.jpg">
-        <img src="/images/classes-CJc2lhFv-30.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 子供クラス">
+        <img src="/images/classes-CJc2lhFv-30.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 子供クラス" width="948" height="533">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
         <source type="image/webp" srcset="/images/classes-CJc2lhFv-31.webp">
         <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-31.jpg">
-        <img src="/images/classes-CJc2lhFv-31.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 子供クラス">
+        <img src="/images/classes-CJc2lhFv-31.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 子供クラス" width="948" height="533">
       </picture>
     </div>
   </div>
@@ -154,14 +154,14 @@ __木__
       <picture>
         <source type="image/webp" srcset="/images/classes-CJc2lhFv-33.webp">
         <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-33.jpg">
-        <img src="/images/classes-CJc2lhFv-33.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 子供クラス">
+        <img src="/images/classes-CJc2lhFv-33.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 子供クラス" width="948" height="533">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
         <source type="image/webp" srcset="/images/classes-CJc2lhFv-32.webp">
         <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-32.jpg">
-        <img src="/images/classes-CJc2lhFv-32.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 子供クラス">
+        <img src="/images/classes-CJc2lhFv-32.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 子供クラス" width="948" height="533">
       </picture>
     </div>
   </div>
@@ -181,14 +181,14 @@ _子供クラスを一時的に休止させていただきます。_
       <picture>
         <source type="image/webp" srcset="/images/classes-CJc2lhFv-34.webp">
         <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-34.jpg">
-        <img src="/images/classes-CJc2lhFv-34.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 居合術クラス">
+        <img src="/images/classes-CJc2lhFv-34.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 居合術クラス" width="948" height="632">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
         <source type="image/webp" srcset="/images/classes-CJc2lhFv-35.webp">
         <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-35.jpg">
-        <img src="/images/classes-CJc2lhFv-35.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 居合術クラス">
+        <img src="/images/classes-CJc2lhFv-35.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 居合術クラス" width="948" height="632">
       </picture>
     </div>
   </div>
@@ -197,14 +197,14 @@ _子供クラスを一時的に休止させていただきます。_
       <picture>
         <source type="image/webp" srcset="/images/classes-CJc2lhFv-36.webp">
         <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-36.jpg">
-        <img src="/images/classes-CJc2lhFv-36.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 居合術クラス">
+        <img src="/images/classes-CJc2lhFv-36.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 居合術クラス" width="948" height="632">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
         <source type="image/webp" srcset="/images/classes-CJc2lhFv-37.webp">
         <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-37.jpg">
-        <img src="/images/classes-CJc2lhFv-37.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 居合術クラス">
+        <img src="/images/classes-CJc2lhFv-37.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 居合術クラス" width="948" height="632">
       </picture>
     </div>
   </div>
@@ -230,14 +230,14 @@ __土__
       <picture>
         <source type="image/webp" srcset="/images/classes-CJc2lhFv-38.webp">
         <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-38.jpg">
-        <img src="/images/classes-CJc2lhFv-38.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 柔道クラス">
+        <img src="/images/classes-CJc2lhFv-38.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 柔道クラス" width="948" height="632">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
         <source type="image/webp" srcset="/images/classes-CJc2lhFv-39.webp">
         <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-39.jpg">
-        <img src="/images/classes-CJc2lhFv-39.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 柔道クラス">
+        <img src="/images/classes-CJc2lhFv-39.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 柔道クラス" width="948" height="632">
       </picture>
     </div>
   </div>
@@ -246,14 +246,14 @@ __土__
       <picture>
         <source type="image/webp" srcset="/images/classes-CJc2lhFv-40.webp">
         <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-40.jpg">
-        <img src="/images/classes-CJc2lhFv-40.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 柔道クラス">
+        <img src="/images/classes-CJc2lhFv-40.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 柔道クラス" width="948" height="632">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
         <source type="image/webp" srcset="/images/classes-CJc2lhFv-41.webp">
         <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-41.jpg">
-        <img src="/images/classes-CJc2lhFv-41.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 柔道クラス">
+        <img src="/images/classes-CJc2lhFv-41.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 柔道クラス" width="948" height="632">
       </picture>
     </div>
   </div>
@@ -287,14 +287,14 @@ __水__
       <picture>
         <source type="image/webp" srcset="/images/classes-CJc2lhFv-42.webp">
         <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-42.jpg">
-        <img src="/images/classes-CJc2lhFv-42.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 空手クラス">
+        <img src="/images/classes-CJc2lhFv-42.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 空手クラス" width="1080" height="1080">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
         <source type="image/webp" srcset="/images/classes-CJc2lhFv-43.webp">
         <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-43.jpg">
-        <img src="/images/classes-CJc2lhFv-43.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 空手クラス">
+        <img src="/images/classes-CJc2lhFv-43.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 空手クラス" width="1080" height="1080">
       </picture>
     </div>
   </div>
@@ -303,14 +303,14 @@ __水__
       <picture>
         <source type="image/webp" srcset="/images/classes-CJc2lhFv-44.webp">
         <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-44.jpg">
-        <img src="/images/classes-CJc2lhFv-44.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 空手クラス">
+        <img src="/images/classes-CJc2lhFv-44.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 空手クラス" width="1080" height="1080">
       </picture>
     </div>
     <div class="col col-sm">
       <picture>
         <source type="image/webp" srcset="/images/classes-CJc2lhFv-45.webp">
         <source type="image/jpeg" srcset="/images/classes-CJc2lhFv-45.jpg">
-        <img src="/images/classes-CJc2lhFv-45.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 空手クラス">
+        <img src="/images/classes-CJc2lhFv-45.jpg" class="img-fluid" loading="lazy" alt="合気道産靈 空手クラス" width="1080" height="1080">
       </picture>
     </div>
   </div>

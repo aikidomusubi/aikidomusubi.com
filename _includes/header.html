@@ -49,18 +49,18 @@
       <link href='/plugins/fullcalendar-4.3.1/packages/daygrid/main.css' rel='stylesheet' />
       <link href='/plugins/fullcalendar-4.3.1/packages/list/main.css' rel='stylesheet' />
       <link href='/plugins/fullcalendar-4.3.1/packages/bootstrap/main.css' rel='stylesheet' />
-      <script src='/plugins/fullcalendar-4.3.1/packages/core/main.js'></script>
-      <script src='/plugins/fullcalendar-4.3.1/packages/daygrid/main.js'></script>
-      <script src='/plugins/fullcalendar-4.3.1/packages/list/main.js'></script>
-      <script src='/plugins/fullcalendar-4.3.1/packages/bootstrap/main.js'></script>
+      <script src='/plugins/fullcalendar-4.3.1/packages/core/main.js' defer></script>
+      <script src='/plugins/fullcalendar-4.3.1/packages/daygrid/main.js' defer></script>
+      <script src='/plugins/fullcalendar-4.3.1/packages/list/main.js' defer></script>
+      <script src='/plugins/fullcalendar-4.3.1/packages/bootstrap/main.js' defer></script>
       {% if page.lang == 'ca' %}
-        <script src='/plugins/fullcalendar-4.3.1/packages/core/locales/ca.js'></script>
+        <script src='/plugins/fullcalendar-4.3.1/packages/core/locales/ca.js' defer></script>
       {% endif %}
       {% if page.lang == 'es' %}
-        <script src='/plugins/fullcalendar-4.3.1/packages/core/locales/es.js'></script>
+        <script src='/plugins/fullcalendar-4.3.1/packages/core/locales/es.js' defer></script>
       {% endif %}
       {% if page.lang == 'ja' %}
-        <script src='/plugins/fullcalendar-4.3.1/packages/core/locales/ja.js'></script>
+        <script src='/plugins/fullcalendar-4.3.1/packages/core/locales/ja.js' defer></script>
       {% endif %}
       {% include fullcalendar.html %}
     {% endif %}

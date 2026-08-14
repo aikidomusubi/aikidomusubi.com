@@ -83,7 +83,7 @@ __合気道産靈__ は南バダロナサッカー球技場内にあります。
     <picture>
       <source type="image/webp" srcset="/images/access-information-NdxqmVbV-00-a.webp" class="card-img-top lazyload">
       <source type="image/jpeg" srcset="/images/access-information-NdxqmVbV-00-a.jpg" class="card-img-top lazyload">
-      <img src="/images/access-information-NdxqmVbV-00-a.jpg" class="card-img-top lazyload" alt="南バダロナサッカー球技場の地図 入口 A">
+      <img src="/images/access-information-NdxqmVbV-00-a.jpg" class="card-img-top lazyload" alt="南バダロナサッカー球技場の地図 入口 A" width="900" height="900">
     </picture>
     <div class="card-body">
       <h5 class="card-title">入口 <span>A</span></h5>
@@ -94,7 +94,7 @@ __合気道産靈__ は南バダロナサッカー球技場内にあります。
     <picture>
       <source type="image/webp" srcset="/images/access-information-NdxqmVbV-00-b.webp" class="card-img-top lazyload">
       <source type="image/jpeg" srcset="/images/access-information-NdxqmVbV-00-b.jpg" class="card-img-top lazyload">
-      <img src="/images/access-information-NdxqmVbV-00-b.jpg" class="card-img-top lazyload" alt="南バダロナサッカー球技場の地図 入口 B">
+      <img src="/images/access-information-NdxqmVbV-00-b.jpg" class="card-img-top lazyload" alt="南バダロナサッカー球技場の地図 入口 B" width="900" height="900">
     </picture>
     <div class="card-body">
       <h5 class="card-title">入口 <span>B</span></h5>
@@ -105,7 +105,7 @@ __合気道産靈__ は南バダロナサッカー球技場内にあります。
     <picture>
       <source type="image/webp" srcset="/images/access-information-NdxqmVbV-00-c.webp" class="card-img-top lazyload">
       <source type="image/jpeg" srcset="/images/access-information-NdxqmVbV-00-c.jpg" class="card-img-top lazyload">
-      <img src="/images/access-information-NdxqmVbV-00-c.jpg" class="card-img-top lazyload" alt="南バダロナサッカー球技場の地図 入口 C">
+      <img src="/images/access-information-NdxqmVbV-00-c.jpg" class="card-img-top lazyload" alt="南バダロナサッカー球技場の地図 入口 C" width="900" height="900">
     </picture>
     <div class="card-body">
       <h5 class="card-title">入口 <span>C</span></h5>
@@ -181,7 +181,7 @@ __合気道産靈 サント・アドリアー__ はマリナ・ベソス市立�
     <picture>
       <source type="image/webp" srcset="/images/access-information-NdxqmVbV-01-a.webp" class="card-img-top lazyload">
       <source type="image/jpeg" srcset="/images/access-information-NdxqmVbV-01-a.jpg" class="card-img-top lazyload">
-      <img src="/images/access-information-NdxqmVbV-01-a.jpg" class="card-img-top lazyload" alt="マリナ・ベソス市立スポーツセンターの地図 入口 A">
+      <img src="/images/access-information-NdxqmVbV-01-a.jpg" class="card-img-top lazyload" alt="マリナ・ベソス市立スポーツセンターの地図 入口 A" width="1876" height="1875">
       </picture>
     <div class="card-body">
       <h5 class="card-title">Acceso <span>A</span></h5>
@@ -192,7 +192,7 @@ __合気道産靈 サント・アドリアー__ はマリナ・ベソス市立�
     <picture>
       <source type="image/webp" srcset="/images/access-information-NdxqmVbV-01-b.webp" class="card-img-top lazyload">
       <source type="image/jpeg" srcset="/images/access-information-NdxqmVbV-01-b.jpg" class="card-img-top lazyload">
-      <img src="/images/access-information-NdxqmVbV-01-b.jpg" class="card-img-top lazyload" alt="マリナ・ベソス市立スポーツセンターの地図 入口 B">
+      <img src="/images/access-information-NdxqmVbV-01-b.jpg" class="card-img-top lazyload" alt="マリナ・ベソス市立スポーツセンターの地図 入口 B" width="1876" height="1875">
       </picture>
     <div class="card-body">
       <h5 class="card-title">Acceso <span>B</span></h5>

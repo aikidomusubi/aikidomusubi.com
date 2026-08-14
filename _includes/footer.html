@@ -58,14 +58,14 @@
       </footer>
     </div><!-- .page -->
     {% if page.i18n-ref == 'courses-hFZ2XXIp' %}
-      <script src="/scripts/glightbox.min.js"></script>
+      <script src="/scripts/glightbox.min.js" defer></script>
       <script>
         document.addEventListener("DOMContentLoaded", function () {
           GLightbox({ selector: '.course-lightbox' });
         });
       </script>
     {% endif %}
-    <script src="/scripts/all.min.js?v=5"></script>
+    <script src="/scripts/all.min.js?v=5" defer></script>
     {% include cookie-banner.html %}
   </body>
 </html>

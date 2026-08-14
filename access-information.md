@@ -82,7 +82,7 @@ __Aikido Musubi__ se encuentra dentro de las instalaciones deportivas Badalona S
     <picture>
       <source type="image/webp" srcset="/images/access-information-NdxqmVbV-00-a.webp" class="card-img-top lazyload">
       <source type="image/jpeg" srcset="/images/access-information-NdxqmVbV-00-a.jpg" class="card-img-top lazyload">
-      <img src="/images/access-information-NdxqmVbV-00-a.jpg" class="card-img-top lazyload" alt="Instalaciones Deportivas Badalona Sur Acceso A">
+      <img src="/images/access-information-NdxqmVbV-00-a.jpg" class="card-img-top lazyload" alt="Instalaciones Deportivas Badalona Sur Acceso A" width="900" height="900">
       </picture>
     <div class="card-body">
       <h5 class="card-title">Acceso <span>A</span></h5>
@@ -93,7 +93,7 @@ __Aikido Musubi__ se encuentra dentro de las instalaciones deportivas Badalona S
     <picture>
       <source type="image/webp" srcset="/images/access-information-NdxqmVbV-00-b.webp" class="card-img-top lazyload">
       <source type="image/jpeg" srcset="/images/access-information-NdxqmVbV-00-b.jpg" class="card-img-top lazyload">
-      <img src="/images/access-information-NdxqmVbV-00-b.jpg" class="card-img-top lazyload" alt="Instalaciones Deportivas Badalona Sur Acceso B">
+      <img src="/images/access-information-NdxqmVbV-00-b.jpg" class="card-img-top lazyload" alt="Instalaciones Deportivas Badalona Sur Acceso B" width="900" height="900">
       </picture>
     <div class="card-body">
       <h5 class="card-title">Acceso <span>B</span></h5>
@@ -104,7 +104,7 @@ __Aikido Musubi__ se encuentra dentro de las instalaciones deportivas Badalona S
     <picture>
       <source type="image/webp" srcset="/images/access-information-NdxqmVbV-00-c.webp" class="card-img-top lazyload">
       <source type="image/jpeg" srcset="/images/access-information-NdxqmVbV-00-c.jpg" class="card-img-top lazyload">
-      <img src="/images/access-information-NdxqmVbV-00-c.jpg" class="card-img-top lazyload" alt="Instalaciones Deportivas Badalona Sur Acceso C">
+      <img src="/images/access-information-NdxqmVbV-00-c.jpg" class="card-img-top lazyload" alt="Instalaciones Deportivas Badalona Sur Acceso C" width="900" height="900">
     </picture>
     <div class="card-body">
       <h5 class="card-title">Acceso <span>C</span></h5>
@@ -178,7 +178,7 @@ __Aikido Musubi Sant Adrià__ se encuentra dentro de las instalaciones del Polid
     <picture>
       <source type="image/webp" srcset="/images/access-information-NdxqmVbV-01-a.webp" class="card-img-top lazyload">
       <source type="image/jpeg" srcset="/images/access-information-NdxqmVbV-01-a.jpg" class="card-img-top lazyload">
-      <img src="/images/access-information-NdxqmVbV-01-a.jpg" class="card-img-top lazyload" alt="Instalaciones del Polideportivo Municipal Marina-Besòs Acceso A">
+      <img src="/images/access-information-NdxqmVbV-01-a.jpg" class="card-img-top lazyload" alt="Instalaciones del Polideportivo Municipal Marina-Besòs Acceso A" width="1876" height="1875">
       </picture>
     <div class="card-body">
       <h5 class="card-title">Acceso <span>A</span></h5>
@@ -189,7 +189,7 @@ __Aikido Musubi Sant Adrià__ se encuentra dentro de las instalaciones del Polid
     <picture>
       <source type="image/webp" srcset="/images/access-information-NdxqmVbV-01-b.webp" class="card-img-top lazyload">
       <source type="image/jpeg" srcset="/images/access-information-NdxqmVbV-01-b.jpg" class="card-img-top lazyload">
-      <img src="/images/access-information-NdxqmVbV-01-b.jpg" class="card-img-top lazyload" alt="Instalaciones del Polideportivo Municipal Marina-Besòs Acceso B">
+      <img src="/images/access-information-NdxqmVbV-01-b.jpg" class="card-img-top lazyload" alt="Instalaciones del Polideportivo Municipal Marina-Besòs Acceso B" width="1876" height="1875">
       </picture>
     <div class="card-body">
       <h5 class="card-title">Acceso <span>B</span></h5>
