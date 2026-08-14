@@ -89,24 +89,24 @@ a {
   text-decoration: none;
 }
 
-.fadeIn {
-  .visible;
+// The page fades in on load. Two things about how this is done matter:
+//
+// It runs from CSS on <body>, not from a class JavaScript adds to a body that
+// starts at visibility:hidden. That older arrangement meant nothing painted
+// until a script had parsed and run, so a script failure left a blank page —
+// and Lighthouse recorded no First Contentful Paint at all, scoring 0.
+//
+// It starts at .85 rather than 0 because Chrome does not treat content at
+// opacity 0 as painted, so a fade from zero pushes First Contentful Paint and
+// Largest Contentful Paint to the end of the animation. At .85 the first frame
+// counts as a paint and the fade still reads as a fade.
+body {
   animation: fadeIn .5s ease;
 }
 
 @keyframes fadeIn {
-  0% { opacity: 0; }
+  0% { opacity: .85; }
   100% { opacity: 1; }
-}
-
-.fadeOut {
-  .invisible;
-  animation: fadeOut .5s ease;
-}
-
-@keyframes fadeOut {
-  0% { opacity: 1; }
-  100% { opacity: 0; }
 }
 
 .hide {

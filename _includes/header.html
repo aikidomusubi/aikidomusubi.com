@@ -43,7 +43,6 @@
     {% include preload.html %}
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@900&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <link href="/styles/all.min.css?v=5" rel="stylesheet">
-    <noscript><style>body.invisible { visibility: visible !important; }</style></noscript>
     {% include icons.html %}
     {% if page.i18n-ref == 'training-schedule-IFMn5oCc' %}
       <link href='/plugins/fullcalendar-4.3.1/packages/core/main.css' rel='stylesheet' />
@@ -100,7 +99,7 @@
     </script>
     {% endif %}
   </head>
-  <body class="{{ page.i18n-ref }} invisible">
+  <body class="{{ page.i18n-ref }}">
     {%- comment -%}
       The GTM <noscript> iframe was removed with the head snippet. It fires
       unconditionally and cannot be gated by the consent banner, which is

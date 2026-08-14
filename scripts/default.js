@@ -62,12 +62,6 @@
     });
   }
 
-  function revealContent() {
-
-    document.body.classList.remove('invisible');
-    document.body.classList.add('fadeIn');
-  }
-
   function parallaxHeader() { // https://codepen.io/theaftermath87/pen/mJqywj
 
     var falseHeader = document.querySelector('.falseHeader');
@@ -321,7 +315,6 @@ function init() {
   ];
 
   hiddenCode();
-  revealContent();
 
   if (page.contains('index-8oGCaMDs')) {
     parallaxHeader();
