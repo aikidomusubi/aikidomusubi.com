@@ -332,74 +332,102 @@ html {
       }
 
       footer {
+        // A three-region flex row: brand, legal links, social icons.
+        //
+        // This used to float the outer two regions and absolutely position the
+        // brand at width:100% to centre it. Floats align to the top of the
+        // line box, so nothing sat on a shared centre line, and the brand's
+        // full-width box overlapped both neighbours. align-items:center does
+        // the job the floats could not, and each region is now only as wide as
+        // its own content.
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+
+        min-height: var(--footer-height);
         background-color: @Dark;
-        color: darken(@White, 50%);
-        overflow: auto;
-        padding: .65rem 1rem;
+        color: @White;
+        padding: .5rem 1rem;
         text-align: center;
 
+        // White at .9, full white on interaction — the same treatment the
+        // in-page anchor bar uses, so the two read as one system.
         a {
-          color: darken(@White, 50%);
-          display: inline-block;
+          color: @White;
+          opacity: .9;
+          transition: opacity .2s ease;
 
           &:focus,
           &:hover {
-            color: darken(@White, 10%);
+            color: @White;
+            opacity: 1;
             text-decoration: none;
           }
         }
 
-        aside {
-          .show;
+        .footer-brand {
+          // Sized by its own text rather than stretched across the footer.
+          flex: 0 1 auto;
+          order: 2;
 
-          &:nth-of-type(1) {
-            .hide;
+          // Hidden below 992px, where the row only has room for the links and
+          // the icons. Scoped here rather than in the wider >=992px block so
+          // it carries this rule's specificity — that block is only
+          // `footer .footer-brand` and would lose to this one.
+          @media (max-width: 991.98px) {
+            display: none;
           }
 
-          // Legal links, in the slot the Seek & Destroy glyph used to occupy.
-          // Art. 10 LSSI-CE wants them reachable from every page, and floating
-          // them left keeps the footer a single row as it was before.
-          &:nth-of-type(2) {
-            float: left;
-            font-size: 12px;
-            letter-spacing: 0;
+          > p {
+            margin: 0;
+            line-height: 1.2;
+          }
+        }
 
-            // Matches the height of the floated social icons opposite, so the
-            // two sides sit on the same optical line rather than the links
-            // hugging the top of the row.
-            line-height: 1rem;
+        .footer-legal {
+          flex: 0 1 auto;
+          order: 1;
+          font-size: 12px;
+          letter-spacing: 0;
+          text-align: left;
+
+          > a {
+            padding: 0 .5rem 0 0;
+            white-space: nowrap;
+          }
+
+          @media (max-width: 767.98px) {
+            font-size: 11px;
 
             > a {
               padding: 0 .35rem 0 0;
             }
-
-            // Below 768px the four items cannot share the row with the social
-            // icons at full size, so they tighten rather than wrap the footer
-            // onto a second line.
-            @media (max-width: 767.98px) {
-              font-size: 10px;
-
-              > a {
-                padding: 0 .2rem 0 0;
-              }
-
-            }
           }
+        }
 
-          &:nth-of-type(3) {
-            .hide;
-          }
+        .footer-social {
+          flex: 0 0 auto;
+          order: 3;
+          display: flex;
+          align-items: center;
 
-          &:nth-of-type(4) {
-            float: right;
+          // Each icon gets its own square hit area. Lighthouse fails anything
+          // under 24x24; these are 32 so the target comfortably clears it and
+          // the icons themselves can grow without crowding.
+          > a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem; height: 2rem;
+            padding: 0;
 
-            a {
-              padding: 0 .125rem;
-
-              > svg {
-                height: 1rem; width: auto;
-                vertical-align: sub;
-              }
+            > svg {
+              // vertical-align was doing the centring before and doing it
+              // badly — a 16px glyph in a 24px inline box sat high. Flex
+              // centring makes the offset symmetrical by construction.
+              height: 1.125rem; width: auto;
+              vertical-align: initial;
             }
           }
         }
@@ -708,7 +736,9 @@ body.courses-hFZ2XXIp {
       z-index: 99;
 
       a {
-        color: lighten(@Dark, 32%);
+        color: @Dark;
+        opacity: .9;
+        transition: opacity .2s ease;
         font-size: .8rem;
         padding: ~"calc(.5rem / 2)" ~"calc(1rem / 2)";
         text-decoration: none;
@@ -716,12 +746,14 @@ body.courses-hFZ2XXIp {
         &:focus,
         &:hover {
           background-color: transparent;
-          color: lighten(@Dark, 8%);
+          color: @Dark;
+          opacity: 1;
           text-decoration: none;
         }
 
         &.active {
-          color: lighten(@Dark, 8%);
+          color: @Dark;
+          opacity: 1;
         }
       }
     }
@@ -756,7 +788,9 @@ body.photos-QDOJ1pyG {
       z-index: 99;
 
       a {
-        color: lighten(@Dark, 32%);
+        color: @Dark;
+        opacity: .9;
+        transition: opacity .2s ease;
         font-size: .8rem;
         padding: ~"calc(.5rem / 2)" ~"calc(1rem / 2)";
         text-decoration: none;
@@ -764,12 +798,14 @@ body.photos-QDOJ1pyG {
         &:focus,
         &:hover {
           background-color: transparent;
-          color: lighten(@Dark, 8%);
+          color: @Dark;
+          opacity: 1;
           text-decoration: none;
         }
 
         &.active {
-          color: lighten(@Dark, 8%);
+          color: @Dark;
+          opacity: 1;
         }
       }
     }
@@ -1037,7 +1073,10 @@ body.index-8oGCaMDs {
 
             > div {
 
-              > h5 {
+              // Was h5, which skipped from the section's h2 straight to h5.
+              // The size is set here regardless, so the level is free to be
+              // the correct one for the document outline.
+              > h3 {
                 .bold;
                 font-size: .9rem !important;
                 line-height: 1.5rem !important;
@@ -1078,7 +1117,9 @@ body.index-8oGCaMDs {
       z-index: 99;
 
       a {
-        color: lighten(@Dark, 32%);
+        color: @Dark;
+        opacity: .9;
+        transition: opacity .2s ease;
         font-size: .8rem;
         padding: ~"calc(.5rem / 2)" ~"calc(1rem / 2)";
         text-decoration: none;
@@ -1086,12 +1127,14 @@ body.index-8oGCaMDs {
         &:focus,
         &:hover {
           background-color: transparent;
-          color: lighten(@Dark, 8%);
+          color: @Dark;
+          opacity: 1;
           text-decoration: none;
         }
 
         &.active {
-          color: lighten(@Dark, 8%);
+          color: @Dark;
+          opacity: 1;
         }
       }
     }
@@ -1184,7 +1227,9 @@ body.resources-uStNjtHz {
       z-index: 99;
 
       a {
-        color: lighten(@Dark, 32%);
+        color: @Dark;
+        opacity: .9;
+        transition: opacity .2s ease;
         font-size: .8rem;
         padding: ~"calc(.5rem / 2)" ~"calc(1rem / 2)";
         text-decoration: none;
@@ -1192,12 +1237,14 @@ body.resources-uStNjtHz {
         &:focus,
         &:hover {
           background-color: transparent;
-          color: lighten(@Dark, 8%);
+          color: @Dark;
+          opacity: 1;
           text-decoration: none;
         }
 
         &.active {
-          color: lighten(@Dark, 8%);
+          color: @Dark;
+          opacity: 1;
         }
       }
     }
@@ -1248,7 +1295,9 @@ body.classes-CJc2lhFv {
       z-index: 99;
 
       a {
-        color: lighten(@Dark, 32%);
+        color: @Dark;
+        opacity: .9;
+        transition: opacity .2s ease;
         font-size: .8rem;
         padding: ~"calc(.5rem / 2)" ~"calc(1rem / 2)";
         text-decoration: none;
@@ -1256,12 +1305,14 @@ body.classes-CJc2lhFv {
         &:focus,
         &:hover {
           background-color: transparent;
-          color: lighten(@Dark, 8%);
+          color: @Dark;
+          opacity: 1;
           text-decoration: none;
         }
 
         &.active {
-          color: lighten(@Dark, 8%);
+          color: @Dark;
+          opacity: 1;
         }
       }
     }
@@ -1420,7 +1471,8 @@ body.training-schedule-IFMn5oCc {
             > li {
 
               > a {
-                color: lighten(@Dark, 8%);
+                color: @Dark;
+                opacity: 1;
                 font-size: .9rem;
                 text-decoration: none;
 
@@ -2068,7 +2120,9 @@ body.access-information-NdxqmVbV {
             z-index: 99;
 
             a {
-              color: lighten(@Dark, 32%);
+              color: @Dark;
+              opacity: .9;
+              transition: opacity .2s ease;
               font-size: .8rem;
               padding: ~"calc(.5rem / 2)" ~"calc(1rem / 2)";
               text-decoration: none;
@@ -2076,12 +2130,14 @@ body.access-information-NdxqmVbV {
               &:focus,
               &:hover {
                 background-color: transparent;
-                color: lighten(@Dark, 8%);
+                color: @Dark;
+                opacity: 1;
                 text-decoration: none;
               }
 
               &.active {
-                color: lighten(@Dark, 8%);
+                color: @Dark;
+                opacity: 1;
               }
             }
           }
@@ -2467,21 +2523,30 @@ body.courses-hFZ2XXIp {
       margin-top: -4rem;
       z-index: 99;
 
+      // lighten(@Dark, 32%) is #808c98, only 3.43:1 on this white bar — well
+      // under the 4.5:1 WCAG AA requires, and what Lighthouse flagged on nine
+      // links. @Dark at .9 opacity still reads as a soft grey but measures
+      // 8.27:1, and fading to full opacity on hover gives the state change
+      // without a second colour to keep in sync.
       a {
-        color: lighten(@Dark, 32%);
+        color: @Dark;
+        opacity: .9;
         font-size: .9rem;
         padding: .5rem 1rem;
         text-decoration: none;
+        transition: opacity .2s ease;
 
         &:focus,
         &:hover {
           background-color: transparent;
-          color: lighten(@Dark, 8%);
+          color: @Dark;
+          opacity: 1;
           text-decoration: none;
         }
 
         &.active {
-          color: lighten(@Dark, 8%);
+          color: @Dark;
+          opacity: 1;
         }
       }
     }
@@ -2515,21 +2580,30 @@ body.photos-QDOJ1pyG {
       margin-top: -4rem;
       z-index: 99;
 
+      // lighten(@Dark, 32%) is #808c98, only 3.43:1 on this white bar — well
+      // under the 4.5:1 WCAG AA requires, and what Lighthouse flagged on nine
+      // links. @Dark at .9 opacity still reads as a soft grey but measures
+      // 8.27:1, and fading to full opacity on hover gives the state change
+      // without a second colour to keep in sync.
       a {
-        color: lighten(@Dark, 32%);
+        color: @Dark;
+        opacity: .9;
         font-size: .9rem;
         padding: .5rem 1rem;
         text-decoration: none;
+        transition: opacity .2s ease;
 
         &:focus,
         &:hover {
           background-color: transparent;
-          color: lighten(@Dark, 8%);
+          color: @Dark;
+          opacity: 1;
           text-decoration: none;
         }
 
         &.active {
-          color: lighten(@Dark, 8%);
+          color: @Dark;
+          opacity: 1;
         }
       }
     }
@@ -2606,21 +2680,30 @@ body.resources-uStNjtHz {
       margin-top: -4rem;
       z-index: 99;
 
+      // lighten(@Dark, 32%) is #808c98, only 3.43:1 on this white bar — well
+      // under the 4.5:1 WCAG AA requires, and what Lighthouse flagged on nine
+      // links. @Dark at .9 opacity still reads as a soft grey but measures
+      // 8.27:1, and fading to full opacity on hover gives the state change
+      // without a second colour to keep in sync.
       a {
-        color: lighten(@Dark, 32%);
+        color: @Dark;
+        opacity: .9;
         font-size: .9rem;
         padding: .5rem 1rem;
         text-decoration: none;
+        transition: opacity .2s ease;
 
         &:focus,
         &:hover {
           background-color: transparent;
-          color: lighten(@Dark, 8%);
+          color: @Dark;
+          opacity: 1;
           text-decoration: none;
         }
 
         &.active {
-          color: lighten(@Dark, 8%);
+          color: @Dark;
+          opacity: 1;
         }
       }
     }
@@ -2677,21 +2760,30 @@ body.classes-CJc2lhFv {
       margin-top: -4rem;
       z-index: 99;
 
+      // lighten(@Dark, 32%) is #808c98, only 3.43:1 on this white bar — well
+      // under the 4.5:1 WCAG AA requires, and what Lighthouse flagged on nine
+      // links. @Dark at .9 opacity still reads as a soft grey but measures
+      // 8.27:1, and fading to full opacity on hover gives the state change
+      // without a second colour to keep in sync.
       a {
-        color: lighten(@Dark, 32%);
+        color: @Dark;
+        opacity: .9;
         font-size: .9rem;
         padding: .5rem 1rem;
         text-decoration: none;
+        transition: opacity .2s ease;
 
         &:focus,
         &:hover {
           background-color: transparent;
-          color: lighten(@Dark, 8%);
+          color: @Dark;
+          opacity: 1;
           text-decoration: none;
         }
 
         &.active {
-          color: lighten(@Dark, 8%);
+          color: @Dark;
+          opacity: 1;
         }
       }
     }
@@ -2749,21 +2841,30 @@ body.index-8oGCaMDs {
       margin-top: -0; // margin-top: -4rem; // Temporary deactivate until stickyBar is deployed
       z-index: 99;
 
+      // lighten(@Dark, 32%) is #808c98, only 3.43:1 on this white bar — well
+      // under the 4.5:1 WCAG AA requires, and what Lighthouse flagged on nine
+      // links. @Dark at .9 opacity still reads as a soft grey but measures
+      // 8.27:1, and fading to full opacity on hover gives the state change
+      // without a second colour to keep in sync.
       a {
-        color: lighten(@Dark, 32%);
+        color: @Dark;
+        opacity: .9;
         font-size: .9rem;
         padding: .5rem 1rem;
         text-decoration: none;
+        transition: opacity .2s ease;
 
         &:focus,
         &:hover {
           background-color: transparent;
-          color: lighten(@Dark, 8%);
+          color: @Dark;
+          opacity: 1;
           text-decoration: none;
         }
 
         &.active {
-          color: lighten(@Dark, 8%);
+          color: @Dark;
+          opacity: 1;
         }
       }
     }
@@ -2834,12 +2935,14 @@ body.access-information-NdxqmVbV {
               &:focus,
               &:hover {
                 background-color: transparent;
-                color: lighten(@Dark, 8%);
+                color: @Dark;
+                opacity: 1;
                 text-decoration: none;
               }
 
               &.active {
-                color: lighten(@Dark, 8%);
+                color: @Dark;
+                opacity: 1;
               }
             }
           }
@@ -2961,44 +3064,25 @@ body {
 
 footer {
 
-  aside {
-    position: relative;
+  // From 992px up the brand block joins the row. Below that the base rule
+  // hides it and space-between simply holds links and icons at either end.
+  .footer-brand {
 
-    &:nth-of-type(1) {
-      .show !important;
-      position: absolute; left: 0;
-      height: auto; width: 100%;
+    > p {
+      .Futura; .bold;
+      font-size: 12px;
+      letter-spacing: 1px;
+      line-height: 1.2;
+      margin: 0 !important;
+      text-transform: uppercase;
+      white-space: nowrap;
 
-      > p {
-        .show;
-        .Futura; .bold;
-        font-size: 12px;
-        letter-spacing: 1px;
-        line-height: .5rem * 1.8;
-        margin: 0 !important;
-        text-align: center;
-        text-transform: uppercase;
-
-        // The year sits under the wordmark and reads as a caption, so it
-        // opts out of the .bold inherited from the <p> above.
-        > small {
-          .regular;
-          letter-spacing: 0;
-        }
+      // The year sits under the wordmark and reads as a caption, so it opts
+      // out of the .bold inherited from the <p> above.
+      > small {
+        .regular;
+        letter-spacing: 0;
       }
-    }
-
-    &:nth-of-type(2) {
-      z-index: 99;
-    }
-
-    &:nth-of-type(3) {
-      .hide;
-      z-index: 99;
-    }
-
-    &:nth-of-type(4) {
-      z-index: 99;
     }
   }
 }
@@ -3576,33 +3660,20 @@ html[lang="ja"] {
           }
         }
 
+        // The footer is dark in both colour schemes, so it keeps the same
+        // white-on-dark treatment either way. The nth-of-type(2) svg rules
+        // that used to live here styled the Seek & Destroy glyph, which the
+        // legal links replaced.
         footer {
           background-color: @Dark;
-          color: darken(@White, 50%);
+          color: @White;
 
           a {
-            color: darken(@White, 50%);
+            color: @White;
 
             &:focus,
             &:hover {
-              color: darken(@White, 10%);
-            }
-          }
-
-          aside {
-
-            &:nth-of-type(2) {
-
-              > svg {
-
-                circle {
-                  stroke: darken(@White, 50%);
-                }
-
-                path {
-                  fill: darken(@White, 50%);
-                }
-              }
+              color: @White;
             }
           }
         }
@@ -4018,33 +4089,20 @@ html[lang="ja"] {
           }
         }
 
+        // The footer is dark in both colour schemes, so it keeps the same
+        // white-on-dark treatment either way. The nth-of-type(2) svg rules
+        // that used to live here styled the Seek & Destroy glyph, which the
+        // legal links replaced.
         footer {
           background-color: @Dark;
-          color: darken(@White, 50%);
+          color: @White;
 
           a {
-            color: darken(@White, 50%);
+            color: @White;
 
             &:focus,
             &:hover {
-              color: darken(@White, 10%);
-            }
-          }
-
-          aside {
-
-            &:nth-of-type(2) {
-
-              > svg {
-
-                circle {
-                  stroke: darken(@White, 50%);
-                }
-
-                path {
-                  fill: darken(@White, 50%);
-                }
-              }
+              color: @White;
             }
           }
         }
