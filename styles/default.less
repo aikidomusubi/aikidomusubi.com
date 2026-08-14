@@ -34,28 +34,33 @@
 // ---------------------------------------------------------------------------
 // Cookie consent banner
 //
-// Sits directly above the fixed footer rather than over it, and deliberately
-// does not use a backdrop: the AEPD does not require blocking the page, and a
-// modal over a dojo timetable is a worse experience than a corner panel. On
-// desktop it is a constrained card in the bottom-left; below 768px it spans
-// the width because a card that narrow reads as an advert.
+// Styled as a card, matching the pricing cards on the fees page: light
+// surface, subtle border, small shadow, blue primary buttons. Sits directly
+// above the fixed footer rather than over it, with no backdrop — the AEPD
+// does not require blocking the page, and a modal over a class timetable is
+// a worse experience than a corner card.
 //
-// Accept and Reject share one identical rule — refusing must be exactly as
-// easy as accepting, so neither may be styled to look like the default.
+// Accept and Reject share one rule on purpose: refusing must be exactly as
+// easy as accepting, so neither may be styled as the obvious default.
 // ---------------------------------------------------------------------------
 .cookie-banner {
   position: fixed;
   z-index: 1030; // above the fixed footer, below Bootstrap's modal (1055)
-  left: 0; right: 0;
-  bottom: var(--footer-height);
-  background-color: @Dark;
-  color: darken(@White, 15%);
-  padding: 1rem;
+  left: 1rem; right: 1rem;
+  bottom: calc(var(--footer-height) + 1rem);
+  max-width: 30rem;
+
+  background-color: @White;
+  color: @Black;
+  border: 1px solid fadeout(@Black, 88%);
+  border-radius: .25rem;
+  box-shadow: 0 .125rem .5rem fadeout(@Black, 85%);
+  padding: 1.25rem;
   font-size: .875rem;
   line-height: 1.5;
-  box-shadow: 0 -2px 12px fadeout(@Black, 70%);
+  text-align: left;
 
-  transform: translateY(1rem);
+  transform: translateY(.5rem);
   opacity: 0;
   transition: transform .25s ease, opacity .25s ease;
 
@@ -65,7 +70,7 @@
   }
 
   .cookie-banner-text {
-    margin: 0 0 .75rem;
+    margin: 0 0 1rem;
   }
 
   .cookie-banner-actions {
@@ -75,35 +80,38 @@
     gap: .5rem;
   }
 
-  // Identical weight for both choices — this is a legal requirement, not a
-  // stylistic preference. Do not make one of them a secondary button.
+  // Both choices identical — a legal requirement, not a stylistic one.
+  // Do not demote either to a secondary button.
   .cookie-accept,
   .cookie-reject {
+    color: @White;
+    background-color: @Blue;
+    border-color: @Blue;
     font-size: .875rem;
     padding: .375rem 1rem;
+
+    &:focus,
+    &:hover {
+      background-color: darken(@Blue, 5%);
+      border-color: darken(@Blue, 5%);
+    }
+
+    &:focus {
+      box-shadow: none;
+    }
   }
 
   .cookie-info {
-    color: darken(@White, 30%);
+    color: @Black;
     margin-left: auto;
     text-decoration: underline;
 
     &:focus,
     &:hover {
-      color: @White;
+      background-color: @Yellow;
     }
   }
 
-  @media (min-width: 768px) {
-    right: auto;
-    left: 1rem;
-    bottom: calc(var(--footer-height) + 1rem);
-    max-width: 30rem;
-    border-radius: .25rem;
-    padding: 1.25rem;
-  }
-
-  // Users who ask for reduced motion get the panel without the slide.
   @media (prefers-reduced-motion: reduce) {
     transition: none;
     transform: none;
@@ -348,47 +356,21 @@ html {
             .hide;
           }
 
+          // Legal links, in the slot the Seek & Destroy glyph used to occupy.
+          // Art. 10 LSSI-CE wants them reachable from every page, and floating
+          // them left keeps the footer a single row as it was before.
           &:nth-of-type(2) {
             float: left;
-            cursor: help;
-
-            > svg {
-              height: auto; width: 1rem * 1.5;
-
-              circle {
-                stroke: darken(@White, 50%);
-              }
-
-              path {
-                fill: darken(@White, 50%);
-              }
-            }
-
-            > small {
-              .hide;
-              font-size: 12px;
-              letter-spacing: 0;
-            }
-          }
-
-          // Legal links get their own row rather than sharing the centre with
-          // the brand block, which does render here despite the nth-of-type(1)
-          // rule above. clear:both drops this below the floated glyph and
-          // social icons instead of squeezing between them.
-          &:nth-of-type(3) {
-            display: block;
-            clear: both;
             font-size: 12px;
             letter-spacing: 0;
-            padding-top: .15rem;
 
             > a,
             > button {
-              padding: 0 .35rem;
+              padding: 0 .35rem 0 0;
 
-              // The cookie item reopens the banner, so it has to be a button
-              // for keyboard and screen-reader users. Stripped back to look
-              // like its sibling links.
+              // Reopens the consent banner, so it has to be a real button for
+              // keyboard and screen-reader users; stripped back to match the
+              // links beside it.
               &.footer-cookie-settings {
                 background: none;
                 border: 0;
@@ -402,6 +384,29 @@ html {
                 }
               }
             }
+
+            // Below 768px the four items cannot share the row with the social
+            // icons at full size, so they tighten rather than wrap the footer
+            // onto a second line.
+            @media (max-width: 767.98px) {
+              font-size: 10px;
+
+              > a,
+              > button {
+                padding: 0 .2rem 0 0;
+              }
+
+              // At 375px the four items plus the social icons come to 382px in
+              // 359px of space. Dropping the trailing word of the cookie label
+              // recovers enough to keep the footer a single row.
+              .footer-legal-long {
+                display: none;
+              }
+            }
+          }
+
+          &:nth-of-type(3) {
+            .hide;
           }
 
           &:nth-of-type(4) {

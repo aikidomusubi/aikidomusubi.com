@@ -9,14 +9,6 @@
             <small>2008 - {{ site.time | date: '%Y' }}</small>
           </p>
         </aside>
-        <aside>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
-            <title>{% if page.lang == 'ja' %}見つけて壊せ{% else %}Seek & Destroy{% endif %}</title>
-            <circle cx="320" cy="320" r="260" fill="none" stroke="#000" stroke-width="32"/>
-            <path d="M490.56 287.72a45.38 45.38 0 0 0-64.56 0l-13.9 13.9-27.78-27.78 13.9-13.9c21.65-21.66 21.65-42.9 0-64.56a45.4 45.4 0 0 0-64.56 0l-13.48 13.9-13.9-13.9c-21.66-21.65-42.9-21.65-64.56 0a45.38 45.38 0 0 0 0 64.56l13.9 13.9-27.78 27.78-13.84-13.9a45.65 45.65 0 1 0 0 64.56l13.9-13.9 27.78 27.78-13.9 13.9c-21.65 21.66-21.65 42.9 0 64.56a45.4 45.4 0 0 0 64.56 0l13.9-13.9-2.45-2.45 2.45 2.45 13.9 13.9c21.65 21.65 42.9 21.65 64.56 0a45.4 45.4 0 0 0 0-64.56l-13.9-13.9 27.8-27.78 13.9 13.9a45.51 45.51 0 1 0 64.15-64.56zM196 333.9a19.64 19.64 0 1 1 0-27.78l13.86 13.9zm156.46-119.7a19.48 19.48 0 0 1 27.78 0c9.4 9.4 9.4 18.38 0 27.78l-13.9 13.9-27.8-27.78zm-32.28 32.28L348 274.24l-27.78 27.37-27.82-27.78zm-60.06-32.28c9.4-9.4 18.38-9.4 27.78 0l13.9 13.9-27.8 27.78L260.12 242c-7.36-7.8-7.36-20.47 0-27.82zM246.63 320l27.8-27.78L302.2 320l-27.78 27.78zm41.27 105.82a19.48 19.48 0 0 1-27.78 0c-9.4-9.4-9.4-18.38 0-27.78l13.88-13.9 27.78 27.78zm32.28-32.28l-27.78-27.78L320.18 338 348 365.76zm60.06 32.28c-9.4 9.4-18.4 9.4-27.78 0l-13.9-13.9 27.8-27.78 13.9 13.85c7.35 7.8 7.35 20.47 0 27.82zm-13.9-78L338.56 320l27.8-27.78L393.72 320zm105.82-13.9a19.48 19.48 0 0 1-27.78 0L430.9 320l13.9-13.9a19.5 19.5 0 0 1 27.79 0 19.86 19.86 0 0 1-.41 27.78z"/>
-          </svg>
-          <small>2008 - {{ site.time | date: '%Y' }}</small>
-        </aside>
         {%- comment -%}
           Legal links. Art. 10 LSSI-CE requires these to be reachable from
           anywhere on the site, which is why they live in the fixed footer
@@ -29,12 +21,12 @@
               <a href="/ca/avis-legal/">Avís Legal</a>
               <a href="/ca/politica-privadesa/">Privadesa</a>
               <a href="/ca/politica-galetes/">Galetes</a>
-              <button type="button" class="footer-cookie-settings">Configurar galetes</button>
+              <button type="button" class="footer-cookie-settings">Configurar<span class="footer-legal-long"> galetes</span></button>
             {%- when 'en' -%}
               <a href="/en/legal-notice/">Legal Notice</a>
               <a href="/en/privacy-policy/">Privacy</a>
               <a href="/en/cookie-policy/">Cookies</a>
-              <button type="button" class="footer-cookie-settings">Cookie settings</button>
+              <button type="button" class="footer-cookie-settings"><span class="footer-legal-long">Cookie </span>Settings</button>
             {%- when 'ja' -%}
               <a href="/ja/legal-notice/">法的通知</a>
               <a href="/ja/privacy-policy/">プライバシー</a>
@@ -44,9 +36,10 @@
               <a href="/aviso-legal/">Aviso Legal</a>
               <a href="/politica-privacidad/">Privacidad</a>
               <a href="/politica-cookies/">Cookies</a>
-              <button type="button" class="footer-cookie-settings">Configurar cookies</button>
+              <button type="button" class="footer-cookie-settings">Configurar<span class="footer-legal-long"> cookies</span></button>
           {%- endcase -%}
         </aside>
+        <aside></aside>
         <aside>
           <a href="https://www.facebook.com/{{ site.facebook_username }}/" title="Facebook">
             <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook-square" class="svg-inline--fa fa-facebook-square fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"></path></svg>
