@@ -1,5 +1,8 @@
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+{% comment %}
+  The preconnects to fonts.googleapis.com and fonts.gstatic.com are gone with
+  the fonts themselves — everything is served from this origin now, so there
+  is no third party to warm up a connection to.
+{% endcomment %}
 {% if page.i18n-ref == 'index-8oGCaMDs' %}
 {% comment %}
   Hero is a CSS background-image swapped at 1200/1920/2560px (see default.less).
@@ -11,5 +14,19 @@
 <link rel="preload" as="image" href="/images/index-8oGCaMDs-00-2560.webp" media="(min-width: 1920px) and (max-width: 2559px)">
 <link rel="preload" as="image" href="/images/index-8oGCaMDs-00-2880.webp" media="(min-width: 2560px)">
 {% endif %}
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@900&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" as="style">
 <link rel="preload" href="/styles/all.min.css?v=5" as="style">
+{% comment %}
+  Only the two roman latin faces are preloaded. They are what body copy and
+  headings paint with on every page, and the browser cannot discover them
+  until it has parsed the stylesheet, so preloading buys a full round trip.
+
+  The italic and latin-ext faces are deliberately left out: preloading a face
+  the page never uses costs a download and, being crossorigin, one the
+  browser cannot reuse. font-display: swap covers them.
+
+  crossorigin is required even for same-origin fonts — without it the preload
+  is fetched in a different mode from the CSS request and the file is
+  downloaded twice.
+{% endcomment %}
+<link rel="preload" href="/fonts/noto-sans-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/noto-sans-700-latin.woff2" as="font" type="font/woff2" crossorigin>

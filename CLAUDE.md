@@ -96,6 +96,61 @@ Four languages: **es** (default, root `/`), **ca** (`/ca/`), **en** (`/en/`), **
 | `sitemap.xml` | **Liquid template that generates the whole sitemap** — never hand-edit the output |
 | `training-schedule-{lang}.json` | Weekly training schedule data consumed by FullCalendar |
 | `gulpfile.js` | Gulp tasks for CSS/JS compilation |
+| `styles/fonts-ja.css` | **Generated** `@font-face` set for the Japanese faces — see below |
+
+## Fonts — self-hosted, no third party
+
+Nothing is fetched from `fonts.googleapis.com` or `fonts.gstatic.com`. The
+files live in `/fonts/` and are served from this origin, which removes two DNS
+lookups and TLS handshakes from the critical path and stops every visitor's IP
+reaching Google before they have consented to anything.
+
+**Latin (every page).** Eight static Noto Sans faces — 400/700 × roman/italic
+× latin/latin-ext — declared in `styles/base.less` and compiled into
+`all.min.css`. Static instances, not the variable font the CSS API now
+returns: the site uses exactly two weights, and the static latin faces are
+~13 KB each against ~35 KB variable.
+
+`latin-ext` is a separate declaration and is genuinely needed — the romanised
+Japanese in the copy (dōjō, jūdō, Ōsensei) uses U+014D, U+016B and U+014C,
+which are outside the latin range. Splitting it keeps pages that use no macron
+at ~26 KB of font.
+
+`_includes/preload.html` preloads only the two roman latin faces. Do not add
+the italic or latin-ext faces: preloading a face the page never paints costs a
+download for nothing. The `crossorigin` attribute is required even though the
+fonts are same-origin — without it the preload and the CSS request use
+different modes and the file is fetched twice.
+
+**Japanese (`/ja/` pages only).** `Noto Sans JP` and `M PLUS 1p` are applied
+exclusively inside `html[lang="ja"]` blocks in `default.less`, so
+`styles/fonts-ja.css` is linked from `_includes/header.html` behind
+`{% if page.lang == 'ja' %}` and nowhere else. This matters: the old single
+Google stylesheet described all three families, so every Spanish page parsed
+~90 KB (gzipped) of rules for fonts it could never use.
+
+`styles/fonts-ja.css` is **generated, not hand-written**. It is Google's own
+CSS with the `gstatic` URLs rewritten to `/fonts/`, which preserves their
+per-chunk `unicode-range` splitting — that splitting is the only reason CJK
+webfonts are usable at all, since the browser then fetches just the chunks
+whose glyphs the page actually contains. To regenerate it, refetch
+
+```
+https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap
+https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@900&display=swap
+```
+
+with a current browser User-Agent (a stale one gets TTF instead of WOFF2),
+download every referenced `.woff2`, and rewrite each URL to
+`/fonts/{family-slug}-{N}.woff2` for numbered chunks or
+`/fonts/{family-slug}-{subset}.woff2` for named ones. Verify afterwards that
+every `url(/fonts/…)` in the file resolves to a file that exists.
+
+A Japanese page still pulls ~950 KB across ~50 chunk requests. That is
+unchanged from the Google-hosted setup — same files, same ranges — and it is
+simply what CJK webfonts cost. Subsetting to the glyphs the site actually uses
+would cut it to tens of KB, but it needs `fonttools` and a re-subset every
+time Japanese copy changes, so it was not done.
 
 ## Sitemap — generated, but it has one manual obligation
 
