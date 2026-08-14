@@ -1,0 +1,99 @@
+{%- comment -%}
+  Consent control for the cookie policy pages.
+
+  This is deliberately NOT a cookie-settings page. There is exactly one
+  non-essential category (Google Analytics via GTM), so a panel of toggles
+  would be theatre: it would imply choices that do not exist. What a visitor
+  actually needs is to see what they chose and change it, which is what this
+  does.
+
+  All the consent logic lives in _includes/cookie-banner.html and is reached
+  through window.amCookies. Nothing here writes a cookie by itself, so the
+  banner and this control can never disagree about what "accepted" means.
+
+  The buttons are rendered with hidden and revealed by script: without
+  JavaScript no consent can be given or withdrawn here anyway, so showing
+  dead buttons would be worse than showing the browser-settings list that
+  follows this block in the policy.
+{%- endcomment -%}
+{%- case page.lang -%}
+  {%- when 'ca' -%}
+    {%- assign cc_title    = "El vostre consentiment" -%}
+    {%- assign cc_accepted = "Actualment accepteu les galetes analítiques." -%}
+    {%- assign cc_rejected = "Actualment rebutgeu les galetes analítiques. Només s'utilitzen galetes tècniques." -%}
+    {%- assign cc_unset    = "Encara no heu triat. Mentrestant no s'ha activat cap galeta analítica." -%}
+    {%- assign cc_accept   = "Acceptar les galetes analítiques" -%}
+    {%- assign cc_reject   = "Rebutjar les galetes analítiques" -%}
+  {%- when 'en' -%}
+    {%- assign cc_title    = "Your consent" -%}
+    {%- assign cc_accepted = "You currently accept analytics cookies." -%}
+    {%- assign cc_rejected = "You currently reject analytics cookies. Only technical cookies are used." -%}
+    {%- assign cc_unset    = "You have not chosen yet. No analytics cookies have been set in the meantime." -%}
+    {%- assign cc_accept   = "Accept analytics cookies" -%}
+    {%- assign cc_reject   = "Reject analytics cookies" -%}
+  {%- when 'ja' -%}
+    {%- assign cc_title    = "お客様の同意" -%}
+    {%- assign cc_accepted = "現在、分析クッキーを承諾しています。" -%}
+    {%- assign cc_rejected = "現在、分析クッキーを拒否しています。技術的クッキーのみを使用します。" -%}
+    {%- assign cc_unset    = "まだ選択されていません。その間、分析クッキーは設定されていません。" -%}
+    {%- assign cc_accept   = "分析クッキーを承諾する" -%}
+    {%- assign cc_reject   = "分析クッキーを拒否する" -%}
+  {%- else -%}
+    {%- assign cc_title    = "Su consentimiento" -%}
+    {%- assign cc_accepted = "Actualmente acepta las cookies analíticas." -%}
+    {%- assign cc_rejected = "Actualmente rechaza las cookies analíticas. Solo se utilizan cookies técnicas." -%}
+    {%- assign cc_unset    = "Todavía no ha elegido. Mientras tanto no se ha activado ninguna cookie analítica." -%}
+    {%- assign cc_accept   = "Aceptar las cookies analíticas" -%}
+    {%- assign cc_reject   = "Rechazar las cookies analíticas" -%}
+{%- endcase -%}
+
+<div id="cookieConsentControl" class="cookie-consent-control" hidden>
+  <p class="cookie-consent-title">{{ cc_title }}</p>
+  <p class="cookie-consent-status" data-accepted="{{ cc_accepted }}" data-rejected="{{ cc_rejected }}" data-unset="{{ cc_unset }}"></p>
+  <div class="cookie-consent-actions">
+    <button type="button" class="btn btn-primary cookie-consent-accept" hidden>{{ cc_accept }}</button>
+    <button type="button" class="btn btn-primary cookie-consent-reject" hidden>{{ cc_reject }}</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  var box = document.getElementById('cookieConsentControl');
+  if (!box) return;
+
+  var status = box.querySelector('.cookie-consent-status');
+  var accept = box.querySelector('.cookie-consent-accept');
+  var reject = box.querySelector('.cookie-consent-reject');
+
+  function render(choice) {
+    if (choice === 'accepted') {
+      status.textContent = status.dataset.accepted;
+      accept.hidden = true;
+      reject.hidden = false;
+    } else if (choice === 'rejected') {
+      status.textContent = status.dataset.rejected;
+      accept.hidden = false;
+      reject.hidden = true;
+    } else {
+      // No choice yet means the banner is still on screen, but offering both
+      // here too costs nothing and saves hunting for it.
+      status.textContent = status.dataset.unset;
+      accept.hidden = false;
+      reject.hidden = false;
+    }
+  }
+
+  // The banner is included in the footer, so its API does not exist while
+  // this runs inside main.
+  document.addEventListener('DOMContentLoaded', function () {
+    if (!window.amCookies) return;
+
+    accept.addEventListener('click', function () { window.amCookies.accept(); });
+    reject.addEventListener('click', function () { window.amCookies.reject(true); });
+    document.addEventListener('am:cookieconsent', function (e) { render(e.detail); });
+
+    render(window.amCookies.get());
+    box.hidden = false;
+  });
+})();
+</script>

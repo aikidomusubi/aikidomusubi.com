@@ -118,6 +118,63 @@
   }
 }
 
+// ---------------------------------------------------------------------------
+// Consent control, rendered inside the cookie policy pages.
+//
+// Same card treatment as the banner above (and so as the fees page cards),
+// but in flow rather than fixed, because it is part of the document. It sits
+// inside main, where the prose rules already set the type, so this only has
+// to draw the card and lay out the buttons.
+// ---------------------------------------------------------------------------
+.cookie-consent-control {
+  background-color: @White;
+  color: @Black;
+  border: 1px solid fadeout(@Black, 88%);
+  border-radius: .25rem;
+  box-shadow: 0 .125rem .5rem fadeout(@Black, 85%);
+  padding: 1.25rem;
+  margin: 0 0 1.5rem;
+  font-size: .875rem;
+  line-height: 1.5;
+  text-align: left;
+
+  .cookie-consent-title {
+    .bold;
+    margin: 0 0 .25rem;
+  }
+
+  .cookie-consent-status {
+    margin: 0 0 1rem;
+  }
+
+  .cookie-consent-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+  }
+
+  // Matches the banner buttons exactly. Accepting and refusing must stay
+  // equally prominent here too — do not demote either to a secondary style.
+  .cookie-consent-accept,
+  .cookie-consent-reject {
+    color: @White;
+    background-color: @Blue;
+    border-color: @Blue;
+    font-size: .875rem;
+    padding: .375rem 1rem;
+
+    &:focus,
+    &:hover {
+      background-color: darken(@Blue, 5%);
+      border-color: darken(@Blue, 5%);
+    }
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}
+
 .course-lightbox {
   display: block;
   overflow: hidden;

@@ -12,7 +12,7 @@ last_modified: 2026-08-14
 
 Which cookies this website uses, what they do, and how to accept or reject them.
 
-**Last updated: 13 August 2026**
+**Last updated: 14 August 2026**
 
 > This English version is provided for convenience. In the event of any discrepancy, the Spanish version prevails, as this website is operated under Spanish law.
 
@@ -56,7 +56,11 @@ When you first access the website, a **cookie notice** is displayed that allows 
 
 ## 4. How can you manage or withdraw your consent?
 
-You can allow, block or delete the cookies installed on your device through your browser settings:
+You can change your decision at any time from this page. If you withdraw your consent, we will stop using analytics cookies and delete any that Google has installed in your browser.
+
+{% include cookie-consent-control.html %}
+
+You can also allow, block or delete the cookies installed on your device through your browser settings:
 
 - [Google Chrome](https://support.google.com/chrome/answer/95647)
 - [Mozilla Firefox](https://support.mozilla.org/en-US/kb/enhanced-tracking-protection-firefox-desktop)

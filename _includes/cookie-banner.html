@@ -103,16 +103,41 @@
   function open()  { banner.hidden = false; banner.classList.add('is-open'); }
   function close() { banner.classList.remove('is-open'); banner.hidden = true; }
 
-  banner.querySelector('.cookie-accept').addEventListener('click', function () {
+  // Accepting and rejecting are defined once here and reused by both the
+  // banner buttons and the control on the cookie policy page, so there is a
+  // single place where consent is written and Google's cookies are cleared.
+  // Each fires an event so any control on the page can restate the choice
+  // without reloading.
+  function announce(value) {
+    document.dispatchEvent(new CustomEvent('am:cookieconsent', { detail: value }));
+  }
+
+  function accept() {
     setChoice('accepted');
     close();
     loadGTM();
-  });
+    announce('accepted');
+  }
 
-  banner.querySelector('.cookie-reject').addEventListener('click', function () {
+  // GTM cannot be unloaded from a live page, so a visitor who accepted and
+  // then refuses keeps sending hits until the next navigation. Clearing the
+  // cookies stops the identifiers persisting; the reload makes the refusal
+  // take effect immediately rather than on their next click.
+  function reject(reload) {
+    var was = getChoice();
     setChoice('rejected');
     close();
     clearAnalyticsCookies();
+    announce('rejected');
+    if (reload && was === 'accepted' && window.__amGtmLoaded) location.reload();
+  }
+
+  banner.querySelector('.cookie-accept').addEventListener('click', function () {
+    accept();
+  });
+
+  banner.querySelector('.cookie-reject').addEventListener('click', function () {
+    reject(true);
   });
 
   var choice = getChoice();
@@ -122,10 +147,15 @@
     open();
   }
 
-  // No on-site control reopens this panel: the footer link was removed by
-  // request. Consent is withdrawn through the browser's own cookie settings,
-  // which the cookie policy documents. Kept as a small API so the panel can
-  // still be reopened from the console or a future control.
-  window.amCookies = { open: open };
+  // The cookie policy page renders a control that reads and flips the choice
+  // through this API. There is no separate cookie-settings page and no footer
+  // link — withdrawing consent happens either here or on that one page.
+  window.amCookies = {
+    open: open,
+    close: close,
+    get: getChoice,
+    accept: accept,
+    reject: reject
+  };
 })();
 </script>

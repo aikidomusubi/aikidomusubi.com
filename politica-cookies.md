@@ -12,7 +12,7 @@ last_modified: 2026-08-14
 
 Qué cookies utiliza este sitio web, para qué sirven y cómo aceptarlas o rechazarlas.
 
-**Última actualización: 13 de agosto de 2026**
+**Última actualización: 14 de agosto de 2026**
 
 Este sitio web, **aikidomusubi.com**, titularidad de Aikido Musubi, utiliza cookies y tecnologías similares. Esta Política de Cookies se ha elaborado siguiendo la *Guía sobre el uso de las cookies* de la Agencia Española de Protección de Datos (AEPD).
 
@@ -54,7 +54,11 @@ Al acceder por primera vez al sitio web, se le muestra un **aviso de cookies** q
 
 ## 4. ¿Cómo puede gestionar o retirar su consentimiento?
 
-Puede permitir, bloquear o eliminar las cookies instaladas en su dispositivo mediante la configuración de las opciones de su navegador:
+Puede cambiar su decisión en cualquier momento desde esta misma página. Si retira su consentimiento, dejaremos de utilizar cookies analíticas y eliminaremos las que Google haya instalado en su navegador.
+
+{% include cookie-consent-control.html %}
+
+También puede permitir, bloquear o eliminar las cookies instaladas en su dispositivo mediante la configuración de las opciones de su navegador:
 
 - [Google Chrome](https://support.google.com/chrome/answer/95647)
 - [Mozilla Firefox](https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias)

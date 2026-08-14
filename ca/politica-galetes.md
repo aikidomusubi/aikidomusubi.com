@@ -12,7 +12,7 @@ last_modified: 2026-08-14
 
 Quines galetes utilitza aquest lloc web, per a què serveixen i com acceptar-les o rebutjar-les.
 
-**Última actualització: 13 d'agost de 2026**
+**Última actualització: 14 d'agost de 2026**
 
 Aquest lloc web, **aikidomusubi.com**, titularitat d'Aikido Musubi, utilitza galetes (cookies) i tecnologies similars. Aquesta Política de Galetes s'ha elaborat seguint la *Guia sobre l'ús de les galetes* de l'Agència Espanyola de Protecció de Dades (AEPD).
 
@@ -54,7 +54,11 @@ En accedir per primera vegada al lloc web, se us mostra un **avís de galetes** 
 
 ## 4. Com podeu gestionar o retirar el vostre consentiment?
 
-Podeu permetre, bloquejar o eliminar les galetes instal·lades al vostre dispositiu mitjançant la configuració de les opcions del vostre navegador:
+Podeu canviar la vostra decisió en qualsevol moment des d'aquesta mateixa pàgina. Si retireu el vostre consentiment, deixarem d'utilitzar galetes analítiques i eliminarem les que Google hagi instal·lat al vostre navegador.
+
+{% include cookie-consent-control.html %}
+
+També podeu permetre, bloquejar o eliminar les galetes instal·lades al vostre dispositiu mitjançant la configuració de les opcions del vostre navegador:
 
 - [Google Chrome](https://support.google.com/chrome/answer/95647)
 - [Mozilla Firefox](https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias)
