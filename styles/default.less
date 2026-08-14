@@ -184,6 +184,49 @@ html {
             text-decoration: underline;
           }
 
+          // Markdown tables (the cookie policies use them for the cookie
+          // inventory) arrive as bare <table> with no classes, so they were
+          // rendering at browser defaults: 1px cell padding, no rules, and
+          // auto layout giving wildly uneven columns. Styled here rather than
+          // by rewriting the Markdown as HTML, so every language and any
+          // future table is covered by one rule.
+          table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: .875rem;
+            margin: 0 0 1.5rem;
+
+            th,
+            td {
+              padding: .5rem .75rem;
+              text-align: left;
+              vertical-align: top;
+              border-bottom: 1px solid fadeout(@Black, 90%);
+            }
+
+            th {
+              .bold;
+              white-space: nowrap;
+              border-bottom-width: 2px;
+            }
+
+            // Cookie names are inline code; keeping them on one line stops the
+            // first column collapsing to a few characters wide.
+            td > code,
+            th > code {
+              white-space: nowrap;
+            }
+
+            // Four columns of prose do not fit a phone. Letting the table
+            // scroll on its own is better than shrinking the text until it is
+            // unreadable or forcing the page to scroll sideways.
+            @media (max-width: 575.98px) {
+              display: block;
+              overflow-x: auto;
+              -webkit-overflow-scrolling: touch;
+            }
+          }
+
           a {
             .NotoSans;
             color: @Black;
@@ -457,6 +500,24 @@ html {
 
 .navbar {
 
+  // Bootstrap's navbar-dark paints links rgba(255,255,255,.55), which is
+  // 4.72:1 on this bar — over the line but only just. White at .9 measures
+  // 9.67:1 and matches the footer and language switcher, so the whole dark
+  // furniture behaves the same way.
+  --bs-navbar-color: @White;
+  --bs-navbar-hover-color: @White;
+  --bs-navbar-active-color: @White;
+
+  .nav-link {
+    opacity: .9;
+    transition: opacity .2s ease;
+
+    &:focus,
+    &:hover {
+      opacity: 1;
+    }
+  }
+
   // Bootstrap 4 gave .navbar `padding: .5rem 1rem`. Bootstrap 5 zeroes the
   // horizontal padding because it expects a .container child to provide it.
   // This navbar has no container (the LESS below targets its children
@@ -625,12 +686,17 @@ html {
       padding: .25rem 0;
 
       a {
-        color: darken(@White, 50%);
+        // On the dark navbar, darken(@White, 50%) is #808080 — 2.91:1, well
+        // under WCAG AA. White at .9 measures 9.67:1 and matches the footer.
+        color: @White;
+        opacity: .9;
+        transition: opacity .2s ease;
         text-transform: uppercase;
 
         &:focus,
         &:hover {
-          color: darken(@White, 10%);
+          color: @White;
+          opacity: 1;
           text-decoration: none;
         }
       }
@@ -3766,11 +3832,14 @@ html[lang="ja"] {
       li {
 
         a {
-          color: darken(@White, 50%);
+          color: @White;
+          opacity: .9;
+          transition: opacity .2s ease;
 
           &:focus,
           &:hover {
-            color: darken(@White, 10%);
+            color: @White;
+            opacity: 1;
           }
         }
       }
@@ -4195,11 +4264,14 @@ html[lang="ja"] {
       li {
 
         a {
-          color: darken(@White, 50%);
+          color: @White;
+          opacity: .9;
+          transition: opacity .2s ease;
 
           &:focus,
           &:hover {
-            color: darken(@White, 10%);
+            color: @White;
+            opacity: 1;
           }
         }
       }
