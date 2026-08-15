@@ -100,6 +100,33 @@
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
 
+// Body copy sits in a narrower measure than main's content box: `> p` and
+// `> ul` take a horizontal inset that grows with the breakpoint (1rem at the
+// smallest, 8rem from 1200px up). Anything else that is a block child of
+// <main> — a Markdown table, the cookie consent card — was left at the full
+// width and visibly overhung the prose on both sides.
+//
+// They cannot just take the same padding. CSS does not apply padding to a
+// table whose border-collapse is collapse, and the consent card already
+// spends its padding on the card inset. Both take the measure as margins
+// with a matching width instead.
+//
+// !important matches the p/ul rules these sit beside, and the breakpoint
+// rules genuinely need it: they are written `body .page .container > main >
+// table`, which is *less* specific than the base table rule
+// (`html body .page .container > main > table`) they have to override.
+//
+// Which is also why the base call passes `~""` to drop the flag. Two
+// !important declarations are settled by specificity, so an important base
+// rule would outrank every breakpoint above it and pin the table at the
+// smallest measure at all widths.
+.prose-inset(@inset; @imp: ~"!important") {
+  @double: (@inset * 2);
+  margin-left: @inset @imp;
+  margin-right: @inset @imp;
+  width: calc(~"100% - @{double}") @imp;
+}
+
 .NotoSans { font-family: 'Noto Sans', sans-serif; }
 .NotoSansJP { font-family: 'Noto Sans JP', sans-serif; }
 .NotoSerif { font-family: 'Noto Serif', sans-serif; }
