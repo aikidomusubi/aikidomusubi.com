@@ -7,3 +7,8 @@ site_links
 site_links_outdated
 package.json
 package-lock.json
+
+# Unsubset source faces for tools/subset-ja-fonts.py — ~4.8 MB of input that
+# never ships. Re-fetch per tools/ja-font-sources/README.md when the script
+# needs them; the subset output in /fonts/ is what is committed.
+tools/ja-font-sources/*.woff2

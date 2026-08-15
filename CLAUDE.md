@@ -96,7 +96,8 @@ Four languages: **es** (default, root `/`), **ca** (`/ca/`), **en** (`/en/`), **
 | `sitemap.xml` | **Liquid template that generates the whole sitemap** — never hand-edit the output |
 | `training-schedule-{lang}.json` | Weekly training schedule data consumed by FullCalendar |
 | `gulpfile.js` | Gulp tasks for CSS/JS compilation |
-| `styles/fonts-ja.css` | **Generated** `@font-face` set for the Japanese faces — see below |
+| `_includes/fonts-ja.css` | **Generated** `@font-face` set for the Japanese faces, inlined on `/ja/` pages — see below |
+| `tools/subset-ja-fonts.py` | **Regenerates** the Japanese faces and that include — re-run after editing Japanese copy |
 
 ## Fonts — self-hosted, no third party
 
@@ -123,34 +124,40 @@ fonts are same-origin — without it the preload and the CSS request use
 different modes and the file is fetched twice.
 
 **Japanese (`/ja/` pages only).** `Noto Sans JP` and `M PLUS 1p` are applied
-exclusively inside `html[lang="ja"]` blocks in `default.less`, so
-`styles/fonts-ja.css` is linked from `_includes/header.html` behind
-`{% if page.lang == 'ja' %}` and nowhere else. This matters: the old single
+exclusively inside `html[lang="ja"]` blocks in `default.less`, so they are
+declared on Japanese pages and nowhere else. This matters: the old single
 Google stylesheet described all three families, so every Spanish page parsed
 ~90 KB (gzipped) of rules for fonts it could never use.
 
-`styles/fonts-ja.css` is **generated, not hand-written**. It is Google's own
-CSS with the `gstatic` URLs rewritten to `/fonts/`, which preserves their
-per-chunk `unicode-range` splitting — that splitting is the only reason CJK
-webfonts are usable at all, since the browser then fetches just the chunks
-whose glyphs the page actually contains. To regenerate it, refetch
+The three faces are **subset to the glyphs the site actually uses**, by
+`tools/subset-ja-fonts.py`. Served whole, these are CJK fonts — ~6 MB across
+~250 `unicode-range` chunks, with ~300 KB of `@font-face` CSS just to describe
+the chunking. Subsetting takes that to three files totalling ~430 KB and under
+a kilobyte of CSS, which is then **inlined** into the `<head>` by
+`_includes/header.html`: at that size a separate stylesheet is pure overhead,
+costing a render-blocking round trip to deliver three rules. A Japanese page
+went from 1,976 KiB to 1,161 KiB total transfer.
 
+**Re-run the subsetter after adding or editing Japanese copy:**
+
+```bash
+RUBYOPT="-E utf-8:utf-8" bundle exec jekyll build
+python3 tools/subset-ja-fonts.py
 ```
-https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap
-https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@900&display=swap
-```
 
-with a current browser User-Agent (a stale one gets TTF instead of WOFF2),
-download every referenced `.woff2`, and rewrite each URL to
-`/fonts/{family-slug}-{N}.woff2` for numbered chunks or
-`/fonts/{family-slug}-{subset}.woff2` for named ones. Verify afterwards that
-every `url(/fonts/…)` in the file resolves to a file that exists.
+It needs `fonttools` and `brotli`, which are deliberately not project
+dependencies — install them into a throwaway venv, as the script's error
+message explains. It reads the built `/ja/` pages plus
+`training-schedule-ja.json` (the calendar injects that at runtime, so scanning
+HTML alone would miss it), and always includes all kana, CJK punctuation and
+ASCII as a safety margin so ordinary copy edits do not need a re-subset. New
+**kanji** do: one outside the subset falls back to the reader's system
+Japanese font — a visible mismatch, not tofu. The script prints any in-use
+character it could not cover, so watch that line. `✕` in the collaboration
+course titles is expected there; Noto Sans JP has never had that glyph.
 
-A Japanese page still pulls ~950 KB across ~50 chunk requests. That is
-unchanged from the Google-hosted setup — same files, same ranges — and it is
-simply what CJK webfonts cost. Subsetting to the glyphs the site actually uses
-would cut it to tens of KB, but it needs `fonttools` and a re-subset every
-time Japanese copy changes, so it was not done.
+`tools/` is excluded from the build — the unsubset source faces live in
+`tools/ja-font-sources/` as inputs only.
 
 ## Sitemap — generated, but it has one manual obligation
 

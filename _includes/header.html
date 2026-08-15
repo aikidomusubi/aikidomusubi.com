@@ -44,13 +44,19 @@
     <link href="/styles/all.min.css?v=5" rel="stylesheet">
     {% comment %}
       Noto Sans JP and M PLUS 1p are only ever applied inside html[lang="ja"]
-      blocks, so the ~300 KB of @font-face declarations describing them is
-      loaded on Japanese pages and nowhere else. Every page used to pull the
-      whole three-family stylesheet from Google, which meant a Spanish page
-      parsed 90 KB (gzipped) of rules for fonts it could never paint with.
+      blocks, so they are declared on Japanese pages and nowhere else. Every
+      page used to pull a three-family stylesheet from Google, which meant a
+      Spanish page parsed 90 KB (gzipped) of rules for fonts it could never
+      paint with.
+
+      Inlined rather than linked. The faces are subset to the glyphs the site
+      actually uses (tools/subset-ja-fonts.py), which took this from ~300 KB
+      of chunked @font-face rules to under a kilobyte — at that size a
+      separate stylesheet is pure overhead, costing a render-blocking round
+      trip to deliver three rules.
     {% endcomment %}
     {% if page.lang == 'ja' %}
-      <link href="/styles/fonts-ja.css?v=1" rel="stylesheet">
+      <style>{% include fonts-ja.css %}</style>
     {% endif %}
     {% include icons.html %}
     {% if page.i18n-ref == 'training-schedule-IFMn5oCc' %}

@@ -82,6 +82,9 @@ exclude:
   - _includes/cssrelpreload.js
   - assets/
   - node_modules/
+  # Font subsetter and its ~2.5 MB of unsubset source faces. Inputs only —
+  # what ships is the subset output in /fonts/.
+  - tools/
   - Gemfile
   - Gemfile.lock
   - gulpfile.js
