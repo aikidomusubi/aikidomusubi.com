@@ -52,9 +52,49 @@ If that combination ever reappears, look for a reintroduced absolute asset URL.
 npx gulp styles scripts   # rebuild bundles after editing LESS/JS
 npx gulp watch            # rebuild on change
 npx gulp lint             # jshint scripts/default.js
+npx gulp purge            # drop unused CSS — see the order below
 ```
 
 Only four asset files ship: `all.min.css`, `all.min.js`, and the two GLightbox files. Everything Gulp consumes is in `_config.yml`'s `exclude:` list. Edit source, run Gulp, commit the compiled output.
+
+### Unused CSS is purged, and the order matters
+
+Bootstrap is ~235 KB of a 327 KB bundle and this site uses a fraction of it.
+`gulp purge` takes `all.min.css` to ~157 KB — about 20 KB a page once brotli
+has had it. **The committed `all.min.css` is the purged one**: GitHub Pages
+does not run Gulp, so whatever is committed is what ships.
+
+Full sequence when CSS changes:
+
+```bash
+npx gulp styles
+RUBYOPT="-E utf-8:utf-8" bundle exec jekyll build
+npx gulp purge
+```
+
+`purge` reads the **built `_site`**, not the templates, and that is not a
+detail: kramdown generates `<blockquote>`, `<table>`, `<em>` and friends from
+Markdown punctuation, so those tag names appear nowhere in the sources.
+Purging against templates silently dropped the blockquote rules on the cookie
+policy pages — caught only by diffing computed styles before and after. The
+task refuses to run without a built `_site`.
+
+Two other things keep it honest. The extractor only accepts class-shaped
+tokens; the default one reads ordinary prose as class names, which is why an
+earlier attempt at this saved 2–5% and was reverted. And the safelist covers
+what no static analysis can see — classes that appear only once JS has run:
+Bootstrap's `.show`/`.collapsing` states, everything FullCalendar builds,
+GLightbox, and the cookie banner's `.is-open`.
+
+If you use a Bootstrap class that was not previously on any page and forget to
+re-purge, that class will be missing. This fails *visibly* — the dev server
+serves the same committed bundle, so it looks broken immediately rather than
+only in production.
+
+Requires `@fullhuman/postcss-purgecss`, which is in `devDependencies`. Note
+that `package.json` and `package-lock.json` are listed in `.gitignore` but were
+committed before that entry existed, so Git still tracks them — dependency
+changes do get recorded, despite what the ignore file suggests.
 
 Jekyll does **not** prune `_site`; after changing `exclude:`, `rm -rf _site` before rebuilding or deleted files linger and look like leaks.
 

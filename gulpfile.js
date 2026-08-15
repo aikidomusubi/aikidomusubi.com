@@ -62,6 +62,65 @@ gulp.task('styles', function() {
 });
 
 // -------------------
+// Drop unused CSS
+//
+// Bootstrap is ~235 KB of the 327 KB bundle and this site uses a fraction of
+// it. Purging takes all.min.css to ~157 KB, which is ~20 KB per page once
+// brotli has had it.
+//
+// Content is the BUILT SITE, not the templates, and that is not a detail.
+// Kramdown generates <blockquote>, <table>, <em> and friends from Markdown
+// punctuation, so those tag names appear nowhere in the sources — purging
+// against templates silently dropped the blockquote rules on the cookie
+// policy pages. _site is what actually ships; purge against that.
+//
+// The extractor only accepts class-shaped tokens. The default one reads
+// ordinary prose as class names, which is why an earlier attempt at this
+// saved almost nothing. The safelist covers what no static analysis can see:
+// classes that only exist once JS has run — Bootstrap's .show/.collapsing
+// states, everything FullCalendar builds at runtime, GLightbox, and the
+// cookie banner's .is-open.
+//
+// Run order matters: gulp styles -> jekyll build -> gulp purge -> commit.
+// Getting it wrong is visible rather than silent — a class purged before it
+// was used simply looks broken locally, since the committed bundle is what
+// the dev server serves.
+// -------------------
+gulp.task('purge', function() {
+  // v6 exports the plugin as module.exports itself, not on .default.
+  var purgecss = require('@fullhuman/postcss-purgecss');
+  var fs = require('fs');
+
+  if (!fs.existsSync('_site') || fs.readdirSync('_site').length < 5) {
+    throw new Error('purge needs a built _site — run jekyll build first');
+  }
+
+  return gulp.src('styles/all.min.css')
+    .pipe(postcss([purgecss({
+      content: [
+        '_site/**/*.html',
+        'scripts/default.js',
+        'scripts/glightbox.min.js',
+        'plugins/fullcalendar-4.3.1/packages/*/main.min.js'
+      ],
+      defaultExtractor: function(content) {
+        return content.match(/[\w-/:%.]+(?<!:)/g) || [];
+      },
+      safelist: {
+        standard: [/^fc-/, /^gl/, /^is-/, /^cookie-/, /^navbar/, /^dropdown/,
+                   /^collaps/, /^modal/, /^offcanvas/, /^carousel/, /^tooltip/,
+                   /^popover/, /^toast/, 'show', 'showing', 'hide', 'hiding',
+                   'fade', 'active', 'disabled', 'open', 'table-bordered',
+                   'sticky-top', 'fixed-bottom'],
+        deep: [/^fc-/, /^gl/, /^modal/],
+        greedy: [/^fc/, /^gl/]
+      }
+    })]))
+    .pipe(cleanCSS())
+    .pipe(gulp.dest('styles'));
+});
+
+// -------------------
 // Minify HTML
 // -------------------
 gulp.task('optimize-html', gulp.series(function(done) {
