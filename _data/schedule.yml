@@ -85,11 +85,19 @@ ui:
   schedule_of: { es: "Horario de",         ca: "Horari de",         en: "Schedule for",   ja: "スケジュール：" }
   weekly:      { es: "Clase semanal",      ca: "Classe setmanal",   en: "Weekly class",   ja: "毎週のクラス" }
   monthly:     { es: "Una vez al mes",     ca: "Un cop al mes",     en: "Once a month",   ja: "月に一度" }
+  # Sits next to "Todo el horario", so it has to say plainly that it covers
+  # less. "Current filter" described the mechanism rather than the result and
+  # did not survive translation; this names what you get. The count is
+  # parenthetical so no language has to agree a plural with it.
   export_filtered:
-    es: "Lo filtrado ({n})"
-    ca: "El filtrat ({n})"
-    en: "Current filter ({n})"
-    ja: "表示中（{n}）"
+    es: "Solo lo visible ({n})"
+    ca: "Només el visible ({n})"
+    en: "Only what's shown ({n})"
+    ja: "表示中のみ（{n}）"
+  share:       { es: "Compartir",       ca: "Comparteix",      en: "Share",        ja: "共有" }
+  share_copied: { es: "Enlace copiado",  ca: "Enllaç copiat",   en: "Link copied",  ja: "リンクをコピーしました" }
+  share_text:  { es: "Horario de clases", ca: "Horari de classes", en: "Class schedule", ja: "稽古時間" }
+  print:       { es: "Imprimir",        ca: "Imprimeix",       en: "Print",        ja: "印刷" }
   also:        { es: "Además",             ca: "A més",             en: "Also",           ja: "その他" }
   subscribe:   { es: "Añadir a tu calendario", ca: "Afegeix al teu calendari", en: "Add to your calendar", ja: "カレンダーに追加" }
   sub_all:     { es: "Todo el horario",    ca: "Tot l'horari",      en: "Full schedule",  ja: "全スケジュール" }

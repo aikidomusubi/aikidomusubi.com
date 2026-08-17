@@ -169,6 +169,51 @@
 }
 
 // ---------------------------------------------------------------------------
+// Share / print actions
+//
+// Pushed to the end of the controls row so they sit apart from the filters
+// they act on, and drop below them when the row runs out of width.
+// ---------------------------------------------------------------------------
+.tt-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin-left: auto;
+  align-self: flex-end;
+}
+
+.tt-action {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  min-height: 2rem;
+  padding: .25rem .8rem;
+  border: 1px solid fadeout(@Black, 88%);
+  border-radius: .25rem;
+  background-color: @White;
+  color: @Black;
+  font-size: .8rem;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: background-color .2s ease, border-color .2s ease;
+
+  > svg { width: .85rem; height: .85rem; flex: 0 0 auto; }
+
+  &:hover { background-color: fadeout(@Black, 96%); border-color: fadeout(@Black, 70%); }
+  &:focus-visible { outline: 2px solid @Blue; outline-offset: 2px; }
+
+  // Confirmation after the link is copied, for the desktop path where there
+  // is no share sheet to acknowledge the action.
+  &[data-done] {
+    border-color: @Blue;
+    color: @Blue;
+  }
+}
+
+// Print-only header. Never shown on screen.
+.tt-print-head { display: none; }
+
+// ---------------------------------------------------------------------------
 // The grid
 // ---------------------------------------------------------------------------
 .timetable-grid {
@@ -454,25 +499,29 @@ html body .page .container > main .tt-ics {
   margin: 1rem 0 0;
 }
 
+// Running text, so no flexbox. A flex container makes an anonymous item of
+// every text node, and `gap` then pushes them apart — which put a 7px space
+// between "Saturday" and the time, and again before "Once a month". The dot is
+// positioned out of the flow instead, and the sentence stays a sentence.
 .tt-note {
-  display: flex;
-  align-items: baseline;
-  gap: .45rem;
+  position: relative;
+  padding-left: 1rem;
   margin: 0 0 .35rem;
   font-size: .78rem;
   line-height: 1.45;
   color: fadeout(@Black, 20%);
 
   > strong { .bold; }
-  > em { font-style: italic; opacity: .8; }
+  > em { font-style: italic; opacity: .85; }
 
   .tt-note-dot {
-    flex: 0 0 auto;
+    position: absolute;
+    left: 0;
+    top: .5em;
     width: .55rem;
     height: .55rem;
     border-radius: 50%;
     background-color: var(--colour);
-    transform: translateY(-.05rem);
   }
 
   &[hidden] { display: none; }
@@ -665,22 +714,115 @@ html body .page .container > main .tt-export-link {
 }
 
 // ---------------------------------------------------------------------------
-// Print — the timetable is the page
+// Print
+//
+// The timetable is the page: site chrome goes, the printed sheet gets its own
+// masthead, and what is left is the grid at full width with the current
+// selection named underneath the title.
+//
+// Backgrounds are not relied on. Most browsers drop them unless the reader
+// ticks "background graphics", so the colour that identifies a discipline is
+// moved to a left border, which always prints — and the block keeps a light
+// tint for anyone who does have backgrounds on.
 // ---------------------------------------------------------------------------
+@page {
+  margin: 12mm 10mm;
+}
+
 @media print {
+
+  // Site chrome. The timetable is what was asked for; the navigation, the
+  // hero, the cookie banner and the footer are not.
+  .navbar,
+  .fixedHead,
+  header,
+  footer,
+  .stickyBar,
+  .cookie-banner,
+  #cookieConsentControl { display: none !important; }
+
+  html body .page .container > main { padding: 0 !important; }
 
   .timetable-controls,
   .tt-tabs,
   .tt-now,
-  .tt-ics { display: none !important; }
+  .tt-ics,
+  .tt-export,
+  .tt-actions { display: none !important; }
 
-  .timetable-grid { grid-template-columns: @tt-axis-width repeat(7, minmax(0, 1fr)); }
+  // ---- printed masthead ----
+  .tt-print-head {
+    display: block;
+    margin: 0 0 6mm;
+    padding-bottom: 3mm;
+    border-bottom: 1pt solid @Black;
+  }
 
-  .tt-axis { display: grid; }
+  .tt-print-logo {
+    display: block;
+    width: 62mm;
+    height: auto;
+    margin: 0 0 3mm;
+  }
+
+  .tt-print-title {
+    .NotoSans; .bold;
+    margin: 0;
+    font-size: 15pt;
+    line-height: 1.2;
+    color: @Black;
+  }
+
+  .tt-print-meta {
+    margin: 1mm 0 0;
+    font-size: 9pt;
+    line-height: 1.4;
+    color: @Black;
+
+    &:empty { display: none; }
+  }
+
+  .tt-print-url {
+    margin: 1mm 0 0;
+    font-size: 8pt;
+    color: @Black;
+    opacity: .7;
+  }
+
+  // ---- the grid ----
+  .timetable { margin: 0; }
+
+  .timetable-grid {
+    display: grid;
+    grid-template-columns: 14mm repeat(7, minmax(0, 1fr));
+    gap: 0 1pt;
+    break-inside: avoid;
+  }
+
+  .tt-axis {
+    display: grid;
+    padding-top: 7mm;
+    font-size: 7pt;
+    color: @Black;
+  }
 
   .tt-day {
     display: flex !important;
     break-inside: avoid;
+  }
+
+  .tt-day-head,
+  html body .page .container > main .tt-day-head {
+    height: 7mm;
+    line-height: 7mm;
+    font-size: 9pt;
+    color: @Black;
+    border-bottom: 1pt solid @Black;
+  }
+
+  .tt-day[data-today] .tt-day-head {
+    color: @Black;
+    border-bottom-color: @Black;
   }
 
   .tt-day-body {
@@ -688,19 +830,44 @@ html body .page .container > main .tt-export-link {
     background-image: none;
   }
 
-  // Colour blocks cost a fortune in ink and most browsers drop backgrounds in
-  // print anyway; outline them instead so the grid still reads.
-  .tt-class {
-    background-color: transparent !important;
-    border: 1px solid fadeout(@Black, 60%);
-    border-left: 3px solid var(--colour);
-    color: @Black !important;
+  .tt-day[data-today] .tt-day-body { background-color: transparent; }
 
-    .tt-place { display: block; }
-    &[data-short] .tt-level, &[data-tiny] .tt-level { display: block; }
+  .tt-class {
+    // The colour survives as a rule down the left edge whether or not the
+    // browser is printing backgrounds.
+    border: .5pt solid fadeout(@Black, 55%);
+    border-left: 2.5pt solid var(--colour);
+    border-radius: 0;
+    background-color: transparent !important;
+    color: @Black !important;
+    padding: 1mm 1.5mm;
+    break-inside: avoid;
+
+    .tt-time { font-size: 7pt; opacity: 1; }
+    .tt-name { font-size: 8pt; }
+    .tt-level { font-size: 7pt; opacity: 1; display: block; }
+    .tt-place { display: none; }
+
+    &[data-tiny] .tt-level { display: block; }
   }
 
-  .tt-day[data-today] .tt-day-body { background-color: transparent; }
+  // Notes belong on the printout — they are classes too.
+  .tt-notes { margin-top: 4mm; break-inside: avoid; }
+
+  .tt-note {
+    font-size: 8pt;
+    color: @Black;
+
+    &[hidden] { display: none !important; }
+
+    .tt-note-dot {
+      border: .5pt solid @Black;
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+    }
+  }
+
+  .tt-empty { font-size: 7pt; color: @Black; }
 }
 
 @media (prefers-reduced-motion: reduce) {

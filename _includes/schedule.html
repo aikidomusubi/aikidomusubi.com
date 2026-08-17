@@ -43,6 +43,20 @@
      data-export-filtered="{{ S.ui.export_filtered[L] }}"
      style="--rows: {{ total_rows }}">
 
+  {%- comment -%}
+    Print header. Hidden on screen entirely; on paper it replaces the site
+    chrome, which is stripped. Without it a printed timetable is a grid of
+    times with nothing saying whose it is or which venue it covers — the
+    filters that produced it are exactly what the print does not carry over,
+    so the selection line is written by script before the dialog opens.
+  {%- endcomment -%}
+  <div class="tt-print-head" aria-hidden="true">
+    <img class="tt-print-logo" src="/graphics/logo-00.svg" alt="" width="1920" height="210">
+    <p class="tt-print-title">{{ page.title }}</p>
+    <p class="tt-print-meta"></p>
+    <p class="tt-print-url">{{ site.url }}{{ page.url }}</p>
+  </div>
+
   {%- comment -%} ---------- Controls ---------- {%- endcomment -%}
   <div class="timetable-controls">
     <fieldset class="tt-filter" id="tt-categories">
@@ -70,6 +84,20 @@
         {%- endfor %}
       </div>
     </fieldset>
+
+    {%- comment -%}
+      Share and print act on the current selection, so they sit with the
+      controls that make it rather than down with the calendar export.
+
+      Both are added by script — share needs navigator.share or a clipboard,
+      print needs window.print, and a dead button is worse than no button. The
+      container is rendered here so the layout does not jump when they appear.
+    {%- endcomment -%}
+    <div class="tt-actions" id="tt-actions"
+         data-share="{{ S.ui.share[L] }}"
+         data-share-copied="{{ S.ui.share_copied[L] }}"
+         data-share-text="{{ S.ui.share_text[L] }} · {{ site.title }}"
+         data-print="{{ S.ui.print[L] }}"></div>
   </div>
 
   {%- comment -%} ---------- Grid ---------- {%- endcomment -%}
@@ -240,9 +268,8 @@
       {%- assign freq = S.ui[c.frequency] -%}
       <p class="tt-note" data-location="{{ loc.id }}" data-category="{{ c.category }}">
         <span class="tt-note-dot" style="--colour: {{ cat.color }}" aria-hidden="true"></span>
-        <strong>{{ S.ui.also[L] }}:</strong>
-        {{ cat.name[L] }} — {{ lvl.name[L] }},
-        {%- for d in c.days %} {{ S.day_names[d][L].long }}{% unless forloop.last %},{% endunless %}{% endfor %}
+        <strong>{{ S.ui.also[L] }}:</strong> {{ cat.name[L] }} — {{ lvl.name[L] }},
+        {%- for d in c.days %} {{ S.day_names[d][L].long }}{% unless forloop.last %},{% endunless %}{%- endfor %},
         <time datetime="{{ c.start }}">{{ c.start }}</time>–<time datetime="{{ c.end }}">{{ c.end }}</time>.
         <em>{{ freq[L] }}</em>.
       </p>

@@ -87,34 +87,91 @@
     });
 
     if (updateFilteredLabel) updateFilteredLabel();
+    updatePrintMeta(cats, loc);
   }
 
-  catInputs.forEach(function (i) { i.addEventListener('change', apply); });
-
-  locInputs.forEach(function (i) {
-    i.addEventListener('change', function () {
-      apply();
-      // Keep the deep link the old calendar supported: ?location=<slug>.
-      try {
-        var url = new URL(window.location.href);
-        url.searchParams.set('location', i.dataset.slug);
-        window.history.replaceState({}, '', url);
-      } catch (e) { /* older browsers: the filter still works */ }
+  // The printed sheet cannot show which chips were lit, so the selection is
+  // spelled out under the title instead — otherwise a filtered printout is
+  // indistinguishable from the full one.
+  function updatePrintMeta(cats, loc) {
+    var meta = root.querySelector('.tt-print-meta');
+    if (!meta) return;
+    var venue = locInputs.filter(function (i) { return i.checked; })[0];
+    var venueName = venue ? venue.parentNode.querySelector('span').textContent.trim() : '';
+    var names = catInputs.filter(function (i) { return i.checked; }).map(function (i) {
+      return i.closest('.tt-chip').querySelector('.tt-chip-label').textContent.trim();
     });
+    var parts = [];
+    if (venueName) parts.push(venueName);
+    // Naming every discipline when they are all on is noise; the printout
+    // already shows them.
+    if (names.length && names.length < catInputs.length) parts.push(names.join(' · '));
+    meta.textContent = parts.join(' — ');
+  }
+
+  // -------------------------------------------------------------------------
+  // URL state
+  //
+  // Both filters live in the query string, independently:
+  //
+  //   ?location=aikido-musubi&activities=aikido,judo
+  //
+  // so a link can carry a venue, a set of disciplines, or both. `activities`
+  // is omitted when everything is selected — the common case should not have
+  // to spell out every discipline just to say "no filter".
+  // -------------------------------------------------------------------------
+  function currentUrl() {
+    var url = new URL(window.location.href);
+    var on = locInputs.filter(function (i) { return i.checked; })[0];
+    if (on) url.searchParams.set('location', on.dataset.slug);
+
+    var cats = activeCategories();
+    if (cats.length === catInputs.length) url.searchParams.delete('activities');
+    else url.searchParams.set('activities', cats.join(','));
+    return url;
+  }
+
+  function syncUrl() {
+    try {
+      window.history.replaceState({}, '', currentUrl());
+    } catch (e) { /* older browsers: the filters still work */ }
+  }
+
+  catInputs.forEach(function (i) {
+    i.addEventListener('change', function () { apply(); syncUrl(); });
   });
 
-  // Honour ?location=<slug> (and #location=<slug>, which the old build also read)
-  (function initLocation() {
-    var slug = null;
+  locInputs.forEach(function (i) {
+    i.addEventListener('change', function () { apply(); syncUrl(); });
+  });
+
+  // Read both parameters on load. The hash form is still honoured because the
+  // old calendar accepted #location=<slug> and links to it may exist.
+  (function initFromUrl() {
+    var params;
     try {
-      slug = new URL(window.location.href).searchParams.get('location');
-      if (!slug && window.location.hash) {
-        slug = new URLSearchParams(window.location.hash.replace(/^#/, '')).get('location');
+      params = new URL(window.location.href).searchParams;
+      if (!params.get('location') && !params.get('activities') && window.location.hash) {
+        params = new URLSearchParams(window.location.hash.replace(/^#/, ''));
       }
     } catch (e) { return; }
-    if (!slug) return;
-    var match = locInputs.filter(function (i) { return i.dataset.slug === slug; })[0];
-    if (match) match.checked = true;
+
+    var slug = params.get('location');
+    if (slug) {
+      var match = locInputs.filter(function (i) { return i.dataset.slug === slug; })[0];
+      if (match) match.checked = true;
+    }
+
+    var acts = params.get('activities');
+    if (acts) {
+      var wanted = acts.split(',').map(function (a) { return a.trim(); }).filter(Boolean);
+      // Ignore a list that names nothing real rather than showing an empty
+      // timetable to someone who followed a stale link.
+      var anyValid = catInputs.some(function (i) { return wanted.indexOf(i.value) !== -1; });
+      if (anyValid) {
+        catInputs.forEach(function (i) { i.checked = wanted.indexOf(i.value) !== -1; });
+      }
+    }
   })();
 
   // -------------------------------------------------------------------------
@@ -355,6 +412,73 @@
       label.textContent = tpl.replace('{n}', n);
       filtered.hidden = (n === 0);
     };
+  }
+
+  // -------------------------------------------------------------------------
+  // Share and print
+  //
+  // Share hands the current URL — filters and all — to the operating system's
+  // own share sheet, so WhatsApp, Mail, Messages and the rest come from the
+  // device rather than from a row of network buttons this site would have to
+  // host and maintain. Where that API does not exist (most desktop browsers)
+  // it falls back to copying the link, which is the same job done quietly.
+  // -------------------------------------------------------------------------
+  var actions = document.getElementById('tt-actions');
+
+  if (actions) {
+    var ICON_SHARE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+      'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+      '<path d="M12 3v13M8 7l4-4 4 4"/><path d="M5 14v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5"/></svg>';
+    var ICON_PRINT = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+      'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+      '<path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/>' +
+      '<path d="M6 17h12v4H6z"/></svg>';
+
+    function makeAction(label, icon) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'tt-action';
+      b.innerHTML = icon + '<span>' + label + '</span>';
+      actions.appendChild(b);
+      return b;
+    }
+
+    var canShare = typeof navigator !== 'undefined' && typeof navigator.share === 'function';
+    var canCopy = typeof navigator !== 'undefined' && navigator.clipboard &&
+                  typeof navigator.clipboard.writeText === 'function';
+
+    if (canShare || canCopy) {
+      var shareBtn = makeAction(actions.dataset.share, ICON_SHARE);
+      var shareLabel = shareBtn.querySelector('span');
+
+      shareBtn.addEventListener('click', function () {
+        var url = currentUrl().href;
+        var payload = {
+          title: document.title,
+          text: actions.dataset.shareText,
+          url: url
+        };
+        if (canShare) {
+          // The rejection when someone dismisses the sheet is not an error.
+          navigator.share(payload).catch(function () {});
+          return;
+        }
+        navigator.clipboard.writeText(url).then(function () {
+          var was = shareLabel.textContent;
+          shareLabel.textContent = actions.dataset.shareCopied;
+          shareBtn.setAttribute('data-done', '');
+          setTimeout(function () {
+            shareLabel.textContent = was;
+            shareBtn.removeAttribute('data-done');
+          }, 2000);
+        }).catch(function () {});
+      });
+    }
+
+    if (typeof window.print === 'function') {
+      var printBtn = makeAction(actions.dataset.print, ICON_PRINT);
+      printBtn.addEventListener('click', function () { window.print(); });
+    }
   }
 
   apply();
