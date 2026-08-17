@@ -1,0 +1,221 @@
+{%- comment -%}
+  Dated calendar: seminars, exams, closures and changes to the regular week.
+  Rendered at build time from _data/calendar.yml, like the weekly timetable —
+  static HTML, indexable, no library, no fetch.
+
+  Two views over one set of entries. The month grid is the default because
+  courses here are published one to three months out, so a month usually has
+  something in it; the list is better on a phone and better for scanning what
+  is next. Both are in the markup and the toggle only changes which is shown,
+  so a crawler and a reader with no JavaScript get everything either way.
+
+  Every month that has entries is rendered, past ones included — the archive
+  of who taught and when is worth keeping and worth indexing. Navigation moves
+  between the rendered months rather than generating empty ones.
+
+  Date arithmetic in Liquid, which has no date maths to speak of, is done
+  through Unix timestamps: the first of the next month minus a day is the last
+  day of this one. Weekday indices come from strftime %w, shifted so the week
+  starts on Monday like the rest of the site.
+{%- endcomment -%}
+
+{%- assign C = site.data.calendar -%}
+{%- assign S = site.data.schedule -%}
+{%- assign L = page.lang | default: 'es' -%}
+{%- assign entries = C.entries | sort: 'date' -%}
+{%- assign today = site.time | date: '%Y-%m-%d' -%}
+{%- assign this_month = site.time | date: '%Y-%m' -%}
+
+{%- comment -%} Distinct months, in order, plus the month the site was built in. {%- endcomment -%}
+{%- assign month_keys = '' -%}
+{%- for e in entries -%}
+  {%- assign ym = e.date | date: '%Y-%m' -%}
+  {%- unless month_keys contains ym -%}
+    {%- assign month_keys = month_keys | append: ym | append: ' ' -%}
+  {%- endunless -%}
+{%- endfor -%}
+{%- unless month_keys contains this_month -%}
+  {%- assign month_keys = month_keys | append: this_month | append: ' ' -%}
+{%- endunless -%}
+{%- assign months = month_keys | split: ' ' | sort -%}
+
+<div class="calendar" id="calendar-view"
+     data-today="{{ today }}"
+     data-this-month="{{ this_month }}"
+     data-label-today="{{ C.ui.today[L] }}">
+
+  {%- comment -%} ---------- Controls ---------- {%- endcomment -%}
+  <div class="cal-controls">
+    <div class="cal-nav">
+      <button type="button" class="cal-nav-btn" data-nav="prev" aria-label="{{ C.ui.prev[L] }}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <p class="cal-current" id="cal-current" aria-live="polite"></p>
+      <button type="button" class="cal-nav-btn" data-nav="next" aria-label="{{ C.ui.next[L] }}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+      <button type="button" class="cal-today-btn" data-nav="today">{{ C.ui.today[L] }}</button>
+    </div>
+
+    <div class="cal-views" role="tablist" aria-label="{{ C.ui.title[L] }}">
+      <button type="button" class="cal-view-btn" role="tab" data-view="month" aria-selected="true">{{ C.ui.month_view[L] }}</button>
+      <button type="button" class="cal-view-btn" role="tab" data-view="list" aria-selected="false">{{ C.ui.list_view[L] }}</button>
+    </div>
+  </div>
+
+  {%- comment -%} ---------- Month grid ---------- {%- endcomment -%}
+  <div class="cal-months" data-view-panel="month">
+    {%- for ym in months -%}
+      {%- if ym == '' -%}{%- continue -%}{%- endif -%}
+      {%- assign parts = ym | split: '-' -%}
+      {%- assign yr = parts[0] -%}
+      {%- assign mo = parts[1] -%}
+      {%- assign first = ym | append: '-01' -%}
+
+      {%- comment -%} Monday-first index of the 1st, and the length of the month. {%- endcomment -%}
+      {%- assign dow = first | date: '%w' | plus: 6 | modulo: 7 -%}
+      {%- assign nudge = first | date: '%s' | plus: 2764800 -%}
+      {%- assign next_first = nudge | date: '%Y-%m-01' -%}
+      {%- assign last_dom = next_first | date: '%s' | minus: 86400 | date: '%-d' | plus: 0 -%}
+      {%- assign cells = dow | plus: last_dom -%}
+      {%- assign weeks = cells | plus: 6 | divided_by: 7 -%}
+      {%- assign total_cells = weeks | times: 7 -%}
+      {%- assign mo_index = mo | plus: 0 | minus: 1 -%}
+
+      <section class="cal-month" data-month="{{ ym }}" hidden
+               aria-label="{{ C.months[L][mo_index] }} {{ yr }}">
+        <h2 class="cal-month-head">{{ C.months[L][mo_index] }} {{ yr }}</h2>
+
+        <div class="cal-grid">
+          {%- for d in S.days -%}
+            <span class="cal-dow" aria-hidden="true">{{ S.day_names[d][L].short }}</span>
+          {%- endfor -%}
+
+          {%- for i in (1..total_cells) -%}
+            {%- assign dom = i | minus: dow -%}
+            {%- if dom < 1 or dom > last_dom -%}
+              <div class="cal-cell is-empty" aria-hidden="true"></div>
+            {%- else -%}
+              {%- if dom < 10 -%}{%- assign dd = '0' | append: dom -%}{%- else -%}{%- assign dd = dom | append: '' -%}{%- endif -%}
+              {%- assign iso = ym | append: '-' | append: dd -%}
+              {%- comment -%}
+                Entries starting on this day, plus any multi-day entry still
+                running through it. Split in two because `until` is absent on
+                most entries and Liquid cannot compare nil to a string.
+              {%- endcomment -%}
+              {%- assign starting = entries | where: "date", iso -%}
+              {%- assign spanning = entries | where_exp: "e", "e.until" | where_exp: "e", "e.date < iso" | where_exp: "e", "e.until >= iso" -%}
+              {%- assign day_entries = starting | concat: spanning -%}
+
+              <div class="cal-cell" data-date="{{ iso }}">
+                <p class="cal-daynum"><time datetime="{{ iso }}">{{ dom }}</time></p>
+                {%- for e in day_entries -%}
+                  {%- assign t = C.types[e.type] -%}
+                  {%- assign title = e.title[L] -%}
+                  {%- if e.type == 'cancellation' and e.affects -%}
+                    {%- assign ac = S.categories | where: "id", e.affects.category | first -%}
+                    {%- assign title = ac.name[L] | append: ' ' | append: e.affects.start -%}
+                  {%- endif -%}
+                  <article class="cal-entry" data-type="{{ e.type }}" style="--colour: {{ t.color }}">
+                    {%- if e.link %}<a class="cal-entry-link" href="{{ e.link }}">{% endif -%}
+                    <span class="cal-entry-type">{{ t.label[L] }}</span>
+                    <span class="cal-entry-title">{{ title }}</span>
+                    {%- if e.start %}<span class="cal-entry-time"><time datetime="{{ e.start }}">{{ e.start }}</time>{% if e.end %}–<time datetime="{{ e.end }}">{{ e.end }}</time>{% endif %}</span>{% endif -%}
+                    {%- if e.link %}</a>{% endif -%}
+                  </article>
+                {%- endfor -%}
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </section>
+    {%- endfor -%}
+
+    <p class="cal-nothing" hidden>{{ C.ui.nothing[L] }}</p>
+  </div>
+
+  {%- comment -%}
+    ---------- Agenda list ----------
+    Every entry in date order. Split into upcoming and past at build time; the
+    script re-splits on load so the boundary is right however long it has been
+    since the last deploy.
+  {%- endcomment -%}
+  <div class="cal-list" data-view-panel="list" hidden>
+    <h2 class="cal-list-head" data-when="upcoming">{{ C.ui.upcoming[L] }}</h2>
+    <ol class="cal-list-items" data-when="upcoming"></ol>
+
+    <h2 class="cal-list-head" data-when="past">{{ C.ui.past[L] }}</h2>
+    <ol class="cal-list-items" data-when="past"></ol>
+
+    {%- comment -%} The source the script splits. Rendered so it is indexable. {%- endcomment -%}
+    <ol class="cal-list-source">
+      {%- for e in entries -%}
+        {%- assign t = C.types[e.type] -%}
+        {%- assign loc = nil -%}{%- if e.location -%}{%- assign loc = S.locations | where: "id", e.location | first -%}{%- endif -%}
+        {%- assign title = e.title[L] -%}
+        {%- if e.type == 'cancellation' and e.affects -%}
+          {%- assign ac = S.categories | where: "id", e.affects.category | first -%}
+          {%- assign title = ac.name[L] | append: ' ' | append: e.affects.start -%}
+        {%- endif -%}
+        <li class="cal-item" data-date="{{ e.date }}"{% if e.until %} data-until="{{ e.until }}"{% endif %}
+            data-type="{{ e.type }}" style="--colour: {{ t.color }}">
+          <p class="cal-item-date">
+            <time datetime="{{ e.date }}">{{ e.date | date: '%-d' }} {{ C.months[L][e.date | date: '%-m' | minus: 1] }}</time>
+            {%- if e.until %} – <time datetime="{{ e.until }}">{{ e.until | date: '%-d' }} {{ C.months[L][e.until | date: '%-m' | minus: 1] }}</time>{% endif -%}
+            <span class="cal-item-year">{{ e.date | date: '%Y' }}</span>
+          </p>
+          <p class="cal-item-type"><span class="cal-item-dot" aria-hidden="true"></span>{{ t.label[L] }}</p>
+          <h3 class="cal-item-title">
+            {%- if e.link %}<a href="{{ e.link }}">{{ title }}</a>{% else %}{{ title }}{% endif -%}
+          </h3>
+          <p class="cal-item-meta">
+            {%- if e.start %}<time datetime="{{ e.start }}">{{ e.start }}</time>{% if e.end %}–<time datetime="{{ e.end }}">{{ e.end }}</time>{% endif %}{% else %}{{ C.ui.all_day[L] }}{% endif -%}
+            {%- if loc %} · {{ loc.name[L] }}{% elsif e.place %} · {{ e.place[L] }}{% endif -%}
+          </p>
+          {%- if e.note %}<p class="cal-item-note">{{ e.note[L] }}</p>{% endif -%}
+        </li>
+      {%- endfor -%}
+    </ol>
+  </div>
+</div>
+
+{%- comment -%}
+  Structured data. Dated one-off events, unlike the weekly timetable's
+  Schedule-based entries — these really are single occurrences, so a plain
+  Event with startDate is the honest description. Cancellations carry
+  eventStatus so an aggregator does not advertise a class that is not running.
+{%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+  {%- assign first_out = true -%}
+  {%- for e in entries -%}
+    {%- assign t = C.types[e.type] -%}
+    {%- assign loc = nil -%}{%- if e.location -%}{%- assign loc = S.locations | where: "id", e.location | first -%}{%- endif -%}
+    {%- assign title = e.title[L] -%}
+    {%- if e.type == 'cancellation' and e.affects -%}
+      {%- assign ac = S.categories | where: "id", e.affects.category | first -%}
+      {%- assign title = ac.name[L] | append: ' ' | append: e.affects.start -%}
+    {%- endif -%}
+    {%- unless first_out %},{% endunless -%}{%- assign first_out = false -%}
+    {
+      "@type": "Event",
+      "name": {{ title | jsonify }},
+      "startDate": "{{ e.date }}{% if e.start %}T{{ e.start }}:00+02:00{% endif %}",
+      "endDate": "{{ e.until | default: e.date }}{% if e.end %}T{{ e.end }}:00+02:00{% endif %}",
+      "eventStatus": "https://schema.org/Event{% if e.type == 'cancellation' or e.type == 'closure' %}Cancelled{% else %}Scheduled{% endif %}",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "organizer": { "@type": "SportsClub", "name": "Aikido Musubi", "url": "{{ site.url }}" },
+      "location": {
+        "@type": "Place",
+        "name": {%- if loc %} {{ loc.name[L] | jsonify }}{%- elsif e.place %} {{ e.place[L] | jsonify }}{%- else %} "Aikido Musubi"{%- endif %}
+      }
+      {%- if e.link %},
+      "url": "{{ site.url }}{{ e.link }}"
+      {%- endif %}
+    }
+  {%- endfor %}
+  ]
+}
+</script>

@@ -1,0 +1,146 @@
+# Dated entries: seminars, exams, closures and changes to the regular week.
+#
+# This is deliberately separate from _data/schedule.yml. That file answers
+# "what happens every week"; this one answers "what is different about this
+# particular week". Mixing them is what makes most dojo timetables confusing —
+# and it is why the weekly grid stays fast and stable while this page carries
+# everything dated.
+#
+# TO ADD SOMETHING: append an entry below. Nothing else needs touching; the
+# month grid, the agenda list, the .ics feed and the "this week" banner on the
+# schedule page all read from here.
+#
+# ---------------------------------------------------------------------------
+# Entry shape
+# ---------------------------------------------------------------------------
+#
+#   date:      "2026-09-19"        required, ISO. The day it happens.
+#   until:     "2026-09-21"        optional. Last day of a multi-day event.
+#   type:      seminar             see `types` below — drives colour and icon
+#   title:     { es:, ca:, en:, ja: }   required except for cancellations,
+#                                       which build their own wording
+#   start/end: "10:00" / "13:00"   optional. Omit for all-day entries.
+#   location:  musubi              optional, a location id from schedule.yml
+#   place:     { es:, ... }        optional, for venues not in schedule.yml
+#   note:      { es:, ... }        optional second line
+#   link:      "/cursos/"          optional. Where to read more.
+#   affects:                       optional. Marks a regular class as not
+#     category: aikido             running, or running differently, that day.
+#     start:    "18:30"            Matches a class in schedule.yml.
+#
+# A `cancellation` with `affects` is what communicates "no Aikido class on
+# Thursday the 24th". The weekly grid keeps showing the class — it is still
+# the normal week — and this page is where the exception lives.
+
+types:
+  seminar:
+    color: "#084F6F"
+    label: { es: "Curso",        ca: "Curs",          en: "Seminar",     ja: "講習会" }
+  exam:
+    color: "#B8860B"
+    label: { es: "Exámenes",     ca: "Exàmens",       en: "Examinations", ja: "審査" }
+  visit:
+    color: "#6A5ACD"
+    label: { es: "Visita",       ca: "Visita",        en: "Visiting instructor", ja: "特別指導" }
+  change:
+    color: "#C2571A"
+    label: { es: "Cambio",       ca: "Canvi",         en: "Change",      ja: "変更" }
+  cancellation:
+    color: "#9A1F2E"
+    label: { es: "Sin clase",    ca: "Sense classe",  en: "No class",    ja: "休講" }
+  closure:
+    color: "#4A4A4A"
+    label: { es: "Dojo cerrado", ca: "Dojo tancat",   en: "Dojo closed", ja: "道場休み" }
+
+ui:
+  title:        { es: "Calendario",   ca: "Calendari",    en: "Calendar",     ja: "カレンダー" }
+  month_view:   { es: "Mes",          ca: "Mes",          en: "Month",        ja: "月" }
+  list_view:    { es: "Lista",        ca: "Llista",       en: "List",         ja: "リスト" }
+  today:        { es: "Hoy",          ca: "Avui",         en: "Today",        ja: "本日" }
+  prev:         { es: "Mes anterior", ca: "Mes anterior", en: "Previous month", ja: "前の月" }
+  next:         { es: "Mes siguiente",ca: "Mes següent",  en: "Next month",   ja: "次の月" }
+  nothing:      { es: "Nada programado este mes", ca: "Res programat aquest mes", en: "Nothing scheduled this month", ja: "今月の予定はありません" }
+  upcoming:     { es: "Próximamente", ca: "Properament",  en: "Upcoming",     ja: "今後の予定" }
+  past:         { es: "Anteriores",   ca: "Anteriors",    en: "Past",         ja: "過去" }
+  all_day:      { es: "Todo el día",  ca: "Tot el dia",   en: "All day",      ja: "終日" }
+  more:         { es: "Más información", ca: "Més informació", en: "More information", ja: "詳細" }
+  instead_of:   { es: "en lugar de",  ca: "en lloc de",   en: "instead of",   ja: "の代わりに" }
+  this_week:    { es: "Esta semana",  ca: "Aquesta setmana", en: "This week", ja: "今週" }
+  see_calendar: { es: "Ver calendario", ca: "Veure calendari", en: "See calendar", ja: "カレンダーを見る" }
+
+months:
+  es: [Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre]
+  ca: [Gener, Febrer, Març, Abril, Maig, Juny, Juliol, Agost, Setembre, Octubre, Novembre, Desembre]
+  en: [January, February, March, April, May, June, July, August, September, October, November, December]
+  ja: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"]
+
+# ---------------------------------------------------------------------------
+# Entries
+#
+# The four below are seeded from _courses/ so the page has real content to
+# render. Replace, edit and extend freely — this list is the whole feature.
+# ---------------------------------------------------------------------------
+entries:
+  - date: "2026-03-12"
+    type: seminar
+    title:
+      es: "Simone Corridoni 4.º Dan Aikikai"
+      ca: "Simone Corridoni 4t Dan Aikikai"
+      en: "Simone Corridoni 4th Dan Aikikai"
+      ja: "シモーネ・コッリドーニ 四段 合気会"
+    location: musubi
+    link: "/cursos/"
+
+  - date: "2026-03-16"
+    type: seminar
+    title:
+      es: "Koji Watanabe 5.º Dan Aikikai"
+      ca: "Koji Watanabe 5è Dan Aikikai"
+      en: "Koji Watanabe 5th Dan Aikikai"
+      ja: "渡辺幸治 五段 合気会"
+    location: musubi
+    link: "/cursos/"
+
+  - date: "2026-04-11"
+    type: seminar
+    title:
+      es: "Aikido Musubi ✕ Japan Weekend Barcelona"
+      ca: "Aikido Musubi ✕ Japan Weekend Barcelona"
+      en: "Aikido Musubi ✕ Japan Weekend Barcelona"
+      ja: "合気道産靈 ✕ Japan Weekend Barcelona"
+    place:
+      es: "Fira de Barcelona"
+      ca: "Fira de Barcelona"
+      en: "Fira de Barcelona"
+      ja: "フィラ・デ・バルセロナ"
+    link: "/cursos/"
+
+  - date: "2026-04-24"
+    until: "2026-04-26"
+    type: seminar
+    title:
+      es: "Emilio Cardia Shihan 6.º Dan Aikikai"
+      ca: "Emilio Cardia Shihan 6è Dan Aikikai"
+      en: "Emilio Cardia Shihan 6th Dan Aikikai"
+      ja: "エミリオ・カルディア 師範 六段 合気会"
+    note:
+      es: "Viernes en el dojo; sábado y domingo en el Polideportivo Marina-Besòs."
+      ca: "Divendres al dojo; dissabte i diumenge al Poliesportiu Marina-Besòs."
+      en: "Friday at the dojo; Saturday and Sunday at the Marina-Besòs sports centre."
+      ja: "金曜は道場、土日はマリナ・ベソス市立スポーツセンターにて。"
+    location: musubi
+    link: "/cursos/"
+
+  # An example of the exception mechanism — a regular class not running on a
+  # particular day. Delete or edit; it is here so the pattern is visible.
+  - date: "2026-04-24"
+    type: cancellation
+    affects:
+      category: aikido
+      start: "19:00"
+    note:
+      es: "Por el curso de Emilio Cardia Shihan."
+      ca: "Pel curs d'Emilio Cardia Shihan."
+      en: "Because of the Emilio Cardia Shihan seminar."
+      ja: "エミリオ・カルディア師範の講習会のため。"
+    location: musubi

@@ -43,6 +43,17 @@
             {% if page.lang == 'ja' %}稽古時間{% endif %}
           </a>
           <a class="dropdown-item" href="
+            {% if page.lang == 'ca' %}/{{ page.lang }}/calendari/{% endif %}
+            {% if page.lang == 'en' %}/{{ page.lang }}/calendar/{% endif %}
+            {% if page.lang == 'es' %}/calendario/{% endif %}
+            {% if page.lang == 'ja' %}/{{ page.lang }}/calendar/{% endif %}
+          ">
+            {% if page.lang == 'ca' %}Calendari{% endif %}
+            {% if page.lang == 'en' %}Calendar{% endif %}
+            {% if page.lang == 'es' %}Calendario{% endif %}
+            {% if page.lang == 'ja' %}カレンダー{% endif %}
+          </a>
+          <a class="dropdown-item" href="
             {% if page.lang == 'ca' %}/{{ page.lang }}/quotes/{% endif %}
             {% if page.lang == 'en' %}/{{ page.lang }}/fees/{% endif %}
             {% if page.lang == 'es' %}/cuotas/{% endif %}

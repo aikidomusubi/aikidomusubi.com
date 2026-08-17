@@ -1,0 +1,474 @@
+// out: false
+//
+// ---------------------------------------------------------------------------
+// Dated calendar — seminars, exams, closures, changes
+//
+// Companion to styles/schedule.less. That one draws the week that repeats;
+// this one draws the days that do not. They share the type scale, the control
+// shapes and the colour tokens so the two pages read as one system, but the
+// layouts have nothing in common: a month is a date grid, not a time grid, so
+// there are no rows derived from clock times here.
+// ---------------------------------------------------------------------------
+
+@cal-gap: 2px;
+@cal-cell-min: 5.5rem;
+
+.calendar {
+  margin: 0 0 3rem;
+}
+
+// ---------------------------------------------------------------------------
+// Controls
+// ---------------------------------------------------------------------------
+.cal-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem 1.5rem;
+  margin: 0 0 1.25rem;
+}
+
+.cal-nav {
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+}
+
+.cal-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 1px solid fadeout(@Black, 88%);
+  border-radius: .25rem;
+  background-color: @White;
+  color: @Black;
+  cursor: pointer;
+  transition: background-color .2s ease, border-color .2s ease, opacity .2s ease;
+
+  > svg { width: 1rem; height: 1rem; }
+
+  &:hover { background-color: fadeout(@Black, 96%); border-color: fadeout(@Black, 70%); }
+  &:focus-visible { outline: 2px solid @Blue; outline-offset: 2px; }
+
+  // Disabled at the ends of the archive rather than hidden, so the control
+  // does not move around as you page through the months.
+  &[disabled] {
+    opacity: .35;
+    cursor: default;
+    background-color: @White;
+  }
+}
+
+.cal-current {
+  .NotoSans; .bold;
+  margin: 0;
+  min-width: 9rem;
+  font-size: .95rem;
+  line-height: 1.2;
+  text-align: center;
+  color: @Black;
+}
+
+.cal-today-btn {
+  min-height: 2rem;
+  margin-left: .35rem;
+  padding: .25rem .75rem;
+  border: 1px solid fadeout(@Black, 88%);
+  border-radius: .25rem;
+  background-color: @White;
+  color: @Black;
+  font-size: .78rem;
+  cursor: pointer;
+  transition: background-color .2s ease, border-color .2s ease;
+
+  &:hover { background-color: fadeout(@Black, 96%); border-color: fadeout(@Black, 70%); }
+  &:focus-visible { outline: 2px solid @Blue; outline-offset: 2px; }
+}
+
+// Same segmented shape as the venue control on the timetable.
+.cal-views {
+  display: inline-flex;
+  border: 1px solid fadeout(@Black, 88%);
+  border-radius: .25rem;
+  overflow: hidden;
+}
+
+.cal-view-btn {
+  min-height: 2rem;
+  padding: .25rem .9rem;
+  border: 0;
+  border-right: 1px solid fadeout(@Black, 92%);
+  background-color: @White;
+  color: @Black;
+  font-size: .8rem;
+  cursor: pointer;
+  transition: background-color .2s ease, color .2s ease;
+
+  &:last-child { border-right: 0; }
+  &[aria-selected="true"] { background-color: @Blue; color: @White; }
+  &:hover[aria-selected="false"] { background-color: fadeout(@Black, 96%); }
+  &:focus-visible { outline: 2px solid @Blue; outline-offset: -2px; }
+}
+
+// ---------------------------------------------------------------------------
+// Month grid
+// ---------------------------------------------------------------------------
+.cal-month[hidden] { display: none; }
+
+.cal-month-head {
+  .NotoSans; .bold;
+  font-size: 1rem;
+  margin: 0 0 .75rem;
+  text-align: left;
+  text-transform: none;
+  letter-spacing: 0;
+  color: @Black;
+}
+
+// The month heading is an h2 inside <main>, where the prose rules give every
+// h2 `margin: 3rem 0 2rem` and centre it — the same clash the timetable's day
+// headings had. (0,3,3) beats (0,2,4) on class count, so no !important.
+html body .page .container > main {
+
+  .cal-month-head {
+    .NotoSans; .bold;
+    font-size: 1rem;
+    margin: 0 0 .75rem;
+    text-align: left;
+    text-transform: none;
+  }
+
+  .cal-list-head {
+    .NotoSans; .bold;
+    font-size: .75rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    text-align: left;
+    margin: 1.75rem 0 .75rem;
+    color: fadeout(@Black, 35%);
+
+    &:first-child { margin-top: 0; }
+  }
+
+  .cal-item-title {
+    .NotoSans; .bold;
+    font-size: .95rem;
+    line-height: 1.3;
+    margin: 0 0 .15rem;
+    text-align: left;
+    text-transform: none;
+  }
+}
+
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: @cal-gap;
+}
+
+.cal-dow {
+  .NotoSans; .bold;
+  padding: .25rem 0;
+  font-size: .7rem;
+  letter-spacing: .04em;
+  text-align: center;
+  text-transform: uppercase;
+  color: fadeout(@Black, 35%);
+  border-bottom: 2px solid fadeout(@Black, 90%);
+}
+
+.cal-cell {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+  min-height: @cal-cell-min;
+  padding: .3rem;
+  border: 1px solid fadeout(@Black, 92%);
+  border-radius: .2rem;
+  background-color: @White;
+
+  // Days outside the month keep their space so the grid stays rectangular,
+  // but carry no border — an empty box reads as a day with nothing on.
+  &.is-empty {
+    border-color: transparent;
+    background-color: transparent;
+    min-height: 0;
+  }
+
+  // Marked by script; the build cannot know the day it is being read.
+  &[data-today] {
+    border-color: @Blue;
+    background-color: fadeout(@Blue, 96%);
+
+    .cal-daynum { color: @Blue; }
+  }
+
+  // Days before today, so the archive reads as past at a glance.
+  &[data-past] {
+    background-color: fadeout(@Black, 98%);
+
+    // Stated as a colour rather than as opacity over the muted base. The two
+    // compound — 30% transparency under a further .5 opacity measured 2.24:1,
+    // well under the floor — and a date nobody can read is not a subtle date,
+    // it is a broken one. 40% lands at 4.8:1 on the past cell's fill.
+    .cal-daynum { color: fadeout(@Black, 40%); }
+    .cal-entry { opacity: .8; }
+  }
+}
+
+.cal-daynum {
+  .NotoSans; .bold;
+  margin: 0;
+  font-size: .72rem;
+  line-height: 1.2;
+  color: fadeout(@Black, 30%);
+}
+
+.cal-entry {
+  border-left: 3px solid var(--colour);
+  border-radius: .15rem;
+  padding: .2rem .35rem;
+  background-color: fadeout(@Black, 97%);
+  font-size: .68rem;
+  line-height: 1.25;
+
+  > .cal-entry-link {
+    display: block;
+    color: @Black;
+    text-decoration: none;
+  }
+
+  .cal-entry-type {
+    display: block;
+    font-size: .6rem;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--colour);
+    .bold;
+  }
+
+  .cal-entry-title {
+    display: block;
+    .bold;
+    color: @Black;
+  }
+
+  .cal-entry-time {
+    display: block;
+    font-size: .62rem;
+    color: fadeout(@Black, 35%);
+  }
+
+  // A cancelled class is struck through, which says "not happening" faster
+  // than any label can.
+  &[data-type="cancellation"] .cal-entry-title,
+  &[data-type="closure"] .cal-entry-title {
+    text-decoration: line-through;
+    text-decoration-thickness: 1px;
+  }
+}
+
+html body .page .container > main .cal-entry-link {
+  // The prose rules underline every link and give it position: relative.
+  position: static;
+  text-decoration: none;
+  color: @Black;
+
+  &:hover .cal-entry-title,
+  &:focus-visible .cal-entry-title { text-decoration: underline; }
+}
+
+.cal-nothing {
+  margin: 2rem 0;
+  padding: 2rem;
+  border: 1px dashed fadeout(@Black, 85%);
+  border-radius: .25rem;
+  text-align: center;
+  font-size: .85rem;
+  color: fadeout(@Black, 35%);
+
+  &[hidden] { display: none; }
+}
+
+// ---------------------------------------------------------------------------
+// Agenda list
+// ---------------------------------------------------------------------------
+.cal-list[hidden] { display: none; }
+
+// The unsplit source is in the markup for crawlers and for no-JS readers; the
+// script moves its items into the two lists above and hides it.
+.cal-list-source {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cal-list-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  &:empty { display: none; }
+}
+
+.cal-list-head:has(+ .cal-list-items:empty) { display: none; }
+
+.cal-item {
+  display: grid;
+  grid-template-columns: 8.5rem minmax(0, 1fr);
+  gap: 0 1rem;
+  padding: .85rem 0 .85rem .85rem;
+  border-left: 3px solid var(--colour);
+  border-bottom: 1px solid fadeout(@Black, 93%);
+
+  &[data-past] { opacity: .6; }
+
+  > * { grid-column: 2; }
+}
+
+.cal-item-date {
+  grid-column: 1 !important;
+  grid-row: 1 / span 2;
+  .NotoSans; .bold;
+  margin: 0;
+  font-size: .85rem;
+  line-height: 1.35;
+  color: @Black;
+
+  .cal-item-year {
+    display: block;
+    .regular;
+    font-size: .72rem;
+    color: fadeout(@Black, 40%);
+  }
+}
+
+.cal-item-type {
+  margin: 0 0 .1rem;
+  font-size: .65rem;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--colour);
+  .bold;
+
+  .cal-item-dot {
+    display: inline-block;
+    width: .5rem;
+    height: .5rem;
+    margin-right: .35rem;
+    border-radius: 50%;
+    background-color: var(--colour);
+  }
+}
+
+.cal-item-meta {
+  margin: 0;
+  font-size: .78rem;
+  color: fadeout(@Black, 35%);
+}
+
+.cal-item-note {
+  margin: .25rem 0 0;
+  font-size: .78rem;
+  line-height: 1.45;
+  color: fadeout(@Black, 25%);
+}
+
+.cal-item[data-type="cancellation"] .cal-item-title,
+.cal-item[data-type="closure"] .cal-item-title {
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+
+// ---------------------------------------------------------------------------
+// Narrow screens
+//
+// A seven-column month grid on a phone gives each day about 45px, which is not
+// enough for a course title. Below 768px the month view collapses to the same
+// list the agenda uses — so the toggle still works, it just has less to switch
+// between.
+// ---------------------------------------------------------------------------
+@media (max-width: 767.98px) {
+
+  .cal-grid {
+    gap: 1px;
+  }
+
+  .cal-cell {
+    min-height: 3.25rem;
+    padding: .2rem;
+
+    &.is-empty { min-height: 0; }
+  }
+
+  .cal-daynum { font-size: .65rem; }
+
+  // Entries shrink to a colour bar; the day number and the bar are enough to
+  // say "something is on", and the list view carries the detail.
+  .cal-entry {
+    padding: 0;
+    border-left-width: 0;
+    border-radius: 1px;
+    height: .35rem;
+    background-color: var(--colour);
+    overflow: hidden;
+
+    .cal-entry-type,
+    .cal-entry-title,
+    .cal-entry-time { display: none; }
+  }
+
+  .cal-item {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .cal-item-date {
+    grid-column: 1 !important;
+    grid-row: auto;
+    margin-bottom: .15rem;
+
+    .cal-item-year { display: inline; margin-left: .35rem; }
+  }
+
+  .cal-controls { gap: .6rem 1rem; }
+  .cal-current { min-width: 7.5rem; font-size: .85rem; }
+}
+
+// ---------------------------------------------------------------------------
+// Print
+// ---------------------------------------------------------------------------
+@media print {
+
+  .cal-controls { display: none !important; }
+
+  // Paper has no toggle, so everything that has content prints.
+  .cal-month[hidden] { display: block !important; break-inside: avoid; }
+  .cal-list[hidden] { display: none !important; }
+
+  .cal-cell {
+    border-color: fadeout(@Black, 60%);
+    background-color: transparent !important;
+    min-height: 18mm;
+  }
+
+  .cal-entry {
+    background-color: transparent !important;
+    border-left-width: 2pt;
+    font-size: 7pt;
+  }
+
+  .cal-month-head,
+  html body .page .container > main .cal-month-head { font-size: 12pt; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .cal-nav-btn,
+  .cal-today-btn,
+  .cal-view-btn { transition: none; }
+}

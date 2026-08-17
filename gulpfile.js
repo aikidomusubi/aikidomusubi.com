@@ -101,6 +101,7 @@ gulp.task('purge', function() {
         '_site/**/*.html',
         'scripts/default.js',
         'scripts/schedule.js',
+        'scripts/calendar.js',
         'scripts/glightbox.min.js',
         'plugins/fullcalendar-4.3.1/packages/*/main.min.js'
       ],
@@ -112,12 +113,12 @@ gulp.task('purge', function() {
         // are built by scripts/schedule.js and never appear in the built HTML,
         // and neither do the data-* states (data-active, data-today,
         // data-narrow, data-short, data-tiny) the stylesheet keys off.
-        standard: [/^tt-/, /^timetable/, /^fc-/, /^gl/, /^is-/, /^cookie-/, /^navbar/, /^dropdown/,
+        standard: [/^tt-/, /^timetable/, /^cal-/, /^calendar/, /^fc-/, /^gl/, /^is-/, /^cookie-/, /^navbar/, /^dropdown/,
                    /^collaps/, /^modal/, /^offcanvas/, /^carousel/, /^tooltip/,
                    /^popover/, /^toast/, 'show', 'showing', 'hide', 'hiding',
                    'fade', 'active', 'disabled', 'open', 'table-bordered',
                    'sticky-top', 'fixed-bottom'],
-        deep: [/^fc-/, /^gl/, /^modal/, /^tt-/],
+        deep: [/^fc-/, /^gl/, /^modal/, /^tt-/, /^cal-/],
         greedy: [/^fc/, /^gl/]
       }
     })]))
@@ -136,6 +137,13 @@ gulp.task('schedule-js', function() {
   return gulp.src('scripts/schedule.js')
     .pipe(terser())
     .pipe(rename('schedule.min.js'))
+    .pipe(gulp.dest('scripts'));
+});
+
+gulp.task('calendar-js', function() {
+  return gulp.src('scripts/calendar.js')
+    .pipe(terser())
+    .pipe(rename('calendar.min.js'))
     .pipe(gulp.dest('scripts'));
 });
 

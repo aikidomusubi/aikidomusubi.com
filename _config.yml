@@ -81,11 +81,13 @@ exclude:
   # Gulp inputs, bundled into all.min.js / all.min.css
   - scripts/default.js
   - scripts/schedule.js
+  - scripts/calendar.js
   - scripts/bootstrap.bundle.min.js
   - scripts/bootstrap.bundle.min.js.map
   - styles/base.less
   - styles/default.less
   - styles/schedule.less
+  - styles/calendar.less
   - styles/bootstrap.min.css
   - styles/bootstrap.min.css.map
   # Unminified build output, kept locally for debugging only
