@@ -39,6 +39,8 @@
      data-slot="{{ slot }}"
      data-rows="{{ total_rows }}"
      data-ics-label="{{ S.ui.add_to_cal[L] }}"
+     data-cal-name="{{ site.title }} — {{ page.title }}"
+     data-export-filtered="{{ S.ui.export_filtered[L] }}"
      style="--rows: {{ total_rows }}">
 
   {%- comment -%} ---------- Controls ---------- {%- endcomment -%}
@@ -134,7 +136,15 @@
             for a crawler.
           {%- endcomment -%}
           {%- for loc in S.locations -%}
-            {%- assign in_day = day_any | where: "location", loc.id | sort: "start" -%}
+            {%- comment -%}
+              Weekly classes only. Anything with a `frequency` runs on some
+              other cadence — the Saturday Iaijutsu is monthly — and drawing it
+              as a permanent Saturday block would be wrong three weeks in four.
+              Those are listed under the grid instead, which also removes the
+              only place two classes collided and let every block keep its full
+              column width.
+            {%- endcomment -%}
+            {%- assign in_day = day_any | where: "location", loc.id | where_exp: "c", "c.frequency == nil" | sort: "start" -%}
 
             {%- for c in in_day -%}
               {%- comment -%} start/end as minutes past midnight {%- endcomment -%}
@@ -214,6 +224,56 @@
         </div>
       </section>
     {%- endfor -%}
+  </div>
+
+  {%- comment -%}
+    Classes that are not weekly, lifted out of the grid. Rendered per venue and
+    hidden with the same location filter as the blocks above.
+  {%- endcomment -%}
+  {%- assign irregular = S.classes | where_exp: "c", "c.frequency" -%}
+  {%- if irregular.size > 0 %}
+  <div class="tt-notes">
+    {%- for c in irregular -%}
+      {%- assign cat = S.categories | where: "id", c.category | first -%}
+      {%- assign lvl = S.levels | where: "id", c.level | first -%}
+      {%- assign loc = S.locations | where: "id", c.location | first -%}
+      {%- assign freq = S.ui[c.frequency] -%}
+      <p class="tt-note" data-location="{{ loc.id }}" data-category="{{ c.category }}">
+        <span class="tt-note-dot" style="--colour: {{ cat.color }}" aria-hidden="true"></span>
+        <strong>{{ S.ui.also[L] }}:</strong>
+        {{ cat.name[L] }} — {{ lvl.name[L] }},
+        {%- for d in c.days %} {{ S.day_names[d][L].long }}{% unless forloop.last %},{% endunless %}{% endfor %}
+        <time datetime="{{ c.start }}">{{ c.start }}</time>–<time datetime="{{ c.end }}">{{ c.end }}</time>.
+        <em>{{ freq[L] }}</em>.
+      </p>
+    {%- endfor -%}
+  </div>
+  {%- endif %}
+
+  {%- comment -%}
+    Calendar export.
+
+    The primary control is a real .ics file at a stable URL, not a script-built
+    download: clicking it hands the file to whatever calendar app the device
+    already uses — Apple Calendar, Outlook, Google via import — with no
+    account, no chooser and no dependency on JavaScript. The webcal:// variant
+    subscribes instead of importing, so the schedule stays current by itself.
+
+    The second button exports whatever the filters are currently showing, which
+    is how "all the Aikido classes" is expressed without adding a link per
+    discipline. It needs JavaScript, so it is added by the script rather than
+    rendered here.
+  {%- endcomment -%}
+  <div class="tt-export">
+    <p class="tt-export-title">{{ S.ui.subscribe[L] }}</p>
+    <p class="tt-export-links">
+      <a class="tt-export-link" href="{{ page.url | append: 'schedule.ics' | replace: '//', '/' }}"
+         data-ics-url="{{ site.url }}{{ page.url | append: 'schedule.ics' | replace: '//', '/' }}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M12 13v5M9.5 15.5h5"/></svg>
+        <span>{{ S.ui.sub_all[L] }}</span>
+      </a>
+    </p>
+    <p class="tt-export-hint">{{ S.ui.sub_hint[L] }}</p>
   </div>
 </div>
 

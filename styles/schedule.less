@@ -13,7 +13,11 @@
 // happens, so five and a half dead hours do not take up half the table.
 // ---------------------------------------------------------------------------
 
-@tt-slot-height: 1.25rem;   // one 15-minute row
+// One 15-minute row. The shortest class on the timetable is 45 minutes, so
+// this sets the floor: three rows must hold the time, the discipline and the
+// level without clipping. At 1.25rem they did not — both Wednesday Aikido
+// classes overflowed by 9px — and 1.5rem gives them room with margin to spare.
+@tt-slot-height: 1.5rem;
 @tt-axis-width: 3.25rem;
 @tt-gap: 2px;
 
@@ -182,7 +186,9 @@
   position: relative;
   padding-top: 2rem;                 // clears the day headings
   font-size: .7rem;
-  color: fadeout(@Black, 45%);
+  // Aria-hidden, so no audit checks it — but it is still read, so it is
+  // held to the same 4.5:1 floor as everything else.
+  color: fadeout(@Black, 35%);
 
   .tt-axis-label {
     grid-row: var(--row);
@@ -271,75 +277,79 @@ html body .page .container > main {
 // A class block
 // ---------------------------------------------------------------------------
 .tt-class {
+  position: relative;
+
   // Position from the times. This single declaration is what replaced the
   // hand-tuned "height: 6rem; margin-top: -11.5rem" offsets.
   grid-row: var(--row-start) / var(--row-end);
   grid-column: 1;
 
+  // The same gap that separates the day columns, applied below each block, so
+  // consecutive classes read as separate cards instead of one stacked slab.
+  // Taken off the bottom only: the block still starts exactly on its own
+  // gridline, so the top edge keeps telling the truth about the start time.
+  margin-bottom: @tt-gap;
+
   // Concurrent classes share the column. Width and offset come from the lane
-  // maths in the include, so a cluster of two splits in half while everything
-  // else stays full width.
+  // maths in the include; with the monthly Iaijutsu moved out of the grid
+  // nothing currently overlaps, so every block is full width.
   width: calc((100% - (var(--lanes) - 1) * @tt-gap) / var(--lanes));
   margin-left: calc(var(--lane) * (100% / var(--lanes)));
 
+  display: flex;
+  flex-direction: column;
+  gap: .1rem;
   overflow: hidden;
-  padding: .3rem .45rem;
+  padding: .35rem .5rem;
   border-radius: .2rem;
   background-color: var(--colour);
   color: @Black;
-  font-size: .7rem;
-  line-height: 1.25;
-  transition: opacity .2s ease, box-shadow .2s ease;
+  line-height: 1.2;
+  transition: box-shadow .2s ease;
 
   > p { margin: 0; }
 
+  // Type hierarchy: the discipline is what someone scans for, so it is the
+  // biggest thing in the block. The time sits above it as a label, the level
+  // below it as a qualifier — decreasing weight and size in reading order.
   .tt-time {
     .bold;
-    font-size: .7rem;
+    font-size: .65rem;
+    letter-spacing: .01em;
+    opacity: .75;
     white-space: nowrap;
   }
 
   .tt-name {
     .bold;
+    font-size: .78rem;
+    line-height: 1.15;
     text-transform: uppercase;
-    font-size: .7rem;
-    letter-spacing: .02em;
+    letter-spacing: .015em;
   }
 
-  .tt-level,
+  .tt-level {
+    font-size: .68rem;
+    opacity: .85;
+  }
+
   .tt-place {
     font-size: .65rem;
-    opacity: .8;
+    opacity: .7;
+    display: none;   // the venue filter already names it
   }
 
-  // Location repeats the segmented control's current choice, so it is noise in
-  // the grid — but it is the only place a crawler or screen reader learns
-  // where the class happens, so it stays in the markup and is hidden visually
-  // only where the column is too narrow to justify it.
-  .tt-place { display: none; }
-
-  // A block sharing its column with a concurrent class is about half width,
-  // too narrow for "08:00–09:00" on one line. Stack the two times instead of
-  // shrinking the type, which stays readable where a smaller font would not.
-  &[data-narrow] {
-
-    .tt-time {
-      white-space: normal;
-
-      > time { display: block; }
-      > span { display: none; }
-    }
-  }
-
-  // Short classes cannot fit four lines. Below an hour, drop the level; below
-  // 45 minutes, keep only time and discipline.
-  &[data-short] .tt-level { display: none; }
+  // Only genuinely tiny blocks lose anything. A 45-minute class is 60px tall,
+  // which fits time, discipline and level comfortably at these sizes — the
+  // previous thresholds hid the level on both Wednesday Aikido classes for no
+  // reason.
   &[data-tiny] {
-    .tt-level, .tt-place { display: none; }
-    padding: .15rem .45rem;
+    gap: 0;
+    padding: .2rem .5rem;
 
-    .tt-time, .tt-name { display: inline; font-size: .65rem; }
-    .tt-name::before { content: " · "; }
+    .tt-level { display: none; }
+    .tt-time { font-size: .62rem; }
+    .tt-name { font-size: .7rem; }
   }
 }
 
@@ -368,37 +378,61 @@ html body .page .container > main {
 // ---------------------------------------------------------------------------
 // Add-to-calendar, injected by script (it needs a Blob URL)
 // ---------------------------------------------------------------------------
-// Held back until the block is hovered or focused. Printed in every block it
-// was pure noise — twenty-one repetitions of the same sentence competing with
-// the class names for room a 45-minute block does not have. It stays in the
-// DOM and reachable by keyboard; only its visibility is deferred.
-.tt-ics {
+// Per-class calendar link
+//
+// An icon in the block's top-right corner rather than a line of text. As
+// wording it repeated the same sentence twenty-one times, competed with the
+// class names for room a 45-minute block does not have, and sat on its own
+// baseline out of line with everything else. As a corner icon it is out of the
+// text flow entirely, so the time/name/level stack keeps its rhythm.
+//
+// Revealed on hover or focus, but always in the DOM and always reachable by
+// keyboard. Touch devices get it permanently — see the narrow breakpoint.
+//
+// Scoped under main because this stylesheet gives every link in prose
+// `position: relative` and an underline at (0,2,4). Unscoped, the icon stayed
+// in the text flow and dragged the block's layout with it.
+// ---------------------------------------------------------------------------
+html body .page .container > main .tt-ics {
   position: absolute;
-  right: .35rem;
-  bottom: .3rem;
+  top: .2rem;
+  right: .2rem;
   display: inline-flex;
   align-items: center;
-  gap: .3rem;
-  font-size: .6rem;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: .2rem;
   color: @Black;
   opacity: 0;
-  text-decoration: underline;
-  transition: opacity .15s ease;
+  text-decoration: none;
+  background-color: fadeout(@White, 35%);
+  transition: opacity .15s ease, background-color .15s ease;
 
-  > svg { width: .7rem; height: auto; }
+  > svg {
+    width: .7rem;
+    height: .7rem;
+    display: block;
+  }
+
+  // The label is for screen readers and tooltips, not for the eye.
+  > .tt-ics-text {
+    position: absolute;
+    width: 1px; height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
 }
 
 .tt-class {
-  position: relative;
 
   &:hover .tt-ics,
-  &:focus-within .tt-ics {
-    opacity: .85;
-  }
+  &:focus-within .tt-ics { opacity: 1; }
 
   .tt-ics:hover,
   .tt-ics:focus-visible {
-    opacity: 1;
+    background-color: @White;
     color: @Black;
   }
 }
@@ -411,6 +445,101 @@ html body .page .container > main {
   font-size: .7rem;
   color: fadeout(@Black, 60%);
   margin: 0;
+}
+
+// ---------------------------------------------------------------------------
+// Notes for classes that are not weekly
+// ---------------------------------------------------------------------------
+.tt-notes {
+  margin: 1rem 0 0;
+}
+
+.tt-note {
+  display: flex;
+  align-items: baseline;
+  gap: .45rem;
+  margin: 0 0 .35rem;
+  font-size: .78rem;
+  line-height: 1.45;
+  color: fadeout(@Black, 20%);
+
+  > strong { .bold; }
+  > em { font-style: italic; opacity: .8; }
+
+  .tt-note-dot {
+    flex: 0 0 auto;
+    width: .55rem;
+    height: .55rem;
+    border-radius: 50%;
+    background-color: var(--colour);
+    transform: translateY(-.05rem);
+  }
+
+  &[hidden] { display: none; }
+}
+
+// ---------------------------------------------------------------------------
+// Calendar export
+// ---------------------------------------------------------------------------
+.tt-export {
+  margin: 1.75rem 0 0;
+  padding: 1rem 1.25rem;
+  border: 1px solid fadeout(@Black, 88%);
+  border-radius: .25rem;
+  background-color: fadeout(@Black, 98%);
+}
+
+.tt-export-title {
+  .NotoSans; .bold;
+  margin: 0 0 .5rem;
+  font-size: .7rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: fadeout(@Black, 30%);
+}
+
+.tt-export-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: 0 0 .5rem;
+}
+
+html body .page .container > main .tt-export-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  min-height: 2rem;
+  padding: .3rem .85rem;
+  border: 1px solid @Blue;
+  border-radius: .25rem;
+  background-color: @Blue;
+  color: @White;
+  font-size: .8rem;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: background-color .2s ease;
+
+  &:hover, &:focus { background-color: darken(@Blue, 6%); color: @White; text-decoration: none; }
+  &:focus-visible { outline: 2px solid @Blue; outline-offset: 2px; }
+
+  > svg { width: .85rem; height: .85rem; }
+
+  // The filtered export is secondary to the whole-schedule one.
+  &.is-secondary {
+    background-color: transparent;
+    color: @Blue;
+
+    &:hover, &:focus { background-color: fadeout(@Blue, 92%); color: @Blue; }
+  }
+}
+
+.tt-export-hint {
+  margin: 0;
+  font-size: .72rem;
+  line-height: 1.45;
+  // 35% transparency measures 5.8:1 on the card fill; 45% was 4.06:1.
+  color: fadeout(@Black, 35%);
 }
 
 // ---------------------------------------------------------------------------
@@ -500,12 +629,17 @@ html body .page .container > main {
     padding: .6rem .75rem;
     font-size: .8rem;
 
-    // No hover on a touch screen, and a stacked card has room for it.
+    // No hover on a touch screen, so the icon is always shown. It stays in
+    // the corner rather than joining the text flow, which keeps the card's
+    // time/name/level rhythm identical to the desktop block.
     .tt-ics {
-      position: static;
-      opacity: .85;
-      margin-top: .35rem;
-      font-size: .7rem;
+      opacity: 1;
+      top: .4rem;
+      right: .4rem;
+      width: 1.75rem;
+      height: 1.75rem;
+
+      > svg { width: .85rem; height: .85rem; }
     }
 
     .tt-time { font-size: .8rem; }

@@ -1,0 +1,11 @@
+---
+# Generated iCalendar feed of the weekly timetable. The body is
+# _includes/schedule-ics.html; this file only fixes the URL and language.
+# Linked from the timetable and subscribable over webcal://.
+permalink: /horarios/schedule.ics
+lang: es
+title: "Horarios"
+sitemap: false
+layout: null
+---
+{% include schedule-ics.html lang="es" %}

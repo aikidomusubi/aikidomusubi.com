@@ -1,0 +1,11 @@
+---
+# Generated iCalendar feed of the weekly timetable. The body is
+# _includes/schedule-ics.html; this file only fixes the URL and language.
+# Linked from the timetable and subscribable over webcal://.
+permalink: /en/training-schedule/schedule.ics
+lang: en
+title: "Training Schedule"
+sitemap: false
+layout: null
+---
+{% include schedule-ics.html lang="en" %}
