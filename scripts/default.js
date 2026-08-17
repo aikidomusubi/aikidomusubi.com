@@ -310,7 +310,7 @@ function init() {
     'classes-CJc2lhFv',
     'resources-uStNjtHz',
     'photos-QDOJ1pyG',
-    'courses-hFZ2XXIp',
+    'events-hFZ2XXIp',
     'access-information-NdxqmVbV'
   ];
 
@@ -329,8 +329,8 @@ function init() {
     initPhotoFilter('#photos-QDOJ1pyG-nav', '.photos-QDOJ1pyG-container .col');
   }
 
-  if (page.contains('courses-hFZ2XXIp')) {
-    initPhotoFilter('#courses-hFZ2XXIp-nav', '.courses-hFZ2XXIp-container .card');
+  if (page.contains('events-hFZ2XXIp')) {
+    initPhotoFilter('#events-hFZ2XXIp-nav', '.events-hFZ2XXIp-container .card');
 
     document.querySelectorAll('.page .container>main .card .card-body').forEach(cardBody => {
       const lastCardText = cardBody.querySelector('.card-text:last-of-type');

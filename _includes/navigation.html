@@ -43,17 +43,6 @@
             {% if page.lang == 'ja' %}稽古時間{% endif %}
           </a>
           <a class="dropdown-item" href="
-            {% if page.lang == 'ca' %}/{{ page.lang }}/calendari/{% endif %}
-            {% if page.lang == 'en' %}/{{ page.lang }}/calendar/{% endif %}
-            {% if page.lang == 'es' %}/calendario/{% endif %}
-            {% if page.lang == 'ja' %}/{{ page.lang }}/calendar/{% endif %}
-          ">
-            {% if page.lang == 'ca' %}Calendari{% endif %}
-            {% if page.lang == 'en' %}Calendar{% endif %}
-            {% if page.lang == 'es' %}Calendario{% endif %}
-            {% if page.lang == 'ja' %}カレンダー{% endif %}
-          </a>
-          <a class="dropdown-item" href="
             {% if page.lang == 'ca' %}/{{ page.lang }}/quotes/{% endif %}
             {% if page.lang == 'en' %}/{{ page.lang }}/fees/{% endif %}
             {% if page.lang == 'es' %}/cuotas/{% endif %}
@@ -66,18 +55,41 @@
           </a>
         </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="
-          {% if page.lang == 'ca' %}/{{ page.lang }}/cursos/{% endif %}
-          {% if page.lang == 'en' %}/{{ page.lang }}/courses/{% endif %}
-          {% if page.lang == 'es' %}/cursos/{% endif %}
-          {% if page.lang == 'ja' %}/{{ page.lang }}/courses/{% endif %}
-        ">
-          {% if page.lang == 'ca' %}Cursos{% endif %}
-          {% if page.lang == 'en' %}Courses{% endif %}
-          {% if page.lang == 'es' %}Cursos{% endif %}
-          {% if page.lang == 'ja' %}講習会{% endif %}
+      {%- comment -%}
+        Events groups the two dated surfaces: what we run (Seminars) and when
+        everything happens (Calendar). 行事 is Aikikai's own word for it.
+      {%- endcomment -%}
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-events" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {% if page.lang == 'ca' %}Esdeveniments{% endif %}
+          {% if page.lang == 'en' %}Events{% endif %}
+          {% if page.lang == 'es' %}Eventos{% endif %}
+          {% if page.lang == 'ja' %}行事{% endif %}
         </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown-events">
+          <a class="dropdown-item" href="
+            {% if page.lang == 'ca' %}/{{ page.lang }}/seminaris/{% endif %}
+            {% if page.lang == 'en' %}/{{ page.lang }}/seminars/{% endif %}
+            {% if page.lang == 'es' %}/seminarios/{% endif %}
+            {% if page.lang == 'ja' %}/{{ page.lang }}/seminars/{% endif %}
+          ">
+            {% if page.lang == 'ca' %}Seminaris{% endif %}
+            {% if page.lang == 'en' %}Seminars{% endif %}
+            {% if page.lang == 'es' %}Seminarios{% endif %}
+            {% if page.lang == 'ja' %}講習会{% endif %}
+          </a>
+          <a class="dropdown-item" href="
+            {% if page.lang == 'ca' %}/{{ page.lang }}/calendari/{% endif %}
+            {% if page.lang == 'en' %}/{{ page.lang }}/calendar/{% endif %}
+            {% if page.lang == 'es' %}/calendario/{% endif %}
+            {% if page.lang == 'ja' %}/{{ page.lang }}/calendar/{% endif %}
+          ">
+            {% if page.lang == 'ca' %}Calendari{% endif %}
+            {% if page.lang == 'en' %}Calendar{% endif %}
+            {% if page.lang == 'es' %}Calendario{% endif %}
+            {% if page.lang == 'ja' %}カレンダー{% endif %}
+          </a>
+        </div>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-media" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

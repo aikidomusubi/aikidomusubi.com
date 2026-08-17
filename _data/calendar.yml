@@ -77,7 +77,7 @@ months:
 # ---------------------------------------------------------------------------
 # Entries
 #
-# The four below are seeded from _courses/ so the page has real content to
+# The four below are seeded from _events/ so the page has real content to
 # render. Replace, edit and extend freely — this list is the whole feature.
 # ---------------------------------------------------------------------------
 entries:

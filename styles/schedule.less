@@ -877,3 +877,46 @@ html body .page .container > main .tt-export-link {
   .tt-tab,
   .tt-class { transition: none; }
 }
+
+// ---------------------------------------------------------------------------
+// Event category badge (Seminars page)
+//
+// Same dot-and-label shape as the timetable's category chips, so the two pages
+// name the same things the same way.
+// ---------------------------------------------------------------------------
+.event-category {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  margin: 0 0 .35rem;
+  font-size: .68rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--event-colour, @Blue);
+  .bold;
+
+  .event-category-dot {
+    width: .5rem;
+    height: .5rem;
+    border-radius: 50%;
+    background-color: var(--event-colour, @Blue);
+    flex: 0 0 auto;
+  }
+}
+
+// The card the calendar just jumped to. A brief ring rather than a permanent
+// highlight — it answers "which one?" and then gets out of the way.
+.card[id^="event-"]:target {
+  outline: 2px solid @Blue;
+  outline-offset: 3px;
+  animation: eventTargetFade 2.4s ease forwards;
+}
+
+@keyframes eventTargetFade {
+  0%, 60% { outline-color: @Blue; }
+  100%    { outline-color: transparent; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card[id^="event-"]:target { animation: none; }
+}

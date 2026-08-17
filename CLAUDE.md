@@ -115,7 +115,7 @@ Four languages: **es** (default, root `/`), **ca** (`/ca/`), **en** (`/en/`), **
 
 | Collection | Output | Notes |
 |---|---|---|
-| `_courses/` | no | Rendered inside `courses.md` via layout |
+| `_events/` | no | Rendered inside `courses.md` via layout |
 | `_resources/` | no | Rendered inside `resources.md` via `_layouts/resource.html` |
 | `_photos/` | yes | Each album is a page; displayed via modal on photos listing |
 | `_videos/` | no | Rendered inside `videos.md` |
@@ -286,7 +286,7 @@ stage, then put it back.
 
 ### The `i18n-ref` — universal page identifier
 
-Every page has `i18n-ref: {page-slug}-{8-char-id}` in front-matter (e.g. `courses-hFZ2XXIp`). The slug is always the **English canonical name**. The 8-char suffix is Base64url-style for collision resistance. This ID propagates into every associated asset name.
+Every page has `i18n-ref: {page-slug}-{8-char-id}` in front-matter (e.g. `events-hFZ2XXIp`). The slug is always the **English canonical name**. The 8-char suffix is Base64url-style for collision resistance. This ID propagates into every associated asset name.
 
 ### Page images — `/images/`
 
@@ -300,7 +300,7 @@ Every page has `i18n-ref: {page-slug}-{8-char-id}` in front-matter (e.g. `course
 
 Every image exists in **both `.jpg` and `.webp`**, same base name. Global shared assets (placeholder, logos) have **no page prefix**.
 
-### Collection files — `_courses/`, `_videos/`, `_photos/`, `_resources/`
+### Collection files — `_events/`, `_videos/`, `_photos/`, `_resources/`
 
 ```
 # Courses & Videos: event date + descriptive slug
@@ -355,7 +355,7 @@ Third-party assets keep their original filenames (e.g. `Logotip_UB.svg`).
 ### HTML element IDs
 
 ```
-{i18n-ref}-{descriptor}    e.g. index-8oGCaMDs-nav, courses-hFZ2XXIp-nav
+{i18n-ref}-{descriptor}    e.g. index-8oGCaMDs-nav, events-hFZ2XXIp-nav
 ```
 
 Ensures no cross-page collisions when pages share layouts.

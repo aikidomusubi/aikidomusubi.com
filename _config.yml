@@ -43,9 +43,9 @@ plugins:
   - jekyll-redirect-from
 
 collections:
-  courses:
+  events:
     output: false
-    layout: "course"
+    layout: "event"
   photos:
     output: true
     layout: "photo"

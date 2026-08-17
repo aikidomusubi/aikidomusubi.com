@@ -1,0 +1,40 @@
+# Categories for the _events/ collection.
+#
+# Shared by the Seminars page (which badges each card) and the calendar (which
+# colours entries by them), so the two cannot drift apart.
+#
+# Every entry in _events/ carries `category:` in its front matter. Three values,
+# and the distinction is about what the thing IS rather than who runs it:
+#
+#   seminar        multi-day, a visiting instructor, registration and a poster
+#   masterclass    one session with a guest instructor — the site has also
+#                  called these "clases especiales" / "special classes"; they
+#                  are the same thing and all use this one label
+#   collaboration  a public event Aikido Musubi appears at rather than hosts,
+#                  such as Japan Weekend or Manga Barcelona
+#
+# Japanese follows Aikikai's own vocabulary: 講習会 for a seminar, 特別稽古 for
+# a special class. See CLAUDE.md on where the Japanese terms come from.
+
+categories:
+  - id: seminar
+    color: "#084F6F"
+    name:
+      es: "Seminario"
+      ca: "Seminari"
+      en: "Seminar"
+      ja: "講習会"
+  - id: masterclass
+    color: "#6A5ACD"
+    name:
+      es: "Masterclass"
+      ca: "Masterclass"
+      en: "Masterclass"
+      ja: "特別稽古"
+  - id: collaboration
+    color: "#C2571A"
+    name:
+      es: "Colaboración"
+      ca: "Col·laboració"
+      en: "Collaboration"
+      ja: "協力イベント"
