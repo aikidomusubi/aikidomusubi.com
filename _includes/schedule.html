@@ -24,6 +24,16 @@
 {%- assign S = site.data.schedule -%}
 {%- assign L = page.lang | default: 'es' -%}
 {%- assign slot = S.meta.slot_minutes -%}
+{%- comment -%}
+  Column order. The data is written Monday-first; English and Japanese readers
+  expect the week to start on Sunday, so the display order is rotated rather
+  than the data being duplicated. See `week_start` in _data/schedule.yml.
+{%- endcomment -%}
+{%- if S.week_start[L] == 'sun' -%}
+  {%- assign week_days = 'sun,mon,tue,wed,thu,fri,sat' | split: ',' -%}
+{%- else -%}
+  {%- assign week_days = 'mon,tue,wed,thu,fri,sat,sun' | split: ',' -%}
+{%- endif -%}
 
 {%- comment -%} Total rows: sum of every band's length in slots. {%- endcomment -%}
 {%- assign total_rows = 0 -%}
@@ -145,7 +155,7 @@
     </div>
 
     {%- comment -%} ---------- One column per day ---------- {%- endcomment -%}
-    {%- for day in S.days -%}
+    {%- for day in week_days -%}
       {%- assign day_any = S.classes | where_exp: "c", "c.days contains day" -%}
 
       <section class="tt-day" data-day="{{ day }}"

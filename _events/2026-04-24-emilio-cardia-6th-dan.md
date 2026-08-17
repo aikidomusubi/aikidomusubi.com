@@ -24,9 +24,8 @@ file_en: "events-hFZ2XXIp-2026-04-24-emilio-cardia-shihan-6th-dan-en.pdf"
 file_es: "events-hFZ2XXIp-2026-04-24-emilio-cardia-shihan-6th-dan-en.pdf"
 file_ja: "events-hFZ2XXIp-2026-04-24-emilio-cardia-shihan-6th-dan-en.pdf"
 
-date_from: 2026-04-24
-date_to: 2026-04-26
-
+date_from: "2026-04-24"
+date_to: "2026-04-26"
 event_link: "https://fb.me/e/48WcZYa1K"
 registration_link: "https://forms.gle/RxpSwDDespYGNJr76"
 ---

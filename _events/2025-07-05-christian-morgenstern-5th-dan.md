@@ -24,7 +24,7 @@ file_en: "events-hFZ2XXIp-2025-07-05-christian-morgenstern-5th-dan-ca.pdf"
 file_es: "events-hFZ2XXIp-2025-07-05-christian-morgenstern-5th-dan-ca.pdf"
 file_ja: "events-hFZ2XXIp-2025-07-05-christian-morgenstern-5th-dan-ca.pdf"
 
-date_from: 2025-07-05
+date_from: "2025-07-05"
 date_to: "blank"
 
 event_link: "https://fb.me/e/2SsFJsf63"

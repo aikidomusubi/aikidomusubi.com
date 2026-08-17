@@ -24,7 +24,7 @@ file_en: "events-hFZ2XXIp-2024-07-01-marilene-gelinas-4th-dan-en.pdf"
 file_es: "events-hFZ2XXIp-2024-07-01-marilene-gelinas-4th-dan-en.pdf"
 file_ja: "events-hFZ2XXIp-2024-07-01-marilene-gelinas-4th-dan-en.pdf"
 
-date_from: 2024-07-01
+date_from: "2024-07-01"
 date_to: "blank"
 
 event_link: "https://www.facebook.com/events/1107384033666335"

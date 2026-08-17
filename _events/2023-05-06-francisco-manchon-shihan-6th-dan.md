@@ -24,7 +24,7 @@ file_en: "events-hFZ2XXIp-2023-05-06-francisco-manchon-shihan-6th-dan-ca.pdf"
 file_es: "events-hFZ2XXIp-2023-05-06-francisco-manchon-shihan-6th-dan-ca.pdf"
 file_ja: "events-hFZ2XXIp-2023-05-06-francisco-manchon-shihan-6th-dan-ca.pdf"
 
-date_from: 2023-05-06
+date_from: "2023-05-06"
 date_to: "blank"
 
 event_link: "https://www.facebook.com/events/764489961738417"

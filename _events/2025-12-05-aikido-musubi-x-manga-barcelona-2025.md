@@ -24,9 +24,8 @@ file_en: "events-hFZ2XXIp-2025-12-05-aikido-musubi-x-manga-barcelona-2025-ca-es-
 file_es: "events-hFZ2XXIp-2025-12-05-aikido-musubi-x-manga-barcelona-2025-ca-es-en.pdf"
 file_ja: "events-hFZ2XXIp-2025-12-05-aikido-musubi-x-manga-barcelona-2025-ca-es-en.pdf"
 
-date_from: 2025-12-05
-date_to: 2025-12-08
-
+date_from: "2025-12-05"
+date_to: "2025-12-08"
 event_link: "https://www.manga-barcelona.com/"
 registration_link:
 ---

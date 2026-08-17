@@ -24,7 +24,7 @@ file_en: "events-hFZ2XXIp-2024-02-24-christian-morgenstern-5th-dan-ca.pdf"
 file_es: "events-hFZ2XXIp-2024-02-24-christian-morgenstern-5th-dan-ca.pdf"
 file_ja: "events-hFZ2XXIp-2024-02-24-christian-morgenstern-5th-dan-ca.pdf"
 
-date_from: 2024-02-24
+date_from: "2024-02-24"
 date_to: "blank"
 
 event_link: "https://www.facebook.com/events/926593938870249"

@@ -24,7 +24,7 @@ file_en: "events-hFZ2XXIp-2022-03-26-xavi-serra-pedro-fortes-and-pablo-martin-ca
 file_es: "events-hFZ2XXIp-2022-03-26-xavi-serra-pedro-fortes-and-pablo-martin-ca.pdf"
 file_ja: "events-hFZ2XXIp-2022-03-26-xavi-serra-pedro-fortes-and-pablo-martin-ca.pdf"
 
-date_from: 2022-03-26
+date_from: "2022-03-26"
 date_to: "blank"
 
 event_link: "https://www.facebook.com/events/798591744864972"

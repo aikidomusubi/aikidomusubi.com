@@ -32,7 +32,9 @@ categories:
       en: "Masterclass"
       ja: "特別稽古"
   - id: collaboration
-    color: "#C2571A"
+    # Darkened from #C2571A, which measured 4.49:1 on white — just under
+    # the 4.5:1 floor for text this size.
+    color: "#B04E17"
     name:
       es: "Colaboración"
       ca: "Col·laboració"

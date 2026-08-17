@@ -77,70 +77,54 @@ months:
 # ---------------------------------------------------------------------------
 # Entries
 #
-# The four below are seeded from _events/ so the page has real content to
-# render. Replace, edit and extend freely — this list is the whole feature.
+# Only things that have no page of their own. Seminars, masterclasses and
+# collaborations are NOT listed here — the calendar reads those straight from
+# the _events/ collection, so adding one there puts it on the Seminars page
+# and this calendar at once, with no second copy to keep in step.
+#
+# What belongs here: gradings, dojo closures, schedule changes, and regular
+# classes that are not running on a given day.
 # ---------------------------------------------------------------------------
 entries:
+  # Regular classes displaced by a masterclass that evening. The masterclass
+  # itself comes from _events/; these say which classes made way for it.
   - date: "2026-03-12"
-    type: seminar
-    title:
-      es: "Simone Corridoni 4.º Dan Aikikai"
-      ca: "Simone Corridoni 4t Dan Aikikai"
-      en: "Simone Corridoni 4th Dan Aikikai"
-      ja: "シモーネ・コッリドーニ 四段 合気会"
+    type: cancellation
+    affects: { category: aikido, start: "19:30" }
+    note:
+      es: "Masterclass con Simone Corridoni de 19:30 a 21:00."
+      ca: "Masterclass amb Simone Corridoni de 19:30 a 21:00."
+      en: "Masterclass with Simone Corridoni, 19:30–21:00."
+      ja: "シモーネ・コッリドーニによる特別稽古（19:30〜21:00）のため。"
     location: musubi
-    link: "/cursos/"
+
+  - date: "2026-03-12"
+    type: cancellation
+    affects: { category: aikido, start: "20:30" }
+    note:
+      es: "Masterclass con Simone Corridoni de 19:30 a 21:00."
+      ca: "Masterclass amb Simone Corridoni de 19:30 a 21:00."
+      en: "Masterclass with Simone Corridoni, 19:30–21:00."
+      ja: "シモーネ・コッリドーニによる特別稽古（19:30〜21:00）のため。"
+    location: musubi
 
   - date: "2026-03-16"
-    type: seminar
-    title:
-      es: "Koji Watanabe 5.º Dan Aikikai"
-      ca: "Koji Watanabe 5è Dan Aikikai"
-      en: "Koji Watanabe 5th Dan Aikikai"
-      ja: "渡辺幸治 五段 合気会"
-    location: musubi
-    link: "/cursos/"
-
-  - date: "2026-04-11"
-    type: seminar
-    title:
-      es: "Aikido Musubi ✕ Japan Weekend Barcelona"
-      ca: "Aikido Musubi ✕ Japan Weekend Barcelona"
-      en: "Aikido Musubi ✕ Japan Weekend Barcelona"
-      ja: "合気道産靈 ✕ Japan Weekend Barcelona"
-    place:
-      es: "Fira de Barcelona"
-      ca: "Fira de Barcelona"
-      en: "Fira de Barcelona"
-      ja: "フィラ・デ・バルセロナ"
-    link: "/cursos/"
-
-  - date: "2026-04-24"
-    until: "2026-04-26"
-    type: seminar
-    title:
-      es: "Emilio Cardia Shihan 6.º Dan Aikikai"
-      ca: "Emilio Cardia Shihan 6è Dan Aikikai"
-      en: "Emilio Cardia Shihan 6th Dan Aikikai"
-      ja: "エミリオ・カルディア 師範 六段 合気会"
+    type: cancellation
+    affects: { category: iaijutsu, start: "20:00" }
     note:
-      es: "Viernes en el dojo; sábado y domingo en el Polideportivo Marina-Besòs."
-      ca: "Divendres al dojo; dissabte i diumenge al Poliesportiu Marina-Besòs."
-      en: "Friday at the dojo; Saturday and Sunday at the Marina-Besòs sports centre."
-      ja: "金曜は道場、土日はマリナ・ベソス市立スポーツセンターにて。"
+      es: "Masterclass con Koji Watanabe de 19:30 a 21:00."
+      ca: "Masterclass amb Koji Watanabe de 19:30 a 21:00."
+      en: "Masterclass with Koji Watanabe, 19:30–21:00."
+      ja: "渡辺幸治による特別稽古（19:30〜21:00）のため。"
     location: musubi
-    link: "/cursos/"
 
-  # An example of the exception mechanism — a regular class not running on a
-  # particular day. Delete or edit; it is here so the pattern is visible.
+  # Friday session of the Emilio Cardia seminar.
   - date: "2026-04-24"
     type: cancellation
-    affects:
-      category: aikido
-      start: "19:00"
+    affects: { category: aikido, start: "19:00" }
     note:
-      es: "Por el curso de Emilio Cardia Shihan."
-      ca: "Pel curs d'Emilio Cardia Shihan."
+      es: "Por el seminario de Emilio Cardia Shihan."
+      ca: "Pel seminari d'Emilio Cardia Shihan."
       en: "Because of the Emilio Cardia Shihan seminar."
       ja: "エミリオ・カルディア師範の講習会のため。"
     location: musubi

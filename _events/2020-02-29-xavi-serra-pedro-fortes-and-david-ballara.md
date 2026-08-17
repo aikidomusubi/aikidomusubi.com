@@ -24,7 +24,7 @@ file_en: "events-hFZ2XXIp-2020-02-29-xavi-serra-pedro-fortes-and-david-ballara-e
 file_es: "events-hFZ2XXIp-2020-02-29-xavi-serra-pedro-fortes-and-david-ballara-es.pdf"
 file_ja: "events-hFZ2XXIp-2020-02-29-xavi-serra-pedro-fortes-and-david-ballara-es.pdf"
 
-date_from: 2020-02-29
+date_from: "2020-02-29"
 date_to: "blank"
 
 event_link: "https://www.facebook.com/events/2641945132703640/"

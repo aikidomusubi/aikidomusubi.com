@@ -32,8 +32,19 @@ meta:
     - start: "18:30"
       end:   "22:30"
 
-# Day keys used by `classes.days`, in display order (Monday first).
+# Day keys used by `classes.days`. This is the canonical order and the one the
+# data is written in; what a reader sees is rotated per language below.
 days: [mon, tue, wed, thu, fri, sat, sun]
+
+# Which day the week starts on, per language. Spain starts the week on Monday;
+# English and Japanese calendars conventionally start on Sunday. This governs
+# both the timetable columns and the calendar month grid, so the two never
+# disagree about where a week begins.
+week_start:
+  es: mon
+  ca: mon
+  en: sun
+  ja: sun
 
 # Day names. `short` is used for the mobile day tabs and the narrow columns.
 day_names:

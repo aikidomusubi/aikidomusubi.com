@@ -1,0 +1,18 @@
+{%- comment -%}
+  One entry inside a month cell.
+
+  Called from two places with the same parameters, because the calendar draws
+  from two sources: the _events/ collection (seminars, masterclasses,
+  collaborations — things with a page and a poster) and _data/calendar.yml
+  (gradings, closures, cancellations — dated facts with nothing to link to).
+  Normalising them here means the two can never drift apart visually.
+
+  Parameters: type, title, colour, label, start, end, link.
+{%- endcomment -%}
+<article class="cal-entry" data-type="{{ include.type }}" style="--colour: {{ include.colour }}">
+  {%- if include.link %}<a class="cal-entry-link" href="{{ include.link }}">{% endif -%}
+  <span class="cal-entry-type">{{ include.label }}</span>
+  <span class="cal-entry-title">{{ include.title }}</span>
+  {%- if include.start %}<span class="cal-entry-time"><time datetime="{{ include.start }}">{{ include.start }}</time>{% if include.end %}–<time datetime="{{ include.end }}">{{ include.end }}</time>{% endif %}</span>{% endif -%}
+  {%- if include.link %}</a>{% endif -%}
+</article>

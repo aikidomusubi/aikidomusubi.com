@@ -22,22 +22,77 @@
 {%- assign C = site.data.calendar -%}
 {%- assign S = site.data.schedule -%}
 {%- assign L = page.lang | default: 'es' -%}
+{%- comment -%}
+  Two sources, one calendar.
+
+  * site.events — seminars, masterclasses and collaborations. They already
+    exist as pages with posters and descriptions, so the calendar reads them
+    rather than asking for the same facts twice. Adding a seminar to
+    _events/ puts it on both pages.
+  * C.entries — gradings, closures, cancellations and schedule changes. Dated
+    facts with no page behind them, authored in _data/calendar.yml.
+
+  Both are normalised to the same field names at the point of use. The events
+  collection uses date_from/date_to and per-language titles; date_to is the
+  string "blank" on single-day entries, which is why it is tested for rather
+  than trusted.
+{%- endcomment -%}
 {%- assign entries = C.entries | sort: 'date' -%}
+{%- assign coll = site.events | sort: 'date_from' -%}
+{%- comment -%} Where an event's anchor link points, per language. {%- endcomment -%}
+{%- if L == 'ca' -%}{%- assign seminars_url = '/ca/seminaris/' -%}
+{%- elsif L == 'en' -%}{%- assign seminars_url = '/en/seminars/' -%}
+{%- elsif L == 'ja' -%}{%- assign seminars_url = '/ja/seminars/' -%}
+{%- else -%}{%- assign seminars_url = '/seminarios/' -%}{%- endif -%}
 {%- assign today = site.time | date: '%Y-%m-%d' -%}
 {%- assign this_month = site.time | date: '%Y-%m' -%}
+{%- comment -%}
+  Week start, taken from the same key the timetable uses so the two pages never
+  disagree about where a week begins. It shifts both the column headings and
+  the number of blank cells before the 1st.
+{%- endcomment -%}
+{%- if S.week_start[L] == 'sun' -%}
+  {%- assign week_days = 'sun,mon,tue,wed,thu,fri,sat' | split: ',' -%}
+  {%- assign dow_shift = 0 -%}
+{%- else -%}
+  {%- assign week_days = 'mon,tue,wed,thu,fri,sat,sun' | split: ',' -%}
+  {%- assign dow_shift = 6 -%}
+{%- endif -%}
 
 {%- comment -%} Distinct months, in order, plus the month the site was built in. {%- endcomment -%}
-{%- assign month_keys = '' -%}
+{%- comment -%}
+  Every month from the first entry to the last, gaps included, plus the month
+  the site was built in if it falls outside that span. Empty months are
+  rendered rather than skipped so paging through the archive moves one month at
+  a time instead of jumping over quiet ones — and an empty month costs about
+  half a kilobyte gzipped, since the markup is near-identical from one to the
+  next and compresses accordingly.
+{%- endcomment -%}
+{%- assign lo = this_month -%}
+{%- assign hi = this_month -%}
 {%- for e in entries -%}
   {%- assign ym = e.date | date: '%Y-%m' -%}
-  {%- unless month_keys contains ym -%}
-    {%- assign month_keys = month_keys | append: ym | append: ' ' -%}
-  {%- endunless -%}
+  {%- if ym < lo %}{% assign lo = ym %}{% endif -%}
+  {%- if ym > hi %}{% assign hi = ym %}{% endif -%}
 {%- endfor -%}
-{%- unless month_keys contains this_month -%}
-  {%- assign month_keys = month_keys | append: this_month | append: ' ' -%}
-{%- endunless -%}
-{%- assign months = month_keys | split: ' ' | sort -%}
+{%- for e in coll -%}
+  {%- assign ym = e.date_from | date: '%Y-%m' -%}
+  {%- if ym < lo %}{% assign lo = ym %}{% endif -%}
+  {%- if ym > hi %}{% assign hi = ym %}{% endif -%}
+{%- endfor -%}
+{%- if this_month < lo -%}{%- assign lo = this_month -%}{%- endif -%}
+{%- if this_month > hi -%}{%- assign hi = this_month -%}{%- endif -%}
+
+{%- assign month_keys = '' -%}
+{%- assign cursor = lo | append: '-01' -%}
+{%- for i in (1..240) -%}
+  {%- assign ym = cursor | date: '%Y-%m' -%}
+  {%- assign month_keys = month_keys | append: ym | append: ' ' -%}
+  {%- if ym >= hi -%}{%- break -%}{%- endif -%}
+  {%- comment -%} +32 days always lands in the next month; snap back to its 1st. {%- endcomment -%}
+  {%- assign cursor = cursor | date: '%s' | plus: 2764800 | date: '%Y-%m-01' -%}
+{%- endfor -%}
+{%- assign months = month_keys | split: ' ' -%}
 
 <div class="calendar" id="calendar-view"
      data-today="{{ today }}"
@@ -73,7 +128,7 @@
       {%- assign first = ym | append: '-01' -%}
 
       {%- comment -%} Monday-first index of the 1st, and the length of the month. {%- endcomment -%}
-      {%- assign dow = first | date: '%w' | plus: 6 | modulo: 7 -%}
+      {%- assign dow = first | date: '%w' | plus: dow_shift | modulo: 7 -%}
       {%- assign nudge = first | date: '%s' | plus: 2764800 -%}
       {%- assign next_first = nudge | date: '%Y-%m-01' -%}
       {%- assign last_dom = next_first | date: '%s' | minus: 86400 | date: '%-d' | plus: 0 -%}
@@ -87,7 +142,7 @@
         <h2 class="cal-month-head">{{ C.months[L][mo_index] }} {{ yr }}</h2>
 
         <div class="cal-grid">
-          {%- for d in S.days -%}
+          {%- for d in week_days -%}
             <span class="cal-dow" aria-hidden="true">{{ S.day_names[d][L].short }}</span>
           {%- endfor -%}
 
@@ -107,22 +162,35 @@
               {%- assign spanning = entries | where_exp: "e", "e.until" | where_exp: "e", "e.date < iso" | where_exp: "e", "e.until >= iso" -%}
               {%- assign day_entries = starting | concat: spanning -%}
 
+              {%- comment -%} Same two questions of the events collection. {%- endcomment -%}
+              {%- assign ev_start = coll | where: "date_from", iso -%}
+              {%- assign ev_span = coll | where_exp: "e", "e.date_to != 'blank'" | where_exp: "e", "e.date_from < iso" | where_exp: "e", "e.date_to >= iso" -%}
+              {%- assign day_events = ev_start | concat: ev_span -%}
+
               <div class="cal-cell" data-date="{{ iso }}">
                 <p class="cal-daynum"><time datetime="{{ iso }}">{{ dom }}</time></p>
+
+                {%- for e in day_events -%}
+                  {%- assign cat = site.data.events.categories | where: "id", e.category | first -%}
+                  {%- assign slug = e.path | split: '/' | last | remove: '.md' -%}
+                  {%- if L == 'ca' %}{% assign t = e.title_ca %}{% elsif L == 'en' %}{% assign t = e.title_en %}{% elsif L == 'ja' %}{% assign t = e.title_ja %}{% else %}{% assign t = e.title_es %}{% endif -%}
+                  {%- comment -%} include params take no filters, so build it first {%- endcomment -%}
+                  {%- assign ev_link = seminars_url | append: '#event-' | append: slug -%}
+                  {%- assign cat_label = cat.name[L] -%}
+                  {%- include calendar-entry.html type=e.category title=t colour=cat.color
+                        label=cat_label start=e.time_from end=e.time_to link=ev_link -%}
+                {%- endfor -%}
+
                 {%- for e in day_entries -%}
-                  {%- assign t = C.types[e.type] -%}
+                  {%- assign ty = C.types[e.type] -%}
                   {%- assign title = e.title[L] -%}
                   {%- if e.type == 'cancellation' and e.affects -%}
                     {%- assign ac = S.categories | where: "id", e.affects.category | first -%}
                     {%- assign title = ac.name[L] | append: ' ' | append: e.affects.start -%}
                   {%- endif -%}
-                  <article class="cal-entry" data-type="{{ e.type }}" style="--colour: {{ t.color }}">
-                    {%- if e.link %}<a class="cal-entry-link" href="{{ e.link }}">{% endif -%}
-                    <span class="cal-entry-type">{{ t.label[L] }}</span>
-                    <span class="cal-entry-title">{{ title }}</span>
-                    {%- if e.start %}<span class="cal-entry-time"><time datetime="{{ e.start }}">{{ e.start }}</time>{% if e.end %}–<time datetime="{{ e.end }}">{{ e.end }}</time>{% endif %}</span>{% endif -%}
-                    {%- if e.link %}</a>{% endif -%}
-                  </article>
+                  {%- assign ty_label = ty.label[L] -%}
+                  {%- include calendar-entry.html type=e.type title=title colour=ty.color
+                        label=ty_label start=e.start end=e.end link=e.link -%}
                 {%- endfor -%}
               </div>
             {%- endif -%}

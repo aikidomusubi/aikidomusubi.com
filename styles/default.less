@@ -829,15 +829,19 @@ html {
   }
 }
 
+// Bootstrap's .text-muted, restyled. lighten(@Dark, 32%) is #808c98, which
+// measures 3.42:1 on white — under the 4.5:1 floor, and this class is used for
+// the date lines under every event card. lighten(@Dark, 18%) is #5a6570 at
+// 5.9:1, still clearly secondary to the body colour.
 .text-muted {
-  color: lighten(@Dark, 32%) !important;
+  color: lighten(@Dark, 18%) !important;
 
   a {
-    color: lighten(@Dark, 32%) !important;
+    color: lighten(@Dark, 18%) !important;
 
     &:focus,
     &:hover {
-      color: lighten(@Dark, 32%) !important;
+      color: lighten(@Dark, 18%) !important;
     }
   }
 }
@@ -4063,14 +4067,14 @@ html[lang="ja"] {
   }
 
   .text-muted {
-    color: lighten(@Dark, 32%) !important;
+    color: lighten(@Dark, 18%) !important;
 
     a {
-      color: lighten(@Dark, 32%) !important;
+      color: lighten(@Dark, 18%) !important;
 
       &:focus,
       &:hover {
-        color: lighten(@Dark, 32%) !important;
+        color: lighten(@Dark, 18%) !important;
       }
     }
   }
@@ -4498,14 +4502,14 @@ html[lang="ja"] {
   }
 
   .text-muted {
-    color: lighten(@Dark, 32%) !important;
+    color: lighten(@Dark, 18%) !important;
 
     a {
-      color: lighten(@Dark, 32%) !important;
+      color: lighten(@Dark, 18%) !important;
 
       &:focus,
       &:hover {
-        color: lighten(@Dark, 32%) !important;
+        color: lighten(@Dark, 18%) !important;
       }
     }
   }

@@ -714,160 +714,217 @@ html body .page .container > main .tt-export-link {
 }
 
 // ---------------------------------------------------------------------------
-// Print
+// Print — a sheet for the wall, not a copy of the page
 //
-// The timetable is the page: site chrome goes, the printed sheet gets its own
-// masthead, and what is left is the grid at full width with the current
-// selection named underneath the title.
+// Landscape, because the timetable is seven columns wide and portrait squeezes
+// each day to about 25mm. Everything except the grid goes: no navigation, no
+// filters, no footer, no cookie banner, no notes, no export panel. What is
+// left is the wordmark, the week, and the venue it belongs to.
 //
-// Backgrounds are not relied on. Most browsers drop them unless the reader
-// ticks "background graphics", so the colour that identifies a discipline is
-// moved to a left border, which always prints — and the block keeps a light
-// tint for anyone who does have backgrounds on.
+// Blocks are compact here on purpose. On screen a block is sized by its
+// duration against a 1.5rem row so the geometry carries meaning; on paper the
+// point is legibility at arm's length on a wall, so rows shrink to 4mm and the
+// type is set in points rather than rems.
+//
+// Backgrounds are not relied on — most browsers drop them unless the reader
+// ticks "background graphics" — so the discipline colour is carried by a solid
+// left rule that always prints.
 // ---------------------------------------------------------------------------
 @page {
-  margin: 12mm 10mm;
+  size: A4 landscape;
+  margin: 10mm;
 }
 
 @media print {
 
-  // Site chrome. The timetable is what was asked for; the navigation, the
-  // hero, the cookie banner and the footer are not.
+  // ---- everything that is not the timetable ----
   .navbar,
   .fixedHead,
   header,
   footer,
   .stickyBar,
   .cookie-banner,
-  #cookieConsentControl { display: none !important; }
-
-  html body .page .container > main { padding: 0 !important; }
-
+  #cookieConsentControl,
   .timetable-controls,
   .tt-tabs,
   .tt-now,
   .tt-ics,
   .tt-export,
-  .tt-actions { display: none !important; }
+  .tt-actions,
+  .tt-notes { display: none !important; }
 
-  // ---- printed masthead ----
+  // The page's own prose and heading go too: the printed sheet has its own
+  // masthead and the paragraph above the grid is for the web page.
+  html body .page .container > main > h1,
+  html body .page .container > main > p,
+  html body .page .container > main > ul,
+  html body .page .container > main > hr { display: none !important; }
+
+  html body .page .container,
+  html body .page .container > main {
+    max-width: none !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  // The screen layout is built to fill the viewport and reserve room for the
+  // fixed footer: html and body are height:100%, .page carries the footer's
+  // height as padding, and the hero header is a full-viewport block. On paper
+  // that geometry has nothing to fill, so it becomes blank pages after the
+  // grid. Collapsed here.
+  html,
+  body,
+  .page {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  .page { padding-bottom: 0 !important; }
+
+  // Pin the layout to the printable area. Chrome lays a printed page out
+  // against the window width, not the paper, so on a wide window the grid ran
+  // off the right edge and the sheet came out three pages of mostly nothing.
+  // A4 landscape less the 10mm margins is 277mm; stating it here makes the
+  // output identical whatever window the reader happens to have open.
+  html,
+  body {
+    width: 277mm !important;
+    max-width: 277mm !important;
+  }
+
+  html body .page .container,
+  html body .page .container > main,
+  .timetable,
+  .timetable-grid {
+    max-width: 277mm !important;
+    width: 277mm !important;
+  }
+
+  // ---- masthead ----
   .tt-print-head {
-    display: block;
-    margin: 0 0 6mm;
-    padding-bottom: 3mm;
+    display: flex;
+    align-items: baseline;
+    gap: 6mm;
+    margin: 0 0 4mm;
+    padding-bottom: 2mm;
     border-bottom: 1pt solid @Black;
   }
 
-  .tt-print-logo {
-    display: block;
-    width: 62mm;
-    height: auto;
-    margin: 0 0 3mm;
+  // Scoped under main because this stylesheet sets every image inside main to
+  // width: 100% at (0,2,5). Unscoped, the wordmark filled the sheet and pushed
+  // the entire timetable onto page two.
+  html body .page .container > main .tt-print-logo {
+    width: 48mm !important;
+    max-width: 48mm !important;
+    height: auto !important;
+    flex: 0 0 auto;
+    align-self: center;
   }
 
   .tt-print-title {
     .NotoSans; .bold;
     margin: 0;
-    font-size: 15pt;
-    line-height: 1.2;
+    font-size: 13pt;
     color: @Black;
   }
 
   .tt-print-meta {
-    margin: 1mm 0 0;
+    margin: 0;
+    margin-left: auto;
     font-size: 9pt;
-    line-height: 1.4;
     color: @Black;
 
     &:empty { display: none; }
   }
 
-  .tt-print-url {
-    margin: 1mm 0 0;
-    font-size: 8pt;
-    color: @Black;
-    opacity: .7;
-  }
+  .tt-print-url { display: none; }
 
   // ---- the grid ----
   .timetable { margin: 0; }
 
   .timetable-grid {
     display: grid;
-    grid-template-columns: 14mm repeat(7, minmax(0, 1fr));
-    gap: 0 1pt;
-    break-inside: avoid;
+    grid-template-columns: 12mm repeat(7, minmax(0, 1fr));
+    gap: 0 .8mm;
   }
+
+  // 3.2mm a slot. 38 slots is 122mm of grid; with the masthead and the day
+  // headings that leaves comfortable room inside A4 landscape's 190mm, which
+  // is what keeps this to a single sheet. A 90-minute class still gets 19mm —
+  // three lines at 7pt with room to spare.
+  .timetable { --slot-h: 3.2mm; }
 
   .tt-axis {
     display: grid;
-    padding-top: 7mm;
-    font-size: 7pt;
+    padding-top: 6mm;
+    font-size: 6.5pt;
     color: @Black;
+
+    .tt-axis-label { padding-right: 1.5mm; }
+    .tt-axis-break { padding-right: 1.5mm; }
   }
 
+  // No break-inside: avoid here. A day column is ~158mm tall, and Chrome's
+  // paged layout treats an unbreakable box that large as "does not fit on the
+  // remaining page" and pushes the whole grid to the next sheet — which is
+  // what produced a three-page print whose first page held only the masthead.
+  // The grid is short enough to fit on one page anyway; letting it break is
+  // the safe default rather than a constraint the engine has to honour.
   .tt-day {
     display: flex !important;
-    break-inside: avoid;
   }
 
   .tt-day-head,
   html body .page .container > main .tt-day-head {
-    height: 7mm;
-    line-height: 7mm;
-    font-size: 9pt;
+    height: 6mm;
+    line-height: 6mm;
+    margin: 0;
+    font-size: 8.5pt;
     color: @Black;
-    border-bottom: 1pt solid @Black;
+    border-bottom: .8pt solid @Black;
   }
 
-  .tt-day[data-today] .tt-day-head {
-    color: @Black;
-    border-bottom-color: @Black;
-  }
+  .tt-day[data-today] .tt-day-head { color: @Black; border-bottom-color: @Black; }
+  .tt-day[data-today] .tt-day-body { background-color: transparent; }
 
   .tt-day-body {
     display: grid;
     background-image: none;
   }
 
-  .tt-day[data-today] .tt-day-body { background-color: transparent; }
-
   .tt-class {
-    // The colour survives as a rule down the left edge whether or not the
-    // browser is printing backgrounds.
-    border: .5pt solid fadeout(@Black, 55%);
-    border-left: 2.5pt solid var(--colour);
+    margin-bottom: .6mm;
+    padding: .8mm 1.2mm;
+    gap: 0;
+    border: .4pt solid fadeout(@Black, 55%);
+    border-left: 1.6mm solid var(--colour);
     border-radius: 0;
     background-color: transparent !important;
     color: @Black !important;
-    padding: 1mm 1.5mm;
-    break-inside: avoid;
+    overflow: hidden;
 
-    .tt-time { font-size: 7pt; opacity: 1; }
-    .tt-name { font-size: 8pt; }
-    .tt-level { font-size: 7pt; opacity: 1; display: block; }
+    .tt-time { font-size: 6.5pt; opacity: 1; letter-spacing: 0; }
+    .tt-name { font-size: 7.5pt; line-height: 1.1; }
+    .tt-level { font-size: 6.5pt; opacity: 1; display: block; line-height: 1.1; }
     .tt-place { display: none; }
 
-    &[data-tiny] .tt-level { display: block; }
-  }
+    // Stacked times cost a line the paper cannot spare.
+    &[data-narrow] .tt-time {
+      white-space: nowrap;
 
-  // Notes belong on the printout — they are classes too.
-  .tt-notes { margin-top: 4mm; break-inside: avoid; }
+      > time { display: inline; }
+      > span { display: inline; }
+    }
 
-  .tt-note {
-    font-size: 8pt;
-    color: @Black;
-
-    &[hidden] { display: none !important; }
-
-    .tt-note-dot {
-      border: .5pt solid @Black;
-      print-color-adjust: exact;
-      -webkit-print-color-adjust: exact;
+    &[data-tiny] {
+      padding: .5mm 1.2mm;
+      .tt-level { display: none; }
     }
   }
 
-  .tt-empty { font-size: 7pt; color: @Black; }
+  .tt-empty { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

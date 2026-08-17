@@ -197,7 +197,10 @@
     document.body.dataset.smoothScrollBound = 'true';
 
     document.addEventListener('click', function(e) {
-      var link = e.target.closest('.stickyBar a[href^="#"]');
+      // The sticky bar's own links, plus any in-page link to an event card —
+      // the calendar sends people to /seminarios/#event-<slug>, and a card
+      // landing under the sticky header would be worse than not scrolling.
+      var link = e.target.closest('.stickyBar a[href^="#"], a[href^="#event-"]');
       if (!link) return;
 
       var target = document.querySelector(link.getAttribute('href'));
@@ -218,6 +221,25 @@
         top: offsetTop(target) - offset,
         behavior: 'smooth'
       });
+    });
+  }
+
+  // Arriving from the calendar with #event-<slug> in the URL. The browser has
+  // already jumped by the time this runs, so the job is to correct for the
+  // sticky header rather than to animate — the jump has happened either way.
+  // Deferred a frame so images above the target have taken their space.
+  function scrollToHashTarget() {
+    if (!window.location.hash) return;
+    if (window.location.hash.indexOf('#event-') !== 0) return;
+
+    var target = document.querySelector(window.location.hash);
+    if (!target) return;
+
+    requestAnimationFrame(function() {
+      var navbar = document.querySelector('.navbar.sticky-top');
+      var bar = document.querySelector('.stickyBar');
+      var offset = (navbar ? outerHeight(navbar) : 0) + (bar ? outerHeight(bar) : 0) + 12;
+      window.scrollTo({ top: offsetTop(target) - offset, behavior: 'smooth' });
     });
   }
 
@@ -343,6 +365,7 @@ function init() {
   if (STICKY_PAGES.some(cls => page.contains(cls))) {
     stickySection();
     smoothScrolling();
+    scrollToHashTarget();
   }
 
   console.log('↑ ↑ ↓ ↓ ← → ← → b a');

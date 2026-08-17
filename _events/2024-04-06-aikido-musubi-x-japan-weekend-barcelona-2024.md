@@ -24,9 +24,8 @@ file_en: "events-hFZ2XXIp-2024-04-06-aikido-musubi-x-japan-weekend-barcelona-202
 file_es: "events-hFZ2XXIp-2024-04-06-aikido-musubi-x-japan-weekend-barcelona-2024-es.pdf"
 file_ja: "events-hFZ2XXIp-2024-04-06-aikido-musubi-x-japan-weekend-barcelona-2024-es.pdf"
 
-date_from: 2024-04-06
-date_to: 2024-04-07
-
+date_from: "2024-04-06"
+date_to: "2024-04-07"
 event_link: "https://www.japanweekend.com/barcelona/"
 registration_link:
 ---

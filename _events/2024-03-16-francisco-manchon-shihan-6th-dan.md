@@ -24,7 +24,7 @@ file_en: "events-hFZ2XXIp-2024-03-16-francisco-manchon-shihan-6th-dan-ca.pdf"
 file_es: "events-hFZ2XXIp-2024-03-16-francisco-manchon-shihan-6th-dan-ca.pdf"
 file_ja: "events-hFZ2XXIp-2024-03-16-francisco-manchon-shihan-6th-dan-ca.pdf"
 
-date_from: 2024-03-16
+date_from: "2024-03-16"
 date_to: "blank"
 
 event_link: "https://www.facebook.com/events/421034150314197"

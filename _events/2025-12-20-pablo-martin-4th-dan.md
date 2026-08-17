@@ -1,4 +1,6 @@
 ---
+time_from: "10:00"
+time_to: "11:00"
 category: masterclass
 title_ca: "Pablo Martín 4t Dan Aikikai"
 title_en: "Pablo Martín 4th Dan Aikikai"
@@ -24,7 +26,7 @@ file_en: "events-hFZ2XXIp-2025-12-20-pablo-martin-4th-dan-ca.pdf"
 file_es: "events-hFZ2XXIp-2025-12-20-pablo-martin-4th-dan-ca.pdf"
 file_ja: "events-hFZ2XXIp-2025-12-20-pablo-martin-4th-dan-ca.pdf"
 
-date_from: 2025-12-20
+date_from: "2025-12-20"
 date_to: "blank"
 
 event_link: "https://fb.me/e/3sm8kM8NA"

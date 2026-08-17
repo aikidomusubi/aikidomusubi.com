@@ -25,7 +25,7 @@ file_en: "events-hFZ2XXIp-2025-06-07-michelle-feilen-shihan-6th-dan-ca.pdf"
 file_es: "events-hFZ2XXIp-2025-06-07-michelle-feilen-shihan-6th-dan-ca.pdf"
 file_ja: "events-hFZ2XXIp-2025-06-07-michelle-feilen-shihan-6th-dan-ca.pdf"
 
-date_from: 2025-06-07
+date_from: "2025-06-07"
 date_to: "blank"
 
 event_link: "https://www.facebook.com/events/9904310109624878"

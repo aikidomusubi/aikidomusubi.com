@@ -24,7 +24,7 @@ file_en: "events-hFZ2XXIp-2025-03-08-carlos-nova-4th-dan-ca.pdf"
 file_es: "events-hFZ2XXIp-2025-03-08-carlos-nova-4th-dan-ca.pdf"
 file_ja: "events-hFZ2XXIp-2025-03-08-carlos-nova-4th-dan-ca.pdf"
 
-date_from: 2025-03-08
+date_from: "2025-03-08"
 date_to: "blank"
 
 event_link: "https://www.facebook.com/events/825092063140840"

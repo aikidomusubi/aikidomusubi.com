@@ -24,7 +24,7 @@ file_en: "events-hFZ2XXIp-2023-07-08-pedro-fortes-4th-dan-ca.pdf"
 file_es: "events-hFZ2XXIp-2023-07-08-pedro-fortes-4th-dan-ca.pdf"
 file_ja: "events-hFZ2XXIp-2023-07-08-pedro-fortes-4th-dan-ca.pdf"
 
-date_from: 2023-07-08
+date_from: "2023-07-08"
 date_to: "blank"
 
 event_link: "https://www.facebook.com/events/219431171051112"

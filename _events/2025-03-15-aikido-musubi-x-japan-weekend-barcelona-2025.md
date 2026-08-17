@@ -24,7 +24,7 @@ file_en: "events-hFZ2XXIp-2025-03-15-aikido-musubi-x-japan-weekend-barcelona-202
 file_es: "events-hFZ2XXIp-2025-03-15-aikido-musubi-x-japan-weekend-barcelona-2025-es.pdf"
 file_ja: "events-hFZ2XXIp-2025-03-15-aikido-musubi-x-japan-weekend-barcelona-2025-es.pdf"
 
-date_from: 2025-03-15
+date_from: "2025-03-15"
 date_to: "blank"
 
 event_link: "https://www.japanweekend.com/barcelona/"

@@ -24,7 +24,7 @@ file_en: "events-hFZ2XXIp-2020-02-01-ricard-coll-4th-dan-ca.pdf"
 file_es: "events-hFZ2XXIp-2020-02-01-ricard-coll-4th-dan-ca.pdf"
 file_ja: "events-hFZ2XXIp-2020-02-01-ricard-coll-4th-dan-ca.pdf"
 
-date_from: 2020-02-01
+date_from: "2020-02-01"
 date_to: "blank"
 
 event_link: "https://www.facebook.com/events/2734322126804991/"

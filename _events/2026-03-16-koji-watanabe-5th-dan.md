@@ -1,4 +1,6 @@
 ---
+time_from: "19:30"
+time_to: "21:00"
 category: masterclass
 title_ca: "Koji Watanabe 5è Dan Aikikai"
 title_en: "Koji Watanabe 5th Dan Aikikai"
@@ -24,7 +26,7 @@ file_en: "events-hFZ2XXIp-2026-03-16-koji-watanabe-5th-dan-en.pdf"
 file_es: "events-hFZ2XXIp-2026-03-16-koji-watanabe-5th-dan-es.pdf"
 file_ja: "events-hFZ2XXIp-2026-03-16-koji-watanabe-5th-dan-en.pdf"
 
-date_from: 2026-03-16
+date_from: "2026-03-16"
 date_to: "blank"
 
 event_link: "https://fb.me/e/jOTkZh6aS"

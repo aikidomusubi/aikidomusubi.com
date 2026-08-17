@@ -25,7 +25,7 @@ file_en: "events-hFZ2XXIp-2024-12-21-pablo-martin-4th-dan-ca.pdf"
 file_es: "events-hFZ2XXIp-2024-12-21-pablo-martin-4th-dan-ca.pdf"
 file_ja: "events-hFZ2XXIp-2024-12-21-pablo-martin-4th-dan-ca.pdf"
 
-date_from: 2024-12-21
+date_from: "2024-12-21"
 date_to: "blank"
 
 event_link: "https://www.facebook.com/events/553025624368507"

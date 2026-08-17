@@ -272,14 +272,43 @@ html body .page .container > main {
   }
 }
 
+// Calendar entries are cards, not prose links, so they opt out of the prose
+// link treatment: this stylesheet paints every link in <main> with a full
+// @Yellow background on hover, which is right for a link inside a sentence and
+// wrong for a coloured block — it flooded the whole entry and buried the type
+// label. The card lifts and deepens its own colour instead.
 html body .page .container > main .cal-entry-link {
-  // The prose rules underline every link and give it position: relative.
   position: static;
+  display: block;
   text-decoration: none;
   color: @Black;
+  background-color: transparent;
 
-  &:hover .cal-entry-title,
-  &:focus-visible .cal-entry-title { text-decoration: underline; }
+  &:hover,
+  &:focus-visible {
+    background-color: transparent;
+    text-decoration: none;
+    color: @Black;
+  }
+}
+
+.cal-entry {
+  transition: background-color .18s ease, box-shadow .18s ease, transform .18s ease;
+
+  // Only entries that lead somewhere respond to the pointer.
+  &:has(.cal-entry-link):hover,
+  &:has(.cal-entry-link):focus-within {
+    background-color: fadeout(@Black, 92%);
+    box-shadow: 0 1px 4px fadeout(@Black, 88%);
+    transform: translateY(-1px);
+
+    .cal-entry-title { text-decoration: underline; text-underline-offset: 2px; }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cal-entry { transition: none; }
+  .cal-entry:has(.cal-entry-link):hover { transform: none; }
 }
 
 .cal-nothing {

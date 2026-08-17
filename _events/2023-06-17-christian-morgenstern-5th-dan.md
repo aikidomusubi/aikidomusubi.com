@@ -24,7 +24,7 @@ file_en: "events-hFZ2XXIp-2023-06-17-christian-morgenstern-5th-dan-ca.pdf"
 file_es: "events-hFZ2XXIp-2023-06-17-christian-morgenstern-5th-dan-ca.pdf"
 file_ja: "events-hFZ2XXIp-2023-06-17-christian-morgenstern-5th-dan-ca.pdf"
 
-date_from: 2023-06-17
+date_from: "2023-06-17"
 date_to: "blank"
 
 event_link: "https://www.facebook.com/events/649632450388105"
