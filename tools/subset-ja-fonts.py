@@ -89,6 +89,7 @@ def collect_chars():
     chars |= ranges(
         (0x0020, 0x007E),  # ASCII
         (0x00A0, 0x00FF),  # Latin-1, for the romanised Japanese
+        (0x2000, 0x206F),  # general punctuation — en/em dashes, ellipsis
         (0x3000, 0x303F),  # CJK punctuation
         (0x3041, 0x309F),  # hiragana
         (0x30A0, 0x30FF),  # katakana

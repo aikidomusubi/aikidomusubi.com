@@ -14,7 +14,7 @@ Actualmente, ofrecemos clases de Aikido (adultos e infantil) de lunes a sábado.
 
 <hr>
 
-<div id='calendar'></div>
+{% if site.schedule_engine == 'fullcalendar' %}<div id='calendar'></div>{% else %}{% include schedule.html %}{% endif %}
 
 Descargar los horarios para el año 2026:
 

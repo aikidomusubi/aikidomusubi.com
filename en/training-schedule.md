@@ -14,7 +14,7 @@ Currently, we offer aikido classes (adults and children) from Monday to Saturday
 
 <hr>
 
-<div id='calendar'></div>
+{% if site.schedule_engine == 'fullcalendar' %}<div id='calendar'></div>{% else %}{% include schedule.html %}{% endif %}
 
 Download the training schedule for the year 2026:
 

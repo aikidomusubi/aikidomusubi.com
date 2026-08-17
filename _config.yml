@@ -67,13 +67,25 @@ defaults:
 # scripts/all.min.js. Everything Gulp consumes to build them is excluded
 # here, as are the build/tooling files. glightbox.* is deliberately NOT
 # excluded — the courses page loads it directly rather than via the bundle.
+# Which training-schedule renderer to use.
+#
+#   native       build-time timetable from _data/schedule.yml (no dependency)
+#   fullcalendar the previous FullCalendar 4.3.1 implementation
+#
+# Both are present so they can be compared side by side. Flip this to roll
+# back; nothing in plugins/fullcalendar-4.3.1/, _includes/fullcalendar.html or
+# the training-schedule-*.json files has been removed.
+schedule_engine: native
+
 exclude:
   # Gulp inputs, bundled into all.min.js / all.min.css
   - scripts/default.js
+  - scripts/schedule.js
   - scripts/bootstrap.bundle.min.js
   - scripts/bootstrap.bundle.min.js.map
   - styles/base.less
   - styles/default.less
+  - styles/schedule.less
   - styles/bootstrap.min.css
   - styles/bootstrap.min.css.map
   # Unminified build output, kept locally for debugging only

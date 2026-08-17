@@ -14,7 +14,7 @@ Actualment, oferim classes d'aikido (adults i infantil) de dilluns a dissabte. A
 
 <hr>
 
-<div id='calendar'></div>
+{% if site.schedule_engine == 'fullcalendar' %}<div id='calendar'></div>{% else %}{% include schedule.html %}{% endif %}
 
 Descarregar els horaris per a l'any 2026:
 

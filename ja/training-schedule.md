@@ -14,7 +14,7 @@ last_modified: 2026-02-26
 
 <hr>
 
-<div id='calendar'></div>
+{% if site.schedule_engine == 'fullcalendar' %}<div id='calendar'></div>{% else %}{% include schedule.html %}{% endif %}
 
 2026年の稽古時間をダウンロード：
 

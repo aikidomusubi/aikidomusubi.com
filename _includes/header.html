@@ -59,7 +59,7 @@
       <style>{% include fonts-ja.css %}</style>
     {% endif %}
     {% include icons.html %}
-    {% if page.i18n-ref == 'training-schedule-IFMn5oCc' %}
+    {% if page.i18n-ref == 'training-schedule-IFMn5oCc' and site.schedule_engine == 'fullcalendar' %}
       <link href='/plugins/fullcalendar-4.3.1/packages/core/main.min.css' rel='stylesheet' />
       <link href='/plugins/fullcalendar-4.3.1/packages/daygrid/main.min.css' rel='stylesheet' />
       <link href='/plugins/fullcalendar-4.3.1/packages/list/main.min.css' rel='stylesheet' />
@@ -78,6 +78,14 @@
         <script src='/plugins/fullcalendar-4.3.1/packages/core/locales/ja.js' defer></script>
       {% endif %}
       {% include fullcalendar.html %}
+    {% endif %}
+    {%- comment -%}
+      The timetable renders without this — it is static HTML. The script only
+      adds filtering, day tabs, the now-line and .ics export, so it is deferred
+      and loaded on this page alone rather than added to all.min.js.
+    {%- endcomment -%}
+    {% if page.i18n-ref == 'training-schedule-IFMn5oCc' and site.schedule_engine != 'fullcalendar' %}
+      <script src="/scripts/schedule.min.js?v=1" defer></script>
     {% endif %}
     {% if page.i18n-ref == 'courses-hFZ2XXIp' %}
       <link rel="stylesheet" href="/styles/glightbox.min.css">

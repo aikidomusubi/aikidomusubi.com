@@ -1,0 +1,578 @@
+// out: false
+//
+// ---------------------------------------------------------------------------
+// Weekly training timetable
+//
+// Replaces ~677 lines of FullCalendar overrides. Nothing here positions a
+// block by hand: every block carries --row-start / --row-end computed from its
+// own times in _includes/schedule.html, and CSS Grid does the rest. Change a
+// class time in _data/schedule.yml and the block moves.
+//
+// The grid skips the empty middle of the day. Rows are the concatenation of
+// meta.bands (08:00–13:00 and 18:30–22:30), with a break marker where the jump
+// happens, so five and a half dead hours do not take up half the table.
+// ---------------------------------------------------------------------------
+
+@tt-slot-height: 1.25rem;   // one 15-minute row
+@tt-axis-width: 3.25rem;
+@tt-gap: 2px;
+
+.timetable {
+  --slot-h: @tt-slot-height;
+  margin: 0 0 3rem;
+
+  // Filtering is done by toggling these attributes on the container, so the
+  // work is one class change rather than a re-render. Blocks that fail either
+  // test are removed from layout, which lets their neighbours reclaim the
+  // width — hiding them with visibility would leave gaps.
+  .tt-class[hidden] {
+    display: none !important;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Controls
+// ---------------------------------------------------------------------------
+.timetable-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem 2rem;
+  align-items: flex-start;
+  margin: 0 0 1.5rem;
+
+  .tt-filter {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+
+    > legend {
+      .NotoSans; .bold;
+      float: none;
+      width: auto;
+      font-size: .7rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: fadeout(@Black, 40%);
+      margin: 0 0 .4rem;
+      padding: 0;
+    }
+  }
+}
+
+// Category chips — multi-select, so "Aikido and Judo" is expressible. The old
+// dropdown allowed exactly one category at a time.
+.tt-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+}
+
+.tt-chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  min-height: 2rem;              // 32px: clears the 24px tap-target minimum
+  padding: .25rem .7rem;
+  border: 1px solid fadeout(@Black, 88%);
+  border-radius: 2rem;
+  font-size: .8rem;
+  line-height: 1.2;
+  cursor: pointer;
+  user-select: none;
+  background-color: @White;
+  transition: background-color .2s ease, border-color .2s ease, opacity .2s ease;
+
+  > input {
+    position: absolute;
+    opacity: 0;
+    width: 1px; height: 1px;
+    margin: 0;
+  }
+
+  .tt-chip-dot {
+    width: .625rem;
+    height: .625rem;
+    border-radius: 50%;
+    background-color: var(--chip);
+    flex: 0 0 auto;
+  }
+
+  // Unchecked reads as "switched off" rather than "absent" — the colour drains
+  // out but the chip keeps its place, so the row does not reflow as you filter.
+  &:has(input:not(:checked)) {
+    opacity: .45;
+    background-color: transparent;
+
+    .tt-chip-dot { background-color: transparent; box-shadow: inset 0 0 0 1px currentColor; }
+  }
+
+  &:hover { border-color: fadeout(@Black, 70%); }
+
+  // Keyboard focus has to be visible on a control whose real input is hidden.
+  // The site-wide rule removes focus rings; this one is drawn deliberately.
+  &:has(input:focus-visible) {
+    outline: 2px solid @Blue;
+    outline-offset: 2px;
+  }
+}
+
+// Location segmented control — three venues, all visible. The old dropdown put
+// two of the three behind a click.
+.tt-segmented {
+  display: inline-flex;
+  flex-wrap: wrap;
+  border: 1px solid fadeout(@Black, 88%);
+  border-radius: .25rem;
+  overflow: hidden;
+}
+
+.tt-segment {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: .25rem .85rem;
+  font-size: .8rem;
+  line-height: 1.2;
+  cursor: pointer;
+  user-select: none;
+  background-color: @White;
+  border-right: 1px solid fadeout(@Black, 92%);
+  transition: background-color .2s ease, color .2s ease;
+
+  &:last-child { border-right: 0; }
+
+  > input {
+    position: absolute;
+    opacity: 0;
+    width: 1px; height: 1px;
+    margin: 0;
+  }
+
+  &:has(input:checked) {
+    background-color: @Blue;
+    color: @White;
+  }
+
+  &:hover:not(:has(input:checked)) { background-color: fadeout(@Black, 96%); }
+
+  &:has(input:focus-visible) {
+    outline: 2px solid @Blue;
+    outline-offset: -2px;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// The grid
+// ---------------------------------------------------------------------------
+.timetable-grid {
+  display: grid;
+  grid-template-columns: @tt-axis-width repeat(7, minmax(0, 1fr));
+  gap: 0 @tt-gap;
+  align-items: start;
+}
+
+// Time axis. Labels are positioned on the same row track as the blocks they
+// line up with, so they stay correct if the bands change.
+.tt-axis {
+  display: grid;
+  grid-template-rows: repeat(var(--rows), var(--slot-h));
+  position: relative;
+  padding-top: 2rem;                 // clears the day headings
+  font-size: .7rem;
+  color: fadeout(@Black, 45%);
+
+  .tt-axis-label {
+    grid-row: var(--row);
+    grid-column: 1;
+    transform: translateY(-.4em);     // sit the label on its gridline
+    text-align: right;
+    padding-right: .5rem;
+    white-space: nowrap;
+  }
+
+  .tt-axis-break {
+    grid-row: var(--row);
+    grid-column: 1;
+    text-align: right;
+    padding-right: .5rem;
+    transform: translateY(-.4em);
+    color: fadeout(@Black, 65%);
+  }
+}
+
+.tt-day {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+// Day headings.
+//
+// These are <h2> because the page runs <h1> Horarios and nothing between —
+// <h3> skipped a level and failed the heading-order audit.
+//
+// The whole rule lives inside the main scope on purpose. This stylesheet gives
+// every heading in <main> a prose treatment (h2 is 1.5rem with `margin: 3rem 0
+// 2rem`, centred), which is right for a section heading in running text and
+// wrong for a column header — the margin alone pushed every day column 3rem
+// below the time axis. `html body .page .container > main h2` is (0,2,4); this
+// is (0,3,3) and wins on class count, so no !important is needed.
+html body .page .container > main {
+
+  .tt-day-head {
+    .NotoSans; .bold;
+    height: 2rem;
+    margin: 0;
+    font-size: .8rem;
+    line-height: 2rem;
+    text-align: center;
+    text-transform: none;
+    letter-spacing: 0;
+    color: @Black;
+    border-bottom: 2px solid fadeout(@Black, 90%);
+    white-space: nowrap;
+    overflow: hidden;
+
+    .tt-day-short { display: none; }
+  }
+}
+
+// Today's column, marked by script — the build cannot know the day.
+.tt-day[data-today] {
+  .tt-day-head {
+    color: @Blue;
+    border-bottom-color: @Blue;
+  }
+
+  .tt-day-body { background-color: fadeout(@Blue, 97%); }
+}
+
+.tt-day-body {
+  position: relative;
+  display: grid;
+  grid-template-rows: repeat(var(--rows), var(--slot-h));
+  grid-template-columns: minmax(0, 1fr);
+
+  // Faint hour lines, drawn rather than marked up: one repeating gradient
+  // instead of 36 empty cells in the DOM.
+  background-image: repeating-linear-gradient(
+    to bottom,
+    fadeout(@Black, 94%) 0,
+    fadeout(@Black, 94%) 1px,
+    transparent 1px,
+    transparent calc(var(--slot-h) * 4)
+  );
+}
+
+// ---------------------------------------------------------------------------
+// A class block
+// ---------------------------------------------------------------------------
+.tt-class {
+  // Position from the times. This single declaration is what replaced the
+  // hand-tuned "height: 6rem; margin-top: -11.5rem" offsets.
+  grid-row: var(--row-start) / var(--row-end);
+  grid-column: 1;
+
+  // Concurrent classes share the column. Width and offset come from the lane
+  // maths in the include, so a cluster of two splits in half while everything
+  // else stays full width.
+  width: calc((100% - (var(--lanes) - 1) * @tt-gap) / var(--lanes));
+  margin-left: calc(var(--lane) * (100% / var(--lanes)));
+
+  overflow: hidden;
+  padding: .3rem .45rem;
+  border-radius: .2rem;
+  background-color: var(--colour);
+  color: @Black;
+  font-size: .7rem;
+  line-height: 1.25;
+  transition: opacity .2s ease, box-shadow .2s ease;
+
+  > p { margin: 0; }
+
+  .tt-time {
+    .bold;
+    font-size: .7rem;
+    white-space: nowrap;
+  }
+
+  .tt-name {
+    .bold;
+    text-transform: uppercase;
+    font-size: .7rem;
+    letter-spacing: .02em;
+  }
+
+  .tt-level,
+  .tt-place {
+    font-size: .65rem;
+    opacity: .8;
+  }
+
+  // Location repeats the segmented control's current choice, so it is noise in
+  // the grid — but it is the only place a crawler or screen reader learns
+  // where the class happens, so it stays in the markup and is hidden visually
+  // only where the column is too narrow to justify it.
+  .tt-place { display: none; }
+
+  // A block sharing its column with a concurrent class is about half width,
+  // too narrow for "08:00–09:00" on one line. Stack the two times instead of
+  // shrinking the type, which stays readable where a smaller font would not.
+  &[data-narrow] {
+
+    .tt-time {
+      white-space: normal;
+
+      > time { display: block; }
+      > span { display: none; }
+    }
+  }
+
+  // Short classes cannot fit four lines. Below an hour, drop the level; below
+  // 45 minutes, keep only time and discipline.
+  &[data-short] .tt-level { display: none; }
+  &[data-tiny] {
+    .tt-level, .tt-place { display: none; }
+    padding: .15rem .45rem;
+
+    .tt-time, .tt-name { display: inline; font-size: .65rem; }
+    .tt-name::before { content: " · "; }
+  }
+}
+
+// The now-line, drawn only while it falls inside a band.
+.tt-now {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 0;
+  border-top: 2px solid @Red;
+  z-index: 3;
+  pointer-events: none;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: -3px;
+    top: -4px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: @Red;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Add-to-calendar, injected by script (it needs a Blob URL)
+// ---------------------------------------------------------------------------
+// Held back until the block is hovered or focused. Printed in every block it
+// was pure noise — twenty-one repetitions of the same sentence competing with
+// the class names for room a 45-minute block does not have. It stays in the
+// DOM and reachable by keyboard; only its visibility is deferred.
+.tt-ics {
+  position: absolute;
+  right: .35rem;
+  bottom: .3rem;
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  font-size: .6rem;
+  color: @Black;
+  opacity: 0;
+  text-decoration: underline;
+  transition: opacity .15s ease;
+
+  > svg { width: .7rem; height: auto; }
+}
+
+.tt-class {
+  position: relative;
+
+  &:hover .tt-ics,
+  &:focus-within .tt-ics {
+    opacity: .85;
+  }
+
+  .tt-ics:hover,
+  .tt-ics:focus-visible {
+    opacity: 1;
+    color: @Black;
+  }
+}
+
+.tt-empty {
+  .NotoSans;
+  grid-row: 1 / -1;
+  align-self: center;
+  text-align: center;
+  font-size: .7rem;
+  color: fadeout(@Black, 60%);
+  margin: 0;
+}
+
+// ---------------------------------------------------------------------------
+// Day tabs (below 992px)
+//
+// The old build swapped FullCalendar's grid view for its list view at this
+// width, which meant a single scrolling column of every class in the week.
+// Tabs keep one day on screen at a time and make the week navigable.
+// ---------------------------------------------------------------------------
+.tt-tabs {
+  display: none;
+  gap: .3rem;
+  margin: 0 0 1rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar { display: none; }
+}
+
+.tt-tab {
+  flex: 1 0 auto;
+  min-width: 2.75rem;
+  min-height: 2.25rem;
+  padding: .35rem .6rem;
+  border: 1px solid fadeout(@Black, 88%);
+  border-radius: .25rem;
+  background-color: @White;
+  color: @Black;
+  font-size: .75rem;
+  line-height: 1.2;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+
+  &[aria-selected="true"] {
+    background-color: @Blue;
+    border-color: @Blue;
+    color: @White;
+  }
+
+  &[data-today]:not([aria-selected="true"]) { border-color: @Blue; color: @Blue; }
+
+  &:focus-visible { outline: 2px solid @Blue; outline-offset: 2px; }
+}
+
+@media (max-width: 991.98px) {
+
+  .tt-tabs { display: flex; }
+
+  .timetable-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  // The axis is meaningless once days are shown one at a time — the blocks
+  // carry their own times.
+  .tt-axis { display: none; }
+
+  .tt-day {
+    display: none;
+
+    &[data-active] { display: block; }
+  }
+
+  .tt-day-head {
+    text-align: left;
+    height: auto;
+    line-height: 1.4;
+    font-size: 1rem;
+    padding-bottom: .5rem;
+    margin-bottom: .75rem;
+  }
+
+  // Stacked, not gridded: a phone has no room for a proportional time axis,
+  // and a list reads better one-handed.
+  .tt-day-body {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    background-image: none;
+  }
+
+  .tt-class {
+    width: 100%;
+    margin-left: 0;
+    padding: .6rem .75rem;
+    font-size: .8rem;
+
+    // No hover on a touch screen, and a stacked card has room for it.
+    .tt-ics {
+      position: static;
+      opacity: .85;
+      margin-top: .35rem;
+      font-size: .7rem;
+    }
+
+    .tt-time { font-size: .8rem; }
+    .tt-name { font-size: .85rem; }
+    .tt-level, .tt-place { font-size: .75rem; }
+    .tt-place { display: block; }
+
+    // Height is meaningless in a stacked list, so the duration-based
+    // truncation above is undone.
+    &[data-short] .tt-level,
+    &[data-tiny] .tt-level,
+    &[data-tiny] .tt-place { display: block; }
+
+    &[data-tiny] {
+      padding: .6rem .75rem;
+
+      .tt-time, .tt-name { display: block; font-size: .8rem; }
+      .tt-name::before { content: none; }
+    }
+  }
+
+  .tt-now { display: none; }
+}
+
+// ---------------------------------------------------------------------------
+// Print — the timetable is the page
+// ---------------------------------------------------------------------------
+@media print {
+
+  .timetable-controls,
+  .tt-tabs,
+  .tt-now,
+  .tt-ics { display: none !important; }
+
+  .timetable-grid { grid-template-columns: @tt-axis-width repeat(7, minmax(0, 1fr)); }
+
+  .tt-axis { display: grid; }
+
+  .tt-day {
+    display: flex !important;
+    break-inside: avoid;
+  }
+
+  .tt-day-body {
+    display: grid;
+    background-image: none;
+  }
+
+  // Colour blocks cost a fortune in ink and most browsers drop backgrounds in
+  // print anyway; outline them instead so the grid still reads.
+  .tt-class {
+    background-color: transparent !important;
+    border: 1px solid fadeout(@Black, 60%);
+    border-left: 3px solid var(--colour);
+    color: @Black !important;
+
+    .tt-place { display: block; }
+    &[data-short] .tt-level, &[data-tiny] .tt-level { display: block; }
+  }
+
+  .tt-day[data-today] .tt-day-body { background-color: transparent; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .tt-chip,
+  .tt-segment,
+  .tt-tab,
+  .tt-class { transition: none; }
+}

@@ -100,6 +100,7 @@ gulp.task('purge', function() {
       content: [
         '_site/**/*.html',
         'scripts/default.js',
+        'scripts/schedule.js',
         'scripts/glightbox.min.js',
         'plugins/fullcalendar-4.3.1/packages/*/main.min.js'
       ],
@@ -107,17 +108,35 @@ gulp.task('purge', function() {
         return content.match(/[\w-/:%.]+(?<!:)/g) || [];
       },
       safelist: {
-        standard: [/^fc-/, /^gl/, /^is-/, /^cookie-/, /^navbar/, /^dropdown/,
+        // /^tt-/ covers the timetable. Its tabs, now-line and calendar links
+        // are built by scripts/schedule.js and never appear in the built HTML,
+        // and neither do the data-* states (data-active, data-today,
+        // data-narrow, data-short, data-tiny) the stylesheet keys off.
+        standard: [/^tt-/, /^timetable/, /^fc-/, /^gl/, /^is-/, /^cookie-/, /^navbar/, /^dropdown/,
                    /^collaps/, /^modal/, /^offcanvas/, /^carousel/, /^tooltip/,
                    /^popover/, /^toast/, 'show', 'showing', 'hide', 'hiding',
                    'fade', 'active', 'disabled', 'open', 'table-bordered',
                    'sticky-top', 'fixed-bottom'],
-        deep: [/^fc-/, /^gl/, /^modal/],
+        deep: [/^fc-/, /^gl/, /^modal/, /^tt-/],
         greedy: [/^fc/, /^gl/]
       }
     })]))
     .pipe(cleanCSS())
     .pipe(gulp.dest('styles'));
+});
+
+// -------------------
+// Page-specific JS
+//
+// The timetable script is loaded only on the training-schedule page, so it
+// stays out of all.min.js rather than costing every other page ~3 KB for
+// behaviour they never use.
+// -------------------
+gulp.task('schedule-js', function() {
+  return gulp.src('scripts/schedule.js')
+    .pipe(terser())
+    .pipe(rename('schedule.min.js'))
+    .pipe(gulp.dest('scripts'));
 });
 
 // -------------------

@@ -1,0 +1,278 @@
+{%- comment -%}
+  Weekly training timetable, rendered at build time from _data/schedule.yml.
+
+  Everything here is static HTML. There is no calendar library, no fetch, and
+  no client-side rendering: the class times are in the markup, so they are
+  indexable, readable with JavaScript off, and cost nothing on the main thread.
+  scripts/schedule.js only adds filtering, day tabs and the now-line on top.
+
+  Layout comes from the times themselves. Each block is placed with CSS Grid
+  row numbers computed below from `start` and `end`, which is what replaced the
+  hand-tuned "height: 6rem; margin-top: -11.5rem" offsets the old data carried.
+  Change a time in the YAML and the block moves; nothing else to update.
+
+  Two coordinate tricks are worth knowing before editing:
+
+  * Times are compared and sorted as zero-padded "HH:MM" strings. That is
+    lexicographically equivalent to comparing them as times, which lets Liquid
+    sort and overlap-test without any date parsing.
+  * The grid skips the empty middle of the day. `meta.bands` lists the periods
+    that actually contain classes, and a time's row is its offset within the
+    concatenation of those bands — see `band_offset` below.
+{%- endcomment -%}
+
+{%- assign S = site.data.schedule -%}
+{%- assign L = page.lang | default: 'es' -%}
+{%- assign slot = S.meta.slot_minutes -%}
+
+{%- comment -%} Total rows: sum of every band's length in slots. {%- endcomment -%}
+{%- assign total_rows = 0 -%}
+{%- for b in S.meta.bands -%}
+  {%- assign bs = b.start | split: ':' -%}{%- assign bsm = bs[0] | times: 60 | plus: bs[1] -%}
+  {%- assign be = b.end   | split: ':' -%}{%- assign bem = be[0] | times: 60 | plus: be[1] -%}
+  {%- assign len = bem | minus: bsm | divided_by: slot -%}
+  {%- assign total_rows = total_rows | plus: len -%}
+{%- endfor -%}
+
+<div class="timetable"
+     id="timetable"
+     data-slot="{{ slot }}"
+     data-rows="{{ total_rows }}"
+     data-ics-label="{{ S.ui.add_to_cal[L] }}"
+     style="--rows: {{ total_rows }}">
+
+  {%- comment -%} ---------- Controls ---------- {%- endcomment -%}
+  <div class="timetable-controls">
+    <fieldset class="tt-filter" id="tt-categories">
+      <legend>{{ S.ui.activities[L] }}</legend>
+      <div class="tt-chips">
+        {%- for c in S.categories %}
+        <label class="tt-chip" data-category="{{ c.id }}" style="--chip: {{ c.color }}">
+          <input type="checkbox" name="category" value="{{ c.id }}" checked>
+          <span class="tt-chip-dot" aria-hidden="true"></span>
+          <span class="tt-chip-label">{{ c.name[L] }}</span>
+        </label>
+        {%- endfor %}
+      </div>
+    </fieldset>
+
+    <fieldset class="tt-filter" id="tt-locations">
+      <legend>{{ S.ui.location[L] }}</legend>
+      <div class="tt-segmented">
+        {%- for loc in S.locations %}
+        <label class="tt-segment" data-location="{{ loc.id }}">
+          <input type="radio" name="location" value="{{ loc.id }}"
+                 data-slug="{{ loc.slug }}"{% if forloop.first %} checked{% endif %}>
+          <span>{{ loc.abbr[L] }}</span>
+        </label>
+        {%- endfor %}
+      </div>
+    </fieldset>
+  </div>
+
+  {%- comment -%} ---------- Grid ---------- {%- endcomment -%}
+  <div class="timetable-grid" role="group"
+       aria-label="{{ S.ui.schedule_of[L] }} {{ page.title }}">
+
+    {%- comment -%}
+      Time axis. One label per hour inside each band, plus a marker where the
+      grid jumps over the empty afternoon.
+    {%- endcomment -%}
+    <div class="tt-axis" aria-hidden="true">
+      {%- assign acc = 0 -%}
+      {%- for b in S.meta.bands -%}
+        {%- assign bs = b.start | split: ':' -%}{%- assign bsm = bs[0] | times: 60 | plus: bs[1] -%}
+        {%- assign be = b.end   | split: ':' -%}{%- assign bem = be[0] | times: 60 | plus: be[1] -%}
+        {%- comment -%}
+          Label on the hour, not on the band's start. A band beginning at 18:30
+          would otherwise be labelled 18:30 / 19:30 / 20:30, which reads as an
+          odd clock. Start at the first whole hour at or after the band start
+          and step hourly from there; the band's own start still gets a label
+          when it happens to fall on the hour.
+        {%- endcomment -%}
+        {%- assign rem = bsm | modulo: 60 -%}
+        {%- if rem == 0 -%}
+          {%- assign mins = bsm -%}
+        {%- else -%}
+          {%- assign mins = bsm | plus: 60 | minus: rem -%}
+        {%- endif -%}
+        {%- for i in (1..48) -%}
+          {%- if mins >= bem -%}{%- break -%}{%- endif -%}
+          {%- assign row = mins | minus: bsm | plus: acc | divided_by: slot | plus: 1 -%}
+          {%- assign hh = mins | divided_by: 60 -%}
+          {%- assign mm = mins | modulo: 60 -%}
+          <span class="tt-axis-label" style="--row: {{ row }}">
+            {% if hh < 10 %}0{% endif %}{{ hh }}:{% if mm < 10 %}0{% endif %}{{ mm }}
+          </span>
+          {%- assign mins = mins | plus: 60 -%}
+        {%- endfor -%}
+        {%- assign acc = acc | plus: bem | minus: bsm -%}
+        {%- unless forloop.last -%}
+          {%- assign brow = acc | divided_by: slot | plus: 1 -%}
+          <span class="tt-axis-break" style="--row: {{ brow }}">⋯</span>
+        {%- endunless -%}
+      {%- endfor -%}
+    </div>
+
+    {%- comment -%} ---------- One column per day ---------- {%- endcomment -%}
+    {%- for day in S.days -%}
+      {%- assign day_any = S.classes | where_exp: "c", "c.days contains day" -%}
+
+      <section class="tt-day" data-day="{{ day }}"
+               aria-labelledby="tt-head-{{ day }}">
+        <h2 class="tt-day-head" id="tt-head-{{ day }}">
+          <span class="tt-day-long">{{ S.day_names[day][L].long }}</span>
+          <span class="tt-day-short" aria-hidden="true">{{ S.day_names[day][L].short }}</span>
+        </h2>
+
+        <div class="tt-day-body">
+          {%- comment -%}
+            Blocks for every location are emitted, and the location control
+            hides all but one. Rendering the whole week for every venue is what
+            makes the page worth indexing — the old build shipped an empty div
+            and fetched the classes afterwards, so none of this text existed
+            for a crawler.
+          {%- endcomment -%}
+          {%- for loc in S.locations -%}
+            {%- assign in_day = day_any | where: "location", loc.id | sort: "start" -%}
+
+            {%- for c in in_day -%}
+              {%- comment -%} start/end as minutes past midnight {%- endcomment -%}
+              {%- assign sp = c.start | split: ':' -%}
+              {%- assign smin = sp[0] | times: 60 | plus: sp[1] -%}
+              {%- assign ep = c.end | split: ':' -%}
+              {%- assign emin = ep[0] | times: 60 | plus: ep[1] -%}
+
+              {%- comment -%} offset of each within the concatenated bands {%- endcomment -%}
+              {%- assign acc = 0 -%}{%- assign soff = 0 -%}{%- assign eoff = 0 -%}
+              {%- for b in S.meta.bands -%}
+                {%- assign bs = b.start | split: ':' -%}{%- assign bsm = bs[0] | times: 60 | plus: bs[1] -%}
+                {%- assign be = b.end   | split: ':' -%}{%- assign bem = be[0] | times: 60 | plus: be[1] -%}
+                {%- if smin >= bsm and smin < bem -%}
+                  {%- assign soff = acc | plus: smin | minus: bsm -%}
+                {%- endif -%}
+                {%- if emin > bsm and emin <= bem -%}
+                  {%- assign eoff = acc | plus: emin | minus: bsm -%}
+                {%- endif -%}
+                {%- assign acc = acc | plus: bem | minus: bsm -%}
+              {%- endfor -%}
+              {%- assign row_start = soff | divided_by: slot | plus: 1 -%}
+              {%- assign row_end = eoff | divided_by: slot | plus: 1 -%}
+
+              {%- comment -%}
+                Overlap lanes. Two classes can run at once in one venue —
+                Saturday morning has Aikido 08:00–09:00 alongside Iaijutsu
+                08:00–10:00 — so a block needs to know both which lane it sits
+                in and how many lanes to divide the column into.
+
+                `lane` counts earlier classes still running when this one
+                starts. `lanes` counts everything overlapping this one,
+                itself included, so it is a property of the cluster rather than
+                of the day: Saturday's 11:00 Karate overlaps nothing and stays
+                full width even though the morning is two deep.
+
+                Both tests work on zero-padded "HH:MM" strings, where string
+                comparison and time comparison agree.
+              {%- endcomment -%}
+              {%- assign lane = 0 -%}
+              {%- for prev in in_day -%}
+                {%- if forloop.index0 < forloop.parentloop.index0 and prev.end > c.start -%}
+                  {%- assign lane = lane | plus: 1 -%}
+                {%- endif -%}
+              {%- endfor -%}
+              {%- assign lanes_used = 0 -%}
+              {%- for other in in_day -%}
+                {%- if other.start < c.end and other.end > c.start -%}
+                  {%- assign lanes_used = lanes_used | plus: 1 -%}
+                {%- endif -%}
+              {%- endfor -%}
+
+              {%- assign cat = S.categories | where: "id", c.category | first -%}
+              {%- assign lvl = S.levels | where: "id", c.level | first -%}
+              {%- assign dur = emin | minus: smin -%}
+
+              <article class="tt-class"
+                       data-category="{{ c.category }}"
+                       data-location="{{ loc.id }}"
+                       data-day="{{ day }}"
+                       {% if lanes_used > 1 %}data-narrow {% endif %}data-start="{{ c.start }}"
+                       data-end="{{ c.end }}"
+                       data-title="{{ cat.name[L] }} — {{ lvl.name[L] }}"
+                       data-place="{{ loc.name[L] }}"
+                       style="--row-start: {{ row_start }}; --row-end: {{ row_end }}; --lane: {{ lane }}; --lanes: {{ lanes_used }}; --colour: {{ cat.color }}">
+                <p class="tt-time">
+                  <time datetime="{{ c.start }}">{{ c.start }}</time><span aria-hidden="true">–</span><time datetime="{{ c.end }}">{{ c.end }}</time>
+                </p>
+                <p class="tt-name">{{ cat.name[L] }}</p>
+                <p class="tt-level">{{ lvl.name[L] }}</p>
+                <p class="tt-place">{{ loc.name[L] }}</p>
+              </article>
+            {%- endfor -%}
+          {%- endfor -%}
+
+          <p class="tt-empty" hidden>{{ S.ui.no_classes[L] }}</p>
+        </div>
+      </section>
+    {%- endfor -%}
+  </div>
+</div>
+
+{%- comment -%}
+  Structured data. Each class is one Event with an eventSchedule describing the
+  weekly repeat, which is how Google is meant to read a recurring timetable —
+  a plain list of Events would claim eighteen one-off classes. Emitted from the
+  same data as the grid above, so the two cannot disagree.
+{%- endcomment -%}
+{%- assign DAYMAP = 'mon:Monday,tue:Tuesday,wed:Wednesday,thu:Thursday,fri:Friday,sat:Saturday,sun:Sunday' | split: ',' -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+  {%- assign first = true -%}
+  {%- for c in S.classes -%}
+    {%- assign cat = S.categories | where: "id", c.category | first -%}
+    {%- assign lvl = S.levels | where: "id", c.level | first -%}
+    {%- assign loc = S.locations | where: "id", c.location | first -%}
+    {%- unless first %},{% endunless %}{%- assign first = false -%}
+    {
+      "@type": "Event",
+      "name": {{ cat.name[L] | append: " — " | append: lvl.name[L] | jsonify }},
+      "description": {{ S.ui.weekly[L] | jsonify }},
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "organizer": { "@type": "SportsClub", "name": "Aikido Musubi", "url": "{{ site.url }}" },
+      "location": {
+        "@type": "Place",
+        "name": {{ loc.name[L] | jsonify }}
+        {%- if loc.id == 'musubi' -%},
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Av. d'Alfons XIII, 351",
+          "addressLocality": "Badalona",
+          "addressRegion": "Barcelona",
+          "postalCode": "08918",
+          "addressCountry": "ES"
+        }
+        {%- endif -%}
+      },
+      "eventSchedule": {
+        "@type": "Schedule",
+        "repeatFrequency": "P1W",
+        "byDay": [
+          {%- for d in c.days -%}
+            {%- for m in DAYMAP -%}
+              {%- assign kv = m | split: ':' -%}
+              {%- if kv[0] == d -%}"https://schema.org/{{ kv[1] }}"{%- endif -%}
+            {%- endfor -%}
+            {%- unless forloop.last -%},{%- endunless -%}
+          {%- endfor -%}
+        ],
+        "startTime": "{{ c.start }}",
+        "endTime": "{{ c.end }}",
+        "scheduleTimezone": "Europe/Madrid"
+      }
+    }
+  {%- endfor %}
+  ]
+}
+</script>

@@ -1,0 +1,177 @@
+# Weekly training timetable — the single source for every language.
+#
+# This replaces the four training-schedule-{es,ca,en,ja}.json files, which held
+# the same 18 classes four times over and had already drifted apart: Saturday
+# Iaijutsu ended at 10:00 in three of them and 10:30 in the English one, so the
+# English page published a time the dojo does not teach.
+#
+# There are no dates here on purpose. This is a weekly timetable, not a
+# calendar, and the old files expressed it as recurring events inside a fixed
+# season window (2025-09-01 to 2026-08-31) — which meant the whole schedule
+# would have silently emptied on 31 August 2026.
+#
+# There are also no pixel offsets. Position is derived from `start` and `end`
+# at build time. The old files carried hand-tuned values like
+# "height: 6rem; margin-top: -11.5rem" — eleven distinct magic numbers that had
+# to be recomputed by hand, in four files, whenever a class time changed.
+#
+# TO CHANGE THE SCHEDULE: edit `classes` below. Nothing else needs touching.
+
+meta:
+  # Slot granularity in minutes. Every start/end time must fall on a multiple
+  # of this; the build fails loudly if one does not.
+  slot_minutes: 15
+
+  # The timetable is drawn as bands rather than one continuous 08:00–22:30
+  # axis, because nothing at all happens between 13:00 and 18:30 and rendering
+  # five and a half empty hours wastes most of the grid. Add or widen a band if
+  # a class ever falls outside these.
+  bands:
+    - start: "08:00"
+      end:   "13:00"
+    - start: "18:30"
+      end:   "22:30"
+
+# Day keys used by `classes.days`, in display order (Monday first).
+days: [mon, tue, wed, thu, fri, sat, sun]
+
+# Day names. `short` is used for the mobile day tabs and the narrow columns.
+day_names:
+  mon:
+    es: { long: "Lunes",     short: "Lun" }
+    ca: { long: "Dilluns",   short: "Dl" }
+    en: { long: "Monday",    short: "Mon" }
+    ja: { long: "月曜日",     short: "月" }
+  tue:
+    es: { long: "Martes",    short: "Mar" }
+    ca: { long: "Dimarts",   short: "Dt" }
+    en: { long: "Tuesday",   short: "Tue" }
+    ja: { long: "火曜日",     short: "火" }
+  wed:
+    es: { long: "Miércoles", short: "Mié" }
+    ca: { long: "Dimecres",  short: "Dc" }
+    en: { long: "Wednesday", short: "Wed" }
+    ja: { long: "水曜日",     short: "水" }
+  thu:
+    es: { long: "Jueves",    short: "Jue" }
+    ca: { long: "Dijous",    short: "Dj" }
+    en: { long: "Thursday",  short: "Thu" }
+    ja: { long: "木曜日",     short: "木" }
+  fri:
+    es: { long: "Viernes",   short: "Vie" }
+    ca: { long: "Divendres", short: "Dv" }
+    en: { long: "Friday",    short: "Fri" }
+    ja: { long: "金曜日",     short: "金" }
+  sat:
+    es: { long: "Sábado",    short: "Sáb" }
+    ca: { long: "Dissabte",  short: "Ds" }
+    en: { long: "Saturday",  short: "Sat" }
+    ja: { long: "土曜日",     short: "土" }
+  sun:
+    es: { long: "Domingo",   short: "Dom" }
+    ca: { long: "Diumenge",  short: "Dg" }
+    en: { long: "Sunday",    short: "Sun" }
+    ja: { long: "日曜日",     short: "日" }
+
+# Interface strings. Kept here rather than in _data/translations.yml because
+# they only exist for this page.
+ui:
+  activities:  { es: "Actividades",        ca: "Activitats",        en: "Activities",     ja: "種目" }
+  all:         { es: "Todas",              ca: "Totes",             en: "All",            ja: "すべて" }
+  location:    { es: "Lugar",              ca: "Lloc",              en: "Location",       ja: "場所" }
+  no_classes:  { es: "Sin clases",         ca: "Sense classes",     en: "No classes",     ja: "クラスなし" }
+  today:       { es: "Hoy",                ca: "Avui",              en: "Today",          ja: "本日" }
+  add_to_cal:  { es: "Añadir al calendario", ca: "Afegir al calendari", en: "Add to calendar", ja: "カレンダーに追加" }
+  schedule_of: { es: "Horario de",         ca: "Horari de",         en: "Schedule for",   ja: "スケジュール：" }
+  weekly:      { es: "Clase semanal",      ca: "Classe setmanal",   en: "Weekly class",   ja: "毎週のクラス" }
+
+locations:
+  - id: musubi
+    slug: aikido-musubi
+    name:
+      es: "Aikido Musubi"
+      ca: "Aikido Musubi"
+      en: "Aikido Musubi"
+      ja: "合気道産靈"
+    abbr:
+      es: "Aikido Musubi"
+      ca: "Aikido Musubi"
+      en: "Aikido Musubi"
+      ja: "合気道産靈"
+  - id: sant-adria
+    slug: sant-adria-de-besos
+    name:
+      es: "Sant Adrià de Besòs"
+      ca: "Sant Adrià de Besòs"
+      en: "Sant Adrià de Besòs"
+      ja: "サント・アドリアー・ダ・バゾス"
+    abbr:
+      es: "Sant Adrià de B."
+      ca: "Sant Adrià de B."
+      en: "Sant Adrià de B."
+      ja: "Sant Adrià de B."
+  - id: ub
+    slug: university-of-barcelona
+    name:
+      es: "Universidad de Barcelona"
+      ca: "Universitat de Barcelona"
+      en: "University of Barcelona"
+      ja: "バルセロナ大学"
+    abbr:
+      es: "UB"
+      ca: "UB"
+      en: "UB"
+      ja: "UB"
+
+categories:
+  - id: aikido
+    color: "#FF7E79"
+    name: { es: "Aikido",   ca: "Aikido",   en: "Aikido",   ja: "合気道" }
+  - id: iaijutsu
+    color: "#94FF94"
+    name: { es: "Iaijutsu", ca: "Iaijutsu", en: "Iaijutsu", ja: "居合術" }
+  - id: judo
+    color: "#76D6FF"
+    name: { es: "Judo",     ca: "Judo",     en: "Judo",     ja: "柔道" }
+  - id: karate
+    color: "#FFE600"
+    name: { es: "Karate",   ca: "Karate",   en: "Karate",   ja: "空手" }
+
+# Reusable level labels, so the four translations are written once rather than
+# repeated on all eighteen classes.
+levels:
+  - id: all
+    name: { es: "Todos los niveles", ca: "Tots els nivells", en: "All levels", ja: "一般" }
+  - id: beginners
+    name: { es: "Principiantes",     ca: "Principiants",     en: "Beginners",  ja: "初心者" }
+  - id: weapons
+    name: { es: "Armas",             ca: "Armes",            en: "Weapons",    ja: "武器" }
+
+classes:
+  # ---- Aikido Musubi (the dojo) ----
+  - { category: aikido,   location: musubi,     level: all,       days: [tue, thu], start: "18:30", end: "19:30" }
+  - { category: aikido,   location: musubi,     level: beginners, days: [tue],      start: "19:30", end: "20:30" }
+  - { category: aikido,   location: musubi,     level: weapons,   days: [thu],      start: "19:30", end: "20:30" }
+  - { category: aikido,   location: musubi,     level: all,       days: [tue, thu], start: "20:30", end: "21:30" }
+  - { category: aikido,   location: musubi,     level: beginners, days: [wed],      start: "20:00", end: "20:45" }
+  # Wednesday only. Monday's 20:45–21:30 Aikido was withdrawn; the Monday
+  # Iaijutsu class below now runs through that slot instead.
+  - { category: aikido,   location: musubi,     level: all,       days: [wed],      start: "20:45", end: "21:30" }
+  - { category: aikido,   location: musubi,     level: all,       days: [fri],      start: "19:00", end: "20:00" }
+  - { category: aikido,   location: musubi,     level: all,       days: [sat],      start: "08:00", end: "09:00" }
+
+  - { category: iaijutsu, location: musubi,     level: all,       days: [mon],      start: "20:00", end: "21:30" }
+  - { category: iaijutsu, location: musubi,     level: all,       days: [sat],      start: "08:00", end: "10:00" }
+
+  - { category: judo,     location: musubi,     level: all,       days: [mon, wed], start: "18:30", end: "20:00" }
+
+  - { category: karate,   location: musubi,     level: all,       days: [tue],      start: "21:30", end: "22:30" }
+  - { category: karate,   location: musubi,     level: all,       days: [fri],      start: "20:00", end: "21:00" }
+  - { category: karate,   location: musubi,     level: all,       days: [sat],      start: "11:00", end: "13:00" }
+
+  # ---- Sant Adrià de Besòs ----
+  - { category: aikido,   location: sant-adria, level: all,       days: [mon],      start: "20:00", end: "21:00" }
+  - { category: aikido,   location: sant-adria, level: all,       days: [wed],      start: "20:15", end: "21:15" }
+
+  # ---- Universidad de Barcelona ----
+  - { category: aikido,   location: ub,         level: beginners, days: [mon, wed], start: "19:00", end: "20:00" }
