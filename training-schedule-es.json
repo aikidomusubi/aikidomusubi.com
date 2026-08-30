@@ -9,7 +9,7 @@
     "startTime": "18:30",
     "endTime": "19:30",
     "startRecur": "2025-09-01",
-    "endRecur": "2026-08-31",
+    "endRecur": "2027-08-31",
     "backgroundColor": "#FF7E79",
     "borderColor": "#FF7E79",
     "customStyle": "height: 6rem"
@@ -24,7 +24,7 @@
     "startTime": "20:30",
     "endTime": "21:30",
     "startRecur": "2025-09-01",
-    "endRecur": "2026-08-31",
+    "endRecur": "2027-08-31",
     "backgroundColor": "#FF7E79",
     "borderColor": "#FF7E79",
     "customStyle": "height: 6rem; margin-top: -6rem"
@@ -39,7 +39,7 @@
     "startTime": "20:45",
     "endTime": "21:30",
     "startRecur": "2025-09-01",
-    "endRecur": "2026-08-31",
+    "endRecur": "2027-08-31",
     "backgroundColor": "#FF7E79",
     "borderColor": "#FF7E79",
     "customStyle": "height: 6rem; margin-top: -9rem"
@@ -54,7 +54,7 @@
     "startTime": "19:30",
     "endTime": "20:30",
     "startRecur": "2025-09-01",
-    "endRecur": "2026-08-31",
+    "endRecur": "2027-08-31",
     "backgroundColor": "#FF7E79",
     "borderColor": "#FF7E79",
     "customStyle": "height: 6rem; margin-top: -3rem"
@@ -69,7 +69,7 @@
     "startTime": "20:00",
     "endTime": "20:45",
     "startRecur": "2025-09-01",
-    "endRecur": "2026-08-31",
+    "endRecur": "2027-08-31",
     "backgroundColor": "#FF7E79",
     "borderColor": "#FF7E79",
     "customStyle": "height: 6rem; margin-top: -10.25rem"
@@ -84,7 +84,7 @@
     "startTime": "19:30",
     "endTime": "20:30",
     "startRecur": "2025-09-01",
-    "endRecur": "2026-08-31",
+    "endRecur": "2027-08-31",
     "backgroundColor": "#FF7E79",
     "borderColor": "#FF7E79",
     "customStyle": "height: 6rem; margin-top: -3rem"
@@ -99,7 +99,7 @@
     "startTime": "19:00",
     "endTime": "20:00",
     "startRecur": "2025-09-01",
-    "endRecur": "2026-08-31",
+    "endRecur": "2027-08-31",
     "backgroundColor": "#FF7E79",
     "borderColor": "#FF7E79",
     "customStyle": "height: 6rem"
@@ -114,7 +114,7 @@
     "startTime": "08:00",
     "endTime": "09:00",
     "startRecur": "2025-09-01",
-    "endRecur": "2026-08-31",
+    "endRecur": "2027-08-31",
     "backgroundColor": "#FF7E79",
     "borderColor": "#FF7E79",
     "customStyle": "height: 6rem"
@@ -129,7 +129,7 @@
     "startTime": "20:00",
     "endTime": "20:45",
     "startRecur": "2025-09-01",
-    "endRecur": "2026-08-31",
+    "endRecur": "2027-08-31",
     "backgroundColor": "#94FF94",
     "borderColor": "#94FF94",
     "customStyle": "height: 6rem; margin-top: -11.5rem"
@@ -144,7 +144,7 @@
     "startTime": "08:30",
     "endTime": "10:00",
     "startRecur": "2025-09-01",
-    "endRecur": "2026-08-31",
+    "endRecur": "2027-08-31",
     "backgroundColor": "#94FF94",
     "borderColor": "#94FF94",
     "customStyle": "height: 12rem; margin-top: -3rem"
@@ -159,7 +159,7 @@
     "startTime": "18:30",
     "endTime": "20:00",
     "startRecur": "2025-09-01",
-    "endRecur": "2026-08-31",
+    "endRecur": "2027-08-31",
     "backgroundColor": "#76D6FF",
     "borderColor": "#76D6FF",
     "customStyle": "height: 9rem"
@@ -174,7 +174,7 @@
     "startTime": "21:30",
     "endTime": "22:30",
     "startRecur": "2025-09-01",
-    "endRecur": "2026-08-31",
+    "endRecur": "2027-08-31",
     "backgroundColor": "#FFE600",
     "borderColor": "#FFE600",
     "customStyle": "height: 6rem; margin-top: 0"
@@ -189,7 +189,7 @@
     "startTime": "20:00",
     "endTime": "21:00",
     "startRecur": "2025-09-01",
-    "endRecur": "2026-08-31",
+    "endRecur": "2027-08-31",
     "backgroundColor": "#FFE600",
     "borderColor": "#FFE600",
     "customStyle": "height: 6rem; margin-top: -3rem"
@@ -204,7 +204,7 @@
     "startTime": "11:00",
     "endTime": "13:00",
     "startRecur": "2025-09-01",
-    "endRecur": "2026-08-31",
+    "endRecur": "2027-08-31",
     "backgroundColor": "#FFE600",
     "borderColor": "#FFE600",
     "customStyle": "height: 12rem; margin-top: 0"
@@ -219,7 +219,7 @@
     "startTime": "20:00",
     "endTime": "21:00",
     "startRecur": "2025-09-01",
-    "endRecur": "2026-08-31",
+    "endRecur": "2027-08-31",
     "backgroundColor": "#FF7E79",
     "borderColor": "#FF7E79",
     "customStyle": "height: 6rem"
@@ -234,7 +234,7 @@
     "startTime": "20:15",
     "endTime": "21:15",
     "startRecur": "2025-09-01",
-    "endRecur": "2026-08-31",
+    "endRecur": "2027-08-31",
     "backgroundColor": "#FF7E79",
     "borderColor": "#FF7E79",
     "customStyle": "height: 6rem; margin-top: -7.25rem"
@@ -249,7 +249,7 @@
     "startTime": "19:00",
     "endTime": "20:00",
     "startRecur": "2025-09-01",
-    "endRecur": "2026-08-31",
+    "endRecur": "2027-08-31",
     "backgroundColor": "#FF7E79",
     "borderColor": "#FF7E79",
     "customStyle": "height: 6rem"
@@ -264,7 +264,7 @@
     "startTime": "19:00",
     "endTime": "20:00",
     "startRecur": "2025-09-01",
-    "endRecur": "2026-08-31",
+    "endRecur": "2027-08-31",
     "backgroundColor": "#FF7E79",
     "borderColor": "#FF7E79",
     "customStyle": "height: 6rem"
