@@ -1,0 +1,137 @@
+# Declaracion de accesibilidad.
+#
+# WE ARE NOT OBLIGED TO PUBLISH THIS. RD 1112/2018 covers the public sector, and
+# Ley 11/2023 - which transposes the European Accessibility Act - covers
+# services such as e-commerce. An informational site belonging to a non-profit
+# that would in any case qualify as a micro-enterprise is outside both.
+#
+# It is published because the work was done and because a dojo that says it
+# welcomes everyone should say it here too. The conformance claim is PARTIAL,
+# which is the honest one, and every known limitation is listed rather than
+# quietly left out.
+#
+# WHEN THE SITE CHANGES, CHECK THIS. Especially `limits` - a statement that
+# lists problems fixed years ago is worse than none. `[email]` is filled in by
+# the layout from _config.yml so the address lives in one place.
+
+ui:
+  summary_h: { es: "En resumen",
+    ca: "En resum",
+    en: "In short",
+    ja: "要点" }
+  summary: { es: "Este sitio es <strong>parcialmente conforme</strong> con la norma UNE-EN 301 549 y las WCAG 2.1 en nivel AA. Parcialmente porque hay excepciones, y están todas listadas más abajo.",
+    ca: "Aquest lloc és <strong>parcialment conforme</strong> amb la norma UNE-EN 301 549 i les WCAG 2.1 en nivell AA. Parcialment perquè hi ha excepcions, i estan totes llistades més avall.",
+    en: "This site is <strong>partially conformant</strong> with EN 301 549 and WCAG 2.1 level AA. Partially because there are exceptions, and every one of them is listed below.",
+    ja: "本サイトは EN 301 549 および WCAG 2.1 レベル AA に<strong>部分的に適合</strong>しています。「部分的に」というのは例外があるからで、その例外はすべて以下に挙げてあります。" }
+  commit_h: { es: "Nuestro compromiso",
+    ca: "El nostre compromís",
+    en: "Our commitment",
+    ja: "私たちの姿勢" }
+  commit: { es: "La Associació Cultural Musubi Aikido quiere que cualquiera pueda consultar los horarios, encontrar el dojo y escribirnos, con independencia de cómo navegue. No estamos obligados por ley a publicar esta declaración: no somos un organismo público ni prestamos servicios de comercio electrónico. La publicamos porque hemos hecho el trabajo y porque nos parece que un dojo que dice recibir a todo el mundo debería decirlo también aquí.",
+    ca: "L'Associació Cultural Musubi Aikido vol que qualsevol pugui consultar els horaris, trobar el dojo i escriure'ns, independentment de com navegui. No estem obligats per llei a publicar aquesta declaració: no som un organisme públic ni prestem serveis de comerç electrònic. La publiquem perquè hem fet la feina i perquè ens sembla que un dojo que diu que rep tothom ho hauria de dir també aquí.",
+    en: "Associació Cultural Musubi Aikido wants anyone to be able to read the timetable, find the dojo and write to us, however they browse. We are not required by law to publish this statement: we are not a public body and we do not provide e-commerce services. We publish it because the work has been done, and because a dojo that says it welcomes everyone ought to say so here as well.",
+    ja: "産靈合気道文化協会は、どなたでも稽古時間を確認し、道場の場所を知り、連絡できるようにしたいと考えています。この宣言の公開は法的義務ではありません。私たちは公的機関でもなく、電子商取引サービスも提供していません。それでも公開するのは、実際に手を尽くしてきたからであり、「どなたでもどうぞ」と言う道場なら、ここでもそう言うべきだと考えるからです。" }
+  done_h: { es: "Qué hemos hecho",
+    ca: "Què hem fet",
+    en: "What we have done",
+    ja: "取り組んだこと" }
+  limits_h: { es: "Lo que sabemos que todavía falla",
+    ca: "El que sabem que encara falla",
+    en: "What we know still fails",
+    ja: "把握している問題" }
+  tell_h: { es: "Cómo avisarnos",
+    ca: "Com avisar-nos",
+    en: "How to tell us",
+    ja: "ご連絡ください" }
+  tell: { es: "Si encuentras una barrera, escríbenos a [email] contando qué página era y qué te pasó. Contestamos en un plazo de quince días. Si lo que necesitas es un contenido concreto en otro formato, dilo y te lo preparamos.",
+    ca: "Si trobes una barrera, escriu-nos a [email] explicant quina pàgina era i què et va passar. Responem en un termini de quinze dies. Si el que necessites és un contingut concret en un altre format, digues-ho i te'l preparem.",
+    en: "If you hit a barrier, write to [email] telling us which page it was and what happened. We reply within fifteen days. If what you need is a particular piece of content in another format, say so and we will prepare it.",
+    ja: "利用しにくい箇所がありましたら、[email] まで、該当ページと状況をお知らせください。15日以内に返信します。特定の内容を別の形式でご入用の場合も、お申し付けください。" }
+  status: { es: "Estado",
+    ca: "Estat",
+    en: "Status",
+    ja: "状態" }
+  status_v: { es: "Parcialmente conforme con WCAG 2.1 nivel AA",
+    ca: "Parcialment conforme amb les WCAG 2.1 nivell AA",
+    en: "Partially conformant with WCAG 2.1 level AA",
+    ja: "WCAG 2.1 レベル AA に部分的に適合" }
+  method: { es: "Método",
+    ca: "Mètode",
+    en: "Method",
+    ja: "評価方法" }
+  method_v: { es: "Autoevaluación, con comprobaciones automáticas en cada compilación y revisión manual de contraste, teclado y foco",
+    ca: "Autoavaluació, amb comprovacions automàtiques a cada compilació i revisió manual de contrast, teclat i focus",
+    en: "Self-assessment, with automated checks on every build and manual review of contrast, keyboard and focus",
+    ja: "自己評価。ビルドごとの自動検査に加え、コントラスト・キーボード操作・フォーカスを手動で確認" }
+  declared: { es: "Declaración",
+    ca: "Declaració",
+    en: "Statement",
+    ja: "宣言日" }
+  reviewed: { es: "Última revisión",
+    ca: "Darrera revisió",
+    en: "Last reviewed",
+    ja: "最終確認" }
+  contact: { es: "Contacto",
+    ca: "Contacte",
+    en: "Contact",
+    ja: "連絡先" }
+  date_v: { es: "23 de agosto de 2026",
+    ca: "23 d’agost de 2026",
+    en: "23 August 2026",
+    ja: "2026年8月23日" }
+
+done:
+  - { es: "Un <strong>enlace para saltar al contenido</strong> como primer elemento de cada página, para no tener que tabular por los veinte enlaces del menú.",
+      ca: "Un <strong>enllaç per saltar al contingut</strong> com a primer element de cada pàgina, per no haver de tabular pels vint enllaços del menú.",
+      en: "A <strong>skip link</strong> as the first element on every page, so nobody has to tab through the twenty links in the menu.",
+      ja: "各ページの先頭に<strong>本文へのスキップリンク</strong>を置き、20 ほどのメニュー項目を順に送らずに済むようにしています。" }
+  - { es: "<strong>Contraste medido, no estimado</strong>, elemento por elemento y contra el fondo real. Todo el texto llega al menos a 4,5:1, y los elementos de interfaz a 3:1.",
+      ca: "<strong>Contrast mesurat, no estimat</strong>, element per element i contra el fons real. Tot el text arriba com a mínim a 4,5:1, i els elements d'interfície a 3:1.",
+      en: "<strong>Contrast measured, not estimated</strong>, element by element and against the real composited background. All text reaches at least 4.5:1, and interface elements 3:1.",
+      ja: "<strong>コントラストは推測ではなく実測</strong>。実際に合成された背景に対して要素ごとに測っています。本文は 4.5:1 以上、UI 要素は 3:1 以上です。" }
+  - { es: "Navegación completa <strong>con teclado</strong>, con foco siempre visible y submenús accesibles aunque JavaScript no se ejecute.",
+      ca: "Navegació completa <strong>amb teclat</strong>, amb focus sempre visible i submenús accessibles encara que JavaScript no s'executi.",
+      en: "Full <strong>keyboard navigation</strong>, with focus always visible and submenus reachable even when JavaScript does not run.",
+      ja: "<strong>キーボードだけで操作可能</strong>。フォーカスは常に見え、JavaScript が動かない場合でもサブメニューに到達できます。" }
+  - { es: "Un solo <code>h1</code> por página y <strong>ningún nivel de encabezado saltado</strong>, verificado automáticamente en cada compilación.",
+      ca: "Un sol <code>h1</code> per pàgina i <strong>cap nivell d'encapçalament saltat</strong>, verificat automàticament a cada compilació.",
+      en: "One <code>h1</code> per page and <strong>no skipped heading levels</strong>, verified automatically on every build.",
+      ja: "各ページの <code>h1</code> は一つだけで、<strong>見出しレベルの飛びもありません</strong>。ビルドごとに自動検査しています。" }
+  - { es: "Texto alternativo en las imágenes que informan, y ninguno en las decorativas.",
+      ca: "Text alternatiu a les imatges que informen, i cap a les decoratives.",
+      en: "Alternative text on images that inform, and none on decorative ones.",
+      ja: "情報を持つ画像には代替テキストを、装飾の画像には付けていません。" }
+  - { es: "Respeto por <strong>reducir movimiento</strong>: si tu sistema lo pide, las animaciones se detienen.",
+      ca: "Respecte per <strong>reduir moviment</strong>: si el teu sistema ho demana, les animacions s’aturen.",
+      en: "<strong>Reduced motion</strong> is honoured: if your system asks for it, the animations stop.",
+      ja: "<strong>視差効果を減らす</strong>設定を尊重します。設定されていればアニメーションは動きません。" }
+  - { es: "El texto se puede <strong>ampliar al 200 %</strong> sin que se solape ni desaparezca nada, y ninguna página necesita desplazamiento horizontal.",
+      ca: "El text es pot <strong>ampliar al 200 %</strong> sense que se solapi ni desaparegui res, i cap pàgina necessita desplaçament horitzontal.",
+      en: "Text can be <strong>enlarged to 200 %</strong> without anything overlapping or disappearing, and no page needs horizontal scrolling.",
+      ja: "文字を<strong>200 % まで拡大</strong>しても重なったり消えたりせず、横スクロールが必要なページもありません。" }
+  - { es: "<strong>Sin dependencias externas</strong>: tipografías y scripts se sirven desde este dominio, así que la página funciona igual con bloqueadores activos.",
+      ca: "<strong>Sense dependències externes</strong>: tipografies i scripts se serveixen des d'aquest domini, així que la pàgina funciona igual amb bloquejadors actius.",
+      en: "<strong>No external dependencies</strong>: fonts and scripts are served from this domain, so the page works the same with blockers on.",
+      ja: "<strong>外部依存なし</strong>。フォントもスクリプトも当ドメインから配信するため、ブロッカーを使っていても同じように動作します。" }
+  - { es: "El idioma de cada página está declarado, y las citas en japonés van marcadas como japonés para que un lector de pantalla las pronuncie bien.",
+      ca: "L'idioma de cada pàgina està declarat, i les cites en japonès van marcades com a japonès perquè un lector de pantalla les pronunciï bé.",
+      en: "Each page declares its language, and Japanese passages are marked as Japanese so a screen reader pronounces them correctly.",
+      ja: "各ページの言語を宣言し、日本語の語句には日本語であることを明示しています。スクリーンリーダーが正しく読み上げるためです。" }
+
+limits:
+  - { es: "Los <strong>PDF de terceros</strong> (programas de seminario, formularios de federaciones) no siempre están etiquetados. Si necesitas uno en otro formato, pídenoslo y te lo pasamos.",
+      ca: "Els <strong>PDF de tercers</strong> (programes de seminari, formularis de federacions) no sempre estan etiquetats. Si en necessites un en un altre format, demana'ns-el i te'l passem.",
+      en: "<strong>Third-party PDFs</strong> (seminar programmes, federation forms) are not always tagged. If you need one in another format, ask and we will send it.",
+      ja: "<strong>第三者提供の PDF</strong>（講習会の要項、連盟の書式）にはタグ付けされていないものがあります。別形式が必要な場合はお申し付けください。" }
+  - { es: "Los <strong>planos de acceso</strong> son imágenes de satélite. Llevan descripción textual con la dirección y la entrada, pero la imagen en sí no es interpretable.",
+      ca: "Els <strong>plànols d'accés</strong> són imatges de satèl·lit. Porten descripció textual amb l'adreça i l'entrada, però la imatge en si no és interpretable.",
+      en: "The <strong>access plans</strong> are satellite images. They carry a text description with the address and the entrance, but the image itself cannot be interpreted.",
+      ja: "<strong>アクセス図</strong>は衛星画像です。住所と入口の説明文を添えていますが、画像そのものは読み取れません。" }
+  - { es: "Los <strong>vídeos alojados en Instagram</strong> no llevan subtítulos y no están bajo nuestro control. Estamos subtitulando los nuevos.",
+      ca: "Els <strong>vídeos allotjats a Instagram</strong> no porten subtítols i no estan sota el nostre control. Estem subtitulant els nous.",
+      en: "<strong>Videos hosted on Instagram</strong> have no captions and are not under our control. We are captioning the new ones.",
+      ja: "<strong>Instagram 上の動画</strong>には字幕がなく、私たちの管理下にありません。新しいものから字幕を付けています。" }
+  - { es: "Algunos <strong>textos antiguos</strong> traducidos hace años usan una redacción más enrevesada de la que nos gustaría. Los vamos reescribiendo.",
+      ca: "Alguns <strong>textos antics</strong> traduïts fa anys fan servir una redacció més enrevessada de la que ens agradaria. Els anem reescrivint.",
+      en: "Some <strong>older texts</strong> translated years ago are more convoluted than we would like. We are rewriting them.",
+      ja: "数年前に翻訳した<strong>古い文章</strong>には、必要以上に入り組んだ言い回しが残っています。順次書き直しています。" }

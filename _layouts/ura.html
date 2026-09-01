@@ -1,0 +1,29 @@
+{% include header.html %}
+
+<main id="main" tabindex="-1">
+
+  {%- comment -%}
+    Ura 裏 — the standalone page.
+
+    Deliberately a real page and not only a panel: it has a URL you can send
+    someone, it is in the sitemap, it works with JavaScript off, and the QA
+    script audits it like anything else.
+
+    It is ALSO what the panel loads. The home ships an empty panel and fetches
+    this page's body the first time the door is opened, so the two can never
+    disagree and the home carries no second copy of it.
+
+    `bare: true` in the front matter drops the nav and the footer. Ura is the
+    site turned over; a white nav above it and a black site footer below it
+    made two navigations and two footers on one screen. The pinned legal strip
+    stays, because Art. 10 LSSI-CE does not have an exception for this.
+  {%- endcomment -%}
+
+  <div class="ur">
+    <h1 class="sr-only">{{ page.title }}</h1>
+    {% include ura.html %}
+  </div>
+
+</main>
+
+{% include footer.html %}

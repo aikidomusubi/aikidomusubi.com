@@ -32,30 +32,45 @@
 # Thursday the 24th". The weekly grid keeps showing the class — it is still
 # the normal week — and this page is where the exception lives.
 
+# Entry colours double as 9.6px uppercase labels, and they sit on the entry
+# card's 3% black tint rather than on white — #F8F8F8 once composited. Three
+# of the seven missed 4.5:1 against that (exam, change and extra) and were
+# darkened to the lightest shade of the same hue that clears 4.8:1, leaving
+# headroom so a future tint change does not silently drop them below AA.
 types:
   seminar:
-    color: "#084F6F"
+    color: "#064F6E"
     label: { es: "Curso",        ca: "Curs",          en: "Seminar",     ja: "講習会" }
   exam:
-    color: "#B8860B"
+    color: "#986F2D"
     label: { es: "Exámenes",     ca: "Exàmens",       en: "Examinations", ja: "審査" }
   visit:
-    color: "#6A5ACD"
+    color: "#6450A1"
     label: { es: "Visita",       ca: "Visita",        en: "Visiting instructor", ja: "特別指導" }
   change:
-    color: "#C2571A"
+    color: "#AE5224"
     label: { es: "Cambio",       ca: "Canvi",         en: "Change",      ja: "変更" }
+  # Something added on top of the regular week rather than a change to it. The
+  # distinction matters to a reader deciding whether to turn up: a `change`
+  # means the usual class is different, an `extra` means there is one more.
+  extra:
+    color: "#1A7444"
+    label: { es: "Clase extra",  ca: "Classe extra",  en: "Extra class", ja: "臨時稽古" }
   cancellation:
-    color: "#9A1F2E"
+    color: "#A62C37"
     label: { es: "Sin clase",    ca: "Sense classe",  en: "No class",    ja: "休講" }
   closure:
-    color: "#4A4A4A"
+    color: "#34454C"
     label: { es: "Dojo cerrado", ca: "Dojo tancat",   en: "Dojo closed", ja: "道場休み" }
 
 ui:
   title:        { es: "Calendario",   ca: "Calendari",    en: "Calendar",     ja: "カレンダー" }
   month_view:   { es: "Mes",          ca: "Mes",          en: "Month",        ja: "月" }
   list_view:    { es: "Lista",        ca: "Llista",       en: "List",         ja: "リスト" }
+  week_view:    { es: "Semana",       ca: "Setmana",      en: "Week",         ja: "週" }
+  prev_week:    { es: "Semana anterior", ca: "Setmana anterior", en: "Previous week", ja: "前の週" }
+  next_week:    { es: "Semana siguiente", ca: "Setmana següent", en: "Next week", ja: "次の週" }
+  nothing_week: { es: "Nada programado esta semana", ca: "Res programat aquesta setmana", en: "Nothing scheduled this week", ja: "今週の予定はありません" }
   today:        { es: "Hoy",          ca: "Avui",         en: "Today",        ja: "本日" }
   prev:         { es: "Mes anterior", ca: "Mes anterior", en: "Previous month", ja: "前の月" }
   next:         { es: "Mes siguiente",ca: "Mes següent",  en: "Next month",   ja: "次の月" }
@@ -68,11 +83,41 @@ ui:
   this_week:    { es: "Esta semana",  ca: "Aquesta setmana", en: "This week", ja: "今週" }
   see_calendar: { es: "Ver calendario", ca: "Veure calendari", en: "See calendar", ja: "カレンダーを見る" }
 
+  # The detail panel that opens from an entry.
+  when_lab:     { es: "Cuándo",  ca: "Quan",   en: "When",  ja: "日時" }
+  where_lab:    { es: "Dónde",   ca: "On",     en: "Where", ja: "場所" }
+  close:        { es: "Cerrar",  ca: "Tancar", en: "Close", ja: "閉じる" }
+  details:      { es: "Ver el detalle", ca: "Veure el detall",
+                  en: "See the details", ja: "詳細を見る" }
+
 months:
   es: [Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre]
   ca: [Gener, Febrer, Març, Abril, Maig, Juny, Juliol, Agost, Setembre, Octubre, Novembre, Desembre]
   en: [January, February, March, April, May, June, July, August, September, October, November, December]
   ja: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"]
+
+# ---------------------------------------------------------------------------
+# Seasons
+#
+# A run of days during which the regular weekly timetable does not run at all.
+# Everything that *does* happen in that range is an ordinary entry below.
+#
+# This exists because the August notice used to be prose and nothing else: the
+# `change` entries said what happens on Tuesdays and Thursdays, the note said
+# "the rest of the usual week is not taught", and the week grid went on
+# cheerfully printing twenty regular sessions underneath it. A reader was told
+# two different things on one screen.
+#
+# One line per closed run. Add next year's alongside the holidays.
+# ---------------------------------------------------------------------------
+seasons:
+  - from: "2026-08-01"
+    to:   "2026-08-31"
+    title:
+      es: "Horario de agosto"
+      ca: "Horari d'agost"
+      en: "August timetable"
+      ja: "8月の稽古時間"
 
 # ---------------------------------------------------------------------------
 # Entries
@@ -86,6 +131,17 @@ months:
 # classes that are not running on a given day.
 # ---------------------------------------------------------------------------
 entries:
+  # 2026 — the rest of the year is in the holiday block further down.
+  - date: "2026-09-11"
+    type: closure
+    holiday: true
+    title:
+      es: "Diada de Catalunya"
+      ca: "Diada de Catalunya"
+      en: "National Day of Catalonia"
+      ja: "カタルーニャの日"
+    location: musubi
+
   # Regular classes displaced by a masterclass that evening. The masterclass
   # itself comes from _events/; these say which classes made way for it.
   - date: "2026-03-12"
@@ -128,3 +184,701 @@ entries:
       en: "Because of the Emilio Cardia Shihan seminar."
       ja: "エミリオ・カルディア師範の講習会のため。"
     location: musubi
+
+  # -------------------------------------------------------------------------
+  # Public holidays — the dojo is closed
+  #
+  # These are the Generalitat's official calendar for Catalonia, which already
+  # contains the Spanish national days. One entry per day, per year, because a
+  # holiday is a fact about a date rather than a rule the site can derive:
+  # Easter moves, and the Generalitat re-issues the calendar every year by
+  # decree, occasionally swapping a day that falls on a Sunday.
+  #
+  # WHAT IS NOT HERE: the two local festes. Barcelona keeps La Mercè (24
+  # September) and Badalona keeps Sant Anastasi (11 May), but which of them the
+  # dojo actually observes is a decision rather than a lookup — and the classes
+  # run in three municipalities. Add them by hand once you have decided.
+  #
+  # 2027 IS PROVISIONAL. The statutory dates and Easter are certain; the
+  # Generalitat's decree for 2027 is what confirms them and settles any Sunday
+  # substitutions. Check it before the year starts and correct anything here.
+  # -------------------------------------------------------------------------
+
+  # `holiday: true` on every one of these. It is what lets Ura's "what is
+  # coming" leave them out while the calendar keeps them: a public holiday is a
+  # fact you look up, not news. A closure WITHOUT the flag — a burst pipe, a
+  # instructor away — is news, and still shows there.
+  # 2026
+  - date: "2026-01-01"
+    type: closure
+    holiday: true
+    title:
+      es: "Año Nuevo"
+      ca: "Cap d'Any"
+      en: "New Year's Day"
+      ja: "元日"
+
+  - date: "2026-01-06"
+    type: closure
+    holiday: true
+    title:
+      es: "Reyes"
+      ca: "Reis"
+      en: "Epiphany"
+      ja: "公現祭"
+
+  - date: "2026-04-03"
+    type: closure
+    holiday: true
+    title:
+      es: "Viernes Santo"
+      ca: "Divendres Sant"
+      en: "Good Friday"
+      ja: "聖金曜日"
+
+  - date: "2026-04-06"
+    type: closure
+    holiday: true
+    title:
+      es: "Lunes de Pascua"
+      ca: "Dilluns de Pasqua Florida"
+      en: "Easter Monday"
+      ja: "復活祭の月曜日"
+
+  - date: "2026-05-01"
+    type: closure
+    holiday: true
+    title:
+      es: "Fiesta del Trabajo"
+      ca: "Festa del Treball"
+      en: "Labour Day"
+      ja: "メーデー"
+
+  - date: "2026-06-24"
+    type: closure
+    holiday: true
+    title:
+      es: "San Juan"
+      ca: "Sant Joan"
+      en: "Saint John's Day"
+      ja: "サン・ジョアンの日"
+
+  - date: "2026-08-15"
+    type: closure
+    holiday: true
+    title:
+      es: "La Asunción"
+      ca: "L'Assumpció"
+      en: "Assumption Day"
+      ja: "聖母被昇天祭"
+
+  - date: "2026-10-12"
+    type: closure
+    holiday: true
+    title:
+      es: "Fiesta Nacional de España"
+      ca: "Festa Nacional d'Espanya"
+      en: "National Day of Spain"
+      ja: "スペイン建国記念日"
+
+  - date: "2026-12-08"
+    type: closure
+    holiday: true
+    title:
+      es: "La Inmaculada"
+      ca: "La Immaculada"
+      en: "Immaculate Conception"
+      ja: "無原罪の御宿りの祝日"
+
+  - date: "2026-12-25"
+    type: closure
+    holiday: true
+    title:
+      es: "Navidad"
+      ca: "Nadal"
+      en: "Christmas Day"
+      ja: "クリスマス"
+
+  - date: "2026-12-26"
+    type: closure
+    holiday: true
+    title:
+      es: "San Esteban"
+      ca: "Sant Esteve"
+      en: "Saint Stephen's Day"
+      ja: "サン・エステベの日"
+
+
+  # 2027
+  - date: "2027-01-01"
+    type: closure
+    holiday: true
+    title:
+      es: "Año Nuevo"
+      ca: "Cap d'Any"
+      en: "New Year's Day"
+      ja: "元日"
+
+  - date: "2027-01-06"
+    type: closure
+    holiday: true
+    title:
+      es: "Reyes"
+      ca: "Reis"
+      en: "Epiphany"
+      ja: "公現祭"
+
+  - date: "2027-03-26"
+    type: closure
+    holiday: true
+    title:
+      es: "Viernes Santo"
+      ca: "Divendres Sant"
+      en: "Good Friday"
+      ja: "聖金曜日"
+
+  - date: "2027-03-29"
+    type: closure
+    holiday: true
+    title:
+      es: "Lunes de Pascua"
+      ca: "Dilluns de Pasqua Florida"
+      en: "Easter Monday"
+      ja: "復活祭の月曜日"
+
+  - date: "2027-05-01"
+    type: closure
+    holiday: true
+    title:
+      es: "Fiesta del Trabajo"
+      ca: "Festa del Treball"
+      en: "Labour Day"
+      ja: "メーデー"
+
+  - date: "2027-06-24"
+    type: closure
+    holiday: true
+    title:
+      es: "San Juan"
+      ca: "Sant Joan"
+      en: "Saint John's Day"
+      ja: "サン・ジョアンの日"
+
+  - date: "2027-08-15"
+    type: closure
+    holiday: true
+    title:
+      es: "La Asunción"
+      ca: "L'Assumpció"
+      en: "Assumption Day"
+      ja: "聖母被昇天祭"
+
+  - date: "2027-09-11"
+    type: closure
+    holiday: true
+    title:
+      es: "Diada de Catalunya"
+      ca: "Diada de Catalunya"
+      en: "National Day of Catalonia"
+      ja: "カタルーニャの日"
+
+  - date: "2027-10-12"
+    type: closure
+    holiday: true
+    title:
+      es: "Fiesta Nacional de España"
+      ca: "Festa Nacional d'Espanya"
+      en: "National Day of Spain"
+      ja: "スペイン建国記念日"
+
+  - date: "2027-11-01"
+    type: closure
+    holiday: true
+    title:
+      es: "Todos los Santos"
+      ca: "Tots Sants"
+      en: "All Saints' Day"
+      ja: "諸聖人の日"
+
+  - date: "2027-12-08"
+    type: closure
+    holiday: true
+    title:
+      es: "La Inmaculada"
+      ca: "La Immaculada"
+      en: "Immaculate Conception"
+      ja: "無原罪の御宿りの祝日"
+
+  - date: "2027-12-25"
+    type: closure
+    holiday: true
+    title:
+      es: "Navidad"
+      ca: "Nadal"
+      en: "Christmas Day"
+      ja: "クリスマス"
+
+  - date: "2027-12-26"
+    type: closure
+    holiday: true
+    title:
+      es: "San Esteban"
+      ca: "Sant Esteve"
+      en: "Saint Stephen's Day"
+      ja: "サン・エステベの日"
+
+
+  # -------------------------------------------------------------------------
+  # August — reduced timetable
+  #
+  # Instructors take their holidays in August, so the regular week does not run
+  # and a shorter one takes its place. It is here rather than in schedule.yml
+  # on purpose: schedule.yml describes the year's ordinary week, and putting a
+  # month-long exception in it would mean editing the regular timetable twice a
+  # year and hoping the second edit is remembered.
+  #
+  # One entry per day it actually happens, not one entry spanning the month —
+  # a spanning entry would paint every Sunday and Monday in August as though
+  # something were on.
+  # -------------------------------------------------------------------------
+  - date: "2026-08-04"
+    type: change
+    title:
+      es: "Horario de agosto"
+      ca: "Horari d'agost"
+      en: "August timetable"
+      ja: "8月の稽古時間"
+    start: "18:30"
+    end: "20:30"
+    location: musubi
+    note:
+      es: "18:30–19:30 con J. M. Molina y 19:30–20:30 con J. M. Pérez. El resto de la semana habitual no se imparte."
+      ca: "18:30–19:30 amb J. M. Molina i 19:30–20:30 amb J. M. Pérez. La resta de la setmana habitual no es fa."
+      en: "18:30–19:30 with J. M. Molina and 19:30–20:30 with J. M. Pérez. The rest of the regular week does not run."
+      ja: "18:30〜19:30はJ. M. モリーナ、19:30〜20:30はJ. M. ペレスが担当します。通常の稽古はお休みです。"
+
+  - date: "2026-08-06"
+    type: change
+    title:
+      es: "Horario de agosto"
+      ca: "Horari d'agost"
+      en: "August timetable"
+      ja: "8月の稽古時間"
+    start: "18:30"
+    end: "20:30"
+    location: musubi
+    note:
+      es: "18:30–19:30 con J. M. Molina y 19:30–20:30 con J. M. Pérez. El resto de la semana habitual no se imparte."
+      ca: "18:30–19:30 amb J. M. Molina i 19:30–20:30 amb J. M. Pérez. La resta de la setmana habitual no es fa."
+      en: "18:30–19:30 with J. M. Molina and 19:30–20:30 with J. M. Pérez. The rest of the regular week does not run."
+      ja: "18:30〜19:30はJ. M. モリーナ、19:30〜20:30はJ. M. ペレスが担当します。通常の稽古はお休みです。"
+
+  - date: "2026-08-11"
+    type: change
+    title:
+      es: "Horario de agosto"
+      ca: "Horari d'agost"
+      en: "August timetable"
+      ja: "8月の稽古時間"
+    start: "18:30"
+    end: "20:30"
+    location: musubi
+    note:
+      es: "18:30–19:30 con J. M. Molina y 19:30–20:30 con J. M. Pérez. El resto de la semana habitual no se imparte."
+      ca: "18:30–19:30 amb J. M. Molina i 19:30–20:30 amb J. M. Pérez. La resta de la setmana habitual no es fa."
+      en: "18:30–19:30 with J. M. Molina and 19:30–20:30 with J. M. Pérez. The rest of the regular week does not run."
+      ja: "18:30〜19:30はJ. M. モリーナ、19:30〜20:30はJ. M. ペレスが担当します。通常の稽古はお休みです。"
+
+  - date: "2026-08-13"
+    type: change
+    title:
+      es: "Horario de agosto"
+      ca: "Horari d'agost"
+      en: "August timetable"
+      ja: "8月の稽古時間"
+    start: "18:30"
+    end: "20:30"
+    location: musubi
+    note:
+      es: "18:30–19:30 con J. M. Molina y 19:30–20:30 con J. M. Pérez. El resto de la semana habitual no se imparte."
+      ca: "18:30–19:30 amb J. M. Molina i 19:30–20:30 amb J. M. Pérez. La resta de la setmana habitual no es fa."
+      en: "18:30–19:30 with J. M. Molina and 19:30–20:30 with J. M. Pérez. The rest of the regular week does not run."
+      ja: "18:30〜19:30はJ. M. モリーナ、19:30〜20:30はJ. M. ペレスが担当します。通常の稽古はお休みです。"
+
+  - date: "2026-08-18"
+    type: change
+    title:
+      es: "Horario de agosto"
+      ca: "Horari d'agost"
+      en: "August timetable"
+      ja: "8月の稽古時間"
+    start: "18:30"
+    end: "20:30"
+    location: musubi
+    note:
+      es: "18:30–19:30 con J. M. Molina y 19:30–20:30 con J. M. Pérez. El resto de la semana habitual no se imparte."
+      ca: "18:30–19:30 amb J. M. Molina i 19:30–20:30 amb J. M. Pérez. La resta de la setmana habitual no es fa."
+      en: "18:30–19:30 with J. M. Molina and 19:30–20:30 with J. M. Pérez. The rest of the regular week does not run."
+      ja: "18:30〜19:30はJ. M. モリーナ、19:30〜20:30はJ. M. ペレスが担当します。通常の稽古はお休みです。"
+
+  - date: "2026-08-20"
+    type: change
+    title:
+      es: "Horario de agosto"
+      ca: "Horari d'agost"
+      en: "August timetable"
+      ja: "8月の稽古時間"
+    start: "18:30"
+    end: "20:30"
+    location: musubi
+    note:
+      es: "18:30–19:30 con J. M. Molina y 19:30–20:30 con J. M. Pérez. El resto de la semana habitual no se imparte."
+      ca: "18:30–19:30 amb J. M. Molina i 19:30–20:30 amb J. M. Pérez. La resta de la setmana habitual no es fa."
+      en: "18:30–19:30 with J. M. Molina and 19:30–20:30 with J. M. Pérez. The rest of the regular week does not run."
+      ja: "18:30〜19:30はJ. M. モリーナ、19:30〜20:30はJ. M. ペレスが担当します。通常の稽古はお休みです。"
+
+  - date: "2026-08-25"
+    type: change
+    title:
+      es: "Horario de agosto"
+      ca: "Horari d'agost"
+      en: "August timetable"
+      ja: "8月の稽古時間"
+    start: "18:30"
+    end: "20:30"
+    location: musubi
+    note:
+      es: "18:30–19:30 con J. M. Molina y 19:30–20:30 con J. M. Pérez. El resto de la semana habitual no se imparte."
+      ca: "18:30–19:30 amb J. M. Molina i 19:30–20:30 amb J. M. Pérez. La resta de la setmana habitual no es fa."
+      en: "18:30–19:30 with J. M. Molina and 19:30–20:30 with J. M. Pérez. The rest of the regular week does not run."
+      ja: "18:30〜19:30はJ. M. モリーナ、19:30〜20:30はJ. M. ペレスが担当します。通常の稽古はお休みです。"
+
+  - date: "2026-08-27"
+    type: change
+    title:
+      es: "Horario de agosto"
+      ca: "Horari d'agost"
+      en: "August timetable"
+      ja: "8月の稽古時間"
+    start: "18:30"
+    end: "20:30"
+    location: musubi
+    note:
+      es: "18:30–19:30 con J. M. Molina y 19:30–20:30 con J. M. Pérez. El resto de la semana habitual no se imparte."
+      ca: "18:30–19:30 amb J. M. Molina i 19:30–20:30 amb J. M. Pérez. La resta de la setmana habitual no es fa."
+      en: "18:30–19:30 with J. M. Molina and 19:30–20:30 with J. M. Pérez. The rest of the regular week does not run."
+      ja: "18:30〜19:30はJ. M. モリーナ、19:30〜20:30はJ. M. ペレスが担当します。通常の稽古はお休みです。"
+
+  # -------------------------------------------------------------------------
+  # Grading preparation — Saturdays, 1 August to 5 December 2026
+  #
+  # A temporary class with J. M. Pérez, not part of the regular week. One entry
+  # per Saturday it runs, for the same reason as the August timetable above.
+  #
+  # Public holidays need no handling here — a closure suppresses everything
+  # else on its day automatically.
+  # -------------------------------------------------------------------------
+  - date: "2026-08-01"
+    type: extra
+    title:
+      es: "Preparación de exámenes"
+      ca: "Preparació d'exàmens"
+      en: "Grading preparation"
+      ja: "審査準備稽古"
+    start: "10:00"
+    end: "11:00"
+    location: musubi
+    note:
+      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
+      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
+      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
+      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
+
+  - date: "2026-08-08"
+    type: extra
+    title:
+      es: "Preparación de exámenes"
+      ca: "Preparació d'exàmens"
+      en: "Grading preparation"
+      ja: "審査準備稽古"
+    start: "10:00"
+    end: "11:00"
+    location: musubi
+    note:
+      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
+      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
+      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
+      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
+
+  - date: "2026-08-15"
+    type: extra
+    title:
+      es: "Preparación de exámenes"
+      ca: "Preparació d'exàmens"
+      en: "Grading preparation"
+      ja: "審査準備稽古"
+    start: "10:00"
+    end: "11:00"
+    location: musubi
+    note:
+      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
+      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
+      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
+      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
+
+  - date: "2026-08-22"
+    type: extra
+    title:
+      es: "Preparación de exámenes"
+      ca: "Preparació d'exàmens"
+      en: "Grading preparation"
+      ja: "審査準備稽古"
+    start: "10:00"
+    end: "11:00"
+    location: musubi
+    note:
+      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
+      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
+      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
+      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
+
+  - date: "2026-08-29"
+    type: extra
+    title:
+      es: "Preparación de exámenes"
+      ca: "Preparació d'exàmens"
+      en: "Grading preparation"
+      ja: "審査準備稽古"
+    start: "10:00"
+    end: "11:00"
+    location: musubi
+    note:
+      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
+      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
+      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
+      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
+
+  - date: "2026-09-05"
+    type: extra
+    title:
+      es: "Preparación de exámenes"
+      ca: "Preparació d'exàmens"
+      en: "Grading preparation"
+      ja: "審査準備稽古"
+    start: "10:00"
+    end: "11:00"
+    location: musubi
+    note:
+      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
+      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
+      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
+      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
+
+  - date: "2026-09-12"
+    type: extra
+    title:
+      es: "Preparación de exámenes"
+      ca: "Preparació d'exàmens"
+      en: "Grading preparation"
+      ja: "審査準備稽古"
+    start: "10:00"
+    end: "11:00"
+    location: musubi
+    note:
+      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
+      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
+      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
+      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
+
+  - date: "2026-09-19"
+    type: extra
+    title:
+      es: "Preparación de exámenes"
+      ca: "Preparació d'exàmens"
+      en: "Grading preparation"
+      ja: "審査準備稽古"
+    start: "10:00"
+    end: "11:00"
+    location: musubi
+    note:
+      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
+      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
+      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
+      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
+
+  - date: "2026-09-26"
+    type: extra
+    title:
+      es: "Preparación de exámenes"
+      ca: "Preparació d'exàmens"
+      en: "Grading preparation"
+      ja: "審査準備稽古"
+    start: "10:00"
+    end: "11:00"
+    location: musubi
+    note:
+      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
+      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
+      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
+      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
+
+  - date: "2026-10-03"
+    type: extra
+    title:
+      es: "Preparación de exámenes"
+      ca: "Preparació d'exàmens"
+      en: "Grading preparation"
+      ja: "審査準備稽古"
+    start: "10:00"
+    end: "11:00"
+    location: musubi
+    note:
+      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
+      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
+      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
+      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
+
+  - date: "2026-10-10"
+    type: extra
+    title:
+      es: "Preparación de exámenes"
+      ca: "Preparació d'exàmens"
+      en: "Grading preparation"
+      ja: "審査準備稽古"
+    start: "10:00"
+    end: "11:00"
+    location: musubi
+    note:
+      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
+      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
+      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
+      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
+
+  - date: "2026-10-17"
+    type: extra
+    title:
+      es: "Preparación de exámenes"
+      ca: "Preparació d'exàmens"
+      en: "Grading preparation"
+      ja: "審査準備稽古"
+    start: "10:00"
+    end: "11:00"
+    location: musubi
+    note:
+      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
+      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
+      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
+      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
+
+  - date: "2026-10-24"
+    type: extra
+    title:
+      es: "Preparación de exámenes"
+      ca: "Preparació d'exàmens"
+      en: "Grading preparation"
+      ja: "審査準備稽古"
+    start: "10:00"
+    end: "11:00"
+    location: musubi
+    note:
+      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
+      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
+      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
+      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
+
+  - date: "2026-10-31"
+    type: extra
+    title:
+      es: "Preparación de exámenes"
+      ca: "Preparació d'exàmens"
+      en: "Grading preparation"
+      ja: "審査準備稽古"
+    start: "10:00"
+    end: "11:00"
+    location: musubi
+    note:
+      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
+      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
+      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
+      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
+
+  - date: "2026-11-07"
+    type: extra
+    title:
+      es: "Preparación de exámenes"
+      ca: "Preparació d'exàmens"
+      en: "Grading preparation"
+      ja: "審査準備稽古"
+    start: "10:00"
+    end: "11:00"
+    location: musubi
+    note:
+      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
+      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
+      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
+      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
+
+  - date: "2026-11-14"
+    type: extra
+    title:
+      es: "Preparación de exámenes"
+      ca: "Preparació d'exàmens"
+      en: "Grading preparation"
+      ja: "審査準備稽古"
+    start: "10:00"
+    end: "11:00"
+    location: musubi
+    note:
+      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
+      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
+      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
+      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
+
+  - date: "2026-11-21"
+    type: extra
+    title:
+      es: "Preparación de exámenes"
+      ca: "Preparació d'exàmens"
+      en: "Grading preparation"
+      ja: "審査準備稽古"
+    start: "10:00"
+    end: "11:00"
+    location: musubi
+    note:
+      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
+      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
+      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
+      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
+
+  - date: "2026-11-28"
+    type: extra
+    title:
+      es: "Preparación de exámenes"
+      ca: "Preparació d'exàmens"
+      en: "Grading preparation"
+      ja: "審査準備稽古"
+    start: "10:00"
+    end: "11:00"
+    location: musubi
+    note:
+      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
+      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
+      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
+      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
+
+  - date: "2026-12-05"
+    type: extra
+    title:
+      es: "Preparación de exámenes"
+      ca: "Preparació d'exàmens"
+      en: "Grading preparation"
+      ja: "審査準備稽古"
+    start: "10:00"
+    end: "11:00"
+    location: musubi
+    note:
+      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
+      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
+      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
+      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
+

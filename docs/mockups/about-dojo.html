@@ -1,0 +1,171 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>El dojo — Aikido Musubi</title><link rel="stylesheet" href="/styles/all.min.css">
+<style>
+:root{--ink:#111314;--mute:#5c6a70;--line:rgba(17,19,20,.13);--acc:#FFF200}
+html,body{margin:0;background:#fff;color:var(--ink);
+  font-family:'Noto Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+h1,h2,h3{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-weight:400;margin:0;
+  letter-spacing:.04em}
+p{margin:0}
+.w{max-width:1140px;margin:0 auto;padding:0 6rem}
+@media(max-width:991.98px){.w{padding:0 4rem}}
+@media(max-width:767.98px){.w{padding:0 2rem}}
+.jp{font-family:'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif}
+
+.ab-nav{display:flex;flex-wrap:wrap;gap:1.4rem;padding:1.6rem 0 1rem;
+  border-bottom:1px solid var(--line)}
+.ab-nav a{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:#425055;
+  text-decoration:none;padding:.2rem 0}
+.ab-nav a:hover{color:var(--ink)}
+.ab-nav a[aria-current]{color:var(--ink);font-weight:700;box-shadow:inset 0 -2px 0 var(--ink)}
+
+.top{padding:2.6rem 0 2rem}
+.top h1{font-size:2.4rem;text-transform:uppercase;letter-spacing:.06em}
+.top .lede{margin-top:1rem;max-width:42rem;font-size:1.05rem;line-height:1.75;color:#2c3437}
+@media(max-width:575.98px){.top h1{font-size:1.8rem}}
+
+.body{padding-bottom:5rem;max-width:43.25rem}
+.body h2{font-size:1.2rem;text-transform:uppercase;letter-spacing:.09em;margin:2.8rem 0 1rem;
+  padding-top:1.5rem;border-top:1px solid var(--line)}
+.body h3{font-size:1rem;margin:1.6rem 0 .5rem}
+.body p{font-size:.98rem;line-height:1.85;color:#2c3437;margin-bottom:1rem}
+.body a{color:var(--ink);text-decoration:underline;text-underline-offset:.18em}
+.body em{font-style:italic}
+.new{display:inline-block;font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.5rem;
+  letter-spacing:.18em;text-transform:uppercase;background:var(--acc);color:var(--ink);
+  padding:.16rem .42rem;vertical-align:.3em;margin-left:.6rem}
+
+/* numbered etiquette list */
+.steps{counter-reset:s;margin:0 0 1rem;padding:0;list-style:none}
+.steps li{counter-increment:s;position:relative;padding:.75rem 0 .75rem 3.2rem;
+  border-bottom:1px solid var(--line);font-size:.95rem;line-height:1.75;color:#2c3437}
+.steps li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:.95rem;
+  font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.66rem;letter-spacing:.14em;
+  color:#B04E17}
+.steps li b{font-weight:400;color:var(--ink)}
+
+/* timeline */
+.tl{margin:0 0 1rem;border-top:1px solid var(--line)}
+.tl-i{display:grid;grid-template-columns:4.6rem 1fr;gap:1.4rem;padding:.85rem 0;
+  border-bottom:1px solid var(--line);align-items:baseline}
+.tl-i .y{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.95rem;color:#B04E17}
+.tl-i .t{font-size:.95rem;line-height:1.7;color:#2c3437}
+.tl-i .t small{display:block;color:var(--mute);font-size:.82rem;margin-top:.15rem}
+.tl-i[data-q] .y{color:var(--mute)}
+.tl-i[data-q] .t::after{content:'por confirmar';display:inline-block;margin-left:.5rem;
+  font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.5rem;letter-spacing:.14em;
+  text-transform:uppercase;color:#fff;background:#B04E17;padding:.1rem .38rem;vertical-align:.18em}
+@media(max-width:575.98px){.tl-i{grid-template-columns:1fr;gap:.1rem}}
+
+/* people */
+.ppl{display:grid;grid-template-columns:1fr 1fr;gap:0 2.4rem;margin-bottom:1rem}
+.ppl div{padding:.7rem 0;border-bottom:1px solid var(--line);display:flex;
+  justify-content:space-between;gap:1rem;align-items:baseline}
+.ppl b{font-weight:400;font-size:.95rem}
+.ppl span{font-size:.78rem;color:var(--mute);white-space:nowrap}
+@media(max-width:575.98px){.ppl{grid-template-columns:1fr}}
+
+/* venues */
+.ven{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin:1.4rem 0}
+.ven figure{margin:0}
+.ven img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
+.ven b{display:block;margin-top:.6rem;font-size:.92rem;font-weight:400}
+.ven small{display:block;font-size:.78rem;color:var(--mute);line-height:1.5}
+@media(max-width:575.98px){.ven{grid-template-columns:1fr}}
+
+/* weapons */
+.wep{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);
+  margin:1.2rem 0}
+.wep div{background:#fff;padding:1rem 1.05rem 1.15rem}
+.wep .k{font-size:1.5rem;line-height:1.2}
+.wep .r{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.62rem;letter-spacing:.18em;
+  text-transform:uppercase;color:#B04E17;margin:.35rem 0 .45rem}
+.wep p{font-size:.82rem;line-height:1.65;color:var(--mute);margin:0}
+@media(max-width:575.98px){.wep{grid-template-columns:1fr}}
+
+/* faq */
+.faq{border-top:1px solid var(--line);max-width:43.25rem}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:1rem 2.2rem 1rem 0;position:relative;
+  font-size:1.02rem;line-height:1.5;color:var(--ink)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'+';position:absolute;right:.3rem;top:.95rem;color:var(--mute);
+  font-size:1.1rem;transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg);color:#B04E17}
+.faq summary:hover{color:#B04E17}
+.faq .a{padding:0 0 1.1rem}
+.faq .a p{font-size:.94rem;line-height:1.8;color:#2c3437;margin-bottom:.8rem}
+.faq .a p:last-child{margin-bottom:0}
+</style></head><body>
+<div class="w"><nav class="ab-nav"><a href="about-dojo.html" aria-current="page">El dojo</a><a href="about-aikido.html">Aikido</a><a href="about-asociacion.html">La asociación</a><a href="about-faq.html">Preguntas frecuentes</a></nav>
+<header class="top"><h1>El dojo</h1><p class="lede">Dónde entrenamos, cómo se cuida el espacio y qué encontrarás cuando llegues.</p></header>
+<div class="body">
+<h2>Un espacio para las artes marciales</h2>
+<p>Nuestro dojo es un espacio grande y diáfano destinado exclusivamente a la práctica y la
+   enseñanza de las artes marciales. Está supervisado y gestionado por el director técnico y
+   los instructores de la asociación; pero siendo responsabilidad de todos, y no sólo de los
+   instructores o del profesor, lo mantienen y lo cuidan los estudiantes.</p>
+<p>El dojo es un lugar ideal para profundizar en el estudio y la comprensión de las artes
+   marciales, y para conocer todo tipo de personas independientemente de su edad, sexo y
+   ocupación.</p>
+
+<h2>Cómo se entra y cómo se sale<span class="new">Nuevo</span></h2>
+<p>La etiqueta del dojo, el <em class="jp">礼法</em> <em>reihō</em>, no es ceremonia: es la
+   manera de que cuarenta personas descalzas compartan un suelo sin estorbarse. Nadie espera
+   que la sepas el primer día, y nadie te va a corregir con mala cara. Esto es todo lo que
+   hay que saber.</p>
+<ol class="steps">
+  <li><b>El calzado se queda en el borde.</b> Al tatami se entra descalzo, siempre. Deja los
+    zapatos con las puntas hacia fuera, para poder ponértelos sin girarte.</li>
+  <li><b>Saluda al entrar y al salir del tatami.</b> De pie, mirando al frente del dojo, una
+    inclinación breve. Es lo que separa la calle del sitio donde vas a entrenar.</li>
+  <li><b>Saluda a tu compañero antes y después.</b> Antes se dice
+    <em class="jp">お願いします</em> <em>onegaishimasu</em>; después,
+    <em class="jp">ありがとうございました</em> <em>arigatō gozaimashita</em>.</li>
+  <li><b>Si llegas tarde</b>, cámbiate, siéntate en <em>seiza</em> en el borde del tatami y
+    espera a que el instructor te haga una señal. No cruces por delante de él.</li>
+  <li><b>Nada de anillos, relojes ni pendientes</b>, y las uñas de manos y pies cortas. Las
+    dos cosas hacen daño, y no a quien las lleva.</li>
+  <li><b>El keikogi limpio</b>, cada día. Se entrena muy cerca de otra persona.</li>
+  <li><b>No se come ni se bebe en el tatami</b>, y el móvil se queda en el vestuario.</li>
+  <li><b>Al final se limpia entre todos.</b> Lleva cinco minutos y no es tarea de los
+    principiantes: es de todos, y el director técnico también barre.</li>
+</ol>
+
+<h2>La primera vez, paso a paso<span class="new">Nuevo</span></h2>
+<p>Llegas quince minutos antes. Te enseñamos dónde está el vestuario, te cambias con ropa
+   cómoda de manga larga y sales al borde del tatami. Alguien te explicará las dos o tres
+   cosas de la lista de arriba: nadie espera que las sepas.</p>
+<p>La clase empieza sentados en <em>seiza</em>, con un saludo al frente del dojo y otro entre
+   el instructor y el grupo. Después hay un calentamiento y unos ejercicios de
+   <em>ukemi</em>, la caída, que es lo primero que se aprende y lo que más se repite. Luego el
+   instructor muestra una técnica y se practica por parejas, cambiando de compañero varias
+   veces. Se cierra con un ejercicio de respiración y otro saludo.</p>
+<p>Dura una hora. No hay marcador y no gana nadie. Si algo te molesta, se para y ya está:
+   se dice y se para.</p>
+
+<h2>El shōmen<span class="new">Nuevo</span></h2>
+<p>El frente del dojo, el <em class="jp">正面</em> <em>shōmen</em>, es la pared hacia la que se
+   saluda. En la nuestra hay una caligrafía y un retrato del fundador, Morihei Ueshiba. El
+   saludo no va dirigido a una persona ni a una religión: reconoce que lo que se practica
+   aquí lo construyeron otros antes, y que uno lo recibe prestado.</p>
+<p>A la entrada del tatami hay además una frase que no es japonesa de origen:
+   <strong class="jp">唱えよ、友、そして入れ</strong>, «habla, amigo, y entra». Quien la
+   reconozca sabrá de dónde viene. Quien no, tiene la traducción justo debajo.</p>
+
+<h2>Los tres espacios</h2>
+<p>Además de nuestra actividad en el dojo, <strong>Aikido Musubi</strong> ofrece clases en
+   otros espacios de Barcelona y sus alrededores, acercando la práctica del aikido a nuevos
+   entornos y comunidades.</p>
+<div class="ven">
+  <figure><img src="/images/access-information-NdxqmVbV-00.webp" alt="" loading="lazy">
+    <b>Badalona</b><small>Av. d'Alfons XIII, 351<br>El dojo propio. Lunes a sábado.</small></figure>
+  <figure><img src="/images/access-information-NdxqmVbV-01.webp" alt="" loading="lazy">
+    <b>Sant Adrià de Besòs</b><small>Poliesportiu Marina-Besòs<br>Lunes y miércoles.</small></figure>
+  <figure><img src="/images/access-information-NdxqmVbV-02.webp" alt="" loading="lazy">
+    <b>Universitat de Barcelona</b><small>Facultat de Dret<br>Lunes y miércoles, principiantes.</small></figure>
+</div>
+<p><a href="/acceso/">Cómo llegar a cada uno</a> · <a href="/horarios/">Qué se da en cada uno</a></p>
+</div></div></body></html>

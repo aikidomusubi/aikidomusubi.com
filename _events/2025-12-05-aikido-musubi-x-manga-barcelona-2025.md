@@ -1,23 +1,28 @@
 ---
 category: collaboration
-title_ca: "Aikido Musubi ✕ Manga Barcelona 2025"
-title_en: "Aikido Musubi ✕ Manga Barcelona 2025"
-title_es: "Aikido Musubi ✕ Manga Barcelona 2025"
-title_ja: "合気道産靈 ✕ Manga Barcelona 2025"
+title_ca: "Classe oberta d'Aikido a la Manga Barcelona 2025"
+title_en: "Aikido Musubi Open Class at Manga Barcelona 2025"
+title_es: "Clase abierta de Aikido en la Manga Barcelona 2025"
+title_ja: "Manga Barcelona 2025 合気道体験稽古"
+
+instructor_ca: "Classe oberta d'Aikido a la Manga Barcelona 2025"
+instructor_en: "Aikido Musubi Open Class at Manga Barcelona 2025"
+instructor_es: "Clase abierta de Aikido en la Manga Barcelona 2025"
+instructor_ja: "Manga Barcelona 2025 合気道体験稽古"
 
 desc_ca: >-
-  El proper 5, 6, 7 i 8 de desembre de 2025 estarem al Manga Barcelona oferint classes d'Aikido obertes a tots els visitants. No t'ho perdis i vine a gaudir d'aquesta activitat!
+  Classe oberta d'Aikido dins de la Manga Barcelona 2025, per a visitants de qualsevol edat i sense experiència prèvia. No cal inscripció ni roba d'entrenament: només ganes de provar-ho.
 desc_en: >-
-  On December 5, 6, 7, and 8, 2025, we will be at Manga Barcelona offering Aikido classes open to all visitors. Don’t miss it and come enjoy this activity!
+  An open Aikido class inside Manga Barcelona 2025, for visitors of any age and with no previous experience. No registration and no training clothes needed — just come and try.
 desc_es: >-
-  El próximo 5, 6, 7 y 8 de diciembre de 2025 estaremos en el Manga Barcelona ofreciendo clases de Aikido abiertas a todos los visitantes. ¡No te lo pierdas y ven a disfrutar de esta actividad!
+  Clase abierta de Aikido dentro de la Manga Barcelona 2025, para visitantes de cualquier edad y sin experiencia previa. No hace falta inscripción ni ropa de entrenamiento: solo ganas de probarlo.
 desc_ja: >-
-  ２０２５年１２月５日、６日、７日、８日に、「Manga Barcelona」で来場者全員が参加できる合気道のクラスを開催します。ぜひお見逃しなく、このアクティビティをお楽しみください！
+  Manga Barcelona 2025 の会場で行う合気道の体験稽古です。年齢を問わず、経験のない方もご参加いただけます。申し込みも稽古着も必要ありません。
 
-image_ca: "events-hFZ2XXIp-2025-12-05-aikido-musubi-x-manga-barcelona-2025-ca-es-en"
-image_en: "events-hFZ2XXIp-2025-12-05-aikido-musubi-x-manga-barcelona-2025-ca-es-en"
-image_es: "events-hFZ2XXIp-2025-12-05-aikido-musubi-x-manga-barcelona-2025-ca-es-en"
-image_ja: "events-hFZ2XXIp-2025-12-05-aikido-musubi-x-manga-barcelona-2025-ca-es-en"
+image_ca: "events-hFZ2XXIp-2025-12-05-aikido-musubi-x-manga-barcelona-2025-open-class"
+image_en: "events-hFZ2XXIp-2025-12-05-aikido-musubi-x-manga-barcelona-2025-open-class"
+image_es: "events-hFZ2XXIp-2025-12-05-aikido-musubi-x-manga-barcelona-2025-open-class"
+image_ja: "events-hFZ2XXIp-2025-12-05-aikido-musubi-x-manga-barcelona-2025-open-class"
 
 file_ca: "events-hFZ2XXIp-2025-12-05-aikido-musubi-x-manga-barcelona-2025-ca-es-en.pdf"
 file_en: "events-hFZ2XXIp-2025-12-05-aikido-musubi-x-manga-barcelona-2025-ca-es-en.pdf"

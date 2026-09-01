@@ -12,13 +12,15 @@ last_modified: 2026-08-14
 
 Which cookies this website uses, what they do, and how to accept or reject them.
 
+{% include legal-summary.html %}
+
+
 **Last updated: 14 August 2026**
 
-> This English version is provided for convenience. In the event of any discrepancy, the Spanish version prevails, as this website is operated under Spanish law.
+This English version is provided for convenience. In the event of any discrepancy, the Spanish version prevails, as this website is operated under Spanish law.
 
 This website, **aikidomusubi.com**, owned by Aikido Musubi, uses cookies and similar technologies. This Cookie Policy has been prepared in line with the *Guide on the use of cookies* of the Spanish Data Protection Agency (AEPD).
 
-<hr>
 
 ## 1. What are cookies?
 
@@ -47,8 +49,8 @@ These allow us to understand, in aggregate and statistical form, how users use t
 
 ### c) Third-party cookies from embedded content
 If the website embeds content from external platforms (for example, **YouTube videos** or **Facebook / Instagram** elements), those platforms may install their own cookies when you interact with that content. We recommend consulting their respective policies:
-- [Google/YouTube Privacy Policy](https://policies.google.com/privacy)
-- [Meta (Facebook/Instagram) Cookie Policy](https://www.facebook.com/policies/cookies/)
+- [Google/YouTube Privacy Policy](https://policies.google.com/privacy){:target="_blank" rel="noopener"}
+- [Meta (Facebook/Instagram) Cookie Policy](https://www.facebook.com/policies/cookies/){:target="_blank" rel="noopener"}
 
 ## 3. Consent
 
@@ -62,10 +64,10 @@ You can change your decision at any time from this page. If you withdraw your co
 
 You can also allow, block or delete the cookies installed on your device through your browser settings:
 
-- [Google Chrome](https://support.google.com/chrome/answer/95647)
-- [Mozilla Firefox](https://support.mozilla.org/en-US/kb/enhanced-tracking-protection-firefox-desktop)
-- [Safari](https://support.apple.com/en-us/guide/safari/sfri11471/mac)
-- [Microsoft Edge](https://support.microsoft.com/en-us/microsoft-edge)
+- [Google Chrome](https://support.google.com/chrome/answer/95647){:target="_blank" rel="noopener"}
+- [Mozilla Firefox](https://support.mozilla.org/en-US/kb/enhanced-tracking-protection-firefox-desktop){:target="_blank" rel="noopener"}
+- [Safari](https://support.apple.com/en-us/guide/safari/sfri11471/mac){:target="_blank" rel="noopener"}
+- [Microsoft Edge](https://support.microsoft.com/en-us/microsoft-edge){:target="_blank" rel="noopener"}
 
 Please note that disabling technical cookies may affect the correct functioning of the website.
 

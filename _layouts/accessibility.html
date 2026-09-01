@@ -1,0 +1,54 @@
+{% include header.html %}
+
+<main id="main" tabindex="-1">
+
+  {% include section-strip.html %}
+  {%- comment -%}
+    Declaración de accesibilidad.
+
+    Not a legal obligation — see the header of _data/accessibility.yml — but a
+    statement worth making, and one that has to stay true. The conformance
+    claim is partial and every known limitation is listed.
+  {%- endcomment -%}
+  {%- assign L = page.lang | default: 'es' -%}
+  {%- assign A = site.data.accessibility -%}
+  {%- capture mail %}<a href="mailto:{{ site.email }}">{{ site.email }}</a>{% endcapture -%}
+
+  {% include page-head.html %}
+
+  <div class="a11y">
+    <div class="a11y-flag">
+      <p><b>{{ A.ui.summary_h[L] }}</b>{{ A.ui.summary[L] }}</p>
+    </div>
+
+    <h2>{{ A.ui.commit_h[L] }}</h2>
+    <p>{{ A.ui.commit[L] }}</p>
+
+    <h2>{{ A.ui.done_h[L] }}</h2>
+    <ul>
+      {%- for d in A.done %}
+      <li>{{ d[L] }}</li>
+      {%- endfor %}
+    </ul>
+
+    <h2>{{ A.ui.limits_h[L] }}</h2>
+    <ul>
+      {%- for d in A.limits %}
+      <li>{{ d[L] }}</li>
+      {%- endfor %}
+    </ul>
+
+    <h2>{{ A.ui.tell_h[L] }}</h2>
+    <p>{{ A.ui.tell[L] | replace: '[email]', mail }}</p>
+
+    <dl class="a11y-facts">
+      <dt>{{ A.ui.status[L] }}</dt><dd>{{ A.ui.status_v[L] }}</dd>
+      <dt>{{ A.ui.method[L] }}</dt><dd>{{ A.ui.method_v[L] }}</dd>
+      <dt>{{ A.ui.declared[L] }}</dt><dd>{{ A.ui.date_v[L] }}</dd>
+      <dt>{{ A.ui.reviewed[L] }}</dt><dd>{{ A.ui.date_v[L] }}</dd>
+      <dt>{{ A.ui.contact[L] }}</dt><dd>{{ mail }}</dd>
+    </dl>
+  </div>
+</main>
+
+{% include footer.html %}

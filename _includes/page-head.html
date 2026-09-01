@@ -1,0 +1,35 @@
+{%- comment -%}
+  The page header, and the only one there is.
+
+  Every Markdown page wrote this by hand — `# Title`, the description
+  paragraph, `<hr>` — and got its look from `.page main`'s own rules: an h1
+  centred in the full column, the paragraph after it centred and also allowed
+  the full column. Everything below is left aligned at the measure.
+
+  THE RULE IS GONE. Centred-then-left, and 4rem of air, already separate the
+  header from the page; the line was a third signal saying the same thing. The
+  lede keeps NO class, because the rule that centres it is
+  `> h1 + p:not([class])` — the sixty Markdown pages emit a bare paragraph and
+  this has to match them exactly. It
+  also stuttered wherever the first thing below it draws its own line — the
+  glossary's filter bar, About's first section heading, the sitemap's first
+  group — which is most pages that are not prose. Sixty Markdown pages carried
+  a literal `<hr>` here and have had it removed.
+
+  Two layouts had grown their own version instead. About had a 2.1rem Futura
+  regular title, a 38rem lede and no rule; the glossary had a left-aligned lede
+  at 44rem. Neither difference meant anything, and both were visible.
+
+  The elements are emitted as DIRECT children of <main> on purpose: the lede
+  rule is `> h1 + p:not([class])`, so a wrapper div around them silently turns
+  the lede back into an ordinary paragraph at the measure.
+
+  include.title / include.lede override the front matter, for the one page that
+  needs to: the glossary's lede carries its own entry count.
+{%- endcomment -%}
+{%- assign ph_title = include.title | default: page.title -%}
+{%- assign ph_lede = include.lede | default: page.description -%}
+<h1>{{ ph_title }}</h1>
+{%- if ph_lede %}
+<p>{{ ph_lede }}</p>
+{%- endif %}

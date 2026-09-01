@@ -5,6 +5,15 @@ title_en: "Pablo Martín 4th Dan Aikikai"
 title_es: "Pablo Martín 4.º Dan Aikikai"
 title_ja: "パブロ・マルティン 四段 合気会"
 
+instructor_ca: "Pablo Martín"
+grade_ca: "4t dan Aikikai"
+instructor_en: "Pablo Martín"
+grade_en: "4th dan Aikikai"
+instructor_es: "Pablo Martín"
+grade_es: "4.º dan Aikikai"
+instructor_ja: "パブロ・マルティン"
+grade_ja: "四段 合気会"
+
 desc_ca: >-
   El proper dissabte 21 de desembre tenim el plaer d'acollir al nostre dojo les molt esperades jornades d'Aikido a càrrec de Pablo Martín, 4t dan Aikikai.
 desc_en: >-

@@ -69,7 +69,20 @@ def collect_chars():
     """Characters on Japanese pages, plus the always-included safety margin."""
     chars = set()
     sources = glob.glob(os.path.join(ROOT, "_site", "ja", "**", "*.html"), recursive=True)
-    sources += [os.path.join(ROOT, "training-schedule-ja.json")]
+
+    # _data/*.yml too: the timetable, calendar, venue and fee pages render their
+    # Japanese from data, and a label that only appears in a hidden panel or is
+    # written by script would otherwise be missed by an HTML-only scan. This
+    # replaced training-schedule-ja.json, a FullCalendar-era file that no longer
+    # matched the live schedule.
+    #
+    # Two of them are generated and must be skipped. `imgw.yml` holds image
+    # paths, and a gallery filename can carry Japanese — those are URL bytes,
+    # never glyphs on a page, and subsetting for them grows all three faces to
+    # draw kanji nothing displays. `assets.yml` is hex.
+    GENERATED = {"imgw.yml", "assets.yml"}
+    sources += sorted(p for p in glob.glob(os.path.join(ROOT, "_data", "*.yml"))
+                      if os.path.basename(p) not in GENERATED)
 
     scanned = 0
     for path in sources:

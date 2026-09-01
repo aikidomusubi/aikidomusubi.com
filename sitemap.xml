@@ -102,6 +102,42 @@ permalink: /sitemap.xml
     </image:image>
         {%- endif -%}
       {%- endfor -%}
+    {%- elsif ref == 'classes-CJc2lhFv' -%}
+      {%- comment -%}
+        Same reason as the access branch below: the classes page renders its
+        photographs from _data/classes.yml through a layout, so the generic
+        branch cannot find the basenames in `p.content`.
+      {%- endcomment -%}
+      {%- for d in site.data.classes.disciplines -%}
+        {%- if d.image %}
+    <image:image>
+      <image:loc>{{ site.url }}/images/{{ d.image }}.jpg</image:loc>
+      <image:title>{{ d.name[p.lang] | xml_escape }} · Aikido Musubi</image:title>
+    </image:image>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- elsif ref == 'access-information-NdxqmVbV' -%}
+      {%- comment -%}
+        The access page renders its images from _data/venues.yml through the
+        layout, so the generic branch below finds nothing: it looks for the
+        basename in `p.content`, and the page's own content is only the intro
+        paragraph. Read the data instead, the way the events branch does.
+      {%- endcomment -%}
+      {%- assign V = site.data.venues -%}
+      {%- for v in V.venues -%}
+        {%- if v.plan %}
+    <image:image>
+      <image:loc>{{ site.url }}/images/{{ v.plan }}.jpg</image:loc>
+      <image:title>{{ v.name[p.lang] | xml_escape }}</image:title>
+    </image:image>
+        {%- endif -%}
+        {%- for e in v.entrances %}
+    <image:image>
+      <image:loc>{{ site.url }}/images/{{ e.image }}.jpg</image:loc>
+      <image:title>{{ v.name[p.lang] }} · {{ V.ui.entrance[p.lang] }} {{ e.letter }}, {{ e.street[p.lang] }}</image:title>
+    </image:image>
+        {%- endfor -%}
+      {%- endfor -%}
     {%- else -%}
       {%- assign prefix = ref | append: "-" -%}
       {%- for f in content_images -%}

@@ -1,0 +1,202 @@
+{% include header.html %}
+
+<main id="main" tabindex="-1">
+
+  {% include section-strip.html %}
+
+  {{ content }}
+
+  {%- comment -%}
+    Fees.
+
+    Replaces sixteen hand-written Bootstrap cards per language — sixty-four in
+    all — plus two PDFs carrying the same numbers a third time. Everything now
+    comes from _data/fees.yml, and every saving is arithmetic rather than a
+    number somebody typed, which is how the page came to claim 22% where the
+    PDF said 21.4%.
+
+    NO JAVASCRIPT. The period switch is four radios and `:has()`. That keeps the
+    page at zero script bytes, works before hydration and without JS entirely,
+    and — because all four panels are in the markup — puts every price in front
+    of a crawler rather than behind a click.
+
+    The full breakdown is a <details>, not a modal: no focus trap to build, no
+    escape handling to get wrong, printable, and indexable.
+  {%- endcomment -%}
+
+  {%- assign L = page.lang -%}
+  {%- assign F = site.data.fees -%}
+
+  <div class="fees">
+
+    <fieldset class="fee-periods">
+      <legend>{{ F.ui.period[L] }}</legend>
+      <div class="fee-chips">
+        {%- for p in F.periods -%}
+        <label class="fee-chip">
+          <input type="radio" name="fee-period" value="{{ p.id }}"
+                 id="fee-{{ p.id }}"{% if forloop.first %} checked{% endif %}>
+          <span>{{ p.name[L] }}</span>
+        </label>
+        {%- endfor -%}
+      </div>
+    </fieldset>
+
+    {%- for p in F.periods -%}
+    <div class="fee-panel" data-period="{{ p.id }}">
+      {%- comment -%}
+        tabindex and a label because this scrolls. A keyboard user has to be
+        able to reach the region to scroll it with the arrow keys, and a screen
+        reader has to be able to say what it is once they get there. Without
+        both, the two cards past the fold are unreachable without a mouse.
+      {%- endcomment -%}
+      {%- comment -%}
+        No role="group" here. Putting one on the <ul> replaced its implicit
+        list role, which orphaned every <li> inside it — axe reports "list
+        items are not contained within <ul>". A list can be named and made
+        focusable without being told it is something else.
+      {%- endcomment -%}
+      <ul class="fee-cards" tabindex="0"
+          aria-label="{{ page.title }} — {{ p.name[L] }}">
+        {%- for c in F.categories -%}
+          {%- assign row = F.prices[p.id][c.id] -%}
+          {%- assign saving = row.base | minus: row.fee -%}
+          {%- assign pct = saving | times: 100 | divided_by: row.base -%}
+          <li class="fee-card{% if saving > 0 %} fee-card-deal{% endif %}">
+            <h2 class="fee-name">{{ c.name[L] }}</h2>
+            <p class="fee-who">{{ c.who[L] }}</p>
+
+            <p class="fee-price">
+              <span class="fee-amount">{{ row.fee }}{{ F.symbol }}</span>
+              <span class="fee-unit">{{ p.unit[L] }}</span>
+            </p>
+
+            {%- if saving > 0 %}
+            <p class="fee-save">
+              {{ F.ui.save[L] }} <strong>{{ saving }}{{ F.symbol }}</strong>
+              <span class="fee-pct">−{{ pct }}%</span>
+              <span class="fee-instead">{{ F.ui.instead[L] }} <s>{{ row.base }}{{ F.symbol }}</s></span>
+            </p>
+            {%- else %}
+            <p class="fee-save fee-save-none" aria-hidden="true">&nbsp;</p>
+            {%- endif %}
+
+            <ul class="fee-included">
+              {%- for i in F.included -%}
+              <li>{{ i[L] }}</li>
+              {%- endfor -%}
+            </ul>
+
+            <a class="fee-btn" href="{% if L == 'es' %}/contacto/{% elsif L == 'ca' %}/ca/contacte/{% else %}/{{ L }}/contact/{% endif %}">
+              {{ F.ui.signup[L] }}
+              <span class="fee-sr"> — {{ c.name[L] }}, {{ p.name[L] }}</span>
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+    {%- endfor -%}
+
+    {%- comment -%}
+      The standing offer.
+
+      It sits UNDER the cards and not inside them: it is the same offer in
+      every category, and repeating it five times across four panels would be
+      twenty copies of one sentence. Under the cards it is also read after the
+      prices, which is the order the decision is made in — you pick a category,
+      then you pick how to pay, and this is about the second choice.
+
+      The gi is why the period chips matter, so the box names the three
+      periods that earn it rather than saying "a longer period".
+    {%- endcomment -%}
+    {%- assign O = F.offer -%}
+    <aside class="fee-offer">
+      <p class="fee-offer-eyebrow">{{ O.eyebrow[L] }}</p>
+      <h2 class="fee-offer-h">{{ O.title[L] }}</h2>
+      <p class="fee-offer-b">{{ O.body[L] }}</p>
+      <p class="fee-offer-n">{{ O.note[L] }}</p>
+    </aside>
+
+    {%- comment -%}
+      What the two PDFs used to hold. Open by nobody's default, but present in
+      the document: a crawler reads it, a printer prints it, and it needs no
+      script to work.
+    {%- endcomment -%}
+    <details class="fee-detail">
+      <summary>{{ F.ui.detail[L] }}</summary>
+
+      <div class="fee-detail-body">
+        {%- for p in F.periods -%}
+        <table class="fee-table">
+          <caption>{{ p.name[L] }} · {{ p.months }} {% if L == 'ja' %}か月{% elsif L == 'en' %}month{% if p.months > 1 %}s{% endif %}{% elsif L == 'ca' %}mes{% if p.months > 1 %}os{% endif %}{% else %}mes{% if p.months > 1 %}es{% endif %}{% endif %}</caption>
+          <thead>
+            <tr>
+              <th scope="col">{{ F.ui.th_cat[L] }}</th>
+              <th scope="col">{{ F.ui.th_fee[L] }}</th>
+              <th scope="col">{{ F.ui.th_base[L] }}</th>
+              <th scope="col">{{ F.ui.th_save[L] }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {%- for c in F.categories -%}
+              {%- assign row = F.prices[p.id][c.id] -%}
+              {%- assign saving = row.base | minus: row.fee -%}
+              {%- assign pct = saving | times: 100 | divided_by: row.base -%}
+            <tr>
+              <th scope="row">{{ c.name[L] }} <span class="fee-th-who">{{ c.who[L] }}</span></th>
+              <td>{{ row.fee }}{{ F.symbol }}</td>
+              <td>{{ row.base }}{{ F.symbol }}</td>
+              <td>{% if saving > 0 %}{{ saving }}{{ F.symbol }} <span class="fee-pct">−{{ pct }}%</span>{% else %}—{% endif %}</td>
+            </tr>
+            {%- endfor -%}
+          </tbody>
+        </table>
+        {%- endfor -%}
+        <p class="fee-note">{{ F.ui.base_note[L] }}</p>
+      </div>
+    </details>
+
+    <p class="fee-note">{{ F.ui.only_aikido[L] }}</p>
+  </div>
+
+  {%- comment -%}
+    Structured data for the membership itself. Only what is on the page: the
+    price, the currency, and the period it covers.
+  {%- endcomment -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": {{ page.title | jsonify }},
+    "serviceType": "Aikido classes",
+    "provider": { "@type": "SportsClub", "name": "Aikido Musubi", "url": "{{ site.url }}/" },
+    "areaServed": "Badalona, Barcelona",
+    "offers": [
+      {%- assign first = true -%}
+      {%- for p in F.periods -%}{%- for c in F.categories -%}
+      {%- assign row = F.prices[p.id][c.id] -%}
+      {%- unless first %},{% endunless %}{%- assign first = false -%}
+      {
+        "@type": "Offer",
+        "name": {{ c.name[L] | append: ' — ' | append: p.name[L] | jsonify }},
+        "priceCurrency": "{{ F.currency }}",
+        "price": "{{ row.fee }}",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "{{ row.fee }}",
+          "priceCurrency": "{{ F.currency }}",
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": {{ p.months }},
+            "unitCode": "MON"
+          }
+        }
+      }
+      {%- endfor -%}{%- endfor -%}
+    ]
+  }
+  </script>
+
+</main>
+
+{% include footer.html %}

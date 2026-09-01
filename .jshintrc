@@ -1,0 +1,38 @@
+// Lint settings for the scripts this repo authors. Driven by gulpfile.js.
+//
+// Every non-default setting below exists for a specific pattern in this
+// codebase, noted alongside it. The aim is a linter that catches real mistakes
+// — a typo'd variable name, a leftover binding — without arguing with correct
+// ES5 that was written deliberately.
+{
+  "browser": true,
+  "esversion": 6,
+
+  // scripts/default.js prints the Konami sequence to the console on purpose.
+  "devel": true,
+
+  // Catches typos in identifiers, which is the main thing worth linting for
+  // here. Globals the site genuinely relies on are declared below.
+  "undef": true,
+  "globals": {
+    "GLightbox": false,
+    "ResizeObserver": false
+  },
+
+  // "vars" only: an unused function argument is often intent — an event
+  // handler that ignores its event — while an unused variable is a leftover.
+  "unused": "vars",
+
+  // scripts/fees.js builds its carousel dots with the classic IIFE-per-
+  // iteration pattern, which is the correct way to capture the index in
+  // var-scoped code. The warning is a false positive against it.
+  "loopfunc": true,
+
+  // W082: function declaration inside a block. Every occurrence is a helper
+  // declared inside a module IIFE — legal, and the pattern the whole codebase
+  // is written in.
+  "-W082": true,
+
+  "eqeqeq": true,
+  "latedef": "nofunc"
+}

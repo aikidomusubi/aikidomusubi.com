@@ -1,0 +1,556 @@
+// out: false
+//
+// ---------------------------------------------------------------------------
+// Access — venue picker
+//
+// One venue shown at a time, chosen with three radios and `:has()`. No script.
+// The other two panels stay in the document so a crawler reads every address.
+// ---------------------------------------------------------------------------
+
+// The palette has no green. Same value the fees page uses: 6.25:1 on white.
+@vn-tick: @Green;
+
+.venues { margin: 0 0 3rem; }
+
+// ---- picker ---------------------------------------------------------------
+.vn-picker {
+  border: 0;
+  margin: 0 0 1.75rem;
+  padding: 0;
+  min-width: 0;
+
+  > legend {
+    .NotoSans; .bold;
+    float: none;
+    width: auto;
+    font-size: .7rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: fadeout(@Black, 40%);
+    margin: 0 0 .5rem;
+    padding: 0;
+  }
+}
+
+.vn-chips { display: flex; flex-wrap: wrap; gap: .4rem; }
+
+.vn-chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.25rem;
+  padding: .3rem 1rem;
+  margin: 0;
+  border: 1px solid fadeout(@Black, 88%);
+  border-radius: 2rem;
+  font-size: .85rem;
+  line-height: 1.2;
+  cursor: pointer;
+  user-select: none;
+  background-color: @White;
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease;
+
+  > input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
+
+  &:has(input:checked) { background-color: @Accent; border-color: @Accent; color: @White; }
+  &:has(input:not(:checked)) { color: lighten(@Dark, 18%); }   // 5.9:1
+  &:hover { border-color: fadeout(@Black, 70%); }
+  &:has(input:focus-visible) { outline: 2px solid @Blue; outline-offset: 2px; }
+}
+
+// ---- which panel shows ----------------------------------------------------
+.vn-panel { display: none; }
+
+// The rule that shows the selected panel is NOT here any more. It was three
+// hand-written selectors, one per venue id, and a fourth venue's panel was
+// therefore invisible: the chip worked, the panel never appeared. CSS cannot
+// derive a selector from data, so _layouts/access.html emits one line per
+// venue from the same loop that renders them.
+
+// Without :has() all three would stack. Showing them all is the honest
+// fallback here — unlike a price list, three addresses at once is merely long,
+// not wrong.
+@supports not selector(:has(*)) {
+  .vn-panel { display: block; margin-bottom: 3rem; }
+  .vn-picker { display: none; }
+}
+
+// ---- the venue ------------------------------------------------------------
+.vn-main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin: 0 0 2rem;
+}
+
+// Equal-height cards. The buttons are pushed to the bottom with `margin-top:
+// auto` rather than by padding the copy, so a venue with a short note and one
+// with a long one still line up — and every card gets room under the text
+// instead of the buttons crowding the last line.
+.vn-info {
+  display: flex;
+  flex-direction: column;
+  gap: .85rem;
+  align-items: flex-start;
+  // Above the tallest card's natural height, so all three settle on the same
+  // floor and the shorter one gains white space rather than the taller one
+  // being squeezed.
+  min-height: 24.5rem;
+}
+
+// ---- card header -----------------------------------------------------------
+.vn-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  margin: 0 0 .35rem !important;
+  padding-bottom: .8rem;
+  border-bottom: 1px solid fadeout(@Black, 92%);
+  min-height: 2.6rem;
+}
+
+.vn-town {
+  .NotoSans; .bold;
+  margin-left: auto;
+  font-size: .68rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: fadeout(@Black, 35%);   // 5.8:1 — 45% measured 4.12:1 at 10.88px bold
+  white-space: nowrap;
+}
+
+// Both marks are cropped to their ink, so the left edge of the mark is the left
+// edge of the box and it lines up with everything below without a nudge.
+.vn-logo {
+  display: block;
+  flex: 0 0 auto;
+  width: 9rem;
+  height: 1.9rem;
+  background-image: var(--logo);
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: contain;
+}
+
+.vn-facts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+
+  > li {
+    display: flex;
+    align-items: center;
+    gap: .45rem;
+    font-size: .85rem;
+    color: lighten(@Dark, 18%);   // 5.9:1
+  }
+
+  svg { width: .85rem; height: .85rem; flex: 0 0 auto; color: @vn-tick; }
+}
+
+.vn-map {
+  aspect-ratio: 16 / 9;
+
+  > iframe,
+  .mp-facade { width: 100%; height: 100%; border: 0; border-radius: .375rem; }
+}
+
+// Pushed to the bottom of the card rather than following the copy, so the three
+// venues line up whatever the length of their note.
+.vn-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: auto 0 0 !important;
+  padding-top: 2.2rem;
+}
+
+.vn-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.5rem;
+  padding: .5rem 1rem;
+  border: 1px solid @Accent;
+  border-radius: .25rem;
+  background-color: @Accent;
+  color: @White;
+  .NotoSans; .bold;
+  font-size: .85rem;
+  transition: background-color .2s ease;
+}
+
+.vn-btn-o { background-color: @White; color: @Black; border-color: fadeout(@Black, 85%); }
+
+// ---- entrances ------------------------------------------------------------
+.vn-entrances { border-top: 1px solid fadeout(@Black, 92%); padding-top: 1.5rem; }
+
+.vn-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+
+.vn-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  counter-reset: none;
+}
+
+.vn-step {
+  display: flex;
+  gap: .9rem;
+  align-items: center;
+  padding: .9rem;
+  // Every entrance card the same height whichever dojo is showing, with room
+  // under the text rather than a box that stops at the last word.
+  min-height: 8.5rem;
+  border: 1px solid fadeout(@Black, 90%);
+  border-radius: .375rem;
+  background-color: @White;
+}
+
+.vn-step-body { min-width: 0; }
+
+// The thumbnail is a button now. Stripping the control's own chrome keeps it
+// looking like the photograph it was, while staying focusable and announced.
+.vn-shot {
+  flex: 0 0 auto;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+  border-radius: .25rem;
+  line-height: 0;
+
+  &:focus-visible { outline: 2px solid @Blue; outline-offset: 2px; }
+}
+
+.vn-dialog {
+  padding: 0;
+  border: 0;
+  border-radius: .375rem;
+  background-color: @White;
+  max-width: min(90vw, 40rem);
+  max-height: 90vh;
+  overflow: visible;
+
+  &::backdrop { background-color: fadeout(@Black, 25%); }
+
+  // The caption has to stay on screen with the photo, so the image takes the
+  // dialog's height minus the caption rather than 100% of it.
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: calc(90vh - 3rem);
+    object-fit: contain;
+    border-radius: .375rem .375rem 0 0;
+  }
+}
+
+.vn-dialog-cap {
+  margin: 0 !important;
+  padding: .7rem .9rem;
+  font-size: .85rem;
+  line-height: 1.4;
+  color: lighten(@Dark, 18%);
+}
+
+.vn-dialog-x {
+  position: absolute;
+  top: -.75rem;
+  right: -.75rem;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: 1px solid fadeout(@Black, 88%);
+  border-radius: 50%;
+  background-color: @White;
+  box-shadow: 0 2px 8px fadeout(@Black, 65%);
+  cursor: pointer;
+  color: @Black;
+
+  > svg { width: .8rem; height: .8rem; }
+
+  &:focus-visible { outline: 2px solid @Blue; outline-offset: 2px; }
+}
+
+.vn-letter {
+  display: grid;
+  place-items: center;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+  background-color: @Accent;
+  color: @White;
+  .NotoSans; .bold;
+  font-size: .72rem;
+  flex: 0 0 auto;
+}
+
+.vn-plan {
+  margin: 0;
+
+  img { width: 100%; height: auto; display: block; border-radius: .375rem; }
+}
+
+// ---------------------------------------------------------------------------
+// The annotated plan
+//
+// A static satellite capture with the highlights drawn over it in markup, not
+// baked into the pixels. Everything below costs about 1 KB of CSS and no JS,
+// which is why this beat a real slippy map: Leaflet plus tiles would be ~60 KB
+// of library before the first tile request, and every one of those requests
+// goes to somebody else's server. See the note in _data/venues.yml.
+// ---------------------------------------------------------------------------
+.vn-stage {
+  position: relative;
+  // The overlay is positioned in percentages, so the box has to be exactly the
+  // image and nothing else — inline-block would leave a descender gap.
+  display: block;
+  line-height: 0;
+}
+
+// The traced footprints. preserveAspectRatio="none" over a square image is a
+// no-op geometrically, and non-scaling-stroke keeps the outline one weight
+// however large the plan is drawn.
+.vn-shapes {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+
+  polygon {
+    fill: var(--vn-fill);
+    stroke: var(--vn-line);
+    stroke-width: 2;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+  }
+
+  // Drawn over an aerial photograph, so these are not text and the floor is
+  // WCAG 1.4.11's 3:1 for a non-text indicator, not 4.5:1. Both are dictionary
+  // colours now: Yellow Ocher over Apricot Yellow for the dojo, and @Blue —
+  // Vandar Poel's Blue — for the parking, which replaces a bright sky blue
+  // that belonged to no palette at all.
+  [data-kind="dojo"]    { --vn-line: @YellowOcher; --vn-fill: fadeout(@ApricotYellow, 62%); }
+  [data-kind="parking"] { --vn-line: @Blue;        --vn-fill: fadeout(@Blue, 74%); }
+}
+
+// The name is HTML, not SVG text: it stays level, wraps sensibly, and picks up
+// the same font stack as everything else on the page.
+.vn-label {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  transform: translate(-50%, -50%);
+  width: max-content;
+  max-width: 8rem;
+  .NotoSans; .bold;
+  font-size: .66rem;
+  line-height: 1.2;
+  letter-spacing: .01em;
+  text-align: center;
+  color: @Black;
+  text-shadow: 0 0 3px @White, 0 0 3px @White, 0 0 5px fadeout(@White, 20%);
+  pointer-events: none;
+}
+
+// Each pin is a <details>. `position: static` on the marker would drop the
+// panel out of the stage, so the whole element is the anchor and the summary
+// is just its visible knob.
+.vn-pin {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  transform: translate(-50%, -50%);
+  line-height: 1;
+
+  > summary {
+    display: grid;
+    place-items: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    border: 2px solid @White;
+    background-color: @Green;
+    box-shadow: 0 1px 4px fadeout(@Black, 60%);
+    color: @White;
+    .NotoSans; .bold;
+    font-size: .8rem;
+    cursor: pointer;
+    list-style: none;          // Firefox
+    transition: transform .12s ease-out;
+
+    &::-webkit-details-marker { display: none; }
+    &::marker { content: ""; }
+
+    &:hover { transform: scale(1.12); }
+
+    &:focus-visible {
+      outline: 2px solid @Black;
+      outline-offset: 2px;
+    }
+  }
+
+  &[open] > summary { background-color: @Black; }
+
+  // Above the marker by default; the modifier below flips the low ones.
+  > .vn-pop {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + .55rem);
+    transform: translateX(-50%);
+    z-index: 2;
+    width: max-content;
+    max-width: 13rem;
+    padding: .5rem .65rem;
+    border-radius: .3rem;
+    background-color: @White;
+    box-shadow: 0 2px 10px fadeout(@Black, 72%);
+    font-size: .8rem;
+    line-height: 1.4;
+    color: @Black;
+    text-align: left;
+
+    > b { display: block; .bold; margin-bottom: .1rem; }
+  }
+}
+
+// A pin low on the image would open its panel off the bottom of the figure,
+// so the layout flags those and they open downwards instead.
+.vn-pin[data-low] > .vn-pop {
+  bottom: auto;
+  top: calc(100% + .55rem);
+}
+
+// `.vn-sr` is in styles/base.less, not here: _includes/directions.html is
+// used on Contact as well, and this stylesheet is only loaded on Access.
+
+// ---- the site's prose rules ------------------------------------------------
+.page main {
+
+  // `main img { width: 100% }` is written at (0,2,5) and beat `.vn-step img`,
+  // so these thumbnails rendered at their natural 900x900 and burst the
+  // section apart. Matching that depth is what fixes it.
+  .vn-step picture { display: block; flex: 0 0 auto; margin: 0; }
+
+  .vn-step img {
+    width: 6.5rem;
+    height: 6.5rem;
+    object-fit: cover;
+    border-radius: .25rem;
+    display: block;
+  }
+
+  .vn-plan img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: .375rem;
+  }
+
+  .vn-name {
+    .NotoSans; .bold;
+    margin: 0;
+    padding: 0;
+    font-size: 1.35rem;
+    line-height: 1.3;
+    color: @Black;
+    text-align: left;
+  }
+
+  .vn-sub {
+    .NotoSans; .bold;
+    margin: 0 0 1rem;
+    padding: 0;
+    font-size: .72rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: fadeout(@Black, 40%);
+    text-align: left;
+  }
+
+  .vn-address,
+  .vn-note,
+  .vn-step-desc,
+  .vn-step-name {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+  }
+
+  .vn-address { font-size: .95rem; line-height: 1.55; }
+
+  .vn-note {
+    font-size: .85rem;
+    line-height: 1.55;
+    color: lighten(@Dark, 18%);
+  }
+
+  .vn-step-name {
+    .NotoSans; .bold;
+    display: flex;
+    align-items: center;
+    gap: .45rem;
+    font-size: .9rem;
+    line-height: 1.3;
+    margin-bottom: .2rem;
+  }
+
+  .vn-step-desc { font-size: .82rem; line-height: 1.45; color: lighten(@Dark, 18%); }
+
+  .vn-btn {
+    text-decoration: none;
+    color: @White;
+
+    &:hover, &:focus { text-decoration: none; background-color: lighten(@Accent, 14%); color: @White; }
+    &:focus-visible { outline: 2px solid @Blue; outline-offset: 2px; }
+  }
+
+  .vn-btn-o {
+    color: @Black;
+
+    &:hover, &:focus { background-color: fadeout(@Black, 96%); color: @Black; border-color: fadeout(@Black, 65%); }
+  }
+}
+
+// Plan first, in either layout: it answers "which of these gates do I want"
+// before the photos answer "what does that gate look like". The source keeps
+// the steps first, so the reading order and the numbering still make sense;
+// `order` puts the plan left of them in two columns and above them in one.
+.vn-grid > .vn-steps { order: 2; }
+.vn-grid > .vn-plan  { order: 1; }
+
+// Two columns only from 1200px, which is where the container reaches its full
+// 1140px. This used to start at 900px, and in between the venue map was down
+// to about 330px wide beside a fixed 22rem column — too small to read a street
+// name off, which is the one thing it is there for.
+@media (min-width: 1200px) {
+  .vn-main { grid-template-columns: 22rem 1fr; align-items: start; }
+
+  .vn-grid {
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vn-chip, .vn-btn { transition: none; }
+}
+
+@media print {
+  .vn-picker, .vn-actions { display: none !important; }
+  .vn-panel { display: block !important; break-inside: avoid; margin-bottom: 2rem; }
+  .vn-map { display: none; }
+}

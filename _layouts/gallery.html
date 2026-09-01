@@ -1,0 +1,231 @@
+{% include header.html %}
+
+<main id="main" tabindex="-1">
+
+  {% include section-strip.html %}
+
+  {{ content }}
+
+  {%- comment -%}
+    Gallery — Facebook albums, Instagram posts and reels in one stream.
+
+    The page hosts nothing. Every tile is a local thumbnail plus a link out, so
+    there is not a single request to Meta until a visitor clicks: no embed
+    scripts, no third-party cookies, nothing to put behind the consent banner,
+    and — unlike an embed — thumbnails and captions a crawler can actually read.
+
+    One source: _data/gallery.yml, sorted on `date_iso`. Albums, posts and reels
+    all arrive from Meta through tools/fetch-social.py, and only entries flagged
+    `show: true` are rendered — which is what makes the nightly fetch safe to
+    run unattended.
+  {%- endcomment -%}
+
+  {%- assign L = page.lang -%}
+  {%- assign G = site.data.gallery -%}
+  {%- assign months = site.data.calendar.months -%}
+  {%- comment -%}
+    Approved entries. Whether each one has its image yet is checked in the loop
+    below rather than here: filtering into a new array with `concat` copies the
+    whole array on every iteration, which is O(n²) and — at 440 entries across
+    four languages — turned a 25-second build into minutes.
+  {%- endcomment -%}
+  {%- assign socials = G.entries | where: "show", true -%}
+  {%- assign items = socials | sort: 'date_iso' | reverse -%}
+
+  {%- comment -%} Years present, newest first, for the year filter. {%- endcomment -%}
+  {%- assign years = '' -%}
+  {%- for it in items -%}
+    {%- assign y = it.date_iso | slice: 0, 4 -%}
+    {%- unless years contains y -%}{%- assign years = years | append: y | append: ',' -%}{%- endunless -%}
+  {%- endfor -%}
+  {%- assign year_list = years | split: ',' -%}
+
+
+  <div class="gx-controls" id="gx-controls">
+
+    <fieldset class="gx-filter">
+      <legend>{{ G.ui.what[L] }}</legend>
+      <div class="gx-chips">
+        {%- comment -%}
+          Each chip says how much is behind it. Cheap to compute here and it
+          answers the question before the click rather than after: the tags
+          are very uneven — training holds 330 of the 462, exams 19.
+        {%- endcomment -%}
+        {%- for t in G.tags -%}
+        {%- assign tag_n = 0 -%}
+        {%- for it in items -%}{%- if it.tags contains t.id -%}{%- assign tag_n = tag_n | plus: 1 -%}{%- endif -%}{%- endfor -%}
+        <label class="gx-chip" style="--chip: {{ t.color }}">
+          <input type="checkbox" name="tag" value="{{ t.id }}" checked>
+          <span class="gx-chip-dot" aria-hidden="true"></span>
+          <span>{{ t.name[L] }}</span>
+          <span class="gx-chip-n" aria-hidden="true">{{ tag_n }}</span>
+        </label>
+        {%- endfor -%}
+      </div>
+    </fieldset>
+
+    {%- assign kinds = 'album,post,reel' | split: ',' -%}
+    <fieldset class="gx-filter">
+      <legend>{{ G.ui.kind[L] }}</legend>
+      <div class="gx-chips">
+        {%- for k in kinds -%}
+        {%- assign kind_n = items | where: "type", k | size -%}
+        <label class="gx-chip gx-chip-plain">
+          <input type="checkbox" name="kind" value="{{ k }}" checked>
+          <span>{{ G.types[k].name[L] }}</span>
+          <span class="gx-chip-n" aria-hidden="true">{{ kind_n }}</span>
+        </label>
+        {%- endfor -%}
+      </div>
+    </fieldset>
+
+    {%- comment -%}
+      The years, as a rule rather than as pills. Seventeen pilled years ran to
+      two rows and took more room than the other two filters together, and the
+      pill chrome gave 2008 — two posts — the same weight as 2024's ninety-six.
+      Same radios, same behaviour, one row.
+    {%- endcomment -%}
+    <fieldset class="gx-filter gx-filter-years">
+      <legend>{{ G.ui.when[L] }}</legend>
+      <div class="gx-rail" role="radiogroup">
+        <label class="gx-year gx-year-all">
+          <input type="radio" name="year" value="all" checked>
+          <span>{{ G.ui.all[L] }}</span>
+        </label>
+        <span class="gx-rail-sep" aria-hidden="true"></span>
+        {%- for y in year_list -%}
+        {%- if y != '' -%}
+        <label class="gx-year">
+          <input type="radio" name="year" value="{{ y }}">
+          <span>{{ y }}</span>
+        </label>
+        {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </fieldset>
+
+    {%- comment -%}
+      The templates travel to the script as data-* so the four translations
+      stay in _data/gallery.yml with everything else.
+    {%- endcomment -%}
+    <p class="gx-count" aria-live="polite"
+       data-showing="{{ G.ui.showing[L] }}"
+       data-all="{{ G.ui.all_of[L] }}"
+       data-items="{{ G.ui.items[L] }}"
+       data-clear="{{ G.ui.clear[L] }}"></p>
+  </div>
+
+  <div class="gx-grid">
+
+    {%- for it in items -%}
+      {%- comment -%}
+        Every tile is now a row out of _data/gallery.yml — album, post or reel
+        — because the site no longer hosts photographs of its own. Facebook
+        and Instagram hold the media; this holds the index.
+      {%- endcomment -%}
+      {%- assign kind = it.type -%}
+      {%- assign tags = it.tags -%}
+      {%- assign thumb = '/images/' | append: it.thumb -%}
+      {%- assign name = it.name -%}
+      {%- if L == 'ca' and it.name_ca %}{% assign name = it.name_ca %}
+      {%- elsif L == 'en' and it.name_en %}{% assign name = it.name_en %}
+      {%- elsif L == 'ja' and it.name_ja %}{% assign name = it.name_ja %}
+      {%- elsif it.name_es %}{% assign name = it.name_es %}{% endif -%}
+      {%- assign href = it.url -%}
+      {%- assign count = it.count -%}
+      {%- comment -%}
+        Approved but not fetched yet — `--metadata-only` writes the entry and
+        `--thumbs` fills the image in later. Skipped rather than broken.
+      {%- endcomment -%}
+      {%- if it.thumb == nil or it.thumb == '' -%}{%- continue -%}{%- endif -%}
+
+      {%- assign tag_attr = tags | join: ' ' -%}
+      {%- assign year = it.date_iso | slice: 0, 4 -%}
+      {%- comment -%}
+        date.html is a 70-line case statement with ordinal handling, and at
+        467 tiles across four languages it was called 1,868 times — most of
+        the build. A tile needs "12 julio 2026", so the month name comes
+        straight out of the calendar's own table.
+      {%- endcomment -%}
+      {%- assign mi = it.date_iso | date: '%-m' | minus: 1 -%}
+
+      <a class="gx-tile gx-{{ kind }}"
+         data-tags="{{ tag_attr }}" data-kind="{{ kind }}" data-year="{{ year }}"
+         href="{{ href }}" target="_blank" rel="noopener">
+        {%- comment -%}
+          A bare <img>, not a <picture> with two <source>s.
+
+          Three nodes a tile is 1,386 across the page, and the DOM was already
+          the heaviest thing here. The fallback they provided is a JPEG for
+          browsers without WebP — a set that no longer includes anything which
+          can run this page, since the filter chips need :has(), which arrived
+          two years after WebP was universal.
+        {%- endcomment -%}
+        {%- comment -%}
+          The first row is EAGER. Lighthouse picks one of these tiles as the
+          Largest Contentful Paint, and `loading="lazy"` on it means the
+          browser deliberately delays the single image that decides the score —
+          4.7 s on mobile. Above the fold nothing should be lazy; below it,
+          everything should.
+        {%- endcomment -%}
+        {%- comment -%}
+          srcset, because a tile is drawn at 15–24rem and was being handed a
+          960px file: 418 KB of waste on this page alone. `sizes` describes the
+          grid — `minmax(15rem, 1fr)` with a 1140 column — so the browser picks
+          before it downloads. The srcset itself comes from `_data/imgw.yml`,
+          which lists only variants that exist: spelling it out here named a
+          `-800` for every tile alike, and the ones whose source was too narrow
+          to be worth resizing 404ed.
+        {%- endcomment -%}
+        {%- assign srcset = site.data.imgw[it.thumb] -%}
+        {%- comment -%}
+          Measured, not read off the grid template: a tile is 305px at 1440 and
+          311px at 375. `24rem` was the minmax floor, not the drawn width, and
+          a `sizes` that over-declares makes the browser fetch a size up.
+        {%- endcomment -%}
+        {%- assign sizes = '(min-width: 992px) 305px, (min-width: 576px) 33vw, 83vw' -%}
+        {%- if forloop.index <= 4 %}
+        <img src="{{ thumb }}.webp"{% if srcset %} srcset="{{ srcset }}" sizes="{{ sizes }}"{% endif %}
+             fetchpriority="high" decoding="async"
+             width="640" height="480" alt="{{ name | escape }}">
+        {%- else %}
+        <img src="{{ thumb }}.webp"{% if srcset %} srcset="{{ srcset }}" sizes="{{ sizes }}"{% endif %}
+             loading="lazy" decoding="async"
+             width="640" height="480" alt="{{ name | escape }}">
+        {%- endif %}
+
+        <span class="gx-badge">{{ G.types[kind].name[L] }}</span>
+        {%- if kind == 'album' and count %}
+        <span class="gx-num">{{ count }} {{ G.ui.photos[L] }}</span>
+        {%- endif %}
+        {%- if kind == 'reel' %}
+        <span class="gx-play" aria-hidden="true">
+          <svg viewBox="0 0 384 512" fill="currentColor"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.3-23-41L73 39z"/></svg>
+        </span>
+        {%- endif %}
+
+        <span class="gx-meta">
+          <span class="gx-name">{{ name }}</span>
+          {%- comment -%}
+            The <time> IS the .gx-date; it used to be wrapped in a span carrying
+            the class, which is one element per tile and 462 across the page on
+            a page whose DOM is already the heaviest thing about it. `.gx-date`
+            is a class selector with `display: block`, so it does not care what
+            element it lands on.
+          {%- endcomment -%}
+          <time class="gx-date" datetime="{{ it.date_iso }}">{{ it.date_iso | date: '%-d' }} {{ months[L][mi] }} {{ it.date_iso | slice: 0, 4 }}</time>
+        </span>
+        <span class="gx-sr">
+          {%- if kind == 'album' -%}{{ G.ui.on_fb[L] }}
+          {%- else -%}{{ G.ui.on_ig[L] }}{%- endif -%}
+        </span>
+      </a>
+    {%- endfor -%}
+
+    <p class="gx-empty" hidden>{{ G.ui.nothing[L] }}</p>
+  </div>
+
+
+</main>
+
+{% include footer.html %}

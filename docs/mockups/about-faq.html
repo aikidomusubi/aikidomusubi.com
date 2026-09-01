@@ -1,0 +1,104 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Preguntas frecuentes — Aikido Musubi</title><link rel="stylesheet" href="/styles/all.min.css">
+<style>
+:root{--ink:#111314;--mute:#5c6a70;--line:rgba(17,19,20,.13);--acc:#FFF200}
+html,body{margin:0;background:#fff;color:var(--ink);
+  font-family:'Noto Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+h1,h2,h3{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-weight:400;margin:0;
+  letter-spacing:.04em}
+p{margin:0}
+.w{max-width:1140px;margin:0 auto;padding:0 6rem}
+@media(max-width:991.98px){.w{padding:0 4rem}}
+@media(max-width:767.98px){.w{padding:0 2rem}}
+.jp{font-family:'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif}
+
+.ab-nav{display:flex;flex-wrap:wrap;gap:1.4rem;padding:1.6rem 0 1rem;
+  border-bottom:1px solid var(--line)}
+.ab-nav a{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:#425055;
+  text-decoration:none;padding:.2rem 0}
+.ab-nav a:hover{color:var(--ink)}
+.ab-nav a[aria-current]{color:var(--ink);font-weight:700;box-shadow:inset 0 -2px 0 var(--ink)}
+
+.top{padding:2.6rem 0 2rem}
+.top h1{font-size:2.4rem;text-transform:uppercase;letter-spacing:.06em}
+.top .lede{margin-top:1rem;max-width:42rem;font-size:1.05rem;line-height:1.75;color:#2c3437}
+@media(max-width:575.98px){.top h1{font-size:1.8rem}}
+
+.body{padding-bottom:5rem;max-width:43.25rem}
+.body h2{font-size:1.2rem;text-transform:uppercase;letter-spacing:.09em;margin:2.8rem 0 1rem;
+  padding-top:1.5rem;border-top:1px solid var(--line)}
+.body h3{font-size:1rem;margin:1.6rem 0 .5rem}
+.body p{font-size:.98rem;line-height:1.85;color:#2c3437;margin-bottom:1rem}
+.body a{color:var(--ink);text-decoration:underline;text-underline-offset:.18em}
+.body em{font-style:italic}
+.new{display:inline-block;font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.5rem;
+  letter-spacing:.18em;text-transform:uppercase;background:var(--acc);color:var(--ink);
+  padding:.16rem .42rem;vertical-align:.3em;margin-left:.6rem}
+
+/* numbered etiquette list */
+.steps{counter-reset:s;margin:0 0 1rem;padding:0;list-style:none}
+.steps li{counter-increment:s;position:relative;padding:.75rem 0 .75rem 3.2rem;
+  border-bottom:1px solid var(--line);font-size:.95rem;line-height:1.75;color:#2c3437}
+.steps li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:.95rem;
+  font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.66rem;letter-spacing:.14em;
+  color:#B04E17}
+.steps li b{font-weight:400;color:var(--ink)}
+
+/* timeline */
+.tl{margin:0 0 1rem;border-top:1px solid var(--line)}
+.tl-i{display:grid;grid-template-columns:4.6rem 1fr;gap:1.4rem;padding:.85rem 0;
+  border-bottom:1px solid var(--line);align-items:baseline}
+.tl-i .y{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.95rem;color:#B04E17}
+.tl-i .t{font-size:.95rem;line-height:1.7;color:#2c3437}
+.tl-i .t small{display:block;color:var(--mute);font-size:.82rem;margin-top:.15rem}
+.tl-i[data-q] .y{color:var(--mute)}
+.tl-i[data-q] .t::after{content:'por confirmar';display:inline-block;margin-left:.5rem;
+  font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.5rem;letter-spacing:.14em;
+  text-transform:uppercase;color:#fff;background:#B04E17;padding:.1rem .38rem;vertical-align:.18em}
+@media(max-width:575.98px){.tl-i{grid-template-columns:1fr;gap:.1rem}}
+
+/* people */
+.ppl{display:grid;grid-template-columns:1fr 1fr;gap:0 2.4rem;margin-bottom:1rem}
+.ppl div{padding:.7rem 0;border-bottom:1px solid var(--line);display:flex;
+  justify-content:space-between;gap:1rem;align-items:baseline}
+.ppl b{font-weight:400;font-size:.95rem}
+.ppl span{font-size:.78rem;color:var(--mute);white-space:nowrap}
+@media(max-width:575.98px){.ppl{grid-template-columns:1fr}}
+
+/* venues */
+.ven{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin:1.4rem 0}
+.ven figure{margin:0}
+.ven img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
+.ven b{display:block;margin-top:.6rem;font-size:.92rem;font-weight:400}
+.ven small{display:block;font-size:.78rem;color:var(--mute);line-height:1.5}
+@media(max-width:575.98px){.ven{grid-template-columns:1fr}}
+
+/* weapons */
+.wep{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);
+  margin:1.2rem 0}
+.wep div{background:#fff;padding:1rem 1.05rem 1.15rem}
+.wep .k{font-size:1.5rem;line-height:1.2}
+.wep .r{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.62rem;letter-spacing:.18em;
+  text-transform:uppercase;color:#B04E17;margin:.35rem 0 .45rem}
+.wep p{font-size:.82rem;line-height:1.65;color:var(--mute);margin:0}
+@media(max-width:575.98px){.wep{grid-template-columns:1fr}}
+
+/* faq */
+.faq{border-top:1px solid var(--line);max-width:43.25rem}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:1rem 2.2rem 1rem 0;position:relative;
+  font-size:1.02rem;line-height:1.5;color:var(--ink)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'+';position:absolute;right:.3rem;top:.95rem;color:var(--mute);
+  font-size:1.1rem;transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg);color:#B04E17}
+.faq summary:hover{color:#B04E17}
+.faq .a{padding:0 0 1.1rem}
+.faq .a p{font-size:.94rem;line-height:1.8;color:#2c3437;margin-bottom:.8rem}
+.faq .a p:last-child{margin-bottom:0}
+</style></head><body>
+<div class="w"><nav class="ab-nav"><a href="about-dojo.html">El dojo</a><a href="about-aikido.html">Aikido</a><a href="about-asociacion.html">La asociación</a><a href="about-faq.html" aria-current="page">Preguntas frecuentes</a></nav>
+<header class="top"><h1>Preguntas frecuentes</h1><p class="lede">Lo que nos preguntan por correo, por teléfono y en el borde del tatami. Si tu pregunta no está, <a href="/contacto/" style="color:inherit">mándanosla</a> y la añadimos.</p></header>
+<div class="body"><div class="faq"><details open><summary>¿Sirve el aikido para defenderse?</summary><div class="a"><p>Sí, pero no es la razón por la que la mayoría se queda. El aikido enseña a no estar donde llega el golpe, a mantener la distancia y a controlar a alguien sin hacerle daño, y todo eso sirve. Lo que no hace es prepararte para una pelea en dos meses: es un estudio largo y lo dice de entrada.</p></div></details><details><summary>¿Es peligroso? ¿Me van a hacer daño?</summary><div class="a"><p>Se practica por parejas y con contacto, así que hay que tener cuidado, y eso es exactamente lo que se entrena. No hay competición ni golpes al contacto, la intensidad la ponen los dos y basta con decir que algo molesta para que se pare.</p><p>Lo primero que se aprende, antes que cualquier técnica, es a caer.</p></div></details><details><summary>¿Tengo que ser flexible o estar en forma?</summary><div class="a"><p>No. Se empieza donde se está, y el calentamiento y el ukemi construyen la movilidad que hace falta. Si tienes una lesión o una limitación concreta, dilo antes de empezar y se adapta.</p></div></details><details><summary>¿Desde qué edad? ¿Hay clases para niños?</summary><div class="a"><p>Escríbenos y te decimos qué grupo encaja. Hay adultos de todas las edades practicando a la vez, que es una de las cosas buenas de que no haya categorías por peso ni por edad.</p></div></details><details><summary>¿Cuánto cuesta empezar?</summary><div class="a"><p>Las dos primeras clases no cuestan nada y la inscripción es gratuita todo el año. A partir de ahí hay una cuota mensual según la actividad: está toda en <a href="/cuotas/">Cuotas</a>.</p></div></details><details><summary>¿Qué me pongo el primer día?</summary><div class="a"><p>Ropa cómoda que cubra los brazos y las piernas, del tipo chándal y camiseta de manga larga. Al tatami se entra descalzo. El keikogi ya llegará cuando decidas quedarte.</p></div></details><details><summary>¿Cuándo puedo empezar?</summary><div class="a"><p>Cualquier semana del año. No hay curso ni temporada: los grupos son abiertos y se entra cuando se puede.</p></div></details><details><summary>¿Cuánto se tarda en llevar hakama?</summary><div class="a"><p>Depende del dojo y de la línea. En la nuestra el hakama va asociado al grado, no al tiempo, y el grado llega cuando el trabajo está hecho. Nadie te va a dar una fecha, y esa es parte de la respuesta.</p></div></details><details><summary>¿Hay competiciones?</summary><div class="a"><p>No. El aikido no tiene competición por decisión de su fundador, y eso cambia bastante cómo se practica: tu compañero no es un rival, es la persona con la que estás aprendiendo.</p></div></details><details><summary>¿Puedo ir a mirar antes de apuntarme?</summary><div class="a"><p>Sí. Avísanos con un día y te decimos cuándo venir. Dicho esto, mirar aikido dice bastante menos que probarlo, y probarlo tampoco cuesta nada.</p></div></details><details><summary>Estoy de paso por Barcelona y practico aikido. ¿Puedo entrenar?</summary><div class="a"><p>Claro. Escríbenos antes con tu grado y tu dojo de origen y te decimos qué clases hay esos días. Está explicado en <a href="/visitantes/">Visitantes</a>.</p></div></details><details><summary>¿Hay que saber japonés?</summary><div class="a"><p>No, pero se oye japonés en cada clase: los nombres de las técnicas, los saludos y los números. Se aprende solo, por repetición. Y si quieres adelantarte, está el <a href="/glosario/">glosario</a>.</p></div></details><details><summary>¿Tengo que federarme?</summary><div class="a"><p>Sí, la licencia federativa incluye el seguro deportivo, que es obligatorio. Se tramita desde el dojo una vez al año.</p></div></details><details><summary>¿Cuántos días a la semana hay que ir?</summary><div class="a"><p>Con dos ya se avanza. Con uno se mantiene, y con tres o cuatro se nota mucho. No hay un mínimo obligatorio: la cuota da acceso a todas las clases de tu actividad y vas las que puedas.</p></div></details><details><summary>Tengo una lesión antigua. ¿Puedo practicar?</summary><div class="a"><p>Casi siempre sí, y hay gente entrenando con rodillas, hombros y espaldas de todo tipo. Cuéntanoslo antes de la primera clase y el instructor te dirá qué adaptar. Lo que no hacemos es decidir por ti: si tu médico te ha dicho algo, hazle caso a él.</p></div></details><details><summary>¿Saludar es una cosa religiosa?</summary><div class="a"><p>No. El saludo al frente del dojo reconoce que lo que se practica aquí lo construyeron otros antes; el saludo al compañero es agradecerle que preste su cuerpo para que aprendas. No hay culto, ni oración, ni se pide creer en nada.</p></div></details><details><summary>¿Hay vestuarios y duchas? ¿Dónde aparco?</summary><div class="a"><p>En Badalona hay vestuarios y el aparcamiento es gratuito. Los otros dos espacios son instalaciones municipales y universitarias con sus propias condiciones: están detalladas en <a href="/acceso/">Acceso</a>.</p></div></details><details><summary>¿Se para en agosto o en vacaciones?</summary><div class="a"><p>En agosto el horario se reduce y en los festivos el dojo cierra. Todo eso está, con fechas, en el <a href="/calendario/">calendario</a>.</p></div></details><details><summary>Si dejo de venir unos meses, ¿pierdo algo?</summary><div class="a"><p>No. Se puede pausar y volver, y volver después de años también. El grado no caduca y el sitio sigue estando.</p></div></details><details><summary>¿Tengo que comprar armas?</summary><div class="a"><p>Al principio no. Hay bokken y jō del dojo para usar. Cuando decidas comprarte los tuyos te decimos dónde y qué medida te conviene.</p></div></details><details><summary>¿Puedo hacer fotos o vídeo en clase?</summary><div class="a"><p>Pregunta antes. En el tatami hay menores y hay gente que no quiere salir, y eso manda por encima de cualquier foto.</p></div></details><details><summary>¿Y las otras artes que se dan en el dojo?</summary><div class="a"><p>El mismo tatami acoge iaijutsu, judo y karate, cada uno con su instructor y su horario. Están en <a href="/clases/">Clases</a>.</p></div></details></div></div></div></body></html>

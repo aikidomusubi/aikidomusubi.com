@@ -1,0 +1,234 @@
+# What we teach.
+#
+# ONE SOURCE, AND NO TIMES. The classes page used to hand-type every start and
+# end time in Markdown — 27 ranges per language, 108 across the four — and it
+# had already drifted from _data/schedule.yml in three places, including a
+# Saturday class that moved to 07:30 and a monthly iaijutsu session listed as
+# weekly. Nothing here states a time. The days and dojos under each discipline
+# are derived from schedule.yml at build time, and the timetable link carries
+# the right filter, so this page cannot go stale on its own.
+#
+# `tier` sets how prominently a discipline is drawn and says what it is:
+#   principal  the dojo's own practice, the reason the club exists
+#   own        also taught by us
+#   guest      an independent club sharing our mat, with its own sign-up
+#
+# `category` and `level` are the keys from _data/schedule.yml. They are what
+# joins a discipline to its classes, so renaming one there means renaming it
+# here too — nothing else links the two files.
+
+ui:
+  teach:      { es: "También enseñamos",     ca: "També ensenyem",
+                en: "We also teach",         ja: "そのほかの稽古" }
+  guests:     { es: "También en nuestro tatami", ca: "També al nostre tatami",
+                en: "Also on our mat",       ja: "同じ道場で" }
+  timetable:  { es: "Ver los horarios de",   ca: "Veure els horaris de",
+                en: "See the timetable for", ja: "の稽古時間を見る" }
+  timetable_short: { es: "Ver los horarios", ca: "Veure els horaris",
+                     en: "See the timetable", ja: "稽古時間を見る" }
+  fees:       { es: "Cuotas",                ca: "Quotes",
+                en: "Fees",                  ja: "会費" }
+  contact:    { es: "Contactar",             ca: "Contactar",
+                en: "Contact",               ja: "問い合わせ" }
+  independent: { es: "Club independiente, inscripción aparte",
+                ca: "Club independent, inscripció a part",
+                en: "Independent club, separate sign-up",
+                ja: "独立クラブ・申込は別" }
+  first:      { es: "Tu primera clase",      ca: "La teva primera classe",
+                en: "Your first class",      ja: "はじめて来られる方へ" }
+  # Day-name joining, which differs by language: Spanish and Catalan write
+  # weekdays in lower case and lead with "de"; English capitalises them and
+  # takes no preposition; Japanese uses a wave dash with no spaces and 、 as
+  # the list separator.
+  # "N clases por semana". Singular and plural are separate strings because
+  # Spanish and Catalan inflect the noun and English does not inflect the same
+  # way; Japanese takes a counter instead and needs no plural at all.
+  per_week:   { es: "clases por semana",  ca: "classes per setmana",
+                en: "classes a week",      ja: "回の稽古" }
+  per_week_1: { es: "clase por semana",    ca: "classe per setmana",
+                en: "class a week",        ja: "回の稽古" }
+  week_prefix: { es: "", ca: "", en: "", ja: "週" }
+  # Opens the screen-reader-only sentence that carries the days, since the
+  # visual week strip is decoration and marked aria-hidden.
+  days_sr:    { es: "Clases", ca: "Classes", en: "Classes", ja: "稽古日" }
+  day_from:   { es: "de", ca: "de", en: "",   ja: "" }
+  day_range:  { es: "a",  ca: "a",  en: "to", ja: "〜" }
+  list_sep:   { es: ", ", ca: ", ", en: ", ", ja: "、" }
+  lowercase_days: { es: true, ca: true, en: false, ja: false }
+
+# The three-step panel at the foot. Kept here rather than in the page bodies so
+# the four languages cannot drift apart.
+first_steps:
+  - title: { es: "Avísanos antes", ca: "Avisa'ns abans",
+             en: "Let us know first", ja: "事前にご連絡を" }
+    body:  { es: "Con un día basta. Dinos qué clase te interesa y te decimos cuándo venir.",
+             ca: "Amb un dia n'hi ha prou. Digues-nos quina classe t'interessa i et diem quan venir.",
+             en: "A day ahead is enough. Tell us which class interests you and we will tell you when to come.",
+             ja: "前日までのご連絡で結構です。ご希望のクラスをお知らせいただければ、日程をご案内します。" }
+  - title: { es: "Qué llevar", ca: "Què portar",
+             en: "What to bring", ja: "持ちもの" }
+    body:  { es: "Ropa cómoda de manga larga y chanclas para pisar fuera del tatami. El keikogi ya llegará.",
+             ca: "Roba còmoda de màniga llarga i xancletes per trepitjar fora del tatami. El keikogi ja arribarà.",
+             en: "Comfortable long-sleeved clothes, and sandals for walking off the mat. The keikogi can wait.",
+             ja: "長袖の動きやすい服と、道場の外を歩くためのサンダル。稽古着は後からで大丈夫です。" }
+  - title: { es: "Llega 15 minutos antes", ca: "Arriba 15 minuts abans",
+             en: "Arrive 15 minutes early", ja: "15分前にお越しください" }
+    body:  { es: "Los polideportivos son grandes y el dojo no se ve desde la calle.",
+             ca: "Els poliesportius són grans i el dojo no es veu des del carrer.",
+             en: "The sports centres are large and the dojo is not visible from the street.",
+             ja: "スポーツ施設は広く、道場は通りからは見えません。" }
+
+disciplines:
+  # ---------------------------------------------------------------------------
+  - id: aikido
+    tier: principal
+    category: aikido
+    image: classes-CJc2lhFv-27
+    jp: "合気道 合気会"
+    romaji: "Aikido Aikikai"
+    name: { es: "Aikido", ca: "Aikido", en: "Aikido", ja: "合気道" }
+    body:
+      es:
+        - "Un arte marcial japonés que no busca vencer al oponente sino neutralizar el ataque redirigiendo su fuerza. Se practica siempre por parejas, sin combate ni competición: uno ataca, el otro resuelve, y luego se cambian los papeles."
+        - "Por eso se puede empezar a cualquier edad y seguir practicando toda la vida. No hace falta fuerza ni experiencia previa."
+      ca:
+        - "Un art marcial japonès que no busca vèncer l'oponent sinó neutralitzar l'atac redirigint-ne la força. Es practica sempre per parelles, sense combat ni competició: un ataca, l'altre resol, i després es canvien els papers."
+        - "Per això es pot començar a qualsevol edat i seguir practicant tota la vida. No cal força ni experiència prèvia."
+      en:
+        - "A Japanese martial art that does not set out to beat an opponent but to neutralise an attack by redirecting its force. It is always practised in pairs, with no sparring and no competition: one attacks, the other resolves it, then they swap."
+        - "That is why you can start at any age and keep practising for life. No strength and no previous experience are needed."
+      ja:
+        - "合気道は相手を打ち負かすのではなく、攻撃の力を導いて無力化する日本の武道です。つねに二人一組で稽古し、試合も競技もありません。攻め手と受け手を交代しながら進めます。"
+        - "だからこそ何歳からでも始められ、生涯続けられます。力も経験も必要ありません。"
+    programmes:
+      - id: all
+        level: all
+        badge: { es: "La clase habitual", ca: "La classe habitual",
+                 en: "The regular class",  ja: "通常稽古" }
+        name:  { es: "Todos los niveles", ca: "Tots els nivells",
+                 en: "All levels",         ja: "一般稽古" }
+        body:
+          es: "La práctica regular del dojo, y donde acaba entrenando todo el mundo. Se trabaja técnica de mano vacía por parejas, con compañeros de todos los grados en el mismo tatami: el que lleva años ajusta su práctica al que acaba de llegar. A partir de 12 años."
+          ca: "La pràctica regular del dojo, i on acaba entrenant tothom. Es treballa tècnica de mà buida per parelles, amb companys de tots els graus al mateix tatami: qui fa anys que practica ajusta la seva pràctica a qui acaba d'arribar. A partir de 12 anys."
+          en: "The dojo's regular practice, and where everybody ends up training. Empty-hand technique in pairs, with every grade on the same mat: whoever has been at it for years adjusts their practice to whoever just walked in. From 12 years old."
+          ja: "道場の中心となる稽古で、最終的には全員がここで稽古します。二人一組の体術を、段級を問わず同じ畳の上で行います。長く稽古している者が、来たばかりの人に合わせます。12歳以上。"
+        # Rank order. See the `rank` field on _data/schedule.yml instructors.
+        instructors: [martin, fortes, sancho, perez, villar, trainee]
+      - id: beginners
+        level: beginners
+        badge: { es: "Por aquí se empieza", ca: "Per aquí es comença",
+                 en: "Start here",           ja: "はじめての方へ" }
+        name:  { es: "Principiantes", ca: "Principiants",
+                 en: "Beginners",      ja: "初心者稽古" }
+        body:
+          es: "La entrada al aikido, sin experiencia previa de ningún tipo. Se dedica a lo que hace posible todo lo demás: aprender a caer sin hacerse daño, los desplazamientos, la distancia y la etiqueta del tatami. Se puede compaginar con la clase general desde el primer mes."
+          ca: "L'entrada a l'aikido, sense cap experiència prèvia. Es dedica al que fa possible tota la resta: aprendre a caure sense fer-se mal, els desplaçaments, la distància i l'etiqueta del tatami. Es pot compaginar amb la classe general des del primer mes."
+          en: "The way into aikido, with no previous experience of any kind. It covers what makes everything else possible: falling without hurting yourself, footwork, distance, and the etiquette of the mat. You can combine it with the general class from your first month."
+          ja: "経験がまったくなくても始められる、合気道への入口です。受身、体さばき、間合い、道場での作法という、ほかのすべての土台になるものを学びます。初月から一般稽古と併せて受けられます。"
+        instructors: [martin, perez]
+      - id: weapons
+        level: weapons
+        badge: { es: "Buki waza", ca: "Buki waza", en: "Buki waza", ja: "武器技" }
+        name:  { es: "Armas", ca: "Armes", en: "Weapons", ja: "武器" }
+        body:
+          es: "El aikido nace de la esgrima, y sus movimientos de mano vacía se entienden mejor con un arma en la mano. Se practica con <i>bokken</i> (sable de madera), <i>jō</i> (bastón medio) y <i>tantō</i> (cuchillo de madera), en formas por parejas. No es una disciplina aparte: aclara lo que ya se hace sin armas."
+          ca: "L'aikido neix de l'esgrima, i els seus moviments de mà buida s'entenen millor amb una arma a la mà. Es practica amb <i>bokken</i> (sabre de fusta), <i>jō</i> (bastó mitjà) i <i>tantō</i> (ganivet de fusta), en formes per parelles. No és una disciplina a part: aclareix el que ja es fa sense armes."
+          en: "Aikido comes out of swordwork, and its empty-hand movement makes more sense with a weapon in your hands. Practised with the <i>bokken</i> (wooden sword), <i>jō</i> (staff) and <i>tantō</i> (wooden knife), in paired forms. It is not a separate discipline: it clarifies what you already do without weapons."
+          ja: "合気道は剣術から生まれており、体術の動きは武器を手にすると理解しやすくなります。<i>木剣</i>、<i>杖</i>、<i>短刀</i>を用い、組んだ形で稽古します。別の武道ではなく、素手の稽古を明らかにするものです。"
+        instructors: [martin, zheng]
+      - id: children
+        suspended: true
+        badge: { es: "Suspendidas hasta nuevo aviso", ca: "Suspeses fins a nou avís",
+                 en: "Suspended until further notice", ja: "当面のあいだ休講" }
+        name:  { es: "Niños y niñas", ca: "Nens i nenes",
+                 en: "Children",       ja: "子どもクラス" }
+        body:
+          es: "De 6 a 12 años. El aikido les da concentración y confianza en un ambiente donde nadie compite contra nadie, y aprenden a defenderse sin hacer daño al otro. <b>El grupo infantil está suspendido por ahora</b>; si te interesa para tu hijo o hija, escríbenos y te avisamos en cuanto vuelva a abrirse."
+          ca: "De 6 a 12 anys. L'aikido els dóna concentració i confiança en un ambient on ningú competeix contra ningú, i aprenen a defensar-se sense fer mal a l'altre. <b>El grup infantil està suspès de moment</b>; si t'interessa per al teu fill o filla, escriu-nos i t'avisem quan torni a obrir-se."
+          en: "Ages 6 to 12. Aikido gives them focus and confidence in a setting where nobody competes against anybody, and they learn to defend themselves without hurting anyone. <b>The children's group is suspended for now</b>; if you would like a place for your child, write to us and we will let you know as soon as it reopens."
+          ja: "6歳から12歳まで。誰とも競わない環境のなかで集中力と自信が育ち、相手を傷つけずに身を守ることを学びます。<b>子どもクラスは現在休講しています。</b>ご希望の方はご連絡ください。再開の際にお知らせします。"
+        note: { es: "Escríbenos para entrar en la lista de aviso",
+                ca: "Escriu-nos per entrar a la llista d'avís",
+                en: "Write to us to join the waiting list",
+                ja: "再開のお知らせをご希望の方はご連絡ください" }
+
+  # ---------------------------------------------------------------------------
+  - id: iaijutsu
+    tier: own
+    category: iaijutsu
+    image: classes-CJc2lhFv-34
+    jp: "居合術 柳心照智流"
+    romaji: "Iaijutsu Ryūshin Shōchi-ryū"
+    name: { es: "Iaijutsu", ca: "Iaijutsu", en: "Iaijutsu", ja: "居合術" }
+    body:
+      es:
+        - "El arte de sacar el sable. En iaijutsu la respuesta empieza con el arma todavía envainada: desenvainar, cortar y volver a envainar forman un mismo gesto, sin pausa entre ellos. No hay adversario delante, y ahí está la dificultad: la precisión no te la corrige nadie, te la corriges tú."
+        - "Se practica con <i>iaitō</i>, un sable sin filo, repitiendo formas heredadas. El Ryūshin Shōchi-ryū es una escuela joven con raíces antiguas: la fundó Kawabata Terutaka en 2006 y adoptó su nombre actual en 2011, pero buena parte de sus <i>kata</i> vienen del Tenshinshō Jigen-ryū, del siglo XVI."
+      ca:
+        - "L'art de desembeinar. A l'iaijutsu la resposta comença amb l'arma encara embeinada: desembeinar, tallar i tornar a embeinar formen un mateix gest, sense pausa entre ells. No hi ha cap adversari al davant, i aquesta és la dificultat: la precisió no te la corregeix ningú, te la corregeixes tu."
+        - "Es practica amb <i>iaitō</i>, un sabre sense fil, repetint formes heretades. El Ryūshin Shōchi-ryū és una escola jove amb arrels antigues: la va fundar Kawabata Terutaka el 2006 i va adoptar el nom actual el 2011, però bona part dels seus <i>kata</i> vénen del Tenshinshō Jigen-ryū, del segle XVI."
+      en:
+        - "The art of drawing the sword. In iaijutsu the answer begins with the blade still in its scabbard: drawing, cutting and sheathing are one gesture with no pause between them. There is no opponent in front of you, and that is the difficulty. Nobody corrects your precision; you correct it yourself."
+        - "It is practised with an <i>iaitō</i>, an unsharpened sword, repeating inherited forms. Ryūshin Shōchi-ryū is a young school with old roots: Kawabata Terutaka founded it in 2006 and it took its present name in 2011, but many of its <i>kata</i> come from the sixteenth-century Tenshinshō Jigen-ryū."
+      ja:
+        - "刀を抜く技。居合術では、まだ鞘に納まったところから応じます。抜刀、斬撃、納刀はひと続きの所作であり、その間に切れ目はありません。目の前に相手はいません。そこが難しさです。正確さを直してくれる人はおらず、自分で直すほかありません。"
+        - "刃のない<i>居合刀</i>を用い、受け継がれた形を繰り返し稽古します。柳心照智流は古い根を持つ新しい流派です。2006年に川端照隆が興し、2011年に現在の流派名となりました。形の多くは16世紀の天真正自顕流に由来します。"
+    # The Saturday session has no fixed rhythm to advertise: it runs when a date
+    # is set, and that date lives in _data/calendar.yml. Saying "one Saturday a
+    # month" here while the timetable shows nothing is the kind of quiet
+    # disagreement between two pages this site keeps having to fix.
+    schedule_note:
+      es: "Clase semanal los lunes. La sesión larga del sábado se anuncia en el calendario."
+      ca: "Classe setmanal els dilluns. La sessió llarga del dissabte s'anuncia al calendari."
+      en: "A weekly class on Mondays. The long Saturday session is announced in the calendar."
+      ja: "毎週月曜の稽古。土曜の長時間稽古はカレンダーでお知らせします。"
+    instructors: [serra, zafra]
+
+  # ---------------------------------------------------------------------------
+  - id: judo
+    tier: guest
+    category: judo
+    image: classes-CJc2lhFv-38
+    jp: "柔道"
+    romaji: "Judo"
+    name: { es: "Judo", ca: "Judo", en: "Judo", ja: "柔道" }
+    body:
+      es:
+        - "Jigorō Kanō lo llamó «el camino de la suavidad» porque su idea era justo la contraria a la fuerza: si el otro empuja, cedes; si tira, avanzas. El momento en que pierde el equilibrio es el momento en que la técnica funciona sola."
+        - "Se entrena de pie y en el suelo, y se cae mucho, que es lo primero que se aprende. Kanō lo concibió como educación antes que como deporte, y esa parte sigue ahí: es la razón por la que tantos padres lo eligen para sus hijos."
+      ca:
+        - "Jigorō Kanō en va dir «el camí de la suavitat» perquè la seva idea era just la contrària a la força: si l'altre empeny, cedeixes; si estira, avances. El moment en què perd l'equilibri és el moment en què la tècnica funciona tota sola."
+        - "S'entrena dempeus i a terra, i es cau molt, que és el primer que s'aprèn. Kanō el va concebre com a educació abans que com a esport, i aquesta part encara hi és: és la raó per la qual tants pares el trien per als seus fills."
+      en:
+        - "Jigorō Kanō called it “the gentle way” because his idea was the opposite of force: if the other person pushes, you give; if they pull, you go with them. The moment they lose their balance is the moment the technique works by itself."
+        - "It is trained standing and on the ground, and you fall a great deal, which is the first thing you learn. Kanō built it as education before sport, and that part has stayed: it is why so many parents choose it for their children."
+      ja:
+        - "嘉納治五郎がこれを「柔の道」と呼んだのは、その考え方が力とは正反対だったからです。相手が押せば引き、引けば進む。相手の体勢が崩れたその瞬間に、技はひとりでに効きます。"
+        - "立ち技と寝技の両方を稽古し、とにかくよく倒れます。受身が最初に身につくものです。嘉納は柔道を競技である前に教育として構想しました。その性格はいまも残っており、多くの親が子どもに柔道を選ぶ理由になっています。"
+    contact: "judomusubi@gmail.com"
+    instructors: [molina]
+
+  # ---------------------------------------------------------------------------
+  - id: karate
+    tier: guest
+    category: karate
+    image: classes-CJc2lhFv-42
+    jp: "極真空手"
+    romaji: "Kyokushin Karate"
+    name: { es: "Karate", ca: "Karate", en: "Karate", ja: "空手" }
+    body:
+      es:
+        - "Kyokushin es karate de contacto pleno: los golpes llegan de verdad, sin protecciones y sin detenerse a puntuar. Masutatsu Ōyama lo fundó en los años cincuenta convencido de que un arte marcial que nunca se pone a prueba acaba siendo una idea sobre pelear, no la cosa misma."
+        - "La clase alterna técnica básica, formas y combate, y esa progresión es la que hace que sea abordable: nadie te pone delante de un combate el primer día. Es exigente por diseño, y lo que más se entrena, al final, es no abandonar."
+      ca:
+        - "El kyokushin és karate de contacte ple: els cops arriben de debò, sense proteccions i sense aturar-se a puntuar. Masutatsu Ōyama el va fundar als anys cinquanta convençut que un art marcial que no es posa mai a prova acaba sent una idea sobre lluitar, no la cosa mateixa."
+        - "La classe alterna tècnica bàsica, formes i combat, i aquesta progressió és la que la fa abordable: ningú no et posa davant d'un combat el primer dia. És exigent per disseny, i el que més s'entrena, al capdavall, és no abandonar."
+      en:
+        - "Kyokushin is full-contact karate: the strikes actually land, without pads and without stopping to score a point. Masutatsu Ōyama founded it in the 1950s, convinced that a martial art never put to the test ends up being an idea about fighting rather than the thing itself."
+        - "A class moves between basics, forms and sparring, and that progression is what makes it approachable, and nobody puts you in a fight on your first day. It is demanding by design, and what it trains hardest, in the end, is not quitting."
+      ja:
+        - "極真はフルコンタクトの空手です。防具をつけず、ポイントで止めることもなく、突きも蹴りも実際に当てます。大山倍達は1950年代に、試されることのない武道は結局「戦いについての考え」であって戦いそのものではない、という確信からこの流派を興しました。"
+        - "稽古は基本、型、組手を行き来します。この段階があるからこそ取り組みやすく、初日からいきなり組手をさせられることはありません。厳しさは設計によるものであり、最後にいちばん鍛えられるのは、やめずに続ける力です。"
+    contact: "pepllorensinstructor@gmail.com"
+    phone: "+34646764213"
+    instructors: [llorens]

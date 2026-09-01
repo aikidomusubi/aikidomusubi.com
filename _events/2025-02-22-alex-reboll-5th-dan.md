@@ -5,14 +5,23 @@ title_en: "Àlex Reboll 5th Dan Aikikai"
 title_es: "Àlex Reboll 5.º Dan Aikikai"
 title_ja: "アレックス・レボイ 五段 合気会"
 
+instructor_ca: "Àlex Reboll"
+grade_ca: "5è dan Aikikai"
+instructor_en: "Àlex Reboll"
+grade_en: "5th dan Aikikai"
+instructor_es: "Àlex Reboll"
+grade_es: "5.º dan Aikikai"
+instructor_ja: "アレックス・レボイ"
+grade_ja: "五段 合気会"
+
 desc_ca: >-
-  Aquest dissabte 25 de gener, no et perdis aquesta classe especial al nostre dojo amb Àlex Reboll, 5è Dan Aikikai.<br><br>Aquesta sessió està oberta a tothom que vulgui participar. No t’ho perdis!<br><br>T’hi esperem!
+ Aquest dissabte 25 de gener, no et perdis aquesta classe especial al nostre dojo amb Àlex Reboll, 5è Dan Aikikai. Aquesta sessió està oberta a tothom que vulgui participar. No t’ho perdis! T’hi esperem!
 desc_en: >-
-  This Saturday, January 25th, don't miss out on this special class at our dojo with Àlex Reboll, 5th Dan Aikikai.<br><br>This session is open to everyone who wants to participate. Don't miss it!<br><br>We look forward to seeing you there!
+ This Saturday, January 25th, don't miss out on this special class at our dojo with Àlex Reboll, 5th Dan Aikikai. This session is open to everyone who wants to participate. Don't miss it! We look forward to seeing you there!
 desc_es: >-
-  Este sábado 25 de enero, no te pierdas esta clase especial en nuestro dojo con Àlex Reboll, 5.º Dan Aikikai.<br><br>Esta sesión está abierta a todos los que quieran participar. ¡No te lo pierdas!<br><br>¡Te esperamos!
+ Este sábado 25 de enero, no te pierdas esta clase especial en nuestro dojo con Àlex Reboll, 5.º Dan Aikikai. Esta sesión está abierta a quien quiera participar. ¡No te lo pierdas! ¡Te esperamos!
 desc_ja: >-
-  １月２５日（土）、私たちの道場でアレックス・レボール（五段）による特別稽古をお見逃しなく！<br><br>このセッションは参加希望の方すべてに開放されています。お見逃しなく！<br><br>お待ちしています！
+ １月２５日（土）、私たちの道場でアレックス・レボール（五段）による特別稽古をお見逃しなく！ このセッションは参加希望の方すべてに開放されています。お見逃しなく！ お待ちしています！
 
 image_ca: "events-hFZ2XXIp-2025-02-22-alex-reboll-5th-dan-ca"
 image_en: "events-hFZ2XXIp-2025-02-22-alex-reboll-5th-dan-ca"

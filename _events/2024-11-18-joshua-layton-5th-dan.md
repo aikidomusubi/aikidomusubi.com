@@ -5,6 +5,15 @@ title_en: "Joshua Layton 5th Dan Aikikai"
 title_es: "Joshua Layton 5.º Dan Aikikai"
 title_ja: "ヨシュア・レイトン 五段 合気会"
 
+instructor_ca: "Joshua Layton"
+grade_ca: "5è dan Aikikai"
+instructor_en: "Joshua Layton"
+grade_en: "5th dan Aikikai"
+instructor_es: "Joshua Layton"
+grade_es: "5.º dan Aikikai"
+instructor_ja: "ヨシュア・レイトン"
+grade_ja: "五段 合気会"
+
 desc_ca: >-
   Estem molt emocionats de presentar una masterclass d'Aikido única amb Joshua Layton Sensei de Montérégie Aikikai. No et perdis aquest esdeveniment especial el dilluns 18 de novembre a Aikido Musubi (Av. d'Alfons XIII, 351 08918 Badalona, Barcelona).
 desc_en: >-

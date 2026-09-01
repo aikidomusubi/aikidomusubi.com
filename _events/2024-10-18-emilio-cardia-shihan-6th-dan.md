@@ -5,18 +5,23 @@ title_en: "Emilio Cardia Shihan 6th Dan Aikikai"
 title_es: "Emilio Cardia Shihan 6.º Dan Aikikai"
 title_ja: "エミリオ・カルディア 師範 六段 合気会"
 
+instructor_ca: "Emilio Cardia Shihan"
+grade_ca: "6è dan Aikikai"
+instructor_en: "Emilio Cardia Shihan"
+grade_en: "6th dan Aikikai"
+instructor_es: "Emilio Cardia Shihan"
+grade_es: "6.º dan Aikikai"
+instructor_ja: "エミリオ・カルディア 師範"
+grade_ja: "六段 合気会"
+
 desc_ca: >-
-  Estem molt emocionats de presentar una masterclass d'Aikido única amb Emilio Cardia Sensei d'Aikikai Corsico, prèvia al seminari de Badalona els dies 19 i 20 d'octubre.<br>
-  <br>No et perdis aquest esdeveniment especial el divendres 18 d'octubre a Aikido Musubi (Av. d'Alfons XIII, 351 08918 Badalona, Barcelona).
+ Estem molt emocionats de presentar una masterclass d'Aikido única amb Emilio Cardia Sensei d'Aikikai Corsico, prèvia al seminari de Badalona els dies 19 i 20 d'octubre. No et perdis aquest esdeveniment especial el divendres 18 d'octubre a Aikido Musubi (Av. d'Alfons XIII, 351 08918 Badalona, Barcelona).
 desc_en: >-
-  We are super excited to present a unique Aikido Masterclass with Emilio Cardia Sensei from Aikikai Corsico preceding the seminar in Badalona on October 19th and 20th.<br>
-  <br>Don't miss out on this special event on Friday, October 18th at Aikido Musubi (Av. d'Alfons XIII, 351 08918 Badalona, Barcelona).
+ We are super excited to present a unique Aikido Masterclass with Emilio Cardia Sensei from Aikikai Corsico preceding the seminar in Badalona on October 19th and 20th. Don't miss out on this special event on Friday, October 18th at Aikido Musubi (Av. d'Alfons XIII, 351 08918 Badalona, Barcelona).
 desc_es: >-
-  ¡Estamos muy emocionados de presentar una masterclass de Aikido única con Emilio Cardia Sensei de Aikikai Corsico, previa al seminario en Badalona los días 19 y 20 de octubre!<br>
-  <br>No te pierdas este evento especial el viernes 18 de octubre en Aikido Musubi (Av. d'Alfons XIII, 351 08918 Badalona, Barcelona).
+ ¡Estamos muy emocionados de presentar una masterclass de Aikido única con Emilio Cardia Sensei de Aikikai Corsico, previa al seminario en Badalona los días 19 y 20 de octubre! No te pierdas este evento especial el viernes 18 de octubre en Aikido Musubi (Av. d'Alfons XIII, 351 08918 Badalona, Barcelona).
 desc_ja: >-
-  アイキカイ・コルシコのエミリオ・カルディア先生を迎え、１０月１９日・２０日のバダロナでのセミナーに先立ち、特別合気道マスタークラスを開催することをお知らせします！<br>
-  <br>１０月１８日（金）に合気道産靈（バルセロナ、バダロナのアルフォンソ１３世通り３５１番地）でお会いしましょう。
+ アイキカイ・コルシコのエミリオ・カルディア先生を迎え、１０月１９日・２０日のバダロナでのセミナーに先立ち、特別合気道マスタークラスを開催することをお知らせします！ １０月１８日（金）に合気道産靈（バルセロナ、バダロナのアルフォンソ１３世通り３５１番地）でお会いしましょう。
 
 image_ca: "events-hFZ2XXIp-2024-10-18-emilio-cardia-shihan-6th-dan-ca"
 image_en: "events-hFZ2XXIp-2024-10-18-emilio-cardia-shihan-6th-dan-en"

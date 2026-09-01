@@ -5,6 +5,15 @@ title_en: "Ricard Coll 4th Dan Aikikai"
 title_es: "Ricard Coll 4.º Dan Aikikai"
 title_ja: "リカルド・コール 四段 合気会"
 
+instructor_ca: "Ricard Coll"
+grade_ca: "4t dan Aikikai"
+instructor_en: "Ricard Coll"
+grade_en: "4th dan Aikikai"
+instructor_es: "Ricard Coll"
+grade_es: "4.º dan Aikikai"
+instructor_ja: "リカルド・コール"
+grade_ja: "四段 合気会"
+
 desc_ca: >-
   El proper dissabte 1 de febrer tenim el plaer de rebre al nostre dojo a Ricard Coll (4t dan Aikikai). Animeu-vos!
 desc_en: >-

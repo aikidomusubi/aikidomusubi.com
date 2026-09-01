@@ -1,23 +1,97 @@
 {% include header.html %}
 
-<main>
+<main id="main" tabindex="-1">
+
+  {% include section-strip.html %}
 
   {{ content }}
 
-  {% for video in site.videos reversed %}
+  {%- comment -%}
+    Press & TV — interviews and appearances.
 
-    <div class="card">
-      <div class="ratio ratio-16x9">
-        <iframe src="{{ video.youtube_url }}" allowfullscreen></iframe>
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">{% if page.lang == "ca" %}{{ video.title_ca }}{% elsif page.lang == "en" %}{{ video.title_en }}{% elsif page.lang == "es" %}{{ video.title_es }}{% elsif page.lang == "ja" %}{{ video.title_ja }}{% endif %}</h5>
-        <p class="card-text">{% if page.lang == "ca" %}{{ video.desc_ca }}{% elsif page.lang == "en" %}{{ video.desc_en }}{% elsif page.lang == "es" %}{{ video.desc_es }}{% elsif page.lang == "ja" %}{{ video.desc_ja }}{% endif %}</p>
-        <p class="card-text"><small class="text-muted">{% include date.html date=video.date %}</small></p>
-      </div>
-    </div>
+    The players are facades, not iframes. A YouTube embed contacts Google and
+    sets cookies the moment the page loads, which made the cookie policy's
+    promise — that third-party content is not activated until you consent —
+    untrue on this page. A local thumbnail with a play button contacts nobody;
+    pressing it swaps in a youtube-nocookie.com iframe with autoplay, so the
+    visitor gets the video in one click and Google gets nothing until they ask.
 
-  {% endfor %}
+    It is also much faster: five embeds were about 2 MB of Google's JavaScript
+    before this page had drawn.
+  {%- endcomment -%}
+
+  {%- assign L = page.lang -%}
+
+  <div class="pv-list">
+
+    {%- for video in site.videos reversed -%}
+      {%- if L == 'ca' %}{% assign t = video.title_ca %}{% assign d = video.desc_ca %}
+      {%- elsif L == 'en' %}{% assign t = video.title_en %}{% assign d = video.desc_en %}
+      {%- elsif L == 'ja' %}{% assign t = video.title_ja %}{% assign d = video.desc_ja %}
+      {%- else %}{% assign t = video.title_es %}{% assign d = video.desc_es %}{% endif -%}
+
+      <article class="pv-item">
+        <div class="pv-player">
+          <button type="button" class="pv-facade"
+                  data-id="{{ video.youtube_id }}" data-params="{{ video.youtube_params }}"
+                  aria-label="{% if L == 'ca' %}Reproduir{% elsif L == 'en' %}Play{% elsif L == 'ja' %}再生{% else %}Reproducir{% endif %}: {{ t | escape }}">
+            <picture>
+              {%- assign ss = site.data.imgw[video.thumb] -%}
+              <source type="image/webp"
+                      srcset="{% if ss %}{{ ss }}{% else %}/images/{{ video.thumb }}.webp{% endif %}"
+                      {% if ss %}sizes="(min-width: 992px) 456px, 82vw"{% endif %}>
+              <source type="image/jpeg" srcset="/images/{{ video.thumb }}.jpg">
+              <img src="/images/{{ video.thumb }}.jpg" loading="lazy" decoding="async"
+                   width="1280" height="720" alt="">
+            </picture>
+            <span class="pv-play" aria-hidden="true">
+              <svg viewBox="0 0 384 512" fill="currentColor"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.3-23-41L73 39z"/></svg>
+            </span>
+          </button>
+        </div>
+
+        <div class="pv-body">
+          <h2 class="pv-title">{{ t }}</h2>
+          <p class="pv-desc">{{ d }}</p>
+          <p class="pv-date"><time datetime="{{ video.date | date: '%Y-%m-%d' }}">{% include date.html date=video.date %}</time></p>
+        </div>
+      </article>
+    {%- endfor -%}
+
+  </div>
+
+  {%- comment -%}
+    One VideoObject per item. An embed gives a crawler an iframe and nothing
+    else; this gives it the title, the date and the thumbnail.
+  {%- endcomment -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": [
+      {%- assign n = 0 -%}
+      {%- for video in site.videos reversed -%}
+      {%- assign n = n | plus: 1 -%}
+      {%- if L == 'ca' %}{% assign t = video.title_ca %}{% assign d = video.desc_ca %}
+      {%- elsif L == 'en' %}{% assign t = video.title_en %}{% assign d = video.desc_en %}
+      {%- elsif L == 'ja' %}{% assign t = video.title_ja %}{% assign d = video.desc_ja %}
+      {%- else %}{% assign t = video.title_es %}{% assign d = video.desc_es %}{% endif -%}
+      {
+        "@type": "ListItem",
+        "position": {{ n }},
+        "item": {
+          "@type": "VideoObject",
+          "name": {{ t | jsonify }},
+          "description": {{ d | strip_html | strip | jsonify }},
+          "thumbnailUrl": {{ video.thumb | prepend: '/images/' | append: '.jpg' | prepend: site.url | jsonify }},
+          "uploadDate": "{{ video.date | date: '%Y-%m-%d' }}",
+          "embedUrl": "https://www.youtube-nocookie.com/embed/{{ video.youtube_id }}"
+        }
+      }{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ]
+  }
+  </script>
 
 </main>
 

@@ -5,6 +5,15 @@ title_en: "Pedro Fortes 4th Dan Aikikai"
 title_es: "Pedro Fortes 4.º Dan Aikikai"
 title_ja: "ペドロ・フォルテス 四段 合気会"
 
+instructor_ca: "Pedro Fortes"
+grade_ca: "4t dan Aikikai"
+instructor_en: "Pedro Fortes"
+grade_en: "4th dan Aikikai"
+instructor_es: "Pedro Fortes"
+grade_es: "4.º dan Aikikai"
+instructor_ja: "ペドロ・フォルテス"
+grade_ja: "四段 合気会"
+
 desc_ca: >-
   El proper dissabte 8 de juliol tenim el plaer d'acollir al nostre dojo les molt esperades jornades d'Aikido a Pedro Fortes 4t dan Aikikai.
 desc_en: >-

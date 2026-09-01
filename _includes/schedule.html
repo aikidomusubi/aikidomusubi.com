@@ -60,10 +60,16 @@
     filters that produced it are exactly what the print does not carry over,
     so the selection line is written by script before the dialog opens.
   {%- endcomment -%}
+  {%- comment -%}
+    Printed masthead. Three parts across the sheet: what is being shown on the
+    left, the wordmark centred, and the name of the sheet on the right. The
+    right-hand slot used to repeat the venue, which the filter line already
+    names and the blocks themselves carry.
+  {%- endcomment -%}
   <div class="tt-print-head" aria-hidden="true">
-    <img class="tt-print-logo" src="/graphics/logo-00.svg" alt="" width="1920" height="210">
-    <p class="tt-print-title">{{ page.title }}</p>
-    <p class="tt-print-meta"></p>
+    <span class="tt-print-spacer"></span>
+    <img class="tt-print-logo" src="/graphics/logo-00-wordmark.svg" alt="" width="632" height="166">
+    <p class="tt-print-name">{{ page.title }}</p>
     <p class="tt-print-url">{{ site.url }}{{ page.url }}</p>
   </div>
 
@@ -82,16 +88,42 @@
       </div>
     </fieldset>
 
+    {%- comment -%}
+      A dropdown rather than a segmented control. Three venues fit in a row;
+      six would not, and a control that breaks the moment a venue is added is
+      the wrong shape for data that is expected to grow. The radios stay — they
+      carry the state and keep it keyboard-operable — and the dropdown is a
+      styled wrapper around them.
+
+      Each option also records which disciplines that venue teaches, so the
+      category chips can disable the ones it does not.
+    {%- endcomment -%}
     <fieldset class="tt-filter" id="tt-locations">
       <legend>{{ S.ui.location[L] }}</legend>
-      <div class="tt-segmented">
-        {%- for loc in S.locations %}
-        <label class="tt-segment" data-location="{{ loc.id }}">
-          <input type="radio" name="location" value="{{ loc.id }}"
-                 data-slug="{{ loc.slug }}"{% if forloop.first %} checked{% endif %}>
-          <span>{{ loc.abbr[L] }}</span>
-        </label>
-        {%- endfor %}
+      <div class="tt-select" data-open="false">
+        <button type="button" class="tt-select-toggle" aria-haspopup="listbox" aria-expanded="false">
+          <span class="tt-select-value">{{ S.locations[0].name[L] }}</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="tt-select-menu" role="listbox">
+          {%- for loc in S.locations %}
+          {%- comment -%} Which disciplines actually run here. {%- endcomment -%}
+          {%- assign here = S.classes | where: "location", loc.id -%}
+          {%- assign cats_here = '' -%}
+          {%- for c in here -%}
+            {%- unless cats_here contains c.category -%}
+              {%- assign cats_here = cats_here | append: c.category | append: ' ' -%}
+            {%- endunless -%}
+          {%- endfor -%}
+          <label class="tt-select-option" data-location="{{ loc.id }}">
+            <input type="radio" name="location" value="{{ loc.id }}"
+                   data-slug="{{ loc.slug }}"
+                   data-categories="{{ cats_here | strip }}"
+                   data-label="{{ loc.name[L] }}"{% if forloop.first %} checked{% endif %}>
+            <span>{{ loc.name[L] }}</span>
+          </label>
+          {%- endfor %}
+        </div>
       </div>
     </fieldset>
 
@@ -253,6 +285,23 @@
                 </p>
                 <p class="tt-name">{{ cat.name[L] }}</p>
                 <p class="tt-level">{{ lvl.name[L] }}</p>
+                {%- if c.instructor -%}
+                  {%- assign who = S.instructors | where: "id", c.instructor | first -%}
+                  {%- if who %}
+                  {%- comment -%}
+                    Three shapes, in order. `name` as a four-language map is
+                    the trainee slot, which is a description rather than a
+                    person. `ja` is the katakana a Japanese reader should see
+                    instead of "P. Martín" in the middle of a Japanese page.
+                    Everything else is the short Latin form the grid is sized
+                    for.
+                  {%- endcomment -%}
+                  {%- if who.name.es -%}{%- assign wname = who.name[L] -%}
+                  {%- elsif L == 'ja' and who.ja -%}{%- assign wname = who.ja -%}
+                  {%- else -%}{%- assign wname = who.name -%}{%- endif %}
+                <p class="tt-who">{{ wname }}</p>
+                  {%- endif -%}
+                {%- endif %}
                 <p class="tt-place">{{ loc.name[L] }}</p>
               </article>
             {%- endfor -%}

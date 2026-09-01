@@ -1,0 +1,901 @@
+// out: false
+//
+// ---------------------------------------------------------------------------
+// Seminars listing
+//
+// Replaces seven blocks of Bootstrap card overrides scattered through
+// default.less — three of them identical copies at different breakpoints, all
+// of them ending in `position: absolute` on the button row. That worked only
+// while the text column happened to be as tall as the poster; adding the
+// category line pushed the content past the image and the layout came apart.
+//
+// Nothing here is positioned by hand. The card is a two-column grid, the body
+// is a flex column, and the actions sit at its end. Add a line and the card
+// grows by a line.
+//
+// Everything is namespaced .seminar-*, so none of the .card rules that videos
+// and resources still rely on can reach it, and none of these can reach them.
+// ---------------------------------------------------------------------------
+
+// The poster column, and the height every card takes from it. Every poster is
+// drawn to the same 2:3 sheet, so one ratio describes them all and the card can
+// be told its height up front instead of inheriting whatever the longest
+// description happened to need.
+@seminar-poster: 16rem;
+@seminar-card-h: 24rem;
+// The proportion the posters are actually drawn to. They read as 2:3 but are
+// 640×905 — the A-series ratio — and the difference is a visible band of empty
+// box under every one of them if you guess.
+@seminar-poster-ratio: (640 / 905);
+@seminar-gap: 1.75rem;
+
+// The palette has no green. This one measures 6.25:1 on white and stays over
+// 5.5:1 on the 12% tint it sits on, so the Upcoming tag passes AA either way.
+@seminar-upcoming: @Green;
+
+// ---------------------------------------------------------------------------
+// Filters
+//
+// Same two-dimension shape as the timetable: a multi-select for the kind of
+// event and a single choice for when. Consistency across the three pages is
+// worth more than a bespoke control here.
+// ---------------------------------------------------------------------------
+.seminar-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem 2rem;
+  align-items: flex-start;
+  margin: 0 0 2rem;
+}
+
+.seminar-filter {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+
+  > legend {
+    .NotoSans; .bold;
+    float: none;
+    width: auto;
+    font-size: .7rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: fadeout(@Black, 40%);
+    margin: 0 0 .4rem;
+    padding: 0;
+  }
+}
+
+.seminar-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+}
+
+.seminar-chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  min-height: 2rem;
+  padding: .25rem .7rem;
+  margin: 0;
+  border: 1px solid fadeout(@Black, 88%);
+  border-radius: 2rem;
+  font-size: .8rem;
+  line-height: 1.2;
+  cursor: pointer;
+  user-select: none;
+  background-color: @White;
+  transition: background-color .2s ease, border-color .2s ease, opacity .2s ease;
+
+  > input {
+    position: absolute;
+    opacity: 0;
+    width: 1px; height: 1px;
+    margin: 0;
+  }
+
+  .seminar-chip-dot {
+    width: .625rem;
+    height: .625rem;
+    border-radius: 50%;
+    background-color: var(--chip);
+    flex: 0 0 auto;
+  }
+
+  // NO OPACITY on the unchecked state. At 45% the label composited to about
+  // 2.5:1 on white, well under the 4.5:1 floor — the same fault the glossary
+  // and resources chips had. It escaped the audit only because every chip
+  // starts checked, so a fresh page load never shows the failing state.
+  //
+  // The signal is the same without it: the dot hollows out, the ground drains,
+  // and the label steps back to a colour that measures 5.9:1.
+  &:has(input:not(:checked)) {
+    background-color: transparent;
+    color: lighten(@Dark, 18%);
+
+    .seminar-chip-dot { background-color: transparent; box-shadow: inset 0 0 0 1px currentColor; }
+  }
+
+  &:hover { border-color: fadeout(@Black, 70%); }
+
+  // The real input is hidden, so the focus ring has to be drawn on the label.
+  &:has(input:focus-visible) {
+    outline: 2px solid @Blue;
+    outline-offset: 2px;
+  }
+}
+
+// The "when" radios carry no colour of their own — a dot there would imply a
+// category. Selected state is the fill instead.
+.seminar-chip-plain {
+
+  &:has(input:checked) {
+    background-color: @Accent;
+    border-color: @Accent;
+    color: @White;
+  }
+
+  // Not the 45% fade the category chips use. Two of these three are unselected
+  // at all times, and faded grey-on-white measured 2.9:1 — the only contrast
+  // failure on the page. This reads as unselected at 5.9:1 instead.
+  &:has(input:not(:checked)) {
+    opacity: 1;
+    background-color: transparent;
+    color: lighten(@Dark, 18%);
+  }
+}
+
+// Names the destination for a screen reader and for Google's link-text audit,
+// which reads rendered text and does not look at aria-label. Clipped rather
+// than display:none — a hidden element contributes no text at all.
+.seminar-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.seminar-count {
+  .NotoSans;
+  margin: 0;
+  align-self: flex-end;
+  font-size: .8rem;
+  color: lighten(@Dark, 18%);   // 5.9:1 on white
+}
+
+// ---------------------------------------------------------------------------
+// The card
+// ---------------------------------------------------------------------------
+.seminars {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 0 0 3rem;
+}
+
+.seminar {
+  display: grid;
+  grid-template-columns: 1fr;
+  border: 1px solid fadeout(@Black, 90%);
+
+  // Forty cards, each with a poster. Only the first two or three are ever on
+  // screen, so the rest are laid out and painted for nothing — this defers that
+  // work until each one approaches the viewport. contain-intrinsic-size gives
+  // the browser the height to reserve meanwhile, so the scrollbar stays honest
+  // and nothing shifts.
+  content-visibility: auto;
+  contain-intrinsic-size: auto @seminar-card-h;
+  border-radius: .375rem;
+  background-color: @White;
+  overflow: hidden;
+
+  // The category colour, as a rule rather than a badge — it identifies the kind
+  // of event without taking a line of vertical space away from the content.
+  border-left: 4px solid var(--seminar-colour, @Accent);
+
+  &[hidden] { display: none !important; }
+}
+
+
+
+.seminar-poster {
+  display: block;
+  background-color: fadeout(@Black, 96%);
+  overflow: hidden;
+
+  &:hover img,
+  &:focus-visible img { transform: scale(1.03); }
+
+  &:focus-visible {
+    outline: 2px solid @Blue;
+    outline-offset: -2px;
+  }
+}
+
+.seminar-body {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  padding: 1.5rem;
+  min-width: 0;
+}
+
+// Somebody else's seminar often reaches us as a date and a place and nothing
+// more. Reserving the poster column for an image that does not exist leaves a
+// hole; this drops the column instead. Used by the Elsewhere page.
+.seminar-noposter {
+  grid-template-columns: 1fr;
+}
+
+// ---------------------------------------------------------------------------
+// Tags
+// ---------------------------------------------------------------------------
+.seminar-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.seminar-tag {
+  .NotoSans; .bold;
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .7rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.seminar-tag-cat {
+  color: var(--seminar-colour, @Accent);
+
+  .seminar-tag-dot {
+    width: .5rem;
+    height: .5rem;
+    border-radius: 50%;
+    background-color: currentColor;
+    flex: 0 0 auto;
+  }
+}
+
+// Upcoming and Ended used to be full-width Bootstrap alerts — a green or grey
+// bar the width of the card for a single word. A tag says the same thing in a
+// line the content can sit beside.
+.seminar-tag-state {
+  padding: .15rem .5rem;
+  border-radius: 2rem;
+
+  &[data-state="upcoming"] {
+    background-color: fadeout(@seminar-upcoming, 88%);
+    color: @seminar-upcoming;
+  }
+
+  // @Dark moved to Slate Color when the palette adopted the dictionary, and
+  // lightening it by 18% from there landed at 4.28:1 on this tint. 8% keeps the
+  // muted reading and clears AA at 11.2px bold.
+  &[data-state="ended"] {
+    background-color: fadeout(@Black, 94%);
+    color: lighten(@Dark, 8%);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Content
+//
+// These four override the site's prose rules for headings, paragraphs and
+// links inside <main>, which are written as
+// `.page main h2` — (0,2,4). A single class loses to
+// that, so the wrappers below match at (0,3,3) and win on specificity without
+// an !important.
+// ---------------------------------------------------------------------------
+.page main {
+
+  .seminar-title {
+    .NotoSans; .bold;
+    margin: 0;
+    padding: 0;
+    font-size: 1.35rem;
+    line-height: 1.3;
+    color: @Black;
+    text-align: left;
+  }
+
+  .seminar-when {
+    .NotoSans;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .4rem;
+    margin: 0;
+    padding: 0;
+    font-size: .85rem;
+    color: lighten(@Dark, 18%);
+    text-align: left;
+
+    > svg {
+      width: .85rem;
+      height: .85rem;
+      flex: 0 0 auto;
+    }
+
+    .seminar-time {
+      &::before { content: "· "; }
+    }
+  }
+
+  .seminar-where {
+    .NotoSans;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .4rem;
+    margin: 0;
+    padding: 0;
+    font-size: .85rem;
+    color: lighten(@Dark, 18%);
+    text-align: left;
+
+    > svg {
+      width: .8rem;
+      height: .8rem;
+      flex: 0 0 auto;
+    }
+  }
+
+  .seminar-desc {
+    margin: 0;
+    padding: 0;
+    font-size: .95rem;
+    line-height: 1.6;
+    text-align: left;
+  }
+
+  .seminar-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin: .25rem 0 0;
+    padding: 0;
+    // Pins the buttons to the bottom of the card when the poster is taller than
+    // the text, which is where the absolute positioning was trying to get to.
+    margin-top: auto;
+    padding-top: .75rem;
+  }
+
+  .seminar-empty {
+    margin: 2rem 0;
+    text-align: center;
+    color: lighten(@Dark, 18%);
+  }
+
+  // The site treats every link inside main as prose: underlined, and flooded
+  // with @Yellow on hover. That is right inside a sentence and wrong on a
+  // button, where it repainted the whole control. Both are undone here, at the
+  // depth the prose rules are written at so no !important is needed.
+  .seminar-btn,
+  .seminar-poster {
+    text-decoration: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: none;
+      background-color: @White;
+    }
+  }
+
+  .seminar-btn:hover,
+  .seminar-btn:focus { background-color: fadeout(@Black, 96%); }
+
+  .seminar-btn-primary,
+  .seminar-btn-primary:hover,
+  .seminar-btn-primary:focus { background-color: @Accent; color: @White; }
+
+  .seminar-poster:hover,
+  .seminar-poster:focus { background-color: fadeout(@Black, 96%); }
+
+  // The site gives every <picture> in main a 3rem bottom margin, which showed
+  // up as a grey band under each poster.
+  .seminar-poster picture {
+    display: block;
+    margin: 0;
+  }
+
+  // `cover`, not `contain`. The column is sized from an assumed card height
+  // (24rem) while the row renders 2px shorter, so the box came out 1.4px wider
+  // than the poster's own 640:905 — and `contain` letterboxed that as a hairline
+  // of white down each side, visible only once the card is large enough for the
+  // half-pixel to round up. Every poster is drawn to the same ratio, so filling
+  // the box crops nothing anyone can see and cannot leave a gap at any size.
+  .seminar-poster img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .4s ease;
+  }
+
+  // The picture wrapper has to fill the link too, or the img has no height to
+  // resolve 100% against.
+  .seminar-poster,
+  .seminar-poster picture { height: 100%; }
+}
+
+// ---------------------------------------------------------------------------
+// Buttons
+//
+// btn-lg on a card this size gave three buttons that filled the row and forced
+// the absolute positioning. These are sized for a card.
+// ---------------------------------------------------------------------------
+.seminar-btn {
+  .NotoSans;
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  min-height: 2.25rem;
+  padding: .4rem .9rem;
+  border: 1px solid fadeout(@Black, 85%);
+  border-radius: .25rem;
+  background-color: @White;
+  color: @Black;
+  font-size: .85rem;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease;
+
+  > svg {
+    width: .9rem;
+    height: .9rem;
+    flex: 0 0 auto;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: fadeout(@Black, 96%);
+    border-color: fadeout(@Black, 70%);
+    color: @Black;
+    text-decoration: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid @Blue;
+    outline-offset: 2px;
+  }
+}
+
+.seminar-btn-primary {
+  background-color: @Accent;
+  border-color: @Accent;
+  color: @White;
+
+  &:hover,
+  &:focus {
+    background-color: lighten(@Accent, 14%);
+    border-color: lighten(@Accent, 14%);
+    color: @White;
+  }
+}
+
+.seminar-btn-ghost {
+  border-style: dashed;
+}
+
+// The registration that has closed. Reads as a control that existed rather than
+// one you can press: no pointer, no hover, and the label at the same 5.9:1 the
+// rest of the secondary text uses.
+.seminar-btn-disabled {
+  border-style: dashed;
+  color: lighten(@Dark, 18%);
+  cursor: not-allowed;
+  opacity: .65;
+}
+
+// Where a link from the calendar lands.
+//
+// The navbar is sticky and 50px tall, so an anchor scrolled flush to the top of
+// the viewport put the card's own heading underneath it. scroll-margin-top
+// reserves the navbar plus a margin, which also stops the ring below from being
+// drawn half off-screen.
+.seminar {
+  scroll-margin-top: @anchor-clear;
+}
+
+// The card the calendar just jumped to. A brief ring rather than a permanent
+// highlight — it answers "which one?" and then gets out of the way.
+.seminar:target {
+  outline: 2px solid @Blue;
+  outline-offset: 3px;
+  animation: seminarTargetFade 2.4s ease forwards;
+}
+
+@keyframes seminarTargetFade {
+  0%, 60% { outline-color: @Blue; }
+  100%    { outline-color: transparent; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .seminar:target { animation: none; }
+
+  .page main .seminar-poster img { transition: none; }
+  .seminar-poster:hover img { transform: none; }
+}
+
+// ---------------------------------------------------------------------------
+// Two columns
+//
+// One breakpoint, not three. Below it the poster runs full width above the
+// text, which is the only arrangement that works on a phone; above it the
+// poster takes a fixed column and the text takes the rest.
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// Three layouts, and the rule that picks between them
+//
+// The poster is the constraint. Every one is drawn to the same 2:3 sheet, and a
+// 2:3 image only fits a side-by-side card if the column it gets is exactly two
+// thirds of the card's height. Below a certain width it cannot be: the text
+// needs the room, the column narrows, and `cover` starts shaving the left and
+// right edges off a flyer whose whole job is to be read.
+//
+// So the side-by-side card is kept for the one case where the image fits whole,
+// and everywhere else the poster goes above the text where its width is the
+// card's width and nothing is cropped:
+//
+//   >= 1200px   poster left, text right — column is exactly 2/3 of card height
+//   768–1199    poster above text, two cards to a row
+//   < 768       poster above text, one card to a row
+//
+// The middle band is not the mobile layout stretched; it is the mobile card,
+// two abreast, which is what the space is actually good for.
+// ---------------------------------------------------------------------------
+
+// ---- the stacked card (all widths below 1200) -----------------------------
+//
+// No box is imposed at all here: the poster is as wide as the card and as tall
+// as that width makes it. The area is the image's own proportions by
+// definition, so there is nothing to crop and nothing to letterbox.
+.page main .seminar-poster img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+// ---- two cards to a row ---------------------------------------------------
+@media (min-width: 768px) {
+
+  .seminars {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+
+  // A card in a stretched grid row is as tall as its neighbour, so the actions
+  // stay on a common baseline without either card being told a height.
+  //
+  // `auto 1fr` decides where the borrowed height goes. Left to itself the grid
+  // shared it between both rows, which grew the poster's box past its image and
+  // put a grey band under the shorter of two neighbouring posters. The body
+  // takes all of it instead — it is the part with room to spare.
+  .seminar {
+    min-height: 0;
+    grid-template-rows: auto 1fr;
+  }
+
+  .seminar-body { padding: 1.25rem; }
+}
+
+// ---- poster beside the text ------------------------------------------------
+@media (min-width: 1200px) {
+
+  .seminars {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .seminar {
+    // The column is the card height times the posters' own ratio, so the image
+    // fills it exactly. That ratio is 640:905 — the A-series proportion the
+    // flyers are drawn to, not the 2:3 they look like. Assuming 2:3 here left a
+    // 35px band of empty box under every poster.
+    grid-template-columns: calc(@seminar-card-h * @seminar-poster-ratio) minmax(0, 1fr);
+    // Undoes the two-row template the stacked layout sets. Here the poster and
+    // the body are side by side in a single row, and that row takes the card's
+    // full height — left as `auto 1fr` the poster shrank to its content and
+    // stopped filling its column.
+    grid-template-rows: minmax(0, 1fr);
+    align-items: stretch;
+    min-height: @seminar-card-h;
+  }
+
+  .seminar-noposter {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  // Back to filling a fixed column rather than sizing itself.
+  .seminar-poster {
+    position: relative;
+  }
+
+  .page main .seminar-poster picture {
+    position: absolute;
+    inset: 0;
+  }
+
+  // `cover`, not `contain` — this is the only layout that imposes a box on the
+  // poster. The column is `card height x poster ratio`, but the row resolves a
+  // couple of pixels shorter than the assumed 24rem, so the box ends up ~1.4px
+  // wider than the image. `contain` drew that as a hairline of white down each
+  // side, visible only once the card was large enough for the half pixel to
+  // round up — which is why it showed on wide windows and not on narrow ones.
+  // Every flyer is drawn to 640:905, so filling the box crops nothing that can
+  // be seen and cannot leave a gap at any card height.
+  .page main .seminar-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .seminar-body { padding: @seminar-gap; }
+
+  .page main .seminar-title { font-size: 1.5rem; }
+}
+
+// ---------------------------------------------------------------------------
+// Print
+//
+// The posters are the bulk of the ink and say nothing a printed page needs, so
+// they go. What is left is a readable list of what happened and what is coming.
+// ---------------------------------------------------------------------------
+@media print {
+
+  .seminar-controls,
+  .seminar-poster,
+  .seminar-empty { display: none !important; }
+
+  .seminars { gap: .75rem; }
+
+  .seminar {
+    display: block;
+    border: 0;
+    border-left: 3px solid #666;
+    border-radius: 0;
+    break-inside: avoid;
+  }
+
+  .seminar-body { padding: .25rem .75rem; gap: .25rem; }
+
+  .seminar-actions { display: none !important; }
+}
+
+// ---------------------------------------------------------------------------
+// Elsewhere: posters we did not design
+//
+// The Seminars page can put a poster in a fixed 640:905 box and `object-fit:
+// cover` it, because every flyer the dojo prints is drawn to that ratio and
+// filling the box crops nothing that can be seen. That premise does not hold
+// here. These are other organisations' posters: 1080x1080 from Aikikai Milano,
+// 1200x1500 from the Arashi Group, 1366x2048 from Aikikai Romania, and four
+// more shapes besides. `cover` in a 640:905 box takes 29% off the top and
+// bottom of the square one, which is where its title and its registration
+// address are.
+//
+// So on this page and only on this page the poster is mounted rather than
+// cropped: the column keeps the same width, so the two pages line up, and the
+// image sits centred inside it at whatever proportions it came with. The 4%
+// tint `.seminar-poster` already carries becomes the mount.
+//
+// `body.elsewhere-Kp8vR2Qs .page main …` is (0,3,3) against the (0,2,2) of the
+// rules above. Written that long on purpose: at equal specificity this would
+// depend on staying below them in the file, and a stylesheet that only works
+// in one order is a stylesheet waiting to be reordered.
+// ---------------------------------------------------------------------------
+// Two cards to a row, and their posters are different shapes. Left alone each
+// poster is as tall as its own width makes it, so the title in the left card
+// starts 60px above the title in the right one and the row reads as two
+// unrelated things. A common 3:4 mount puts every title on the same line. The
+// value is not arbitrary: seven of the ten posters sit between 0.70 and 0.76
+// wide-to-tall, so most of them very nearly fill it.
+//
+// Below 768 there is one card to a row and nothing to align, so the poster
+// goes back to its own proportions there.
+@media (min-width: 768px) and (max-width: 1199.98px) {
+
+  body.elsewhere-Kp8vR2Qs .page main .seminar-poster {
+    aspect-ratio: 3 / 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  body.elsewhere-Kp8vR2Qs .page main .seminar-poster picture {
+    display: flex;
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  body.elsewhere-Kp8vR2Qs .page main .seminar-poster img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+}
+
+@media (min-width: 1200px) {
+
+  body.elsewhere-Kp8vR2Qs .page main .seminar-poster {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  // Undoes the absolute fill the cropped version needs. Here the picture is a
+  // flex item that sizes to its image, and the image is bounded by the box.
+  body.elsewhere-Kp8vR2Qs .page main .seminar-poster picture {
+    position: static;
+    inset: auto;
+    display: flex;
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  body.elsewhere-Kp8vR2Qs .page main .seminar-poster img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Multi-poster cards
+//
+// One event was printed with five cover illustrations of the same layout. The
+// card shows all five, one at a time, and clicking opens a picker.
+//
+// The stack is a grid with every poster in the same cell, so the box is the
+// height of the tallest and nothing reflows as they change. Opacity does the
+// crossfade: transform and opacity are the two things a compositor can animate
+// without touching layout.
+// ---------------------------------------------------------------------------
+.seminar-shots {
+  position: relative;
+  display: grid;
+
+  .seminar-shot {
+    grid-area: 1 / 1;
+    opacity: 0;
+    transition: opacity .9s ease-in-out;
+  }
+
+  .seminar-shot.is-on { opacity: 1; }
+}
+
+// Without the script the stack never rotates, so every poster would be stacked
+// at opacity 0 and the card would be empty. `html.js` is set by the site's own
+// first-paint script, so this is the no-JS state and not a flash of one.
+html:not(.js) .seminar-shots .seminar-shot:first-child { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .seminar-shots .seminar-shot { transition: none; }
+}
+
+// ---------------------------------------------------------------------------
+// The picker
+//
+// Built by scripts/seminars.js on the first click. It is a dialog over the
+// page, so it lives at the end of <body> rather than inside the card, and the
+// page behind it is made `inert` — `aria-hidden` alone does not stop the
+// keyboard, which is the lesson the Ura panel already carries.
+// ---------------------------------------------------------------------------
+html.sh-on { overflow: hidden; }
+
+.sh-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: grid;
+  place-items: center;
+  padding: 2rem 1rem;
+
+  &[hidden] { display: none; }
+}
+
+.sh-scrim {
+  position: absolute;
+  inset: 0;
+  background: fadeout(@Black, 12%);
+}
+
+.sh-box {
+  position: relative;
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+  max-height: 100%;
+}
+
+.sh-big {
+  display: block;
+  max-width: min(92vw, 30rem);
+  // The strip below is about 5.5rem with its gap, and the padding another 4.
+  max-height: calc(100vh - 12rem);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  background: fadeout(@White, 92%);
+}
+
+.sh-thumbs {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.sh-thumb {
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  line-height: 0;
+  // The selected one is full strength and the rest are dimmed. Opacity on a
+  // photograph is not the contrast trap that opacity on text is: there is no
+  // ratio to fail, and the ring below is what actually carries the state.
+  opacity: .55;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  transition: opacity .2s;
+
+  img { display: block; width: 3.1rem; height: auto; }
+
+  &:hover { opacity: .85; }
+  &[aria-pressed="true"] { opacity: 1; outline-color: @Yellow; }
+  &:focus-visible { outline: 2px solid @White; outline-offset: 3px; }
+}
+
+.sh-x {
+  position: absolute;
+  top: -2.6rem;
+  right: 0;
+  width: 2.2rem;
+  height: 2.2rem;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: fadeout(@White, 88%);
+  color: @White;
+  cursor: pointer;
+
+  svg { width: .85rem; height: .85rem; }
+
+  &:hover { background: fadeout(@White, 78%); }
+  &:focus-visible { outline: 2px solid @Yellow; outline-offset: 2px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sh-thumb { transition: none; }
+}
+
+@media print {
+  .sh-modal { display: none !important; }
+  // Printed, the stack would come out as five posters on top of each other.
+  .seminar-shots .seminar-shot:not(.is-on) { display: none; }
+}

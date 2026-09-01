@@ -1,0 +1,351 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Variantes</title>
+<link rel="stylesheet" href="/styles/all.min.css">
+<style>
+:root{--ink:#111314;--mute:#5c6a70;--line:rgba(17,19,20,.13)}
+html,body{margin:0;background:#f7f7f5;color:var(--ink);
+  font-family:'Noto Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+.w{max-width:1140px;margin:0 auto;padding:0 3rem}
+@media(max-width:767.98px){.w{padding:0 1.4rem}}
+h1,h2,h3{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-weight:400;margin:0;letter-spacing:.04em}
+p{margin:0}
+.jp{font-family:'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif}
+.fu{font-family:Futura,'Trebuchet MS',Arial,sans-serif}
+
+.chap{padding:3rem 0 1.4rem;border-top:2px solid var(--ink);margin-top:3rem}
+.chap:first-of-type{margin-top:0;border-top:0;padding-top:2.6rem}
+.chap h2{font-size:1.5rem;text-transform:uppercase;letter-spacing:.08em}
+.chap p{margin-top:.7rem;max-width:66ch;color:var(--mute);line-height:1.75;font-size:.95rem}
+.tag{display:inline-block;font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.54rem;
+  letter-spacing:.18em;text-transform:uppercase;background:#111314;color:#FFF200;
+  padding:.2rem .5rem;vertical-align:.18em;margin-left:.5rem}
+
+.card{border:1px solid var(--line);background:#fff;margin-bottom:1.6rem}
+.card > .lbl{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.56rem;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--mute);padding:.7rem 1.4rem;
+  border-bottom:1px solid var(--line);display:flex;gap:1rem;align-items:baseline}
+.card > .lbl b{color:var(--ink);font-weight:400;letter-spacing:.1em}
+.card > .body{padding:2.6rem 1.4rem 2.8rem}
+.note{padding:0 1.4rem 1.3rem;font-size:.84rem;color:var(--mute);line-height:1.7;max-width:70ch}
+.note b{color:var(--ink);font-weight:400}
+
+/* ── A · título + lede ─────────────────────────────────────────────────── */
+.tt{text-align:center}
+.tt h3{font-size:2.9rem;line-height:1.1;text-transform:uppercase;letter-spacing:.06em;
+  margin-bottom:1.4rem}
+.tt .lede{max-width:36rem;margin:0 auto;font-size:1.16rem;line-height:1.72;color:#2c3437}
+.tt.left{text-align:left}
+.tt.left .lede{margin:0;max-width:40rem}
+.tt .kanji{font-size:3.6rem;line-height:1;color:var(--ink);display:block;margin-bottom:.9rem}
+.tt .sub{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.66rem;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--mute);margin-bottom:1rem}
+@media(max-width:767.98px){.tt h3{font-size:2rem}.tt .lede{font-size:1rem}}
+
+/* ── B · la puerta ─────────────────────────────────────────────────────── */
+.door{background:#111314;color:#fff;padding:3rem 2.4rem 3.2rem}
+.door .mk{font-family:'Hiragino Sans','Noto Sans JP',sans-serif;color:#FFF200;font-size:1.5rem;
+  line-height:1;margin-bottom:.9rem}
+.door h3{font-size:2rem;color:#fff;line-height:1;margin-bottom:.9rem}
+.door .desc{color:#aeb6b8;font-size:1.05rem;line-height:1.7;max-width:34ch}
+.door .bt{display:inline-block;margin-top:1.9rem;font-family:Futura,'Trebuchet MS',Arial,sans-serif;
+  font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;background:#FFF200;color:#111314;
+  padding:.9rem 1.7rem;cursor:pointer;border:0}
+.door .bt:hover{background:#fff}
+
+/* V1 escalera */
+.d1{display:grid;grid-template-columns:1fr 22rem;gap:3.4rem;align-items:center}
+.pk{display:grid;gap:.55rem}
+.pk > div{background:#1a1d1e;border-left:2px solid var(--c);padding:.7rem .9rem}
+.pk > div:nth-child(2){margin-left:1.1rem;background:#171a1b}
+.pk > div:nth-child(3){margin-left:2.2rem;background:#141617}
+.pk .d{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.58rem;letter-spacing:.14em;
+  text-transform:uppercase;color:#8f9698;margin-bottom:.25rem}
+.pk .t{color:#fff;font-size:.88rem;line-height:1.35}
+.pk > div:nth-child(2) .t{color:#c9cfd1}
+.pk > div:nth-child(3) .t{color:#a6adb0}
+@media(max-width:991.98px){.d1{grid-template-columns:1fr;gap:2rem}}
+
+/* V2 tres columnas */
+.d2 .top{margin-bottom:2.2rem}
+.d2 .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.d2 .cols > a{background:#1a1d1e;padding:1.3rem 1.2rem 1.5rem;display:block;
+  border-top:2px solid var(--c);text-decoration:none}
+.d2 .cols > a:hover{background:#222627}
+.d2 .h{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.58rem;letter-spacing:.18em;
+  text-transform:uppercase;color:#8f9698;margin-bottom:.8rem}
+.d2 .big{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:1.5rem;color:#fff;
+  line-height:1.15;margin-bottom:.3rem}
+.d2 .sm{color:#a6adb0;font-size:.82rem;line-height:1.5}
+@media(max-width:767.98px){.d2 .cols{grid-template-columns:1fr}}
+
+/* V3 la banda */
+.d3{display:grid;grid-template-columns:14rem 1fr auto;gap:2.6rem;align-items:center}
+.d3 .id .mk{margin-bottom:.5rem}
+.d3 .id h3{font-size:1.5rem;margin-bottom:.4rem}
+.d3 .id .desc{font-size:.85rem;max-width:none}
+.d3 .rows{display:grid;gap:0}
+.d3 .rows > div{display:grid;grid-template-columns:7rem 1fr;gap:1.2rem;align-items:baseline;
+  padding:.65rem 0;border-top:1px solid rgba(255,255,255,.12)}
+.d3 .rows > div:last-child{border-bottom:1px solid rgba(255,255,255,.12)}
+.d3 .k{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.58rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--c)}
+.d3 .v{color:#fff;font-size:.9rem}
+.d3 .v small{color:#a6adb0;display:block;font-size:.76rem;margin-top:.1rem}
+@media(max-width:991.98px){.d3{grid-template-columns:1fr;gap:1.8rem}}
+
+/* ── C · intro de Ura ──────────────────────────────────────────────────── */
+.ura{background:#111314;color:#d5dadc;padding:2.6rem 2.4rem 3rem}
+.ura .mast{display:flex;align-items:center;gap:1rem;padding-bottom:.85rem;
+  border-bottom:1px solid rgba(255,255,255,.13);margin-bottom:2.6rem}
+.ura .mast .s{font-family:'Hiragino Sans','Noto Sans JP',sans-serif;color:#FFF200;font-size:1.4rem;
+  line-height:1}
+.ura .mast .t{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.72rem;
+  letter-spacing:.3em;text-transform:uppercase;color:#fff}
+.ura .mast .u{font-size:.72rem;color:#9aa2a5}
+.ura .mast .x{margin-left:auto;border:1px solid rgba(255,255,255,.13);padding:.5rem .85rem;
+  font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.6rem;letter-spacing:.14em;
+  text-transform:uppercase;color:#d5dadc;display:inline-flex;gap:.5rem;align-items:center}
+.ura .mast .x i{font-style:normal;color:#FFF200;font-family:'Hiragino Sans','Noto Sans JP',sans-serif;
+  font-size:.95rem}
+.i-a p{font-size:1.24rem;line-height:1.55;color:#e6eaec;max-width:44ch}
+.i-a p + p{margin-top:.8rem;font-size:.9rem;color:#9aa2a5}
+.i-b p{font-size:1.6rem;line-height:1.45;color:#fff;max-width:30ch;
+  font-family:Futura,'Trebuchet MS',Arial,sans-serif}
+.i-c p{font-size:1.24rem;line-height:1.55;color:#e6eaec;max-width:44ch;margin-bottom:1.8rem}
+.i-c .cnt{display:flex;gap:2.6rem;flex-wrap:wrap;padding-top:1.2rem;
+  border-top:1px solid rgba(255,255,255,.13)}
+.i-c .cnt b{display:block;font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:1.6rem;
+  color:#fff;line-height:1}
+.i-c .cnt span{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:#9aa2a5}
+.i-d .flag{display:flex;gap:.8rem;padding:.9rem 1.1rem;background:rgba(255,242,0,.08);
+  border-left:2px solid #FFF200}
+.i-d .flag b{color:#FFF200;font-weight:400;font-family:Futura,'Trebuchet MS',Arial,sans-serif;
+  font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;padding-top:.15rem}
+.i-d .flag p{font-size:.87rem;color:#e2e6e8;line-height:1.6}
+.i-d h4{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-weight:400;font-size:1.65rem;
+  color:#fff;margin:2.2rem 0 0}
+
+/* option lists */
+.opts{display:grid;gap:0;border-top:1px solid var(--line)}
+.opts > div{display:grid;grid-template-columns:2.4rem 1fr;gap:1.2rem;padding:1rem 1.4rem;
+  border-bottom:1px solid var(--line);align-items:baseline}
+.opts .n{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.62rem;letter-spacing:.16em;
+  color:#B04E17}
+.opts .q{font-size:1.02rem;line-height:1.6;color:var(--ink)}
+.opts .why{display:block;font-size:.82rem;color:var(--mute);margin-top:.35rem;line-height:1.6}
+.opts > div.rec{background:#fffdf0;box-shadow:inset 3px 0 0 #FFF200}
+</style></head>
+<body><div class="w">
+
+<!-- ══════════ A ══════════ -->
+<div class="chap"><h2>A · El título y la entrada</h2>
+<p>Cinco maneras. Los dos problemas que señalaste: «en Badalona» deja fuera dos de los tres
+   espacios, y «recibimos a quien quiera empezar en cualquier momento del año» suena a
+   folleto. Cada propuesta resuelve los dos de forma distinta.</p></div>
+
+<div class="card"><p class="lbl"><b>A1</b> Barcelona en vez de Badalona <span class="tag">La que uso ahora</span></p>
+<div class="body"><div class="tt">
+  <h3>Aikido en Barcelona<br>desde 2008</h3>
+  <p class="lede">Una asociación cultural sin ánimo de lucro dedicada a la enseñanza del
+     aikido. Entrenamos en Badalona, en Sant Adrià de Besòs y en la Universitat de Barcelona.
+     Se puede empezar en cualquier momento del año.</p>
+</div></div>
+<p class="note">El cambio mínimo. «Barcelona» abarca los tres espacios y Badalona aparece
+   enseguida, donde está el dojo propio. <b>La frase final sigue siendo la más floja.</b></p></div>
+
+<div class="card"><p class="lbl"><b>A2</b> El tiempo como titular</p>
+<div class="body"><div class="tt">
+  <h3>Dieciocho años<br>en el tatami</h3>
+  <p class="lede">Aikido Musubi es una asociación cultural sin ánimo de lucro fundada en 2008.
+     Enseñamos aikido en tres espacios del área de Barcelona: el dojo de Badalona, el
+     Poliesportiu Marina-Besòs y la Facultad de Derecho de la UB.</p>
+</div></div>
+<p class="note">El titular ya no dice dónde, dice cuánto llevamos. Es lo más difícil de imitar
+   y lo que más tranquiliza a quien duda. <b>El número se actualiza solo si se calcula desde
+   2008.</b></p></div>
+
+<div class="card"><p class="lbl"><b>A3</b> El verbo primero</p>
+<div class="body"><div class="tt">
+  <h3>Enseñamos aikido<br>desde 2008</h3>
+  <p class="lede">En Badalona, en Sant Adrià de Besòs y en la Universitat de Barcelona.
+     Asociación cultural autogestionada y sin ánimo de lucro. Se empieza cuando se quiere:
+     no hay curso ni temporada.</p>
+</div></div>
+<p class="note">La entrada se convierte en tres frases cortas en vez de una larga.
+   <b>«No hay curso ni temporada» es la mejor sustitución que se me ocurre</b> para la frase
+   que no te convencía: dice lo mismo y además dice algo que el lector no sabía.</p></div>
+
+<div class="card"><p class="lbl"><b>A4</b> Con el nombre delante</p>
+<div class="body"><div class="tt">
+  <p class="sub">Associació Cultural Musubi Aikido</p>
+  <h3>Aikido<br>en el área de Barcelona</h3>
+  <p class="lede">Desde 2008, en Badalona, en Sant Adrià de Besòs y en la Facultad de Derecho
+     de la UB. Somos una asociación autogestionada y sin ánimo de lucro. La inscripción está
+     abierta todo el año.</p>
+</div></div>
+<p class="note">Añade una línea de identificación encima del h1. Útil si alguien llega desde
+   una búsqueda del nombre legal. <b>Cuesta una línea de altura en la parte más valiosa de la
+   página.</b></p></div>
+
+<div class="card"><p class="lbl"><b>A5</b> El kanji como entrada</p>
+<div class="body"><div class="tt">
+  <span class="kanji jp">産靈</span>
+  <h3>Aikido desde 2008<br>en el área de Barcelona</h3>
+  <p class="lede">Musubi es el nudo: lo que une dos cosas y las deja unidas. Somos una
+     asociación cultural sin ánimo de lucro y enseñamos aikido en Badalona, en Sant Adrià de
+     Besòs y en la Universitat de Barcelona. Se empieza cuando se quiere.</p>
+</div></div>
+<p class="note">La más de marca de las cinco: explica el nombre en la primera línea que se
+   lee. <b>Riesgo:</b> el hero ya lleva mucha carga visual y dos kanji grandes justo debajo
+   pueden competir con él.</p></div>
+
+<!-- ══════════ B ══════════ -->
+<div class="chap"><h2>B · Cómo presentar Ura</h2>
+<p>Primero la frase, después el diseño. Estas son las alternativas a «La otra cara del dojo».</p></div>
+
+<div class="card"><p class="lbl"><b>B</b> La línea descriptiva</p>
+<div class="opts">
+  <div class="rec"><p class="n">01</p><p class="q">El horario de estos días, el calendario y
+    dieciocho años de archivo.<span class="why">La más honesta: nombra las tres cosas sin
+    listarlas como un menú. Es la que pondría.</span></p></div>
+  <div><p class="n">02</p><p class="q">Lo que pasa en el dojo esta semana, y todo lo que ha
+    pasado antes.<span class="why">Ordena el contenido en un eje temporal. Cálida y muy
+    legible.</span></p></div>
+  <div><p class="n">03</p><p class="q">Lo que se mueve.<span class="why">Tres palabras. Con
+    las fichas al lado explicándolo, puede bastar.</span></p></div>
+  <div><p class="n">04</p><p class="q">Todo lo que no cabía en esta página.<span class="why">La
+    más de b-side. Ligera, un poco irónica, cero solemne.</span></p></div>
+  <div><p class="n">05</p><p class="q">Detrás de cada técnica hay un ura. Detrás de esta
+    página también.<span class="why">El guiño técnico explícito. Encantará a quien practica y
+    dejará frío a quien no.</span></p></div>
+  <div><p class="n">06</p><p class="q">El dojo por dentro: horarios, fechas, archivo y unas
+    cuantas palabras japonesas.<span class="why">La más informativa y la menos elegante.
+    Sirve si prefieres que nadie tenga que adivinar.</span></p></div>
+</div></div>
+
+<!-- ══════════ C ══════════ -->
+<div class="chap"><h2>C · La sección antes del footer</h2>
+<p>Tres versiones del mismo bloque. Las tres muestran contenido real de dentro, ninguna
+   explica cómo funciona nada.</p></div>
+
+<div class="card"><p class="lbl"><b>C1</b> Las fichas en escalera <span class="tag">La actual</span></p>
+<div class="door d1">
+  <div>
+    <p class="mk jp">裏</p><h3>Ura</h3>
+    <p class="desc">El horario de estos días, el calendario y dieciocho años de archivo.</p>
+    <span class="bt">Entrar</span>
+  </div>
+  <div class="pk">
+    <div style="--c:#FFF200"><p class="d">Mañana, martes 25</p><p class="t">Aikido · 18:30 y 19:30</p></div>
+    <div style="--c:#E2625E"><p class="d">1 de septiembre</p><p class="t">Vuelta al horario habitual</p></div>
+    <div style="--c:#A5C8D1"><p class="d">El archivo</p><p class="t">462 momentos desde 2008</p></div>
+  </div>
+</div>
+<p class="note">Las hojas escalonadas dicen «hay más debajo» sin decirlo. <b>La más
+   sugerente y la menos legible de las tres:</b> el escalonado sacrifica alineación.</p></div>
+
+<div class="card"><p class="lbl"><b>C2</b> Tres columnas iguales</p>
+<div class="door d2">
+  <div class="top">
+    <p class="mk jp">裏</p><h3>Ura</h3>
+    <p class="desc">Lo que pasa en el dojo esta semana, y todo lo que ha pasado antes.</p>
+  </div>
+  <div class="cols">
+    <a href="#" style="--c:#FFF200"><p class="h">El horario</p>
+      <p class="big">Martes y jueves</p><p class="sm">18:30 a 20:30 · horario de agosto</p></a>
+    <a href="#" style="--c:#E2625E"><p class="h">Lo que viene</p>
+      <p class="big">5 fechas</p><p class="sm">La próxima, el 29 de agosto</p></a>
+    <a href="#" style="--c:#A5C8D1"><p class="h">El archivo</p>
+      <p class="big">462</p><p class="sm">momentos guardados desde 2008</p></a>
+  </div>
+  <span class="bt">Entrar en Ura</span>
+</div>
+<p class="note">Cada columna es un enlace directo a su sección, así que la banda no es solo
+   un anuncio: <b>es también un índice.</b> La más clara de leer y la más convencional.</p></div>
+
+<div class="card"><p class="lbl"><b>C3</b> La banda de datos</p>
+<div class="door d3">
+  <div class="id">
+    <p class="mk jp">裏</p><h3>Ura</h3>
+    <p class="desc">Lo que se mueve.</p>
+  </div>
+  <div class="rows">
+    <div style="--c:#FFF200"><p class="k">Esta semana</p>
+      <p class="v">Martes y jueves, 18:30 a 20:30<small>Horario de agosto hasta el día 31</small></p></div>
+    <div style="--c:#E2625E"><p class="k">Lo próximo</p>
+      <p class="v">29 de agosto · Preparación de exámenes<small>Cada sábado hasta el 5 de diciembre</small></p></div>
+    <div style="--c:#A5C8D1"><p class="k">El archivo</p>
+      <p class="v">462 momentos guardados<small>49 álbumes, 236 publicaciones, 177 vídeos</small></p></div>
+  </div>
+  <span class="bt">Entrar</span>
+</div>
+<p class="note">La más densa y la que más información real entrega antes de hacer clic. Se
+   parece a las filas de dentro, así que <b>la transición al panel es la más suave de las
+   tres.</b> A cambio es la menos «portada» y la más «panel».</p></div>
+
+<!-- ══════════ D ══════════ -->
+<div class="chap"><h2>D · La entrada de Ura</h2>
+<p>Cuatro maneras de abrir el panel, de más texto a nada de texto.</p></div>
+
+<div class="card"><p class="lbl"><b>D1</b> Dos párrafos <span class="tag">La actual</span></p>
+<div class="ura">
+  <div class="mast"><span class="s jp">裏</span><span class="t">Ura</span>
+    <span class="u">el dojo por detrás</span>
+    <span class="x"><i class="jp">表</i> Volver a la portada</span></div>
+  <div class="i-a">
+    <p>El horario de estos días, el calendario, dieciocho años de archivo y un puñado de
+       cosas que en la portada no cabían.</p>
+    <p>Se actualiza solo.</p>
+  </div>
+</div>
+<p class="note">«Se actualiza solo» hace mucho trabajo por ser tan corta: promete que lo que
+   viene abajo es de fiar.</p></div>
+
+<div class="card"><p class="lbl"><b>D2</b> Una sola frase, grande</p>
+<div class="ura">
+  <div class="mast"><span class="s jp">裏</span><span class="t">Ura</span>
+    <span class="u">el dojo por detrás</span>
+    <span class="x"><i class="jp">表</i> Volver a la portada</span></div>
+  <div class="i-b"><p>Lo que pasa esta semana, y todo lo que ha pasado desde 2008.</p></div>
+</div>
+<p class="note">Futura a 1,6rem, treinta caracteres de ancho. <b>La más elegante.</b> Funciona
+   porque la sección siguiente empieza inmediatamente y explica el resto.</p></div>
+
+<div class="card"><p class="lbl"><b>D3</b> Frase y contadores</p>
+<div class="ura">
+  <div class="mast"><span class="s jp">裏</span><span class="t">Ura</span>
+    <span class="u">el dojo por detrás</span>
+    <span class="x"><i class="jp">表</i> Volver a la portada</span></div>
+  <div class="i-c">
+    <p>El horario de estos días, el calendario y todo lo que hemos ido guardando.</p>
+    <div class="cnt">
+      <div><b>18</b><span>años</span></div>
+      <div><b>462</b><span>momentos</span></div>
+      <div><b>39</b><span>seminarios</span></div>
+      <div><b>3</b><span>tatamis</span></div>
+    </div>
+  </div>
+</div>
+<p class="note">Los números dan el tamaño del sitio de un vistazo. <b>Ojo:</b> se parecen
+   mucho a la fila de cifras que quitamos de la portada. Aquí encajan porque el panel sí es
+   de datos; en la portada no lo era.</p></div>
+
+<div class="card"><p class="lbl"><b>D4</b> Sin entrada</p>
+<div class="ura">
+  <div class="mast"><span class="s jp">裏</span><span class="t">Ura</span>
+    <span class="u">el dojo por detrás</span>
+    <span class="x"><i class="jp">表</i> Volver a la portada</span></div>
+  <div class="i-d">
+    <div class="flag"><b>Agosto</b><p>Estamos en <strong>horario de agosto</strong>: solo
+      martes y jueves, de 18:30 a 20:30. El horario habitual vuelve el 1 de septiembre.</p></div>
+    <h4>Los próximos siete días</h4>
+  </div>
+</div>
+<p class="note">El panel se abre directamente en lo que ha venido a buscar el lector. La
+   cabecera ya dice el nombre y el subtítulo. <b>Es la que menos hace perder el tiempo</b> y
+   la que menos personalidad tiene.</p></div>
+
+<div style="height:4rem"></div>
+</div></body></html>

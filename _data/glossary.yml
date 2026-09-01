@@ -1,0 +1,1124 @@
+# ---------------------------------------------------------------------------
+# Glossary
+#
+# The words you actually hear on the mat: dojo Japanese, aikido terms, and the
+# handful of phrases that are painted on our own walls.
+#
+# Ordered by where you meet a word, not alphabetically. Someone looking things
+# up after their first class wants the room first, then what people said to
+# them, then who everyone was — which is the order a first class happens in.
+# An A-to-Z would scatter that, and search covers the case where you already
+# know the word.
+#
+# Every definition is quoted. A bare `: ` inside a value makes YAML read the
+# line as a mapping, and Jekyll then prints "YAML Exception", skips the file
+# and exits 0 — the page simply does not exist. `npx gulp qa` catches it now,
+# but quoting is what prevents it.
+#
+# `k` is the Japanese, `r` the rōmaji, `d` the definition in four languages.
+# The first two are the same in every language and are not translated.
+# ---------------------------------------------------------------------------
+
+ui:
+  title:
+    es: "Glosario"
+    ca: "Glossari"
+    en: "Glossary"
+    ja: "用語集"
+  # COUNT is replaced with the real number of entries at build time, so the
+  # lede cannot disagree with the page under it.
+  lede:
+    es: "Las palabras que se oyen en el tatami: japonés de dojo, términos de aikido y vocabulario de artes marciales. COUNT entradas, ordenadas por dónde te las encuentras y no por el alfabeto."
+    ca: "Les paraules que se senten al tatami: japonès de dojo, termes d'aikido i vocabulari d'arts marcials. COUNT entrades, ordenades per on te les trobes i no per l'alfabet."
+    en: "The words you hear on the mat: dojo Japanese, aikido terms and martial arts vocabulary. COUNT entries, ordered by where you meet them rather than by the alphabet."
+    ja: "畳の上で耳にする言葉。道場の日本語、合気道の用語、そして武道の語彙。COUNT項目を、五十音順ではなく出会う順に並べています。"
+  search:
+    es: "Buscar en kanji, rōmaji o significado…"
+    ca: "Cerca en kanji, rōmaji o significat…"
+    en: "Search kanji, rōmaji or meaning…"
+    ja: "漢字・ローマ字・意味で検索…"
+  search_lab:
+    es: "Buscar en el glosario"
+    ca: "Cerca al glossari"
+    en: "Search the glossary"
+    ja: "用語集を検索"
+  clear:
+    es: "Limpiar"
+    ca: "Esborrar"
+    en: "Clear"
+    ja: "クリア"
+  all:
+    es: "Todas"
+    ca: "Totes"
+    en: "All"
+    ja: "すべて"
+  entries:
+    es: "entradas"
+    ca: "entrades"
+    en: "entries"
+    ja: "項目"
+  empty:
+    es: "Ninguna entrada coincide con la búsqueda."
+    ca: "Cap entrada coincideix amb la cerca."
+    en: "No entry matches that search."
+    ja: "該当する項目がありません。"
+  filters:
+    es: "Filtrar por categoría"
+    ca: "Filtra per categoria"
+    en: "Filter by category"
+    ja: "カテゴリで絞り込む"
+
+cats:
+  - id: dojo
+    name: { es: "En el dojo", ca: "Al dojo", en: "In the dojo", ja: "道場のなかで" }
+    sub:
+      es: "El espacio y lo que hay en él"
+      ca: "L'espai i el que hi ha"
+      en: "The space and what is in it"
+      ja: "場所と、その設え"
+    terms:
+      - k: 道場
+        r: dōjō
+        d:
+          es: "El lugar donde se estudia el camino. No es un gimnasio: se entra y se sale saludando."
+          ca: "El lloc on s'estudia el camí. No és un gimnàs: s'hi entra i se'n surt saludant."
+          en: "The place where the way is studied. Not a gym: you bow on the way in and on the way out."
+          ja: "道を学ぶ場所。体育館ではなく、礼をして入り、礼をして出る。"
+      - k: 畳
+        r: tatami
+        d:
+          es: "La estera sobre la que se practica. Da nombre al suelo entero, aunque hoy sea de otro material."
+          ca: "L'estora sobre la qual es practica. Dona nom a tot el terra, encara que avui sigui d'un altre material."
+          en: "The mat you practise on. It names the whole floor, even when the floor is made of something else."
+          ja: "稽古をする敷物。今は別の素材でも、床全体をこう呼ぶ。"
+      - k: 正面
+        r: shōmen
+        d:
+          es: "El frente del dojo, donde cuelgan la caligrafía y el retrato del fundador. Se saluda hacia allí."
+          ca: "El front del dojo, on pengen la cal·ligrafia i el retrat del fundador. S'hi saluda."
+          en: "The front of the dojo, where the calligraphy and the founder's portrait hang. You bow towards it."
+          ja: "道場の正面。書と開祖の写真を掲げ、そこへ礼をする。"
+      - k: 上座
+        r: kamiza
+        d:
+          es: "El lado de honor del dojo, junto al shōmen."
+          ca: "El costat d'honor del dojo, al costat del shōmen."
+          en: "The place of honour in the dojo, beside the shōmen."
+          ja: "道場の上手。正面のそば。"
+      - k: 下座
+        r: shimoza
+        d:
+          es: "El lado opuesto al kamiza, donde se sitúan los estudiantes."
+          ca: "El costat oposat al kamiza, on se situen els estudiants."
+          en: "The side opposite the kamiza, where the students line up."
+          ja: "上座の反対側。稽古する者が並ぶところ。"
+      - k: 道場長
+        r: dōjō-chō
+        d:
+          es: "El responsable del dojo. En Aikido Musubi, Pablo Martín."
+          ca: "El responsable del dojo. A Aikido Musubi, Pablo Martín."
+          en: "The person in charge of the dojo. At Aikido Musubi, Pablo Martín."
+          ja: "道場の責任者。合気道産靈では、パブロ・マルティン。"
+      - k: 掃除
+        r: sōji
+        d:
+          es: "La limpieza del dojo. La hacen los estudiantes y forma parte de la práctica."
+          ca: "La neteja del dojo. La fan els estudiants i forma part de la pràctica."
+          en: "Cleaning the dojo. The students do it, and it is part of the practice."
+          ja: "道場の掃除。稽古する者が行い、稽古の一部でもある。"
+      - k: 更衣室
+        r: kōishitsu
+        d:
+          es: "El vestuario."
+          ca: "El vestidor."
+          en: "The changing room."
+          ja: "更衣室。"
+
+  - id: frases
+    name: { es: "Saludos y frases", ca: "Salutacions i frases", en: "Greetings and phrases", ja: "挨拶と言葉" }
+    sub:
+      es: "Lo que se dice en voz alta"
+      ca: "El que es diu en veu alta"
+      en: "What is said out loud"
+      ja: "声に出して言うこと"
+    terms:
+      - k: 礼
+        r: rei
+        d:
+          es: "El saludo. Abre y cierra la clase, y también cada práctica con cada compañero."
+          ca: "La salutació. Obre i tanca la classe, i també cada pràctica amb cada company."
+          en: "The bow. It opens and closes the class, and every practice with every partner."
+          ja: "礼。稽古の始めと終わり、そして相手ごとの稽古の始めと終わりに。"
+      - k: お願いします
+        r: onegaishimasu
+        d:
+          es: "«Te lo pido, por favor.» Se le dice al compañero antes de practicar con él."
+          ca: "«T'ho demano, si us plau.» Es diu al company abans de practicar-hi."
+          en: "\"Please\", in the sense of asking a favour. Said to your partner before practising with them."
+          ja: "稽古を始めるとき、相手に言う言葉。"
+      - k: ありがとうございました
+        r: arigatō gozaimashita
+        d:
+          es: "«Muchas gracias.» Se le dice al terminar."
+          ca: "«Moltes gràcies.» Es diu en acabar."
+          en: "\"Thank you very much.\" Said when you finish."
+          ja: "稽古を終えるときに言う言葉。"
+      - k: 正座
+        r: seiza
+        d:
+          es: "Sentarse sobre los talones. Así empieza y termina cada clase."
+          ca: "Seure sobre els talons. Així comença i acaba cada classe."
+          en: "Sitting on your heels. Every class begins and ends this way."
+          ja: "かかとの上に座る座り方。稽古はこの姿勢で始まり、終わる。"
+      - k: 黙想
+        r: mokusō
+        d:
+          es: "Un momento breve de silencio con los ojos cerrados, antes o después de la clase."
+          ca: "Un moment breu de silenci amb els ulls tancats, abans o després de la classe."
+          en: "A short silence with the eyes closed, before or after the class."
+          ja: "目を閉じて静かに座る短い時間。稽古の前後に行う。"
+      - k: 始め
+        r: hajime
+        d:
+          es: "«Empezad.»"
+          ca: "«Comenceu.»"
+          en: "\"Begin.\""
+          ja: "「始め」。稽古を始める合図。"
+      - k: 止め
+        r: yame
+        d:
+          es: "«Parad.»"
+          ca: "«Pareu.»"
+          en: "\"Stop.\""
+          ja: "「止め」。稽古を止める合図。"
+      - k: 交代
+        r: kōtai
+        d:
+          es: "«Cambiad»: de papel o de compañero."
+          ca: "«Canvieu»: de paper o de company."
+          en: "\"Change over\", of role or of partner."
+          ja: "「交代」。取りと受け、あるいは相手を替える合図。"
+      - k: どうぞ
+        r: dōzo
+        d:
+          es: "«Adelante», «por favor, pasa»."
+          ca: "«Endavant», «si us plau, passa»."
+          en: "\"Go ahead\", \"please, after you\"."
+          ja: "「どうぞ」。先を譲るときの言葉。"
+      - k: 失礼します
+        r: shitsurei shimasu
+        d:
+          es: "«Disculpe la molestia.» Se dice al entrar o salir del tatami fuera de tiempo."
+          ca: "«Disculpi la molèstia.» Es diu en entrar o sortir del tatami fora de temps."
+          en: "\"Excuse me.\" Said when entering or leaving the mat out of turn."
+          ja: "稽古の途中で畳に出入りするときに言う言葉。"
+      - k: すみません
+        r: sumimasen
+        d:
+          es: "«Perdón», «disculpe»."
+          ca: "«Perdó», «disculpi»."
+          en: "\"Sorry\", \"excuse me\"."
+          ja: "「すみません」。詫びるとき、呼びかけるとき。"
+      - k: はい
+        r: hai
+        d:
+          es: "«Sí», y también «entendido»."
+          ca: "«Sí», i també «entès»."
+          en: "\"Yes\", and also \"understood\"."
+          ja: "「はい」。返事であり、了解でもある。"
+
+  - id: gente
+    name: { es: "Quién es quién", ca: "Qui és qui", en: "Who is who", ja: "人と呼び名" }
+    sub:
+      es: "Personas, títulos y grados"
+      ca: "Persones, títols i graus"
+      en: "People, titles and grades"
+      ja: "人、称号、段級"
+    terms:
+      - k: 先生
+        r: sensei
+        d:
+          es: "«El que nació antes.» El que enseña."
+          ca: "«El que va néixer abans.» El qui ensenya."
+          en: "\"The one born before.\" The one who teaches."
+          ja: "先に生まれた者。教える人。"
+      - k: 師範
+        r: shihan
+        d:
+          es: "«Modelo a seguir.» Título de la Aikikai para los maestros de grado alto."
+          ca: "«Model a seguir.» Títol de l'Aikikai per als mestres de grau alt."
+          en: "\"Model to follow.\" An Aikikai title for high-grade teachers."
+          ja: "手本となる者。合気会が高段の指導者に与える称号。"
+      - k: 指導員
+        r: shidōin
+        d:
+          es: "Instructor titulado por la Aikikai. El título de Pablo Martín."
+          ca: "Instructor titulat per l'Aikikai. El títol de Pablo Martín."
+          en: "An instructor certified by the Aikikai. Pablo Martín's title."
+          ja: "合気会公認の指導者。パブロ・マルティンの資格。"
+      - k: 副指導員
+        r: fukushidōin
+        d:
+          es: "Instructor auxiliar titulado, un escalón por debajo de shidōin."
+          ca: "Instructor auxiliar titulat, un esglaó per sota de shidōin."
+          en: "A certified assistant instructor, one step below shidōin."
+          ja: "公認の助教。指導員の一つ下。"
+      - k: 道主
+        r: dōshu
+        d:
+          es: "«El dueño del camino.» El jefe de la escuela; hoy Ueshiba Moriteru."
+          ca: "«L'amo del camí.» El cap de l'escola; avui Ueshiba Moriteru."
+          en: "\"Master of the way.\" The head of the school; today Ueshiba Moriteru."
+          ja: "道の主。合気道の宗家。現在は植芝守央。"
+      - k: 開祖
+        r: kaiso
+        d:
+          es: "El fundador. Para el aikido, Morihei Ueshiba."
+          ca: "El fundador. Per a l'aikido, Morihei Ueshiba."
+          en: "The founder. For aikido, Morihei Ueshiba."
+          ja: "流派を開いた人。合気道では植芝盛平。"
+      - k: 翁先生
+        r: Ō-Sensei
+        d:
+          es: "«Gran maestro.» Como se llama a Ueshiba dentro del dojo."
+          ca: "«Gran mestre.» Com s'anomena Ueshiba dins del dojo."
+          en: "\"Great teacher.\" What Ueshiba is called inside the dojo."
+          ja: "翁先生。道場のなかで植芝盛平を指す呼び方。"
+      - k: 先輩
+        r: senpai
+        d:
+          es: "Quien lleva más tiempo practicando que tú."
+          ca: "Qui fa més temps que practica que tu."
+          en: "Someone who has been practising longer than you."
+          ja: "自分より先に稽古を始めた人。"
+      - k: 後輩
+        r: kōhai
+        d:
+          es: "Quien lleva menos."
+          ca: "Qui en fa menys."
+          en: "Someone who has been practising less time."
+          ja: "自分より後に稽古を始めた人。"
+      - k: 内弟子
+        r: uchi-deshi
+        d:
+          es: "Alumno que vive en el dojo y lo atiende a cambio de la enseñanza."
+          ca: "Alumne que viu al dojo i el cuida a canvi de l'ensenyament."
+          en: "A student who lives in the dojo and looks after it in exchange for the teaching."
+          ja: "道場に住み込み、世話をしながら学ぶ弟子。"
+      - k: 級
+        r: kyū
+        d:
+          es: "Los grados anteriores al cinturón negro. Se numeran a la baja: 5.º, 4.º, 3.º…"
+          ca: "Els graus anteriors al cinturó negre. Es numeren a la baixa: 5è, 4t, 3r…"
+          en: "The grades before black belt. They count downwards: 5th, 4th, 3rd…"
+          ja: "黒帯より前の段階。五級、四級と数が減っていく。"
+      - k: 段
+        r: dan
+        d:
+          es: "Los grados a partir del cinturón negro. Se numeran al alza."
+          ca: "Els graus a partir del cinturó negre. Es numeren a l'alça."
+          en: "The grades from black belt onwards. They count upwards."
+          ja: "黒帯からの段階。初段、二段と数が増えていく。"
+      - k: 有段者
+        r: yūdansha
+        d:
+          es: "Quien ya tiene grado dan."
+          ca: "Qui ja té grau dan."
+          en: "Someone who holds a dan grade."
+          ja: "段位を持つ人。"
+      - k: 審査
+        r: shinsa
+        d:
+          es: "El examen de grado."
+          ca: "L'examen de grau."
+          en: "The grading examination."
+          ja: "昇級・昇段の審査。"
+
+  - id: ropa
+    name: { es: "Ropa y armas", ca: "Roba i armes", en: "Clothing and weapons", ja: "稽古着と武器" }
+    sub:
+      es: "Lo que se lleva y lo que se coge"
+      ca: "El que es porta i el que s'agafa"
+      en: "What you wear and what you pick up"
+      ja: "身につけるものと、手に取るもの"
+    terms:
+      - k: 稽古着
+        r: keikogi
+        d:
+          es: "La ropa de práctica. Para las primeras clases basta con manga larga."
+          ca: "La roba de pràctica. Per a les primeres classes n'hi ha prou amb màniga llarga."
+          en: "The practice uniform. For the first few classes, long sleeves are enough."
+          ja: "稽古のための衣服。最初のうちは長袖の服で足りる。"
+      - k: 帯
+        r: obi
+        d:
+          es: "El cinturón."
+          ca: "El cinturó."
+          en: "The belt."
+          ja: "帯。"
+      - k: 袴
+        r: hakama
+        d:
+          es: "El pantalón ancho plisado. En muchos dojos lo visten los grados dan."
+          ca: "El pantaló ample plissat. A molts dojos el vesteixen els graus dan."
+          en: "The wide pleated trousers. In many dojos they are worn by dan grades."
+          ja: "ひだのある袴。多くの道場では有段者が着ける。"
+      - k: 草履
+        r: zōri
+        d:
+          es: "Las sandalias para ir del vestuario al borde del tatami. En el tatami se entra descalzo."
+          ca: "Les sandàlies per anar del vestidor a la vora del tatami. Al tatami s'hi entra descalç."
+          en: "Sandals for getting from the changing room to the edge of the mat. You step onto the mat barefoot."
+          ja: "更衣室から畳の際まで履く履物。畳には裸足で上がる。"
+      - k: 木刀
+        r: bokken
+        d:
+          es: "El sable de madera."
+          ca: "El sabre de fusta."
+          en: "The wooden sword."
+          ja: "木でできた刀。"
+      - k: 杖
+        r: jō
+        d:
+          es: "El bastón de madera, de metro y pico."
+          ca: "El bastó de fusta, de metre i escaig."
+          en: "The wooden staff, a little over a metre."
+          ja: "一メートルあまりの木の杖。"
+      - k: 短刀
+        r: tantō
+        d:
+          es: "El cuchillo de madera, para las técnicas de desarme."
+          ca: "El ganivet de fusta, per a les tècniques de desarmament."
+          en: "The wooden knife, used for disarming techniques."
+          ja: "木製の短刀。取り上げの稽古に使う。"
+      - k: 武器
+        r: buki
+        d:
+          es: "Las armas, en general."
+          ca: "Les armes, en general."
+          en: "Weapons, in general."
+          ja: "武器全般。"
+
+      - k: 素振り
+        r: suburi
+        d:
+          es: "Cortes al aire, repetidos. Los ocho suburis de bokken son la base del programa de armas."
+          ca: "Talls a l'aire, repetits. Els vuit suburis de bokken són la base del programa d'armes."
+          en: "Cuts repeated in the air. The eight bokken suburi are the basis of the weapons programme."
+          ja: "素振り。木剣の八本が武器の要項の土台。"
+      - k: 袈裟
+        r: kesa
+        d:
+          es: "La diagonal del hombro a la cadera opuesta, por la caída del manto de un monje. Los cortes de jō salen de ahí."
+          ca: "La diagonal de l'espatlla al maluc oposat, per la caiguda del mantell d'un monjo. Els talls de jō en surten."
+          en: "The diagonal from shoulder to opposite hip, after the hang of a monk's robe. The jō cuts start there."
+          ja: "肩から反対の腰への斜線。僧の袈裟の掛かり方から。杖の斬りはここから。"
+      - k: 打ち落とし
+        r: uchiotoshi
+        d:
+          es: "Golpear hacia abajo el arma del otro. En jō aparece con varias empuñaduras: junte, kaete, keshi."
+          ca: "Colpejar cap avall l'arma de l'altre. En jō apareix amb diverses empunyadures: junte, kaete, keshi."
+          en: "Striking the other weapon downwards. In jō it comes with several grips: junte, kaete, keshi."
+          ja: "相手の武器を打ち落とす。杖では順手・替え手・返しなど持ち方が変わる。"
+  - id: cuerpo
+    name: { es: "Cuerpo y movimiento", ca: "Cos i moviment", en: "Body and movement", ja: "体と動き" }
+    sub:
+      es: "Cómo se mueve uno"
+      ca: "Com es mou un"
+      en: "How you move"
+      ja: "体の使い方"
+    terms:
+      - k: 受身
+        r: ukemi
+        d:
+          es: "La caída. La mitad del aikido consiste en aprender a recibir sin romperse."
+          ca: "La caiguda. La meitat de l'aikido consisteix a aprendre a rebre sense trencar-se."
+          en: "The fall. Half of aikido is learning to receive without breaking."
+          ja: "受け身。合気道の半分は、壊れずに受けることを学ぶことにある。"
+      - k: 体捌き
+        r: tai-sabaki
+        d:
+          es: "El desplazamiento del cuerpo para salir de la línea del ataque."
+          ca: "El desplaçament del cos per sortir de la línia de l'atac."
+          en: "Moving the body off the line of the attack."
+          ja: "攻撃の線から外れるための体の運び。"
+      - k: 入身
+        r: irimi
+        d:
+          es: "Entrar. Ocupar el espacio del atacante en lugar de retroceder."
+          ca: "Entrar. Ocupar l'espai de l'atacant en lloc de recular."
+          en: "Entering. Taking the attacker's space instead of backing away."
+          ja: "入る動き。退がらず、相手の空間に入る。"
+      - k: 転換
+        r: tenkan
+        d:
+          es: "Girar sobre el pie adelantado para acompañar la fuerza en vez de chocar con ella."
+          ca: "Girar sobre el peu avançat per acompanyar la força en lloc de xocar-hi."
+          en: "Turning on the front foot to go with the force instead of meeting it."
+          ja: "前足を軸に回り、力にぶつからず流れに沿う。"
+      - k: 表・裏
+        r: omote / ura
+        d:
+          es: "Las dos versiones de casi toda técnica: la que entra por delante y la que gira por detrás."
+          ca: "Les dues versions de gairebé tota tècnica: la que entra per davant i la que gira per darrere."
+          en: "The two versions of almost every technique: the one that enters in front and the one that turns behind."
+          ja: "ほとんどの技に二つの形がある。前へ入る表と、後ろへ回る裏。"
+      - k: 間合い
+        r: ma-ai
+        d:
+          es: "La distancia justa entre dos personas. Ni tan cerca que estorbe ni tan lejos que no llegue."
+          ca: "La distància justa entre dues persones. Ni tan a prop que faci nosa ni tan lluny que no hi arribi."
+          en: "The right distance between two people. Not so close that it crowds, not so far that it cannot reach."
+          ja: "二人のあいだの適切な距離。近すぎず、遠すぎず。"
+      - k: 残心
+        r: zanshin
+        d:
+          es: "La atención que queda después de terminar. La técnica no acaba cuando el otro cae."
+          ca: "L'atenció que queda després d'acabar. La tècnica no s'acaba quan l'altre cau."
+          en: "The attention that remains after finishing. The technique does not end when the other person falls."
+          ja: "終えたあとに残る心。相手が倒れて技が終わるのではない。"
+      - k: 呼吸
+        r: kokyū
+        d:
+          es: "La respiración, y por extensión el tiempo interior del movimiento."
+          ca: "La respiració, i per extensió el temps interior del moviment."
+          en: "Breathing, and by extension the inner timing of a movement."
+          ja: "呼吸。転じて、動きの内にある間合いと拍子。"
+      - k: 丹田
+        r: tanden
+        d:
+          es: "El centro, dos dedos bajo el ombligo. De ahí sale el movimiento."
+          ca: "El centre, dos dits sota el melic. D'allà surt el moviment."
+          en: "The centre, two fingers below the navel. Movement comes from there."
+          ja: "臍の下、指二本のところにある中心。動きはここから出る。"
+      - k: 構え
+        r: kamae
+        d:
+          es: "La postura de guardia."
+          ca: "La postura de guàrdia."
+          en: "The ready stance."
+          ja: "身構え。"
+      - k: 半身
+        r: hanmi
+        d:
+          es: "El cuerpo de perfil, un pie adelantado. La postura básica."
+          ca: "El cos de perfil, un peu avançat. La postura bàsica."
+          en: "The body side-on, one foot forward. The basic stance."
+          ja: "半身。体を斜めに、片足を前に置く基本の構え。"
+      - k: 膝行
+        r: shikkō
+        d:
+          es: "Caminar de rodillas."
+          ca: "Caminar de genolls."
+          en: "Walking on the knees."
+          ja: "膝で進む歩き方。"
+      - k: 座り技
+        r: suwari-waza
+        d:
+          es: "Técnicas con los dos de rodillas."
+          ca: "Tècniques amb tots dos de genolls."
+          en: "Techniques with both people kneeling."
+          ja: "二人とも膝をついて行う技。"
+      - k: 半身半立
+        r: hanmi-handachi
+        d:
+          es: "Uno de rodillas y el otro de pie."
+          ca: "Un de genolls i l'altre dret."
+          en: "One kneeling, the other standing."
+          ja: "取りが座り、受けが立って行う稽古。"
+      - k: 立ち技
+        r: tachi-waza
+        d:
+          es: "Técnicas de pie."
+          ca: "Tècniques dretes."
+          en: "Standing techniques."
+          ja: "立って行う技。"
+      - k: 後ろ技
+        r: ushiro-waza
+        d:
+          es: "Técnicas contra ataques por la espalda."
+          ca: "Tècniques contra atacs per l'esquena."
+          en: "Techniques against attacks from behind."
+          ja: "背後からの攻撃に対する技。"
+      - k: 取り・受け
+        r: tori / uke
+        d:
+          es: "Quien hace la técnica y quien la recibe. Se alternan sin parar."
+          ca: "Qui fa la tècnica i qui la rep. S'alternen sense parar."
+          en: "The one who does the technique and the one who receives it. They swap constantly."
+          ja: "技をかける側と受ける側。絶えず入れ替わる。"
+
+      - k: 相半身 / 逆半身
+        r: ai-hanmi / gyaku-hanmi
+        d:
+          es: "Mismo pie adelante los dos, o pies contrarios. Cambia el ángulo y con él toda la técnica."
+          ca: "Mateix peu endavant tots dos, o peus contraris. Canvia l'angle i amb ell tota la tècnica."
+          en: "Both with the same foot forward, or opposite feet. It changes the angle, and with it the whole technique."
+          ja: "同じ足を前に出すか、逆の足か。角度が変わり、技全体が変わる。"
+      - k: 内 / 外
+        r: uchi / soto
+        d:
+          es: "Por dentro o por fuera del brazo que ataca. Kaiten-nage se pide de las dos formas."
+          ca: "Per dins o per fora del braç que ataca. Kaiten-nage es demana de les dues formes."
+          en: "Inside or outside the attacking arm. Kaiten-nage is asked for both ways."
+          ja: "攻撃する腕の内側か外側か。回転投げは両方求められる。"
+      - k: 上段 / 中段 / 下段
+        r: jōdan / chūdan / gedan
+        d:
+          es: "Alto, medio y bajo. La altura a la que se trabaja: en 1.er kyū el ikkyō de morote-dori se pide en las tres."
+          ca: "Alt, mig i baix. L'alçada a què es treballa: a 1r kyū l'ikkyō de morote-dori es demana a les tres."
+          en: "High, middle and low. The height the work happens at: at 1st kyū the morote-dori ikkyō is asked at all three."
+          ja: "上・中・下。稽古する高さ。一級では諸手取り一教を三段階すべてで行う。"
+      - k: 二人取り
+        r: futari-dori
+        d:
+          es: "Dos que agarran a la vez. Desde 3.er kyū es el punto de partida del randori."
+          ca: "Dos que agafen alhora. Des de 3r kyū és el punt de partida del randori."
+          en: "Two people taking hold at once. From 3rd kyū it is where randori starts."
+          ja: "二人が同時に取る。三級からは乱取りの起点。"
+      - k: 腹
+        r: hara
+        d:
+          es: "El vientre, y por extensión el centro del cuerpo. La técnica sale de ahí, no de los brazos."
+          ca: "El ventre, i per extensió el centre del cos. La tècnica en surt, no dels braços."
+          en: "The belly, and by extension the centre of the body. Technique comes from there, not from the arms."
+          ja: "腹。体の中心。技は腕ではなくここから出る。"
+      - k: 合わせ
+        r: awase
+        d:
+          es: "Ajustarse al otro: su tiempo, su dirección, su distancia. Antes de hacer nada hay que coincidir."
+          ca: "Ajustar-se a l'altre: el seu temps, la seva direcció, la seva distància. Abans de fer res cal coincidir."
+          en: "Matching the other person: their timing, their direction, their distance. Before anything else, you meet."
+          ja: "相手に合わせること。間合い・方向・呼吸を合わせてから技が始まる。"
+  - id: ataques
+    name: { es: "Ataques", ca: "Atacs", en: "Attacks", ja: "攻撃" }
+    sub:
+      es: "Cómo empieza cada técnica"
+      ca: "Com comença cada tècnica"
+      en: "How each technique begins"
+      ja: "技の始まり"
+    terms:
+      - k: 正面打ち
+        r: shōmen-uchi
+        d:
+          es: "Corte vertical a la cabeza."
+          ca: "Tall vertical al cap."
+          en: "A vertical strike to the head."
+          ja: "頭上への真っ直ぐな打ち。"
+      - k: 横面打ち
+        r: yokomen-uchi
+        d:
+          es: "Corte diagonal a la sien."
+          ca: "Tall diagonal al pols."
+          en: "A diagonal strike to the side of the head."
+          ja: "こめかみへの斜めの打ち。"
+      - k: 突き
+        r: tsuki
+        d:
+          es: "Golpe directo, normalmente al abdomen."
+          ca: "Cop directe, normalment a l'abdomen."
+          en: "A straight thrust, usually to the abdomen."
+          ja: "まっすぐな突き。多くは腹への一撃。"
+      - k: 片手取り
+        r: katate-dori
+        d:
+          es: "Agarre de una muñeca con una mano."
+          ca: "Agafada d'un canell amb una mà."
+          en: "One hand grabbing one wrist."
+          ja: "片手で片方の手首を取る。"
+      - k: 諸手取り
+        r: morote-dori
+        d:
+          es: "Agarre de una muñeca con las dos manos."
+          ca: "Agafada d'un canell amb les dues mans."
+          en: "Both hands grabbing one wrist."
+          ja: "両手で片方の手首を取る。"
+      - k: 両手取り
+        r: ryōte-dori
+        d:
+          es: "Agarre de las dos muñecas."
+          ca: "Agafada dels dos canells."
+          en: "Both wrists grabbed."
+          ja: "両方の手首を取る。"
+      - k: 肩取り
+        r: kata-dori
+        d:
+          es: "Agarre del hombro."
+          ca: "Agafada de l'espatlla."
+          en: "A grab to the shoulder."
+          ja: "肩を取る。"
+      - k: 胸取り
+        r: mune-dori
+        d:
+          es: "Agarre de la solapa."
+          ca: "Agafada de la solapa."
+          en: "A grab to the lapel."
+          ja: "胸元を取る。"
+      - k: 後ろ両手取り
+        r: ushiro ryōte-dori
+        d:
+          es: "Agarre de las dos muñecas por detrás."
+          ca: "Agafada dels dos canells per darrere."
+          en: "Both wrists grabbed from behind."
+          ja: "背後から両方の手首を取る。"
+
+      - k: 後ろ両肩取り
+        r: ushiro ryōkata-dori
+        d:
+          es: "Agarre de los dos hombros desde atrás."
+          ca: "Agafada de les dues espatlles des de darrere."
+          en: "A hold on both shoulders from behind."
+          ja: "後ろから両肩を取る。"
+      - k: 後ろ首絞め
+        r: ushiro kubi-shime
+        d:
+          es: "Estrangulación desde atrás, normalmente con la otra mano sujetando una muñeca."
+          ca: "Estrangulació des de darrere, normalment amb l'altra mà subjectant un canell."
+          en: "A choke from behind, usually with the other hand holding a wrist."
+          ja: "後ろからの首絞め。多くは反対の手で手首を取る。"
+  - id: tecnicas
+    name: { es: "Técnicas", ca: "Tècniques", en: "Techniques", ja: "技" }
+    sub:
+      es: "Las que más se oyen"
+      ca: "Les que més se senten"
+      en: "The ones you hear most"
+      ja: "よく耳にするもの"
+    terms:
+      - k: 一教
+        r: ikkyō
+        d:
+          es: "«Primera enseñanza.» Control del codo."
+          ca: "«Primera ensenyança.» Control del colze."
+          en: "\"First teaching.\" A control on the elbow."
+          ja: "第一の教え。肘を制する。"
+      - k: 二教
+        r: nikyō
+        d:
+          es: "«Segunda.» Torsión de la muñeca hacia dentro."
+          ca: "«Segona.» Torsió del canell cap endins."
+          en: "\"Second.\" An inward wrist turn."
+          ja: "第二の教え。手首を内へ極める。"
+      - k: 三教
+        r: sankyō
+        d:
+          es: "«Tercera.» Torsión en espiral del brazo."
+          ca: "«Tercera.» Torsió en espiral del braç."
+          en: "\"Third.\" A spiralling twist of the arm."
+          ja: "第三の教え。腕を螺旋に絞る。"
+      - k: 四教
+        r: yonkyō
+        d:
+          es: "«Cuarta.» Presión sobre el nervio del antebrazo."
+          ca: "«Quarta.» Pressió sobre el nervi de l'avantbraç."
+          en: "\"Fourth.\" Pressure on the nerve of the forearm."
+          ja: "第四の教え。前腕の神経を圧する。"
+      - k: 五教
+        r: gokyō
+        d:
+          es: "«Quinta.» Variante de ikkyō para el desarme del cuchillo."
+          ca: "«Cinquena.» Variant d'ikkyō per al desarmament del ganivet."
+          en: "\"Fifth.\" A variant of ikkyō used to take a knife away."
+          ja: "第五の教え。短刀取りに用いる一教の変化。"
+      - k: 入身投げ
+        r: irimi-nage
+        d:
+          es: "«Proyección entrando.»"
+          ca: "«Projecció entrant.»"
+          en: "\"Entering throw.\""
+          ja: "入身から投げる技。"
+      - k: 四方投げ
+        r: shihō-nage
+        d:
+          es: "«Proyección a las cuatro direcciones.»"
+          ca: "«Projecció a les quatre direccions.»"
+          en: "\"Four-direction throw.\""
+          ja: "四方に投げる技。"
+      - k: 小手返し
+        r: kote-gaeshi
+        d:
+          es: "«Vuelta de muñeca.»"
+          ca: "«Volta de canell.»"
+          en: "\"Wrist return.\""
+          ja: "手首を返して投げる技。"
+      - k: 回転投げ
+        r: kaiten-nage
+        d:
+          es: "«Proyección giratoria.»"
+          ca: "«Projecció giratòria.»"
+          en: "\"Rotary throw.\""
+          ja: "回転させて投げる技。"
+      - k: 天地投げ
+        r: tenchi-nage
+        d:
+          es: "«Proyección cielo y tierra.»"
+          ca: "«Projecció cel i terra.»"
+          en: "\"Heaven and earth throw.\""
+          ja: "天と地、上下に分けて投げる技。"
+      - k: 腰投げ
+        r: koshi-nage
+        d:
+          es: "Proyección de cadera."
+          ca: "Projecció de maluc."
+          en: "A hip throw."
+          ja: "腰に乗せて投げる技。"
+      - k: 呼吸法
+        r: kokyū-hō
+        d:
+          es: "El ejercicio de respiración con el que suele cerrarse la clase."
+          ca: "L'exercici de respiració amb què sol tancar-se la classe."
+          en: "The breathing exercise that usually closes the class."
+          ja: "稽古の終わりに行うことの多い呼吸の稽古。"
+      - k: 抑え技
+        r: osae-waza
+        d:
+          es: "Técnicas de control en el suelo."
+          ca: "Tècniques de control a terra."
+          en: "Pinning techniques on the ground."
+          ja: "床の上で相手を抑える技。"
+      - k: 投げ技
+        r: nage-waza
+        d:
+          es: "Técnicas de proyección."
+          ca: "Tècniques de projecció."
+          en: "Throwing techniques."
+          ja: "投げる技。"
+
+      - k: 呼吸投げ
+        r: kokyū-nage
+        d:
+          es: "Proyección de respiración. No hay palanca: se conduce el desequilibrio hasta el final."
+          ca: "Projecció de respiració. No hi ha palanca: es condueix el desequilibri fins al final."
+          en: "A breath throw. No lever: the imbalance is led all the way out."
+          ja: "呼吸投げ。極めではなく、崩れをそのまま導く。"
+      - k: 隅落とし
+        r: sumi-otoshi
+        d:
+          es: "«Caída al rincón.» Se deja caer a uke hacia su esquina ciega."
+          ca: "«Caiguda al racó.» Es deixa caure l'uke cap al seu racó cec."
+          en: "\"Corner drop.\" Uke is dropped towards the blind corner behind them."
+          ja: "隅へ落とす。受けの死角へ崩す。"
+      - k: 十字投げ
+        r: jūji-nage
+        d:
+          es: "Los dos brazos cruzados en diez, 十, y la proyección sale de ahí."
+          ca: "Els dos braços creuats en deu, 十, i la projecció en surt."
+          en: "The two arms crossed like the figure ten, 十, and the throw comes from that."
+          ja: "両腕を十字に組んで投げる。"
+      - k: 腕極め投げ
+        r: ude-kime-nage
+        d:
+          es: "Proyección extendiendo el codo. El brazo se estira, no se retuerce."
+          ca: "Projecció estenent el colze. El braç s'estira, no es recargola."
+          en: "A throw that extends the elbow. The arm is straightened, not twisted."
+          ja: "肘を極めて投げる。腕は伸ばす、捻らない。"
+      - k: 肘極め押え
+        r: hiji-kime-osae
+        d:
+          es: "Inmovilización con el codo extendido contra el suelo. Aparece en 1.er kyū en todos los ataques."
+          ca: "Immobilització amb el colze estès contra el terra. Apareix a 1r kyū a tots els atacs."
+          en: "A pin with the elbow extended against the mat. It arrives at 1st kyū across every attack."
+          ja: "肘を極めて押える。一級で全ての攻撃に登場する。"
+      - k: 腕絡み
+        r: ude-garami
+        d:
+          es: "El brazo enrollado sobre sí mismo. En el programa aparece en hanmi-handachi."
+          ca: "El braç enrotllat sobre si mateix. Al programa apareix en hanmi-handachi."
+          en: "The arm wound back on itself. In the programme it appears in hanmi-handachi."
+          ja: "腕を絡めて制する。要項では半身半立に出てくる。"
+      - k: 巻き落とし
+        r: maki-otoshi
+        d:
+          es: "Enrollar y dejar caer. Se pide de yokomen y también en el jō."
+          ca: "Enrotllar i deixar caure. Es demana de yokomen i també al jō."
+          en: "To wind up and drop. Asked for from yokomen, and in the jō work too."
+          ja: "巻いて落とす。横面からも、杖でも求められる。"
+  - id: ideas
+    name: { es: "Ideas", ca: "Idees", en: "Ideas", ja: "考え方" }
+    sub:
+      es: "Lo que hay detrás de todo lo demás"
+      ca: "El que hi ha darrere de tota la resta"
+      en: "What is behind everything else"
+      ja: "すべての根にあるもの"
+    terms:
+      - k: 合気道
+        r: aikidō
+        d:
+          es: "«El camino de la unión con la energía.»"
+          ca: "«El camí de la unió amb l'energia.»"
+          en: "\"The way of joining with energy.\""
+          ja: "気と合わせる道。"
+      - k: 合気
+        r: aiki
+        d:
+          es: "Unir la propia energía con la del otro en vez de oponerse a ella."
+          ca: "Unir la pròpia energia amb la de l'altre en lloc d'oposar-s'hi."
+          en: "Joining your own energy with the other person's instead of opposing it."
+          ja: "相手の気に逆らわず、自分の気を合わせること。"
+      - k: 気
+        r: ki
+        d:
+          es: "La energía, el aliento, la intención. La misma sílaba que abre aikidō."
+          ca: "L'energia, l'alè, la intenció. La mateixa síl·laba que obre aikidō."
+          en: "Energy, breath, intention. The same syllable that opens aikidō."
+          ja: "気。息であり、意であり、合気道の名の一字。"
+      - k: 武道
+        r: budō
+        d:
+          es: "«La vía marcial.» Las artes marciales entendidas como camino, no como deporte."
+          ca: "«La via marcial.» Les arts marcials enteses com a camí, no com a esport."
+          en: "\"The martial way.\" Martial arts understood as a path rather than a sport."
+          ja: "武の道。競技ではなく、道として捉えた武術。"
+      - k: 道
+        r: dō
+        d:
+          es: "El camino. La misma palabra que en aikidō, judō o karatedō."
+          ca: "El camí. La mateixa paraula que en aikidō, judō o karatedō."
+          en: "The way. The same word as in aikidō, jūdō or karatedō."
+          ja: "道。合気道、柔道、空手道に共通する一字。"
+      - k: 稽古
+        r: keiko
+        d:
+          es: "La práctica. Literalmente «pensar en lo antiguo»: se repite algo que otros repitieron antes."
+          ca: "La pràctica. Literalment «pensar en l'antic»: es repeteix una cosa que altres van repetir abans."
+          en: "Practice. Literally \"to consider the old\": you repeat something others repeated before you."
+          ja: "稽古。古を稽える、つまり先人が繰り返したことを繰り返すこと。"
+      - k: 修行
+        r: shugyō
+        d:
+          es: "La práctica sostenida durante años, con todo lo que implica."
+          ca: "La pràctica sostinguda durant anys, amb tot el que implica."
+          en: "Sustained practice over years, with everything that involves."
+          ja: "長い年月にわたって続ける修練。"
+      - k: 型
+        r: kata
+        d:
+          es: "La forma fija que se repite para aprenderla."
+          ca: "La forma fixa que es repeteix per aprendre-la."
+          en: "A fixed form, repeated in order to learn it."
+          ja: "決まった形。繰り返して身につける。"
+      - k: 乱取り
+        r: randori
+        d:
+          es: "Práctica libre contra varios atacantes."
+          ca: "Pràctica lliure contra diversos atacants."
+          en: "Free practice against several attackers."
+          ja: "複数の相手を受けての自由な稽古。"
+      - k: 自由技
+        r: jiyū-waza
+        d:
+          es: "Técnica libre: el ataque está fijado, la respuesta no."
+          ca: "Tècnica lliure: l'atac està fixat, la resposta no."
+          en: "Free technique: the attack is fixed, the answer is not."
+          ja: "攻撃は決まっていて、応じ方は自由な稽古。"
+      - k: 気合
+        r: kiai
+        d:
+          es: "El grito que acompaña un movimiento decidido."
+          ca: "El crit que acompanya un moviment decidit."
+          en: "The shout that goes with a committed movement."
+          ja: "思い切った動きに伴う声。"
+      - k: 無心
+        r: mushin
+        d:
+          es: "«Sin mente.» Actuar sin que el pensamiento se interponga."
+          ca: "«Sense ment.» Actuar sense que el pensament s'hi interposi."
+          en: "\"No mind.\" Acting without thought getting in the way."
+          ja: "無心。考えが動きの邪魔をしない状態。"
+      - k: 初心
+        r: shoshin
+        d:
+          es: "«Mente de principiante.» La disposición que conviene conservar siempre."
+          ca: "«Ment de principiant.» La disposició que convé conservar sempre."
+          en: "\"Beginner's mind.\" The attitude worth keeping for good."
+          ja: "初心。いつまでも持ち続けたい心構え。"
+      - k: 礼法
+        r: reihō
+        d:
+          es: "La etiqueta del dojo: cómo se entra, cómo se saluda, cómo se trata al compañero."
+          ca: "L'etiqueta del dojo: com s'hi entra, com se saluda, com es tracta el company."
+          en: "Dojo etiquette: how you come in, how you bow, how you treat your partner."
+          ja: "道場の作法。入り方、礼の仕方、相手への接し方。"
+      - k: 産靈
+        r: musubi
+        d:
+          es: "El nudo: lo que une dos cosas y las deja unidas. De ahí el nombre del dojo."
+          ca: "El nus: allò que uneix dues coses i les deixa unides. D'aquí ve el nom del dojo."
+          en: "The knot: what joins two things and leaves them joined. The dojo takes its name from it."
+          ja: "産靈。二つのものを結び、結ばれたままにする働き。道場の名の由来。"
+
+  - id: casa
+    name: { es: "Frases de la casa", ca: "Frases de la casa", en: "Our own phrases", ja: "道場の言葉" }
+    sub:
+      es: "Las que están escritas en nuestras paredes"
+      ca: "Les que hi ha escrites a les nostres parets"
+      en: "The ones written on our own walls"
+      ja: "壁に書かれているもの"
+    terms:
+      - k: 唱えよ、友、そして入れ。
+        r: tonaeyo, tomo, soshite haire
+        d:
+          es: "«Habla, amigo, y entra.» Está a la entrada de nuestro tatami. Viene de la puerta de Moria, en <em>El Señor de los Anillos</em>: la contraseña era decir «amigo» en élfico."
+          ca: "«Parla, amic, i entra.» És a l'entrada del nostre tatami. Ve de la porta de Mòria, a <em>El Senyor dels Anells</em>: la contrasenya era dir «amic» en èlfic."
+          en: "\"Speak, friend, and enter.\" It is at the entrance to our mat. It comes from the gate of Moria in <em>The Lord of the Rings</em>: the password was to say \"friend\" in Elvish."
+          ja: "「友と唱えて入れ」。畳の入口に掲げてある。<em>指輪物語</em>のモリアの門から。合言葉はエルフ語で「友」と言うことだった。"
+      - k: 見つけて壊せ。
+        r: mitsukete kowase
+        d:
+          es: "«Búscalo y destrúyelo.» Seek &amp; Destroy, la canción de Metallica."
+          ca: "«Busca'l i destrueix-lo.» Seek &amp; Destroy, la cançó de Metallica."
+          en: "\"Seek and destroy.\" After the Metallica song."
+          ja: "「探し出して壊せ」。メタリカの曲「Seek &amp; Destroy」から。"
+      - k: 我らの道。
+        r: warera no michi
+        d:
+          es: "«Este es el camino.» De <em>The Mandalorian</em>. En el dojo se dice medio en broma y medio en serio, que es como se dicen las cosas importantes."
+          ca: "«Aquest és el camí.» De <em>The Mandalorian</em>. Al dojo es diu mig en broma i mig seriosament, que és com es diuen les coses importants."
+          en: "\"This is the way.\" From <em>The Mandalorian</em>. In the dojo it is said half joking and half seriously, which is how important things get said."
+          ja: "「これが我らの道」。<em>マンダロリアン</em>から。道場では半分冗談、半分本気で言う。大事なことはたいていそう言われる。"
+      - k: 生ビールを二つください。
+        r: nama bīru o futatsu kudasai
+        d:
+          es: "«Dos cañas, por favor.» La frase de japonés más útil después del entrenamiento, y la única que todo el mundo memoriza a la primera."
+          ca: "«Dues canyes, si us plau.» La frase de japonès més útil després d'entrenar, i l'única que tothom memoritza a la primera."
+          en: "\"Two draught beers, please.\" The most useful Japanese phrase after training, and the only one everybody memorises first time."
+          ja: "稽古のあとにいちばん役に立つ日本語。そして、誰もが一度で覚える唯一の一文。"
+
+  - id: kaiju
+    name: { es: "Kaijū", ca: "Kaijū", en: "Kaijū", ja: "怪獣" }
+    sub:
+      es: "Monstruos gigantes, que también son cultura japonesa"
+      ca: "Monstres gegants, que també són cultura japonesa"
+      en: "Giant monsters, which are also Japanese culture"
+      ja: "これもまた日本の文化"
+    terms:
+      - k: ゴジラ
+        r: Gojira
+        d:
+          es: "Godzilla. El nombre sale de juntar <em>gorira</em> (gorila) y <em>kujira</em> (ballena). Vive en nuestra página de error 404."
+          ca: "Godzilla. El nom surt de juntar <em>gorira</em> (goril·la) i <em>kujira</em> (balena). Viu a la nostra pàgina d'error 404."
+          en: "Godzilla. The name comes from joining <em>gorira</em> (gorilla) and <em>kujira</em> (whale). It lives on our 404 page."
+          ja: "ゴジラ。<em>ゴリラ</em>と<em>クジラ</em>を合わせた名。この道場では404ページに棲んでいる。"
+      - k: 怪獣
+        r: kaijū
+        d:
+          es: "«Bestia extraña.» El género entero de monstruos gigantes."
+          ca: "«Bèstia estranya.» El gènere sencer de monstres gegants."
+          en: "\"Strange beast.\" The whole giant-monster genre."
+          ja: "怪しい獣。巨大怪獣というジャンルそのもの。"
+      - k: 大怪獣
+        r: daikaijū
+        d:
+          es: "El kaijū grande, el que da nombre a la película."
+          ca: "El kaijū gran, el que dona nom a la pel·lícula."
+          en: "The big one, the kaijū the film is named after."
+          ja: "大怪獣。題名になるほうの怪獣。"
+      - k: 特撮
+        r: tokusatsu
+        d:
+          es: "«Fotografía especial.» El cine japonés de efectos prácticos: trajes de goma, maquetas y ciudades en miniatura."
+          ca: "«Fotografia especial.» El cinema japonès d'efectes pràctics: vestits de goma, maquetes i ciutats en miniatura."
+          en: "\"Special photography.\" Japanese practical-effects cinema: rubber suits, models and miniature cities."
+          ja: "特殊撮影。着ぐるみとミニチュアで街をつくる日本映画の技法。"
+      - k: 着ぐるみ
+        r: kigurumi
+        d:
+          es: "El traje de monstruo con actor dentro. La técnica que hizo posible el género."
+          ca: "El vestit de monstre amb actor a dins. La tècnica que va fer possible el gènere."
+          en: "The monster suit with an actor inside. The technique that made the genre possible."
+          ja: "中に人が入る着ぐるみ。このジャンルを成り立たせた技術。"
+      - k: 東宝
+        r: Tōhō
+        d:
+          es: "El estudio que produjo <em>Gojira</em> en 1954 y casi todo lo que vino después."
+          ca: "L'estudi que va produir <em>Gojira</em> el 1954 i gairebé tot el que va venir després."
+          en: "The studio that produced <em>Gojira</em> in 1954, and most of what followed."
+          ja: "1954年に<em>ゴジラ</em>を製作し、その後もほとんどを手がけた映画会社。"
+      - k: 放射熱線
+        r: hōshanetsusen
+        d:
+          es: "«Rayo térmico radiactivo.» El aliento atómico."
+          ca: "«Raig tèrmic radioactiu.» L'alè atòmic."
+          en: "\"Radioactive heat ray.\" The atomic breath."
+          ja: "放射熱線。いわゆる放射能火炎。"
+      - k: モスラ
+        r: Mosura
+        d:
+          es: "Mothra. La polilla gigante, y la única kaijū claramente benévola."
+          ca: "Mothra. L'arna gegant, i l'única kaijū clarament benèvola."
+          en: "Mothra. The giant moth, and the one clearly benevolent kaijū."
+          ja: "モスラ。巨大な蛾であり、はっきり善なる唯一の怪獣。"
+      - k: ラドン
+        r: Radon
+        d:
+          es: "Rodan. El pteranodonte."
+          ca: "Rodan. El pteranodont."
+          en: "Rodan. The pteranodon."
+          ja: "ラドン。翼竜の怪獣。"
+      - k: キングギドラ
+        r: Kingu Gidora
+        d:
+          es: "King Ghidorah. El dragón de tres cabezas."
+          ca: "King Ghidorah. El drac de tres caps."
+          en: "King Ghidorah. The three-headed dragon."
+          ja: "キングギドラ。三つ首の竜。"
+      - k: ウルトラマン
+        r: Urutoraman
+        d:
+          es: "Ultraman. El gigante de plata que pelea con los kaijū cada semana desde 1966."
+          ca: "Ultraman. El gegant de plata que lluita amb els kaijū cada setmana des del 1966."
+          en: "Ultraman. The silver giant who has fought kaijū every week since 1966."
+          ja: "ウルトラマン。1966年から毎週怪獣と戦っている銀の巨人。"
+      - k: 破壊
+        r: hakai
+        d:
+          es: "Destrucción. Lo que le pasa a Tokio, y a esta página."
+          ca: "Destrucció. El que li passa a Tòquio, i a aquesta pàgina."
+          en: "Destruction. What happens to Tokyo, and to that page."
+          ja: "破壊。東京に起こること、そしてあのページに起こること。"
+
+  - id: contar
+    name: { es: "Contar", ca: "Comptar", en: "Counting", ja: "数える" }
+    sub:
+      es: "Del uno al diez, que se oye cada día"
+      ca: "De l'u al deu, que se sent cada dia"
+      en: "One to ten, heard every day"
+      ja: "毎日聞く、一から十まで"
+    terms:
+      - k: 一
+        r: ichi
+        d: { es: "Uno.", ca: "U.", en: "One.", ja: "一。" }
+      - k: 二
+        r: ni
+        d: { es: "Dos.", ca: "Dos.", en: "Two.", ja: "二。" }
+      - k: 三
+        r: san
+        d: { es: "Tres.", ca: "Tres.", en: "Three.", ja: "三。" }
+      - k: 四
+        r: shi / yon
+        d:
+          es: "Cuatro. Al contar en el dojo se suele decir «shi»."
+          ca: "Quatre. En comptar al dojo se sol dir «shi»."
+          en: "Four. Counting in the dojo, it is usually \"shi\"."
+          ja: "四。道場で数えるときは「し」と言うことが多い。"
+      - k: 五
+        r: go
+        d: { es: "Cinco.", ca: "Cinc.", en: "Five.", ja: "五。" }
+      - k: 六
+        r: roku
+        d: { es: "Seis.", ca: "Sis.", en: "Six.", ja: "六。" }
+      - k: 七
+        r: shichi / nana
+        d: { es: "Siete.", ca: "Set.", en: "Seven.", ja: "七。" }
+      - k: 八
+        r: hachi
+        d: { es: "Ocho.", ca: "Vuit.", en: "Eight.", ja: "八。" }
+      - k: 九
+        r: kyū / ku
+        d:
+          es: "Nueve. Suena igual que el grado kyū."
+          ca: "Nou. Sona igual que el grau kyū."
+          en: "Nine. It sounds the same as the kyū grade."
+          ja: "九。級と同じ音。"
+      - k: 十
+        r: jū
+        d: { es: "Diez.", ca: "Deu.", en: "Ten.", ja: "十。" }

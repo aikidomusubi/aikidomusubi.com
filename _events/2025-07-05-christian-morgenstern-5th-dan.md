@@ -5,6 +5,15 @@ title_en: "Christian Morgenstern 5th Dan Aikikai"
 title_es: "Christian Morgenstern 5.º Dan Aikikai"
 title_ja: "クリスティアン・モリゲンシュテルン 五段 合気会"
 
+instructor_ca: "Christian Morgenstern"
+grade_ca: "5è dan Aikikai"
+instructor_en: "Christian Morgenstern"
+grade_en: "5th dan Aikikai"
+instructor_es: "Christian Morgenstern"
+grade_es: "5.º dan Aikikai"
+instructor_ja: "クリスティアン・モリゲンシュテルン"
+grade_ja: "五段 合気会"
+
 desc_ca: >-
   El proper dissabte 5 de juliol tenim el plaer d'acollir al nostre dojo les molt esperades jornades d'Aikido a càrrec de Christian Morgenstern 5è dan Aikikai.
 desc_en: >-

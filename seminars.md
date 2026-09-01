@@ -9,13 +9,10 @@ redirect_from:
   - /cursos/
 lang: es
 i18n-ref: events-hFZ2XXIp
-last_modified: 2026-05-31
+last_modified: 2026-08-30
 ---
 
 # Seminarios
 
-Seminarios, masterclasses y colaboraciones que organizamos en nuestro dojo. Consulta el [calendario](/calendario/) para ver las fechas del mes. Para más información, visita [nuestra página de Facebook](https://www.facebook.com/{{ site.facebook_username }}/events/).
+Seminarios, masterclasses y colaboraciones que organizamos en nuestro dojo. Consulta el [calendario](/calendario/) para ver las fechas del mes. Para más información, visita [nuestra página de Facebook](https://www.facebook.com/{{ site.facebook_username }}/events/){:target="_blank" rel="noopener"}.
 
-<hr>
-
-{% include stickyBar.html %}

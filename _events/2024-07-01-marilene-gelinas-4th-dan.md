@@ -5,6 +5,15 @@ title_en: "Marilène Gélinas 4th Dan Aikikai"
 title_es: "Marilène Gélinas 4.º Dan Aikikai"
 title_ja: "マリレンヌ・ジェリナス 四段 合気会"
 
+instructor_ca: "Marilène Gélinas"
+grade_ca: "4t dan Aikikai"
+instructor_en: "Marilène Gélinas"
+grade_en: "4th dan Aikikai"
+instructor_es: "Marilène Gélinas"
+grade_es: "4.º dan Aikikai"
+instructor_ja: "マリレンヌ・ジェリナス"
+grade_ja: "四段 合気会"
+
 desc_ca: >-
   Estem molt emocionats de presentar una masterclass d'Aikido única amb Marilène Gélinas Sensei de Montérégie Aikikai. No et perdis aquest esdeveniment especial el dilluns 1 de juliol a Aikido Musubi (Av. d'Alfons XIII, 351 08918 Badalona, Barcelona).
 desc_en: >-

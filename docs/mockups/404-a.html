@@ -1,0 +1,118 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>404 · El aliento</title>
+<link rel="stylesheet" href="/styles/all.min.css">
+<style>
+:root{--ink:#111314;--mute:#5c6a70;--line:rgba(17,19,20,.13)}
+html,body{margin:0;background:#fff;color:var(--ink);overflow-x:hidden;
+  font-family:'Noto Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+h1,h2{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-weight:400;margin:0;letter-spacing:.04em}
+p{margin:0}
+.stage{position:relative;min-height:100svh;display:grid;place-items:center;overflow:hidden}
+.inner{max-width:1140px;width:100%;padding:0 6rem;position:relative;z-index:3;text-align:center}
+@media(max-width:767.98px){.inner{padding:0 2rem}}
+
+/* ── the number, being cooked ──────────────────────────────────────────── */
+.num{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:clamp(6rem,22vw,15rem);
+  line-height:.86;letter-spacing:.02em;display:inline-flex;gap:.04em;position:relative}
+.num span{display:inline-block;transform-origin:50% 90%;
+  background:linear-gradient(180deg,#111314 0%,#111314 55%,#B04E17 78%,#E2625E 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  background-size:100% 300%;background-position:0 0;
+  animation:char 5.2s cubic-bezier(.4,0,.2,1) infinite}
+.num span:nth-child(2){animation-delay:.22s}
+.num span:nth-child(3){animation-delay:.44s}
+@keyframes char{
+  0%,44%{background-position:0 0;transform:none;filter:none}
+  62%{background-position:0 100%;transform:rotate(-1.5deg) translateY(.01em);
+      filter:drop-shadow(0 0 18px rgba(226,98,94,.55))}
+  78%{background-position:0 100%;transform:rotate(1deg) translateY(.03em) scaleY(.97);
+      filter:drop-shadow(0 0 26px rgba(226,98,94,.4))}
+  100%{background-position:0 0;transform:none;filter:none}}
+
+.kicker{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.66rem;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--mute);margin-bottom:1.6rem}
+.lede{margin:1.8rem auto 0;max-width:34rem;font-size:1.08rem;line-height:1.75;color:#2c3437}
+.acts{margin-top:2.2rem;display:flex;gap:1.6rem;justify-content:center;flex-wrap:wrap}
+.acts a{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.66rem;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:2px solid #FFF200;
+  padding-bottom:.25rem}
+.acts a:hover{border-bottom-color:var(--ink)}
+
+/* ── the beast ─────────────────────────────────────────────────────────── */
+.god{position:absolute;left:-38vw;bottom:-2vh;width:min(58vw,640px);z-index:2;
+  mix-blend-mode:multiply;transform-origin:50% 100%;
+  animation:walkin 5.2s cubic-bezier(.34,0,.28,1) infinite}
+.god img{width:100%;display:block}
+@keyframes walkin{
+  0%{left:-46vw;transform:translateY(0) rotate(0)}
+  30%{left:-6vw;transform:translateY(0) rotate(0)}
+  36%{left:-4vw;transform:translateY(-1.2%) rotate(-1.2deg)}
+  44%{left:-3vw;transform:translateY(0) rotate(.6deg)}
+  52%{left:-3vw;transform:translateY(-.6%) rotate(-.4deg)}
+  86%{left:-4vw;transform:translateY(0) rotate(0)}
+  100%{left:-46vw;transform:translateY(0) rotate(0)}}
+@media(max-width:767.98px){.god{width:78vw;opacity:.16;left:-10vw !important;
+  animation:none;bottom:-4vh}}
+
+/* ── the breath ────────────────────────────────────────────────────────── */
+.breath{position:absolute;left:14vw;bottom:44vh;width:44vw;height:12vh;z-index:1;
+  pointer-events:none;filter:blur(14px);opacity:0;
+  background:radial-gradient(60% 100% at 0% 50%,rgba(255,242,0,.95),rgba(226,98,94,.6) 45%,
+    rgba(176,78,23,0) 78%);
+  transform-origin:0 50%;animation:breath 5.2s ease-in-out infinite}
+@keyframes breath{
+  0%,46%{opacity:0;transform:scaleX(.2)}
+  54%{opacity:.9;transform:scaleX(1)}
+  70%{opacity:.75;transform:scaleX(1.05)}
+  80%{opacity:0;transform:scaleX(1.1)}
+  100%{opacity:0;transform:scaleX(.2)}}
+.ember{position:absolute;width:5px;height:5px;border-radius:50%;background:#E2625E;
+  z-index:2;pointer-events:none;opacity:0;animation:ember 5.2s linear infinite}
+@keyframes ember{
+  0%,50%{opacity:0;transform:translate(0,0) scale(1)}
+  56%{opacity:1}
+  100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(.2)}}
+@media(prefers-reduced-motion:reduce){
+  .god,.breath,.ember,.num span{animation:none !important}
+  .breath{opacity:.5;transform:scaleX(1)}.god{left:-4vw}}
+
+.floor{position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--line);z-index:1}
+</style></head>
+<body>
+<div class="stage">
+  <div class="breath" aria-hidden="true"></div>
+  <div class="god" aria-hidden="true">
+    <picture><source type="image/webp" srcset="/images/404-24EeTTuv-godzilla.webp">
+      <img src="/images/404-24EeTTuv-godzilla.png" alt=""></picture>
+  </div>
+  <div class="floor"></div>
+  <div class="inner">
+    <p class="kicker">Error 404</p>
+    <h1 class="num"><span>4</span><span>0</span><span>4</span></h1>
+    <p class="lede">Esta página ya no está. Algo se la comió, y por el rastro chamuscado
+       creemos saber quién.</p>
+    <div class="acts">
+      <a href="/">Volver a la portada</a>
+      <a href="/horarios/">Ver los horarios</a>
+      <a href="/contacto/">Escribirnos</a>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var st=document.querySelector('.stage');
+  for(var i=0;i<14;i++){
+    var e=document.createElement('span'); e.className='ember';
+    e.style.left=(16+Math.random()*38)+'vw';
+    e.style.bottom=(42+Math.random()*10)+'vh';
+    e.style.setProperty('--dx',(Math.random()*220-40)+'px');
+    e.style.setProperty('--dy',(-120-Math.random()*220)+'px');
+    e.style.animationDelay=(2.6+Math.random()*1.4)+'s';
+    e.style.background=Math.random()>.5?'#E2625E':'#FFF200';
+    st.appendChild(e);
+  }
+})();
+</script>
+</body></html>

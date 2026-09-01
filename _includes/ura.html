@@ -1,0 +1,912 @@
+{%- comment -%}
+  Ura 裏 — the aside.
+
+  Rendered twice: as the page at /ura/, and as the sliding panel that the home
+  opens. Same markup both times; `include.panel` only decides whether the
+  masthead closes the panel or links home.
+
+  Nothing here is written by hand except the labels in _data/ura.yml. The week
+  comes from _data/schedule.yml, what is coming from _data/calendar.yml, the
+  archive from _data/gallery.yml and the log from _events/. That is the whole
+  point: a page that composes itself cannot go stale between pushes.
+{%- endcomment -%}
+{%- assign L = page.lang | default: 'es' -%}
+{%- assign U = site.data.ura -%}
+{%- assign SC = site.data.schedule -%}
+{%- assign today = site.time | date: '%Y-%m-%d' -%}
+
+{% include ura-mast.html panel=include.panel %}
+
+<div class="ur-w" data-ura-body>
+
+  <p class="ur-intro">{{ U.ui.intro[L] }}</p>
+
+  {%- comment -%} ── 01 the week ─────────────────────────────────────────
+    Twenty-one day cells with real dates, each already resolved against
+    _data/calendar.yml: a closure empties the day, a `change` replaces the
+    regular classes, a `cancellation` removes one of them and an `extra` adds
+    one. scripts/ura.js then shows the seven that start today.
+
+    Twenty-one and not seven because GitHub Pages only builds on push: a
+    seven-day window would be wrong the day after. Three weeks of runway, and
+    if today falls outside them the script shows the first seven and drops the
+    dates rather than showing dates that are lies.
+  {%- endcomment -%}
+  {%- assign S = U.sections[0] -%}
+  {%- assign base = site.time | date: '%Y-%m-%d' | append: 'T12:00:00Z' | date: '%s' | plus: 0 -%}
+  {%- assign cal = site.data.calendar.entries -%}
+  {%- comment -%}
+    The subheading is the range the grid is actually showing, not a slogan.
+    Rendered here for the build day and rewritten by scripts/ura.js from the
+    first and last visible cell, because the grid slides forward daily and a
+    static range would start lying the morning after a push.
+  {%- endcomment -%}
+  {%- assign lastTs = base | plus: 518400 -%}
+  {%- assign MN = U.of_month[L] -%}
+  {%- comment -%}
+    Filters are not allowed inside a Liquid subscript, and a pipe after a
+    `replace:` argument feeds the whole string to the next filter rather than
+    the argument. Both are why every part of this is a plain variable first.
+  {%- endcomment -%}
+  {%- assign n1 = site.time | date: '%-d' -%}
+  {%- assign n2 = lastTs | date: '%-d' -%}
+  {%- assign m1 = site.time | date: '%-m' | minus: 1 -%}
+  {%- assign m2 = lastTs | date: '%-m' | minus: 1 -%}
+  {%- assign o1 = MN[m1] -%}
+  {%- assign o2 = MN[m2] -%}
+  {%- if m1 == m2 -%}{%- assign tpl = U.ui.range_same[L] -%}
+  {%- else -%}{%- assign tpl = U.ui.range_cross[L] -%}{%- endif -%}
+  {%- assign rng = tpl | replace: 'DD1', n1 -%}
+  {%- assign rng = rng | replace: 'DD2', n2 -%}
+  {%- assign rng = rng | replace: 'MON1', o1 -%}
+  {%- assign rng = rng | replace: 'MON2', o2 -%}
+  <section class="ur-sec" id="ura-week">
+    <div class="ur-h"><h2>{{ S.title[L] }}</h2><p class="note" data-ura-range
+        data-same="{{ U.ui.range_same[L] }}" data-cross="{{ U.ui.range_cross[L] }}"
+        data-months="{{ MN | join: '|' }}">{{ rng }}</p></div>
+
+    {%- comment -%}
+      The notice. Shown only while a run of `change` days is actually running,
+      which is how the reduced August timetable announces itself without anyone
+      writing an announcement.
+    {%- endcomment -%}
+    {%- assign todayStr = site.time | date: '%Y-%m-%d' -%}
+    {%- assign MO = U.months -%}
+    {%- assign live = '' -%}
+    {%- for e in cal -%}
+      {%- if e.type == 'change' and e.date >= todayStr and live == '' -%}
+        {%- assign gap = e.date | append: 'T12:00:00Z' | date: '%s' | plus: 0 | minus: base -%}
+        {%- if gap <= 1209600 %}{% assign live = e %}{% endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+    {%- if live != '' and live.note %}
+    <div class="ur-flag">
+      <b>{{ live.title[L] }}</b>
+      <p>{{ live.note[L] | strip_html }}</p>
+    </div>
+    {%- endif %}
+
+    {%- assign cls = SC.classes | sort: 'start' -%}
+    <div class="ur-days" data-ura-week>
+      {%- for i in (0..20) -%}
+        {%- assign ts = i | times: 86400 | plus: base -%}
+        {%- assign dstr = ts | date: '%Y-%m-%d' -%}
+        {%- comment -%}
+          `%w` is 0 for Sunday; SC.days starts on Monday. +6 mod 7 turns one
+          into the other without a second table to keep in step.
+        {%- endcomment -%}
+        {%- assign di = ts | date: '%w' | plus: 6 | modulo: 7 -%}
+        {%- assign day = SC.days[di] -%}
+        {%- assign ex = cal | where: 'date', dstr -%}
+        {%- assign closed = ex | where: 'type', 'closure' | first -%}
+        {%- assign changes = ex | where: 'type', 'change' -%}
+        {%- assign extras = ex | where: 'type', 'extra' -%}
+        {%- assign cancels = ex | where: 'type', 'cancellation' -%}
+        {%- comment -%}
+          A season is a run of days with no regular timetable at all — August.
+          Without it the grid printed the twenty usual sessions directly under
+          a notice saying they are not taught.
+        {%- endcomment -%}
+        {%- assign season = '' -%}
+        {%- for sn in site.data.calendar.seasons -%}
+          {%- if dstr >= sn.from and dstr <= sn.to %}{% assign season = sn %}{% endif -%}
+        {%- endfor -%}
+      <div class="ur-day" data-day="{{ day }}" data-date="{{ dstr }}"{% if i > 6 %} hidden{% endif %}>
+        <p class="dn">{{ SC.day_names[day][L].short }}</p>
+        <p class="dd">{{ ts | date: '%-d' }}</p>
+        {%- comment -%}
+          ONE SORTED LIST, NOT TWO RUNS.
+
+          The regular classes were rendered in a loop and the extra classes in
+          a second loop after it, so an extra always landed at the bottom of
+          the day whatever time it started: on a Saturday the reader saw Karate
+          at 11:00 above the grading class at 10:00.
+
+          Each entry is flattened to `HH:MM¦colour¦label¦meta¦url` and the rows
+          are sorted as strings. A zero-padded 24-hour time leads every one, so
+          a plain sort is a sort by clock. `¦` (U+00A6) is the separator: it is
+          not a character that appears in a class name, a venue abbreviation or
+          a title. Same device as "what is coming" below.
+        {%- endcomment -%}
+        {%- assign n = 0 -%}
+        {%- assign DAY = '' -%}
+
+        {%- unless closed -%}
+          {%- if changes.size > 0 -%}
+            {%- for c in changes -%}
+              {%- if c.link.es %}{% assign curl = c.link[L] %}{% elsif c.link %}{% assign curl = c.link %}{% else %}{% assign curl = '' %}{% endif -%}
+              {%- capture row -%}{{ c.start }}¦#FFF200¦{{ c.title[L] }}¦{{ c.start }}–{{ c.end }}¦{{ curl }}{%- endcapture -%}
+              {%- assign DAY = DAY | append: row | append: '§' -%}
+            {%- endfor -%}
+          {%- elsif season != '' -%}
+          {%- else -%}
+            {%- for c in cls -%}
+              {%- if c.days contains day -%}
+                {%- assign killed = false -%}
+                {%- for k in cancels -%}
+                  {%- if k.affects.category == c.category and k.affects.start == c.start %}{% assign killed = true %}{% endif -%}
+                {%- endfor -%}
+                {%- unless killed -%}
+                  {%- assign cat = SC.categories | where: 'id', c.category | first -%}
+                  {%- assign loc = SC.locations | where: 'id', c.location | first -%}
+                  {%- capture meta -%}{{ c.start }} / {{ loc.abbr[L] }}{% if c.frequency == 'monthly' %} / {{ U.ui.monthly[L] }}{% endif %}{%- endcapture -%}
+                  {%- capture row -%}{{ c.start }}¦{{ cat.color }}¦{{ cat.name[L] }}¦{{ meta }}¦{%- endcapture -%}
+                  {%- assign DAY = DAY | append: row | append: '§' -%}
+                {%- endunless -%}
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endif -%}
+        {%- endunless -%}
+
+        {%- comment -%}
+          An extra class on a day the dojo is shut is not on. The calendar has
+          suppressed those since the grading class and the Assumption were
+          drawn side by side on 15 August; this strip had not caught up.
+        {%- endcomment -%}
+        {%- for x in extras -%}
+          {%- unless closed and x.despite_closure != true -%}
+            {%- if x.link.es %}{% assign xurl = x.link[L] %}{% elsif x.link %}{% assign xurl = x.link %}{% else %}{% assign xurl = '' %}{% endif -%}
+            {%- capture row -%}{{ x.start }}¦#FFF200¦{{ x.title[L] }}¦{{ x.start }} / {{ U.ui.extra_c[L] }}¦{{ xurl }}{%- endcapture -%}
+            {%- assign DAY = DAY | append: row | append: '§' -%}
+          {%- endunless -%}
+        {%- endfor -%}
+
+        {%- if closed %}
+        <p class="ur-off"><b>{{ U.ui.closed_d[L] }}</b>{{ closed.title[L] }}</p>
+        {%- assign n = 1 -%}
+        {%- endif -%}
+
+        {%- assign dayRows = DAY | split: '§' | sort -%}
+        {%- for r in dayRows -%}
+          {%- assign f = r | split: '¦' -%}
+          {%- assign n = n | plus: 1 %}
+        <div class="ur-cl" style="--c: {{ f[1] }}">
+          <b>{% if f[4] and f[4] != '' %}<a href="{{ f[4] }}">{{ f[2] }}</a>{% else %}{{ f[2] }}{% endif %}</b><span>{{ f[3] }}</span>
+        </div>
+        {%- endfor -%}
+        {%- if n == 0 %}<p class="ur-rest">{{ U.ui.rest[L] }}</p>{% endif %}
+      </div>
+      {%- endfor %}
+    </div>
+    {%- assign gCl = site.data.nav.groups | where: 'id', 'classes' | first -%}
+    <p class="ur-note"><a href="{{ gCl.items[1].url[L] }}">{{ gCl.items[1].label[L] }}</a></p>
+  </section>
+
+  {%- comment -%} ── 02 what is coming ───────────────────────────────────
+    THREE SOURCES, NOT ONE. This section exists to answer "what is happening
+    in the next few days" at a glance, and until now it read _data/calendar.yml
+    alone: closures, timetable changes and extra classes. A reader who checked
+    it on the Tuesday before a seminar was told about a bank holiday and not
+    about the seminar.
+
+    So it merges the calendar with `site.events` (what we host) and
+    `site.elsewhere` (what we travel to). The three carry different field
+    names — `date` against `date_from`, `title[L]` against `title_es` — and
+    Liquid cannot sort one array of three shapes by three different keys. Each
+    entry is flattened to a delimited row instead, `date|type|title|detail|url`,
+    and the rows are sorted as strings: an ISO date leads every one of them, so
+    a plain sort is a sort by date.
+
+    `¦` (U+00A6, broken bar) is the field separator on purpose — it is not a
+    character that appears in a seminar title, a place name or a note.
+
+    Repeated entries are still collapsed to their first occurrence: the grading
+    class runs every Saturday until December, and thirty-five identical rows is
+    a list nobody reads. The first five are rendered visible so the section
+    says something without JavaScript; the script re-filters as days pass.
+  {%- endcomment -%}
+  {%- assign S = U.sections[1] %}
+
+  {%- assign ROWS = '' -%}
+
+  {%- comment -%}
+    Calendar: changes, cancellations, extra classes — and closures that are
+    NOT public holidays. `holiday: true` marks the thirteen statutory dates,
+    and they are a lookup rather than news: with all future rows rendered they
+    filled the section with Christmas and Reyes for two years running. They
+    stay on the calendar, which is where you look a date up. A closure with no
+    flag is something unexpected, and that is exactly what this section is for.
+  {%- endcomment -%}
+  {%- for e in cal -%}
+    {%- if e.date >= todayStr and e.holiday != true -%}
+      {%- assign txt = e.title[L] | default: e.note[L] -%}
+      {%- if txt -%}
+        {%- assign rtitle = txt | strip_html -%}
+        {%- if e.type == 'closure' -%}
+          {%- assign rdetail = U.ui.closed[L] -%}
+        {%- elsif e.note -%}
+          {%- assign rdetail = e.note[L] | strip_html | truncate: 64 -%}
+        {%- elsif e.start -%}
+          {%- assign rdetail = e.start -%}
+        {%- else -%}
+          {%- assign rdetail = '' -%}
+        {%- endif -%}
+        {%- comment -%}
+          A calendar entry may carry `link:` — four per-language URLs, or one
+          string if it is the same everywhere. Entries that name one become
+          clickable; closures and timetable changes, which are facts and not
+          destinations, stay as plain text.
+        {%- endcomment -%}
+        {%- if e.link.es %}{% assign rurl = e.link[L] %}{% elsif e.link %}{% assign rurl = e.link %}{% else %}{% assign rurl = '' %}{% endif -%}
+        {%- capture row -%}{{ e.date }}¦{{ e.type }}¦{{ rtitle }}¦{{ rdetail }}¦{{ rurl }}¦{{ rtitle }}{%- endcapture -%}
+        {%- assign ROWS = ROWS | append: row | append: '§' -%}
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- comment -%}
+    Ours. The detail is the category rather than the place, because the place
+    is the dojo on nearly all of them and "Seminario" is what tells one row
+    from the next. Each links to its own card on the Seminars page.
+  {%- endcomment -%}
+  {%- assign gEvNav = site.data.nav.groups | where: 'id', 'events' | first -%}
+  {%- for e in site.events -%}
+    {%- if e.date_from >= todayStr -%}
+      {%- if L == 'ca' -%}{%- assign rtitle = e.title_ca -%}
+      {%- elsif L == 'en' -%}{%- assign rtitle = e.title_en -%}
+      {%- elsif L == 'ja' -%}{%- assign rtitle = e.title_ja -%}
+      {%- else -%}{%- assign rtitle = e.title_es -%}{%- endif -%}
+      {%- assign ecat = site.data.events.categories | where: 'id', e.category | first -%}
+      {%- assign eslug = e.path | split: '/' | last | remove: '.md' -%}
+      {%- capture row -%}{{ e.date_from }}¦{{ e.category }}¦{{ rtitle | strip_html }}¦{{ ecat.name[L] }}¦{{ gEvNav.items[0].url[L] }}#event-{{ eslug }}¦{{ eslug }}{%- endcapture -%}
+      {%- assign ROWS = ROWS | append: row | append: '§' -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- comment -%}
+    Theirs. Here the place IS the point — a seminar in Milan and one in
+    Valencia are told apart by where they are, not by what kind of thing they
+    are, since they are all seminars.
+  {%- endcomment -%}
+  {%- for e in site.elsewhere -%}
+    {%- if e.date_from >= todayStr -%}
+      {%- if L == 'ca' -%}{%- assign rtitle = e.title_ca -%}{%- assign rdetail = e.place_ca -%}
+      {%- elsif L == 'en' -%}{%- assign rtitle = e.title_en -%}{%- assign rdetail = e.place_en -%}
+      {%- elsif L == 'ja' -%}{%- assign rtitle = e.title_ja -%}{%- assign rdetail = e.place_ja -%}
+      {%- else -%}{%- assign rtitle = e.title_es -%}{%- assign rdetail = e.place_es -%}{%- endif -%}
+      {%- assign aslug = e.path | split: '/' | last | remove: '.md' -%}
+      {%- capture row -%}{{ e.date_from }}¦away¦{{ rtitle | strip_html }}¦{{ rdetail | strip_html | truncate: 40 }}¦{{ gEvNav.items[1].url[L] }}#elsewhere-{{ aslug }}¦{{ aslug }}{%- endcapture -%}
+      {%- assign ROWS = ROWS | append: row | append: '§' -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  <section class="ur-sec" id="ura-ahead">
+    <div class="ur-h"><h2>{{ S.title[L] }}</h2><p class="note">{{ S.sub[L] }}</p></div>
+    <div class="ur-next" data-ura-ahead>
+      {%- assign ahead = ROWS | split: '§' | sort -%}
+      {%- assign seen = '' | split: '' -%}
+      {%- assign shownAhead = 0 -%}
+      {%- for r in ahead -%}
+        {%- assign f = r | split: '¦' -%}
+        {%- assign rdate = f[0] -%}
+        {%- assign rtype = f[1] -%}
+        {%- assign rtitle = f[2] -%}
+        {%- assign rdetail = f[3] -%}
+        {%- assign rurl = f[4] -%}
+        {%- comment -%}
+          The dedupe key, and it is NOT the title. Collapsing by title is right
+          for the calendar, where the same grading class is thirty-five
+          entries; it is wrong for a seminar, where the title is the
+          instructor's name and grade. Miyamoto Shihan teaches in Bucharest in
+          September and in Barcelona in November, and the second one silently
+          vanished. Calendar rows key on their title, seminars on their slug.
+        {%- endcomment -%}
+        {%- assign rkey = f[5] -%}
+        {%- unless seen contains rkey -%}
+          {%- assign one = rkey | split: '¦' -%}
+          {%- assign seen = seen | concat: one -%}
+          {%- assign shownAhead = shownAhead | plus: 1 -%}
+          {%- comment -%}
+            EVERY future row is rendered, not the first twelve. The cap was
+            there when the only source was the calendar and the tail was
+            bank holidays; now that seminars are in the list, a cap is a
+            promise to hide the sixth thing that is coming. The script
+            renders them all too, and hides only what has already happened.
+          {%- endcomment -%}
+          {%- if true %}
+      <div class="ur-nx" data-date="{{ rdate }}" data-type="{{ rtype }}">
+        {%- assign mk = rdate | date: '%-m' -%}
+        {%- assign dayNum = rdate | date: '%-d' -%}
+        {%- assign yr = rdate | date: '%Y' -%}
+        {%- comment -%}
+          `date_fmt_y`, with the year. The list used to stop at twelve rows and
+          rarely left the current year; it now runs to the last seminar on the
+          books, which is fifteen months out.
+        {%- endcomment -%}
+        {%- assign shortDate = U.date_fmt_y[L] | replace: 'YYYY', yr | replace: 'DD', dayNum | replace: 'MM', U.months[mk][L] -%}
+        <p class="d"><time datetime="{{ rdate }}">{{ shortDate }}</time></p>
+        <p class="t">{% if rurl and rurl != '' %}<a href="{{ rurl }}">{{ rtitle }}</a>{% else %}{{ rtitle }}{% endif %}</p>
+        <p class="n">{{ rdetail }}</p>
+      </div>
+          {%- endif -%}
+        {%- endunless -%}
+      {%- endfor -%}
+    </div>
+  </section>
+
+  {%- comment -%} ── 03 the archive ──────────────────────────────────────{%- endcomment -%}
+  {%- assign S = U.sections[2] %}
+  <section class="ur-sec" id="ura-archive">
+    <div class="ur-h"><h2>{{ S.title[L] }}</h2><p class="note">{{ S.sub[L] }}</p></div>
+    {%- assign shown = site.data.gallery.entries | where_exp: 'e', 'e.show != false' -%}
+    {%- assign recent = shown | sort: 'date_iso' | reverse -%}
+    {%- assign gMedia = site.data.nav.groups | where: 'id', 'media' | first -%}
+    {%- assign gal = gMedia.items[0].url[L] -%}
+    {%- comment -%}
+      The year strip, and it means it now.
+
+      It used to offer eighteen years over a sheet that held the most recent
+      sixty-four — which reached back to 2024, so fifteen of the chips filtered
+      to nothing. Then it held eight per year, which covered every year but
+      still implied the whole archive was here.
+
+      Every entry is here now. All 462 tiles are in the markup, hidden except
+      the most recent sixty-four, and a hidden tile costs NO image bytes:
+      `loading="lazy"` never fetches an image that is not in the viewport, and
+      a display:none image never is. Opening a year reveals its tiles and only
+      then are its thumbnails requested.
+
+      The cost used to be markup: all 462 tiles in the page put 2,375 elements
+      on Ura and 2.4 s of render delay in front of an LCP that is a paragraph
+      of text. Only the recent sixty-four are markup now; the other 398 ride
+      along as JSON and become elements the first time their year is asked
+      for. Nothing about the behaviour changes — the strip already did nothing
+      without JavaScript, because revealing a year is what it is for.
+    {%- endcomment -%}
+    {%- assign byYear = recent | group_by_exp: 'e', 'e.date_iso | slice: 0, 4' -%}
+    <p class="ur-lab">{{ U.ui.jump[L] }}</p>
+    <div class="ur-jump" data-ura-years>
+      <a href="{{ gal }}" data-year="recent" data-on>{{ U.ui.all_years[L] }} <i>64</i></a>
+      {%- for g in byYear %}
+      <a href="{{ gal }}?y={{ g.name }}" data-year="{{ g.name }}">{{ g.name }} <i>{{ g.items | size }}</i></a>
+      {%- endfor %}
+    </div>
+    {%- comment -%}
+      Sixty-four different destinations, so sixty-four named links — it was one
+      link wrapping sixty-four unnamed images, which gave a keyboard user that
+      many tab stops to a single page.
+
+      `-t.webp` is the 160px thumbnail written by tools/gallery-thumbs.py. The
+      sheet used to draw the full 960px images: 2.4 MB to paint a grid of 57px
+      squares.
+    {%- endcomment -%}
+    <div class="ur-sheet" data-ura-sheet>
+      {%- assign n = 0 -%}
+      {%- for e in recent -%}
+        {%- if e.thumb -%}
+        {%- assign n = n | plus: 1 -%}
+        {%- if n <= 64 -%}
+        {%- assign ey = e.date_iso | slice: 0, 4 -%}
+      <a href="{{ e.url }}" target="_blank" rel="noopener" data-year="{{ ey }}"
+         data-full="/images/{{ e.thumb }}.webp" data-name="{{ e.name | escape }}"
+         data-date="{{ e.date_iso }}">
+        <img src="/images/{{ e.thumb }}-t.webp" alt="" loading="lazy" width="160" height="160">
+        <span class="sr-only">{{ e.name }}</span>
+      </a>
+        {%- endif -%}
+        {%- endif -%}
+      {%- endfor %}
+    </div>
+    {%- comment -%}
+      The rest of the archive, in the same date order, as four fields each:
+      url, thumbnail stem, name, date. scripts/ura.js turns a year's worth
+      into tiles when the year is opened.
+    {%- endcomment -%}
+    {%- capture arch -%}
+[{%- assign n = 0 -%}{%- assign k = 0 -%}
+{%- for e in recent -%}{%- if e.thumb -%}{%- assign n = n | plus: 1 -%}
+{%- if n > 64 -%}{% if k > 0 %},{% endif %}{%- assign k = k | plus: 1 -%}
+[{{ e.url | jsonify }},{{ e.thumb | jsonify }},{{ e.name | jsonify }},{{ e.date_iso | jsonify }}]
+{%- endif -%}{%- endif -%}{%- endfor -%}]
+    {%- endcapture -%}
+    <script type="application/json" data-ura-arch>{{ arch }}</script>
+    <p class="ur-note ur-sheet-none" data-ura-sheet-none hidden>{{ U.ui.empty_year[L] | default: '—' }}</p>
+    <p class="ur-note"><a href="{{ gal }}">{{ U.ui.full_gallery[L] }}</a></p>
+    {%- assign albums = shown | where: 'type', 'album' -%}
+    {%- assign posts = shown | where: 'type', 'post' -%}
+    {%- assign reels = shown | where: 'type', 'reel' -%}
+    {%- comment -%}
+      The type names in _data/gallery.yml are singular — "Álbum", "Reel" — and
+      they are filter labels, not counter labels. A counter reading "49 Álbum"
+      is wrong in three of the four languages, so these are their own strings.
+    {%- endcomment -%}
+    <div class="ur-count">
+      <div><b>{{ shown | size }}</b><span>{{ U.ui.saved[L] }}</span></div>
+      <div><b>{{ albums | size }}</b><span>{{ U.ui.albums[L] }}</span></div>
+      <div><b>{{ posts | size }}</b><span>{{ U.ui.posts[L] }}</span></div>
+      <div><b>{{ reels | size }}</b><span>{{ U.ui.reels[L] }}</span></div>
+    </div>
+  </section>
+
+  {%- comment -%} ── 04 the seminar log ──────────────────────────────────
+    The stored titles are a name and a grade — "Emilio Cardia Shihan 6.º Dan
+    Aikikai" — which is right on the event's own card and thin in a list of
+    things that happened. `category` already tells seminar from masterclass
+    from open class, and a multi-day span tells international from local, so a
+    descriptive kicker is composed instead of rewriting thirty-nine files in
+    four languages.
+
+    The title itself is read with a lookup table and not with
+    `e['title_' | append: L]`: a filter is not allowed inside a subscript, and
+    that expression rendered the literal string "es" on every row.
+  {%- endcomment -%}
+  {%- assign S = U.sections[3] -%}
+  {%- assign evs = site.events | sort: 'date_from' | reverse -%}
+  {%- comment -%}
+    Grouped with `group_by_exp` and not by building the arrays by hand. The
+    hand-rolled version used `assign one = e | split: ''` to make a one-item
+    array out of a document, which does not do that — it stringifies it — and
+    every row came out with an empty date and an empty title.
+  {%- endcomment -%}
+  {%- assign byYear = evs | group_by_exp: 'ev', 'ev.path | split: "/" | last | slice: 0, 4' -%}
+  {%- assign groups = byYear | sort: 'name' | reverse %}
+  {%- assign gEv = site.data.nav.groups | where: 'id', 'events' | first -%}
+  {%- assign gEv0 = gEv.items[0].url[L] -%}
+  <section class="ur-sec" id="ura-seminars">
+    <div class="ur-h"><h2>{{ S.title[L] }}</h2>
+      {%- comment -%}
+        The count alone. "Desde 2020" was the section's `sub`, and it dated a
+        list whose first row already carries the year — see _data/ura.yml.
+      {%- endcomment -%}
+      <p class="note">{{ evs | size }} {{ U.ui.sessions[L] }}</p></div>
+    <div class="ur-acc">
+      {%- for g in groups %}
+      <details name="ura-years"{% if forloop.first %} open{% endif %}>
+        <summary><span class="y">{{ g.name }}</span>
+          <span class="c">{{ g.items | size }} {{ U.ui.sessions[L] }}</span>
+          <span class="ch" aria-hidden="true">+</span></summary>
+        <div class="ur-ev-list">
+          {%- for e in g.items -%}
+            {%- assign slug = e.path | split: '/' | last -%}
+            {%- assign iso = slug | slice: 0, 10 -%}
+            {%- comment -%}
+              `instructor_*` and `grade_*` were split out of the stored titles
+              once, into the front matter, rather than being pulled apart in
+              Liquid every build across four different grade formats. See
+              tools/ or the note in the seminar section above.
+            {%- endcomment -%}
+            {%- if L == 'ca' -%}
+              {%- assign ename = e.instructor_ca -%}{%- assign egrade = e.grade_ca -%}
+            {%- elsif L == 'en' -%}
+              {%- assign ename = e.instructor_en -%}{%- assign egrade = e.grade_en -%}
+            {%- elsif L == 'ja' -%}
+              {%- assign ename = e.instructor_ja -%}{%- assign egrade = e.grade_ja -%}
+            {%- else -%}
+              {%- assign ename = e.instructor_es -%}{%- assign egrade = e.grade_es -%}
+            {%- endif -%}
+            {%- assign span = false -%}
+            {%- if e.date_to and e.date_to != '' and e.date_to != 'blank' and e.date_to != e.date_from -%}
+              {%- assign span = true -%}
+            {%- endif -%}
+            {%- comment -%}
+              Collaborations already carry a descriptive title of their own
+              ("Clase abierta de Aikido en la Japan Weekend"), so a kicker in
+              front of one just says it twice.
+            {%- endcomment -%}
+            {%- comment -%}
+              A collaboration has no instructor, so the slot that carries the
+              grade on every other row was empty on these four. It carries the
+              category name instead — the row still answers "and what was
+              that?", and the answer comes from _data/events.yml rather than
+              being written here.
+            {%- endcomment -%}
+            {%- if e.category == 'collaboration' -%}
+              {%- assign ecat = site.data.events.categories | where: 'id', 'collaboration' | first -%}
+              {%- assign label = ename -%}{%- assign egrade = ecat.name[L] -%}
+            {%- elsif e.category == 'masterclass' -%}
+              {%- assign label = U.ui.masterclass_of[L] | replace: 'NAME', ename -%}
+            {%- elsif span -%}
+              {%- assign label = U.ui.seminar_i_of[L] | replace: 'NAME', ename -%}
+            {%- else -%}
+              {%- assign label = U.ui.seminar_of[L] | replace: 'NAME', ename -%}
+            {%- endif %}
+          <div class="ur-ev">
+            {%- assign mk = iso | date: '%-m' -%}
+            {%- assign dayNum = iso | date: '%-d' -%}
+            {%- assign shortDate = U.date_fmt[L] | replace: 'DD', dayNum | replace: 'MM', U.months[mk][L] -%}
+            <p class="d"><time datetime="{{ iso }}">{{ shortDate }}</time></p>
+            {%- comment -%}
+              Every seminar already has an anchor on the seminars page —
+              `id="event-{slug}"` in _layouts/event.html — so the row can go
+              straight to the entry rather than to the top of a list of
+              thirty-nine.
+            {%- endcomment -%}
+            {%- comment -%}
+              Every row gets a second line. Where there is one instructor it is
+              their grade; a collaboration has no instructor, and the two
+              seminars taught by three people between them have no single grade
+              — both fall back to what kind of session it was.
+            {%- endcomment -%}
+            {%- if egrade == '' or egrade == nil -%}
+              {%- assign ec2 = site.data.events.categories | where: 'id', e.category | first -%}
+              {%- assign egrade = ec2.name[L] -%}
+            {%- endif -%}
+            <p class="t"><a href="{{ gEv0 }}#event-{{ slug | remove: '.md' }}">{{ label }}</a>{% if egrade != '' and egrade %}<small>{{ egrade }}</small>{% endif %}</p>
+          </div>
+          {%- endfor %}
+        </div>
+      </details>
+      {%- endfor %}
+    </div>
+    <p class="ur-note"><a href="{{ gEv0 }}">{{ gEv.items[0].label[L] }}</a></p>
+  </section>
+
+  {%- comment -%} ── 05 the chain ────────────────────────────────────────{%- endcomment -%}
+  {%- assign S = U.sections[4] %}
+  <section class="ur-sec" id="ura-chain">
+    <div class="ur-h"><h2>{{ S.title[L] }}</h2><p class="note">{{ S.sub[L] }}</p></div>
+    <div class="ur-chain">
+      {%- for c in U.chain %}
+      <div class="ur-link"{% if forloop.last %} data-us{% endif %}>
+        <p class="y">{% if c.ongoing and U.ui.since[L] != "" %}{{ U.ui.since[L] }} {% endif %}{{ c.year }}</p>
+        {%- comment -%}
+          The Japanese page shows the Japanese name where there is one. These
+          are people and organisations that HAVE a Japanese name — printing
+          "Morihei Ueshiba" in romaji to a Japanese reader is like printing
+          "Miguel de Cervantes" as "Migeru de Serubantesu" to a Spanish one.
+        {%- endcomment -%}
+        {%- if L == 'ja' and c.name_ja %}{% assign cname = c.name_ja %}{% else %}{% assign cname = c.name %}{% endif -%}
+        <p class="n">{{ cname }}<small>{{ c.sub[L] }}</small>
+          {%- if c.detail %}<span class="det">{{ c.detail[L] }}</span>{% endif %}</p>
+      </div>
+      {%- endfor %}
+    </div>
+  </section>
+
+  {%- comment -%} ── 06 the words ────────────────────────────────────────{%- endcomment -%}
+  {%- assign S = U.sections[5] %}
+  <section class="ur-sec" id="ura-words">
+    <div class="ur-h"><h2>{{ S.title[L] }}</h2><p class="note">{{ S.sub[L] }}</p></div>
+    <div class="ur-words">
+      {%- for w in U.words %}
+      <div class="ur-word"><p class="k" lang="ja">{{ w.kanji }}</p><p class="r">{{ w.roman }}</p>
+        <p>{{ w.gloss[L] }}</p></div>
+      {%- endfor %}
+    </div>
+    <div class="ur-more" id="ura-more"><div class="ur-words">
+      {%- for w in U.words_more %}
+      <div class="ur-word"><p class="k" lang="ja">{{ w.kanji }}</p><p class="r">{{ w.roman }}</p>
+        <p>{{ w.gloss[L] }}</p></div>
+      {%- endfor %}
+    </div></div>
+    <div class="ur-morebar">
+      <button class="ur-morebtn" type="button" aria-expanded="false" aria-controls="ura-more"
+              data-more="{{ U.ui.more_words[L] }}" data-less="{{ U.ui.less_words[L] }}">{{ U.ui.more_words[L] }}</button>
+    </div>
+    {%- comment -%}
+      The glossary link sits where every other section's does — a .ur-note
+      under the section, not beside the expander button. It was the one
+      section-level link on the page with a style of its own.
+
+      Still conditional: the page is looked up by i18n-ref, so if it were ever
+      unpublished this renders nothing rather than a link to a 404.
+    {%- endcomment -%}
+    {%- assign gloss = site.pages | where: 'i18n-ref', 'glossary-Tn6xQ4Vb' | where: 'lang', L | first -%}
+    {%- if gloss %}
+    <p class="ur-note"><a href="{{ gloss.url }}">{{ U.ui.glossary[L] }}</a></p>
+    {%- endif %}
+  </section>
+
+  {%- comment -%} ── 06b resources ───────────────────────────────────────
+    Ura's index of the resources, read out of _data/resources.yml — the same
+    file /recursos/ renders, so the two cannot drift and nothing here is
+    written by hand.
+
+    Categories as columns, and every item the same shape. The kyū grades had
+    the archive's pastille treatment for a while, which made a syllabus look
+    more important than the form you cannot train without; they are rows like
+    everything else now.
+
+    A resource whose file is not in /files/ yet renders as a plain <span>, not
+    a dead link — see the site.static_files check below.
+  {%- endcomment -%}
+  {%- assign S = U.sections[8] -%}
+  {%- assign RS = site.data.resources -%}
+  {%- assign resPage = site.pages | where: 'i18n-ref', 'resources-uStNjtHz' | where: 'lang', L | first %}
+  <section class="ur-sec" id="ura-resources">
+    <div class="ur-h"><h2>{{ S.title[L] }}</h2><p class="note">{{ S.sub[L] }}</p></div>
+
+    {%- comment -%}
+      FOUR COLUMNS, NAMED, IN THIS ORDER. Not "every group except the ones we
+      skip": `.ur-res` is a four-column grid, so a fifth group wrapped onto a
+      second row of one, and every group added to /recursos/ landed here
+      whether it belonged or not.
+
+      Reading and Weapons are the two left out. Reading is somebody else's
+      publishing rather than something the dojo issues, and Weapons is three
+      long PDFs and three videos that nobody opens from a summary. Both are one
+      link away, at the foot of the section.
+    {%- endcomment -%}
+    {%- assign ur_cols = 'tramites,examen,etiqueta,videos' | split: ',' -%}
+    <div class="ur-res">
+      {%- for gid in ur_cols -%}
+        {%- assign g = RS.groups | where: 'id', gid | first -%}
+        {%- if g == nil %}{% continue %}{% endif -%}
+        {%- assign shown = 0 -%}
+        {%- for it in g.items %}{% unless it.draft %}{% assign shown = shown | plus: 1 %}{% endunless %}{% endfor -%}
+        {%- if shown == 0 %}{% continue %}{% endif %}
+      <div>
+        <p class="ur-lk-h">{{ g.name[L] }}</p>
+        {%- comment -%}
+          Five rows a column and no more. Reading has twenty-seven and Videos
+          seven; a column that long stops being a summary and turns the section
+          into a second copy of the page it is summarising.
+        {%- endcomment -%}
+        {%- assign listed = 0 -%}
+        {%- for it in g.items -%}
+          {%- if it.draft %}{% continue %}{% endif -%}
+          {%- if listed >= 5 %}{% break %}{% endif -%}
+          {%- assign listed = listed | plus: 1 -%}
+          {%- assign rurl = '' -%}
+          {%- if it.file and it.file != '' -%}
+            {%- assign want = '/files/resources-uStNjtHz-' | append: it.file | append: '-' | append: L | append: '.pdf' -%}
+            {%- assign got = site.static_files | where: 'path', want | first -%}
+            {%- comment -%} Same Spanish fallback as /recursos/. {%- endcomment -%}
+            {%- unless got -%}
+              {%- assign want = '/files/resources-uStNjtHz-' | append: it.file | append: '-es.pdf' -%}
+              {%- assign got = site.static_files | where: 'path', want | first -%}
+            {%- endunless -%}
+            {%- if got %}{% assign rurl = want %}{% endif -%}
+          {%- elsif it.ref -%}
+            {%- assign tgt = site.pages | where: 'i18n-ref', it.ref | where: 'lang', L | first -%}
+            {%- if tgt %}{% assign rurl = tgt.url | append: it.anchor %}{% endif -%}
+          {%- elsif it.panel and resPage -%}
+            {%- comment -%}
+              A grading sheet is not a file and not a page of its own: it is a
+              panel on /recursos/, addressed by `?r=`. Ura links straight to it,
+              so the sheet opens on arrival rather than leaving somebody on the
+              list to find it again.
+            {%- endcomment -%}
+            {%- assign rurl = resPage.url | append: '?r=' | append: it.panel -%}
+          {%- elsif it.url and it.url != 'PLACEHOLDER' -%}
+            {%- assign rurl = it.url -%}
+          {%- endif -%}
+          {%- comment -%}
+            Every kind, not three. The `else` branch printed "PDF", so a
+            YouTube video in the Practice videos column was badged as a PDF.
+            The list has to match the one in _layouts/resources.html.
+          {%- endcomment -%}
+          {%- case it.kind -%}
+            {%- when 'form'  -%}{%- assign kb = RS.ui.k_form[L] -%}
+            {%- when 'page'  -%}{%- assign kb = RS.ui.k_page[L] -%}
+            {%- when 'book'  -%}{%- assign kb = RS.ui.k_book[L] -%}
+            {%- when 'video' -%}{%- assign kb = RS.ui.k_video[L] -%}
+            {%- when 'media' -%}{%- assign kb = RS.ui.k_media[L] -%}
+            {%- else -%}{%- assign kb = RS.ui.k_doc[L] -%}
+          {%- endcase -%}
+          {%- if rurl == '' %}
+        <span class="ur-res-i" data-soon><b>{{ it.title[L] }}</b>
+          <span><i class="k k-{{ it.kind }}">{{ kb }}</i>{{ RS.ui.soon[L] }}</span></span>
+          {%- else %}
+        <a class="ur-res-i" href="{{ rurl }}"{% if rurl contains '://' %} target="_blank" rel="noopener"{% endif %}><b>{{ it.title[L] }}</b>
+          <span><i class="k k-{{ it.kind }}">{{ kb }}</i>{% if it.langs %}{{ it.langs }}{% endif %}</span></a>
+          {%- endif -%}
+        {%- endfor %}
+      </div>
+      {%- endfor %}
+    </div>
+    {%- if resPage %}
+    <p class="ur-note"><a href="{{ resPage.url }}">{{ U.ui.res_all[L] }}</a></p>
+    {%- endif %}
+  </section>
+
+  {%- comment -%} ── 07 the links ────────────────────────────────────────{%- endcomment -%}
+  {%- assign S = U.sections[6] -%}
+  {%- assign K = site.data.links %}
+  <section class="ur-sec" id="ura-links">
+    <div class="ur-h"><h2>{{ S.title[L] }}</h2><p class="note">{{ S.sub[L] }}</p></div>
+    {%- comment -%}
+      Three tiers, not one grid. Eighteen dojos in a single list flattens the
+      three federations into them; three cards, then the dojos, then a tail of
+      headed columns keeps each tier legible at its own weight.
+    {%- endcomment -%}
+    <div class="ur-lk-main">
+      {%- comment -%}
+        The visible text is the URL with the scheme and any `www.` taken off,
+        computed here rather than stored. It used to be a `host:` field, and a
+        host is not enough to identify a page: three of the eighteen dojos link
+        to a page ON a platform, and all three read "facebook.com" or
+        "taplink.cc" — the same label for different places.
+      {%- endcomment -%}
+      {%- for k in K.orgs %}
+      {%- assign d = k.url | remove_first: 'https://' | remove_first: 'http://' | remove_first: 'www.' -%}
+      {%- assign dn = d.size | minus: 1 -%}{%- assign dl = d | slice: dn -%}
+      {%- if dl == '/' %}{% assign d = d | slice: 0, dn %}{% endif -%}
+      {%- if L == 'ja' and k.name_ja %}{% assign kname = k.name_ja %}{% else %}{% assign kname = k.name %}{% endif -%}
+      <a href="{{ k.url }}" target="_blank" rel="noopener"><b>{{ kname }}</b><span>{{ d }}</span></a>
+      {%- endfor %}
+    </div>
+    <p class="ur-lk-h">{{ K.headings.dojos[L] }}</p>
+    <div class="ur-lk-grid">
+      {%- for k in K.dojos %}
+      {%- assign d = k.url | remove_first: 'https://' | remove_first: 'http://' | remove_first: 'www.' -%}
+      {%- assign dn = d.size | minus: 1 -%}{%- assign dl = d | slice: dn -%}
+      {%- if dl == '/' %}{% assign d = d | slice: 0, dn %}{% endif -%}
+      {%- if L == 'ja' and k.name_ja %}{% assign kname = k.name_ja %}{% else %}{% assign kname = k.name %}{% endif -%}
+      <a href="{{ k.url }}" target="_blank" rel="noopener"><b>{{ kname }}</b>
+        <span><i>{{ K.places[k.place][L] }}</i>{{ d }}</span></a>
+      {%- endfor %}
+    </div>
+    <div class="ur-lk-tail">
+      <div>
+        <p class="ur-lk-h">{{ K.headings.venues[L] }}</p>
+        {%- comment -%}
+          One entry has a URL per language, so both the href and the visible
+          text have to come from the resolved value. They did not: the label
+          printed the whole hash.
+        {%- endcomment -%}
+        {%- for k in K.venues %}
+        {%- if k.url.es %}{% assign ku = k.url[L] %}{% else %}{% assign ku = k.url %}{% endif -%}
+        {%- assign kd = ku | remove_first: 'https://' | remove_first: 'http://' | remove_first: 'www.' -%}
+        {%- assign kn = kd.size | minus: 1 -%}{%- assign kl = kd | slice: kn -%}
+        {%- if kl == '/' %}{% assign kd = kd | slice: 0, kn %}{% endif -%}
+        {%- if L == 'ja' and k.name_ja %}{% assign kname = k.name_ja %}{% else %}{% assign kname = k.name %}{% endif -%}
+        <a href="{{ ku }}" target="_blank" rel="noopener"><b>{{ kname }}</b><span>{{ kd }}</span></a>
+        {%- endfor %}
+      </div>
+      <div>
+        <p class="ur-lk-h">{{ K.headings.gear[L] }}</p>
+        {%- for k in K.gear %}
+        {%- assign kd = k.url | remove_first: 'https://' | remove_first: 'http://' | remove_first: 'www.' -%}
+        {%- assign kn = kd.size | minus: 1 -%}{%- assign kl = kd | slice: kn -%}
+        {%- if kl == '/' %}{% assign kd = kd | slice: 0, kn %}{% endif -%}
+        {%- if L == 'ja' and k.name_ja %}{% assign kname = k.name_ja %}{% else %}{% assign kname = k.name %}{% endif -%}
+        <a href="{{ k.url }}" target="_blank" rel="noopener"><b>{{ kname }}</b><em>{{ k.note[L] }}</em>
+          <span>{{ kd }}</span></a>
+        {%- endfor %}
+      </div>
+      <div>
+        <p class="ur-lk-h">{{ K.headings.media[L] }}</p>
+        {%- for k in K.media %}
+        {%- assign kd = k.url | remove_first: 'https://' | remove_first: 'http://' | remove_first: 'www.' -%}
+        {%- assign kn = kd.size | minus: 1 -%}{%- assign kl = kd | slice: kn -%}
+        {%- if kl == '/' %}{% assign kd = kd | slice: 0, kn %}{% endif -%}
+        {%- if L == 'ja' and k.name_ja %}{% assign kname = k.name_ja %}{% else %}{% assign kname = k.name %}{% endif -%}
+        <a href="{{ k.url }}" target="_blank" rel="noopener"><b>{{ kname }}</b><em>{{ k.note[L] }}</em>
+          <span>{{ kd }}</span></a>
+        {%- endfor %}
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ── 08 the digest ───────────────────────────────────────
+    Three pages in one screen: where, what it costs, how to start. The
+    addresses are the town and the street, not the full postal address — this
+    is a reminder, and the access page is the reference.
+  {%- endcomment -%}
+  {%- assign S = U.sections[7] -%}
+  {%- assign E = U.essentials -%}
+  {%- assign gContact = site.data.nav.groups | where: 'id', 'contact' | first -%}
+  {%- assign gClasses = site.data.nav.groups | where: 'id', 'classes' | first %}
+  <section class="ur-sec" id="ura-essentials">
+    <div class="ur-h"><h2>{{ S.title[L] }}</h2><p class="note">{{ S.sub[L] }}</p></div>
+    <div class="ur-ess">
+      <div class="ur-cell"><h3>{{ E.where[L] }}</h3>
+        <dl>
+        {%- for w in site.data.venues.venues %}
+          <dt>{{ w.town[L] }}</dt>
+          <dd>{{ w.address[L] | split: '<br>' | first | strip_html }}</dd>
+        {%- endfor %}
+        </dl>
+        <a class="go" href="{{ gContact.items[1].url[L] }}">{{ site.data.venues.ui.directions[L] }}</a>
+      </div>
+      <div class="ur-cell"><h3>{{ E.cost[L] }}</h3>
+        <dl>
+        {%- for r in E.cost_rows %}
+          <dt>{{ r.label[L] }}</dt><dd>{{ r.value[L] }}</dd>
+        {%- endfor %}
+        </dl>
+        <a class="go" href="{{ gClasses.items[2].url[L] }}">{{ gClasses.items[2].label[L] }}</a>
+      </div>
+      <div class="ur-cell"><h3>{{ E.start[L] }}</h3>
+        <p>{{ E.start_text[L] }}</p>
+        <a class="go" href="{{ gContact.items[0].url[L] }}">{{ gContact.items[0].label[L] }}</a>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%}
+    One <dialog> for the whole archive. It is the platform's: Escape closes it,
+    focus is trapped and returned, and the backdrop is a pseudo-element — none
+    of which a div-and-JS modal gets without writing it, and getting it wrong.
+  {%- endcomment -%}
+  <dialog class="ur-modal" data-ura-modal aria-label="{{ U.ui.archive_of[L] }}">
+    {%- comment -%}
+      The arrows are SIBLINGS of the panel, not overlays on it. They sat on top
+      of the picture, and the one in the top right corner covered the close
+      button — two controls fighting for the same 3.4rem. Outside the box they
+      are always visible, always clickable, and nothing overlaps.
+    {%- endcomment -%}
+    <button type="button" class="ur-modal-nav" data-ura-modal-prev>
+      <span class="sr-only">{{ U.ui.prev_img[L] }}</span><span aria-hidden="true">&#8249;</span>
+    </button>
+
+    <div class="ur-modal-box">
+      <button type="button" class="ur-modal-x" data-ura-modal-close>
+        <span class="sr-only">{{ U.ui.close_img[L] }}</span><span aria-hidden="true">&times;</span>
+      </button>
+      <img alt="" data-ura-modal-img>
+      <div class="ur-modal-foot">
+        <p class="t" data-ura-modal-name></p>
+        <p class="m" data-ura-modal-date></p>
+        {%- comment -%}
+          A real href from the start. It had none until a thumbnail was opened
+          and the script wrote one, which made it an uncrawlable link and an
+          inert control without JavaScript. The gallery is the honest default:
+          the script replaces it with the specific post on open.
+        {%- endcomment -%}
+        <a class="ur-modal-cta" target="_blank" rel="noopener" data-ura-modal-cta
+           href="{{ gal }}" data-tpl="{{ U.ui.see_on[L] }}">{{ U.ui.see_src[L] }}</a>
+      </div>
+    </div>
+
+    <button type="button" class="ur-modal-nav" data-ura-modal-next>
+      <span class="sr-only">{{ U.ui.next_img[L] }}</span><span aria-hidden="true">&#8250;</span>
+    </button>
+  </dialog>
+
+  <div class="ur-foot">
+    {%- comment -%}
+      One column, two lines. The generated line was its own <p>, which made it
+      a third flex item in .ur-foot and moved it out from under the colophon.
+      Wrapping both keeps them in the same column, and the second gets its own
+      space rather than sitting on a <br>.
+
+      Each of its three parts is nowrap and the separators are not, so a narrow
+      screen breaks BETWEEN them: the association's name never splits.
+    {%- endcomment -%}
+    <div class="ur-foot-col">
+      <p>{{ U.ui.colophon[L] }}</p>
+      {%- comment -%}
+        Two lines: the build date is one fact and the association is another,
+        and running all three together read as one long string of unrelated
+        numbers. The Japanese page takes the association's Japanese name, the
+        same as the pinned strip.
+      {%- endcomment -%}
+      {%- if L == 'ja' %}{% assign forg = site.data.footer.ui.org_ja %}{% else %}{% assign forg = site.data.footer.ui.org %}{% endif -%}
+      <p class="ur-mono"><span>{{ site.time | date: '%d.%m.%Y' }}</span><br>
+        <span>{{ forg }}</span> / <span>CIF {{ site.data.footer.ui.cif }}</span></p>
+    </div>
+    {%- if include.panel %}
+    <button class="ur-back" type="button" data-ura-close>{{ U.ui.close_img[L] }}</button>
+    {%- else %}
+    <a class="ur-back" href="{% if L == 'es' %}/{% else %}/{{ L }}/{% endif %}">{{ U.ui.back[L] }}</a>
+    {%- endif %}
+  </div>
+
+  {%- comment -%}
+    The legal links, here rather than in the site's pinned strip.
+
+    Art. 10 LSSI-CE wants them reachable from anywhere, and "anywhere" includes
+    Ura — but a 30px bar pinned to the viewport is the site's chrome, and Ura
+    is meant not to have any. Ura carries them itself instead: the obligation
+    is met on the page AND in the panel, which the pinned strip never covered
+    because the panel sits on top of it.
+  {%- endcomment -%}
+  <ul class="ur-legal" aria-label="{{ site.data.footer.ui.legal_nav[L] }}">
+    {%- for it in site.data.footer.legal %}
+    <li><a href="{{ it.url[L] }}">{{ it.label[L] }}</a></li>
+    {%- endfor %}
+  </ul>
+
+</div>

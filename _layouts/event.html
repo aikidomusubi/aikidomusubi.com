@@ -1,97 +1,327 @@
 {% include header.html %}
 
-<main>
+<main id="main" tabindex="-1">
+
+  {% include section-strip.html %}
 
   {{ content }}
 
-  <div class="events-hFZ2XXIp-container container">
-    <div class="row">
-      {% capture now %}{{ 'now' | date: '%s' | plus: 0 }}{% endcapture %}
-      {% for event in site.events reversed %}
-        {% capture date %}{{ event.date_from | date: '%s' | plus: 0 }}{% endcapture %}
-        {%- comment -%}
-          The anchor the calendar links to. Derived from the filename so it is
-          stable and needs nothing added to the front matter; the calendar
-          builds the same string from its own `event` key.
-        {%- endcomment -%}
-        {%- assign slug = event.path | split: '/' | last | remove: '.md' -%}
-        {%- assign cat = site.data.events.categories | where: "id", event.category | first -%}
-        <div class="card {% if date > now %}upcoming{% else %}ended{% endif %}"
-             id="event-{{ slug }}" style="--event-colour: {{ cat.color }}">
-          <div class="row g-0">
-            <div class="col-lg-4">
-              <a href="/images/{% if page.lang == 'ca' %}{{ event.image_ca }}{% elsif page.lang == 'en' %}{{ event.image_en }}{% elsif page.lang == 'es' %}{{ event.image_es }}{% elsif page.lang == 'ja' %}{{ event.image_ja }}{% endif %}.jpg" class="event-lightbox" aria-label="{% if page.lang == 'ca' %}Cartell: {{ event.title_ca }}{% elsif page.lang == 'en' %}Poster: {{ event.title_en }}{% elsif page.lang == 'ja' %}ポスター：{{ event.title_ja }}{% else %}Cartel: {{ event.title_es }}{% endif %}">
-                <picture>
-                  <source type="image/webp" srcset="/images/{% if page.lang == 'ca' %}{{ event.image_ca }}{% elsif page.lang == 'en' %}{{ event.image_en }}{% elsif page.lang == 'es' %}{{ event.image_es }}{% elsif page.lang == 'ja' %}{{ event.image_ja }}{% endif %}.webp">
-                  <source type="image/jpeg" srcset="/images/{% if page.lang == 'ca' %}{{ event.image_ca }}{% elsif page.lang == 'en' %}{{ event.image_en }}{% elsif page.lang == 'es' %}{{ event.image_es }}{% elsif page.lang == 'ja' %}{{ event.image_ja }}{% endif %}.jpg">
-                  <img src="/images/{% if page.lang == 'ca' %}{{ event.image_ca }}{% elsif page.lang == 'en' %}{{ event.image_en }}{% elsif page.lang == 'es' %}{{ event.image_es }}{% elsif page.lang == 'ja' %}{{ event.image_ja }}{% endif %}.jpg" class="img-fluid" loading="lazy" width="640" height="905" alt="{% if page.lang == 'ca' %}{{ event.title_ca }}{% elsif page.lang == 'en' %}{{ event.title_en }}{% elsif page.lang == 'es' %}{{ event.title_es }}{% elsif page.lang == 'ja' %}{{ event.title_ja }}{% endif %}">
-                </picture>
-              </a>
-            </div>
-            <div class="col-lg-8">
-              <div class="card-body">
-                {% capture date %}{{ event.date_from | date: '%s' | plus: 0 }}{% endcapture %}
-                {% if date > now %}
-                  <div class="alert alert-success text-center" role="alert">
-                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="calendar-check" class="svg-inline--fa fa-calendar-check fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M436 160H12c-6.627 0-12-5.373-12-12v-36c0-26.51 21.49-48 48-48h48V12c0-6.627 5.373-12 12-12h40c6.627 0 12 5.373 12 12v52h128V12c0-6.627 5.373-12 12-12h40c6.627 0 12 5.373 12 12v52h48c26.51 0 48 21.49 48 48v36c0 6.627-5.373 12-12 12zM12 192h424c6.627 0 12 5.373 12 12v260c0 26.51-21.49 48-48 48H48c-26.51 0-48-21.49-48-48V204c0-6.627 5.373-12 12-12zm333.296 95.947l-28.169-28.398c-4.667-4.705-12.265-4.736-16.97-.068L194.12 364.665l-45.98-46.352c-4.667-4.705-12.266-4.736-16.971-.068l-28.397 28.17c-4.705 4.667-4.736 12.265-.068 16.97l82.601 83.269c4.667 4.705 12.265 4.736 16.97.068l142.953-141.805c4.705-4.667 4.736-12.265.068-16.97z"></path></svg>{% if page.lang == "ca" %}{{ "Próximament" }}{% elsif page.lang == "en" %}{{ "Upcoming" }}{% elsif page.lang == "es" %}{{ "Próximamente" }}{% elsif page.lang == "ja" %}{{ "今度の講習会" }}{% endif %}
-                  </div>
-                {% else %}
-                  <div class="alert alert-secondary text-center" role="alert">
-                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="calendar-times" class="svg-inline--fa fa-calendar-times fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M436 160H12c-6.6 0-12-5.4-12-12v-36c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48v36c0 6.6-5.4 12-12 12zM12 192h424c6.6 0 12 5.4 12 12v260c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V204c0-6.6 5.4-12 12-12zm257.3 160l48.1-48.1c4.7-4.7 4.7-12.3 0-17l-28.3-28.3c-4.7-4.7-12.3-4.7-17 0L224 306.7l-48.1-48.1c-4.7-4.7-12.3-4.7-17 0l-28.3 28.3c-4.7 4.7-4.7 12.3 0 17l48.1 48.1-48.1 48.1c-4.7 4.7-4.7 12.3 0 17l28.3 28.3c4.7 4.7 12.3 4.7 17 0l48.1-48.1 48.1 48.1c4.7 4.7 12.3 4.7 17 0l28.3-28.3c4.7-4.7 4.7-12.3 0-17L269.3 352z"></path></svg>{% if page.lang == "ca" %}{{ "Finalitzat" }}{% elsif page.lang == "en" %}{{ "Ended" }}{% elsif page.lang == "es" %}{{ "Finalizado" }}{% elsif page.lang == "ja" %}{{ "終了" }}{% endif %}
-                  </div>
-                {% endif %}
-                {%- if cat %}
-                <p class="event-category"><span class="event-category-dot" aria-hidden="true"></span>{{ cat.name[page.lang] }}</p>
-                {%- endif %}
-                <h2 class="card-title">
-                  {% if page.lang == "ca" %}{{ event.title_ca }}{% elsif page.lang == "en" %}{{ event.title_en }}{% elsif page.lang == "es" %}{{ event.title_es }}{% elsif page.lang == "ja" %}{{ event.title_ja }}{% endif %}
-                </h2>
-                <p class="card-text">{% if page.lang == "ca" %}{{ event.desc_ca }}{% elsif page.lang == "en" %}{{ event.desc_en }}{% elsif page.lang == "es" %}{{ event.desc_es }}{% elsif page.lang == "ja" %}{{ event.desc_ja }}{% endif %}</p>
-                <p class="card-text">
-                  <small class="text-muted">
-                    {% unless event.date_to == "blank" %}
-                      <b>{% include date.html date=event.date_from %}</b> - <b>{% include date.html date=event.date_to %}</b>
-                    {% else %}
-                      <b>{% include date.html date=event.date_from %}</b>
-                    {% endunless %}
-                  </small>
-                </p>
-                <p class="card-text">
-                  {% if event.registration_link %}
-                    {% capture date %}{{ event.date_from | date: '%s' | plus: 0 }}{% endcapture %}
-                    <a
-                      {% if date > now %}
-                        href="{{ event.registration_link }}" target="_blank"
-                      {% endif %}
-                      class="btn btn-primary btn-lg register-btn{% unless date > now %} disabled btn-disabled{% endunless %}"
-                      role="button"
-                      aria-pressed="true"
-                      {% unless date > now %}aria-disabled="true" tabindex="-1"{% endunless %}>
-                      <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="file-pen" class="svg-inline--fa fa-file-pen fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path fill="currentColor" d="M128.1 64C92.8 64 64.1 92.7 64.1 128L64.1 512C64.1 547.3 92.8 576 128.1 576L274.3 576L285.2 521.5C289.5 499.8 300.2 479.9 315.8 464.3L448 332.1L448 234.6C448 217.6 441.3 201.3 429.3 189.3L322.8 82.7C310.8 70.7 294.5 64 277.6 64L128.1 64zM389.6 240L296.1 240C282.8 240 272.1 229.3 272.1 216L272.1 122.5L389.6 240zM332.3 530.9L320.4 590.5C320.2 591.4 320.1 592.4 320.1 593.4C320.1 601.4 326.6 608 334.7 608C335.7 608 336.6 607.9 337.6 607.7L397.2 595.8C409.6 593.3 421 587.2 429.9 578.3L548.8 459.4L468.8 379.4L349.9 498.3C341 507.2 334.9 518.6 332.4 531zM600.1 407.9C622.2 385.8 622.2 350 600.1 327.9C578 305.8 542.2 305.8 520.1 327.9L491.3 356.7L571.3 436.7L600.1 407.9z"/></svg>
-                      {% if page.lang == "ca" %}{{ "Inscriu-t'hi!" }}{% elsif page.lang == "en" %}{{ "Sign up!" }}{% elsif page.lang == "es" %}{{ "¡Inscríbete!" }}{% elsif page.lang == "ja" %}{{ "申し込む！" }}{% endif %}
-                    </a>
-                  {% endif %}
-                  {% if event.event_link %}
-                    <a href="{{ event.event_link }}" class="btn btn-primary btn-lg" role="button" target="_blank"
-                       aria-label="{% if page.lang == 'ca' %}Més informació sobre {% elsif page.lang == 'en' %}More information about {% elsif page.lang == 'ja' %}詳細：{% else %}Más información sobre {% endif %}{% if page.lang == 'ca' %}{{ event.title_ca }}{% elsif page.lang == 'en' %}{{ event.title_en }}{% elsif page.lang == 'ja' %}{{ event.title_ja }}{% else %}{{ event.title_es }}{% endif %}">
-                      <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="square-arrow-up-right" class="svg-inline--fa fa-square-arrow-up-right fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path fill="currentColor" d="M480 96C515.3 96 544 124.7 544 160L544 480C544 515.3 515.3 544 480 544L160 544C124.7 544 96 515.3 96 480L96 160C96 124.7 124.7 96 160 96L480 96zM368 360C368 373.3 378.7 384 392 384C405.3 384 416 373.3 416 360L416 248C416 234.7 405.3 224 392 224L280 224C266.7 224 256 234.7 256 248C256 261.3 266.7 272 280 272L334.1 272L231.1 375C221.7 384.4 221.7 399.6 231.1 408.9C240.5 418.2 255.7 418.3 265 408.9L368 305.9L368 360z"/></svg>
-                      {% if page.lang == "ca" %}{{ "Més informació" }}{% elsif page.lang == "en" %}{{ "More information" }}{% elsif page.lang == "es" %}{{ "Más información" }}{% elsif page.lang == "ja" %}{{ "詳細" }}{% endif %}
-                    </a>
-                  {% endif %}
-                  <a href="/files/{% if page.lang == 'ca' %}{{ event.file_ca }}{% elsif page.lang == 'en' %}{{ event.file_en }}{% elsif page.lang == 'es' %}{{ event.file_es }}{% elsif page.lang == 'ja' %}{{ event.file_ja }}{% endif %}" class="btn btn-secondary btn-lg" role="button" target="_blank"
-                     aria-label="{% if page.lang == 'ca' %}Descarregar el cartell de {% elsif page.lang == 'en' %}Download the poster for {% elsif page.lang == 'ja' %}ポスターをダウンロード：{% else %}Descargar el cartel de {% endif %}{% if page.lang == 'ca' %}{{ event.title_ca }}{% elsif page.lang == 'en' %}{{ event.title_en }}{% elsif page.lang == 'ja' %}{{ event.title_ja }}{% else %}{{ event.title_es }}{% endif %}">
-                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="cloud-arrow-down" class="svg-inline--fa fa-cloud-arrow-down fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path fill="currentColor" d="M176 544C96.5 544 32 479.5 32 400C32 336.6 73 282.8 129.9 263.5C128.6 255.8 128 248 128 240C128 160.5 192.5 96 272 96C327.4 96 375.5 127.3 399.6 173.1C413.8 164.8 430.4 160 448 160C501 160 544 203 544 256C544 271.7 540.2 286.6 533.5 299.7C577.5 320 608 364.4 608 416C608 486.7 550.7 544 480 544L176 544zM409 377C418.4 367.6 418.4 352.4 409 343.1C399.6 333.8 384.4 333.7 375.1 343.1L344.1 374.1L344.1 272C344.1 258.7 333.4 248 320.1 248C306.8 248 296.1 258.7 296.1 272L296.1 374.1L265.1 343.1C255.7 333.7 240.5 333.7 231.2 343.1C221.9 352.5 221.8 367.7 231.2 377L303.2 449C312.6 458.4 327.8 458.4 337.1 449L409.1 377z"/></svg>
-                    {% if page.lang == "ca" %}{{ "Descarregar" }}{% elsif page.lang == "en" %}{{ "Download" }}{% elsif page.lang == "es" %}{{ "Descargar" }}{% elsif page.lang == "ja" %}{{ "ダウンロード" }}{% endif %}
-                  </a>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      {% endfor %}
+  {%- comment -%}
+    Seminars listing.
 
-    </div>
+    Rebuilt from Bootstrap cards onto a small named component. The old markup
+    nested .card > .row.g-0 > .col-lg-4/.col-lg-8 > .card-body and then leaned on
+    seven blocks of overrides in default.less to make it look right — the button
+    row was `position: absolute` at three breakpoints with :nth-of-type margin
+    corrections, which only held while the text happened to be the same height as
+    the poster. Adding one line (the category) broke it.
+
+    Here the card is a two-column grid, the poster sizes itself, and the actions
+    sit at the end of a flex column. Adding a line adds height; nothing has to be
+    re-tuned.
+  {%- endcomment -%}
+
+  {%- assign L = page.lang -%}
+  {%- assign cats = site.data.events.categories -%}
+  {%- capture now %}{{ 'now' | date: '%s' | plus: 0 }}{% endcapture -%}
+
+
+  {%- comment -%}
+    Filters. The nav that used to sit here linked to #show-all, #upcoming and
+    #ended — three anchors that exist nowhere in the document, with no script
+    behind them. These do the filtering they claim to.
+
+    Both dimensions render as checked with JavaScript off, which is also what
+    a crawler sees: every seminar, in the markup, unfiltered.
+  {%- endcomment -%}
+  <div class="seminar-controls" id="seminar-controls">
+
+    <fieldset class="seminar-filter">
+      <legend>
+        {%- if L == 'ca' -%}Tipus
+        {%- elsif L == 'en' -%}Type
+        {%- elsif L == 'ja' -%}種類
+        {%- else -%}Tipo{%- endif -%}
+      </legend>
+      <div class="seminar-chips">
+        {%- for c in cats -%}
+        <label class="seminar-chip" data-category="{{ c.id }}" style="--chip: {{ c.color }}">
+          <input type="checkbox" value="{{ c.id }}" checked>
+          <span class="seminar-chip-dot" aria-hidden="true"></span>
+          <span>{{ c.name[L] }}</span>
+        </label>
+        {%- endfor -%}
+      </div>
+    </fieldset>
+
+    <fieldset class="seminar-filter">
+      <legend>
+        {%- if L == 'ca' -%}Quan
+        {%- elsif L == 'en' -%}When
+        {%- elsif L == 'ja' -%}時期
+        {%- else -%}Cuándo{%- endif -%}
+      </legend>
+      <div class="seminar-chips" role="radiogroup">
+        <label class="seminar-chip seminar-chip-plain">
+          <input type="radio" name="when" value="all" checked>
+          <span>
+            {%- if L == 'ca' -%}Tots
+            {%- elsif L == 'en' -%}All
+            {%- elsif L == 'ja' -%}すべて
+            {%- else -%}Todos{%- endif -%}
+          </span>
+        </label>
+        <label class="seminar-chip seminar-chip-plain">
+          <input type="radio" name="when" value="upcoming">
+          <span>
+            {%- if L == 'ca' -%}Properament
+            {%- elsif L == 'en' -%}Upcoming
+            {%- elsif L == 'ja' -%}今後
+            {%- else -%}Próximamente{%- endif -%}
+          </span>
+        </label>
+        <label class="seminar-chip seminar-chip-plain">
+          <input type="radio" name="when" value="ended">
+          <span>
+            {%- if L == 'ca' -%}Finalitzats
+            {%- elsif L == 'en' -%}Past
+            {%- elsif L == 'ja' -%}終了
+            {%- else -%}Finalizados{%- endif -%}
+          </span>
+        </label>
+      </div>
+    </fieldset>
+
+    <p class="seminar-count" aria-live="polite" hidden></p>
   </div>
+
+  <div class="seminars">
+
+    {%- for event in site.events reversed -%}
+      {%- capture start %}{{ event.date_from | date: '%s' | plus: 0 }}{% endcapture -%}
+      {%- if event.date_to and event.date_to != "blank" -%}
+        {%- capture finish %}{{ event.date_to | date: '%s' | plus: 0 }}{% endcapture -%}
+      {%- else -%}
+        {%- assign finish = start -%}
+      {%- endif -%}
+      {%- comment -%}
+        A three-day seminar is still upcoming on its second morning, so the end
+        date decides, not the start.
+      {%- endcomment -%}
+      {%- if finish >= now -%}{%- assign state = 'upcoming' -%}
+      {%- else -%}{%- assign state = 'ended' -%}{%- endif -%}
+
+      {%- assign slug = event.path | split: '/' | last | remove: '.md' -%}
+      {%- assign cat = cats | where: "id", event.category | first -%}
+
+      {%- if L == 'ca' -%}{%- assign title = event.title_ca -%}{%- assign desc = event.desc_ca -%}{%- assign img = event.image_ca -%}{%- assign file = event.file_ca -%}
+      {%- elsif L == 'en' -%}{%- assign title = event.title_en -%}{%- assign desc = event.desc_en -%}{%- assign img = event.image_en -%}{%- assign file = event.file_en -%}
+      {%- elsif L == 'ja' -%}{%- assign title = event.title_ja -%}{%- assign desc = event.desc_ja -%}{%- assign img = event.image_ja -%}{%- assign file = event.file_ja -%}
+      {%- else -%}{%- assign title = event.title_es -%}{%- assign desc = event.desc_es -%}{%- assign img = event.image_es -%}{%- assign file = event.file_es -%}{%- endif -%}
+
+      <article class="seminar" id="event-{{ slug }}"
+               data-category="{{ event.category }}"
+               data-state="{{ state }}"
+               style="--seminar-colour: {{ cat.color }}">
+
+        {%- comment -%}
+          ONE POSTER OR SEVERAL.
+
+          Most events have one. The open-doors morning was printed with five
+          cover illustrations of the same layout, and choosing one of them for
+          the card would throw four away. `posters:` in the front matter turns
+          the poster into a stack that crossfades; without it nothing changes
+          and the markup is what it always was.
+
+          Both forms are a plain <a> to the JPEG, so with JavaScript off the
+          card still shows a poster and the link still opens one. The rotation
+          and the picker are upgrades, not the mechanism.
+        {%- endcomment -%}
+        {%- assign shots = event.posters -%}
+        {%- if shots and shots.size > 1 -%}
+          {%- assign lbl_multi = shots.size | append: '' -%}
+        <a class="seminar-poster seminar-shots" href="/images/{{ shots[0] }}.jpg"
+           data-shots="{% for sh in shots %}{{ sh }}{% unless forloop.last %},{% endunless %}{% endfor %}"
+           data-shots-title="{{ title | escape }}"
+           data-shots-close="{% if L == 'ca' %}Tanca{% elsif L == 'en' %}Close{% elsif L == 'ja' %}閉じる{% else %}Cerrar{% endif %}"
+           data-shots-pick="{% if L == 'ca' %}Cartell{% elsif L == 'en' %}Poster{% elsif L == 'ja' %}ポスター{% else %}Cartel{% endif %}"
+           aria-label="{% if L == 'ca' %}{{ lbl_multi }} cartells: {% elsif L == 'en' %}{{ lbl_multi }} posters: {% elsif L == 'ja' %}ポスター{{ lbl_multi }}点：{% else %}{{ lbl_multi }} carteles: {% endif %}{{ title }}">
+          {%- for sh in shots -%}
+            {%- assign ss = site.data.imgw[sh] -%}
+          <picture class="seminar-shot{% if forloop.first %} is-on{% endif %}">
+            <source type="image/webp"
+                    srcset="{% if ss %}{{ ss }}{% else %}/images/{{ sh }}.webp{% endif %}"
+                    {% if ss %}sizes="(min-width: 992px) 20rem, (min-width: 576px) 40vw, 90vw"{% endif %}>
+            <source type="image/jpeg" srcset="/images/{{ sh }}.jpg">
+            {%- comment -%}
+              Only the first of the stack is announced; the other four are the
+              same poster with different cover art, and a screen reader reading
+              five near-identical alt strings in a row is noise.
+            {%- endcomment -%}
+            <img src="/images/{{ sh }}.jpg" loading="lazy" decoding="async"
+                 width="640" height="905"
+                 {% if forloop.first %}alt="{{ title }}"{% else %}alt="" aria-hidden="true"{% endif %}>
+          </picture>
+          {%- endfor %}
+        </a>
+        {%- else -%}
+        <a class="seminar-poster event-lightbox" href="/images/{{ img }}.jpg"
+           aria-label="{% if L == 'ca' %}Cartell: {% elsif L == 'en' %}Poster: {% elsif L == 'ja' %}ポスター：{% else %}Cartel: {% endif %}{{ title }}">
+          {%- comment -%}
+            The poster is drawn at about 20rem and was shipping at 960px —
+            113 KB of waste on the widest one. The WebP source now offers three
+            widths and lets the browser choose; the JPEG fallback stays single,
+            because the browsers that need it are the ones that will not be
+            reading this page at all.
+          {%- endcomment -%}
+          {%- assign ss = site.data.imgw[img] -%}
+          <picture>
+            <source type="image/webp"
+                    srcset="{% if ss %}{{ ss }}{% else %}/images/{{ img }}.webp{% endif %}"
+                    {% if ss %}sizes="(min-width: 992px) 20rem, (min-width: 576px) 40vw, 90vw"{% endif %}>
+            <source type="image/jpeg" srcset="/images/{{ img }}.jpg">
+            {%- comment -%}
+              The first poster is what largest-contentful-paint measures on
+              this page, and lazy-loading it delayed the very thing being
+              timed. It loads eagerly at high priority; every one after it
+              stays lazy.
+            {%- endcomment -%}
+            <img src="/images/{{ img }}.jpg"
+                 {% if forloop.first %}fetchpriority="high" decoding="sync"{% else %}loading="lazy" decoding="async"{% endif %}
+                 width="640" height="905" alt="{{ title }}">
+          </picture>
+        </a>
+        {%- endif -%}
+
+        <div class="seminar-body">
+
+          <p class="seminar-tags">
+            {%- if cat %}
+            <span class="seminar-tag seminar-tag-cat">
+              <span class="seminar-tag-dot" aria-hidden="true"></span>{{ cat.name[L] }}
+            </span>
+            {%- endif %}
+            <span class="seminar-tag seminar-tag-state" data-state="{{ state }}">
+              {%- if state == 'upcoming' -%}
+                {%- if L == 'ca' -%}Properament{%- elsif L == 'en' -%}Upcoming{%- elsif L == 'ja' -%}今後の講習会{%- else -%}Próximamente{%- endif -%}
+              {%- else -%}
+                {%- if L == 'ca' -%}Finalitzat{%- elsif L == 'en' -%}Ended{%- elsif L == 'ja' -%}終了{%- else -%}Finalizado{%- endif -%}
+              {%- endif -%}
+            </span>
+          </p>
+
+          <h2 class="seminar-title">{{ title }}</h2>
+
+          {%- comment -%}
+            <time> rather than a bare string: the machine-readable value is the
+            ISO date, and the visible text stays in the reader's language.
+          {%- endcomment -%}
+          <p class="seminar-when">
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 448 512"><path fill="currentColor" d="M152 24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H64C28.7 64 0 92.7 0 128v16 48V448c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V192 144 128c0-35.3-28.7-64-64-64H344V24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H152V24zM48 192h80v56H48V192zm0 104h80v64H48V296zm128 0h96v64H176V296zm144 0h80v64H320V296zm80-48H320V192h80v56zm0 160v40c0 8.8-7.2 16-16 16H320V408h80zm-128 0v56H176V408h96zm-144 0v56H64c-8.8 0-16-7.2-16-16V408h80zM272 248H176V192h96v56z"/></svg>
+            <time datetime="{{ event.date_from }}">{% include date.html date=event.date_from %}</time>
+            {%- unless event.date_to == "blank" or event.date_to == event.date_from %}
+              <span aria-hidden="true">–</span>
+              <time datetime="{{ event.date_to }}">{% include date.html date=event.date_to %}</time>
+            {%- endunless %}
+            {%- if event.time_from and event.time_from != '' %}
+              <span class="seminar-time">{{ event.time_from }}{% if event.time_to %}–{{ event.time_to }}{% endif %}</span>
+            {%- endif %}
+          </p>
+
+          <p class="seminar-desc">{{ desc }}</p>
+
+          <p class="seminar-actions">
+            {%- if event.registration_link and event.registration_link != '' %}
+              {%- if state == 'upcoming' %}
+            <a class="seminar-btn seminar-btn-primary" href="{{ event.registration_link }}"
+               target="_blank" rel="noopener">
+              <svg aria-hidden="true" focusable="false" viewBox="0 0 640 640"><path fill="currentColor" d="M128.1 64C92.8 64 64.1 92.7 64.1 128L64.1 512C64.1 547.3 92.8 576 128.1 576L274.3 576L285.2 521.5C289.5 499.8 300.2 479.9 315.8 464.3L448 332.1L448 234.6C448 217.6 441.3 201.3 429.3 189.3L322.8 82.7C310.8 70.7 294.5 64 277.6 64L128.1 64zM389.6 240L296.1 240C282.8 240 272.1 229.3 272.1 216L272.1 122.5L389.6 240zM332.3 530.9L320.4 590.5C320.2 591.4 320.1 592.4 320.1 593.4C320.1 601.4 326.6 608 334.7 608C335.7 608 336.6 607.9 337.6 607.7L397.2 595.8C409.6 593.3 421 587.2 429.9 578.3L548.8 459.4L468.8 379.4L349.9 498.3C341 507.2 334.9 518.6 332.4 531zM600.1 407.9C622.2 385.8 622.2 350 600.1 327.9C578 305.8 542.2 305.8 520.1 327.9L491.3 356.7L571.3 436.7L600.1 407.9z"/></svg>
+              {% if L == 'ca' %}Inscriu-t'hi{% elsif L == 'en' %}Sign up{% elsif L == 'ja' %}申し込む{% else %}Inscríbete{% endif %}<span class="seminar-sr"> {% if L == 'ca' %}a {% elsif L == 'en' %}for {% elsif L == 'ja' %}：{% else %}en {% endif %}{{ title }}</span>
+            </a>
+              {%- else %}
+              {%- comment -%}
+                The seminar has been and gone, so the link goes nowhere — but
+                the control stays. Removing it made a past card one row
+                shorter than an upcoming one and hid the fact that there was
+                ever a registration. <span> rather than a disabled <a>: an
+                anchor without href is not focusable and needs no aria state.
+              {%- endcomment -%}
+            <span class="seminar-btn seminar-btn-disabled" aria-disabled="true">
+              <svg aria-hidden="true" focusable="false" viewBox="0 0 640 640"><path fill="currentColor" d="M128.1 64C92.8 64 64.1 92.7 64.1 128L64.1 512C64.1 547.3 92.8 576 128.1 576L274.3 576L285.2 521.5C289.5 499.8 300.2 479.9 315.8 464.3L448 332.1L448 234.6C448 217.6 441.3 201.3 429.3 189.3L322.8 82.7C310.8 70.7 294.5 64 277.6 64L128.1 64zM389.6 240L296.1 240C282.8 240 272.1 229.3 272.1 216L272.1 122.5L389.6 240zM332.3 530.9L320.4 590.5C320.2 591.4 320.1 592.4 320.1 593.4C320.1 601.4 326.6 608 334.7 608C335.7 608 336.6 607.9 337.6 607.7L397.2 595.8C409.6 593.3 421 587.2 429.9 578.3L548.8 459.4L468.8 379.4L349.9 498.3C341 507.2 334.9 518.6 332.4 531zM600.1 407.9C622.2 385.8 622.2 350 600.1 327.9C578 305.8 542.2 305.8 520.1 327.9L491.3 356.7L571.3 436.7L600.1 407.9z"/></svg>
+              {% if L == 'ca' %}Inscriu-t'hi{% elsif L == 'en' %}Sign up{% elsif L == 'ja' %}申し込む{% else %}Inscríbete{% endif %}
+            </span>
+              {%- endif %}
+            {%- endif %}
+            {%- if event.event_link and event.event_link != '' %}
+            <a class="seminar-btn" href="{{ event.event_link }}" target="_blank" rel="noopener">
+              <svg aria-hidden="true" focusable="false" viewBox="0 0 640 640"><path fill="currentColor" d="M480 96C515.3 96 544 124.7 544 160L544 480C544 515.3 515.3 544 480 544L160 544C124.7 544 96 515.3 96 480L96 160C96 124.7 124.7 96 160 96L480 96zM368 360C368 373.3 378.7 384 392 384C405.3 384 416 373.3 416 360L416 248C416 234.7 405.3 224 392 224L280 224C266.7 224 256 234.7 256 248C256 261.3 266.7 272 280 272L334.1 272L231.1 375C221.7 384.4 221.7 399.6 231.1 408.9C240.5 418.2 255.7 418.3 265 408.9L368 305.9L368 360z"/></svg>
+              {% if L == 'ca' %}Més informació{% elsif L == 'en' %}More information{% elsif L == 'ja' %}詳細{% else %}Más información{% endif %}<span class="seminar-sr"> {% if L == 'ca' %}sobre {% elsif L == 'en' %}about {% elsif L == 'ja' %}：{% else %}sobre {% endif %}{{ title }}</span>
+            </a>
+            {%- endif %}
+            {%- if file and file != "" %}
+            <a class="seminar-btn seminar-btn-ghost" href="/files/{{ file }}" target="_blank" rel="noopener">
+              <svg aria-hidden="true" focusable="false" viewBox="0 0 640 640"><path fill="currentColor" d="M176 544C96.5 544 32 479.5 32 400C32 336.6 73 282.8 129.9 263.5C128.6 255.8 128 248 128 240C128 160.5 192.5 96 272 96C327.4 96 375.5 127.3 399.6 173.1C413.8 164.8 430.4 160 448 160C501 160 544 203 544 256C544 271.7 540.2 286.6 533.5 299.7C577.5 320 608 364.4 608 416C608 486.7 550.7 544 480 544L176 544zM409 377C418.4 367.6 418.4 352.4 409 343.1C399.6 333.8 384.4 333.7 375.1 343.1L344.1 374.1L344.1 272C344.1 258.7 333.4 248 320.1 248C306.8 248 296.1 258.7 296.1 272L296.1 374.1L265.1 343.1C255.7 333.7 240.5 333.7 231.2 343.1C221.9 352.5 221.8 367.7 231.2 377L303.2 449C312.6 458.4 327.8 458.4 337.1 449L409.1 377z"/></svg>
+              {% if L == 'ca' %}Descarregar{% elsif L == 'en' %}Download{% elsif L == 'ja' %}ダウンロード{% else %}Descargar{% endif %}<span class="seminar-sr"> {% if L == 'ca' %}el cartell de {% elsif L == 'en' %}the poster for {% elsif L == 'ja' %}：{% else %}el cartel de {% endif %}{{ title }}</span>
+            </a>
+            {%- endif %}
+          </p>
+        </div>
+      </article>
+    {%- endfor -%}
+
+    <p class="seminar-empty" hidden>
+      {%- if L == 'ca' -%}Cap seminari coincideix amb aquest filtre.
+      {%- elsif L == 'en' -%}No seminars match this filter.
+      {%- elsif L == 'ja' -%}この条件に合う講習会はありません。
+      {%- else -%}Ningún seminario coincide con este filtro.{%- endif -%}
+    </p>
+  </div>
+
+  {%- comment -%}
+    Structured data. Each seminar is a schema.org Event, wrapped in an ItemList
+    so Google reads the page as a list rather than guessing which Event the page
+    is "about". Only the fields we actually hold are emitted — an invented
+    location or price is worse than an absent one.
+  {%- endcomment -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": [
+      {%- assign n = 0 -%}
+      {%- for event in site.events reversed -%}
+      {%- assign n = n | plus: 1 -%}
+      {%- assign slug = event.path | split: '/' | last | remove: '.md' -%}
+      {%- if L == 'ca' -%}{%- assign title = event.title_ca -%}{%- assign desc = event.desc_ca -%}{%- assign img = event.image_ca -%}
+      {%- elsif L == 'en' -%}{%- assign title = event.title_en -%}{%- assign desc = event.desc_en -%}{%- assign img = event.image_en -%}
+      {%- elsif L == 'ja' -%}{%- assign title = event.title_ja -%}{%- assign desc = event.desc_ja -%}{%- assign img = event.image_ja -%}
+      {%- else -%}{%- assign title = event.title_es -%}{%- assign desc = event.desc_es -%}{%- assign img = event.image_es -%}{%- endif -%}
+      {
+        "@type": "ListItem",
+        "position": {{ n }},
+        "item": {
+          "@type": "Event",
+          "name": {{ title | jsonify }},
+          "description": {{ desc | strip | jsonify }},
+          "url": {{ page.url | prepend: site.url | append: '#event-' | append: slug | jsonify }},
+          "image": {{ img | prepend: '/images/' | append: '.jpg' | prepend: site.url | jsonify }},
+          "startDate": "{{ event.date_from }}{% if event.time_from %}T{{ event.time_from }}:00+02:00{% endif %}",
+          {% if event.date_to and event.date_to != "blank" -%}
+          "endDate": "{{ event.date_to }}{% if event.time_to %}T{{ event.time_to }}:00+02:00{% endif %}",
+          {% endif -%}
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "organizer": {
+            "@type": "SportsClub",
+            "name": "Aikido Musubi",
+            "url": "{{ site.url }}/"
+          }
+        }
+      }{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ]
+  }
+  </script>
 
 </main>
 

@@ -5,6 +5,15 @@ title_en: "Laura Benevelli 5th Dan Aikikai"
 title_es: "Laura Benevelli 5.º Dan Aikikai"
 title_ja: "ラウラ・ベネヴェッリ 五段 合気会"
 
+instructor_ca: "Laura Benevelli"
+grade_ca: "5è dan Aikikai"
+instructor_en: "Laura Benevelli"
+grade_en: "5th dan Aikikai"
+instructor_es: "Laura Benevelli"
+grade_es: "5.º dan Aikikai"
+instructor_ja: "ラウラ・ベネヴェッリ"
+grade_ja: "五段 合気会"
+
 desc_ca: >-
   Estem emocionats d'anunciar una masterclass d'Aikido exclusiva a càrrec de Laura Benevelli Sensei de l'Aikikai Milano! Uneix-te a nosaltres el divendres 28 de juny a Aikido Musubi (Av. d'Alfons XIII, 351 08918 Badalona, Barcelona).
 desc_en: >-

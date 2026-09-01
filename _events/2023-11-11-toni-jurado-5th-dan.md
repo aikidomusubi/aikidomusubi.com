@@ -5,6 +5,15 @@ title_en: "Toni Jurado 5th Dan Aikikai"
 title_es: "Toni Jurado 5.º Dan Aikikai"
 title_ja: "トニ・フラド 五段 合気会"
 
+instructor_ca: "Toni Jurado"
+grade_ca: "5è dan Aikikai"
+instructor_en: "Toni Jurado"
+grade_en: "5th dan Aikikai"
+instructor_es: "Toni Jurado"
+grade_es: "5.º dan Aikikai"
+instructor_ja: "トニ・フラド"
+grade_ja: "五段 合気会"
+
 desc_ca: >-
   El proper dissabte 11 de novembre tenim el plaer d'acollir al nostre dojo les molt esperades jornades d'Aikido a càrrec de Toni Jurado 5è dan Aikikai.
 desc_en: >-

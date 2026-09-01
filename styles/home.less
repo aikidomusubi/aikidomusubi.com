@@ -1,0 +1,458 @@
+// out: false
+//
+// ---------------------------------------------------------------------------
+// The home page
+//
+// One measured column. The title and the opening paragraph are the most
+// important space on the site, so they get the largest type and the most air;
+// everything below is a section of the same shape — label, heading, prose, and
+// a link to the About page that carries the long version.
+//
+// The home states. The About pages explain. That division is why the prose
+// here is short: the paragraphs are lifted verbatim from _data/about.yml
+// rather than rewritten, so the same sentence never exists in two versions.
+// ---------------------------------------------------------------------------
+
+@hm-mute: lighten(@Dark, 18%);   // 5.9:1 on white, same token the About pages use
+@hm-line: fadeout(@Black, 87%);
+
+.hm { --hm-ink: @Black; }
+
+// ---- the title block -------------------------------------------------------
+// The one centred thing on the page.
+.hm-top {
+  text-align: center;
+  padding-top: 1rem;
+}
+
+// `.page main .hm-top p` is (0,3,1); the kanji is a <p>, so it has to be
+// written at the same depth or the lede's size and centring win.
+.page main .hm-top .hm-kanji {
+  // Its own face — see @font-face 'Musubi Mon' in base.less. A Mincho, and
+  // 1.4 KB, because it is subset to the two characters it sets.
+  .MusubiMon;
+  font-weight: 600;
+  display: block;
+  width: 100%;
+  max-width: none;
+  margin: 0 auto 1.1rem;
+  font-size: 3.4rem;
+  line-height: 1;
+  letter-spacing: .08em;
+  text-align: center;
+  color: @Black;
+
+  @media (max-width: @bp-md - .02px) { font-size: 2.6rem; }
+}
+
+.page main .hm-top h1 {
+  .Futura; .regular;
+  margin: 0 0 1.6rem;
+  padding: 0;
+  font-size: 2.9rem;
+  line-height: 1.1;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  text-align: center;
+  color: @Black;
+
+  @media (max-width: @bp-md - .02px) { font-size: 2.1rem; }
+}
+
+.page main .hm-top .hm-lede {
+  max-width: 36rem;
+  margin: 0 auto;
+  font-size: 1.16rem;
+  line-height: 1.72;
+  text-align: center;
+  color: @Dark;
+
+  @media (max-width: @bp-md - .02px) { font-size: 1.02rem; }
+}
+
+.page main .hm-top hr {
+  margin: 3.4rem 0;
+  border: 0;
+  border-top: 1px solid @hm-line;
+}
+
+// ---- a section -------------------------------------------------------------
+.hm-sec {
+  margin: 0 0 3.4rem;
+
+  // The sticky section bar pins itself under the nav once you scroll, so a
+  // jump has to clear both. `--sticky-h` is published by stickySection() in
+  // scripts/default.js from the bar's measured height; without the script it
+  // is 0 and this falls back to the nav-only clearance.
+  scroll-margin-top: calc(var(--nav-shrunk) + var(--sticky-h, 0px) + 1.5rem);
+}
+
+.page main .hm-lab {
+  .Futura;
+  margin: 0 0 .8rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid @hm-line;
+  font-size: .62rem;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: @hm-mute;
+
+  // A section that opens with a photograph does not need a rule above the
+  // label as well: the image is already the separator.
+  &.bare { border-top: 0; padding-top: 0; }
+}
+
+.page main .hm-sec h2 {
+  .Futura; .regular;
+  margin: 0 0 1.3rem;
+  padding: 0;
+  font-size: 1.6rem;
+  line-height: 1.2;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  text-align: left;
+  color: @Black;
+}
+
+.hm-fig {
+  margin: 0 0 1.7rem;
+
+  picture { display: block; margin: 0; }
+}
+
+.page main .hm-fig img {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.hm-prose { max-width: @measure; }
+
+.page main .hm-prose p {
+  margin: 0 0 1.05rem;
+  font-size: 1rem;
+  line-height: 1.85;
+  color: @Dark;
+
+  &:last-child { margin-bottom: 0; }
+}
+
+.page main .hm-prose em { font-style: italic; }
+
+.page main .hm-role {
+  max-width: @measure;
+  margin: -.6rem 0 1.2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid @hm-line;
+  font-size: .82rem;
+  line-height: 1.6;
+  color: @hm-mute;
+
+  em { font-style: italic; }
+}
+
+// ---- the three spaces ------------------------------------------------------
+.hm-ven {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+  margin-top: 1.8rem;
+
+  figure { margin: 0; }
+
+  @media (max-width: @bp-md - .02px) { grid-template-columns: 1fr; }
+}
+
+// `.page main picture` carries margin-bottom: 3rem for the prose figures it
+// was written for, and it is (0,1,2): a flat `.hm-ven picture` at (0,1,1) lost
+// to it, so there were 48px of white between each photograph and its caption.
+// Same fix, same reason, as `.ab-ven picture` on the About pages.
+.page main .hm-ven picture { display: block; margin-bottom: 0; }
+
+.page main .hm-ven small {
+  display: block;
+  font-size: .78rem;
+  line-height: 1.5;
+  color: @hm-mute;
+}
+
+.page main .hm-ven img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.page main .hm-ven b {
+  display: block;
+  margin-top: .8rem;
+  font-size: .95rem;
+  color: @Black;
+}
+
+.page main .hm-ven small {
+  display: block;
+  font-size: .8rem;
+  line-height: 1.55;
+  color: @hm-mute;
+}
+
+// ---- how to start ----------------------------------------------------------
+.hm-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+
+  @media (max-width: @bp-md - .02px) { grid-template-columns: 1fr; gap: 1.6rem; }
+}
+
+.hm-step {
+  border-top: 1px solid @Black;
+  padding-top: .95rem;
+}
+
+.page main .hm-step .n {
+  .Futura;
+  margin: 0 0 .6rem;
+  font-size: .66rem;
+  letter-spacing: .2em;
+  color: @hm-mute;
+}
+
+.page main .hm-step h3 {
+  .Futura; .regular;
+  margin: 0 0 .45rem;
+  padding: 0;
+  font-size: 1.05rem;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  text-align: left;
+  color: @Black;
+}
+
+.page main .hm-step p {
+  margin: 0;
+  font-size: .88rem;
+  line-height: 1.7;
+  color: @hm-mute;
+}
+
+// ---- the association's details ---------------------------------------------
+.hm-facts {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: .55rem 2rem;
+  max-width: @measure;
+  margin: 1.8rem 0 0;
+  padding-top: 1.4rem;
+  border-top: 1px solid @hm-line;
+  font-size: .9rem;
+
+  @media (max-width: @bp-sm - .02px) {
+    grid-template-columns: 1fr;
+    gap: .1rem;
+  }
+}
+
+.page main .hm-facts dt {
+  .Futura;
+  padding-top: .24rem;
+  font-size: .62rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: @hm-mute;
+}
+
+.page main .hm-facts dd {
+  margin: 0;
+  line-height: 1.6;
+  color: @Black;
+
+  @media (max-width: @bp-sm - .02px) { margin-bottom: .8rem; }
+}
+
+// ---- the link out ----------------------------------------------------------
+// `.page main a` is (0,1,2) and floods the background on hover, so this needs
+// the same depth to hold its own. Same reason as .ab-nav in about.less.
+.page main .hm-btn {
+  display: inline-block;
+  margin-top: 1.4rem;
+  padding-bottom: .25rem;
+  border-bottom: 2px solid @Yellow;
+  .Futura;
+  font-size: .66rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: @Black;
+  background-color: transparent;
+
+  // `.page main a:hover` is (0,2,2) and adds an underline on top of the yellow
+  // rule below the text — two lines, which is what looked broken. This rule is
+  // (0,3,1) so it wins, but it has to say `none` explicitly: overriding the
+  // colour and the background did not undo the decoration.
+  &:hover, &:focus {
+    border-bottom-color: @Black;
+    background-color: transparent;
+    color: @Black;
+    text-decoration: none;
+  }
+
+  &:focus-visible { outline: 2px solid @Blue; outline-offset: 3px; }
+}
+
+
+// ══ the door to Ura ═══════════════════════════════════════════════════════
+// Full bleed, and flush into the footer so the page ends in one unbroken run
+// of black rather than a white seam between two dark bands.
+// A shade off the footer, not the same black. The door and the footer are
+// stacked full-bleed blocks with nothing between them, so at identical values
+// they read as one very tall black area and the door stops being a section.
+// This is the invitation band's own tint — the two bands that ask the reader
+// to do something now share a colour.
+.hm-door {
+  position: relative;
+  .full-bleed();
+  margin-top: 4rem;
+  background: lighten(@Black, 3%);
+  overflow: hidden;
+}
+
+// Aligned to the footer, and it was not before. `.ft-in` is .page-measure() —
+// 1140 wide INCLUDING its gutter, so its content box is 948. The door put the
+// gutter on the full-bleed wrapper and capped the inner box at 1140, so the
+// two blocks' contents started 96px apart at desktop. Same mixin now, and the
+// same three columns underneath it.
+.hm-door-mid {
+  .page-measure();
+  position: relative;
+  padding-top: 5.2rem;
+  padding-bottom: 5.4rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.2rem;
+  align-items: center;
+
+  // The footer's own tracks, its own breakpoints and its own gaps, so the two
+  // blocks read as one grid. Below 992 the footer is three equal columns with
+  // the identity block spanning two; above it, four uneven ones — the widths
+  // are the footer's, not a guess.
+  @media (min-width: @bp-sm) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.4rem 2.2rem;
+
+    > .hm-door-in { grid-column: 1 / span 2; }
+    > .hm-rows    { grid-column: 1 / span 3; }
+  }
+
+  @media (min-width: @bp-lg) {
+    grid-template-columns: 1.5fr 1fr 1.05fr 1.2fr;
+    gap: 2.6rem;
+
+    // The copy sits over the wordmark and the address; the three live rows
+    // start where "Practicar" starts and end where the last column ends.
+    > .hm-door-in { grid-column: 1; }
+    > .hm-rows    { grid-column: 2 / span 3; }
+  }
+}
+
+.page main .hm-door {
+  .mk { margin: 0 0 .9rem; }
+  .mk i { .NotoSansJP; font-style: normal; font-size: 1.5rem; line-height: 1; color: @Yellow; }
+
+  .k {
+    .Futura;
+    margin: 0 0 .6rem;
+    font-size: .62rem;
+    letter-spacing: .26em;
+    text-transform: uppercase;
+    color: @Yellow;
+  }
+
+  h2 {
+    .Futura; .regular;
+    margin: 0;
+    padding: 0;
+    font-size: 2rem;
+    line-height: 1;
+    letter-spacing: .02em;
+    text-transform: none;
+    text-align: left;
+    color: @White;
+  }
+
+  .d {
+    max-width: 30ch;
+    margin-top: .9rem;
+    font-size: .95rem;
+    line-height: 1.7;
+    color: mix(@White, @Dark, 60.5%);
+  }
+
+  @media (max-width: @bp-sm - .02px) { h2 { font-size: 1.6rem; } }
+}
+
+// The link is an <a> to /ura/, so it needs the same depth as `.page main a`
+// to hold its own colours.
+.page main a.hm-door-go {
+  display: inline-block;
+  margin-top: 1.7rem;
+  padding: .9rem 1.7rem;
+  border: 0;
+  background-color: @Yellow;
+  color: @Black;
+  cursor: pointer;
+  text-decoration: none;
+  .Futura;
+  font-size: .68rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+
+  &:hover, &:focus {
+    background-color: @White;
+    color: @Black;
+    text-decoration: none;
+  }
+
+  &:focus-visible { outline: 2px solid @White; outline-offset: 3px; }
+}
+
+.hm-rows { display: grid; gap: 0; }
+
+.hm-rows > div {
+  display: grid;
+  grid-template-columns: 10rem 1fr;
+  gap: 1.4rem;
+  align-items: baseline;
+  padding: .8rem 0;
+  border-top: 1px solid fade(@White, 13%);
+
+  &:last-child { border-bottom: 1px solid fade(@White, 13%); }
+
+  @media (max-width: @bp-sm - .02px) { grid-template-columns: 1fr; gap: .1rem; }
+}
+
+.page main .hm-rows {
+  .k {
+    .Futura;
+    margin: 0;
+    font-size: .58rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--c);
+  }
+
+  .v { margin: 0; font-size: .95rem; line-height: 1.4; color: @White; }
+  .v small { display: block; margin-top: .15rem; font-size: .78rem; color: mix(@White, @Dark, 56%); }
+}
+
+// ══ the panel ═════════════════════════════════════════════════════════════
+// The door is the last thing on the page and it is full-bleed black, so it has
+// to butt against the footer. `> main` carries the 2/4/6rem gutter as padding
+// on all four sides, and the bottom one left a 96px white band between the
+// black door and the black footer.
+.page main { padding-bottom: 0; }
+
+

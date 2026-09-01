@@ -1,0 +1,96 @@
+{% include header.html %}
+
+<main id="main" tabindex="-1">
+
+  {% include section-strip.html %}
+  {%- comment -%}
+    Mapa del sitio.
+
+    Built from _data/nav.yml plus the legal strip, so it cannot drift away from
+    the menu. Every title and description is the page's own front matter in its
+    own language: nothing here is translated twice.
+  {%- endcomment -%}
+  {%- assign L = page.lang | default: 'es' -%}
+  {%- assign N = site.data.nav -%}
+  {%- assign F = site.data.footer -%}
+
+  {% include page-head.html %}
+
+  <div class="sm">
+    {%- comment -%}
+      The home first, and on its own. It is reached from the wordmark rather
+      than from a menu entry, so _data/nav.yml has never held it — which is
+      exactly why a map built from the menu was missing the front page.
+    {%- endcomment -%}
+    {%- assign H = site.data.sitemap.home -%}
+    {%- assign target = site.pages | where: 'url', H.url[L] | first %}
+    <section class="sm-row">
+      <div class="sm-lab">
+        <h2>{{ H.label[L] }}</h2>
+        <p class="n">1</p>
+      </div>
+      <div class="sm-cells">
+        <a class="sm-cell" href="{{ H.url[L] }}">
+          <b>{{ H.label[L] }}</b>
+          <span class="u">{{ H.url[L] }}</span>
+          <span class="d">{{ H.desc[L] }}</span>
+          <span class="lg">{%- for lang in site.data.languages %}<span>{{ lang[0] }}</span>{% endfor %}</span>
+        </a>
+      </div>
+    </section>
+
+    {%- for g in N.groups -%}
+      {%- if g.items -%}{%- assign items = g.items -%}
+      {%- else -%}{%- assign items = '' | split: '' -%}{%- endif -%}
+      {%- assign count = items | size -%}
+      {%- if g.items == nil %}{% assign count = 1 %}{% endif %}
+    <section class="sm-row">
+      <div class="sm-lab">
+        <h2>{{ g.label[L] }}</h2>
+        <p class="n">{{ count }}</p>
+      </div>
+      <div class="sm-cells">
+        {%- if g.items -%}
+          {%- for it in g.items -%}
+            {%- assign target = site.pages | where: 'url', it.url[L] | first %}
+        <a class="sm-cell" href="{{ it.url[L] }}">
+          <b>{{ it.label[L] }}</b>
+          <span class="u">{{ it.url[L] }}</span>
+          {%- if target.description %}<span class="d">{{ target.description }}</span>{% endif %}
+          <span class="lg">{%- for lang in site.data.languages %}<span>{{ lang[0] }}</span>{% endfor %}</span>
+        </a>
+          {%- endfor -%}
+        {%- else %}
+        <a class="sm-cell" href="{{ g.url[L] }}">
+          <b>{{ g.label[L] }}</b>
+          <span class="u">{{ g.url[L] }}</span>
+          {%- assign target = site.pages | where: 'url', g.url[L] | first -%}
+          {%- if target.description %}<span class="d">{{ target.description }}</span>{% endif %}
+          <span class="lg">{%- for lang in site.data.languages %}<span>{{ lang[0] }}</span>{% endfor %}</span>
+        </a>
+        {%- endif %}
+      </div>
+    </section>
+    {%- endfor %}
+
+    <section class="sm-row">
+      <div class="sm-lab">
+        <h2>{{ site.data.sitemap.legal[L] }}</h2>
+        <p class="n">{{ F.legal | size }}</p>
+      </div>
+      <div class="sm-cells">
+        {%- for it in F.legal -%}
+          {%- assign target = site.pages | where: 'url', it.url[L] | first %}
+        <a class="sm-cell" href="{{ it.url[L] }}">
+          <b>{{ it.label[L] }}</b>
+          <span class="u">{{ it.url[L] }}</span>
+          {%- if target.description %}<span class="d">{{ target.description }}</span>{% endif %}
+          <span class="lg">{%- for lang in site.data.languages %}<span>{{ lang[0] }}</span>{% endfor %}</span>
+        </a>
+        {%- endfor %}
+      </div>
+    </section>
+  </div>
+</main>
+
+{% include footer.html %}

@@ -109,7 +109,7 @@
   transition: background-color .2s ease, color .2s ease;
 
   &:last-child { border-right: 0; }
-  &[aria-selected="true"] { background-color: @Blue; color: @White; }
+  &[aria-selected="true"] { background-color: @Accent; color: @White; }
   &:hover[aria-selected="false"] { background-color: fadeout(@Black, 96%); }
   &:focus-visible { outline: 2px solid @Blue; outline-offset: -2px; }
 }
@@ -132,7 +132,7 @@
 // The month heading is an h2 inside <main>, where the prose rules give every
 // h2 `margin: 3rem 0 2rem` and centre it — the same clash the timetable's day
 // headings had. (0,3,3) beats (0,2,4) on class count, so no !important.
-html body .page .container > main {
+.page main {
 
   .cal-month-head {
     .NotoSans; .bold;
@@ -201,10 +201,10 @@ html body .page .container > main {
 
   // Marked by script; the build cannot know the day it is being read.
   &[data-today] {
-    border-color: @Blue;
-    background-color: fadeout(@Blue, 96%);
+    border-color: @Accent;
+    background-color: fadeout(@Accent, 96%);
 
-    .cal-daynum { color: @Blue; }
+    .cal-daynum { color: @Accent; }
   }
 
   // Days before today, so the archive reads as past at a glance.
@@ -216,7 +216,16 @@ html body .page .container > main {
     // well under the floor — and a date nobody can read is not a subtle date,
     // it is a broken one. 40% lands at 4.8:1 on the past cell's fill.
     .cal-daynum { color: fadeout(@Black, 40%); }
-    .cal-entry { opacity: .8; }
+
+    // Not opacity, for the same reason. At .8 it lightened the category label
+    // to 3.21:1 and the times to 3.5:1 — the exact compounding described above,
+    // reintroduced one line below it. The past cue moves to the entry's chrome,
+    // which carries no text, so the colour drains out of the rule while every
+    // readable thing stays at full strength.
+    .cal-entry {
+      border-left-color: fadeout(@Black, 80%);
+      background-color: transparent;
+    }
   }
 }
 
@@ -265,8 +274,11 @@ html body .page .container > main {
 
   // A cancelled class is struck through, which says "not happening" faster
   // than any label can.
-  &[data-type="cancellation"] .cal-entry-title,
-  &[data-type="closure"] .cal-entry-title {
+  //
+  // Closures are not. A closure's title is the reason the dojo is shut — a
+  // public holiday, usually — and striking that out reads as though the
+  // holiday were cancelled. "Dojo cerrado" above it already says what happened.
+  &[data-type="cancellation"] .cal-entry-title {
     text-decoration: line-through;
     text-decoration-thickness: 1px;
   }
@@ -277,7 +289,7 @@ html body .page .container > main {
 // @Yellow background on hover, which is right for a link inside a sentence and
 // wrong for a coloured block — it flooded the whole entry and buried the type
 // label. The card lifts and deepens its own colour instead.
-html body .page .container > main .cal-entry-link {
+.page main .cal-entry-link {
   position: static;
   display: block;
   text-decoration: none;
@@ -407,8 +419,7 @@ html body .page .container > main .cal-entry-link {
   color: fadeout(@Black, 25%);
 }
 
-.cal-item[data-type="cancellation"] .cal-item-title,
-.cal-item[data-type="closure"] .cal-item-title {
+.cal-item[data-type="cancellation"] .cal-item-title {
   text-decoration: line-through;
   text-decoration-thickness: 1px;
 }
@@ -436,9 +447,21 @@ html body .page .container > main .cal-entry-link {
 
   .cal-daynum { font-size: .65rem; }
 
-  // Entries shrink to a colour bar; the day number and the bar are enough to
-  // say "something is on", and the list view carries the detail.
-  .cal-entry {
+  // In the grid, entries shrink to a colour bar: the day number plus the bar
+  // says "something is on", which is all 45mm of column can carry. Tapping the
+  // day opens the panel below with the detail.
+  // Only days that have something to open. A pointer over every square in the
+  // month promises a panel on all 31 of them, and on a desktop pointer that
+  // reads as thirty broken links. :has() is the right test because the entries
+  // are already in the cell — no class to keep in sync.
+  .cal-cell[data-date]:has(.cal-entry) { cursor: pointer; }
+
+  .cal-cell[data-selected] {
+    border-color: @Accent;
+    box-shadow: inset 0 0 0 1px @Accent;
+  }
+
+  .cal-grid .cal-entry {
     padding: 0;
     border-left-width: 0;
     border-radius: 1px;
@@ -449,6 +472,40 @@ html body .page .container > main .cal-entry-link {
     .cal-entry-type,
     .cal-entry-title,
     .cal-entry-time { display: none; }
+  }
+
+  .cal-daypeek {
+    margin: .85rem 0 0;
+    padding: .85rem;
+    border: 1px solid fadeout(@Black, 88%);
+    border-radius: .25rem;
+    background-color: fadeout(@Black, 98%);
+
+    &[hidden] { display: none; }
+
+    .cal-daypeek-date {
+      .NotoSans; .bold;
+      margin: 0 0 .5rem;
+      font-size: .85rem;
+      color: @Black;
+    }
+
+    // Full-size entries here, not the grid's colour bars.
+    .cal-entry {
+      height: auto;
+      padding: .5rem .7rem;
+      margin-bottom: .4rem;
+      border-left: 4px solid var(--colour);
+      border-radius: .15rem;
+      background-color: @White;
+      font-size: .82rem;
+
+      &:last-child { margin-bottom: 0; }
+
+      .cal-entry-type { display: block; font-size: .65rem; }
+      .cal-entry-title { display: block; font-size: .9rem; line-height: 1.3; }
+      .cal-entry-time { display: block; font-size: .78rem; }
+    }
   }
 
   .cal-item {
@@ -492,7 +549,7 @@ html body .page .container > main .cal-entry-link {
   }
 
   .cal-month-head,
-  html body .page .container > main .cal-month-head { font-size: 12pt; }
+  .page main .cal-month-head { font-size: 12pt; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -500,4 +557,308 @@ html body .page .container > main .cal-entry-link {
   .cal-nav-btn,
   .cal-today-btn,
   .cal-view-btn { transition: none; }
+}
+
+// ---------------------------------------------------------------------------
+// Week view
+//
+// A day gets a whole row here rather than a 5.5rem box, so entries can show
+// what the month cell has no room for: the venue, the note, the full title.
+// Same markup, cloned from the month grid — see scripts/calendar.js.
+// ---------------------------------------------------------------------------
+.cal-week[hidden] { display: none; }
+
+.cal-week-nav {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin: 0 0 1rem;
+}
+
+.cal-week-label {
+  .NotoSans; .bold;
+  margin: 0;
+  font-size: .95rem;
+  color: @Black;
+}
+
+.cal-week-days {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid fadeout(@Black, 92%);
+}
+
+.cal-week-day {
+  display: grid;
+  grid-template-columns: 10rem minmax(0, 1fr);
+  gap: 0 1.25rem;
+  padding: .85rem 0;
+  border-bottom: 1px solid fadeout(@Black, 92%);
+
+  &[data-today] {
+    background-color: fadeout(@Accent, 97%);
+
+    .cal-week-dow { color: @Accent; }
+  }
+
+  &[data-past] { opacity: .65; }
+}
+
+.cal-week-dayname {
+  margin: 0;
+
+  .cal-week-dow {
+    .NotoSans; .bold;
+    display: block;
+    font-size: .9rem;
+    color: @Black;
+  }
+
+  .cal-week-date {
+    display: block;
+    font-size: .78rem;
+    color: fadeout(@Black, 35%);
+  }
+}
+
+.cal-week-entries {
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+  min-width: 0;
+
+  // The month cell squeezes an entry into two short lines. Here there is room,
+  // so the type label, title and time all get their own scale back.
+  .cal-entry {
+    padding: .5rem .7rem;
+    font-size: .82rem;
+    border-left-width: 4px;
+
+    .cal-entry-type { font-size: .65rem; }
+    .cal-entry-title { font-size: .9rem; line-height: 1.3; }
+    .cal-entry-time { font-size: .78rem; }
+  }
+}
+
+.cal-week-none {
+  margin: 0;
+  font-size: .85rem;
+  color: fadeout(@Black, 60%);
+}
+
+.cal-week-empty {
+  margin: 1.5rem 0 0;
+  padding: 1.5rem;
+  border: 1px dashed fadeout(@Black, 85%);
+  border-radius: .25rem;
+  text-align: center;
+  font-size: .85rem;
+  color: fadeout(@Black, 35%);
+
+  &[hidden] { display: none; }
+}
+
+@media (max-width: 575.98px) {
+
+  .cal-week-day {
+    grid-template-columns: minmax(0, 1fr);
+    gap: .35rem;
+  }
+
+  .cal-week-dayname {
+    display: flex;
+    align-items: baseline;
+    gap: .5rem;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Entry detail panel
+//
+// Opens from an entry with the date, the venue, a couple of sentences and the
+// link as a button inside it — instead of the entry itself being a link that
+// carried you off the page without saying where to.
+//
+// Deliberately not a hover tooltip: see the note in _includes/calendar-entry.html
+// and the SC 1.4.13 requirements it has to meet.
+// ---------------------------------------------------------------------------
+@cal-pop-w: 18.25rem;   // 292px
+
+// The trigger the script wraps around entries that have no link of their own.
+// It has to look like nothing: the entry already carries all the styling.
+.cal-entry-trigger {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+
+  &:focus-visible { outline: 2px solid @Blue; outline-offset: 2px; }
+}
+
+.cal-entry { position: relative; }
+
+// Raised above its neighbours only while open, so the panel is not clipped by
+// the entries drawn after it.
+.cal-entry[data-open] { z-index: 30; }
+
+.cal-pop {
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + .3rem);
+  left: -.35rem;
+  width: @cal-pop-w;
+  max-width: calc(100vw - 2rem);
+
+  background-color: @White;
+  border: 1px solid fadeout(@Black, 86%);
+  border-radius: .3rem;
+  box-shadow: 0 10px 30px fadeout(@Black, 82%);
+  overflow: hidden;
+  text-align: left;
+  cursor: default;
+
+  // Set by the script when the panel would otherwise run off the right edge of
+  // the viewport, which it does for anything in the last two columns.
+  &[data-flip] { left: auto; right: -.35rem; }
+
+  // ...and when there is more room above the entry than below it.
+  &[data-up] { top: auto; bottom: calc(100% + .3rem); }
+}
+
+.cal-pop-bar {
+  display: block;
+  height: 4px;
+  background-color: var(--colour);
+}
+
+.cal-pop-x {
+  position: absolute;
+  top: .55rem;
+  right: .45rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  border: 0;
+  border-radius: .2rem;
+  background: none;
+  color: lighten(@Dark, 18%);   // 5.9:1 on white
+  cursor: pointer;
+
+  > svg { width: .7rem; height: .7rem; }
+
+  &:hover { color: @Black; background-color: fadeout(@Black, 94%); }
+  &:focus-visible { outline: 2px solid @Blue; outline-offset: 1px; }
+}
+
+.cal-pop-in { padding: .8rem .9rem .95rem; }
+
+.cal-pop-type {
+  .Futura;
+  margin: 0 1.5rem .15rem 0;    // clears the close button
+  font-size: .62rem;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--colour);
+}
+
+.cal-pop-title {
+  .NotoSans; .bold;
+  margin: 0 0 .5rem !important;
+  font-size: .95rem;
+  line-height: 1.2;
+  color: @Black;
+}
+
+.cal-pop-facts {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: .1rem .6rem;
+  margin: 0 0 .55rem;
+  font-size: .78rem;
+
+  > dt {
+    .Futura;
+    font-size: .6rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: lighten(@Dark, 18%);
+    padding-top: .18rem;
+  }
+
+  > dd { margin: 0; color: @Black; }
+}
+
+.cal-pop-desc {
+  margin: 0 0 .7rem !important;
+  font-size: .78rem;
+  line-height: 1.5;
+  color: @Dark;                 // 8.6:1 on white
+}
+
+.cal-pop-cta {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;           // it is the panel's primary action
+  padding: .45rem .9rem;
+  background-color: @Accent;
+  color: @White !important;     // 18.6:1; the prose rule would paint it @Black
+  border-radius: .2rem;
+  .Futura;
+  font-size: .7rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  text-decoration: none !important;
+
+  // !important because `.page main a:hover` floods every
+  // prose link with @Yellow, and it outranks a bare class selector — which put
+  // white text on yellow here, at 1.2:1. The same correction .cl-btn needed.
+  &:hover, &:focus {
+    background-color: lighten(@Accent, 14%) !important;   // 12.2:1 with white
+    color: @White !important;
+    text-decoration: none !important;
+  }
+
+  &:focus-visible { outline: 2px solid @Blue; outline-offset: 2px; }
+}
+
+html[lang="ja"] {
+  .cal-pop-type, .cal-pop-cta, .cal-pop-facts > dt { .MPlus1p; letter-spacing: .04em; }
+  .cal-pop-cta, .cal-pop-facts > dt { text-transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cal-pop { transition: none; }
+}
+
+@media print {
+  .cal-pop { display: none !important; }
+}
+
+
+// ---- no JavaScript ---------------------------------------------------------
+// The entry carries no link of its own; the panel's button is the only one, so
+// a hidden panel would put it out of reach. Laid out inline instead: no
+// absolute positioning, no shadow, no close button, just the detail under the
+// entry it belongs to.
+html.no-js {
+
+  .cal-pop[hidden] {
+    display: block;
+    position: static;
+    width: auto;
+    margin: .35rem 0 .5rem;
+    box-shadow: none;
+  }
+
+  .cal-pop-x { display: none; }
 }

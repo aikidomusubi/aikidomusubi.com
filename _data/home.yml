@@ -1,0 +1,220 @@
+# Home page — one source, four languages.
+#
+# The home used to be four Markdown files with the same five sections written
+# out four times, and they had already drifted: the Spanish one still described
+# instructors the English one had dropped. This is the same move the nav, the
+# footer and the About pages already made.
+#
+# WHERE THE PROSE COMES FROM. Most paragraphs are lifted verbatim from
+# _data/about.yml, on purpose: the home states, the About pages explain, and a
+# sentence that appears in both should be the same sentence. Each section here
+# ends with `more`, the link to the page that carries the long version.
+#
+# TO CHANGE THE HOME: edit this file. _includes/home.html renders it and the
+# four index.md files are stubs.
+
+hero:
+  title:
+    es: "Aikido desde 2008<br>en el área de Barcelona"
+    ca: "Aikido des del 2008<br>a l'àrea de Barcelona"
+    en: "Aikido since 2008<br>in the Barcelona area"
+    ja: "2008年から<br>バルセロナ圏で合気道を"
+  lede:
+    es: "Una asociación cultural sin ánimo de lucro dedicada a la enseñanza del aikido. Entrenamos en Badalona, en Sant Adrià de Besòs y en Barcelona. La inscripción está abierta todo el año."
+    ca: "Una associació cultural sense ànim de lucre dedicada a l'ensenyament de l'aikido. Entrenem a Badalona, a Sant Adrià de Besòs i a Barcelona. La inscripció està oberta tot l'any."
+    en: "A non-profit cultural association dedicated to teaching aikido. We train in Badalona, in Sant Adrià de Besòs and in Barcelona. Enrolment is open all year round."
+    ja: "合気道の指導を目的とする非営利の文化協会です。バダロナ、サント・アドリア・ダ・バゾス、そしてバルセロナで稽古しています。入会はいつでも受け付けています。"
+
+sections:
+  # ---------------------------------------------------------------------------
+  - id: aikido
+    image: index-8oGCaMDs-02
+    label: { es: "El arte", ca: "L'art", en: "The art", ja: "この武道について" }
+    heading: { es: "Aikido", ca: "Aikido", en: "Aikido", ja: "合気道" }
+    body:
+      es:
+        - "El aikido es un arte marcial japonés no competitivo desarrollado a principios del siglo XX por Morihei Ueshiba (1883-1969). Se basa en otras artes marciales tradicionales de Japón, principalmente <em>Daitō-ryū Aiki-jūjutsu</em>, y utiliza movimientos flexibles, naturales y altamente efectivos para evadir, redirigir o neutralizar los ataques utilizando la fuerza del oponente."
+        - "Se puede empezar a practicar aikido en cualquier momento, independientemente de la edad o de la condición física; tanto hombres como mujeres, desde adultos hasta niños."
+      ca:
+        - "L'aikido és un art marcial japonès no competitiu desenvolupat a principis del segle XX per Morihei Ueshiba (1883-1969). Es basa en altres arts marcials tradicionals del Japó, principalment el <em>Daitō-ryū Aiki-jūjutsu</em>, i utilitza moviments flexibles, naturals i altament efectius per evadir, redirigir o neutralitzar els atacs aprofitant la força de l'oponent."
+        - "Es pot començar a practicar aikido en qualsevol moment, independentment de l'edat o de la condició física; tant homes com dones, des d'adults fins a nens."
+      en:
+        - "Aikido is a non-competitive Japanese martial art developed in the early twentieth century by Morihei Ueshiba (1883-1969). It draws on other traditional Japanese martial arts, principally <em>Daitō-ryū Aiki-jūjutsu</em>, and uses supple, natural and highly effective movement to evade, redirect or neutralise an attack using the opponent's own force."
+        - "You can begin at any time, whatever your age or physical condition, men and women, adults and children alike."
+      ja:
+        - "合気道は、20世紀初頭に植芝盛平（1883–1969）が大成した、試合を行わない日本の武道です。日本の古流武術、とりわけ<em>大東流合気柔術</em>を土台とし、しなやかで自然な、しかも極めて有効な体さばきによって、相手の力を用いて攻撃をかわし、導き、無力化します。"
+        - "年齢や体力を問わず、男女を問わず、大人も子どもも、いつからでも始められます。"
+    more:
+      label: { es: "Sobre el aikido", ca: "Sobre l'aikido", en: "About aikido", ja: "合気道について" }
+      url:   { es: "/sobre-nosotros/aikido/", ca: "/ca/sobre-nosaltres/aikido/",
+               en: "/en/about/aikido/", ja: "/ja/about/aikido/" }
+
+  # ---------------------------------------------------------------------------
+  - id: dojo
+    image: index-8oGCaMDs-09
+    label: { es: "Nuestro espacio", ca: "El nostre espai", en: "Our space", ja: "私たちの場所" }
+    heading: { es: "El dojo", ca: "El dojo", en: "The dojo", ja: "道場" }
+    body:
+      es:
+        - "Nuestro dojo es un espacio grande y diáfano destinado exclusivamente a la práctica y la enseñanza de las artes marciales. Está supervisado y gestionado por el director técnico y los instructores de la asociación; pero siendo responsabilidad de todos, y no sólo de los instructores o del profesor, lo mantienen y lo cuidan los estudiantes."
+      ca:
+        - "El nostre dojo és un espai gran i diàfan destinat exclusivament a la pràctica i l'ensenyament de les arts marcials. Està supervisat i gestionat pel director tècnic i els instructors de l'associació; però com que és responsabilitat de tothom, i no només dels instructors o del professor, el mantenen i el cuiden els estudiants."
+      en:
+        - "Our dojo is a large, open space given over entirely to the practice and teaching of martial arts. It is supervised and run by the technical director and the association's instructors; but because looking after it is everyone's responsibility and not only the instructors', it is the students who maintain and care for it."
+      ja:
+        - "私たちの道場は、武道の稽古と指導のためだけに使われる、広く見通しのよい空間です。運営は指導部と協会の指導者が担いますが、道場の手入れは指導者だけの仕事ではなく全員の務めであり、実際に維持し整えているのは稽古生です。"
+    more:
+      label: { es: "Sobre el dojo", ca: "Sobre el dojo", en: "About the dojo", ja: "道場について" }
+      url:   { es: "/sobre-nosotros/el-dojo/", ca: "/ca/sobre-nosaltres/el-dojo/",
+               en: "/en/about/the-dojo/", ja: "/ja/about/the-dojo/" }
+
+  # ---------------------------------------------------------------------------
+  - id: venues
+    label: { es: "Dónde entrenamos", ca: "On entrenem", en: "Where we train", ja: "稽古の場所" }
+    # NOT "三つの稽古場". The Japanese heading counted the venues, and there
+    # are four of them now. The other three languages never counted.
+    heading: { es: "Nuestros espacios", ca: "Els nostres espais",
+               en: "Our spaces", ja: "私たちの稽古場" }
+    body:
+      es:
+        - "Además de nuestra actividad en el dojo, <strong>Aikido Musubi</strong> ofrece clases en otros espacios de Barcelona y sus alrededores. Actualmente impartimos clases en el Polideportivo Municipal Marina-Besòs, en el Complejo Deportivo Municipal Espronceda y en la Facultad de Derecho de la Universidad de Barcelona, acercando la práctica del aikido a nuevos entornos y comunidades."
+      ca:
+        - "A més de l'activitat al dojo, <strong>Aikido Musubi</strong> ofereix classes en altres espais de Barcelona i rodalia. Actualment fem classes al Poliesportiu Municipal Marina-Besòs, al Complex Esportiu Municipal Espronceda i a la Facultat de Dret de la Universitat de Barcelona, acostant la pràctica de l'aikido a nous entorns i comunitats."
+      en:
+        - "Beyond the dojo itself, <strong>Aikido Musubi</strong> teaches in other spaces around Barcelona. We currently run classes at the Marina-Besòs municipal sports centre, at the Espronceda municipal sports complex and at the Faculty of Law of the University of Barcelona, bringing aikido to new places and communities."
+      ja:
+        - "道場での活動に加え、<strong>産靈合気道文化協会</strong>はバルセロナ周辺の他の施設でも稽古を行っています。現在はマリナ・バゾス市立スポーツセンター、エスプロンセダ市立スポーツ複合施設、そしてバルセロナ大学法学部で稽古を開いており、合気道を新しい場所と人びとに届けています。"
+    # THE CARD IS THE PLACE OVER THE ROOM: the heading is where you go, the line
+    # under it is what it is called once you are there. Four of them now, which
+    # the grid wraps 3 + 1.
+    venues:
+      - image: access-information-NdxqmVbV-00
+        location: musubi
+        name: { es: "Badalona", ca: "Badalona", en: "Badalona", ja: "バダロナ" }
+        note:
+          es: "Aikido Musubi"
+          ca: "Aikido Musubi"
+          en: "Aikido Musubi"
+          ja: "合気道産靈"
+      - image: access-information-NdxqmVbV-01
+        location: sant-adria
+        name: { es: "Sant Adrià de Besòs", ca: "Sant Adrià de Besòs",
+                en: "Sant Adrià de Besòs", ja: "サント・アドリア・ダ・バゾス" }
+        note:
+          es: "Marina-Besòs"
+          ca: "Marina-Besòs"
+          en: "Marina-Besòs"
+          ja: "マリナ・バゾス"
+      - image: access-information-NdxqmVbV-03
+        location: espronceda
+        name: { es: "Barcelona", ca: "Barcelona", en: "Barcelona", ja: "バルセロナ" }
+        note:
+          es: "CxEM Espronceda"
+          ca: "CxEM Espronceda"
+          en: "CxEM Espronceda"
+          ja: "エスプロンセダ"
+      - image: access-information-NdxqmVbV-02
+        location: ub
+        name: { es: "Universitat de Barcelona", ca: "Universitat de Barcelona",
+                en: "University of Barcelona", ja: "バルセロナ大学" }
+        note:
+          es: "Facultat de Dret de la UB"
+          ca: "Facultat de Dret de la UB"
+          en: "Faculty of Law, UB"
+          ja: "法学部"
+    more:
+      label: { es: "Cómo llegar a cada uno", ca: "Com arribar a cadascun",
+               en: "How to get to each one", ja: "行き方" }
+      url:   { es: "/acceso/", ca: "/ca/acces/", en: "/en/access-information/", ja: "/ja/access-information/" }
+
+  # ---------------------------------------------------------------------------
+  - id: start
+    label: { es: "Cómo empezar", ca: "Com començar", en: "How to start", ja: "始めるには" }
+    heading: { es: "Ven a probar", ca: "Vine a provar-ho",
+               en: "Come and try", ja: "体験してみてください" }
+    steps:
+      - heading: { es: "Escríbenos", ca: "Escriu-nos", en: "Write to us", ja: "連絡する" }
+        text:
+          es: "Con un día de aviso basta. Dinos qué clase te interesa y te decimos cuándo venir."
+          ca: "Amb un dia d'avís n'hi ha prou. Digues-nos quina classe t'interessa i et diem quan venir."
+          en: "A day's notice is enough. Tell us which class interests you and we will tell you when to come."
+          ja: "前日までにご連絡ください。ご希望のクラスを伺い、お越しいただく日をお伝えします。"
+      - heading: { es: "Dos clases", ca: "Dues classes", en: "Two classes", ja: "二回の体験" }
+        text:
+          es: "Sin compromiso ni coste. Ropa cómoda de manga larga; el keikogi ya llegará."
+          ca: "Sense compromís ni cost. Roba còmoda de màniga llarga; el keikogi ja arribarà."
+          en: "No commitment and no charge. Comfortable long-sleeved clothes; the keikogi can wait."
+          ja: "無料で、義務もありません。長袖の動きやすい服装で。稽古着はあとからで大丈夫です。"
+      - heading: { es: "Únete", ca: "Uneix-t'hi", en: "Join us", ja: "入会する" }
+        text:
+          es: "La inscripción es gratuita y está abierta todo el año."
+          ca: "La inscripció és gratuïta i està oberta tot l'any."
+          en: "Enrolment is free and open all year round."
+          ja: "入会金は無料で、一年を通じて受け付けています。"
+    more:
+      label: { es: "Escríbenos", ca: "Escriu-nos", en: "Write to us", ja: "お問い合わせ" }
+      url:   { es: "/contacto/", ca: "/ca/contacte/", en: "/en/contact/", ja: "/ja/contact/" }
+
+  # ---------------------------------------------------------------------------
+  - id: instructor
+    image: index-8oGCaMDs-05_
+    label: { es: "Dirección técnica", ca: "Direcció tècnica",
+             en: "Technical direction", ja: "指導部" }
+    heading: { es: "Pablo Martín", ca: "Pablo Martín", en: "Pablo Martín", ja: "パブロ・マルティン" }
+    role:
+      es: "Badalona, 1977 / 4.º dan / <em>shidoin</em>, instructor titulado por la Aikikai / presidente y director técnico"
+      ca: "Badalona, 1977 / 4t dan / <em>shidoin</em>, instructor titulat per l'Aikikai / president i director tècnic"
+      en: "Badalona, 1977 / 4th dan / <em>shidoin</em>, instructor certified by the Aikikai / president and technical director"
+      ja: "1977年バダロナ生まれ / 四段 / <em>指導員</em>（合気会公認） / 会長・指導部長"
+    body:
+      es:
+        - "Empezó a practicar en Badalona en 1999 con Ricard Coll y fundó la asociación en 2008. Ha entrenado en el Aikido Hombu Dojo de Tokio con Ueshiba Moriteru Doshu y con varios de sus shihan."
+      ca:
+        - "Va començar a practicar a Badalona el 1999 amb en Ricard Coll i va fundar l'associació el 2008. Ha entrenat a l'Aikido Hombu Dojo de Tòquio amb Ueshiba Moriteru Doshu i amb diversos dels seus shihan."
+      en:
+        - "He began practising in Badalona in 1999 with Ricard Coll and founded the association in 2008. He has trained at the Aikido Hombu Dojo in Tokyo with Ueshiba Moriteru Doshu and with several of its shihan."
+      ja:
+        - "1999年、バダロナでリカルド・コイに師事して稽古を始め、2008年に協会を設立しました。東京の合気道本部道場で植芝守央道主をはじめ複数の師範の指導を受けています。"
+    more:
+      label: { es: "Su trayectoria", ca: "La seva trajectòria",
+               en: "His background", ja: "経歴" }
+      url:   { es: "/sobre-nosotros/la-asociacion/", ca: "/ca/sobre-nosaltres/l-associacio/",
+               en: "/en/about/the-association/", ja: "/ja/about/the-association/" }
+
+  # ---------------------------------------------------------------------------
+  - id: association
+    label: { es: "Quiénes somos", ca: "Qui som", en: "Who we are", ja: "私たちについて" }
+    heading: { es: "La asociación", ca: "L'associació",
+               en: "The association", ja: "協会について" }
+    body:
+      es:
+        - "<strong>Aikido Musubi</strong> es una asociación cultural fundada en 2008. Es la primera asociación en Barcelona autogestionada y sin ánimo de lucro cuyo objetivo es promover la práctica del aikido y los valores de las artes marciales tradicionales de Japón."
+        - "<strong>Aikido Musubi</strong> no aboga, apoya ni practica la discriminación ilegal basada en la edad, el origen étnico, el género, el origen nacional, la discapacidad, la raza, la religión, la orientación sexual o los antecedentes socioeconómicos."
+      ca:
+        - "<strong>Aikido Musubi</strong> és una associació cultural fundada el 2008. És la primera associació de Barcelona autogestionada i sense ànim de lucre amb l'objectiu de promoure la pràctica de l'aikido i els valors de les arts marcials tradicionals del Japó."
+        - "<strong>Aikido Musubi</strong> no defensa, dóna suport ni practica la discriminació il·legal basada en l'edat, l'origen ètnic, el gènere, l'origen nacional, la discapacitat, la raça, la religió, l'orientació sexual o els antecedents socioeconòmics."
+      en:
+        - "<strong>Aikido Musubi</strong> is a cultural association founded in 2008. It was the first self-managed, non-profit association in Barcelona set up to promote the practice of aikido and the values of Japan's traditional martial arts."
+        - "<strong>Aikido Musubi</strong> does not advocate, support or practise unlawful discrimination on the basis of age, ethnicity, gender, national origin, disability, race, religion, sexual orientation or socioeconomic background."
+      ja:
+        - "<strong>合気道産靈</strong>は2008年に設立された文化協会です。合気道の稽古と日本の伝統武道の価値を広めることを目的とした、バルセロナで最初の自主運営・非営利の団体です。"
+        - "<strong>合気道産靈</strong>は、年齢、民族的出自、性別、国籍、障害、人種、宗教、性的指向、社会経済的背景に基づく違法な差別を、支持も容認も実践もしません。"
+    facts:
+      - label: { es: "Denominación", ca: "Denominació", en: "Registered name", ja: "名称" }
+        value: { es: "Associació Cultural Musubi Aikido", ca: "Associació Cultural Musubi Aikido",
+                 en: "Associació Cultural Musubi Aikido", ja: "産靈合気道文化協会" }
+      - label: { es: "CIF", ca: "CIF", en: "Tax ID", ja: "登録番号" }
+        value: { es: "G-64799554", ca: "G-64799554", en: "G-64799554", ja: "G-64799554" }
+      - label: { es: "Fundación", ca: "Fundació", en: "Founded", ja: "設立" }
+        value: { es: "2008, Badalona", ca: "2008, Badalona",
+                 en: "2008, Badalona", ja: "2008年・バダロナ" }
+      - label: { es: "Afiliación", ca: "Afiliació", en: "Affiliation", ja: "所属" }
+        value: { es: "Arashi Group, Aikikai Foundation (Aikido Hombu Dojo, Tokio)"
+                 , ca: "Arashi Group, Aikikai Foundation (Aikido Hombu Dojo, Tòquio)"
+                 , en: "Arashi Group, Aikikai Foundation (Aikido Hombu Dojo, Tokyo)"
+                 , ja: "嵐グループ、公益財団法人合気会（合気道本部道場・東京）" }
+    more:
+      label: { es: "Sobre la asociación", ca: "Sobre l'associació",
+               en: "About the association", ja: "協会について" }
+      url:   { es: "/sobre-nosotros/la-asociacion/", ca: "/ca/sobre-nosaltres/l-associacio/",
+               en: "/en/about/the-association/", ja: "/ja/about/the-association/" }

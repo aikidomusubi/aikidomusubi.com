@@ -7,12 +7,21 @@ title_en: "Koji Watanabe 5th Dan Aikikai"
 title_es: "Koji Watanabe 5.º Dan Aikikai"
 title_ja: "渡邉 耕司 五段 合気会"
 
+instructor_ca: "Koji Watanabe"
+grade_ca: "5è dan Aikikai"
+instructor_en: "Koji Watanabe"
+grade_en: "5th dan Aikikai"
+instructor_es: "Koji Watanabe"
+grade_es: "5.º dan Aikikai"
+instructor_ja: "渡邉 耕司"
+grade_ja: "五段 合気会"
+
 desc_ca: >-
-  Aquest dilluns 16 de març, de 19:30 a 21:00, tenim una masterclass amb Koji Watanabe a Aikido Musubi. Tothom hi és benvingut!
+  Aquest dilluns 16 de març, de 19:30 a 21:00, tenim una masterclass amb Koji Watanabe a Aikido Musubi. Oberta a tothom!
 desc_en: >-
   This Monday, March 16, from 19:30 to 21:00, we have a masterclass with Koji Watanabe at Aikido Musubi. Everyone is welcome!
 desc_es: >-
-  Este lunes 16 de marzo, de 19:30 a 21:00, tenemos una masterclass con Koji Watanabe en Aikido Musubi. ¡Todos son bienvenidos!
+  Este lunes 16 de marzo, de 19:30 a 21:00, tenemos una masterclass con Koji Watanabe en Aikido Musubi. ¡Abierta a todo el mundo!
 desc_ja: >-
   ０３月１６日（月）19:30～21:00に、合気道産靈で渡邉耕司によるマスタークラスを開催します。どなたでもご参加いただけます！
 

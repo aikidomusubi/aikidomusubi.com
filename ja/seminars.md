@@ -9,13 +9,10 @@ redirect_from:
   - /ja/courses/
 lang: ja
 i18n-ref: events-hFZ2XXIp
-last_modified: 2026-05-31
+last_modified: 2026-08-30
 ---
 
 # 講習会
 
-当道場が主催する講習会・特別稽古・協力イベントのご案内です。今月の日程は[カレンダー](/ja/calendar/)をご覧ください。詳細については、[Facebookのページをご覧ください](https://www.facebook.com/{{site.facebook_username}}/events/)。
+当道場が主催する講習会・特別稽古・協力イベントのご案内です。今月の日程は[カレンダー](/ja/calendar/)をご覧ください。詳細については、[Facebookのページをご覧ください](https://www.facebook.com/{{site.facebook_username}}/events/){:target="_blank" rel="noopener"}。
 
-<hr>
-
-{% include stickyBar.html %}

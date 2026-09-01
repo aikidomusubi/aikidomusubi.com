@@ -24,6 +24,11 @@
   var locInputs = Array.prototype.slice.call(root.querySelectorAll('input[name="location"]'));
   var notes = Array.prototype.slice.call(root.querySelectorAll('.tt-note'));
 
+  // Assigned further down, once the print-meta line exists; apply() calls it on
+  // every filter change. Declared here because hoisting made it work 240 lines
+  // before it was written, which reads like a bug even though it is not.
+  var updateFilteredLabel = null;
+
   function minutes(hhmm) {
     var p = hhmm.split(':');
     return parseInt(p[0], 10) * 60 + parseInt(p[1], 10);
@@ -45,7 +50,7 @@
   // Filtering
   // -------------------------------------------------------------------------
   function activeCategories() {
-    return catInputs.filter(function (i) { return i.checked; })
+    return catInputs.filter(function (i) { return i.checked && !i.disabled; })
                     .map(function (i) { return i.value; });
   }
 
@@ -54,7 +59,33 @@
     return on ? on.value : null;
   }
 
+
+  // -------------------------------------------------------------------------
+  // Disciplines a venue does not teach
+  //
+  // Sant Adrià and the university run Aikido only, so offering Judo, Karate
+  // and Iaijutsu there is offering a filter that can only ever empty the grid.
+  // Each venue's option lists what it actually teaches; the rest are disabled
+  // and dimmed, and re-enabled when a venue that has them is chosen.
+  //
+  // A disabled chip stays checked. Unchecking it would mean that returning to
+  // the dojo silently dropped disciplines the visitor never switched off.
+  // -------------------------------------------------------------------------
+  function syncAvailability() {
+    var on = locInputs.filter(function (i) { return i.checked; })[0];
+    if (!on) return;
+    var available = (on.dataset.categories || '').split(/\s+/).filter(Boolean);
+
+    catInputs.forEach(function (i) {
+      var has = available.indexOf(i.value) !== -1;
+      i.disabled = !has;
+      i.closest('.tt-chip').toggleAttribute('data-unavailable', !has);
+    });
+  }
+
   function apply() {
+    syncAvailability();
+    // Only disciplines the venue teaches AND the visitor has left on.
     var cats = activeCategories();
     var loc = activeLocation();
 
@@ -125,9 +156,14 @@
     var on = locInputs.filter(function (i) { return i.checked; })[0];
     if (on) url.searchParams.set('location', on.dataset.slug);
 
-    var cats = activeCategories();
-    if (cats.length === catInputs.length) url.searchParams.delete('activities');
-    else url.searchParams.set('activities', cats.join(','));
+    // What the visitor chose, not what the venue happens to allow. Recording
+    // the filtered set would mean a link shared from Sant Adrià — where only
+    // Aikido is taught — carried activities=aikido, and pinned that filter for
+    // whoever opened it and switched to the dojo.
+    var chosen = catInputs.filter(function (i) { return i.checked; })
+                          .map(function (i) { return i.value; });
+    if (chosen.length === catInputs.length) url.searchParams.delete('activities');
+    else url.searchParams.set('activities', chosen.join(','));
     return url;
   }
 
@@ -173,6 +209,46 @@
       }
     }
   })();
+
+  // -------------------------------------------------------------------------
+  // Venue dropdown
+  //
+  // A styled wrapper over the radios rather than a <select>, so the options can
+  // carry colour and disabled state later without fighting native rendering.
+  // The radios remain the source of truth, which keeps the control keyboard-
+  // operable and means the filter still works if this never runs.
+  // -------------------------------------------------------------------------
+  var select = root.querySelector('.tt-select');
+
+  if (select) {
+    var toggle = select.querySelector('.tt-select-toggle');
+    var value = select.querySelector('.tt-select-value');
+
+    function closeSelect() {
+      select.dataset.open = 'false';
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+
+    toggle.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var open = select.dataset.open === 'true';
+      select.dataset.open = open ? 'false' : 'true';
+      toggle.setAttribute('aria-expanded', open ? 'false' : 'true');
+    });
+
+    select.addEventListener('change', function () {
+      var on = locInputs.filter(function (i) { return i.checked; })[0];
+      if (on) value.textContent = on.dataset.label || on.value;
+      closeSelect();
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!select.contains(e.target)) closeSelect();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeSelect();
+    });
+  }
 
   // -------------------------------------------------------------------------
   // Day tabs (narrow screens)
@@ -282,7 +358,6 @@
   // -------------------------------------------------------------------------
   var ICS_DAY = { sun: 'SU', mon: 'MO', tue: 'TU', wed: 'WE', thu: 'TH', fri: 'FR', sat: 'SA' };
   var icsLabel = root.dataset.icsLabel || 'Add to calendar';
-  var updateFilteredLabel = null;
 
   function pad(n) { return (n < 10 ? '0' : '') + n; }
 

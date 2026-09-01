@@ -1,0 +1,96 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Recursos · B — Aikido Musubi</title>
+<link rel="stylesheet" href="/styles/all.min.css">
+<style>
+:root{--ink:#111314;--mute:#4f5c62;--line:rgba(17,19,20,.13);--rule:rgba(17,19,20,.30);
+      --acc:#FFF200;--rust:#AE5224;--green:#1A7444;--panel:#f6f7f7}
+html,body{margin:0;background:#fff;color:var(--ink);
+  font-family:'Noto Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.7}
+*{box-sizing:border-box}
+h1,h2,h3,h4{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-weight:400;margin:0;letter-spacing:.04em}
+p{margin:0}
+a{color:inherit}
+.w{max-width:1140px;margin:0 auto;padding-left:6rem;padding-right:6rem}
+@media(max-width:991.98px){.w{padding-left:4rem;padding-right:4rem}}
+@media(max-width:767.98px){.w{padding-left:2rem;padding-right:2rem}}
+.mono{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-variant-numeric:tabular-nums}
+
+/* the shared page header, as the real site now renders it */
+.top{padding:3.4rem 0 0;text-align:center}
+.top h1{font-size:2rem;letter-spacing:1px;text-transform:uppercase;margin:2rem 0}
+.top .lede{max-width:none;font-size:.9rem;color:var(--mute);margin:0 0 5.4rem}
+.strip{display:flex;flex-wrap:wrap;gap:1.4rem;padding:1.6rem 0 1rem;border-bottom:1px solid var(--line)}
+.strip a{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:#425055;text-decoration:none}
+.strip a[aria-current]{color:var(--ink);font-weight:700;box-shadow:inset 0 -2px 0 var(--ink)}
+
+/* the badge that says what a thing IS */
+.k{display:inline-block;font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.52rem;
+   letter-spacing:.16em;text-transform:uppercase;padding:.16rem .44rem;vertical-align:.14em}
+.k-pdf{background:var(--rust);color:#fff}
+.k-html{background:var(--ink);color:#fff}
+.k-book{background:var(--green);color:#fff}
+.k-link{background:none;color:var(--mute);box-shadow:inset 0 0 0 1px var(--line)}
+.lg{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.56rem;letter-spacing:.14em;color:var(--mute)}
+.note{font-size:.88rem;color:var(--mute)}
+footer.end{margin-top:4rem;padding:2rem 0 4rem;border-top:1px solid var(--line);
+  font-size:.78rem;color:var(--mute)}
+.badge{position:fixed;top:0;left:0;z-index:99;background:var(--ink);color:#fff;
+  font-family:Futura,sans-serif;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;
+  padding:.5rem .9rem}
+
+.b-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);margin-bottom:3rem}
+.b-card{background:#fff;padding:1.6rem 1.5rem 1.7rem;display:flex;flex-direction:column;
+  text-decoration:none;min-height:13rem}
+.b-card:hover{background:var(--panel)}
+.b-card .n{font-family:Futura,sans-serif;font-size:.56rem;letter-spacing:.18em;color:var(--rust)}
+.b-card h2{font-size:1.15rem;text-transform:uppercase;letter-spacing:.09em;margin:.5rem 0 .5rem}
+.b-card p{font-size:.86rem;color:var(--mute);line-height:1.65}
+.b-card .c{margin-top:auto;padding-top:1rem;font-family:Futura,sans-serif;font-size:.6rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+@media(max-width:991.98px){.b-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:575.98px){.b-grid{grid-template-columns:1fr}}
+
+.b-featured{border-top:2px solid var(--ink);padding-top:1.2rem;margin-bottom:3rem}
+.b-featured h3{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);margin-bottom:1rem}
+.b-kyu{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;background:var(--line)}
+.b-kyu a{background:#fff;padding:1.1rem 1rem 1.2rem;text-decoration:none;display:block}
+.b-kyu a:hover{background:var(--panel)}
+.b-kyu .g{font-family:Futura,sans-serif;font-size:1.3rem;letter-spacing:.02em}
+.b-kyu .t{font-size:.72rem;color:var(--mute);margin-top:.5rem;line-height:1.5}
+.b-kyu .w2{font-family:Futura,sans-serif;font-size:.56rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--rust);margin-top:.6rem}
+@media(max-width:767.98px){.b-kyu{grid-template-columns:1fr 1fr}}
+
+.b-recent{display:grid;grid-template-columns:1fr 1fr;gap:0 3rem}
+.b-recent a{display:flex;justify-content:space-between;gap:1rem;align-items:baseline;
+  padding:.7rem 0;border-bottom:1px solid var(--line);text-decoration:none;font-size:.9rem}
+.b-recent span{font-size:.72rem;color:var(--mute);white-space:nowrap}
+@media(max-width:767.98px){.b-recent{grid-template-columns:1fr}}
+</style></head><body><div class="badge">Propuesta B · hub y páginas</div><div class="w"><nav class="strip"><a href="#" aria-current="page">Recursos</a><a href="#">Clases</a><a href="#">Horarios</a><a href="#">Cuotas</a><a href="#">Visitantes</a></nav><header class="top"><h1>Recursos</h1>
+<p class="lede">Cinco secciones, cada una con su página. Los papeles por un lado, el programa de examen por otro, y las lecturas donde no estorban a quien busca un impreso.</p></header></div><div class="w">
+<div class="b-grid"><a class="b-card" href="#"><p class="n">01</p><h2>Trámites</h2>
+<p>Cuatro documentos. Se rellenan, se firman y se entregan; después no vuelves a mirarlos.</p><p class="c">4 documentos &rarr;</p></a><a class="b-card" href="#"><p class="n">02</p><h2>Programa de examen</h2>
+<p>El contenido de cada examen de kyū, con los días mínimos de práctica y las técnicas que entran.</p><p class="c">5 documentos &rarr;</p></a><a class="b-card" href="#"><p class="n">03</p><h2>Armas</h2>
+<p>Los programas de armas que se siguen en el dojo, con la numeración que se usa en clase.</p><p class="c">4 documentos &rarr;</p></a><a class="b-card" href="#"><p class="n">04</p><h2>Etiqueta y normas</h2>
+<p>Lo que conviene saber antes de la primera clase y lo que se espera después.</p><p class="c">3 documentos &rarr;</p></a><a class="b-card" href="#"><p class="n">05</p><h2>Lecturas</h2>
+<p>Nada de esto lo publicamos nosotros. Está en la biblioteca pública o se compra.</p><p class="c">6 documentos &rarr;</p></a></div>
+
+<section class="b-featured">
+  <h3>Programa de examen · de 5.º a 1.er kyū</h3>
+  <div class="b-kyu"><a href="#"><p class="g">5.º kyū</p><p class="t">El primero.</p>
+<p class="w2">8 técnicas</p></a><a href="#"><p class="g">4.º kyū</p><p class="t">Entran suwariwaza y el primer trabajo contra dos ataques distintos.</p>
+<p class="w2">14 técnicas</p></a><a href="#"><p class="g">3.er kyū</p><p class="t">Aparecen hanmi handachi y las primeras proyecciones de cadera.</p>
+<p class="w2">21 técnicas</p></a><a href="#"><p class="g">2.º kyū</p><p class="t">Ushirowaza completo y el programa de jō empieza a contar.</p>
+<p class="w2">27 técnicas</p></a><a href="#"><p class="g">1.er kyū</p><p class="t">Todo lo anterior, más jiyū waza y el trabajo con armas.</p>
+<p class="w2">34 técnicas</p></a></div>
+  <p class="note" style="margin-top:1rem">Cada uno es una página en la web, no un PDF:
+     se busca, se enlaza a una técnica concreta y se imprime igual que el horario.</p>
+</section>
+
+<section>
+  <h3 style="font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);
+      border-top:1px solid var(--line);padding-top:1.2rem;margin-bottom:1rem">Lo último</h3>
+  <div class="b-recent"><a href="#">Hoja de inscripción <span>PDF · 210 KB</span></a><a href="#">Autorización de uso de imagen <span>PDF · 180 KB</span></a><a href="#">36 técnicas básicas de jō <span>HTML · —</span></a><a href="#">31 no jō kata <span>PDF · 340 KB</span></a><a href="#">Etiqueta del dojo · reihō <span>HTML · —</span></a><a href="#">Normas de la sala <span>PDF · 160 KB</span></a></div>
+</section>
+</div><div class="w"><footer class="end"><b>Propuesta B.</b> Un índice y cinco páginas reales, cada una con su URL. El programa de examen deja de ser cinco PDFs y pasa a ser cinco páginas buscables, enlazables e imprimibles. Más piezas que mantener.</footer></div></body></html>

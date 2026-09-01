@@ -1,0 +1,127 @@
+# Fees.
+#
+# ONE SOURCE. The four fees pages used to carry sixteen hand-written Bootstrap
+# cards each — sixty-four across the languages — and a pair of PDFs holding the
+# same numbers again. They had already drifted: the page said the monthly family
+# rate was "22% de descuento" where the PDF's own arithmetic said 21.4%, and the
+# mixed-family rate existed in the PDF but on no page at all.
+#
+# So only two numbers are stored per row: what you pay, and what the same period
+# would cost billed monthly. Every saving and percentage on the page is worked
+# out from those at build time, which is why they can no longer disagree.
+#
+# TO CHANGE A PRICE: edit `fee` (and `base` if the monthly rate moved). Nothing
+# else needs touching — the cards, the comparison table and the structured data
+# all read from here.
+
+year: 2026
+currency: EUR
+symbol: "€"
+
+periods:
+  - id: monthly
+    months: 1
+    name:  { es: "Mensual",     ca: "Mensual",     en: "Monthly",     ja: "月額" }
+    unit:  { es: "al mes",      ca: "al mes",      en: "per month",   ja: "／月" }
+  - id: quarterly
+    months: 3
+    name:  { es: "Trimestral",  ca: "Trimestral",  en: "Quarterly",   ja: "3か月" }
+    unit:  { es: "al trimestre",ca: "al trimestre",en: "per quarter", ja: "／3か月" }
+  - id: biannual
+    months: 6
+    name:  { es: "Semestral",   ca: "Semestral",   en: "Six months",  ja: "6か月" }
+    unit:  { es: "al semestre", ca: "al semestre", en: "per 6 months",ja: "／6か月" }
+  - id: annual
+    months: 12
+    name:  { es: "Anual",       ca: "Anual",       en: "Annual",      ja: "年額" }
+    unit:  { es: "al año",      ca: "a l'any",     en: "per year",    ja: "／年" }
+
+categories:
+  - id: adults
+    name: { es: "Adultos", ca: "Adults", en: "Adults", ja: "一般" }
+    who:  { es: "Mayores de 12 años", ca: "Majors de 12 anys", en: "Ages 12 and up", ja: "12歳以上" }
+  - id: children
+    name: { es: "Infantil", ca: "Infantil", en: "Children", ja: "こども" }
+    who:  { es: "Menores de 12 años", ca: "Menors de 12 anys", en: "Under 12", ja: "12歳未満" }
+  - id: family-adults
+    name: { es: "Familiar adultos", ca: "Familiar adults", en: "Family adults", ja: "家族（一般）" }
+    who:  { es: "Mismo núcleo familiar, mayores de 12 años", ca: "Mateix nucli familiar, majors de 12 anys", en: "Same household, ages 12 and up", ja: "同一世帯（12歳以上）" }
+  - id: family-children
+    name: { es: "Familiar infantil", ca: "Familiar infantil", en: "Family children", ja: "家族（こども）" }
+    who:  { es: "Mismo núcleo familiar, menores de 12 años", ca: "Mateix nucli familiar, menors de 12 anys", en: "Same household, under 12", ja: "同一世帯（12歳未満）" }
+  - id: family
+    name: { es: "Familiar", ca: "Familiar", en: "Family", ja: "家族" }
+    who:  { es: "Mismo núcleo familiar, adultos e infantil", ca: "Mateix nucli familiar, adults i infantil", en: "Same household, adults and children", ja: "同一世帯（一般・こども）" }
+
+# fee  = what you pay for the period
+# base = the same period paid month by month, which is what the saving is against
+prices:
+  monthly:
+    adults:          { fee: 35,  base: 35 }
+    children:        { fee: 25,  base: 25 }
+    family:          { fee: 50,  base: 60 }
+    family-adults:   { fee: 55,  base: 70 }
+    family-children: { fee: 40,  base: 50 }
+  quarterly:
+    adults:          { fee: 85,  base: 105 }
+    children:        { fee: 60,  base: 75 }
+    family:          { fee: 140, base: 180 }
+    family-adults:   { fee: 165, base: 210 }
+    family-children: { fee: 110, base: 150 }
+  biannual:
+    adults:          { fee: 160, base: 210 }
+    children:        { fee: 110, base: 150 }
+    family:          { fee: 260, base: 360 }
+    family-adults:   { fee: 310, base: 420 }
+    family-children: { fee: 200, base: 300 }
+  annual:
+    adults:          { fee: 290, base: 420 }
+    children:        { fee: 180, base: 250 }
+    family:          { fee: 430, base: 720 }
+    family-adults:   { fee: 500, base: 840 }
+    family-children: { fee: 325, base: 500 }
+
+included:
+  - { es: "Inscripción gratuita",  ca: "Inscripció gratuïta",  en: "Free registration",       ja: "入会金無料" }
+  - { es: "2 clases de prueba",    ca: "2 classes de prova",   en: "Two trial classes",       ja: "体験稽古2回" }
+
+# THE STANDING OFFER. Not a `included:` line, because that list is the same on
+# every card and this is not: it is what you get for choosing a billing period
+# other than monthly, in any category. Rendered once, under the cards.
+offer:
+  eyebrow: { es: "Oferta permanente", ca: "Oferta permanent",
+             en: "Standing offer", ja: "常設の特典" }
+  title:   { es: "El keikogi, de regalo", ca: "El keikogi, de regal",
+             en: "The keikogi is on us", ja: "稽古着を進呈" }
+  body:
+    es: "Al matricularte, si eliges trimestre, semestre o año en lugar de mes a mes, el keikogi lo pone el dojo. Vale para todas las cuotas."
+    ca: "En matricular-te, si tries trimestre, semestre o any en comptes de mes a mes, el keikogi el posa el dojo. Val per a totes les quotes."
+    en: "Sign up and choose a quarter, six months or a year instead of month by month, and the dojo provides the keikogi. It applies to every fee."
+    ja: "入会の際、月払いではなく3か月・6か月・年払いを選ばれた方には、道場から稽古着を一式お渡しします。すべての区分が対象です。"
+  note:
+    es: "Un equipo por persona, en la primera matrícula."
+    ca: "Un equip per persona, en la primera matrícula."
+    en: "One set per person, on your first enrolment."
+    ja: "お一人につき一式、初回入会時のみ。"
+
+ui:
+  period:    { es: "Periodo",           ca: "Període",          en: "Billing period",   ja: "支払い方法" }
+  save:      { es: "Ahorras",           ca: "Estalvies",        en: "You save",         ja: "割引" }
+  instead:   { es: "en lugar de",       ca: "en lloc de",       en: "instead of",       ja: "通常" }
+  signup:    { es: "¡Apúntate!",        ca: "Apunta-t'hi!",     en: "Sign up",          ja: "申し込む" }
+  detail:    { es: "Ver el detalle completo de cuotas y descuentos",
+               ca: "Veure el detall complet de quotes i descomptes",
+               en: "See the full breakdown of fees and discounts",
+               ja: "料金と割引の詳細を見る" }
+  th_cat:    { es: "Categoría",         ca: "Categoria",        en: "Category",         ja: "区分" }
+  th_fee:    { es: "Cuota",             ca: "Quota",            en: "Fee",              ja: "料金" }
+  th_base:   { es: "Precio base",       ca: "Preu base",        en: "Base price",       ja: "通常料金" }
+  th_save:   { es: "Descuento",         ca: "Descompte",        en: "Discount",         ja: "割引" }
+  base_note: { es: "El precio base es el mismo periodo pagado mes a mes.",
+               ca: "El preu base és el mateix període pagat mes a mes.",
+               en: "The base price is the same period paid month by month.",
+               ja: "通常料金は、同じ期間を月払いした場合の金額です。" }
+  only_aikido: { es: "Las cuotas indicadas son únicamente para las clases de Aikido.",
+                 ca: "Les quotes indicades són únicament per a les classes d'Aikido.",
+                 en: "The fees shown are for Aikido classes only.",
+                 ja: "記載の料金は合気道の稽古のみが対象です。" }

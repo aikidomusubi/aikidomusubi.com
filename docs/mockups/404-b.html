@@ -1,0 +1,113 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>404 · Ukemi de kaiju</title>
+<link rel="stylesheet" href="/styles/all.min.css">
+<style>
+:root{--ink:#111314;--mute:#5c6a70;--line:rgba(17,19,20,.13)}
+html,body{margin:0;background:#FFF200;color:var(--ink);overflow-x:hidden;
+  font-family:'Noto Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+h1,h2{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-weight:400;margin:0;letter-spacing:.04em}
+p{margin:0}
+.stage{position:relative;min-height:100svh;display:grid;grid-template-rows:1fr auto;
+  overflow:hidden;cursor:pointer;user-select:none}
+.mat{position:absolute;left:0;right:0;bottom:0;height:38vh;background:#111314;z-index:1}
+.mat::before{content:'';position:absolute;inset:0;
+  background-image:linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px),
+    linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px);
+  background-size:88px 88px}
+.mat::after{content:'';position:absolute;left:0;right:0;top:0;height:2px;background:#111314}
+
+.inner{position:relative;z-index:4;max-width:1140px;width:100%;margin:0 auto;
+  padding:5rem 6rem 0;text-align:center}
+@media(max-width:767.98px){.inner{padding:3rem 2rem 0}}
+.kicker{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.66rem;letter-spacing:.3em;
+  text-transform:uppercase;color:#4a4300;margin-bottom:1.3rem}
+.num{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:clamp(5.5rem,20vw,14rem);
+  line-height:.85;color:#111314}
+.lede{margin:1.5rem auto 0;max-width:33rem;font-size:1.08rem;line-height:1.7;color:#2c2800}
+.hint{margin-top:1.5rem;font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.6rem;
+  letter-spacing:.2em;text-transform:uppercase;color:#5a5200}
+.hint b{color:#111314;font-weight:400}
+.acts{position:relative;z-index:5;padding:0 6rem 2.6rem;display:flex;gap:1.6rem;
+  justify-content:center;flex-wrap:wrap}
+@media(max-width:767.98px){.acts{padding:0 2rem 2rem}}
+.acts a{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.66rem;letter-spacing:.15em;
+  text-transform:uppercase;color:#fff;text-decoration:none;border-bottom:2px solid #FFF200;
+  padding-bottom:.25rem}
+.acts a:hover{border-bottom-color:#fff}
+
+/* ── the beast, and the throw ──────────────────────────────────────────── */
+.god{position:absolute;z-index:3;width:min(34vw,380px);left:8vw;bottom:4vh;
+  filter:invert(1);mix-blend-mode:screen;transform-origin:50% 80%;
+  transition:transform 1.05s cubic-bezier(.28,.9,.3,1),left 1.05s cubic-bezier(.28,.9,.3,1),
+    bottom 1.05s cubic-bezier(.34,1.2,.4,1)}
+.god img{width:100%;display:block}
+.stage[data-thrown] .god{transform:rotate(196deg) scale(.86);left:56vw;bottom:19vh}
+@media(max-width:767.98px){.god{width:56vw;left:4vw}}
+
+/* ── the shockwave where he lands ──────────────────────────────────────── */
+.ring{position:absolute;z-index:2;left:62vw;bottom:14vh;width:8px;height:8px;border-radius:50%;
+  border:2px solid #FFF200;opacity:0;pointer-events:none;transform:translate(-50%,50%) scale(1)}
+.stage[data-thrown] .ring{animation:ring 1s .55s cubic-bezier(.2,.8,.3,1) forwards}
+.stage[data-thrown] .ring.r2{animation-delay:.68s}
+@keyframes ring{0%{opacity:.95;transform:translate(-50%,50%) scale(1)}
+  100%{opacity:0;transform:translate(-50%,50%) scale(46)}}
+.dust{position:absolute;z-index:2;width:6px;height:6px;border-radius:50%;background:#FFF200;
+  opacity:0;pointer-events:none}
+.stage[data-thrown] .dust{animation:dust .95s .55s ease-out forwards}
+@keyframes dust{0%{opacity:.9;transform:translate(0,0)}
+  100%{opacity:0;transform:translate(var(--dx),var(--dy))}}
+
+.counter{position:absolute;right:2rem;top:2rem;z-index:6;font-family:Futura,'Trebuchet MS',Arial,sans-serif;
+  font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:#4a4300;text-align:right}
+.counter b{display:block;font-size:1.6rem;color:#111314;line-height:1;margin-top:.3rem}
+@media(prefers-reduced-motion:reduce){.god{transition:none}.ring,.dust{display:none}}
+</style></head>
+<body>
+<div class="stage" id="stage" role="button" tabindex="0"
+     aria-label="Proyectar a Godzilla otra vez">
+  <div class="mat" aria-hidden="true"></div>
+  <div class="god" aria-hidden="true">
+    <picture><source type="image/webp" srcset="/images/404-24EeTTuv-godzilla.webp">
+      <img src="/images/404-24EeTTuv-godzilla.png" alt=""></picture>
+  </div>
+  <span class="ring" aria-hidden="true"></span><span class="ring r2" aria-hidden="true"></span>
+  <p class="counter" aria-live="polite">Proyecciones<b id="n">0</b></p>
+  <div class="inner">
+    <p class="kicker">Error 404</p>
+    <h1 class="num">404</h1>
+    <p class="lede">Godzilla tampoco encontró esta página. Lo que sí encontró fue un
+       <em>kote gaeshi</em> bien puesto.</p>
+    <p class="hint">Toca en cualquier sitio para <b>proyectarlo otra vez</b></p>
+  </div>
+  <div class="acts">
+    <a href="/">Volver a la portada</a>
+    <a href="/clases/">Aprender a caer</a>
+    <a href="/contacto/">Escribirnos</a>
+  </div>
+</div>
+<script>
+(function(){
+  var st=document.getElementById('stage'), n=document.getElementById('n'), c=0, busy=false;
+  for(var i=0;i<16;i++){
+    var d=document.createElement('span'); d.className='dust';
+    d.style.left=(58+Math.random()*10)+'vw'; d.style.bottom=(12+Math.random()*6)+'vh';
+    d.style.setProperty('--dx',(Math.random()*300-150)+'px');
+    d.style.setProperty('--dy',(-40-Math.random()*160)+'px');
+    d.style.animationDelay=(.55+Math.random()*.25)+'s';
+    st.appendChild(d);
+  }
+  function throwHim(){
+    if(busy) return; busy=true;
+    st.setAttribute('data-thrown','');
+    c++; n.textContent=c;
+    setTimeout(function(){ st.removeAttribute('data-thrown'); busy=false; },2100);
+  }
+  st.addEventListener('click',function(e){ if(!e.target.closest('a')) throwHim(); });
+  st.addEventListener('keydown',function(e){
+    if(e.key===' '||e.key==='Enter'){e.preventDefault();throwHim();} });
+  setTimeout(throwHim,900);
+})();
+</script>
+</body></html>

@@ -1,0 +1,371 @@
+// out: false
+//
+// ---------------------------------------------------------------------------
+// Footer
+//
+// Two objects with different jobs, which is the whole idea:
+//
+//   .ft        sits at the end of the page like an ordinary footer. It has
+//              room for the invitation band, the association's details and
+//              three columns of internal links.
+//   .ft-strip  stays pinned to the viewport, because Art. 10 LSSI-CE wants
+//              the legal links reachable from anywhere. It is 30px, where the
+//              old footer that did nothing but hold those same links was 46.5.
+//
+// It reads the nav's palette and type exactly: @Black ground, Futura for the
+// headings, Noto Sans for everything else, @Yellow for focus.
+//
+// COLOURS ARE MIXED, NOT FADED. Every muted grey here is `mix(@White, @Black,
+// n%)`, which compiles to the solid colour that `fadeout()` would have
+// composited to. Same pixels, but the value in the file is the value that
+// gets measured — writing these as alpha is how four contrast regressions got
+// shipped earlier in this rebuild.
+//   62% -> mix(@Black, @White, 38%)  7.6:1 on @Black   body text and links
+//   56% -> mix(@Black, @White, 44.3%)  6.3:1 on @Black   column headings
+// ---------------------------------------------------------------------------
+
+@ft-text:  mix(@White, @Black, 62%);
+@ft-quiet: mix(@White, @Black, 56%);
+@ft-rule:  mix(@White, @Black, 12%);
+@ft-strip-h: 30px;
+@ft-strip-h-narrow: 52px;   // two rows; must match the --footer-height override below
+
+// The bottom padding is the room the pinned strip sits in. It used to be on
+// `.page`, which is white, so anything that lifted the strip — a rubber-band
+// overscroll at the end of the page, which moves fixed elements in Safari and
+// Chrome — exposed a white band between the footer and the strip. Reserving it
+// here instead means what is behind the strip is the footer's own black.
+.ft {
+  background-color: @Black;
+  padding-bottom: var(--footer-height);
+  color: @ft-text;
+  .NotoSans;
+  font-size: .875rem;
+  line-height: 1.6;
+  text-align: left;
+
+  a {
+    color: @ft-text;
+    text-decoration: none;
+
+    &:hover {
+      color: @White;
+      text-decoration: underline;
+      text-decoration-color: @Yellow;
+      text-underline-offset: 3px;
+    }
+
+    &:focus-visible { outline: 2px solid @Yellow; outline-offset: 2px; }
+  }
+
+  ul { list-style: none; margin: 0; padding: 0; }
+  p  { margin: 0; }
+}
+
+// The nav's mixin, so the footer wordmark lands on the same vertical as the nav
+// wordmark and as the first character of body text. See the long note beside
+// `.page-measure()` in nav.less for why matching only the 1140 is not enough.
+.ft-in { .page-measure(); }
+
+// ---- invitation band -------------------------------------------------------
+// One line and one button. It asks for the thing we actually want a first-time
+// reader to do — come and try a class — and nothing else. What visitors are
+// charged and whether they may sit and watch are both on the Visitors page,
+// where someone looking for them will be.
+.ft-band {
+  background-color: lighten(@Black, 3%);
+  border-bottom: 1px solid @ft-rule;
+}
+
+.ft-band-in {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding-top: 1.6rem;
+  padding-bottom: 1.6rem;
+}
+
+.ft-band-h {
+  .Futura;
+  font-size: 1.22rem;
+  font-weight: 600;
+  letter-spacing: .07em;   // uppercase needs a touch more air between letters
+  text-transform: uppercase;
+  color: @White;
+  margin-bottom: .3rem !important;
+}
+
+// Kana have no case, so uppercasing does nothing and the wider tracking only
+// pulls the characters apart.
+html[lang="ja"] .ft-band-h { text-transform: none; letter-spacing: .04em; }
+
+.ft-band-p {
+  font-size: .85rem;
+  max-width: 56ch;
+}
+
+.ft-cta {
+  flex: 0 0 auto;
+  margin-left: auto;
+  .Futura;
+  font-size: .8rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  // 15.9:1. The only saturated element in the footer, so it is unmistakably
+  // the one thing to press.
+  color: @Black !important;
+  background-color: @Yellow;
+  padding: .75rem 1.4rem;
+
+  // 44px tall including the padding above: a comfortable touch target.
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+
+  &:hover {
+    color: @Black !important;
+    background-color: @White;
+    text-decoration: none;
+  }
+
+  &:focus-visible { outline: 2px solid @White; outline-offset: 2px; }
+}
+
+@media (max-width: 767.98px) {
+  .ft-band-in { display: block; }
+  .ft-cta { margin-top: 1.1rem; }
+}
+
+// ---- body ------------------------------------------------------------------
+.ft-body {
+  padding-top: 2.8rem;
+  padding-bottom: 2.4rem;
+}
+
+.ft-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+
+  // Between 576 and 992 the identity block takes a row of its own, two columns
+  // wide with the third left empty, and the three link columns sit underneath.
+  // Squeezing all four into two columns put the wordmark and "Practicar" on the
+  // same line, which read as though the address were a fourth list.
+  @media (min-width: 576px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.4rem 2.2rem;
+
+    // Row one is the identity block over two columns with the third left
+    // empty; row two is the three link columns. Spanning .ft-id alone is not
+    // enough — auto-placement happily drops the first list into the empty cell
+    // beside the address, which is the arrangement this is meant to avoid.
+    > .ft-id  { grid-column: 1 / span 2; grid-row: 1; }
+    > .ft-col { grid-row: 2; }
+
+    // ONE COLUMN, always. The identity block used to split into two between
+    // 576 and 992 — wordmark and address on the left, email and social on the
+    // right — which read as two unrelated lists rather than one identity. It
+    // is a single stack at every width now, so nothing here rearranges its
+    // insides; it only spans two of the three columns.
+  }
+
+  @media (min-width: 992px) {
+    grid-template-columns: 1.5fr 1fr 1.05fr 1.2fr;
+    gap: 2.6rem;
+    align-items: start;
+
+    > .ft-id  { grid-column: auto; grid-row: auto; display: block; }
+    > .ft-col { grid-row: auto; }
+
+  }
+}
+
+.ft-mark {
+  display: block;
+  width: 122px;   // the wordmark's own aspect at 32px tall: 632/166 * 32
+  height: 32px;
+  background: url('/graphics/logo-00-wordmark-white.svg') left center / contain no-repeat;
+}
+
+.ft-sr {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.ft-addr {
+  margin-top: 1rem !important;
+  font-size: .82rem;
+  line-height: 1.7;
+}
+
+.ft-reach {
+  margin-top: .6rem !important;
+  font-size: .82rem;
+
+  > li { line-height: 1.7; }
+}
+
+.ft-soc {
+  display: flex;
+  gap: .35rem;
+  margin-top: .9rem !important;
+  margin-left: -.5rem !important;   // pulls the first icon's hit area back to the edge
+
+  > li > a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;   // 36px, clear of the 24px minimum target
+
+    &:hover { text-decoration: none; }
+
+    > svg { width: 1.05rem; height: 1.05rem; }
+  }
+}
+
+.ft-colh {
+  .Futura;
+  font-size: .74rem !important;
+  font-weight: 400 !important;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: @ft-quiet;
+  margin: 0 0 .8rem !important;
+}
+
+// The column headings sit on the same line as the first line of the address, so
+// the wordmark reads as belonging to the address beneath it rather than floating
+// above a row of lists. The offset is the wordmark's height plus the margin
+// under it — see .ft-mark and .ft-addr.
+// Both in px on purpose. `32px + 1rem` does not mean 48px to LESS — it keeps
+// the first operand's unit and adds the bare number, giving 33px, which is what
+// put the column headings 15px above the address they are supposed to sit level
+// with. Mixing units in LESS arithmetic is silently wrong, never an error.
+@ft-mark-h: 32px;
+@ft-mark-gap: 16px;   // = the 1rem margin-top on .ft-addr
+
+// ...and then 6px more, because matching the box tops is not what the eye
+// reads. The address is 13.12px Noto Sans on a 22.3px line, the heading is
+// 11.84px Futura on a 14.2px line, so with both boxes starting on the same
+// pixel the address's first baseline lands 6px BELOW the heading's — measured,
+// not guessed. This closes that gap.
+@ft-baseline-fix: 6px;
+
+.ft-col {
+
+  @media (min-width: 992px) { padding-top: @ft-mark-h + @ft-mark-gap + @ft-baseline-fix; }
+
+  > ul > li > a {
+    display: inline-block;
+    padding: .34rem 0;
+    font-size: .84rem;
+  }
+}
+
+// ---- the pinned strip -------------------------------------------------------
+// Copyright, CIF and the legal links. Two rows below 576px, where the copyright
+// alone is about 300px of the 311px available; --footer-height is redefined to
+// match so the page still reserves exactly the strip's height and no more.
+.ft-strip {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1030;
+
+  background-color: @Black;
+  border-top: 1px solid @ft-rule;
+}
+
+.ft-strip-in {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  height: @ft-strip-h;
+}
+
+.ft-legal {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-left: auto !important;
+
+  > li > a {
+    display: inline-flex;
+    align-items: center;
+    height: @ft-strip-h;   // the whole strip height is the target
+    font-size: .72rem;
+    letter-spacing: .01em;
+    white-space: nowrap;
+  }
+}
+
+.ft-cr {
+  font-size: .72rem;
+  color: @ft-quiet;
+  white-space: nowrap;
+}
+
+@media (max-width: 575.98px) {
+  // Two rows: links first, then the copyright. The association's name comes out
+  // of the line rather than wrapping it — it is the first line of the identity
+  // block a few centimetres above.
+  :root { --footer-height: @ft-strip-h-narrow; }
+
+  .ft-strip-in {
+    display: block;
+    height: @ft-strip-h-narrow;
+    padding-top: .25rem;
+  }
+
+  .ft-legal {
+    margin-left: 0 !important;
+    gap: 1rem;
+
+    > li > a { height: 1.55rem; }
+  }
+
+  .ft-cr { font-size: .68rem; line-height: 1.4; }
+}
+
+// At 400px the content column is 336px and the copyright is about 285px, so it
+// still fits on one line. Below that it would wrap and push the strip to three
+// rows while --footer-height still claimed two, so the association's name comes
+// out and the copyright and the CIF — the parts actually asked for — stay.
+@media (max-width: 399.98px) {
+  .ft-org { display: none; }
+}
+
+// ---- Japanese --------------------------------------------------------------
+// Only the display face changes; the body face is already Noto Sans JP from the
+// html[lang="ja"] block in default.less.
+html[lang="ja"] {
+  .ft-band-h,
+  .ft-colh,
+  .ft-cta { .MPlus1p; }
+
+  // Uppercase and wide tracking do nothing for kana and hurt legibility.
+  .ft-colh, .ft-cta { text-transform: none; letter-spacing: .04em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ft a { transition: none; }
+}
+
+@media print {
+  .ft-band,
+  .ft-soc { display: none; }
+
+  .ft-strip { position: static; }
+
+  .ft { background-color: transparent; color: @Black; }
+  .ft a { color: @Black; }
+}

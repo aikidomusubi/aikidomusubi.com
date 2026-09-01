@@ -114,7 +114,7 @@
 // !important matches the p/ul rules these sit beside, and the breakpoint
 // rules genuinely need it: they are written `body .page .container > main >
 // table`, which is *less* specific than the base table rule
-// (`html body .page .container > main > table`) they have to override.
+// (`.page main > table`) they have to override.
 //
 // Which is also why the base call passes `~""` to drop the flag. Two
 // !important declarations are settled by specificity, so an important base
@@ -128,6 +128,32 @@
 }
 
 .NotoSans { font-family: 'Noto Sans', sans-serif; }
+// ---------------------------------------------------------------------------
+// 産靈 — two glyphs, and a face of their own
+//
+// The mon on the home is the dojo's name in kanji, and it is the one piece of
+// Japanese that appears on all four languages' pages rather than only on /ja/.
+// It was set in whatever sans the reader's system offered, which on a Spanish
+// page is a fallback nobody chose.
+//
+// This is Noto Serif JP subset to exactly 産 and 靈 — a brush-derived Mincho
+// with the stroke contrast the name deserves. Two glyphs is 1.4 KB, so it can
+// be declared on every page without the usual CJK cost, and it is self-hosted
+// like every other face here: no request leaves this origin.
+//
+// The unicode-range means the browser fetches it only for those two
+// characters, so any other Japanese on the page still gets the subset sans.
+@font-face {
+  font-family: 'Musubi Mon';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/noto-serif-jp-600-musubi.woff2') format('woff2');
+  unicode-range: U+7523, U+9748;
+}
+
+.MusubiMon { font-family: 'Musubi Mon', 'Noto Serif JP', serif; }
+
 .NotoSansJP { font-family: 'Noto Sans JP', sans-serif; }
 .NotoSerif { font-family: 'Noto Serif', sans-serif; }
 .NotoSerifJP { font-family: 'Noto Serif JP', sans-serif; }
@@ -153,14 +179,241 @@
 // consumes it through compile-time colour maths — darken(), lighten() and
 // fadeout() account for roughly two thirds of all palette references, and
 // none of those can operate on a CSS custom property.
-@Black: #121315;
+// Off-screen but in the accessibility tree and in the document outline. The
+// nav and the footer each carry their own copy of this (.nv-sr, .ft-sr); this
+// is the one for page content.
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// ---------------------------------------------------------------------------
+// LAYOUT — one breakpoint scale, one page column, one reading measure
+//
+// Everything responsive on this site steps at these four widths and nowhere
+// else. There used to be seventeen distinct breakpoints across the
+// stylesheets — 320, 400, 480, 576, 768, 880, 900, 992, 1024, 1200, 1400 and
+// four hero-only ones — so the page column changed width at 992 while the text
+// inside it changed inset at 1024, and two components invented 880 and 900 for
+// themselves. Add a tier here, not in a component.
+// ---------------------------------------------------------------------------
+// The nav's own heights, needed here by @anchor-clear. nav.less is imported
+// after this file, so they are declared here and consumed there.
+@nv-h:       3.9rem;    // bar height at rest
+@nv-h-small: 3.05rem;   // once shrunk
+@nv-strip-h: 2.15rem;   // the utility row above it
+
+@bp-sm:  576px;   // large phone
+@bp-md:  768px;   // tablet portrait
+@bp-lg:  992px;   // tablet landscape, small laptop
+@bp-xl: 1200px;   // desktop
+
+// The page column. Elastic: it fills the viewport minus the gutter until it
+// reaches @page-max, and then stops. It does NOT step through Bootstrap's
+// 540/720/960/1140 tiers any more — those made the layout jump sideways at
+// every breakpoint instead of breathing.
+@page-max: 1140px;
+@gut-sm:   2rem;   // < 768
+@gut-md:   4rem;   // >= 768
+@gut-lg:   6rem;   // >= 992
+
+// The reading measure. Long-form blocks are held to this and centred inside
+// the column; headings and components use the full column.
+//
+// This replaces a second, hidden inset layer: `> p` and `> ul` carried
+// `padding: 0 2/3/4/8rem !important` per breakpoint, `> table` carried the
+// same as margins, and everything else — headings, blockquotes, figures —
+// carried none, so a note in a <blockquote> ran 256px wider than the
+// paragraph above it. 43.25rem is 692px, which is exactly what those 8rem
+// paddings produced at desktop, so the prose does not move.
+@measure: 43.25rem;
+
+// How far a link target has to sit below the top of the viewport so the sticky
+// nav does not cover it. It must clear the nav at its TALLEST — the resting
+// 6.05rem, strip included — because that is the height it has at the instant
+// the browser jumps to a fragment. The old value was `50px + 1.75rem`, written
+// when the Bootstrap navbar was 50px tall; against a 97px nav it left the
+// target 19px underneath. It only looked right on a reload, where the nav is
+// already shrunk to 3.05rem by the restored scroll position.
+@anchor-clear: (@nv-h + @nv-strip-h + 1.5rem);
+
+// Full bleed, without the fifteen pixels of horizontal scroll.
+//
+// `100vw` includes the vertical scrollbar, so a section exactly one viewport
+// wide hangs past the edge of the document on every platform with classic
+// scrollbars. The usual cure is `overflow-x: clip` on an ancestor, and this
+// toolchain cannot deliver it: the clean-css in the pipeline is from 2018,
+// predates the keyword and drops the declaration — inside @supports too.
+//
+// So the scrollbar is measured instead. scripts/default.js publishes --sbw on
+// first paint and on resize; it is 0 on macOS and on touch, where scrollbars
+// are overlays and there is nothing to subtract.
+.full-bleed() {
+  width: calc(100vw - var(--sbw, 0px));
+  margin-left: calc(50% - ((100vw - var(--sbw, 0px)) / 2));
+  margin-right: calc(50% - ((100vw - var(--sbw, 0px)) / 2));
+}
+
+@Black: #111314;   // Sanzo Wada "Black" — was #121315, ΔE 0.8
 @White: #ffffff;
 
-@Dark: #343a40;
+@Dark: #34454C;    // Sanzo Wada "Slate Color" — was #343a40
 
-@Red: #da525d;
-@Blue: #084f6f;
-@Yellow: #fff200;
+@Red: #da525d;     // Sanzo Wada "Eugenia Red | B"
+
+// The same red one step lighter. @Red measures 4.40:1 on Ura's card ground —
+// just under the floor at the size the dates are set — and this clears it at
+// 5.06:1. It is already the timetable's Aikido colour, so it is not a new hue.
+@EugeniaRedA: #e2625e;   // Sanzo Wada "Eugenia Red | A"
+// Vandar Poel's Blue is now the FOCUS COLOUR AND NOTHING ELSE. Everything it
+// used to paint — buttons, selected days, active tabs, the tinted panels, the
+// rules down the side of a block — is @Accent below.
+//
+// It survives here because a focus ring has to be visibly different from the
+// thing it surrounds, and the things it surrounds are now black: a black ring
+// on a black button is not a focus indicator. Blue measures 8.9:1 on white,
+// and appearing nowhere else means that when it does appear it can only mean
+// one thing. If you want the blue gone altogether, @Red is the only other
+// colour in the palette that clears 3:1 on both white (3.9:1) and @Black
+// (4.7:1), so it is the one substitution that works everywhere.
+@Blue: #064F6E;    // Sanzo Wada "Vandar Poel's Blue" — was #084f6f, ΔE 0.8
+
+// The interaction colour. One line to put the blue back.
+@Accent: @Black;
+@Yellow: #FFF200;  // Sanzo Wada "Yellow" — already exact
+
+// The positive/green accent: ticks, "upcoming", the savings badge, the
+// visitors card. It was written literally as #1b6e43 in six stylesheets, which
+// is how _data/gallery.yml ended up with a SECOND green (#2E7D64) and
+// _data/calendar.yml a THIRD (#2D7A62) for the same idea. All three are this
+// one value now.
+@Green: #1a7444;   // Sanzo Wada "Diamine Green" — was #1b6e43, ΔE 2.2. 5.79:1 on white
+
+// The secondary accent on the About pages: the step numbers in the etiquette
+// and class lists, the rōmaji under each weapon, and the open marker on a FAQ
+// answer. It is warm where @Yellow is loud, which is what those small
+// uppercase labels want.
+//
+// It was #B04E17 from the mockups. Burnt Sienna is ΔE 1.9 from that — an
+// invisible move — and it was already in the site as the calendar's "change"
+// colour, so taking it collapsed three near-identical browns into one.
+@Rust: #ae5224;    // Sanzo Wada "Burnt Sienna". 5.21:1 on white
+
+// ---------------------------------------------------------------------------
+// Shades of the above, and why they are not new colours
+//
+// A label printed ON @Yellow cannot be @Black (too heavy at 0.6rem) and cannot
+// be any mid-tone in the dictionary either — what it has to satisfy is a
+// contrast ratio against yellow, not a resemblance to an entry. So these are
+// derived: the same hue, darkened until the ratio is met, which keeps the
+// palette to dictionary colours and their shades and leaves no literal behind.
+//
+// The percentages are not arbitrary. They were chosen by measuring: 36% is the
+// step that lands on 8.57:1, which is exactly what the hand-written #4A4300 it
+// replaces measured.
+@YellowInk:     darken(@Yellow, 36%);   // #474400 — 8.57:1 on @Yellow
+@YellowInkDeep: darken(@Yellow, 42%);   // #292700 — 12.97:1 on @Yellow
+
+// The error state on @Yellow. This one IS a dictionary colour: Vandyke Red
+// clears 8.08:1 on yellow where the hand-written #8A1F1A managed 7.83:1.
+@VandykeRed: #82241f;   // Sanzo Wada "Vandyke Red". 9.45:1 on white
+
+// The "suspended" class label and the tint it sits on, both derived from
+// @Rust. 7.83:1 against its own tint, up from 7.07:1.
+@RustInk:  darken(@Rust, 14%);      // #733618
+@RustTint: fadeout(@Rust, 88%);
+
+// Map overlays only — the dojo outline on the venue plans. Not text.
+@YellowOcher:   #e2b540;   // Sanzo Wada "Yellow Ocher"
+
+// The three pale dictionary colours the timetable already uses for its
+// categories, promoted to tokens so anything drawn on a dark ground can reach
+// them. They were only in _data/schedule.yml, which is data and not a palette.
+@GreenishGlaucous: #B7C2A9;   // Sanzo Wada "Dark Greenish Glaucous". 10.0:1 on @Black
+@GlaucousBlue:     #A5C8D1;   // Sanzo Wada "Light Glaucous Blue".    10.5:1 on @Black
+@ApricotYellow: #ffdd00;   // Sanzo Wada "Apricot Yellow"
+
+// ---------------------------------------------------------------------------
+// Accordions that open and close instead of jumping
+//
+// A <details> cannot be animated the old way: the browser does not render its
+// content at all when it is closed, so there is nothing there to grow from,
+// and the grid-template-rows trick that works on a plain div does nothing
+// here. Two newer things make it possible, and both are progressive — a
+// browser that has neither simply snaps open, which is what this did before.
+//
+//   `interpolate-size: allow-keywords` lets `height: auto` be an animation
+//   endpoint, so the panel can grow to exactly its content and no farther.
+//
+//   `::details-content` is the box the browser wraps that content in, and
+//   `transition-behavior: allow-discrete` lets `content-visibility` flip at
+//   the right end of the transition rather than immediately — which is the
+//   same problem, and the same fix, as the sliding panel's `visibility`.
+//
+// .accordion() is applied by the two places that have accordions: the FAQ on
+// the About pages and the year groups in Ura.
+:root { interpolate-size: allow-keywords; }
+
+.accordion(@ms: 320ms) {
+  details::details-content {
+    block-size: 0;
+    overflow: hidden;
+    transition: block-size @ms cubic-bezier(.33, 1, .68, 1),
+                content-visibility @ms allow-discrete;
+  }
+
+  details[open]::details-content { block-size: auto; }
+
+  @media (prefers-reduced-motion: reduce) {
+    details::details-content { transition: none; }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// One "how to get there", two destinations
+//
+// Both map links are in the markup; scripts/default.js stamps the root with
+// which platform this is and one of them is hidden. No script means no stamp,
+// which means neither rule matches and BOTH show — the fallback is two labelled
+// buttons rather than none, and the sr-only text on each says which service it
+// goes to.
+:root[data-maps="apple"] .dir-google { display: none; }
+:root[data-maps="other"] .dir-apple  { display: none; }
+
+// The sr-only half of that label, and it belongs in the core bundle rather
+// than in venues.less: the same include is used on Contact, which does not
+// load that stylesheet, so the span was visible there and the button read
+// "Cómo llegar · Aikido Musubi · Apple Maps" on the page.
+.vn-sr {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// ---------------------------------------------------------------------------
+// The neutral ramp
+//
+// Every grey on the site used to be a hand-written hex, and there were
+// eighteen of them. They are all written as `mix()` of two dictionary colours
+// now — Slate Color into White for the light greys, White into Black for Ura's
+// dark surfaces, @Yellow into White for the tinted callout.
+//
+// The percentages were SOLVED, not chosen: each one reproduces the measured
+// value it replaced, most of them exactly and none by more than ΔE 0.7. So the
+// contrast ratios those greys were picked for still hold, and the palette is
+// now dictionary entries and mixes of dictionary entries and nothing else.
+//
+// Three greys are still literal, all in styles/default.less, and all three are
+// already `lighten(@Dark, N%)` in the source with the hex only in a comment.
 
 // The same values published as custom properties, interpolated from the
 // variables above so there is still exactly one place to change a colour.
@@ -171,13 +424,23 @@
   --color-dark:   @Dark;
   --color-red:    @Red;
   --color-blue:   @Blue;
+  --color-accent: @Accent;
   --color-yellow: @Yellow;
+  --color-green:  @Green;
+  --color-rust:   @Rust;
 
-  // The footer is fixed to the bottom, so the page has to reserve exactly its
-  // height as padding or the last line of content hides behind it. Keeping
-  // that measurement in one token means the two can never drift apart — and
-  // the cookie banner uses it to sit directly above the footer.
-  --footer-height: 46.5px;
+  // Only the legal strip is pinned to the viewport now; the rest of the footer
+  // sits at the end of the page. This token is that strip's height, and the
+  // page reserves exactly it so the last line of the footer cannot hide behind
+  // it. The cookie banner uses the same token to sit directly above the strip.
+  // It must stay in step with @ft-strip-h in footer.less.
+  --footer-height: 30px;
+
+  // The nav's shrunk height, published for scripts/default.js. The in-page
+  // sticky bar's margin-top uses @nv-h-small, and the script has to pin the bar
+  // at exactly the matching scroll position or the bar jumps by the difference
+  // at the moment it pins. One value, two consumers.
+  --nav-shrunk: @nv-h-small;
 
   --font-sans:       'Noto Sans', sans-serif;
   --font-sans-jp:    'Noto Sans JP', sans-serif;
@@ -271,4 +534,21 @@ body {
 
 .flipV {
   transform: scale(1, -1);
+}
+
+// ---------------------------------------------------------------------------
+// Print, site-wide
+//
+// A cookie banner is a decision the reader has not made yet. On paper there is
+// nothing to decide and nothing to click, so it prints as a grey slab across
+// the foot of the page — which is what happened to the first printed grading
+// sheet, because the banner was still up. It is chrome, and chrome does not
+// print.
+//
+// The pinned legal strip goes for the same reason: it is fixed to the viewport,
+// so it repeats on every printed page.
+// ---------------------------------------------------------------------------
+@media print {
+  .cookie-banner,
+  .ft-strip { display: none !important; }
 }

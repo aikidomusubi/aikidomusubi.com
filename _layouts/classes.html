@@ -1,0 +1,307 @@
+{% include header.html %}
+
+<main id="main" tabindex="-1">
+
+  {% include section-strip.html %}
+
+  {{ content }}
+
+  {%- comment -%}
+    Classes — what each art is, who teaches it, and where to go next.
+
+    IT STATES NO TIMES. The old page hand-typed 27 time ranges per language,
+    108 across the four, and had already drifted from _data/schedule.yml in
+    three places. Everything time-shaped below is derived from that file at
+    build time: the days a discipline runs, the dojos it runs at, and the
+    filtered link into the timetable. Nothing here can go stale on its own.
+
+    Content lives in _data/classes.yml, the schedule join keys in
+    _data/schedule.yml. Adding a discipline is a block in the first file.
+  {%- endcomment -%}
+
+  {%- assign L = page.lang -%}
+  {%- assign C = site.data.classes -%}
+  {%- assign S = site.data.schedule -%}
+
+  {%- comment -%} Localised URL for the timetable page, filtered by activity. {%- endcomment -%}
+  {%- if L == 'es' -%}{%- assign tt = '/horarios/' -%}
+  {%- elsif L == 'ca' -%}{%- assign tt = '/ca/horaris/' -%}
+  {%- else -%}{%- assign tt = '/' | append: L | append: '/training-schedule/' -%}
+  {%- endif -%}
+
+  {%- if L == 'es' -%}{%- assign fees_url = '/cuotas/' -%}
+  {%- elsif L == 'ca' -%}{%- assign fees_url = '/ca/quotes/' -%}
+  {%- else -%}{%- assign fees_url = '/' | append: L | append: '/fees/' -%}
+  {%- endif -%}
+
+  <div class="classes">
+
+    {%- for d in C.disciplines -%}
+
+      {%- comment -%}
+        ---------------------------------------------------------------------
+        Derive when and where, from _data/schedule.yml.
+
+        Liquid has no set type, so membership is tested by building a
+        comma-delimited string and asking whether it contains "key,". Walking
+        the canonical day order afterwards is what puts the result in calendar
+        order rather than the order the classes happen to be written in.
+        ---------------------------------------------------------------------
+      {%- endcomment -%}
+      {%- assign seen_days = ',' -%}
+      {%- assign seen_locs = ',' -%}
+      {%- assign per_week = 0 -%}
+      {%- for c in S.classes -%}
+        {%- if c.category == d.category -%}
+          {%- comment -%}
+            A monthly session is not a weekly one. Counting the iaijutsu
+            Saturday here would advertise two classes a week when there is
+            one, which is exactly the kind of quiet wrongness this page was
+            rebuilt to stop.
+          {%- endcomment -%}
+          {%- unless c.frequency -%}
+            {%- assign per_week = per_week | plus: c.days.size -%}
+            {%- comment -%}
+              The day list skips non-weekly sessions too, so the count and the
+              days agree. Iaijutsu otherwise read "1 class a week · Monday,
+              Saturday". The monthly Saturday is carried by `schedule_note`.
+            {%- endcomment -%}
+            {%- for dy in c.days -%}
+              {%- assign probe = dy | append: ',' -%}
+              {%- unless seen_days contains probe %}{% assign seen_days = seen_days | append: probe %}{% endunless -%}
+            {%- endfor -%}
+          {%- endunless -%}
+          {%- assign lprobe = c.location | append: ',' -%}
+          {%- unless seen_locs contains lprobe %}{% assign seen_locs = seen_locs | append: lprobe %}{% endunless -%}
+        {%- endif -%}
+      {%- endfor -%}
+
+      {%- assign day_keys = '' -%}
+      {%- for k in S.days -%}
+        {%- assign probe = k | append: ',' -%}
+        {%- if seen_days contains probe %}{% assign day_keys = day_keys | append: k | append: ',' %}{% endif -%}
+      {%- endfor -%}
+      {%- assign days = day_keys | split: ',' -%}
+
+      {%- comment -%}
+        A contiguous run of three or more days reads better as a range than as
+        a list: "Monday to Saturday", not six names. Contiguity is span versus
+        count, both counted against the canonical order.
+      {%- endcomment -%}
+      {%- assign first_i = -1 -%}{%- assign last_i = -1 -%}{%- assign i = 0 -%}
+      {%- for k in S.days -%}
+        {%- if day_keys contains k -%}
+          {%- if first_i == -1 %}{% assign first_i = i %}{% endif -%}
+          {%- assign last_i = i -%}
+        {%- endif -%}
+        {%- assign i = i | plus: 1 -%}
+      {%- endfor -%}
+      {%- assign span = last_i | minus: first_i | plus: 1 -%}
+
+      {%- capture when_days -%}
+        {%- if span == days.size and days.size > 2 -%}
+          {%- if C.ui.day_from[L] != '' %}{{ C.ui.day_from[L] }} {% endif -%}
+          {%- if L == 'ja' -%}
+            {{ S.day_names[days.first][L].long }}{{ C.ui.day_range[L] }}{{ S.day_names[days.last][L].long }}
+          {%- else -%}
+            {{ S.day_names[days.first][L].long }} {{ C.ui.day_range[L] }} {{ S.day_names[days.last][L].long }}
+          {%- endif -%}
+        {%- else -%}
+          {%- for k in days -%}
+            {{- S.day_names[k][L].long -}}
+            {%- unless forloop.last %}{{ C.ui.list_sep[L] }}{% endunless -%}
+          {%- endfor -%}
+        {%- endif -%}
+      {%- endcapture -%}
+      {%- if C.ui.lowercase_days[L] %}{% assign when_days = when_days | downcase %}{% endif -%}
+
+      {%- comment -%}
+        CITIES, NOT ROOMS, and deduplicated.
+
+        This listed `loc.name`, which is the room: aikido came out as "Aikido
+        Musubi, Marina-Besòs, CxEM Espronceda, Universitat de Barcelona". Two of
+        those four are the same city, and a reader deciding whether we are near
+        them wants the town. `city` collapses them, so the line reads "Badalona,
+        Sant Adrià de Besòs, Barcelona" and the three arts taught only at the
+        dojo read "Badalona" rather than "Aikido Musubi".
+
+        The separator is placed by counting rather than by `forloop.last`: the
+        loop can no longer know which entry is the last one printed, because
+        duplicates are skipped after the test.
+      {%- endcomment -%}
+      {%- capture when_where -%}
+        {%- assign locs = seen_locs | split: ',' -%}
+        {%- assign seen_cities = ',' -%}
+        {%- assign printed = 0 -%}
+        {%- for lid in locs -%}
+          {%- for loc in S.locations -%}
+            {%- if loc.id == lid -%}
+              {%- assign cprobe = loc.city[L] | append: ',' -%}
+              {%- unless seen_cities contains cprobe -%}
+                {%- assign seen_cities = seen_cities | append: cprobe -%}
+                {%- if printed > 0 %}{{ C.ui.list_sep[L] }}{% endif -%}
+                {{- loc.city[L] -}}
+                {%- assign printed = printed | plus: 1 -%}
+              {%- endunless -%}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endfor -%}
+      {%- endcapture -%}
+
+      {%- comment -%} Group headings, printed once before the tier they open. {%- endcomment -%}
+      {%- if d.tier == 'own' and forloop.index > 1 %}<p class="cl-group">{{ C.ui.teach[L] }}</p>{% endif -%}
+      {%- if d.tier == 'guest' -%}
+        {%- assign prev = forloop.index0 | minus: 1 -%}
+        {%- if C.disciplines[prev].tier != 'guest' %}<p class="cl-group">{{ C.ui.guests[L] }}</p><div class="cl-pair">{% endif -%}
+      {%- endif -%}
+
+      {%- comment -%}
+        The category's colour, straight out of _data/schedule.yml, so this
+        page, the timetable and the calendar cannot disagree about what
+        colour a discipline is. It used to be one hard-coded hex in
+        classes.less for Aikido alone — and after the palette moved to
+        Sanzo Wada that hex (#FF7E79) was no longer the Aikido colour
+        (#E2625E) either, while a comment above it claimed it matched.
+      {%- endcomment -%}
+      {%- assign cat = site.data.schedule.categories | where: "id", d.category | first -%}
+      <section class="cl-block" data-tier="{{ d.tier }}" data-kind="{{ d.id }}" id="{{ d.id }}"
+               style="--cl-colour: {{ cat.color }}"
+               aria-labelledby="cl-name-{{ d.id }}">
+        <div class="cl-media">
+          {%- assign ss = site.data.imgw[d.image] -%}
+          <picture>
+            <source type="image/webp"
+                    srcset="{% if ss %}{{ ss }}{% else %}/images/{{ d.image }}.webp{% endif %}"
+                    {% if ss %}sizes="(min-width: 992px) 460px, 92vw"{% endif %}>
+            <img src="/images/{{ d.image }}.jpg" width="948" height="632"
+                 {% if d.tier == 'principal' %}fetchpriority="high"{% else %}loading="lazy"{% endif %}
+                 decoding="async" alt="{{ d.name[L] }} · Aikido Musubi">
+          </picture>
+        </div>
+
+        <div class="cl-body">
+          <h2 class="cl-name" id="cl-name-{{ d.id }}">{{ d.name[L] }}</h2>
+          <p class="cl-jp"><span lang="ja">{{ d.jp }}</span> · {{ d.romaji }}</p>
+
+          {%- for para in d.body[L] %}
+          <p class="cl-text">{{ para }}</p>
+          {%- endfor %}
+
+          {%- if d.schedule_note %}
+          <p class="cl-text">{{ d.schedule_note[L] }}</p>
+          {%- endif %}
+
+          {%- comment -%}
+            One line, set off by a rule rather than boxed. It carries the same
+            three derived facts the week strip did — count, days, dojos — but
+            without interrupting the reading. Nothing here is typed by hand.
+          {%- endcomment -%}
+          {%- comment -%}
+            Each branch opens and closes its own <b>. Written the other way —
+            one <b> before the branch and the </b> inside one arm — the tag
+            never closed on Japanese, and the browser re-nested everything
+            after it, which is what collapsed the programme grid to one column.
+          {%- endcomment -%}
+          <p class="cl-when">
+            {%- if L == 'ja' -%}
+              <b>{{ C.ui.week_prefix[L] }}{{ per_week }}{{ C.ui.per_week[L] }}</b>
+            {%- else -%}
+              <b>{{ per_week }}</b>
+              {%- if per_week == 1 %} {{ C.ui.per_week_1[L] }}{% else %} {{ C.ui.per_week[L] }}{% endif -%}
+            {%- endif -%},
+            {{ when_days | strip }}<br>{{ when_where | strip }}
+          </p>
+
+          {%- if d.tier == 'guest' %}
+          <p class="cl-who">{{ C.ui.independent[L] }}</p>
+          {%- endif %}
+
+          <p class="cl-actions">
+            {%- comment -%}
+              The timetable reads `activities`, plural and comma-separated —
+              `activity` is silently ignored, which sends the reader to an
+              unfiltered timetable that looks like the link did nothing.
+            {%- endcomment -%}
+            <a class="cl-btn" href="{{ tt }}?activities={{ d.category }}">
+              {%- if L == 'ja' -%}{{ d.name[L] }}{{ C.ui.timetable[L] }}
+              {%- else -%}{{ C.ui.timetable[L] }} {{ d.name[L] | downcase }}{%- endif -%}
+            </a>
+            {%- if d.tier == 'principal' %}
+            <a class="cl-btn cl-btn-o" href="{{ fees_url }}">{{ C.ui.fees[L] }}</a>
+            {%- endif %}
+            {%- if d.contact %}
+            <a class="cl-btn cl-btn-o" href="mailto:{{ d.contact }}">
+              {{ C.ui.contact[L] }}<span class="cl-sr"> · {{ d.name[L] }}</span>
+            </a>
+            {%- endif %}
+          </p>
+
+        </div>
+
+        {%- if d.programmes %}
+        <div class="cl-progs">
+          {%- for p in d.programmes %}
+          <article class="cl-prog{% if p.suspended %} is-suspended{% endif %}">
+            <h3 class="cl-prog-name">
+              {{ p.name[L] }}
+              <span class="cl-badge{% if p.suspended %} is-off{% endif %}">{{ p.badge[L] }}</span>
+            </h3>
+            <p class="cl-prog-text">{{ p.body[L] }}</p>
+            {%- if p.note %}
+            <p class="cl-who">{{ p.note[L] }}</p>
+            {%- endif %}
+          </article>
+          {%- endfor %}
+        </div>
+        {%- endif %}
+      </section>
+
+      {%- if d.tier == 'guest' and forloop.last %}</div>{% endif -%}
+    {%- endfor -%}
+
+    <div class="cl-first">
+      <h2>{{ C.ui.first[L] }}</h2>
+      {%- for s in C.first_steps %}
+      <div class="cl-step">
+        <b>{{ s.title[L] }}</b>
+        <span>{{ s.body[L] }}</span>
+      </div>
+      {%- endfor %}
+    </div>
+
+  </div>
+
+  {%- comment -%}
+    One Course per discipline. The timetable page already publishes the Events;
+    this describes what is taught, which is the thing a search result shows.
+  {%- endcomment -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": [
+      {%- for d in C.disciplines -%}
+      {%- unless forloop.first %},{% endunless %}
+      {
+        "@type": "ListItem",
+        "position": {{ forloop.index }},
+        "item": {
+          "@type": "Course",
+          "name": {{ d.name[L] | jsonify }},
+          "description": {{ d.body[L] | first | strip_html | jsonify }},
+          "inLanguage": {{ L | jsonify }},
+          "provider": {
+            "@type": "SportsClub",
+            "name": "Aikido Musubi",
+            "url": {{ site.url | jsonify }}
+          }
+        }
+      }
+      {%- endfor -%}
+    ]
+  }
+  </script>
+
+</main>
+
+{% include footer.html %}

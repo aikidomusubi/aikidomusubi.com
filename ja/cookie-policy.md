@@ -12,13 +12,15 @@ last_modified: 2026-08-14
 
 本ウェブサイトが使用するクッキーの種類と目的、および同意・拒否の方法について。
 
+{% include legal-summary.html %}
+
+
 **最終更新日：2026年8月14日**
 
-> この日本語版は便宜のために提供されるものです。本ウェブサイトはスペイン法に基づいて運営されているため、内容に相違がある場合はスペイン語版が優先されます。
+この日本語版は便宜のために提供されるものです。本ウェブサイトはスペイン法に基づいて運営されているため、内容に相違がある場合はスペイン語版が優先されます。
 
 Aikido Musubi が所有する本ウェブサイト **aikidomusubi.com** は、クッキーおよび類似技術を使用しています。本クッキーポリシーは、スペインデータ保護庁（AEPD）の『クッキーの使用に関するガイド』に準拠して作成されています。
 
-<hr>
 
 ## 1. クッキーとは何か
 
@@ -47,8 +49,8 @@ Aikido Musubi が所有する本ウェブサイト **aikidomusubi.com** は、�
 
 ### c) 埋め込みコンテンツによる第三者クッキー
 本ウェブサイトが外部プラットフォームのコンテンツ（例：**YouTube 動画**や **Facebook / Instagram** の要素）を埋め込んでいる場合、これらのプラットフォームは、あなたがそのコンテンツを操作した際に独自のクッキーを設定することがあります。それぞれのポリシーをご確認いただくことをお勧めします。
-- [Google/YouTube プライバシーポリシー](https://policies.google.com/privacy)
-- [Meta（Facebook/Instagram）クッキーポリシー](https://www.facebook.com/policies/cookies/)
+- [Google/YouTube プライバシーポリシー](https://policies.google.com/privacy){:target="_blank" rel="noopener"}
+- [Meta（Facebook/Instagram）クッキーポリシー](https://www.facebook.com/policies/cookies/){:target="_blank" rel="noopener"}
 
 ## 3. 同意
 
@@ -62,10 +64,10 @@ Aikido Musubi が所有する本ウェブサイト **aikidomusubi.com** は、�
 
 ブラウザの設定オプションを通じて、デバイスにインストールされたクッキーを許可、ブロック、または削除することもできます。
 
-- [Google Chrome](https://support.google.com/chrome/answer/95647)
-- [Mozilla Firefox](https://support.mozilla.org/ja/kb/enhanced-tracking-protection-firefox-desktop)
-- [Safari](https://support.apple.com/ja-jp/guide/safari/sfri11471/mac)
-- [Microsoft Edge](https://support.microsoft.com/ja-jp/microsoft-edge)
+- [Google Chrome](https://support.google.com/chrome/answer/95647){:target="_blank" rel="noopener"}
+- [Mozilla Firefox](https://support.mozilla.org/ja/kb/enhanced-tracking-protection-firefox-desktop){:target="_blank" rel="noopener"}
+- [Safari](https://support.apple.com/ja-jp/guide/safari/sfri11471/mac){:target="_blank" rel="noopener"}
+- [Microsoft Edge](https://support.microsoft.com/ja-jp/microsoft-edge){:target="_blank" rel="noopener"}
 
 技術的クッキーを無効化すると、ウェブサイトの正常な動作に影響が出る場合がありますのでご注意ください。
 

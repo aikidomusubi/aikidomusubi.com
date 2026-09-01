@@ -5,13 +5,12 @@ description: "Seminaris, exàmens, canvis d'horari i dies sense classe: tot el q
 permalink: /ca/calendari/
 lang: ca
 i18n-ref: calendar-Qv7mK2xR
-last_modified: 2026-08-17
+last_modified: 2026-09-01
 ---
 
 # Calendari
 
 Seminaris, exàmens, canvis d'horari i dies sense classe: tot el que se surt de la setmana habitual. Per a les classes de cada setmana, consulta l'[horari regular](/ca/horaris/).
 
-<hr>
 
 {% include calendar.html %}

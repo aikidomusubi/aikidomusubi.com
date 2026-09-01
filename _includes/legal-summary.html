@@ -1,0 +1,19 @@
+{%- comment -%}
+  The "in short" box, for the legal pages that are Markdown.
+
+  It reuses `.a11y-flag`, which the Accessibility statement already had: a
+  yellow rule down the left and a pale yellow ground. Same component, same
+  meaning — "this is the short version" — rather than a second one that looks
+  almost the same.
+
+  The text is in _data/legal.yml keyed by i18n-ref, so the four languages of
+  each summary sit together and none of them is written inside a Markdown file.
+{%- endcomment -%}
+{%- assign L = page.lang | default: 'es' -%}
+{%- assign LG = site.data.legal -%}
+{%- assign body = LG.pages[page.i18n-ref] -%}
+{%- if body %}
+<div class="a11y-flag">
+  <p><b>{{ LG.head[L] }}</b>{{ body[L] }}</p>
+</div>
+{%- endif -%}

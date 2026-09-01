@@ -1,0 +1,41 @@
+{%- comment -%}
+  Ura's masthead, on its own because the panel needs it before the content
+  exists. The panel shell renders this at build time and then fetches the rest
+  of /ura/ on first open, so the home ships a bar and a close button rather
+  than a second copy of the whole of Ura.
+
+  `include.panel` is the only difference between the two: a close button that
+  dismisses the panel, or a link back to the home page.
+
+  It assigns its own L and U. It used to inherit them from ura.html, which was
+  its only caller; the footer includes it too now, and there the labels came
+  out empty — including the close button's, which left eighty-eight pages with
+  a button that had no accessible name.
+{%- endcomment -%}
+{%- assign L = page.lang | default: 'es' -%}
+{%- assign U = site.data.ura -%}
+<header class="ur-mast">
+  <div class="ur-w ur-mast-in">
+    <span class="ur-seal" lang="ja">{{ U.ui.kanji }}</span>
+    <span class="ur-ttl">{{ U.ui.name[L] }}</span>
+    <span class="ur-sub">{{ U.ui.sub[L] }}</span>
+    {%- if include.panel %}
+    {%- comment -%}
+      "Close", not "back to the home page". The panel opened only from the home
+      when that label was written; it opens from the nav on any page now, and
+      closing it returns you to wherever you were — which is usually not the
+      home. The link on the standalone page below still says the other thing,
+      because there it is true.
+    {%- endcomment -%}
+    <button class="ur-x" type="button" data-ura-close>
+      <i lang="ja" aria-hidden="true">{{ U.ui.home_kanji }}</i>
+      <span>{{ U.ui.close_img[L] }}</span>
+    </button>
+    {%- else %}
+    <a class="ur-x" href="{% if L == 'es' %}/{% else %}/{{ L }}/{% endif %}">
+      <i lang="ja" aria-hidden="true">{{ U.ui.home_kanji }}</i>
+      <span>{{ U.ui.back[L] }}</span>
+    </a>
+    {%- endif %}
+  </div>
+</header>

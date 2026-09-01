@@ -5,22 +5,24 @@ description: Dades identificatives del titular del lloc web, condicions d'ús, p
 permalink: /ca/avis-legal/
 lang: ca
 i18n-ref: legal-notice-Up6gBHvn
-last_modified: 2026-08-14
+last_modified: 2026-08-28
 ---
 
 # Avís Legal
 
 Dades identificatives del titular del lloc web, condicions d'ús, propietat intel·lectual i legislació aplicable.
 
+{% include legal-summary.html %}
+
+
 **Última actualització: 13 d'agost de 2026**
 
-<hr>
 
 ## 1. Dades identificatives del titular
 
 En compliment del deure d'informació recollit a l'article 10 de la Llei 34/2002, d'11 de juliol, de Serveis de la Societat de la Informació i de Comerç Electrònic (LSSI-CE), es faciliten tot seguit les dades identificatives del titular d'aquest lloc web:
 
-- **Titular:** Associació Aikido Musubi *(associació cultural sense ànim de lucre)*
+- **Titular:** Associació Cultural Musubi Aikido *(associació cultural sense ànim de lucre)*
 - **CIF:** G-64799554
 - **Domicili:** Av. d'Alfons XIII, 351, 08918 Badalona (Barcelona), Espanya
 - **Correu electrònic:** info@aikidomusubi.com
@@ -60,7 +62,7 @@ El Lloc Web pot contenir enllaços a llocs web de tercers (per exemple, xarxes s
 
 ## 7. Allotjament del Lloc Web
 
-Aquest Lloc Web es troba allotjat a **GitHub Pages**, un servei prestat per **GitHub, Inc.** (88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, Estats Units), empresa del grup Microsoft. Com a conseqüència de l'allotjament, el proveïdor pot tractar determinades dades tècniques de connexió (com l'adreça IP) amb finalitats de seguretat i de prestació del servei. Per a més informació, consulteu la [Declaració de Privadesa de GitHub](https://docs.github.com/es/site-policy/privacy-policies/github-general-privacy-statement).
+Aquest Lloc Web es troba allotjat a **GitHub Pages**, un servei prestat per **GitHub, Inc.** (88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, Estats Units), empresa del grup Microsoft. Com a conseqüència de l'allotjament, el proveïdor pot tractar determinades dades tècniques de connexió (com l'adreça IP) amb finalitats de seguretat i de prestació del servei. Per a més informació, consulteu la [Declaració de Privadesa de GitHub](https://docs.github.com/es/site-policy/privacy-policies/github-general-privacy-statement){:target="_blank" rel="noopener"}.
 
 ## 8. Protecció de dades i galetes
 

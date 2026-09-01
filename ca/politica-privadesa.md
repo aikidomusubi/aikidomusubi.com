@@ -12,15 +12,17 @@ last_modified: 2026-08-14
 
 Quines dades personals tractem, amb quina finalitat i base legal, durant quant temps i com exercir els seus drets.
 
+{% include legal-summary.html %}
+
+
 **Última actualització: 13 d'agost de 2026**
 
 Aikido Musubi es compromet a protegir la privadesa dels usuaris del seu lloc web, dels seus socis, alumnes i de qualsevol persona les dades personals de la qual tracti. Aquesta Política de Privadesa s'ha redactat de conformitat amb el Reglament (UE) 2016/679 (Reglament General de Protecció de Dades, "RGPD") i la Llei Orgànica 3/2018, de 5 de desembre, de Protecció de Dades Personals i garantia dels drets digitals (LOPDGDD).
 
-<hr>
 
 ## 1. Responsable del tractament
 
-- **Responsable:** Associació Aikido Musubi *(associació cultural sense ànim de lucre)*
+- **Responsable:** Associació Cultural Musubi Aikido *(associació cultural sense ànim de lucre)*
 - **CIF:** G-64799554
 - **Domicili:** Av. d'Alfons XIII, 351, 08918 Badalona (Barcelona), Espanya
 - **Correu electrònic:** info@aikidomusubi.com
@@ -89,7 +91,7 @@ Teniu dret a:
 
 Podeu exercir aquests drets adreçant-vos per escrit a **info@aikidomusubi.com** o a l'adreça postal indicada a l'apartat 1, adjuntant una còpia del vostre document d'identitat o document equivalent que permeti verificar la vostra identitat.
 
-Així mateix, si considereu que el tractament de les vostres dades no s'ajusta a la normativa, teniu dret a presentar una reclamació davant l'**Agència Espanyola de Protecció de Dades (AEPD)**, C/ Jorge Juan, 6, 28001 Madrid — [www.aepd.es](https://www.aepd.es).
+Així mateix, si considereu que el tractament de les vostres dades no s'ajusta a la normativa, teniu dret a presentar una reclamació davant l'**Agència Espanyola de Protecció de Dades (AEPD)**, C/ Jorge Juan, 6, 28001 Madrid — [www.aepd.es](https://www.aepd.es){:target="_blank" rel="noopener"}.
 
 ## 7. Mesures de seguretat
 

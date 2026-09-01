@@ -1,0 +1,841 @@
+# ---------------------------------------------------------------------------
+# Recursos
+#
+# One page, filtered in the browser — the same shape as the glossary, for the
+# same reason: everything fits in one scroll and one bookmark, and search is
+# what finds a thing you already know the name of.
+#
+# `kind` is NOT a file format. It is what the reader does with the thing:
+#
+#   form   a PDF that exists to be printed and signed. Primary action is
+#          "download" — there is nothing to read on screen.
+#   page   a resource that lives on the site. Primary action is "read", and
+#          the page itself carries share and print. No PDF is kept for these:
+#          the browser's own print-to-PDF cannot go stale, and a second file
+#          on a shelf can.
+#   doc    a PDF that is a document rather than a form — someone else's
+#          syllabus, a reference sheet. Download, but it is worth reading.
+#   book   printed matter. The action is finding it, not getting it from us.
+#   media  an archive to browse, elsewhere.
+#   video  something to watch. Separate from `media` because the button says
+#          "Ver" and not "Consultar", and a video you sit through is not an
+#          archive you look things up in.
+#
+# PLACEHOLDERS. A `file:` is a name, not a promise: the page checks
+# site.static_files and only links a PDF that is actually in /files/. Anything
+# missing renders as "coming soon" and starts working the moment the file is
+# added — there is no flag to remember to clear.
+#
+# `draft: true` still exists and hides a row entirely — for a resource that is
+# not announced at all. It is not the way to mark one whose document is
+# pending: those should be visible, saying "coming soon", because a syllabus
+# the dojo is known to have should appear in the list before its page exists.
+# ---------------------------------------------------------------------------
+
+ui:
+  search:     { es: "Buscar en los recursos…", ca: "Cerca als recursos…",
+                en: "Search the resources…", ja: "資料を検索…" }
+  search_lab: { es: "Buscar en los recursos", ca: "Cerca als recursos",
+                en: "Search the resources", ja: "資料を検索" }
+  clear:      { es: "Limpiar", ca: "Esborrar", en: "Clear", ja: "クリア" }
+  all:        { es: "Todos", ca: "Tots", en: "All", ja: "すべて" }
+  entries:    { es: "recursos", ca: "recursos", en: "resources", ja: "件" }
+  empty:      { es: "Ningún recurso coincide con la búsqueda.", ca: "Cap recurs coincideix amb la cerca.",
+                en: "No resource matches that search.", ja: "該当する資料がありません。" }
+  filters:    { es: "Filtrar por tipo", ca: "Filtra per tipus", en: "Filter by type", ja: "種類で絞り込む" }
+  # the verb on the button, by kind
+  get_form:   { es: "Descargar", ca: "Descarregar", en: "Download", ja: "ダウンロード" }
+  get_doc:    { es: "Descargar", ca: "Descarregar", en: "Download", ja: "ダウンロード" }
+  get_page:   { es: "Leer", ca: "Llegir", en: "Read", ja: "読む" }
+  # Every button goes to the thing itself. "Find it" sent people looking, and
+  # "Watch" was wrong for a written archive — both were labels for a link that
+  # did not quite deliver, which is the wrong way round.
+  get_book:   { es: "Comprar", ca: "Comprar", en: "Buy", ja: "購入する" }
+  get_free:   { es: "Leer gratis", ca: "Llegir gratis", en: "Read free", ja: "無料で読む" }
+  get_media:  { es: "Consultar", ca: "Consultar", en: "Browse", ja: "閲覧する" }
+  # `video` is its own kind because the verb is its own verb. "Consultar" is
+  # right for an archive you look things up in and wrong for a class you sit
+  # and watch, and the two used to share one label.
+  get_video:  { es: "Ver", ca: "Veure", en: "Watch", ja: "見る" }
+  buy_at:     { es: "Comprar en", ca: "Comprar a", en: "Buy from", ja: "購入先" }
+  # the badge that says what a thing is
+  k_form:     { es: "Impreso", ca: "Imprès", en: "Form", ja: "書式" }
+  k_doc:      { es: "PDF", ca: "PDF", en: "PDF", ja: "PDF" }
+  k_page:     { es: "En la web", ca: "A la web", en: "On the site", ja: "サイト内" }
+  k_book:     { es: "Libro", ca: "Llibre", en: "Book", ja: "書籍" }
+  k_media:    { es: "Media", ca: "Media", en: "Media", ja: "メディア" }
+  k_video:    { es: "Vídeo", ca: "Vídeo", en: "Video", ja: "動画" }
+  soon:       { es: "Próximamente", ca: "Aviat", en: "Coming soon", ja: "準備中" }
+
+groups:
+  - id: tramites
+    name: { es: "Trámites", ca: "Tràmits", en: "Forms", ja: "手続き" }
+    sub:
+      es: "Los papeles que se firman una vez"
+      ca: "Els papers que se signen una vegada"
+      en: "The papers you sign once"
+      ja: "一度だけ記入する書類"
+    items:
+      - kind: form
+        title: { es: "Hoja de inscripción", ca: "Full d'inscripció",
+                 en: "Enrolment form", ja: "入会申込書" }
+        desc:
+          es: "Datos, actividad y cuota. Se entrega firmada en el dojo o por correo."
+          ca: "Dades, activitat i quota. Es lliura signada al dojo o per correu."
+          en: "Details, activity and fee. Hand it in signed at the dojo or by email."
+          ja: "氏名、活動、月謝。記入・署名のうえ道場またはメールで提出します。"
+        file: "inscripcion"
+        langs: "ES CA EN JA"
+      - kind: form
+        title: { es: "Autorización de uso de imagen", ca: "Autorització d'ús d'imatge",
+                 en: "Image release", ja: "肖像使用の同意書" }
+        desc:
+          es: "Para aparecer en fotos y vídeos del dojo. Se puede retirar cuando quieras."
+          ca: "Per aparèixer a fotos i vídeos del dojo. Es pot retirar quan vulguis."
+          en: "To appear in the dojo's photographs and videos. Withdrawable at any time."
+          ja: "道場の写真・動画への掲載について。同意はいつでも撤回できます。"
+        file: "imagen"
+        langs: "ES CA EN JA"
+      - kind: form
+        title: { es: "Autorización para menores", ca: "Autorització per a menors",
+                 en: "Consent for minors", ja: "未成年者の保護者同意書" }
+        desc:
+          es: "La firman padres, madres o tutores. Obligatoria por debajo de 14 años."
+          ca: "La signen pares, mares o tutors. Obligatòria per sota dels 14 anys."
+          en: "Signed by a parent or guardian. Required under the age of 14."
+          ja: "保護者が署名します。14歳未満は必須です。"
+        file: "menores"
+        langs: "ES CA"
+      - kind: form
+        title: { es: "Orden de domiciliación SEPA", ca: "Ordre de domiciliació SEPA",
+                 en: "SEPA direct debit mandate", ja: "口座振替依頼書（SEPA）" }
+        desc:
+          es: "Sólo si eliges pagar la cuota por banco."
+          ca: "Només si tries pagar la quota per banc."
+          en: "Only if you choose to pay the fee by bank transfer."
+          ja: "月謝を口座振替で支払う場合のみ。"
+        file: "sepa"
+        langs: "ES CA"
+
+  - id: examen
+    name: { es: "Programa de examen", ca: "Programa d'examen",
+            en: "Grading programme", ja: "審査要項" }
+    sub:
+      es: "De 5.º a 1.er kyū"
+      ca: "De 5è a 1r kyū"
+      en: "From 5th to 1st kyū"
+      ja: "五級から一級まで"
+    items:
+      - kind: page
+        title: { es: "Programa de 5.º kyū", ca: "Programa de 5è kyū",
+                 en: "5th kyū programme", ja: "五級審査要項" }
+        desc:
+          es: "El primero. Ikkyo a yonkyo en suwari waza, seis ataques de pie y los cuatro primeros suburis."
+          ca: "El primer. Ikkyo a yonkyo en suwari waza, sis atacs dempeus i els quatre primers suburis."
+          en: "The first one. Ikkyo to yonkyo in suwari waza, six standing attacks and the first four suburi."
+          ja: "最初の審査。座り技の一教から四教、立ち技六種の攻撃、素振り四本。"
+        panel: kyu5
+        meta: { es: "18 técnicas · 8 ataques", ca: "18 tècniques · 8 atacs",
+                en: "18 techniques · 8 attacks", ja: "技18本・攻撃8種" }
+      - kind: page
+        title: { es: "Programa de 4.º kyū", ca: "Programa de 4t kyū",
+                 en: "4th kyū programme", ja: "四級審査要項" }
+        desc:
+          es: "Llega el ushiro ryote-dori, irimi-nage en suwari waza y el bokken sube a seis suburis."
+          ca: "Arriba l'ushiro ryote-dori, irimi-nage en suwari waza i el bokken puja a sis suburis."
+          en: "Ushiro ryote-dori arrives, irimi-nage in suwari waza, and the bokken goes up to six suburi."
+          ja: "後ろ両手取り、座り技の入身投げ、素振りは六本に。"
+        panel: kyu4
+        meta: { es: "26 técnicas · 9 ataques", ca: "26 tècniques · 9 atacs",
+                en: "26 techniques · 9 attacks", ja: "技26本・攻撃9種" }
+      - kind: page
+        title: { es: "Programa de 3.er kyū", ca: "Programa de 3r kyū",
+                 en: "3rd kyū programme", ja: "三級審査要項" }
+        desc:
+          es: "Entran los kokyu-nage, el jō empieza a pedir uchiotoshi y el randori arranca en futari-dori."
+          ca: "Entren els kokyu-nage, el jō comença a demanar uchiotoshi i el randori arrenca en futari-dori."
+          en: "The kokyu-nage arrive, the jō starts asking for uchiotoshi, and randori begins from futari-dori."
+          ja: "呼吸投げが入り、杖に打ち落としが加わり、乱取りは二人取りから。"
+        panel: kyu3
+        meta: { es: "36 técnicas · 9 ataques", ca: "36 tècniques · 9 atacs",
+                en: "36 techniques · 9 attacks", ja: "技36本・攻撃9種" }
+      - kind: page
+        title: { es: "Programa de 2.º kyū", ca: "Programa de 2n kyū",
+                 en: "2nd kyū programme", ja: "二級審査要項" }
+        desc:
+          es: "Aparecen gokyo, koshi-nage y juji-nage, y el randori pasa a tres personas."
+          ca: "Apareixen gokyo, koshi-nage i juji-nage, i el randori passa a tres persones."
+          en: "Gokyo, koshi-nage and juji-nage appear, and randori goes up to three people."
+          ja: "五教・腰投げ・十字投げが加わり、乱取りは三人に。"
+        panel: kyu2
+        meta: { es: "47 técnicas · 11 ataques", ca: "47 tècniques · 11 atacs",
+                en: "47 techniques · 11 attacks", ja: "技47本・攻撃11種" }
+      - kind: page
+        title: { es: "Programa de 1.er kyū", ca: "Programa de 1r kyū",
+                 en: "1st kyū programme", ja: "一級審査要項" }
+        desc:
+          es: "El programa se recorta y se ensancha: hiji-kime-osae y gokyo en todos los ataques, ju-waza y el sansho de jō."
+          ca: "El programa es retalla i s'eixampla: hiji-kime-osae i gokyo a tots els atacs, ju-waza i el sansho de jō."
+          en: "The programme is recut and widened: hiji-kime-osae and gokyo across every attack, ju-waza and the jō sansho."
+          ja: "要項が組み直され広がります。全攻撃に肘極め押えと五教、柔技、杖の三章。"
+        panel: kyu1
+        meta: { es: "74 técnicas · 15 ataques", ca: "74 tècniques · 15 atacs",
+                en: "74 techniques · 15 attacks", ja: "技74本・攻撃15種" }
+      - kind: page
+        title: { es: "Todo el programa, de 5.º a 1.er kyū", ca: "Tot el programa, de 5è a 1r kyū",
+                 en: "The whole programme, 5th to 1st kyū", ja: "全要項（五級〜一級）" }
+        desc:
+          es: "Las cinco listas en una. Cada técnica aparece una vez, en el color del grado en que se pide por primera vez."
+          ca: "Les cinc llistes en una. Cada tècnica apareix un cop, amb el color del grau on es demana per primera vegada."
+          en: "The five lists as one. Each technique appears once, in the colour of the grade where it is first asked for."
+          ja: "五つの要項を一枚に。各技は一度だけ、最初に求められる級の色で。"
+        panel: all
+        meta: { es: "112 técnicas · 5 grados", ca: "112 tècniques · 5 graus",
+                en: "112 techniques · 5 grades", ja: "技112本・5級位" }
+
+  # ---------------------------------------------------------------------------
+  # Vídeos de práctica
+  #
+  # Not "media" in the sense the Lecturas group uses it. Those are things to
+  # read or browse; these are things to DO — a warm-up you can follow, an ukemi
+  # broken down, a class you can train along with. That is why they are their
+  # own group rather than more rows under Lecturas.
+  #
+  # The weapons videos are NOT here. They sit in Armas, with the guides they
+  # demonstrate: this list is grouped by what the material is for, and somebody
+  # looking up a suburi is looking under weapons.
+  # ---------------------------------------------------------------------------
+  - id: videos
+    name: { es: "Vídeos de práctica", ca: "Vídeos de pràctica",
+            en: "Practice videos", ja: "稽古の動画" }
+    sub:
+      es: "Ejercicios, ukemi y clases grabadas"
+      ca: "Exercicis, ukemi i classes gravades"
+      en: "Exercises, ukemi and recorded classes"
+      ja: "稽古法・受身・録画された稽古"
+    items:
+      # ---- Kumazawa Sensei's own series for her dojo -----------------------
+      # Filmed for the students of Aikido Sanshinkai to practise on their own.
+      # Japanese, and unnarrated enough to follow without it.
+      - kind: video
+        title: { es: "Vídeo de aikido 1 · Preparación",
+                 ca: "Vídeo d'aikido 1 · Preparació",
+                 en: "Aikido on video 1 · Warm-up",
+                 ja: "ビデオで合気道 第1回 準備体操" }
+        by: "Miyuki Kumazawa"
+        desc:
+          es: "El calentamiento entero, en el orden en que se hace en clase."
+          ca: "L'escalfament sencer, en l'ordre en què es fa a classe."
+          en: "The whole warm-up, in the order it is done in class."
+          ja: "稽古で行う順のまま、準備体操を通して。"
+        url: "https://www.youtube.com/watch?v=uDOkmEjlq9U"
+        langs: "JA"
+        src_name: "Aikido Sanshinkai"
+        src_url: "https://aikidosanshin.wixsite.com/sanshinkai"
+      - kind: video
+        title: { es: "Vídeo de aikido 2 · Equilibrio",
+                 ca: "Vídeo d'aikido 2 · Equilibri",
+                 en: "Aikido on video 2 · Balance",
+                 ja: "ビデオで合気道 第2回 身体を作ろう ～バランス編～" }
+        by: "Miyuki Kumazawa"
+        desc:
+          es: "Ejercicios para sostenerse sobre un pie y encontrar el centro. Se hacen solo y en poco espacio."
+          ca: "Exercicis per sostenir-se sobre un peu i trobar el centre. Es fan sol i en poc espai."
+          en: "Exercises for standing on one foot and finding your centre. Done alone and in very little room."
+          ja: "片足で立ち、中心を探すための稽古法。ひとりで、狭い場所でもできます。"
+        url: "https://www.youtube.com/watch?v=Z0Pho6F-UVU"
+        langs: "JA"
+        src_name: "Aikido Sanshinkai"
+        src_url: "https://aikidosanshin.wixsite.com/sanshinkai"
+      - kind: video
+        title: { es: "Vídeo de aikido 3 · Ushiro-ukemi",
+                 ca: "Vídeo d'aikido 3 · Ushiro-ukemi",
+                 en: "Aikido on video 3 · Ushiro-ukemi",
+                 ja: "ビデオで合気道 第3回 基本動作 ～後ろ受身編～" }
+        by: "Miyuki Kumazawa"
+        desc:
+          es: "La caída hacia atrás por partes: desde sentado, desde cuclillas y de pie."
+          ca: "La caiguda cap enrere per parts: assegut, en ganxo i dempeus."
+          en: "The backward fall in stages: from sitting, from a squat and standing."
+          ja: "後ろ受身を段階に分けて。座った姿勢から、しゃがんだ姿勢から、立った姿勢から。"
+        url: "https://www.youtube.com/watch?v=_5YoFNRTdcM"
+        langs: "JA"
+        src_name: "Aikido Sanshinkai"
+        src_url: "https://aikidosanshin.wixsite.com/sanshinkai"
+      - kind: video
+        title: { es: "Mae-mawari-ukemi", ca: "Mae-mawari-ukemi",
+                 en: "Mae-mawari-ukemi", ja: "前回り受身" }
+        by: "Miyuki Kumazawa"
+        desc:
+          es: "La caída rodando hacia delante, que es la que más cuesta al principio y la que más se usa."
+          ca: "La caiguda rodolant endavant, que és la que més costa al principi i la que més es fa servir."
+          en: "The forward roll: the hardest one at the start and the one you use most."
+          ja: "前回り受身。最初がいちばん難しく、そしていちばん使う受身です。"
+        url: "https://www.youtube.com/watch?v=H1o6Fg6iK8Q"
+        langs: "JA"
+        src_name: "Aikido Sanshinkai"
+        src_url: "https://aikidosanshin.wixsite.com/sanshinkai"
+      # ---- the IAF series --------------------------------------------------
+      # Filmed in 2020, when nobody could touch anybody. What came out of it is
+      # a set of answers to "how do you keep practising alone", which outlived
+      # the reason it was made.
+      - kind: video
+        title: { es: "Practicar solo", ca: "Practicar sol",
+                 en: "Practising alone", ja: "ひとりで稽古する" }
+        by: "Miyuki Kumazawa"
+        desc:
+          es: "Ejercicios para mantener el cuerpo y el hábito cuando no hay con quién practicar."
+          ca: "Exercicis per mantenir el cos i l'hàbit quan no hi ha amb qui practicar."
+          en: "Exercises for keeping the body and the habit when there is nobody to practise with."
+          ja: "相手のいないときに、身体と稽古の習慣を保つための稽古法。"
+        url: "https://www.youtube.com/watch?v=_yaFpiQcENw"
+        langs: "EN"
+        src_name: "International Aikido Federation"
+        src_url: "https://www.aikido-international.org/"
+      - kind: video
+        title: { es: "El camino a la nueva normalidad",
+                 ca: "El camí a la nova normalitat",
+                 en: "The Road to New Normal", ja: "新しい日常への道" }
+        by: "Yoko Okamoto"
+        desc:
+          es: "Un año de Aikido Kyoto contado desde dentro: qué se dejó de hacer, qué se cambió y con qué se siguió."
+          ca: "Un any d'Aikido Kyoto explicat des de dins: què es va deixar de fer, què es va canviar i amb què es va continuar."
+          en: "A year at Aikido Kyoto from the inside: what was dropped, what was changed and what was kept."
+          ja: "合気道京都の一年を内側から。何をやめ、何を変え、何を続けたか。"
+        url: "https://www.youtube.com/watch?v=-IwCfp70P2w"
+        langs: "EN"
+        src_name: "International Aikido Federation"
+        src_url: "https://www.aikido-international.org/"
+      - kind: video
+        title: { es: "Una clase entera, en línea",
+                 ca: "Una classe sencera, en línia",
+                 en: "A whole class, online", ja: "オンラインでの稽古一回分" }
+        by: "Kayla Feder"
+        desc:
+          es: "Clase completa de junio de 2020, con Lisi Baldwin de uke. Se puede seguir de principio a fin."
+          ca: "Classe completa de juny de 2020, amb Lisi Baldwin d'uke. Es pot seguir de principi a fi."
+          en: "A full class from June 2020, with Lisi Baldwin as uke. It can be followed start to finish."
+          ja: "2020年6月の稽古を一回分そのまま。受けはリシ・ボールドウィン。最初から最後まで通して稽古できます。"
+        url: "https://www.youtube.com/watch?v=HkMelHgJrw8"
+        langs: "EN"
+        src_name: "International Aikido Federation"
+        src_url: "https://www.aikido-international.org/"
+
+  - id: armas
+    name: { es: "Armas", ca: "Armes", en: "Weapons", ja: "武器" }
+    sub:
+      es: "Jō, bokken y tantō"
+      ca: "Jō, bokken i tantō"
+      en: "Jō, bokken and tantō"
+      ja: "杖・木刀・短刀"
+    items:
+      # The three below are the dojo's own layout of Birankai's weapons
+      # material — same content, set in Spanish. The source is credited on each
+      # and linked, because it is not ours and because somebody looking for the
+      # English should be able to find it.
+      - kind: doc
+        title: { es: "36 técnicas básicas de jō", ca: "36 tècniques bàsiques amb el jō",
+                 en: "36 jō basics", ja: "杖基本36技" }
+        desc:
+          es: "Las 36 técnicas numeradas, en tres columnas —kesa, tsuki, shōmen— con el kanji y la posición inicial de la mano."
+          ca: "Les 36 tècniques numerades, en tres columnes —kesa, tsuki, shōmen— amb el kanji i la posició inicial de la mà."
+          en: "The 36 numbered techniques in three columns — kesa, tsuki, shōmen — with the kanji and the starting hand position."
+          ja: "杖基本36技。袈裟・突き・正面の三列に、漢字と手の初期位置を添えて。"
+        file: "birankai-36-jo-basics"
+        langs: "ES"
+        src_name: "Birankai"
+        src_url: "https://birankai.org/training/#weapons"
+      - kind: doc
+        title: { es: "Guía de entrenamiento de bokken", ca: "Guia d'entrenament de bokken",
+                 en: "Bokken training guide", ja: "木剣稽古の手引き" }
+        desc:
+          es: "Movimientos de pies, posturas, suburi, kiri-otoshi y kiri-gaeshi, los cinco kumi-tachi y ki-musubi-no-tachi."
+          ca: "Moviments de peus, postures, suburi, kiri-otoshi i kiri-gaeshi, els cinc kumi-tachi i ki-musubi-no-tachi."
+          en: "Footwork, postures, suburi, kiri-otoshi and kiri-gaeshi, the five kumi-tachi and ki-musubi-no-tachi."
+          ja: "足捌き、構え、素振り、切り落とし、切り返し、組太刀五本、気結びの太刀。"
+        file: "birankai-bokken-guide"
+        langs: "ES"
+        src_name: "Birankai"
+        src_url: "https://birankai.org/training/#weapons"
+      - kind: doc
+        title: { es: "Guía de entrenamiento de jō", ca: "Guia d'entrenament de jō",
+                 en: "Jō training guide", ja: "杖稽古の手引き" }
+        desc:
+          es: "Manejo, ataques, las 36 técnicas, kumi-jō y kumi-gata con los sanshō, jō-waza y jō-dori."
+          ca: "Maneig, atacs, les 36 tècniques, kumi-jō i kumi-gata amb els sanshō, jō-waza i jō-dori."
+          en: "Handling, attacks, the 36 techniques, kumi-jō and kumi-gata with the sanshō, jō-waza and jō-dori."
+          ja: "杖の扱い、攻撃、36技、組杖と組形（三章）、杖技、杖取り。"
+        file: "birankai-jo-guide"
+        langs: "ES"
+        src_name: "Birankai"
+        src_url: "https://birankai.org/training/#weapons"
+      # ---- the same material, moving ---------------------------------------
+      # The three guides above are Birankai's, which is Chiba Sensei's line, so
+      # these are the same weapons system demonstrated rather than drawn. They
+      # are listed after the PDFs on purpose: the sheet tells you the order,
+      # the video tells you the shape.
+      - kind: video
+        title: { es: "Los ocho suburi de bokken, seguidos",
+                 ca: "Els vuit suburi de bokken, seguits",
+                 en: "The eight bokken suburi, in sequence",
+                 ja: "木剣の素振り八本、続けて" }
+        by: "Etsuji Horii"
+        desc:
+          es: "Los ocho cortes uno detrás de otro, en un solo vídeo. Para repasar el orden antes de un examen."
+          ca: "Els vuit talls un darrere l'altre, en un sol vídeo. Per repassar l'ordre abans d'un examen."
+          en: "The eight cuts one after another in a single take. For going over the order before a grading."
+          ja: "八本の素振りを一続きに。審査前に順番をさらうために。"
+        url: "https://www.youtube.com/watch?v=O3U8AZ5bhpA"
+        src_name: "Aikido Zanshin Dojo"
+        src_url: "https://www.youtube.com/@Aikidozanshindojo"
+      - kind: video
+        title: { es: "Los ocho suburi, uno por vídeo",
+                 ca: "Els vuit suburi, un per vídeo",
+                 en: "The eight suburi, one per video",
+                 ja: "素振り八本、一本ずつ" }
+        by: "Kazuo Chiba"
+        desc:
+          es: "Cada suburi por separado y dos pasadas completas. Doce vídeos para mirar el que se te resiste sin buscarlo dentro de otro."
+          ca: "Cada suburi per separat i dues passades completes. Dotze vídeos per mirar el que se't resisteix sense buscar-lo dins d'un altre."
+          en: "Each suburi on its own, plus two full run-throughs. Twelve videos, so the one giving you trouble is not buried inside another."
+          ja: "素振りを一本ずつ、加えて通しを二本。全12本。うまくいかない一本を、他の映像の中から探さずに見られます。"
+        url: "https://www.youtube.com/playlist?list=PLZfH1IaqQe11pJhBu8_QW4YLgQdvJbeWT"
+        meta: { es: "12 vídeos", ca: "12 vídeos", en: "12 videos", ja: "動画12本" }
+        src_name: "Aikido Zanshin Dojo"
+        src_url: "https://www.youtube.com/@Aikidozanshindojo"
+      - kind: video
+        title: { es: "Introducción al sistema de armas de Chiba Sensei",
+                 ca: "Introducció al sistema d'armes de Chiba Sensei",
+                 en: "Introduction to Chiba Sensei's weapons system",
+                 ja: "千葉先生の武器体系への入門" }
+        by: "Julian Frost"
+        desc:
+          es: "Tres vídeos de partida: el jō en dos partes y el bokken en una. Explica de dónde salen las formas que están en las guías de arriba."
+          ca: "Tres vídeos de partida: el jō en dues parts i el bokken en una. Explica d'on surten les formes que hi ha a les guies de dalt."
+          en: "Three videos to start from: the jō in two parts and the sword in one. It explains where the forms in the guides above come from."
+          ja: "手がかりとなる三本。杖を二回、剣を一回に分けて、上の手引きにある形の出どころを説明します。"
+        url: "https://www.youtube.com/playlist?list=PLArFIjXePxNFpm_-nqMaA2uZ76PfJyYNR"
+        langs: "EN"
+        meta: { es: "3 vídeos", ca: "3 vídeos", en: "3 videos", ja: "動画3本" }
+        src_name: "Julian Frost"
+        src_url: "https://www.youtube.com/@JulianFrostAikido"
+  - id: etiqueta
+    name: { es: "Etiqueta y normas", ca: "Etiqueta i normes",
+            en: "Etiquette and rules", ja: "作法と決まり" }
+    sub:
+      es: "Cómo funciona el tatami"
+      ca: "Com funciona el tatami"
+      en: "How the mat works"
+      ja: "畳の上の約束事"
+    # Four documents in _data/etiquette.yml, opened in the same panel as the
+    # grading programme. They replaced three placeholders that pointed at the
+    # About page: a rule is something you look up, not something you read once
+    # in a paragraph about the dojo.
+    items:
+      - kind: page
+        title: { es: "Reglas durante la práctica", ca: "Regles durant la pràctica",
+                 en: "Rules during practice", ja: "稽古上の心得" }
+        desc:
+          es: "Las seis reglas del fundador expuestas en el Hombu Dojo, con el comentario del segundo Dōshu."
+          ca: "Les sis regles del fundador exposades al Hombu Dojo, amb el comentari del segon Dōshu."
+          en: "The founder's six rules as posted at Hombu Dojo, with the second Dōshu's commentary."
+          ja: "本部道場に掲げられた開祖の六箇条と、二代道主の解説。"
+        panel: keiko-kokoroe
+        meta: { es: "Fuente: Ueshiba, «Aikido», 1974", ca: "Font: Ueshiba, «Aikido», 1974",
+                en: "Source: Ueshiba, Aikido, 1974", ja: "出典：植芝『合気道』1974年" }
+      - kind: page
+        title: { es: "Reglas del dojo", ca: "Regles del dojo",
+                 en: "Dojo rules", ja: "道場の決まり" }
+        desc:
+          es: "El lugar, la pertenencia y la gente: cómo se rige esta casa y qué se espera de quien entra."
+          ca: "El lloc, la pertinença i la gent: com es regeix aquesta casa i què s'espera de qui hi entra."
+          en: "The place, belonging, and the people: how this house runs and what it expects."
+          ja: "場・入門・人について。この道場の運び方と、求められること。"
+        panel: dojo-rules
+      - kind: page
+        title: { es: "Compromiso de quien practica", ca: "Compromís de qui practica",
+                 en: "What practice asks of you", ja: "稽古する者の心得" }
+        desc:
+          es: "Para qué sirve la técnica, cómo se cuida al compañero y cómo se aprende."
+          ca: "Per a què serveix la tècnica, com es té cura del company i com s'aprèn."
+          en: "What the technique is for, how to look after your partner, and how to learn."
+          ja: "技の用いどころ、相手の守り方、そして学び方。"
+        panel: practitioner
+      - kind: page
+        title: { es: "Etiqueta en el tatami · reihō", ca: "Etiqueta al tatami · reihō",
+                 en: "Etiquette on the mat · reihō", ja: "畳の上の作法・礼法" }
+        desc:
+          es: "El orden de una clase, de la puerta a la puerta. Para las dos primeras semanas."
+          ca: "L'ordre d'una classe, de la porta a la porta. Per a les dues primeres setmanes."
+          en: "The order of a class, door to door. For your first fortnight."
+          ja: "稽古の流れを入口から出口まで。最初の二週間のために。"
+        panel: reiho
+
+  - id: lecturas
+    name: { es: "Lecturas", ca: "Lectures", en: "Reading", ja: "読みもの" }
+    sub:
+      es: "Libros y material de estudio"
+      ca: "Llibres i material d'estudi"
+      en: "Books and study material"
+      ja: "書籍と学びの材料"
+    # EVERY LINK GOES TO THE THING ITSELF — a page to read it on, or a page to
+    # buy that edition. No publisher home pages, no catalogue hubs: an entry
+    # that cannot offer one of those two is not listed at all.
+    #
+    # `free:` is a copy on open loan at the Internet Archive; `buy_url` is the
+    # edition. One verified product URL per title rather than the same ASIN
+    # guessed at three marketplaces — a link that resolves to "not available"
+    # is the same broken promise as a dead one.
+    #
+    # Every entry shows on every language page; `langs:` says what language the
+    # resource itself is in.
+    items:
+      # ---- freely readable -------------------------------------------------
+      - kind: book
+        free: true
+        title: { es: "Budo. Enseñanzas del fundador del Aikido",
+                 ca: "Budo. Ensenyaments del fundador de l'Aikido",
+                 en: "Budo. Teachings of the Founder of Aikido", ja: "武道 ― 開祖の教え" }
+        by: "Morihei Ueshiba"
+        desc:
+          es: "El manual de 1938, con fotografías del propio Ō-Sensei."
+          ca: "El manual de 1938, amb fotografies del mateix Ō-Sensei."
+          en: "The 1938 manual, with photographs of Ō-Sensei himself."
+          ja: "1938年の教本。開祖自身の写真を収める。"
+        url: "https://archive.org/details/budoteachingsoff0000uesh"
+        langs: "EN"
+        buy_name: "Amazon"
+        buy_url: "https://www.amazon.com/dp/1568364873"
+      - kind: book
+        free: true
+        title: { es: "La esencia del Aikido", ca: "L'essència de l'Aikido",
+                 en: "The Essence of Aikidō", ja: "合気道の真髄" }
+        by: "Morihei Ueshiba"
+        desc:
+          es: "Las enseñanzas espirituales del fundador, recogidas por su hijo."
+          ca: "Els ensenyaments espirituals del fundador, recollits pel seu fill."
+          en: "The founder's spiritual teachings, collected by his son."
+          ja: "開祖の精神的教えを、子息がまとめたもの。"
+        url: "https://archive.org/details/essenceofaikidos0000uesh"
+        langs: "EN"
+        buy_name: "Amazon"
+        buy_url: "https://www.amazon.com/dp/1568364695"
+      - kind: book
+        free: true
+        title: { es: "El espíritu del Aikido", ca: "L'esperit de l'Aikido",
+                 en: "The Spirit of Aikido", ja: "合気道の心" }
+        by: "Kisshomaru Ueshiba"
+        desc:
+          es: "El hijo del fundador explicando qué se hereda y qué se cambia."
+          ca: "El fill del fundador explicant què s'hereta i què es canvia."
+          en: "The founder's son on what is inherited and what is changed."
+          ja: "開祖の子息が語る、受け継ぐものと変えるもの。"
+        url: "https://archive.org/details/spiritofaikido0000uesh"
+        langs: "EN"
+        buy_name: "Amazon"
+        buy_url: "https://www.amazon.com/dp/1568364830"
+      - kind: book
+        free: true
+        title: { es: "El arte del Aikido", ca: "L'art de l'Aikido",
+                 en: "The Art of Aikido", ja: "合気道の技" }
+        by: "Kisshomaru Ueshiba"
+        desc:
+          es: "Principios y técnicas esenciales, explicados por el segundo Dōshu."
+          ca: "Principis i tècniques essencials, explicats pel segon Dōshu."
+          en: "Principles and essential techniques, from the second Dōshu."
+          ja: "二代道主による、原理と基本技の解説。"
+        url: "https://archive.org/details/KisshomaruUeshibaArtOfAikido"
+        langs: "EN"
+      - kind: book
+        free: true
+        title: { es: "Aikido", ca: "Aikido", en: "Aikido", ja: "合気道" }
+        by: "Kisshomaru Ueshiba"
+        desc:
+          es: "El libro con el que varias generaciones aprendieron el programa."
+          ca: "El llibre amb què diverses generacions van aprendre el programa."
+          en: "The book several generations learned the syllabus from."
+          ja: "幾世代もがこれで要項を学んだ一冊。"
+        url: "https://archive.org/details/aikido0000uesh_y8q6"
+        langs: "EN"
+      - kind: book
+        free: true
+        title: { es: "Una vida en el Aikido", ca: "Una vida en l'Aikido",
+                 en: "A Life in Aikido", ja: "合気道開祖 植芝盛平伝" }
+        by: "Kisshomaru Ueshiba"
+        desc:
+          es: "La biografía del fundador escrita por su hijo."
+          ca: "La biografia del fundador escrita pel seu fill."
+          en: "The founder's biography, written by his son."
+          ja: "子息が書いた、開祖の伝記。"
+        url: "https://archive.org/details/lifeinaikidobiog0000uesh"
+        langs: "EN"
+      - kind: book
+        free: true
+        title: { es: "Aikido Complete", ca: "Aikido Complete",
+                 en: "Aikido Complete", ja: "Aikido Complete" }
+        by: "Yoshimitsu Yamada"
+        desc:
+          es: "Uno de los primeros manuales de Yamada Sensei, de sus años en Nueva York."
+          ca: "Un dels primers manuals de Yamada Sensei, dels seus anys a Nova York."
+          en: "One of Yamada Sensei's early manuals, from his New York years."
+          ja: "ニューヨーク時代の山田先生による初期の教本。"
+        url: "https://archive.org/details/aikidocomplete0000yama"
+        langs: "EN"
+      - kind: book
+        free: true
+        title: { es: "Ultimate Aikido", ca: "Ultimate Aikido",
+                 en: "Ultimate Aikido", ja: "Ultimate Aikido" }
+        by: "Yoshimitsu Yamada"
+        desc:
+          es: "Técnica y principio, con el detalle de quien enseñó cuarenta años fuera de Japón."
+          ca: "Tècnica i principi, amb el detall de qui va ensenyar quaranta anys fora del Japó."
+          en: "Technique and principle, from forty years of teaching outside Japan."
+          ja: "日本国外で四十年教えた人の、技と原理。"
+        url: "https://archive.org/details/ultimateaikidose0000yama"
+        langs: "EN"
+      - kind: book
+        free: true
+        title: { es: "Takemusu Aikido, vol. 1", ca: "Takemusu Aikido, vol. 1",
+                 en: "Takemusu Aikido, vol. 1", ja: "武産合気 第一巻" }
+        by: "Morihiro Saito"
+        desc:
+          es: "Fundamentos y contexto. La serie con la que se documentó el Aikido de Iwama."
+          ca: "Fonaments i context. La sèrie amb què es va documentar l'Aikido d'Iwama."
+          en: "Background and basics. The series that documented Iwama Aikido."
+          ja: "背景と基本。岩間の合気道を記録した叢書の第一巻。"
+        url: "https://archive.org/details/TakemusuAikidoVolI.BackgroundAndBasicsByMorihiroSaito"
+        langs: "EN"
+      - kind: book
+        free: true
+        title: { es: "Evil Heart", ca: "Evil Heart", en: "Evil Heart", ja: "エヴイルハート" }
+        by: "Tomo Taketomi"
+        desc:
+          es: "Cuatro volúmenes sobre un chico con mal genio que entra en un dojo de aikido."
+          ca: "Quatre volums sobre un noi amb mal geni que entra en un dojo d'aikido."
+          en: "Four volumes about a bad-tempered boy who walks into an aikido dojo."
+          ja: "気の短い少年が合気道の道場に迷い込む、全四巻。"
+        url: "https://archive.org/details/manga_Evil_Heart"
+        langs: "JA"
+      # ---- in print --------------------------------------------------------
+      - kind: book
+        title: { es: "合気道入門", ca: "合気道入門", en: "合気道入門", ja: "合気道入門" }
+        by: "Mitsuteru Ueshiba"
+        desc:
+          es: "El libro del Dōjō-chō: el básico llevado con precisión. Naigai, 2019."
+          ca: "El llibre del Dōjō-chō: el bàsic portat amb precisió. Naigai, 2019."
+          en: "The Dōjō-chō's book: the basics done precisely. Naigai, 2019."
+          ja: "道場長による入門書。正確な稽古で基本を極める。内外出版社、2019年。"
+        url: "https://www.amazon.co.jp/dp/486257467X"
+        langs: "JA"
+        buy_name: "Amazon.co.jp"
+        buy_url: "https://www.amazon.co.jp/dp/486257467X"
+      - kind: media
+        title: { es: "DVD 合気道入門", ca: "DVD 合気道入門",
+                 en: "DVD 合気道入門", ja: "DVD 合気道入門" }
+        by: "Mitsuteru Ueshiba"
+        desc:
+          es: "El DVD que acompaña al libro del Dōjō-chō. Naigai, 2020."
+          ca: "El DVD que acompanya el llibre del Dōjō-chō. Naigai, 2020."
+          en: "The DVD that goes with the Dōjō-chō's book. Naigai, 2020."
+          ja: "道場長の入門書に対応するDVD。内外出版社、2020年。"
+        url: "https://www.amazon.co.jp/dp/4862575013"
+        langs: "JA"
+        buy_name: "Amazon.co.jp"
+        buy_url: "https://www.amazon.co.jp/dp/4862575013"
+      - kind: book
+        title: { es: "Best Aikido. Los fundamentos", ca: "Best Aikido. Els fonaments",
+                 en: "Best Aikido. The Fundamentals", ja: "ベスト合気道 ― 基本" }
+        by: "Kisshomaru & Moriteru Ueshiba"
+        desc:
+          es: "El manual de referencia de Hombu, firmado por el segundo y el tercer Dōshu."
+          ca: "El manual de referència de Hombu, signat pel segon i el tercer Dōshu."
+          en: "Hombu's reference manual, by the second and third Dōshu."
+          ja: "二代・三代道主による、本部の基準となる教本。"
+        url: "https://www.amazon.com/dp/4770027621"
+        langs: "EN"
+        buy_name: "Amazon"
+        buy_url: "https://www.amazon.com/dp/4770027621"
+      - kind: book
+        title: { es: "Progressive Aikido", ca: "Progressive Aikido",
+                 en: "Progressive Aikido", ja: "Progressive Aikido" }
+        by: "Moriteru Ueshiba"
+        desc:
+          es: "El Dōshu actual sobre el movimiento correcto, de lo básico a lo avanzado."
+          ca: "El Dōshu actual sobre el moviment correcte, del bàsic a l'avançat."
+          en: "The current Dōshu on proper movement, from basic to advanced."
+          ja: "現道主が説く正しい体の運び。基本から応用まで。"
+        url: "https://www.amazon.com/dp/1568364555"
+        langs: "EN"
+        buy_name: "Amazon"
+        buy_url: "https://www.amazon.com/dp/1568364555"
+      - kind: book
+        title: { es: "Aïkido. Etiquette et transmission",
+                 ca: "Aïkido. Etiquette et transmission",
+                 en: "Aïkido. Etiquette et transmission", ja: "Aïkido. Etiquette et transmission" }
+        by: "Nobuyoshi Tamura"
+        desc:
+          es: "Tamura Sensei sobre la etiqueta y sobre qué se transmite realmente. Sólo en francés."
+          ca: "Tamura Sensei sobre l'etiqueta i sobre què es transmet realment. Només en francès."
+          en: "Tamura Sensei on etiquette, and on what is actually handed on. French only."
+          ja: "田村先生による、礼法と「伝える」ことについて。フランス語のみ。"
+        url: "https://www.amazon.com/dp/2846170134"
+        langs: "FR"
+        buy_name: "Amazon"
+        buy_url: "https://www.amazon.com/dp/2846170134"
+      - kind: book
+        title: { es: "生命の力を高める「呼吸」", ca: "生命の力を高める「呼吸」",
+                 en: "生命の力を高める「呼吸」", ja: "生命の力を高める「呼吸」" }
+        by: "Hiroshi Tada"
+        desc:
+          es: "Tada Sensei sobre el «ki no renma», del método respiratorio a la meditación. Edición japonesa, 2024."
+          ca: "Tada Sensei sobre el «ki no renma», del mètode respiratori a la meditació. Edició japonesa, 2024."
+          en: "Tada Sensei on ki no renma, from breathing method to meditation. Japanese edition, 2024."
+          ja: "多田宏先生による「氣の錬磨」のすべて。呼吸法から瞑想まで。世界文化社、2024年。"
+        url: "https://books.sekaibunka.com/book/b10103577.html"
+        langs: "JA"
+        buy_name: "世界文化社"
+        buy_url: "https://books.sekaibunka.com/book/b10103577.html"
+      - kind: book
+        title: { es: "The Aikido Master Course · Best Aikido 2",
+                 ca: "The Aikido Master Course · Best Aikido 2",
+                 en: "The Aikido Master Course · Best Aikido 2",
+                 ja: "ベスト合気道2" }
+        by: "Moriteru Ueshiba"
+        desc:
+          es: "La continuación de Best Aikido: las formas avanzadas, por el Dōshu actual."
+          ca: "La continuació de Best Aikido: les formes avançades, pel Dōshu actual."
+          en: "The sequel to Best Aikido: the advanced forms, by the current Dōshu."
+          ja: "『ベスト合気道』の続編。現道主による応用の形。"
+        url: "https://www.amazon.com/dp/477002763X"
+        langs: "EN"
+        buy_name: "Amazon"
+        buy_url: "https://www.amazon.com/dp/477002763X"
+      - kind: book
+        title: { es: "The Secret Teachings of Aikido", ca: "The Secret Teachings of Aikido",
+                 en: "The Secret Teachings of Aikido", ja: "合気道の秘伝" }
+        by: "Morihei Ueshiba"
+        desc:
+          es: "Charlas del fundador sobre el fondo espiritual del arte, recopiladas por Hombu."
+          ca: "Xerrades del fundador sobre el fons espiritual de l'art, recopilades per Hombu."
+          en: "The founder's talks on the spiritual ground of the art, gathered by Hombu."
+          ja: "開祖の講話をまとめたもの。技の背後にある精神について。"
+        url: "https://www.amazon.com/dp/1568364466"
+        langs: "EN"
+        buy_name: "Amazon"
+        buy_url: "https://www.amazon.com/dp/1568364466"
+      - kind: book
+        title: { es: "The Heart of Aikido", ca: "The Heart of Aikido",
+                 en: "The Heart of Aikido", ja: "合気道の心髄" }
+        by: "Morihei Ueshiba"
+        desc:
+          es: "La filosofía del takemusu aiki, en palabras del propio fundador."
+          ca: "La filosofia del takemusu aiki, en paraules del mateix fundador."
+          en: "The philosophy of takemusu aiki, in the founder's own words."
+          ja: "武産合気の思想を、開祖自身の言葉で。"
+        url: "https://www.amazon.com/dp/1568365144"
+        langs: "EN"
+        buy_name: "Amazon"
+        buy_url: "https://www.amazon.com/dp/1568365144"
+      - kind: book
+        title: { es: "合気道 ― 稽古とこころ", ca: "合気道 ― 稽古とこころ",
+                 en: "合気道 ― 稽古とこころ", ja: "合気道 ― 稽古とこころ" }
+        by: "Moriteru Ueshiba"
+        desc:
+          es: "El Dōshu actual sobre la práctica y el ánimo con que se hace. Naigai."
+          ca: "El Dōshu actual sobre la pràctica i l'ànim amb què es fa. Naigai."
+          en: "The current Dōshu on practice, and the frame of mind it is done in. Naigai."
+          ja: "現道主による、稽古とその心構え。内外出版社。"
+        url: "https://www.amazon.co.jp/dp/4862573495"
+        langs: "JA"
+        buy_name: "Amazon.co.jp"
+        buy_url: "https://www.amazon.co.jp/dp/4862573495"
+      - kind: book
+        title: { es: "合気道開祖 植芝盛平伝", ca: "合気道開祖 植芝盛平伝",
+                 en: "合気道開祖 植芝盛平伝", ja: "合気道開祖 植芝盛平伝" }
+        by: "Kisshomaru Ueshiba"
+        desc:
+          es: "La biografía del fundador en su edición japonesa. Shuppan Geijutsu."
+          ca: "La biografia del fundador en la seva edició japonesa. Shuppan Geijutsu."
+          en: "The founder's biography in its Japanese edition. Shuppan Geijutsu."
+          ja: "開祖の伝記、日本語版。出版芸術社。"
+        url: "http://www.spng.jp/book/b241446.html"
+        langs: "JA"
+        buy_name: "出版芸術社"
+        buy_url: "http://www.spng.jp/book/b241446.html"
+      - kind: book
+        title: { es: "規範合気道 ― 基本編", ca: "規範合気道 ― 基本編",
+                 en: "規範合気道 ― 基本編", ja: "規範合気道 ― 基本編" }
+        by: "Kisshomaru & Moriteru Ueshiba"
+        desc:
+          es: "El manual de referencia de Hombu en japonés, del que sale Best Aikido."
+          ca: "El manual de referència de Hombu en japonès, del qual surt Best Aikido."
+          en: "Hombu's Japanese reference manual, the source of Best Aikido."
+          ja: "本部の規範となる教本。『ベスト合気道』の原典。"
+        url: "http://www.spng.jp/book/b241411.html"
+        langs: "JA"
+        buy_name: "出版芸術社"
+        buy_url: "http://www.spng.jp/book/b241411.html"
+      - kind: media
+        title: { es: "DVD 規範合気道 ― 応用編 1 y 2", ca: "DVD 規範合気道 ― 応用編 1 i 2",
+                 en: "DVD 規範合気道 ― 応用編 1 & 2", ja: "DVD 規範合気道 ― 応用編 1・2" }
+        by: "Moriteru Ueshiba"
+        desc:
+          es: "Las dos entregas en vídeo del programa aplicado de Hombu."
+          ca: "Les dues entregues en vídeo del programa aplicat de Hombu."
+          en: "The two video volumes of Hombu's applied syllabus."
+          ja: "本部の応用技を収めた映像二巻。"
+        url: "http://www.spng.jp/book/b241318.html"
+        langs: "JA"
+        buy_name: "出版芸術社"
+        buy_url: "http://www.spng.jp/book/b241319.html"
+      - kind: book
+        title: { es: "劇画 合気道開祖 植芝盛平物語", ca: "劇画 合気道開祖 植芝盛平物語",
+                 en: "劇画 合気道開祖 植芝盛平物語", ja: "劇画 合気道開祖 植芝盛平物語" }
+        by: "Asa Yamaoka"
+        desc:
+          es: "La vida de Ueshiba Morihei contada en viñetas. Shuppan Geijutsu."
+          ca: "La vida d'Ueshiba Morihei explicada en vinyetes. Shuppan Geijutsu."
+          en: "Ueshiba Morihei's life told in panels. Shuppan Geijutsu."
+          ja: "植芝盛平の生涯を劇画で。出版芸術社。"
+        url: "http://www.spng.jp/book/b241171.html"
+        langs: "JA"
+        buy_name: "出版芸術社"
+        buy_url: "http://www.spng.jp/book/b241171.html"
+      - kind: book
+        title: { es: "Out of the World ― 武道は世界を駆けめぐる",
+                 ca: "Out of the World ― 武道は世界を駆けめぐる",
+                 en: "Out of the World ― 武道は世界を駆けめぐる",
+                 ja: "Out of the World ― 武道は世界を駆けめぐる" }
+        by: "Yoko Okamoto"
+        desc:
+          es: "Okamoto Sensei sobre Togo, Portland, París y Kioto, y sobre qué son la cultura y el budō vistos desde fuera."
+          ca: "Okamoto Sensei sobre Togo, Portland, París i Kyoto, i sobre què són la cultura i el budō vistos des de fora."
+          en: "Okamoto Sensei on Togo, Portland, Paris and Kyoto, and on what culture and budō look like from outside."
+          ja: "岡本洋子先生が、トーゴ・ポートランド・パリ・京都から見た文化と武道について。"
+        url: "https://www.amazon.co.jp/dp/4865550593"
+        langs: "JA"
+        buy_name: "紀伊國屋書店"
+        buy_url: "https://www.kinokuniya.co.jp/f/dsg-01-9784865550597"
+      # ---- open archives ---------------------------------------------------
+      - kind: media
+        title: { es: "Aikido Journal", ca: "Aikido Journal", en: "Aikido Journal", ja: "Aikido Journal" }
+        by: "Stanley Pranin"
+        desc:
+          es: "Archivo histórico y entrevistas. Décadas de material, en abierto."
+          ca: "Arxiu històric i entrevistes. Dècades de material, en obert."
+          en: "Historical archive and interviews. Decades of material, in the open."
+          ja: "歴史資料とインタビューの蓄積。長年の記録が公開されています。"
+        url: "https://aikidojournal.com/"
+        langs: "EN"
+      - kind: media
+        title: { es: "Escritos de Chiba Sensei · Biran",
+                 ca: "Escrits de Chiba Sensei · Biran",
+                 en: "Chiba Sensei's writings · Biran", ja: "千葉先生の講話 · Biran" }
+        by: "Kazuo Chiba"
+        desc:
+          es: "Chiba Sensei no dejó libro, pero sí conferencias y ensayos, reunidos en el diario de Birankai."
+          ca: "Chiba Sensei no va deixar cap llibre, però sí conferències i assajos, aplegats al diari de Birankai."
+          en: "Chiba Sensei left no book, but his lectures and essays are collected in Birankai's journal."
+          ja: "千葉先生の著書はないが、講話と随筆が美蘭会の会報にまとめられている。"
+        url: "https://biran.birankai.org/?cat=13"
+        langs: "EN"

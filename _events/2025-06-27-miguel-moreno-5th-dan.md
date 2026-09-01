@@ -5,6 +5,15 @@ title_en: "Miguel Moreno 5th Dan Birankai"
 title_es: "Miguel Moreno 5.º Dan Birankai"
 title_ja: "ミゲル・モレノ 五段 毘嵐会"
 
+instructor_ca: "Miguel Moreno"
+grade_ca: "5è dan Birankai"
+instructor_en: "Miguel Moreno"
+grade_en: "5th dan Birankai"
+instructor_es: "Miguel Moreno"
+grade_es: "5.º dan Birankai"
+instructor_ja: "ミゲル・モレノ"
+grade_ja: "五段 毘嵐会"
+
 desc_ca: >-
   Estem molt contents de donar la benvinguda al nostre dojo (Av. d'Alfons XIII, 351, 08918 Badalona, Barcelona) a Miguel Moreno Sensei (5è Dan, Birankai), del Venice Aikikai, alumne directe de K. Chiba Shihan, per a un seminari especial d'armes de tres dies.
 desc_en: >-

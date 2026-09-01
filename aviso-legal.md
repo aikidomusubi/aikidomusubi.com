@@ -5,22 +5,24 @@ description: Datos identificativos del titular del sitio web, condiciones de uso
 permalink: /aviso-legal/
 lang: es
 i18n-ref: legal-notice-Up6gBHvn
-last_modified: 2026-08-14
+last_modified: 2026-08-28
 ---
 
 # Aviso Legal
 
 Datos identificativos del titular del sitio web, condiciones de uso, propiedad intelectual y legislación aplicable.
 
+{% include legal-summary.html %}
+
+
 **Última actualización: 13 de agosto de 2026**
 
-<hr>
 
 ## 1. Datos identificativos del titular
 
 En cumplimiento del deber de información recogido en el artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se facilitan a continuación los datos identificativos del titular de este sitio web:
 
-- **Titular:** Associació Aikido Musubi *(asociación cultural sin ánimo de lucro)*
+- **Titular:** Associació Cultural Musubi Aikido *(asociación cultural sin ánimo de lucro)*
 - **CIF:** G-64799554
 - **Domicilio:** Av. d'Alfons XIII, 351, 08918 Badalona (Barcelona), España
 - **Correo electrónico:** info@aikidomusubi.com
@@ -60,7 +62,7 @@ El Sitio Web puede contener enlaces a sitios web de terceros (por ejemplo, redes
 
 ## 7. Alojamiento del Sitio Web
 
-Este Sitio Web se encuentra alojado en **GitHub Pages**, un servicio prestado por **GitHub, Inc.** (88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, Estados Unidos), empresa del grupo Microsoft. Como consecuencia del alojamiento, el proveedor puede tratar determinados datos técnicos de conexión (como la dirección IP) con fines de seguridad y de prestación del servicio. Para más información, consulte la [Declaración de Privacidad de GitHub](https://docs.github.com/es/site-policy/privacy-policies/github-general-privacy-statement).
+Este Sitio Web se encuentra alojado en **GitHub Pages**, un servicio prestado por **GitHub, Inc.** (88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, Estados Unidos), empresa del grupo Microsoft. Como consecuencia del alojamiento, el proveedor puede tratar determinados datos técnicos de conexión (como la dirección IP) con fines de seguridad y de prestación del servicio. Para más información, consulte la [Declaración de Privacidad de GitHub](https://docs.github.com/es/site-policy/privacy-policies/github-general-privacy-statement){:target="_blank" rel="noopener"}.
 
 ## 8. Protección de datos y cookies
 

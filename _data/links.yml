@@ -1,0 +1,77 @@
+# `name_ja` is the name the Japanese page shows instead of the Latin one. It is
+# what the site already publishes on /ja/, not a transliteration invented here,
+# and it is absent on the entries that page never carried — those keep the Latin
+# name rather than acquire a guess.
+#
+# The links. Exactly the eighteen dojos, three organisations, three venues and
+# two shops that the home page used to carry, no more and no fewer. They live
+# here now because Ura carries them, and _includes/links.html — which wrote each
+# one out with a 1.5 KB inline SVG icon — is gone.
+#
+# The dojos are ordered by name, not by country: eighteen dojos across eight
+# countries would need eight columns of one or two entries each, so the place
+# rides on the row instead.
+
+headings:
+  orgs:          { es: "Organizaciones", ca: "Organitzacions", en: "Organisations", ja: "団体" }
+  dojos:         { es: "Dojos amigos", ca: "Dojos amics", en: "Friendly dojos", ja: "友好道場" }
+  venues:        { es: "Dónde entrenamos", ca: "On entrenem", en: "Where we train", ja: "稽古の場所" }
+  gear:          { es: "Material", ca: "Material", en: "Equipment", ja: "用具" }
+  media:         { es: "Divulgación", ca: "Divulgació", en: "Outreach", ja: "発信" }
+
+places:
+  jp:   { es: "Japón", ca: "Japó", en: "Japan", ja: "日本" }
+  it:   { es: "Italia", ca: "Itàlia", en: "Italy", ja: "イタリア" }
+  sco:  { es: "Escocia", ca: "Escòcia", en: "Scotland", ja: "スコットランド" }
+  uk:   { es: "Inglaterra", ca: "Anglaterra", en: "England", ja: "イギリス" }
+  de:   { es: "Alemania", ca: "Alemanya", en: "Germany", ja: "ドイツ" }
+  ro:   { es: "Rumanía", ca: "Romania", en: "Romania", ja: "ルーマニア" }
+  ca_:  { es: "Canadá", ca: "Canadà", en: "Canada", ja: "カナダ" }
+  bcn:  { es: "Barcelona", ca: "Barcelona", en: "Barcelona", ja: "バルセロナ" }
+
+orgs:
+  - { name: "Aikikai Foundation", name_ja: "公益財団法人 合気会", host: "aikikai.or.jp", url: "http://www.aikikai.or.jp/" }
+  - { name: "International Aikido Federation", name_ja: "国際合気道連盟", host: "aikido-international.org", url: "http://www.aikido-international.org/" }
+  - { name: "Arashi Group", name_ja: "嵐グループ", host: "aikidoarashigroup.com", url: "http://aikidoarashigroup.com/" }
+
+dojos:
+  - { name: "Aikido Harukaze", name_ja: "春風 合気道会", host: "aikido-harukaze.com", url: "https://aikido-harukaze.com/", place: jp }
+  - { name: "Aikido of London", host: "aikidooflondon.com", url: "https://aikidooflondon.com/", place: uk }
+  - { name: "Aikido Palestra Fujiyama Pietrasanta", name_ja: "合気道 富士山ジム ピエトラサンタ", host: "aikido.palestrafujiyama.com", url: "https://aikido.palestrafujiyama.com/", place: it }
+  - { name: "Aikido Sanshinkai", name_ja: "合気道 三心会", host: "aikidosanshin.wixsite.com", url: "https://aikidosanshin.wixsite.com/sanshinkai", place: jp }
+  - { name: "Aikido Verona", name_ja: "合気道 ヴェローナ", host: "veronaikido.it", url: "https://www.veronaikido.it/", place: it }
+  - { name: "Aikido Watanabe Dojo", name_ja: "合気道渡邉道場", host: "aikidowatanabedojo.it", url: "https://aikidowatanabedojo.it/", place: it }
+  - { name: "Aikikai Corsico", name_ja: "合気会 コルシコ", host: "aikikaicorsico.it", url: "https://aikikaicorsico.it/", place: it }
+  - { name: "Aikikai Milano", name_ja: "合気会 ミラノ", host: "aikikaimilano.it", url: "http://www.aikikaimilano.it/", place: it }
+  - { name: "Aioikai / Aikido Kobe Sanda Dojo", name_ja: "相生會 合気道神戸三田道場", host: "lares.dti.ne.jp", url: "http://www.lares.dti.ne.jp/~horii", place: jp }
+  - { name: "Dojo Feilen Meishūkan", name_ja: "道場 フェイレン 明修館", host: "aikifeilen.org", url: "https://www.aikifeilen.org/", place: bcn }
+  - { name: "Hakken Dojo", name_ja: "発見 道場", host: "aikido-aikikai.ro", url: "https://www.aikido-aikikai.ro/", place: ro }
+  - { name: "Kokoro Aikido", name_ja: "心 合気道", host: "kokoro-aikido.de", url: "https://www.kokoro-aikido.de/", place: de }
+  - { name: "Montérégie Aikikai", name_ja: "モンテレジー 合気会", host: "monteregieaikikai.com", url: "https://www.monteregieaikikai.com/", place: ca_ }
+  - { name: "Sandokai Aikido Kyoto", name_ja: "参同会 合気道京都", host: "aikidokyoto.com", url: "https://www.aikidokyoto.com/", place: jp }
+  - { name: "Scottish and Borders Birankai", name_ja: "スコティッシュ・ボーダーズ 毘嵐会", host: "scottishandbordersbirankai.com", url: "http://www.scottishandbordersbirankai.com/", place: sco }
+  - { name: "Thistle Aikikai", name_ja: "シッスル 合気会", host: "thistleaikikai.com", url: "http://thistleaikikai.com/", place: sco }
+  - { name: "Venice Aikikai Birankai", name_ja: "ヴェネツィア 合気会 毘嵐会", host: "facebook.com", url: "https://www.facebook.com/veniceaikikai.birankai/", place: it }
+  - { name: "Wabi Aikido House", name_ja: "ワビ 合気道 ハウス", host: "taplink.cc", url: "https://taplink.cc/wabiaikidohouse", place: it }
+
+venues:
+  - { name: "Poliesportiu Municipal Marina-Besòs", name_ja: "マリナ・バゾス市立スポーツセンター", host: "marinabesos.net", url: "https://marinabesos.net/" }
+  - { name: "CxEM Espronceda", name_ja: "エスプロンセダ市立スポーツ複合施設", host: "asme.cat", url: "https://www.asme.cat/cxemespronceda/" }
+  - name: "Facultat de Dret, Universitat de Barcelona"
+    name_ja: "バルセロナ大学法学部"
+    host: "web.ub.edu"
+    url: { es: "https://web.ub.edu/es/web/facultat-dret/", ca: "https://web.ub.edu/ca/web/facultat-dret",
+           en: "https://web.ub.edu/en/web/facultat-dret/", ja: "https://web.ub.edu/en/web/facultat-dret/" }
+
+gear:
+  - name: "Iwata Co."
+    name_ja: "岩田商会"
+    host: "iwataco.com"
+    url: "https://iwataco.com/"
+    note: { es: "Tienda de material de artes marciales", ca: "Botiga de material d'arts marcials", en: "Martial arts equipment shop", ja: "武道具店" }
+
+media:
+  - name: "Budo Cool"
+    host: "budocool.com"
+    url: "https://www.budocool.com/"
+    note: { es: "Creador de contenido", ca: "Creador de contingut", en: "Content creator", ja: "コンテンツクリエイター" }

@@ -9,13 +9,10 @@ redirect_from:
   - /ca/cursos/
 lang: ca
 i18n-ref: events-hFZ2XXIp
-last_modified: 2026-05-31
+last_modified: 2026-08-30
 ---
 
 # Seminaris
 
-Seminaris, masterclasses i col·laboracions que organitzem al nostre dojo. Consulta el [calendari](/ca/calendari/) per veure les dates del mes. Per a més informació, visita [la nostra pàgina de Facebook](https://www.facebook.com/{{ site.facebook_username }}/events/).
+Seminaris, masterclasses i col·laboracions que organitzem al nostre dojo. Consulta el [calendari](/ca/calendari/) per veure les dates del mes. Per a més informació, visita [la nostra pàgina de Facebook](https://www.facebook.com/{{ site.facebook_username }}/events/){:target="_blank" rel="noopener"}.
 
-<hr>
-
-{% include stickyBar.html %}

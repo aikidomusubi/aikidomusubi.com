@@ -1,0 +1,239 @@
+// out: false
+//
+// ---------------------------------------------------------------------------
+// Press & TV
+//
+// Interviews and appearances. Replaces the Bootstrap .card + .ratio markup and
+// the shared card overrides in default.less, and — more to the point — replaces
+// five live YouTube iframes with five local thumbnails.
+// ---------------------------------------------------------------------------
+
+.pv-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  // Each card is its own height. These are press pieces with wildly different
+  // descriptions — one is a sentence, three carry a list of five participants —
+  // and stretching them to a common height would put a gulf under the short
+  // ones to no purpose.
+  align-items: start;
+  margin: 0 0 3rem;
+}
+
+.pv-item {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid fadeout(@Black, 90%);
+  border-radius: .375rem;
+  background-color: @White;
+  overflow: hidden;
+}
+
+// ---------------------------------------------------------------------------
+// The player
+//
+// On top and the full width of the card, rather than beside the text.
+// Side by side, the player was a fixed 16:9 column and the text was whatever
+// length it happened to be — so the three Shugyō TALKS, which list their
+// participants, ran hundreds of pixels past the bottom of their own thumbnail.
+// Stacked, the image gets the whole width and the text takes the height it
+// needs underneath.
+// ---------------------------------------------------------------------------
+.pv-player {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  background-color: fadeout(@Black, 90%);
+}
+
+// The facade. A <button>, not a div: operable from the keyboard, announced as a
+// control, and needing no role or tabindex to say so.
+.pv-facade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  display: block;
+
+  &:focus-visible {
+    outline: 2px solid @Blue;
+    outline-offset: -3px;
+  }
+}
+
+.pv-play {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 4.25rem;
+  height: 4.25rem;
+  border-radius: 50%;
+  // Not YouTube red. This is our page, and the button only has to read as play.
+  background-color: fadeout(@White, 8%);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 .125rem .75rem fadeout(@Black, 75%);
+  transition: transform .25s ease, background-color .25s ease;
+
+  > svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-left: .2rem;
+    color: @Black;
+  }
+}
+
+.pv-facade:hover .pv-play,
+.pv-facade:focus-visible .pv-play {
+  transform: translate(-50%, -50%) scale(1.08);
+  background-color: @White;
+}
+
+// The iframe that replaces the facade once it has been asked for.
+.pv-player > iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+// Every card the same height.
+//
+// The player is already fixed — 16:9 of a fixed column — so pinning the body
+// pins the card. The descriptions were cut to a single paragraph to make that
+// possible; the participant lists that used to follow them ran three cards to
+// twice the height of the other two.
+//
+// The date is pushed to the foot rather than following the paragraph, so it
+// lands in the same corner on all five whatever the text above it does.
+.pv-body {
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem 1.5rem 1.25rem;
+  min-width: 0;
+}
+
+.page main {
+
+  .pv-facade picture { display: block; margin: 0; height: 100%; }
+
+  .pv-facade img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .pv-title {
+    .NotoSans; .bold;
+    margin: 0 0 .5rem;
+    padding: 0;
+    font-size: 1.2rem;
+    line-height: 1.3;
+    color: @Black;
+    text-align: left;
+  }
+
+  .pv-desc {
+    margin: 0 0 1rem;
+    padding: 0;
+    font-size: .9rem;
+    line-height: 1.6;
+    text-align: left;
+  }
+
+  // margin-top: auto is what puts it in the bottom-left corner, and the padding
+  // above it is the room asked for between the paragraph and the date.
+  .pv-date {
+    .NotoSans;
+    margin: auto 0 0;
+    padding: .35rem 0 0;
+    font-size: .78rem;
+    color: lighten(@Dark, 18%);   // 5.9:1
+    text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pv-play { transition: none; }
+  .pv-facade:hover .pv-play { transform: translate(-50%, -50%); }
+}
+
+// Two to a row once there is width for it. Five items in one column would be a
+// very long page for what is a short list; two columns keeps the whole section
+// visible in about a screen and a half, and each player is still ~550px wide.
+@media (min-width: 992px) {
+
+  .pv-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+  }
+
+  // The height of the longest of the five, so all five match. Measured, not
+  // guessed: at this column width the descriptions run four to eight lines, and
+  // 20.5rem is what the eight-line one needs. The shorter cards spend the
+  // difference as space above the date rather than as a ragged row.
+  //
+  // Only here. In one column every card is the full container width and the
+  // text reflows, so a height taken from a two-column measurement would be
+  // wrong — and a floor is all this is, so it grows if a description ever does.
+  .pv-body { min-height: 20.5rem; }
+}
+
+@media print {
+
+  .pv-play { display: none; }
+  .pv-item { break-inside: avoid; border: 0; border-left: 3px solid #666; }
+}
+
+
+// ---------------------------------------------------------------------------
+// Map facades
+//
+// Same idea as the player facades above, on the access page. A button the size
+// of the map it replaces, so nothing shifts when the real thing arrives.
+// ---------------------------------------------------------------------------
+.mp-facade {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  width: 100%;
+  min-height: 100%;
+  padding: 2rem 1rem;
+  border: 1px dashed fadeout(@Black, 80%);
+  border-radius: .375rem;
+  background-color: fadeout(@Black, 97%);
+  color: @Black;
+  cursor: pointer;
+  .NotoSans;
+  transition: background-color .2s ease, border-color .2s ease;
+
+  &:hover { background-color: fadeout(@Black, 94%); border-color: fadeout(@Black, 60%); }
+
+  &:focus-visible { outline: 2px solid @Blue; outline-offset: -3px; }
+}
+
+.mp-pin > svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: @Accent;
+}
+
+.mp-label {
+  .bold;
+  font-size: .9rem;
+  text-align: center;
+}
+
+.mp-hint {
+  font-size: .78rem;
+  color: lighten(@Dark, 18%);   // 5.9:1
+  text-align: center;
+}

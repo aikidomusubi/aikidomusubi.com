@@ -1,0 +1,217 @@
+# Ura 裏 — the aside.
+#
+# In aikido every technique has an omote and an ura: the version that enters in
+# front and the one that turns behind. They are not two techniques, they are two
+# sides of one. This is the same site entering from behind.
+#
+# NOT A SECOND HOME PAGE. Everything here either changes on its own — the week,
+# the calendar, the archive — or is a shorter, odder way of saying something a
+# full page says at length. Nothing here is needed in order to come and train.
+#
+# WHAT IS GENERATED AND WHAT IS WRITTEN. The week comes from _data/schedule.yml,
+# what is coming from _data/calendar.yml, the archive from _data/gallery.yml and
+# the seminar log from _events/. Only the labels below are written by hand.
+
+ui:
+  name:      { es: "Ura", ca: "Ura", en: "Ura", ja: "裏" }
+  kanji:     "裏"
+  home_kanji: "表"
+  sub:        { es: "el dojo por detrás", ca: "el dojo per darrere", en: "the dojo from behind", ja: "道場の裏側" }
+  title:      { es: "Ura / La otra cara del dojo", ca: "Ura / L'altra cara del dojo", en: "Ura / The other side of the dojo", ja: "裏 ｜ 道場のもうひとつの顔" }
+  desc:       { es: "Lo que pasa en el dojo esta semana, el calendario, el archivo desde 2008 y unas cuantas palabras del tatami.", ca: "El que passa al dojo aquesta setmana, el calendari, l'arxiu des del 2008 i unes quantes paraules del tatami.", en: "What is happening in the dojo this week, the calendar, the archive since 2008 and a few words from the mat.", ja: "今週の道場の予定、カレンダー、2008年からの記録、そして畳の上の言葉。" }
+  intro:      { es: "Lo que pasa esta semana, y todo lo que ha pasado desde 2008.", ca: "El que passa aquesta setmana, i tot el que ha passat des del 2008.", en: "What is happening this week, and everything that has happened since 2008.", ja: "今週のこと、そして2008年からのすべて。" }
+  back:       { es: "Volver a la portada", ca: "Tornar a la portada", en: "Back to the home page", ja: "トップページへ戻る" }
+  open:       { es: "Entrar", ca: "Entrar", en: "Enter", ja: "入る" }
+  door_k:     { es: "Contenido extra", ca: "Contingut extra", en: "Extra content", ja: "おまけ" }
+  door_p:     { es: "Lo que pasa en el dojo esta semana, y todo lo que ha pasado antes.", ca: "El que passa al dojo aquesta setmana, i tot el que ha passat abans.", en: "What is happening in the dojo this week, and everything that came before.", ja: "今週、道場で起きていること。そして、これまでに起きたすべて。" }
+  colophon:   { es: "Esto no se escribe a mano. Sale del horario, del calendario, de la galería y de las fichas de seminario, así que no puede quedarse atrás.", ca: "Això no s'escriu a mà. Surt de l'horari, del calendari, de la galeria i de les fitxes de seminari, així que no pot quedar-se enrere.", en: "None of this is written by hand. It comes from the timetable, the calendar, the gallery and the seminar entries, so it cannot fall behind.", ja: "これは手書きではありません。稽古時間、カレンダー、ギャラリー、講習会の記録から生成されるので、古くなりません。" }
+  today:      { es: "Hoy", ca: "Avui", en: "Today", ja: "本日" }
+  rest:       { es: "Descanso", ca: "Descans", en: "Rest", ja: "稽古なし" }
+  # The week's own date range. Two templates because a range that crosses a
+  # month has to name both, and one that does not must not repeat it.
+  range_same:  { es: "Del DD1 al DD2 MON2", ca: "Del DD1 al DD2 MON2", en: "DD1 to DD2 MON2", ja: "MON2DD1日〜DD2日" }
+  range_cross: { es: "Del DD1 MON1 al DD2 MON2", ca: "Del DD1 MON1 al DD2 MON2", en: "DD1 MON1 to DD2 MON2", ja: "MON1DD1日〜MON2DD2日" }
+  monthly:    { es: "Una vez al mes", ca: "Un cop al mes", en: "Once a month", ja: "月に一度" }
+  more_words: { es: "Seis palabras más", ca: "Sis paraules més", en: "Six more words", ja: "さらに六つ" }
+  less_words: { es: "Menos palabras", ca: "Menys paraules", en: "Fewer words", ja: "表示を減らす" }
+  glossary:   { es: "Glosario completo", ca: "Glossari complet", en: "Full glossary", ja: "用語集をすべて見る" }
+  all_years:  { es: "Recientes", ca: "Recents", en: "Recent", ja: "最近" }
+  res_exam:   { es: "Programa de examen", ca: "Programa d'examen",
+                en: "Grading programme", ja: "審査要項" }
+  res_docs:   { es: "Impresos y documentos", ca: "Impresos i documents",
+                en: "Forms and documents", ja: "書式と資料" }
+  res_all:    { es: "Todos los recursos", ca: "Tots els recursos",
+                en: "All the resources", ja: "資料をすべて見る" }
+  full_gallery: { es: "La galería completa", ca: "La galeria completa", en: "The full gallery", ja: "ギャラリーをすべて見る" }
+  # Two labels for one button: the generic one is what the markup ships, so
+  # the link has an accessible name before any script runs; the script swaps in
+  # the specific one once a tile is clicked and the platform is known.
+  see_src:    { es: "Ver la publicación original", ca: "Veure la publicació original", en: "See the original post", ja: "元の投稿を見る" }
+  see_on:     { es: "Ver en NAME", ca: "Veure a NAME", en: "See it on NAME", ja: "NAMEで見る" }
+  prev_img:   { es: "Anterior", ca: "Anterior", en: "Previous", ja: "前へ" }
+  next_img:   { es: "Siguiente", ca: "Següent", en: "Next", ja: "次へ" }
+  close_img:  { es: "Cerrar", ca: "Tancar", en: "Close", ja: "閉じる" }
+  archive_of: { es: "Del archivo", ca: "De l'arxiu", en: "From the archive", ja: "記録より" }
+  sessions:   { es: "sesiones", ca: "sessions", en: "sessions", ja: "回" }
+  closed:     { es: "El dojo cierra", ca: "El dojo tanca", en: "The dojo is closed", ja: "道場は休みです" }
+  saved:       { es: "momentos guardados", ca: "moments guardats", en: "moments kept", ja: "記録" }
+  jump:        { es: "Salta a un año", ca: "Salta a un any", en: "Jump to a year", ja: "年で絞り込む" }
+  closed_d:    { es: "Cerrado", ca: "Tancat", en: "Closed", ja: "休み" }
+  changed:     { es: "Horario especial", ca: "Horari especial", en: "Special timetable", ja: "特別時間" }
+  extra_c:     { es: "Clase extra", ca: "Classe extra", en: "Extra class", ja: "臨時稽古" }
+  seminar:     { es: "Seminario", ca: "Seminari", en: "Seminar", ja: "講習会" }
+  seminar_i:   { es: "Seminario internacional", ca: "Seminari internacional", en: "International seminar", ja: "国際講習会" }
+  masterclass: { es: "Masterclass", ca: "Masterclass", en: "Masterclass", ja: "特別稽古" }
+  collab:      { es: "Clase abierta", ca: "Classe oberta", en: "Open class", ja: "公開稽古" }
+  albums:      { es: "álbumes", ca: "àlbums", en: "albums", ja: "アルバム" }
+  posts:       { es: "publicaciones", ca: "publicacions", en: "posts", ja: "投稿" }
+  reels:       { es: "vídeos", ca: "vídeos", en: "videos", ja: "動画" }
+  since:       { es: "desde", ca: "des del", en: "since", ja: "" }
+  seminar_of:      { es: "Seminario de NAME en Barcelona", ca: "Seminari de NAME a Barcelona", en: "Seminar with NAME in Barcelona", ja: "NAMEによる講習会（バルセロナ）" }
+  seminar_i_of:    { es: "Seminario internacional de NAME en Barcelona", ca: "Seminari internacional de NAME a Barcelona", en: "International seminar with NAME in Barcelona", ja: "NAMEによる国際講習会（バルセロナ）" }
+  masterclass_of:  { es: "Masterclass de NAME en el dojo", ca: "Masterclass de NAME al dojo", en: "Masterclass with NAME at the dojo", ja: "NAMEによる特別稽古（道場）" }
+
+sections:
+  - id: week
+    title: { es: "Los próximos siete días", ca: "Els propers set dies", en: "The next seven days", ja: "これからの七日間" }
+    sub:   { es: "Lo que hay en el tatami", ca: "El que hi ha al tatami", en: "What is on the mat", ja: "畳の上の予定" }
+  - id: ahead
+    title: { es: "Lo que viene", ca: "El que ve", en: "What is coming", ja: "これからの予定" }
+    # The seminars belong in the subtitle because they are now in the list:
+    # _includes/ura.html merges _data/calendar.yml with site.events and
+    # site.elsewhere. A reader checking this on the Tuesday before a seminar
+    # used to be told about a bank holiday and not about the seminar.
+    sub:   { es: "Cierres, cambios, clases extra y seminarios",
+             ca: "Tancaments, canvis, classes extra i seminaris",
+             en: "Closures, changes, extra classes and seminars",
+             ja: "休講・変更・臨時稽古・講習会" }
+  - id: archive
+    title: { es: "El archivo", ca: "L'arxiu", en: "The archive", ja: "記録" }
+    sub:   { es: "Lo más reciente de cada año", ca: "El més recent de cada any", en: "The most recent from each year", ja: "各年の直近から" }
+  - id: seminars
+    title: { es: "Seminarios y clases especiales", ca: "Seminaris i classes especials", en: "Seminars and special classes", ja: "講習会と特別稽古" }
+    # No `sub`. It said "Desde 2020", which dated a list whose first accordion
+    # row is the year itself. _includes/ura.html renders the count alone.
+  - id: chain
+    title: { es: "De Tokio a Barcelona", ca: "De Tòquio a Barcelona", en: "From Tokyo to Barcelona", ja: "東京からバルセロナへ" }
+    sub:   { es: "De 1883, a hoy", ca: "Del 1883, fins avui", en: "From 1883 to today", ja: "1883年から今日まで" }
+  - id: words
+    title: { es: "Palabras del tatami", ca: "Paraules del tatami", en: "Words from the mat", ja: "畳の上の言葉" }
+    sub:   { es: "Seis que oirás el primer día", ca: "Sis que sentiràs el primer dia", en: "Six you will hear on your first day", ja: "初日に耳にする六つ" }
+  - id: links
+    title: { es: "Enlaces", ca: "Enllaços", en: "Links", ja: "リンク集" }
+    sub:   { es: "Con quién compartimos el tatami", ca: "Amb qui compartim el tatami", en: "Who we share the mat with", ja: "ともに畳を分かち合う人びと" }
+  - id: essentials
+    title: { es: "Lo esencial", ca: "L'essencial", en: "The essentials", ja: "要点" }
+    sub:   { es: "Tres páginas en una pantalla", ca: "Tres pàgines en una pantalla", en: "Three pages on one screen", ja: "三ページ分を一画面で" }
+
+# Six on the first screen, six behind a button, and then the glossary.
+  # Appended rather than inserted. _includes/ura.html reaches these by index —
+  # sections[0] is the week, sections[7] the digest — so putting Recursos in
+  # the middle of the list would silently retitle five other sections. It is
+  # rendered between "Palabras del tatami" and "Enlaces"; only its position in
+  # THIS list is arbitrary.
+  - id: resources
+    title: { es: "Recursos", ca: "Recursos", en: "Resources", ja: "資料" }
+    sub:   { es: "Lo que hay que firmar y lo que hay que saber",
+             ca: "El que cal signar i el que cal saber",
+             en: "What has to be signed and what has to be known",
+             ja: "署名するもの、知っておくこと" }
+
+words:
+  - { kanji: "道場", roman: "dōjō", gloss: { es: "El lugar donde se estudia el camino. No es un gimnasio: se entra y se sale saludando.", ca: "El lloc on s'estudia el camí. No és un gimnàs: s'hi entra i se'n surt saludant.", en: "The place where the way is studied. Not a gym: you bow on the way in and on the way out.", ja: "道を学ぶ場所。ジムではありません。礼をして入り、礼をして出ます。" } }
+  - { kanji: "稽古", roman: "keiko", gloss: { es: "La práctica. Literalmente «pensar en lo antiguo»: se repite algo que otros repitieron antes.", ca: "La pràctica. Literalment «pensar en allò antic»: es repeteix allò que altres van repetir abans.", en: "Practice. Literally \"to think on the old\": you repeat what others repeated before you.", ja: "稽古。文字どおり「古（いにしえ）を考える」。先人が繰り返したことを繰り返します。" } }
+  - { kanji: "礼", roman: "rei", gloss: { es: "El saludo. Abre y cierra la clase, y también cada práctica con cada compañero.", ca: "La salutació. Obre i tanca la classe, i també cada pràctica amb cada company.", en: "The bow. It opens and closes the class, and every practice with every partner.", ja: "礼。稽古の初めと終わり、そして相手ごとの稽古の初めと終わりに行います。" } }
+  - { kanji: "受身", roman: "ukemi", gloss: { es: "La caída. La mitad del aikido consiste en aprender a recibir sin romperse.", ca: "La caiguda. La meitat de l'aikido consisteix a aprendre a rebre sense trencar-se.", en: "The fall. Half of aikido is learning to receive without breaking.", ja: "受身。合気道の半分は、壊れずに受けることを覚えることです。" } }
+  - { kanji: "稽古着", roman: "keikogi", gloss: { es: "La ropa de práctica. Para las primeras clases basta con manga larga.", ca: "La roba de pràctica. Per a les primeres classes n'hi ha prou amb màniga llarga.", en: "The practice uniform. Long sleeves are enough for the first few classes.", ja: "稽古着。最初のうちは長袖の服装で十分です。" } }
+  - { kanji: "産靈", roman: "musubi", gloss: { es: "El nudo: lo que une dos cosas y las deja unidas. De ahí el nombre del dojo.", ca: "El nus: allò que uneix dues coses i les deixa unides. D'aquí el nom del dojo.", en: "The knot: what binds two things and leaves them bound. Hence the name of the dojo.", ja: "結び。二つのものを結び、結ばれたままにするもの。道場の名はここから来ています。" } }
+
+words_more:
+  - { kanji: "取り・受け", roman: "tori / uke", gloss: { es: "Quien hace la técnica y quien la recibe. Se alternan sin parar.", ca: "Qui fa la tècnica i qui la rep. S'alternen sense parar.", en: "The one who performs the technique and the one who receives it. They swap constantly.", ja: "技をかける側と受ける側。絶えず入れ替わります。" } }
+  - { kanji: "正座", roman: "seiza", gloss: { es: "Sentarse sobre los talones. Así empieza y termina cada clase.", ca: "Seure sobre els talons. Així comença i acaba cada classe.", en: "Sitting on your heels. Every class begins and ends this way.", ja: "正座。稽古はこの姿勢で始まり、この姿勢で終わります。" } }
+  - { kanji: "お願いします", roman: "onegaishimasu", gloss: { es: "«Te lo pido, por favor.» Se le dice al compañero antes de practicar con él.", ca: "«T'ho demano, si us plau.» Es diu al company abans de practicar-hi.", en: "\"I ask this of you, please.\" Said to your partner before practising together.", ja: "お願いします。稽古を始める前に相手に伝える言葉です。" } }
+  - { kanji: "ありがとうございました", roman: "arigatō gozaimashita", gloss: { es: "«Muchas gracias.» Se le dice al terminar.", ca: "«Moltes gràcies.» Es diu en acabar.", en: "\"Thank you very much.\" Said when you finish.", ja: "ありがとうございました。稽古を終えたときに伝える言葉です。" } }
+  - { kanji: "段・級", roman: "dan / kyū", gloss: { es: "Los grados. Los kyu los examina el dojo; los dan quedan registrados en Tokio.", ca: "Els graus. Els kyu els examina el dojo; els dan queden registrats a Tòquio.", en: "The grades. Kyu grades are examined by the dojo; dan grades are registered in Tokyo.", ja: "段級。級の審査は道場で行い、段は東京に登録されます。" } }
+  - { kanji: "師範", roman: "shihan", gloss: { es: "«Modelo a seguir.» El título de los maestros de grado alto que vienen a dar seminarios.", ca: "«Model a seguir.» El títol dels mestres de grau alt que vénen a fer seminaris.", en: "\"Model to follow.\" The title of the senior teachers who come to give seminars.", ja: "師範。講習会に招く高段者の称号です。" } }
+
+# Four links, no gaps. Miyamoto Sensei is the connection to the Hombu Dojo.
+chain:
+  # `name` is the roman form every language uses; `name_ja` is what the
+  # Japanese page shows instead. The Japanese here is the site's own — every
+  # one of these already appears in _data/about.yml or _data/gallery.yml — so
+  # the chain does not introduce a second spelling of anybody's name.
+  - year: "1883–1969"
+    name: "Morihei Ueshiba"
+    name_ja: "植芝盛平"
+    sub: { es: "Ō-Sensei, fundador del aikido", ca: "Ō-Sensei, fundador de l'aikido", en: "Ō-Sensei, founder of aikido", ja: "開祖・大先生" }
+  - year: "1931"
+    ongoing: true
+    name: "Aikido Hombu Dojo"
+    name_ja: "合気会本部道場"
+    sub: { es: "Tokio, la sede mundial del Aikido", ca: "Tòquio, la seu mundial de l'Aikido", en: "Tokyo, the world headquarters of Aikido", ja: "東京・合気道の総本部" }
+    detail: { es: "Aikido Doshu Ueshiba Moriteru / Aikido Hombu Dojo-cho Ueshiba Mitsuteru", ca: "Aikido Doshu Ueshiba Moriteru / Aikido Hombu Dojo-cho Ueshiba Mitsuteru", en: "Aikido Doshu Ueshiba Moriteru / Aikido Hombu Dojo-cho Ueshiba Mitsuteru", ja: "道主・植芝守央 / 本部道場長・植芝充央" }
+  - year: "2020"
+    ongoing: true
+    name: "Arashi Group"
+    name_ja: "嵐グループ"
+    sub: { es: "Organización reconocida por el Aikido Hombu Dojo a la que pertenecemos", ca: "Organització reconeguda per l'Aikido Hombu Dojo a la qual pertanyem", en: "An organisation recognised by the Aikido Hombu Dojo, and the one we belong to", ja: "合気会本部道場に認められた団体で、私たちが所属しています" }
+    detail: { es: "Vínculo a través de Tsuruzo Miyamoto Sensei, 8.º dan", ca: "Vincle a través de Tsuruzo Miyamoto Sensei, 8è dan", en: "Linked through Tsuruzo Miyamoto Sensei, 8th dan", ja: "宮本鶴蔵先生（八段）を通じてつながっています" }
+  - year: "2008"
+    ongoing: true
+    name: "Aikido Musubi"
+    name_ja: "合気道産靈"
+    sub: { es: "Badalona, Barcelona", ca: "Badalona, Barcelona", en: "Badalona, Barcelona", ja: "バダロナ・バルセロナ" }
+
+
+# The digest. Three cells, and the third is a paragraph rather than a list
+# because "how to start" is a sentence, not a table.
+essentials:
+  where:  { es: "Dónde", ca: "On", en: "Where", ja: "場所" }
+  cost:   { es: "Cuánto", ca: "Quant", en: "How much", ja: "費用" }
+  start:  { es: "Cómo empezar", ca: "Com començar", en: "How to start", ja: "始めるには" }
+  cost_rows:
+    - { label: { es: "Inscripción", ca: "Inscripció", en: "Enrolment", ja: "入会金" },
+        value: { es: "Gratuita, todo el año", ca: "Gratuïta, tot l'any", en: "Free, all year round", ja: "無料・通年" } }
+    - { label: { es: "Prueba", ca: "Prova", en: "Trial", ja: "体験" },
+        value: { es: "Dos clases, sin coste", ca: "Dues classes, sense cost", en: "Two classes, no charge", ja: "二回まで無料" } }
+    - { label: { es: "Cuota", ca: "Quota", en: "Fee", ja: "月謝" },
+        value: { es: "Mensual, según la actividad", ca: "Mensual, segons l'activitat", en: "Monthly, depending on the activity", ja: "活動により月額" } }
+  start_text: { es: "Escríbenos con un día de antelación, dinos qué clase te interesa y te decimos cuándo venir. Ropa cómoda de manga larga; el keikogi ya llegará.", ca: "Escriu-nos amb un dia d'antelació, digues-nos quina classe t'interessa i et diem quan venir. Roba còmoda de màniga llarga; el keikogi ja arribarà.", en: "Write to us a day ahead, tell us which class interests you and we will tell you when to come. Comfortable long-sleeved clothes; the keikogi can wait.", ja: "前日までにご連絡ください。ご希望のクラスを伺い、お越しいただく日をお伝えします。長袖の動きやすい服装で。稽古着はあとからで大丈夫です。" }
+
+# Month abbreviations. Liquid's `date: "%b"` returns English whatever the
+# page language is, so the four languages are written out rather than
+# formatted. Indexed 1-12 by the `%-m` of the date.
+# Day and month, ordered the way each language orders them. Japanese puts the
+# month first and closes with 日; the others put the day first.
+date_fmt: { es: "DD MM", ca: "DD MM", en: "DD MM", ja: "MMDD日" }
+
+# The same date with the year on it. The seminar log does not need one: its
+# rows sit inside a year accordion. "What is coming" does — it is one flat run
+# that reaches the last seminar on the books, fifteen months out.
+date_fmt_y: { es: "DD MM YYYY", ca: "DD MM YYYY", en: "DD MM YYYY", ja: "YYYY年MMDD日" }
+
+months:
+  "1": { es: "ene", ca: "gen", en: "Jan", ja: "1月" }
+  "2": { es: "feb", ca: "febr", en: "Feb", ja: "2月" }
+  "3": { es: "mar", ca: "març", en: "Mar", ja: "3月" }
+  "4": { es: "abr", ca: "abr", en: "Apr", ja: "4月" }
+  "5": { es: "may", ca: "maig", en: "May", ja: "5月" }
+  "6": { es: "jun", ca: "juny", en: "Jun", ja: "6月" }
+  "7": { es: "jul", ca: "jul", en: "Jul", ja: "7月" }
+  "8": { es: "ago", ca: "ag", en: "Aug", ja: "8月" }
+  "9": { es: "sep", ca: "set", en: "Sep", ja: "9月" }
+  "10": { es: "oct", ca: "oct", en: "Oct", ja: "10月" }
+  "11": { es: "nov", ca: "nov", en: "Nov", ja: "11月" }
+  "12": { es: "dic", ca: "des", en: "Dec", ja: "12月" }
+
+# The month as it is spoken inside a date. Catalan turns "de" into "d'" before
+# a vowel, so the preposition travels with the month rather than sitting in the
+# sentence template where it would be wrong four times a year.
+of_month:
+  es: ["de enero", "de febrero", "de marzo", "de abril", "de mayo", "de junio",
+       "de julio", "de agosto", "de septiembre", "de octubre", "de noviembre", "de diciembre"]
+  ca: ["de gener", "de febrer", "de març", "d'abril", "de maig", "de juny",
+       "de juliol", "d'agost", "de setembre", "d'octubre", "de novembre", "de desembre"]
+  en: ["January", "February", "March", "April", "May", "June",
+       "July", "August", "September", "October", "November", "December"]
+  ja: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"]

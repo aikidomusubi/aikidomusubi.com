@@ -1,0 +1,339 @@
+# Where the classes happen.
+#
+# ONE SOURCE. The access page was 237 lines of hand-written Bootstrap cards per
+# language — 948 across the four — repeating the same shape three times: a venue
+# card, a facility card, then a row of entrance cards. Adding a venue meant four
+# page edits and getting the markup right four times.
+#
+# TO ADD A VENUE: append a block below. The picker, the panels, the entrance
+# steps and the structured data all read from here.
+
+ui:
+  where:     { es: "Dónde",            ca: "On",                en: "Where",           ja: "場所" }
+  how_in:    { es: "Cómo entrar",      ca: "Com entrar",        en: "Getting in",      ja: "入口" }
+  schedule:  { es: "Ver los horarios",  ca: "Veure els horaris",
+               en: "See the timetable",  ja: "稽古時間を見る" }
+  directions: { es: "Cómo llegar",      ca: "Com arribar",       en: "Directions",      ja: "行き方" }
+  dir_apple:  { es: "Cómo llegar · Apple Maps", ca: "Com arribar · Apple Maps",
+                en: "Directions · Apple Maps", ja: "行き方・Appleマップ" }
+  dir_google: { es: "Cómo llegar · Google Maps", ca: "Com arribar · Google Maps",
+                en: "Directions · Google Maps", ja: "行き方・Googleマップ" }
+  entrance:  { es: "Acceso",           ca: "Accés",             en: "Entrance",        ja: "入口" }
+  enlarge:   { es: "Ampliar la foto",  ca: "Ampliar la foto",   en: "Enlarge photo",   ja: "写真を拡大" }
+  close:     { es: "Cerrar",           ca: "Tancar",            en: "Close",           ja: "閉じる" }
+
+# ---------------------------------------------------------------------------
+# Maps
+#
+# `maps_url` is Google; `apple_url` is the same place on Apple Maps, which
+# opens the Maps app natively on an iPhone or a Mac rather than a browser tab.
+# Both are rendered — see _includes/directions.html — and a small script hides
+# whichever one is not the reader's platform. With no script, both show.
+#
+# `lat`/`lng` feed the Place JSON-LD. They were read out of the Google links
+# rather than typed, so they are the coordinates the listing itself carries.
+#
+# NOTE: the University of Barcelona still has no coordinates, so it carries no
+# Place JSON-LD. Its Google short link was dead and is now a Maps URL-scheme
+# search; its Apple link is real.
+# ---------------------------------------------------------------------------
+
+venues:
+  - id: aikido-musubi
+    slug: aikido-musubi
+    map_section: aikido_musubi
+    maps_url: "https://g.page/aikidomusubi"
+    apple_url: "https://maps.apple/p/dfbfrqjpcpKB0m"
+    lat: 41.4370303
+    lng: 2.223998
+    logo: "/graphics/logo-00-wordmark.svg"
+    name:
+      es: "Aikido Musubi"
+      ca: "Aikido Musubi"
+      en: "Aikido Musubi"
+      ja: "合気道産靈"
+    town:
+      es: "Badalona"
+      ca: "Badalona"
+      en: "Badalona"
+      ja: "バダロナ"
+    address:
+      es: "Av. d'Alfons XIII, 351<br>08918 Badalona, Barcelona"
+      ca: "Av. d'Alfons XIII, 351<br>08918 Badalona, Barcelona"
+      en: "Av. d'Alfons XIII, 351<br>08918 Badalona, Barcelona"
+      ja: "Av. d'Alfons XIII, 351<br>08918 Badalona, Barcelona"
+    facts:
+      es: ["Parking gratuito", "Abierto de lunes a sábado"]
+      ca: ["Parking gratuït", "Obert de dilluns a dissabte"]
+      en: ["Free parking", "Open Monday to Saturday"]
+      ja: ["駐車場無料", "月〜土営業"]
+    facility:
+      es: "Instalaciones Deportivas Badalona Sur"
+      ca: "Instal·lacions Esportives Badalona Sud"
+      en: "Badalona Sud Sports Facilities"
+      ja: "南バダロナ サッカー球技場"
+    note:
+      es: "El dojo está dentro del recinto deportivo y puede costar encontrarlo. Mira bien el plano y ven con tiempo la primera vez."
+      ca: "El dojo és dins del recinte esportiu i pot costar de trobar. Mira bé el plànol i vine amb temps el primer dia."
+      en: "The dojo is inside the sports complex and can be hard to find. Study the plan and allow extra time on your first visit."
+      ja: "道場は運動施設の敷地内にあり、見つけにくい場所です。地図をご確認のうえ、初回は余裕をもってお越しください。"
+    plan: "access-information-NdxqmVbV-00"
+    # Overlay shapes, as SVG polygon points in % of the image. Traced from the
+    # outlines Juanma drew over the orthophotos, so they follow the actual
+    # footprint rather than a bounding box — the Badalona parking is a triangle.
+    # `label_at` is where the name sits; labels live here rather than baked into
+    # the JPEG, which is what let the four per-language plans become one.
+    areas:
+      - points: "61.4,38.3 65.8,35.0 74.8,46.8 70.4,49.9"
+        label_at: [68.1, 42.5]
+        kind: dojo
+        label: { es: "Aikido Musubi", ca: "Aikido Musubi",
+                 en: "Aikido Musubi", ja: "合気道産靈" }
+      - points: "48.0,78.6 69.5,62.4 61.5,96.4"
+        label_at: [59.7, 80.5]
+        kind: parking
+        label: { es: "Parking gratuito", ca: "Pàrquing gratuït",
+                 en: "Free parking",     ja: "無料駐車場" }
+    entrances:
+      - letter: "A"
+        at: [72.0, 52.0]
+        image: "access-information-NdxqmVbV-00-a"
+        street:
+          es: "Calle Jumilla"
+          ca: "Carrer Jumilla"
+          en: "Jumilla St."
+          ja: "フミージャ通り"
+        desc:
+          es: "Acceso a través de la calle Jumilla."
+          ca: "Accés a través del carrer Jumilla."
+          en: "Access via Jumilla St."
+          ja: "フミージャ通り（Jumilla St.）からアクセス。"
+      - letter: "B"
+        at: [64.0, 72.0]
+        image: "access-information-NdxqmVbV-00-b"
+        street:
+          es: "Calle Jumilla · entrada del parking"
+          ca: "Carrer Jumilla · entrada del pàrquing"
+          en: "Jumilla St. · parking entrance"
+          ja: "フミージャ通り（駐車場入口）"
+        desc:
+          es: "Acceso a través de la entrada del parking en la calle Jumilla."
+          ca: "Accés a través de l'entrada del parking al carrer Jumilla."
+          en: "Access via the parking area on Jumilla St."
+          ja: "フミージャ通りの駐車場入口からアクセス。"
+      - letter: "C"
+        at: [56.0, 26.0]
+        image: "access-information-NdxqmVbV-00-c"
+        street:
+          es: "Passatge de la Ciutat de San Fernando"
+          ca: "Passatge de la Ciutat de San Fernando"
+          en: "Passatge de la Ciutat de San Fernando"
+          ja: "サン・フェルナンド通りの小道"
+        desc:
+          es: "Acceso a través de la puerta pequeña del pasaje."
+          ca: "Accés a través de la porta petita del passatge."
+          en: "Access through the small door in the passage."
+          ja: "小道にある小さな扉からアクセス。"
+
+  - id: sant-adria-de-besos
+    slug: sant-adria-de-besos
+    map_section: sant_adria_de_besos
+    maps_url: "https://maps.app.goo.gl/P1VC1JDquzXWdgXQ8"
+    apple_url: "https://maps.apple/p/HqxcEdEyXCrcsG"
+    lat: 41.4232868
+    lng: 2.2318006
+    logo: "/graphics/logo-ajuntament-sant-adria.png"
+    name:
+      es: "Marina-Besòs"
+      ca: "Marina-Besòs"
+      en: "Marina-Besòs"
+      ja: "マリナ・バゾス"
+    town:
+      es: "Sant Adrià de Besòs"
+      ca: "Sant Adrià de Besòs"
+      en: "Sant Adrià de Besòs"
+      ja: "サント・アドリアー・ダ・バゾス"
+    address:
+      es: "Carrer de Dolores Ibarruri Pasionaria, s/n<br>08930 Sant Adrià de Besòs, Barcelona"
+      ca: "Carrer de Dolores Ibarruri Pasionaria, s/n<br>08930 Sant Adrià de Besòs, Barcelona"
+      en: "Carrer de Dolores Ibarruri Pasionaria, s/n<br>08930 Sant Adrià de Besòs, Barcelona"
+      ja: "Carrer de Dolores Ibarruri Pasionaria, s/n<br>08930 Sant Adrià de Besòs, Barcelona"
+    facts:
+      es: ["Parking gratuito", "Abierto lunes y miércoles"]
+      ca: ["Parking gratuït", "Obert dilluns i dimecres"]
+      en: ["Free parking", "Open Monday and Wednesday"]
+      ja: ["駐車場無料", "月・水営業"]
+    facility:
+      es: "Polideportivo Municipal Marina-Besòs"
+      ca: "Poliesportiu Municipal Marina-Besòs"
+      en: "Marina-Besòs Municipal Sports Center"
+      ja: "マリナ・ベソス市立スポーツセンター"
+    note:
+      es: "El dojo está dentro del polideportivo y puede costar encontrarlo. Mira bien el plano y ven con tiempo la primera vez."
+      ca: "El dojo és dins del poliesportiu i pot costar de trobar. Mira bé el plànol i vine amb temps el primer dia."
+      en: "The dojo is inside the sports centre and can be hard to find. Study the plan and allow extra time on your first visit."
+      ja: "道場はスポーツセンターの施設内にあり、見つけにくい場所です。地図をご確認のうえ、初回は余裕をもってお越しください。"
+    plan: "access-information-NdxqmVbV-01"
+    areas:
+      - points: "44.6,63.5 54.5,48.1 60.7,52.0 50.8,67.6"
+        label_at: [52.7, 57.8]
+        kind: dojo
+        label: { es: "Aikido Musubi", ca: "Aikido Musubi",
+                 en: "Aikido Musubi", ja: "合気道産靈" }
+      - points: "7.3,98.5 14.0,49.9 35.2,64.0 11.1,99.4"
+        label_at: [17.5, 76.0]
+        kind: parking
+        label: { es: "Parking gratuito", ca: "Pàrquing gratuït",
+                 en: "Free parking",     ja: "無料駐車場" }
+    entrances:
+      - letter: "A"
+        at: [46.0, 42.0]
+        image: "access-information-NdxqmVbV-01-a"
+        street:
+          es: "Calle de Dolores Ibarruri Pasionaria"
+          ca: "Carrer de Dolores Ibarruri Pasionaria"
+          en: "Dolores Ibarruri Pasionaria St."
+          ja: "ドロレス・イバルリ・パシオナリア通り"
+        desc:
+          es: "Acceso a través de la calle de Dolores Ibarruri Pasionaria."
+          ca: "Accés a través del carrer de Dolores Ibarruri Pasionaria."
+          en: "Access via Dolores Ibarruri Pasionaria St."
+          ja: "ドロレス・イバルリ・パシオナリア通りからアクセス。"
+      - letter: "B"
+        at: [22.0, 58.0]
+        image: "access-information-NdxqmVbV-01-b"
+        street:
+          es: "Dolores Ibarruri Pasionaria · parking"
+          ca: "Dolores Ibarruri Pasionaria · pàrquing"
+          en: "Dolores Ibarruri Pasionaria · parking"
+          ja: "ドロレス・イバルリ・パシオナリア通り（駐車場）"
+        desc:
+          es: "Acceso al parking en la calle de Dolores Ibarruri Pasionaria."
+          ca: "Accés al parking pel carrer de Dolores Ibarruri Pasionaria."
+          en: "Access to the parking area on Dolores Ibarruri Pasionaria St."
+          ja: "ドロレス・イバルリ・パシオナリア通りの駐車場へのアクセス。"
+
+  - id: cxem-espronceda
+    slug: cxem-espronceda
+    map_section: cxem_espronceda
+    maps_url: "https://maps.app.goo.gl/xE1cHD7zRygTG78z9"
+    apple_url: "https://maps.apple/p/czWeasADhbQc~p"
+    # Read out of the Google listing the short link resolves to, not typed.
+    lat: 41.4167705
+    lng: 2.1897692
+    logo: "/graphics/logo-ajuntament-barcelona.svg"
+    name:
+      es: "CxEM Espronceda"
+      ca: "CxEM Espronceda"
+      en: "CxEM Espronceda"
+      ja: "エスプロンセダ"
+    town:
+      es: "Barcelona"
+      ca: "Barcelona"
+      en: "Barcelona"
+      ja: "バルセロナ"
+    address:
+      es: "C/ Espronceda, 326<br>08027 Barcelona"
+      ca: "C/ Espronceda, 326<br>08027 Barcelona"
+      en: "C/ Espronceda, 326<br>08027 Barcelona"
+      ja: "C/ Espronceda, 326<br>08027 Barcelona"
+    facts:
+      es: ["Abierto lunes y miércoles"]
+      ca: ["Obert dilluns i dimecres"]
+      en: ["Open Monday and Wednesday"]
+      ja: ["月・水営業"]
+    facility:
+      es: "Complejo Deportivo Municipal Espronceda"
+      ca: "Complex Esportiu Municipal Espronceda"
+      en: "Espronceda Municipal Sports Complex"
+      ja: "エスプロンセダ市立スポーツ複合施設"
+    note:
+      es: "Las clases se hacen en la sala de tatami del complejo deportivo. Mira bien el plano y ven con tiempo la primera vez."
+      ca: "Les classes es fan a la sala de tatami del complex esportiu. Mira bé el plànol i vine amb temps el primer dia."
+      en: "Classes are held in the tatami room inside the sports complex. Study the plan and allow extra time on your first visit."
+      ja: "稽古はスポーツ施設内の畳の間で行います。地図をご確認のうえ、初回は余裕をもってお越しください。"
+    plan: "access-information-NdxqmVbV-03"
+    # Traced from the outline Juanma drew over the orthophoto: the corners were
+    # read off the yellow polygon and the green pin by sampling the pixels, not
+    # estimated by eye.
+    areas:
+      - points: "56.2,37.6 65.8,47.0 51.1,61.4 41.8,51.8"
+        label_at: [53.7, 49.5]
+        kind: dojo
+        label: { es: "Sala de tatami", ca: "Sala de tatami",
+                 en: "Tatami room",    ja: "畳の間" }
+    entrances:
+      - letter: "A"
+        at: [39.1, 64.3]
+        image: "access-information-NdxqmVbV-03-a"
+        street:
+          es: "Calle de Espronceda"
+          ca: "Carrer d'Espronceda"
+          en: "Espronceda St."
+          ja: "エスプロンセダ通り"
+        desc:
+          es: "Acceso a través de la entrada principal en la calle de Espronceda."
+          ca: "Accés a través de l'entrada principal al carrer d'Espronceda."
+          en: "Access through the main entrance on Espronceda St."
+          ja: "エスプロンセダ通りの正面入口からアクセス。"
+
+  - id: university-of-barcelona
+    slug: university-of-barcelona
+    map_section: university_of_barcelona
+    # The old short link (maps.app.goo.gl/8CqSPLZqLPBQoLDS6) returns 404. This
+    # is the documented Maps URL scheme instead, which resolves from the name
+    # and cannot rot the way a generated short link does.
+    maps_url: "https://www.google.com/maps/search/?api=1&query=Facultat+de+Dret+Universitat+de+Barcelona"
+    apple_url: "https://maps.apple/p/WpkTJqkJdjE~RE"
+    logo: "/graphics/Logotip_UB.svg"
+    name:
+      es: "Facultat de Dret de la UB"
+      ca: "Facultat de Dret de la UB"
+      en: "Faculty of Law, UB"
+      ja: "バルセロナ大学法学部"
+    town:
+      es: "Universitat de Barcelona"
+      ca: "Universitat de Barcelona"
+      en: "Universitat de Barcelona"
+      ja: "バルセロナ大学"
+    address:
+      es: "Av. Diagonal, 684, Les Corts<br>08034 Barcelona"
+      ca: "Av. Diagonal, 684, Les Corts<br>08034 Barcelona"
+      en: "Av. Diagonal, 684, Les Corts<br>08034 Barcelona"
+      ja: "Av. Diagonal, 684, Les Corts<br>08034 Barcelona"
+    facts:
+      es: ["Abierto lunes y miércoles"]
+      ca: ["Obert dilluns i dimecres"]
+      en: ["Open Monday and Wednesday"]
+      ja: ["月・水営業"]
+    note:
+      es: "Todas las clases se celebran en la sala polivalente «La Capella», dentro de la Facultad de Derecho."
+      ca: "Totes les classes es fan a la sala polivalent «La Capella», dins de la Facultat de Dret."
+      en: "All classes are held in the «La Capella» multipurpose hall, inside the Faculty of Law."
+      ja: "稽古はすべて、法学部内の多目的ホール「La Capella」で行います。"
+    plan: "access-information-NdxqmVbV-02"
+    facility:
+      es: "Facultad de Derecho"
+      ca: "Facultat de Dret"
+      en: "Faculty of Law"
+      ja: "法学部"
+    areas:
+      - points: "64.9,50.3 72.2,47.6 74.3,53.2 66.8,56.2"
+        label_at: [69.6, 51.8]
+        kind: dojo
+        label: { es: "«La Capella»", ca: "«La Capella»",
+                 en: "«La Capella»",  ja: "「La Capella」" }
+    entrances:
+      - letter: "A"
+        at: [73.1, 77.1]
+        image: "access-information-NdxqmVbV-02-a"
+        street:
+          es: "Entrada principal de la Facultad de Derecho"
+          ca: "Entrada principal de la Facultat de Dret"
+          en: "Faculty of Law main entrance"
+          ja: "法学部 正面入口"
+        desc:
+          es: "Sube la escalinata hasta la entrada principal; «La Capella» está dentro del edificio."
+          ca: "Puja l'escalinata fins a l'entrada principal; «La Capella» és dins de l'edifici."
+          en: "Up the steps to the main entrance; «La Capella» is inside the building."
+          ja: "階段を上がって正面入口へ。「La Capella」は建物の中にあります。"

@@ -5,6 +5,15 @@ title_en: "Francesc Castellanos 5th Dan Aikikai"
 title_es: "Francesc Castellanos 5.º Dan Aikikai"
 title_ja: "フランセスク・カステヤノス 五段 合気会"
 
+instructor_ca: "Francesc Castellanos"
+grade_ca: "5è dan Aikikai"
+instructor_en: "Francesc Castellanos"
+grade_en: "5th dan Aikikai"
+instructor_es: "Francesc Castellanos"
+grade_es: "5.º dan Aikikai"
+instructor_ja: "フランセスク・カステヤノス"
+grade_ja: "五段 合気会"
+
 desc_ca: >-
   El proper dissabte 25 de maig tenim el plaer d'acollir al nostre dojo les molt esperades jornades d'Aikido a càrrec de Francesc Castellanos 5è dan Aikikai.
 desc_en: >-

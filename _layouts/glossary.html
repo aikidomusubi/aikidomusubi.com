@@ -1,0 +1,104 @@
+{% include header.html %}
+
+<main id="main" tabindex="-1">
+
+  {% include section-strip.html %}
+  {%- comment -%}
+    Glosario.
+
+    Every entry comes from _data/glossary.yml. The page is rendered whole and
+    filtered in the browser: 123 entries is small enough that shipping all of
+    them costs less than a round trip, and it means the page works, and is
+    indexable, with JavaScript off. The search box and the chips are the only
+    things that need the script, and both are hidden until it runs.
+
+    The order is the one in the data — where you meet a word, not the
+    alphabet. Search is what covers the case where you already know the word.
+  {%- endcomment -%}
+  {%- assign L = page.lang | default: 'es' -%}
+  {%- assign G = site.data.glossary -%}
+  {%- assign total = 0 -%}
+  {%- for c in G.cats %}{% assign total = total | plus: c.terms.size %}{% endfor -%}
+  {%- assign lede = G.ui.lede[L] | replace: 'COUNT', total -%}
+
+  {%- assign ph_t = G.ui.title[L] -%}
+  {% include page-head.html title=ph_t lede=lede %}
+
+  {%- comment -%}
+    The bar is sticky under the nav, not under the viewport: the site's own
+    header is already there, and `top: 0` would slide this underneath it.
+    It carries hidden until the script runs, because a search box that does
+    nothing is worse than no search box.
+  {%- endcomment -%}
+  {%- comment -%}
+    The bar and the entries share a wrapper so the sticky release has an edge
+    to release at — see the note in styles/glossary.less. Without it the bar
+    stays pinned over the footer, where there is nothing left to filter.
+  {%- endcomment -%}
+  <div class="gl-wrap">
+  <div class="gl-bar" data-gl-bar hidden>
+    <div class="gl-bar-in">
+      <div class="gl-search">
+        <input id="gl-q" type="search" autocomplete="off"
+               placeholder="{{ G.ui.search[L] }}" aria-label="{{ G.ui.search_lab[L] }}">
+        <button type="button" data-gl-clear>{{ G.ui.clear[L] }}</button>
+      </div>
+      <div class="gl-chips" role="group" aria-label="{{ G.ui.filters[L] }}">
+        <button type="button" data-cat="all" data-on aria-pressed="true">{{ G.ui.all[L] }}</button>
+        {%- for c in G.cats %}
+        <button type="button" data-cat="{{ c.id }}" aria-pressed="false">{{ c.name[L] }} <i>{{ c.terms.size }}</i></button>
+        {%- endfor %}
+      </div>
+      <p class="gl-count" data-gl-count aria-live="polite">{{ total }} {{ G.ui.entries[L] }}</p>
+    </div>
+  </div>
+  {%- comment -%}
+    Un-hidden HERE, during parse, and not by the deferred script.
+
+    The bar ships `hidden` because a search box that does nothing is worse than
+    no search box. Revealing it from a deferred script meant it appeared after
+    the first paint and pushed the list down — 0.058 of layout shift on the one
+    page that shifts at all. Three lines inline, immediately after the element,
+    run before anything is painted, so there is nothing to shift.
+
+    With JavaScript off this never runs and the bar stays hidden, which is the
+    whole point of shipping it that way.
+  {%- endcomment -%}
+  <script>(function(){var b=document.querySelector('[data-gl-bar]');if(b)b.hidden=false;}());</script>
+
+  <div class="gl">
+    {%- for c in G.cats %}
+    <section class="gl-grp" id="gl-{{ c.id }}" data-cat="{{ c.id }}">
+      <div class="gl-gh"><h2>{{ c.name[L] }}</h2><span>{{ c.sub[L] }}</span></div>
+      {%- comment -%}
+        The row count, so the grid does not have to balance itself. See the
+        note in styles/glossary.less: `columns: 2` cost 557 ms of layout on a
+        throttled phone. Half the terms, rounded up.
+      {%- endcomment -%}
+      {%- assign rows = c.terms.size | plus: 1 | divided_by: 2 -%}
+      <div class="gl-list" style="--rows: {{ rows }}">
+        {%- for t in c.terms -%}
+        {%- comment -%}
+          The haystack has to be escaped: several definitions contain a double
+          quote, which would close the attribute and swallow the rest of the
+          entry. The parser hands the script back the original text.
+        {%- endcomment -%}
+        {%- assign plain = t.d[L] | strip_html -%}
+        {%- capture hay %}{{ t.k }} {{ t.r }} {{ plain }}{% endcapture -%}
+        <div class="gl-t" data-cat="{{ c.id }}" data-s="{{ hay | escape }}">
+          <p class="gl-k" lang="ja">{{ t.k }}</p>
+          <div>
+            <p class="gl-r">{{ t.r }}</p>
+            <p class="gl-d">{{ t.d[L] }}</p>
+          </div>
+        </div>
+        {%- endfor %}
+      </div>
+    </section>
+    {%- endfor %}
+    <p class="gl-empty" data-gl-empty hidden>{{ G.ui.empty[L] }}</p>
+  </div>
+  </div><!-- .gl-wrap -->
+</main>
+
+{% include footer.html %}

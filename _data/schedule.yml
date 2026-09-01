@@ -119,6 +119,14 @@ ui:
     ja: "お使いのカレンダーアプリ（Apple、Google、Outlook など）で開きます。購読すると自動で更新されます。"
 
 locations:
+  # THREE NAMES, and they answer three different questions.
+  #
+  #   name   the room, and what the timetable's venue filter lists.
+  #   abbr   the same, short enough for Ura's twenty-one day strip.
+  #   city   where it is. The Classes page lists cities and not rooms, so the
+  #          two Barcelona rooms collapse into one entry there. Nowhere else
+  #          uses it, and nothing else should have to know that CxEM Espronceda
+  #          and the Faculty of Law are the same town.
   - id: musubi
     slug: aikido-musubi
     name:
@@ -131,43 +139,78 @@ locations:
       ca: "Aikido Musubi"
       en: "Aikido Musubi"
       ja: "合気道産靈"
+    city:
+      es: "Badalona"
+      ca: "Badalona"
+      en: "Badalona"
+      ja: "バダロナ"
   - id: sant-adria
     slug: sant-adria-de-besos
     name:
+      es: "Marina-Besòs"
+      ca: "Marina-Besòs"
+      en: "Marina-Besòs"
+      ja: "マリナ・バゾス"
+    abbr:
+      es: "Marina-Besòs"
+      ca: "Marina-Besòs"
+      en: "Marina-Besòs"
+      ja: "マリナ・バゾス"
+    city:
       es: "Sant Adrià de Besòs"
       ca: "Sant Adrià de Besòs"
       en: "Sant Adrià de Besòs"
-      ja: "サント・アドリアー・ダ・バゾス"
+      ja: "サント・アドリア・ダ・バゾス"
+  - id: espronceda
+    slug: cxem-espronceda
+    name:
+      es: "CxEM Espronceda"
+      ca: "CxEM Espronceda"
+      en: "CxEM Espronceda"
+      ja: "エスプロンセダ"
     abbr:
-      es: "Sant Adrià de B."
-      ca: "Sant Adrià de B."
-      en: "Sant Adrià de B."
-      ja: "Sant Adrià de B."
+      es: "CxEM Espronceda"
+      ca: "CxEM Espronceda"
+      en: "CxEM Espronceda"
+      ja: "エスプロンセダ"
+    city:
+      es: "Barcelona"
+      ca: "Barcelona"
+      en: "Barcelona"
+      ja: "バルセロナ"
   - id: ub
     slug: university-of-barcelona
     name:
-      es: "Universidad de Barcelona"
+      es: "Universitat de Barcelona"
       ca: "Universitat de Barcelona"
-      en: "University of Barcelona"
+      en: "Universitat de Barcelona"
       ja: "バルセロナ大学"
     abbr:
       es: "UB"
       ca: "UB"
       en: "UB"
       ja: "UB"
+    city:
+      es: "Barcelona"
+      ca: "Barcelona"
+      en: "Barcelona"
+      ja: "バルセロナ"
 
+# Activity colours. Sanzo Wada, like the rest of the palette: Eugenia Red,
+# Dark Greenish Glaucous, Light Glaucous Blue and Naples Yellow. The previous
+# set were macOS system colours with no equivalent in the dictionary.
 categories:
   - id: aikido
-    color: "#FF7E79"
+    color: "#E2625E"
     name: { es: "Aikido",   ca: "Aikido",   en: "Aikido",   ja: "合気道" }
   - id: iaijutsu
-    color: "#94FF94"
+    color: "#B7C2A9"
     name: { es: "Iaijutsu", ca: "Iaijutsu", en: "Iaijutsu", ja: "居合術" }
   - id: judo
-    color: "#76D6FF"
+    color: "#A5C8D1"
     name: { es: "Judo",     ca: "Judo",     en: "Judo",     ja: "柔道" }
   - id: karate
-    color: "#FFE600"
+    color: "#FBE6A0"
     name: { es: "Karate",   ca: "Karate",   en: "Karate",   ja: "空手" }
 
 # Reusable level labels, so the four translations are written once rather than
@@ -180,34 +223,98 @@ levels:
   - id: weapons
     name: { es: "Armas",             ca: "Armes",            en: "Weapons",    ja: "武器" }
 
+# Who teaches what.
+#
+# Referenced by id from the classes below, so a name is written once. Nothing
+# renders these yet — they are here so the timetable and the classes page can
+# both draw on one list when we decide where instructors belong.
+#
+# `name` is a plain string for a person, because a proper noun is the same in
+# all four languages. The one exception carries a per-language map instead,
+# because it describes a position rather than a person.
+#
+# ORDER MATTERS WHERE THESE ARE LISTED. The dojo lists its instructors by rank,
+# and `rank` below records that order so a new list can be written correctly
+# without asking. It is documentation, not a sort key: the lists in
+# _data/classes.yml are authored in their intended order and rendered in it,
+# because at least one of them departs from the ranking on purpose (the
+# iaijutsu list leads with the Ryūshin Shōchi-ryū instructor).
+# NAMES CARRY A `ja`. The Japanese timetable was printing "P. Martín" and
+# "J.M. Pérez" in the Latin alphabet in the middle of a Japanese page; every
+# other proper noun on the site is transliterated. `name` stays the short Latin
+# form the grid is laid out for, and `ja` is the katakana that replaces it on
+# /ja/ pages. See _includes/schedule.html and _includes/ura.html for the lookup.
+#
+# The katakana is Juanma's own, not a transliteration invented here.
+instructors:
+  - { id: sancho,     name: "A. Sancho",  ja: "アルベルト　サンチョ",       rank: 4 }
+  - { id: martin,     name: "P. Martín",  ja: "パブロ　マルティン",         rank: 1 }
+  - { id: perez,      name: "J.M. Pérez", ja: "フアンマ　ペレス",           rank: 5 }
+  - { id: fortes,     name: "P. Fortes",  ja: "ペドロ　フォルテス",         rank: 2 }
+  - { id: villar,     name: "A. Villar",  ja: "アンドレウ　ビヤル",         rank: 6 }
+  # Joan Manel has no class of his own yet, so he is here without a `rank`:
+  # the rank only orders the people who appear in the timetable legend.
+  - { id: molina-jm,  name: "J. M. Molina", ja: "ジョアン・マネル　モリナ" }
+  - { id: zheng,      name: "G. Zheng",   ja: "グアンロン　ジェン",         rank: 7 }
+  - { id: mikhaylov,  name: "D. Mikhaylov", ja: "ダニール　ミハイロフ",     rank: 8 }
+  - { id: zafra,      name: "J.L. Zafra", ja: "ホセ・ルイス　サフラ",       rank: 3 }
+  - { id: serra,      name: "X. Serra" }
+  # A different Molina from the aikido one above, and the reason that one is
+  # `molina-jm`: this id was here first, for judo.
+  - { id: molina,     name: "A. Molina" }
+  - { id: llorens,    name: "P. Llorens" }
+  - id: trainee
+    name:
+      es: "Instructor en formación"
+      ca: "Instructor en formació"
+      en: "Instructor in training"
+      ja: "指導者研修中"
+
 classes:
   # ---- Aikido Musubi (the dojo) ----
-  - { category: aikido,   location: musubi,     level: all,       days: [tue, thu], start: "18:30", end: "19:30" }
-  - { category: aikido,   location: musubi,     level: beginners, days: [tue],      start: "19:30", end: "20:30" }
-  - { category: aikido,   location: musubi,     level: weapons,   days: [thu],      start: "19:30", end: "20:30" }
-  - { category: aikido,   location: musubi,     level: all,       days: [tue, thu], start: "20:30", end: "21:30" }
-  - { category: aikido,   location: musubi,     level: beginners, days: [wed],      start: "20:00", end: "20:45" }
-  # Wednesday only. Monday's 20:45–21:30 Aikido was withdrawn; the Monday
-  # Iaijutsu class below now runs through that slot instead.
-  - { category: aikido,   location: musubi,     level: all,       days: [wed],      start: "20:45", end: "21:30" }
-  - { category: aikido,   location: musubi,     level: all,       days: [fri],      start: "19:00", end: "20:00" }
-  - { category: aikido,   location: musubi,     level: all,       days: [sat],      start: "07:30", end: "09:00" }
+  - { category: aikido,   location: musubi,     level: all,       days: [tue, thu], start: "18:30", end: "19:30", instructor: sancho }
+  - { category: aikido,   location: musubi,     level: beginners, days: [tue],      start: "19:30", end: "20:30", instructor: martin }
+  - { category: aikido,   location: musubi,     level: weapons,   days: [thu],      start: "19:30", end: "20:30", instructor: martin }
+  # Split from one two-day entry because the teacher differs by day. The
+  # rendered timetable is unchanged — it draws each day separately anyway.
+  - { category: aikido,   location: musubi,     level: all,       days: [tue],      start: "20:30", end: "21:30", instructor: trainee }
+  - { category: aikido,   location: musubi,     level: all,       days: [thu],      start: "20:30", end: "21:30", instructor: martin }
+  # One 90-minute class, not the two consecutive 45-minute ones (beginners
+  # 20:00-20:45, all levels 20:45-21:30) that used to sit here. Same teacher,
+  # same room, same total time.
+  - { category: aikido,   location: musubi,     level: all,       days: [wed],      start: "20:00", end: "21:30", instructor: perez }
+  - { category: aikido,   location: musubi,     level: all,       days: [fri],      start: "19:00", end: "20:00", instructor: fortes }
+  - { category: aikido,   location: musubi,     level: all,       days: [sat],      start: "07:30", end: "09:00", instructor: villar }
 
-  - { category: iaijutsu, location: musubi,     level: all,       days: [mon],      start: "20:00", end: "21:30" }
-  # Once a month, not weekly. `frequency` keeps it out of the weekly grid — a
-  # block drawn every Saturday would be wrong three weeks in four, and it also
-  # collided with the Aikido class above it — and lists it underneath instead.
-  - { category: iaijutsu, location: musubi,     level: all,       days: [sat],      start: "08:00", end: "10:00", frequency: monthly }
+  - { category: iaijutsu, location: musubi,     level: all,       days: [mon],      start: "20:00", end: "21:30", instructor: zafra }
+  # THE MONTHLY SATURDAY IAIJUTSU SESSION IS NOT HERE, AND THAT IS DELIBERATE.
+  #
+  # It used to sit here as `frequency: monthly`, which kept it out of the
+  # weekly grid on /horarios/ but not out of everything else: Ura's twenty-one
+  # day strip tests `c.days contains day` and drew it on EVERY Saturday, and
+  # schedule-ics.html turned it into `RRULE:FREQ=MONTHLY;BYDAY=1SA`, promising
+  # subscribers the first Saturday of every month for ever. Neither is true.
+  # The session runs when a date is set for it, and the next one is not set.
+  #
+  # So it is announced by date in _data/calendar.yml, as an `extra`, the same
+  # way the grading class is. Nothing recurring, nothing to go stale, and the
+  # calendar is the single place that says when it is on. The Classes page
+  # says as much in `schedule_note` in _data/classes.yml.
 
-  - { category: judo,     location: musubi,     level: all,       days: [mon, wed], start: "18:30", end: "20:00" }
+  - { category: judo,     location: musubi,     level: all,       days: [mon, wed], start: "18:30", end: "20:00", instructor: molina }
 
-  - { category: karate,   location: musubi,     level: all,       days: [tue],      start: "21:30", end: "22:30" }
-  - { category: karate,   location: musubi,     level: all,       days: [fri],      start: "20:00", end: "21:00" }
-  - { category: karate,   location: musubi,     level: all,       days: [sat],      start: "11:00", end: "13:00" }
+  - { category: karate,   location: musubi,     level: all,       days: [tue],      start: "21:30", end: "22:30", instructor: llorens }
+  - { category: karate,   location: musubi,     level: all,       days: [fri],      start: "20:00", end: "21:00", instructor: llorens }
+  - { category: karate,   location: musubi,     level: all,       days: [sat],      start: "11:00", end: "13:00", instructor: llorens }
 
   # ---- Sant Adrià de Besòs ----
-  - { category: aikido,   location: sant-adria, level: all,       days: [mon],      start: "20:00", end: "21:00" }
-  - { category: aikido,   location: sant-adria, level: all,       days: [wed],      start: "20:15", end: "21:15" }
+  - { category: aikido,   location: sant-adria, level: all,       days: [mon],      start: "20:00", end: "21:00", instructor: zheng }
+  - { category: aikido,   location: sant-adria, level: all,       days: [wed],      start: "20:15", end: "21:15", instructor: zheng }
+
+  # ---- Barcelona · CxEM Espronceda ----
+  # In the tatami room of the municipal sports complex, both days the same hour
+  # and the same teacher.
+  - { category: aikido,   location: espronceda, level: all,       days: [mon, wed], start: "20:00", end: "21:00", instructor: mikhaylov }
 
   # ---- Universidad de Barcelona ----
-  - { category: aikido,   location: ub,         level: beginners, days: [mon, wed], start: "19:00", end: "20:00" }
+  - { category: aikido,   location: ub,         level: beginners, days: [mon, wed], start: "19:00", end: "20:00", instructor: martin }

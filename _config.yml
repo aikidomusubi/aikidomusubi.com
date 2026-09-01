@@ -46,52 +46,63 @@ collections:
   events:
     output: false
     layout: "event"
-  photos:
-    output: true
-    layout: "photo"
+  elsewhere:
+    output: false
+    layout: "elsewhere"
   videos:
     output: false
     layout: "video"
 
-defaults:
-  - scope:
-      path: "photos"
-      type: "photos"
-    values:
-      image: true
-
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
-# Only two asset files are actually served: styles/all.min.css and
-# scripts/all.min.js. Everything Gulp consumes to build them is excluded
-# here, as are the build/tooling files. glightbox.* is deliberately NOT
-# excluded — the courses page loads it directly rather than via the bundle.
-# Which training-schedule renderer to use.
-#
-#   native       build-time timetable from _data/schedule.yml (no dependency)
-#   fullcalendar the previous FullCalendar 4.3.1 implementation
-#
-# Both are present so they can be compared side by side. Flip this to roll
-# back; nothing in plugins/fullcalendar-4.3.1/, _includes/fullcalendar.html or
-# the training-schedule-*.json files has been removed.
-schedule_engine: native
+# What ships is the built bundles: styles/all.min.css, scripts/all.min.js and
+# the per-page ones beside them. Everything Gulp consumes to build them is
+# excluded here, as are the build/tooling files. glightbox.* is deliberately
+# NOT excluded — the Seminars page loads it on the first poster click rather
+# than through the bundle.
 
 exclude:
-  # Gulp inputs, bundled into all.min.js / all.min.css
-  - scripts/default.js
-  - scripts/schedule.js
-  - scripts/calendar.js
-  - scripts/bootstrap.bundle.min.js
-  - scripts/bootstrap.bundle.min.js.map
-  - styles/base.less
-  - styles/default.less
-  - styles/schedule.less
-  - styles/calendar.less
-  - styles/bootstrap.min.css
-  - styles/bootstrap.min.css.map
-  # Unminified build output, kept locally for debugging only
-  - scripts/all.js
+  - docs
+
+  # Working files. `temp/` held the two source posters for the July masterclass
+  # and the UB course — 8 MB of print-resolution PNG, copied straight into
+  # _site and bound for production, because Jekyll publishes any directory it
+  # is not told to skip. `check-assets` did not catch it: it looks for .less
+  # and unminified .js, not for stray source images.
+  - temp
+
+  # GULP INPUTS — never served.
+  #
+  # This was a hand-written list of every source file, and it drifted: every
+  # stylesheet and script added after it was written kept leaking into _site.
+  # At the last count that was 65 KB of .less and unminified .js deployed to
+  # production. Globs instead of names, so a new source file is covered the
+  # moment it is created. `npx gulp build` fails if anything slips through —
+  # see `check-assets` in gulpfile.js.
+  - "styles/*.less"
+  - "styles/bootstrap.min.css"
+  - "styles/bootstrap.min.css.map"
+  #
+  # The scripts are still named one by one, and it still drifts: glossary.js
+  # shipped to _site on its first build. `exclude: "scripts/*.js"` plus
+  # `include: "scripts/*.min.js"` does NOT work — Jekyll's include? does not
+  # rescue a glob-excluded file, and the result is a site with no scripts at
+  # all, which `check-assets` now also refuses to let past. The real fix is to
+  # move the sources under scripts/src/ so one glob covers them for good.
+  - "scripts/default.js"
+  - "scripts/schedule.js"
+  - "scripts/calendar.js"
+  - "scripts/fees.js"
+  - "scripts/gallery.js"
+  - "scripts/press.js"
+  - "scripts/seminars.js"
+  - "scripts/nav.js"
+  - "scripts/ura.js"
+  - "scripts/notfound.js"
+  - "scripts/glossary.js"
+  - "scripts/resources.js"
+
   # Tooling and repo files
   - _includes/cssrelpreload.js
   - assets/

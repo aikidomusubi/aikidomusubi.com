@@ -5,6 +5,15 @@ title_en: "Arturo Fernández 4th Dan Aikikai"
 title_es: "Arturo Fernández 4.º Dan Aikikai"
 title_ja: "アルトゥーロ・フェルナンデス 四段 合気会"
 
+instructor_ca: "Arturo Fernández"
+grade_ca: "4t dan Aikikai"
+instructor_en: "Arturo Fernández"
+grade_en: "4th dan Aikikai"
+instructor_es: "Arturo Fernández"
+grade_es: "4.º dan Aikikai"
+instructor_ja: "アルトゥーロ・フェルナンデス"
+grade_ja: "四段 合気会"
+
 desc_ca: >-
   El proper dissabte 20 de gener tenim el plaer d'acollir al nostre dojo les molt esperades jornades d'Aikido a càrrec d'Arturo Fernández 4t dan Aikikai.
 desc_en: >-

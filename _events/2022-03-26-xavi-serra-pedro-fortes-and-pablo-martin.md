@@ -5,6 +5,11 @@ title_en: "Xavi Serra, Pedro Fortes, and Pablo Martín"
 title_es: "Xavi Serra, Pedro Fortes, y Pablo Martín"
 title_ja: "チャビ・セッラ、ペドロ・フォルテス、パブロ・マルティン"
 
+instructor_ca: "Xavi Serra, Pedro Fortes, i Pablo Martín"
+instructor_en: "Xavi Serra, Pedro Fortes, and Pablo Martín"
+instructor_es: "Xavi Serra, Pedro Fortes, y Pablo Martín"
+instructor_ja: "チャビ・セッラ、ペドロ・フォルテス、パブロ・マルティン"
+
 desc_ca: >-
   El proper dissabte 26 de març tenim el plaer d'acollir en el nostre dojo la molt esperada classe especial a càrrec de Xavi Serra (5è dan Aikikai), Pedro Fortes (4t dan Aikikai), i Pablo Martín (3r dan Aikikai).
 desc_en: >-

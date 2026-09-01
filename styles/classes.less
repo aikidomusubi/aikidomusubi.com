@@ -1,0 +1,360 @@
+// out: false
+//
+// ---------------------------------------------------------------------------
+// Classes
+//
+// Three tiers of prominence, matching what the disciplines actually are:
+//
+//   principal  Aikido — the dojo's own practice. Full width, tinted panel,
+//              its own programmes nested inside.
+//   own        Iaijutsu — also taught by us. A single band.
+//   guest      Judo and Karate — independent clubs on our mat. A quieter pair,
+//              side by side, with their own contact.
+//
+// No times anywhere. Every day and dojo shown is derived from
+// _data/schedule.yml by the layout, so this page cannot contradict the
+// timetable the way its hand-typed predecessor did.
+// ---------------------------------------------------------------------------
+
+// Category colour comes in as --cl-colour from _data/schedule.yml, per block.
+// The fallback is only there so a discipline added without a matching category
+// still draws a rule rather than nothing.
+@cl-line: fadeout(@Black, 90%);
+@cl-mute: lighten(@Dark, 18%);   // 5.9:1 on white
+
+.classes { margin: 0 0 3rem; }
+
+// ---- group headings --------------------------------------------------------
+.cl-group {
+  .NotoSans; .bold;
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  margin: 2.4rem 0 1.1rem !important;
+  font-size: .7rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: fadeout(@Black, 30%);   // 6.9:1 — 45% measured 4.11:1 at 11.2px
+
+  &::after { content: ""; flex: 1; height: 1px; background: @cl-line; }
+}
+
+// ---- a discipline ----------------------------------------------------------
+.cl-block {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.3rem;
+  margin: 0 0 2rem;
+}
+
+.cl-media picture { display: block; }
+
+// text-align because the site centres every heading inside main, which is right
+// for a page title and wrong for a discipline sitting beside its photograph.
+.cl-name {
+  .NotoSans; .bold;
+  margin: 0 0 .1rem;
+  padding: 0;
+  font-size: 1.4rem;
+  line-height: 1.15;
+  text-align: left;
+  color: @Black;
+}
+
+.cl-jp {
+  margin: 0 0 .8rem !important;
+  font-size: .86rem;
+  color: @cl-mute;
+}
+
+.cl-text {
+  margin: 0 0 .7rem !important;
+  font-size: .92rem;
+  line-height: 1.62;
+  color: @Dark;
+}
+
+// The derived line. Deliberately plain: it is a summary, and the timetable
+// button beside it is where the actual hours live.
+// One line, set off by a rule rather than a box. Same three derived facts, but
+// it reads as part of the text instead of as a widget parked inside it.
+.cl-when {
+  margin: .5rem 0 1rem !important;
+  padding: .1rem 0 .1rem .9rem;
+  border-left: 2px solid @Accent;
+  font-size: .86rem;
+  line-height: 1.6;
+  color: @Black;
+
+  > b { .bold; }
+}
+
+.cl-who {
+  margin: 0 0 .8rem !important;
+  font-size: .8rem;
+  line-height: 1.5;
+  color: @cl-mute;
+
+  > b { .bold; color: @Black; }
+}
+
+.cl-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: 0 !important;
+}
+
+.cl-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.5rem;
+  padding: .5rem 1rem;
+  border: 1px solid @Accent;
+  border-radius: .25rem;
+  background-color: @Accent;
+  color: @White;
+  .NotoSans; .bold;
+  font-size: .83rem;
+  text-decoration: none;
+  transition: background-color .2s ease;
+}
+
+.cl-btn-o { background-color: @White; color: @Black; border-color: @cl-line; }
+
+// Names which discipline a generic "Contact" leads to, for a screen reader and
+// for Google's link-text audit — otherwise there are two identical ones.
+.cl-sr {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// ---- the principal discipline ----------------------------------------------
+.cl-block[data-tier="principal"] {
+  padding: 1.5rem;
+  border: 1px solid @cl-line;
+  border-top: 5px solid var(--cl-colour, @cl-line);
+  border-radius: .375rem;
+  background-color: fadeout(@Black, 98.5%);
+  margin-bottom: 2.6rem;
+
+  .cl-name { font-size: 1.9rem; }
+  .cl-text { font-size: .97rem; }
+}
+
+// The other three carry the same category rule, thinner. The tier hierarchy is
+// already doing its work through size, image and layout; the colour is the
+// site's key for what a discipline is, the same one the timetable and the
+// calendar use, so applying it to one discipline out of four made the other
+// three look unlabelled rather than quieter.
+.cl-block[data-tier="own"],
+.cl-block[data-tier="guest"] {
+  border-top: 3px solid var(--cl-colour, @cl-line);
+  padding-top: 1.15rem;
+}
+
+// ---- programmes ------------------------------------------------------------
+.cl-progs {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: .85rem;
+  margin: 1.5rem 0 0;
+  padding-top: 1.4rem;
+  border-top: 1px solid @cl-line;
+}
+
+.cl-prog {
+  padding: .9rem 1rem;
+  border: 1px solid @cl-line;
+  border-radius: .3rem;
+  background-color: @White;
+
+  // Suspended, not deleted: the copy still explains what the class is, because
+  // a parent reading this wants to know whether it is worth waiting for.
+  &.is-suspended {
+    background-color: fadeout(@Black, 98%);
+    border-style: dashed;
+
+    .cl-prog-name, .cl-prog-text { color: @cl-mute; }
+  }
+}
+
+.cl-prog-name {
+  .NotoSans; .bold;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: 0 0 .3rem;
+  padding: 0;
+  font-size: .97rem;
+  line-height: 1.25;
+  color: @Black;
+}
+
+.cl-prog-text {
+  margin: 0 0 .5rem !important;
+  font-size: .86rem;
+  line-height: 1.55;
+  color: @Dark;
+}
+
+.cl-badge {
+  .NotoSans; .bold;
+  font-size: .62rem;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  padding: .16rem .45rem;
+  border-radius: .2rem;
+  background-color: fadeout(@Accent, 91%);
+  color: @Accent;
+  white-space: nowrap;
+
+  // 7.83:1 on its own tint — the suspended state has to stay readable, since
+  // it is the one label on the page a reader most needs to notice. Both halves
+  // are shades of @Rust now; they used to be two hand-written browns.
+  &.is-off { background-color: @RustTint; color: @RustInk; }
+}
+
+// ---- first class -----------------------------------------------------------
+.cl-first {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.1rem;
+  margin: 2.4rem 0 0;
+  padding-top: 1.6rem;
+  border-top: 1px solid @cl-line;
+
+  > h2 {
+    .NotoSans; .bold;
+    grid-column: 1 / -1;
+    margin: 0;
+    padding: 0;
+    font-size: 1.05rem;
+    text-align: left;
+    color: @Black;
+  }
+}
+
+.cl-step {
+  border-left: 3px solid @Accent;
+  padding-left: .8rem;
+
+  > b { .bold; display: block; font-size: .88rem; margin-bottom: .15rem; color: @Black; }
+  > span { display: block; font-size: .82rem; line-height: 1.5; color: @Dark; }
+}
+
+// ---- the site's prose rules ------------------------------------------------
+// `.page main img { width: 100% }` is written at (0,2,5)
+// and beats any single-class rule, which is what let the venue thumbnails
+// render at their natural size. Matching that depth is what fixes it.
+.page main {
+
+  // The site centres every heading inside main. Right for a page title, wrong
+  // for a discipline beside its photograph — and it has to be undone at this
+  // depth, because `.page main h2` is (0,2,4) and a bare
+  // `.cl-name` is (0,1,0). The font-size above wins only because it sits on a
+  // compound selector; text-align did not, which is why the names stayed
+  // centred after the first attempt.
+  .cl-name,
+  .cl-first > h2 { text-align: left; }
+
+  // The site gives every <picture> inside main a 3rem bottom margin, which put
+  // 48px of dead space under each photo — the same rule venues.less has to zero
+  // out for the entrance thumbnails.
+  .cl-media picture { display: block; margin: 0; }
+
+  .cl-media img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: .3rem;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+  }
+
+  // Filling the column is a two-column idea. In one column there is no text
+  // beside the photo to match, and `height: 100%` of an auto row just made the
+  // hero shot tall and portrait-cropped on a phone.
+  @media (min-width: 992px) {
+    .cl-block[data-tier="principal"] .cl-media,
+    .cl-block[data-tier="principal"] .cl-media picture { height: 100%; }
+
+    .cl-block[data-tier="principal"] .cl-media img {
+      height: 100%;
+      aspect-ratio: auto;
+      min-height: 16rem;
+    }
+  }
+
+  // The page sets every link inside main as prose — @Black, underlined, flooded
+  // with @Yellow on hover. All three are wrong on a button, and the colour is
+  // not cosmetic: the prose rule would paint the label @Black on an @Accent
+  // fill, which is now the same colour. It has to be restated at this depth
+  // because the prose rule outranks a bare `.cl-btn`.
+  .cl-btn {
+    color: @White;            // 18.6:1 on @Accent
+    text-decoration: none;
+
+    &:hover, &:focus, &:active { text-decoration: none; background-color: @Accent; color: @White; }
+  }
+
+  .cl-btn-o {
+    color: @Black;            // 16.9:1 on white
+
+    &:hover, &:focus, &:active { background-color: @White; color: @Black; }
+  }
+
+}
+
+// ---- wider -----------------------------------------------------------------
+@media (min-width: 992px) {
+  .cl-block {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+    align-items: start;
+  }
+
+  // The principal block runs its photo and text side by side, then spans the
+  // programmes across the full width underneath. `.cl-progs` is a direct child
+  // of the block for exactly that reason — nested inside .cl-body it was a
+  // grandchild of the grid and `grid-column` did nothing, which left the four
+  // cards squeezed into the text column.
+  .cl-block[data-tier="principal"] {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+
+    // The photo fills its column rather than sitting at its natural height and
+    // leaving a hole beneath it.
+    .cl-media { align-self: stretch; }
+
+    .cl-progs { grid-column: 1 / -1; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  .cl-block .cl-progs { grid-column: 1 / -1; }
+
+  // Judo and Karate sit side by side, each stacked, so the pair reads as one
+  // quieter row rather than two more full-width bands.
+  .cl-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.8rem;
+
+    .cl-block { grid-template-columns: 1fr; margin-bottom: 0; }
+  }
+
+  .cl-first { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cl-btn { transition: none; }
+}
+
+@media print {
+  .cl-actions, .cl-media { display: none; }
+  .cl-block { break-inside: avoid; }
+}

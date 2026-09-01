@@ -1,0 +1,177 @@
+{%- comment -%}
+  The home page. Renders _data/home.yml, which holds the four languages of
+  every string. The four index.md files are stubs that call this.
+
+  Section order is the file's order. Adding a section is a block of YAML, not
+  four Markdown edits.
+{%- endcomment -%}
+{%- assign L = page.lang -%}
+{%- assign H = site.data.home -%}
+
+<div class="hm">
+
+  <header class="hm-top">
+    <p class="hm-kanji" lang="ja">産靈</p>
+    <h1>{{ H.hero.title[L] }}</h1>
+    <p class="hm-lede">{{ H.hero.lede[L] }}</p>
+    <hr>
+  </header>
+
+  {%- for s in H.sections %}
+  <section class="hm-sec" id="{{ page.i18n-ref }}-{{ s.id }}">
+
+    {%- if s.image %}
+    <figure class="hm-fig">
+      {%- comment -%}
+        Three widths, not one. A section image is drawn at 948px at most and
+        much less on a phone; it was shipping the 960px file to everything.
+        Variants come from tools/image-widths.py.
+      {%- endcomment -%}
+      {%- assign ss = site.data.imgw[s.image] -%}
+      <picture>
+        <source type="image/webp"
+                srcset="{% if ss %}{{ ss }}{% else %}/images/{{ s.image }}.webp{% endif %}"
+                {% if ss %}sizes="(min-width: 1200px) 948px, 92vw"{% endif %}>
+        <source type="image/jpeg" srcset="/images/{{ s.image }}.jpg">
+        <img src="/images/{{ s.image }}.jpg" loading="lazy" alt=""
+             width="948" height="632">
+      </picture>
+    </figure>
+    {%- endif %}
+
+    <p class="hm-lab{% if s.image %} bare{% endif %}">{{ s.label[L] }}</p>
+    <h2>{{ s.heading[L] }}</h2>
+
+    {%- if s.role %}
+    <p class="hm-role">{{ s.role[L] }}</p>
+    {%- endif %}
+
+    {%- if s.body %}
+    <div class="hm-prose">
+      {%- for para in s.body[L] %}
+      <p>{{ para }}</p>
+      {%- endfor %}
+    </div>
+    {%- endif %}
+
+    {%- if s.venues %}
+    {%- comment -%}
+      The days come from _data/schedule.yml, joined on the location slug, the
+      one key the two files already share — the same join the About page makes.
+      Writing them into _data/home.yml instead would let this page disagree
+      with the timetable.
+    {%- endcomment -%}
+    {%- assign SC = site.data.schedule -%}
+    <div class="hm-ven">
+      {%- for v in s.venues %}
+      {%- assign loc = SC.locations | where: 'id', v.location | first -%}
+      {%- assign days = '' -%}
+      {%- if loc -%}
+        {%- for d in SC.days -%}
+          {%- assign hit = false -%}
+          {%- for c in SC.classes -%}
+            {%- if c.location == loc.id and c.days contains d %}{% assign hit = true %}{% endif -%}
+          {%- endfor -%}
+          {%- if hit -%}
+            {%- assign dn = SC.day_names[d][L].short -%}
+            {%- if days == '' %}{% assign days = dn %}{% else %}{% assign days = days | append: ' · ' | append: dn %}{% endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+      <figure>
+        {%- comment -%}
+          A venue plan is drawn at about 300px in a three-up row, and the file
+          is 1000px square — 85 KB of waste on this page by Lighthouse's count,
+          the single largest on it.
+        {%- endcomment -%}
+        {%- assign ss = site.data.imgw[v.image] -%}
+        <picture>
+          <source type="image/webp"
+                  srcset="{% if ss %}{{ ss }}{% else %}/images/{{ v.image }}.webp{% endif %}"
+                  {% if ss %}sizes="(min-width: 992px) 300px, (min-width: 576px) 30vw, 90vw"{% endif %}>
+          <source type="image/jpeg" srcset="/images/{{ v.image }}.jpg">
+          <img src="/images/{{ v.image }}.jpg" loading="lazy" alt=""
+               width="600" height="600">
+        </picture>
+        <figcaption>
+          <b>{{ v.name[L] }}</b>
+          <small>{{ v.note[L] }}</small>
+          {%- if days != '' %}<small>{{ days }}</small>{% endif %}
+        </figcaption>
+      </figure>
+      {%- endfor %}
+    </div>
+    {%- endif %}
+
+    {%- if s.steps %}
+    <div class="hm-steps">
+      {%- for st in s.steps %}
+      <div class="hm-step">
+        <p class="n">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</p>
+        <h3>{{ st.heading[L] }}</h3>
+        <p>{{ st.text[L] }}</p>
+      </div>
+      {%- endfor %}
+    </div>
+    {%- endif %}
+
+    {%- if s.facts %}
+    <dl class="hm-facts">
+      {%- for f in s.facts %}
+      <dt>{{ f.label[L] }}</dt><dd>{{ f.value[L] }}</dd>
+      {%- endfor %}
+    </dl>
+    {%- endif %}
+
+    {%- if s.more %}
+    <a class="hm-btn" href="{{ s.more.url[L] }}">{{ s.more.label[L] }}</a>
+    {%- endif %}
+
+  </section>
+  {%- endfor %}
+
+  {%- comment -%}
+    The door to Ura. Three real rows from inside do the explaining; there is no
+    list of contents and no description of how the panel works, because a panel
+    that needs instructions is the wrong panel.
+
+    It is an <a> to a real page, not a button. Without JavaScript it navigates
+    to /ura/ and everything still works; with it, scripts/ura.js upgrades the
+    click into the sliding panel.
+  {%- endcomment -%}
+  {%- assign U = site.data.ura -%}
+  {%- assign UR = site.data.nav.groups | where: 'id', 'ura' | first -%}
+  <section class="hm-door">
+    <div class="hm-door-mid">
+      <div class="hm-door-in">
+        <p class="mk" aria-hidden="true"><i lang="ja">{{ U.ui.kanji }}</i></p>
+        <p class="k">{{ U.ui.door_k[L] }}</p>
+        <h2>{{ U.ui.name[L] }}</h2>
+        <p class="d">{{ U.ui.door_p[L] }}</p>
+        <a class="hm-door-go" href="{{ UR.url[L] }}" data-ura-open>{{ U.ui.open[L] }}</a>
+      </div>
+      <div class="hm-rows" aria-hidden="true">
+        {%- assign SC = site.data.schedule -%}
+        {%- assign shown = site.data.gallery.entries | where_exp: 'e', 'e.show != false' -%}
+        <div style="--c: #E2625E">
+          <p class="k">{{ U.sections[0].title[L] }}</p>
+          {%- comment -%}
+            No count here. "{{ n }} {{ weekly }}" rendered as "17 clase semanal":
+            a number in front of a singular label needs plural agreement, and
+            four languages do not agree on how.
+          {%- endcomment -%}
+          <p class="v">{{ SC.categories | map: 'name' | map: L | join: ' / ' }}<small>{{ U.sections[0].sub[L] }}</small></p>
+        </div>
+        <div style="--c: #FFF200">
+          <p class="k">{{ U.sections[1].title[L] }}</p>
+          <p class="v">{{ U.sections[1].sub[L] }}<small>{{ site.events | size }} {{ U.sections[3].title[L] | downcase }}</small></p>
+        </div>
+        <div style="--c: #A5C8D1">
+          <p class="k">{{ U.sections[2].title[L] }}</p>
+          <p class="v">{{ shown | size }}<small>{{ site.data.gallery.types.album.name[L] }} / {{ site.data.gallery.types.post.name[L] }} / {{ site.data.gallery.types.reel.name[L] }}</small></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>

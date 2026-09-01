@@ -9,13 +9,10 @@ redirect_from:
   - /en/courses/
 lang: en
 i18n-ref: events-hFZ2XXIp
-last_modified: 2026-05-31
+last_modified: 2026-08-30
 ---
 
 # Seminars
 
-Seminars, masterclasses and collaborations we organise at our dojo. See the [calendar](/en/calendar/) for this month’s dates. For more information, visit [our Facebook page](https://www.facebook.com/{{site.facebook_username}}/events/).
+Seminars, masterclasses and collaborations we organise at our dojo. See the [calendar](/en/calendar/) for this month’s dates. For more information, visit [our Facebook page](https://www.facebook.com/{{site.facebook_username}}/events/){:target="_blank" rel="noopener"}.
 
-<hr>
-
-{% include stickyBar.html %}

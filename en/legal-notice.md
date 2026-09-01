@@ -5,24 +5,26 @@ description: Identifying details of the website owner, conditions of use, intell
 permalink: /en/legal-notice/
 lang: en
 i18n-ref: legal-notice-Up6gBHvn
-last_modified: 2026-08-14
+last_modified: 2026-08-28
 ---
 
 # Legal Notice
 
 Identifying details of the website owner, conditions of use, intellectual property and applicable law.
 
+{% include legal-summary.html %}
+
+
 **Last updated: 13 August 2026**
 
-> This English version is provided for convenience. In the event of any discrepancy, the Spanish version prevails, as this website is operated under Spanish law.
+This English version is provided for convenience. In the event of any discrepancy, the Spanish version prevails, as this website is operated under Spanish law.
 
-<hr>
 
 ## 1. Identification details of the owner
 
 In compliance with the duty to provide information set out in Article 10 of Spanish Law 34/2002, of 11 July, on Information Society Services and Electronic Commerce (LSSI-CE), the identification details of the owner of this website are provided below:
 
-- **Owner:** Associació Aikido Musubi *(non-profit cultural association)*
+- **Owner:** Associació Cultural Musubi Aikido *(non-profit cultural association)*
 - **Tax ID (CIF):** G-64799554
 - **Registered address:** Av. d'Alfons XIII, 351, 08918 Badalona (Barcelona), Spain
 - **Email:** info@aikidomusubi.com
@@ -62,7 +64,7 @@ The Website may contain links to third-party websites (for example, social netwo
 
 ## 7. Website hosting
 
-This Website is hosted on **GitHub Pages**, a service provided by **GitHub, Inc.** (88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, United States), a Microsoft company. As a result of hosting, the provider may process certain technical connection data (such as the IP address) for security and service-provision purposes. For more information, see the [GitHub Privacy Statement](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement).
+This Website is hosted on **GitHub Pages**, a service provided by **GitHub, Inc.** (88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, United States), a Microsoft company. As a result of hosting, the provider may process certain technical connection data (such as the IP address) for security and service-provision purposes. For more information, see the [GitHub Privacy Statement](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement){:target="_blank" rel="noopener"}.
 
 ## 8. Data protection and cookies
 

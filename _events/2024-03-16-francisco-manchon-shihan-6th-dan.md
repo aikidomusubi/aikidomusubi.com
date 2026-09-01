@@ -5,6 +5,15 @@ title_en: "Francisco Manchón Shihan 6th Dan Aikikai"
 title_es: "Francisco Manchón Shihan 6.º Dan Aikikai"
 title_ja: "フランシスコ・マンチョン 師範 六段 合気会"
 
+instructor_ca: "Francisco Manchón Shihan"
+grade_ca: "6è dan Aikikai"
+instructor_en: "Francisco Manchón Shihan"
+grade_en: "6th dan Aikikai"
+instructor_es: "Francisco Manchón Shihan"
+grade_es: "6.º dan Aikikai"
+instructor_ja: "フランシスコ・マンチョン 師範"
+grade_ja: "六段 合気会"
+
 desc_ca: >-
   El proper dissabte 16 de març tenim el plaer d'acollir al nostre dojo les molt esperades jornades d'Aikido a càrrec de Francisco Manchón Shihan 6è dan Aikikai.
 desc_en: >-

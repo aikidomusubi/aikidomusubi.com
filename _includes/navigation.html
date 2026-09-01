@@ -1,175 +1,131 @@
-<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
+{%- comment -%}
+  Main navigation — no Bootstrap.
 
-  <a class="navbar-brand" href="{% if page.lang == 'es' %}/{% else %}/{{ page.lang }}/{% endif %}" title="{% if page.lang == 'ja' %}合気道産靈 (あいきどうむすび){% else %}Aikido Musubi{% endif %}">
-    {% if page.lang == 'ca' %}{{ site.title }}{% endif %}
-    {% if page.lang == 'en' %}{{ site.title }}{% endif %}
-    {% if page.lang == 'es' %}{{ site.title }}{% endif %}
-    {% if page.lang == 'ja' %}合気道<ruby>産靈<rt>むすび</rt></ruby>{% endif %}
-  </a>
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  Was 192 lines of Bootstrap markup with the labels and URLs written out four
+  times each; it is a loop over _data/nav.yml now, and it is the last thing on
+  the site that needed bootstrap.bundle.min.js.
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav me-auto">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-classes" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {% if page.lang == 'ca' %}Classes i Horaris{% endif %}
-          {% if page.lang == 'en' %}Classes and Schedule{% endif %}
-          {% if page.lang == 'es' %}Clases y Horarios{% endif %}
-          {% if page.lang == 'ja' %}クラス・スケジュール{% endif %}
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown-classes">
-          <a class="dropdown-item" href="
-            {% if page.lang == 'ca' %}/{{ page.lang }}/classes/{% endif %}
-            {% if page.lang == 'en' %}/{{ page.lang }}/classes/{% endif %}
-            {% if page.lang == 'es' %}/clases/{% endif %}
-            {% if page.lang == 'ja' %}/{{ page.lang }}/classes/{% endif %}
-          ">
-            {% if page.lang == 'ca' %}Classes{% endif %}
-            {% if page.lang == 'en' %}Classes{% endif %}
-            {% if page.lang == 'es' %}Clases{% endif %}
-            {% if page.lang == 'ja' %}各クラスの紹介{% endif %}
-          </a>
-          <a class="dropdown-item" href="
-            {% if page.lang == 'ca' %}/{{ page.lang }}/horaris/{% endif %}
-            {% if page.lang == 'en' %}/{{ page.lang }}/training-schedule/{% endif %}
-            {% if page.lang == 'es' %}/horarios/{% endif %}
-            {% if page.lang == 'ja' %}/{{ page.lang }}/training-schedule/{% endif %}
-          ">
-            {% if page.lang == 'ca' %}Horaris{% endif %}
-            {% if page.lang == 'en' %}Training Schedule{% endif %}
-            {% if page.lang == 'es' %}Horarios{% endif %}
-            {% if page.lang == 'ja' %}稽古時間{% endif %}
-          </a>
-          <a class="dropdown-item" href="
-            {% if page.lang == 'ca' %}/{{ page.lang }}/quotes/{% endif %}
-            {% if page.lang == 'en' %}/{{ page.lang }}/fees/{% endif %}
-            {% if page.lang == 'es' %}/cuotas/{% endif %}
-            {% if page.lang == 'ja' %}/{{ page.lang }}/fees/{% endif %}
-          ">
-            {% if page.lang == 'ca' %}Quotes{% endif %}
-            {% if page.lang == 'en' %}Fees{% endif %}
-            {% if page.lang == 'es' %}Cuotas{% endif %}
-            {% if page.lang == 'ja' %}月謝{% endif %}
-          </a>
-        </div>
-      </li>
-      {%- comment -%}
-        Events groups the two dated surfaces: what we run (Seminars) and when
-        everything happens (Calendar). 行事 is Aikikai's own word for it.
-      {%- endcomment -%}
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-events" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {% if page.lang == 'ca' %}Esdeveniments{% endif %}
-          {% if page.lang == 'en' %}Events{% endif %}
-          {% if page.lang == 'es' %}Eventos{% endif %}
-          {% if page.lang == 'ja' %}行事{% endif %}
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown-events">
-          <a class="dropdown-item" href="
-            {% if page.lang == 'ca' %}/{{ page.lang }}/seminaris/{% endif %}
-            {% if page.lang == 'en' %}/{{ page.lang }}/seminars/{% endif %}
-            {% if page.lang == 'es' %}/seminarios/{% endif %}
-            {% if page.lang == 'ja' %}/{{ page.lang }}/seminars/{% endif %}
-          ">
-            {% if page.lang == 'ca' %}Seminaris{% endif %}
-            {% if page.lang == 'en' %}Seminars{% endif %}
-            {% if page.lang == 'es' %}Seminarios{% endif %}
-            {% if page.lang == 'ja' %}講習会{% endif %}
-          </a>
-          <a class="dropdown-item" href="
-            {% if page.lang == 'ca' %}/{{ page.lang }}/calendari/{% endif %}
-            {% if page.lang == 'en' %}/{{ page.lang }}/calendar/{% endif %}
-            {% if page.lang == 'es' %}/calendario/{% endif %}
-            {% if page.lang == 'ja' %}/{{ page.lang }}/calendar/{% endif %}
-          ">
-            {% if page.lang == 'ca' %}Calendari{% endif %}
-            {% if page.lang == 'en' %}Calendar{% endif %}
-            {% if page.lang == 'es' %}Calendario{% endif %}
-            {% if page.lang == 'ja' %}カレンダー{% endif %}
-          </a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-media" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {% if page.lang == 'ca' %}Media{% endif %}
-          {% if page.lang == 'en' %}Media{% endif %}
-          {% if page.lang == 'es' %}Media{% endif %}
-          {% if page.lang == 'ja' %}メディア{% endif %}
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown-media">
-          <a class="dropdown-item" href="
-            {% if page.lang == 'ca' %}/{{ page.lang }}/fotos/{% endif %}
-            {% if page.lang == 'en' %}/{{ page.lang }}/photos/{% endif %}
-            {% if page.lang == 'es' %}/fotos/{% endif %}
-            {% if page.lang == 'ja' %}/{{ page.lang }}/photos/{% endif %}
-          ">
-            {% if page.lang == 'ca' %}Fotos{% endif %}
-            {% if page.lang == 'en' %}Photos{% endif %}
-            {% if page.lang == 'es' %}Fotos{% endif %}
-            {% if page.lang == 'ja' %}写真{% endif %}
-          </a>
-          <a class="dropdown-item" href="
-            {% if page.lang == 'ca' %}/{{ page.lang }}/videos/{% endif %}
-            {% if page.lang == 'en' %}/{{ page.lang }}/videos/{% endif %}
-            {% if page.lang == 'es' %}/videos/{% endif %}
-            {% if page.lang == 'ja' %}/{{ page.lang }}/videos/{% endif %}
-          ">
-            {% if page.lang == 'ca' %}Vídeos{% endif %}
-            {% if page.lang == 'en' %}Videos{% endif %}
-            {% if page.lang == 'es' %}Vídeos{% endif %}
-            {% if page.lang == 'ja' %}ビデオ{% endif %}
-          </a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-contact" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {% if page.lang == 'ca' %}Contacte i Accés{% endif %}
-          {% if page.lang == 'en' %}Contact and Access{% endif %}
-          {% if page.lang == 'es' %}Contacto y Acceso{% endif %}
-          {% if page.lang == 'ja' %}お問い合わせ・アクセス{% endif %}
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown-contact">
-          <a class="dropdown-item" href="
-            {% if page.lang == 'ca' %}/{{ page.lang }}/visitants/{% endif %}
-            {% if page.lang == 'en' %}/{{ page.lang }}/visitors/{% endif %}
-            {% if page.lang == 'es' %}/visitantes/{% endif %}
-            {% if page.lang == 'ja' %}/{{ page.lang }}/visitors/{% endif %}
-          ">
-            {% if page.lang == 'ca' %}Visitants{% endif %}
-            {% if page.lang == 'en' %}Visitors{% endif %}
-            {% if page.lang == 'es' %}Visitantes{% endif %}
-            {% if page.lang == 'ja' %}見学者{% endif %}
-          </a>
-          <a class="dropdown-item" href="
-            {% if page.lang == 'ca' %}/{{ page.lang }}/acces/{% endif %}
-            {% if page.lang == 'en' %}/{{ page.lang }}/access-information/{% endif %}
-            {% if page.lang == 'es' %}/acceso/{% endif %}
-            {% if page.lang == 'ja' %}/{{ page.lang }}/access-information/{% endif %}
-          ">
-            {% if page.lang == 'ca' %}Accés{% endif %}
-            {% if page.lang == 'en' %}Access Information{% endif %}
-            {% if page.lang == 'es' %}Acceso{% endif %}
-            {% if page.lang == 'ja' %}アクセス{% endif %}
-          </a>
-          <a class="dropdown-item" href="
-            {% if page.lang == 'ca' %}/{{ page.lang }}/contacte/{% endif %}
-            {% if page.lang == 'en' %}/{{ page.lang }}/contact/{% endif %}
-            {% if page.lang == 'es' %}/contacto/{% endif %}
-            {% if page.lang == 'ja' %}/{{ page.lang }}/contact/{% endif %}
-          ">
-            {% if page.lang == 'ca' %}Contacte{% endif %}
-            {% if page.lang == 'en' %}Contact{% endif %}
-            {% if page.lang == 'es' %}Contacto{% endif %}
-            {% if page.lang == 'ja' %}お問合せ{% endif %}
-          </a>
-        </div>
-      </li>
-    </ul>
+  MECHANICS
+  - Each dropdown is a real <button aria-expanded>, not an <a href="#">. A link
+    that goes nowhere is announced as a link and does nothing when followed;
+    a button says what it is and works from the keyboard by default.
+  - Everything is a plain nested <ul>. With JavaScript off, or before it runs,
+    every submenu is simply visible and every link works — the menu degrades to
+    a list of links rather than to nothing.
+  - The submenus are also opened by :focus-within, so keyboard tabbing reveals
+    them even if the script never loads.
+  - `aria-current="page"` marks where you are, which the old menu never did.
+{%- endcomment -%}
 
-    <div class="navbar-text">
-      {% include language-switcher.html %}
+{%- assign L = page.lang | default: 'es' -%}
+{%- assign N = site.data.nav -%}
+{%- if L == 'es' -%}{%- assign home = '/' -%}{%- else -%}{%- assign home = '/' | append: L | append: '/' -%}{%- endif -%}
+
+{%- comment -%}
+  THE NAV BOX IS A CONSTANT HEIGHT AND THE SHELL INSIDE IT IS WHAT SHRINKS.
+
+  `.nv` is sticky, which means it is in normal flow, which means anything that
+  changes its height reflows the whole document below it. Shrinking it used to
+  do exactly that: the strip collapsing (34px) plus the bar shrinking (14px)
+  pulled every element on the page up by 48px, over the 0.28s of the transition,
+  while the reader was still scrolling. On pages with large graphics — the venue
+  cards on Access most of all — that reads as the images trembling.
+
+  So `.nv` keeps one height forever and `.nv-shell` paints and shrinks inside
+  it. Once shrunk, the lower part of the nav box is simply transparent and the
+  page scrolls through it, which is what a sticky header looks like anyway. The
+  box has `pointer-events: none` and the shell turns them back on, so that
+  transparent band does not swallow clicks meant for the page.
+{%- endcomment -%}
+{%- comment -%}
+  A zero-height marker immediately above the nav. The shrink threshold is
+  measured from this, not from the nav: `.nv` is sticky, and a sticky element's
+  offsetTop and rect both report where it is *currently painted*, so once it is
+  stuck they read as the scroll position and the threshold chases the scroll
+  instead of standing still.
+{%- endcomment -%}
+<div id="nv-top" class="nv-top-marker" aria-hidden="true"></div>
+<nav class="nv" id="nv" aria-label="{{ N.ui.menu[L] }}">
+ <div class="nv-shell">
+  {%- comment -%}
+    Utility strip. The language switcher used to sit at the right-hand end of
+    the same row as the menu, where it was neither part of the menu nor clearly
+    separate from it: the gap between the last menu item and the first language
+    was 25.6px against the 24px between menu items, so nine links read as one
+    run. Giving it its own row leaves the main bar with two things in it.
+
+    It collapses on scroll, and re-expands on :focus-within so that a keyboard
+    can still reach the languages from halfway down a page.
+  {%- endcomment -%}
+  {%- assign alts = site.pages | where: "i18n-ref", page.i18n-ref | sort: 'lang' -%}
+  <div class="nv-strip">
+    <div class="nv-strip-in">
+      <a class="nv-mail" href="mailto:{{ site.email }}">{{ site.email }}</a>
+      {%- if alts.size > 1 %}
+      <ul class="nv-lang" aria-label="{{ N.ui.lang[L] }}">
+        {%- for a in alts -%}
+        <li><a href="{{ a.url }}" lang="{{ a.lang }}" hreflang="{{ a.lang }}"
+               {% if a.lang == L %}aria-current="true"{% endif %}>{% case a.lang %}{% when 'ca' %}Català{% when 'en' %}English{% when 'es' %}Español{% when 'ja' %}日本語{% endcase %}</a></li>
+        {%- endfor -%}
+      </ul>
+      {%- endif %}
     </div>
   </div>
+
+  <div class="nv-bar">
+    <a class="nv-brand" href="{{ home }}">
+      <span class="nv-brand-mark" aria-hidden="true"></span>
+      <span class="nv-sr">{% if L == 'ja' %}合気道産靈{% else %}{{ site.title }}{% endif %} — {{ N.ui.home[L] }}</span>
+    </a>
+
+    <button class="nv-burger" type="button" id="nv-burger"
+            aria-expanded="false" aria-controls="nv-menu" aria-label="{{ N.ui.menu[L] }}">
+      <span class="nv-burger-box" aria-hidden="true"><i></i><i></i><i></i></span>
+    </button>
+
+    <div class="nv-panel" id="nv-menu">
+      <ul class="nv-list">
+        {%- for g in N.groups -%}
+        {%- comment -%} Is the current page inside this group? {%- endcomment -%}
+        {%- assign here = false -%}
+        {%- for it in g.items -%}
+          {%- if it.url[L] == page.url %}{% assign here = true %}{% endif -%}
+        {%- endfor -%}
+        {%- comment -%}
+          A group with `items` is a dropdown. A group with a `url` and no items
+          is a plain link — that is Ura, and it is a link so that it still works
+          with JavaScript off.
+        {%- endcomment -%}
+        {%- if g.items %}
+        <li class="nv-item"{% if here %} data-here{% endif %}>
+          <button class="nv-top" type="button" aria-expanded="false" aria-controls="nv-{{ g.id }}">
+            {{ g.label[L] }}<span class="nv-chev" aria-hidden="true"></span>
+          </button>
+          <ul class="nv-sub" id="nv-{{ g.id }}">
+            {%- for it in g.items %}
+            <li>
+              <a href="{{ it.url[L] }}"{% if it.url[L] == page.url %} aria-current="page"{% endif %}>{{ it.label[L] }}</a>
+            </li>
+            {%- endfor %}
+          </ul>
+        </li>
+        {%- else %}
+        <li class="nv-item nv-flat"{% if g.url[L] == page.url %} data-here{% endif %}>
+          {%- comment -%}
+            `data-ura-open` on the Ura entry, and nothing else. scripts/ura.js
+            intercepts it into the sliding panel exactly as it does the home's
+            door; with no script, or on the Ura page itself where there is no
+            panel, it stays what it looks like — a link to /ura/.
+          {%- endcomment -%}
+          <a class="nv-top" href="{{ g.url[L] }}"{% if g.id == 'ura' %} data-ura-open{% endif %}{% if g.url[L] == page.url %} aria-current="page"{% endif %}>
+            {%- if g.kanji %}<i class="nv-kanji" lang="ja" aria-hidden="true">{{ g.kanji }}</i>{% endif %}
+            {{ g.label[L] }}
+          </a>
+        </li>
+        {%- endif %}
+        {%- endfor -%}
+      </ul>
+    </div>
+  </div>
+ </div>
 </nav>

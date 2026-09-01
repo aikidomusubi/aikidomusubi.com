@@ -5,6 +5,11 @@ title_en: "Xavi Serra, Pedro Fortes, and David Ballara"
 title_es: "Xavi Serra, Pedro Fortes, y David Ballara"
 title_ja: "チャビ・セッラ、ペドロ・フォルテス、ダヴィド・バヤラ"
 
+instructor_ca: "Xavi Serra, Pedro Fortes, i David Ballara"
+instructor_en: "Xavi Serra, Pedro Fortes, and David Ballara"
+instructor_es: "Xavi Serra, Pedro Fortes, y David Ballara"
+instructor_ja: "チャビ・セッラ、ペドロ・フォルテス、ダヴィド・バヤラ"
+
 desc_ca: >-
   El proper dissabte 29 de febrer tenim el plaer d'acollir en el nostre dojo la molt esperada classe especial a càrrec de Xavi Serra (5è dan Aikikai), Pedro Fortes (3r dan Aikikai), i David Ballara (3r dan Aikikai).
 desc_en: >-

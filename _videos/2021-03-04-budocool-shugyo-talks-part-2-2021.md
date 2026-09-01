@@ -5,54 +5,21 @@ title_es: "Shugyō TALKS: Budo en español Parte 2"
 title_ja: "「Shugyō TALKS」：スペイン語での武道 パート2"
 
 desc_ca: >-
-  La segona part de Shugyō en català discuteix els canvis que ha provocat la pandèmia en la pràctica de les arts marcials tradicionals, els seus avantatges i desavantatges, i el paper de les xarxes socials com a promotores d’aspectes positius i negatius del Budo.<br>
-  <br>
-  Amb la participació de:<br>
-  - José Cifuentes (Karate 8è dan / Madrid, Espanya)<br>
-  - Nicolas Díaz (Kendo 6è dan, Iaido 4t dan / Santiago, Xile)<br>
-  - Tomás Miranda (Kendo 6è dan / Xile, Japó)<br>
-  - Nicolás Pérez (Karate 3r dan / Colòmbia, Okinawa)<br>
-  - Pablo Martín (Aikido 3r dan / Barcelona, Espanya)<br>
-  <br>
-  Budo cool, 2021
+  La segona part de Shugyō en català discuteix els canvis que ha provocat la pandèmia en la pràctica de les arts marcials tradicionals, els seus avantatges i desavantatges, i el paper de les xarxes socials com a promotores d’aspectes positius i negatius del Budo.
 
 desc_en: >-
-  The second part of Shugyō in English discusses the changes caused by the pandemic in the practice of traditional martial arts, their advantages and disadvantages, and the role of social media as promoters of both positive and negative aspects of Budo.<br>
-  <br>
-  Featuring:<br>
-  - José Cifuentes (Karate 8th dan / Madrid, Spain)<br>
-  - Nicolás Díaz (Kendo 6th dan, Iaido 5th dan / Santiago, Chile)<br>
-  - Tomás Miranda (Kendo 6th dan / Chile, Japan)<br>
-  - Nicolás Pérez (Karate 3rd dan / Colombia, Okinawa)<br>
-  - Pablo Martín (Aikido 3rd dan / Barcelona, Spain)<br>
-  <br>
-  Budo cool, 2021
+  The second part of Shugyō in English discusses the changes caused by the pandemic in the practice of traditional martial arts, their advantages and disadvantages, and the role of social media as promoters of both positive and negative aspects of Budo.
 
 desc_es: >-
-  La segunda parte de Shugyō en español discute los cambios que ha provocado la pandemia en la práctica de las artes marciales tradicionales, sus ventajas y desventajas, y el rol de las redes sociales como promotoras de aspectos positivos y negativos del Budo.<br>
-  <br>
-  Con la participación de:<br>
-  - José Cifuentes (Karate 8.º dan / Madrid, España)<br>
-  - Nicolás Díaz (Kendo 6.º dan, Iaido 5.º dan / Santiago, Chile)<br>
-  - Tomás Miranda (Kendo 6.º dan / Chile, Japan)<br>
-  - Nicolás Pérez (Karate 3.er dan / Colombia, Okinawa)<br>
-  - Pablo Martín (Aikido 3.er dan / Barcelona, España)<br>
-  <br>
-  Budo cool, 2021
+  La segunda parte de Shugyō en español discute los cambios que ha provocado la pandemia en la práctica de las artes marciales tradicionales, sus ventajas y desventajas, y el rol de las redes sociales como promotoras de aspectos positivos y negativos del Budo.
 
 desc_ja: >-
-  「Shugyō」の第2部では、パンデミックが伝統武道の実践に及ぼした変化、その利点と欠点、そして武道のポジティブおよびネガティブな側面を促進する手段としてのソーシャルメディアの役割について解説します。<br>
-  <br>
-  参加者：<br>
-  - ホセ・シフエンテス（空手 8段 / マドリード、スペイン）<br>
-  - ニコラス・ディアス（剣道 6段、居合道 4段 / サンティアゴ、チリ）<br>
-  - トマス・ミランダ（剣道 6段 / チリ、日本）<br>
-  - ニコラス・ペレス（空手 3段 / コロンビア、沖縄）<br>
-  - パブロ・マルティン（合気道 3段 / バルセロナ、スペイン）<br>
-  <br>
-  Budo cool, 2021
+  「Shugyō」の第2部では、パンデミックが伝統武道の実践に及ぼした変化、その利点と欠点、そして武道のポジティブおよびネガティブな側面を促進する手段としてのソーシャルメディアの役割について解説します。
 
 date: 20210304
 
 youtube_url: "https://www.youtube.com/embed/4ldsBG3O7s0"
+youtube_id: "4ldsBG3O7s0"
+youtube_params: ""
+thumb: "press-and-tv-Rm4zW8dL-2021-03-04-budocool-shugyo-talks-part-2-2021"
 ---

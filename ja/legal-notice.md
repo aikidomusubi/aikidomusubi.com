@@ -5,24 +5,26 @@ description: 本ウェブサイトの運営者の識別情報、利用条件、�
 permalink: /ja/legal-notice/
 lang: ja
 i18n-ref: legal-notice-Up6gBHvn
-last_modified: 2026-08-14
+last_modified: 2026-08-28
 ---
 
 # 法的通知（Aviso Legal）
 
 本ウェブサイトの運営者の識別情報、利用条件、知的財産権および準拠法について。
 
+{% include legal-summary.html %}
+
+
 **最終更新日：2026年8月13日**
 
-> この日本語版は便宜のために提供されるものです。本ウェブサイトはスペイン法に基づいて運営されているため、内容に相違がある場合はスペイン語版が優先されます。
+この日本語版は便宜のために提供されるものです。本ウェブサイトはスペイン法に基づいて運営されているため、内容に相違がある場合はスペイン語版が優先されます。
 
-<hr>
 
 ## 1. サイト運営者の識別情報
 
 情報社会サービスおよび電子商取引に関するスペイン法律 34/2002（2002年7月11日、LSSI-CE）第10条に定める情報提供義務を遵守し、本ウェブサイトの運営者の識別情報を以下に記載します。
 
-- **運営者：** Associació Aikido Musubi *（非営利の文化協会）*
+- **運営者：** 産靈合気道文化協会（Associació Cultural Musubi Aikido）*（非営利の文化協会）*
 - **納税者番号（CIF）：** G-64799554
 - **登録住所：** Av. d'Alfons XIII, 351, 08918 Badalona (Barcelona), スペイン
 - **メール：** info@aikidomusubi.com
@@ -62,7 +64,7 @@ last_modified: 2026-08-14
 
 ## 7. ウェブサイトのホスティング
 
-本ウェブサイトは **GitHub Pages** 上でホストされています。これは **GitHub, Inc.**（88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, アメリカ合衆国、Microsoft グループの企業）が提供するサービスです。ホスティングの結果として、提供業者はセキュリティおよびサービス提供の目的で、特定の技術的接続データ（IPアドレスなど）を処理する場合があります。詳細は [GitHub プライバシーステートメント](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement) をご覧ください。
+本ウェブサイトは **GitHub Pages** 上でホストされています。これは **GitHub, Inc.**（88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, アメリカ合衆国、Microsoft グループの企業）が提供するサービスです。ホスティングの結果として、提供業者はセキュリティおよびサービス提供の目的で、特定の技術的接続データ（IPアドレスなど）を処理する場合があります。詳細は [GitHub プライバシーステートメント](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement){:target="_blank" rel="noopener"} をご覧ください。
 
 ## 8. データ保護とクッキー
 

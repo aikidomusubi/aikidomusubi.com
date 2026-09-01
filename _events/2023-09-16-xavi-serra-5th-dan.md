@@ -5,6 +5,15 @@ title_en: "Xavi Serra 5th Dan Aikikai"
 title_es: "Xavi Serra 5.º Dan Aikikai"
 title_ja: "チャビ・セッラ 五段 合気会"
 
+instructor_ca: "Xavi Serra"
+grade_ca: "5è dan Aikikai"
+instructor_en: "Xavi Serra"
+grade_en: "5th dan Aikikai"
+instructor_es: "Xavi Serra"
+grade_es: "5.º dan Aikikai"
+instructor_ja: "チャビ・セッラ"
+grade_ja: "五段 合気会"
+
 desc_ca: >-
   El proper dissabte 16 de setembre tenim el plaer d'acollir al nostre dojo les molt esperades jornades d'Aikido a càrrec de Xavi Serra 5è dan Aikikai.
 desc_en: >-
@@ -14,15 +23,15 @@ desc_es: >-
 desc_ja: >-
   ９月１６日（土）に私たちの道場で、待ちに待ったシャビ・セラ（五段）による特別稽古が行われます。
 
-image_ca: "events-hFZ2XXIp-2025-04-26-xavi-serra-5th-dan-ca"
-image_en: "events-hFZ2XXIp-2025-04-26-xavi-serra-5th-dan-ca"
-image_es: "events-hFZ2XXIp-2025-04-26-xavi-serra-5th-dan-ca"
-image_ja: "events-hFZ2XXIp-2025-04-26-xavi-serra-5th-dan-ca"
+image_ca: "events-hFZ2XXIp-2023-09-16-xavi-serra-5th-dan-ca"
+image_en: "events-hFZ2XXIp-2023-09-16-xavi-serra-5th-dan-ca"
+image_es: "events-hFZ2XXIp-2023-09-16-xavi-serra-5th-dan-ca"
+image_ja: "events-hFZ2XXIp-2023-09-16-xavi-serra-5th-dan-ca"
 
-file_ca: "events-hFZ2XXIp-2025-04-26-xavi-serra-5th-dan-ca.pdf"
-file_en: "events-hFZ2XXIp-2025-04-26-xavi-serra-5th-dan-ca.pdf"
-file_es: "events-hFZ2XXIp-2025-04-26-xavi-serra-5th-dan-ca.pdf"
-file_ja: "events-hFZ2XXIp-2025-04-26-xavi-serra-5th-dan-ca.pdf"
+file_ca: "events-hFZ2XXIp-2023-09-16-xavi-serra-5th-dan-ca.pdf"
+file_en: "events-hFZ2XXIp-2023-09-16-xavi-serra-5th-dan-ca.pdf"
+file_es: "events-hFZ2XXIp-2023-09-16-xavi-serra-5th-dan-ca.pdf"
+file_ja: "events-hFZ2XXIp-2023-09-16-xavi-serra-5th-dan-ca.pdf"
 
 date_from: "2025-04-26"
 date_to: "blank"

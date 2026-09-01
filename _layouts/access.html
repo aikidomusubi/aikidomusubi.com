@@ -1,0 +1,266 @@
+{% include header.html %}
+
+<main id="main" tabindex="-1">
+
+  {% include section-strip.html %}
+
+  {{ content }}
+
+  {%- comment -%}
+    Access — one venue at a time.
+
+    Replaces 237 lines of hand-written Bootstrap cards per language, 948 across
+    the four, repeating the same shape three times over. Everything is in
+    _data/venues.yml now.
+
+    A picker rather than a stack, because of when this page is read: somebody is
+    travelling to one particular venue, usually on a phone, often already late.
+    Three full sections meant scrolling past two they did not care about.
+
+    NO JAVASCRIPT. Three radios and `:has()`, the same mechanism as the fee
+    periods. All three panels are in the markup, so a crawler reads every
+    address and every entrance — nothing is behind a click for a machine.
+  {%- endcomment -%}
+
+  {%- assign L = page.lang -%}
+  {%- assign V = site.data.venues -%}
+
+  <div class="venues">
+
+    <fieldset class="vn-picker">
+      <legend>{{ V.ui.where[L] }}</legend>
+      <div class="vn-chips">
+        {%- for v in V.venues -%}
+        <label class="vn-chip">
+          <input type="radio" name="venue" value="{{ v.id }}"
+                 id="vn-{{ v.id }}"{% if forloop.first %} checked{% endif %}>
+          <span>{{ v.town[L] }}</span>
+        </label>
+        {%- endfor -%}
+      </div>
+    </fieldset>
+
+    {%- comment -%}
+      WHICH PANEL SHOWS, generated from the same list that renders the panels.
+
+      This rule used to be three hand-written selectors in styles/venues.less,
+      one per venue id. A fourth venue was added to _data/venues.yml and its
+      panel stayed `display: none` for ever: the chip appeared, the chip could
+      be selected, and nothing happened. CSS cannot derive a selector from
+      data, so the selector is emitted beside the data instead.
+
+      It comes after the stylesheet, so at equal specificity it wins. A browser
+      with no `:has()` drops the whole rule as unparseable and falls back to
+      the `@supports not selector(:has(*))` block in venues.less, which shows
+      every panel — long rather than wrong.
+    {%- endcomment -%}
+    <style>{% for v in V.venues %}.venues:has(#vn-{{ v.id }}:checked) .vn-panel[data-venue="{{ v.id }}"]{display:block}{% endfor %}</style>
+
+    {%- for v in V.venues -%}
+    <section class="vn-panel" data-venue="{{ v.id }}" id="{{ v.slug }}"
+             aria-labelledby="vn-name-{{ v.id }}">
+
+      <div class="vn-main">
+        <div class="vn-info">
+          {%- comment -%}
+            A header strip rather than a mark floating above the title. Sitting
+            on its own the Aikido Musubi wordmark just repeated the heading a
+            line below it, which is what made it look pasted on; small, on a
+            rule, opposite the town, it reads as the card's identity instead.
+            Decoration, not a heading — an <h3> with no text and a background
+            image announces as "heading, blank".
+          {%- endcomment -%}
+          <p class="vn-head">
+            {%- if v.logo %}
+            <span class="vn-logo" role="presentation" style="--logo: url('{{ v.logo }}')"></span>
+            {%- endif %}
+            <span class="vn-town">{{ v.town[L] }}</span>
+          </p>
+
+          <h2 class="vn-name" id="vn-name-{{ v.id }}">{{ v.name[L] }}</h2>
+          <p class="vn-address">{{ v.address[L] }}</p>
+
+          {%- if v.facts %}
+          <ul class="vn-facts">
+            {%- for f in v.facts[L] %}
+            <li>
+              <svg aria-hidden="true" viewBox="0 0 512 512" fill="currentColor"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></svg>
+              {{ f }}
+            </li>
+            {%- endfor %}
+          </ul>
+          {%- endif %}
+
+          {%- if v.note %}
+          <p class="vn-note">{{ v.note[L] }}</p>
+          {%- endif %}
+
+          <p class="vn-actions">
+            <a class="vn-btn" href="{% if L == 'es' %}/horarios/{% elsif L == 'ca' %}/ca/horaris/{% else %}/{{ L }}/training-schedule/{% endif %}?location={{ v.slug }}">
+              {{ V.ui.schedule[L] }}
+            </a>
+            {% include directions.html venue=v class="vn-btn vn-btn-o" %}
+          </p>
+        </div>
+
+        <div class="vn-map">
+          {% include map.html section=v.map_section %}
+        </div>
+      </div>
+
+      {%- if v.entrances and v.entrances.size > 0 %}
+      <div class="vn-entrances">
+        {%- comment -%}
+          The facility is not a link. Three of the four have a page of their
+          own and the Badalona sports ground does not, so linking them would
+          leave exactly one bare. Ura's links section carries all three.
+        {%- endcomment -%}
+        <h3 class="vn-sub">{{ V.ui.how_in[L] }}{% if v.facility %} · {{ v.facility[L] }}{% endif %}</h3>
+
+        <div class="vn-grid">
+          <ol class="vn-steps">
+            {%- for e in v.entrances %}
+            <li class="vn-step">
+              {%- comment -%}
+                A 104px thumbnail is too small to recognise a gate by, so it
+                opens full size. The card loads a 300px crop and the dialog
+                fetches the 900px file only when asked — the full set would be
+                ~500 KB of photos nobody had clicked on.
+              {%- endcomment -%}
+              <button type="button" class="vn-shot"
+                      data-full="/images/{{ e.image }}.webp"
+                      data-fallback="/images/{{ e.image }}.jpg"
+                      data-caption="{{ V.ui.entrance[L] }} {{ e.letter }} · {{ e.street[L] }}">
+                <picture>
+                  <source type="image/webp" srcset="/images/{{ e.image }}-300.webp">
+                  <img src="/images/{{ e.image }}-300.jpg" loading="lazy" decoding="async"
+                       width="300" height="300" alt="{{ V.ui.entrance[L] }} {{ e.letter }} · {{ e.street[L] }}">
+                </picture>
+                <span class="vn-sr">{{ V.ui.enlarge[L] }}</span>
+              </button>
+              <div class="vn-step-body">
+                <p class="vn-step-name">
+                  <span class="vn-letter" aria-hidden="true">{{ e.letter }}</span>
+                  <span class="vn-sr">{{ V.ui.entrance[L] }} {{ e.letter }}: </span>{{ e.street[L] }}
+                </p>
+                <p class="vn-step-desc">{{ e.desc[L] }}</p>
+              </div>
+            </li>
+            {%- endfor %}
+          </ol>
+
+          {%- if v.plan %}
+          {%- comment -%}
+            The labels and pins sit on top of the image rather than inside it.
+            Baking them in is what forced a separate plan JPEG per language;
+            as markup they translate for free and stay sharp at any zoom.
+
+            Each pin is a <details>: the summary is the marker, the panel is
+            the tooltip. Clicking and keyboard both work with no JavaScript,
+            and the text is the same entrance copy rendered in the list beside
+            it, so there is one source for it.
+          {%- endcomment -%}
+          <figure class="vn-plan">
+            <div class="vn-stage">
+              <picture>
+                <source type="image/webp" srcset="/images/{{ v.plan }}.webp">
+                <img src="/images/{{ v.plan }}.jpg" loading="lazy" decoding="async"
+                     width="1000" height="1000" alt="{{ v.facility[L] }}">
+              </picture>
+
+              {%- if v.areas %}
+              {%- comment -%}
+                The shapes are an SVG rather than rotated <span>s because the
+                footprints are not rectangles — the Badalona parking is a
+                triangle. viewBox 0 0 100 100 over a square image means the
+                points are literally the percentages stored in the data.
+              {%- endcomment -%}
+              <svg class="vn-shapes" viewBox="0 0 100 100" preserveAspectRatio="none"
+                   aria-hidden="true" focusable="false">
+                {%- for a in v.areas %}
+                <polygon data-kind="{{ a.kind }}" points="{{ a.points }}" />
+                {%- endfor %}
+              </svg>
+              {%- for a in v.areas %}
+              <span class="vn-label" data-kind="{{ a.kind }}" aria-hidden="true"
+                    style="--x:{{ a.label_at[0] }}%; --y:{{ a.label_at[1] }}%">{{ a.label[L] }}</span>
+              {%- endfor %}
+              {%- endif %}
+
+              {%- for e in v.entrances %}
+              {%- if e.at %}
+              {%- assign low = false %}{% if e.at[1] > 60 %}{% assign low = true %}{% endif -%}
+              <details class="vn-pin"{% if low %} data-low{% endif %} style="--x:{{ e.at[0] }}%; --y:{{ e.at[1] }}%">
+                <summary>
+                  <span aria-hidden="true">{{ e.letter }}</span>
+                  <span class="vn-sr">{{ V.ui.entrance[L] }} {{ e.letter }} · {{ e.street[L] }}</span>
+                </summary>
+                <span class="vn-pop">
+                  <b>{{ e.street[L] }}</b>
+                  {{ e.desc[L] }}
+                </span>
+              </details>
+              {%- endif %}
+              {%- endfor %}
+            </div>
+          </figure>
+          {%- endif %}
+        </div>
+      </div>
+      {%- endif %}
+    </section>
+    {%- endfor -%}
+  </div>
+
+  {%- comment -%}
+    One dialog for every entrance photo on the page. <dialog> gives the focus
+    trap, Esc-to-close and the backdrop for free — the alternative was pulling
+    in GLightbox, 70 KB of library for three photographs.
+  {%- endcomment -%}
+  <dialog class="vn-dialog" id="vn-dialog" aria-label="{{ V.ui.enlarge[L] }}">
+    <button type="button" class="vn-dialog-x" aria-label="{{ V.ui.close[L] }}">
+      <svg aria-hidden="true" viewBox="0 0 384 512" fill="currentColor"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+    </button>
+    <img alt="">
+    <p class="vn-dialog-cap"></p>
+  </dialog>
+
+  {%- comment -%}
+    One Place per venue. An address a machine can read is the difference between
+    appearing in "aikido near me" and not.
+  {%- endcomment -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": [
+      {%- assign n = 0 -%}
+      {%- for v in V.venues -%}
+      {%- assign n = n | plus: 1 -%}
+      {%- unless forloop.first %},{% endunless %}
+      {
+        "@type": "ListItem",
+        "position": {{ n }},
+        "item": {
+          "@type": "Place",
+          "name": {{ v.name[L] | jsonify }},
+          "address": {{ v.address[L] | replace: '<br>', ', ' | jsonify }},
+          {%- comment -%}
+            hasMap takes an array: the same place on both services. `geo` is
+            what lets a search engine or an assistant put a pin down without
+            geocoding the street address and guessing.
+          {%- endcomment -%}
+          {%- if v.lat %}
+          "geo": { "@type": "GeoCoordinates", "latitude": {{ v.lat }}, "longitude": {{ v.lng }} },
+          {%- endif %}
+          "hasMap": [{{ v.maps_url | jsonify }}{% if v.apple_url %}, {{ v.apple_url | jsonify }}{% endif %}]
+        }
+      }
+      {%- endfor -%}
+    ]
+  }
+  </script>
+
+</main>
+
+{% include footer.html %}
