@@ -1,0 +1,189 @@
+{% include header.html %}
+
+<main id="main" tabindex="-1">
+
+  {% include section-strip.html %}
+
+  {{ content }}
+
+  {%- comment -%}
+    Seminars we attend rather than host.
+
+    Deliberately the same component as the Seminars page — same card, same tags,
+    same filter — because it is the same kind of thing seen from the other side.
+    Two differences follow from the content rather than from taste:
+
+    - the poster is optional. Somebody else's seminar often reaches us as a date
+      and a place and nothing more, and a card that reserves a column for an
+      image it does not have looks broken. `.seminar-noposter` drops the column.
+    - the venue is shown. On the Seminars page everything is at our dojo or a
+      hall we booked, so the place is in the description; here it is the point.
+  {%- endcomment -%}
+
+  {%- assign L = page.lang -%}
+  {%- assign cats = site.data.events.categories -%}
+  {%- capture now %}{{ 'now' | date: '%s' | plus: 0 }}{% endcapture -%}
+
+
+  <div class="seminar-controls" id="seminar-controls">
+
+    <fieldset class="seminar-filter">
+      <legend>
+        {%- if L == 'ca' -%}Tipus
+        {%- elsif L == 'en' -%}Type
+        {%- elsif L == 'ja' -%}種類
+        {%- else -%}Tipo{%- endif -%}
+      </legend>
+      <div class="seminar-chips">
+        {%- for c in cats -%}
+        <label class="seminar-chip" data-category="{{ c.id }}" style="--chip: {{ c.color }}">
+          <input type="checkbox" value="{{ c.id }}" checked>
+          <span class="seminar-chip-dot" aria-hidden="true"></span>
+          <span>{{ c.name[L] }}</span>
+        </label>
+        {%- endfor -%}
+      </div>
+    </fieldset>
+
+    <fieldset class="seminar-filter">
+      <legend>
+        {%- if L == 'ca' -%}Quan
+        {%- elsif L == 'en' -%}When
+        {%- elsif L == 'ja' -%}時期
+        {%- else -%}Cuándo{%- endif -%}
+      </legend>
+      <div class="seminar-chips" role="radiogroup">
+        <label class="seminar-chip seminar-chip-plain">
+          <input type="radio" name="when" value="all" checked>
+          <span>{% if L == 'ca' %}Tots{% elsif L == 'en' %}All{% elsif L == 'ja' %}すべて{% else %}Todos{% endif %}</span>
+        </label>
+        <label class="seminar-chip seminar-chip-plain">
+          <input type="radio" name="when" value="upcoming">
+          <span>{% if L == 'ca' %}Properament{% elsif L == 'en' %}Upcoming{% elsif L == 'ja' %}今後{% else %}Próximamente{% endif %}</span>
+        </label>
+        <label class="seminar-chip seminar-chip-plain">
+          <input type="radio" name="when" value="ended">
+          <span>{% if L == 'ca' %}Finalitzats{% elsif L == 'en' %}Past{% elsif L == 'ja' %}終了{% else %}Finalizados{% endif %}</span>
+        </label>
+      </div>
+    </fieldset>
+
+    <p class="seminar-count" aria-live="polite" hidden></p>
+  </div>
+
+  <div class="seminars">
+
+    {%- assign entries = site.elsewhere | sort: 'date_from' | reverse -%}
+    {%- for event in entries -%}
+      {%- capture start %}{{ event.date_from | date: '%s' | plus: 0 }}{% endcapture -%}
+      {%- if event.date_to and event.date_to != "blank" -%}
+        {%- capture finish %}{{ event.date_to | date: '%s' | plus: 0 }}{% endcapture -%}
+      {%- else -%}
+        {%- assign finish = start -%}
+      {%- endif -%}
+      {%- if finish >= now -%}{%- assign state = 'upcoming' -%}
+      {%- else -%}{%- assign state = 'ended' -%}{%- endif -%}
+
+      {%- assign slug = event.path | split: '/' | last | remove: '.md' -%}
+      {%- assign cat = cats | where: "id", event.category | first -%}
+
+      {%- if L == 'ca' -%}{%- assign title = event.title_ca -%}{%- assign desc = event.desc_ca -%}{%- assign img = event.image_ca -%}{%- assign place = event.place_ca -%}
+      {%- elsif L == 'en' -%}{%- assign title = event.title_en -%}{%- assign desc = event.desc_en -%}{%- assign img = event.image_en -%}{%- assign place = event.place_en -%}
+      {%- elsif L == 'ja' -%}{%- assign title = event.title_ja -%}{%- assign desc = event.desc_ja -%}{%- assign img = event.image_ja -%}{%- assign place = event.place_ja -%}
+      {%- else -%}{%- assign title = event.title_es -%}{%- assign desc = event.desc_es -%}{%- assign img = event.image_es -%}{%- assign place = event.place_es -%}{%- endif -%}
+
+      {%- assign has_poster = false -%}
+      {%- if img and img != "" -%}{%- assign has_poster = true -%}{%- endif -%}
+
+      <article class="seminar{% unless has_poster %} seminar-noposter{% endunless %}"
+               id="elsewhere-{{ slug }}"
+               data-category="{{ event.category }}"
+               data-state="{{ state }}"
+               style="--seminar-colour: {{ cat.color }}">
+
+        {%- comment -%}
+          UNLIKE THE SEMINARS PAGE, the width and height are read rather than
+          written. Every poster the dojo prints is drawn to 640x905, so that
+          page can hardcode it; these are other people's posters and they are
+          1:1, 4:5, 2:3 and three more besides. A hardcoded ratio here is a
+          wrong aspect-ratio box, which is a layout shift on every card as the
+          image arrives. _data/imgdim.yml is generated by
+          tools/image-widths.py from the files themselves.
+        {%- endcomment -%}
+        {%- if has_poster %}
+        {%- assign dim = site.data.imgdim[img] -%}
+        {%- if dim %}{% assign iw = dim[0] %}{% assign ih = dim[1] %}{% else %}{% assign iw = 640 %}{% assign ih = 905 %}{% endif -%}
+        <a class="seminar-poster event-lightbox" href="/images/{{ img }}.jpg"
+           aria-label="{% if L == 'ca' %}Cartell: {% elsif L == 'en' %}Poster: {% elsif L == 'ja' %}ポスター：{% else %}Cartel: {% endif %}{{ title }}">
+          <picture>
+            {%- assign ss = site.data.imgw[img] -%}
+            <source type="image/webp"
+                    srcset="{% if ss %}{{ ss }}{% else %}/images/{{ img }}.webp{% endif %}"
+                    {% if ss %}sizes="(min-width: 1200px) 272px, (min-width: 768px) 45vw, 92vw"{% endif %}>
+            <source type="image/jpeg" srcset="/images/{{ img }}.jpg">
+            <img src="/images/{{ img }}.jpg" loading="lazy" decoding="async"
+                 width="{{ iw }}" height="{{ ih }}" alt="{{ title }}">
+          </picture>
+        </a>
+        {%- endif %}
+
+        <div class="seminar-body">
+
+          <p class="seminar-tags">
+            {%- if cat %}
+            <span class="seminar-tag seminar-tag-cat">
+              <span class="seminar-tag-dot" aria-hidden="true"></span>{{ cat.name[L] }}
+            </span>
+            {%- endif %}
+            <span class="seminar-tag seminar-tag-state" data-state="{{ state }}">
+              {%- if state == 'upcoming' -%}
+                {%- if L == 'ca' -%}Properament{%- elsif L == 'en' -%}Upcoming{%- elsif L == 'ja' -%}今後{%- else -%}Próximamente{%- endif -%}
+              {%- else -%}
+                {%- if L == 'ca' -%}Finalitzat{%- elsif L == 'en' -%}Ended{%- elsif L == 'ja' -%}終了{%- else -%}Finalizado{%- endif -%}
+              {%- endif -%}
+            </span>
+          </p>
+
+          <h2 class="seminar-title">{{ title }}</h2>
+
+          <p class="seminar-when">
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 448 512"><path fill="currentColor" d="M152 24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H64C28.7 64 0 92.7 0 128v16 48V448c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V192 144 128c0-35.3-28.7-64-64-64H344V24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H152V24zM48 192h80v56H48V192zm0 104h80v64H48V296zm128 0h96v64H176V296zm144 0h80v64H320V296zm80-48H320V192h80v56zm0 160v40c0 8.8-7.2 16-16 16H320V408h80zm-128 0v56H176V408h96zm-144 0v56H64c-8.8 0-16-7.2-16-16V408h80zM272 248H176V192h96v56z"/></svg>
+            <time datetime="{{ event.date_from }}">{% include date.html date=event.date_from %}</time>
+            {%- unless event.date_to == "blank" or event.date_to == event.date_from or event.date_to == nil %}
+              <span aria-hidden="true">–</span>
+              <time datetime="{{ event.date_to }}">{% include date.html date=event.date_to %}</time>
+            {%- endunless %}
+          </p>
+
+          {%- if place and place != "" %}
+          <p class="seminar-where">
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 384 512"><path fill="currentColor" d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>
+            {{ place }}
+          </p>
+          {%- endif %}
+
+          <p class="seminar-desc">{{ desc }}</p>
+
+          {%- if event.event_link and event.event_link != '' %}
+          <p class="seminar-actions">
+            <a class="seminar-btn" href="{{ event.event_link }}" target="_blank" rel="noopener">
+              <svg aria-hidden="true" focusable="false" viewBox="0 0 640 640"><path fill="currentColor" d="M480 96C515.3 96 544 124.7 544 160L544 480C544 515.3 515.3 544 480 544L160 544C124.7 544 96 515.3 96 480L96 160C96 124.7 124.7 96 160 96L480 96zM368 360C368 373.3 378.7 384 392 384C405.3 384 416 373.3 416 360L416 248C416 234.7 405.3 224 392 224L280 224C266.7 224 256 234.7 256 248C256 261.3 266.7 272 280 272L334.1 272L231.1 375C221.7 384.4 221.7 399.6 231.1 408.9C240.5 418.2 255.7 418.3 265 408.9L368 305.9L368 360z"/></svg>
+              {% if L == 'ca' %}Més informació{% elsif L == 'en' %}More information{% elsif L == 'ja' %}詳細{% else %}Más información{% endif %}<span class="seminar-sr"> {% if L == 'ca' %}sobre {% elsif L == 'en' %}about {% elsif L == 'ja' %}：{% else %}sobre {% endif %}{{ title }}</span>
+            </a>
+          </p>
+          {%- endif %}
+        </div>
+      </article>
+    {%- endfor -%}
+
+    <p class="seminar-empty" hidden>
+      {%- if L == 'ca' -%}Cap activitat coincideix amb aquest filtre.
+      {%- elsif L == 'en' -%}Nothing matches this filter.
+      {%- elsif L == 'ja' -%}この条件に合う行事はありません。
+      {%- else -%}Ninguna actividad coincide con este filtro.{%- endif -%}
+    </p>
+  </div>
+
+</main>
+
+{% include footer.html %}

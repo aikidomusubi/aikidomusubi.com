@@ -1,0 +1,39 @@
+# The "in short" box at the top of each legal page.
+#
+# The Accessibility statement has had one since it was written and it is the
+# most useful thing on the page: four lines that answer the question most
+# readers actually arrived with, above five screens of statute. The other three
+# legal pages are longer and denser and had nothing.
+#
+# EVERY CLAIM HERE IS A SUMMARY OF THE PAGE BELOW IT, not a new statement.
+# If the policy changes, this changes with it — a summary that has drifted from
+# the text it summarises is worse than no summary, because it is the part
+# people read.
+#
+# Keyed by i18n-ref. The Accessibility page keeps its own copy in
+# _data/accessibility.yml, where the rest of that page's text lives.
+
+head:
+  es: "En resumen"
+  ca: "En resum"
+  en: "In short"
+  ja: "要点"
+
+pages:
+  legal-notice-Up6gBHvn:
+    es: "Este sitio lo publica la <strong>Associació Cultural Musubi Aikido</strong>, una asociación cultural sin ánimo de lucro con CIF G-64799554 y domicilio en Badalona. Aquí no se vende nada ni se contrata en línea. Esta página dice quién responde del sitio, qué puedes hacer con lo que hay en él y qué ley se aplica."
+    ca: "Aquest lloc el publica l'<strong>Associació Cultural Musubi Aikido</strong>, una associació cultural sense ànim de lucre amb CIF G-64799554 i domicili a Badalona. Aquí no s'hi ven res ni s'hi contracta en línia. Aquesta pàgina diu qui respon del lloc, què pots fer amb el que hi ha i quina llei s'hi aplica."
+    en: "This site is published by the <strong>Associació Cultural Musubi Aikido</strong>, a non-profit cultural association, tax ID G-64799554, registered in Badalona. Nothing is sold here and nothing is contracted online. This page says who is answerable for the site, what you may do with what is on it, and which law applies."
+    ja: "本サイトは、非営利の文化協会である<strong>Associació Cultural Musubi Aikido</strong>（登録番号 G-64799554、バダロナ）が公開しています。物品の販売もオンライン契約も行っていません。このページでは、サイトの責任者、掲載物の利用範囲、適用される法律を示します。"
+
+  privacy-policy-EgFc1Qem:
+    es: "Para leer el sitio no hace falta darnos ningún dato. Si nos escribes, usamos tu correo para contestarte; si te apuntas, tratamos lo necesario para gestionar la actividad; y las fotos del tatami solo se publican con tu autorización, que puedes retirar cuando quieras. Las analíticas no se activan hasta que las aceptas. Tienes derecho a acceder, rectificar y suprimir tus datos, y abajo se explica cómo."
+    ca: "Per llegir el lloc no cal donar-nos cap dada. Si ens escrius, fem servir el teu correu per contestar-te; si t'hi apuntes, tractem el que cal per gestionar l'activitat; i les fotos del tatami només es publiquen amb la teva autorització, que pots retirar quan vulguis. Les analítiques no s'activen fins que les acceptes. Tens dret a accedir a les teves dades, rectificar-les i suprimir-les, i a sota s'explica com."
+    en: "You do not have to give us anything to read this site. If you write to us, we use your email to answer you; if you join, we handle what running the activity requires; and photographs from the mat are published only with your permission, which you can withdraw at any time. Analytics do not run until you accept them. You have the right to see, correct and delete your data, and how to do that is set out below."
+    ja: "本サイトを読むために個人情報をいただく必要はありません。お問い合わせにはいただいたメールアドレスで返信するためだけに使用します。入会される場合は、活動の運営に必要な範囲で取り扱います。稽古の写真の公開はご本人の同意にもとづき、同意はいつでも撤回できます。アクセス解析は承諾されるまで作動しません。ご自身のデータの開示・訂正・削除を求める権利があり、その方法は以下に記しています。"
+
+  cookie-policy-67RmRt6B:
+    es: "Solo usamos dos clases de cookies: las técnicas, que hacen funcionar el sitio, y las analíticas de Google, que <strong>no se activan hasta que las aceptas</strong>. Rechazarlas es tan fácil como aceptarlas y no rompe nada. Puedes cambiar de opinión en cualquier momento desde esta misma página, y si retiras el consentimiento borramos las que Google haya dejado."
+    ca: "Només fem servir dues menes de galetes: les tècniques, que fan funcionar el lloc, i les analítiques de Google, que <strong>no s'activen fins que les acceptes</strong>. Rebutjar-les és tan fàcil com acceptar-les i no trenca res. Pots canviar d'opinió en qualsevol moment des d'aquesta mateixa pàgina, i si retires el consentiment esborrem les que Google hagi deixat."
+    en: "We use two kinds of cookie: the technical ones that make the site work, and Google's analytics, which <strong>do not run until you accept them</strong>. Refusing is as easy as accepting and breaks nothing. You can change your mind at any time from this page, and if you withdraw consent we delete the ones Google has left."
+    ja: "使用するクッキーは二種類だけです。サイトの動作に必要な技術的クッキーと、Google のアクセス解析クッキーで、後者は<strong>承諾されるまで作動しません</strong>。拒否は承諾と同じ手数で、拒否しても機能は損なわれません。このページからいつでも変更でき、同意を撤回された場合は Google が残したクッキーを削除します。"

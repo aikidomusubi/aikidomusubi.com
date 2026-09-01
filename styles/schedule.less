@@ -1,0 +1,1170 @@
+// out: false
+//
+// ---------------------------------------------------------------------------
+// Weekly training timetable
+//
+// Replaces ~677 lines of FullCalendar overrides. Nothing here positions a
+// block by hand: every block carries --row-start / --row-end computed from its
+// own times in _includes/schedule.html, and CSS Grid does the rest. Change a
+// class time in _data/schedule.yml and the block moves.
+//
+// The grid skips the empty middle of the day. Rows are the concatenation of
+// meta.bands (08:00–13:00 and 18:30–22:30), with a break marker where the jump
+// happens, so five and a half dead hours do not take up half the table.
+// ---------------------------------------------------------------------------
+
+// One 15-minute row. The shortest class on the timetable is 45 minutes, so
+// this sets the floor: three rows must hold the time, the discipline and the
+// level without clipping. At 1.25rem they did not — both Wednesday Aikido
+// classes overflowed by 9px — and 1.5rem gives them room with margin to spare.
+@tt-slot-height: 1.5rem;
+@tt-axis-width: 3.25rem;
+@tt-gap: 2px;
+
+.timetable {
+  --slot-h: @tt-slot-height;
+  margin: 0 0 3rem;
+
+  // Filtering is done by toggling these attributes on the container, so the
+  // work is one class change rather than a re-render. Blocks that fail either
+  // test are removed from layout, which lets their neighbours reclaim the
+  // width — hiding them with visibility would leave gaps.
+  .tt-class[hidden] {
+    display: none !important;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Controls
+// ---------------------------------------------------------------------------
+.timetable-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem 2rem;
+  align-items: flex-start;
+  margin: 0 0 1.5rem;
+
+  .tt-filter {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+
+    > legend {
+      .NotoSans; .bold;
+      float: none;
+      width: auto;
+      font-size: .7rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: fadeout(@Black, 40%);
+      margin: 0 0 .4rem;
+      padding: 0;
+    }
+  }
+}
+
+// Category chips — multi-select, so "Aikido and Judo" is expressible. The old
+// dropdown allowed exactly one category at a time.
+.tt-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+}
+
+.tt-chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  min-height: 2rem;              // 32px: clears the 24px tap-target minimum
+  padding: .25rem .7rem;
+  border: 1px solid fadeout(@Black, 88%);
+  border-radius: 2rem;
+  font-size: .8rem;
+  line-height: 1.2;
+  cursor: pointer;
+  user-select: none;
+  background-color: @White;
+  transition: background-color .2s ease, border-color .2s ease, opacity .2s ease;
+
+  > input {
+    position: absolute;
+    opacity: 0;
+    width: 1px; height: 1px;
+    margin: 0;
+  }
+
+  .tt-chip-dot {
+    width: .625rem;
+    height: .625rem;
+    border-radius: 50%;
+    background-color: var(--chip);
+    flex: 0 0 auto;
+  }
+
+  // Unchecked reads as "switched off" rather than "absent" — the colour drains
+  // out but the chip keeps its place, so the row does not reflow as you filter.
+  // NO OPACITY on the unchecked state. At 45% the label composited to about
+  // 2.5:1 on white, well under the 4.5:1 floor — the same fault the glossary
+  // and resources chips had. It escaped the audit only because every chip
+  // starts checked, so a fresh page load never shows the failing state.
+  //
+  // The signal is the same without it: the dot hollows out, the ground drains,
+  // and the label steps back to a colour that measures 5.9:1.
+  &:has(input:not(:checked)) {
+    background-color: transparent;
+    color: lighten(@Dark, 18%);
+
+    .tt-chip-dot { background-color: transparent; box-shadow: inset 0 0 0 1px currentColor; }
+  }
+
+  &:hover { border-color: fadeout(@Black, 70%); }
+
+  // Keyboard focus has to be visible on a control whose real input is hidden.
+  // The site-wide rule removes focus rings; this one is drawn deliberately.
+  &:has(input:focus-visible) {
+    outline: 2px solid @Blue;
+    outline-offset: 2px;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Venue dropdown
+//
+// Was a segmented control showing all three venues at once, which read well
+// but only because there are three. A fourth or fifth would wrap the row and a
+// sixth would break it, so this is the shape that survives the data growing.
+// The radios underneath still carry the state.
+// ---------------------------------------------------------------------------
+.tt-select {
+  position: relative;
+  display: inline-block;
+}
+
+.tt-select-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .6rem;
+  min-height: 2rem;
+  min-width: 12rem;
+  padding: .25rem .75rem;
+  border: 1px solid fadeout(@Black, 88%);
+  border-radius: .25rem;
+  background-color: @White;
+  color: @Black;
+  font-size: .8rem;
+  line-height: 1.2;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color .2s ease, background-color .2s ease;
+
+  > svg {
+    width: .8rem;
+    height: .8rem;
+    flex: 0 0 auto;
+    transition: transform .2s ease;
+  }
+
+  &:hover { border-color: fadeout(@Black, 70%); }
+  &:focus-visible { outline: 2px solid @Blue; outline-offset: 2px; }
+}
+
+.tt-select[data-open="true"] {
+
+  .tt-select-toggle {
+    border-color: @Accent;
+
+    > svg { transform: rotate(180deg); }
+  }
+
+  .tt-select-menu { display: block; }
+}
+
+.tt-select-menu {
+  display: none;
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + .25rem);
+  left: 0;
+  min-width: 100%;
+  padding: .25rem;
+  border: 1px solid fadeout(@Black, 85%);
+  border-radius: .25rem;
+  background-color: @White;
+  box-shadow: 0 .25rem .75rem fadeout(@Black, 88%);
+  white-space: nowrap;
+}
+
+.tt-select-option {
+  position: relative;
+  display: block;
+  padding: .4rem .6rem;
+  border-radius: .2rem;
+  font-size: .8rem;
+  line-height: 1.3;
+  cursor: pointer;
+  transition: background-color .15s ease;
+
+  > input {
+    position: absolute;
+    opacity: 0;
+    width: 1px; height: 1px;
+    margin: 0;
+  }
+
+  &:hover { background-color: fadeout(@Black, 96%); }
+
+  &:has(input:checked) {
+    background-color: @Accent;
+    color: @White;
+  }
+
+  &:has(input:focus-visible) {
+    outline: 2px solid @Blue;
+    outline-offset: -2px;
+  }
+}
+
+// A discipline the selected venue does not teach. Kept in place rather than
+// removed — the row would reflow on every venue change, and a chip that
+// vanishes reads as a bug rather than as "not here".
+.tt-chip[data-unavailable] {
+  opacity: .3;
+  cursor: not-allowed;
+  border-style: dashed;
+
+  .tt-chip-dot { background-color: transparent; box-shadow: inset 0 0 0 1px currentColor; }
+}
+
+// One awkward width.
+//
+// Between 768 and 992 the container is 592px: the activity chips and the venue
+// dropdown fit on one line together, and the share/print pair wraps to a second.
+// On that one line the dropdown sat immediately after the chips with a gap of
+// dead space to its right. Pushing it to the end pairs it with the actions
+// below and gives the row two edges instead of one.
+//
+// Above this band the actions rejoin the row and take the right edge
+// themselves; below it the dropdown gets a line of its own. Neither needs help,
+// so neither gets it.
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+  .timetable-controls .tt-filter:last-of-type { margin-left: auto; }
+}
+
+// ---------------------------------------------------------------------------
+// Share / print actions
+//
+// Pushed to the end of the controls row so they sit apart from the filters
+// they act on, and drop below them when the row runs out of width.
+// ---------------------------------------------------------------------------
+.tt-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin-left: auto;
+  align-self: flex-end;
+}
+
+.tt-action {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  min-height: 2rem;
+  padding: .25rem .8rem;
+  border: 1px solid fadeout(@Black, 88%);
+  border-radius: .25rem;
+  background-color: @White;
+  color: @Black;
+  font-size: .8rem;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: background-color .2s ease, border-color .2s ease;
+
+  > svg { width: .85rem; height: .85rem; flex: 0 0 auto; }
+
+  &:hover { background-color: fadeout(@Black, 96%); border-color: fadeout(@Black, 70%); }
+  &:focus-visible { outline: 2px solid @Blue; outline-offset: 2px; }
+
+  // Confirmation after the link is copied, for the desktop path where there
+  // is no share sheet to acknowledge the action.
+  &[data-done] {
+    border-color: @Accent;
+    color: @Accent;
+  }
+}
+
+// Print-only header. Never shown on screen.
+.tt-print-head { display: none; }
+
+// ---------------------------------------------------------------------------
+// The grid
+// ---------------------------------------------------------------------------
+.timetable-grid {
+  display: grid;
+  grid-template-columns: @tt-axis-width repeat(7, minmax(0, 1fr));
+  gap: 0 @tt-gap;
+  align-items: start;
+}
+
+// Time axis. Labels are positioned on the same row track as the blocks they
+// line up with, so they stay correct if the bands change.
+.tt-axis {
+  display: grid;
+  grid-template-rows: repeat(var(--rows), var(--slot-h));
+  position: relative;
+  padding-top: 2rem;                 // clears the day headings
+  font-size: .7rem;
+  // Aria-hidden, so no audit checks it — but it is still read, so it is
+  // held to the same 4.5:1 floor as everything else.
+  color: fadeout(@Black, 35%);
+
+  .tt-axis-label {
+    grid-row: var(--row);
+    grid-column: 1;
+    transform: translateY(-.4em);     // sit the label on its gridline
+    text-align: right;
+    padding-right: .5rem;
+    white-space: nowrap;
+  }
+
+  .tt-axis-break {
+    grid-row: var(--row);
+    grid-column: 1;
+    text-align: right;
+    padding-right: .5rem;
+    transform: translateY(-.4em);
+    // Solid, not fadeout(@Black, 65%), which composited to mix(@Black, @White, 40.1%) and measured
+    // 2.26:1 on white. Same trap as .tt-time, .vn-town and .cl-days: an alpha
+    // on text over a light ground reads as "slightly quieter" in the source and
+    // as a contrast failure on the screen.
+    color: lighten(@Dark, 18%);   // 5.9:1 on white
+  }
+}
+
+.tt-day {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+// Day headings.
+//
+// These are <h2> because the page runs <h1> Horarios and nothing between —
+// <h3> skipped a level and failed the heading-order audit.
+//
+// The whole rule lives inside the main scope on purpose. This stylesheet gives
+// every heading in <main> a prose treatment (h2 is 1.5rem with `margin: 3rem 0
+// 2rem`, centred), which is right for a section heading in running text and
+// wrong for a column header — the margin alone pushed every day column 3rem
+// below the time axis. `.page main h2` is (0,2,4); this
+// is (0,3,3) and wins on class count, so no !important is needed.
+.page main {
+
+  .tt-day-head {
+    .NotoSans; .bold;
+    height: 2rem;
+    margin: 0;
+    font-size: .8rem;
+    line-height: 2rem;
+    text-align: center;
+    text-transform: none;
+    letter-spacing: 0;
+    color: @Black;
+    border-bottom: 2px solid fadeout(@Black, 90%);
+    white-space: nowrap;
+    overflow: hidden;
+
+    .tt-day-short { display: none; }
+  }
+}
+
+// Today's column, marked by script — the build cannot know the day.
+.tt-day[data-today] {
+  .tt-day-head {
+    color: @Accent;
+    border-bottom-color: @Accent;
+  }
+
+  .tt-day-body { background-color: fadeout(@Accent, 97%); }
+}
+
+.tt-day-body {
+  position: relative;
+  display: grid;
+  grid-template-rows: repeat(var(--rows), var(--slot-h));
+  grid-template-columns: minmax(0, 1fr);
+
+  // Faint hour lines, drawn rather than marked up: one repeating gradient
+  // instead of 36 empty cells in the DOM.
+  background-image: repeating-linear-gradient(
+    to bottom,
+    fadeout(@Black, 94%) 0,
+    fadeout(@Black, 94%) 1px,
+    transparent 1px,
+    transparent calc(var(--slot-h) * 4)
+  );
+}
+
+// ---------------------------------------------------------------------------
+// A class block
+// ---------------------------------------------------------------------------
+.tt-class {
+  position: relative;
+
+  // Position from the times. This single declaration is what replaced the
+  // hand-tuned "height: 6rem; margin-top: -11.5rem" offsets.
+  grid-row: var(--row-start) / var(--row-end);
+  grid-column: 1;
+
+  // The same gap that separates the day columns, applied below each block, so
+  // consecutive classes read as separate cards instead of one stacked slab.
+  // Taken off the bottom only: the block still starts exactly on its own
+  // gridline, so the top edge keeps telling the truth about the start time.
+  margin-bottom: @tt-gap;
+
+  // Concurrent classes share the column. Width and offset come from the lane
+  // maths in the include; with the monthly Iaijutsu moved out of the grid
+  // nothing currently overlaps, so every block is full width.
+  width: calc((100% - (var(--lanes) - 1) * @tt-gap) / var(--lanes));
+  margin-left: calc(var(--lane) * (100% / var(--lanes)));
+
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow: hidden;
+  // More air above and below than the .26rem it had: the four lines were
+  // sitting hard against the top and bottom edges of the tint. There is room
+  // for it now that the shortest class on the timetable is 60 minutes.
+  padding: .5rem .55rem;
+  border-radius: .2rem;
+  background-color: var(--colour);
+  color: @Black;
+  line-height: 1.14;
+  transition: box-shadow .2s ease;
+
+  > p { margin: 0; }
+
+  // Type hierarchy: the discipline is what someone scans for, so it is the
+  // biggest thing in the block. The time sits above it as a label, the level
+  // below it as a qualifier — decreasing weight and size in reading order.
+  // Not opacity. Faded to 75% over the darkest activity tint this measured
+  // 3.91:1; at full strength it is 5.45:1 on the same block. Size and weight
+  // already carry the "secondary" reading — the same correction .tt-place
+  // needed, and the calendar before it.
+  // Time above the discipline, in reading order, the way it has always been.
+  // What changed is the teacher below: it is anchored to the floor of the block
+  // instead of trailing the level, so the four facts read top-to-bottom with the
+  // slack between them rather than a gap at the bottom.
+  .tt-time {
+    .bold;
+    font-size: .63rem;
+    letter-spacing: .01em;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;   // the columns of digits line up
+  }
+
+  .tt-name {
+    .bold;
+    font-size: .8rem;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: .015em;
+  }
+
+  .tt-level {
+    font-size: .64rem;
+    margin-top: .06rem;
+  }
+
+  // Just the name, set apart from the level above it. The gap is what marks it
+  // as a different kind of fact; a "Instructor:" label said the obvious and
+  // cost a line in a block that has very few.
+  // Anchored to the bottom of the block rather than trailing the level, so in
+  // a 90-minute block it sits on the floor instead of floating in the middle.
+  .tt-who {
+    .bold;
+    margin-top: auto;
+    font-size: .64rem;
+    line-height: 1.2;
+    color: @Black;
+  }
+
+  .tt-place {
+    font-size: .65rem;
+    // Not opacity. The block colours are light enough that near-black text on
+    // them measures 7.5:1 at worst, but faded to 70% it drops under the 4.5:1
+    // floor — which is what the audit caught on the wide layout, where this
+    // line is shown. A smaller size carries the "secondary" reading on its own.
+    color: @Black;
+    display: none;   // the venue filter already names it
+  }
+
+  // Only genuinely tiny blocks lose anything. A 45-minute class is 60px tall,
+  // which fits time, discipline and level comfortably at these sizes — the
+  // previous thresholds hid the level on both Wednesday Aikido classes for no
+  // reason.
+  // Only the very shortest blocks lose anything now, and only the teacher.
+  // With the time out of its own line a 45-minute block holds discipline, time
+  // and level, where before it held discipline and time and nothing else.
+  &[data-tiny] {
+    padding: .28rem .55rem;
+
+    .tt-who { display: none; }
+    .tt-time { font-size: .6rem; }
+    .tt-name { font-size: .72rem; }
+    .tt-level { font-size: .6rem; margin-top: .02rem; }
+  }
+}
+
+// The now-line, drawn only while it falls inside a band.
+.tt-now {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 0;
+  border-top: 2px solid @Red;
+  z-index: 3;
+  pointer-events: none;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: -3px;
+    top: -4px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: @Red;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Add-to-calendar, injected by script (it needs a Blob URL)
+// ---------------------------------------------------------------------------
+// Per-class calendar link
+//
+// An icon in the block's top-right corner rather than a line of text. As
+// wording it repeated the same sentence twenty-one times, competed with the
+// class names for room a 45-minute block does not have, and sat on its own
+// baseline out of line with everything else. As a corner icon it is out of the
+// text flow entirely, so the time/name/level stack keeps its rhythm.
+//
+// Revealed on hover or focus, but always in the DOM and always reachable by
+// keyboard. Touch devices get it permanently — see the narrow breakpoint.
+//
+// Scoped under main because this stylesheet gives every link in prose
+// `position: relative` and an underline at (0,2,4). Unscoped, the icon stayed
+// in the text flow and dragged the block's layout with it.
+// ---------------------------------------------------------------------------
+.page main .tt-ics {
+  position: absolute;
+  top: .2rem;
+  right: .2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: .2rem;
+  color: @Black;
+  opacity: 0;
+  text-decoration: none;
+  background-color: fadeout(@White, 35%);
+  transition: opacity .15s ease, background-color .15s ease;
+
+  > svg {
+    width: .7rem;
+    height: .7rem;
+    display: block;
+  }
+
+  // The label is for screen readers and tooltips, not for the eye.
+  > .tt-ics-text {
+    position: absolute;
+    width: 1px; height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+.tt-class {
+
+  &:hover .tt-ics,
+  &:focus-within .tt-ics { opacity: 1; }
+
+  .tt-ics:hover,
+  .tt-ics:focus-visible {
+    background-color: @White;
+    color: @Black;
+  }
+}
+
+.tt-empty {
+  .NotoSans;
+  grid-row: 1 / -1;
+  align-self: center;
+  text-align: center;
+  font-size: .7rem;
+  color: lighten(@Dark, 18%);   // 5.9:1 on white; was 2.6:1 as fadeout(@Black, 60%)
+  margin: 0;
+}
+
+// ---------------------------------------------------------------------------
+// Notes for classes that are not weekly
+// ---------------------------------------------------------------------------
+.tt-notes {
+  margin: 1rem 0 0;
+}
+
+// Running text, so no flexbox. A flex container makes an anonymous item of
+// every text node, and `gap` then pushes them apart — which put a 7px space
+// between "Saturday" and the time, and again before "Once a month". The dot is
+// positioned out of the flow instead, and the sentence stays a sentence.
+.tt-note {
+  position: relative;
+  padding-left: 1rem;
+  margin: 0 0 .35rem;
+  font-size: .78rem;
+  line-height: 1.45;
+  color: fadeout(@Black, 20%);
+
+  > strong { .bold; }
+  > em { font-style: italic; opacity: .85; }
+
+  .tt-note-dot {
+    position: absolute;
+    left: 0;
+    top: .5em;
+    width: .55rem;
+    height: .55rem;
+    border-radius: 50%;
+    background-color: var(--colour);
+  }
+
+  &[hidden] { display: none; }
+}
+
+// ---------------------------------------------------------------------------
+// Calendar export
+// ---------------------------------------------------------------------------
+.tt-export {
+  margin: 1.75rem 0 0;
+  padding: 1rem 1.25rem;
+  border: 1px solid fadeout(@Black, 88%);
+  border-radius: .25rem;
+  background-color: fadeout(@Black, 98%);
+}
+
+.tt-export-title {
+  .NotoSans; .bold;
+  margin: 0 0 .5rem;
+  font-size: .7rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: fadeout(@Black, 30%);
+}
+
+.tt-export-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: 0 0 .5rem;
+}
+
+.page main .tt-export-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  min-height: 2rem;
+  padding: .3rem .85rem;
+  border: 1px solid @Accent;
+  border-radius: .25rem;
+  background-color: @Accent;
+  color: @White;
+  font-size: .8rem;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: background-color .2s ease;
+
+  &:hover, &:focus { background-color: lighten(@Accent, 14%); color: @White; text-decoration: none; }
+  &:focus-visible { outline: 2px solid @Blue; outline-offset: 2px; }
+
+  > svg { width: .85rem; height: .85rem; }
+
+  // The filtered export is secondary to the whole-schedule one.
+  &.is-secondary {
+    background-color: transparent;
+    color: @Accent;
+
+    &:hover, &:focus { background-color: fadeout(@Accent, 92%); color: @Accent; }
+  }
+}
+
+.tt-export-hint {
+  margin: 0;
+  font-size: .72rem;
+  line-height: 1.45;
+  // 35% transparency measures 5.8:1 on the card fill; 45% was 4.06:1.
+  color: fadeout(@Black, 35%);
+}
+
+// ---------------------------------------------------------------------------
+// Day tabs (below 992px)
+//
+// The old build swapped FullCalendar's grid view for its list view at this
+// width, which meant a single scrolling column of every class in the week.
+// Tabs keep one day on screen at a time and make the week navigable.
+// ---------------------------------------------------------------------------
+.tt-tabs {
+  display: none;
+  gap: .3rem;
+  margin: 0 0 1rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar { display: none; }
+}
+
+.tt-tab {
+  flex: 1 0 auto;
+  min-width: 2.75rem;
+  min-height: 2.25rem;
+  padding: .35rem .6rem;
+  border: 1px solid fadeout(@Black, 88%);
+  border-radius: .25rem;
+  background-color: @White;
+  color: @Black;
+  font-size: .75rem;
+  line-height: 1.2;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+
+  &[aria-selected="true"] {
+    background-color: @Accent;
+    border-color: @Accent;
+    color: @White;
+  }
+
+  &[data-today]:not([aria-selected="true"]) { border-color: @Accent; color: @Accent; }
+
+  &:focus-visible { outline: 2px solid @Blue; outline-offset: 2px; }
+}
+
+@media (max-width: 991.98px) {
+
+  .tt-tabs { display: flex; }
+
+  .timetable-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  // The axis is meaningless once days are shown one at a time — the blocks
+  // carry their own times.
+  .tt-axis { display: none; }
+
+  .tt-day {
+    display: none;
+
+    &[data-active] { display: block; }
+  }
+
+  .tt-day-head {
+    text-align: left;
+    height: auto;
+    line-height: 1.4;
+    font-size: 1rem;
+    padding-bottom: .5rem;
+    margin-bottom: .75rem;
+  }
+
+  // Stacked, not gridded: a phone has no room for a proportional time axis,
+  // and a list reads better one-handed.
+  .tt-day-body {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    background-image: none;
+  }
+
+  .tt-class {
+    width: 100%;
+    margin-left: 0;
+    padding: .6rem .75rem;
+    font-size: .8rem;
+
+    // No hover on a touch screen, so the icon is always shown. It stays in
+    // the corner rather than joining the text flow, which keeps the card's
+    // time/name/level rhythm identical to the desktop block.
+    .tt-ics {
+      opacity: 1;
+      top: .4rem;
+      right: .4rem;
+      width: 1.75rem;
+      height: 1.75rem;
+
+      > svg { width: .85rem; height: .85rem; }
+    }
+
+    .tt-time { font-size: .8rem; }
+    .tt-name { font-size: .85rem; }
+    .tt-level, .tt-place { font-size: .75rem; }
+    .tt-who { font-size: .75rem; }
+    .tt-who { display: block; }
+    // The list view prints the venue on the row itself, so repeating it
+    // inside every block was the same word twice a few pixels apart.
+    .tt-place { display: none; }
+
+    // Height is meaningless in a stacked list, so the duration-based
+    // truncation above is undone.
+    &[data-short] .tt-level,
+    &[data-tiny] .tt-level,
+    &[data-short] .tt-who,
+    &[data-tiny] .tt-who,
+    &[data-tiny] .tt-place { display: block; }
+
+    &[data-tiny] {
+      padding: .6rem .75rem;
+
+      .tt-time, .tt-name { display: block; font-size: .8rem; }
+      .tt-name::before { content: none; }
+    }
+  }
+
+  .tt-now { display: none; }
+}
+
+// ---------------------------------------------------------------------------
+// Print — a sheet for the wall, not a copy of the page
+//
+// Landscape, because the timetable is seven columns wide and portrait squeezes
+// each day to about 25mm. Everything except the grid goes: no navigation, no
+// filters, no footer, no cookie banner, no notes, no export panel. What is
+// left is the wordmark, the week, and the venue it belongs to.
+//
+// Blocks are compact here on purpose. On screen a block is sized by its
+// duration against a 1.5rem row so the geometry carries meaning; on paper the
+// point is legibility at arm's length on a wall, so rows shrink to 4mm and the
+// type is set in points rather than rems.
+//
+// Backgrounds are not relied on — most browsers drop them unless the reader
+// ticks "background graphics" — so the discipline colour is carried by a solid
+// left rule that always prints.
+// ---------------------------------------------------------------------------
+@page {
+  size: A4 landscape;
+  margin: 10mm;
+}
+
+@media print {
+
+  // ---- everything that is not the timetable ----
+  .navbar,
+  .fixedHead,
+  header,
+  footer,
+  .stickyBar,
+  .cookie-banner,
+  #cookieConsentControl,
+  .timetable-controls,
+  .tt-tabs,
+  .tt-now,
+  .tt-ics,
+  .tt-export,
+  .tt-actions,
+  .tt-notes { display: none !important; }
+
+  // The page's own prose and heading go too: the printed sheet has its own
+  // masthead and the paragraph above the grid is for the web page.
+  .page main > h1,
+  .page main > p,
+  .page main > ul,
+  .page main > hr { display: none !important; }
+
+  html body .page .container,
+  .page main {
+    max-width: none !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  // The screen layout is built to fill the viewport and reserve room for the
+  // fixed footer: html and body are height:100%, .page carries the footer's
+  // height as padding, and the hero header is a full-viewport block. On paper
+  // that geometry has nothing to fill, so it becomes blank pages after the
+  // grid. Collapsed here.
+  html,
+  body,
+  .page {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  // <html> carries the site's dark background so the area behind the fixed
+  // footer is not white on screen. On paper that colour propagates to the page
+  // canvas and floods every sheet edge to edge — a full A4 of #343A40 behind a
+  // timetable that is mostly white space.
+  html,
+  body,
+  .page {
+    background-color: #fff !important;
+    background-image: none !important;
+  }
+
+  .page { padding-bottom: 0 !important; }
+
+  // Pin the layout to the printable area. Chrome lays a printed page out
+  // against the window width, not the paper, so on a wide window the grid ran
+  // off the right edge and the sheet came out three pages of mostly nothing.
+  // A4 landscape less the 10mm margins is 277mm; stating it here makes the
+  // output identical whatever window the reader happens to have open.
+  html,
+  body {
+    width: 277mm !important;
+    max-width: 277mm !important;
+  }
+
+  html body .page .container,
+  .page main,
+  .timetable,
+  .timetable-grid {
+    max-width: 277mm !important;
+    width: 277mm !important;
+  }
+
+  // ---- masthead ----
+  //
+  // The wordmark and the name of the sheet, nothing else. The filter line that
+  // used to sit on the left said "Aikido Musubi" beside a logo that already
+  // says it; the venue is on the blocks themselves when it is not the dojo.
+  .tt-print-head {
+    display: flex;
+    align-items: center;
+    gap: 6mm;
+    margin: 0 0 5mm;
+    padding-bottom: 3mm;
+    border-bottom: 1pt solid @Black;
+  }
+
+  // Scoped under main because this stylesheet sets every image inside main to
+  // width: 100% at (0,2,5). Unscoped, the wordmark filled the sheet and pushed
+  // the entire timetable onto page two.
+  // 48mm left the top of the sheet mostly empty while the grid was sized to
+  // survive a fragmentation bug that no longer exists. With the height now
+  // arithmetic, the free space at the top can go to the wordmark: 90mm of a
+  // 277mm sheet, which reads across a room.
+  // The wordmark is cropped to its ink, unlike the old logo-00.svg whose
+  // viewBox was two-thirds empty. 30mm of ink here is the same printed size
+  // the 90mm-wide padded file used to give.
+  .page main .tt-print-logo {
+    width: 30mm !important;
+    max-width: 30mm !important;
+    height: auto !important;
+    flex: 0 0 auto;
+    align-self: center;
+  }
+
+  // Left: the current filter — which venue, and which disciplines if not all of
+  // them. Without it a filtered printout is indistinguishable from the full one.
+  // Right: what the sheet is. That corner used to repeat "Aikido Musubi", which
+  // the wordmark beside it already says.
+  // The logo sits on the centre line of the paper, not on the centre of what
+  // is left after the title. An empty slot the same width as the title is what
+  // makes those two different things the same.
+  .tt-print-spacer,
+  .tt-print-name {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .tt-print-name {
+    .NotoSans;
+    margin: 0;
+    font-size: 12pt;
+    line-height: 1.2;
+    color: @Black;
+    text-align: right;
+  }
+
+  .tt-print-meta { display: none; }
+
+  .tt-print-url { display: none; }
+
+  // ---- the grid ----
+  .timetable { margin: 0; }
+
+  .timetable-grid {
+    display: grid;
+    grid-template-columns: 12mm repeat(7, minmax(0, 1fr));
+    gap: 0 .8mm;
+  }
+
+  // 4.2mm a slot. 38 slots is 160mm; with the masthead and the day headings
+  // that fills A4 landscape's 190mm almost exactly. Measured, not guessed: 4.4
+  // is the first value that spills onto a second sheet, so this is one step
+  // under the ceiling and the last one that prints on one page.
+  //
+  // It was 3.2mm while the layout could fragment, which was a guess at a height
+  // that might survive; nothing survived, because the fragmentation was the
+  // problem rather than the size. With the positioning made explicit the height
+  // is arithmetic, so the slot is set for legibility instead: a 90-minute class
+  // gets 24mm and a 45-minute one 12mm, which holds three lines at 7.5pt.
+  .timetable { --slot-h: 4.2mm; }
+
+  // ---- why print does not use the grid -------------------------------------
+  //
+  // On screen the axis and the day bodies are CSS grids of `--rows` fixed
+  // tracks, and every block spans the rows its own times computed. That is the
+  // right model and it is exact — on screen.
+  //
+  // In paged media it is not. Chrome's grid fragmentation re-sizes row tracks
+  // from their content once a grid container can break across pages, so the
+  // fixed 3.2mm tracks grew to whatever each block needed. The day columns
+  // stretched, the axis (which has almost no content) did not, and the two
+  // drifted apart: printed, the evening classes sat level with the 22:00 line
+  // and ran off the bottom onto a second sheet. Making the grid taller or
+  // shorter only moved the drift around, because the cause is that it can
+  // fragment at all.
+  //
+  // So print positions from the same custom properties directly. Absolute
+  // offsets inside a box of a stated height are not subject to any of that:
+  // rows × slot is exactly the height it says, and a block at row 23 is exactly
+  // 22 slots down. Same data, same arithmetic, no fragmentation to negotiate.
+  .tt-axis {
+    display: block;
+    position: relative;
+    height: calc(var(--rows) * var(--slot-h));
+    margin-top: 6mm;                 // clears the day headings
+    padding-top: 0;
+    font-size: 6.5pt;
+    color: @Black;
+
+    .tt-axis-label,
+    .tt-axis-break {
+      position: absolute;
+      right: 1.5mm;
+      top: calc((var(--row) - 1) * var(--slot-h));
+      line-height: 1;
+      transform: translateY(-.35em);
+    }
+  }
+
+  // No break-inside: avoid here. A day column is ~158mm tall, and Chrome's
+  // paged layout treats an unbreakable box that large as "does not fit on the
+  // remaining page" and pushes the whole grid to the next sheet — which is
+  // what produced a three-page print whose first page held only the masthead.
+  // The grid is short enough to fit on one page anyway; letting it break is
+  // the safe default rather than a constraint the engine has to honour.
+  .tt-day {
+    display: flex !important;
+  }
+
+  // Safe to state now that the grid is gone: the timetable's printed height is
+  // exactly the masthead plus the day heading plus rows × slot, so it either
+  // fits a sheet or it does not — it cannot half-fit and drag a tail onto a
+  // second one. The earlier attempt at this was on the fragmenting layout,
+  // where a day column measured ~158mm and Chrome pushed the whole grid to
+  // page two rather than break it.
+  .timetable { break-inside: avoid; }
+
+  .tt-day-head,
+  .page main .tt-day-head {
+    height: 6mm;
+    line-height: 6mm;
+    margin: 0;
+    font-size: 8.5pt;
+    color: @Black;
+    border-bottom: .8pt solid @Black;
+  }
+
+  .tt-day[data-today] .tt-day-head { color: @Black; border-bottom-color: @Black; }
+  .tt-day[data-today] .tt-day-body { background-color: transparent; }
+
+  .tt-day-body {
+    display: block;
+    position: relative;
+    height: calc(var(--rows) * var(--slot-h));
+    background-image: none;
+  }
+
+  .tt-class {
+    // The screen layout's four properties, resolved by hand. --lane / --lanes
+    // carry the Saturday overlap the same way they do on screen.
+    position: absolute;
+    top: calc((var(--row-start) - 1) * var(--slot-h));
+    height: calc((var(--row-end) - var(--row-start)) * var(--slot-h));
+    left: calc(var(--lane, 0) * (100% / var(--lanes, 1)));
+    width: calc(100% / var(--lanes, 1));
+    margin: 0;
+    padding: 1.6mm 2mm;
+    gap: 0;
+    border: .4pt solid fadeout(@Black, 55%);
+    border-left: 1.6mm solid var(--colour);
+    border-radius: 0;
+    background-color: transparent !important;
+    color: @Black !important;
+    overflow: hidden;
+
+    // On screen the three lines are separated by the flex gap; in print the gap
+    // was zeroed to save height back when height was scarce, which ran the time,
+    // the discipline and the level together into a solid block of type. The
+    // sheet has room now, so they get leading and a size hierarchy: the
+    // discipline leads, the time sits above it in small caps-ish tracking, and
+    // the level trails in the same size as the time but lighter.
+    .tt-time {
+      font-size: 6.5pt;
+      line-height: 1.25;
+      opacity: 1;
+      letter-spacing: .02em;
+      margin-bottom: .5mm;
+      color: #333;
+    }
+
+    .tt-name {
+      font-size: 8.5pt;
+      line-height: 1.2;
+      margin-bottom: .4mm;
+    }
+
+    .tt-level {
+      font-size: 6.5pt;
+      line-height: 1.25;
+      opacity: 1;
+      display: block;
+      color: #333;
+    }
+
+    .tt-place, .tt-who { display: none; }
+
+    // Stacked times cost a line the paper cannot spare.
+    &[data-narrow] .tt-time {
+      white-space: nowrap;
+
+      > time { display: inline; }
+      > span { display: inline; }
+    }
+
+    &[data-tiny] {
+      padding: .5mm 1.2mm;
+      .tt-level { display: none; }
+    }
+  }
+
+  .tt-empty { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .tt-chip,
+  .tt-segment,
+  .tt-tab,
+  .tt-class { transition: none; }
+}

@@ -1,0 +1,106 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Recursos · C — Aikido Musubi</title>
+<link rel="stylesheet" href="/styles/all.min.css">
+<style>
+:root{--ink:#111314;--mute:#4f5c62;--line:rgba(17,19,20,.13);--rule:rgba(17,19,20,.30);
+      --acc:#FFF200;--rust:#AE5224;--green:#1A7444;--panel:#f6f7f7}
+html,body{margin:0;background:#fff;color:var(--ink);
+  font-family:'Noto Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.7}
+*{box-sizing:border-box}
+h1,h2,h3,h4{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-weight:400;margin:0;letter-spacing:.04em}
+p{margin:0}
+a{color:inherit}
+.w{max-width:1140px;margin:0 auto;padding-left:6rem;padding-right:6rem}
+@media(max-width:991.98px){.w{padding-left:4rem;padding-right:4rem}}
+@media(max-width:767.98px){.w{padding-left:2rem;padding-right:2rem}}
+.mono{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-variant-numeric:tabular-nums}
+
+/* the shared page header, as the real site now renders it */
+.top{padding:3.4rem 0 0;text-align:center}
+.top h1{font-size:2rem;letter-spacing:1px;text-transform:uppercase;margin:2rem 0}
+.top .lede{max-width:none;font-size:.9rem;color:var(--mute);margin:0 0 5.4rem}
+.strip{display:flex;flex-wrap:wrap;gap:1.4rem;padding:1.6rem 0 1rem;border-bottom:1px solid var(--line)}
+.strip a{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:#425055;text-decoration:none}
+.strip a[aria-current]{color:var(--ink);font-weight:700;box-shadow:inset 0 -2px 0 var(--ink)}
+
+/* the badge that says what a thing IS */
+.k{display:inline-block;font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.52rem;
+   letter-spacing:.16em;text-transform:uppercase;padding:.16rem .44rem;vertical-align:.14em}
+.k-pdf{background:var(--rust);color:#fff}
+.k-html{background:var(--ink);color:#fff}
+.k-book{background:var(--green);color:#fff}
+.k-link{background:none;color:var(--mute);box-shadow:inset 0 0 0 1px var(--line)}
+.lg{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.56rem;letter-spacing:.14em;color:var(--mute)}
+.note{font-size:.88rem;color:var(--mute)}
+footer.end{margin-top:4rem;padding:2rem 0 4rem;border-top:1px solid var(--line);
+  font-size:.78rem;color:var(--mute)}
+.badge{position:fixed;top:0;left:0;z-index:99;background:var(--ink);color:#fff;
+  font-family:Futura,sans-serif;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;
+  padding:.5rem .9rem}
+
+.c-wrap{display:grid;grid-template-columns:15rem 1fr;gap:4rem;align-items:start}
+@media(max-width:991.98px){.c-wrap{grid-template-columns:1fr;gap:2rem}}
+.c-toc{position:sticky;top:1.5rem}
+.c-toc p{font-family:Futura,sans-serif;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--mute);padding-bottom:.6rem;border-bottom:1px solid var(--line);margin-bottom:.5rem}
+.c-toc a{display:block;padding:.4rem 0;font-size:.88rem;text-decoration:none;color:var(--mute)}
+.c-toc a[aria-current]{color:var(--ink);box-shadow:inset 2px 0 0 var(--rust);padding-left:.7rem}
+.c-toc .dl{margin-top:1.4rem;display:block;font-family:Futura,sans-serif;font-size:.6rem;
+  letter-spacing:.14em;text-transform:uppercase;padding:.6rem .9rem;background:var(--ink);color:#fff;text-align:center}
+.c-sec{padding-top:1.5rem;border-top:1px solid var(--line);margin-bottom:3rem}
+.c-sec h2{font-size:1.2rem;text-transform:uppercase;letter-spacing:.09em;margin-bottom:.9rem}
+.c-sec > p{font-size:.95rem;line-height:1.85;color:#2c3437;margin-bottom:1rem;max-width:43.25rem}
+.c-steps{counter-reset:s;list-style:none;margin:0 0 1.2rem;padding:0}
+.c-steps li{counter-increment:s;position:relative;padding:.7rem 0 .7rem 3rem;
+  border-bottom:1px solid var(--line);font-size:.93rem;line-height:1.75;color:#2c3437}
+.c-steps li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:.9rem;
+  font-family:Futura,sans-serif;font-size:.64rem;letter-spacing:.14em;color:var(--rust)}
+.c-tbl{width:100%;border-collapse:collapse;font-size:.88rem;margin-bottom:1.2rem}
+.c-tbl th{text-align:left;font-family:Futura,sans-serif;font-size:.58rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--mute);padding:.5rem .8rem .5rem 0;border-bottom:1px solid var(--rule)}
+.c-tbl td{padding:.6rem .8rem .6rem 0;border-bottom:1px solid var(--line);vertical-align:top}
+.c-tbl td:first-child{font-family:Futura,sans-serif;white-space:nowrap}
+.c-att{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.2rem 0 0}
+.c-att a{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem .8rem;
+  box-shadow:inset 0 0 0 1px var(--line);text-decoration:none;font-size:.82rem}
+.c-att a:hover{box-shadow:inset 0 0 0 1px var(--rule)}
+</style></head><body><div class="badge">Propuesta C · manual del dojo</div><div class="w"><nav class="strip"><a href="#" aria-current="page">Recursos</a><a href="#">Clases</a><a href="#">Horarios</a><a href="#">Cuotas</a><a href="#">Visitantes</a></nav><header class="top"><h1>Recursos</h1>
+<p class="lede">El manual del dojo: se lee aquí, entero, y cada sección lleva sus impresos colgados debajo. Se imprime completo o por secciones.</p></header></div><div class="w"><div class="c-wrap">
+<nav class="c-toc"><p>En esta página</p><a href="#" aria-current="true">Trámites</a><a href="#">Programa de examen</a><a href="#">Armas</a><a href="#">Etiqueta y normas</a><a href="#">Lecturas</a><a class="dl" href="#">Descargar todo · PDF</a></nav>
+<div>
+
+<section class="c-sec"><h2>Trámites</h2>
+<p>Cuatro documentos, una vez. Se rellenan, se firman y se entregan en el dojo o por
+correo; después no vuelves a mirarlos.</p>
+<div class="c-att"><a href="#"><span class="k k-pdf">PDF</span> Hoja de inscripción</a><a href="#"><span class="k k-pdf">PDF</span> Autorización de uso de imagen</a><a href="#"><span class="k k-pdf">PDF</span> Autorización para menores</a><a href="#"><span class="k k-pdf">PDF</span> Orden de domiciliación SEPA</a></div>
+</section>
+
+<section class="c-sec"><h2>Programa de examen</h2>
+<p>El contenido de cada examen de kyū y los días mínimos de práctica desde el grado
+anterior. No hay fecha fija: se propone cuando el instructor considera que el trabajo
+está hecho.</p>
+<table class="c-tbl"><thead><tr><th>Grado</th><th>Qué entra</th><th>Técnicas</th><th>Mínimo</th></tr></thead>
+<tbody><tr><td>5.º kyū</td><td>El primero. Ocho técnicas, tres ataques y el ukemi que las acompaña.</td><td class="mono">8</td><td>20 días de práctica</td></tr><tr><td>4.º kyū</td><td>Entran suwariwaza y el primer trabajo contra dos ataques distintos.</td><td class="mono">14</td><td>40 días desde 5.º</td></tr><tr><td>3.er kyū</td><td>Aparecen hanmi handachi y las primeras proyecciones de cadera.</td><td class="mono">21</td><td>60 días desde 4.º</td></tr><tr><td>2.º kyū</td><td>Ushirowaza completo y el programa de jō empieza a contar.</td><td class="mono">27</td><td>80 días desde 3.º</td></tr><tr><td>1.er kyū</td><td>Todo lo anterior, más jiyū waza y el trabajo con armas.</td><td class="mono">34</td><td>100 días desde 2.º</td></tr></tbody></table>
+<p class="note">Cada grado tiene además su propia página con las técnicas nombradas una
+a una, en japonés y en castellano.</p>
+</section>
+
+<section class="c-sec"><h2>Etiqueta y normas</h2>
+<p>La etiqueta del dojo, el <em>礼法 reihō</em>, no es ceremonia: es la manera de que
+cuarenta personas descalzas compartan un suelo sin estorbarse.</p>
+<ol class="c-steps"><li><b>Etiqueta del dojo.</b> Cómo se entra, cómo se saluda, cómo se trata al compañero.</li><li><b>Normas de la sala.</b> Uso del tatami, vestuarios, material y horarios de acceso.</li><li><b>Guía de la primera clase.</b> Qué llevar, a qué hora llegar y qué va a pasar durante esa hora.</li></ol>
+<div class="c-att"><a href="#"><span class="k k-html">En la web</span> Etiqueta del dojo · reihō</a><a href="#"><span class="k k-pdf">PDF</span> Normas de la sala</a><a href="#"><span class="k k-html">En la web</span> Guía de la primera clase</a></div>
+</section>
+
+<section class="c-sec"><h2>Armas</h2>
+<p>Los programas que se siguen en el dojo, con la numeración que se usa en clase.</p>
+<div class="c-att"><a href="#"><span class="k k-html">En la web</span> 36 técnicas básicas de jō</a><a href="#"><span class="k k-pdf">PDF</span> 31 no jō kata</a><a href="#"><span class="k k-html">En la web</span> Ken suburi · 7 cortes</a><a href="#"><span class="k k-pdf">PDF</span> Kumijō · 10 formas</a></div>
+</section>
+
+<section class="c-sec"><h2>Lecturas</h2>
+<p>Nada de esto lo publicamos nosotros. Está en la biblioteca pública o se compra.</p>
+<div class="c-att"><a href="#"><span class="k k-book">Libro</span> Budo. Enseñanzas del fundador del Aikido <span class="lg">· Morihei Ueshiba</span></a><a href="#"><span class="k k-book">Libro</span> El espíritu del Aikido <span class="lg">· Kisshomaru Ueshiba</span></a><a href="#"><span class="k k-book">Libro</span> Aikido and the Dynamic Sphere <span class="lg">· Westbrook &amp; Ratti</span></a><a href="#"><span class="k k-book">Libro</span> Total Aikido. The Master Course <span class="lg">· Gozo Shioda</span></a><a href="#"><span class="k k-link">Enlace</span> Aikido Journal <span class="lg">· Stanley Pranin (ed.)</span></a><a href="#"><span class="k k-link">Enlace</span> Aikikai Hombu Dojo · vídeos <span class="lg">· Aikikai Foundation</span></a></div>
+</section>
+
+</div></div></div><div class="w"><footer class="end"><b>Propuesta C.</b> Un documento, no una lista de descargas. Lo que se puede leer, se lee en la página; los PDFs cuelgan de la sección a la que pertenecen. Los trámites encajan peor: un impreso no es lectura.</footer></div></body></html>

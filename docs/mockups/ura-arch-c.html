@@ -1,0 +1,83 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ura · Archivo C</title><link rel="stylesheet" href="/styles/all.min.css">
+<style>
+:root{--fg:#d5dadc;--hi:#fff;--mute:#9ba3a6;--line:rgba(255,255,255,.13);
+      --acc:#FFF200;--bg:#111314;--card:#191b1c;--rust:#AE5224}
+html,body{margin:0;background:var(--bg);color:var(--fg);
+  font-family:'Noto Sans',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+h1,h2,h3{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-weight:400;margin:0;color:var(--hi);letter-spacing:.02em}
+p{margin:0}
+a{color:inherit;text-decoration:none}
+.w{max-width:1140px;margin:0 auto;padding:0 6rem}
+@media(max-width:991.98px){.w{padding:0 4rem}}
+@media(max-width:767.98px){.w{padding:0 2rem}}
+.mast{position:sticky;top:0;z-index:6;background:rgba(17,19,20,.95);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line)}
+.mast-in{display:flex;align-items:center;gap:1rem;min-height:3.3rem;padding:.8rem 0}
+.seal{font-family:'Hiragino Sans','Noto Sans JP',sans-serif;font-size:1.4rem;color:var(--acc)}
+.ttl{font-family:Futura,sans-serif;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--hi)}
+.sub{font-size:.72rem;color:var(--mute)}
+.sec{padding-top:3.2rem}
+.sh{display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:1.6rem}
+.sh h2{font-size:1.65rem}
+.sh .note{font-size:.8rem;color:var(--mute)}
+.lab{font-family:Futura,sans-serif;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--mute);margin-bottom:.9rem}
+.sheet{display:grid;grid-template-columns:repeat(16,1fr);gap:2px}
+.sheet a,.sheet span{display:block;position:relative}
+.sheet img{display:block;width:100%;aspect-ratio:1;object-fit:cover}
+@media(max-width:991.98px){.sheet{grid-template-columns:repeat(10,1fr)}}
+@media(max-width:575.98px){.sheet{grid-template-columns:repeat(6,1fr)}}
+.counts{display:flex;gap:2.6rem;flex-wrap:wrap;margin-top:1.6rem}
+.counts b{font-family:Futura,sans-serif;font-size:1.4rem;color:var(--hi);display:block;line-height:1}
+.counts i{font-style:normal;font-family:Futura,sans-serif;font-size:.56rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--mute);display:block;margin-top:.4rem}
+.note-link{margin-top:1.6rem;font-size:.82rem}
+.note-link a{color:var(--acc);border-bottom:1px solid rgba(255,242,0,.4);padding-bottom:.1rem}
+.badge{position:fixed;top:0;left:0;z-index:99;background:var(--acc);color:#111314;
+  font-family:Futura,sans-serif;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;padding:.5rem .9rem}
+footer.end{margin-top:3.4rem;padding:2.4rem 0 4rem;border-top:1px solid var(--line);
+  font-size:.78rem;color:var(--mute)}
+footer.end b{color:var(--hi);font-weight:400}
+.cost{margin-top:.8rem;font-family:ui-monospace,Menlo,monospace;font-size:.72rem;color:var(--acc)}
+
+.yr{display:grid;grid-template-columns:repeat(auto-fill,minmax(5.2rem,1fr));gap:2px;margin-top:1.8rem}
+.yr a{background:var(--card);padding:.7rem .7rem .8rem;display:block}
+.yr a:hover{background:#1f2223}
+.yr a:hover .n{color:var(--acc)}
+.yr .y{font-family:Futura,sans-serif;font-size:.62rem;letter-spacing:.12em;color:var(--mute)}
+.yr .n{font-family:Futura,sans-serif;font-size:1.05rem;color:var(--hi);line-height:1;margin-top:.3rem}
+.yr .bar{height:2px;background:var(--acc);margin-top:.5rem;opacity:.55}
+</style></head><body>
+<div class="badge">Enfoque C · lámina + índice de años</div>
+<header class="mast"><div class="w mast-in"><span class="seal">裏</span>
+<span class="ttl">Ura</span><span class="sub">el dojo por detrás</span></div></header>
+<div class="w"><section class="sec">
+  <div class="sh"><h2>El archivo</h2><p class="note">Lo más reciente, y todo lo demás por años</p></div>
+  <div class="sheet"><a href="#"><img src="/images/gallery-2026-07-05-a-warrior-of-the-gentlest-kind-welcome-m-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2026-06-27-how-was-michelle-feilen-senseis-class-la-665258-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2026-06-27-how-was-michelle-feilen-senseis-class-la-213243-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2026-05-07-ismail-hasan-sensei-at-aikido-musubi-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2026-04-28-e-cardia-shihan-barcelona-24-26-april-20-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2026-04-27-saturday-morning-土曜朝-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2026-04-27-saturday-evening-土曜夜-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2026-04-15-リ-リリリ-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2025-12-27-you-just-witnessed-the-next-best-aikidok-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2025-12-27-bro-why-am-i-crying-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2025-12-26-numb-but-wrapped-in-light-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2025-12-19-yesterday-evening-was-really-something-s-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2025-12-07-day-1-午前-at-manga-barcelona-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2025-12-07-day-1-午後-at-manga-barcelona-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2025-11-22-part-1-of-2-kyoto-京都-extended-ver-direct-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2025-11-15-julius-k9-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2024-12-23-last-saturday-we-had-grading-exams-at-ou-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2024-11-26-aikido-masterclass-led-by-joshua-layton-465800-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2024-11-26-aikido-masterclass-led-by-joshua-layton-211274-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2024-11-24-had-such-a-great-time-at-horii-sensei-se-987583-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2024-11-24-had-such-a-great-time-at-horii-sensei-se-947423-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2024-11-22-02137619-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2024-11-22-12186034-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2024-11-21-aikido-musubi-kyotoosaka-part-of-8-またこんど-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2023-12-20-at-hombu-dojo-after-osawa-h-shihan-morni-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2023-12-10-we-had-the-great-honour-and-pleasure-to-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2023-12-07-at-hombu-dojo-after-dojo-cho-morning-cla-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2023-12-05-at-hombu-dojo-after-doshu-morning-class-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2023-12-04-tokyo-vice-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2023-12-01-part-2-of-2-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2023-12-01-part-1-of-2-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2023-11-29-we-had-the-great-honour-and-pleasure-to-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2022-12-18-post-exam-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2022-12-16-the-more-the-merrier-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2022-12-16-united-we-stand-divided-we-fall-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2022-12-11-moltes-felicitats-congratulations-muchas-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2022-12-10-hahaha-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2022-12-08-ペペとアルベルト-腰投げ-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2022-12-02-dav-samar-can-really-dance-feat-liver-ea-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2022-11-29-you-dont-mess-with-bloody-sunday-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2021-12-10-7a-embukai-daikido-organitzada-per-aikid-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2021-12-04-7a-embukai-daikido-organitzada-per-aikid-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2021-12-03-7a-embukai-daikido-organitzada-per-aikid-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2021-12-01-7a-embukai-daikido-organitzada-per-aikid-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2021-11-30-get-ready-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2021-11-29-7a-embukai-daikido-organitzada-per-aikid-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2021-11-28-7a-embukai-daikido-organitzada-per-aikid-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2021-11-23-7a-embukai-daikido-organitzada-per-aikid-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2020-12-30-窓から一条の光か漏れてきました-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2020-12-29-道場の正面-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2020-12-27-taron-hamkhiyan-2nd-dan-showing-shōmen-u-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2020-12-26-taron-hamkhiyan-2nd-dan-showing-shōmen-u-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2020-12-25-タロン先輩です-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2020-12-23-タロン先輩です-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2020-12-22-トミンコくんはすっと正座してたからか足かしひれちゃって-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2020-12-21-もっと入り身投けてすよ取りは友達のタロンハンキヤンてす受けは私てす-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2020-09-04-miyamoto-t-shihan-barcelona-2019-677746-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2020-09-04-hombu-dojo-2019-671800-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2020-09-04-exámenes-de-kyū-2019-010398-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2020-09-04-karate-infantil-2019-676103-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2020-09-04-exámenes-de-dan-2019-675497-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2016-12-09-exámenes-de-kyū-2016-016121-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2016-07-04-inter-dojo-2016-211100-t.webp" alt="" loading="lazy" width="160" height="160"></a><a href="#"><img src="/images/gallery-2016-06-19-exhibición-sant-adrià-de-besós-2016-832418-t.webp" alt="" loading="lazy" width="160" height="160"></a></div>
+  <div class="counts">
+  <div><b>462</b><i>momentos guardados</i></div><div><b>49</b><i>álbumes</i></div>
+  <div><b>236</b><i>publicaciones</i></div><div><b>177</b><i>vídeos</i></div></div>
+  <p class="lab" style="margin-top:2.4rem">Todo lo publicado, por año</p>
+  <div class="yr"><a href="/galeria/?y=2026"><p class="y">2026</p><p class="n">9</p>
+<div class="bar" style="width:9%"></div></a><a href="/galeria/?y=2025"><p class="y">2025</p><p class="n">43</p>
+<div class="bar" style="width:45%"></div></a><a href="/galeria/?y=2024"><p class="y">2024</p><p class="n">96</p>
+<div class="bar" style="width:100%"></div></a><a href="/galeria/?y=2023"><p class="y">2023</p><p class="n">91</p>
+<div class="bar" style="width:95%"></div></a><a href="/galeria/?y=2022"><p class="y">2022</p><p class="n">52</p>
+<div class="bar" style="width:54%"></div></a><a href="/galeria/?y=2021"><p class="y">2021</p><p class="n">79</p>
+<div class="bar" style="width:82%"></div></a><a href="/galeria/?y=2020"><p class="y">2020</p><p class="n">50</p>
+<div class="bar" style="width:52%"></div></a><a href="/galeria/?y=2019"><p class="y">2019</p><p class="n">5</p>
+<div class="bar" style="width:6%"></div></a><a href="/galeria/?y=2016"><p class="y">2016</p><p class="n">5</p>
+<div class="bar" style="width:6%"></div></a><a href="/galeria/?y=2015"><p class="y">2015</p><p class="n">5</p>
+<div class="bar" style="width:6%"></div></a><a href="/galeria/?y=2014"><p class="y">2014</p><p class="n">3</p>
+<div class="bar" style="width:6%"></div></a><a href="/galeria/?y=2013"><p class="y">2013</p><p class="n">3</p>
+<div class="bar" style="width:6%"></div></a><a href="/galeria/?y=2012"><p class="y">2012</p><p class="n">15</p>
+<div class="bar" style="width:16%"></div></a><a href="/galeria/?y=2011"><p class="y">2011</p><p class="n">2</p>
+<div class="bar" style="width:6%"></div></a><a href="/galeria/?y=2010"><p class="y">2010</p><p class="n">1</p>
+<div class="bar" style="width:6%"></div></a><a href="/galeria/?y=2009"><p class="y">2009</p><p class="n">1</p>
+<div class="bar" style="width:6%"></div></a><a href="/galeria/?y=2008"><p class="y">2008</p><p class="n">2</p>
+<div class="bar" style="width:6%"></div></a></div>
+  <p class="note-link"><a href="/galeria/">Ver la galería completa &rarr;</a></p>
+</section><footer class="end"><b>Enfoque C.</b> El mosaico es textura: los 64 recientes, sin filtro. Debajo, un índice de años que dice cuántos hay en cada uno y lleva a la galería filtrada por ese año. La navegación es explícita y sale del sitio donde no está el contenido, así que no promete nada que no cumpla — y de paso enseña la forma del archivo: 96 en 2024, dos en 2008.<p class="cost">peso: 64 miniaturas ≈ 220 KB · página ≈ 16 KB gz</p></footer></div></body></html>

@@ -1,0 +1,251 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tres formas de abrir el registro</title>
+<link rel="stylesheet" href="/styles/all.min.css">
+<style>
+:root{--ink:#111314;--mute:#5c6a70;--line:rgba(17,19,20,.13)}
+html,body{margin:0;background:#f7f7f5;color:var(--ink);
+  font-family:'Noto Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+.w{max-width:1140px;margin:0 auto;padding:0 3rem}
+@media(max-width:767.98px){.w{padding:0 1.4rem}}
+h1,h2,h3{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-weight:400;margin:0;
+  letter-spacing:.04em}
+p{margin:0}
+.top{padding:3.4rem 0 2.4rem;border-bottom:1px solid var(--line)}
+.top h1{font-size:1.9rem;text-transform:uppercase;letter-spacing:.07em}
+.top p{margin-top:.9rem;max-width:60ch;color:var(--mute);line-height:1.75;font-size:.97rem}
+
+.opt{padding:3rem 0;border-bottom:1px solid var(--line)}
+.opt-h{display:grid;grid-template-columns:3rem 1fr;gap:1.4rem;margin-bottom:1.8rem}
+.opt-n{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.72rem;letter-spacing:.2em;
+  color:#B04E17;padding-top:.35rem}
+.opt-h h2{font-size:1.35rem}
+.opt-h .s{margin-top:.4rem;color:var(--mute);font-size:.9rem;line-height:1.7;max-width:64ch}
+.split{display:grid;grid-template-columns:1.25fr 1fr;gap:2.4rem;align-items:start}
+@media(max-width:900px){.split{grid-template-columns:1fr;gap:1.6rem}
+  .opt-h{grid-template-columns:1fr;gap:.4rem}}
+
+/* the stage — a miniature browser window */
+.stage{position:relative;background:#fff;border:1px solid var(--line);overflow:hidden;
+  height:290px}
+.stage .chrome{height:1.6rem;background:#ececea;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;gap:.3rem;padding:0 .6rem}
+.stage .chrome i{width:.42rem;height:.42rem;border-radius:50%;background:#c9c9c5;display:block}
+.mini-nav{background:#111314;color:#fff}
+.mini-strip{display:flex;align-items:center;gap:.7rem;padding:.3rem .8rem;font-size:.52rem;
+  border-bottom:1px solid rgba(255,255,255,.14);letter-spacing:.05em}
+.mini-strip .sp{margin-left:auto;display:flex;gap:.5rem;align-items:center}
+.mini-bar{display:flex;align-items:center;gap:1rem;padding:.55rem .8rem}
+.mini-bar .lg{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.62rem;
+  letter-spacing:.2em}
+.mini-bar .ln{margin-left:auto;display:flex;gap:.7rem;font-size:.5rem;color:#b9c0c2}
+.mini-body{padding:1rem .8rem;font-size:.55rem;color:#8b9296;line-height:1.5}
+.mini-body .hh{height:.42rem;background:#dfe0dd;margin-bottom:.4rem;width:52%}
+.mini-body .ll{height:.26rem;background:#ececea;margin-bottom:.28rem}
+.mini-body .im{height:3.4rem;background:#e3e4e1;margin:.6rem 0}
+.mini-body .gg{display:flex;gap:.3rem;margin-top:.5rem}
+.mini-body .gg span{flex:1;height:1.5rem;background:#eceded}
+
+/* A · edge rail */
+.rail{position:absolute;right:0;top:52%;transform:translateY(-50%);background:#111314;
+  color:#fff;writing-mode:vertical-rl;font-family:Futura,'Trebuchet MS',Arial,sans-serif;
+  font-size:.5rem;letter-spacing:.24em;text-transform:uppercase;padding:.75rem .38rem;
+  cursor:pointer;border:0;display:flex;align-items:center;gap:.45rem}
+.rail:hover{background:#FFF200;color:#111314}
+.rail em{font-family:'Noto Sans JP','Noto Sans',sans-serif;font-style:normal;font-size:.62rem;
+  writing-mode:horizontal-tb}
+
+/* B · the door band */
+.door{background:#111314;color:#fff;padding:.8rem;position:relative;overflow:hidden;
+  margin-top:.7rem}
+.door .gh{position:absolute;right:-.2rem;top:50%;transform:translateY(-50%);
+  font-family:'Noto Sans JP','Noto Sans',sans-serif;font-size:3.4rem;
+  color:rgba(255,255,255,.07);line-height:1}
+.door .k{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.42rem;
+  letter-spacing:.2em;color:#FFF200;text-transform:uppercase}
+.door b{display:block;font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-weight:400;
+  font-size:.82rem;margin:.25rem 0 .3rem}
+.door .n{display:flex;gap:.8rem;margin:.35rem 0 .5rem;font-size:.44rem;color:#9aa2a5}
+.door .n u{display:block;font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.72rem;
+  color:#fff;text-decoration:none}
+.door .bt{background:#FFF200;color:#111314;font-family:Futura,'Trebuchet MS',Arial,sans-serif;
+  font-size:.44rem;letter-spacing:.12em;text-transform:uppercase;padding:.34rem .6rem;
+  display:inline-block;border:0;cursor:pointer}
+
+/* C · the strip switch */
+.swch{display:inline-flex;align-items:center;gap:.25rem;border:1px solid rgba(255,255,255,.3);
+  padding:.1rem .3rem;font-size:.44rem;letter-spacing:.12em;text-transform:uppercase;
+  font-family:Futura,'Trebuchet MS',Arial,sans-serif;cursor:pointer;background:none;color:#fff}
+.swch:hover{background:#FFF200;color:#111314;border-color:#FFF200}
+.swch em{font-family:'Noto Sans JP','Noto Sans',sans-serif;font-style:normal;font-size:.55rem}
+.hl{outline:2px solid #B04E17;outline-offset:2px;animation:bl 1.8s ease-in-out infinite}
+@keyframes bl{50%{outline-color:rgba(176,78,23,.25)}}
+
+/* the notes column */
+.notes dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:.45rem 1.1rem;
+  font-size:.86rem;line-height:1.6}
+.notes dt{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.58rem;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--mute);padding-top:.22rem}
+.notes dd{margin:0}
+.verdict{margin-top:1.2rem;padding-top:1rem;border-top:1px solid var(--line);font-size:.86rem;
+  line-height:1.7;color:#2c3437}
+.verdict b{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-weight:400;
+  text-transform:uppercase;font-size:.62rem;letter-spacing:.15em;display:block;
+  margin-bottom:.35rem;color:#B04E17}
+.rec{background:#111314;color:#fff;padding:2.4rem 0 3rem;margin-top:0}
+.rec h2{font-size:1.3rem;color:#fff;text-transform:uppercase;letter-spacing:.08em}
+.rec p{color:#aeb6b8;font-size:.93rem;line-height:1.8;max-width:66ch;margin-top:.9rem}
+.rec strong{color:#FFF200;font-weight:400}
+</style></head>
+<body>
+
+<div class="w top">
+  <h1>Tres formas de abrir el registro</h1>
+  <p>La misma puerta, en tres sitios distintos. Lo que cambia no es el aspecto del botón
+     sino <em>cuándo</em> lo encuentra el visitante: nada más llegar, al terminar de leer,
+     o cuando ya sabe que lo busca.</p>
+</div>
+
+<!-- ══ A ══════════════════════════════════════════════════════════════ -->
+<div class="w opt">
+  <div class="opt-h"><p class="opt-n">A</p>
+    <div><h2>La pestaña del margen</h2>
+      <p class="s">Una lengüeta vertical pegada al borde derecho, presente en todas las
+        páginas y a todas las alturas. Es un marcapáginas asomando por el canto del libro:
+        siempre visible, nunca en medio.</p></div></div>
+  <div class="split">
+    <div class="stage">
+      <div class="chrome"><i></i><i></i><i></i></div>
+      <div class="mini-nav">
+        <div class="mini-strip"><span>info@aikidomusubi.com</span>
+          <span class="sp"><span>ES</span><span style="opacity:.4">CA EN 日本語</span></span></div>
+        <div class="mini-bar"><span class="lg">AIKIDO MUSUBI</span>
+          <span class="ln"><span>Practicar</span><span>Sobre nosotros</span><span>Dónde</span></span></div>
+      </div>
+      <div class="mini-body">
+        <div class="hh"></div><div class="ll"></div><div class="ll" style="width:88%"></div>
+        <div class="im"></div><div class="ll"></div><div class="ll" style="width:76%"></div>
+        <div class="gg"><span></span><span></span><span></span></div>
+      </div>
+      <button class="rail hl"><em>産</em> El registro</button>
+    </div>
+    <div class="notes">
+      <dl>
+        <dt>Dónde</dt><dd>Fijo al viewport, borde derecho, en todas las páginas.</dd>
+        <dt>Cuándo se ve</dt><dd>Siempre. Desde el primer segundo.</dd>
+        <dt>En móvil</dt><dd>Se encoge a un cuadrado con solo 産, o baja a la esquina.</dd>
+        <dt>Coste</dt><dd>Un elemento fijo más. Ya hay dos (la franja legal y el aviso de
+          cookies).</dd>
+      </dl>
+      <p class="verdict"><b>El riesgo</b>
+        Es el gesto más de <em>producto</em> de los tres, y el sitio no lo es. Una pestaña
+        que te sigue por todas las páginas compite con el contenido y empieza a parecerse a
+        un chat de soporte. Además, a un visitante que llega buscando un horario le ofreces
+        una segunda lectura antes de darle la primera.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ B ══════════════════════════════════════════════════════════════ -->
+<div class="w opt">
+  <div class="opt-h"><p class="opt-n">B</p>
+    <div><h2>La puerta al final del pasillo</h2>
+      <p class="s">Una banda oscura a sangre, al pie de la portada, que ya <em>es</em> el
+        registro en miniatura: el kanji al fondo, cuatro cifras y un botón. No interrumpe
+        nada porque llega cuando ya has leído todo lo demás.</p></div></div>
+  <div class="split">
+    <div class="stage">
+      <div class="chrome"><i></i><i></i><i></i></div>
+      <div class="mini-nav">
+        <div class="mini-strip"><span>info@aikidomusubi.com</span>
+          <span class="sp"><span>ES</span><span style="opacity:.4">CA EN 日本語</span></span></div>
+        <div class="mini-bar"><span class="lg">AIKIDO MUSUBI</span>
+          <span class="ln"><span>Practicar</span><span>Sobre nosotros</span><span>Dónde</span></span></div>
+      </div>
+      <div class="mini-body" style="padding-bottom:0">
+        <div class="ll"></div><div class="ll" style="width:70%"></div>
+        <div class="gg"><span></span><span></span><span></span></div>
+        <div class="door hl">
+          <span class="gh">産靈</span>
+          <p class="k">Segunda lectura</p><b>El registro</b>
+          <div class="n"><span><u>18</u>años</span><span><u>462</u>entradas</span>
+            <span><u>39</u>seminarios</span></div>
+          <span class="bt">Abrir el registro →</span>
+        </div>
+      </div>
+    </div>
+    <div class="notes">
+      <dl>
+        <dt>Dónde</dt><dd>Solo en la portada, después de «La asociación».</dd>
+        <dt>Cuándo se ve</dt><dd>Al terminar de leer. Es el final natural de la página.</dd>
+        <dt>En móvil</dt><dd>Igual, en una columna. Es la sección que mejor aguanta el
+          estrechamiento.</dd>
+        <dt>Coste</dt><dd>Ninguno estructural: es una sección más de la portada.</dd>
+      </dl>
+      <p class="verdict"><b>El riesgo</b>
+        Que no lo vea quien no llega abajo, y que desde el resto del sitio no haya forma de
+        entrar. Por eso funciona acompañado, no solo.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ C ══════════════════════════════════════════════════════════════ -->
+<div class="w opt">
+  <div class="opt-h"><p class="opt-n">C</p>
+    <div><h2>El interruptor junto al idioma</h2>
+      <p class="s">Un control pequeño en la franja superior de la navegación, al lado del
+        selector de idioma. Dice, sin decirlo: <em>esto es otra manera de leer el mismo
+        sitio</em>, igual que el catalán es otra manera de leerlo.</p></div></div>
+  <div class="split">
+    <div class="stage">
+      <div class="chrome"><i></i><i></i><i></i></div>
+      <div class="mini-nav">
+        <div class="mini-strip"><span>info@aikidomusubi.com</span>
+          <span class="sp"><button class="swch hl"><em>産</em> El registro</button>
+            <span>ES</span><span style="opacity:.4">CA EN 日本語</span></span></div>
+        <div class="mini-bar"><span class="lg">AIKIDO MUSUBI</span>
+          <span class="ln"><span>Practicar</span><span>Sobre nosotros</span><span>Dónde</span></span></div>
+      </div>
+      <div class="mini-body">
+        <div class="hh"></div><div class="ll"></div><div class="ll" style="width:88%"></div>
+        <div class="im"></div><div class="ll"></div><div class="ll" style="width:76%"></div>
+        <div class="gg"><span></span><span></span><span></span></div>
+      </div>
+    </div>
+    <div class="notes">
+      <dl>
+        <dt>Dónde</dt><dd>En <code>.nv-strip</code>, antes del selector de idioma. Todas las
+          páginas.</dd>
+        <dt>Cuándo se ve</dt><dd>Siempre, pero en un sitio que ya se lee como «ajustes».</dd>
+        <dt>En móvil</dt><dd>La franja se colapsa al bajar; el control viaja al panel del
+          menú.</dd>
+        <dt>Coste</dt><dd>Un elemento en la franja, que ya está bastante llena.</dd>
+      </dl>
+      <p class="verdict"><b>El riesgo</b>
+        Nadie lo descubre solo. Un botón de 10 px junto al idioma no invita a nada: sirve
+        para <em>volver</em>, no para entrar la primera vez.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ recomendación ══════════════════════════════════════════════════ -->
+<div class="rec"><div class="w">
+  <h2>Lo que yo haría</h2>
+  <p><strong>B más C</strong>, y descartar A. No son alternativas excluyentes: hacen trabajos
+     distintos. La banda del pie es el descubrimiento —grande, editorial, con las cifras
+     puestas, colocada donde el lector ya ha decidido que le interesa el dojo—. El
+     interruptor de la franja es el reingreso: una vez sabes que el registro existe, lo
+     quieres a mano desde cualquier página, y ahí basta con que sea discreto.</p>
+  <p>A es la única de las tres que le pide algo al visitante antes de haberle dado nada. La
+     primera impresión que buscas es limpia y editorial, y una pestaña flotante en el margen
+     es exactamente lo contrario.</p>
+</div></div>
+
+<script>
+document.addEventListener('click',function(e){
+  if(e.target.closest('.rail,.bt,.swch'))
+    alert('Aquí se desliza el registro.\n\nDemo real: /mockups/home-3.html');
+});
+</script>
+</body></html>

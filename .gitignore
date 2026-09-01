@@ -12,3 +12,21 @@ package-lock.json
 # never ships. Re-fetch per tools/ja-font-sources/README.md when the script
 # needs them; the subset output in /fonts/ is what is committed.
 tools/ja-font-sources/*.woff2
+
+# Python virtualenv for tools/fetch-social.py (see docs/meta-setup.md)
+.venv/
+# Meta tokens for tools/fetch-social.py. Never committed — a token is a
+# password, and this file is the place to keep one.
+.env.local
+.env
+
+# Working directory for files handed over mid-session (posters, PDFs, logos)
+# before they are converted into /images, /files or /graphics. Inputs only.
+temp/
+
+# Verification screenshots from the mockup passes: 37 MB of PNGs that nothing
+# renders from. The approved mockups themselves — the HTML and the generators
+# in docs/mockups/src — ARE committed, per the note in CLAUDE.md about losing
+# the whole set once.
+docs/mockups/renders/
+__pycache__/

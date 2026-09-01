@@ -5,27 +5,21 @@ title_es: "Shugyō - Aikido en Barcelona con Pablo Martín"
 title_ja: "【しゅぎょう】パブロ•マルティンとバルセロナで合気道"
 
 desc_ca: >-
-  Tot i que la pandèmia ha afectat la vida del Pablo Martín, el fundador d'Aikido Musubi, el seu amor i connexió amb l'Aikido no es pot aturar.<br>
-  Localitzat a Badalona, el Pablo comparteix la seva formació en solitari, amb la il·lusió i la força del Budo, que els dies més foscos aviat quedaran enrere.<br>
-  <br>
-  Budo cool, 2021
+  Tot i que la pandèmia ha afectat la vida del Pablo Martín, el fundador d'Aikido Musubi, el seu amor i connexió amb l'Aikido no es pot aturar.
+
 desc_en: >-
-  Although the pandemic has affected the life of Pablo Martin the founder of Aikido Musubi, his love and connection with Aikido can’t be stopped.<br>
-  Based in Badalona, Barcelona, Pablo shares his solo training, with the hope and power of Budo, that the darkest days are behind us soon.<br>
-  <br>
-  Budo cool, 2021
+  Although the pandemic has affected the life of Pablo Martin the founder of Aikido Musubi, his love and connection with Aikido can’t be stopped. Based in Badalona, Barcelona, Pablo shares his solo training, with the hope and power of Budo, that the darkest days are behind us soon.
+
 desc_es: >-
-  Aunque la pandemia ha afectado la vida de Pablo Martín, el fundador de Aikido Musubi, su amor y conexión con el Aikido no se puede detener.<br>
-  Localizado en Badalona, Pablo comparte su formación en solitario, con la ilusión y el poder del Budo, de que los días más oscuros pronto quedarán atrás.<br>
-  <br>
-  Budo cool, 2021
+  Aunque la pandemia ha afectado la vida de Pablo Martín, el fundador de Aikido Musubi, su amor y conexión con el Aikido no se puede detener.
+
 desc_ja: >-
-  パンデミックは合気道産靈の創設者パブロ・マルティンの生活に影響を与えましたが、彼の合気道への愛とつながりは止められません。<br>
-  バルセロナ・バダロナを拠点に、パブロは自身の一人稽古を通して、武道の希望と力を共有し、最も暗い日々もすぐに過ぎ去ることを信じています。<br>
-  <br>
-  Budo cool, 2021
+  パンデミックは合気道産靈の創設者パブロ・マルティンの生活に影響を与えましたが、彼の合気道への愛とつながりは止められません。
 
 date: 20210121
 
 youtube_url: "https://www.youtube.com/embed/K4eME9XlSG4"
+youtube_id: "K4eME9XlSG4"
+youtube_params: ""
+thumb: "press-and-tv-Rm4zW8dL-2021-01-08-budocool-shugyo-aikido-in-barcelona-with-pablo-martin-2021"
 ---

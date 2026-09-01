@@ -1,0 +1,268 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ura — Aikido Musubi</title>
+<link rel="stylesheet" href="/styles/all.min.css">
+<style>html,body{margin:0;background:#111314}
+.ab{--fg:#d5dadc;--hi:#fff;--mute:#9aa2a5;--line:rgba(255,255,255,.13);
+    --acc:#FFF200;--bg:#111314;--card:#181b1c;
+    background:var(--bg);color:var(--fg);font-family:'Noto Sans',system-ui,sans-serif;
+    font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.ab *{box-sizing:border-box}
+.ab a{color:inherit;text-decoration:none}
+.ab h1,.ab h2,.ab h3{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-weight:400;
+    color:var(--hi);margin:0;letter-spacing:.02em}
+.ab p{margin:0}
+.ab-w{max-width:1140px;margin:0 auto;padding:0 6rem}
+@media(max-width:991.98px){.ab-w{padding:0 4rem}}
+@media(max-width:767.98px){.ab-w{padding:0 2rem}}
+.ab-mono{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-variant-numeric:tabular-nums}
+.ab-kick{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.62rem;letter-spacing:.24em;
+    text-transform:uppercase;color:var(--mute)}
+
+/* ── masthead ───────────────────────────────────────────────────────────── */
+.ab-mast{position:sticky;top:0;z-index:6;background:rgba(17,19,20,.95);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.ab-mast-in{display:flex;align-items:center;gap:1rem;padding:.8rem 0;min-height:3.3rem}
+.ab-seal{font-family:'Noto Sans JP','Noto Sans',sans-serif;font-size:1.4rem;color:var(--acc);
+    line-height:1}
+.ab-mast .ttl{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.72rem;
+    letter-spacing:.3em;text-transform:uppercase;color:var(--hi)}
+.ab-mast .sub{font-size:.72rem;color:var(--mute);margin-left:.4rem}
+.ab-x{margin-left:auto;display:inline-flex;align-items:center;gap:.55rem;
+    border:1px solid var(--line);background:none;color:var(--fg);cursor:pointer;
+    font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.62rem;letter-spacing:.14em;
+    text-transform:uppercase;padding:.55rem .9rem;line-height:1}
+.ab-x:hover{background:var(--acc);color:#111314;border-color:var(--acc)}
+.ab-x:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.ab-x i{font-family:'Noto Sans JP','Noto Sans',sans-serif;font-style:normal;font-size:.95rem;
+    color:var(--acc);line-height:1}
+.ab-x:hover i{color:#111314}
+@media(max-width:575.98px){.ab-mast .sub{display:none}.ab-x span{display:none}}
+
+/* ── this week ──────────────────────────────────────────────────────────── */
+.ab-flag{display:flex;gap:.8rem;align-items:flex-start;padding:.9rem 1.1rem;
+    background:rgba(255,242,0,.08);border-left:2px solid var(--acc);margin-bottom:1.5rem}
+.ab-flag b{color:var(--acc);font-weight:400;font-family:Futura,'Trebuchet MS',Arial,sans-serif;
+    font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;
+    padding-top:.15rem}
+.ab-flag p{font-size:.87rem;color:#e2e6e8}
+.ab-days{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.ab-day{background:var(--card);padding:.75rem .6rem 1rem;min-height:8.5rem}
+.ab-day .dn{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.58rem;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.ab-day .dd{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:1.25rem;
+    color:var(--hi);line-height:1;margin:.15rem 0 .7rem}
+.ab-day[data-off]{background:rgba(255,255,255,.02)}
+.ab-day[data-off] .dd{color:#5f696c}
+.ab-day[data-now]{background:rgba(255,242,0,.1)}
+.ab-day[data-now] .dn,.ab-day[data-now] .dd{color:var(--acc)}
+.ab-cl{border-left:2px solid var(--c);padding:.2rem 0 .25rem .45rem;margin-bottom:.45rem}
+.ab-cl b{display:block;color:var(--hi);font-size:.72rem;font-weight:400;line-height:1.3}
+.ab-cl span{display:block;color:var(--mute);font-size:.64rem}
+.ab-rest{color:#5f696c;font-size:.68rem}
+@media(max-width:991.98px){.ab-days{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:575.98px){.ab-days{grid-template-columns:repeat(2,1fr)}.ab-day{min-height:0}}
+.ab-usual{margin-top:1.1rem;font-size:.82rem;color:var(--mute)}
+.ab-usual a{color:var(--acc);border-bottom:1px solid rgba(255,242,0,.4)}
+
+/* ── what's coming ──────────────────────────────────────────────────────── */
+.ab-next{display:grid;gap:2px}
+.ab-nx{display:grid;grid-template-columns:6.5rem 1fr auto;gap:1.2rem;align-items:baseline;
+    background:var(--card);padding:.85rem 1.1rem}
+.ab-nx .d{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.72rem;color:var(--acc);
+    letter-spacing:.06em;white-space:nowrap}
+.ab-nx .t{color:var(--hi);font-size:.95rem}
+.ab-nx .n{color:var(--mute);font-size:.8rem;text-align:right}
+.ab-nx[data-cl] .d{color:#E2625E}
+@media(max-width:767.98px){.ab-nx{grid-template-columns:1fr;gap:.15rem}
+    .ab-nx .n{text-align:left}}
+
+/* ── archive ────────────────────────────────────────────────────────────── */
+.ab-jump{display:flex;gap:2px;margin-bottom:1rem;flex-wrap:wrap}
+.ab-jump a{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.62rem;
+    letter-spacing:.06em;color:var(--mute);padding:.3rem .5rem;background:var(--card)}
+.ab-jump a:hover{background:var(--acc);color:#111314}
+.ab-jump a[data-on]{color:var(--hi)}
+.ab-sheet{display:grid;grid-template-columns:repeat(16,1fr);gap:2px}
+.ab-sheet a{aspect-ratio:1;overflow:hidden;background:#1b1e1f;display:block}
+.ab-sheet img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.04);
+    opacity:.7;transition:filter .25s,opacity .25s,transform .25s}
+.ab-sheet a:hover img{filter:none;opacity:1;transform:scale(1.06)}
+@media(max-width:991.98px){.ab-sheet{grid-template-columns:repeat(8,1fr)}}
+@media(max-width:575.98px){.ab-sheet{grid-template-columns:repeat(4,1fr)}}
+.ab-count{display:flex;gap:2rem;flex-wrap:wrap;margin-top:1.2rem}
+.ab-count b{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:1.4rem;color:var(--hi);
+    display:block;line-height:1}
+.ab-count span{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+
+/* ── seminars, as an accordion ──────────────────────────────────────────── */
+.ab-acc{border-top:1px solid var(--line)}
+.ab-acc details{border-bottom:1px solid var(--line)}
+.ab-acc summary{list-style:none;cursor:pointer;display:flex;align-items:baseline;gap:1.2rem;
+    padding:.95rem 0}
+.ab-acc summary::-webkit-details-marker{display:none}
+.ab-acc summary .y{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:1.15rem;
+    color:var(--hi);min-width:4rem}
+.ab-acc summary .c{font-size:.75rem;color:var(--mute)}
+.ab-acc summary .ch{margin-left:auto;color:var(--mute);font-size:.8rem;transition:transform .2s}
+.ab-acc details[open] summary .y{color:var(--acc)}
+.ab-acc details[open] summary .ch{transform:rotate(45deg)}
+.ab-acc summary:hover .y{color:var(--acc)}
+.ab-ev{display:grid;grid-template-columns:5rem 1fr;gap:1.2rem;padding:.5rem 0 .8rem 0;
+    align-items:baseline}
+.ab-ev .d{font-size:.75rem;color:var(--mute);white-space:nowrap}
+.ab-ev .t{color:var(--fg);font-size:.9rem;line-height:1.45}
+.ab-ev .t small{display:block;color:var(--mute);font-size:.72rem;margin-top:.1rem}
+.ab-ev-list{padding-bottom:.7rem}
+@media(max-width:575.98px){.ab-ev{grid-template-columns:1fr;gap:.1rem}}
+
+/* ── where it comes from ────────────────────────────────────────────────── */
+.ab-chain{display:grid;gap:0}
+.ab-link{display:grid;grid-template-columns:8rem 1fr;gap:1.5rem;padding:1rem .9rem;
+    border-top:1px solid rgba(255,255,255,.08);align-items:baseline}
+.ab-link:last-child{border-bottom:1px solid rgba(255,255,255,.08)}
+.ab-link .y{font-size:.7rem;color:var(--mute)}
+.ab-link .n{color:var(--hi);font-size:1.02rem}
+.ab-link .n small{display:block;color:var(--mute);font-size:.78rem;margin-top:.2rem;
+    line-height:1.5;max-width:52ch}
+.ab-link .det{display:block;margin-top:.5rem;padding-top:.5rem;font-size:.76rem;
+    color:#c2c8ca;border-top:1px solid rgba(255,255,255,.09);max-width:52ch}
+.ab-link[data-us]{background:rgba(255,242,0,.07)}
+.ab-link[data-us] .n{color:var(--acc)}
+@media(max-width:575.98px){.ab-link{grid-template-columns:1fr;gap:.15rem}}
+
+/* ── words ──────────────────────────────────────────────────────────────── */
+.ab-words{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.ab-word{background:var(--card);padding:1.2rem 1.1rem 1.3rem}
+.ab-word .k{font-family:'Noto Sans JP','Noto Sans',sans-serif;font-size:1.7rem;color:var(--hi);
+    line-height:1;letter-spacing:.05em}
+.ab-word .r{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.66rem;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--acc);margin:.5rem 0 .55rem}
+.ab-word p{font-size:.82rem;line-height:1.65;color:var(--mute)}
+@media(max-width:767.98px){.ab-words{grid-template-columns:1fr 1fr}}
+@media(max-width:479.98px){.ab-words{grid-template-columns:1fr}}
+
+/* the second six sit behind a control rather than lengthening the panel */
+.ab-more{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+.ab-more>div{overflow:hidden;min-height:0}
+.ab-more[data-open]{grid-template-rows:1fr}
+.ab-more .ab-words{margin-top:2px}
+@media(prefers-reduced-motion:reduce){.ab-more{transition:none}}
+.ab-morebar{display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap;margin-top:1.1rem}
+.ab-morebtn{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.64rem;
+    letter-spacing:.15em;text-transform:uppercase;background:none;color:var(--fg);
+    border:1px solid var(--line);padding:.6rem 1.1rem;cursor:pointer}
+.ab-morebtn:hover{border-color:var(--acc);color:var(--acc)}
+.ab-morebtn:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.ab-morebtn[aria-expanded="true"]{border-color:var(--acc);color:var(--acc)}
+.ab-gloss{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.64rem;
+    letter-spacing:.15em;text-transform:uppercase;color:var(--mute);
+    border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:.2rem}
+.ab-gloss:hover{color:var(--acc);border-bottom-color:var(--acc)}
+
+/* ── links: eighteen of them, so three tiers rather than one grid ───────── */
+.ab-lk-main{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:2rem}
+.ab-lk-main a{background:var(--card);padding:1.15rem 1.1rem 1.25rem;display:block}
+.ab-lk-main a:hover{background:#1f2223}
+.ab-lk-main b{display:block;font-weight:400;font-family:Futura,'Trebuchet MS',Arial,sans-serif;
+    color:var(--hi);font-size:1.02rem;letter-spacing:.02em;line-height:1.3}
+.ab-lk-main a:hover b{color:var(--acc)}
+.ab-lk-main span{display:block;color:var(--mute);font-size:.72rem;margin-top:.4rem}
+@media(max-width:767.98px){.ab-lk-main{grid-template-columns:1fr}}
+
+.ab-lk-h{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.6rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--mute);margin-bottom:.9rem;padding-bottom:.6rem;
+    border-bottom:1px solid var(--line)}
+/* Eighteen dojos across eight countries: the country rides on the row, because
+   a column per country would be eight columns of one or two entries. */
+.ab-lk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0 2.4rem}
+.ab-lk-grid a{display:block;padding:.6rem 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.ab-lk-grid b{display:block;font-weight:400;color:var(--hi);font-size:.87rem;line-height:1.35}
+.ab-lk-grid a:hover b{color:var(--acc)}
+.ab-lk-grid span{display:flex;gap:.5rem;align-items:baseline;color:var(--mute);font-size:.68rem;
+    margin-top:.15rem}
+.ab-lk-grid i{font-style:normal;font-family:Futura,'Trebuchet MS',Arial,sans-serif;
+    font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);
+    flex:0 0 auto;min-width:4.6rem}
+.ab-lk-tail{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.4rem;margin-top:2.4rem}
+.ab-lk-tail a{display:block;padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.ab-lk-tail b{display:block;font-weight:400;color:var(--hi);font-size:.87rem;line-height:1.35}
+.ab-lk-tail a:hover b{color:var(--acc)}
+.ab-lk-tail em{display:block;font-style:normal;color:#c2c8ca;font-size:.76rem;margin-top:.12rem}
+.ab-lk-tail span{display:block;color:var(--mute);font-size:.68rem;margin-top:.12rem}
+@media(max-width:991.98px){.ab-lk-grid{grid-template-columns:1fr 1fr}
+    .ab-lk-tail{grid-template-columns:1fr 1fr}}
+@media(max-width:575.98px){.ab-lk-grid,.ab-lk-tail{grid-template-columns:1fr;gap:0}
+    .ab-lk-tail>div{margin-top:1.6rem}}
+
+/* ── the digest ─────────────────────────────────────────────────────────── */
+.ab-ess{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.ab-cell{background:var(--card);padding:1.3rem 1.2rem 1.5rem}
+.ab-cell h3{font-size:.95rem;margin-bottom:.8rem;letter-spacing:.05em;text-transform:uppercase}
+.ab-cell dl{display:grid;grid-template-columns:auto 1fr;gap:.35rem .9rem;margin:0;font-size:.82rem}
+.ab-cell dt{color:var(--mute)}
+.ab-cell dd{margin:0;color:var(--fg)}
+.ab-cell p{font-size:.82rem;line-height:1.65;color:var(--mute)}
+.ab-cell a.go{display:inline-block;margin-top:.9rem;font-family:Futura,'Trebuchet MS',Arial,sans-serif;
+    font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);
+    border-bottom:1px solid rgba(255,242,0,.45);padding-bottom:.2rem}
+@media(max-width:767.98px){.ab-ess{grid-template-columns:1fr}}
+
+/* ── foot ───────────────────────────────────────────────────────────────── */
+.ab-foot{border-top:1px solid var(--line);padding:2.4rem 0 3.4rem;display:flex;gap:2rem;
+    flex-wrap:wrap;align-items:flex-end}
+.ab-foot p{font-size:.76rem;color:var(--mute);max-width:48ch;line-height:1.7}
+.ab-back{margin-left:auto;font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.66rem;
+    letter-spacing:.16em;text-transform:uppercase;background:var(--acc);color:#111314;border:0;
+    padding:.8rem 1.4rem;cursor:pointer;white-space:nowrap}
+.ab-back:hover{background:#fff}
+
+.ab-a .ab-band{border-top:1px solid var(--line);padding:3.2rem 0}
+.ab-a .ab-band:first-of-type{border-top:0}
+.ab-a .ab-h{display:flex;align-items:baseline;gap:1.1rem;flex-wrap:wrap;margin-bottom:1.6rem}
+.ab-a .ab-h h2{font-size:1.65rem}
+.ab-a .ab-h .note{font-size:.85rem;color:var(--mute)}
+.ab-a .ab-lead{padding:3.6rem 0 2.6rem;max-width:44ch}
+.ab-a .ab-lead p{font-size:1.24rem;line-height:1.55;color:#e6eaec}
+.ab-a .ab-lead p+p{margin-top:.8rem;font-size:.9rem;color:var(--mute)}
+.ab-a .ab-lead p.ab-one{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:1.6rem;
+    line-height:1.45;color:#fff;max-width:31ch}
+@media(max-width:575.98px){.ab-a .ab-lead p.ab-one{font-size:1.25rem}}
+</style></head>
+<body class="ab"><header class="ab-mast"><div class="ab-w"><div class="ab-mast-in"><span class="ab-seal">裏</span><span class="ttl">Ura</span><span class="sub">el dojo por detrás</span></div></div></header><div class="ab-a"><div class="ab-w">
+  <div class="ab-lead">
+    <p class="ab-one">Lo que pasa esta semana, y todo lo que ha pasado desde 2008.</p>
+  </div>
+  <section class="ab-band"><div class="ab-h"><h2>Los próximos siete días</h2><p class="note">Del domingo 23 al sábado 29 de agosto</p></div><div class="ab-flag"><b>Agosto</b><p>Estamos en <strong>horario de agosto</strong>: solo martes y jueves, de 18:30 a 20:30. El horario habitual vuelve el 1 de septiembre.</p></div><div class="ab-days"><div class="ab-day" data-now><p class="dn">Dom</p><p class="dd">23</p><p class="ab-rest">Hoy, descanso</p></div><div class="ab-day" data-off><p class="dn">Lun</p><p class="dd">24</p><p class="ab-rest">Descanso</p></div><div class="ab-day"><p class="dn">Mar</p><p class="dd">25</p><div class="ab-cl" style="--c:#E2625E"><b>Aikido</b><span>18:30 · J. M. Molina</span></div><div class="ab-cl" style="--c:#E2625E"><b>Aikido</b><span>19:30 · J. M. Pérez</span></div></div><div class="ab-day" data-off><p class="dn">Mié</p><p class="dd">26</p><p class="ab-rest">Descanso</p></div><div class="ab-day"><p class="dn">Jue</p><p class="dd">27</p><div class="ab-cl" style="--c:#E2625E"><b>Aikido</b><span>18:30 · J. M. Molina</span></div><div class="ab-cl" style="--c:#E2625E"><b>Aikido</b><span>19:30 · J. M. Pérez</span></div></div><div class="ab-day" data-off><p class="dn">Vie</p><p class="dd">28</p><p class="ab-rest">Descanso</p></div><div class="ab-day"><p class="dn">Sáb</p><p class="dd">29</p><div class="ab-cl" style="--c:#FFF200"><b>Preparación de exámenes</b><span>10:00 · J. M. Pérez</span></div></div></div><p class="ab-usual">A partir del 1 de septiembre vuelven las veinte sesiones semanales de aikido, iaijutsu, judo y karate. <a href="/horarios/">Ver el horario completo</a></p></section> <section class="ab-band"><div class="ab-h"><h2>Lo que viene</h2><p class="note">Próximas cinco cosas en el calendario</p></div><div class="ab-next"><div class="ab-nx"><p class="d">29 ago</p><p class="t">Preparación de exámenes</p><p class="n">Cada sábado, 10:00, hasta el 5 de diciembre</p></div><div class="ab-nx"><p class="d">1 sep</p><p class="t">Vuelta al horario habitual</p><p class="n">Termina el horario reducido de agosto</p></div><div class="ab-nx" data-cl><p class="d">11 sep</p><p class="t">Diada de Catalunya</p><p class="n">El dojo cierra</p></div><div class="ab-nx" data-cl><p class="d">12 oct</p><p class="t">Fiesta Nacional</p><p class="n">El dojo cierra</p></div><div class="ab-nx" data-cl><p class="d">8 dic</p><p class="t">La Inmaculada</p><p class="n">El dojo cierra</p></div></div></section> <section class="ab-band"><div class="ab-h"><h2>El archivo</h2><p class="note">Las 64 entradas más recientes</p></div><div class="ab-jump"><a href="/galeria/" data-on>2026</a><a href="/galeria/" data-on>2025</a><a href="/galeria/" data-on>2024</a><a href="/galeria/">2023</a><a href="/galeria/">2022</a><a href="/galeria/">2021</a><a href="/galeria/">2020</a><a href="/galeria/">2019</a><a href="/galeria/">2016</a><a href="/galeria/">2015</a><a href="/galeria/">2014</a><a href="/galeria/">2013</a><a href="/galeria/">2012</a><a href="/galeria/">2011</a><a href="/galeria/">2010</a><a href="/galeria/">2009</a><a href="/galeria/">2008</a></div><div class="ab-sheet"><a href="/galeria/" title="2026-07-05"><img src="/images/gallery-2026-07-05-a-warrior-of-the-gentlest-kind-welcome-m.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2026-06-27"><img src="/images/gallery-2026-06-27-how-was-michelle-feilen-senseis-class-la-665258.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2026-06-27"><img src="/images/gallery-2026-06-27-how-was-michelle-feilen-senseis-class-la-213243.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2026-05-07"><img src="/images/gallery-2026-05-07-ismail-hasan-sensei-at-aikido-musubi.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2026-04-28"><img src="/images/gallery-2026-04-28-e-cardia-shihan-barcelona-24-26-april-20.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2026-04-27"><img src="/images/gallery-2026-04-27-saturday-morning-土曜朝.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2026-04-27"><img src="/images/gallery-2026-04-27-saturday-evening-土曜夜.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2026-04-15"><img src="/images/gallery-2026-04-15-リ-リリリ.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2026-01-25"><img src="/images/gallery-2026-01-25-suzuki-t-shihan-valencia-2026.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-12-27"><img src="/images/gallery-2025-12-27-you-just-witnessed-the-next-best-aikidok.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-12-27"><img src="/images/gallery-2025-12-27-bro-why-am-i-crying.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-12-26"><img src="/images/gallery-2025-12-26-numb-but-wrapped-in-light.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-12-19"><img src="/images/gallery-2025-12-19-yesterday-evening-was-really-something-s.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-12-07"><img src="/images/gallery-2025-12-07-day-1-午後-at-manga-barcelona.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-12-07"><img src="/images/gallery-2025-12-07-day-1-午前-at-manga-barcelona.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-11-22"><img src="/images/gallery-2025-11-22-part-1-of-2-kyoto-京都-extended-ver-direct.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-11-15"><img src="/images/gallery-2025-11-15-julius-k9.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-11-13"><img src="/images/gallery-2025-11-13-わたしの献血宣言.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-11-08"><img src="/images/gallery-2025-11-08-the-dojo-is-calm-but-my-ukemi-is-not.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-11-07"><img src="/images/gallery-2025-11-07-lucifer.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-08-19"><img src="/images/gallery-2025-08-19-part-2-of-many-we-do-the-laundry-to-prac.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-08-15"><img src="/images/gallery-2025-08-15-part-1-of-many-grwu-or.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-08-12"><img src="/images/gallery-2025-08-12-part-0-waffles-space-invaders-other-brus.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-08-11"><img src="/images/gallery-2025-08-11-out-pf-the-blue-photo-duel-with-francois.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-07-16"><img src="/images/gallery-2025-07-16-reel.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-07-15"><img src="/images/gallery-2025-07-15-part-2-fill-your-saturday-with-intense-k.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-07-14"><img src="/images/gallery-2025-07-14-part-1-train-hard-friday-harder.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-07-07"><img src="/images/gallery-2025-07-07-big-thanks-to-christian-morgenstern-sens.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-07-06"><img src="/images/gallery-2025-07-06-were-incredibly-proud-of-emily-and-all-t.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-06-10"><img src="/images/gallery-2025-06-10-oops-we-did-it-again-train-hard-party-ha.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-06-10"><img src="/images/gallery-2025-06-10-huge-thanks-to-everyone-who-joined-us-fo.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-06-08"><img src="/images/gallery-2025-06-08-this-is-our-dear-friend-adan-he-folds-wo.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-06-03"><img src="/images/gallery-2025-06-03-part-3-may-the-4th-be-with-you.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-05-10"><img src="/images/gallery-2025-05-10-bonus-interlude-drinking-monkeys-lit.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-05-09"><img src="/images/gallery-2025-05-09-part-2-thanos-infinity-gauntlet-or-super.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-05-06"><img src="/images/gallery-2025-05-06-part-1-arriving-to-pietrasanta-la-città.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-05-05"><img src="/images/gallery-2025-05-05-part-0-fooling-around-florence-before-he.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-04-13"><img src="/images/gallery-2025-04-13-part-4-in-the-name-of-the-moon-well-trai.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-04-12"><img src="/images/gallery-2025-04-12-part-3-kissed-by-the-sun.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-04-12"><img src="/images/gallery-2025-04-12-interlude-laundry-day-chronicles-episode.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-04-11"><img src="/images/gallery-2025-04-11-part-2-we-train-hard-we-laugh-harder.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-04-11"><img src="/images/gallery-2025-04-11-part-1-we-travel-and-we-dance.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-03-21"><img src="/images/gallery-2025-03-21-what-an-incredible-weekend-at-japanweeke.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-03-17"><img src="/images/gallery-2025-03-17-this-weekend-was-an-absolute-blast-at-ja.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-02-22"><img src="/images/gallery-2025-02-22-awesome-training-this-week-with-our-frie.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-02-07"><img src="/images/gallery-2025-02-07-we-made-a-tv-appearance.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-01-29"><img src="/images/gallery-2025-01-29-part-2-of-2-francisco-manchón-aikido-mus.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-01-29"><img src="/images/gallery-2025-01-29-part-1-of-2-francisco-manchón-aikido-mus.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-01-20"><img src="/images/gallery-2025-01-20-٩๑ᴗ๑۶-had-such-a-great-time-at-kumazawa.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-01-20"><img src="/images/gallery-2025-01-20-paris-vous-aime.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-01-18"><img src="/images/gallery-2025-01-18-part-2-of-2-pablo-martín-sensei-aikido-m.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2025-01-15"><img src="/images/gallery-2025-01-15-part-1-of-2-pablo-martín-sensei-aikido-m.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2024-12-23"><img src="/images/gallery-2024-12-23-last-saturday-we-had-grading-exams-at-ou.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2024-11-26"><img src="/images/gallery-2024-11-26-aikido-masterclass-led-by-joshua-layton-465800.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2024-11-26"><img src="/images/gallery-2024-11-26-aikido-masterclass-led-by-joshua-layton-211274.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2024-11-24"><img src="/images/gallery-2024-11-24-had-such-a-great-time-at-horii-sensei-se-987583.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2024-11-24"><img src="/images/gallery-2024-11-24-had-such-a-great-time-at-horii-sensei-se-947423.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2024-11-22"><img src="/images/gallery-2024-11-22-12186034.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2024-11-22"><img src="/images/gallery-2024-11-22-02137619.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2024-11-21"><img src="/images/gallery-2024-11-21-aikido-musubi-kyotoosaka-part-of-8-またこんど.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2024-11-17"><img src="/images/gallery-2024-11-17-aikido-musubi-nara-part-シカとの事故多発中.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2024-11-09"><img src="/images/gallery-2024-11-09-aikido-musubi-kyotosanda-part-a-chubby-c.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2024-11-08"><img src="/images/gallery-2024-11-08-aikido-musubi-osakakyoto-part-あなたの未来を大予言.webp" alt="" loading="lazy"></a><a href="/galeria/" title="2024-11-05"><img src="/images/gallery-2024-11-05-aikido-musubi-osaka-part-learn-bear-safe.webp" alt="" loading="lazy"></a></div><div class="ab-count"><div><b>462</b><span>momentos guardados</span></div><div><b>49</b><span>álbumes</span></div><div><b>236</b><span>publicaciones</span></div><div><b>177</b><span>vídeos</span></div></div></section> <section class="ab-band"><div class="ab-h"><h2>Seminarios y clases especiales</h2><p class="note">39 sesiones desde 2020</p></div><div class="ab-acc"><details open><summary><span class="y">2026</span><span class="c">4 sesiones</span><span class="ch">+</span></summary><div class="ab-ev-list"><div class="ab-ev"><p class="d">24 abr</p><p class="t">Seminario internacional de Emilio Cardia Shihan en Barcelona<small>6.º dan Aikikai</small></p></div><div class="ab-ev"><p class="d">11 abr</p><p class="t">Clase abierta de Aikido en la Japan Weekend Barcelona 2026</p></div><div class="ab-ev"><p class="d">16 mar</p><p class="t">Masterclass de Koji Watanabe en el dojo<small>5.º dan Aikikai</small></p></div><div class="ab-ev"><p class="d">12 mar</p><p class="t">Masterclass de Simone Corridoni en el dojo<small>4.º dan Aikikai</small></p></div></div></details><details><summary><span class="y">2025</span><span class="c">12 sesiones</span><span class="ch">+</span></summary><div class="ab-ev-list"><div class="ab-ev"><p class="d">20 dic</p><p class="t">Masterclass de Pablo Martín en el dojo<small>4.º dan Aikikai</small></p></div><div class="ab-ev"><p class="d">5 dic</p><p class="t">Clase abierta de Aikido en la Manga Barcelona 2025</p></div><div class="ab-ev"><p class="d">29 nov</p><p class="t">Seminario internacional de Miyuki Kumazawa en Barcelona<small>6.º dan Aikikai</small></p></div><div class="ab-ev"><p class="d">5 jul</p><p class="t">Masterclass de Christian Morgenstern en el dojo<small>5.º dan Aikikai</small></p></div><div class="ab-ev"><p class="d">27 jun</p><p class="t">Seminario internacional de Miguel Moreno en Barcelona<small>5.º dan Birankai</small></p></div><div class="ab-ev"><p class="d">7 jun</p><p class="t">Masterclass de Michelle Feilen Shihan en el dojo<small>6.º dan Aikikai</small></p></div><div class="ab-ev"><p class="d">3 may</p><p class="t">Seminario internacional de Pablo Martín en Barcelona<small>4.º dan Aikikai</small></p></div><div class="ab-ev"><p class="d">26 abr</p><p class="t">Masterclass de Xavi Serra en el dojo<small>5.º dan Aikikai</small></p></div><div class="ab-ev"><p class="d">15 mar</p><p class="t">Clase abierta de Aikido en la Japan Weekend Barcelona 2025</p></div><div class="ab-ev"><p class="d">8 mar</p><p class="t">Masterclass de Carlos Nova en el dojo<small>4.º dan Aikikai</small></p></div><div class="ab-ev"><p class="d">22 feb</p><p class="t">Masterclass de Àlex Reboll en el dojo<small>5.º dan Aikikai</small></p></div><div class="ab-ev"><p class="d">25 ene</p><p class="t">Masterclass de Francisco Manchón Shihan en el dojo<small>6.º dan Aikikai</small></p></div></div></details><details><summary><span class="y">2024</span><span class="c">12 sesiones</span><span class="ch">+</span></summary><div class="ab-ev-list"><div class="ab-ev"><p class="d">21 dic</p><p class="t">Masterclass de Pablo Martín en el dojo<small>4.º dan Aikikai</small></p></div><div class="ab-ev"><p class="d">18 nov</p><p class="t">Masterclass de Joshua Layton en el dojo<small>5.º dan Aikikai</small></p></div><div class="ab-ev"><p class="d">19 oct</p><p class="t">Seminario internacional de Emilio Cardia Shihan en Barcelona<small>6.º dan Aikikai</small></p></div><div class="ab-ev"><p class="d">18 oct</p><p class="t">Seminario de Emilio Cardia Shihan en Barcelona<small>6.º dan Aikikai</small></p></div><div class="ab-ev"><p class="d">27 jul</p><p class="t">Masterclass de Arturo Fernández en el dojo<small>4.º dan Aikikai</small></p></div><div class="ab-ev"><p class="d">1 jul</p><p class="t">Masterclass de Marilène Gélinas en el dojo<small>4.º dan Aikikai</small></p></div><div class="ab-ev"><p class="d">28 jun</p><p class="t">Masterclass de Laura Benevelli en el dojo<small>5.º dan Aikikai</small></p></div><div class="ab-ev"><p class="d">25 may</p><p class="t">Masterclass de Francesc Castellanos en el dojo<small>5.º dan Aikikai</small></p></div><div class="ab-ev"><p class="d">6 abr</p><p class="t">Clase abierta de Aikido en la Japan Weekend Barcelona 2024</p></div><div class="ab-ev"><p class="d">16 mar</p><p class="t">Masterclass de Francisco Manchón Shihan en el dojo<small>6.º dan Aikikai</small></p></div><div class="ab-ev"><p class="d">24 feb</p><p class="t">Masterclass de Christian Morgenstern en el dojo<small>5.º dan Aikikai</small></p></div><div class="ab-ev"><p class="d">20 ene</p><p class="t">Masterclass de Arturo Fernández en el dojo<small>4.º dan Aikikai</small></p></div></div></details><details><summary><span class="y">2023</span><span class="c">6 sesiones</span><span class="ch">+</span></summary><div class="ab-ev-list"><div class="ab-ev"><p class="d">11 nov</p><p class="t">Masterclass de Toni Jurado en el dojo<small>5.º dan Aikikai</small></p></div><div class="ab-ev"><p class="d">13 oct</p><p class="t">Masterclass de Emilio Cardia en el dojo<small>6.º dan Aikikai</small></p></div><div class="ab-ev"><p class="d">16 sep</p><p class="t">Masterclass de Xavi Serra en el dojo<small>5.º dan Aikikai</small></p></div><div class="ab-ev"><p class="d">8 jul</p><p class="t">Masterclass de Pedro Fortes en el dojo<small>4.º dan Aikikai</small></p></div><div class="ab-ev"><p class="d">17 jun</p><p class="t">Masterclass de Christian Morgenstern en el dojo<small>5.º dan Aikikai</small></p></div><div class="ab-ev"><p class="d">6 may</p><p class="t">Masterclass de Francisco Manchón Shihan en el dojo<small>6.º dan Aikikai</small></p></div></div></details><details><summary><span class="y">2022</span><span class="c">2 sesiones</span><span class="ch">+</span></summary><div class="ab-ev-list"><div class="ab-ev"><p class="d">23 abr</p><p class="t">Masterclass de Pablo Martín en el dojo<small>4.º dan Aikikai</small></p></div><div class="ab-ev"><p class="d">26 mar</p><p class="t">Masterclass de Xavi Serra, Pedro Fortes, y Pablo Martín en el dojo</p></div></div></details><details><summary><span class="y">2020</span><span class="c">3 sesiones</span><span class="ch">+</span></summary><div class="ab-ev-list"><div class="ab-ev"><p class="d">29 feb</p><p class="t">Masterclass de Xavi Serra, Pedro Fortes, y David Ballara en el dojo</p></div><div class="ab-ev"><p class="d">15 feb</p><p class="t">Seminario internacional de Mike Flynn Shihan en Barcelona<small>7.º dan Aikikai</small></p></div><div class="ab-ev"><p class="d">1 feb</p><p class="t">Masterclass de Ricard Coll en el dojo<small>4.º dan Aikikai</small></p></div></div></details></div></section> <section class="ab-band"><div class="ab-h"><h2>De Tokio a Barcelona</h2><p class="note">La línea, sin saltos</p></div><div class="ab-chain"><div class="ab-link"><p class="y">1883–1969</p><p class="n">Morihei Ueshiba<small>Ō-Sensei, fundador del aikido</small></p></div><div class="ab-link"><p class="y">desde 1931</p><p class="n">Aikido Hombu Dojo<small>Tokio, la sede mundial del Aikido</small><span class="det">Aikido Doshu Ueshiba Moriteru · Aikido Hombu Dojo-cho Ueshiba Mitsuteru</span></p></div><div class="ab-link"><p class="y">desde 2020</p><p class="n">Arashi Group<small>Organización reconocida por el Aikido Hombu Dojo a la que pertenecemos</small><span class="det">Vínculo a través de Tsuruzo Miyamoto Sensei, 8.º dan</span></p></div><div class="ab-link" data-us><p class="y">desde 2008</p><p class="n">Aikido Musubi<small>Badalona, Barcelona</small></p></div></div></section> <section class="ab-band"><div class="ab-h"><h2>Palabras del tatami</h2><p class="note">Seis que oirás el primer día</p></div><div class="ab-words"><div class="ab-word"><p class="k">道場</p><p class="r">dōjō</p><p>El lugar donde se estudia el camino. No es un gimnasio: se entra y se sale saludando.</p></div><div class="ab-word"><p class="k">稽古</p><p class="r">keiko</p><p>La práctica. Literalmente «pensar en lo antiguo»: se repite algo que otros repitieron antes.</p></div><div class="ab-word"><p class="k">礼</p><p class="r">rei</p><p>El saludo. Abre y cierra la clase, y también cada práctica con cada compañero.</p></div><div class="ab-word"><p class="k">受身</p><p class="r">ukemi</p><p>La caída. La mitad del aikido consiste en aprender a recibir sin romperse.</p></div><div class="ab-word"><p class="k">稽古着</p><p class="r">keikogi</p><p>La ropa de práctica. Para las primeras clases basta con manga larga.</p></div><div class="ab-word"><p class="k">産靈</p><p class="r">musubi</p><p>El nudo: lo que une dos cosas y las deja unidas. De ahí el nombre del dojo.</p></div></div><div class="ab-more" id="ab-more"><div class="ab-words"><div class="ab-word"><p class="k">取り・受け</p><p class="r">tori · uke</p><p>Quien hace la técnica y quien la recibe. Se alternan sin parar: nadie es siempre uno de los dos.</p></div><div class="ab-word"><p class="k">正座</p><p class="r">seiza</p><p>Sentarse sobre los talones. Es como empieza y termina cada clase.</p></div><div class="ab-word"><p class="k">お願いします</p><p class="r">onegaishimasu</p><p>«Te lo pido, por favor.» Lo que se dice al compañero antes de practicar con él.</p></div><div class="ab-word"><p class="k">ありがとうございました</p><p class="r">arigatō gozaimashita</p><p>«Muchas gracias.» Lo que se le dice al terminar.</p></div><div class="ab-word"><p class="k">段・級</p><p class="r">dan · kyū</p><p>Los grados. Los kyu los examina el dojo; los dan quedan registrados en Tokio.</p></div><div class="ab-word"><p class="k">師範</p><p class="r">shihan</p><p>«Modelo a seguir.» El título de los maestros de grado alto que vienen a dar seminarios.</p></div></div></div><div class="ab-morebar"><button class="ab-morebtn" aria-expanded="false" aria-controls="ab-more">Seis palabras más</button><a class="ab-gloss" href="/glosario/">Glosario completo &rarr;</a></div></section> <section class="ab-band"><div class="ab-h"><h2>Enlaces</h2><p class="note">Con quién compartimos el tatami</p></div><div class="ab-lk-main"><a href="http://www.aikikai.or.jp/" rel="noopener"><b>Aikikai Foundation</b><span>aikikai.or.jp</span></a><a href="http://www.aikido-international.org/" rel="noopener"><b>International Aikido Federation</b><span>aikido-international.org</span></a><a href="http://aikidoarashigroup.com/" rel="noopener"><b>Arashi Group</b><span>aikidoarashigroup.com</span></a></div><p class="ab-lk-h">Dojos amigos</p><div class="ab-lk-grid"><a href="https://aikido-harukaze.com/" rel="noopener"><b>Aikido Harukaze</b><span><i>Japón</i>aikido-harukaze.com</span></a><a href="https://aikidooflondon.com/" rel="noopener"><b>Aikido of London</b><span><i>Inglaterra</i>aikidooflondon.com</span></a><a href="https://aikido.palestrafujiyama.com/" rel="noopener"><b>Aikido Palestra Fujiyama Pietrasanta</b><span><i>Italia</i>aikido.palestrafujiyama.com</span></a><a href="https://aikidosanshin.wixsite.com/sanshinkai" rel="noopener"><b>Aikido Sanshinkai</b><span><i>Japón</i>aikidosanshin.wixsite.com</span></a><a href="https://www.veronaikido.it/" rel="noopener"><b>Aikido Verona</b><span><i>Italia</i>veronaikido.it</span></a><a href="https://aikidowatanabedojo.it/" rel="noopener"><b>Aikido Watanabe Dojo</b><span><i>Italia</i>aikidowatanabedojo.it</span></a><a href="https://aikikaicorsico.it/" rel="noopener"><b>Aikikai Corsico</b><span><i>Italia</i>aikikaicorsico.it</span></a><a href="http://www.aikikaimilano.it/" rel="noopener"><b>Aikikai Milano</b><span><i>Italia</i>aikikaimilano.it</span></a><a href="http://www.lares.dti.ne.jp/~horii" rel="noopener"><b>Aioikai · Aikido Kobe Sanda Dojo</b><span><i>Japón</i>lares.dti.ne.jp</span></a><a href="https://www.aikifeilen.org/" rel="noopener"><b>Dojo Feilen Meishūkan</b><span><i>Barcelona</i>aikifeilen.org</span></a><a href="https://www.aikido-aikikai.ro/" rel="noopener"><b>Hakken Dojo</b><span><i>Rumanía</i>aikido-aikikai.ro</span></a><a href="https://www.kokoro-aikido.de/" rel="noopener"><b>Kokoro Aikido</b><span><i>Alemania</i>kokoro-aikido.de</span></a><a href="https://www.monteregieaikikai.com/" rel="noopener"><b>Montérégie Aikikai</b><span><i>Canadá</i>monteregieaikikai.com</span></a><a href="https://www.aikidokyoto.com/" rel="noopener"><b>Sandokai Aikido Kyoto</b><span><i>Japón</i>aikidokyoto.com</span></a><a href="http://www.scottishandbordersbirankai.com/" rel="noopener"><b>Scottish and Borders Birankai</b><span><i>Escocia</i>scottishandbordersbirankai.com</span></a><a href="http://thistleaikikai.com/" rel="noopener"><b>Thistle Aikikai</b><span><i>Escocia</i>thistleaikikai.com</span></a><a href="https://www.facebook.com/veniceaikikai.birankai/" rel="noopener"><b>Venice Aikikai Birankai</b><span><i>Italia</i>facebook.com</span></a><a href="https://taplink.cc/wabiaikidohouse" rel="noopener"><b>Wabi Aikido House</b><span><i>Italia</i>taplink.cc</span></a></div><div class="ab-lk-tail"><div><p class="ab-lk-h">Dónde entrenamos</p><a href="https://marinabesos.net/" rel="noopener"><b>Poliesportiu Municipal Marina-Besòs</b><span>marinabesos.net</span></a><a href="https://web.ub.edu/es/web/facultat-dret/" rel="noopener"><b>Facultat de Dret, Universitat de Barcelona</b><span>web.ub.edu</span></a></div><div><p class="ab-lk-h">Material</p><a href="https://iwataco.com/" rel="noopener"><b>Iwata Co.</b><em>Tienda de material de artes marciales</em><span>iwataco.com</span></a></div><div><p class="ab-lk-h">Divulgación</p><a href="https://www.budocool.com/" rel="noopener"><b>Budo Cool</b><em>Creador de contenido</em><span>budocool.com</span></a></div></div></section> <section class="ab-band"><div class="ab-h"><h2>Lo esencial</h2><p class="note">Tres páginas en una pantalla</p></div><div class="ab-ess">
+  <div class="ab-cell"><h3>Dónde</h3>
+    <dl><dt>Badalona</dt><dd>Av. d'Alfons XIII, 351</dd>
+        <dt>Sant Adrià</dt><dd>Poliesportiu Marina-Besòs</dd>
+        <dt>Barcelona</dt><dd>UB, Facultat de Dret</dd></dl>
+    <a class="go" href="/acceso/">Cómo llegar</a></div>
+  <div class="ab-cell"><h3>Cuánto</h3>
+    <dl><dt>Inscripción</dt><dd>Gratuita, todo el año</dd>
+        <dt>Prueba</dt><dd>Dos clases, sin coste</dd>
+        <dt>Cuota</dt><dd>Mensual, según la actividad</dd></dl>
+    <a class="go" href="/cuotas/">Ver las cuotas</a></div>
+  <div class="ab-cell"><h3>Cómo empezar</h3>
+    <p>Escríbenos con un día de antelación, dinos qué clase te interesa y te decimos
+       cuándo venir. Ropa cómoda de manga larga; el keikogi ya llegará.</p>
+    <a class="go" href="/contacto/">Escríbenos</a></div>
+</div></section>
+  <div class="ab-foot"><p>Esto no se escribe a mano. Sale del horario, del calendario,
+de la galería y de las fichas de seminario, así que no puede quedarse atrás.
+<br><span class="ab-mono">23.08.2026 · Associació Cultural Musubi Aikido</span></p>
+<button class="ab-back" data-rg-close>Volver a la portada</button></div>
+</div></div><script>
+(function(){
+  var b=document.querySelector('.ab-morebtn'); if(!b)return;
+  var box=document.getElementById('ab-more');
+  b.addEventListener('click',function(){
+    var on=box.hasAttribute('data-open');
+    if(on){box.removeAttribute('data-open');b.setAttribute('aria-expanded','false');
+           b.textContent='Seis palabras más';}
+    else{box.setAttribute('data-open','');b.setAttribute('aria-expanded','true');
+         b.textContent='Menos palabras';}
+  });
+})();
+</script></body></html>

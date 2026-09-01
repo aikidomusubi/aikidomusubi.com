@@ -1,0 +1,698 @@
+# Sobre nosotros — the four topics behind the nav dropdown.
+#
+# This is the content that used to sit on the homepage as five long sections.
+# It did not belong there: a beginner never read past the first, and another
+# dojo or a federation wants a page it can link to, not an anchor two thirds of
+# the way down a front page. Nothing was cut in the move.
+#
+# ONE SOURCE, FOUR LANGUAGES. Each topic below carries `title`, `lede` and a
+# list of `blocks`. A block is a heading plus paragraphs, and optionally an
+# image or a definition list of facts. _layouts/about.html renders them; the
+# sixteen page files are stubs that name a topic and nothing else.
+
+ui:
+  section:  { es: "Sobre nosotros", ca: "Sobre nosaltres",
+              en: "About us",       ja: "私たちについて" }
+
+topics:
+  # ---------------------------------------------------------------------------
+  - id: dojo
+    image: index-8oGCaMDs-02
+    slug: { es: "el-dojo", ca: "el-dojo", en: "the-dojo", ja: "the-dojo" }
+    title: { es: "El dojo", ca: "El dojo", en: "The dojo", ja: "道場" }
+    lede:
+      es: "Dónde entrenamos, cómo se cuida el espacio y qué encontrarás cuando llegues."
+      ca: "On entrenem, com es cuida l'espai i què hi trobaràs quan arribis."
+      en: "Where we train, how the space is looked after, and what you will find when you arrive."
+      ja: "稽古の場、その手入れ、そして訪れたときに目にするもの。"
+    blocks:
+      - heading: { es: "Un espacio para las artes marciales", ca: "Un espai per a les arts marcials",
+                   en: "A space for martial arts", ja: "武道のための場所" }
+        body:
+          es:
+            - "Nuestro dojo es un espacio grande y diáfano destinado exclusivamente a la práctica y la enseñanza de las artes marciales. Está supervisado y gestionado por el director técnico y los instructores de la asociación; pero siendo responsabilidad de todos, y no sólo de los instructores o del profesor, lo mantienen y lo cuidan los estudiantes."
+            - "El dojo es un lugar ideal para profundizar en el estudio y la comprensión de las artes marciales, y para conocer todo tipo de personas independientemente de su edad, sexo y ocupación."
+          ca:
+            - "El nostre dojo és un espai gran i diàfan destinat exclusivament a la pràctica i l'ensenyament de les arts marcials. Està supervisat i gestionat pel director tècnic i els instructors de l'associació; però com que és responsabilitat de tothom, i no només dels instructors o del professor, el mantenen i el cuiden els estudiants."
+            - "El dojo és un lloc ideal per aprofundir en l'estudi i la comprensió de les arts marcials, i per conèixer tota mena de persones independentment de la seva edat, sexe i ocupació."
+          en:
+            - "Our dojo is a large, open space given over entirely to the practice and teaching of martial arts. It is supervised and run by the technical director and the association's instructors; but because looking after it is everyone's responsibility and not only the instructors', it is the students who maintain and care for it."
+            - "The dojo is a good place to study martial arts seriously, and to meet all kinds of people whatever their age, sex or occupation."
+          ja:
+            - "私たちの道場は、武道の稽古と指導のためだけに使われる、広く見通しのよい空間です。運営は指導部と協会の指導者が担いますが、道場の手入れは指導者だけの仕事ではなく全員の務めであり、実際に維持し整えているのは稽古生です。"
+            - "道場は武道を深く学ぶのに適した場所であり、年齢や性別、職業を問わずさまざまな人と出会える場でもあります。"
+      # Reihō. Written as a numbered list rather than prose because it is a
+      # list — someone reading it the night before their first class wants to
+      # be able to count the things they have to remember.
+      - heading: { es: "Cómo se entra y cómo se sale", ca: "Com s'hi entra i com se'n surt",
+                   en: "How you come in and how you leave", ja: "入り方と出方" }
+        body:
+          es:
+            - "La etiqueta del dojo, el <em>礼法 reihō</em>, no es ceremonia: es la manera de que cuarenta personas descalzas compartan un suelo sin estorbarse. Nadie espera que la sepas el primer día, y nadie te va a corregir con mala cara. Esto es todo lo que hay que saber."
+          ca:
+            - "L'etiqueta del dojo, el <em>礼法 reihō</em>, no és cerimònia: és la manera que quaranta persones descalces comparteixin un terra sense fer-se nosa. Ningú espera que la sàpigues el primer dia, i ningú et corregirà amb mala cara. Això és tot el que cal saber."
+          en:
+            - "Dojo etiquette, <em>礼法 reihō</em>, is not ceremony: it is how forty barefoot people share one floor without getting in each other's way. Nobody expects you to know it on your first day, and nobody will correct you unkindly. This is all of it."
+          ja:
+            - "道場の作法、<em>礼法</em>は儀式ではありません。裸足の四十人が一つの床を分け合うための約束事です。初日から知っている必要はありませんし、きつく直されることもありません。必要なのは次のことだけです。"
+        steps:
+          - es: "<b>El calzado se queda en el borde.</b> Al tatami se entra descalzo, siempre. Deja los zapatos con las puntas hacia fuera, para poder ponértelos sin girarte."
+            ca: "<b>El calçat es queda a la vora.</b> Al tatami s'hi entra descalç, sempre. Deixa les sabates amb les puntes cap enfora, per poder posar-te-les sense girar-te."
+            en: "<b>Shoes stay at the edge.</b> You step onto the mat barefoot, always. Leave them pointing outwards so you can put them on without turning round."
+            ja: "<b>履物は畳の外に。</b>畳には必ず裸足で上がります。靴は爪先を外に向けて置くと、向きを変えずに履けます。"
+          - es: "<b>Saluda al entrar y al salir del tatami.</b> De pie, mirando al frente del dojo, una inclinación breve. Es lo que separa la calle del sitio donde vas a entrenar."
+            ca: "<b>Saluda en entrar i en sortir del tatami.</b> Dret, mirant al front del dojo, una inclinació breu. És el que separa el carrer del lloc on entrenaràs."
+            en: "<b>Bow as you step on and off the mat.</b> Standing, facing the front of the dojo, a short bow. It is what separates the street from the place you are about to train in."
+            ja: "<b>畳に上がるとき、降りるときに礼を。</b>立ったまま正面に向かい、軽く一礼します。これが外と稽古の場との区切りです。"
+          - es: "<b>Saluda a tu compañero antes y después.</b> Antes se dice <em>お願いします onegaishimasu</em>; después, <em>ありがとうございました arigatō gozaimashita</em>."
+            ca: "<b>Saluda el teu company abans i després.</b> Abans es diu <em>お願いします onegaishimasu</em>; després, <em>ありがとうございました arigatō gozaimashita</em>."
+            en: "<b>Bow to your partner before and after.</b> Before, you say <em>お願いします onegaishimasu</em>; after, <em>ありがとうございました arigatō gozaimashita</em>."
+            ja: "<b>相手にも稽古の前後に礼を。</b>始めに<em>お願いします</em>、終わりに<em>ありがとうございました</em>。"
+          - es: "<b>Si llegas tarde</b>, cámbiate, siéntate en <em>seiza</em> en el borde del tatami y espera a que el instructor te haga una señal. No cruces por delante de él."
+            ca: "<b>Si arribes tard</b>, canvia't, seu en <em>seiza</em> a la vora del tatami i espera que l'instructor et faci un senyal. No creuis per davant seu."
+            en: "<b>If you are late</b>, change, sit in <em>seiza</em> at the edge of the mat and wait for the instructor to wave you on. Do not cross in front of them."
+            ja: "<b>遅れたときは</b>着替えて畳の端で正座し、指導者の合図を待ちます。指導者の前を横切らないようにします。"
+          - es: "<b>Nada de anillos, relojes ni pendientes</b>, y las uñas de manos y pies cortas. Las dos cosas hacen daño, y no a quien las lleva."
+            ca: "<b>Res d'anells, rellotges ni arracades</b>, i les ungles de mans i peus curtes. Totes dues coses fan mal, i no a qui les porta."
+            en: "<b>No rings, watches or earrings</b>, and keep finger and toe nails short. Both hurt somebody, and not the person wearing them."
+            ja: "<b>指輪、腕時計、ピアスは外し</b>、手足の爪は短く。どちらも怪我をさせるのは自分ではなく相手です。"
+          - es: "<b>El keikogi limpio</b>, cada día. Se entrena muy cerca de otra persona."
+            ca: "<b>El keikogi net</b>, cada dia. S'entrena molt a prop d'una altra persona."
+            en: "<b>A clean keikogi</b>, every day. You train very close to another person."
+            ja: "<b>稽古着は毎回洗ったものを。</b>相手とごく近い距離で稽古します。"
+          - es: "<b>No se come ni se bebe en el tatami</b>, y el móvil se queda en el vestuario."
+            ca: "<b>No es menja ni es beu al tatami</b>, i el mòbil es queda al vestidor."
+            en: "<b>No food or drink on the mat</b>, and phones stay in the changing room."
+            ja: "<b>畳の上での飲食はしません。</b>携帯電話は更衣室に置いておきます。"
+          - es: "<b>Al final se limpia entre todos.</b> Lleva cinco minutos y no es tarea de los principiantes: es de todos, y el director técnico también barre."
+            ca: "<b>Al final es neteja entre tots.</b> Són cinc minuts i no és feina dels principiants: és de tothom, i el director tècnic també escombra."
+            en: "<b>Everyone cleans at the end.</b> It takes five minutes and it is not the beginners' job: it is everybody's, and the technical director sweeps too."
+            ja: "<b>終わったら全員で掃除をします。</b>五分ほどで、初心者の仕事ではありません。全員の務めで、指導部長も箒を持ちます。"
+
+      - heading: { es: "La primera vez, paso a paso", ca: "La primera vegada, pas a pas",
+                   en: "Your first time, step by step", ja: "はじめての一日" }
+        body:
+          es:
+            - "Llegas quince minutos antes. Te enseñamos dónde está el vestuario, te cambias con ropa cómoda de manga larga y sales al borde del tatami. Alguien te explicará las dos o tres cosas de la lista de arriba: nadie espera que las sepas."
+            - "La clase empieza sentados en <em>seiza</em>, con un saludo al frente del dojo y otro entre el instructor y el grupo. Después hay un calentamiento y unos ejercicios de <em>ukemi</em>, la caída, que es lo primero que se aprende y lo que más se repite. Luego el instructor muestra una técnica y se practica por parejas, cambiando de compañero varias veces. Se cierra con un ejercicio de respiración y otro saludo."
+            - "Dura una hora. No hay marcador y no gana nadie. Si algo te molesta, se para y ya está: se dice y se para."
+          ca:
+            - "Arribes quinze minuts abans. T'ensenyem on és el vestidor, et canvies amb roba còmoda de màniga llarga i surts a la vora del tatami. Algú t'explicarà les dues o tres coses de la llista de dalt: ningú espera que les sàpigues."
+            - "La classe comença asseguts en <em>seiza</em>, amb una salutació al front del dojo i una altra entre l'instructor i el grup. Després hi ha un escalfament i uns exercicis d'<em>ukemi</em>, la caiguda, que és el primer que s'aprèn i el que més es repeteix. Tot seguit l'instructor mostra una tècnica i es practica per parelles, canviant de company diverses vegades. Es tanca amb un exercici de respiració i una altra salutació."
+            - "Dura una hora. No hi ha marcador i no guanya ningú. Si alguna cosa et molesta, es para i ja està: es diu i es para."
+          en:
+            - "Arrive fifteen minutes early. We will show you the changing room; put on something comfortable with long sleeves and come out to the edge of the mat. Someone will run you through the two or three things on the list above — nobody expects you to know them."
+            - "The class starts seated in <em>seiza</em>, with a bow to the front of the dojo and another between the instructor and the group. Then a warm-up and some <em>ukemi</em>, the falls, which are the first thing you learn and the thing you repeat most. The instructor then shows a technique and you practise it in pairs, changing partner several times. It closes with a breathing exercise and one more bow."
+            - "It lasts an hour. There is no score and nobody wins. If something hurts, you say so and it stops. That is all it takes."
+          ja:
+            - "十五分前にお越しください。更衣室をご案内します。長袖の動きやすい服に着替えて、畳の端まで出てきてください。上の項目のうち大事なところは、その場で誰かが教えます。知らなくて構いません。"
+            - "稽古は正座から始まり、正面への礼、そして指導者と全員との礼を交わします。次に準備運動と<em>受け身</em>。受け身は最初に習い、いちばん多く繰り返すものです。そのあと指導者が技を示し、相手を何度か替えながら二人一組で稽古します。最後に呼吸法を行い、もう一度礼をして終わります。"
+            - "所要は一時間。点数はつかず、勝ち負けもありません。痛いところがあれば、言えばそこで止めます。それだけのことです。"
+
+      - heading: { es: "El shōmen", ca: "El shōmen", en: "The shōmen", ja: "正面" }
+        body:
+          es:
+            - "El frente del dojo, el <em>正面 shōmen</em>, es la pared hacia la que se saluda. En la nuestra hay una caligrafía y un retrato del fundador, Morihei Ueshiba. El saludo no va dirigido a una persona ni a una religión: reconoce que lo que se practica aquí lo construyeron otros antes, y que uno lo recibe prestado."
+            - "A la entrada del tatami hay además una frase que no es japonesa de origen: <em lang=\"ja\">唱えよ、友、そして入れ</em>, «habla, amigo, y entra». Quien la reconozca sabrá de dónde viene. Quien no, tiene la traducción justo debajo."
+          ca:
+            - "El front del dojo, el <em>正面 shōmen</em>, és la paret cap a la qual se saluda. A la nostra hi ha una cal·ligrafia i un retrat del fundador, Morihei Ueshiba. La salutació no va dirigida a una persona ni a una religió: reconeix que allò que es practica aquí ho van construir altres abans, i que un ho rep en préstec."
+            - "A l'entrada del tatami hi ha a més una frase que no és japonesa d'origen: <em lang=\"ja\">唱えよ、友、そして入れ</em>, «parla, amic, i entra». Qui la reconegui sabrà d'on ve. Qui no, té la traducció just a sota."
+          en:
+            - "The front of the dojo, the <em>正面 shōmen</em>, is the wall you bow towards. Ours carries a piece of calligraphy and a portrait of the founder, Morihei Ueshiba. The bow is not addressed to a person or to a religion: it acknowledges that what is practised here was built by others first, and that you have it on loan."
+            - "At the entrance to the mat there is also a line that is not Japanese in origin: <em lang=\"ja\">唱えよ、友、そして入れ</em>, \"speak, friend, and enter\". Anyone who recognises it will know where it comes from. Anyone who does not has the translation right underneath."
+          ja:
+            - "道場の<em>正面</em>は、礼をする側の壁です。私たちの道場には書と、開祖・植芝盛平の写真を掲げています。この礼は特定の人物や宗教に向けたものではありません。ここで稽古できるものを築いたのは先人であり、自分はそれを借りているにすぎない、という確認です。"
+            - "畳の入口には、もともとは日本語ではない一文も掲げてあります。<em>唱えよ、友、そして入れ</em>。出典がわかる人にはわかりますし、わからなくても、すぐ下に訳が添えてあります。"
+
+      - heading: { es: "Nuestros espacios", ca: "Els nostres espais",
+                   en: "Our spaces", ja: "私たちの稽古場" }
+        body:
+          es:
+            - "Además de nuestra actividad en el dojo, <strong>Aikido Musubi</strong> ofrece clases en otros espacios de Barcelona y sus alrededores. Actualmente impartimos clases en el Polideportivo Municipal Marina-Besòs, en el Complejo Deportivo Municipal Espronceda y en la Facultad de Derecho de la Universidad de Barcelona, acercando la práctica del aikido a nuevos entornos y comunidades."
+          ca:
+            - "A més de l'activitat al dojo, <strong>Aikido Musubi</strong> ofereix classes en altres espais de Barcelona i rodalia. Actualment fem classes al Poliesportiu Municipal Marina-Besòs, al Complex Esportiu Municipal Espronceda i a la Facultat de Dret de la Universitat de Barcelona, acostant la pràctica de l'aikido a nous entorns i comunitats."
+          en:
+            - "Beyond the dojo itself, <strong>Aikido Musubi</strong> teaches in other spaces around Barcelona. We currently run classes at the Marina-Besòs municipal sports centre, at the Espronceda municipal sports complex and at the Faculty of Law of the University of Barcelona, bringing aikido to new places and communities."
+          ja:
+            - "道場での活動に加え、<strong>産靈合気道文化協会</strong>はバルセロナ周辺の他の施設でも稽古を行っています。現在はマリナ・バゾス市立スポーツセンター、エスプロンセダ市立スポーツ複合施設、そしてバルセロナ大学法学部で稽古を開いており、合気道を新しい場所と人びとに届けています。"
+        # The three cards come from _data/venues.yml and the days from
+        # _data/schedule.yml. Nothing about a venue is written twice, so a
+        # class moving night cannot leave this page saying the old one.
+        venues: true
+        more:
+          - label: { es: "Cómo llegar a cada uno", ca: "Com arribar a cadascun",
+                     en: "How to get to each one", ja: "それぞれへの行き方" }
+            url:   { es: "/acceso/", ca: "/ca/acces/",
+                     en: "/en/access-information/", ja: "/ja/access-information/" }
+          - label: { es: "Qué se da en cada uno", ca: "Què s'hi fa a cadascun",
+                     en: "What is taught at each", ja: "それぞれの稽古内容" }
+            url:   { es: "/horarios/", ca: "/ca/horaris/",
+                     en: "/en/training-schedule/", ja: "/ja/training-schedule/" }
+
+  # ---------------------------------------------------------------------------
+  - id: aikido
+    image: classes-CJc2lhFv-27
+    slug: { es: "aikido", ca: "aikido", en: "aikido", ja: "aikido" }
+    title: { es: "Aikido", ca: "Aikido", en: "Aikido", ja: "合気道" }
+    lede:
+      es: "Qué es, de dónde viene y cómo se practica aquí."
+      ca: "Què és, d'on ve i com es practica aquí."
+      en: "What it is, where it comes from, and how it is practised here."
+      ja: "合気道とは何か、どこから来たのか、そしてここでどう稽古するのか。"
+    blocks:
+      - heading: { es: "El arte", ca: "L'art", en: "The art", ja: "この武道について" }
+        body:
+          es:
+            - "El aikido es un arte marcial japonés no competitivo desarrollado a principios del siglo XX por Morihei Ueshiba (1883-1969). Se basa en otras artes marciales tradicionales de Japón, principalmente <em>Daitō-ryū Aiki-jūjutsu</em>, y utiliza movimientos flexibles, naturales y altamente efectivos para evadir, redirigir o neutralizar los ataques utilizando la fuerza del oponente."
+            - "La práctica del aikido es un entrenamiento físico arduo que se basa en la repetición de ejercicios, manteniendo un buen balance entre la izquierda y la derecha, y alternando entre la realización de técnicas y su aceptación. El aikido no sólo es bueno para la salud, sino que también desarrolla la autoconfianza de forma natural para la vida diaria."
+            - "Se puede empezar a practicar aikido en cualquier momento, independientemente de la edad o de la condición física; tanto hombres como mujeres, desde adultos hasta niños."
+          ca:
+            - "L'aikido és un art marcial japonès no competitiu desenvolupat a principis del segle XX per Morihei Ueshiba (1883-1969). Es basa en altres arts marcials tradicionals del Japó, principalment el <em>Daitō-ryū Aiki-jūjutsu</em>, i utilitza moviments flexibles, naturals i altament efectius per evadir, redirigir o neutralitzar els atacs aprofitant la força de l'oponent."
+            - "La pràctica de l'aikido és un entrenament físic exigent basat en la repetició d'exercicis, mantenint un bon equilibri entre l'esquerra i la dreta, i alternant entre fer les tècniques i rebre-les. L'aikido no només és bo per a la salut, sinó que també desenvolupa la confiança en un mateix de manera natural per a la vida diària."
+            - "Es pot començar a practicar aikido en qualsevol moment, independentment de l'edat o de la condició física; tant homes com dones, des d'adults fins a nens."
+          en:
+            - "Aikido is a non-competitive Japanese martial art developed in the early twentieth century by Morihei Ueshiba (1883-1969). It draws on other traditional Japanese martial arts, principally <em>Daitō-ryū Aiki-jūjutsu</em>, and uses supple, natural and highly effective movement to evade, redirect or neutralise an attack using the opponent's own force."
+            - "Practice is demanding physical training built on repetition, keeping a balance between left and right and alternating between performing a technique and receiving it. Aikido is not only good for your health; it builds self-confidence that carries naturally into daily life."
+            - "You can begin at any time, whatever your age or physical condition, men and women, adults and children alike."
+          ja:
+            - "合気道は、20世紀初頭に植芝盛平（1883–1969）が大成した、試合を行わない日本の武道です。日本の古流武術、とりわけ<em>大東流合気柔術</em>を土台とし、しなやかで自然な、しかも極めて有効な体さばきによって、相手の力を用いて攻撃をかわし、導き、無力化します。"
+            - "稽古は反復を重ねる厳しい鍛錬です。左右の均衡を保ち、技をかける側と受ける側を交互に務めます。合気道は健康によいだけでなく、日常生活に自然につながる自信を育てます。"
+            - "年齢や体力を問わず、男女を問わず、大人も子どもも、いつからでも始められます。"
+      # What an hour actually looks like. The commonest question from someone
+      # who has never done a martial art is not "what is aikido" but "what
+      # will happen to me for sixty minutes".
+      - heading: { es: "Una clase por dentro", ca: "Una classe per dins",
+                   en: "A class from the inside", ja: "稽古の一時間" }
+        body:
+          es:
+            - "Una hora, con la misma estructura casi siempre. Se empieza y se termina sentados, y en medio se repite mucho."
+          ca:
+            - "Una hora, amb la mateixa estructura gairebé sempre. Es comença i s'acaba asseguts, i al mig es repeteix molt."
+          en:
+            - "One hour, and almost always the same shape. It starts and ends seated, and in between there is a great deal of repetition."
+          ja:
+            - "一時間。流れはほぼ毎回同じです。座って始まり、座って終わり、その間はひたすら繰り返します。"
+        steps:
+          - es: "<b>Saludo.</b> En <em>seiza</em>, al frente del dojo y entre el instructor y el grupo."
+            ca: "<b>Salutació.</b> En <em>seiza</em>, al front del dojo i entre l'instructor i el grup."
+            en: "<b>The bow.</b> In <em>seiza</em>, to the front of the dojo and between the instructor and the group."
+            ja: "<b>礼。</b>正座で、正面へ、そして指導者と全員とで。"
+          - es: "<b>Calentamiento.</b> Movilidad de muñecas, hombros y caderas. Las muñecas se calientan mucho porque muchas técnicas trabajan sobre ellas."
+            ca: "<b>Escalfament.</b> Mobilitat de canells, espatlles i malucs. Els canells s'escalfen molt perquè moltes tècniques hi treballen."
+            en: "<b>Warm-up.</b> Wrists, shoulders and hips. The wrists get a lot of attention, because a lot of the techniques work on them."
+            ja: "<b>準備運動。</b>手首、肩、腰をほぐします。手首を入念にするのは、多くの技が手首にかかるからです。"
+          - es: "<b>Ukemi.</b> Caídas hacia atrás, hacia delante, rodando. Es la mitad del aikido y lo primero que aprende quien llega."
+            ca: "<b>Ukemi.</b> Caigudes enrere, endavant, rodant. És la meitat de l'aikido i el primer que aprèn qui arriba."
+            en: "<b>Ukemi.</b> Falling backwards, forwards, rolling. It is half of aikido and the first thing a newcomer learns."
+            ja: "<b>受け身。</b>後ろ受け身、前受け身、前回り受け身。合気道の半分であり、入門して最初に習うものです。"
+          - es: "<b>Técnica.</b> El instructor la muestra dos o tres veces y se practica por parejas, alternando quien la hace y quien la recibe, y cambiando de compañero varias veces."
+            ca: "<b>Tècnica.</b> L'instructor la mostra dues o tres vegades i es practica per parelles, alternant qui la fa i qui la rep, i canviant de company diverses vegades."
+            en: "<b>Technique.</b> The instructor shows it two or three times, then you work in pairs, swapping who does it and who receives it, and changing partner several times."
+            ja: "<b>技。</b>指導者が二、三度示し、二人一組で稽古します。取りと受けを交代し、相手も何度か替えます。"
+          - es: "<b>Kokyū hō.</b> Un ejercicio de respiración sentados, que cierra la sesión."
+            ca: "<b>Kokyū hō.</b> Un exercici de respiració asseguts, que tanca la sessió."
+            en: "<b>Kokyū hō.</b> A seated breathing exercise that closes the session."
+            ja: "<b>呼吸法。</b>座って行う呼吸の稽古で締めくくります。"
+          - es: "<b>Saludo y limpieza.</b> Cinco minutos entre todos."
+            ca: "<b>Salutació i neteja.</b> Cinc minuts entre tots."
+            en: "<b>Bow, then cleaning.</b> Five minutes, everybody."
+            ja: "<b>礼、そして掃除。</b>全員で五分ほど。"
+
+      - heading: { es: "Las armas", ca: "Les armes", en: "The weapons", ja: "武器の稽古" }
+        body:
+          es:
+            - "Un arte que no compite estudia armas por una razón concreta: el aikido nace del trabajo con el sable, y muchos movimientos de mano vacía se entienden mejor cuando se han hecho antes con un <em>bokken</em> en las manos. Las tres son de madera y nunca se usan con filo."
+          ca:
+            - "Un art que no competeix estudia armes per una raó concreta: l'aikido neix del treball amb el sabre, i molts moviments de mà buida s'entenen millor quan abans s'han fet amb un <em>bokken</em> a les mans. Les tres són de fusta i mai no es fan servir amb tall."
+          en:
+            - "A non-competitive art studies weapons for a specific reason: aikido comes out of swordwork, and a lot of empty-hand movement makes more sense once you have done it holding a <em>bokken</em>. All three are wooden, and never bladed."
+          ja:
+            - "試合をしない武道が武器を学ぶのには理由があります。合気道は剣の理合いから生まれており、素手の動きの多くは、一度<em>木刀</em>を持って行ってみるとよくわかります。いずれも木製で、刃のあるものは使いません。"
+        weapons:
+          - k: 木刀
+            r: bokken
+            d:
+              es: "El sable de madera. De él vienen los cortes <em>shōmen</em> y <em>yokomen</em>, que son la base de medio programa."
+              ca: "El sabre de fusta. D'ell vénen els talls <em>shōmen</em> i <em>yokomen</em>, que són la base de mig programa."
+              en: "The wooden sword. The <em>shōmen</em> and <em>yokomen</em> strikes come from it, and they are half the syllabus."
+              ja: "木の刀。<em>正面打ち</em>と<em>横面打ち</em>はここから来ており、稽古の半分の土台になります。"
+          - k: 杖
+            r: jō
+            d:
+              es: "El bastón, de metro y pico. Enseña la distancia y el trabajo con las dos manos separadas."
+              ca: "El bastó, de metre i escaig. Ensenya la distància i el treball amb les dues mans separades."
+              en: "The staff, a little over a metre. It teaches distance, and working with the hands apart."
+              ja: "一メートルあまりの杖。間合いと、両手を離して使う体の運びを学びます。"
+          - k: 短刀
+            r: tantō
+            d:
+              es: "El cuchillo. Se usa para las técnicas de desarme, siempre despacio y siempre con el compañero avisado."
+              ca: "El ganivet. S'usa per a les tècniques de desarmament, sempre a poc a poc i sempre amb el company avisat."
+              en: "The knife. Used for disarming techniques, always slowly and always with your partner warned."
+              ja: "短刀。取り上げの稽古に用います。必ずゆっくり、必ず相手に断ってから。"
+        more:
+          - label: { es: "Cuándo es la clase de armas", ca: "Quan és la classe d'armes",
+                     en: "When the weapons class is", ja: "武器稽古の曜日と時間" }
+            url:   { es: "/horarios/", ca: "/ca/horaris/",
+                     en: "/en/training-schedule/", ja: "/ja/training-schedule/" }
+
+      - heading: { es: "Grados y exámenes", ca: "Graus i exàmens",
+                   en: "Grades and examinations", ja: "段級と審査" }
+        body:
+          es:
+            - "Los grados <em>kyu</em> los examina el dojo. Los grados <em>dan</em> se presentan y quedan registrados en la Aikikai Foundation de Tokio, que los reconoce internacionalmente a través de la International Aikido Federation."
+            - "No hay una fecha fija para presentarse: se propone cuando el instructor considera que el trabajo está hecho. Cada examen tiene un programa concreto de ataques y técnicas, y un número mínimo de días de práctica desde el grado anterior. Antes de cada convocatoria hay clases de preparación abiertas a todo el que se vaya a examinar."
+          ca:
+            - "Els graus <em>kyu</em> els examina el dojo. Els graus <em>dan</em> es presenten i queden registrats a la Aikikai Foundation de Tòquio, que els reconeix internacionalment a través de la International Aikido Federation."
+            - "No hi ha una data fixa per presentar-s'hi: es proposa quan l'instructor considera que la feina està feta. Cada examen té un programa concret d'atacs i tècniques, i un nombre mínim de dies de pràctica des del grau anterior. Abans de cada convocatòria hi ha classes de preparació obertes a tothom qui s'hagi d'examinar."
+          en:
+            - "<em>Kyu</em> grades are examined by the dojo. <em>Dan</em> grades are presented and registered with the Aikikai Foundation in Tokyo, which recognises them internationally through the International Aikido Federation."
+            - "There is no fixed date for taking one: you are put forward when the instructor thinks the work is done. Each examination has a specific syllabus of attacks and techniques, and a minimum number of practice days since the previous grade. Preparation classes run before every session, open to anyone who is going to be examined."
+          ja:
+            - "<em>級</em>の審査は道場で行います。<em>段</em>は東京の財団法人合気会に登録され、国際合気道連盟を通じて国際的に認められます。"
+            - "受審の日取りは決まっていません。稽古が仕上がったと指導者が判断したときに推薦されます。審査ごとに攻撃と技の内容が定められており、前の級・段からの最低稽古日数もあります。審査の前には、受ける人なら誰でも参加できる準備稽古があります。"
+
+      - heading: { es: "Una historia breve", ca: "Una història breu",
+                   en: "A short history", ja: "簡単な歴史" }
+        body:
+          es:
+            - "Morihei Ueshiba nace en Tanabe en 1883 y estudia varias escuelas tradicionales antes de encontrar el <em>Daitō-ryū Aiki-jūjutsu</em> de Sokaku Takeda, que sería la base técnica de lo que vino después. En los años treinta abre en Tokio el dojo que acabaría llamándose Aikikai Hombu Dojo, y va desplazando el arte desde la eficacia marcial pura hacia la idea que le da nombre: unirse a la fuerza del otro en lugar de chocar con ella."
+            - "Tras la Segunda Guerra Mundial, y con la ocupación levantando la prohibición sobre las artes marciales, sus alumnos empiezan a enseñar fuera de Japón. Llega a Europa en los años cincuenta y sesenta, y a España en los setenta. Hoy la Aikikai Foundation, dirigida por el nieto del fundador, coordina el reconocimiento de grados en todo el mundo a través de la International Aikido Federation."
+          ca:
+            - "Morihei Ueshiba neix a Tanabe el 1883 i estudia diverses escoles tradicionals abans de trobar el <em>Daitō-ryū Aiki-jūjutsu</em> de Sokaku Takeda, que seria la base tècnica del que vindria després. Als anys trenta obre a Tòquio el dojo que acabaria dient-se Aikikai Hombu Dojo, i va desplaçant l'art des de l'eficàcia marcial pura cap a la idea que li dóna nom: unir-se a la força de l'altre en lloc de xocar-hi."
+            - "Després de la Segona Guerra Mundial, i amb l'ocupació aixecant la prohibició sobre les arts marcials, els seus alumnes comencen a ensenyar fora del Japó. Arriba a Europa als anys cinquanta i seixanta, i a Espanya als setanta. Avui l'Aikikai Foundation, dirigida pel nét del fundador, coordina el reconeixement de graus arreu del món a través de la International Aikido Federation."
+          en:
+            - "Morihei Ueshiba was born in Tanabe in 1883 and studied several traditional schools before meeting Sokaku Takeda's <em>Daitō-ryū Aiki-jūjutsu</em>, which became the technical basis of everything that followed. In the 1930s he opened the Tokyo dojo that would come to be called the Aikikai Hombu Dojo, and gradually moved the art away from pure martial efficiency towards the idea that gives it its name: joining the other person's force rather than colliding with it."
+            - "After the Second World War, once the occupation lifted the ban on martial arts, his students began teaching outside Japan. It reached Europe in the 1950s and 60s and Spain in the 70s. Today the Aikikai Foundation, headed by the founder's grandson, coordinates the recognition of grades worldwide through the International Aikido Federation."
+          ja:
+            - "植芝盛平は1883年に田辺に生まれ、いくつかの古流を学んだのち、武田惣角の<em>大東流合気柔術</em>に出会います。これがのちの技術的な土台となりました。1930年代には東京に道場を開き、それがのちの合気会本部道場となります。この時期を通じて、武術としての効きから、名の由来である「相手の力とぶつからず合わせる」という考えへと重心を移していきました。"
+            - "第二次世界大戦後、占領下で武道の禁止が解かれると、門人たちが日本の外で教え始めます。ヨーロッパには1950〜60年代に、スペインには1970年代に伝わりました。現在は開祖の孫が率いる（財）合気会が、国際合気道連盟を通じて世界各地の段位の認定をとりまとめています。"
+
+  # ---------------------------------------------------------------------------
+  - id: association
+    image: index-8oGCaMDs-11
+    slug: { es: "la-asociacion", ca: "l-associacio", en: "the-association", ja: "the-association" }
+    title: { es: "La asociación", ca: "L'associació", en: "The association", ja: "協会について" }
+    lede:
+      es: "Quiénes somos, cómo nos organizamos y con quién estamos afiliados."
+      ca: "Qui som, com ens organitzem i amb qui estem afiliats."
+      en: "Who we are, how we are organised, and who we are affiliated with."
+      ja: "私たちの成り立ち、運営のかたち、そして所属について。"
+    blocks:
+      - heading: { es: "La asociación", ca: "L'associació", en: "The association", ja: "協会" }
+        body:
+          es:
+            - "<strong>Aikido Musubi</strong> (CIF: G-64799554) es una asociación cultural fundada en 2008. Es la primera asociación en Barcelona autogestionada y sin ánimo de lucro cuyo objetivo es promover la práctica del aikido y los valores de las artes marciales tradicionales de Japón. Desde entonces somos un actor principal en el área metropolitana de Barcelona ofreciendo un espacio 100 % dedicado a las artes marciales y la cultura japonesa."
+            - "<strong>Aikido Musubi</strong> no aboga, apoya ni practica la discriminación ilegal basada en la edad, el origen étnico, el género, el origen nacional, la discapacidad, la raza, la religión, la orientación sexual o los antecedentes socioeconómicos."
+          ca:
+            - "<strong>Aikido Musubi</strong> (CIF: G-64799554) és una associació cultural fundada el 2008. És la primera associació de Barcelona autogestionada i sense ànim de lucre amb l'objectiu de promoure la pràctica de l'aikido i els valors de les arts marcials tradicionals del Japó. Des de llavors som un actor principal a l'àrea metropolitana de Barcelona oferint un espai 100 % dedicat a les arts marcials i la cultura japonesa."
+            - "<strong>Aikido Musubi</strong> no defensa, dóna suport ni practica la discriminació il·legal basada en l'edat, l'origen ètnic, el gènere, l'origen nacional, la discapacitat, la raça, la religió, l'orientació sexual o els antecedents socioeconòmics."
+          en:
+            - "<strong>Aikido Musubi</strong> (tax ID G-64799554) is a cultural association founded in 2008. It was the first self-managed, non-profit association in Barcelona set up to promote the practice of aikido and the values of Japan's traditional martial arts. Since then we have been a significant presence in the Barcelona metropolitan area, offering a space given over entirely to martial arts and Japanese culture."
+            - "<strong>Aikido Musubi</strong> does not advocate, support or practise unlawful discrimination on the basis of age, ethnicity, gender, national origin, disability, race, religion, sexual orientation or socioeconomic background."
+          ja:
+            - "<strong>合気道産靈</strong>（登録番号 G-64799554）は2008年に設立された文化協会です。合気道の稽古と日本の伝統武道の価値を広めることを目的とした、バルセロナで最初の自主運営・非営利の団体です。以来、武道と日本文化のためだけの場を提供し、バルセロナ都市圏で中心的な役割を担ってきました。"
+            - "<strong>合気道産靈</strong>は、年齢、民族的出自、性別、国籍、障害、人種、宗教、性的指向、社会経済的背景に基づく違法な差別を、支持も容認も実践もしません。"
+        facts:
+          - { label: { es: "Denominación", ca: "Denominació", en: "Registered name", ja: "名称" },
+              value: { es: "Asociación Cultural Musubi Aikido", ca: "Associació Cultural Musubi Aikido",
+                       en: "Asociación Cultural Musubi Aikido", ja: "産靈合気道文化協会" } }
+          - { label: { es: "CIF", ca: "CIF", en: "Tax ID", ja: "登録番号" },
+              value: { es: "G-64799554", ca: "G-64799554", en: "G-64799554", ja: "G-64799554" } }
+          - { label: { es: "Fundación", ca: "Fundació", en: "Founded", ja: "設立" },
+              value: { es: "2008, Badalona", ca: "2008, Badalona", en: "2008, Badalona", ja: "2008年・バダロナ" } }
+          - { label: { es: "Afiliación", ca: "Afiliació", en: "Affiliation", ja: "所属" },
+              value: { es: "Aikido Arashi Group, Aikikai Foundation (Hombu Dojo, Tokio)",
+                       ca: "Aikido Arashi Group, Aikikai Foundation (Hombu Dojo, Tòquio)",
+                       en: "Aikido Arashi Group, Aikikai Foundation (Hombu Dojo, Tokyo)",
+                       ja: "嵐グループ、（財）合気会 本部道場（東京）" } }
+      - heading: { es: "Desde 2008", ca: "Des del 2008", en: "Since 2008", ja: "2008年から" }
+        body:
+          es:
+            - "Empezamos con un tatami en Badalona y desde entonces no hemos parado ningún curso. Por el camino se abrieron las clases de Sant Adrià de Besòs y las de la Facultad de Derecho de la Universidad de Barcelona, salieron los primeros grados dan de la casa, y el dojo pasó de recibir maestros de vez en cuando a traer varios seminarios cada año."
+            - "No llevamos la cuenta con solemnidad, pero sí la llevamos: el archivo y el registro de seminarios están en Ura, y arranca en 2020. Es una historia mejor contada en fotos que en fechas."
+          ca:
+            - "Vam començar amb un tatami a Badalona i des de llavors no hem aturat cap curs. Pel camí es van obrir les classes de Sant Adrià de Besòs i les de la Facultat de Dret de la Universitat de Barcelona, van sortir els primers graus dan de la casa, i el dojo va passar de rebre mestres de tant en tant a portar diversos seminaris cada any."
+            - "No en portem el compte amb solemnitat, però el portem: l'arxiu i el registre de seminaris són a Ura, i arrenca el 2020. És una història més ben explicada en fotos que en dates."
+          en:
+            - "We started with one mat in Badalona and have not missed a season since. Along the way the Sant Adrià de Besòs classes opened, and the ones at the Faculty of Law of the University of Barcelona; the first dan grades came out of the dojo; and we went from hosting a visiting teacher now and then to running several seminars a year."
+            - "We do not keep the count solemnly, but we do keep it: the archive and the seminar log live in Ura, and the log starts in 2020. It is a story better told in photographs than in dates."
+          ja:
+            - "バダロナの一枚の畳から始まり、以来ひと年も稽古を絶やしていません。その間にサント・アドリアー・ダ・バゾスの稽古と、バルセロナ大学法学部の稽古が始まり、道場から最初の有段者が出て、たまに講師を招く道場から、年に何度も講習会を開く道場になりました。"
+            - "大げさに数えてはいませんが、記録は残しています。写真の記録と講習会の記録は「裏」にあり、講習会の記録は2020年から始まります。日付より写真のほうがよく伝わる歴史です。"
+        more:
+          - label: { es: "El archivo, en Ura", ca: "L'arxiu, a Ura",
+                     en: "The archive, in Ura", ja: "「裏」の記録" }
+            url:   { es: "/ura/#ura-archive", ca: "/ca/ura/#ura-archive",
+                     en: "/en/ura/#ura-archive", ja: "/ja/ura/#ura-archive" }
+          - label: { es: "El registro de seminarios", ca: "El registre de seminaris",
+                     en: "The seminar log", ja: "講習会の記録" }
+            url:   { es: "/ura/#ura-seminars", ca: "/ca/ura/#ura-seminars",
+                     en: "/en/ura/#ura-seminars", ja: "/ja/ura/#ura-seminars" }
+
+      - heading: { es: "Cómo funciona", ca: "Com funciona", en: "How it works", ja: "運営のしくみ" }
+        body:
+          es:
+            - "La Junta Directiva está constituida por la Presidencia, la Secretaría y la Tesorería, que a su vez asumen el rol de dirección técnica e instrucción respectivamente. Son miembros fundadores activos con experiencia significativa dentro de la asociación que han sido elegidos por la Asamblea General, compuesta por todos los miembros de la asociación."
+            - "La Asamblea se reúne una vez al año, aprueba las cuentas y decide lo que hay que decidir. Cualquier miembro puede asistir, hablar y votar. <strong>Nadie cobra por enseñar</strong>: las cuotas cubren el alquiler del espacio, el mantenimiento del tatami, los seguros, las licencias federativas y los seminarios que traemos. Lo que sobra se queda en el dojo."
+            - "Los estatutos y las cuentas están a disposición de cualquier miembro que los pida."
+          ca:
+            - "La Junta Directiva està constituïda per la Presidència, la Secretaria i la Tresoreria, que alhora assumeixen el rol de direcció tècnica i instrucció respectivament. Són membres fundadors actius amb experiència significativa dins de l'associació, escollits per l'Assemblea General, formada per tots els membres."
+            - "L'Assemblea es reuneix un cop l'any, aprova els comptes i decideix el que s'hagi de decidir. Qualsevol membre hi pot assistir, parlar i votar. <strong>Ningú cobra per ensenyar</strong>: les quotes cobreixen el lloguer de l'espai, el manteniment del tatami, les assegurances, les llicències federatives i els seminaris que portem. El que sobra es queda al dojo."
+            - "Els estatuts i els comptes estan a disposició de qualsevol membre que els demani."
+          en:
+            - "The board is made up of the President, the Secretary and the Treasurer, who also serve as technical director and instructors. They are active founding members with substantial experience in the association, elected by the General Assembly, which is made up of all its members."
+            - "The Assembly meets once a year, approves the accounts and decides whatever needs deciding. Any member may attend, speak and vote. <strong>Nobody is paid to teach</strong>: the fees cover the rent, the upkeep of the mat, insurance, federation licences and the seminars we bring in. What is left stays in the dojo."
+            - "The statutes and the accounts are available to any member who asks for them."
+          ja:
+            - "理事会は会長・書記・会計で構成され、それぞれ指導部長および指導者を兼ねます。いずれも協会内で長い経験を持つ現役の創設メンバーであり、全会員からなる総会によって選出されます。"
+            - "総会は年に一度開かれ、会計を承認し、決めるべきことを決めます。会員は誰でも出席し、発言し、投票できます。<strong>指導に報酬は出ません。</strong>会費は場所の賃料、畳の維持、保険、連盟登録、そして招く講習会にあてられ、残りは道場に留まります。"
+            - "定款と会計は、求める会員にはいつでも開示します。"
+
+      # AIKIDO ONLY, and that is what decides who is on this list. The judo and
+      # karate teachers who share the mat are not part of this association's
+      # teaching line, and José Luis Zafra is not here any more either: he
+      # teaches the Monday iaijutsu class and no longer teaches aikido. He is
+      # still in _data/schedule.yml, which is the timetable and lists whoever
+      # takes the class whatever the art.
+      #
+      # `name_ja` is the katakana a Japanese reader should see. It is only on
+      # the people who have one; the layout falls back to `name`.
+      - heading: { es: "Quién enseña", ca: "Qui ensenya", en: "Who teaches", ja: "指導する人" }
+        people:
+          - { name: "Pablo Martín",   name_ja: "パブロ　マルティン",       grade: { es: "4.º dan / shidōin", ca: "4t dan / shidōin", en: "4th dan / shidōin", ja: "四段・指導員" } }
+          - { name: "Pedro Fortes",   name_ja: "ペドロ　フォルテス",       grade: { es: "4.º dan", ca: "4t dan", en: "4th dan", ja: "四段" } }
+          - { name: "Alberto Sancho", name_ja: "アルベルト　サンチョ",     grade: { es: "4.º dan", ca: "4t dan", en: "4th dan", ja: "四段" } }
+          - { name: "Juanma Pérez",   name_ja: "フアンマ　ペレス",         grade: { es: "3.er dan", ca: "3r dan", en: "3rd dan", ja: "三段" } }
+          - { name: "Andreu Villar",  name_ja: "アンドレウ　ビヤル",       grade: { es: "3.er dan", ca: "3r dan", en: "3rd dan", ja: "三段" } }
+          - { name: "Joan Manel Molina", name_ja: "ジョアン・マネル　モリナ", grade: { es: "3.er dan", ca: "3r dan", en: "3rd dan", ja: "三段" } }
+          - { name: "Guanlong Zheng", name_ja: "グアンロン　ジェン",       grade: { es: "3.er dan", ca: "3r dan", en: "3rd dan", ja: "三段" } }
+          - { name: "Daniil Mikhaylov", name_ja: "ダニール　ミハイロフ",   grade: { es: "3.er dan", ca: "3r dan", en: "3rd dan", ja: "三段" } }
+        more:
+          - label: { es: "Quién da cada clase", ca: "Qui fa cada classe",
+                     en: "Who teaches which class", ja: "各稽古の担当" }
+            url:   { es: "/horarios/", ca: "/ca/horaris/",
+                     en: "/en/training-schedule/", ja: "/ja/training-schedule/" }
+
+      - heading: { es: "Dirección técnica", ca: "Direcció tècnica",
+                   en: "Technical direction", ja: "指導部" }
+        body:
+          es:
+            - "<strong>Pablo Martín</strong> (Badalona, 1977) empezó a practicar aikido en Badalona en el año 1999 con Ricard Coll. Después ha continuado su práctica al mismo tiempo que ejerce como instructor en <strong>Aikido Musubi</strong>. A lo largo de su trayectoria ha participado en numerosos cursos y seminarios de maestros reputados como Yamada Y. Shihan, Sugano S. Shihan, Shibata I. Shihan, M. Flynn Shihan, D. Waite Shihan y P. Bernath Shihan, entre otros. También ha viajado a Japón para entrenar en la sede mundial del aikido, el Hombu Dojo, con Ueshiba Moriteru Doshu, Miyamoto T. Shihan, Yokota Y. Shihan, Osawa Hayato Shihan, Kuribayashi T. Shihan, Kanazawa T. Shihan y Suzuki T. Shihan, entre otros."
+            - "Con el propósito de promover el aikido en Barcelona y sus alrededores, estableció la Asociación Cultural Musubi Aikido en el año 2008, y más tarde asumió los roles de presidente de la asociación y director técnico."
+            - "Actualmente tiene el grado de 4.º dan y el título de <em>shidoin</em> (instructor cualificado), otorgado por Aikido Doshu Ueshiba Moriteru y reconocido a nivel mundial por la <em>Aikikai Foundation</em> y la <em>International Aikido Federation</em>."
+          ca:
+            - "<strong>Pablo Martín</strong> (Badalona, 1977) va començar a practicar aikido a Badalona l'any 1999 amb en Ricard Coll. Després ha continuat la seva pràctica alhora que exerceix com a instructor a <strong>Aikido Musubi</strong>. Al llarg de la seva trajectòria ha participat en nombrosos cursos i seminaris de mestres reputats com Yamada Y. Shihan, Sugano S. Shihan, Shibata I. Shihan, M. Flynn Shihan, D. Waite Shihan i P. Bernath Shihan, entre d'altres. També ha viatjat al Japó per entrenar a la seu mundial de l'aikido, el Hombu Dojo, amb Ueshiba Moriteru Doshu, Miyamoto T. Shihan, Yokota Y. Shihan, Osawa Hayato Shihan, Kuribayashi T. Shihan, Kanazawa T. Shihan i Suzuki T. Shihan, entre d'altres."
+            - "Amb el propòsit de promoure l'aikido a Barcelona i rodalia, va establir l'Associació Cultural Musubi Aikido l'any 2008, i més tard va assumir els rols de president de l'associació i director tècnic."
+            - "Actualment té el grau de 4t dan i el títol de <em>shidoin</em> (instructor qualificat), atorgat per l'Aikido Doshu Ueshiba Moriteru i reconegut mundialment per la <em>Aikikai Foundation</em> i la <em>International Aikido Federation</em>."
+          en:
+            - "<strong>Pablo Martín</strong> (Badalona, 1977) began practising aikido in Badalona in 1999 with Ricard Coll. He has continued his own practice while teaching at <strong>Aikido Musubi</strong>. Over the years he has taken part in many courses and seminars with well-known teachers including Yamada Y. Shihan, Sugano S. Shihan, Shibata I. Shihan, M. Flynn Shihan, D. Waite Shihan and P. Bernath Shihan. He has also travelled to Japan to train at aikido's world headquarters, the Hombu Dojo, with Ueshiba Moriteru Doshu, Miyamoto T. Shihan, Yokota Y. Shihan, Osawa Hayato Shihan, Kuribayashi T. Shihan, Kanazawa T. Shihan and Suzuki T. Shihan, among others."
+            - "To promote aikido in Barcelona and the surrounding area he established the Asociación Cultural Musubi Aikido in 2008, later taking on the roles of president of the association and technical director."
+            - "He currently holds the grade of 4th dan and the title of <em>shidoin</em> (qualified instructor), awarded by Aikido Doshu Ueshiba Moriteru and recognised worldwide by the <em>Aikikai Foundation</em> and the <em>International Aikido Federation</em>."
+          ja:
+            - "<strong>パブロ・マルティン</strong>（1977年、バダロナ生まれ）は1999年にバダロナでリカルド・コイに師事して合気道を始めました。以後、<strong>合気道産靈</strong>で指導にあたりながら自身の稽古を続けています。これまでに山田嘉光師範、菅野誠一師範、柴田一郎師範、M・フリン師範、D・ウェイト師範、P・ベルナート師範などの講習会に参加。また日本へ渡り、合気道の総本部である本部道場で、植芝守央道主、宮本鶴蔵師範、横田愛明師範、大澤勇人師範、栗林孝典師範、金澤威師範、鈴木俊雄師範らの指導を受けています。"
+            - "バルセロナとその周辺で合気道を広めるため、2008年に産靈合気道文化協会を設立し、のちに会長および指導部長を務めています。"
+            - "現在は四段、および植芝守央道主より授与された<em>指導員</em>の資格を持ち、（財）合気会と国際合気道連盟によって国際的に認められています。"
+
+  # ---------------------------------------------------------------------------
+
+  # ---------------------------------------------------------------------------
+  # Preguntas frecuentes.
+  #
+  # Written from what people actually ask before a first class, in roughly the
+  # order they ask it: does it work, will I get hurt, do I have to be fit, what
+  # does it cost, what do I wear. The awkward ones are in here on purpose —
+  # whether the bowing is religious, how long until a hakama, whether you can
+  # film — because leaving them out does not stop anyone wondering.
+  - id: faq
+    slug: { es: "preguntas-frecuentes", ca: "preguntes-frequents",
+            en: "faq", ja: "faq" }
+    title: { es: "Preguntas frecuentes", ca: "Preguntes freqüents",
+             en: "Frequently asked questions", ja: "よくある質問" }
+    lede:
+      es: "Lo que se pregunta antes de la primera clase, respondido sin rodeos."
+      ca: "El que es pregunta abans de la primera classe, respost sense embuts."
+      en: "What people ask before their first class, answered plainly."
+      ja: "はじめての稽古の前によく聞かれることに、率直にお答えします。"
+    faq:
+      - q: { es: "¿Sirve el aikido para defenderse?", ca: "Serveix l'aikido per defensar-se?",
+             en: "Is aikido any use for self-defence?", ja: "合気道は護身に役立ちますか。" }
+        a:
+          es: ["Sí, pero no es la razón por la que la mayoría se queda. El aikido enseña a no estar donde llega el golpe, a mantener la distancia y a controlar a alguien sin hacerle daño, y todo eso sirve. Lo que no hace es prepararte para una pelea en dos meses: es un estudio largo y lo dice de entrada."]
+          ca: ["Sí, però no és la raó per la qual la majoria s'hi queda. L'aikido ensenya a no ser on arriba el cop, a mantenir la distància i a controlar algú sense fer-li mal, i tot això serveix. El que no fa és preparar-te per a una baralla en dos mesos: és un estudi llarg i ho diu d'entrada."]
+          en: ["Yes, but it is not why most people stay. Aikido teaches you not to be where the strike lands, to keep your distance, and to control someone without hurting them, and all of that is useful. What it will not do is prepare you for a fight in two months. It is a long study and it says so up front."]
+          ja: ["役に立ちます。ただ、多くの人が続ける理由はそこではありません。打たれる位置に居ない体さばき、間合いの取り方、相手を痛めずに制すること——どれも実際に役立ちます。一方で、二か月で喧嘩に強くなるものではありません。長く続ける稽古であることは、最初にお伝えしています。"]
+      - q: { es: "¿Es peligroso? ¿Me van a hacer daño?", ca: "És perillós? Em faran mal?",
+             en: "Is it dangerous? Will I get hurt?", ja: "危なくありませんか。怪我をしませんか。" }
+        a:
+          es: ["Se practica por parejas y con contacto, así que hay que tener cuidado, y eso es exactamente lo que se entrena. No hay competición ni golpes al contacto, la intensidad la ponen los dos y basta con decir que algo molesta para que se pare.",
+               "Lo primero que se aprende, antes que cualquier técnica, es a caer."]
+          ca: ["Es practica per parelles i amb contacte, així que cal anar amb compte, i això és exactament el que s'entrena. No hi ha competició ni cops al contacte, la intensitat la posen tots dos i n'hi ha prou de dir que alguna cosa molesta perquè es pari.",
+               "El primer que s'aprèn, abans que cap tècnica, és a caure."]
+          en: ["You practise in pairs and in contact, so care is needed — and care is exactly what you are training. There is no competition and no contact striking; the two of you set the intensity, and saying that something hurts is enough to stop it.",
+               "The first thing you learn, before any technique, is how to fall."]
+          ja: ["二人一組で、実際に触れて稽古します。だからこそ気をつける必要があり、その気配りこそが稽古の中身です。試合はなく、当てる打撃もありません。強さは二人で決めるもので、痛ければそう言えば止まります。",
+               "どんな技よりも先に習うのは、受け身です。"]
+      - q: { es: "¿Tengo que ser flexible o estar en forma?", ca: "He de ser flexible o estar en forma?",
+             en: "Do I need to be flexible or fit?", ja: "体が硬くても、運動不足でも大丈夫ですか。" }
+        a:
+          es: ["No. Se empieza donde se está, y el calentamiento y el ukemi construyen la movilidad que hace falta. Si tienes una lesión o una limitación concreta, dilo antes de empezar y se adapta."]
+          ca: ["No. Es comença on s'és, i l'escalfament i l'ukemi construeixen la mobilitat que cal. Si tens una lesió o una limitació concreta, digues-ho abans de començar i s'adapta."]
+          en: ["No. You start where you are, and the warm-up and the ukemi build the mobility you need. If you have an injury or a specific limitation, say so before you start and it will be adapted."]
+          ja: ["必要ありません。今の状態から始めれば大丈夫です。準備運動と受け身が、必要な動きを少しずつつくっていきます。怪我や制限がある場合は、始める前にお知らせください。合わせて稽古します。"]
+      - q: { es: "¿Desde qué edad? ¿Hay clases para niños?", ca: "A partir de quina edat? Hi ha classes per a nens?",
+             en: "From what age? Are there children's classes?", ja: "何歳から始められますか。子ども向けの稽古はありますか。" }
+        a:
+          es: ["Escríbenos y te decimos qué grupo encaja. Hay adultos de todas las edades practicando a la vez, que es una de las cosas buenas de que no haya categorías por peso ni por edad."]
+          ca: ["Escriu-nos i et diem quin grup encaixa. Hi ha adults de totes les edats practicant alhora, que és una de les coses bones que no hi hagi categories per pes ni per edat."]
+          en: ["Write to us and we will tell you which group fits. Adults of every age practise together, which is one of the good things about having no weight or age categories."]
+          ja: ["ご連絡ください。どの稽古が合うかお伝えします。年齢の幅は広く、いろいろな世代が同じ時間に稽古しています。体重別も年齢別もない稽古の、良いところの一つです。"]
+      - q: { es: "¿Cuánto cuesta empezar?", ca: "Quant costa començar?",
+             en: "What does it cost to start?", ja: "始めるのにいくらかかりますか。" }
+        a:
+          es: ["Las dos primeras clases no cuestan nada y la inscripción es gratuita todo el año. A partir de ahí hay una cuota mensual según la actividad: está toda en <a href=\"/cuotas/\">Cuotas</a>."]
+          ca: ["Les dues primeres classes no costen res i la inscripció és gratuïta tot l'any. A partir d'aquí hi ha una quota mensual segons l'activitat: és tota a <a href=\"/ca/quotes/\">Quotes</a>."]
+          en: ["The first two classes are free and enrolment is free all year. After that there is a monthly fee depending on the activity, all of it on the <a href=\"/en/fees/\">Fees</a> page."]
+          ja: ["最初の二回は無料で、入会金は一年を通じてかかりません。その後は活動ごとの月謝があります。詳しくは<a href=\"/ja/fees/\">月謝</a>のページに。"]
+      - q: { es: "¿Qué me pongo el primer día?", ca: "Què em poso el primer dia?",
+             en: "What do I wear on the first day?", ja: "初日は何を着ていけばいいですか。" }
+        a:
+          es: ["Ropa cómoda que cubra los brazos y las piernas, del tipo chándal y camiseta de manga larga. Al tatami se entra descalzo. El keikogi ya llegará cuando decidas quedarte."]
+          ca: ["Roba còmoda que cobreixi els braços i les cames, del tipus xandall i samarreta de màniga llarga. Al tatami s'hi entra descalç. El keikogi ja arribarà quan decideixis quedar-t'hi."]
+          en: ["Something comfortable that covers your arms and legs — tracksuit bottoms and a long-sleeved top. You step onto the mat barefoot. The keikogi can wait until you decide to stay."]
+          ja: ["腕と脚が隠れる動きやすい服装で。ジャージと長袖のシャツで十分です。畳には裸足で上がります。稽古着は、続けると決めてからで構いません。"]
+      - q: { es: "¿Cuándo puedo empezar?", ca: "Quan puc començar?",
+             en: "When can I start?", ja: "いつから始められますか。" }
+        a:
+          es: ["Cualquier semana del año. No hay curso ni temporada: los grupos son abiertos y se entra cuando se puede."]
+          ca: ["Qualsevol setmana de l'any. No hi ha curs ni temporada: els grups són oberts i s'hi entra quan es pot."]
+          en: ["Any week of the year. There is no term and no season: the groups are open and you join when you can."]
+          ja: ["いつでも。学期も季節もありません。稽古は常に開かれていて、都合のつくときに始められます。"]
+      - q: { es: "¿Cuánto se tarda en llevar hakama?", ca: "Quant es triga a portar hakama?",
+             en: "How long until I wear a hakama?", ja: "袴はいつから着けられますか。" }
+        a:
+          es: ["Depende del dojo y de la línea. En la nuestra el hakama va asociado al grado, no al tiempo, y el grado llega cuando el trabajo está hecho. Nadie te va a dar una fecha, y esa es parte de la respuesta."]
+          ca: ["Depèn del dojo i de la línia. A la nostra el hakama va associat al grau, no al temps, i el grau arriba quan la feina està feta. Ningú et donarà una data, i això forma part de la resposta."]
+          en: ["It depends on the dojo and the line. In ours the hakama goes with the grade, not with time served, and the grade comes when the work is done. Nobody will give you a date, and that is part of the answer."]
+          ja: ["道場や系統によって異なります。私たちのところでは、袴は年数ではなく段位に結びついています。段位は稽古が仕上がったときに来ます。日付をお答えする人はいませんし、それ自体が答えの一部です。"]
+      - q: { es: "¿Hay competiciones?", ca: "Hi ha competicions?",
+             en: "Are there competitions?", ja: "試合はありますか。" }
+        a:
+          es: ["No. El aikido no tiene competición por decisión de su fundador, y eso cambia bastante cómo se practica: tu compañero no es un rival, es la persona con la que estás aprendiendo."]
+          ca: ["No. L'aikido no té competició per decisió del seu fundador, i això canvia força com es practica: el teu company no és un rival, és la persona amb qui estàs aprenent."]
+          en: ["No. Aikido has no competition, by its founder's decision, and that changes how it is practised: your partner is not an opponent, they are the person you are learning with."]
+          ja: ["ありません。開祖の考えにより、合気道は試合を行いません。そのぶん稽古の質が変わります。相手は敵ではなく、ともに学ぶ人です。"]
+      - q: { es: "¿Puedo ir a mirar antes de apuntarme?", ca: "Puc anar a mirar abans d'apuntar-m'hi?",
+             en: "Can I come and watch first?", ja: "見学だけでもできますか。" }
+        a:
+          es: ["Sí. Avísanos con un día y te decimos cuándo venir. Dicho esto, mirar aikido dice bastante menos que probarlo, y probarlo tampoco cuesta nada."]
+          ca: ["Sí. Avisa'ns amb un dia i et diem quan venir. Dit això, mirar aikido diu força menys que provar-lo, i provar-lo tampoc no costa res."]
+          en: ["Yes. Give us a day's notice and we will tell you when to come. That said, watching aikido tells you a good deal less than trying it, and trying it is free too."]
+          ja: ["できます。前日までにご連絡いただければ、都合のよい日をお伝えします。ただ、合気道は見るよりやってみるほうがずっとわかります。体験も無料です。"]
+      - q: { es: "Estoy de paso por Barcelona y practico aikido. ¿Puedo entrenar?",
+             ca: "Sóc de pas a Barcelona i practico aikido. Puc entrenar?",
+             en: "I practise aikido and I am passing through Barcelona. Can I train?",
+             ja: "バルセロナに滞在中の合気道稽古者です。稽古に参加できますか。" }
+        a:
+          es: ["Claro. Escríbenos antes con tu grado y tu dojo de origen y te decimos qué clases hay esos días. Está explicado en <a href=\"/visitantes/\">Visitantes</a>."]
+          ca: ["És clar. Escriu-nos abans amb el teu grau i el teu dojo d'origen i et diem quines classes hi ha aquells dies. Està explicat a <a href=\"/ca/visitants/\">Visitants</a>."]
+          en: ["Of course. Write to us first with your grade and your home dojo and we will tell you what is on those days. It is explained on the <a href=\"/en/visitors/\">Visitors</a> page."]
+          ja: ["どうぞ。段級とご所属の道場をそえて、事前にご連絡ください。その期間の稽古をお知らせします。詳しくは<a href=\"/ja/visitors/\">ビジターの方へ</a>に。"]
+      - q: { es: "¿Hay que saber japonés?", ca: "Cal saber japonès?",
+             en: "Do I need to know Japanese?", ja: "日本語がわからなくても大丈夫ですか。" }
+        a:
+          es: ["No, pero se oye japonés en cada clase: los nombres de las técnicas, los saludos y los números. Se aprende solo, por repetición. Y si quieres adelantarte, está el <a href=\"/glosario/\">glosario</a>."]
+          ca: ["No, però se sent japonès a cada classe: els noms de les tècniques, les salutacions i els números. S'aprèn sol, per repetició. I si vols avançar-t'hi, hi ha el <a href=\"/ca/glossari/\">glossari</a>."]
+          en: ["No, but you will hear Japanese in every class: the names of the techniques, the greetings and the numbers. It sticks by repetition. If you want a head start, there is the <a href=\"/en/glossary/\">glossary</a>."]
+          ja: ["必要ありません。ただ、稽古では毎回日本語を耳にします。技の名前、挨拶、数の数え方。繰り返すうちに自然に覚えます。先に見ておきたい方は<a href=\"/ja/glossary/\">用語集</a>をどうぞ。"]
+      - q: { es: "¿Tengo que federarme?", ca: "M'he de federar?",
+             en: "Do I have to take out a federation licence?", ja: "連盟の登録は必要ですか。" }
+        a:
+          es: ["Sí, la licencia federativa incluye el seguro deportivo, que es obligatorio. Se tramita desde el dojo una vez al año."]
+          ca: ["Sí, la llicència federativa inclou l'assegurança esportiva, que és obligatòria. Es tramita des del dojo un cop l'any."]
+          en: ["Yes. The federation licence includes the sports insurance, which is compulsory. The dojo handles it once a year."]
+          ja: ["必要です。連盟登録にはスポーツ保険が含まれており、加入は義務です。手続きは道場が年に一度まとめて行います。"]
+      - q: { es: "¿Cuántos días a la semana hay que ir?", ca: "Quants dies a la setmana cal anar-hi?",
+             en: "How many days a week should I come?", ja: "週に何回通えばいいですか。" }
+        a:
+          es: ["Con dos ya se avanza. Con uno se mantiene, y con tres o cuatro se nota mucho. No hay un mínimo obligatorio: la cuota da acceso a todas las clases de tu actividad y vas las que puedas."]
+          ca: ["Amb dos ja s'avança. Amb un es manté, i amb tres o quatre es nota molt. No hi ha un mínim obligatori: la quota dóna accés a totes les classes de la teva activitat i hi vas les que puguis."]
+          en: ["Two is enough to make progress. One keeps you where you are; three or four shows quickly. There is no compulsory minimum — the fee covers every class in your activity and you come to the ones you can."]
+          ja: ["週二回でしっかり進みます。一回なら維持、三、四回になるとはっきり変わります。最低回数の決まりはありません。月謝はその活動のすべての稽古に有効で、来られる日に来ていただければ十分です。"]
+      - q: { es: "Tengo una lesión antigua. ¿Puedo practicar?", ca: "Tinc una lesió antiga. Puc practicar?",
+             en: "I have an old injury. Can I practise?", ja: "古い怪我があります。稽古できますか。" }
+        a:
+          es: ["Casi siempre sí, y hay gente entrenando con rodillas, hombros y espaldas de todo tipo. Cuéntanoslo antes de la primera clase y el instructor te dirá qué adaptar. Lo que no hacemos es decidir por ti: si tu médico te ha dicho algo, hazle caso a él."]
+          ca: ["Gairebé sempre sí, i hi ha gent entrenant amb genolls, espatlles i esquenes de tota mena. Explica'ns-ho abans de la primera classe i l'instructor et dirà què adaptar. El que no fem és decidir per tu: si el teu metge t'ha dit alguna cosa, fes-li cas a ell."]
+          en: ["Almost always, yes; there are people training here with knees, shoulders and backs of every description. Tell us before your first class and the instructor will say what to adapt. What we will not do is decide for you: if your doctor has told you something, listen to them."]
+          ja: ["ほとんどの場合は可能です。膝や肩、腰にそれぞれ事情のある人が稽古しています。初回の前にお知らせいただければ、指導者が調整をお伝えします。ただ、判断を代わることはできません。医師の指示があるなら、そちらに従ってください。"]
+      - q: { es: "¿Saludar es una cosa religiosa?", ca: "Saludar és una cosa religiosa?",
+             en: "Is the bowing religious?", ja: "礼には宗教的な意味がありますか。" }
+        a:
+          es: ["No. El saludo al frente del dojo reconoce que lo que se practica aquí lo construyeron otros antes; el saludo al compañero es agradecerle que preste su cuerpo para que aprendas. No hay culto, ni oración, ni se pide creer en nada."]
+          ca: ["No. La salutació al front del dojo reconeix que allò que es practica aquí ho van construir altres abans; la salutació al company és agrair-li que presti el seu cos perquè aprenguis. No hi ha culte, ni oració, ni es demana creure en res."]
+          en: ["No. The bow to the front of the dojo acknowledges that what is practised here was built by others first; the bow to your partner thanks them for lending you their body so that you can learn. There is no worship, no prayer, and nothing you are asked to believe."]
+          ja: ["ありません。正面への礼は、ここで稽古できるものを築いた先人への確認です。相手への礼は、学ばせてもらうために体を貸してくれることへの感謝です。信仰も祈りもなく、何かを信じるよう求めることもありません。"]
+      - q: { es: "¿Hay vestuarios y duchas? ¿Dónde aparco?", ca: "Hi ha vestidors i dutxes? On aparco?",
+             en: "Are there changing rooms and showers? Where do I park?",
+             ja: "更衣室やシャワーはありますか。駐車場は。" }
+        a:
+          es: ["En Badalona hay vestuarios y el aparcamiento es gratuito. Los otros dos espacios son instalaciones municipales y universitarias con sus propias condiciones: están detalladas en <a href=\"/acceso/\">Acceso</a>."]
+          ca: ["A Badalona hi ha vestidors i l'aparcament és gratuït. Els altres dos espais són instal·lacions municipals i universitàries amb les seves pròpies condicions: estan detallades a <a href=\"/ca/acces/\">Accés</a>."]
+          en: ["In Badalona there are changing rooms and parking is free. The other two are municipal and university facilities with their own arrangements, set out on the <a href=\"/en/access-information/\">Access</a> page."]
+          ja: ["バダロナには更衣室があり、駐車は無料です。ほかの二か所は市とバルセロナ大学の施設で、それぞれ条件が異なります。<a href=\"/ja/access-information/\">アクセス</a>のページに詳しく記しています。"]
+      - q: { es: "¿Se para en agosto o en vacaciones?", ca: "Es para a l'agost o per vacances?",
+             en: "Do you stop in August or over holidays?", ja: "八月や祝日は休みですか。" }
+        a:
+          es: ["En agosto el horario se reduce y en los festivos el dojo cierra. Todo eso está, con fechas, en el <a href=\"/calendario/\">calendario</a>."]
+          ca: ["A l'agost l'horari es redueix i els festius el dojo tanca. Tot això és, amb dates, al <a href=\"/ca/calendari/\">calendari</a>."]
+          en: ["In August the timetable is reduced, and the dojo closes on public holidays. It is all there, with dates, in the <a href=\"/en/calendar/\">calendar</a>."]
+          ja: ["八月は稽古時間が短くなり、祝日は休みになります。日付はすべて<a href=\"/ja/calendar/\">カレンダー</a>に載せています。"]
+      - q: { es: "Si dejo de venir unos meses, ¿pierdo algo?", ca: "Si deixo de venir uns mesos, hi perdo alguna cosa?",
+             en: "If I stop for a few months, do I lose anything?", ja: "数か月休むと、何か失いますか。" }
+        a:
+          es: ["No. Se puede pausar y volver, y volver después de años también. El grado no caduca y el sitio sigue estando."]
+          ca: ["No. Es pot pausar i tornar, i tornar després d'anys també. El grau no caduca i el lloc continua sent-hi."]
+          en: ["No. You can pause and come back, and come back after years as well. The grade does not expire and the place is still here."]
+          ja: ["何も失いません。休んで戻ることも、何年か経ってから戻ることもできます。段級は失効しませんし、場所もそのままあります。"]
+      - q: { es: "¿Tengo que comprar armas?", ca: "He de comprar armes?",
+             en: "Do I have to buy weapons?", ja: "武器は買わないといけませんか。" }
+        a:
+          es: ["Al principio no. Hay bokken y jō del dojo para usar. Cuando decidas comprarte los tuyos te decimos dónde y qué medida te conviene."]
+          ca: ["Al principi no. Hi ha bokken i jō del dojo per fer servir. Quan decideixis comprar-te els teus et diem on i quina mida et convé."]
+          en: ["Not at first. The dojo has bokken and jō you can use. When you decide to buy your own we will tell you where, and what length suits you."]
+          ja: ["最初は必要ありません。道場の木刀と杖を使えます。自分のものを持ちたくなったら、購入先と適した寸法をお伝えします。"]
+      - q: { es: "¿Puedo hacer fotos o vídeo en clase?", ca: "Puc fer fotos o vídeo a classe?",
+             en: "Can I take photos or video in class?", ja: "稽古中に写真や動画を撮ってもいいですか。" }
+        a:
+          es: ["Pregunta antes. En el tatami hay menores y hay gente que no quiere salir, y eso manda por encima de cualquier foto."]
+          ca: ["Pregunta abans. Al tatami hi ha menors i hi ha gent que no vol sortir-hi, i això mana per sobre de qualsevol foto."]
+          en: ["Ask first. There are minors on the mat and there are people who would rather not appear, and that comes before any photograph."]
+          ja: ["まずひと声かけてください。畳の上には未成年もいますし、写りたくない人もいます。それはどんな一枚よりも優先されます。"]
+      - q: { es: "¿Y las otras artes que se dan en el dojo?", ca: "I les altres arts que es fan al dojo?",
+             en: "What about the other arts taught in the dojo?", ja: "道場で行われている他の武道は。" }
+        a:
+          es: ["El mismo tatami acoge iaijutsu, judo y karate, cada uno con su instructor y su horario. Están en <a href=\"/clases/\">Clases</a>."]
+          ca: ["El mateix tatami acull iaijutsu, judo i karate, cadascun amb el seu instructor i el seu horari. Són a <a href=\"/ca/classes/\">Classes</a>."]
+          en: ["The same mat hosts iaijutsu, judo and karate, each with its own instructor and timetable. They are on the <a href=\"/en/classes/\">Classes</a> page."]
+          ja: ["同じ畳で居合術、柔道、空手も行っています。それぞれに指導者と稽古時間があります。<a href=\"/ja/classes/\">各クラスの紹介</a>をご覧ください。"]
+
+# ---------------------------------------------------------------------------
+# Instructors in training
+#
+# The Tuesday 20:30 slot has said "Instructor en formación" in the timetable
+# since the programme started, and nothing on the site explained it. This is
+# that explanation.
+#
+# It lives on THE ASSOCIATION page, not on Classes: it is not a class anyone
+# can sign up to, it is how the dojo keeps having teachers — which is what the
+# association page is for. Rendered by _layouts/about.html for `topic:
+# association` only, as the last thing before the footer.
+#
+# Places open as they free up rather than in cohorts, and there is no fee.
+# ---------------------------------------------------------------------------
+instructors:
+  eyebrow: { es: "Instructores en formación", ca: "Instructors en formació",
+             en: "Instructors in training", ja: "指導者研修" }
+  title:
+    es: "Enseñar también se aprende"
+    ca: "Ensenyar també s'aprèn"
+    en: "Teaching is learned too"
+    ja: "教えることもまた学ぶこと"
+  lede:
+    es: "Los martes a las 20:30 la clase la da alguien que está aprendiendo a darla."
+    ca: "Els dimarts a les 20:30 la classe la fa algú que està aprenent a fer-la."
+    en: "On Tuesdays at 20:30 the class is taught by someone who is learning to teach it."
+    ja: "火曜20:30の稽古は、教えることを学んでいる者が指導します。"
+  body:
+    es: "Un dojo dura lo que duran sus profesores. Enseñar aikido no se sigue de saber hacerlo: son dos cosas distintas, y la segunda se aprende como se aprende la primera, en el tatami y delante de gente."
+    ca: "Un dojo dura el que duren els seus professors. Ensenyar aikido no se segueix de saber-lo fer: són dues coses diferents, i la segona s'aprèn com s'aprèn la primera, al tatami i davant de gent."
+    en: "A dojo lasts as long as its teachers do. Teaching aikido does not follow from being able to do it: they are two different things, and the second is learned the way the first is, on the mat and in front of people."
+    ja: "道場は指導者が続く限り続きます。合気道を教えることは、できることの延長ではありません。二つは別のものであり、後者もまた前者と同じく、畳の上で人の前に立って学ぶものです。"
+  timetable:
+    es: "En el horario ese hueco ya aparece: <b>martes, 20:30, Instructor en formación</b>."
+    ca: "A l'horari aquest buit ja hi apareix: <b>dimarts, 20:30, Instructor en formació</b>."
+    en: "The slot is already in the timetable: <b>Tuesday, 20:30, Instructor in training</b>."
+    ja: "この枠は時間割にすでにあります。<b>火曜 20:30、指導者研修中</b>。"
+  # NOT "Escríbenos". The footer's invitation band sits a few hundred pixels
+  # below with a button that already says exactly that; this one names what
+  # it is asking about instead.
+  cta: { es: "Pregunta por el programa", ca: "Pregunta pel programa",
+         en: "Ask about the programme", ja: "課程について問い合わせる" }
+  parts:
+    - head: { es: "El programa", ca: "El programa", en: "The programme", ja: "課程について" }
+      items:
+        - es: "Cada martes de 20:30 a 21:30 la clase la dirige un yūdansha en formación. El director técnico está en el tatami, practicando como uno más."
+          ca: "Cada dimarts de 20:30 a 21:30 la classe la dirigeix un yūdansha en formació. El director tècnic és al tatami, practicant com un més."
+          en: "Every Tuesday from 20:30 to 21:30 the class is led by a yūdansha in training. The technical director is on the mat, practising alongside everyone else."
+          ja: "毎週火曜20:30から21:30まで、研修中の有段者が稽古を指導します。技術部長も畳に上がり、一人の稽古者として加わります。"
+        - es: "El comentario llega después de la clase, o de forma periódica según el momento del programa. Nunca durante, y nunca delante de los alumnos."
+          ca: "El comentari arriba després de la classe, o de manera periòdica segons el moment del programa. Mai durant, i mai davant dels alumnes."
+          en: "The feedback comes after class, or periodically depending on where you are in the programme. Never during, and never in front of the students."
+          ja: "講評は稽古の後、または課程の段階に応じて折々に伝えます。稽古中に、また門人の前で行うことはありません。"
+        - es: "No es una clase de prueba ni una suplencia. Es la clase de ese día, con sus alumnos y su programa."
+          ca: "No és una classe de prova ni una suplència. És la classe d'aquell dia, amb els seus alumnes i el seu programa."
+          en: "It is not a trial class or a stand-in. It is that day's class, with its students and its syllabus."
+          ja: "試しの稽古でも代講でもありません。その日の稽古そのものであり、門人も内容も本来のものです。"
+    - head: { es: "Los dos años", ca: "Els dos anys", en: "The two years", ja: "二年の流れ" }
+      items:
+        - es: "El primer año se observa y se asiste: preparar la sesión, corregir en pareja, llevar el calentamiento, tomar el examen de otro."
+          ca: "El primer any s'observa i s'assisteix: preparar la sessió, corregir en parella, portar l'escalfament, prendre l'examen d'un altre."
+          en: "The first year is watching and assisting: preparing the session, correcting in pairs, leading the warm-up, sitting on someone else's grading."
+          ja: "一年目は見て、手伝う年です。稽古の準備、二人組での修正、準備運動の指導、他者の審査への同席。"
+        - es: "El segundo se dirige. La frecuencia sube y el comentario baja, hasta que la clase se sostiene sola."
+          ca: "El segon es dirigeix. La freqüència puja i el comentari baixa, fins que la classe se sosté sola."
+          en: "The second year is leading. The frequency goes up and the commentary goes down, until the class holds itself."
+          ja: "二年目は指導する年です。回数が増え、講評は減り、やがて稽古はひとりでに立ちます。"
+        - es: "Dos años no es una cifra ritual: es lo que tarda alguien en pasar por un curso entero de programa, dos ciclos de exámenes y un verano."
+          ca: "Dos anys no és una xifra ritual: és el que triga algú a passar per un curs sencer de programa, dos cicles d'exàmens i un estiu."
+          en: "Two years is not a ceremonial number: it is how long it takes to go through a full year of syllabus, two grading cycles and a summer."
+          ja: "二年という数に儀式的な意味はありません。要項を一巡し、審査を二度経験し、夏を一度越すのに要する時間です。"
+    - head: { es: "Qué se espera", ca: "Què s'espera", en: "What is asked of you", ja: "求められること" }
+      items:
+        - es: "Grado de yūdansha y práctica regular, aquí o en el dojo de origen."
+          ca: "Grau de yūdansha i pràctica regular, aquí o al dojo d'origen."
+          en: "Yūdansha grade and regular practice, here or at your own dojo."
+          ja: "有段者であること、そして当道場または所属道場での継続した稽古。"
+        - es: "Asistencia sostenida: enseñar los martes exige entrenar el resto de la semana."
+          ca: "Assistència sostinguda: ensenyar els dimarts exigeix entrenar la resta de la setmana."
+          en: "Steady attendance: teaching on Tuesdays asks that you train the rest of the week."
+          ja: "続けて通うこと。火曜に教えるには、週の残りを稽古する必要があります。"
+        - es: "Preparar cada sesión: saber qué se va a trabajar y por qué, antes de subir al tatami."
+          ca: "Preparar cada sessió: saber què es treballarà i per què, abans de pujar al tatami."
+          en: "Prepare each session: know what you will work on and why, before you step on the mat."
+          ja: "毎回の稽古を準備すること。何をなぜ行うのかを、畳に上がる前に定めておく。"
+    - head: { es: "Cómo entrar", ca: "Com entrar-hi", en: "How to join", ja: "参加について" }
+      items:
+        - es: "Cuatro plazas, y se entra cuando queda una libre. No hay convocatorias ni fechas de inscripción."
+          ca: "Quatre places, i s'hi entra quan en queda una de lliure. No hi ha convocatòries ni dates d'inscripció."
+          en: "Four places, and you join when one frees up. There are no intakes and no application dates."
+          ja: "定員は四名。空きが出たときに加わります。募集期間や締切はありません。"
+        - es: "El programa no tiene coste para quien participa."
+          ca: "El programa no té cap cost per a qui hi participa."
+          en: "The programme costs those taking part nothing."
+          ja: "この課程に参加費はかかりません。"
+        - es: "Escríbenos y hablamos. Si practicas en otro dojo, ven con el visto bueno de tu sensei."
+          ca: "Escriu-nos i en parlem. Si practiques en un altre dojo, vine amb el vistiplau del teu sensei."
+          en: "Write to us and we will talk. If you train at another dojo, come with your own sensei's blessing."
+          ja: "まずはご連絡ください。他道場で稽古されている方は、ご自身の指導者の了解を得たうえでお越しください。"

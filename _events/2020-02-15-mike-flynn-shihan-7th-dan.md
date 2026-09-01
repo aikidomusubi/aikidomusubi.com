@@ -1,0 +1,40 @@
+---
+category: seminar
+title_ca: "Mike Flynn Shihan 7è Dan Aikikai"
+title_en: "Mike Flynn Shihan 7th Dan Aikikai"
+title_es: "Mike Flynn Shihan 7.º Dan Aikikai"
+title_ja: "マイク・フリン 師範 七段 合気会"
+
+instructor_ca: "Mike Flynn Shihan"
+grade_ca: "7è dan Aikikai"
+instructor_en: "Mike Flynn Shihan"
+grade_en: "7th dan Aikikai"
+instructor_es: "Mike Flynn Shihan"
+grade_es: "7.º dan Aikikai"
+instructor_ja: "マイク・フリン 師範"
+grade_ja: "七段 合気会"
+
+desc_ca: >-
+  Seminari de cap de setmana de Mike Flynn (7è dan Aikikai) en tots dos dojos: Aikido Musubi Badalona el 15 de febrer (dissabte al matí), i Aikido Arashi Badalona el 15 de febrer (dissabte a la tarda) i el 16 de febrer (diumenge al matí).
+desc_en: >-
+  Mike Flynn (7th dan Aikikai) weekend seminar in both venues: Aikido Musubi Badalona on Feb. 15th (Sat. morning), and Aikido Arashi Badalona on Feb. 15th (Sat. afternoon) and Feb. 16th (Sun. morning).
+desc_es: >-
+  Seminario de fin de semana de Mike Flynn (7.º dan Aikikai) en ambos dojos: Aikido Musubi Badalona el 15 de febrero (sábado por la mañana), y Aikido Arashi Badalona el 15 de febrero (sábado por la tarde) y el 16 de febrero (domingo por la mañana).
+desc_ja: >-
+  マイク・フリン師範 (七段) の週末の講習会には合気道産靈の道場と嵐グループの道場で開催されています。合気道産靈：２月１５日 (朝)、嵐グループの道場：２月１５ (夜) - ２月１６日 (朝)。
+
+image_ca: "events-hFZ2XXIp-2020-02-15-mike-flynn-shihan-7th-dan-es"
+image_en: "events-hFZ2XXIp-2020-02-15-mike-flynn-shihan-7th-dan-en"
+image_es: "events-hFZ2XXIp-2020-02-15-mike-flynn-shihan-7th-dan-es"
+image_ja: "events-hFZ2XXIp-2020-02-15-mike-flynn-shihan-7th-dan-en"
+
+file_ca: "events-hFZ2XXIp-2020-02-15-mike-flynn-shihan-7th-dan-es.pdf"
+file_en: "events-hFZ2XXIp-2020-02-15-mike-flynn-shihan-7th-dan-en.pdf"
+file_es: "events-hFZ2XXIp-2020-02-15-mike-flynn-shihan-7th-dan-es.pdf"
+file_ja: "events-hFZ2XXIp-2020-02-15-mike-flynn-shihan-7th-dan-en.pdf"
+
+date_from: "2020-02-15"
+date_to: "2020-02-16"
+event_link: "https://www.facebook.com/events/2629834983914110/"
+registration_link:
+---

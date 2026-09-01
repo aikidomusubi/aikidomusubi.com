@@ -5,6 +5,24 @@
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
 
+  // --- which map app can this device actually open? ------------------------
+  // A maps.apple.com link opens the Maps APP on an iPhone, an iPad or a Mac,
+  // with the dojo's claimed listing and turn-by-turn directions in it. On
+  // anything else it opens a web page that asks the reader to get Apple Maps.
+  // So both links are rendered and this stamps the root with which one to
+  // show; the CSS hides the other. With this script off, both show, which is
+  // correct rather than broken.
+  //
+  // Platform and not browser sniffing: what is being asked is "is there a Maps
+  // app behind this link", and that is a property of the device. iPadOS
+  // reports itself as a Mac, which is why the test is shaped this way.
+  (function () {
+    var ua = navigator.userAgent || '';
+    var apple = /\b(iPhone|iPad|iPod|Macintosh)\b/.test(ua) &&
+                !/\b(Android|CrOS|Windows)\b/.test(ua);
+    document.documentElement.setAttribute('data-maps', apple ? 'apple' : 'other');
+  }());
+
   // Document-relative top of an element, the equivalent of jQuery's
   // .offset().top. getBoundingClientRect() is viewport-relative, so the
   // current scroll offset has to be added back in.
@@ -64,13 +82,11 @@
 
   function parallaxHeader() { // https://codepen.io/theaftermath87/pen/mJqywj
 
-    var falseHeader = document.querySelector('.falseHeader');
     var shadower = document.querySelector('.shadower');
     var fixedHead = document.querySelector('.fixedHead');
-    if (!falseHeader || !shadower || !fixedHead) return;
+    if (!shadower || !fixedHead) return;
 
     var base = null;
-    var stickyHeight = 0;
 
     // Where the header art sits vertically at this viewport size. null means
     // the viewport is too small to offset it at all.
@@ -89,7 +105,6 @@
       var y = window.innerHeight || document.documentElement.clientHeight;
 
       base = baseOffset(x, y);
-      stickyHeight = offsetTop(falseHeader);
 
       // Clear the inline value when no offset applies at this size, so the
       // stylesheet's own background-position takes over again.
@@ -112,8 +127,10 @@
       if (base !== null) {
         fixedHead.style.backgroundPosition = '50% ' + (base - scrolled / 2) + 'px';
       }
-
-      falseHeader.classList.toggle('clipped', scrolled >= stickyHeight);
+      // The `clipped` class this used to toggle pinned a copy of the nav to the
+      // top of the homepage, duplicating what the nav's own sticky positioning
+      // does on every other page. The nav is an ordinary sibling of the hero
+      // now and sticks by itself.
     }), { passive: true });
 
     window.addEventListener('resize', onAnimationFrame(measure));
@@ -141,8 +158,18 @@
     var stickyTop = null;
 
     function calculate() {
-      var navbar = document.querySelector('.navbar.sticky-top');
-      var mainNavHeight = navbar ? outerHeight(navbar) : 0;
+      // How much nav the bar has to clear once it is pinned. That is the nav's
+      // SHRUNK height, because the reader has scrolled by then — and it is the
+      // same value the bar's own margin-top uses, published as --nav-shrunk so
+      // the two cannot drift. Measuring `.nv-shell` here instead would read its
+      // resting height and pin the bar ~48px early, making it jump.
+      //
+      // This used to query `.navbar.sticky-top`, which the site has not had
+      // since the Bootstrap navbar was replaced, so it measured 0 and the bar
+      // pinned underneath the nav.
+      var root = getComputedStyle(document.documentElement);
+      var mainNavHeight = parseFloat(root.getPropertyValue('--nav-shrunk')) *
+                          parseFloat(root.fontSize);
 
       // Measure in the un-fixed state, otherwise the bar is out of flow and
       // reports the wrong document position.
@@ -155,6 +182,13 @@
 
       placeholder.style.height = barHeight + 'px';
       placeholder.style.display = 'none';
+
+      // Published so CSS can clear it. An in-page link on a page that has this
+      // bar must land below the nav AND below the bar, and the bar's height is
+      // content-driven — there is no token for it. Anything reading this falls
+      // back to 0px when the script has not run, which leaves the nav-only
+      // clearance the :target rule already provides.
+      document.documentElement.style.setProperty('--sticky-h', barHeight + 'px');
     }
 
     function update() {
@@ -197,7 +231,10 @@
     document.body.dataset.smoothScrollBound = 'true';
 
     document.addEventListener('click', function(e) {
-      var link = e.target.closest('.stickyBar a[href^="#"]');
+      // The sticky bar's own links, plus any in-page link to an event card —
+      // the calendar sends people to /seminarios/#event-<slug>, and a card
+      // landing under the sticky header would be worse than not scrolling.
+      var link = e.target.closest('.stickyBar a[href^="#"], a[href^="#event-"]');
       if (!link) return;
 
       var target = document.querySelector(link.getAttribute('href'));
@@ -210,128 +247,71 @@
       });
       link.classList.add('active');
 
-      var navbar = document.querySelector('.navbar.sticky-top');
-      var bar = document.querySelector('.stickyBar');
-      var offset = (navbar ? outerHeight(navbar) : 0) + (bar ? outerHeight(bar) : 0);
-
-      window.scrollTo({
-        top: offsetTop(target) - offset,
-        behavior: 'smooth'
-      });
+      // No manual scrollTo. The offset used to be measured from
+      // `.navbar.sticky-top`, an element this site has not had since the
+      // Bootstrap navbar was replaced — so it evaluated to zero and the page
+      // landed with the target under the nav. `scroll-margin-top: @anchor-clear`
+      // does the job in CSS now, which also means it is right on the very first
+      // navigation rather than only after a reload.
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   }
 
-  function modalContent() {
+  // Arriving from the calendar with #event-<slug> in the URL used to be
+  // corrected here, a frame after load, because the browser had already jumped
+  // to the wrong place. It jumped to the wrong place because the correction —
+  // and the landing — were both measured against `.navbar.sticky-top`, which no
+  // longer exists, so the offset was zero. `scroll-margin-top` on the target
+  // handles it in CSS, before paint, with no dependency on when images finish
+  // loading. Nothing to do at load time any more.
 
-    // Bootstrap 5 fires native CustomEvents whose type is the whole string
-    // "show.bs.modal". jQuery would read ".bs.modal" as a namespace on a
-    // "show" event and never match, so this listens natively.
-    document.querySelectorAll('a[data-bs-toggle="modal"]').forEach(function(trigger) {
-      var selector = trigger.getAttribute('data-bs-target');
-      var album = trigger.getAttribute('data-target-name');
-      if (!selector || !album) return;
 
-      var modal = document.querySelector(selector);
-      if (!modal) return;
-
-      // Bound once at init rather than on every click, so repeated opens
-      // do not stack duplicate listeners, and fetched once per album.
-      modal.addEventListener('show.bs.modal', function() {
-        var body = modal.querySelector('.modal-body');
-        if (!body || body.dataset.loaded === 'true') return;
-
-        fetch('/photos/' + album + '.html')
-          .then(function(res) {
-            if (!res.ok) throw new Error('HTTP ' + res.status);
-            return res.text();
-          })
-          .then(function(html) {
-            body.innerHTML = html;
-            body.dataset.loaded = 'true';
-          })
-          .catch(function(err) {
-            console.error('Could not load album "' + album + '":', err);
-          });
-      });
-    });
-  }
-
-  function fullCalendarChangeIcons() {
-
-    var svgIconTh = '<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="th" class="svg-inline--fa fa-th fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M149.333 56v80c0 13.255-10.745 24-24 24H24c-13.255 0-24-10.745-24-24V56c0-13.255 10.745-24 24-24h101.333c13.255 0 24 10.745 24 24zm181.334 240v-80c0-13.255-10.745-24-24-24H205.333c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24h101.333c13.256 0 24.001-10.745 24.001-24zm32-240v80c0 13.255 10.745 24 24 24H488c13.255 0 24-10.745 24-24V56c0-13.255-10.745-24-24-24H386.667c-13.255 0-24 10.745-24 24zm-32 80V56c0-13.255-10.745-24-24-24H205.333c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24h101.333c13.256 0 24.001-10.745 24.001-24zm-205.334 56H24c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24h101.333c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24zM0 376v80c0 13.255 10.745 24 24 24h101.333c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H24c-13.255 0-24 10.745-24 24zm386.667-56H488c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H386.667c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24zm0 160H488c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H386.667c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24zM181.333 376v80c0 13.255 10.745 24 24 24h101.333c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H205.333c-13.255 0-24 10.745-24 24z"></path></svg>';
-    var svgIconBars = '<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" class="svg-inline--fa fa-bars fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path></svg>';
-
-    document.querySelectorAll('.fc-myCustomListWeekButton-button.btn.btn-primary').forEach(function(btn) {
-      btn.innerHTML = svgIconBars;
-    });
-    document.querySelectorAll('.fc-myCustomDayGridWeekButton-button.btn.btn-primary').forEach(function(btn) {
-      btn.innerHTML = svgIconTh;
-    });
-  }
-
-  function initPhotoFilter(navSelector, cardSelector) {
-    const navLinks = document.querySelectorAll(`${navSelector} .nav-link`);
-    const cards = document.querySelectorAll(cardSelector);
-
-    if (!navLinks.length || !cards.length) return;
-
-    navLinks.forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-
-        navLinks.forEach(l => l.classList.remove('active'));
-        this.classList.add('active');
-
-        const filter = this.dataset.filter;
-
-        cards.forEach(card => {
-          if (filter === 'all') {
-            card.style.display = '';
-          } else {
-            card.style.display = card.classList.contains(filter) ? '' : 'none';
-          }
-        });
-      });
-    });
-  }
 
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
+
+// The width of the vertical scrollbar, published for CSS. Full-bleed sections
+// are one viewport wide, and `100vw` counts the scrollbar, so without this they
+// hang past the edge and the page scrolls sideways. Zero on macOS and on touch,
+// where the scrollbar is an overlay. See .full-bleed() in styles/base.less.
+function scrollbarWidth() {
+  function set() {
+    var w = window.innerWidth - document.documentElement.clientWidth;
+    document.documentElement.style.setProperty('--sbw', (w > 0 ? w : 0) + 'px');
+  }
+  set();
+  window.addEventListener('resize', onAnimationFrame(set));
+}
 
 function init() {
 
   const page = document.body.classList;
 
-  // Pages that carry an in-page anchor bar.
+  // Pages that carry an in-page anchor bar. `photos-QDOJ1pyG` is gone from the
+  // list with the page itself; the albums live in _data/gallery.yml now.
   const STICKY_PAGES = [
     'index-8oGCaMDs',
     'classes-CJc2lhFv',
     'resources-uStNjtHz',
-    'photos-QDOJ1pyG',
-    'courses-hFZ2XXIp',
+    'events-hFZ2XXIp',
     'access-information-NdxqmVbV'
   ];
 
+  scrollbarWidth();
   hiddenCode();
 
   if (page.contains('index-8oGCaMDs')) {
     parallaxHeader();
   }
 
-  if (page.contains('training-schedule-IFMn5oCc')) {
-    fullCalendarChangeIcons();
-  }
-
-  if (page.contains('photos-QDOJ1pyG')) {
-    modalContent();
-    initPhotoFilter('#photos-QDOJ1pyG-nav', '.photos-QDOJ1pyG-container .col');
-  }
-
-  if (page.contains('courses-hFZ2XXIp')) {
-    initPhotoFilter('#courses-hFZ2XXIp-nav', '.courses-hFZ2XXIp-container .card');
-
+  // fullCalendarChangeIcons() and initPhotoFilter() used to be called here.
+  // The first swapped icons on FullCalendar's toolbar buttons, and FullCalendar
+  // is gone; the second filtered the photos page, which is gone, and the events
+  // nav, which the seminars page's own script replaced. Neither hook appears on
+  // a single built page — checked across all eighty.
+  if (page.contains('events-hFZ2XXIp')) {
     document.querySelectorAll('.page .container>main .card .card-body').forEach(cardBody => {
       const lastCardText = cardBody.querySelector('.card-text:last-of-type');
       if (lastCardText && lastCardText.children.length === 3) {

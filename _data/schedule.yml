@@ -1,0 +1,320 @@
+# Weekly training timetable — the single source for every language.
+#
+# This replaces the four training-schedule-{es,ca,en,ja}.json files, which held
+# the same 18 classes four times over and had already drifted apart: Saturday
+# Iaijutsu ended at 10:00 in three of them and 10:30 in the English one, so the
+# English page published a time the dojo does not teach.
+#
+# There are no dates here on purpose. This is a weekly timetable, not a
+# calendar, and the old files expressed it as recurring events inside a fixed
+# season window (2025-09-01 to 2026-08-31) — which meant the whole schedule
+# would have silently emptied on 31 August 2026.
+#
+# There are also no pixel offsets. Position is derived from `start` and `end`
+# at build time. The old files carried hand-tuned values like
+# "height: 6rem; margin-top: -11.5rem" — eleven distinct magic numbers that had
+# to be recomputed by hand, in four files, whenever a class time changed.
+#
+# TO CHANGE THE SCHEDULE: edit `classes` below. Nothing else needs touching.
+
+meta:
+  # Slot granularity in minutes. Every start/end time must fall on a multiple
+  # of this; the build fails loudly if one does not.
+  slot_minutes: 15
+
+  # The timetable is drawn as bands rather than one continuous 08:00–22:30
+  # axis, because nothing at all happens between 13:00 and 18:30 and rendering
+  # five and a half empty hours wastes most of the grid. Add or widen a band if
+  # a class ever falls outside these.
+  bands:
+    - start: "07:30"
+      end:   "13:00"
+    - start: "18:30"
+      end:   "22:30"
+
+# Day keys used by `classes.days`. This is the canonical order and the one the
+# data is written in; what a reader sees is rotated per language below.
+days: [mon, tue, wed, thu, fri, sat, sun]
+
+# Which day the week starts on, per language. Spain starts the week on Monday;
+# English and Japanese calendars conventionally start on Sunday. This governs
+# both the timetable columns and the calendar month grid, so the two never
+# disagree about where a week begins.
+week_start:
+  es: mon
+  ca: mon
+  en: sun
+  ja: sun
+
+# Day names. `short` is used for the mobile day tabs and the narrow columns.
+day_names:
+  mon:
+    es: { long: "Lunes",     short: "Lun" }
+    ca: { long: "Dilluns",   short: "Dl" }
+    en: { long: "Monday",    short: "Mon" }
+    ja: { long: "月曜日",     short: "月" }
+  tue:
+    es: { long: "Martes",    short: "Mar" }
+    ca: { long: "Dimarts",   short: "Dt" }
+    en: { long: "Tuesday",   short: "Tue" }
+    ja: { long: "火曜日",     short: "火" }
+  wed:
+    es: { long: "Miércoles", short: "Mié" }
+    ca: { long: "Dimecres",  short: "Dc" }
+    en: { long: "Wednesday", short: "Wed" }
+    ja: { long: "水曜日",     short: "水" }
+  thu:
+    es: { long: "Jueves",    short: "Jue" }
+    ca: { long: "Dijous",    short: "Dj" }
+    en: { long: "Thursday",  short: "Thu" }
+    ja: { long: "木曜日",     short: "木" }
+  fri:
+    es: { long: "Viernes",   short: "Vie" }
+    ca: { long: "Divendres", short: "Dv" }
+    en: { long: "Friday",    short: "Fri" }
+    ja: { long: "金曜日",     short: "金" }
+  sat:
+    es: { long: "Sábado",    short: "Sáb" }
+    ca: { long: "Dissabte",  short: "Ds" }
+    en: { long: "Saturday",  short: "Sat" }
+    ja: { long: "土曜日",     short: "土" }
+  sun:
+    es: { long: "Domingo",   short: "Dom" }
+    ca: { long: "Diumenge",  short: "Dg" }
+    en: { long: "Sunday",    short: "Sun" }
+    ja: { long: "日曜日",     short: "日" }
+
+# Interface strings. Kept here rather than in _data/translations.yml because
+# they only exist for this page.
+ui:
+  activities:  { es: "Actividades",        ca: "Activitats",        en: "Activities",     ja: "種目" }
+  all:         { es: "Todas",              ca: "Totes",             en: "All",            ja: "すべて" }
+  location:    { es: "Lugar",              ca: "Lloc",              en: "Location",       ja: "場所" }
+  no_classes:  { es: "Sin clases",         ca: "Sense classes",     en: "No classes",     ja: "クラスなし" }
+  today:       { es: "Hoy",                ca: "Avui",              en: "Today",          ja: "本日" }
+  add_to_cal:  { es: "Añadir al calendario", ca: "Afegir al calendari", en: "Add to calendar", ja: "カレンダーに追加" }
+  schedule_of: { es: "Horario de",         ca: "Horari de",         en: "Schedule for",   ja: "スケジュール：" }
+  weekly:      { es: "Clase semanal",      ca: "Classe setmanal",   en: "Weekly class",   ja: "毎週のクラス" }
+  monthly:     { es: "Una vez al mes",     ca: "Un cop al mes",     en: "Once a month",   ja: "月に一度" }
+  # Sits next to "Todo el horario", so it has to say plainly that it covers
+  # less. "Current filter" described the mechanism rather than the result and
+  # did not survive translation; this names what you get. The count is
+  # parenthetical so no language has to agree a plural with it.
+  export_filtered:
+    es: "Solo lo visible ({n})"
+    ca: "Només el visible ({n})"
+    en: "Only what's shown ({n})"
+    ja: "表示中のみ（{n}）"
+  share:       { es: "Compartir",       ca: "Comparteix",      en: "Share",        ja: "共有" }
+  share_copied: { es: "Enlace copiado",  ca: "Enllaç copiat",   en: "Link copied",  ja: "リンクをコピーしました" }
+  share_text:  { es: "Horario de clases", ca: "Horari de classes", en: "Class schedule", ja: "稽古時間" }
+  print:       { es: "Imprimir",        ca: "Imprimeix",       en: "Print",        ja: "印刷" }
+  also:        { es: "Además",             ca: "A més",             en: "Also",           ja: "その他" }
+  subscribe:   { es: "Añadir a tu calendario", ca: "Afegeix al teu calendari", en: "Add to your calendar", ja: "カレンダーに追加" }
+  sub_all:     { es: "Todo el horario",    ca: "Tot l'horari",      en: "Full schedule",  ja: "全スケジュール" }
+  sub_hint:
+    es: "Se abrirá en tu aplicación de calendario (Apple, Google, Outlook…). Se actualiza solo si te suscribes."
+    ca: "S'obrirà a la teva aplicació de calendari (Apple, Google, Outlook…). S'actualitza sol si t'hi subscrius."
+    en: "Opens in your calendar app (Apple, Google, Outlook…). Subscribing keeps it up to date automatically."
+    ja: "お使いのカレンダーアプリ（Apple、Google、Outlook など）で開きます。購読すると自動で更新されます。"
+
+locations:
+  # THREE NAMES, and they answer three different questions.
+  #
+  #   name   the room, and what the timetable's venue filter lists.
+  #   abbr   the same, short enough for Ura's twenty-one day strip.
+  #   city   where it is. The Classes page lists cities and not rooms, so the
+  #          two Barcelona rooms collapse into one entry there. Nowhere else
+  #          uses it, and nothing else should have to know that CxEM Espronceda
+  #          and the Faculty of Law are the same town.
+  - id: musubi
+    slug: aikido-musubi
+    name:
+      es: "Aikido Musubi"
+      ca: "Aikido Musubi"
+      en: "Aikido Musubi"
+      ja: "合気道産靈"
+    abbr:
+      es: "Aikido Musubi"
+      ca: "Aikido Musubi"
+      en: "Aikido Musubi"
+      ja: "合気道産靈"
+    city:
+      es: "Badalona"
+      ca: "Badalona"
+      en: "Badalona"
+      ja: "バダロナ"
+  - id: sant-adria
+    slug: sant-adria-de-besos
+    name:
+      es: "Marina-Besòs"
+      ca: "Marina-Besòs"
+      en: "Marina-Besòs"
+      ja: "マリナ・バゾス"
+    abbr:
+      es: "Marina-Besòs"
+      ca: "Marina-Besòs"
+      en: "Marina-Besòs"
+      ja: "マリナ・バゾス"
+    city:
+      es: "Sant Adrià de Besòs"
+      ca: "Sant Adrià de Besòs"
+      en: "Sant Adrià de Besòs"
+      ja: "サント・アドリア・ダ・バゾス"
+  - id: espronceda
+    slug: cxem-espronceda
+    name:
+      es: "CxEM Espronceda"
+      ca: "CxEM Espronceda"
+      en: "CxEM Espronceda"
+      ja: "エスプロンセダ"
+    abbr:
+      es: "CxEM Espronceda"
+      ca: "CxEM Espronceda"
+      en: "CxEM Espronceda"
+      ja: "エスプロンセダ"
+    city:
+      es: "Barcelona"
+      ca: "Barcelona"
+      en: "Barcelona"
+      ja: "バルセロナ"
+  - id: ub
+    slug: university-of-barcelona
+    name:
+      es: "Universitat de Barcelona"
+      ca: "Universitat de Barcelona"
+      en: "Universitat de Barcelona"
+      ja: "バルセロナ大学"
+    abbr:
+      es: "UB"
+      ca: "UB"
+      en: "UB"
+      ja: "UB"
+    city:
+      es: "Barcelona"
+      ca: "Barcelona"
+      en: "Barcelona"
+      ja: "バルセロナ"
+
+# Activity colours. Sanzo Wada, like the rest of the palette: Eugenia Red,
+# Dark Greenish Glaucous, Light Glaucous Blue and Naples Yellow. The previous
+# set were macOS system colours with no equivalent in the dictionary.
+categories:
+  - id: aikido
+    color: "#E2625E"
+    name: { es: "Aikido",   ca: "Aikido",   en: "Aikido",   ja: "合気道" }
+  - id: iaijutsu
+    color: "#B7C2A9"
+    name: { es: "Iaijutsu", ca: "Iaijutsu", en: "Iaijutsu", ja: "居合術" }
+  - id: judo
+    color: "#A5C8D1"
+    name: { es: "Judo",     ca: "Judo",     en: "Judo",     ja: "柔道" }
+  - id: karate
+    color: "#FBE6A0"
+    name: { es: "Karate",   ca: "Karate",   en: "Karate",   ja: "空手" }
+
+# Reusable level labels, so the four translations are written once rather than
+# repeated on all eighteen classes.
+levels:
+  - id: all
+    name: { es: "Todos los niveles", ca: "Tots els nivells", en: "All levels", ja: "一般" }
+  - id: beginners
+    name: { es: "Principiantes",     ca: "Principiants",     en: "Beginners",  ja: "初心者" }
+  - id: weapons
+    name: { es: "Armas",             ca: "Armes",            en: "Weapons",    ja: "武器" }
+
+# Who teaches what.
+#
+# Referenced by id from the classes below, so a name is written once. Nothing
+# renders these yet — they are here so the timetable and the classes page can
+# both draw on one list when we decide where instructors belong.
+#
+# `name` is a plain string for a person, because a proper noun is the same in
+# all four languages. The one exception carries a per-language map instead,
+# because it describes a position rather than a person.
+#
+# ORDER MATTERS WHERE THESE ARE LISTED. The dojo lists its instructors by rank,
+# and `rank` below records that order so a new list can be written correctly
+# without asking. It is documentation, not a sort key: the lists in
+# _data/classes.yml are authored in their intended order and rendered in it,
+# because at least one of them departs from the ranking on purpose (the
+# iaijutsu list leads with the Ryūshin Shōchi-ryū instructor).
+# NAMES CARRY A `ja`. The Japanese timetable was printing "P. Martín" and
+# "J.M. Pérez" in the Latin alphabet in the middle of a Japanese page; every
+# other proper noun on the site is transliterated. `name` stays the short Latin
+# form the grid is laid out for, and `ja` is the katakana that replaces it on
+# /ja/ pages. See _includes/schedule.html and _includes/ura.html for the lookup.
+#
+# The katakana is Juanma's own, not a transliteration invented here.
+instructors:
+  - { id: sancho,     name: "A. Sancho",  ja: "アルベルト　サンチョ",       rank: 4 }
+  - { id: martin,     name: "P. Martín",  ja: "パブロ　マルティン",         rank: 1 }
+  - { id: perez,      name: "J.M. Pérez", ja: "フアンマ　ペレス",           rank: 5 }
+  - { id: fortes,     name: "P. Fortes",  ja: "ペドロ　フォルテス",         rank: 2 }
+  - { id: villar,     name: "A. Villar",  ja: "アンドレウ　ビヤル",         rank: 6 }
+  # Joan Manel has no class of his own yet, so he is here without a `rank`:
+  # the rank only orders the people who appear in the timetable legend.
+  - { id: molina-jm,  name: "J. M. Molina", ja: "ジョアン・マネル　モリナ" }
+  - { id: zheng,      name: "G. Zheng",   ja: "グアンロン　ジェン",         rank: 7 }
+  - { id: mikhaylov,  name: "D. Mikhaylov", ja: "ダニール　ミハイロフ",     rank: 8 }
+  - { id: zafra,      name: "J.L. Zafra", ja: "ホセ・ルイス　サフラ",       rank: 3 }
+  - { id: serra,      name: "X. Serra" }
+  # A different Molina from the aikido one above, and the reason that one is
+  # `molina-jm`: this id was here first, for judo.
+  - { id: molina,     name: "A. Molina" }
+  - { id: llorens,    name: "P. Llorens" }
+  - id: trainee
+    name:
+      es: "Instructor en formación"
+      ca: "Instructor en formació"
+      en: "Instructor in training"
+      ja: "指導者研修中"
+
+classes:
+  # ---- Aikido Musubi (the dojo) ----
+  - { category: aikido,   location: musubi,     level: all,       days: [tue, thu], start: "18:30", end: "19:30", instructor: sancho }
+  - { category: aikido,   location: musubi,     level: beginners, days: [tue],      start: "19:30", end: "20:30", instructor: martin }
+  - { category: aikido,   location: musubi,     level: weapons,   days: [thu],      start: "19:30", end: "20:30", instructor: martin }
+  # Split from one two-day entry because the teacher differs by day. The
+  # rendered timetable is unchanged — it draws each day separately anyway.
+  - { category: aikido,   location: musubi,     level: all,       days: [tue],      start: "20:30", end: "21:30", instructor: trainee }
+  - { category: aikido,   location: musubi,     level: all,       days: [thu],      start: "20:30", end: "21:30", instructor: martin }
+  # One 90-minute class, not the two consecutive 45-minute ones (beginners
+  # 20:00-20:45, all levels 20:45-21:30) that used to sit here. Same teacher,
+  # same room, same total time.
+  - { category: aikido,   location: musubi,     level: all,       days: [wed],      start: "20:00", end: "21:30", instructor: perez }
+  - { category: aikido,   location: musubi,     level: all,       days: [fri],      start: "19:00", end: "20:00", instructor: fortes }
+  - { category: aikido,   location: musubi,     level: all,       days: [sat],      start: "07:30", end: "09:00", instructor: villar }
+
+  - { category: iaijutsu, location: musubi,     level: all,       days: [mon],      start: "20:00", end: "21:30", instructor: zafra }
+  # THE MONTHLY SATURDAY IAIJUTSU SESSION IS NOT HERE, AND THAT IS DELIBERATE.
+  #
+  # It used to sit here as `frequency: monthly`, which kept it out of the
+  # weekly grid on /horarios/ but not out of everything else: Ura's twenty-one
+  # day strip tests `c.days contains day` and drew it on EVERY Saturday, and
+  # schedule-ics.html turned it into `RRULE:FREQ=MONTHLY;BYDAY=1SA`, promising
+  # subscribers the first Saturday of every month for ever. Neither is true.
+  # The session runs when a date is set for it, and the next one is not set.
+  #
+  # So it is announced by date in _data/calendar.yml, as an `extra`, the same
+  # way the grading class is. Nothing recurring, nothing to go stale, and the
+  # calendar is the single place that says when it is on. The Classes page
+  # says as much in `schedule_note` in _data/classes.yml.
+
+  - { category: judo,     location: musubi,     level: all,       days: [mon, wed], start: "18:30", end: "20:00", instructor: molina }
+
+  - { category: karate,   location: musubi,     level: all,       days: [tue],      start: "21:30", end: "22:30", instructor: llorens }
+  - { category: karate,   location: musubi,     level: all,       days: [fri],      start: "20:00", end: "21:00", instructor: llorens }
+  - { category: karate,   location: musubi,     level: all,       days: [sat],      start: "11:00", end: "13:00", instructor: llorens }
+
+  # ---- Sant Adrià de Besòs ----
+  - { category: aikido,   location: sant-adria, level: all,       days: [mon],      start: "20:00", end: "21:00", instructor: zheng }
+  - { category: aikido,   location: sant-adria, level: all,       days: [wed],      start: "20:15", end: "21:15", instructor: zheng }
+
+  # ---- Barcelona · CxEM Espronceda ----
+  # In the tatami room of the municipal sports complex, both days the same hour
+  # and the same teacher.
+  - { category: aikido,   location: espronceda, level: all,       days: [mon, wed], start: "20:00", end: "21:00", instructor: mikhaylov }
+
+  # ---- Universidad de Barcelona ----
+  - { category: aikido,   location: ub,         level: beginners, days: [mon, wed], start: "19:00", end: "20:00", instructor: martin }

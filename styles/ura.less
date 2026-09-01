@@ -1,0 +1,1167 @@
+// out: false
+//
+// ---------------------------------------------------------------------------
+// Ura 裏
+//
+// In aikido every technique has an omote and an ura: the version that enters
+// in front and the one that turns behind. This is the same site entering from
+// behind, and it is dark for the same reason the footer is — so that arriving
+// here feels like turning something over rather than loading another page.
+//
+// The whole file is scoped under `.ur`, which is a sibling of `.page` when it
+// is a panel and inside `main` when it is the page. Scoping it that way means
+// the site's prose rules cannot reach in, and none of this needs !important.
+// ---------------------------------------------------------------------------
+
+.ur {
+  --fg:   mix(@White, @Dark, 79.9%);
+  --hi:   #fff;
+  --mute: mix(@White, @Dark, 50.5%);   // 7.1:1 on the ground below, measured
+  --line: rgba(255, 255, 255, .13);
+  --acc:  @Yellow;
+  --bg:   @Black;
+  --card: mix(@Black, @White, 96.5%);
+
+  background: var(--bg);
+  color: var(--fg);
+  .NotoSans;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+
+  * { box-sizing: border-box; }
+}
+
+// ---- the element layer -----------------------------------------------------
+// The bare elements the site's prose layer also claims. On the page these sit
+// inside <main>, where `.page main h2` is (0,1,2) and a flat `.ur h2` (0,1,1)
+// loses — the headings came out Noto Sans 700 at 1.5rem instead of Futura 400.
+//
+// The companion is `main .ur X`, which is *exactly* (0,1,2) as well. Equal
+// specificity, and this file loads after all.min.css, so it wins on order —
+// and, being no higher than it needs to be, it still loses to the components,
+// which are (0,2,1). `.page main .ur X` would be (0,2,2) and would have
+// overridden them instead: .ur-cell h3 would have lost its own letter-spacing.
+.ur, main .ur {
+  p { margin: 0; }
+
+  h1, h2, h3 {
+    .Futura; .regular;
+    margin: 0;
+    padding: 0;
+    color: var(--hi);
+    letter-spacing: .02em;
+    text-align: left;
+    text-transform: none;
+  }
+
+  // Family and style only. The prose layer forces Noto Sans on all four and
+  // italics on two of them; it does not get to decide weight here, because the
+  // approved design leans on the browser's own bold for <b> in the counters.
+  b, strong { font-family: inherit; }
+  em, i     { font-family: inherit; font-style: normal; }
+  hr        { margin: 0; border: 0; }
+  img       { width: auto; max-width: 100%; }
+}
+
+// Same arithmetic for links. `.page main a` (0,1,2) repaints every link in the
+// site's link colour — on a black ground, invisible — and floods @Yellow on
+// hover. `main .ur a` matches it exactly and wins on order.
+.ur a,
+main .ur a {
+  color: inherit;
+  text-decoration: none;
+  background-color: transparent;
+
+  &:hover, &:focus {
+    background-color: transparent;
+    text-decoration: none;
+  }
+}
+
+// The measure. Same tokens as .page-measure() so the panel lines up with the
+// page underneath it.
+// ---- the components -------------------------------------------------------
+// Every one of these is nested inside `.ur`, and that nesting is load-bearing,
+// not tidiness. On the page Ura sits inside <main>, where the prose layer
+// styles `a b em i strong h1 h2 h3 h4 h5 hr img` at `.page main X` — (0,1,2).
+// A flat `.ur-lk b` is (0,1,1) and loses: the dojo names came out bold, the
+// section headings came out Noto Sans 700, and the whole links block came out
+// yellow. Nested, `.ur .ur-lk b` is (0,2,1), which beats (0,1,2) on class
+// count in both contexts at once — so the panel and the page need one rule,
+// not a hand-maintained pair.
+.ur {
+  .ur-w {
+    max-width: @page-max;
+    margin: 0 auto;
+    padding: 0 @gut-lg;
+
+    @media (max-width: @bp-lg - .02px) { padding: 0 @gut-md; }
+    @media (max-width: @bp-md - .02px) { padding: 0 @gut-sm; }
+  }
+
+  // The generated line sits below the colophon with air, not on a <br>, and
+  // each of its three parts is unbreakable so the association's name cannot
+  // split. The breaks fall on the separators between them.
+  p.ur-mono {
+    margin-top: 1.1rem;
+    font-size: .68rem;      // a shade under the colophon above it
+    letter-spacing: .01em;
+    color: mix(@White, @Dark, 42%);
+  }
+  p.ur-mono > span { white-space: nowrap; }
+
+  .ur-mono { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-variant-numeric: tabular-nums; }
+
+  // ---- masthead --------------------------------------------------------------
+  .ur-mast {
+    position: sticky;
+    top: 0;
+    z-index: 6;
+    background: fade(@Black, 95%);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  // padding-top/bottom and NOT `padding: .8rem 0`. The element also carries
+  // .ur-w, which is what gives the masthead the same 2/4/6rem gutter as the
+  // content below it; a shorthand here comes later in the cascade and wiped
+  // it, so at narrow widths the seal and the close button sat flat against
+  // the edges of the screen.
+  .ur-mast-in {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-height: 3.3rem;
+    padding-top: .8rem;
+    padding-bottom: .8rem;
+  }
+
+  .ur-seal { .NotoSansJP; font-size: 1.4rem; line-height: 1; color: var(--acc); }
+  .ur-ttl  { .Futura; font-size: .72rem; letter-spacing: .3em; text-transform: uppercase; color: var(--hi); }
+  .ur-sub  { font-size: .72rem; color: var(--mute); }
+
+  .ur-x {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: .55rem;
+    padding: .55rem .9rem;
+    border: 1px solid var(--line);
+    background: none;
+    color: var(--fg);
+    cursor: pointer;
+    .Futura;
+    font-size: .62rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    line-height: 1;
+
+    i { .NotoSansJP; font-style: normal; font-size: .95rem; line-height: 1; color: var(--acc); }
+
+    &:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; }
+  }
+
+  a.ur-x{ color: var(--fg); }
+
+  .ur-x:hover{
+    background-color: var(--acc);
+    border-color: var(--acc);
+    color: @Black;
+
+    i { color: @Black; }
+  }
+
+  @media (max-width: @bp-sm - .02px) {
+    .ur-sub { display: none; }
+    // sr-only, NOT display:none. The label is the only nameable thing in this
+    // control — the kanji beside it is aria-hidden — so hiding it outright
+    // left a link that a screen reader announces as empty. Lighthouse only
+    // caught it on the mobile run, because that is the only width where the
+    // rule applies.
+    .ur-x > span {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+      border: 0;
+    }
+  }
+
+  // ---- the opening line ------------------------------------------------------
+  .ur-intro {
+    .Futura;
+    max-width: 31ch;
+    padding: 3.4rem 0 0;
+    font-size: 1.6rem;
+    line-height: 1.45;
+    color: var(--hi);
+
+    @media (max-width: @bp-sm - .02px) { font-size: 1.25rem; }
+  }
+
+  // ---- a section -------------------------------------------------------------
+  .ur-sec {
+    padding: 3.2rem 0;
+    border-top: 1px solid var(--line);
+
+    &:first-of-type { border-top: 0; }
+  }
+
+  .ur-h {
+    display: flex;
+    align-items: baseline;
+    gap: 1.1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.6rem;
+
+    h2 { font-size: 1.65rem; }
+    .note { font-size: .85rem; color: var(--mute); }
+  }
+
+  .ur-note {
+    margin-top: 1.2rem;
+    font-size: .82rem;
+    color: var(--mute);
+
+  }
+
+  .ur-note a{
+    color: var(--acc);
+    border-bottom: 1px solid fade(@Yellow, 40%);
+
+    &:hover { border-bottom-color: @Yellow; color: var(--acc); }
+  }
+
+  // ---- the week --------------------------------------------------------------
+  // The notice. Only painted while a run of `change` days is actually running,
+  // so nobody has to remember to take it down.
+  .ur-flag {
+    display: flex;
+    gap: .9rem;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    padding: .9rem 1.1rem;
+    background: fade(@Yellow, 8%);
+    border-left: 2px solid var(--acc);
+
+    b {
+      flex: 0 0 auto;
+      padding-top: .15rem;
+      .Futura;
+      font-weight: 400;
+      font-size: .68rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--acc);
+    }
+
+    p { font-size: .87rem; line-height: 1.6; color: mix(@White, @Dark, 86.4%); }
+
+    @media (max-width: @bp-sm - .02px) { flex-direction: column; gap: .35rem; }
+  }
+
+  .ur-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+
+    @media (max-width: @bp-lg - .02px) { grid-template-columns: repeat(4, 1fr); }
+    @media (max-width: @bp-sm - .02px) { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .ur-day {
+    background: var(--card);
+    padding: .75rem .6rem 1rem;
+    min-height: 9rem;
+
+    .dn {
+      .Futura;
+      margin-bottom: 0;
+      font-size: .6rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--mute);
+    }
+
+    // The day number. Hidden by the script when the rendered window has gone
+    // stale, because a wrong date is worse than no date.
+    .dd {
+      .Futura;
+      margin: .15rem 0 .7rem;
+      font-size: 1.25rem;
+      line-height: 1;
+      color: var(--hi);
+    }
+
+    &[data-today] {
+      background: fade(@Yellow, 10%);
+      .dn, .dd { color: var(--acc); }
+    }
+
+    &[data-nodates] .dd { display: none; }
+
+    @media (max-width: @bp-sm - .02px) { min-height: 0; }
+  }
+
+  .ur-cl {
+    margin-bottom: .45rem;
+    padding: .2rem 0 .25rem .45rem;
+    border-left: 2px solid var(--c);
+
+    b { display: block; font-weight: 400; font-size: .74rem; line-height: 1.3; color: var(--hi); }
+    span { display: block; font-size: .64rem; color: var(--mute); }
+  }
+
+  .ur-rest { font-size: .68rem; color: var(--mute); }
+
+  .ur-off {
+    font-size: .7rem;
+    line-height: 1.5;
+    color: var(--mute);
+
+    b {
+      display: block;
+      .Futura;
+      font-weight: 400;
+      font-size: .6rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      // Eugenia Red | A, not @Red. @Red is Eugenia Red | B, and on Ura's card
+      // ground it measures 4.40:1 — sixteen hundredths under the floor, at
+      // 11.52px. The A variant is the same colour one step lighter, already in
+      // the site as the Aikido category, and clears it at 5.06:1.
+      color: @EugeniaRedA;
+    }
+  }
+
+  // ---- the year strip ---------------------------------------------------------
+  // A way into the archive, not a chart of it.
+  .ur-lab {
+    .Futura;
+    margin-bottom: .6rem;
+    font-size: .6rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--mute);
+  }
+
+  .ur-jump {
+    display: flex;
+    gap: 2px;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+
+  .ur-jump a{
+    padding: .32rem .55rem;
+    background: var(--card);
+    .Futura;
+    font-size: .62rem;
+    letter-spacing: .06em;
+    color: var(--mute);
+
+    &:hover { background: var(--acc); color: @Black; }
+    &:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; }
+  }
+
+  // ---- what is coming --------------------------------------------------------
+  .ur-next { display: grid; gap: 2px; }
+
+  .ur-nx {
+    display: grid;
+    // A FIXED FIRST COLUMN, and `auto` was wrong.
+    //
+    // Every row is its own grid — `.ur-next` is the flow container, `.ur-nx`
+    // the grid — so `auto` sized each row's date column to that row's own
+    // date. "5 sep 2026" is 65px and "17 oct 2026" is 76px, so the titles
+    // started at six different left edges down the list.
+    //
+    // Measured rather than guessed: the widest Spanish date renders at 76px
+    // and the widest Japanese one at 97px, both at .72rem with .06em of
+    // tracking. 5.25rem and 6.75rem are those with a little room.
+    grid-template-columns: 5.25rem 1fr auto;
+    gap: 1.2rem;
+    align-items: baseline;
+    background: var(--card);
+    padding: .85rem 1.1rem;
+
+    .d { .Futura; font-size: .72rem; letter-spacing: .06em; color: var(--acc); white-space: nowrap; }
+    .t { font-size: .95rem; color: var(--hi); }
+    .n { font-size: .8rem; color: var(--mute); text-align: right; }
+
+    // Eugenia Red | A, not @Red. @Red is Eugenia Red | B, and on Ura's card
+    // ground it measures 4.40:1 — sixteen hundredths under the floor, at
+    // 11.52px. The A variant is the same colour one step lighter, already in
+    // the site as the Aikido category, and clears it at 5.06:1.
+    &[data-type="closure"] .d { color: @EugeniaRedA; }
+
+    @media (max-width: @bp-md - .02px) {
+      grid-template-columns: 1fr;
+      gap: .15rem;
+      .n { text-align: left; }
+    }
+  }
+
+  // Kanji dates are wider than the same date in Spanish, and the column has to
+  // be told so: "2026年12月26日" against "26 dic 2026".
+  html[lang="ja"] & .ur-nx {
+    grid-template-columns: 6.75rem 1fr auto;
+
+    @media (max-width: @bp-md - .02px) { grid-template-columns: 1fr; }
+  }
+
+  // ---- the archive -----------------------------------------------------------
+  .ur-sheet {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    gap: 2px;
+
+    img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      background: mix(@Black, @White, 95.2%);
+      filter: grayscale(1) contrast(1.04);
+      opacity: .7;
+      transition: filter .25s, opacity .25s, transform .25s;
+    }
+
+    &:hover img, &:focus-visible img { filter: none; opacity: 1; }
+    img:hover { transform: scale(1.06); position: relative; z-index: 1; }
+    &:focus-visible { outline: 2px solid var(--acc); outline-offset: 3px; }
+
+    @media (max-width: @bp-lg - .02px) { grid-template-columns: repeat(8, 1fr); }
+    @media (max-width: @bp-sm - .02px) { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  .ur-count {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 1.2rem;
+
+    b { .Futura; display: block; font-size: 1.4rem; line-height: 1; color: var(--hi); }
+    span { font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--mute); }
+  }
+
+  // ---- the seminar log -------------------------------------------------------
+  .ur-acc {
+    .accordion();
+    border-top: 1px solid var(--line);
+
+    details { border-bottom: 1px solid var(--line); }
+
+    summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: baseline;
+      gap: 1.2rem;
+      padding: .95rem 0;
+
+      &::-webkit-details-marker { display: none; }
+      .y { .Futura; min-width: 4rem; font-size: 1.15rem; color: var(--hi); }
+      .c { font-size: .75rem; color: var(--mute); }
+      .ch { margin-left: auto; font-size: .8rem; color: var(--mute); transition: transform .2s; }
+      &:hover .y { color: var(--acc); }
+      &:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; }
+    }
+
+    details[open] summary { .y { color: var(--acc); } .ch { transform: rotate(45deg); } }
+  }
+
+  .ur-ev-list { padding-bottom: .7rem; }
+
+  .ur-ev {
+    display: grid;
+    grid-template-columns: 5rem 1fr;
+    gap: 1.2rem;
+    align-items: baseline;
+    padding: .5rem 0 .8rem;
+
+    .d { font-size: .75rem; color: var(--mute); white-space: nowrap; }
+    .t { font-size: .9rem; line-height: 1.45; color: var(--fg); }
+
+    .t small {
+      display: block;
+      margin-top: .15rem;
+      font-size: .74rem;
+      color: var(--mute);
+    }
+
+    @media (max-width: @bp-sm - .02px) { grid-template-columns: 1fr; gap: .1rem; }
+  }
+
+  // ---- the chain -------------------------------------------------------------
+  .ur-link {
+    display: grid;
+    grid-template-columns: 8rem 1fr;
+    gap: 1.5rem;
+    align-items: baseline;
+    padding: 1rem .9rem;
+    border-top: 1px solid fade(@White, 8%);
+
+    &:last-child { border-bottom: 1px solid fade(@White, 8%); }
+
+    .y { font-size: .7rem; color: var(--mute); }
+    .n { font-size: 1.02rem; color: var(--hi); }
+    .n small { display: block; margin-top: .2rem; font-size: .78rem; line-height: 1.5; color: var(--mute); }
+
+    // The two affiliation lines are names and must not break mid-name. Below
+    // 700px they cannot fit whatever we do, so there they are allowed to wrap.
+    .det {
+      display: block;
+      margin-top: .5rem;
+      padding-top: .5rem;
+      border-top: 1px solid fade(@White, 9%);
+      font-size: .76rem;
+      color: mix(@White, @Dark, 69.7%);
+      white-space: nowrap;
+
+      @media (max-width: 699.98px) { white-space: normal; }
+    }
+
+    &[data-us] { background: fade(@Yellow, 7%); .n { color: var(--acc); } }
+
+    @media (max-width: @bp-sm - .02px) { grid-template-columns: 1fr; gap: .15rem; }
+  }
+
+  // ---- the words -------------------------------------------------------------
+  .ur-words {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+
+    @media (max-width: @bp-md - .02px) { grid-template-columns: 1fr 1fr; }
+    @media (max-width: 479.98px) { grid-template-columns: 1fr; }
+  }
+
+  .ur-word {
+    background: var(--card);
+    padding: 1.2rem 1.1rem 1.3rem;
+
+    .k { .NotoSansJP; font-size: 1.7rem; line-height: 1; letter-spacing: .05em; color: var(--hi); }
+    .r { .Futura; margin: .5rem 0 .55rem; font-size: .66rem; letter-spacing: .2em; text-transform: uppercase; color: var(--acc); }
+    p { font-size: .82rem; line-height: 1.65; color: var(--mute); }
+  }
+
+  // The second six sit behind a control rather than lengthening the panel.
+  // grid-template-rows animates where height:auto does not.
+  .ur-more {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows .35s ease;
+
+    > div { min-height: 0; overflow: hidden; }
+    &[data-open] { grid-template-rows: 1fr; }
+    .ur-words { margin-top: 2px; }
+
+    @media (prefers-reduced-motion: reduce) { transition: none; }
+  }
+
+  .ur-morebar { display: flex; align-items: center; gap: 1.4rem; flex-wrap: wrap; margin-top: 1.1rem; }
+
+  .ur-morebtn {
+    padding: .6rem 1.1rem;
+    border: 1px solid var(--line);
+    background: none;
+    color: var(--fg);
+    cursor: pointer;
+    .Futura;
+    font-size: .64rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+
+    &:hover { border-color: var(--acc); color: var(--acc); }
+    &:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; }
+    &[aria-expanded="true"] { border-color: var(--acc); color: var(--acc); }
+  }
+
+  // ---- the links -------------------------------------------------------------
+  // One three-column grid for all twenty-five. The organisations are marked by
+  // an accent rule and a heavier name rather than by being a different component.
+  // ---- the resources index --------------------------------------------
+  // Categories as headed columns, every item the same row. The kyū grades used
+  // to get pastilles of their own, which said a syllabus mattered more than
+  // the form you cannot train without.
+  .ur-res {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0 2.4rem;
+    align-items: start;
+
+    > div { min-width: 0; }
+
+    @media (max-width: @bp-lg - .02px) { grid-template-columns: 1fr 1fr; }
+    @media (max-width: @bp-sm - .02px) {
+      grid-template-columns: 1fr;
+      > div + div { margin-top: 1.6rem; }
+    }
+  }
+
+  .ur-res-i {
+    display: block;
+    padding: .7rem 0;
+    border-bottom: 1px solid fade(@White, 8%);
+
+    b { display: block; font-weight: 400; font-size: .87rem; line-height: 1.35; color: var(--hi); }
+
+    > span {
+      display: flex;
+      gap: .5rem;
+      align-items: baseline;
+      margin-top: .2rem;
+      font-size: .68rem;
+      color: var(--mute);
+    }
+
+    .k {
+      flex: 0 0 auto;
+      .Futura;
+      font-style: normal;
+      font-size: .5rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      padding: .14rem .4rem;
+      background: @Rust;
+      color: @White;
+    }
+
+    // ONE COLOUR PER KIND, the same criterion as /recursos/ — and the same hue
+    // per kind, lightened, because this ground is black rather than white. A
+    // page is @Black there and @White here: the one badge that has to inverse
+    // rather than lighten, since black on black is not a badge.
+    //
+    // The lightened hues are dictionary colours already in the palette, not
+    // `lighten()` of the dark ones: Sanzo Wada is the only colour source here.
+    // Every ratio is the badge against the ground, which is also its ink
+    // against the badge, since all five take @Black.
+    .k-form  { background: @Yellow; color: @Black; }             // 15.93:1
+    .k-doc   { background: @EugeniaRedA; color: @Black; }        //  5.45:1
+    .k-page  { background: @White; color: @Black; }              // 18.63:1
+    .k-book  { background: @GreenishGlaucous; color: @Black; }   // 10.03:1
+    .k-video { background: @GlaucousBlue; color: @Black; }       // 10.45:1
+    .k-media { background: none; color: var(--mute); box-shadow: inset 0 0 0 1px var(--line); }
+
+    &[data-soon] b { color: var(--mute); }
+    &[data-soon] .k { background: none; color: var(--mute); box-shadow: inset 0 0 0 1px var(--line); }
+
+    &:hover:not([data-soon]) > b { color: var(--acc); }
+    &:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; }
+  }
+
+  // ---- links: three tiers, not one grid ------------------------------------
+  // Eighteen dojos in a single list flatten the three federations into them.
+  // The approved design gives each tier its own weight: the federations as
+  // three cards, the dojos as a plain three-column list with the country
+  // riding on the row, and the rest as headed columns.
+  .ur-lk-h {
+    .Futura;
+    margin-bottom: .9rem;
+    padding-bottom: .6rem;
+    border-bottom: 1px solid var(--line);
+    font-size: .6rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--mute);
+  }
+
+  // The three federations. They were cards — a filled panel with 1.15rem of
+  // padding and the name at 1.02rem — which made them a different kind of
+  // object from the eighteen dojos below rather than the same kind, first.
+  // Same row geometry as the grid now; what marks them out is Futura and a
+  // hair more size, and nothing else.
+  .ur-lk-main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0 2.4rem;
+    margin-bottom: 2.4rem;
+
+    a { display: block; padding: .7rem 0; border-bottom: 1px solid fade(@White, 8%); }
+    a:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; }
+
+    b {
+      .Futura;
+      display: block;
+      font-weight: 400;
+      font-size: .95rem;
+      letter-spacing: .02em;
+      line-height: 1.35;
+      color: var(--hi);
+    }
+    a:hover > b { color: var(--acc); }
+
+    span { display: block; margin-top: .15rem; font-size: .68rem; color: var(--mute); }
+
+    @media (max-width: @bp-lg - .02px) { grid-template-columns: 1fr 1fr; }
+    @media (max-width: @bp-sm - .02px) { grid-template-columns: 1fr; }
+  }
+
+  .ur-lk-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0 2.4rem;
+    align-items: start;
+
+    a { display: block; padding: .6rem 0; border-bottom: 1px solid fade(@White, 8%); }
+    a:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; }
+
+    b { display: block; font-weight: 400; font-size: .87rem; line-height: 1.35; color: var(--hi); }
+    a:hover > b { color: var(--acc); }
+
+    span {
+      display: flex;
+      gap: .5rem;
+      align-items: baseline;
+      margin-top: .15rem;
+      font-size: .68rem;
+      color: var(--mute);
+    }
+
+    i {
+      flex: 0 0 auto;
+      min-width: 4.6rem;
+      .Futura;
+      font-style: normal;
+      font-size: .58rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--acc);
+    }
+
+    @media (max-width: @bp-lg - .02px) { grid-template-columns: 1fr 1fr; }
+    @media (max-width: @bp-sm - .02px) { grid-template-columns: 1fr; }
+  }
+
+  .ur-lk-tail {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 2.4rem;
+    margin-top: 2.4rem;
+
+    > div { min-width: 0; }
+
+    a { display: block; padding: .55rem 0; border-bottom: 1px solid fade(@White, 8%); }
+    a:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; }
+
+    b { display: block; font-weight: 400; font-size: .87rem; line-height: 1.35; color: var(--hi); }
+    a:hover > b { color: var(--acc); }
+
+    em { display: block; margin-top: .12rem; font-style: normal; font-size: .76rem; color: mix(@White, @Dark, 69.7%); }
+    span { display: block; margin-top: .12rem; font-size: .68rem; color: var(--mute); }
+
+    @media (max-width: @bp-lg - .02px) { grid-template-columns: 1fr 1fr; }
+    @media (max-width: @bp-sm - .02px) {
+      grid-template-columns: 1fr;
+      gap: 0;
+      > div + div { margin-top: 1.6rem; }
+    }
+  }
+
+  // A calendar entry that names a destination is a link, and on a black
+  // ground with everything else in white it needs to look like one.
+  //
+  // `.ur-ev .t a` was missing from this list, which is why every row in the
+  // seminar log looked like plain text: forty-odd links to forty-odd event
+  // cards, with nothing to say they were links until the cursor happened to
+  // cross one.
+  .ur-nx .t a,
+  .ur-ev .t a,
+  .ur-cl b a {
+    border-bottom: 1px solid fade(@Yellow, 35%);
+
+    &:hover { color: var(--acc); border-bottom-color: @Yellow; }
+    &:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; }
+  }
+
+  // The whole row lifts on hover, so the target reads as the row and not as
+  // the three words of the title. The date brightens with it: on a list this
+  // dense the date is what the eye is tracking down.
+  .ur-ev {
+    // The inset is padding and negative margin in the same amount, so the
+    // highlight reaches past the text without moving a single column.
+    padding-left: .6rem;
+    padding-right: .6rem;
+    margin-left: -.6rem;
+    margin-right: -.6rem;
+    transition: background-color .15s;
+
+    &:hover {
+      background: fade(@White, 4%);
+
+      .d { color: var(--acc); }
+      .t a { border-bottom-color: @Yellow; color: var(--acc); }
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ur-ev { transition: none; }
+  }
+
+  // ---- the archive: the year strip is a filter now ----------------------
+  .ur-jump a[data-on] {
+    background: var(--acc);
+    color: @Black;
+  }
+
+  .ur-sheet a {
+    display: block;
+    position: relative;
+
+    &[hidden] { display: none; }
+    &:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; z-index: 1; }
+
+    // A hairline of the accent on hover, so it is obvious the tiles are live.
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      box-shadow: inset 0 0 0 2px transparent;
+      transition: box-shadow .15s ease;
+    }
+    &:hover::after { box-shadow: inset 0 0 0 2px @Yellow; }
+  }
+
+  .ur-sheet img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; }
+
+  // ---- the chain -------------------------------------------------------------
+  .ur-chain { display: grid; gap: 0; }
+
+  // ---- the digest ------------------------------------------------------------
+  .ur-ess {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+
+    @media (max-width: @bp-md - .02px) { grid-template-columns: 1fr; }
+  }
+
+  .ur-cell {
+    background: var(--card);
+    padding: 1.3rem 1.2rem 1.5rem;
+
+    h3 { margin-bottom: .9rem; font-size: .95rem; letter-spacing: .05em; text-transform: uppercase; }
+
+    // Label over value, not beside it. Two columns inside a 310px card left
+    // the value about 180px, and "Facultat de Dret, Universitat de Barcelona"
+    // came out four lines deep beside a one-word label.
+    dl { margin: 0; font-size: .82rem; }
+
+    // Small, uppercase and letterspaced is where a muted grey stops being
+    // readable — the same colour that measures 7.1:1 in running text loses
+    // its stroke weight at .6rem. These labels sit two steps brighter.
+    dt {
+      .Futura;
+      font-size: .6rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: mix(@White, @Dark, 72%);
+    }
+    dd { margin: .1rem 0 .75rem; line-height: 1.45; color: var(--fg); }
+    dd:last-of-type { margin-bottom: 0; }
+
+    p { font-size: .82rem; line-height: 1.65; color: mix(@White, @Dark, 80%); }
+  }
+
+  .ur-cell a.go {
+    display: inline-block;
+    margin-top: .9rem;
+    padding-bottom: .2rem;
+    border-bottom: 1px solid fade(@Yellow, 45%);
+    .Futura;
+    font-size: .62rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--acc);
+
+    &:hover { border-bottom-color: @Yellow; }
+    &:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; }
+  }
+
+  // ---- the colophon ----------------------------------------------------------
+  .ur-foot {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    padding: 2.4rem 0 2.4rem;
+    border-top: 1px solid var(--line);
+
+    p { max-width: 48ch; font-size: .76rem; line-height: 1.7; color: var(--mute); }
+  }
+
+  .ur-foot-col { max-width: 48ch; }
+
+  // The generated line sits below the colophon with air, not on a <br>, and
+  // each of its three parts is unbreakable so the association's name cannot
+  // split. The breaks fall on the separators between them.
+  p.ur-mono {
+    margin-top: 1.1rem;
+    font-size: .68rem;      // a shade under the colophon above it
+    letter-spacing: .01em;
+    color: mix(@White, @Dark, 42%);
+  }
+  p.ur-mono > span { white-space: nowrap; }
+
+  // Art. 10's links, in Ura's own hand rather than the site's pinned strip.
+  .ur-legal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem 1.4rem;
+    margin: 0 0 3.4rem;
+    padding: 1.1rem 0 0;
+    border-top: 1px solid var(--line);
+    list-style: none;
+
+    li { margin: 0; }
+
+    a {
+      .Futura;
+      font-size: .6rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--mute);
+
+      &:hover { color: var(--acc); }
+      &:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; }
+    }
+  }
+
+  // ---- one picture at a time --------------------------------------------
+  // The dialog is a ROW: arrow, panel, arrow. The panel takes its width from
+  // the picture — `width: fit-content` on the box, and a caption block that
+  // contributes nothing to that calculation (see .ur-modal-foot) — and the
+  // arrows sit outside it, so nothing is ever on top of the close button.
+  .ur-modal {
+    position: fixed;
+    width: fit-content;
+    max-width: 100vw;
+    max-height: 100vh;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--fg);
+    overflow: visible;
+
+    // GATED ON [open]. A <dialog> is hidden by the UA rule
+    // `dialog:not([open]) { display: none }`, and an unconditional `display`
+    // here beats it — so closing took the backdrop away (that follows the
+    // top-layer state) and left the box sitting on the page. Any display value
+    // on a dialog has to carry the state it belongs to.
+    display: none;
+    align-items: center;
+    gap: .4rem;
+
+    &[open] { display: flex; }
+
+    &::backdrop { background: fade(@Black, 88%); }
+  }
+
+  .ur-modal-box {
+    position: relative;
+    width: fit-content;
+    max-width: min(52rem, 80vw);
+    background: var(--card);
+    overflow: hidden;
+
+    img {
+      display: block;
+      margin: 0 auto;
+      max-width: min(52rem, 80vw);
+      max-height: 68vh;
+      width: auto;
+      height: auto;
+      background: @Black;
+    }
+  }
+
+  // `width: 0; min-width: 100%` and NOT a max-width. The box is
+  // `width: fit-content`, which sizes to its widest child's max-content — and
+  // that child was this block, not the picture. A portrait shot 345px wide sat
+  // in a box as wide as the longest line of its own caption, with dead panel
+  // either side. A zero-width child contributes nothing to that calculation,
+  // and the min-width then stretches it to whatever the image decided.
+  .ur-modal-foot {
+    display: grid;
+    gap: .15rem;
+    padding: 1rem 1.2rem 1.2rem;
+    width: 0;
+    min-width: 100%;
+
+    .t { font-size: .92rem; line-height: 1.4; color: var(--hi); }
+    .m { .Futura; font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--mute); }
+  }
+
+  .ur-modal-cta {
+    justify-self: start;
+    margin-top: .7rem;
+    padding: .55rem 1rem;
+    background: var(--acc);
+    .Futura;
+    font-size: .62rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: @Black;
+
+    &:hover { background: @White; color: @Black; }
+    &:focus-visible { outline: 2px solid @White; outline-offset: 2px; }
+  }
+
+  .ur-modal-nav {
+    flex: 0 0 auto;
+    width: 2.8rem;
+    height: 4.4rem;
+    border: 0;
+    background: fade(@Black, 40%);
+    color: @White;
+    font-size: 1.8rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color .15s ease, color .15s ease;
+
+    &:hover { background: var(--acc); color: @Black; }
+    &:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; }
+  }
+
+  .ur-modal-x {
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+    z-index: 2;
+    width: 2.2rem;
+    height: 2.2rem;
+    border: 0;
+    background: fade(@Black, 55%);
+    color: @White;
+    font-size: 1.3rem;
+    line-height: 1;
+    cursor: pointer;
+
+    &:hover { background: @Black; color: var(--acc); }
+    &:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ur-modal-nav { transition: none; }
+  }
+
+  // No room for arrows beside the picture on a phone; they go under it.
+  @media (max-width: @bp-sm - .02px) {
+    .ur-modal[open] { flex-wrap: wrap; justify-content: center; }
+    .ur-modal { max-width: 96vw; }
+    .ur-modal-box { order: -1; flex: 0 0 100%; max-width: 96vw; }
+    .ur-modal-box img { max-width: 96vw; max-height: 60vh; }
+    .ur-modal-nav { height: 3rem; width: 4.4rem; }
+  }
+
+  .ur-back {
+    margin-left: auto;
+    padding: .8rem 1.4rem;
+    border: 0;
+    background: var(--acc);
+    color: @Black;
+    cursor: pointer;
+    white-space: nowrap;
+    .Futura;
+    font-size: .66rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+
+    &:focus-visible { outline: 2px solid @White; outline-offset: 3px; }
+  }
+
+  a.ur-back{ color: @Black; }
+  .ur-back:hover{ background-color: @White; color: @Black; }
+}
+
+
+// ---- the standalone page ---------------------------------------------------
+// The page version has to paint the whole surface, not just its own box: .page
+// is white and main has the 1140 column, and Ura is neither.
+//
+// `margin: 0 -100vw; padding: 0 100vw` looks like it cancels out, and visually
+// it does, but the border box is still 300vw wide and nothing clips it — the
+// page scrolled horizontally by over a thousand pixels. This is the version
+// that does not: exactly 100vw, pulled back by half the difference. The
+// remaining scrollbar-width overflow is clipped by `.page` — see default.less.
+// On an ordinary page .ur has to escape the 1140 column and cancel main's
+// gutter. On a bare one there is no column and no gutter, so it must not: the
+// negative margin pulled it up under the masthead and main's bottom padding
+// left a white band between Ura and the pinned strip.
+.page:not(.page-bare) main .ur {
+  .full-bleed();
+  margin-top: -@gut-md;
+}
+
+.page-bare main { padding: 0; }
+
+@media (max-width: @bp-md - .02px) {
+  .page:not(.page-bare) main .ur { margin-top: -@gut-sm; }
+}
+
+
+// ---------------------------------------------------------------------------
+// The sliding panel
+//
+// This lived in styles/home.less, which is loaded on the home and nowhere
+// else. The panel used to live there too, so that was right — until the nav's
+// Ura entry started opening it from any page, at which point every page except
+// the home rendered an unstyled block at the end of the document: Ura's
+// contents dumped below the footer, and the click scrolling to them.
+//
+// It belongs with the rest of Ura, which now ships everywhere the panel does.
+// ---------------------------------------------------------------------------
+.ura-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 1400;
+  background: fade(#000, 60%);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .38s ease, visibility .38s;
+}
+
+.ura-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 1401;
+  transform: translateX(100%);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  visibility: hidden;
+
+  // `visibility` has to be in the transition or the panel does not slide OUT.
+  // It slid in fine — visibility flips to visible immediately and the
+  // transform animates behind it — but on close it flipped to hidden on the
+  // first frame and the element was gone before the slide had started.
+  // Transitioned, it holds `visible` for the whole duration and switches at
+  // the end, which is the one property where that is the defined behaviour.
+  transition: transform .52s cubic-bezier(.16, .84, .28, 1),
+              visibility 0s linear .52s;
+  box-shadow: -2rem 0 5rem fade(#000, 55%);
+}
+
+html.ura-on {
+  .ura-scrim { opacity: 1; visibility: visible; }
+
+  .ura-panel {
+    transform: none;
+    visibility: visible;
+    // Opening, visibility must switch on the FIRST frame, not the last.
+    transition: transform .52s cubic-bezier(.16, .84, .28, 1),
+                visibility 0s linear 0s;
+  }
+
+  &, body { overflow: hidden; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ura-panel, .ura-scrim, html.ura-on .ura-panel { transition: none; }
+}

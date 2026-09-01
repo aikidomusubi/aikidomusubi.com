@@ -1,0 +1,179 @@
+<!doctype html><meta charset="utf-8"><title>Classes — Option B v2</title>
+<link rel="stylesheet" href="/styles/all.min.css">
+<style>
+:root{ --ak:#FF7E79; --ia:#94FF94; --ju:#76D6FF; --ka:#FFE600;
+       --blue:#084f6f; --black:#121315; --dark:#343a40; --line:rgba(18,19,21,.1); --mute:#5b6167; }
+body{margin:0;background:#fff}
+.mk{max-width:1140px;margin:0 auto;padding:28px 24px 60px}
+.mk h1{font-size:2rem;letter-spacing:.12em;text-transform:uppercase;text-align:center;margin:0 0 .6rem;font-weight:400}
+.lede{text-align:center;max-width:46rem;margin:0 auto 1.6rem;color:var(--dark);line-height:1.62;font-size:.98rem}
+.cl-nav{position:sticky;top:0;background:rgba(255,255,255,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);display:flex;gap:1.2rem;padding:.7rem 0;margin:0 0 2.2rem;font-size:.83rem;z-index:5}
+.cl-nav a{color:#4a5258;text-decoration:none;font-weight:700}
+.cl-nav a.on{color:var(--blue);box-shadow:inset 0 -2px 0 var(--blue)}
+.grp{font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(18,19,21,.55);margin:0 0 1rem;display:flex;align-items:center;gap:.7rem}
+.grp::after{content:"";flex:1;height:1px;background:var(--line)}
+
+/* ---- the principal discipline ---- */
+.hero{border-top:5px solid var(--ak);border-radius:.375rem;background:#fbfcfc;padding:1.6rem;margin:0 0 2.6rem;border:1px solid var(--line);border-top-width:5px}
+.hero-top{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:1.7rem;align-items:start}
+.hero .ph{border-radius:.3rem;background:#e9edef;aspect-ratio:4/3;display:grid;place-items:center;color:#9aa4aa;font-size:.8rem}
+.hero h2{margin:0 0 .15rem;font-size:2.05rem;font-weight:700;line-height:1.1}
+.jp{font-size:.86rem;color:var(--mute);margin:0 0 .85rem}
+.hero p.body{margin:0 0 .8rem;font-size:.97rem;line-height:1.68;color:var(--dark)}
+.when{display:flex;flex-wrap:wrap;gap:.45rem .8rem;padding:.65rem .85rem;border-radius:.3rem;background:rgba(8,79,111,.05);font-size:.82rem;margin:.3rem 0 .9rem;align-items:center}
+.when b{color:var(--black)}
+.when .sep{color:rgba(18,19,21,.25)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:2.4rem;padding:.45rem 1rem;border-radius:.25rem;background:var(--blue);color:#fff;font-size:.83rem;font-weight:700;text-decoration:none;margin:0 .4rem .4rem 0}
+.btn.o{background:#fff;color:var(--black);border:1px solid var(--line)}
+.progs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.85rem;margin:1.5rem 0 0;border-top:1px solid var(--line);padding-top:1.4rem}
+.prog{border:1px solid var(--line);border-radius:.3rem;padding:.9rem 1rem;background:#fff}
+.prog h3{margin:0 0 .3rem;font-size:.98rem;font-weight:700;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.prog p{margin:0 0 .5rem;font-size:.86rem;line-height:1.55;color:var(--dark)}
+.who{margin:0;font-size:.77rem;color:var(--mute)}
+.who b{color:var(--black);font-weight:700}
+.badge{font-size:.62rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.14rem .42rem;border-radius:.2rem;background:rgba(8,79,111,.09);color:var(--blue)}
+.badge.off{background:rgba(176,78,23,.12);color:#8a4310}
+.prog.susp{background:#fafafa;border-style:dashed}
+.prog.susp h3,.prog.susp p{color:var(--mute)}
+
+/* ---- secondary disciplines ---- */
+.band{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:1.4rem;align-items:start;padding:0 0 1.8rem;margin:0 0 1.8rem;border-bottom:1px solid var(--line)}
+.band .ph{border-radius:.3rem;background:#e9edef;aspect-ratio:4/3;display:grid;place-items:center;color:#9aa4aa;font-size:.78rem;border-top:4px solid var(--c)}
+.band h2{margin:0 0 .12rem;font-size:1.35rem;font-weight:700;line-height:1.15}
+.band p.body{margin:0 0 .6rem;font-size:.89rem;line-height:1.6;color:var(--dark)}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem}
+.pair .band{grid-template-columns:1fr;border-bottom:0;padding-bottom:0;margin-bottom:0}
+.pair .ph{aspect-ratio:16/9}
+.first{border-top:1px solid var(--line);padding-top:1.6rem;margin-top:1.4rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.first h2{grid-column:1/-1;margin:0;font-size:1.05rem}
+.first div{border-left:3px solid var(--blue);padding-left:.8rem}
+.first b{display:block;font-size:.88rem;margin-bottom:.15rem}
+.first span{font-size:.82rem;color:var(--dark);line-height:1.5}
+.note{margin-top:2rem;font-size:.75rem;color:#6b7176;border-top:1px dashed var(--line);padding-top:.8rem}
+@media (max-width:900px){.hero-top,.progs,.pair,.first{grid-template-columns:1fr}.band{grid-template-columns:1fr}}
+</style>
+<div class="mk">
+  <h1>Clases</h1>
+  <p class="lede">El aikido es lo que practicamos y enseñamos, en tres dojos y seis días a la semana.
+    En nuestro tatami entrenan además un club de judo y uno de karate, con sus propios instructores.</p>
+
+  <nav class="cl-nav"><a class="on" href="#">Aikido</a><a href="#">Iaijutsu</a><a href="#">Judo</a><a href="#">Karate</a></nav>
+
+  <section class="hero">
+    <div class="hero-top">
+      <div class="ph">[ foto principal — clase de aikido ]</div>
+      <div>
+        <h2>Aikido</h2>
+        <p class="jp">合気道 合気会 — Aikido Aikikai</p>
+        <p class="body">Un arte marcial japonés que no busca vencer al oponente sino neutralizar
+          el ataque redirigiendo su fuerza. Se practica siempre por parejas, sin combate ni
+          competición: uno ataca, el otro resuelve, y luego se cambian los papeles.</p>
+        <p class="body">Por eso se puede empezar a cualquier edad y seguir practicando toda la
+          vida. No hace falta fuerza ni experiencia previa — hace falta venir.</p>
+        <p class="when"><span>lunes a sábado</span><span class="sep">·</span>
+          <span>Badalona, Sant Adrià y Universitat de Barcelona</span></p>
+        <a class="btn" href="#">Ver los horarios de aikido</a><a class="btn o" href="#">Cuotas</a>
+      </div>
+    </div>
+
+    <div class="progs">
+      <article class="prog">
+        <h3>Todos los niveles <span class="badge">La clase habitual</span></h3>
+        <p>La práctica regular del dojo, y donde acaba entrenando todo el mundo. Se trabaja
+          técnica de mano vacía por parejas, con compañeros de todos los grados en el mismo
+          tatami: el que lleva años ajusta su práctica al que acaba de llegar. A partir de 12 años.</p>
+        <p class="who"><b>A. Sancho · P. Martín · P. Fortes · A. Villar · G. Zheng</b>
+          y un instructor en formación</p>
+      </article>
+
+      <article class="prog">
+        <h3>Principiantes <span class="badge">Por aquí se empieza</span></h3>
+        <p>La entrada al aikido, sin experiencia previa de ningún tipo. Se dedica a lo que hace
+          posible todo lo demás: aprender a caer sin hacerse daño, los desplazamientos, la
+          distancia y la etiqueta del tatami. Se puede compaginar con la clase general desde el
+          primer mes.</p>
+        <p class="who"><b>P. Martín · J.M. Pérez</b></p>
+      </article>
+
+      <article class="prog">
+        <h3>Armas <span class="badge">Buki waza</span></h3>
+        <p>El aikido nace de la esgrima, y sus movimientos de mano vacía se entienden mejor con
+          un arma en la mano. Se practica con <i>bokken</i> (sable de madera), <i>jō</i> (bastón
+          medio) y <i>tantō</i> (cuchillo de madera), en formas por parejas. No es una disciplina
+          aparte: aclara lo que ya se hace sin armas.</p>
+        <p class="who"><b>P. Martín</b> · jueves</p>
+      </article>
+
+      <article class="prog susp">
+        <h3>Niños y niñas <span class="badge off">Suspendidas hasta nuevo aviso</span></h3>
+        <p>De 6 a 12 años. El aikido les da concentración y confianza en un ambiente donde nadie
+          compite contra nadie, y aprenden a defenderse sin hacer daño al otro. <b>El grupo
+          infantil está suspendido por ahora</b>; si te interesa para tu hijo o hija, escríbenos
+          y te avisamos en cuanto vuelva a abrirse.</p>
+        <p class="who">Escríbenos para entrar en la lista de aviso</p>
+      </article>
+    </div>
+  </section>
+
+  <p class="grp">También enseñamos</p>
+
+  <section class="band">
+    <div class="ph" style="--c:var(--ia)">[ foto — iaijutsu ]</div>
+    <div>
+      <h2>Iaijutsu</h2>
+      <p class="jp">居合術 柳心照智流 — Iaijutsu Ryūshin Shōchi-ryū</p>
+      <p class="body">Esgrima tradicional japonesa: desenvainar, cortar y envainar como un solo
+        movimiento continuo. Se practica en solitario, con formas heredadas, y exige una
+        precisión que se nota enseguida en el resto de la práctica. La escuela Ryūshin
+        Shōchi-ryū procede de la región de Kantō.</p>
+      <p class="when"><span>lunes por la tarde</span><span class="sep">·</span>
+        <span>un sábado al mes, sesión larga</span><span class="sep">·</span><span>Badalona</span></p>
+      <p class="who"><b>J.L. Zafra</b> los lunes · <b>X. Serra</b> la sesión mensual</p>
+      <p style="margin:.7rem 0 0"><a class="btn" href="#">Ver los horarios de iaijutsu</a></p>
+    </div>
+  </section>
+
+  <p class="grp">También en nuestro tatami</p>
+
+  <div class="pair">
+    <section class="band">
+      <div class="ph" style="--c:var(--ju)">[ foto — judo ]</div>
+      <div>
+        <h2>Judo</h2>
+        <p class="jp">柔道 — Judo</p>
+        <p class="body">«El camino de la suavidad», creado por Jigorō Kanō a finales del XIX.
+          Proyecciones de pie y control en el suelo, aprovechando el desequilibrio en lugar de la
+          fuerza. Disciplina olímpica desde Tokio 1964, y desde su origen una herramienta educativa.</p>
+        <p class="when"><span>lunes y miércoles</span><span class="sep">·</span><span>Badalona</span></p>
+        <p class="who"><b>A. Molina</b> · club independiente, inscripción aparte</p>
+        <p style="margin:.7rem 0 0"><a class="btn" href="#">Ver los horarios</a><a class="btn o" href="#">Contactar</a></p>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="ph" style="--c:var(--ka)">[ foto — karate ]</div>
+      <div>
+        <h2>Karate</h2>
+        <p class="jp">極真空手 — Kyokushin Karate</p>
+        <p class="body">Karate tradicional de contacto completo, de la escuela de Masutatsu Ōyama.
+          Técnica, combate y valores tradicionales, en un entorno exigente pero abierto tanto a
+          quien empieza como a quien ya tiene grado.</p>
+        <p class="when"><span>martes, viernes y sábado</span><span class="sep">·</span><span>Badalona</span></p>
+        <p class="who"><b>P. Llorens</b> · club independiente, inscripción aparte</p>
+        <p style="margin:.7rem 0 0"><a class="btn" href="#">Ver los horarios</a><a class="btn o" href="#">Contactar</a></p>
+      </div>
+    </section>
+  </div>
+
+  <div class="first">
+    <h2>Tu primera clase</h2>
+    <div><b>Avísanos antes</b><span>Con un día basta. Mirar una clase y entrenar de visita no se cobra.</span></div>
+    <div><b>Qué llevar</b><span>Ropa cómoda de manga larga y chanclas para pisar fuera del tatami.</span></div>
+    <div><b>Llega 15 minutos antes</b><span>Los polideportivos son grandes y el dojo no se ve desde la calle.</span></div>
+  </div>
+
+  <p class="note">MAQUETA · Option B v2. Aikido pasa a bloque principal con sus cuatro programas;
+    iaijutsu queda como segunda disciplina propia; judo y karate comparten una fila más discreta.
+    Los días y dojos se calculan desde <code>_data/schedule.yml</code>; los instructores desde el
+    nuevo bloque <code>instructors:</code> del mismo archivo.</p>
+</div>

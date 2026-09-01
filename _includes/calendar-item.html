@@ -1,0 +1,36 @@
+{%- comment -%}
+  One entry in the agenda list. Same two sources as calendar-entry.html — the
+  _events/ collection and the dated facts in _data/calendar.yml — normalised to
+  one set of parameters so the list cannot drift from the month grid.
+
+  Parameters: date, until, type, title, colour, label, start, end, place, note,
+  link, month_from, month_to.
+
+  Month names arrive already resolved. Liquid will not take a filter inside an
+  index, so `months[date | date: '%-m']` does not error — it silently yields 0
+  and prints "24 0" where the month should be.
+
+  A missing time prints nothing. Most of the older seminars never recorded one,
+  and "all day" would be asserting something the record does not support — it
+  also read as a contradiction next to a note naming an evening class.
+{%- endcomment -%}
+<li class="cal-item" data-date="{{ include.date }}"{% if include.until %} data-until="{{ include.until }}"{% endif %}
+    data-type="{{ include.type }}" style="--colour: {{ include.colour }}">
+  <p class="cal-item-date">
+    <time datetime="{{ include.date }}">{{ include.date | date: '%-d' }} {{ include.month_from }}</time>
+    {%- if include.until %} – <time datetime="{{ include.until }}">{{ include.until | date: '%-d' }} {{ include.month_to }}</time>{% endif -%}
+    <span class="cal-item-year">{{ include.date | date: '%Y' }}</span>
+  </p>
+  <p class="cal-item-type"><span class="cal-item-dot" aria-hidden="true"></span>{{ include.label }}</p>
+  <h3 class="cal-item-title">
+    {%- if include.link %}<a href="{{ include.link }}">{{ include.title }}</a>{% else %}{{ include.title }}{% endif -%}
+  </h3>
+  {%- if include.start or include.place %}
+  <p class="cal-item-meta">
+    {%- if include.start %}<time datetime="{{ include.start }}">{{ include.start }}</time>{% if include.end %}–<time datetime="{{ include.end }}">{{ include.end }}</time>{% endif %}{% endif -%}
+    {%- if include.start and include.place %} · {% endif -%}
+    {%- if include.place %}{{ include.place }}{% endif -%}
+  </p>
+  {%- endif -%}
+  {%- if include.note %}<p class="cal-item-note">{{ include.note }}</p>{% endif -%}
+</li>

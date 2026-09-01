@@ -1,0 +1,376 @@
+# ---------------------------------------------------------------------------
+# Programa de examen — kyū grades
+#
+# Transcribed from the dojo's five PDFs. The PDFs are not published: this is
+# the content, the page renders it, and the browser's own print-to-PDF cannot
+# go stale.
+#
+# EACH GRADE LISTS ONLY WHAT IT ADDS. The syllabus is cumulative — 4th kyū is
+# everything in 5th plus more — and it used to be stored as five complete
+# lists, which meant the same technique was written up to five times and the
+# grades could silently disagree. They did: the 1st kyū PDF had lost Udekime-
+# nage and Maki-otoshi from yokomen, the whole jō programme, and Kata-dori
+# nikyō. Storing the additions makes that impossible to express.
+#
+# `tools/exam-cumulative.py` accumulates these into the six sheets the page
+# renders, stamping every technique with the grade it first appears at.
+#
+#   a   the attack, rōmaji — universal, not translated
+#   an  a note ON the attack, which is prose and IS translated
+#   w   the techniques. A plain string, or {n:, note:} when something has to be
+#       said about one that is not part of its name.
+#
+# NOTATION, decided once and applied everywhere:
+#   · macrons on long vowels — Shihō-nage, Kokyū-hō, Ikkyō, Jō — matching
+#     _data/glossary.yml, which has spelled rōmaji that way from the start
+#   · compound terms hyphenated: Shōmen-uchi, Katate-dori, Ushiro ryōte-dori
+#   · qualifiers follow the name, space-separated, NO parentheses:
+#     `Katate-dori gyaku-hanmi`, `Ikkyō jōdan`, `Kaiten-nage uchi`
+#   · Kaiten-nage names the direction after the technique: `Kaiten-nage uchi`,
+#     `Kaiten-nage soto`, or `Kaiten-nage uchi, soto` for both
+#   · anything that is NOT part of the name — a condition, an instruction — is
+#     a `note` and renders in italic beside it
+#
+# CORRECTIONS to the PDFs, all spelling: Shino-nage → Shihō-nage, Nikkyo →
+# Nikyō, Tenchin-nage → Tenchi-nage, Ju-waza → Jiyū-waza.
+# Left as written, being the dojo's own jō vocabulary: Kaete / Junte / Keshi
+# uchiotoshi, Sanshō, Ude-kime-nage, Hiji-kime-osae.
+# ---------------------------------------------------------------------------
+
+ui:
+  title:      { es: "Programa de examen", ca: "Programa d'examen",
+                en: "Grading programme", ja: "審査要項" }
+  close:      { es: "Cerrar", ca: "Tancar", en: "Close", ja: "閉じる" }
+  share:      { es: "Compartir", ca: "Compartir", en: "Share", ja: "共有" }
+  share_copied: { es: "Enlace copiado", ca: "Enllaç copiat", en: "Link copied", ja: "リンクをコピーしました" }
+  print:      { es: "Imprimir", ca: "Imprimir", en: "Print", ja: "印刷" }
+  legend:     { es: "Se añade en", ca: "S'afegeix a", en: "Added at", ja: "追加される級" }
+  legend_5:   { es: "Base de 5.º kyū", ca: "Base de 5è kyū", en: "5th kyū base", ja: "五級の基本" }
+  all_title:  { es: "Todo el programa, de 5.º a 1.er kyū",
+                ca: "Tot el programa, de 5è a 1r kyū",
+                en: "The whole programme, 5th to 1st kyū",
+                ja: "全要項（五級〜一級）" }
+  all_intro:  { es: "El programa es acumulativo. Cada técnica aparece una vez, en el color del grado en que se pide por primera vez.",
+                ca: "El programa és acumulatiu. Cada tècnica apareix un cop, amb el color del grau on es demana per primera vegada.",
+                en: "The programme is cumulative. Each technique appears once, in the colour of the grade where it is first asked for.",
+                ja: "要項は累積です。各技は一度だけ、最初に求められる級の色で示します。" }
+
+grades_meta:
+  - { n: 5, id: kyu5, color: "#34454C", name: { es: "5.º kyū", ca: "5è kyū", en: "5th kyū", ja: "五級" } }
+  - { n: 4, id: kyu4, color: "#1A7444", name: { es: "4.º kyū", ca: "4t kyū", en: "4th kyū", ja: "四級" } }
+  - { n: 3, id: kyu3, color: "#064F6E", name: { es: "3.er kyū", ca: "3r kyū", en: "3rd kyū", ja: "三級" } }
+  - { n: 2, id: kyu2, color: "#6450A1", name: { es: "2.º kyū", ca: "2n kyū", en: "2nd kyū", ja: "二級" } }
+  - { n: 1, id: kyu1, color: "#AE5224", name: { es: "1.er kyū", ca: "1r kyū", en: "1st kyū", ja: "一級" } }
+
+sections:
+  - { id: suwari,  name: { es: "Suwari-waza", ca: "Suwari-waza", en: "Suwari-waza", ja: "座技" } }
+  - { id: hanmi,   name: { es: "Hanmi-handachi", ca: "Hanmi-handachi", en: "Hanmi-handachi", ja: "半身半立" } }
+  - { id: tachi,   name: { es: "Tachi-waza", ca: "Tachi-waza", en: "Tachi-waza", ja: "立技" } }
+  - { id: jiyu,    name: { es: "Jiyū-waza", ca: "Jiyū-waza", en: "Jiyū-waza", ja: "自由技" } }
+  - { id: buki,    name: { es: "Armas", ca: "Armes", en: "Weapons", ja: "武器" } }
+  - { id: kokyuho, name: { es: "Suwari-waza kokyū-hō", ca: "Suwari-waza kokyū-hō",
+                           en: "Suwari-waza kokyū-hō", ja: "座技呼吸法" } }
+  - { id: randori, name: { es: "Randori", ca: "Randori", en: "Randori", ja: "乱取り" } }
+
+notes:
+  inside:    &n_inside    { es: "por dentro", ca: "per dins", en: "from the inside", ja: "内側から" }
+  fromkesa:  &n_fromkesa  { es: "desde kesa", ca: "des de kesa", en: "from kesa", ja: "袈裟から" }
+  dist:      &n_dist      { es: "se pedirá distancia corta, media o larga",
+                            ca: "es demanarà distància curta, mitjana o llarga",
+                            en: "short, medium or long distance will be asked for",
+                            ja: "近間・中間・遠間のいずれかを指定" }
+  examiner:  &n_examiner  { es: "el examinador indica el ataque",
+                            ca: "l'examinador indica l'atac",
+                            en: "the examiner names the attack", ja: "攻撃は審査員が指定" }
+  otherwaza: &n_otherwaza { es: "y una segunda técnica que indica el examinador",
+                            ca: "i una segona tècnica que indica l'examinador",
+                            en: "and a second technique named by the examiner",
+                            ja: "および審査員が指定する二つ目の技" }
+  fromfut:   &n_fromfut   { es: "empieza en futari-dori", ca: "comença en futari-dori",
+                            en: "begins from futari-dori", ja: "二人取りから始める" }
+  sanshoparts: &n_sanshoparts { es: "parte 1, haciendo los dos roles",
+                            ca: "part 1, fent els dos rols",
+                            en: "part 1, performing both roles",
+                            ja: "第一部、両方の役" }
+  bothroles: &n_bothroles { es: "haciendo los dos roles, uke y nage",
+                            ca: "fent els dos rols, uke i nage",
+                            en: "performing both roles, uke and nage",
+                            ja: "受けと投げの両方を行う" }
+  levels:    &n_levels    { es: "gedan, chūdan y jōdan", ca: "gedan, chūdan i jōdan",
+                            en: "gedan, chūdan and jōdan", ja: "下段・中段・上段" }
+  two:       &n_two       { es: "2 personas", ca: "2 persones", en: "2 people", ja: "2人" }
+  three:     &n_three     { es: "3 personas", ca: "3 persones", en: "3 people", ja: "3人" }
+  one:       &n_one       { es: "1 persona", ca: "1 persona", en: "1 person", ja: "1人" }
+  first4:    &n_first4    { es: "los 4 primeros", ca: "els 4 primers", en: "the first 4", ja: "最初の4本" }
+  first6:    &n_first6    { es: "los 6 primeros", ca: "els 6 primers", en: "the first 6", ja: "最初の6本" }
+  all8:      &n_all8      { es: "los 8", ca: "els 8", en: "all 8", ja: "8本すべて" }
+  n1:        &n_1         { es: "#1", ca: "#1", en: "#1", ja: "#1" }
+  n12:       &n_12        { es: "#1, #2", ca: "#1, #2", en: "#1, #2", ja: "#1・#2" }
+  part1:     &n_part1     { es: "parte 1", ca: "part 1", en: "part 1", ja: "第一部" }
+
+# ---------------------------------------------------------------------------
+# The Japanese forms.
+#
+# The /ja/ pages were printing rōmaji at a Japanese reader, which is the one
+# audience that does not need it. Keyed by the rōmaji exactly as the sheets
+# spell it, so the sheets stay in one language and this is the only place the
+# other one lives.
+#
+# Spelling follows the Aikikai's own grading page — aikikai.or.jp/hombudojo/
+# grading/ beside its English twin. Their house style is attacks WITHOUT
+# okurigana and throws WITH it: 正面打, 片手取, 肩取, 両手取 against 四方投げ,
+# 入身投げ, 小手返し, 天地投げ. Sections likewise: 座技 and 立技, not 座り技.
+#
+# The jō names are the kanji on the dojo's own 36-technique sheet, including
+# 順手撃落, which uses 撃 where the others use 打. That is what the document
+# says, so that is what this says.
+# ---------------------------------------------------------------------------
+ja:
+  # attacks and grips
+  "Shōmen-uchi":             "正面打"
+  "Yokomen-uchi":            "横面打"
+  "Tsuki":                   "突"
+  "Kata-dori":               "肩取"
+  "Katate-dori":             "片手取"
+  "Katate-dori ai-hanmi":    "片手取相半身"
+  "Katate-dori gyaku-hanmi": "片手取逆半身"
+  "Ryōte-dori":              "両手取"
+  "Morote-dori":             "諸手取"
+  "Ushiro ryōte-dori":       "後ろ両手取"
+  "Ushiro ryōkata-dori":     "後ろ両肩取"
+  "Ushiro kubi-shime":       "後ろ首絞"
+  "Futari-dori":             "二人取"
+  # techniques
+  "Ikkyō":                   "一教"
+  "Nikyō":                   "二教"
+  "Sankyō":                  "三教"
+  "Yonkyō":                  "四教"
+  "Gokyō":                   "五教"
+  "Ikkyō jōdan":             "一教（上段）"
+  "Irimi-nage":              "入身投げ"
+  "Shihō-nage":              "四方投げ"
+  "Kote-gaeshi":             "小手返し"
+  "Tenchi-nage":             "天地投げ"
+  "Koshi-nage":              "腰投げ"
+  "Jūji-nage":               "十字投げ"
+  "Sumi-otoshi":             "隅落とし"
+  "Kokyū-hō":                "呼吸法"
+  "Kokyū-nage":              "呼吸投げ"
+  "Ude-kime-nage":           "腕極め投げ"
+  "Hiji-kime-osae":          "肘極め押え"
+  "Ude-garami":              "腕絡み"
+  "Maki-otoshi":             "巻き落とし"
+  "Kaiten-nage uchi":        "回転投げ（内）"
+  "Kaiten-nage soto":        "回転投げ（外）"
+  "Kaiten-nage uchi, soto":  "回転投げ（内・外）"
+  # weapons
+  "Bokken":                  "木剣"
+  "Jō":                      "杖"
+  "Suburi":                  "素振り"
+  "Kesa-uchi":               "袈裟打"
+  "Kaete-uchi-otoshi":       "替手打落"
+  "Junte-uchi-otoshi":       "順手撃落"
+  "Kaeshi-uchi-otoshi":      "返打落"
+  "Sanshō #1":               "三章 #1"
+
+# Weapons override. The same rōmaji means two different written forms: the
+# yokomen throw is 巻き落とし, while the jō technique is 巻落 on the dojo's own
+# 36-technique sheet. Consulted first when the block is the weapons section.
+ja_buki:
+  "Maki-otoshi": "巻落"
+
+grades:
+  # ================================================================ 5th kyū ==
+  - id: kyu5
+    adds:
+      - section: suwari
+        rows:
+          - a: "Shōmen-uchi"
+            w: ["Ikkyō", "Nikyō", "Sankyō", "Yonkyō"]
+      - section: hanmi
+        rows:
+          - a: "Katate-dori"
+            w: ["Shihō-nage"]
+      - section: tachi
+        rows:
+          - a: "Shōmen-uchi"
+            w: ["Ikkyō", "Irimi-nage", "Kote-gaeshi"]
+          - a: "Yokomen-uchi"
+            w: ["Nikyō", "Shihō-nage", "Ude-kime-nage"]
+          - a: "Tsuki"
+            w: ["Kote-gaeshi", "Sumi-otoshi"]
+          - a: "Katate-dori gyaku-hanmi"
+            w: ["Sankyō", "Yonkyō", "Kaiten-nage uchi, soto"]
+          - a: "Ryōte-dori"
+            w: ["Tenchi-nage"]
+          - a: "Morote-dori"
+            w: ["Kokyū-hō"]
+      - section: buki
+        rows:
+          - a: "Bokken"
+            w: [{ n: "Suburi", note: *n_first4 }]
+          - a: "Jō"
+            an: *n_fromkesa
+            w: [{ n: "Kesa-uchi", note: *n_1 }, { n: "Maki-otoshi", note: *n_1 }]
+      - section: kokyuho
+        rows:
+          - a: "Kokyū-hō"
+      - section: randori
+        bn: *n_two
+
+  # ================================================================ 4th kyū ==
+  - id: kyu4
+    adds:
+      - section: suwari
+        rows:
+          - a: "Shōmen-uchi"
+            w: ["Irimi-nage"]
+      - section: hanmi
+        rows:
+          - a: "Katate-dori"
+            w: ["Ikkyō"]
+      - section: tachi
+        rows:
+          - a: "Shōmen-uchi"
+            w: ["Kokyū-nage"]
+          - a: "Yokomen-uchi"
+            w: ["Kote-gaeshi"]
+          - a: "Tsuki"
+            w: ["Irimi-nage"]
+          - a: "Katate-dori gyaku-hanmi"
+            w: ["Shihō-nage"]
+          - a: "Ryōte-dori"
+            w: ["Ikkyō"]
+          - a: "Ushiro ryōte-dori"
+            w: ["Shihō-nage"]
+      - section: buki
+        upd:
+          - a: "Bokken"
+            w: [{ n: "Suburi", note: *n_first6 }]
+          - a: "Jō"
+            an: *n_fromkesa
+            w: [{ n: "Kesa-uchi", note: *n_12 }, { n: "Maki-otoshi", note: *n_12 }]
+
+  # ================================================================ 3rd kyū ==
+  - id: kyu3
+    adds:
+      - section: suwari
+        rows:
+          - a: "Shōmen-uchi"
+            w: ["Kote-gaeshi"]
+      - section: hanmi
+        rows:
+          - a: "Katate-dori"
+            w: ["Kaiten-nage uchi, soto"]
+      - section: tachi
+        rows:
+          - a: "Shōmen-uchi"
+            w: ["Nikyō"]
+          - a: "Yokomen-uchi"
+            w: ["Maki-otoshi"]
+          - a: "Tsuki"
+            w: ["Ude-kime-nage"]
+          - a: "Katate-dori gyaku-hanmi"
+            w: ["Kokyū-nage"]
+          - a: "Ryōte-dori"
+            w: ["Kokyū-nage"]
+          - a: "Ushiro ryōte-dori"
+            w: ["Ikkyō"]
+          - a: "Morote-dori"
+            w: ["Kokyū-nage", "Ikkyō jōdan"]
+      - section: buki
+        upd:
+          - a: "Bokken"
+            w: [{ n: "Suburi", note: *n_all8 }]
+        rows:
+          - a: "Jō"
+            an: *n_fromkesa
+            w: ["Kaete-uchi-otoshi", "Junte-uchi-otoshi"]
+      - section: randori
+        bn: *n_two
+        tail: [{ note: *n_fromfut }]
+
+  # ================================================================ 2nd kyū ==
+  - id: kyu2
+    adds:
+      - section: suwari
+        rows:
+          - a: "Shōmen-uchi"
+            w: ["Gokyō"]
+      - section: hanmi
+        rows:
+          - a: "Ryōte-dori"
+            w: ["Shihō-nage"]
+      - section: tachi
+        rows:
+          - a: "Shōmen-uchi"
+            w: ["Gokyō", "Shihō-nage"]
+          - a: "Yokomen-uchi"
+            w: [{ n: "Irimi-nage", note: *n_dist }]
+          - a: "Tsuki"
+            w: [{ n: "Ikkyō", note: *n_inside }]
+          - a: "Katate-dori gyaku-hanmi"
+            w: ["Koshi-nage"]
+          - a: "Ryōte-dori"
+            w: ["Shihō-nage"]
+          - a: "Ushiro ryōte-dori"
+            w: ["Sankyō"]
+          - a: "Morote-dori"
+            w: ["Jūji-nage"]
+          - a: "Kata-dori"
+            w: ["Nikyō"]
+      - section: buki
+        rows:
+          - a: "Jō"
+            an: *n_fromkesa
+            w: [{ n: "Kaeshi-uchi-otoshi", note: *n_12 }]
+      - section: randori
+        bn: *n_three
+        rows:
+          - a: "Futari-dori"
+            w: [{ n: "Kokyū-hō", note: *n_otherwaza }]
+
+  # ================================================================ 1st kyū ==
+  - id: kyu1
+    adds:
+      - section: suwari
+        rows:
+          - a: "Shōmen-uchi"
+            w: ["Hiji-kime-osae", "Kaiten-nage soto"]
+          - a: "Kata-dori"
+            w: ["Ikkyō", "Nikyō"]
+          - a: "Katate-dori gyaku-hanmi"
+            w: ["Ikkyō", "Nikyō", "Sankyō", "Irimi-nage", "Kote-gaeshi"]
+      - section: hanmi
+        rows:
+          - a: "Katate-dori"
+            w: ["Ude-garami"]
+      - section: tachi
+        rows:
+          - a: "Shōmen-uchi"
+            w: ["Yonkyō", "Hiji-kime-osae", "Koshi-nage", "Kaiten-nage soto"]
+          - a: "Yokomen-uchi"
+            w: ["Ikkyō", "Sankyō", "Yonkyō", "Gokyō", "Hiji-kime-osae", "Koshi-nage"]
+          - a: "Tsuki"
+            w: ["Hiji-kime-osae", "Koshi-nage", "Shihō-nage"]
+          - a: "Katate-dori ai-hanmi"
+            w: ["Kaiten-nage uchi", "Kote-gaeshi", "Sumi-otoshi", "Shihō-nage", "Ude-kime-nage"]
+          - a: "Katate-dori gyaku-hanmi"
+            w: ["Ikkyō", "Sumi-otoshi", "Maki-otoshi"]
+          - a: "Ryōte-dori"
+            w: ["Kokyū-hō", "Irimi-nage", "Kote-gaeshi", "Koshi-nage"]
+          - a: "Ushiro ryōte-dori"
+            w: ["Shihō-nage", "Kote-gaeshi", "Jūji-nage"]
+          - a: "Ushiro ryōkata-dori"
+            w: ["Ikkyō", "Sankyō"]
+          - a: "Ushiro kubi-shime"
+            w: ["Ikkyō"]
+          - a: "Morote-dori"
+            w: [{ n: "Ikkyō", note: *n_levels }]
+      - section: jiyu
+        bn: *n_one
+        tail: [{ note: *n_examiner }]
+      - section: buki
+        rows:
+          - a: "Jō"
+            w: [{ n: "Sanshō #1", note: *n_sanshoparts }]

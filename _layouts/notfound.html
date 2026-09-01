@@ -1,0 +1,65 @@
+{% include header.html %}
+
+<main id="main" tabindex="-1">
+  {%- comment -%}
+    404 — the kaijū and the ma-ai.
+
+    The page has an apology to make and about four seconds of the reader's
+    patience, so it spends them on the one thing it can teach: ma-ai, the
+    correct distance. Godzilla walks in from either side, and a throw only
+    lands while he is inside the circle. Miss and it says which way you missed.
+
+    Godzilla is the woodcut that has been on this page for years, inverted and
+    screened so the white ground drops out against the black mat.
+  {%- endcomment -%}
+  {%- assign L = page.lang | default: 'es' -%}
+  {%- assign N = site.data.notfound.ui -%}
+  {%- assign gCl = site.data.nav.groups | where: 'id', 'classes' | first -%}
+  {%- assign gCo = site.data.nav.groups | where: 'id', 'contact' | first -%}
+
+  <div class="nf" id="nf" role="button" tabindex="0" aria-label="{{ N.play[L] }}">
+    <div class="nf-mat" aria-hidden="true"></div>
+
+    <div class="nf-head">
+      <p class="nf-kicker">{{ N.kicker[L] }}</p>
+      <h1 class="nf-num">404</h1>
+      <p class="nf-lede">{{ N.lede[L] }}</p>
+    </div>
+
+    <div class="nf-field" aria-hidden="true">
+      <div class="nf-zone"><span>MA-AI</span></div>
+      <span class="nf-boom" id="nf-boom"></span>
+      <div class="nf-kaiju" id="nf-kaiju"><div class="nf-flip" id="nf-flip"><div class="nf-bob">
+        <picture>
+          <source type="image/webp" srcset="/images/404-24EeTTuv-godzilla.webp">
+          <img src="/images/404-24EeTTuv-godzilla.png" alt="" width="800" height="800">
+        </picture>
+      </div></div></div>
+      <p class="nf-call" id="nf-call"></p>
+    </div>
+
+    <p class="nf-hud" aria-live="polite">{{ N.streak[L] }}<b id="nf-streak">0</b>{{ N.best[L] }}<b id="nf-best">0</b></p>
+
+    {%- comment -%}
+      `hint` is gone from the line. "Throw him when he enters the circle" was
+      a rule for a game whose rule is already visible: there is a dashed circle
+      labelled MA-AI and a kaijū walking into it. What is left is the only part
+      a reader cannot work out by looking, which is what to press.
+    {%- endcomment -%}
+    <p class="nf-hint"><b>{{ N.how[L] }}</b></p>
+
+    <div class="nf-acts">
+      <a href="{% if L == 'es' %}/{% else %}/{{ L }}/{% endif %}">{{ N.home[L] }}</a>
+      <a href="{{ gCl.items[0].url[L] }}">{{ N.learn[L] }}</a>
+      <a href="{{ gCo.items[0].url[L] }}">{{ N.write[L] }}</a>
+    </div>
+
+    <script type="application/json" id="nf-words">
+      {"maai":{{ N.maai[L] | jsonify }},"ukemi":{{ N.ukemi[L] | jsonify }},
+       "early":{{ N.early[L] | jsonify }},"late":{{ N.late[L] | jsonify }},
+       "gone":{{ N.gone[L] | jsonify }}}
+    </script>
+  </div>
+</main>
+
+{% include footer.html %}

@@ -1,0 +1,139 @@
+// out: false
+//
+// ---------------------------------------------------------------------------
+// Visitors
+//
+// Three questions a reader arrives with — can I watch, can I train, can I join
+// — answered in three panels rather than one column of prose. The wording is
+// unchanged apart from moving to second person singular, which is how the rest
+// of the site speaks.
+// ---------------------------------------------------------------------------
+
+@vs-accent: @Green;   // 6.25:1 on white
+
+// The site indents every <ul> inside main to the prose measure — 8rem above
+// 1200px, tapering down the breakpoints. That is right for a list inside a
+// paragraph and wrong for a row of cards: it was taking 128px off an already
+// 96px-padded 948px and leaving each card 217px wide. The prose rule carries
+// `!important`, so unlike the rest of this bundle matching its depth is not
+// enough — the override has to be !important too.
+.page main .vs-paths {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin: 0 0 2.5rem;
+  padding: 0 !important;
+  list-style: none;
+
+  > li { margin: 0; }
+}
+
+.vs-paths { list-style: none; }
+
+.vs-path {
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+  padding: 1.5rem;
+  border: 1px solid fadeout(@Black, 90%);
+  border-radius: .375rem;
+  background-color: @White;
+  // The colour rule identifies the route without spending a line on a badge.
+  border-top: 3px solid var(--vs-colour, @Accent);
+}
+
+.vs-icon {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: fadeout(@Accent, 92%);
+
+  > svg { width: 1.05rem; height: 1.05rem; color: var(--vs-colour, @Accent); }
+}
+
+
+// A checklist, because the reader is assembling a message.
+.page main .vs-send {
+  margin: .35rem 0 0;
+  padding: 0;
+  list-style: none;
+
+  > li {
+    position: relative;
+    padding-left: 1.35rem;
+    margin-bottom: .35rem;
+    font-size: .9rem;
+    line-height: 1.5;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: .15rem;
+      top: .45em;
+      width: .4rem;
+      height: .22rem;
+      border-left: 2px solid @vs-accent;
+      border-bottom: 2px solid @vs-accent;
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+// Room under the text rather than a box that stops at the last word.
+.vs-path { padding-bottom: 2rem; }
+
+.vs-note {
+  display: flex;
+  gap: .7rem;
+  align-items: flex-start;
+  margin: 2rem 0 0;
+  padding: 1rem 1.15rem;
+  border-left: 3px solid @vs-accent;
+  background-color: fadeout(@vs-accent, 97%);
+  border-radius: 0 .25rem .25rem 0;
+
+  > svg { width: 1rem; height: 1rem; flex: 0 0 auto; margin-top: .15rem; color: @vs-accent; }
+}
+
+.page main {
+
+  .vs-title {
+    .NotoSans; .bold;
+    margin: 0;
+    padding: 0;
+    font-size: 1.15rem;
+    line-height: 1.3;
+    color: @Black;
+    text-align: left;
+  }
+
+  .vs-lead,
+  .vs-note p {
+    margin: 0;
+    padding: 0;
+    font-size: .92rem;
+    line-height: 1.6;
+    text-align: left;
+  }
+
+  .vs-when {
+    .NotoSans; .bold;
+    margin: .25rem 0 0;
+    padding: 0;
+    font-size: .72rem;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    color: lighten(@Dark, 18%);
+    text-align: left;
+  }
+}
+
+@media (min-width: 992px) {
+  .page main .vs-paths { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media print {
+  .vs-path { break-inside: avoid; }
+}

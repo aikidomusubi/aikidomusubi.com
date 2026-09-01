@@ -1,0 +1,61 @@
+# Categories for the _events/ collection.
+#
+# Shared by the Seminars page (which badges each card) and the calendar (which
+# colours entries by them), so the two cannot drift apart.
+#
+# Every entry in _events/ carries `category:` in its front matter. Four values,
+# and the distinction is about what the thing IS rather than who runs it:
+#
+#   seminar        multi-day, a visiting instructor, registration and a poster
+#   masterclass    one session with a guest instructor — the site has also
+#                  called these "clases especiales" / "special classes"; they
+#                  are the same thing and all use this one label
+#   collaboration  a public event Aikido Musubi appears at rather than hosts,
+#                  such as Japan Weekend or Manga Barcelona
+#   course         a programme with enrolment: a fixed weekly slot over a term,
+#                  a start and an end date, a fee and a place to sign up. The
+#                  first is the 26-session course at the UB Faculty of Law.
+#                  A seminar is an occasion; a course is a term's commitment,
+#                  which is why it is its own thing and not a long seminar.
+#
+# Japanese follows Aikikai's own vocabulary: 講習会 for a seminar, 特別稽古 for
+# a special class, 講座 for a taught course. See CLAUDE.md on where the Japanese
+# terms come from.
+
+categories:
+  - id: seminar
+    color: "#064F6E"
+    name:
+      es: "Seminario"
+      ca: "Seminari"
+      en: "Seminar"
+      ja: "講習会"
+  - id: masterclass
+    color: "#6450A1"
+    name:
+      es: "Masterclass"
+      ca: "Masterclass"
+      en: "Masterclass"
+      ja: "特別稽古"
+  - id: course
+    # Sanzo Wada "Olive Green", 5.17:1 on white. The free hue was green, but
+    # Cossack Green sits 10.1 Lab from @Green — and @Green is the "Upcoming"
+    # pill, which renders in the same tag row as this dot. Olive is 28.5 away
+    # and reads as its own colour beside it.
+    color: "#6B7140"
+    name:
+      es: "Curso"
+      ca: "Curs"
+      en: "Course"
+      ja: "講座"
+  - id: collaboration
+    # Sanzo Wada "Burnt Sienna", the same value as @Rust. It reached this
+    # by two steps: #C2571A measured 4.49:1 on white — just under the floor
+    # for text this size — so it was darkened by hand to #B04E17, and then
+    # snapped to the dictionary entry 1.9 away from that. 5.21:1.
+    color: "#AE5224"
+    name:
+      es: "Colaboración"
+      ca: "Col·laboració"
+      en: "Collaboration"
+      ja: "協力イベント"

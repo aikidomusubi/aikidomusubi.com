@@ -1,0 +1,7 @@
+// out: false
+//
+// Wrapper. `(reference)` pulls in the variables and mixins without emitting a
+// byte of base.less itself — otherwise every page bundle would carry its own
+// copy of the @font-face block and the Bootstrap import.
+@import (reference) 'base.less';
+@import 'press.less';

@@ -1,0 +1,28 @@
+# The 404 page.
+#
+# Godzilla has been on this page for years and stays. What is new is that he now
+# walks into a ma-ai circle and you throw him: a kote gaeshi, which is a real
+# technique, at a real distance, which is the one thing the page can teach while
+# it apologises. Every miss says whether you were early or late.
+#
+# The whole thing honours prefers-reduced-motion: with it on, nothing moves.
+
+ui:
+  kicker:   { es: "Error 404", ca: "Error 404", en: "Error 404", ja: "エラー 404" }
+  lede:     { es: "Godzilla tampoco encontró esta página. Lo que sí encontró fue un <em>kote gaeshi</em>.", ca: "Godzilla tampoc no va trobar aquesta pàgina. El que sí que va trobar va ser un <em>kote gaeshi</em>.", en: "Godzilla could not find this page either. What he did find was a <em>kote gaeshi</em>.", ja: "ゴジラもこのページを見つけられませんでした。見つけたのは<em>小手返し</em>でした。" }
+  # `hint` is no longer rendered — see _layouts/notfound.html. Kept here
+  # because it is the sentence to put back if the circle ever stops being
+  # self-explanatory.
+  hint:     { es: "Proyéctalo cuando entre en el círculo.", ca: "Projecta'l quan entri al cercle.", en: "Throw him when he enters the circle.", ja: "円の中に入ったら投げてください。" }
+  how:      { es: "Clic, toque o barra espaciadora", ca: "Clic, toc o barra espaiadora", en: "Click, tap or spacebar", ja: "クリック・タップ・スペースキー" }
+  maai:     { es: "¡Ma-ai!", ca: "Ma-ai!", en: "Ma-ai!", ja: "間合い！" }
+  ukemi:    { es: "Ukemi", ca: "Ukemi", en: "Ukemi", ja: "受身" }
+  early:    { es: "Muy pronto", ca: "Massa aviat", en: "Too early", ja: "早すぎ" }
+  late:     { es: "Muy tarde", ca: "Massa tard", en: "Too late", ja: "遅すぎ" }
+  gone:     { es: "Se fue", ca: "Se n'ha anat", en: "He got away", ja: "逃げられた" }
+  streak:   { es: "Seguidas", ca: "Seguides", en: "Streak", ja: "連続" }
+  best:     { es: "Mejor", ca: "Millor", en: "Best", ja: "最高" }
+  play:     { es: "Proyectar al kaijū cuando entre en la distancia correcta", ca: "Projectar el kaijū quan entri a la distància correcta", en: "Throw the kaijū when it enters the correct distance", ja: "正しい間合いに入った怪獣を投げる" }
+  home:     { es: "Volver a la portada", ca: "Tornar a la portada", en: "Back to the home page", ja: "トップページへ戻る" }
+  learn:    { es: "Aprender a caer", ca: "Aprendre a caure", en: "Learn to fall", ja: "受身を学ぶ" }
+  write:    { es: "Escribirnos", ca: "Escriu-nos", en: "Write to us", ja: "お問い合わせ" }

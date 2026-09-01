@@ -1,0 +1,124 @@
+# The footer.
+#
+# ONE SOURCE, and where possible not even that: the first two columns are the
+# nav's own groups, pulled in by id, so a section renamed in _data/nav.yml is
+# renamed in the footer too and the two can never disagree. Only the heading
+# above each column is written here, because "Practicar" reads better over a
+# list than the nav's "Clases y Horarios" does.
+#
+# Everything factual below — the legal name, the CIF, the registry number —
+# comes from aviso-legal.md, which is the page that is legally obliged to be
+# right. Do not retype it here from memory; copy it from there.
+
+# ---------------------------------------------------------------------------
+# The invitation band
+#
+# The one thing the footer is asking a first-time visitor to do: come and try
+# a class. It deliberately does NOT lead with "watching is allowed" or "it is
+# free for visitors" — both are true, both live on the Visitors page, and
+# neither is the thing we want someone to act on from the bottom of a page.
+# The two trial classes are the offer that matches the ask, and they are what
+# visitors.md already promises.
+# ---------------------------------------------------------------------------
+band:
+  title:
+    es: "Prueba una clase"
+    ca: "Prova una classe"
+    en: "Try a class"
+    ja: "稽古を体験する"
+  text:
+    es: "Te invitamos a dos clases de prueba, sin compromiso. No hace falta experiencia previa: se empieza en una clase para principiantes."
+    ca: "T'oferim dues classes de prova, sense compromís. No cal experiència prèvia: es comença en una classe per a principiants."
+    en: "Come for two trial classes, with no commitment. No previous experience is needed; you start in a beginners' class."
+    ja: "入会前に体験稽古へ二回ご参加いただけます。経験は必要ありません。初心者クラスから始めます。"
+  cta:
+    es: "Escríbenos"
+    ca: "Escriu-nos"
+    en: "Write to us"
+    ja: "お問い合わせ"
+  url:
+    es: "/contacto/"
+    ca: "/ca/contacte/"
+    en: "/en/contact/"
+    ja: "/ja/contact/"
+
+# ---------------------------------------------------------------------------
+# Columns
+#
+# `from_nav` names a group id in _data/nav.yml and takes its items verbatim.
+# `items` spells them out, for links the menu does not carry.
+# ---------------------------------------------------------------------------
+columns:
+  - from_nav: classes
+    label: { es: "Practicar", ca: "Practicar", en: "Training", ja: "稽古" }
+
+  - from_nav: about
+    label: { es: "Sobre nosotros", ca: "Sobre nosaltres", en: "About us", ja: "私たちについて" }
+
+  # The three dojos. These anchors are venue slugs and are the same in all four
+  # languages, so only the page path changes.
+  - id: where
+    label: { es: "Dónde entrenamos", ca: "On entrenem", en: "Where we train", ja: "稽古場所" }
+    items:
+      - label: { es: "Badalona", ca: "Badalona", en: "Badalona", ja: "バダロナ" }
+        url:   { es: "/acceso/#aikido-musubi", ca: "/ca/acces/#aikido-musubi",
+                 en: "/en/access-information/#aikido-musubi", ja: "/ja/access-information/#aikido-musubi" }
+      - label: { es: "Sant Adrià de Besòs", ca: "Sant Adrià de Besòs",
+                 en: "Sant Adrià de Besòs", ja: "サン・アドリア・ダ・バゾス" }
+        url:   { es: "/acceso/#sant-adria-de-besos", ca: "/ca/acces/#sant-adria-de-besos",
+                 en: "/en/access-information/#sant-adria-de-besos", ja: "/ja/access-information/#sant-adria-de-besos" }
+      - label: { es: "Barcelona", ca: "Barcelona", en: "Barcelona", ja: "バルセロナ" }
+        url:   { es: "/acceso/#cxem-espronceda", ca: "/ca/acces/#cxem-espronceda",
+                 en: "/en/access-information/#cxem-espronceda", ja: "/ja/access-information/#cxem-espronceda" }
+      - label: { es: "Universitat de Barcelona", ca: "Universitat de Barcelona",
+                 en: "Universitat de Barcelona", ja: "バルセロナ大学" }
+        url:   { es: "/acceso/#university-of-barcelona", ca: "/ca/acces/#university-of-barcelona",
+                 en: "/en/access-information/#university-of-barcelona", ja: "/ja/access-information/#university-of-barcelona" }
+      - label: { es: "Cómo llegar", ca: "Com arribar", en: "Directions", ja: "行き方" }
+        url:   { es: "/acceso/", ca: "/ca/acces/",
+                 en: "/en/access-information/", ja: "/ja/access-information/" }
+
+# ---------------------------------------------------------------------------
+# The fixed legal strip
+#
+# Art. 10 LSSI-CE wants these reachable from anywhere, which is why a 30px
+# band stays pinned to the viewport while the rest of the footer sits at the
+# end of the page like a normal footer.
+# ---------------------------------------------------------------------------
+legal:
+  - label: { es: "Aviso legal", ca: "Avís legal", en: "Legal notice", ja: "法的通知" }
+    url:   { es: "/aviso-legal/", ca: "/ca/avis-legal/",
+             en: "/en/legal-notice/", ja: "/ja/legal-notice/" }
+  - label: { es: "Privacidad", ca: "Privadesa", en: "Privacy", ja: "プライバシー" }
+    url:   { es: "/politica-privacidad/", ca: "/ca/politica-privadesa/",
+             en: "/en/privacy-policy/", ja: "/ja/privacy-policy/" }
+  - label: { es: "Cookies", ca: "Galetes", en: "Cookies", ja: "クッキー" }
+    url:   { es: "/politica-cookies/", ca: "/ca/politica-galetes/",
+             en: "/en/cookie-policy/", ja: "/ja/cookie-policy/" }
+  - label: { es: "Accesibilidad", ca: "Accessibilitat",
+             en: "Accessibility", ja: "アクセシビリティ" }
+    url:   { es: "/accesibilidad/", ca: "/ca/accessibilitat/",
+             en: "/en/accessibility/", ja: "/ja/accessibility/" }
+  - label: { es: "Mapa del sitio", ca: "Mapa del lloc",
+             en: "Site map", ja: "サイトマップ" }
+    url:   { es: "/mapa-del-sitio/", ca: "/ca/mapa-del-lloc/",
+             en: "/en/site-map/", ja: "/ja/site-map/" }
+
+ui:
+  # Verbatim from aviso-legal.md §1, except on /ja/, where the association's
+  # own Japanese name is what a Japanese reader should see. The CIF beside it
+  # is what identifies the entity, and it does not change.
+  org:     "Associació Cultural Musubi Aikido"
+  org_ja:  "産靈合気道文化協会"
+  cif:     "G-64799554"
+  address: "Av. d'Alfons XIII, 351<br>08918 Badalona, Barcelona"
+
+  email:    { es: "Correo",     ca: "Correu",    en: "Email",    ja: "メール" }
+  whatsapp: { es: "WhatsApp",   ca: "WhatsApp",  en: "WhatsApp", ja: "WhatsApp" }
+  phone:    { es: "Teléfono",   ca: "Telèfon",   en: "Phone",    ja: "電話" }
+  social:   { es: "Redes sociales", ca: "Xarxes socials",
+              en: "Social media",   ja: "ソーシャルメディア" }
+  footer:   { es: "Pie de página", ca: "Peu de pàgina",
+              en: "Site footer",    ja: "フッター" }
+  legal_nav: { es: "Información legal", ca: "Informació legal",
+               en: "Legal information", ja: "法的情報" }

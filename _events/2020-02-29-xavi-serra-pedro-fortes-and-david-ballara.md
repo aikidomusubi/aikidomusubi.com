@@ -1,0 +1,37 @@
+---
+category: masterclass
+title_ca: "Xavi Serra, Pedro Fortes, i David Ballara"
+title_en: "Xavi Serra, Pedro Fortes, and David Ballara"
+title_es: "Xavi Serra, Pedro Fortes, y David Ballara"
+title_ja: "チャビ・セッラ、ペドロ・フォルテス、ダヴィド・バヤラ"
+
+instructor_ca: "Xavi Serra, Pedro Fortes, i David Ballara"
+instructor_en: "Xavi Serra, Pedro Fortes, and David Ballara"
+instructor_es: "Xavi Serra, Pedro Fortes, y David Ballara"
+instructor_ja: "チャビ・セッラ、ペドロ・フォルテス、ダヴィド・バヤラ"
+
+desc_ca: >-
+  El proper dissabte 29 de febrer tenim el plaer d'acollir en el nostre dojo la molt esperada classe especial a càrrec de Xavi Serra (5è dan Aikikai), Pedro Fortes (3r dan Aikikai), i David Ballara (3r dan Aikikai).
+desc_en: >-
+  Next Saturday, February 29th, we are pleased to host the long awaited special class at our dojo by Xavi Serra (5th dan Aikikai), Pedro Fortes (3rd dan Aikikai), and David Ballara (3rd dan Aikikai).
+desc_es: >-
+  El próximo sábado 29 de febrero tenemos el placer de acoger en nuestro dojo la muy esperada clase especial a cargo de Xavi Serra (5.º dan Aikikai), Pedro Fortes (3.er dan Aikikai), y David Ballara (3.er dan Aikikai).
+desc_ja: >-
+  ２月２９日（土）に合気道産靈の道場でチャビ・セッラ（五段）とペドロ・フォルテス（参段）とダヴィド・バヤラ（参段）の待ちに待った稽古が行われます。
+
+image_ca: "events-hFZ2XXIp-2020-02-29-xavi-serra-pedro-fortes-and-david-ballara-es"
+image_en: "events-hFZ2XXIp-2020-02-29-xavi-serra-pedro-fortes-and-david-ballara-es"
+image_es: "events-hFZ2XXIp-2020-02-29-xavi-serra-pedro-fortes-and-david-ballara-es"
+image_ja: "events-hFZ2XXIp-2020-02-29-xavi-serra-pedro-fortes-and-david-ballara-es"
+
+file_ca: "events-hFZ2XXIp-2020-02-29-xavi-serra-pedro-fortes-and-david-ballara-es.pdf"
+file_en: "events-hFZ2XXIp-2020-02-29-xavi-serra-pedro-fortes-and-david-ballara-es.pdf"
+file_es: "events-hFZ2XXIp-2020-02-29-xavi-serra-pedro-fortes-and-david-ballara-es.pdf"
+file_ja: "events-hFZ2XXIp-2020-02-29-xavi-serra-pedro-fortes-and-david-ballara-es.pdf"
+
+date_from: "2020-02-29"
+date_to: "blank"
+
+event_link: "https://www.facebook.com/events/2641945132703640/"
+registration_link:
+---

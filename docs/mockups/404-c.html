@@ -1,0 +1,110 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>404 · Informe de incidencia</title>
+<link rel="stylesheet" href="/styles/all.min.css">
+<style>
+:root{--acc:#FFF200}
+html,body{margin:0;background:#0b0d0d;color:#d5dadc;overflow-x:hidden;
+  font-family:'Noto Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+h1,h2{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-weight:400;margin:0;letter-spacing:.04em}
+p{margin:0}
+.mono{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-variant-numeric:tabular-nums}
+.stage{position:relative;min-height:100svh;overflow:hidden;display:grid;
+  grid-template-rows:1fr auto}
+
+/* ── the city, the beast, the searchlight ──────────────────────────────── */
+.sky{position:absolute;inset:0;z-index:0;
+  background:radial-gradient(120% 80% at 50% 100%,#16302f 0%,#0b0d0d 62%)}
+.god{position:absolute;z-index:1;right:2vw;bottom:-3vh;width:min(46vw,560px);
+  filter:invert(1) blur(.4px);mix-blend-mode:screen;opacity:.2;
+  animation:loom 9s ease-in-out infinite alternate}
+.god img{width:100%;display:block}
+@keyframes loom{from{transform:translateY(2%) scale(1)}to{transform:translateY(-2%) scale(1.035)}}
+@media(max-width:767.98px){.god{width:82vw;right:-14vw;opacity:.13}}
+
+.beam{position:absolute;z-index:2;left:50%;top:-40vh;width:34vw;height:150vh;
+  background:linear-gradient(180deg,rgba(255,242,0,.16),rgba(255,242,0,0) 70%);
+  transform-origin:50% 0;filter:blur(22px);pointer-events:none;
+  animation:sweep 11s ease-in-out infinite}
+@keyframes sweep{0%{transform:translateX(-50%) rotate(-26deg)}
+  50%{transform:translateX(-50%) rotate(24deg)}
+  100%{transform:translateX(-50%) rotate(-26deg)}}
+.scan{position:absolute;inset:0;z-index:5;pointer-events:none;
+  background:repeating-linear-gradient(180deg,rgba(255,255,255,.028) 0 1px,transparent 1px 3px)}
+.grain{position:absolute;inset:-50%;z-index:6;pointer-events:none;opacity:.05;
+  background-image:radial-gradient(#fff 1px,transparent 1px);background-size:3px 3px;
+  animation:grain 1.1s steps(4) infinite}
+@keyframes grain{0%{transform:translate(0,0)}25%{transform:translate(-2%,1%)}
+  50%{transform:translate(1%,-2%)}75%{transform:translate(-1%,-1%)}100%{transform:translate(0,0)}}
+
+/* ── the broken sign ───────────────────────────────────────────────────── */
+.inner{position:relative;z-index:7;max-width:1140px;width:100%;margin:0 auto;padding:5rem 6rem 0}
+@media(max-width:767.98px){.inner{padding:3rem 2rem 0}}
+.num{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:clamp(5rem,17vw,12rem);
+  line-height:.85;color:#fff;display:inline-flex;gap:.03em}
+.num span{display:inline-block;text-shadow:0 0 26px rgba(255,242,0,.35)}
+.num span:nth-child(1){animation:flick 4.1s steps(1) infinite}
+.num span:nth-child(2){animation:flick 3.3s steps(1) .4s infinite;color:#FFF200}
+.num span:nth-child(3){animation:flick 5.7s steps(1) .9s infinite}
+@keyframes flick{0%,86%,100%{opacity:1}88%{opacity:.15}90%{opacity:1}
+  93%{opacity:.25}95%{opacity:1}}
+.kicker{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.62rem;letter-spacing:.32em;
+  text-transform:uppercase;color:#FFF200;margin-bottom:1.2rem}
+
+/* ── the log ───────────────────────────────────────────────────────────── */
+.log{margin-top:2.2rem;max-width:44rem;border-left:2px solid rgba(255,242,0,.5);
+  padding-left:1.2rem;min-height:9.5rem}
+.log p{font-size:.86rem;line-height:1.85;color:#aeb6b8;opacity:0}
+.log p.on{opacity:1}
+.log p b{color:#fff;font-weight:400}
+.log .t{color:#FFF200;margin-right:.6rem;font-size:.76rem}
+.cur{display:inline-block;width:.5em;height:1em;background:#FFF200;vertical-align:-.14em;
+  animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+.acts{position:relative;z-index:7;padding:2.6rem 6rem 2.6rem;display:flex;gap:1.6rem;flex-wrap:wrap}
+@media(max-width:767.98px){.acts{padding:2rem 2rem}}
+.acts a{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.66rem;letter-spacing:.15em;
+  text-transform:uppercase;color:#fff;text-decoration:none;border-bottom:2px solid #FFF200;
+  padding-bottom:.25rem}
+.acts a:hover{border-bottom-color:#fff}
+@media(prefers-reduced-motion:reduce){
+  .god,.beam,.grain,.num span{animation:none !important}.log p{opacity:1 !important}
+  .cur{display:none}}
+</style></head>
+<body>
+<div class="stage">
+  <div class="sky" aria-hidden="true"></div>
+  <div class="beam" aria-hidden="true"></div>
+  <div class="god" aria-hidden="true">
+    <picture><source type="image/webp" srcset="/images/404-24EeTTuv-godzilla.webp">
+      <img src="/images/404-24EeTTuv-godzilla.png" alt=""></picture>
+  </div>
+  <div class="scan" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div>
+  <div class="inner">
+    <p class="kicker">Informe de incidencia / 404</p>
+    <h1 class="num"><span>4</span><span>0</span><span>4</span></h1>
+    <div class="log mono" id="log" aria-live="polite">
+      <p><span class="t">04:12</span>Avistamiento en la desembocadura del Besòs.</p>
+      <p><span class="t">04:31</span>Se confirma dirección sur. Altura estimada: <b>50 m</b>.</p>
+      <p><span class="t">05:02</span>Pérdida de la página solicitada. No se recupera.</p>
+      <p><span class="t">05:19</span>El tatami permanece intacto. El dojo abre a su hora.</p>
+      <p><span class="t">05:40</span>Recomendación: <b>volver a la portada</b>.<span class="cur"></span></p>
+    </div>
+  </div>
+  <div class="acts">
+    <a href="/">Volver a la portada</a>
+    <a href="/acceso/">Dónde está el dojo</a>
+    <a href="/contacto/">Escribirnos</a>
+  </div>
+</div>
+<script>
+(function(){
+  var ps=[].slice.call(document.querySelectorAll('#log p'));
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){
+    ps.forEach(function(p){p.classList.add('on');}); return; }
+  ps.forEach(function(p,i){ setTimeout(function(){ p.classList.add('on'); }, 500+i*900); });
+})();
+</script>
+</body></html>

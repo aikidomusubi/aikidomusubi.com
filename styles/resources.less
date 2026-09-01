@@ -1,0 +1,854 @@
+// out: false
+//
+// ---------------------------------------------------------------------------
+// Recursos
+//
+// One page, filtered in the browser. The bar is the glossary's — same job,
+// same component — and the rows are the mockup's: what it is, what it is for,
+// and one button whose verb depends on what the reader has to do with it.
+// ---------------------------------------------------------------------------
+
+main {
+  --rs-mute: mix(@White, @Dark, 13.1%);   // 7.4:1 on white
+  --rs-line: fade(@Black, 13%);
+}
+
+// Sticky, but only while it is the thing you are using.
+//
+// A sticky bar under a sticky nav is already two fixed strips; reaching the
+// invitation band and the footer made four, and on a phone that was most of
+// the viewport occupied by furniture. So the bar unsticks once the entries
+// have run out: `position: sticky` on an element inside a container releases
+// at the container's bottom edge, and .gl is exactly the entries — the bar is
+// pinned while there is something to filter and scrolls away with the last of
+// them. No script, no scroll listener.
+//
+// It is also shorter than it was: one row of chips instead of five on a phone
+// (see .rs-chips), and less padding above and below.
+.rs-wrap {
+  position: relative;
+}
+
+.rs-bar {
+  position: sticky;
+  top: var(--nav-shrunk, 0px);
+  z-index: 5;
+  .full-bleed();
+  margin-bottom: 1.8rem;
+  background: fade(@White, 96%);
+
+  // No rules above and below. The gallery, the timetable and the seminars all
+  // put their filter row straight on the page with nothing drawn round it, and
+  // there is no reason this one should be boxed. The rules were also fighting
+  // the section headings underneath, which draw their own.
+
+  @supports (backdrop-filter: blur(10px)) {
+    backdrop-filter: blur(10px);
+  }
+}
+
+// NOT .page-measure(). That mixin sets the gutter as a `padding` SHORTHAND,
+// once per breakpoint, and every one of those redeclarations lands after the
+// vertical padding written here and resets it to zero. The bar has looked
+// unpadded at every width above 768px through three attempts at fixing it,
+// and correct below — because the mobile override happened to come last.
+//
+// Same tokens, same result, written long-hand so the two axes stop fighting.
+.rs-bar-in {
+  width: 100%;
+  max-width: @page-max;
+  margin: 0 auto;
+  padding: 1.15rem @gut-sm;
+
+  @media (min-width: @bp-md) { padding: 1.15rem @gut-md; }
+  @media (min-width: @bp-lg) { padding: 1.15rem @gut-lg; }
+  @media (max-width: @bp-md - .02px) { padding: .95rem @gut-sm .85rem; }
+}
+
+.rs-search {
+  display: flex;
+  gap: .5rem;
+  margin-bottom: .6rem;
+
+  input {
+    flex: 1;
+    min-width: 0;
+    padding: .5rem .8rem;
+    border: 1px solid var(--rs-line);
+    border-radius: 0;
+    background: @White;
+    font: inherit;
+    font-size: .95rem;
+    color: @Black;
+
+    &:focus {
+      outline: 2px solid @Yellow;
+      outline-offset: -1px;
+      border-color: @Black;
+    }
+  }
+
+  button {
+    padding: 0 1rem;
+    border: 1px solid var(--rs-line);
+    background: none;
+    cursor: pointer;
+    .Futura;
+    font-size: .62rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--rs-mute);
+
+    &:hover { border-color: @Black; color: @Black; }
+  }
+}
+
+// The chips are the site's chips.
+//
+// There were two chip languages: a pill with a colour dot at .8rem Noto Sans
+// on the gallery, the timetable and the seminars, and a square .6rem Futura
+// tag here. Nothing distinguished the two jobs — both are "narrow this list"
+// — so this one is the pill now, and the count sits where the colour dot sits
+// on the others. The one difference that stays is the dot itself: these
+// categories have no colour, they have a size.
+//
+// Ura keeps its own square tags on purpose. It is a different surface, and
+// micro Futura labels are its whole idiom.
+.rs-chips {
+  display: flex;
+  gap: .4rem;
+  flex-wrap: wrap;
+
+  button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    min-height: 2rem;
+    padding: .25rem .8rem;
+    margin: 0;
+    border: 1px solid fadeout(@Black, 88%);
+    border-radius: 2rem;
+    background-color: @White;
+    font: inherit;
+    font-size: .8rem;
+    line-height: 1.2;
+    color: var(--rs-mute);
+    cursor: pointer;
+    user-select: none;
+    transition: background-color .2s ease, border-color .2s ease, opacity .2s ease;
+
+    // The count, where the others carry the category's colour dot.
+    i {
+      font-style: normal;
+      font-size: .68rem;
+      font-variant-numeric: tabular-nums;
+      color: var(--rs-mute);   // 7.4:1 on white; it used to be #7C878C at 55%
+    }
+
+    // NO OPACITY. An unselected chip used to be the selected one at 55%,
+    // which composited to #9EA6A9 on white — 2.47:1, against a 4.5:1 floor,
+    // and the count inside it reached 1.89:1. Opacity on text over a tint is
+    // the single most repeated accessibility fault in this codebase.
+    //
+    // Unselected is now a lighter BORDER and nothing else: the colour of the
+    // label does not move, so it cannot fail.
+    border-color: fadeout(@Black, 92%);
+
+    &:hover { border-color: fadeout(@Black, 70%); color: @Black; }
+    &:focus-visible { outline: 2px solid @Blue; outline-offset: 2px; }
+
+    &[data-on] {
+      background: @Black;
+      border-color: @Black;
+      color: @White;
+
+      i { color: @Yellow; }
+    }
+  }
+
+  // Wrap, do not scroll. A horizontal scroller hides chips behind an edge with
+  // nothing to say they are there, and on a filter row every option matters —
+  // the reader is choosing from a set, not browsing a shelf. Four rows of
+  // chips is more page but no hidden state.
+  @media (max-width: @bp-md - .02px) {
+    padding-bottom: 0;
+
+    button { flex: 0 1 auto; }
+  }
+}
+
+.rs-count {
+  margin-top: .55rem;
+  .Futura;
+  font-size: .6rem;
+  @media (max-width: @bp-md - .02px) { margin-top: .4rem; }
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--rs-mute);
+}
+
+
+// Everything below is nested inside .rs-wrap, and that nesting is load-bearing.
+// `.rs-get` is an <a>, and the prose layer styles `.page main a` at (0,1,2);
+// a single class is (0,1,0), so the button came out black text on its own
+// black ground and in Noto Sans instead of Futura. Two classes beat it.
+// Same arithmetic as styles/ura.less and the About pages.
+.rs-wrap {
+  // ---- the rows -------------------------------------------------------------
+  .rs { padding-bottom: 2rem; }
+
+  .rs-grp {
+    margin-bottom: 2.8rem;
+
+    &[hidden] { display: none; }
+  }
+
+  .rs-gh {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: .2rem;
+    padding-bottom: .7rem;
+    border-bottom: 2px solid @Black;
+
+    h2 { margin: 0; font-size: 1.15rem; text-transform: uppercase; letter-spacing: .1em; }
+    span { font-size: .82rem; color: var(--rs-mute); }
+  }
+
+  .rs-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem 1.6rem;
+    align-items: center;
+    padding: .95rem 0;
+    border-bottom: 1px solid var(--rs-line);
+
+    &[hidden] { display: none; }
+
+    b { display: block; font-weight: 400; font-size: .98rem; }
+    .d { margin: .15rem 0 0; font-size: .86rem; line-height: 1.6; color: var(--rs-mute); }
+    .m { margin: .4rem 0 0; display: flex; gap: .7rem; align-items: center; flex-wrap: wrap; }
+
+    @media (max-width: @bp-sm - .02px) { grid-template-columns: 1fr; align-items: start; }
+  }
+
+  .rs-by { color: var(--rs-mute); font-size: .86rem; }
+
+  // The badge says what the thing IS, and its colour says which of the two
+  // jobs it belongs to: something of ours to take away, or something to read.
+  .rs-k {
+    display: inline-block;
+    .Futura;
+    font-size: .52rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    padding: .18rem .46rem;
+    color: @White;
+  }
+  // ONE COLOUR PER KIND, and six kinds. Forms and PDFs were both @Rust, so the
+  // badge told you nothing about the two things it was most likely to be
+  // distinguishing: a form you print and sign, and a document you read.
+  //
+  // Every ratio below is white ink on the badge, except the form, which is the
+  // one light badge and takes @YellowInkDeep instead. A form is the thing on
+  // this page you are meant to act on, so it gets the brand colour.
+  .rs-k-form  { background: @Yellow; color: @YellowInkDeep; }  // 12.97:1
+  .rs-k-doc   { background: @Rust; }                           //  5.21:1
+  .rs-k-page  { background: @Black; }                          // 18.63:1
+  .rs-k-book  { background: @Green; }                          //  5.79:1
+  .rs-k-video { background: @Blue; }                           //  8.93:1
+  // An archive elsewhere is the one kind that is not a thing we hold, so it is
+  // the one badge with no fill.
+  .rs-k-media { background: none; color: var(--rs-mute); box-shadow: inset 0 0 0 1px var(--rs-line); }
+
+  .rs-lg { .Futura; font-size: .58rem; letter-spacing: .14em; color: var(--rs-mute); }
+
+  .rs-get {
+    align-self: center;
+    justify-self: start;
+    white-space: nowrap;
+    padding: .55rem .95rem;
+    background: @Black;
+    .Futura;
+    font-size: .62rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: @White;
+    text-decoration: none;      // the prose layer underlines every <a>
+
+    &:hover { background: @Rust; color: @White; text-decoration: none; }
+    &:focus-visible { outline: 2px solid @Blue; outline-offset: 2px; }
+  }
+
+  .rs-get-o {
+    background: none;
+    color: @Black;
+    box-shadow: inset 0 0 0 1px fade(@Black, 30%);
+
+    &:hover { background: @Black; color: @White; }
+    &, &:hover { text-decoration: none; }
+  }
+
+  // Rendered, not hidden: a resource that is coming says so, which is more use
+  // than a gap where a row should be. NOT .rs-get as well — it was, and it
+  // inherited the button's black fill under muted grey text.
+  .rs-soon {
+    display: inline-block;
+    align-self: center;
+    justify-self: start;
+    white-space: nowrap;
+    padding: .55rem .95rem;
+    .Futura;
+    font-size: .62rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--rs-mute);
+    box-shadow: inset 0 0 0 1px var(--rs-line);
+  }
+
+  .rs-empty { padding: 3rem 0; font-size: .95rem; color: var(--rs-mute); }
+}
+
+// ---------------------------------------------------------------------------
+// The syllabus panel
+//
+// Ura's panel, in daylight. Same mechanics for the same reasons — fixed, slid
+// in from the right, `visibility` transitioned so it slides OUT as well as in,
+// `inert` when closed so the keyboard cannot walk into it — but this one is a
+// document to be read and printed, so it is paper-coloured and the type is set
+// for reading rather than for atmosphere.
+//
+// The closed state is NOT duplicated inline in the head the way Ura's is:
+// resources.min.css is an ordinary blocking stylesheet on this page, so it is
+// applied before the first paint and the panel cannot flash in the document
+// flow.
+// ---------------------------------------------------------------------------
+@ex-bar-h: 3.6rem;
+@ex-slide: .52s;
+@ex-ease: cubic-bezier(.16, .84, .28, 1);
+
+.ex-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 1400;
+  background: fade(@Black, 45%);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .38s ease, visibility .38s;
+}
+
+.ex-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 60rem;
+  z-index: 1401;
+  display: flex;
+  flex-direction: column;
+  background: @White;
+  transform: translateX(100%);
+  visibility: hidden;
+  // Same reasoning as Ura: visibility has to be in the transition or the panel
+  // vanishes on the first frame of the close and never slides out.
+  transition: transform @ex-slide @ex-ease, visibility 0s linear @ex-slide;
+  box-shadow: -2rem 0 5rem fade(@Black, 28%);
+}
+
+html.ex-on {
+  // `html` is painted @Black in base.less, as the canvas an overscroll exposes
+  // at the end of a dark footer. It showed through the scrim while the panel
+  // was open; painting it white only changed the colour of the hole. The hole
+  // itself is fixed below — this stays as the backstop.
+  background: @White;
+
+  // THE SCROLL LOCK IS ONE LINE, on `html` and nowhere else.
+  //
+  // It was `overflow: hidden` on html AND body, which is the combination that
+  // drops the page to the top. Pinning the body with `position: fixed` and a
+  // negative `top` — the usual answer — was worse here: `base.less` sets
+  // `body { height: 100% }`, so a fixed body is exactly one viewport tall, and
+  // offsetting it by the scroll position put the whole thing above the
+  // viewport. That is the blank strip beside the panel, and it also printed as
+  // an empty sheet. `overflow: hidden` on html alone stops the scroll and
+  // keeps the position, and needs no bookkeeping in the script at all.
+  overflow: hidden;
+
+  .ex-scrim { opacity: 1; visibility: visible; }
+
+  .ex-panel {
+    transform: none;
+    visibility: visible;
+    transition: transform @ex-slide @ex-ease, visibility 0s linear 0s;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ex-scrim, .ex-panel, html.ex-on .ex-panel { transition: none; }
+}
+
+// ---- the bar ---------------------------------------------------------------
+.ex-bar {
+  flex: 0 0 auto;
+  border-bottom: 1px solid fade(@Black, 12%);
+  background: @White;
+}
+
+.ex-bar-in {
+  display: flex;
+  align-items: center;
+  gap: .9rem;
+  flex-wrap: wrap;
+  min-height: @ex-bar-h;
+  padding: .8rem 1.25rem;
+
+  @media (min-width: @bp-md) { padding: .8rem 2rem; }
+}
+
+.ex-eyebrow {
+  .Futura;
+  flex: 0 0 100%;
+  margin: 0;
+  font-size: .58rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: fade(@Black, 55%);
+}
+
+.ex-name {
+  .Futura;
+  flex: 1 1 14rem;
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: @Black;
+  line-height: 1.2;
+}
+
+.ex-acts { display: flex; gap: .4rem; }
+
+.ex-action, .ex-x {
+  .NotoSans;
+  display: inline-flex;
+  align-items: center;
+  gap: .38rem;
+  padding: .42rem .7rem;
+  font-size: .78rem;
+  color: @Black;
+  background: fade(@Black, 5%);
+  border: 0;
+  border-radius: .25rem;
+  cursor: pointer;
+
+  svg { width: .95rem; height: .95rem; flex: 0 0 auto; }
+
+  &:hover  { background: fade(@Black, 10%); }
+  &:focus-visible { outline: 2px solid @Blue; outline-offset: 2px; }
+}
+
+// "Link copied" replaces the label in place, so the button must not resize.
+.ex-action[data-done] { background: fade(@Green, 14%); color: darken(@Green, 6%); }
+
+.ex-x {
+  background: @Black;
+  color: @White;
+  &:hover { background: lighten(@Black, 14%); }
+}
+
+// ---- the sheet -------------------------------------------------------------
+.ex-scroll {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 1.4rem 1.25rem 4rem;
+
+  @media (min-width: @bp-md) { padding: 1.8rem 2rem 4rem; }
+}
+
+.ex-sheet[hidden] { display: none; }
+
+.ex-intro {
+  .NotoSans;
+  max-width: 44rem;
+  margin: 0 0 1rem;
+  font-size: .9rem;
+  color: fade(@Black, 72%);
+}
+
+// Two columns on a wide panel, one on a phone. `columns` rather than grid
+// because the blocks are of wildly different heights and the only requirement
+// is that they fill; nothing has to line up across the gutter.
+.ex-cols {
+  @media (min-width: @bp-md) {
+    columns: 2;
+    column-gap: 2.4rem;
+  }
+}
+
+.ex-block {
+  break-inside: avoid;
+  margin: 0 0 1.5rem;
+
+  h3 {
+    .Futura;
+    margin: 0 0 .5rem;
+    padding-bottom: .3rem;
+    border-bottom: 2px solid @Black;
+    font-size: .68rem;
+    font-weight: 400;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: @Black;
+
+    i { font-style: normal; letter-spacing: .04em; text-transform: none;
+        color: fade(@Black, 55%); }
+  }
+
+  dl { margin: 0; }
+
+  dt {
+    .NotoSans; .bold;
+    margin: .55rem 0 .15rem;
+    font-size: .82rem;
+    color: @Black;
+
+    i { .NotoSans; font-style: italic; font-weight: 400; color: fade(@Black, 55%); }
+  }
+
+  dd { margin: 0; }
+
+  ul { list-style: none; margin: 0; padding: 0; }
+
+  li {
+    .NotoSans;
+    font-size: .82rem;
+    line-height: 1.45;
+    color: fade(@Black, 82%);
+    padding: .04rem 0;
+
+    i { font-style: italic; color: fade(@Black, 52%); }
+  }
+}
+
+.ex-tail li { .bold; color: @Black; }
+
+// ---- the cumulative sheet --------------------------------------------------
+// A left rule in the grade's colour, not a background wash: a wash behind
+// eleven-point text is a contrast problem waiting to happen, and the rule reads
+// at a glance down a column.
+// A superseded value — "suburi, the first 4" once it has become "the first 6"
+// — belongs only to the cumulative view, where the progression is the point.
+// On a grade sheet it would contradict the line under it.
+li[data-was] { display: none; }
+.ex-colour li[data-was] { display: list-item; }
+
+// `.ex-colour` is set by the script for the cumulative view only. The grade
+// sheets carry the same `data-from` attributes and simply do not paint them.
+.ex-colour {
+  li[data-from] { padding-left: .55rem; box-shadow: inset 2px 0 0 transparent; }
+  li[data-from="4"] { box-shadow: inset 2px 0 0 @Green; }
+  li[data-from="3"] { box-shadow: inset 2px 0 0 #064F6E; }
+  li[data-from="2"] { box-shadow: inset 2px 0 0 #6450A1; }
+  li[data-from="1"] { box-shadow: inset 2px 0 0 @Rust; }
+}
+
+.ex-all-head[hidden] { display: none; }
+
+.ex-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .35rem 1rem;
+  margin: 0 0 1.4rem;
+  padding: .7rem .9rem;
+  background: fade(@Black, 4%);
+  border-radius: .25rem;
+}
+
+.ex-legend-lab {
+  .Futura;
+  font-size: .58rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: fade(@Black, 58%);
+}
+
+.ex-key {
+  .NotoSans;
+  display: inline-flex;
+  align-items: center;
+  gap: .38rem;
+  font-size: .78rem;
+  color: @Black;
+
+  i { font-style: normal; color: fade(@Black, 52%); }
+}
+
+.ex-key-dot {
+  width: .55rem;
+  height: .55rem;
+  border-radius: 50%;
+  background: fade(@Black, 22%);
+  flex: 0 0 auto;
+}
+
+.ex-key[data-from="4"] .ex-key-dot { background: @Green; }
+.ex-key[data-from="3"] .ex-key-dot { background: #064F6E; }
+.ex-key[data-from="2"] .ex-key-dot { background: #6450A1; }
+.ex-key[data-from="1"] .ex-key-dot { background: @Rust; }
+
+// Print-only masthead: hidden on screen, where the bar already names the sheet.
+.ex-print-head { display: none; }
+
+// ---------------------------------------------------------------------------
+// Print — one sheet of paper
+//
+// The panel is the document. Everything else on the page is chrome, and the
+// chrome is what a printed syllabus does not need: the nav, the filter, the
+// list the panel was opened from, the panel's own bar with its share and print
+// buttons. What is left is the sheet, on A4, in one piece.
+//
+// FITTING ONE PAGE is the whole design constraint here. 1st kyū is 74
+// techniques across fifteen attacks, so the print type is 7.4pt in three
+// columns with the section rules doing the work of separating things. It is a
+// reference sheet to pin up, not prose — and at that size the whole of the
+// largest grade lands on a single side.
+// ---------------------------------------------------------------------------
+@media print {
+  @page { size: A4 portrait; margin: 10mm 9mm; }
+
+  // Paper is white, and nothing is locked or pinned. `html` is @Black on
+  // screen and printed as a black field wherever the sheet did not reach;
+  // `html.ex-on` locks the scroll, which print must undo or the sheet is
+  // clipped to one viewport.
+  html, body, html.ex-on, html.ex-on body {
+    background: #fff !important;
+    overflow: visible !important;
+    height: auto !important;
+    position: static !important;
+    top: auto !important;
+  }
+
+  // The page underneath, and the site's own furniture. NOT `.page` itself:
+  // the panel is inside it — Ura's sits outside because footer.html emits it
+  // after the close, and this one is emitted by the layout before it. Hiding
+  // `.page` hid the very thing being printed, and measured as a zero-height
+  // sheet, which is how it was caught.
+  html.ex-on .nv,
+  html.ex-on main,
+  html.ex-on .ft,
+  html.ex-on .ft-strip,
+  html.ex-on .ex-scrim,
+  html.ex-on .cookie-banner,
+  html.ex-on .skip,
+  html.ex-on .ura-panel,
+  html.ex-on .ura-scrim { display: none !important; }
+
+  // `.page` is the white surface the site draws on; for print it is nothing.
+  html.ex-on .page {
+    display: block;
+    padding: 0;
+    margin: 0;
+    background: none;
+    box-shadow: none;
+  }
+
+  html.ex-on .ex-panel {
+    position: static;
+    display: block;
+    max-width: none;
+    width: auto;
+    transform: none;
+    visibility: visible;
+    box-shadow: none;
+    background: #fff;
+  }
+
+  .ex-bar { display: none; }
+
+  .ex-scroll {
+    overflow: visible;
+    padding: 0;
+  }
+
+  // The masthead the screen does not need. A printout with no name on it is a
+  // list of Japanese words.
+  .ex-print-head {
+    display: block;
+    margin: 0 0 3mm;
+    padding-bottom: 2mm;
+    border-bottom: .4pt solid #111;
+  }
+
+  .ex-print-logo { width: 34mm; height: auto; display: block; }
+
+  .ex-print-name {
+    .Futura;
+    margin: 1.5mm 0 0;
+    font-size: 11pt;
+    color: #000;
+  }
+
+  .ex-print-url {
+    .NotoSans;
+    margin: .6mm 0 0;
+    font-size: 6.5pt;
+    color: #555;
+  }
+
+  .ex-intro { font-size: 7pt; margin: 0 0 2mm; color: #333; max-width: none; }
+
+  .ex-legend {
+    background: none;
+    border: .4pt solid #bbb;
+    padding: 1.2mm 2mm;
+    margin: 0 0 3mm;
+    gap: .2rem .8rem;
+  }
+  .ex-legend-lab { font-size: 5.6pt; }
+  .ex-key { font-size: 6.6pt; }
+  .ex-key-dot { width: 1.6mm; height: 1.6mm; }
+
+  // Three columns. Measured rather than guessed: the print rules are applied
+  // at A4's content box and the sheet height read back. At 8.2pt the largest
+  // sheet — all 111 techniques — comes to about three quarters of a page, so
+  // every grade and the cumulative sheet each land on one side of one sheet.
+  // Three columns, and where it fits, an area per column rather than a
+  // continuous flow. Suwari-waza and hanmi-handachi share the first; tachi-
+  // waza — which is most of any sheet, and two columns wide on its own at 1st
+  // kyū — starts a fresh one. What follows it is small and flows on. Strict
+  // one-area-per-column cannot hold for the larger grades and one page, and
+  // one page is the harder requirement.
+  .ex-cols { columns: 3; column-gap: 5mm; }
+  .ex-block[data-sec="tachi"] { break-before: column; }
+
+  // A document is sentences, so two columns, not three.
+  .ex-doc-cols { columns: 2; column-gap: 7mm; }
+  .ex-cite { font-size: 7pt; margin: -1mm 0 3mm; color: #555; }
+  .ex-part {
+    break-inside: auto;
+    margin: 0 0 3mm;
+    h3 { font-size: 6.6pt; break-after: avoid; margin: 0 0 1mm;
+         padding-bottom: .4mm; border-bottom: .7pt solid #111; }
+    li { font-size: 8pt; line-height: 1.35; margin: 0 0 1.4mm;
+         padding-left: 4mm; color: #111; }
+    li::before { font-size: 7pt; color: #666; }
+  }
+
+  // On screen a block never splits; in print it must. Tachi waza in the
+  // cumulative sheet is ten attacks deep and taller than a column, and
+  // `break-inside: avoid` made the whole sheet as tall as that one block —
+  // four columns changed nothing until this came off. What must NOT split is a
+  // heading from what it heads, which is what the two `break-after` rules say.
+  .ex-block {
+    break-inside: auto;
+    margin: 0 0 2.2mm;
+
+    h3 { break-after: avoid; }
+    dt { break-after: avoid; }
+
+    h3 {
+      font-size: 6.6pt;
+      letter-spacing: .12em;
+      margin: 0 0 .8mm;
+      padding-bottom: .4mm;
+      border-bottom: .7pt solid #111;
+    }
+
+    dt { font-size: 7.6pt; margin: 1.2mm 0 .25mm; color: #000; }
+    li { font-size: 7.6pt; line-height: 1.28; color: #111; padding: 0; }
+    dt i, li i { color: #666; }
+  }
+
+  // The colour coding has to survive a printer that is told not to print
+  // backgrounds — a left rule does, a background wash does not.
+  .ex-colour li[data-from] { padding-left: 1.2mm; }
+  .ex-colour li[data-from="4"] { box-shadow: inset 1.2pt 0 0 #1A7444; }
+  .ex-colour li[data-from="3"] { box-shadow: inset 1.2pt 0 0 #064F6E; }
+  .ex-colour li[data-from="2"] { box-shadow: inset 1.2pt 0 0 #6450A1; }
+  .ex-colour li[data-from="1"] { box-shadow: inset 1.2pt 0 0 #AE5224; }
+
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+
+// The source of a document the dojo did not write. Small, and a real link.
+.rs-src {
+  .NotoSans;
+  font-size: .72rem;
+  color: fade(@Black, 58%);
+
+  a { color: inherit; text-decoration: underline; text-underline-offset: .15em; }
+  a:hover { color: @Black; }
+}
+
+// ---------------------------------------------------------------------------
+// Etiquette documents, in the same panel as the grading sheets
+//
+// A sheet is a dense index; a document is read. So this sets prose measure and
+// numbering rather than the two-column technique grid — and prints in two
+// columns rather than three, because a rule is a sentence, not a name.
+// ---------------------------------------------------------------------------
+.ex-cite {
+  .NotoSans;
+  margin: -.4rem 0 1.4rem;
+  font-size: .78rem;
+  color: fade(@Black, 58%);
+
+  em { font-style: italic; }
+}
+
+.ex-doc-cols {
+  @media (min-width: @bp-lg) {
+    columns: 2;
+    column-gap: 2.8rem;
+  }
+}
+
+.ex-part {
+  break-inside: avoid;
+  margin: 0 0 1.6rem;
+
+  h3 {
+    .Futura;
+    margin: 0 0 .6rem;
+    padding-bottom: .3rem;
+    border-bottom: 2px solid @Black;
+    font-size: .68rem;
+    font-weight: 400;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: @Black;
+  }
+
+  ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: rule;
+  }
+
+  li {
+    .NotoSans;
+    counter-increment: rule;
+    position: relative;
+    margin: 0 0 .7rem;
+    padding-left: 1.5rem;
+    font-size: .86rem;
+    line-height: 1.55;
+    color: fade(@Black, 84%);
+
+    &::before {
+      content: counter(rule);
+      .Futura;
+      position: absolute;
+      left: 0;
+      top: .1rem;
+      font-size: .72rem;
+      color: fade(@Black, 45%);
+      font-variant-numeric: tabular-nums;
+    }
+  }
+}

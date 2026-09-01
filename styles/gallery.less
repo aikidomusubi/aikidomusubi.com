@@ -1,0 +1,448 @@
+// out: false
+//
+// ---------------------------------------------------------------------------
+// Gallery
+//
+// A mosaic of tiles, each one a local thumbnail and a link out. The old page
+// was a 2-up grid of album covers opening a Bootstrap modal that AJAX-loaded a
+// hidden page of 50 photos; this replaces the whole of that, and the 200 MB it
+// needed, with an index.
+//
+// Heights come from the grid, not from the images: one row for an album or a
+// post, two for a reel. That is what makes a reel legible as a reel before any
+// text is read, and it is why `grid-auto-flow: dense` matters — without it a
+// two-row tile leaves a hole beside it.
+// ---------------------------------------------------------------------------
+
+@gx-row: 11rem;
+@gx-min: 15rem;
+
+// ---------------------------------------------------------------------------
+// Controls — the chips the timetable, calendar and seminars pages already use
+// ---------------------------------------------------------------------------
+.gx-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem 2rem;
+  align-items: flex-start;
+  margin: 0 0 2rem;
+}
+
+.gx-filter {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+
+  > legend {
+    .NotoSans; .bold;
+    float: none;
+    width: auto;
+    font-size: .7rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: fadeout(@Black, 40%);
+    margin: 0 0 .4rem;
+    padding: 0;
+  }
+}
+
+.gx-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+}
+
+.gx-chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  min-height: 2rem;
+  padding: .25rem .7rem;
+  margin: 0;
+  border: 1px solid fadeout(@Black, 88%);
+  border-radius: 2rem;
+  font-size: .8rem;
+  line-height: 1.2;
+  cursor: pointer;
+  user-select: none;
+  background-color: @White;
+  transition: background-color .2s ease, border-color .2s ease, opacity .2s ease;
+
+  > input {
+    position: absolute;
+    opacity: 0;
+    width: 1px; height: 1px;
+    margin: 0;
+  }
+
+  .gx-chip-dot {
+    width: .625rem;
+    height: .625rem;
+    border-radius: 50%;
+    background-color: var(--chip);
+    flex: 0 0 auto;
+  }
+
+  // NO OPACITY on the unchecked state. At 45% the label composited to about
+  // 2.5:1 on white, well under the 4.5:1 floor — the same fault the glossary
+  // and resources chips had. It escaped the audit only because every chip
+  // starts checked, so a fresh page load never shows the failing state.
+  //
+  // The signal is the same without it: the dot hollows out, the ground drains,
+  // and the label steps back to a colour that measures 5.9:1.
+  &:has(input:not(:checked)) {
+    background-color: transparent;
+    color: lighten(@Dark, 18%);
+
+    .gx-chip-dot { background-color: transparent; box-shadow: inset 0 0 0 1px currentColor; }
+  }
+
+  &:hover { border-color: fadeout(@Black, 70%); }
+
+  &:has(input:focus-visible) {
+    outline: 2px solid @Blue;
+    outline-offset: 2px;
+  }
+}
+
+// No colour dot on these, so an unchecked one has only its label to read —
+// which means it cannot be dimmed to 45% and stay legible.
+.gx-chip-plain {
+
+  &:has(input:checked) {
+    background-color: @Accent;
+    border-color: @Accent;
+    color: @White;
+  }
+
+  &:has(input:not(:checked)) {
+    opacity: 1;
+    background-color: transparent;
+    color: lighten(@Dark, 18%);   // 5.9:1
+  }
+}
+
+// ---- the year rail ---------------------------------------------------------
+// Same radios as before, without the pill chrome: a single rule of years with
+// the active one underlined in @Yellow. Seventeen pills wrapped to two rows and
+// weighed every year the same, which is misleading when 2008 holds two posts
+// and 2024 holds ninety-six.
+.gx-filter-years { flex: 1 1 100%; }
+
+.gx-rail {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0;
+  overflow-x: auto;
+  border-top: 1px solid fadeout(@Black, 88%);
+  border-bottom: 1px solid fadeout(@Black, 88%);
+  padding: .15rem 0;
+
+  // No scrollbar gutter stealing height on the platforms that reserve one; the
+  // row is short and the years are short, so it only scrolls on small screens.
+  scrollbar-width: thin;
+}
+
+.gx-rail-sep {
+  flex: 0 0 auto;
+  width: 1px;
+  height: .85rem;
+  margin: 0 .25rem;
+  background-color: fadeout(@Black, 88%);
+}
+
+.gx-year {
+  flex: 0 0 auto;
+  position: relative;
+  cursor: pointer;
+  white-space: nowrap;
+
+  > input {
+    position: absolute;
+    width: 1px; height: 1px;
+    opacity: 0;
+    margin: 0;
+  }
+
+  > span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.9rem;         // 30px of vertical target on a short rule
+    padding: .3rem .4rem;
+    font-size: .78rem;
+    font-variant-numeric: tabular-nums;
+    color: @Dark;               // 8.6:1 on white
+    border-radius: .15rem;
+  }
+
+  &:hover > span { background-color: fadeout(@Black, 94%); }
+
+  > input:checked + span {
+    .bold;
+    color: @Black;
+    box-shadow: inset 0 -2px 0 @Yellow;
+  }
+
+  // The ring has to be visible against a rule with no border of its own.
+  > input:focus-visible + span { outline: 2px solid @Blue; outline-offset: 1px; }
+}
+
+// Noto Sans across the whole rail, "Todo" included. Futura on a row that is
+// otherwise digits made the one word in it look like it belonged to a different
+// control.
+.gx-year > span { .NotoSans; }
+
+.gx-year-all > span {
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-size: .7rem;
+}
+
+// ---- counts on the chips ---------------------------------------------------
+// aria-hidden in the markup: a screen reader gets the count from the status
+// line, and "Seminarios 76" read as two things is worse than one.
+.gx-chip-n {
+  margin-left: .1rem;
+  font-size: .68rem;
+  font-variant-numeric: tabular-nums;
+  color: lighten(@Dark, 18%);   // 5.9:1 on white
+}
+
+.gx-chip > input:checked ~ .gx-chip-n { color: inherit; }
+
+// ---- status ----------------------------------------------------------------
+.gx-count {
+  .NotoSans;
+  margin: 0;
+  flex: 1 1 100%;
+  align-self: flex-start;
+  font-size: .8rem;
+  color: lighten(@Dark, 18%);
+}
+
+.gx-count-facets { color: @Black; }
+
+.gx-clear {
+  .NotoSans;
+  margin-left: .7rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: .76rem;
+  color: @Blue;                 // 8.9:1 on white
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+
+  &:hover { color: darken(@Blue, 8%); }
+  &:focus-visible { outline: 2px solid @Blue; outline-offset: 2px; }
+}
+
+// ---------------------------------------------------------------------------
+// The mosaic
+// ---------------------------------------------------------------------------
+.gx-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(@gx-min, 1fr));
+  grid-auto-rows: @gx-row;
+  grid-auto-flow: dense;
+  gap: 1rem;
+  margin: 0 0 3rem;
+}
+
+.gx-tile {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: .375rem;
+  background-color: fadeout(@Black, 94%);
+  grid-row: span 1;
+
+  // Skip layout and paint for tiles that are off screen.
+  //
+  // The page carries every entry so the filters can work and a crawler can read
+  // them, which at 460-odd tiles was 1.1 seconds of blocking time before
+  // anything was interactive. This lets the browser do that work only as each
+  // tile approaches the viewport. contain-intrinsic-size supplies the height it
+  // would have had, so the scrollbar does not lurch as they resolve.
+  content-visibility: auto;
+  contain-intrinsic-size: auto @gx-row;
+
+  &[hidden] { display: none !important; }
+
+  // Reels are shot 9:16 and shown 9:16-ish: two rows against everything else's
+  // one. It is the fastest thing on the page to read.
+  &.gx-reel {
+    grid-row: span 2;
+    contain-intrinsic-size: auto (@gx-row * 2);
+  }
+
+  // The scrim. Without it a white gi under white text is unreadable, and these
+  // are photographs of people in white.
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top,
+      fadeout(@Black, 20%) 0%,
+      fadeout(@Black, 62%) 38%,
+      fadeout(@Black, 100%) 68%);
+  }
+
+  &:focus-visible {
+    outline: 2px solid @Blue;
+    outline-offset: 2px;
+  }
+}
+
+.gx-badge {
+  position: absolute;
+  z-index: 2;
+  top: .6rem; left: .6rem;
+  padding: .2rem .5rem;
+  border-radius: 2rem;
+  .NotoSans; .bold;
+  font-size: .62rem;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  background-color: fadeout(@White, 6%);
+  color: @Black;
+}
+
+.gx-num {
+  position: absolute;
+  z-index: 2;
+  top: .6rem; right: .6rem;
+  padding: .2rem .5rem;
+  border-radius: 2rem;
+  .NotoSans; .bold;
+  font-size: .65rem;
+  background-color: fadeout(@Black, 40%);
+  color: @White;
+}
+
+.gx-play {
+  position: absolute;
+  z-index: 2;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: fadeout(@White, 10%);
+  display: grid;
+  place-items: center;
+  transition: transform .25s ease, background-color .25s ease;
+
+  > svg {
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-left: .15rem;
+    color: @Black;
+  }
+}
+
+.gx-meta {
+  position: absolute;
+  z-index: 2;
+  left: 0; right: 0; bottom: 0;
+  padding: .85rem .9rem;
+  color: @White;
+}
+
+.gx-name {
+  .NotoSans; .bold;
+  display: block;
+  font-size: .9rem;
+  line-height: 1.25;
+  // The scrim carries most of it; this is for the few frames that are bright
+  // right where the text sits.
+  text-shadow: 0 1px 2px fadeout(@Black, 60%);
+}
+
+.gx-date {
+  display: block;
+  font-size: .72rem;
+  opacity: .85;
+  margin-top: .1rem;
+}
+
+// "View on Instagram" for a screen reader and for Google's link-text audit,
+// which reads rendered text and ignores aria-label. The tile's visible text is
+// a name and a date, which on their own do not say where the link goes.
+.gx-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.gx-empty {
+  grid-column: 1 / -1;
+  margin: 2rem 0;
+  text-align: center;
+  color: lighten(@Dark, 18%);
+}
+
+// ---------------------------------------------------------------------------
+// The image, and the site rules it has to get out from under
+//
+// `main img { width: 100% }` at (0,2,5) and `main a` at (0,2,4) would size and
+// underline these; matching that depth is cheaper than an !important.
+// ---------------------------------------------------------------------------
+.page main {
+
+  .gx-tile {
+    text-decoration: none;
+
+    &:hover,
+    &:focus { text-decoration: none; background-color: fadeout(@Black, 94%); }
+  }
+
+  .gx-tile img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .5s ease;
+  }
+
+  .gx-tile:hover img,
+  .gx-tile:focus-visible img { transform: scale(1.05); }
+
+  .gx-tile:hover .gx-play { transform: translate(-50%, -50%) scale(1.08); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .page main .gx-tile img { transition: none; }
+  .page main .gx-tile:hover img { transform: none; }
+  .gx-play { transition: none; }
+}
+
+// A phone gets one column of full-width tiles, which is the right way to look
+// at photographs on a phone.
+@media (max-width: 575.98px) {
+
+  .gx-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 13rem;
+    gap: .75rem;
+  }
+}
+
+@media print {
+
+  .gx-controls,
+  .gx-lightbox-source { display: none !important; }
+
+  .gx-grid { grid-template-columns: repeat(3, 1fr); }
+}

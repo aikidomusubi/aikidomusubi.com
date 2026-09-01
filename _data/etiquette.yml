@@ -1,0 +1,317 @@
+# ---------------------------------------------------------------------------
+# Etiquette and rules
+#
+# Four documents, read in the same panel as the grading programme and printed
+# the same way. They replace three placeholders that pointed at the About page,
+# which was never where a rule belongs: a rule is looked up, not read once.
+#
+# WHAT IS OURS AND WHAT IS NOT. `osensei` is a translation of a published text
+# and is reproduced as published, with the source named on the document itself
+# — it is not ours to reword. The other three are the dojo's own, rewritten
+# from its practice sheets into sections that can be found quickly: a flat list
+# of twenty-four numbered lines is a document nobody reads twice.
+#
+# SHAPE. A document has parts; a part has a heading and items. An item is a
+# paragraph or a rule. `lead` sets the document up; `source` cites it.
+# ---------------------------------------------------------------------------
+
+ui:
+  title:   { es: "Etiqueta y normas", ca: "Etiqueta i normes",
+             en: "Etiquette and rules", ja: "作法と決まり" }
+  source:  { es: "Fuente", ca: "Font", en: "Source", ja: "出典" }
+
+docs:
+  # =========================================================== the founder ==
+  - id: keiko-kokoroe
+    title:
+      es: "Reglas durante la práctica"
+      ca: "Regles durant la pràctica"
+      en: "Rules during practice"
+      ja: "稽古上の心得"
+    lead:
+      es: "Las reglas del fundador, expuestas en un cartel en el Hombu Dojo para que cualquiera las lea. Se han traducido varias veces y de formas ligeramente distintas; ésta es la versión que apareció en el libro del segundo Dōshu, y se reproduce tal cual, sin reescribir."
+      ca: "Les regles del fundador, exposades en un cartell al Hombu Dojo perquè qualsevol les llegeixi. S'han traduït diverses vegades i de maneres lleugerament diferents; aquesta és la versió que va aparèixer al llibre del segon Dōshu, i es reprodueix tal com és, sense reescriure."
+      en: "The founder's rules, posted at Hombu Dojo where anyone can read them. They have been translated several times and in slightly different ways; this is the version that appeared in the second Dōshu's book, reproduced as published rather than rewritten."
+      ja: "本部道場に掲げられている開祖の心得。訳は何度か、少しずつ異なる形で行われてきました。ここに載せるのは二代道主の著書に現れた版で、書き改めずそのまま収めています。"
+    source:
+      es: "Kisshōmaru Ueshiba, «Aikido», Hozansha, 1974"
+      ca: "Kisshōmaru Ueshiba, «Aikido», Hozansha, 1974"
+      en: "Kisshōmaru Ueshiba, <em>Aikido</em>, Hozansha, 1974"
+      ja: "植芝吉祥丸『合気道』出版芸術社、1974年"
+    parts:
+      - head:
+          es: "Las seis reglas"
+          ca: "Les sis regles"
+          en: "The six rules"
+          ja: "六箇条"
+        items:
+          - es: "Un golpe de Aikido puede matar al adversario. Durante la práctica obedece a tu instructor y no conviertas el tiempo de práctica en una prueba de fuerza innecesaria."
+            ca: "Un cop d'Aikido pot matar l'adversari. Durant la pràctica obeeix el teu instructor i no converteixis el temps de pràctica en una prova de força innecessària."
+            en: "One blow in Aikido is capable of killing an opponent. In practice, obey your instructor, and do not make the practice period a time for needless testing of strength."
+            ja: "合気道の一撃は相手を制する力を持つ。稽古では指導者に従い、いたずらに力を試す時間としてはならない。"
+          - es: "El Aikido es un arte en el que una persona aprende a enfrentarse a muchos adversarios a la vez. Exige por tanto que pulas y perfecciones cada movimiento, de modo que puedas responder no sólo a quien tienes delante, sino también a quienes se acercan desde cualquier dirección."
+            ca: "L'Aikido és un art en què una persona aprèn a enfrontar-se a molts adversaris alhora. Exigeix per tant que poleixis i perfeccionis cada moviment, de manera que puguis respondre no només a qui tens al davant, sinó també als qui s'acosten des de qualsevol direcció."
+            en: "Aikido is an art in which one man learns to face many opponents simultaneously. It therefore requires that you polish and perfect your execution of each movement so that you can take on not only the one directly before you but also those approaching from every direction."
+            ja: "合気道は一人が多数を相手にすることを学ぶ武道である。ゆえに一つ一つの動きを磨き、正面の相手のみならず四方から来る者にも応じられるようにせよ。"
+          - es: "Practica en todo momento con una sensación de alegría."
+            ca: "Practica en tot moment amb una sensació d'alegria."
+            en: "Practice at all times with a feeling of pleasurable exhilaration."
+            ja: "常に心楽しく稽古せよ。"
+          - es: "Las enseñanzas de tu instructor son sólo una pequeña parte de lo que vas a aprender. Tu dominio de cada movimiento dependerá casi por completo de la práctica individual, hecha en serio."
+            ca: "Els ensenyaments del teu instructor són només una petita part del que aprendràs. El teu domini de cada moviment dependrà gairebé del tot de la pràctica individual, feta seriosament."
+            en: "The teachings of your instructor constitute only a small fraction of what you will learn. Your mastery of each movement will depend almost completely on individual, earnest practice."
+            ja: "指導者の教えは学ぶべきもののごく一部にすぎない。技の習得はひとえに己の真剣な稽古による。"
+          - es: "La práctica diaria empieza con movimientos suaves del cuerpo y va aumentando en intensidad y fuerza, pero nunca debe haber sobreesfuerzo. Por eso incluso una persona mayor puede seguir practicando con gusto y sin daño, y alcanzar la meta de su entrenamiento."
+            ca: "La pràctica diària comença amb moviments suaus del cos i va augmentant en intensitat i força, però mai no hi ha d'haver sobreesforç. Per això fins i tot una persona gran pot continuar practicant amb gust i sense mal, i assolir la meta del seu entrenament."
+            en: "Daily practice begins with light movements of the body, gradually increasing in intensity and strength; but there must be no over-exertion. That is why even an elderly man can continue to practice with pleasure without bodily harm, and will attain the goal of his training."
+            ja: "日々の稽古は軽い動きから始め、次第に強度を増していく。だが無理をしてはならない。だからこそ年を重ねた者も、体を損なうことなく楽しみながら稽古を続け、その目指すところに至ることができる。"
+          - es: "La finalidad del Aikido es entrenar cuerpo y mente y hacer de la persona alguien sincero. Las artes del Aikido son de naturaleza reservada: no deben divulgarse públicamente ni enseñarse a quien vaya a usarlas con malos fines."
+            ca: "La finalitat de l'Aikido és entrenar cos i ment i fer de la persona algú sincer. Les arts de l'Aikido són de naturalesa reservada: no s'han de divulgar públicament ni ensenyar a qui les faci servir amb mala intenció."
+            en: "The purpose of Aikido is to train both body and mind and to make a man sincere. All Aikido arts are secret in nature and are not to be revealed publicly, nor taught to rogues who will use them for evil purposes."
+            ja: "合気道の目的は心身を練り、人を誠実にすることにある。合気道の技は妄りに公開せず、悪用する者に教えてはならない。"
+      - head:
+          es: "Comentario del segundo Dōshu"
+          ca: "Comentari del segon Dōshu"
+          en: "The second Dōshu's commentary"
+          ja: "二代道主による解説"
+        items:
+          - es: "Lo primero es obedecer al instructor y recordar sus enseñanzas. Pero hay que trascenderse a uno mismo: por mucho que estudies, si te aferras a tu ego no desarrollarás tus cualidades."
+            ca: "El primer és obeir l'instructor i recordar els seus ensenyaments. Però cal transcendir-se a un mateix: per molt que estudiïs, si t'aferres al teu ego no desenvoluparàs les teves qualitats."
+            en: "The first thing is to obey your instructor and remember what he teaches. But you must also go beyond yourself: however much you study, if you cling to your ego you will not develop your qualities."
+            ja: "まず指導者に従い、その教えを心にとどめること。だが自我を超えねばならない。いくら学んでも我に執すれば、その資質は伸びない。"
+          - es: "En segundo lugar, el budō sirve para responder a cualquier ataque, en cualquier dirección y en cualquier momento. Si sólo estás preparado para un adversario y no para los demás, aquello se convierte en una simple pelea. La base de todo ejercicio en el budō es una guardia impenetrable y un espíritu inamovible."
+            ca: "En segon lloc, el budō serveix per respondre a qualsevol atac, en qualsevol direcció i en qualsevol moment. Si només estàs preparat per a un adversari i no per als altres, allò esdevé una simple baralla. La base de tot exercici en el budō és una guàrdia impenetrable i un esperit inamovible."
+            en: "Second, budō is for answering any attack, from any direction, at any moment. If you are ready for one opponent only and not for the others, it becomes a mere fight. The ground of every exercise in budō is an impenetrable guard and an unmoving spirit."
+            ja: "第二に、武道はいかなる攻撃にも、いかなる方向からも、いかなる時にも応じるためのものである。一人にしか備えがなければ、それは喧嘩に過ぎない。武道のすべての稽古の土台は、隙のない構えと動じない心にある。"
+          - es: "En tercer lugar, aunque la práctica seria exige sacrificio, si se mantiene la disciplina del budō sin desfallecer se llega a un estado auténticamente gozoso. Algunos creen que hay que sufrir mientras se estudia, y no saben que el verdadero estudio es siempre grato. Concentrándonos para no hacernos daño, podemos disfrutar de la práctica."
+            ca: "En tercer lloc, encara que la pràctica seriosa exigeix sacrifici, si es manté la disciplina del budō sense defallir s'arriba a un estat autènticament joiós. Alguns creuen que cal patir mentre s'estudia, i no saben que el veritable estudi és sempre grat. Concentrant-nos per no fer-nos mal, podem gaudir de la pràctica."
+            en: "Third, serious practice asks a great deal, but if the discipline of budō is kept without flagging it arrives at a genuinely joyful state. Some believe study must be suffered; they do not know that real study is always a pleasure. By concentrating so as not to hurt ourselves, we can enjoy the practice."
+            ja: "第三に、真剣な稽古は決して楽ではないが、武道の修練をたゆまず続ければ、まことの喜びに至る。学ぶことは苦しむことだと思う者がいるが、真の学びは常に楽しいものである。互いに傷つけぬよう心を配れば、稽古は楽しめる。"
+          - es: "La cuarta regla trata de cómo se asimilan las técnicas. El Aikido tiene miles de variaciones, y hay quien acumula cantidad en lugar de calidad; cuando mira hacia dentro descubre que no ha aprendido nada y pierde el interés. Por eso lo que los instructores subrayamos a quien empieza es la repetición: cuando practicas una técnica básica una y otra vez acabas dominándola, y entonces puedes con sus variaciones."
+            ca: "La quarta regla tracta de com s'assimilen les tècniques. L'Aikido té milers de variacions, i hi ha qui acumula quantitat en lloc de qualitat; quan mira endins descobreix que no ha après res i perd l'interès. Per això el que els instructors subratllem a qui comença és la repetició: quan practiques una tècnica bàsica un cop i un altre acabes dominant-la, i llavors pots amb les seves variacions."
+            en: "The fourth rule is about how technique is absorbed. Aikido has thousands of variations, and some collect quantity rather than quality; when they look inward they find they have learned nothing, and lose interest. So what we as instructors press on beginners is repetition: practise a basic technique again and again and you come to own it, and then its variations are within reach."
+            ja: "第四は技の身につけ方について。合気道には無数の変化があり、質より数を求める者がいる。内を省みれば何も身についておらず、やがて興味を失う。だから指導者が初心者に説くのは反復である。基本の一本を繰り返し稽古すれば身につき、その先の変化にも応じられる。"
+          - es: "La quinta regla consiste en no ir contra la naturaleza, evitando el exceso en cualquier circunstancia. La clave es la moderación. Por pequeño que sea el exceso, todo el equilibrio del cuerpo se resiente. Los practicantes jóvenes y vigorosos tienden a creer que no serán eficaces si no desarrollan la fuerza, y no es así: lo que da verdadera fuerza es la práctica natural."
+            ca: "La cinquena regla consisteix a no anar contra la natura, evitant l'excés en qualsevol circumstància. La clau és la moderació. Per petit que sigui l'excés, tot l'equilibri del cos se'n ressent. Els practicants joves i vigorosos tendeixen a creure que no seran eficaços si no desenvolupen la força, i no és així: el que dóna veritable força és la pràctica natural."
+            en: "The fifth rule is not to go against nature, avoiding excess in any circumstance. The key is moderation. However small the excess, the whole balance of the body suffers for it. Young and vigorous practitioners tend to think they will not be effective unless they build strength. They will not: what gives real strength is natural practice."
+            ja: "第五は自然に逆らわぬこと。いかなる場合も過ぎたるを避ける。要は中庸である。わずかな行き過ぎでも体の均衡は崩れる。若く力のある者は、力を鍛えねば効かないと思いがちだが、そうではない。真の力は自然な稽古から生まれる。"
+          - es: "Por último, la meta del Aikido no es sólo un cuerpo fuerte, sino una persona íntegra. Cualquiera con formación sabe que la fuerza bruta no tiene razón de ser en la civilización actual. Por eso el fundador prohibió que el Aikido se usara mal, advirtió severamente a todo el mundo, no permitió publicar las técnicas de su arte y exigió que cada nuevo estudiante fuera avalado."
+            ca: "Finalment, la meta de l'Aikido no és només un cos fort, sinó una persona íntegra. Qualsevol amb formació sap que la força bruta no té raó de ser en la civilització actual. Per això el fundador va prohibir que l'Aikido s'usés malament, va advertir severament tothom, no va permetre publicar les tècniques del seu art i va exigir que cada nou estudiant fos avalat."
+            en: "Last, the goal of Aikido is not only a strong body but a whole person. Anyone educated knows that brute force has no place in the civilisation we live in. That is why the founder forbade Aikido being misused, warned everyone severely, would not allow the techniques of his art to be published, and required that each new student be vouched for."
+            ja: "最後に、合気道の目指すところは強い体だけではなく、まとまりのある人間である。教養ある者なら、今の世に腕力の居場所がないことを知っている。ゆえに開祖は合気道の悪用を禁じ、厳しく戒め、技の公開を許さず、入門者には保証人を求めた。"
+          - es: "En resumen: para practicar Aikido hace falta una mente recta, obedecer a los instructores y estudiar de forma natural. El resultado es un carácter noble y destreza en la técnica."
+            ca: "En resum: per practicar Aikido cal una ment recta, obeir els instructors i estudiar de manera natural. El resultat és un caràcter noble i destresa en la tècnica."
+            en: "In short: to practise Aikido you need an upright mind, obedience to your instructors, and natural study. What comes of it is a noble character and skill in technique."
+            ja: "要するに、合気道を修めるには正しい心を持ち、指導者に従い、自然に学ぶことである。その結果として、気高い人格と確かな技が身につく。"
+
+  # ============================================================== the dojo ==
+  - id: dojo-rules
+    title:
+      es: "Reglas del dojo"
+      ca: "Regles del dojo"
+      en: "Dojo rules"
+      ja: "道場の決まり"
+    lead:
+      es: "Cómo funciona esta casa. No son costumbres pintorescas: cada una existe porque sin ella el tatami funciona peor para todo el mundo."
+      ca: "Com funciona aquesta casa. No són costums pintorescos: cadascuna existeix perquè sense ella el tatami funciona pitjor per a tothom."
+      en: "How this house runs. None of it is quaint custom: each rule is here because without it the mat works worse for everyone on it."
+      ja: "この道場の約束事。趣味的な習慣ではなく、どれも無ければ畳の上が皆にとって不便になるから在ります。"
+    parts:
+      - head:
+          es: "El lugar"
+          ca: "El lloc"
+          en: "The place"
+          ja: "場について"
+        items:
+          - es: "El dojo se rige de forma estricta y según las reglas tradicionales. Es el lugar destinado a recibir la enseñanza del fundador, y honrarla y seguirla es deber de quien practica aquí."
+            ca: "El dojo es regeix de forma estricta i segons les regles tradicionals. És el lloc destinat a rebre l'ensenyament del fundador, i honrar-lo i seguir-lo és deure de qui hi practica."
+            en: "The dojo is run strictly and by traditional rules. It is the place set aside for receiving the founder's teaching, and honouring that teaching is the duty of anyone who trains here."
+            ja: "道場は厳格に、伝統の規に従って運営される。開祖の教えを受ける場であり、その教えを重んじ守ることは、ここで稽古する者の務めである。"
+          - es: "Fuera de las clases previstas, el dojo no se usa para otros fines sin autorización directa del sensei."
+            ca: "Fora de les classes previstes, el dojo no es fa servir per a altres finalitats sense autorització directa del sensei."
+            en: "Outside the scheduled classes, the dojo is not used for anything else without the sensei's direct permission."
+            ja: "定められた稽古以外の目的で道場を用いるには、指導者の直接の許可を要する。"
+          - es: "La limpieza es un acto de gratitud, no una tarea. Todo el mundo participa en la del dojo, y el tatami se barre antes y después de cada clase."
+            ca: "La neteja és un acte de gratitud, no una tasca. Tothom participa en la del dojo, i el tatami s'escombra abans i després de cada classe."
+            en: "Cleaning is an act of gratitude, not a chore. Everyone takes part in cleaning the dojo, and the mat is swept before and after every class."
+            ja: "掃除は義務ではなく感謝の行いである。道場の掃除には全員が加わり、畳は稽古の前後に掃く。"
+          - es: "El espacio está para trabajar. No se está ocioso sobre el tatami antes ni después de la clase."
+            ca: "L'espai és per treballar. No s'hi està ociós abans ni després de la classe."
+            en: "The space is for training. Nobody idles on the mat before or after class."
+            ja: "畳は稽古のための場である。稽古の前後にただ居座ることはしない。"
+      - head:
+          es: "Pertenecer al dojo"
+          ca: "Pertànyer al dojo"
+          en: "Belonging to the dojo"
+          ja: "入門について"
+        items:
+          - es: "La aceptación de nuevos alumnos queda a criterio del sensei. La técnica no se compra: la cuota garantiza un lugar donde practicar y es una forma de mostrar gratitud por lo que se recibe. Se paga puntualmente."
+            ca: "L'acceptació de nous alumnes queda a criteri del sensei. La tècnica no es compra: la quota garanteix un lloc on practicar i és una manera de mostrar gratitud pel que es rep. Es paga puntualment."
+            en: "Taking on new students is the sensei's decision. Technique is not bought: the fee secures a place to train and is one way of showing gratitude for what is received. It is paid on time."
+            ja: "入門の可否は指導者が定める。技は買うものではない。会費は稽古する場を確保するものであり、受けた教えへの感謝を示す一つの形である。期日を守って納める。"
+          - es: "Se espera asistencia de al menos dos clases por semana, y se recomiendan tres. Si alguna semana no es posible, se avisa. El aikido cuesta de aprender y a veces frustra; cuanto más se viene, menos frustra."
+            ca: "S'espera assistència d'almenys dues classes per setmana, i se'n recomanen tres. Si alguna setmana no és possible, s'avisa. L'aikido costa d'aprendre i de vegades frustra; com més s'hi ve, menys frustra."
+            en: "Two classes a week is what is expected, and three is what is recommended. If a week makes that impossible, say so. Aikido is hard to learn and is sometimes frustrating; the more you come, the less frustrating it gets."
+            ja: "週に二回の稽古を求め、三回を勧める。都合がつかない週はその旨を伝える。合気道は習得の難しい道であり、時にもどかしい。通うほどにそのもどかしさは薄れる。"
+          - es: "Mantenerse en contacto con el sensei es responsabilidad de quien practica, no al revés: avisar de una ausencia, de una lesión o de una enfermedad."
+            ca: "Mantenir-se en contacte amb el sensei és responsabilitat de qui practica, no a l'inrevés: avisar d'una absència, d'una lesió o d'una malaltia."
+            en: "Keeping in touch with the sensei is the student's responsibility, not the other way round: let him know about an absence, an injury or an illness."
+            ja: "指導者との連絡は稽古する側の務めであり、その逆ではない。欠席・怪我・病気は自ら伝えること。"
+      - head:
+          es: "Con quien practicas"
+          ca: "Amb qui practiques"
+          en: "The people you train with"
+          ja: "共に稽古する者へ"
+        items:
+          - es: "Cada alumno contribuye a que la atmósfera sea de armonía y respeto. Todos los miembros del dojo forman una familia grande."
+            ca: "Cada alumne contribueix que l'atmosfera sigui d'harmonia i respecte. Tots els membres del dojo formen una família gran."
+            en: "Every student contributes to an atmosphere of harmony and respect. Everyone in the dojo makes up one large family."
+            ja: "和と敬いの気風は一人ひとりが作る。道場の者は皆で一つの大きな家族である。"
+          - es: "Se respeta al fundador y su enseñanza tal como la transmite el sensei; se respetan el dojo, el material y las personas con las que se practica."
+            ca: "Es respecta el fundador i el seu ensenyament tal com el transmet el sensei; es respecten el dojo, el material i les persones amb qui es practica."
+            en: "Respect the founder and his teaching as the sensei passes it on; respect the dojo, the equipment, and the people you train with."
+            ja: "開祖とその教え、そして指導者の伝えるところを敬う。道場と道具、そして共に稽古する人を敬う。"
+
+  # ======================================================= the practitioner ==
+  - id: practitioner
+    title:
+      es: "Compromiso de quien practica"
+      ca: "Compromís de qui practica"
+      en: "What practice asks of you"
+      ja: "稽古する者の心得"
+    lead:
+      es: "Lo que se acepta al pisar el tatami. Es la parte del reglamento que no trata de horarios ni de material, sino de para qué se está aquí."
+      ca: "El que s'accepta en trepitjar el tatami. És la part del reglament que no tracta d'horaris ni de material, sinó de per què s'hi és."
+      en: "What you take on when you step onto the mat. This is the part of the rules that is not about timetables or equipment, but about what you are here for."
+      ja: "畳に上がるとき引き受けること。時間や道具ではなく、何のためにここに居るのかについての決まり。"
+    parts:
+      - head:
+          es: "Para qué sirve la técnica"
+          ca: "Per a què serveix la tècnica"
+          en: "What the technique is for"
+          ja: "技は何のためにあるか"
+        items:
+          - es: "Nadie usará jamás una técnica de aikido para hacer daño ni para lucirse. El aikido no es una técnica de destrucción sino de creación: una herramienta para mejorar la sociedad mejorando a la persona."
+            ca: "Ningú no farà servir mai una tècnica d'aikido per fer mal ni per lluir-se. L'aikido no és una tècnica de destrucció sinó de creació: una eina per millorar la societat millorant la persona."
+            en: "No one will ever use an aikido technique to hurt someone or to show off. Aikido is not a technique of destruction but of creation: a tool for bettering society by bettering the person."
+            ja: "合気道の技を人を傷つけるため、また己を誇るために用いてはならない。合気道は壊す技ではなく創る技であり、人を通じて社会をよくする手立てである。"
+          - es: "En el tatami no se resuelven conflictos personales. No es una pelea callejera: se está aquí para trascender las reacciones agresivas, no para ejercerlas."
+            ca: "Al tatami no s'hi resolen conflictes personals. No és una baralla al carrer: s'hi és per transcendir les reaccions agressives, no per exercir-les."
+            en: "Personal quarrels are not settled on the mat. This is not a street fight: you are here to get past aggressive reactions, not to act on them."
+            ja: "畳の上で私的な争いを解決しない。これは路上の喧嘩ではない。攻撃的な反応を超えるためにここに居るのであり、それを振るうためではない。"
+          - es: "No hay espíritu de competición. El objetivo no es vencer a un adversario sino a los propios impulsos; la fuerza del aikido no está en el músculo sino en la flexibilidad, la comunicación, el dominio de uno mismo y la modestia."
+            ca: "No hi ha esperit de competició. L'objectiu no és vèncer un adversari sinó els propis impulsos; la força de l'aikido no és al múscul sinó en la flexibilitat, la comunicació, el domini d'un mateix i la modèstia."
+            en: "There is no competitive spirit here. The aim is not to beat an opponent but to beat your own impulses; aikido's strength is not in muscle but in flexibility, communication, self-command and modesty."
+            ja: "競い合う心は持たない。目指すのは相手に勝つことではなく己の衝動に勝つこと。合気道の力は筋力ではなく、柔らかさ、通じ合い、自制、そして謙虚さにある。"
+      - head:
+          es: "Cuidar al compañero"
+          ca: "Tenir cura del company"
+          en: "Looking after your partner"
+          ja: "相手を守る"
+        items:
+          - es: "Cada persona llega con un cuerpo distinto y con sus propias razones para practicar. Todas merecen el mismo respeto."
+            ca: "Cada persona arriba amb un cos diferent i amb les seves pròpies raons per practicar. Totes mereixen el mateix respecte."
+            en: "Everyone arrives with a different body and with their own reasons for training. All of them deserve the same respect."
+            ja: "人はそれぞれ異なる体と、それぞれの理由を持って来る。誰もが等しく敬われるべきである。"
+          - es: "No causar daño es responsabilidad de quien practica: hay que proteger al compañero y protegerse a uno mismo. Aikido es aplicar la técnica adecuada, con la medida adecuada, en la circunstancia que se presente."
+            ca: "No causar mal és responsabilitat de qui practica: cal protegir el company i protegir-se un mateix. Aikido és aplicar la tècnica adequada, amb la mesura adequada, en la circumstància que es presenti."
+            en: "Doing no harm is your responsibility: protect your partner and protect yourself. Aikido is applying the right technique, in the right measure, to the circumstance in front of you."
+            ja: "人を傷つけないことは稽古する者の責任である。相手を守り、自らも守る。合気道とは、その場に応じた技を、その場に応じた加減で用いることである。"
+          - es: "Ser consciente de los propios límites. No se tolera la insolencia."
+            ca: "Ser conscient dels propis límits. No es tolera la insolència."
+            en: "Know your own limits. Insolence is not tolerated."
+            ja: "己の限りを知ること。不遜な振る舞いは許されない。"
+      - head:
+          es: "Aprender"
+          ca: "Aprendre"
+          en: "Learning"
+          ja: "学ぶこと"
+        items:
+          - es: "Se acepta el consejo del sensei y se intenta aplicar con sinceridad, lo mejor que se pueda."
+            ca: "S'accepta el consell del sensei i s'intenta aplicar amb sinceritat, tan bé com es pugui."
+            en: "Take the sensei's advice and try to apply it honestly, as well as you are able."
+            ja: "指導者の助言を受け入れ、誠実に、できる限り実行しようと努める。"
+          - es: "Si conoces el movimiento y trabajas con alguien que no, puedes guiarle; pero corregir corresponde a quien tiene grado de yūdansha."
+            ca: "Si coneixes el moviment i treballes amb algú que no, pots guiar-lo; però corregir correspon a qui té grau de yūdansha."
+            en: "If you know the movement and your partner does not, you may guide them; correcting is for those who hold yūdansha grade."
+            ja: "自分が知っていて相手が知らない動きなら導いてよい。ただし直すのは有段者の役である。"
+          - es: "Se habla lo menos posible. El aikido es experiencia. Y no se discute sobre técnica en el tatami."
+            ca: "Es parla el mínim possible. L'aikido és experiència. I no es discuteix sobre tècnica al tatami."
+            en: "Talk as little as possible. Aikido is experience. And technique is not argued about on the mat."
+            ja: "言葉は少なく。合気道は体験である。畳の上で技を論じない。"
+
+  # ============================================================ on the mat ==
+  - id: reiho
+    title:
+      es: "Etiqueta en el tatami · reihō"
+      ca: "Etiqueta al tatami · reihō"
+      en: "Etiquette on the mat · reihō"
+      ja: "畳の上の作法・礼法"
+    lead:
+      es: "El orden de una clase, de la puerta a la puerta. Casi todo se aprende mirando; esto es para las dos primeras semanas, mientras mirar todavía cuesta."
+      ca: "L'ordre d'una classe, de la porta a la porta. Gairebé tot s'aprèn mirant; això és per a les dues primeres setmanes, mentre mirar encara costa."
+      en: "The order of a class, door to door. Nearly all of it is learned by watching; this is for the first fortnight, while watching is still hard work."
+      ja: "稽古の流れを、入口から出口まで。ほとんどは見て覚えるもの。これは、見ることがまだ難しい最初の二週間のためのもの。"
+    parts:
+      - head:
+          es: "Antes de empezar"
+          ca: "Abans de començar"
+          en: "Before it starts"
+          ja: "稽古の前に"
+        items:
+          - es: "Se saluda al entrar y al salir del tatami, y siempre en dirección al shōmen y el kamiza."
+            ca: "Se saluda en entrar i en sortir del tatami, i sempre en direcció al shōmen i el kamiza."
+            en: "Bow on stepping onto the mat and on leaving it, and always towards the shōmen and the kamiza."
+            ja: "畳に上がるとき、降りるときに礼をする。礼は常に正面と上座に向かって行う。"
+          - es: "Unos minutos antes se hacen ejercicios de calentamiento. Después los practicantes se sientan en seiza, en una misma línea, en postura de meditación."
+            ca: "Uns minuts abans es fan exercicis d'escalfament. Després els practicants s'asseuen en seiza, en una mateixa línia, en postura de meditació."
+            en: "A few minutes beforehand, warm up. Then everyone sits in seiza, in one line, in the posture for meditation."
+            ja: "始まる数分前に準備運動をする。その後、皆が一列に正座し、黙想の姿勢をとる。"
+          - es: "La clase empieza y termina con una ceremonia y la puntualidad es esencial para participar en ella. Si el retraso es inevitable, se espera fuera del tatami hasta que el sensei haga la señal para entrar."
+            ca: "La classe comença i acaba amb una cerimònia i la puntualitat és essencial per participar-hi. Si el retard és inevitable, s'espera fora del tatami fins que el sensei faci el senyal per entrar."
+            en: "Class opens and closes with a ceremony, and being on time is what lets you take part in it. If you cannot help being late, wait off the mat until the sensei signals you on."
+            ja: "稽古は礼で始まり礼で終わる。それに加わるには時間を守ること。やむを得ず遅れたときは、指導者の合図があるまで畳の外で待つ。"
+      - head:
+          es: "Durante la clase"
+          ca: "Durant la classe"
+          en: "During the class"
+          ja: "稽古の間"
+        items:
+          - es: "Cuando el sensei demuestra, se permanece en seiza y se observa con atención. Al terminar se saluda al sensei, después a un compañero, y se empieza a trabajar."
+            ca: "Quan el sensei demostra, es roman en seiza i s'observa amb atenció. En acabar se saluda el sensei, després un company, i es comença a treballar."
+            en: "When the sensei demonstrates, stay in seiza and watch closely. When he finishes, bow to him, then to a partner, and begin."
+            ja: "指導者が示すときは正座して注意深く見る。終わったら指導者に礼をし、次に相手に礼をして、稽古を始める。"
+          - es: "Cuando se anuncia el final de una técnica se detiene el movimiento de inmediato, se saluda al compañero y se vuelve a la línea."
+            ca: "Quan s'anuncia el final d'una tècnica s'atura el moviment immediatament, se saluda el company i es torna a la línia."
+            en: "When the end of a technique is called, stop the movement at once, bow to your partner and return to the line."
+            ja: "技の終わりが告げられたら、その場で動きを止め、相手に礼をして列に戻る。"
+          - es: "La postura para sentarse es seiza. Con una lesión de rodilla se puede sentar con las piernas cruzadas. Nunca se estiran las piernas ni se apoya uno en la pared o en una columna: hay que estar listo para reaccionar."
+            ca: "La postura per seure és seiza. Amb una lesió de genoll es pot seure amb les cames creuades. Mai no s'estiren les cames ni un s'recolza a la paret o a una columna: cal estar a punt per reaccionar."
+            en: "The way to sit is seiza. With a knee injury, sit cross-legged. Never stretch your legs out or lean against a wall or a pillar: you should be ready to move."
+            ja: "座り方は正座。膝を痛めている場合はあぐらでよい。足を投げ出したり、壁や柱にもたれたりしない。常に動ける備えでいること。"
+          - es: "No se está de pie sin trabajar. Si hay que esperar turno, se espera en seiza. Y no se sale del tatami durante la práctica salvo por lesión o malestar."
+            ca: "No s'està dret sense treballar. Si cal esperar torn, s'espera en seiza. I no se surt del tatami durant la pràctica llevat de lesió o malestar."
+            en: "Do not stand about not training. If you must wait your turn, wait in seiza. And do not leave the mat during practice except for injury or feeling unwell."
+            ja: "稽古せずに立っていない。順番を待つときは正座で待つ。稽古中に畳を降りるのは、怪我や体調の不良のときだけ。"
+          - es: "Si hay que preguntar al sensei, se va hacia él —nunca se le llama—, se saluda y se espera en seiza a que esté disponible."
+            ca: "Si cal preguntar al sensei, s'hi va —mai no se'l crida—, se saluda i s'espera en seiza que estigui disponible."
+            en: "If you must ask the sensei something, go to him — never call him over — bow, and wait in seiza until he is free."
+            ja: "指導者に尋ねる必要があるときは、こちらから近づく。呼びつけない。礼をし、手が空くまで正座で待つ。"
+      - head:
+          es: "El cuerpo y el equipo"
+          ca: "El cos i l'equip"
+          en: "Your body and your kit"
+          ja: "身体と道具"
+        items:
+          - es: "El gi se mantiene limpio y en buen estado, y el cuerpo también. Uñas cortas, y nada de joyas, relojes, anillos ni pendientes durante la práctica."
+            ca: "El gi es manté net i en bon estat, i el cos també. Ungles curtes, i res de joies, rellotges, anells ni arracades durant la pràctica."
+            en: "Keep the gi clean and in good repair, and yourself likewise. Nails short, and no jewellery, watches, rings or earrings on the mat."
+            ja: "稽古着は清潔に、傷みのないように保つ。身体も同じ。爪は短く切り、装身具・時計・指輪・耳飾りは外して稽古する。"
+          - es: "Sin maquillaje ni perfume fuerte. Las armas se guardan en su sitio cuando no se usan, y no se usa el gi ni las armas de otra persona."
+            ca: "Sense maquillatge ni perfum fort. Les armes es guarden al seu lloc quan no es fan servir, i no es fa servir el gi ni les armes d'una altra persona."
+            en: "No make-up or strong scent. Weapons go back in their place when not in use, and nobody uses another person's gi or weapons."
+            ja: "化粧や強い香りは控える。武器は使わないときに定位置へ戻す。他人の稽古着や武器は使わない。"
+          - es: "No se come, bebe, fuma ni se masca chicle en el tatami en ningún momento, ni fuera de él durante la clase. Y no se bebe alcohol llevando el gi puesto."
+            ca: "No es menja, beu, fuma ni es masca xiclet al tatami en cap moment, ni fora durant la classe. I no es beu alcohol portant el gi posat."
+            en: "No eating, drinking, smoking or chewing gum on the mat at any time, nor off it during class. And no alcohol while you have the gi on."
+            ja: "畳の上では、いつであれ飲食・喫煙・ガムを禁じる。稽古中は畳の外でも同じ。稽古着を着たまま酒を飲まない。"

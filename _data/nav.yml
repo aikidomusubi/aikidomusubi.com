@@ -1,0 +1,97 @@
+# The main menu.
+#
+# ONE SOURCE. This used to be 192 lines of `{% if page.lang == 'xx' %}` inside
+# _includes/navigation.html — every label and every URL written out four times,
+# so adding one entry meant eight edits and getting all eight right. It is a
+# loop over this file now.
+#
+# `url` is a per-language path, because the slugs are localised (/clases/ but
+# /ca/classes/). `label` is the visible text. A group with `items` becomes a
+# dropdown; without, a plain link.
+
+groups:
+  - id: classes
+    label: { es: "Clases y Horarios", ca: "Classes i Horaris",
+             en: "Classes and Schedule", ja: "クラス・スケジュール" }
+    items:
+      - label: { es: "Clases", ca: "Classes", en: "Classes", ja: "各クラスの紹介" }
+        url:   { es: "/clases/", ca: "/ca/classes/", en: "/en/classes/", ja: "/ja/classes/" }
+      - label: { es: "Horarios", ca: "Horaris", en: "Training Schedule", ja: "稽古時間" }
+        url:   { es: "/horarios/", ca: "/ca/horaris/", en: "/en/training-schedule/", ja: "/ja/training-schedule/" }
+      - label: { es: "Cuotas", ca: "Quotes", en: "Fees", ja: "月謝" }
+        url:   { es: "/cuotas/", ca: "/ca/quotes/", en: "/en/fees/", ja: "/ja/fees/" }
+      - label: { es: "Visitantes", ca: "Visitants", en: "Visitors", ja: "ビジターの方へ" }
+        url:   { es: "/visitantes/", ca: "/ca/visitants/", en: "/en/visitors/", ja: "/ja/visitors/" }
+
+  # New. The four topics that used to run down the homepage as long sections;
+  # each is now a page another dojo or a federation can link to directly.
+  - id: about
+    label: { es: "Sobre nosotros", ca: "Sobre nosaltres",
+             en: "About us", ja: "私たちについて" }
+    items:
+      - label: { es: "El dojo", ca: "El dojo", en: "The dojo", ja: "道場" }
+        url:   { es: "/sobre-nosotros/el-dojo/", ca: "/ca/sobre-nosaltres/el-dojo/",
+                 en: "/en/about/the-dojo/", ja: "/ja/about/the-dojo/" }
+      - label: { es: "Aikido", ca: "Aikido", en: "Aikido", ja: "合気道" }
+        url:   { es: "/sobre-nosotros/aikido/", ca: "/ca/sobre-nosaltres/aikido/",
+                 en: "/en/about/aikido/", ja: "/ja/about/aikido/" }
+      - label: { es: "La asociación", ca: "L'associació", en: "The association", ja: "協会について" }
+        url:   { es: "/sobre-nosotros/la-asociacion/", ca: "/ca/sobre-nosaltres/l-associacio/",
+                 en: "/en/about/the-association/", ja: "/ja/about/the-association/" }
+      - label: { es: "Preguntas frecuentes", ca: "Preguntes freqüents",
+                 en: "FAQ", ja: "よくある質問" }
+        url:   { es: "/sobre-nosotros/preguntas-frecuentes/", ca: "/ca/sobre-nosaltres/preguntes-frequents/",
+                 en: "/en/about/faq/", ja: "/ja/about/faq/" }
+      - label: { es: "Glosario", ca: "Glossari", en: "Glossary", ja: "用語集" }
+        url:   { es: "/glosario/", ca: "/ca/glossari/",
+                 en: "/en/glossary/", ja: "/ja/glossary/" }
+
+  # 行事 is Aikikai's own word for it.
+  - id: events
+    label: { es: "Eventos", ca: "Esdeveniments", en: "Events", ja: "行事" }
+    items:
+      - label: { es: "Seminarios", ca: "Seminaris", en: "Seminars", ja: "講習会" }
+        url:   { es: "/seminarios/", ca: "/ca/seminaris/", en: "/en/seminars/", ja: "/ja/seminars/" }
+      - label: { es: "Fuera del dojo", ca: "Fora del dojo", en: "Elsewhere", ja: "道場の外で" }
+        url:   { es: "/fuera-del-dojo/", ca: "/ca/fora-del-dojo/", en: "/en/elsewhere/", ja: "/ja/elsewhere/" }
+      - label: { es: "Calendario", ca: "Calendari", en: "Calendar", ja: "カレンダー" }
+        url:   { es: "/calendario/", ca: "/ca/calendari/", en: "/en/calendar/", ja: "/ja/calendar/" }
+
+  # Renamed from "Media" when Recursos moved in. The three are the same kind of
+  # thing — material about the dojo rather than the practice of it: what we
+  # photographed, what was written about us, and what we hand out.
+  - id: media
+    label: { es: "Media y Recursos", ca: "Media i Recursos",
+             en: "Media and Resources", ja: "メディア・資料" }
+    items:
+      - label: { es: "Galería", ca: "Galeria", en: "Gallery", ja: "ギャラリー" }
+        url:   { es: "/galeria/", ca: "/ca/galeria/", en: "/en/gallery/", ja: "/ja/gallery/" }
+      - label: { es: "Prensa y TV", ca: "Premsa i TV", en: "Press and TV", ja: "メディア掲載" }
+        url:   { es: "/prensa-y-tv/", ca: "/ca/premsa-i-tv/", en: "/en/press-and-tv/", ja: "/ja/press-and-tv/" }
+      - label: { es: "Recursos", ca: "Recursos", en: "Resources", ja: "資料" }
+        url:   { es: "/recursos/", ca: "/ca/recursos/", en: "/en/resources/", ja: "/ja/resources/" }
+
+  - id: contact
+    label: { es: "Contacto y Acceso", ca: "Contacte i Accés",
+             en: "Contact and Access", ja: "お問い合わせ・アクセス" }
+    items:
+      - label: { es: "Contacto", ca: "Contacte", en: "Contact", ja: "お問い合わせ" }
+        url:   { es: "/contacto/", ca: "/ca/contacte/", en: "/en/contact/", ja: "/ja/contact/" }
+      - label: { es: "Acceso", ca: "Accés", en: "Access", ja: "アクセス" }
+        url:   { es: "/acceso/", ca: "/ca/acces/", en: "/en/access-information/", ja: "/ja/access-information/" }
+
+  # Ura 裏 — the aside. A group without `items` is a plain link, which is what
+  # this is: a place, not a dropdown and not a setting. It sits last, after
+  # Contacto, because it is the thing you reach for once you already know the
+  # rest of the site.
+  - id: ura
+    label: { es: "Ura", ca: "Ura", en: "Ura", ja: "裏" }
+    kanji: "裏"
+    url:   { es: "/ura/", ca: "/ca/ura/", en: "/en/ura/", ja: "/ja/ura/" }
+
+ui:
+  menu:   { es: "Menú", ca: "Menú", en: "Menu", ja: "メニュー" }
+  home:   { es: "Inicio", ca: "Inici", en: "Home", ja: "ホーム" }
+  lang:   { es: "Idioma", ca: "Idioma", en: "Language", ja: "言語" }
+  skip:   { es: "Ir al contenido", ca: "Anar al contingut",
+            en: "Skip to content",  ja: "本文へスキップ" }

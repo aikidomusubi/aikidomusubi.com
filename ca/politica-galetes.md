@@ -12,11 +12,13 @@ last_modified: 2026-08-14
 
 Quines galetes utilitza aquest lloc web, per a què serveixen i com acceptar-les o rebutjar-les.
 
+{% include legal-summary.html %}
+
+
 **Última actualització: 14 d'agost de 2026**
 
 Aquest lloc web, **aikidomusubi.com**, titularitat d'Aikido Musubi, utilitza galetes (cookies) i tecnologies similars. Aquesta Política de Galetes s'ha elaborat seguint la *Guia sobre l'ús de les galetes* de l'Agència Espanyola de Protecció de Dades (AEPD).
 
-<hr>
 
 ## 1. Què són les galetes?
 
@@ -45,8 +47,8 @@ Ens permeten conèixer, de manera agregada i estadística, com utilitzen els usu
 
 ### c) Galetes de tercers per contingut incrustat
 Si el lloc web incrusta contingut de plataformes externes (per exemple, **vídeos de YouTube** o elements de **Facebook / Instagram**), aquestes plataformes poden instal·lar les seves pròpies galetes quan interactueu amb aquell contingut. Us recomanem consultar-ne les polítiques respectives:
-- [Política de privadesa de Google/YouTube](https://policies.google.com/privacy)
-- [Política de galetes de Meta (Facebook/Instagram)](https://www.facebook.com/policies/cookies/)
+- [Política de privadesa de Google/YouTube](https://policies.google.com/privacy){:target="_blank" rel="noopener"}
+- [Política de galetes de Meta (Facebook/Instagram)](https://www.facebook.com/policies/cookies/){:target="_blank" rel="noopener"}
 
 ## 3. Consentiment
 
@@ -60,10 +62,10 @@ Podeu canviar la vostra decisió en qualsevol moment des d'aquesta mateixa pàgi
 
 També podeu permetre, bloquejar o eliminar les galetes instal·lades al vostre dispositiu mitjançant la configuració de les opcions del vostre navegador:
 
-- [Google Chrome](https://support.google.com/chrome/answer/95647)
-- [Mozilla Firefox](https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias)
-- [Safari](https://support.apple.com/es-es/guide/safari/sfri11471/mac)
-- [Microsoft Edge](https://support.microsoft.com/es-es/microsoft-edge)
+- [Google Chrome](https://support.google.com/chrome/answer/95647){:target="_blank" rel="noopener"}
+- [Mozilla Firefox](https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias){:target="_blank" rel="noopener"}
+- [Safari](https://support.apple.com/es-es/guide/safari/sfri11471/mac){:target="_blank" rel="noopener"}
+- [Microsoft Edge](https://support.microsoft.com/es-es/microsoft-edge){:target="_blank" rel="noopener"}
 
 Tingueu en compte que la desactivació de les galetes tècniques pot afectar el funcionament correcte del lloc web.
 

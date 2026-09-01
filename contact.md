@@ -5,13 +5,12 @@ description: Para más información, contáctanos a través de los siguientes me
 permalink: /contacto/
 lang: es
 i18n-ref: contact-mu1FDiTN
-last_modified: 2026-01-11
+last_modified: 2026-08-20
 ---
 
 # Contacto
 
 Para más información, contáctanos a través de los siguientes medios.
 
-<hr>
 
 {% include contact.html %}

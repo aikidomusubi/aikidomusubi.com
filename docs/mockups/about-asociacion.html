@@ -1,0 +1,164 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>La asociación — Aikido Musubi</title><link rel="stylesheet" href="/styles/all.min.css">
+<style>
+:root{--ink:#111314;--mute:#5c6a70;--line:rgba(17,19,20,.13);--acc:#FFF200}
+html,body{margin:0;background:#fff;color:var(--ink);
+  font-family:'Noto Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+h1,h2,h3{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-weight:400;margin:0;
+  letter-spacing:.04em}
+p{margin:0}
+.w{max-width:1140px;margin:0 auto;padding:0 6rem}
+@media(max-width:991.98px){.w{padding:0 4rem}}
+@media(max-width:767.98px){.w{padding:0 2rem}}
+.jp{font-family:'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif}
+
+.ab-nav{display:flex;flex-wrap:wrap;gap:1.4rem;padding:1.6rem 0 1rem;
+  border-bottom:1px solid var(--line)}
+.ab-nav a{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:#425055;
+  text-decoration:none;padding:.2rem 0}
+.ab-nav a:hover{color:var(--ink)}
+.ab-nav a[aria-current]{color:var(--ink);font-weight:700;box-shadow:inset 0 -2px 0 var(--ink)}
+
+.top{padding:2.6rem 0 2rem}
+.top h1{font-size:2.4rem;text-transform:uppercase;letter-spacing:.06em}
+.top .lede{margin-top:1rem;max-width:42rem;font-size:1.05rem;line-height:1.75;color:#2c3437}
+@media(max-width:575.98px){.top h1{font-size:1.8rem}}
+
+.body{padding-bottom:5rem;max-width:43.25rem}
+.body h2{font-size:1.2rem;text-transform:uppercase;letter-spacing:.09em;margin:2.8rem 0 1rem;
+  padding-top:1.5rem;border-top:1px solid var(--line)}
+.body h3{font-size:1rem;margin:1.6rem 0 .5rem}
+.body p{font-size:.98rem;line-height:1.85;color:#2c3437;margin-bottom:1rem}
+.body a{color:var(--ink);text-decoration:underline;text-underline-offset:.18em}
+.body em{font-style:italic}
+.new{display:inline-block;font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.5rem;
+  letter-spacing:.18em;text-transform:uppercase;background:var(--acc);color:var(--ink);
+  padding:.16rem .42rem;vertical-align:.3em;margin-left:.6rem}
+
+/* numbered etiquette list */
+.steps{counter-reset:s;margin:0 0 1rem;padding:0;list-style:none}
+.steps li{counter-increment:s;position:relative;padding:.75rem 0 .75rem 3.2rem;
+  border-bottom:1px solid var(--line);font-size:.95rem;line-height:1.75;color:#2c3437}
+.steps li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:.95rem;
+  font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.66rem;letter-spacing:.14em;
+  color:#B04E17}
+.steps li b{font-weight:400;color:var(--ink)}
+
+/* timeline */
+.tl{margin:0 0 1rem;border-top:1px solid var(--line)}
+.tl-i{display:grid;grid-template-columns:4.6rem 1fr;gap:1.4rem;padding:.85rem 0;
+  border-bottom:1px solid var(--line);align-items:baseline}
+.tl-i .y{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.95rem;color:#B04E17}
+.tl-i .t{font-size:.95rem;line-height:1.7;color:#2c3437}
+.tl-i .t small{display:block;color:var(--mute);font-size:.82rem;margin-top:.15rem}
+.tl-i[data-q] .y{color:var(--mute)}
+.tl-i[data-q] .t::after{content:'por confirmar';display:inline-block;margin-left:.5rem;
+  font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.5rem;letter-spacing:.14em;
+  text-transform:uppercase;color:#fff;background:#B04E17;padding:.1rem .38rem;vertical-align:.18em}
+@media(max-width:575.98px){.tl-i{grid-template-columns:1fr;gap:.1rem}}
+
+/* people */
+.ppl{display:grid;grid-template-columns:1fr 1fr;gap:0 2.4rem;margin-bottom:1rem}
+.ppl div{padding:.7rem 0;border-bottom:1px solid var(--line);display:flex;
+  justify-content:space-between;gap:1rem;align-items:baseline}
+.ppl b{font-weight:400;font-size:.95rem}
+.ppl span{font-size:.78rem;color:var(--mute);white-space:nowrap}
+@media(max-width:575.98px){.ppl{grid-template-columns:1fr}}
+
+/* venues */
+.ven{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin:1.4rem 0}
+.ven figure{margin:0}
+.ven img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
+.ven b{display:block;margin-top:.6rem;font-size:.92rem;font-weight:400}
+.ven small{display:block;font-size:.78rem;color:var(--mute);line-height:1.5}
+@media(max-width:575.98px){.ven{grid-template-columns:1fr}}
+
+/* weapons */
+.wep{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);
+  margin:1.2rem 0}
+.wep div{background:#fff;padding:1rem 1.05rem 1.15rem}
+.wep .k{font-size:1.5rem;line-height:1.2}
+.wep .r{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.62rem;letter-spacing:.18em;
+  text-transform:uppercase;color:#B04E17;margin:.35rem 0 .45rem}
+.wep p{font-size:.82rem;line-height:1.65;color:var(--mute);margin:0}
+@media(max-width:575.98px){.wep{grid-template-columns:1fr}}
+
+/* faq */
+.faq{border-top:1px solid var(--line);max-width:43.25rem}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:1rem 2.2rem 1rem 0;position:relative;
+  font-size:1.02rem;line-height:1.5;color:var(--ink)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'+';position:absolute;right:.3rem;top:.95rem;color:var(--mute);
+  font-size:1.1rem;transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg);color:#B04E17}
+.faq summary:hover{color:#B04E17}
+.faq .a{padding:0 0 1.1rem}
+.faq .a p{font-size:.94rem;line-height:1.8;color:#2c3437;margin-bottom:.8rem}
+.faq .a p:last-child{margin-bottom:0}
+</style></head><body>
+<div class="w"><nav class="ab-nav"><a href="about-dojo.html">El dojo</a><a href="about-aikido.html">Aikido</a><a href="about-asociacion.html" aria-current="page">La asociación</a><a href="about-faq.html">Preguntas frecuentes</a></nav>
+<header class="top"><h1>La asociación</h1><p class="lede">Quiénes somos, cómo nos organizamos y con quién estamos afiliados.</p></header>
+<div class="body">
+<h2>La asociación</h2>
+<p><strong>Aikido Musubi</strong> (CIF: G-64799554) es una asociación cultural fundada en
+   2008. Es la primera asociación en Barcelona autogestionada y sin ánimo de lucro cuyo
+   objetivo es promover la práctica del aikido y los valores de las artes marciales
+   tradicionales de Japón. Desde entonces somos un actor principal en el área metropolitana de
+   Barcelona ofreciendo un espacio 100 % dedicado a las artes marciales y la cultura
+   japonesa.</p>
+<p><strong>Aikido Musubi</strong> no aboga, apoya ni practica la discriminación ilegal basada
+   en la edad, el origen étnico, el género, el origen nacional, la discapacidad, la raza, la
+   religión, la orientación sexual o los antecedentes socioeconómicos.</p>
+
+<h2>Desde 2008<span class="new">Nuevo</span></h2>
+<p>Empezamos con un tatami en Badalona y desde entonces no hemos parado ningún curso. Por el
+   camino se abrieron las clases de Sant Adrià de Besòs y las de la Facultad de Derecho de la
+   Universidad de Barcelona, salieron los primeros grados dan de la casa, y el dojo pasó de
+   recibir maestros de vez en cuando a traer varios seminarios cada año.</p>
+<p>No llevamos la cuenta con solemnidad, pero sí la llevamos: en el archivo hay
+   <a href="/galeria/">462 momentos guardados</a> y el <a href="/seminarios/">registro de
+   seminarios</a> arranca en 2020 y va por treinta y nueve. Es una historia mejor contada en
+   fotos que en fechas.</p>
+
+<h2>Cómo funciona<span class="new">Nuevo</span></h2>
+<p>La Junta Directiva está constituida por el Presidente, el Secretario y el Tesorero, que a
+   su vez asumen el rol de director técnico e instructores respectivamente. Son miembros
+   fundadores activos con experiencia significativa dentro de la asociación que han sido
+   elegidos por la Asamblea General, compuesta por todos los miembros de la asociación.</p>
+<p>La Asamblea se reúne una vez al año, aprueba las cuentas y decide lo que hay que decidir.
+   Cualquier socio puede asistir, hablar y votar. <strong>Nadie cobra por enseñar</strong>: las
+   cuotas cubren el alquiler del espacio, el mantenimiento del tatami, los seguros, las
+   licencias federativas y los seminarios que traemos. Lo que sobra se queda en el dojo.</p>
+<p>Los estatutos y las cuentas están a disposición de cualquier socio que los pida.</p>
+
+<h2>Quién enseña<span class="new">Nuevo</span></h2>
+<div class="ppl">
+  <div><b>Pablo Martín</b><span>4.º dan / shidoin</span></div>
+  <div><b>Pedro Fortes</b><span>4.º dan</span></div>
+  <div><b>José Luis Zafra</b><span>4.º dan</span></div>
+  <div><b>Alberto Sancho</b><span>4.º dan</span></div>
+  <div><b>Juanma Pérez</b><span>3.<sup>er</sup> dan</span></div>
+  <div><b>Andreu Villar</b><span>3.<sup>er</sup> dan</span></div>
+  <div><b>Guanlong Zheng</b><span>3.<sup>er</sup> dan</span></div>
+</div>
+<p><a href="/horarios/">Quién da cada clase</a></p>
+
+<h2>Dirección técnica</h2>
+<p><strong>Pablo Martín</strong> (Badalona, 1977) empezó a practicar aikido en Badalona en el
+   año 1999 con Ricard Coll. Después ha continuado su práctica al mismo tiempo que ejerce como
+   instructor en <strong>Aikido Musubi</strong>. A lo largo de su trayectoria ha participado en
+   numerosos cursos y seminarios de maestros reputados como Yamada Y. Shihan, Sugano S. Shihan,
+   Shibata I. Shihan, M. Flynn Shihan, D. Waite Shihan y P. Bernath Shihan, entre otros.</p>
+<p>También ha viajado a Japón para entrenar en la sede mundial del aikido, el Aikido Hombu
+   Dojo, con Ueshiba Moriteru Doshu, Miyamoto T. Shihan, Yokota Y. Shihan, Osawa Hayato Shihan,
+   Kuribayashi T. Shihan, Kanazawa T. Shihan y Suzuki T. Shihan, entre otros.</p>
+<p>Con el propósito de promover el aikido en Barcelona y sus alrededores, estableció la
+   Asociación Cultural Musubi Aikido en el año 2008, y más tarde asumió los roles de presidente
+   de la asociación y director técnico.</p>
+<p>Actualmente tiene el grado de 4.º dan y el título de <em>shidoin</em>, instructor titulado
+   por la Aikikai, otorgado por Aikido Doshu Ueshiba Moriteru y reconocido a nivel mundial por
+   la <em>Aikikai Foundation</em> y la <em>International Aikido Federation</em>.</p>
+</div></div></body></html>

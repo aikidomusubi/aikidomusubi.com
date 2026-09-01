@@ -1,0 +1,258 @@
+{% include header.html %}
+
+<main id="main" tabindex="-1">
+
+  {% include section-strip.html %}
+
+  {%- comment -%}
+    Sobre nosotros — one layout, four topics, four languages.
+
+    The page files carry nothing but a `topic:` key and their front matter; all
+    the content is in _data/about.yml. That is what makes sixteen pages cost
+    sixteen stubs instead of sixteen documents to keep in step.
+
+    This is the material that used to run down the homepage as five long
+    sections. It reads better here, and — more to the point — another dojo or a
+    federation can link to a page about the association rather than to an anchor
+    two thirds of the way down a front page.
+  {%- endcomment -%}
+
+  {%- assign L = page.lang -%}
+  {%- assign A = site.data.about -%}
+  {%- assign t = A.topics | where: "id", page.topic | first -%}
+
+
+  {%- comment -%}
+    These pages shipped without an <h1> at all once: the sibling nav ran
+    straight into the lede, so the first heading was the footer's, and both
+    Lighthouse's heading-order audit and every screen reader's heading list
+    started at h2 with no page title in them.
+  {%- endcomment -%}
+  {%- comment -%}
+    Assigned first: Jekyll's include tag will not take a subscript in a
+    parameter — `title=t.title[L]` is an "Invalid syntax for include tag".
+  {%- endcomment -%}
+  {%- assign ph_t = t.title[L] -%}
+  {%- assign ph_l = t.lede[L] -%}
+  {% include page-head.html title=ph_t lede=ph_l %}
+
+  <div class="about">
+
+    {%- if t.image %}
+    <figure class="ab-hero">
+      {%- assign ss = site.data.imgw[t.image] -%}
+      <picture>
+        <source type="image/webp"
+                srcset="{% if ss %}{{ ss }}{% else %}/images/{{ t.image }}.webp{% endif %}"
+                {% if ss %}sizes="(min-width: 1200px) 948px, 92vw"{% endif %}>
+        <img src="/images/{{ t.image }}.jpg" width="948" height="632"
+             fetchpriority="high" decoding="async" alt="{{ t.title[L] }} · Aikido Musubi">
+      </picture>
+    </figure>
+    {%- endif %}
+
+    {%- for b in t.blocks %}
+    <section class="ab-block">
+      <h2 class="ab-h">{{ b.heading[L] }}</h2>
+      {%- for para in b.body[L] %}
+      <p class="ab-p">{{ para }}</p>
+      {%- endfor %}
+
+      {%- comment -%}
+        A block carries at most one of these. They are separate keys rather
+        than one polymorphic `items` list because each renders differently and
+        a wrong guess would fail silently — an empty <ol> reads as a bug in the
+        content, not in the template.
+      {%- endcomment -%}
+
+      {%- if b.steps %}
+      <ol class="ab-steps">
+        {%- for st in b.steps %}
+        <li>{{ st[L] }}</li>
+        {%- endfor %}
+      </ol>
+      {%- endif %}
+
+      {%- if b.weapons %}
+      <div class="ab-wep">
+        {%- for w in b.weapons %}
+        <div>
+          <p class="k" lang="ja">{{ w.k }}</p>
+          <p class="r">{{ w.r }}</p>
+          <p>{{ w.d[L] }}</p>
+        </div>
+        {%- endfor %}
+      </div>
+      {%- endif %}
+
+      {%- if b.people %}
+      <div class="ab-ppl">
+        {%- for pr in b.people %}
+        {%- comment -%}
+          The Japanese page shows the katakana where there is one, for the same
+          reason the chain on Ura does: printing "Pablo Martín" to a Japanese
+          reader in the middle of Japanese text is the transliteration missing,
+          not a name being respected.
+        {%- endcomment -%}
+        {%- if L == 'ja' and pr.name_ja %}{% assign prname = pr.name_ja %}{% else %}{% assign prname = pr.name %}{% endif -%}
+        <div><b>{{ prname }}</b><span>{{ pr.grade[L] }}</span></div>
+        {%- endfor %}
+      </div>
+      {%- endif %}
+
+      {%- comment -%}
+        The venue cards read _data/venues.yml for the place and the plan, and
+        _data/schedule.yml for the days — joined on the location slug, which
+        is the one key the two files already share. Writing the days here
+        instead would mean this page could disagree with the timetable.
+      {%- endcomment -%}
+      {%- if b.venues %}
+      {%- assign SC = site.data.schedule %}
+      <div class="ab-ven">
+        {%- for v in site.data.venues.venues -%}
+          {%- assign loc = SC.locations | where: 'slug', v.slug | first -%}
+          {%- assign days = '' -%}
+          {%- for d in SC.days -%}
+            {%- assign hit = false -%}
+            {%- for c in SC.classes -%}
+              {%- if c.location == loc.id and c.days contains d %}{% assign hit = true %}{% endif -%}
+            {%- endfor -%}
+            {%- if hit -%}
+              {%- assign dn = SC.day_names[d][L].short -%}
+              {%- if days == '' %}{% assign days = dn %}{% else %}{% assign days = days | append: ' · ' | append: dn %}{% endif -%}
+            {%- endif -%}
+          {%- endfor %}
+        <figure>
+          <picture>
+            {%- assign ss = site.data.imgw[v.plan] -%}
+            <source type="image/webp"
+                    srcset="{% if ss %}{{ ss }}{% else %}/images/{{ v.plan }}.webp{% endif %}"
+                    {% if ss %}sizes="(min-width: 992px) 300px, (min-width: 576px) 30vw, 90vw"{% endif %}>
+            <img src="/images/{{ v.plan }}.jpg" width="300" height="300" loading="lazy"
+                 decoding="async" alt="{{ v.town[L] }} · {{ v.name[L] }}">
+          </picture>
+          <figcaption>
+            <b>{{ v.town[L] }}</b>
+            <small>{{ v.name[L] }}</small>
+            {%- if days != '' %}<small>{{ days }}</small>{% endif %}
+          </figcaption>
+        </figure>
+        {%- endfor %}
+      </div>
+      {%- endif %}
+
+      {%- if b.facts %}
+      <dl class="ab-facts">
+        {%- for f in b.facts %}
+        <dt>{{ f.label[L] }}</dt>
+        <dd>{{ f.value[L] }}</dd>
+        {%- endfor %}
+      </dl>
+      {%- endif %}
+
+      {%- if b.more %}
+      <p class="ab-more">
+        {%- for m in b.more %}<a href="{{ m.url[L] }}">{{ m.label[L] }}</a>{% unless forloop.last %} <span aria-hidden="true">/</span> {% endunless %}{% endfor %}
+      </p>
+      {%- endif %}
+    </section>
+    {%- endfor %}
+
+    {%- comment -%}
+      The FAQ. <details>/<summary> and no script: it opens with JavaScript off,
+      it is keyboard-operable for free, and the browser's own find-in-page will
+      open a closed answer that matches. A hand-rolled accordion gets none of
+      those without work, and gets them wrong when the work is skipped.
+
+      `name` makes it an exclusive accordion: opening one closes the last. It
+      is a platform primitive, so that behaviour costs no JavaScript either,
+      and a browser too old to know the attribute simply leaves both open —
+      which is what this did before.
+    {%- endcomment -%}
+    {%- if t.faq %}
+    <div class="ab-faq">
+      {%- for f in t.faq %}
+      <details name="about-faq">
+        <summary>{{ f.q[L] }}</summary>
+        <div class="a">
+          {%- for para in f.a[L] %}
+          <p>{{ para }}</p>
+          {%- endfor %}
+        </div>
+      </details>
+      {%- endfor %}
+    </div>
+    {%- endif %}
+
+    {%- if t.groups %}
+    <div class="ab-links">
+      {%- for g in t.groups %}
+      <section class="ab-group">
+        <h2 class="ab-h">{{ g.heading[L] }}</h2>
+        <ul>
+          {%- for l in g.links %}
+          <li><a href="{{ l.url }}" target="_blank" rel="noopener">{{ l.name }}</a></li>
+          {%- endfor %}
+        </ul>
+      </section>
+      {%- endfor %}
+    </div>
+    {%- endif %}
+
+  </div>
+
+  {%- comment -%}
+    Instructors in training — THE ASSOCIATION PAGE ONLY.
+
+    It is not a class anyone can sign up to, so it does not belong beside the
+    four disciplines; it is how the dojo keeps having teachers, which is what
+    this page is about. Outside `.about` and last inside <main>, full bleed and
+    dark, so it butts against the footer the way the home page's Ura door does
+    — see the note beside `.ab-it` in styles/about.less.
+  {%- endcomment -%}
+  {%- if page.topic == 'association' %}
+  {%- assign IT = A.instructors -%}
+  <section class="ab-it" id="instructors">
+    <div class="ab-it-in">
+      <div class="ab-it-say">
+        <p class="ab-it-eyebrow">{{ IT.eyebrow[L] }}</p>
+        <h2>{{ IT.title[L] }}</h2>
+        <p class="ab-it-lede">{{ IT.lede[L] }}</p>
+        <p class="ab-it-body">{{ IT.body[L] }}</p>
+        <p class="ab-it-tt">{{ IT.timetable[L] }}</p>
+        <a class="ab-it-cta" href="mailto:{{ site.email }}">{{ IT.cta[L] }}</a>
+      </div>
+
+      <div class="ab-it-parts">
+        {%- for part in IT.parts %}
+        <section>
+          <h3>{{ part.head[L] }}</h3>
+          {%- for it in part.items %}
+          <p>{{ it[L] }}</p>
+          {%- endfor %}
+        </section>
+        {%- endfor %}
+      </div>
+    </div>
+  </section>
+  {%- endif %}
+
+  {%- comment -%}
+    Breadcrumbs, so a search result for one of these four shows where it sits
+    rather than as a bare page floating on its own.
+  {%- endcomment -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": {{ A.ui.section[L] | jsonify }} },
+      { "@type": "ListItem", "position": 2, "name": {{ t.title[L] | jsonify }},
+        "item": {{ site.url | append: page.url | jsonify }} }
+    ]
+  }
+  </script>
+
+</main>
+
+{% include footer.html %}

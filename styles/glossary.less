@@ -1,0 +1,301 @@
+// out: false
+//
+// ---------------------------------------------------------------------------
+// Glosario
+//
+// A light page, and the only one on the site with a control bar of its own.
+// Geometry is the approved mockup's: a 7.5rem kanji column, two text columns
+// on desktop collapsing to one, and entries that never break across a column.
+//
+// The one thing that is deliberately not the mockup: the bar sticks under the
+// site's nav rather than under the viewport. The mockup had no nav above it.
+// ---------------------------------------------------------------------------
+
+// Only this page loads this file, so `main` is the right place for the two
+// tokens: .gl-bar and .gl-top sit outside .gl and custom properties inherit
+// down the tree, not sideways.
+main {
+  --gl-mute: mix(@White, @Dark, 13.1%);   // Slate Color, 7.4:1 on white
+  --gl-line: fade(@Black, 13%);
+}
+
+// .gl-top is gone for the same reason as .ab-title: the page header is
+// _includes/page-head.html and `.page main`'s own rules now, on every page.
+
+// ---- the bar --------------------------------------------------------------
+// Sticky, but only while it is the thing you are using.
+//
+// A sticky bar under a sticky nav is already two fixed strips; reaching the
+// invitation band and the footer made four, and on a phone that was most of
+// the viewport occupied by furniture. So the bar unsticks once the entries
+// have run out: `position: sticky` on an element inside a container releases
+// at the container's bottom edge, and .gl is exactly the entries — the bar is
+// pinned while there is something to filter and scrolls away with the last of
+// them. No script, no scroll listener.
+//
+// It is also shorter than it was: one row of chips instead of five on a phone
+// (see .gl-chips), and less padding above and below.
+.gl-wrap {
+  position: relative;
+}
+
+.gl-bar {
+  position: sticky;
+  top: var(--nav-shrunk, 0px);
+  z-index: 5;
+  .full-bleed();
+  margin-bottom: 1.8rem;
+  background: fade(@White, 96%);
+
+  // No rules above and below. The gallery, the timetable and the seminars all
+  // put their filter row straight on the page with nothing drawn round it, and
+  // there is no reason this one should be boxed. The rules were also fighting
+  // the section headings underneath, which draw their own.
+
+  @supports (backdrop-filter: blur(10px)) {
+    backdrop-filter: blur(10px);
+  }
+}
+
+// NOT .page-measure(). That mixin sets the gutter as a `padding` SHORTHAND,
+// once per breakpoint, and every one of those redeclarations lands after the
+// vertical padding written here and resets it to zero. The bar has looked
+// unpadded at every width above 768px through three attempts at fixing it,
+// and correct below — because the mobile override happened to come last.
+//
+// Same tokens, same result, written long-hand so the two axes stop fighting.
+.gl-bar-in {
+  width: 100%;
+  max-width: @page-max;
+  margin: 0 auto;
+  padding: 1.15rem @gut-sm;
+
+  @media (min-width: @bp-md) { padding: 1.15rem @gut-md; }
+  @media (min-width: @bp-lg) { padding: 1.15rem @gut-lg; }
+  @media (max-width: @bp-md - .02px) { padding: .95rem @gut-sm .85rem; }
+}
+
+.gl-search {
+  display: flex;
+  gap: .5rem;
+  margin-bottom: .6rem;
+
+  input {
+    flex: 1;
+    min-width: 0;
+    padding: .5rem .8rem;
+    border: 1px solid var(--gl-line);
+    border-radius: 0;
+    background: @White;
+    font: inherit;
+    font-size: .95rem;
+    color: @Black;
+
+    &:focus {
+      outline: 2px solid @Yellow;
+      outline-offset: -1px;
+      border-color: @Black;
+    }
+  }
+
+  button {
+    padding: 0 1rem;
+    border: 1px solid var(--gl-line);
+    background: none;
+    cursor: pointer;
+    .Futura;
+    font-size: .62rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--gl-mute);
+
+    &:hover { border-color: @Black; color: @Black; }
+  }
+}
+
+// The chips are the site's chips.
+//
+// There were two chip languages: a pill with a colour dot at .8rem Noto Sans
+// on the gallery, the timetable and the seminars, and a square .6rem Futura
+// tag here. Nothing distinguished the two jobs — both are "narrow this list"
+// — so this one is the pill now, and the count sits where the colour dot sits
+// on the others. The one difference that stays is the dot itself: these
+// categories have no colour, they have a size.
+//
+// Ura keeps its own square tags on purpose. It is a different surface, and
+// micro Futura labels are its whole idiom.
+.gl-chips {
+  display: flex;
+  gap: .4rem;
+  flex-wrap: wrap;
+
+  button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    min-height: 2rem;
+    padding: .25rem .8rem;
+    margin: 0;
+    border: 1px solid fadeout(@Black, 88%);
+    border-radius: 2rem;
+    background-color: @White;
+    font: inherit;
+    font-size: .8rem;
+    line-height: 1.2;
+    color: var(--gl-mute);
+    cursor: pointer;
+    user-select: none;
+    transition: background-color .2s ease, border-color .2s ease, opacity .2s ease;
+
+    // The count, where the others carry the category's colour dot.
+    i {
+      font-style: normal;
+      font-size: .68rem;
+      font-variant-numeric: tabular-nums;
+      color: var(--gl-mute);   // 7.4:1 on white; it used to be #7C878C at 55%
+    }
+
+    // NO OPACITY. An unselected chip used to be the selected one at 55%,
+    // which composited to #9EA6A9 on white — 2.47:1, against a 4.5:1 floor,
+    // and the count inside it reached 1.89:1. Opacity on text over a tint is
+    // the single most repeated accessibility fault in this codebase.
+    //
+    // Unselected is now a lighter BORDER and nothing else: the colour of the
+    // label does not move, so it cannot fail.
+    border-color: fadeout(@Black, 92%);
+
+    &:hover { border-color: fadeout(@Black, 70%); color: @Black; }
+    &:focus-visible { outline: 2px solid @Blue; outline-offset: 2px; }
+
+    &[data-on] {
+      background: @Black;
+      border-color: @Black;
+      color: @White;
+
+      i { color: @Yellow; }
+    }
+  }
+
+  // Wrap, do not scroll. A horizontal scroller hides chips behind an edge with
+  // nothing to say they are there, and on a filter row every option matters —
+  // the reader is choosing from a set, not browsing a shelf. Four rows of
+  // chips is more page but no hidden state.
+  @media (max-width: @bp-md - .02px) {
+    padding-bottom: 0;
+
+    button { flex: 0 1 auto; }
+  }
+}
+
+.gl-count {
+  margin-top: .55rem;
+  .Futura;
+  font-size: .6rem;
+  @media (max-width: @bp-md - .02px) { margin-top: .4rem; }
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--gl-mute);
+}
+
+// ---- the entries ----------------------------------------------------------
+.gl { padding-bottom: 2rem; }
+
+.gl-grp {
+  margin-bottom: 2.8rem;
+
+  &[hidden] { display: none; }
+}
+
+.gl-gh {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: .2rem;
+  padding-bottom: .7rem;
+  border-bottom: 2px solid @Black;
+
+  h2 {
+    margin: 0;
+    font-size: 1.15rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+  }
+
+  span { font-size: .82rem; color: var(--gl-mute); }
+}
+
+// GRID, not `columns: 2`.
+//
+// CSS multi-column has to balance: with 123 entries each carrying
+// `break-inside: avoid`, the browser lays the list out repeatedly until the
+// columns even up. Lighthouse attributed 557 ms of Style & Layout to it on a
+// throttled phone — the whole of the page's blocking time, and none of it in
+// script.
+//
+// A grid with an explicit row count and `grid-auto-flow: column` produces the
+// same reading order — down the first column, then down the second — with none
+// of the balancing, because the row count is given rather than solved for.
+// Liquid knows how many terms are in each group and writes it into --rows.
+.gl-list {
+  display: grid;
+  grid-template-rows: repeat(var(--rows, 1), auto);
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  column-gap: 3.4rem;
+
+  @media (max-width: @bp-lg - .02px) {
+    grid-template-rows: none;
+    grid-auto-flow: row;
+  }
+}
+
+.gl-t {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  gap: 1.2rem;
+  align-items: baseline;
+  padding: .85rem 0;
+  border-bottom: 1px solid var(--gl-line);
+
+  &[hidden] { display: none; }
+
+  @media (max-width: @bp-sm - .02px) {
+    grid-template-columns: 1fr;
+    gap: .15rem;
+  }
+}
+
+.gl-k {
+  margin: 0;
+  // Named explicitly. Noto Sans has no CJK, and the subset Noto Sans JP is
+  // declared only on /ja/ pages, so on the other three the browser would pick
+  // whatever it liked per glyph. This is the mockup's stack.
+  font-family: 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif;
+  font-size: 1.15rem;
+  line-height: 1.3;
+  color: @Black;
+}
+
+.gl-r {
+  margin: 0;
+  .Futura;
+  font-size: .95rem;
+  letter-spacing: .02em;
+  color: @Black;
+}
+
+.gl-d {
+  margin: .2rem 0 0;
+  font-size: .87rem;
+  line-height: 1.65;
+  color: var(--gl-mute);
+
+  em { font-style: italic; }
+}
+
+.gl-empty {
+  padding: 3rem 0;
+  font-size: .95rem;
+  color: var(--gl-mute);
+}

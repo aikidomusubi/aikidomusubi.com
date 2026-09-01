@@ -1,0 +1,185 @@
+{% include header.html %}
+
+<main id="main" tabindex="-1">
+
+  {% include section-strip.html %}
+
+  {%- comment -%}
+    Recursos — one page, filtered in the browser.
+
+    Same shape as the glossary and for the same reason: the whole thing fits in
+    one scroll and one bookmark, and search is what finds a resource whose name
+    you already know. Every row is rendered, so the page works, prints and is
+    indexable with JavaScript off; the bar only hides rows.
+
+    THE PRIMARY ACTION IS WHAT THE READER HAS TO DO WITH THE THING, and that is
+    why `kind` exists rather than a file extension. A form is downloaded because
+    there is nothing on screen to read — it exists to be printed and signed. A
+    syllabus is read here, because the page is searchable, linkable to one
+    technique, always current, and prints to PDF on demand from the browser. A
+    kept PDF of the same thing would be a second copy that goes stale on
+    somebody's desktop.
+  {%- endcomment -%}
+  {%- assign L = page.lang | default: 'es' -%}
+  {%- assign R = site.data.resources -%}
+
+  {%- assign total = 0 -%}
+  {%- for g in R.groups -%}
+    {%- for it in g.items -%}
+      {%- unless it.draft %}{% assign total = total | plus: 1 %}{% endunless -%}
+    {%- endfor -%}
+  {%- endfor -%}
+
+  {% include page-head.html %}
+
+  <div class="rs-wrap">
+  <div class="rs-bar" data-rs-bar hidden>
+    <div class="rs-bar-in">
+      <div class="rs-search">
+        <input id="rs-q" type="search" autocomplete="off"
+               placeholder="{{ R.ui.search[L] }}" aria-label="{{ R.ui.search_lab[L] }}">
+        <button type="button" data-rs-clear>{{ R.ui.clear[L] }}</button>
+      </div>
+      <div class="rs-chips" role="group" aria-label="{{ R.ui.filters[L] }}">
+        <button type="button" data-cat="all" data-on aria-pressed="true">{{ R.ui.all[L] }}</button>
+        {%- for g in R.groups -%}
+          {%- assign n = 0 -%}
+          {%- for it in g.items %}{% unless it.draft %}{% assign n = n | plus: 1 %}{% endunless %}{% endfor -%}
+          {%- if n > 0 %}
+        <button type="button" data-cat="{{ g.id }}" aria-pressed="false">{{ g.name[L] }} <i>{{ n }}</i></button>
+          {%- endif -%}
+        {%- endfor %}
+      </div>
+      <p class="rs-count" data-rs-count aria-live="polite">{{ total }} {{ R.ui.entries[L] }}</p>
+    </div>
+  </div>
+  {%- comment -%}
+    Un-hidden HERE, during parse, and not by the deferred script.
+
+    The bar ships `hidden` because a search box that does nothing is worse than
+    no search box. Revealing it from a deferred script meant it appeared after
+    the first paint and pushed the list down — 0.058 of layout shift on the one
+    page that shifts at all. Three lines inline, immediately after the element,
+    run before anything is painted, so there is nothing to shift.
+
+    With JavaScript off this never runs and the bar stays hidden, which is the
+    whole point of shipping it that way.
+  {%- endcomment -%}
+  <script>(function(){var b=document.querySelector('[data-rs-bar]');if(b)b.hidden=false;}());</script>
+
+  <div class="rs">
+    {%- for g in R.groups -%}
+      {%- assign shown = 0 -%}
+      {%- for it in g.items %}{% unless it.draft %}{% assign shown = shown | plus: 1 %}{% endunless %}{% endfor -%}
+      {%- if shown > 0 %}
+    <section class="rs-grp" id="rs-{{ g.id }}" data-cat="{{ g.id }}">
+      <div class="rs-gh"><h2>{{ g.name[L] }}</h2><span>{{ g.sub[L] }}</span></div>
+
+      {%- for it in g.items -%}
+        {%- if it.draft %}{% continue %}{% endif -%}
+
+        {%- comment -%} Where the button goes, and what it says. {%- endcomment -%}
+        {%- case it.kind -%}
+          {%- when 'form' -%}{%- assign verb = R.ui.get_form[L] -%}{%- assign badge = R.ui.k_form[L] -%}
+          {%- when 'doc'  -%}{%- assign verb = R.ui.get_doc[L]  -%}{%- assign badge = R.ui.k_doc[L]  -%}
+          {%- when 'page' -%}{%- assign verb = R.ui.get_page[L] -%}{%- assign badge = R.ui.k_page[L] -%}
+          {%- when 'book' -%}{%- assign verb = R.ui.get_book[L] -%}{%- assign badge = R.ui.k_book[L] -%}
+            {%- comment -%}
+              A book on open loan is read, not found. Same kind, different verb.
+            {%- endcomment -%}
+            {%- if it.free %}{% assign verb = R.ui.get_free[L] %}{% endif -%}
+          {%- when 'video' -%}{%- assign verb = R.ui.get_video[L] -%}{%- assign badge = R.ui.k_video[L] -%}
+          {%- else        -%}{%- assign verb = R.ui.get_media[L] -%}{%- assign badge = R.ui.k_media[L] -%}
+        {%- endcase -%}
+
+        {%- assign href = '' -%}
+        {%- if it.file and it.file != '' -%}
+          {%- comment -%}
+            Only if the PDF is really there. `site.static_files` is every file
+            Jekyll copied, so a resource whose document has not been added yet
+            renders as "coming soon" instead of a link to a 404 — and starts
+            working the moment the file lands, with no flag to remember to
+            clear.
+          {%- endcomment -%}
+          {%- assign want = '/files/resources-uStNjtHz-' | append: it.file | append: '-' | append: L | append: '.pdf' -%}
+          {%- assign got = site.static_files | where: 'path', want | first -%}
+          {%- comment -%}
+            A document the dojo has only written in Spanish is still the
+            document. Rather than tell a Catalan reader it is "coming soon"
+            forever, fall back to the Spanish file — `langs:` beside the button
+            already says what language it is in.
+          {%- endcomment -%}
+          {%- unless got -%}
+            {%- assign want = '/files/resources-uStNjtHz-' | append: it.file | append: '-es.pdf' -%}
+            {%- assign got = site.static_files | where: 'path', want | first -%}
+          {%- endunless -%}
+          {%- if got %}{% assign href = want %}{% endif -%}
+        {%- elsif it.ref -%}
+          {%- assign tgt = site.pages | where: 'i18n-ref', it.ref | where: 'lang', L | first -%}
+          {%- if tgt %}{% assign href = tgt.url | append: it.anchor %}{% endif -%}
+        {%- elsif it.panel -%}
+          {%- comment -%}
+            A panel item is a real, linkable URL — the page plus `?r=<id>` —
+            and the script turns the click into a slide instead of a
+            navigation. Without JavaScript it is still a link that loads the
+            page with that sheet open, so the resource is reachable either way.
+          {%- endcomment -%}
+          {%- assign href = page.url | append: '?r=' | append: it.panel -%}
+        {%- elsif it.url and it.url != 'PLACEHOLDER' -%}
+          {%- assign href = it.url -%}
+        {%- endif -%}
+        {%- assign pending = false -%}
+        {%- if href == '' or href contains 'PLACEHOLDER' %}{% assign pending = true %}{% endif -%}
+
+        {%- capture hay %}{{ it.title[L] }} {{ it.by }} {{ it.desc[L] }} {{ g.name[L] }}{% endcapture -%}
+      <div class="rs-row" data-cat="{{ g.id }}" data-s="{{ hay | escape }}">
+        <div>
+          <b>{{ it.title[L] }}{% if it.by %} <span class="rs-by">· {{ it.by }}</span>{% endif %}</b>
+          <p class="d">{{ it.desc[L] }}</p>
+          <p class="m">
+            <span class="rs-k rs-k-{{ it.kind }}">{{ badge }}</span>
+            {%- if it.langs %}<span class="rs-lg">{{ it.langs }}</span>{% endif -%}
+            {%- if it.meta %}<span class="rs-lg">{{ it.meta[L] }}</span>{% endif -%}
+            {%- if it.where and it.where != 'PLACEHOLDER' %}<span class="rs-lg">{{ it.where }}</span>{% endif -%}
+            {%- comment -%}
+              Where the material came from. These are the dojo's own layout of
+              somebody else's syllabus, and saying so is the point.
+            {%- endcomment -%}
+            {%- comment -%}
+              Where to buy it, when the primary link is a free loan. Both
+              matter: one to read it today, one to own it.
+            {%- endcomment -%}
+            {%- if it.buy_name %}<span class="rs-src">{{ R.ui.buy_at[L] }} <a href="{{ it.buy_url }}" target="_blank" rel="noopener">{{ it.buy_name }}</a></span>{% endif -%}
+            {%- if it.src_name %}<span class="rs-src">{% if L == 'ca' %}Font{% elsif L == 'en' %}Source{% elsif L == 'ja' %}出典{% else %}Fuente{% endif %}: <a href="{{ it.src_url }}" target="_blank" rel="noopener">{{ it.src_name }}</a></span>{% endif -%}
+          </p>
+        </div>
+        {%- if pending %}
+        <span class="rs-soon">{{ R.ui.soon[L] }}</span>
+        {%- else %}
+        {%- comment -%}
+          A link that leaves the site opens in a new tab, like every other
+          outbound link here. The test is the href and not the kind: a `page`
+          resource is internal and a `book` is not, but what actually decides
+          it is whether the URL has a scheme on it.
+        {%- endcomment -%}
+        <a class="rs-get{% if it.kind == 'book' or it.kind == 'media' or it.kind == 'video' %} rs-get-o{% endif %}"
+           href="{{ href }}"{% if href contains '://' %} target="_blank" rel="noopener"{% endif %}{% if it.panel %} data-ex-open="{{ it.panel }}"{% endif %}{% if it.kind == 'form' or it.kind == 'doc' %} download{% endif %}>{{ verb }}</a>
+        {%- endif %}
+      </div>
+      {%- endfor %}
+    </section>
+      {%- endif -%}
+    {%- endfor %}
+    <p class="rs-empty" data-rs-empty hidden>{{ R.ui.empty[L] }}</p>
+  </div>
+  </div><!-- .rs-wrap -->
+</main>
+
+{%- comment -%}
+  The syllabus panel. Outside <main> because it is a dialog over the page, not
+  a section of it — the same reason Ura's panel sits beside the page rather
+  than inside it.
+{%- endcomment -%}
+{% include exam-panel.html %}
+
+{% include footer.html %}

@@ -1,0 +1,46 @@
+{%- comment -%}
+  The section strip: the other pages in this page's group.
+
+  About had one and nothing else did, which was the inconsistency. It is built
+  from _data/nav.yml — the same source as the menu and the footer's first two
+  columns — by finding the group whose items include this page's URL, so a page
+  gets a strip by belonging to a group and for no other reason. Nothing here
+  has to be kept in step by hand.
+
+  The legal pages are not a nav group; they are _data/footer.yml's `legal`
+  list, so that is checked too.
+
+  No exemptions. The glossary had one for a while — it is a reference you
+  arrive at rather than a page you read alongside its neighbours — but a strip
+  that appears on every grouped page except one is a rule with a hole in it,
+  and the hole is more confusing than the extra row of links.
+{%- endcomment -%}
+{%- assign L = page.lang | default: 'es' -%}
+{%- assign N = site.data.nav -%}
+{%- assign grp = nil -%}
+  {%- for g in N.groups -%}
+    {%- if g.items -%}
+      {%- for it in g.items -%}
+        {%- if it.url[L] == page.url %}{% assign grp = g %}{% endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- assign items = nil -%}
+  {%- assign label = nil -%}
+  {%- if grp -%}
+    {%- assign items = grp.items -%}{%- assign label = grp.label[L] -%}
+  {%- else -%}
+    {%- for it in site.data.footer.legal -%}
+      {%- if it.url[L] == page.url -%}
+        {%- assign items = site.data.footer.legal -%}
+        {%- assign label = site.data.sitemap.legal[L] -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+  {%- if items %}
+  <nav class="sec-strip" aria-label="{{ label }}">
+    {%- for it in items %}
+    <a href="{{ it.url[L] }}"{% if it.url[L] == page.url %} aria-current="page"{% endif %}>{{ it.label[L] }}</a>
+    {%- endfor %}
+  </nav>
+  {%- endif -%}

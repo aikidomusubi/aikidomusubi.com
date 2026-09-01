@@ -1,0 +1,24 @@
+# The site map page.
+#
+# Everything else it needs it already has: the sections come from
+# _data/nav.yml, the legal strip from _data/footer.yml, and every title and
+# description is the target page's own front matter in its own language. Only
+# the heading for the legal group is written here, because the footer has never
+# needed one.
+
+# The home has no nav entry — the wordmark is its link — so it is the one page
+# the menu cannot supply and the map has to name.
+home:
+  label: { es: "Portada", ca: "Portada", en: "Home", ja: "トップページ" }
+  url:   { es: "/", ca: "/ca/", en: "/en/", ja: "/ja/" }
+  # The home has no front matter description of its own — the <title> and the
+  # meta description are built in _includes/header.html — so unlike every other
+  # cell on this page, this one is written here.
+  desc:
+    es: "El dojo, el aikido y la asociación en una página, con lo que pasa esta semana y la puerta a Ura."
+    ca: "El dojo, l'aikido i l'associació en una pàgina, amb el que passa aquesta setmana i la porta a Ura."
+    en: "The dojo, aikido and the association on one page, with what is happening this week and the door into Ura."
+    ja: "道場、合気道、協会を一枚に。今週の予定と、「裏」への入口。" 
+
+legal: { es: "Legal", ca: "Legal", en: "Legal", ja: "法的事項" }
+pages: { es: "páginas", ca: "pàgines", en: "pages", ja: "ページ" }

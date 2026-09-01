@@ -1,0 +1,329 @@
+// out: false
+//
+// ---------------------------------------------------------------------------
+// 404
+//
+// The page has an apology to make and about four seconds of patience, so it
+// spends them on the one thing it can teach: ma-ai, the correct distance.
+// ---------------------------------------------------------------------------
+
+// PROPORTIONS OF `.nf`, NOT OF THE VIEWPORT.
+//
+// The mat was `height: 40vh` and everything standing on it was placed in vh.
+// `.nf` is `100svh` minus the nav minus a gutter, and it carries a min-height
+// besides, so the two diverge on a short window: growing the mat in vh put the
+// black up over the apology, which then read dark on dark.
+//
+// Every offset below is a share of `.nf` instead. The mat is its lower half
+// whatever that resolves to, the apology keeps the upper half, and the kaijū is
+// bounded by a percentage HEIGHT rather than a width computed from vh — a
+// percentage width would have been measured against the wrong axis.
+@nf-mat-top: 52%;      // the yellow keeps everything above this line
+@nf-zone-y:  30%;      // the circle's centre, off the floor of .nf
+@nf-kaiju-y: 19%;      // where he stands
+@nf-kaiju-h: 26%;      // and how tall he may be: 19 + 26 = 45, inside the mat
+
+
+.nf {
+  position: relative;
+  // One screen, minus the nav above it. `100svh` and not `100vh` for the same
+  // reason the hero uses it: on iOS `100vh` is the height the viewport has
+  // once the URL bar has gone, which it has not on arrival.
+  height: calc(100svh - (@nv-h + @nv-strip-h) - @gut-sm);
+  // The apology has to stay on the yellow, so the mat takes a little less.
+  min-height: 32rem;
+  overflow: hidden;
+  user-select: none;
+  touch-action: manipulation;
+  background-color: @Yellow;
+  cursor: pointer;
+}
+
+// The page paints its own ground, so the white surface and the reading column
+// both step aside — the same move Ura's page makes.
+// The page paints its own ground, so the white surface and the reading column
+// both step aside, and main's own padding is cancelled top and bottom: the
+// footer belongs directly under the mat.
+.page main .nf {
+  .full-bleed();
+  margin-top: -@gut-md;
+  margin-bottom: -6rem;
+
+  @media (max-width: @bp-md - .02px) { margin-top: -@gut-sm; }
+}
+
+.nf-mat {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: @nf-mat-top;
+  background: @Black;
+  z-index: 1;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(90deg, fade(@White, 7%) 1px, transparent 1px),
+      linear-gradient(fade(@White, 7%) 1px, transparent 1px);
+    background-size: 88px 88px;
+  }
+}
+
+// ---- the apology -----------------------------------------------------------
+.nf-head {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 6;
+  padding: 4.4rem @gut-lg 0;
+  text-align: center;
+
+  @media (max-width: @bp-lg - .02px) { padding: 3rem @gut-md 0; }
+  @media (max-width: @bp-md - .02px) { padding: 2.4rem @gut-sm 0; }
+}
+
+.page main .nf {
+  .nf-kicker {
+    .Futura;
+    margin: 0 0 1.3rem;
+    font-size: .66rem;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: @YellowInk;                    // 8.57:1 on @Yellow, measured
+  }
+
+  .nf-num {
+    .Futura; .regular;
+    margin: 0;
+    padding: 0;
+    font-size: clamp(5rem, 17vw, 12rem);
+    line-height: .85;
+    letter-spacing: .04em;
+    text-align: center;
+    color: @Black;
+  }
+
+  .nf-lede {
+    max-width: 33rem;
+    margin: 1.4rem auto 0;
+    font-size: 1.08rem;
+    line-height: 1.7;
+    text-align: center;
+    color: @YellowInkDeep;
+
+    em { font-style: italic; }
+  }
+
+}
+
+// ---- the field of play -----------------------------------------------------
+.nf-field { position: absolute; inset: 0; z-index: 4; pointer-events: none; }
+
+.nf-zone {
+  position: absolute;
+  left: 50%;
+  bottom: @nf-zone-y;
+  width: var(--z, 240px);
+  height: var(--z, 240px);
+  transform: translate(-50%, 50%);
+  border: 2px dashed fade(@White, 32%);
+  border-radius: 50%;
+  z-index: 3;
+
+  span {
+    position: absolute;
+    left: 50%;
+    // Inside the circle rather than above it. Hung outside, the label was the
+    // one thing that still crossed onto the yellow once the circle itself sat
+    // clear of it.
+    top: .6rem;
+    transform: translateX(-50%);
+    .Futura;
+    font-size: .56rem;
+    letter-spacing: .24em;
+    color: fade(@White, 50%);
+  }
+}
+
+.nf-kaiju {
+  position: absolute;
+  bottom: @nf-kaiju-y;
+  left: 0;
+  // BOUNDED BY HEIGHT. A width capped from vh could not know how tall the mat
+  // had actually resolved to, so his head kept crossing onto the yellow. A
+  // percentage height is measured against `.nf` itself, which is the box the
+  // mat is a share of, so he is as large as the black allows and never larger.
+  width: auto;
+  height: min(232px, @nf-kaiju-h);
+  z-index: 5;
+  transform-origin: 50% 86%;
+  will-change: transform, left;
+
+  @media (max-width: @bp-md - .02px) { height: min(44vw, @nf-kaiju-h); }
+}
+
+.nf-flip { transform: scaleX(var(--f, 1)); }
+.nf-bob  { animation: nf-bob .46s ease-in-out infinite alternate; }
+
+@keyframes nf-bob {
+  from { transform: translateY(0) rotate(-1.4deg); }
+  to   { transform: translateY(-4%) rotate(1.4deg); }
+}
+
+// The woodcut is black ink on a white ground. Inverting it and screening drops
+// the ground and leaves a white beast on the black mat.
+.page main .nf-kaiju img {
+  display: block;
+  // The wrapper is sized by height now, so the image follows the height and
+  // its width comes from the drawing.
+  height: 100%;
+  width: auto;
+  filter: invert(1);
+  mix-blend-mode: screen;
+}
+
+.nf-kaiju.thrown {
+  transition:
+    transform .95s cubic-bezier(.3, .9, .3, 1),
+    left .95s cubic-bezier(.3, .9, .3, 1),
+    bottom .95s cubic-bezier(.34, 1.25, .4, 1),
+    opacity .3s .62s linear;
+  opacity: 0;
+}
+
+.nf-boom {
+  position: absolute;
+  bottom: @nf-zone-y;
+  z-index: 3;
+  width: 10px;
+  height: 10px;
+  border: 3px solid @Yellow;
+  border-radius: 50%;
+  transform: translate(-50%, 50%);
+  opacity: 0;
+  pointer-events: none;
+
+  &.go { animation: nf-boom .9s cubic-bezier(.2, .8, .3, 1) forwards; }
+}
+
+@keyframes nf-boom {
+  0%   { opacity: .95; width: 10px; height: 10px; }
+  100% { opacity: 0; width: 1000px; height: 1000px; }
+}
+
+// ---- the score and the calls -----------------------------------------------
+.page main .nf-hud {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.8rem;
+  z-index: 7;
+  margin: 0;
+  text-align: right;
+  .Futura;
+  font-size: .56rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: @YellowInk;
+
+  b { display: block; margin: .25rem 0 .8rem; font-size: 1.7rem; line-height: 1; color: @Black; }
+}
+
+.page main .nf-call {
+  position: absolute;
+  left: 50%;
+  bottom: 48vh;
+  transform: translateX(-50%);
+  z-index: 7;
+  margin: 0;
+  .Futura;
+  font-size: 1.2rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0;
+
+  &.on { animation: nf-call .95s ease-out forwards; }
+  &.good { color: @Black; }
+  &.bad  { color: @VandykeRed; }           // 8.08:1 on @Yellow; @Red is 2.9:1
+}
+
+@keyframes nf-call {
+  0%   { opacity: 0; transform: translate(-50%, 10px); }
+  25%  { opacity: 1; transform: translate(-50%, -4px); }
+  100% { opacity: 0; transform: translate(-50%, -28px); }
+}
+
+// ---- the way out -----------------------------------------------------------
+// The instructions sit with the controls they describe, on the mat. They used
+// to sit under the apology, where the yellow band ends and the black one
+// starts, so on a short window they landed dark on dark.
+.page main .nf-hint {
+  position: absolute;
+  left: 0;
+  right: 0;
+  // 4.6rem and not less: the links sit 3.4rem off the floor once their own
+  // padding is counted, and at 3.4rem this line landed on top of them.
+  bottom: 4.6rem;
+  z-index: 7;
+  margin: 0;
+  padding: 0 @gut-sm;
+  text-align: center;
+  .Futura;
+  font-size: .6rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: fade(@White, 72%);
+
+  b { font-weight: 400; color: @Yellow; }
+
+  @media (max-width: @bp-md - .02px) { bottom: 3.8rem; }
+}
+
+.nf-acts {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 7;
+  display: flex;
+  gap: 1.6rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0 @gut-lg 2.4rem;
+
+  @media (max-width: @bp-md - .02px) { padding: 0 @gut-sm 1.6rem; gap: 1.1rem; }
+}
+
+// `.page main a` is (0,1,2) and floods @Yellow on hover, which on a black mat
+// makes the links vanish. Same depth, same reason as .hm-btn.
+.page main .nf-acts a {
+  padding-bottom: .25rem;
+  border-bottom: 2px solid @Yellow;
+  .Futura;
+  font-size: .66rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: @White;
+  background-color: transparent;
+
+  &:hover, &:focus {
+    border-bottom-color: @White;
+    background-color: transparent;
+    text-decoration: none;
+    color: @White;
+  }
+
+  &:focus-visible { outline: 2px solid @Yellow; outline-offset: 3px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nf-bob { animation: none; }
+  .nf-kaiju.thrown { transition: none; }
+  .nf-boom.go { animation: none; }
+  .page main .nf-call.on { animation: none; opacity: 1; }
+}

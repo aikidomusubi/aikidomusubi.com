@@ -1,0 +1,76 @@
+{%- comment -%}
+  One entry inside a month cell, plus the detail panel it opens.
+
+  Called from two places with the same parameters, because the calendar draws
+  from two sources: the _events/ collection (seminars, masterclasses,
+  collaborations — things with a page and a poster) and _data/calendar.yml
+  (gradings, closures, cancellations — dated facts with nothing to link to).
+  Normalising them here means the two can never drift apart visually.
+
+  THE PANEL IS RENDERED, NOT BUILT BY SCRIPT. It sits here `hidden`, and
+  calendar.js only shows and places it. That keeps all four translations in
+  Liquid where the rest of the copy is, and it means the detail is in the HTML
+  a crawler reads rather than assembled from data-* attributes at runtime.
+
+  It is NOT a hover-only tooltip. WCAG 2.1 SC 1.4.13 requires content revealed
+  on hover to be dismissible, hoverable and persistent, and a hover tooltip does
+  not exist at all on the phone where a calendar actually gets read. So the
+  entry is a disclosure: click or Enter opens it, Escape or a click outside
+  closes it, and on a pointer device hover opens it too.
+
+  WITHOUT JAVASCRIPT THE PANEL IS SIMPLY OPEN. There is no <a> on the entry any
+  more — the link is the panel's button and nowhere else — so hiding the panel
+  by default would put that link out of reach when the script is blocked. The
+  `.no-js` rules in calendar.less lay every panel out inline instead. The month
+  grid gets very tall that way, which is the right trade for a fallback almost
+  nobody sees: nothing becomes unreachable.
+
+  Parameters: type, title, colour, label, start, end, link, iso, place, desc.
+{%- endcomment -%}
+{%- assign C = site.data.calendar -%}
+{%- assign EL = page.lang | default: 'es' -%}
+{%- assign mi = include.iso | date: "%-m" | minus: 1 -%}
+{%- assign dnum = include.iso | date: "%-d" -%}
+{%- if EL == 'ja' -%}
+  {%- assign when = C.months[EL][mi] | append: dnum | append: '日' -%}
+{%- else -%}
+  {%- assign when = dnum | append: ' ' | append: C.months[EL][mi] -%}
+{%- endif -%}
+{%- if include.start -%}
+  {%- assign when = when | append: ' · ' | append: include.start -%}
+  {%- if include.end -%}{%- assign when = when | append: '–' | append: include.end -%}{%- endif -%}
+{%- endif -%}
+
+<article class="cal-entry" data-type="{{ include.type }}" style="--colour: {{ include.colour }}">
+  {%- comment -%}
+    ONE LINK, IN THE PANEL. The entry itself used to be an <a> to the same URL
+    the panel's button now points at, so every seminar carried the same href
+    twice. The entry is the thing you open; the panel is the thing you act on.
+  {%- endcomment -%}
+  <span class="cal-entry-type">{{ include.label }}</span>
+  <span class="cal-entry-title">{{ include.title }}</span>
+  {%- if include.start %}<span class="cal-entry-time"><time datetime="{{ include.start }}">{{ include.start }}</time>{% if include.end %}–<time datetime="{{ include.end }}">{{ include.end }}</time>{% endif %}</span>{% endif -%}
+
+  <div class="cal-pop" hidden>
+    <span class="cal-pop-bar" aria-hidden="true"></span>
+    <button class="cal-pop-x" type="button" aria-label="{{ C.ui.close[EL] }}">
+      <svg aria-hidden="true" focusable="false" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.6" d="M3 3l10 10M13 3L3 13"/></svg>
+    </button>
+    <div class="cal-pop-in">
+      <p class="cal-pop-type">{{ include.label }}</p>
+      <p class="cal-pop-title">{{ include.title }}</p>
+      <dl class="cal-pop-facts">
+        <dt>{{ C.ui.when_lab[EL] }}</dt><dd>{{ when }}</dd>
+        {%- if include.place %}
+        <dt>{{ C.ui.where_lab[EL] }}</dt><dd>{{ include.place }}</dd>
+        {%- endif %}
+      </dl>
+      {%- if include.desc %}
+      <p class="cal-pop-desc">{{ include.desc }}</p>
+      {%- endif %}
+      {%- if include.link %}
+      <a class="cal-pop-cta" href="{{ include.link }}">{{ C.ui.details[EL] }}</a>
+      {%- endif %}
+    </div>
+  </div>
+</article>

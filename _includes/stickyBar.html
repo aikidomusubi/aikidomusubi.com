@@ -1,41 +1,23 @@
+{%- comment -%}
+  THE HOME BAR IS GENERATED, and it has to be.
+
+  It used to be six hand-written links to #welcome, #our-dojo, #aikido,
+  #instructors, #association and #links: the anchors of the site that came
+  before this one. The rebuilt home page emits `index-8oGCaMDs-aikido`,
+  `-dojo`, `-venues`, `-start`, `-instructor` and `-association`, so all six
+  links pointed at nothing and had done since the rebuild.
+
+  Both halves now read _data/home.yml. The href is composed the same way
+  _includes/home.html composes the id, and the label is the section's own
+  `label`, which is the short form it was already written for. Add a section
+  there and it appears here; rename one and it is renamed here.
+{%- endcomment -%}
 {% if page.i18n-ref == 'index-8oGCaMDs' %}
+{%- assign HS = site.data.home.sections -%}
 <nav id="index-8oGCaMDs-nav" class="nav justify-content-center stickyBar">
-  <a class="nav-link" href="#welcome">
-    {% if page.lang == 'ca' %}Benvinguts{% endif %}
-    {% if page.lang == 'en' %}Welcome{% endif %}
-    {% if page.lang == 'es' %}Bienvenidos{% endif %}
-    {% if page.lang == 'ja' %}ようこそ{% endif %}
-  </a>
-  <a class="nav-link" href="#our-dojo">
-    {% if page.lang == 'ca' %}El nostre dojo{% endif %}
-    {% if page.lang == 'en' %}Our dojo{% endif %}
-    {% if page.lang == 'es' %}Nuestro dojo{% endif %}
-    {% if page.lang == 'ja' %}道場について{% endif %}
-  </a>
-  <a class="nav-link" href="#aikido">
-    {% if page.lang == 'ca' %}Aikido{% endif %}
-    {% if page.lang == 'en' %}Aikido{% endif %}
-    {% if page.lang == 'es' %}Aikido{% endif %}
-    {% if page.lang == 'ja' %}合気道とは{% endif %}
-  </a>
-  <a class="nav-link" href="#instructors">
-    {% if page.lang == 'ca' %}Instructors{% endif %}
-    {% if page.lang == 'en' %}Instructors{% endif %}
-    {% if page.lang == 'es' %}Instructores{% endif %}
-    {% if page.lang == 'ja' %}指導者{% endif %}
-  </a>
-  <a class="nav-link" href="#association">
-    {% if page.lang == 'ca' %}Associació Cultural{% endif %}
-    {% if page.lang == 'en' %}Association{% endif %}
-    {% if page.lang == 'es' %}Asociación Cultural{% endif %}
-    {% if page.lang == 'ja' %}文化協会{% endif %}
-  </a>
-  <a class="nav-link" href="#links">
-    {% if page.lang == 'ca' %}Enllaços{% endif %}
-    {% if page.lang == 'en' %}Links{% endif %}
-    {% if page.lang == 'es' %}Enlaces{% endif %}
-    {% if page.lang == 'ja' %}リンク{% endif %}
-  </a>
+  {%- for s in HS %}
+  <a class="nav-link" href="#{{ page.i18n-ref }}-{{ s.id }}">{{ s.label[page.lang] }}</a>
+  {%- endfor %}
 </nav>
 {% endif %}
 {% if page.i18n-ref == 'classes-CJc2lhFv' %}
@@ -54,12 +36,12 @@
   </a>
 </nav>
 {% endif %}
-{% if page.i18n-ref == 'courses-hFZ2XXIp' %}
-<nav id="courses-hFZ2XXIp-nav" class="nav justify-content-center stickyBar">
+{% if page.i18n-ref == 'events-hFZ2XXIp' %}
+<nav id="events-hFZ2XXIp-nav" class="nav justify-content-center stickyBar">
   <a class="nav-link active" href="#show-all" data-filter="all">
-    {% if page.lang == 'ca' %}Tots els cursos{% endif %}
-    {% if page.lang == 'en' %}All courses{% endif %}
-    {% if page.lang == 'es' %}Todos los cursos{% endif %}
+    {% if page.lang == 'ca' %}Tots els seminaris{% endif %}
+    {% if page.lang == 'en' %}All seminars{% endif %}
+    {% if page.lang == 'es' %}Todos los seminarios{% endif %}
     {% if page.lang == 'ja' %}すべて{% endif %}
   </a>
   <a class="nav-link" href="#upcoming" data-filter="upcoming">

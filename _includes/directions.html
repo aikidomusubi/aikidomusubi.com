@@ -1,0 +1,28 @@
+{%- comment -%}
+  The "how to get there" button, in the flavour the reader's device can use.
+
+  Both links are in the markup. `scripts/default.js` stamps `apple` or `other`
+  on <html>, and CSS hides the one that does not match — so the choice costs no
+  request, survives caching (the decision is made in the browser, not baked
+  into the page), and with JavaScript off both simply show.
+
+  It matters because a maps.apple.com link OPENS THE MAPS APP on an iPhone or a
+  Mac, with the dojo's claimed listing and turn-by-turn directions, rather than
+  a browser tab someone then has to copy an address out of.
+
+  include.venue — an entry from _data/venues.yml
+  include.class — extra classes for the anchors
+{%- endcomment -%}
+{%- assign L = page.lang | default: 'es' -%}
+{%- assign V = site.data.venues -%}
+{%- assign v = include.venue -%}
+{%- if v.apple_url %}
+<a class="{{ include.class }} dir-apple" href="{{ v.apple_url }}" target="_blank" rel="noopener">
+  {{ V.ui.directions[L] }}<span class="vn-sr"> · {{ v.name[L] }} · Apple Maps</span>
+</a>
+{%- endif %}
+{%- if v.maps_url %}
+<a class="{{ include.class }} dir-google" href="{{ v.maps_url }}" target="_blank" rel="noopener">
+  {{ V.ui.directions[L] }}<span class="vn-sr"> · {{ v.name[L] }} · Google Maps</span>
+</a>
+{%- endif -%}

@@ -1,0 +1,20 @@
+{%- comment -%}
+  The five things we need in order to say yes.
+
+  This list appeared twice on the visitors page, word for word — once for
+  training as a guest and once for joining from another dojo. It is one block
+  used in both places now: the last line differs, so it is passed in.
+
+  Presented as a checklist rather than a bullet list because that is what it is
+  — the reader is assembling a message, and can tick items off.
+{%- endcomment -%}
+
+{%- assign L = page.lang -%}
+
+<ul class="vs-send">
+  <li>{% if L == 'ca' %}El teu nom complet{% elsif L == 'en' %}Your full name{% elsif L == 'ja' %}お名前（フルネーム）{% else %}Tu nombre completo{% endif %}</li>
+  <li>{% if L == 'ca' %}El nom del teu dojo{% elsif L == 'en' %}The name of your dojo{% elsif L == 'ja' %}所属道場名{% else %}El nombre de tu dojo{% endif %}</li>
+  <li>{% if L == 'ca' %}El teu grau{% elsif L == 'en' %}Your grade{% elsif L == 'ja' %}段級位{% else %}Tu grado{% endif %}</li>
+  <li>{% if L == 'ca' %}El nom del teu instructor{% elsif L == 'en' %}The name of your instructor{% elsif L == 'ja' %}指導者のお名前{% else %}El nombre de tu instructor{% endif %}</li>
+  <li>{{ include.last }}</li>
+</ul>

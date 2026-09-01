@@ -1,0 +1,156 @@
+{%- comment -%}
+  The grading programme, as a panel over the Resources page.
+
+  WHY A PANEL AND NOT SIX PAGES. The five sheets plus the cumulative one are
+  one document read one at a time, always reached from the same list. Six pages
+  would be six URLs in the sitemap, six hreflang sets and six near-identical
+  layouts; a panel is one. The deep link is `?r=kyu3`, which the script reads
+  on load and writes on open, so a sheet can still be sent to somebody.
+
+  FIVE SHEETS ARE RENDERED, NOT SIX. The syllabus is cumulative, so "the whole
+  programme" IS the 1st kyū sheet — the only difference is that the colours are
+  turned on and the legend appears. Rendering it twice would be ten kilobytes
+  of duplicate markup on a page that already carries the other five.
+
+  PRINT. `@media print` in styles/resources.less hides the site and prints the
+  open sheet alone on one side of one sheet of A4.
+{%- endcomment -%}
+
+{%- assign E = site.data.exams -%}
+{%- assign S = site.data['exams-sheets'] -%}
+{%- assign L = page.lang -%}
+
+<div class="ex-scrim" aria-hidden="true"></div>
+
+<div class="ex-panel" id="ex-panel" role="dialog" aria-modal="true"
+     aria-labelledby="ex-title" aria-hidden="true" inert
+     data-name-all="{{ E.ui.all_title[L] }}">
+
+  <header class="ex-bar">
+    <div class="ex-bar-in">
+      <p class="ex-eyebrow" data-ex-eyebrow>{{ E.ui.title[L] }}</p>
+      <h2 class="ex-name" id="ex-title" data-ex-title></h2>
+      <div class="ex-acts" data-ex-acts
+           data-share="{{ E.ui.share[L] }}"
+           data-share-copied="{{ E.ui.share_copied[L] }}"
+           data-print="{{ E.ui.print[L] }}"></div>
+      <button type="button" class="ex-x" data-ex-close>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        <span>{{ E.ui.close[L] }}</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="ex-scroll" data-ex-scroll>
+    {%- comment -%}
+      Print-only masthead. A printed sheet with no name on it is a list of
+      Japanese words, and the URL is the one written on the copy somebody pins
+      up — so it carries the `?r=` of the sheet that was printed, which the
+      script fills in.
+    {%- endcomment -%}
+    <div class="ex-print-head" aria-hidden="true">
+      <img class="ex-print-logo" src="/graphics/logo-00-wordmark.svg" alt=""
+           width="632" height="166">
+      <p class="ex-print-name" data-ex-printname></p>
+      <p class="ex-print-url" data-ex-printurl></p>
+    </div>
+
+    {%- comment -%}
+      The legend belongs to the cumulative view only, so it lives outside the
+      sheets and the script reveals it there.
+    {%- endcomment -%}
+    <div class="ex-all-head" data-ex-legend hidden>
+      <p class="ex-intro">{{ E.ui.all_intro[L] }}</p>
+      <p class="ex-legend">
+        <span class="ex-legend-lab">{{ E.ui.legend[L] }}</span>
+        {%- for gm in E.grades_meta -%}
+        <span class="ex-key" data-from="{{ gm.n }}">
+          <span class="ex-key-dot" aria-hidden="true"></span>{{ gm.name[L] }}
+          {%- if gm.n == 5 %} <i>{{ E.ui.legend_5[L] }}</i>{% endif -%}
+        </span>
+        {%- endfor -%}
+      </p>
+    </div>
+
+    {%- for gm in E.grades_meta -%}
+      {%- assign blocks = S.sheets[gm.id] -%}
+    <section class="ex-sheet" data-ex-sheet="{{ gm.id }}" hidden
+             data-eyebrow="{{ E.ui.title[L] }}" data-name="{{ gm.name[L] }}">
+      <div class="ex-cols">
+        {%- for b in blocks -%}
+          {%- assign sec = E.sections | where: 'id', b.section | first -%}
+        <section class="ex-block" data-sec="{{ b.section }}">
+          <h3>{{ sec.name[L] }}{% if b.bn %} <i>{{ b.bn[L] }}</i>{% endif %}</h3>
+          {%- if b.rows and b.rows.size > 0 -%}
+          <dl>
+            {%- for r in b.rows -%}
+            {%- comment -%}
+              Japanese readers get Japanese. `E.ja` is keyed by the rōmaji the
+              sheet is written in, so a term with no entry there simply falls
+              back to the rōmaji rather than disappearing.
+            {%- endcomment -%}
+            {%- assign a_ja = E.ja[r.a] -%}
+            <dt>{% if L == 'ja' and a_ja %}{{ a_ja }}{% else %}{{ r.a }}{% endif %}{% if r.an %} <i>{{ r.an[L] }}</i>{% endif %}</dt>
+            <dd>
+              <ul>
+                {%- for w in r.w -%}
+                {%- comment -%}
+                  The weapons map wins where it has an entry: `Maki-otoshi` is
+                  巻き落とし as a throw and 巻落 on the jō.
+                {%- endcomment -%}
+                {%- assign w_ja = nil -%}
+                {%- if b.section == 'buki' -%}{%- assign w_ja = E.ja_buki[w.n] -%}{%- endif -%}
+                {%- unless w_ja -%}{%- assign w_ja = E.ja[w.n] -%}{%- endunless -%}
+                <li data-from="{{ w.from }}"{% if w.was %} data-was{% endif %}>{% if L == 'ja' and w_ja %}{{ w_ja }}{% else %}{{ w.n }}{% endif %}{% if w.note %} <i>{{ w.note[L] }}</i>{% endif %}</li>
+                {%- endfor -%}
+              </ul>
+            </dd>
+            {%- endfor -%}
+          </dl>
+          {%- endif -%}
+          {%- if b.tail -%}
+          <ul class="ex-tail">
+            {%- for t in b.tail -%}
+            <li>{% if t.n %}{{ t.n }}{% endif %}{% if t.note %} <i>{{ t.note[L] }}</i>{% endif %}</li>
+            {%- endfor -%}
+          </ul>
+          {%- endif -%}
+        </section>
+        {%- endfor -%}
+      </div>
+    </section>
+    {%- endfor -%}
+
+    {%- comment -%}
+      ---- etiquette and rules -----------------------------------------------
+      Same panel, same share, same print, same `?r=`. A rule and a syllabus are
+      both things you open, read one of, and close — building a second panel to
+      say that twice would have been the mistake. The markup differs because
+      the content does: a document is headed parts and numbered items, not
+      attacks and techniques.
+    {%- endcomment -%}
+    {%- assign ET = site.data.etiquette -%}
+    {%- for d in ET.docs -%}
+    <section class="ex-sheet ex-doc" data-ex-sheet="{{ d.id }}" hidden
+             data-eyebrow="{{ ET.ui.title[L] }}" data-name="{{ d.title[L] }}">
+      <p class="ex-intro">{{ d.lead[L] }}</p>
+      {%- if d.source %}
+      <p class="ex-cite">{{ ET.ui.source[L] }}: {{ d.source[L] }}</p>
+      {%- endif %}
+      <div class="ex-doc-cols">
+        {%- for part in d.parts -%}
+        <section class="ex-part">
+          <h3>{{ part.head[L] }}</h3>
+          <ol>
+            {%- for it in part.items -%}
+            <li>{{ it[L] }}</li>
+            {%- endfor -%}
+          </ol>
+        </section>
+        {%- endfor -%}
+      </div>
+    </section>
+    {%- endfor -%}
+  </div>
+</div>

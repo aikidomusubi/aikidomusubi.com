@@ -1,0 +1,637 @@
+// out: false
+//
+// ---------------------------------------------------------------------------
+// Fees
+//
+// The period switch is four radio inputs and `:has()`. No script: the page ships
+// zero bytes of JavaScript, works before and without it, and every price is in
+// the markup where a crawler can read it rather than behind a click.
+//
+// The chips are the same control the timetable, calendar and gallery use, so
+// there is nothing new to learn here.
+// ---------------------------------------------------------------------------
+
+@fee-deal: @Green;   // 6.25:1 on white, and >5.5:1 on the tint it sits on
+
+.fees {
+  margin: 0 0 3rem;
+}
+
+// ---------------------------------------------------------------------------
+// Period switch
+// ---------------------------------------------------------------------------
+.fee-periods {
+  border: 0;
+  margin: 0 0 1.75rem;
+  padding: 0;
+  min-width: 0;
+
+  > legend {
+    .NotoSans; .bold;
+    float: none;
+    width: auto;
+    font-size: .7rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: fadeout(@Black, 40%);
+    margin: 0 0 .5rem;
+    padding: 0;
+  }
+}
+
+.fee-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+}
+
+.fee-chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.25rem;
+  padding: .3rem 1rem;
+  margin: 0;
+  border: 1px solid fadeout(@Black, 88%);
+  border-radius: 2rem;
+  font-size: .85rem;
+  line-height: 1.2;
+  cursor: pointer;
+  user-select: none;
+  background-color: @White;
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease;
+
+  > input {
+    position: absolute;
+    opacity: 0;
+    width: 1px; height: 1px;
+    margin: 0;
+  }
+
+  &:has(input:checked) {
+    background-color: @Accent;
+    border-color: @Accent;
+    color: @White;
+  }
+
+  &:has(input:not(:checked)) { color: lighten(@Dark, 18%); }   // 5.9:1
+
+  &:hover { border-color: fadeout(@Black, 70%); }
+
+  // The real input is hidden, so the ring is drawn on the label.
+  &:has(input:focus-visible) {
+    outline: 2px solid @Blue;
+    outline-offset: 2px;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Which panel shows
+//
+// All four are in the document; three are hidden. `display: none` keeps them
+// out of the layout and out of the accessibility tree while leaving them in the
+// HTML for crawlers.
+// ---------------------------------------------------------------------------
+.fee-panel { display: none; }
+
+.fees:has(#fee-monthly:checked)   .fee-panel[data-period="monthly"],
+.fees:has(#fee-quarterly:checked) .fee-panel[data-period="quarterly"],
+.fees:has(#fee-biannual:checked)  .fee-panel[data-period="biannual"],
+.fees:has(#fee-annual:checked)    .fee-panel[data-period="annual"] { display: block; }
+
+// Without :has() every panel would stack. Showing the first and hiding the rest
+// is the honest fallback: one correct price list rather than four at once.
+@supports not selector(:has(*)) {
+
+  .fee-panel[data-period="monthly"] { display: block; }
+  .fee-periods { display: none; }
+}
+
+// ---------------------------------------------------------------------------
+// The cards
+//
+// Five categories that do not describe themselves in the same number of words:
+// "Adultos / Mayores de 12 años" is two short lines where "Familiar adultos /
+// Mismo núcleo familiar, mayores de 12 años" is five. Left to themselves the
+// prices ended up at five different heights and the row read as five unrelated
+// things rather than one price list.
+//
+// Two fixes, and they are separate problems:
+//
+//   1. Every row is given the height of its longest member, so the price, the
+//      saving and the button sit on the same line across all five cards
+//      whatever the wording does above them.
+//   2. On wide screens the five are a scroll-snapped row showing three at a
+//      time, so each card is half as wide again and most of the wrapping that
+//      caused the problem stops happening at all.
+// ---------------------------------------------------------------------------
+.fee-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.fee-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  border: 1px solid fadeout(@Black, 90%);
+  border-radius: .375rem;
+  background-color: @White;
+
+  // The button leaves the text behind and sits at the foot of the card.
+  > .fee-btn { margin-top: auto; }
+}
+
+.fee-card-deal { border-left: 4px solid @fee-deal; }
+
+.page main {
+
+  // Two lines of name and three of description, reserved whether or not this
+  // particular card needs them. em rather than a pixel guess, so the box
+  // follows the type if the size ever changes.
+  .fee-name {
+    .NotoSans; .bold;
+    margin: 0 0 .15rem;
+    padding: 0;
+    font-size: 1.05rem;
+    line-height: 1.3;
+    min-height: 2.6em;          // 2 lines
+    color: @Black;
+    text-align: left;
+  }
+
+  .fee-who {
+    .NotoSans;
+    margin: 0 0 1rem;
+    padding: 0;
+    font-size: .8rem;
+    line-height: 1.4;
+    min-height: 4.2em;          // 3 lines
+    color: lighten(@Dark, 18%);
+    text-align: left;
+  }
+
+  .fee-price {
+    margin: 0 0 .35rem;
+    padding: 0;
+    text-align: left;
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: .35rem;
+  }
+
+  // Adults and Children have no discount, so this is empty on two cards in
+  // every period. It keeps its height regardless — otherwise their prices and
+  // buttons would ride up while the family cards' stayed put.
+  .fee-save {
+    .NotoSans;
+    margin: 0 0 1.1rem;
+    padding: 0;
+    font-size: .82rem;
+    line-height: 1.5;
+    min-height: 3em;            // the saving plus the "instead of" line
+    color: @fee-deal;
+    text-align: left;
+  }
+
+  .fee-note {
+    .NotoSans;
+    margin: 1.5rem 0 0;
+    padding: 0;
+    font-size: .82rem;
+    color: lighten(@Dark, 18%);
+    text-align: left;
+  }
+}
+
+.fee-amount {
+  .NotoSans; .bold;
+  font-size: 2.1rem;
+  line-height: 1;
+  color: @Black;
+  // Digits of the same width, so the column does not jitter as the period
+  // changes and 35 becomes 290.
+  font-variant-numeric: tabular-nums;
+}
+
+.fee-unit {
+  .NotoSans;
+  font-size: .82rem;
+  color: lighten(@Dark, 18%);
+}
+
+.fee-pct {
+  display: inline-block;
+  padding: .05rem .4rem;
+  border-radius: 2rem;
+  background-color: fadeout(@fee-deal, 88%);
+  font-size: .75rem;
+  .bold;
+}
+
+.fee-instead {
+  display: block;
+  color: lighten(@Dark, 18%);
+  font-size: .78rem;
+}
+
+.fee-save-none { visibility: hidden; }
+
+.fee-included {
+  margin: 0 0 1.25rem;
+  padding: 0;
+  list-style: none;
+  font-size: .85rem;
+
+  > li {
+    position: relative;
+    padding-left: 1.15rem;
+    margin-bottom: .3rem;
+    line-height: 1.45;
+
+    // A tick drawn in CSS rather than an SVG per item — five items × five cards
+    // × four panels is a hundred copies of the same glyph in the markup.
+    &::before {
+      content: "";
+      position: absolute;
+      left: .1rem;
+      top: .42em;
+      width: .38rem;
+      height: .2rem;
+      border-left: 2px solid @fee-deal;
+      border-bottom: 2px solid @fee-deal;
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+.fee-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.5rem;
+  padding: .5rem 1rem;
+  border-radius: .25rem;
+  background-color: @Accent;
+  color: @White;
+  .NotoSans; .bold;
+  font-size: .9rem;
+  text-align: center;
+  transition: background-color .2s ease;
+}
+
+.page main {
+
+  .fee-btn {
+    text-decoration: none;
+    color: @White;
+
+    &:hover,
+    &:focus {
+      background-color: lighten(@Accent, 14%);
+      color: @White;
+      text-decoration: none;
+    }
+  }
+
+  .fee-btn:focus-visible {
+    outline: 2px solid @Blue;
+    outline-offset: 2px;
+  }
+}
+
+// Names which card the button belongs to, for a screen reader and for Google's
+// link-text audit — five identical "Sign up" links otherwise.
+.fee-sr {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// ---------------------------------------------------------------------------
+// Carousel controls
+//
+// The peeking fourth card says "there is more" quietly. These say it out loud,
+// which is what was asked for — and since the scrollbar is now hidden, they are
+// the only thing that does.
+//
+// Built by script and hidden until it runs: without JavaScript the row still
+// scrolls perfectly well by trackpad, swipe, shift-wheel and keyboard, and a
+// dead arrow button would be worse than no arrow button.
+// ---------------------------------------------------------------------------
+.fee-nav {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: .25rem 0 0;
+}
+
+.fee-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: 1px solid fadeout(@Black, 85%);
+  border-radius: 50%;
+  background-color: @White;
+  color: @Black;
+  cursor: pointer;
+  transition: background-color .2s ease, border-color .2s ease, opacity .2s ease;
+
+  > svg { width: .85rem; height: .85rem; }
+
+  &:hover:not(:disabled) { background-color: fadeout(@Black, 96%); border-color: fadeout(@Black, 65%); }
+
+  &:focus-visible { outline: 2px solid @Blue; outline-offset: 2px; }
+
+  // Disabled rather than hidden: a control that vanishes at the end of the row
+  // makes the other one jump sideways.
+  &:disabled { opacity: .35; cursor: default; }
+}
+
+.fee-dots {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.fee-dot {
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+
+  &::before {
+    content: "";
+    width: .5rem;
+    height: .5rem;
+    border-radius: 50%;
+    background-color: fadeout(@Black, 75%);
+    transition: background-color .2s ease, transform .2s ease;
+  }
+
+  &[aria-current="true"]::before {
+    background-color: @Accent;
+    transform: scale(1.25);
+  }
+
+  &:focus-visible { outline: 2px solid @Blue; outline-offset: 0; border-radius: 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fee-dot::before, .fee-arrow { transition: none; }
+}
+
+// ---------------------------------------------------------------------------
+// The standing offer
+//
+// The one thing on this page that is not a price, so it does not look like a
+// card: no border-radius shared with them, no white ground, a rule down the
+// side in @fee-deal — the same green the discounted cards already carry, which
+// is what the offer is about.
+//
+// `.page main .fee-offer-h` and not `.fee-offer-h`: the prose layer styles
+// `.page main h2` at (0,1,2) and a single class is (0,1,0), so the size and
+// the margin were simply discarded. Same arithmetic as `.about .ab-h`.
+// ---------------------------------------------------------------------------
+.fee-offer {
+  margin: 2.5rem 0 0;
+  padding: 1.4rem 1.5rem;
+  border-left: 4px solid @fee-deal;
+  border-radius: .375rem;
+  // 4% of the green rather than a grey: the tint belongs to the accent so the
+  // box reads as one object. @fee-deal at 4% over white is #f5faf6, and every
+  // colour below is measured against that, not against white.
+  background-color: fadeout(@fee-deal, 96%);
+
+  @media (max-width: @bp-sm - .02px) { padding: 1.2rem 1.1rem; }
+}
+
+.page main {
+
+  .fee-offer-eyebrow {
+    .Futura;
+    margin: 0 0 .5rem;
+    padding: 0;
+    font-size: .62rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    // 5.1:1 on the tint. The green is the label's whole job here, so it has to
+    // clear AA at this size on the ground it actually sits on.
+    color: darken(@fee-deal, 6%);
+    text-align: left;
+  }
+
+  .fee-offer-h {
+    .NotoSans; .bold;
+    margin: 0 0 .5rem;
+    padding: 0;
+    font-size: 1.15rem;
+    line-height: 1.25;
+    text-transform: none;
+    text-align: left;
+    color: @Black;
+  }
+
+  .fee-offer-b {
+    .NotoSans;
+    margin: 0;
+    padding: 0;
+    max-width: 62ch;
+    font-size: .92rem;
+    line-height: 1.6;
+    text-align: left;
+    color: @Black;
+  }
+
+  .fee-offer-n {
+    .NotoSans;
+    margin: .55rem 0 0;
+    padding: 0;
+    font-size: .8rem;
+    text-align: left;
+    // NOT the site's usual lighten(@Dark, 18%). That token is measured on
+    // white, and on the 4% green tint it lands at 4.56:1 — six hundredths over
+    // the floor, which is the margin this codebase keeps losing. 8% is 6.8:1
+    // on the tint and still reads as small print.
+    color: lighten(@Dark, 8%);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// The full breakdown — what the two PDFs used to be
+// ---------------------------------------------------------------------------
+.fee-detail {
+  margin: 2.5rem 0 0;
+  border: 1px solid fadeout(@Black, 90%);
+  border-radius: .375rem;
+  background-color: @White;
+
+  > summary {
+    .NotoSans; .bold;
+    padding: 1rem 1.25rem;
+    font-size: .9rem;
+    cursor: pointer;
+    list-style-position: inside;
+    border-radius: .375rem;
+
+    &:focus-visible {
+      outline: 2px solid @Blue;
+      outline-offset: -2px;
+    }
+  }
+
+  &[open] > summary { border-bottom: 1px solid fadeout(@Black, 92%); }
+}
+
+.fee-detail-body {
+  padding: .5rem 1.25rem 1.25rem;
+  // Four tables of four columns: on a phone they scroll rather than squeeze the
+  // page sideways.
+  overflow-x: auto;
+}
+
+.page main .fee-table {
+  width: 100%;
+  margin: 1.25rem 0 0;
+  border-collapse: collapse;
+  font-size: .84rem;
+
+  > caption {
+    .NotoSans; .bold;
+    caption-side: top;
+    text-align: left;
+    padding: 0 0 .4rem;
+    font-size: .8rem;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    color: fadeout(@Black, 40%);
+  }
+
+  th, td {
+    padding: .5rem .6rem;
+    border-bottom: 1px solid fadeout(@Black, 93%);
+    text-align: right;
+    vertical-align: top;
+    font-variant-numeric: tabular-nums;
+  }
+
+  thead th {
+    .NotoSans; .bold;
+    font-size: .74rem;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: lighten(@Dark, 18%);
+    border-bottom-width: 2px;
+  }
+
+  tbody th[scope="row"] {
+    text-align: left;
+    font-weight: 700;
+    white-space: normal;
+  }
+}
+
+.fee-th-who {
+  display: block;
+  font-weight: 400;
+  font-size: .76rem;
+  color: lighten(@Dark, 18%);
+}
+
+// ---------------------------------------------------------------------------
+// Wider screens
+//
+//   < 880px    one column — two columns at 760 squeezed the names back into
+//              the wrapping this layout exists to avoid
+//   880–991    two columns
+//   >= 992     three at a time, scroll-snapped, the fourth peeking
+//
+// The carousel has no upper bound. Five across is technically possible on a
+// very wide screen, but a row of five narrow price cards reads as a wall rather
+// than a set — three at a comfortable width is the better shape at any size.
+// ---------------------------------------------------------------------------
+// Was 880px — a breakpoint this component invented for itself. On the scale now.
+@media (min-width: @bp-lg) and (max-width: 991.98px) {
+  .fee-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 992px) {
+
+  .fee-cards {
+    display: flex;
+    gap: 1.25rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    // No horizontal padding: it would let a slice of the fourth card show
+    // inside it. Vertical only, so the focus ring is not clipped.
+    padding: .25rem 0 1rem;
+
+    // No scrollbar. The dots and the arrows are the affordance now, and the
+    // fourth card still peeks in at the edge — the bar was a third way of
+    // saying the same thing, and the noisiest of the three.
+    //
+    // Hiding it does NOT stop it scrolling: `overflow-x: auto` still applies,
+    // so trackpad, swipe, shift-wheel and the arrow keys all work, and the
+    // container keeps its focus ring so a keyboard user can still see where
+    // they are. That matters more than usual here, because the controls are
+    // built by script — with JavaScript blocked, scrolling is the only way
+    // through the row.
+    scrollbar-width: none;              // Firefox
+    &::-webkit-scrollbar { display: none; }   // Chrome, Safari, Edge
+
+    // The scroll container is focusable, so it needs to look focused.
+    &:focus-visible {
+      outline: 2px solid @Blue;
+      outline-offset: 2px;
+    }
+  }
+
+  .fee-card {
+    // Exactly three across, so the fourth and fifth are fully outside the
+    // container until they are scrolled to. The peeking slice was there to hint
+    // at the carousel; the arrows and dots say it plainly enough now.
+    flex: 0 0 calc((100% - 2 * 1.25rem) / 3);
+    scroll-snap-align: start;
+  }
+
+  // The controls only exist once there is something to scroll.
+  .fee-nav { display: flex; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fee-chip, .fee-btn { transition: none; }
+}
+
+@media print {
+  // The offer is a real term of the fee, so it prints — but flat, without the
+  // tint that would come out as a grey block.
+  .fee-offer { background: none; border-left: 3px solid #666; break-inside: avoid; }
+
+  .fee-periods { display: none; }
+  .fee-panel { display: block !important; }
+  .fee-btn { display: none; }
+  .fee-detail { border: 0; }
+  .fee-detail > summary { display: none; }
+  .fee-detail-body { display: block !important; padding: 0; }
+  .fee-table { break-inside: avoid; }
+}

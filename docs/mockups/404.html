@@ -1,0 +1,178 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>404 · Ukemi de kaiju</title>
+<link rel="stylesheet" href="/styles/all.min.css">
+<style>
+:root{--ink:#111314;--mute:#5c6a70}
+html,body{margin:0;background:#FFF200;color:var(--ink);overflow:hidden;
+  font-family:'Noto Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+h1{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-weight:400;margin:0;letter-spacing:.04em}
+p{margin:0}
+
+.stage{position:relative;height:100svh;overflow:hidden;user-select:none;
+  touch-action:manipulation}
+.mat{position:absolute;left:0;right:0;bottom:0;height:38vh;background:#111314;z-index:1}
+.mat::before{content:'';position:absolute;inset:0;
+  background-image:linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px),
+    linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px);background-size:88px 88px}
+
+/* ── head, exactly as before ───────────────────────────────────────────── */
+.inner{position:absolute;left:0;right:0;top:0;z-index:6;padding:4.4rem 6rem 0;text-align:center}
+@media(max-width:767.98px){.inner{padding:2.4rem 1.4rem 0}}
+.kicker{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.66rem;letter-spacing:.3em;
+  text-transform:uppercase;color:#4a4300;margin-bottom:1.3rem}
+.num{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:clamp(5rem,17vw,12rem);
+  line-height:.85;color:#111314}
+.lede{margin:1.4rem auto 0;max-width:33rem;font-size:1.08rem;line-height:1.7;color:#2c2800}
+.hint{margin-top:1.4rem;font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.6rem;
+  letter-spacing:.2em;text-transform:uppercase;color:#5a5200}
+.hint b{color:#111314;font-weight:400}
+
+/* ── the field ─────────────────────────────────────────────────────────── */
+.field{position:absolute;inset:0;z-index:4;pointer-events:none}
+.zone{position:absolute;left:50%;bottom:19vh;width:var(--z,240px);height:var(--z,240px);
+  transform:translate(-50%,50%);border:2px dashed rgba(255,255,255,.32);border-radius:50%;z-index:3}
+.zone::after{content:'MA-AI';position:absolute;left:50%;top:-1.6rem;transform:translateX(-50%);
+  font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.56rem;letter-spacing:.24em;
+  color:rgba(255,255,255,.5)}
+
+.kaiju{position:absolute;bottom:15vh;left:0;width:min(30vw,300px);z-index:5;
+  transform-origin:50% 86%;will-change:transform,left}
+.kaiju .gz{transform:scaleX(var(--f,1))}
+.kaiju .bob{animation:bob .46s ease-in-out infinite alternate}
+.kaiju picture,.kaiju img{display:block;width:100%}
+/* the woodcut is black ink on white: inverting it and screening drops the
+   white ground and leaves a white beast on the black mat */
+.kaiju img{filter:invert(1);mix-blend-mode:screen}
+@keyframes bob{from{transform:translateY(0) rotate(-1.4deg)}to{transform:translateY(-4%) rotate(1.4deg)}}
+@media(max-width:767.98px){.kaiju{width:52vw}}
+
+.kaiju.thrown{transition:transform .95s cubic-bezier(.3,.9,.3,1),left .95s cubic-bezier(.3,.9,.3,1),
+  bottom .95s cubic-bezier(.34,1.25,.4,1),opacity .3s .62s linear;opacity:0}
+.boom{position:absolute;bottom:19vh;z-index:3;width:10px;height:10px;border-radius:50%;
+  border:3px solid #FFF200;transform:translate(-50%,50%);opacity:0;pointer-events:none}
+.boom.go{animation:boom .9s cubic-bezier(.2,.8,.3,1) forwards}
+@keyframes boom{0%{opacity:.95;width:10px;height:10px}100%{opacity:0;width:1000px;height:1000px}}
+
+/* ── hud ───────────────────────────────────────────────────────────────── */
+.hud{position:absolute;top:1.5rem;right:1.8rem;z-index:7;text-align:right;
+  font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.56rem;letter-spacing:.16em;
+  text-transform:uppercase;color:#4a4300}
+.hud b{display:block;font-size:1.7rem;color:#111314;line-height:1;margin:.25rem 0 .8rem}
+.call{position:absolute;left:50%;bottom:41vh;transform:translateX(-50%);z-index:7;
+  font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:1.2rem;letter-spacing:.16em;
+  text-transform:uppercase;opacity:0;white-space:nowrap}
+.call.on{animation:call .95s ease-out forwards}
+@keyframes call{0%{opacity:0;transform:translate(-50%,10px)}
+  25%{opacity:1;transform:translate(-50%,-4px)}100%{opacity:0;transform:translate(-50%,-28px)}}
+.call.good{color:#111314}.call.bad{color:#E2625E}
+
+.acts{position:absolute;left:0;right:0;bottom:0;z-index:7;padding:0 6rem 2.4rem;display:flex;
+  gap:1.6rem;justify-content:center;flex-wrap:wrap}
+@media(max-width:767.98px){.acts{padding:0 1.4rem 1.6rem;gap:1.1rem}}
+.acts a{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.66rem;letter-spacing:.15em;
+  text-transform:uppercase;color:#fff;text-decoration:none;border-bottom:2px solid #FFF200;
+  padding-bottom:.25rem}
+.acts a:hover{border-bottom-color:#fff}
+@media(prefers-reduced-motion:reduce){.kaiju .bob{animation:none}.kaiju.thrown{transition:none}
+  .boom.go{animation:none}}
+</style></head>
+<body>
+<div class="stage" id="stage" role="button" tabindex="0"
+     aria-label="Proyectar al kaijū cuando entre en la distancia correcta">
+  <div class="mat" aria-hidden="true"></div>
+
+  <div class="inner">
+    <p class="kicker">Error 404</p>
+    <h1 class="num">404</h1>
+    <p class="lede">Godzilla tampoco encontró esta página. Lo que sí encontró fue un
+       <em>kote gaeshi</em>.</p>
+    <p class="hint">Proyéctalo cuando entre en el círculo. <b>Clic, toque o barra espaciadora</b></p>
+  </div>
+
+  <div class="field" aria-hidden="true">
+    <div class="zone"></div>
+    <span class="boom" id="boom"></span>
+    <div class="kaiju" id="kaiju"><div class="gz" id="gz"><div class="bob">
+      <picture><source type="image/webp" srcset="/images/404-24EeTTuv-godzilla.webp">
+        <img src="/images/404-24EeTTuv-godzilla.png" alt=""></picture>
+    </div></div></div>
+    <p class="call" id="call"></p>
+  </div>
+
+  <p class="hud" aria-live="polite">Seguidas<b id="streak">0</b>Mejor<b id="best">0</b></p>
+
+  <div class="acts">
+    <a href="/">Volver a la portada</a>
+    <a href="/clases/">Aprender a caer</a>
+    <a href="/contacto/">Escribirnos</a>
+  </div>
+</div>
+
+<script>
+(function(){
+  var stage=document.getElementById('stage'), k=document.getElementById('kaiju'),
+      gz=document.getElementById('gz'), boom=document.getElementById('boom'),
+      call=document.getElementById('call'), elS=document.getElementById('streak'),
+      elB=document.getElementById('best'), zoneEl=document.querySelector('.zone'),
+      reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var W=0, mid=0, zone=0, x=0, dir=1, speed=0, live=false, streak=0, best=0, raf=0;
+
+  function measure(){
+    W=stage.clientWidth; mid=W/2;
+    zone=Math.min(Math.max(W*0.085,72),135);
+    zoneEl.style.setProperty('--z',(zone*2)+'px');
+  }
+  function place(){ k.style.left=(x-k.offsetWidth/2)+'px'; }
+  function spawn(){
+    measure();
+    dir = Math.random()<.5 ? 1 : -1;
+    x = dir>0 ? -k.offsetWidth : W+k.offsetWidth;
+    speed = (2.1 + Math.min(streak,9)*0.36) * dir;
+    // the woodcut faces left, so it only needs flipping when walking right
+    gz.style.setProperty('--f', dir>0 ? -1 : 1);
+    k.classList.remove('thrown');
+    k.style.opacity=''; k.style.bottom=''; k.style.transform='';
+    live=true; place(); loop();
+  }
+  function loop(){
+    if(!live) return;
+    x+=speed; place();
+    if((dir>0 && x>W+k.offsetWidth)||(dir<0 && x<-k.offsetWidth)){
+      live=false; say('Se fue','bad'); streak=0; elS.textContent=0;
+      setTimeout(spawn,650); return; }
+    raf=requestAnimationFrame(loop);
+  }
+  function say(t,c){ call.textContent=t; call.className='call on '+c;
+    setTimeout(function(){ call.className='call '+c; },950); }
+
+  function strike(){
+    if(!live) return;
+    live=false; cancelAnimationFrame(raf);
+    var d=Math.abs(x-mid);
+    if(d<=zone){
+      streak++; best=Math.max(best,streak);
+      elS.textContent=streak; elB.textContent=best;
+      say(d<=zone*0.42?'¡Ma-ai!':'Ukemi','good');
+      boom.style.left=x+'px'; boom.className='boom';
+      void boom.offsetWidth; boom.className='boom go';
+      k.classList.add('thrown');
+      k.style.transform='rotate('+(dir>0?206:-206)+'deg) scale(.82)';
+      k.style.left=(x-k.offsetWidth/2+dir*280)+'px'; k.style.bottom='32vh';
+      setTimeout(spawn,1200);
+    } else {
+      say(d>zone*2.4?'Muy pronto':'Muy tarde','bad');
+      streak=0; elS.textContent=0;
+      setTimeout(function(){ live=true; loop(); },400);
+    }
+  }
+  stage.addEventListener('pointerdown',function(e){ if(!e.target.closest('a')) strike(); });
+  stage.addEventListener('keydown',function(e){
+    if(e.key===' '||e.key==='Enter'){ e.preventDefault(); strike(); } });
+  addEventListener('resize',measure);
+  if(reduce){ measure(); x=mid; place(); }
+  else addEventListener('load',function(){ measure(); setTimeout(spawn,500); });
+})();
+</script>
+</body></html>

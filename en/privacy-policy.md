@@ -12,17 +12,19 @@ last_modified: 2026-08-14
 
 What personal data we process, for what purpose and legal basis, for how long, and how to exercise your rights.
 
+{% include legal-summary.html %}
+
+
 **Last updated: 13 August 2026**
 
-> This English version is provided for convenience. In the event of any discrepancy, the Spanish version prevails, as this website is operated under Spanish law.
+This English version is provided for convenience. In the event of any discrepancy, the Spanish version prevails, as this website is operated under Spanish law.
 
 Aikido Musubi is committed to protecting the privacy of the users of its website, its members, students and anyone whose personal data it processes. This Privacy Policy has been drafted in accordance with Regulation (EU) 2016/679 (General Data Protection Regulation, "GDPR") and Spanish Organic Law 3/2018, of 5 December, on the Protection of Personal Data and the guarantee of digital rights (LOPDGDD).
 
-<hr>
 
 ## 1. Data controller
 
-- **Controller:** Associació Aikido Musubi *(non-profit cultural association)*
+- **Controller:** Associació Cultural Musubi Aikido *(non-profit cultural association)*
 - **Tax ID (CIF):** G-64799554
 - **Registered address:** Av. d'Alfons XIII, 351, 08918 Badalona (Barcelona), Spain
 - **Email:** info@aikidomusubi.com
@@ -91,7 +93,7 @@ You have the right to:
 
 You may exercise these rights by writing to **info@aikidomusubi.com** or to the postal address indicated in section 1, enclosing a copy of your identity document or equivalent document that allows your identity to be verified.
 
-Likewise, if you consider that the processing of your data does not comply with the regulations, you have the right to lodge a complaint with the **Spanish Data Protection Agency (AEPD)**, C/ Jorge Juan, 6, 28001 Madrid — [www.aepd.es](https://www.aepd.es).
+Likewise, if you consider that the processing of your data does not comply with the regulations, you have the right to lodge a complaint with the **Spanish Data Protection Agency (AEPD)**, C/ Jorge Juan, 6, 28001 Madrid — [www.aepd.es](https://www.aepd.es){:target="_blank" rel="noopener"}.
 
 ## 7. Security measures
 

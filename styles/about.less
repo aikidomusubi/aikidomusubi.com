@@ -1,0 +1,536 @@
+// out: false
+//
+// ---------------------------------------------------------------------------
+// Sobre nosotros
+//
+// Four sibling pages sharing one layout. Deliberately plainer than the rest of
+// the site: this is reference material — a federation checking our affiliation,
+// another dojo reading our lineage — and it should read like a document, not
+// like a pitch.
+// ---------------------------------------------------------------------------
+
+@ab-line: fadeout(@Black, 90%);
+@ab-mute: lighten(@Dark, 18%);   // 5.9:1 on white
+
+.about { margin: 0 0 3rem; }
+
+// .ab-title and .ab-lede are gone. They were a 2.1rem Futura regular title
+// and a 38rem centred lede, where every other page on the site used the 2rem
+// Futura medium h1 and the full-column lede that `.page main` already
+// provides. _includes/page-head.html renders that one instead.
+
+.ab-hero {
+  margin: 0 0 2.6rem;
+
+  picture { display: block; margin: 0; }
+}
+
+// ---- a block ---------------------------------------------------------------
+.ab-block { margin: 0 0 2.4rem; }
+
+// The approved treatment: Futura, uppercase, and a rule across the top. These
+// pages carry five sections each now rather than two, and a bold Noto Sans
+// line was not enough separation to see where one ended.
+// `.about .ab-h` and not `.ab-h`: the prose layer styles `.page main h2` at
+// (0,1,2) and a single class is (0,1,0), so the Futura and the uppercase were
+// simply discarded — the heading rendered as bold Noto Sans and looked like
+// nothing had changed. Two classes beat it. Same arithmetic as styles/ura.less.
+.about .ab-h {
+  .Futura; .regular;
+  margin: 2.8rem 0 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid @ab-line;
+  font-size: 1.2rem;
+  line-height: 1.3;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: @Black;
+}
+
+.about .ab-block:first-of-type .ab-h { margin-top: 0; }
+
+.ab-p {
+  margin: 0 0 1rem !important;
+  font-size: .95rem;
+  line-height: 1.8;
+  color: @Dark;
+}
+
+// ---- facts -----------------------------------------------------------------
+.ab-facts {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: .45rem 1.6rem;
+  margin: 1.4rem 0 0;
+  padding-top: 1.2rem;
+  border-top: 1px solid @ab-line;
+  font-size: .88rem;
+
+  > dt {
+    .NotoSans; .bold;
+    font-size: .7rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: @ab-mute;
+    padding-top: .2rem;
+  }
+
+  > dd {
+    margin: 0;
+    line-height: 1.55;
+    color: @Black;
+  }
+}
+
+// ---- links page ------------------------------------------------------------
+.ab-links {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.8rem;
+}
+
+.ab-group > ul {
+  list-style: none;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.ab-group li { margin: 0; }
+
+// ---- the site's prose rules ------------------------------------------------
+// `main h2` and `main > p` are written at (0,2,4) and centre everything; the
+// list indent is 8rem at this width. All three have to be undone at the depth
+// they are set at.
+.page main {
+
+  .ab-h { text-align: left; }
+
+  .ab-hero img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: .375rem;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+  }
+
+  .ab-hero picture { margin: 0; }
+
+  .ab-group ul { padding: 0 !important; margin: 0 !important; }
+
+  .ab-group a {
+    display: block;
+    padding: .45rem 0;
+    font-size: .9rem;
+    color: @Dark;
+    text-decoration: none;
+    border-bottom: 1px solid @ab-line;
+
+    &:hover, &:focus { color: @Black; background-color: transparent; }
+  }
+}
+
+@media (min-width: 768px) {
+  .ab-links { grid-template-columns: 1fr 1fr; gap: 1.8rem 2.6rem; }
+}
+
+@media (min-width: 992px) {
+  .ab-block { max-width: 44rem; }
+  .ab-facts { max-width: 44rem; }
+}
+
+// ---- the expanded blocks ---------------------------------------------------
+// Four components from the approved mockups. They all sit inside .ab-block, so
+// they inherit its 44rem cap and line up with the prose above them.
+
+
+.about {
+  // Reihō and the shape of a class. A numbered list because it is a list: the
+  // reader wants to be able to count what they have to remember.
+  .ab-steps {
+    margin: 0 0 1rem !important;
+    padding: 0 !important;
+    list-style: none;
+    counter-reset: abs;
+
+    > li {
+      counter-increment: abs;
+      position: relative;
+      margin: 0;
+      padding: .75rem 0 .75rem 3.2rem;
+      border-bottom: 1px solid @ab-line;
+      font-size: .95rem;
+      line-height: 1.75;
+      color: @Dark;
+
+      // decimal-leading-zero, so 01 through 08 are the same width and the text
+      // beside them starts on one line rather than two.
+      &::before {
+        content: counter(abs, decimal-leading-zero);
+        position: absolute;
+        left: 0;
+        top: .95rem;
+        .Futura;
+        font-size: .66rem;
+        letter-spacing: .14em;
+        color: @Rust;
+      }
+
+      b { font-weight: 400; color: @Black; }
+      em { font-style: italic; }
+    }
+  }
+
+  // The three wooden weapons.
+  .ab-wep {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    margin: 1.2rem 0;
+    background: @ab-line;
+
+    > div { background: @White; padding: 1rem 1.05rem 1.15rem; }
+
+    .k {
+      margin: 0;
+      font-family: 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif;
+      font-size: 1.5rem;
+      line-height: 1.2;
+      color: @Black;
+    }
+
+    .r {
+      margin: .35rem 0 .45rem;
+      .Futura;
+      font-size: .62rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: @Rust;
+    }
+
+    p { margin: 0; font-size: .82rem; line-height: 1.65; color: @ab-mute; }
+
+    @media (max-width: @bp-sm - .02px) { grid-template-columns: 1fr; }
+  }
+
+  // Who teaches. Name left, grade right, so the column of grades reads down.
+  .ab-ppl {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 2.4rem;
+    margin-bottom: 1rem;
+
+    > div {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: baseline;
+      padding: .7rem 0;
+      border-bottom: 1px solid @ab-line;
+    }
+
+    b { font-weight: 400; font-size: .95rem; color: @Black; }
+    span { font-size: .78rem; color: @ab-mute; white-space: nowrap; }
+
+    @media (max-width: @bp-sm - .02px) { grid-template-columns: 1fr; }
+  }
+
+  // The three places, from _data/venues.yml.
+  .ab-ven {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+    margin: 1.4rem 0;
+
+    figure { margin: 0; }
+
+    // `.page main picture` carries margin-bottom: 3rem for the prose figures
+    // it was written for. Inside a card that is 48px of white between the
+    // photograph and the name under it, which read as two unrelated things.
+    picture { display: block; margin-bottom: 0; }
+
+    img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+    }
+
+    b { display: block; margin-top: .6rem; font-size: .92rem; font-weight: 400; color: @Black; }
+    small { display: block; font-size: .78rem; line-height: 1.5; color: @ab-mute; }
+
+    @media (max-width: @bp-sm - .02px) { grid-template-columns: 1fr; }
+  }
+
+  // The FAQ. <details>/<summary>, so it works with no script at all.
+  // Centred in the column rather than pinned to its left edge. The questions
+  // are a single narrow stack and the page around them is 948 wide, so
+  // left-aligned it read as a column that had come adrift.
+  .ab-faq {
+    .accordion();
+    max-width: 44rem;
+    margin-left: auto;
+    margin-right: auto;
+    border-top: 1px solid @ab-line;
+
+    details { border-bottom: 1px solid @ab-line; }
+
+    summary {
+      position: relative;
+      padding: 1rem 2.2rem 1rem 0;
+      cursor: pointer;
+      list-style: none;
+      font-size: 1.02rem;
+      line-height: 1.5;
+      color: @Black;
+
+      // Safari still paints its own triangle without this.
+      &::-webkit-details-marker { display: none; }
+
+      // A rotating + rather than an arrow: it reads as open/closed at a
+      // glance and needs no second glyph for the two states.
+      &::after {
+        content: '+';
+        position: absolute;
+        right: .3rem;
+        top: .95rem;
+        font-size: 1.1rem;
+        color: @ab-mute;
+        transition: transform .2s;
+      }
+
+      &:hover { color: @Rust; }
+      &:focus-visible { outline: 2px solid @Blue; outline-offset: 2px; }
+    }
+
+    details[open] > summary::after { transform: rotate(45deg); color: @Rust; }
+
+    .a { padding: 0 0 1.1rem; }
+
+    .a p {
+      margin: 0 0 .8rem;
+      font-size: .94rem;
+      line-height: 1.8;
+      color: @Dark;
+
+      &:last-child { margin-bottom: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      summary::after { transition: none; }
+    }
+  }
+
+  // Where a block hands off to another page.
+  .ab-more {
+    margin: 1.2rem 0 0 !important;
+    font-size: .88rem;
+
+    > span { margin: 0 .1rem; color: @ab-mute; }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Instructors in training — the association page only
+//
+// Full bleed and dark. These pages are deliberately plain documents, so the
+// one band on them is the one thing that is not reference material: it is an
+// invitation, and it is the last thing before the footer.
+//
+// `.full-bleed()` rather than `100vw`: the clean-css in this pipeline drops
+// `overflow: clip`, so the mixin subtracts a scrollbar width measured by
+// scripts/default.js instead.
+//
+// EVERYTHING IS NESTED UNDER `.ab-it` ON PURPOSE. The prose prefix is
+// `.page main`, so `.page main h2` is (0,1,2), `.page main a` is (0,1,2) and
+// `.page main b` is (0,1,2). A bare `.ab-it-cta` at (0,1,0) loses to all
+// three and the band renders in Noto Sans bold at 1.5rem with the site's link
+// colour — the same arithmetic `.about .ab-h` above is written for. Nesting
+// makes every rule here (0,2,x), which wins on class count with no
+// `!important`.
+// ---------------------------------------------------------------------------
+.ab-it {
+  .full-bleed();
+  // @Black, and the footer's invitation band below it is lighten(@Black, 3%) —
+  // the same two-tone stack the home page's Ura door makes with the footer. At
+  // identical values two full-bleed blocks with nothing between them read as
+  // one very tall black area and the section stops being a section.
+  background: @Black;
+  color: @White;
+  padding: 4.5rem 0 5rem;
+  margin-top: 4.5rem;
+
+  .ab-it-in {
+    .page-measure();
+  }
+
+  // One column, held to the reading measure. The facts table that used to sit
+  // in a second column is gone, and a lone left column beside an empty right
+  // one is not a two-column layout.
+  .ab-it-say {
+    max-width: @measure;
+    margin-bottom: 3rem;
+  }
+
+  .ab-it-eyebrow {
+    .Futura;
+    margin: 0 0 1rem;
+    font-size: .68rem;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    color: @Yellow;
+  }
+
+  // `.ab-it-say h2`, not a bare `h2`: nested under `.ab-it` alone this is
+  // (0,1,1) and `.page main h2` is (0,1,2), so the heading came out in Noto
+  // Sans bold at 1.5rem. Measured, not guessed.
+  .ab-it-say h2 {
+    .Futura; .regular;
+    margin: 0 0 1.1rem;
+    padding: 0;
+    border: 0;
+    font-size: 1.9rem;
+    line-height: 1.15;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    color: @White;
+  }
+
+  .ab-it-lede {
+    .NotoSans;
+    margin: 0 0 1.1rem;
+    font-size: 1.02rem;
+    line-height: 1.55;
+    color: @White;
+  }
+
+  // Flat colours on a flat ground, never opacity on text over a tint — that
+  // pattern is what put .tt-axis-break at 2.26:1. #c9d0d3 on @Black is 11.9:1,
+  // #9aa2a5 is 7.2:1.
+  .ab-it-body {
+    .NotoSans;
+    margin: 0 0 1.2rem;
+    font-size: .9rem;
+    line-height: 1.6;
+    color: #c9d0d3;
+  }
+
+  .ab-it-tt {
+    .NotoSans;
+    margin: 0 0 1.8rem;
+    font-size: .82rem;
+    line-height: 1.5;
+    color: #9aa2a5;
+
+    b { .NotoSans; .regular; color: @White; }
+  }
+
+  // NOT a filled yellow button. The footer's invitation band sits directly
+  // under this one and its own CTA is exactly that, so two identical yellow
+  // buttons ended up 26px apart and the section read as a duplicate footer.
+  // This is `.hm-btn`'s treatment instead — the site's quiet link — inverted
+  // for a dark ground, which leaves one filled button on the page.
+  //
+  // `.page main a:hover` is (0,2,2); `.ab-it .ab-it-cta:hover` is (0,3,0) and
+  // wins on class count, so the hover underline it adds stays off.
+  .ab-it-cta {
+    .Futura;
+    display: inline-block;
+    padding-bottom: .25rem;
+    border: 0;
+    border-bottom: 2px solid @Yellow;
+    background-color: transparent;
+    color: @White;
+    font-size: .66rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      border-bottom-color: @White;
+      background-color: transparent;
+      color: @White;
+      text-decoration: none;
+    }
+    // @White, not the site's @Blue focus colour. Blue measures 8.9:1 on white
+    // and 2.09:1 on @Black, which is under the 3:1 a focus indicator has to
+    // clear — the same reason .hm-door-go and .ft-cta use white on their dark
+    // bands.
+    &:focus-visible { outline: 2px solid @White; outline-offset: 3px; }
+  }
+
+  .ab-it-parts {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.8rem 3.5rem;
+
+    @media (max-width: (@bp-md - 0.02px)) { grid-template-columns: 1fr; }
+
+    h3 {
+      .Futura; .regular;
+      margin: 0 0 .7rem;
+      padding-bottom: .4rem;
+      border-bottom: 1px solid fadeout(@White, 78%);
+      font-size: .68rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: @Yellow;
+    }
+
+    p {
+      .NotoSans;
+      margin: 0 0 .55rem;
+      font-size: .86rem;
+      line-height: 1.6;
+      color: #c9d0d3;
+
+      &:last-child { margin-bottom: 0; }
+    }
+  }
+}
+
+// Kana and kanji have no case, so `text-transform: uppercase` does nothing here
+// and the wide tracking the Latin labels need only pulls the characters apart.
+// Same reason and same numbers as `html[lang="ja"] .ft-band-h` in footer.less.
+// `[lang]` counts as a class, so these are (0,3,x) and win without !important.
+html[lang="ja"] .ab-it {
+  .ab-it-eyebrow,
+  .ab-it-cta,
+  .ab-it-parts h3 {
+    text-transform: none;
+    letter-spacing: .04em;
+  }
+
+  .ab-it-say h2 { text-transform: none; letter-spacing: .02em; }
+}
+
+// The band is the last thing on the page and it is full-bleed black, so it has
+// to butt against the footer — the same reason home.less ends this way. `main`
+// carries the 2/4/6rem gutter as padding on all four sides and the bottom one
+// left a 96px white seam between the black band and the black invitation band.
+//
+// Scoped to the ONE page that has the band. This stylesheet serves all four
+// About topics and the other three end in ordinary prose, which needs that
+// padding. The body carries the i18n-ref as a class, so `body.x main` is
+// (0,1,2) and beats `.page main` at (0,1,1).
+body.about-association-Tz6bR3Xe main { padding-bottom: 0; }
+
+// The band is a solid black rectangle the width of the page. Printed, it is a
+// wasted cartridge and unreadable besides.
+@media print {
+  .ab-it { background: none; color: @Black; padding: 1rem 0; }
+  .ab-it .ab-it-cta { display: none; }
+  .ab-it .ab-it-say h2,
+  .ab-it .ab-it-lede { color: @Black; }
+  .ab-it .ab-it-body,
+  .ab-it .ab-it-tt,
+  .ab-it .ab-it-parts p { color: @Dark; }
+  .ab-it .ab-it-eyebrow,
+  .ab-it .ab-it-parts h3 { color: @Black; }
+  // Both of these are white-on-black on screen, so left alone they print as
+  // nothing: the rule under each part heading disappears and the timetable's
+  // bold slot goes blank mid-sentence.
+  .ab-it .ab-it-parts h3 { border-bottom-color: fadeout(@Black, 78%); }
+  .ab-it .ab-it-tt b { color: @Black; }
+}

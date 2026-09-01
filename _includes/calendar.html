@@ -1,0 +1,542 @@
+{%- comment -%}
+  Dated calendar: seminars, exams, closures and changes to the regular week.
+  Rendered at build time from _data/calendar.yml, like the weekly timetable —
+  static HTML, indexable, no library, no fetch.
+
+  Two views over one set of entries. The month grid is the default because
+  courses here are published one to three months out, so a month usually has
+  something in it; the list is better on a phone and better for scanning what
+  is next. Both are in the markup and the toggle only changes which is shown,
+  so a crawler and a reader with no JavaScript get everything either way.
+
+  Every month that has entries is rendered, past ones included — the archive
+  of who taught and when is worth keeping and worth indexing. Navigation moves
+  between the rendered months rather than generating empty ones.
+
+  Date arithmetic in Liquid, which has no date maths to speak of, is done
+  through Unix timestamps: the first of the next month minus a day is the last
+  day of this one. Weekday indices come from strftime %w, shifted so the week
+  starts on Monday like the rest of the site.
+{%- endcomment -%}
+
+{%- assign C = site.data.calendar -%}
+{%- assign S = site.data.schedule -%}
+{%- assign L = page.lang | default: 'es' -%}
+{%- comment -%}
+  Two sources, one calendar.
+
+  * site.events — seminars, masterclasses and collaborations. They already
+    exist as pages with posters and descriptions, so the calendar reads them
+    rather than asking for the same facts twice. Adding a seminar to
+    _events/ puts it on both pages.
+  * C.entries — gradings, closures, cancellations and schedule changes. Dated
+    facts with no page behind them, authored in _data/calendar.yml.
+
+  Both are normalised to the same field names at the point of use. The events
+  collection uses date_from/date_to and per-language titles; date_to is the
+  string "blank" on single-day entries, which is why it is tested for rather
+  than trusted.
+{%- endcomment -%}
+{%- assign entries = C.entries | sort: 'date' -%}
+{%- comment -%}
+  Two collections feed the calendar, not one. `coll` is what we host — the
+  Seminars page. `away` is what we travel to — the Elsewhere page. A weekend
+  can legitimately appear in both: the open class we run inside somebody else's
+  fair is one entry, and attending that fair is another, and a reader looking
+  for either would be puzzled to find only the other.
+{%- endcomment -%}
+{%- assign coll = site.events | sort: 'date_from' -%}
+{%- assign away = site.elsewhere | sort: 'date_from' -%}
+
+{%- comment -%}
+  Days the dojo is shut. A closure means nothing else runs that day unless the
+  entry says otherwise, so these dates are collected once here and every
+  surface below tests against them. Built as a padded string rather than an
+  array because Liquid has no set type and `contains` on a delimited string is
+  the cheapest membership test available at build time.
+{%- endcomment -%}
+{%- assign shut = '' -%}
+{%- for e in C.entries -%}
+  {%- if e.type == 'closure' -%}
+    {%- assign shut = shut | append: '|' | append: e.date -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- assign shut = shut | append: '|' -%}
+{%- comment -%} Where an event's anchor link points, per language. {%- endcomment -%}
+{%- if L == 'ca' -%}{%- assign seminars_url = '/ca/seminaris/' -%}{%- assign away_url = '/ca/fora-del-dojo/' -%}
+{%- elsif L == 'en' -%}{%- assign seminars_url = '/en/seminars/' -%}{%- assign away_url = '/en/elsewhere/' -%}
+{%- elsif L == 'ja' -%}{%- assign seminars_url = '/ja/seminars/' -%}{%- assign away_url = '/ja/elsewhere/' -%}
+{%- else -%}{%- assign seminars_url = '/seminarios/' -%}{%- assign away_url = '/fuera-del-dojo/' -%}{%- endif -%}
+{%- assign today = site.time | date: '%Y-%m-%d' -%}
+{%- assign this_month = site.time | date: '%Y-%m' -%}
+{%- comment -%}
+  Week start, taken from the same key the timetable uses so the two pages never
+  disagree about where a week begins. It shifts both the column headings and
+  the number of blank cells before the 1st.
+{%- endcomment -%}
+{%- if S.week_start[L] == 'sun' -%}
+  {%- assign week_days = 'sun,mon,tue,wed,thu,fri,sat' | split: ',' -%}
+  {%- assign dow_shift = 0 -%}
+{%- else -%}
+  {%- assign week_days = 'mon,tue,wed,thu,fri,sat,sun' | split: ',' -%}
+  {%- assign dow_shift = 6 -%}
+{%- endif -%}
+
+{%- comment -%} Distinct months, in order, plus the month the site was built in. {%- endcomment -%}
+{%- comment -%}
+  Every month from the first entry to the last, gaps included, plus the month
+  the site was built in if it falls outside that span. Empty months are
+  rendered rather than skipped so paging through the archive moves one month at
+  a time instead of jumping over quiet ones — and an empty month costs about
+  half a kilobyte gzipped, since the markup is near-identical from one to the
+  next and compresses accordingly.
+{%- endcomment -%}
+{%- assign lo = this_month -%}
+{%- assign hi = this_month -%}
+{%- for e in entries -%}
+  {%- assign ym = e.date | date: '%Y-%m' -%}
+  {%- if ym < lo %}{% assign lo = ym %}{% endif -%}
+  {%- if ym > hi %}{% assign hi = ym %}{% endif -%}
+{%- endfor -%}
+{%- for e in coll -%}
+  {%- assign ym = e.date_from | date: '%Y-%m' -%}
+  {%- if ym < lo %}{% assign lo = ym %}{% endif -%}
+  {%- if ym > hi %}{% assign hi = ym %}{% endif -%}
+{%- endfor -%}
+{%- for e in away -%}
+  {%- assign ym = e.date_from | date: '%Y-%m' -%}
+  {%- if ym < lo %}{% assign lo = ym %}{% endif -%}
+  {%- if ym > hi %}{% assign hi = ym %}{% endif -%}
+{%- endfor -%}
+{%- if this_month < lo -%}{%- assign lo = this_month -%}{%- endif -%}
+{%- if this_month > hi -%}{%- assign hi = this_month -%}{%- endif -%}
+
+{%- comment -%}
+  The month grid stops twelve months back.
+
+  It used to start at the oldest thing on the site — February 2020 once the
+  seminars collection was included — which meant 95 month grids per language,
+  nearly all of them empty, 580 KB a page and most of the build. Nobody pages
+  back six years a month at a time.
+
+  Nothing is lost: the list view below reads the same sources with no floor, so
+  the full archive is still on the page, still indexable, and far more compact
+  than an empty grid. The grid is for "what is coming up and what just
+  happened"; the list is for "everything".
+{%- endcomment -%}
+{%- assign floor_year = site.time | date: '%Y' | minus: 1 -%}
+{%- assign floor_month = site.time | date: '%m' -%}
+{%- assign floor = floor_year | append: '-' | append: floor_month -%}
+{%- if lo < floor -%}{%- assign lo = floor -%}{%- endif -%}
+
+{%- assign month_keys = '' -%}
+{%- assign cursor = lo | append: '-01' -%}
+{%- for i in (1..240) -%}
+  {%- assign ym = cursor | date: '%Y-%m' -%}
+  {%- assign month_keys = month_keys | append: ym | append: ' ' -%}
+  {%- if ym >= hi -%}{%- break -%}{%- endif -%}
+  {%- comment -%} +32 days always lands in the next month; snap back to its 1st. {%- endcomment -%}
+  {%- assign cursor = cursor | date: '%s' | plus: 2764800 | date: '%Y-%m-01' -%}
+{%- endfor -%}
+{%- assign months = month_keys | split: ' ' -%}
+
+<div class="calendar" id="calendar-view"
+     data-today="{{ today }}"
+     data-this-month="{{ this_month }}"
+     data-label-today="{{ C.ui.today[L] }}"
+     data-week-start="{{ S.week_start[L] | default: 'mon' }}"
+     data-lang="{{ L }}"
+     data-day-names='{{ S.day_names | jsonify }}'
+     data-month-names='{{ C.months[L] | jsonify }}'>
+
+  {%- comment -%} ---------- Controls ---------- {%- endcomment -%}
+  <div class="cal-controls">
+    <div class="cal-nav">
+      <button type="button" class="cal-nav-btn" data-nav="prev" aria-label="{{ C.ui.prev[L] }}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <p class="cal-current" id="cal-current" aria-live="polite"></p>
+      <button type="button" class="cal-nav-btn" data-nav="next" aria-label="{{ C.ui.next[L] }}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+      <button type="button" class="cal-today-btn" data-nav="today">{{ C.ui.today[L] }}</button>
+    </div>
+
+    <div class="cal-views" role="tablist" aria-label="{{ C.ui.title[L] }}">
+      <button type="button" class="cal-view-btn" role="tab" data-view="month" aria-selected="true">{{ C.ui.month_view[L] }}</button>
+      <button type="button" class="cal-view-btn" role="tab" data-view="week" aria-selected="false">{{ C.ui.week_view[L] }}</button>
+      <button type="button" class="cal-view-btn" role="tab" data-view="list" aria-selected="false">{{ C.ui.list_view[L] }}</button>
+    </div>
+  </div>
+
+  {%- comment -%} ---------- Month grid ---------- {%- endcomment -%}
+  <div class="cal-months" data-view-panel="month">
+    {%- for ym in months -%}
+      {%- if ym == '' -%}{%- continue -%}{%- endif -%}
+      {%- assign parts = ym | split: '-' -%}
+      {%- assign yr = parts[0] -%}
+      {%- assign mo = parts[1] -%}
+      {%- assign first = ym | append: '-01' -%}
+
+      {%- comment -%} Monday-first index of the 1st, and the length of the month. {%- endcomment -%}
+      {%- assign dow = first | date: '%w' | plus: dow_shift | modulo: 7 -%}
+      {%- assign nudge = first | date: '%s' | plus: 2764800 -%}
+      {%- assign next_first = nudge | date: '%Y-%m-01' -%}
+      {%- assign last_dom = next_first | date: '%s' | minus: 86400 | date: '%-d' | plus: 0 -%}
+      {%- assign cells = dow | plus: last_dom -%}
+      {%- assign weeks = cells | plus: 6 | divided_by: 7 -%}
+      {%- assign total_cells = weeks | times: 7 -%}
+      {%- assign mo_index = mo | plus: 0 | minus: 1 -%}
+
+      <section class="cal-month" data-month="{{ ym }}" hidden
+               aria-label="{{ C.months[L][mo_index] }} {{ yr }}">
+        <h2 class="cal-month-head">{{ C.months[L][mo_index] }} {{ yr }}</h2>
+
+        <div class="cal-grid">
+          {%- for d in week_days -%}
+            <span class="cal-dow" aria-hidden="true">{{ S.day_names[d][L].short }}</span>
+          {%- endfor -%}
+
+          {%- comment -%}
+            Narrow every source to this month before walking its days.
+
+            Each cell used to scan all three collections in full: 95 months of
+            ~42 cells against ~60 dated entries plus both collections is around
+            a million filter operations, and it took the calendar from 10
+            seconds to 103. Filtering once per month instead of once per cell
+            gives each cell a handful of candidates and costs six operations a
+            month. Same output, same order.
+
+            The spanning halves are separate because `until` / `date_to` are
+            absent on most entries, and Liquid cannot compare nil to a string.
+          {%- endcomment -%}
+          {%- assign m_first = ym | append: '-01' -%}
+          {%- assign m_last = ym | append: '-31' -%}
+
+          {%- assign m_start = entries | where_exp: "e", "e.date >= m_first" | where_exp: "e", "e.date <= m_last" -%}
+          {%- assign m_span = entries | where_exp: "e", "e.until" | where_exp: "e", "e.date < m_first" | where_exp: "e", "e.until >= m_first" -%}
+          {%- assign m_entries = m_start | concat: m_span -%}
+
+          {%- assign c_start = coll | where_exp: "e", "e.date_from >= m_first" | where_exp: "e", "e.date_from <= m_last" -%}
+          {%- assign c_span = coll | where_exp: "e", "e.date_to != 'blank'" | where_exp: "e", "e.date_from < m_first" | where_exp: "e", "e.date_to >= m_first" -%}
+          {%- assign m_coll = c_start | concat: c_span -%}
+
+          {%- assign a_start = away | where_exp: "e", "e.date_from >= m_first" | where_exp: "e", "e.date_from <= m_last" -%}
+          {%- assign a_span = away | where_exp: "e", "e.date_to" | where_exp: "e", "e.date_from < m_first" | where_exp: "e", "e.date_to >= m_first" -%}
+          {%- assign m_away = a_start | concat: a_span -%}
+
+          {%- for i in (1..total_cells) -%}
+            {%- assign dom = i | minus: dow -%}
+            {%- if dom < 1 or dom > last_dom -%}
+              <div class="cal-cell is-empty" aria-hidden="true"></div>
+            {%- else -%}
+              {%- if dom < 10 -%}{%- assign dd = '0' | append: dom -%}{%- else -%}{%- assign dd = dom | append: '' -%}{%- endif -%}
+              {%- assign iso = ym | append: '-' | append: dd -%}
+              {%- comment -%}
+                Entries starting on this day, plus any multi-day entry still
+                running through it. Split in two because `until` is absent on
+                most entries and Liquid cannot compare nil to a string.
+              {%- endcomment -%}
+              {%- assign starting = m_entries | where: "date", iso -%}
+              {%- assign spanning = m_entries | where_exp: "e", "e.until" | where_exp: "e", "e.date < iso" | where_exp: "e", "e.until >= iso" -%}
+              {%- assign day_entries = starting | concat: spanning -%}
+
+              {%- comment -%} Same two questions of both collections. {%- endcomment -%}
+              {%- assign ev_start = m_coll | where: "date_from", iso -%}
+              {%- assign ev_span = m_coll | where_exp: "e", "e.date_to != 'blank'" | where_exp: "e", "e.date_from < iso" | where_exp: "e", "e.date_to >= iso" -%}
+              {%- assign aw_start = m_away | where: "date_from", iso -%}
+              {%- assign aw_span = m_away | where_exp: "e", "e.date_to" | where_exp: "e", "e.date_from < iso" | where_exp: "e", "e.date_to >= iso" -%}
+              {%- assign day_events = ev_start | concat: ev_span | concat: aw_start | concat: aw_span -%}
+
+              {%- comment -%}
+                A course runs on named weekdays, not on every day between its
+                first and its last. `date_to` alone put the UB course in all 95
+                cells from 4 March to 10 June, Saturdays and Sundays included,
+                when it actually met on Mondays and Wednesdays — 26 sessions.
+                An entry with `days:` is drawn only on those; everything without
+                it spans as before, which is right for a seminar weekend.
+              {%- endcomment -%}
+              {%- comment -%}
+                `cell_dow` and NOT `dow`. Liquid's `assign` has no block scope,
+                so naming this `dow` overwrote the month's leading-blank offset
+                set at the top of the grid. From the second cell onwards
+                `i | minus: dow` was subtracting the string "sat", which Liquid
+                coerces to 0, so every day after the 1st was drawn at its own
+                index: five days vanished out of August 2026 and every date
+                after the 1st sat in the wrong weekday column. Twenty-three of
+                the ninety-five months were wrong the same way.
+              {%- endcomment -%}
+              {%- assign cell_dow = iso | date: '%a' | downcase -%}
+
+              {%- comment -%}
+                A public holiday closes the dojo, so nothing else is on that day
+                — no class, no seminar, no exam — unless the entry explicitly
+                says `despite_closure: true`. Without this the grid showed the
+                grading preparation class and the Assumption side by side on 15
+                August, which reads as though both were happening.
+              {%- endcomment -%}
+              {%- assign day_key = '|' | append: iso | append: '|' -%}
+              {%- assign is_shut = false -%}
+              {%- if shut contains day_key -%}{%- assign is_shut = true -%}{%- endif -%}
+
+              <div class="cal-cell" data-date="{{ iso }}">
+                <p class="cal-daynum"><time datetime="{{ iso }}">{{ dom }}</time></p>
+
+                {%- for e in day_events -%}
+                  {%- if is_shut and e.despite_closure != true -%}{%- continue -%}{%- endif -%}
+                  {%- if e.days -%}
+                    {%- unless e.days contains cell_dow -%}{%- continue -%}{%- endunless -%}
+                  {%- endif -%}
+                  {%- assign cat = site.data.events.categories | where: "id", e.category | first -%}
+                  {%- assign slug = e.path | split: '/' | last | remove: '.md' -%}
+                  {%- if L == 'ca' %}{% assign t = e.title_ca %}{% elsif L == 'en' %}{% assign t = e.title_en %}{% elsif L == 'ja' %}{% assign t = e.title_ja %}{% else %}{% assign t = e.title_es %}{% endif -%}
+                  {%- comment -%} include params take no filters, so build it first {%- endcomment -%}
+                  {%- if e.path contains '_elsewhere' -%}
+                    {%- assign ev_link = away_url | append: '#elsewhere-' | append: slug -%}
+                  {%- else -%}
+                    {%- assign ev_link = seminars_url | append: '#event-' | append: slug -%}
+                  {%- endif -%}
+                  {%- assign cat_label = cat.name[L] -%}
+                  {%- comment -%}
+                    The first couple of sentences of the event's own text for
+                    the detail panel. strip_html because those descriptions
+                    carry <a> tags to Google Maps, and truncating markup mid-tag
+                    produces broken HTML.
+                  {%- endcomment -%}
+                  {%- if L == 'ca' %}{% assign raw = e.desc_ca %}{% elsif L == 'en' %}{% assign raw = e.desc_en %}{% elsif L == 'ja' %}{% assign raw = e.desc_ja %}{% else %}{% assign raw = e.desc_es %}{% endif -%}
+                  {%- if L == 'ja' -%}
+                    {%- assign ev_desc = raw | strip_html | strip | truncate: 78 -%}
+                  {%- else -%}
+                    {%- assign ev_desc = raw | strip_html | strip | truncatewords: 26 -%}
+                  {%- endif -%}
+                  {%- comment -%}
+                    Where, when the event is not at the dojo. The agenda list
+                    below has always named it; the day cells never did, so a
+                    reader looking at 9 March saw a class with no hint it was
+                    across town at the university. `calendar-entry.html` took a
+                    `place` all along — it was simply never handed one here.
+                    An Elsewhere entry names somebody else's hall in plain text,
+                    so it has no id in schedule.yml to look up.
+                  {%- endcomment -%}
+                  {%- assign ev_place = nil -%}
+                  {%- if e.location -%}
+                    {%- assign ev_loc = S.locations | where: "id", e.location | first -%}
+                    {%- assign ev_place = ev_loc.name[L] -%}
+                  {%- endif -%}
+                  {%- if L == 'ca' and e.place_ca -%}{%- assign ev_place = e.place_ca -%}
+                  {%- elsif L == 'en' and e.place_en -%}{%- assign ev_place = e.place_en -%}
+                  {%- elsif L == 'ja' and e.place_ja -%}{%- assign ev_place = e.place_ja -%}
+                  {%- elsif e.place_es -%}{%- assign ev_place = e.place_es -%}{%- endif -%}
+                  {%- include calendar-entry.html type=e.category title=t colour=cat.color
+                        label=cat_label start=e.time_from end=e.time_to link=ev_link
+                        iso=iso place=ev_place desc=ev_desc -%}
+                {%- endfor -%}
+
+                {%- for e in day_entries -%}
+                  {%- if is_shut and e.type != 'closure' and e.despite_closure != true -%}{%- continue -%}{%- endif -%}
+                  {%- assign ty = C.types[e.type] -%}
+                  {%- assign title = e.title[L] -%}
+                  {%- if e.type == 'cancellation' and e.affects -%}
+                    {%- assign ac = S.categories | where: "id", e.affects.category | first -%}
+                    {%- assign title = ac.name[L] | append: ' ' | append: e.affects.start -%}
+                  {%- endif -%}
+                  {%- assign ty_label = ty.label[L] -%}
+                  {%- comment -%}
+                    `location` is an id into schedule.yml's venues; `place` is
+                    a free-text hash for somewhere that is not one of ours.
+                    Either may be absent, and the panel simply drops the row.
+                  {%- endcomment -%}
+                  {%- assign en_place = nil -%}
+                  {%- if e.location -%}
+                    {%- assign vloc = S.locations | where: "id", e.location | first -%}
+                    {%- if vloc %}{% assign en_place = vloc.name[L] %}{% endif -%}
+                  {%- elsif e.place -%}
+                    {%- assign en_place = e.place[L] -%}
+                  {%- endif -%}
+                  {%- assign en_note = nil -%}
+                  {%- if e.note %}{% assign en_note = e.note[L] %}{% endif -%}
+                  {%- include calendar-entry.html type=e.type title=title colour=ty.color
+                        label=ty_label start=e.start end=e.end link=e.link
+                        iso=iso place=en_place desc=en_note -%}
+                {%- endfor -%}
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </section>
+    {%- endfor -%}
+
+    <p class="cal-nothing" hidden>{{ C.ui.nothing[L] }}</p>
+
+    {%- comment -%}
+      Narrow screens only. A seven-column month gives each day about 45px,
+      which holds a number and a colour bar and nothing else — enough to see
+      which days have something on, not enough to read what. Tapping a day
+      fills this panel with its entries, so the overview stays an overview and
+      the detail is one tap away rather than unavailable.
+    {%- endcomment -%}
+    <div class="cal-daypeek" hidden aria-live="polite"></div>
+  </div>
+
+  {%- comment -%}
+    ---------- Week ----------
+    Built by script from the cells already in the month grid rather than
+    rendered a third time: the month view holds every entry with its date, so
+    the week is a selection of seven of those cells. That keeps one source of
+    truth in the markup and lets the week carry more per entry — there is room
+    for the venue and the note that the month cell has to leave out.
+  {%- endcomment -%}
+  <div class="cal-week" data-view-panel="week" hidden>
+    <div class="cal-week-nav">
+      <button type="button" class="cal-nav-btn" data-weeknav="prev" aria-label="{{ C.ui.prev_week[L] }}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <p class="cal-week-label" aria-live="polite"></p>
+      <button type="button" class="cal-nav-btn" data-weeknav="next" aria-label="{{ C.ui.next_week[L] }}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+    <ol class="cal-week-days"></ol>
+    <p class="cal-week-empty" hidden>{{ C.ui.nothing_week[L] }}</p>
+  </div>
+
+  {%- comment -%}
+    ---------- Agenda list ----------
+    Every entry in date order. Split into upcoming and past at build time; the
+    script re-splits on load so the boundary is right however long it has been
+    since the last deploy.
+  {%- endcomment -%}
+  <div class="cal-list" data-view-panel="list" hidden>
+    <h2 class="cal-list-head" data-when="upcoming">{{ C.ui.upcoming[L] }}</h2>
+    <ol class="cal-list-items" data-when="upcoming"></ol>
+
+    <h2 class="cal-list-head" data-when="past">{{ C.ui.past[L] }}</h2>
+    <ol class="cal-list-items" data-when="past"></ol>
+
+    {%- comment -%}
+      The source the script splits into upcoming and past. Rendered in the
+      markup so it is indexable and works without JavaScript.
+
+      Both sources again — the collection first, then the dated facts — and the
+      month name is resolved into a variable before it is printed. Liquid does
+      not accept filters inside an index, so `months[date | date: '%-m']` did
+      not fail loudly, it quietly resolved to 0 and printed "24 0".
+    {%- endcomment -%}
+    <ol class="cal-list-source">
+      {%- assign listed = coll | concat: away -%}
+      {%- for e in listed -%}
+        {%- assign e_day = '|' | append: e.date_from | append: '|' -%}
+        {%- if shut contains e_day and e.despite_closure != true -%}{%- continue -%}{%- endif -%}
+        {%- assign cat = site.data.events.categories | where: "id", e.category | first -%}
+        {%- assign slug = e.path | split: '/' | last | remove: '.md' -%}
+        {%- if L == 'ca' %}{% assign t = e.title_ca %}{% elsif L == 'en' %}{% assign t = e.title_en %}{% elsif L == 'ja' %}{% assign t = e.title_ja %}{% else %}{% assign t = e.title_es %}{% endif -%}
+        {%- assign mi = e.date_from | date: '%-m' | minus: 1 -%}
+        {%- assign m_from = C.months[L][mi] -%}
+        {%- assign until = nil -%}{%- assign m_to = nil -%}
+        {%- if e.date_to and e.date_to != 'blank' and e.date_to != e.date_from -%}
+          {%- assign until = e.date_to -%}
+          {%- assign mj = e.date_to | date: '%-m' | minus: 1 -%}
+          {%- assign m_to = C.months[L][mj] -%}
+        {%- endif -%}
+        {%- if e.path contains '_elsewhere' -%}
+          {%- assign ev_link = away_url | append: '#elsewhere-' | append: slug -%}
+        {%- else -%}
+          {%- assign ev_link = seminars_url | append: '#event-' | append: slug -%}
+        {%- endif -%}
+        {%- assign cat_label = cat.name[L] -%}
+        {%- assign place = nil -%}
+        {%- if e.location -%}
+          {%- assign loc = S.locations | where: "id", e.location | first -%}
+          {%- assign place = loc.name[L] -%}
+        {%- endif -%}
+        {%- comment -%}
+          An Elsewhere entry names its own venue in plain text — it is somebody
+          else's hall, so there is no location id in schedule.yml to look up.
+        {%- endcomment -%}
+        {%- if L == 'ca' and e.place_ca -%}{%- assign place = e.place_ca -%}
+        {%- elsif L == 'en' and e.place_en -%}{%- assign place = e.place_en -%}
+        {%- elsif L == 'ja' and e.place_ja -%}{%- assign place = e.place_ja -%}
+        {%- elsif e.place_es -%}{%- assign place = e.place_es -%}{%- endif -%}
+        {%- include calendar-item.html date=e.date_from until=until type=e.category
+              title=t colour=cat.color label=cat_label start=e.time_from end=e.time_to
+              place=place link=ev_link month_from=m_from month_to=m_to -%}
+      {%- endfor -%}
+
+      {%- for e in entries -%}
+        {%- assign e_day = '|' | append: e.date | append: '|' -%}
+        {%- if shut contains e_day and e.type != 'closure' and e.despite_closure != true -%}{%- continue -%}{%- endif -%}
+        {%- assign ty = C.types[e.type] -%}
+        {%- assign loc = nil -%}{%- if e.location -%}{%- assign loc = S.locations | where: "id", e.location | first -%}{%- endif -%}
+        {%- assign title = e.title[L] -%}
+        {%- assign e_start = e.start -%}
+        {%- assign e_end = e.end -%}
+        {%- if e.type == 'cancellation' and e.affects -%}
+          {%- assign ac = S.categories | where: "id", e.affects.category | first -%}
+          {%- assign title = ac.name[L] -%}
+          {%- comment -%}
+            A cancelled class has the time of the class it replaces. Printing
+            "all day" next to a note that names an evening masterclass was the
+            two halves of the entry contradicting each other.
+          {%- endcomment -%}
+          {%- assign e_start = e.affects.start -%}
+        {%- endif -%}
+        {%- assign mi = e.date | date: '%-m' | minus: 1 -%}
+        {%- assign m_from = C.months[L][mi] -%}
+        {%- assign m_to = nil -%}
+        {%- if e.until -%}
+          {%- assign mj = e.until | date: '%-m' | minus: 1 -%}
+          {%- assign m_to = C.months[L][mj] -%}
+        {%- endif -%}
+        {%- assign ty_label = ty.label[L] -%}
+        {%- assign place = nil -%}
+        {%- if loc -%}{%- assign place = loc.name[L] -%}
+        {%- elsif e.place -%}{%- assign place = e.place[L] -%}{%- endif -%}
+        {%- assign note = nil -%}{%- if e.note -%}{%- assign note = e.note[L] -%}{%- endif -%}
+        {%- include calendar-item.html date=e.date until=e.until type=e.type
+              title=title colour=ty.color label=ty_label start=e_start end=e_end
+              place=place note=note link=e.link month_from=m_from month_to=m_to -%}
+      {%- endfor -%}
+    </ol>
+  </div>
+</div>
+
+{%- comment -%}
+  Structured data. Dated one-off events, unlike the weekly timetable's
+  Schedule-based entries — these really are single occurrences, so a plain
+  Event with startDate is the honest description. Cancellations carry
+  eventStatus so an aggregator does not advertise a class that is not running.
+{%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+  {%- assign first_out = true -%}
+  {%- for e in entries -%}
+    {%- assign t = C.types[e.type] -%}
+    {%- assign loc = nil -%}{%- if e.location -%}{%- assign loc = S.locations | where: "id", e.location | first -%}{%- endif -%}
+    {%- assign title = e.title[L] -%}
+    {%- if e.type == 'cancellation' and e.affects -%}
+      {%- assign ac = S.categories | where: "id", e.affects.category | first -%}
+      {%- assign title = ac.name[L] | append: ' ' | append: e.affects.start -%}
+    {%- endif -%}
+    {%- unless first_out %},{% endunless -%}{%- assign first_out = false -%}
+    {
+      "@type": "Event",
+      "name": {{ title | jsonify }},
+      "startDate": "{{ e.date }}{% if e.start %}T{{ e.start }}:00+02:00{% endif %}",
+      "endDate": "{{ e.until | default: e.date }}{% if e.end %}T{{ e.end }}:00+02:00{% endif %}",
+      "eventStatus": "https://schema.org/Event{% if e.type == 'cancellation' or e.type == 'closure' %}Cancelled{% else %}Scheduled{% endif %}",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "organizer": { "@type": "SportsClub", "name": "Aikido Musubi", "url": "{{ site.url }}" },
+      "location": {
+        "@type": "Place",
+        "name": {%- if loc %} {{ loc.name[L] | jsonify }}{%- elsif e.place %} {{ e.place[L] | jsonify }}{%- else %} "Aikido Musubi"{%- endif %}
+      }
+      {%- if e.link %},
+      "url": "{{ site.url }}{{ e.link }}"
+      {%- endif %}
+    }
+  {%- endfor %}
+  ]
+}
+</script>

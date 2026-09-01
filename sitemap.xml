@@ -44,8 +44,8 @@ permalink: /sitemap.xml
   <url>
     <loc>{{ site.url }}{{ p.url }}</loc>
     {%- assign lastmod = p.last_modified -%}
-    {%- if ref == 'courses-hFZ2XXIp' and site.courses.size > 0 -%}
-      {%- assign newest = site.courses | map: 'date_from' | sort | last | date: "%Y-%m-%d" -%}
+    {%- if ref == 'events-hFZ2XXIp' and site.events.size > 0 -%}
+      {%- assign newest = site.events | map: 'date_from' | sort | last | date: "%Y-%m-%d" -%}
       {%- assign lastmod = lastmod | append: "," | append: newest | split: "," | sort | last -%}
     {%- elsif ref == 'photos-QDOJ1pyG' and site.photos.size > 0 -%}
       {%- assign raw = site.photos | map: 'date' | sort | last | append: "" -%}
@@ -71,8 +71,8 @@ permalink: /sitemap.xml
       Every other page is matched against /images/ by its i18n-ref prefix,
       which the naming convention guarantees.
     {%- endcomment -%}
-    {%- if ref == 'courses-hFZ2XXIp' -%}
-      {%- for item in site.courses -%}
+    {%- if ref == 'events-hFZ2XXIp' -%}
+      {%- for item in site.events -%}
         {%- case p.lang -%}
           {%- when 'ca' -%}{%- assign img = item.image_ca -%}{%- assign t = item.title_ca -%}
           {%- when 'en' -%}{%- assign img = item.image_en -%}{%- assign t = item.title_en -%}
@@ -101,6 +101,42 @@ permalink: /sitemap.xml
       <image:title>{{ t | xml_escape }}</image:title>
     </image:image>
         {%- endif -%}
+      {%- endfor -%}
+    {%- elsif ref == 'classes-CJc2lhFv' -%}
+      {%- comment -%}
+        Same reason as the access branch below: the classes page renders its
+        photographs from _data/classes.yml through a layout, so the generic
+        branch cannot find the basenames in `p.content`.
+      {%- endcomment -%}
+      {%- for d in site.data.classes.disciplines -%}
+        {%- if d.image %}
+    <image:image>
+      <image:loc>{{ site.url }}/images/{{ d.image }}.jpg</image:loc>
+      <image:title>{{ d.name[p.lang] | xml_escape }} · Aikido Musubi</image:title>
+    </image:image>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- elsif ref == 'access-information-NdxqmVbV' -%}
+      {%- comment -%}
+        The access page renders its images from _data/venues.yml through the
+        layout, so the generic branch below finds nothing: it looks for the
+        basename in `p.content`, and the page's own content is only the intro
+        paragraph. Read the data instead, the way the events branch does.
+      {%- endcomment -%}
+      {%- assign V = site.data.venues -%}
+      {%- for v in V.venues -%}
+        {%- if v.plan %}
+    <image:image>
+      <image:loc>{{ site.url }}/images/{{ v.plan }}.jpg</image:loc>
+      <image:title>{{ v.name[p.lang] | xml_escape }}</image:title>
+    </image:image>
+        {%- endif -%}
+        {%- for e in v.entrances %}
+    <image:image>
+      <image:loc>{{ site.url }}/images/{{ e.image }}.jpg</image:loc>
+      <image:title>{{ v.name[p.lang] }} · {{ V.ui.entrance[p.lang] }} {{ e.letter }}, {{ e.street[p.lang] }}</image:title>
+    </image:image>
+        {%- endfor -%}
       {%- endfor -%}
     {%- else -%}
       {%- assign prefix = ref | append: "-" -%}

@@ -1,0 +1,485 @@
+// out: false
+//
+// ---------------------------------------------------------------------------
+// Navigation
+//
+// Replaces the Bootstrap navbar. Two states: a full-height bar at the top of
+// the page and a shrunken one once you scroll, with the wordmark and the
+// padding easing between them.
+//
+// IT WORKS WITH THE SCRIPT BLOCKED, and that is not decorative: everything
+// below is gated on `.js`, which an inline snippet in <head> puts on <html>
+// before anything paints. With scripts off the burger is hidden, the panel is
+// simply part of the page, and the submenus open on :hover and :focus-within so
+// a keyboard still reaches all fifteen links. With scripts on, the same
+// submenus are driven by aria-expanded instead, which is what lets Escape and
+// an outside click close them.
+// ---------------------------------------------------------------------------
+
+// @nv-h, @nv-h-small and @nv-strip-h are declared in base.less, because
+// @anchor-clear there is derived from them and base is imported first.
+@nv-ease:     .28s cubic-bezier(.4, 0, .2, 1);
+
+// ---------------------------------------------------------------------------
+// The page measure
+//
+// Anything that wants to line up with the page content has to reproduce two
+// things, because the content column is made of two: `.container` is 1140px
+// wide with no padding of its own, and `> main` insets it by 2rem / 4rem / 6rem
+// depending on the breakpoint. Matching only the 1140 lines a bar up with an
+// edge nothing is drawn on — at 1440px the container edge is x=150 and the
+// first character of body text is at x=246.
+//
+// This is what was wrong with the bar. It was `max-width: 1140px` plus a flat
+// `padding: 0 1.5rem`, which put the wordmark at x=174: 24px inside the
+// container edge, 72px outside the text, aligned to neither.
+// ---------------------------------------------------------------------------
+// LONGHAND, and that matters. This used to set `padding: 0 @gut-*` — a
+// shorthand, once per breakpoint — and every one of those redeclarations
+// landed after whatever vertical padding the caller had written and reset it
+// to zero. It cost two rounds on the glossary's filter bar and one on the
+// home's Ura door, and in both cases the symptom was the same and confusing:
+// correct below 768px, where the caller's own mobile override happened to come
+// last, and gone at every width above it.
+//
+// Setting only the axis it means leaves the other one alone.
+.page-measure() {
+  width: 100%;
+  max-width: @page-max;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: @gut-sm;
+  padding-right: @gut-sm;
+
+  @media (min-width: @bp-md) { padding-left: @gut-md; padding-right: @gut-md; }
+  @media (min-width: @bp-lg) { padding-left: @gut-lg; padding-right: @gut-lg; }
+}
+
+// ---------------------------------------------------------------------------
+// The box and the shell
+//
+// `.nv` is sticky, so it is in normal flow, so anything that changes its height
+// reflows the entire document beneath it. Shrinking it did exactly that: the
+// strip collapsing plus the bar shrinking pulled the whole page up by 48px over
+// the 0.28s of the transition, while the reader was mid-scroll. It looked like
+// the page was trembling, and it was worst on the Access page, where the venue
+// cards are large graphics with hard edges.
+//
+// So the box keeps one height for ever and the shell shrinks inside it. Once
+// shrunk, the lower 48px of the box is transparent and the page scrolls through
+// it — which is what a sticky header looks like regardless. `pointer-events`
+// is off on the box and back on in the shell so that transparent band does not
+// eat clicks aimed at the page underneath.
+// ---------------------------------------------------------------------------
+// Zero height, no margin, no paint: it exists only so the script has a fixed
+// point in the document to measure the nav's resting position from.
+.nv-top-marker { height: 0; }
+
+// ---------------------------------------------------------------------------
+// Skip link
+//
+// Off-screen, not `display: none` — a hidden element is not focusable, and a
+// skip link that cannot be focused is no skip link at all. It comes back on
+// :focus, above the nav, and is styled like the nav so it does not look like a
+// rendering accident when it appears.
+// ---------------------------------------------------------------------------
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 1100;
+
+  .NotoSans;
+  font-size: .85rem;
+  padding: .75rem 1.15rem;
+  background-color: @Black;
+  color: @White;          // 18.6:1
+  text-decoration: none;
+  border-bottom-right-radius: .25rem;
+
+  &:focus {
+    left: 0;
+    outline: 2px solid @Yellow;
+    outline-offset: -4px;
+  }
+}
+
+// Focus lands on <main>, which is not otherwise interactive; no ring on it.
+#main:focus { outline: none; }
+
+.nv {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  height: @nv-h + @nv-strip-h;
+  pointer-events: none;
+}
+
+.nv-shell {
+  position: relative;   // the containing block for the mobile panel
+  background-color: @Black;
+  pointer-events: auto;
+  transition: box-shadow @nv-ease;
+
+  .nv[data-shrunk] & { box-shadow: 0 1px 0 fadeout(@White, 86%); }
+}
+
+.nv-bar {
+  .page-measure();
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  height: @nv-h;
+  transition: height @nv-ease;
+
+  .nv[data-shrunk] & { height: @nv-h-small; }
+}
+
+// ---- utility strip ---------------------------------------------------------
+// The language switcher and the address, on their own row. It collapses on
+// scroll so the bar that follows you down the page carries the wordmark and the
+// five sections and nothing else.
+//
+// `overflow: hidden` with a height transition rather than `display: none`,
+// because the row has to animate; the inset shadow draws the hairline so that
+// it collapses with the box instead of surviving at zero height the way a
+// border would. And because links inside a zero-height box are still in the
+// tab order, :focus-within re-opens it — otherwise a keyboard reaching the
+// language switcher from halfway down a page would move focus somewhere
+// invisible.
+.nv-strip {
+  height: @nv-strip-h;
+  overflow: hidden;
+  box-shadow: inset 0 -1px 0 fadeout(@White, 91%);
+  transition: height @nv-ease;
+
+  .nv[data-shrunk] & { height: 0; }
+  .nv[data-shrunk] &:focus-within { height: @nv-strip-h; }
+}
+
+.nv-strip-in {
+  .page-measure();
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  height: @nv-strip-h;
+}
+
+.nv-mail {
+  .NotoSans;
+  font-size: .72rem;
+  letter-spacing: .01em;
+  color: fadeout(@White, 45%);
+  text-decoration: none;
+
+  &:hover { color: @White; }
+  &:focus-visible { outline: 2px solid @Yellow; outline-offset: 2px; }
+
+  // Below 480px the address and four language names cannot share the row, and
+  // the address is the one that has a page of its own to live on.
+  @media (max-width: 479.98px) { display: none; }
+}
+
+// ---- brand -----------------------------------------------------------------
+.nv-brand {
+  display: block;
+  flex: 0 0 auto;
+
+  // The wordmark's own aspect ratio, 632/166 = 3.822. The box used to be
+  // 8.6rem wide against 7.64rem of painted artwork, so 15px of it was empty
+  // and the declared width described nothing.
+  width: 7.64rem;
+  height: 2rem;
+  background-image: url('/graphics/logo-00-wordmark-white.svg');
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: contain;
+  transition: width @nv-ease, height @nv-ease;
+
+  .nv[data-shrunk] & { width: 6.12rem; height: 1.6rem; }
+
+  &:focus-visible { outline: 2px solid @Yellow; outline-offset: 3px; }
+}
+
+.nv-sr {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// ---- burger ----------------------------------------------------------------
+// Hidden by default: without JavaScript it cannot open anything, and the whole
+// menu is already on the page.
+.nv-burger {
+  display: none;
+  place-items: center;
+  margin-left: auto;
+  width: 2.75rem;          // 44px: the minimum comfortable touch target
+  height: 2.75rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+
+  &:focus-visible { outline: 2px solid @Yellow; outline-offset: 2px; }
+}
+
+.js .nv-burger { display: grid; }
+
+.nv-burger-box {
+  display: block;
+  width: 1.25rem;
+  height: .8rem;
+  position: relative;
+
+  > i {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: @White;
+    transition: transform @nv-ease, opacity @nv-ease;
+
+    &:nth-child(1) { top: 0; }
+    &:nth-child(2) { top: 50%; margin-top: -1px; }
+    &:nth-child(3) { bottom: 0; }
+  }
+
+  // Into a cross while the panel is open.
+  .nv[data-open] & > i:nth-child(1) { transform: translateY(.35rem) rotate(45deg); }
+  .nv[data-open] & > i:nth-child(2) { opacity: 0; }
+  .nv[data-open] & > i:nth-child(3) { transform: translateY(-.35rem) rotate(-45deg); }
+}
+
+// ---- lists -----------------------------------------------------------------
+.nv-list,
+.nv-sub,
+.nv-lang {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nv-top,
+.nv-sub a,
+.nv-lang a {
+  .NotoSans;
+  font-family: 'Noto Sans', sans-serif;
+  color: fadeout(@White, 15%);
+  text-decoration: none;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.nv-top {
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+  font-size: .82rem;
+  letter-spacing: .01em;
+  padding: .55rem 0;
+
+  &:hover { color: @White; }
+  &:focus-visible { outline: 2px solid @Yellow; outline-offset: 2px; }
+}
+
+// A flat item — a link, not a dropdown. `.nv-top` is written for <button>,
+// which does not inherit the anchor colour, so an <a> in that slot has to be
+// told. See _data/nav.yml: a group with a `url` and no `items`.
+.nv-flat > .nv-top {
+  color: fade(@White, 85%);
+  text-decoration: none;
+  background: none;
+  border: 0;
+
+  &:hover { color: @White; background: none; }
+}
+
+.nv-kanji {
+  .NotoSansJP;
+  font-style: normal;
+  font-size: 1rem;
+  line-height: 1;
+  color: @Yellow;
+}
+
+.nv-chev {
+  width: .34rem;
+  height: .34rem;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg) translateY(-.08rem);
+  transition: transform @nv-ease;
+}
+
+.nv-item[data-here] > .nv-top {
+  color: @White;
+  box-shadow: inset 0 -2px 0 @Yellow;
+}
+
+// ---- mobile: everything stacked -------------------------------------------
+// Visible by default. `.js` on <html> — set inline in the head, before paint —
+// is what collapses it behind the burger; with scripts blocked the menu simply
+// stays on the page as a list of links.
+.nv-panel {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  background-color: @Black;
+
+  // Horizontal padding tracks the page measure so the panel's links start on
+  // the same vertical as the wordmark above them.
+  padding: .5rem 2rem 1.5rem;
+  @media (min-width: 768px)  { padding-left: 4rem; padding-right: 4rem; }
+  @media (min-width: @bp-lg) { padding-left: 6rem; padding-right: 6rem; }
+
+  max-height: calc(100dvh - @nv-h);
+  overflow-y: auto;
+  border-top: 1px solid fadeout(@White, 90%);
+
+  .js & { display: none; }
+  .js .nv[data-open] & { display: block; }
+}
+
+.nv-item { border-bottom: 1px solid fadeout(@White, 92%); }
+
+.nv-item > .nv-top {
+  width: 100%;
+  justify-content: space-between;
+  min-height: 2.75rem;
+  font-size: .95rem;
+
+}
+
+// ...except a flat item. `space-between` is there to push the chevron to the
+// far edge of a dropdown row, and Ura is the one row with no chevron: its
+// content is the kanji and the word, so the rule shoved those two to opposite
+// ends of the panel. It packs to the start and lets the gap do the spacing.
+//
+// `.nv-item.nv-flat`, not `.nv-flat > .nv-item`: both classes are on the same
+// <li>, so the second selector describes a nesting that does not exist.
+.nv-item.nv-flat > .nv-top { justify-content: flex-start; }
+
+.nv-sub {
+  // Closed by default only once the script is present to open it. Without JS
+  // every submenu stays visible, which is the honest fallback.
+  padding: 0 0 .6rem .9rem;
+
+  a {
+    display: block;
+    padding: .55rem 0;
+    font-size: .88rem;
+    color: fadeout(@White, 25%);
+
+    &:hover, &:focus { color: @White; }
+    &:focus-visible { outline: 2px solid @Yellow; outline-offset: 2px; }
+  }
+
+  a[aria-current="page"] { color: @White; box-shadow: inset 2px 0 0 @Yellow; padding-left: .6rem; }
+}
+
+.js .nv-sub { display: none; }
+.js .nv-top[aria-expanded="true"] + .nv-sub { display: block; }
+.js .nv-top[aria-expanded="true"] > .nv-chev { transform: rotate(-135deg) translateY(-.08rem); }
+
+
+// The toggle is a button, and a button that cannot do anything should not look
+// like it can.
+.no-js .nv-top { cursor: default; }
+
+.nv-chev { display: none; }
+
+// Lives in the strip at every width now, so there is one rule rather than a
+// mobile one overridden at 992px. It also means the language switcher is
+// reachable on a phone without opening the burger, which it was not before.
+.nv-lang {
+  display: flex;
+  align-items: center;
+  gap: .9rem;
+  margin-left: auto;
+
+  a {
+    font-size: .72rem;
+    line-height: 1;
+    color: fadeout(@White, 45%);
+
+    &:hover { color: @White; }
+    &[aria-current] { color: @White; }
+    &:focus-visible { outline: 2px solid @Yellow; outline-offset: 2px; }
+  }
+}
+
+// ---- desktop ---------------------------------------------------------------
+@media (min-width: 992px) {
+
+  .nv-burger, .js .nv-burger { display: none; }
+
+  .nv-panel,
+  .js .nv-panel {
+    display: flex;
+    position: static;
+    align-items: center;
+    margin-left: auto;
+    padding: 0;
+    max-height: none;
+    overflow: visible;
+    border-top: 0;
+    background: none;
+  }
+
+  .nv-list { display: flex; gap: 1.5rem; align-items: center; }
+
+  .nv-item {
+    position: relative;
+    border-bottom: 0;
+  }
+
+  .nv-item > .nv-top { min-height: 0; font-size: .82rem; width: auto; }
+
+  // The panel floats. Hover and focus-within drive it with no script; once
+  // nav.js has flagged the nav, aria-expanded takes over so that Escape and
+  // clicking outside can close it.
+  .nv-sub {
+    position: absolute;
+    top: 100%;
+    left: -.9rem;
+    min-width: 11.5rem;
+    padding: .45rem 0;
+    background-color: @Black;
+    border: 1px solid fadeout(@White, 88%);
+    border-radius: .25rem;
+    box-shadow: 0 8px 24px fadeout(@Black, 55%);
+
+    a {
+      padding: .5rem .9rem;
+      white-space: nowrap;
+      font-size: .84rem;
+    }
+
+    a[aria-current="page"] { padding-left: .9rem; box-shadow: inset 2px 0 0 @Yellow; }
+  }
+
+  // Without the script the submenus open on hover and on focus, so a keyboard
+  // still reaches every link.
+  .no-js .nv-sub { display: none; }
+  .no-js .nv-item:hover > .nv-sub,
+  .no-js .nv-item:focus-within > .nv-sub { display: block; }
+
+  .js .nv-item:hover > .nv-sub { display: block; }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nv, .nv-bar, .nv-brand, .nv-chev, .nv-burger-box > i { transition: none; }
+}
+
+@media print {
+  .nv { display: none; }
+}
