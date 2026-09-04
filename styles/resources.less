@@ -62,13 +62,100 @@ main {
 
   @media (min-width: @bp-md) { padding: 1.15rem @gut-md; }
   @media (min-width: @bp-lg) { padding: 1.15rem @gut-lg; }
-  @media (max-width: @bp-md - .02px) { padding: .95rem @gut-sm .85rem; }
+  // Tighter below @bp-md, because below @bp-md this is one line and the whole
+  // point of it is to be short. .95/.85 was sized for a bar that carried five
+  // rows of chips and could afford the air.
+  @media (max-width: @bp-md - .02px) { padding: .6rem @gut-sm .55rem; }
+}
+
+// ---- one line on a phone, chips in a drawer -------------------------------
+//
+// The glossary carries the same control, and styles/glossary.less has the long
+// note. Here the numbers were 274px of a 667px viewport at 375 wide, seven
+// chips over four rows, down to 55px. Change one of the two pages and change
+// the other with it.
+// `.rs-bar-line` and NOT `.rs-row`, which was the first name for it. `.rs-row`
+// is already a resource — one row of the list — so the bar's own line matched
+// `.rs-wrap .rs-row`, was collected by the script as a searchable term, and got
+// `hidden` set on it the moment a filter matched nothing in it. The bar
+// measured 18px and the search field measured zero. Prefix the bar's parts with
+// `-bar-`; the list owns the unprefixed names.
+.rs-bar-line {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+}
+
+.rs-drawer {
+  display: none;
+  padding-top: .55rem;
+}
+
+.rs-bar.is-open .rs-drawer { display: block; }
+
+.rs-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  flex: none;
+  height: 2.375rem;
+  max-width: 8.5rem;
+  padding: 0 .7rem;
+  border: 1px solid var(--rs-line);
+  background: @White;
+  cursor: pointer;
+  .Futura;
+  font-size: .62rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--rs-mute);
+  white-space: nowrap;
+
+  svg { width: 13px; height: 13px; flex: none; }
+
+  // The label ellipsizes, not the button: "Programa de examen" is wider than
+  // the button will ever be, and truncating the button took the icon with it.
+  > span:last-child { overflow: hidden; text-overflow: ellipsis; }
+
+  &:hover { border-color: @Black; color: @Black; }
+  &:focus-visible { outline: 2px solid @Blue; outline-offset: 2px; }
+
+  &[aria-expanded="true"] { border-color: @Black; color: @Black; }
+
+  &[data-active] {
+    background: @Black;
+    border-color: @Black;
+    color: @White;
+  }
+}
+
+@media (min-width: @bp-md) {
+  .rs-bar-in {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .rs-bar-line { display: contents; }
+  .rs-search  { order: 1; }
+  .rs-drawer  { order: 2; display: block; padding-top: 0; }
+  .rs-count   { order: 3; }
+  .rs-filter  { display: none; }
 }
 
 .rs-search {
   display: flex;
   gap: .5rem;
   margin-bottom: .6rem;
+
+  // `flex` and `min-width` inside the query: from @bp-md the parent is a
+  // column, where `flex: 1` grows on the vertical axis and stretches the search
+  // row to fill the bar.
+  @media (max-width: @bp-md - .02px) {
+    flex: 1;
+    min-width: 7.5rem;
+    margin-bottom: 0;
+    button { display: none; }
+  }
 
   input {
     flex: 1;
@@ -182,10 +269,28 @@ main {
   margin-top: .55rem;
   .Futura;
   font-size: .6rem;
-  @media (max-width: @bp-md - .02px) { margin-top: .4rem; }
   letter-spacing: .16em;
   text-transform: uppercase;
   color: var(--rs-mute);
+  font-variant-numeric: tabular-nums;
+
+  // The noun goes off-screen rather than to `display: none` on the phone: this
+  // is a live region and a hidden node is not announced, so the screen reader
+  // keeps "12 recursos" while the eye sees "12".
+  @media (max-width: @bp-md - .02px) {
+    margin: 0;
+    flex: none;
+
+    .rs-count-unit {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  }
 }
 
 

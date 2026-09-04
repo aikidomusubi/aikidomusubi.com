@@ -5,7 +5,7 @@ description: "Seminars, examinations, schedule changes and days without class. E
 permalink: /en/calendar/
 lang: en
 i18n-ref: calendar-Qv7mK2xR
-last_modified: 2026-09-01
+last_modified: 2026-09-04
 ---
 
 # Calendar

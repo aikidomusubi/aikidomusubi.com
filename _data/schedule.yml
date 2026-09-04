@@ -308,8 +308,14 @@ classes:
   - { category: karate,   location: musubi,     level: all,       days: [sat],      start: "11:00", end: "13:00", instructor: llorens }
 
   # ---- Sant Adrià de Besòs ----
-  - { category: aikido,   location: sant-adria, level: all,       days: [mon],      start: "20:00", end: "21:00", instructor: zheng }
-  - { category: aikido,   location: sant-adria, level: all,       days: [wed],      start: "20:15", end: "21:15", instructor: zheng }
+  # NO `instructor:` ON EITHER OF THESE, and that is a state rather than an
+  # omission. Guanlong Zheng taught both and no longer does; a new teacher is
+  # being assigned. The timetable renders the instructor line only when the key
+  # is present (see _includes/schedule.html), so leaving it out prints the class
+  # without a name instead of printing a name that has stopped being true.
+  # Put the id back when there is one.
+  - { category: aikido,   location: sant-adria, level: all,       days: [mon],      start: "20:00", end: "21:00" }
+  - { category: aikido,   location: sant-adria, level: all,       days: [wed],      start: "20:15", end: "21:15" }
 
   # ---- Barcelona · CxEM Espronceda ----
   # In the tatami room of the municipal sports complex, both days the same hour

@@ -9,7 +9,7 @@ redirect_from:
   - /ja/courses/
 lang: ja
 i18n-ref: events-hFZ2XXIp
-last_modified: 2026-08-30
+last_modified: 2026-09-04
 ---
 
 # 講習会

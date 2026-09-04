@@ -36,20 +36,64 @@
     stays pinned over the footer, where there is nothing left to filter.
   {%- endcomment -%}
   <div class="gl-wrap">
+  {%- comment -%}
+    THE BAR IS ONE LINE ON A PHONE, and the chips are behind the button.
+
+    Measured before it was changed: at 375x667, with the nav shrunk, this bar
+    was 389px of a 667px viewport. Fifty-eight per cent of the screen, and 66%
+    once the nav is counted, before a single entry is read. Twelve chips wrap to
+    five rows and there is nothing to be done about that while they are all on
+    show at once.
+
+    So the sticky line is the search, the count and a button, and the chips live
+    in a drawer under it. The drawer pushes the list rather than covering it,
+    closes when a chip is picked, and the button then carries that chip's name,
+    so the state is legible without opening anything. 389px becomes 55px.
+
+    ABOVE @bp-md NOTHING CHANGES. The chips fit in a row or two there and the
+    full bar is better than a drawer; the button is display:none and the drawer
+    is always open. `.gl-bar-line` becomes `display: contents` so the three parts
+    become flex items of `.gl-bar-in` again and `order` puts them back in the
+    order they have always been in — search, chips, count. One tree, two
+    layouts, no second copy of anything.
+  {%- endcomment -%}
   <div class="gl-bar" data-gl-bar hidden>
     <div class="gl-bar-in">
-      <div class="gl-search">
-        <input id="gl-q" type="search" autocomplete="off"
-               placeholder="{{ G.ui.search[L] }}" aria-label="{{ G.ui.search_lab[L] }}">
-        <button type="button" data-gl-clear>{{ G.ui.clear[L] }}</button>
+      <div class="gl-bar-line">
+        <div class="gl-search">
+          <input id="gl-q" type="search" autocomplete="off"
+                 placeholder="{{ G.ui.search[L] }}" aria-label="{{ G.ui.search_lab[L] }}">
+          <button type="button" data-gl-clear>{{ G.ui.clear[L] }}</button>
+        </div>
+        {%- comment -%}
+          The unit is a span of its own so the phone can drop it to the
+          accessibility tree and keep the number. Splitting it here also
+          retires the old trick of reading "123 entradas" back out of the
+          element and substituting the digits — the script sets a number now.
+        {%- endcomment -%}
+        <p class="gl-count" data-gl-count aria-live="polite"><span data-gl-n>{{ total }}</span> <span class="gl-count-unit">{{ G.ui.entries[L] }}</span></p>
+        {%- comment -%}
+          The accessible name is the sr-only phrase plus the label, so it reads
+          "Filtrar por categoría: Todas" and then "Filtrar por categoría: En el
+          dojo". That is why the visible label starts at "Todas" rather than at
+          the word "Filtrar": the button always says which filter is on, and
+          "all of them" is a filter like any other.
+        {%- endcomment -%}
+        <button type="button" class="gl-filter" data-gl-filter
+                aria-expanded="false" aria-controls="gl-drawer">
+          <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M1 3h14v2H1zM3.5 7h9v2h-9zM6 11h4v2H6z"/></svg>
+          <span class="sr-only">{{ G.ui.filters[L] }}:</span>
+          <span data-gl-filter-label>{{ G.ui.all[L] }}</span>
+        </button>
       </div>
-      <div class="gl-chips" role="group" aria-label="{{ G.ui.filters[L] }}">
-        <button type="button" data-cat="all" data-on aria-pressed="true">{{ G.ui.all[L] }}</button>
-        {%- for c in G.cats %}
-        <button type="button" data-cat="{{ c.id }}" aria-pressed="false">{{ c.name[L] }} <i>{{ c.terms.size }}</i></button>
-        {%- endfor %}
+      <div class="gl-drawer" id="gl-drawer">
+        <div class="gl-chips" role="group" aria-label="{{ G.ui.filters[L] }}">
+          <button type="button" data-cat="all" data-on aria-pressed="true" data-label="{{ G.ui.all[L] }}">{{ G.ui.all[L] }}</button>
+          {%- for c in G.cats %}
+          <button type="button" data-cat="{{ c.id }}" aria-pressed="false" data-label="{{ c.name[L] }}">{{ c.name[L] }} <i>{{ c.terms.size }}</i></button>
+          {%- endfor %}
+        </div>
       </div>
-      <p class="gl-count" data-gl-count aria-live="polite">{{ total }} {{ G.ui.entries[L] }}</p>
     </div>
   </div>
   {%- comment -%}

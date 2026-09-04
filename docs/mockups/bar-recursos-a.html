@@ -1,0 +1,222 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Recursos · barra A — Aikido Musubi</title>
+<link rel="stylesheet" href="/styles/all.min.css">
+<style>
+:root{
+  --ink:#111314; --mute:#5c6a70; --line:rgba(17,19,20,.13);
+  --hair:rgba(17,19,20,.08); --acc:#FFF200; --blue:#064F6E;
+  --paper:#fff; --tint:rgba(17,19,20,.03);
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:#f2f2f0;color:var(--ink);
+  font-family:'Noto Sans',system-ui,-apple-system,sans-serif;
+  -webkit-font-smoothing:antialiased}
+h1,h2,h3,.fut{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-weight:400;
+  letter-spacing:.04em;margin:0}
+p{margin:0}
+.jp{font-family:'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif}
+
+/* ---- the page around the prototype ------------------------------------ */
+.pg{max-width:1180px;margin:0 auto;padding:3rem 2rem 5rem}
+.pg > header{margin-bottom:2.5rem;max-width:46rem}
+.pg h1{font-size:2.1rem;text-transform:uppercase}
+.kicker{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.62rem;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--mute);margin-bottom:.7rem}
+.lede{margin-top:1rem;font-size:1rem;line-height:1.7;color:#2c3437}
+.cols{display:grid;grid-template-columns:375px minmax(0,1fr);gap:3rem;align-items:start}
+@media(max-width:900px){.cols{grid-template-columns:1fr}}
+.notes h2{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--mute);margin:0 0 .8rem;padding-bottom:.5rem;border-bottom:2px solid var(--ink)}
+.notes section{margin-bottom:2.2rem}
+.notes p{font-size:.9rem;line-height:1.75;color:#2c3437;margin-bottom:.7rem}
+.notes ul{margin:.2rem 0 0;padding-left:0;list-style:none}
+.notes li{display:flex;gap:.5rem;font-size:.9rem;line-height:1.7;color:#2c3437;
+  margin-bottom:.35rem}
+.notes li > span:first-child{flex:none;width:1rem}
+.fig{display:flex;gap:2.5rem;margin:.4rem 0 1rem;padding:1rem 0;
+  border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+.fig div{min-width:0}
+.fig b{display:block;font-family:Futura,'Trebuchet MS',Arial,sans-serif;
+  font-size:1.75rem;line-height:1;font-variant-numeric:tabular-nums}
+.fig span{display:block;margin-top:.35rem;font-size:.66rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--mute)}
+.fig .down b{color:#1A7444}
+.tick{color:#1A7444}.cross{color:#A62C37}
+
+/* ---- the phone -------------------------------------------------------- */
+.phone{width:375px;height:667px;overflow-y:auto;overflow-x:hidden;position:relative;
+  background:var(--paper);border:10px solid #111314;border-radius:26px;
+  box-shadow:0 18px 40px rgba(0,0,0,.18);scrollbar-width:thin}
+.phone-cap{margin-top:.8rem;font-size:.66rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--mute);text-align:center}
+.stick-wrap{position:sticky;top:0;z-index:9}
+.mnav{height:49px;background:#111314;color:#fff;display:flex;align-items:center;
+  justify-content:space-between;padding:0 1rem}
+.mnav b{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:1.05rem;
+  letter-spacing:.08em}
+.mnav i{display:block;width:22px;height:2px;background:#fff;
+  box-shadow:0 6px 0 #fff,0 -6px 0 #fff;font-style:normal}
+.head{padding:1.6rem 1rem .9rem}
+.head h2{font-size:1.5rem;text-transform:uppercase;letter-spacing:.05em}
+.head p{margin-top:.5rem;font-size:.82rem;line-height:1.6;color:var(--mute)}
+
+/* ---- the list --------------------------------------------------------- */
+.grp{padding:0 1rem;margin-bottom:1.8rem}
+.grp[hidden]{display:none}
+.gh{display:flex;align-items:baseline;gap:.6rem;padding-bottom:.5rem;
+  border-bottom:2px solid var(--ink);margin-bottom:.2rem}
+.gh h3{font-size:.92rem;text-transform:uppercase;letter-spacing:.09em}
+.gh span{font-size:.7rem;color:var(--mute)}
+.t{display:grid;gap:.1rem;padding:.7rem 0;border-bottom:1px solid var(--line)}
+.t[hidden]{display:none}
+.t .k{font-size:1rem;line-height:1.3}
+.t .r{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.86rem}
+.t .d{font-size:.78rem;line-height:1.6;color:var(--mute)}
+.t .kind{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.55rem;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--blue)}
+.empty{padding:2.5rem 1rem;font-size:.85rem;color:var(--mute)}
+.empty[hidden]{display:none}
+.tail{padding:2.5rem 1rem 3rem;background:#111314;color:#8b9296;font-size:.7rem}
+
+
+.bar{position:sticky;top:49px;z-index:8;background:rgba(255,255,255,.97);
+  border-bottom:1px solid var(--hair)}
+@supports (backdrop-filter:blur(10px)){.bar{backdrop-filter:blur(10px)}}
+.bar-row{display:flex;align-items:center;gap:.45rem;padding:.5rem 1rem}
+.bar-row input{flex:1;min-width:7.5rem;height:38px;padding:0 .7rem;border:1px solid var(--line);
+  border-radius:0;background:#fff;font:inherit;font-size:.88rem;color:var(--ink)}
+.bar-row input:focus{outline:2px solid var(--acc);outline-offset:-1px;border-color:var(--ink)}
+.tally{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.62rem;
+  letter-spacing:.1em;color:var(--mute);font-variant-numeric:tabular-nums;
+  white-space:nowrap}
+.fbtn{display:inline-flex;align-items:center;gap:.4rem;height:38px;padding:0 .7rem;
+  border:1px solid var(--line);background:#fff;cursor:pointer;
+  font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.62rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
+.fbtn svg{width:13px;height:13px;flex:none}
+.fbtn[aria-expanded="true"]{border-color:var(--ink);color:var(--ink)}
+.fbtn[data-active]{background:var(--ink);border-color:var(--ink);color:#fff;
+  max-width:8.5rem}
+.fbtn span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.drawer{padding:.15rem 1rem .8rem}
+.drawer[hidden]{display:none}
+.chips{display:flex;flex-wrap:wrap;gap:.35rem}
+.chips button{display:inline-flex;align-items:center;gap:.4rem;min-height:2rem;
+  padding:.25rem .75rem;border:1px solid rgba(17,19,20,.08);border-radius:2rem;
+  background:#fff;font:inherit;font-size:.78rem;line-height:1.2;color:var(--mute);
+  cursor:pointer}
+.chips button i{font-style:normal;font-size:.66rem;font-variant-numeric:tabular-nums}
+.chips button[data-on]{background:var(--ink);border-color:var(--ink);color:#fff}
+.chips button[data-on] i{color:var(--acc)}
+</style></head><body>
+<div class="pg">
+  <header>
+    <p class="kicker">Propuesta &middot; barra fija en móvil</p>
+    <h1>Recursos &middot; A</h1>
+    <p class="lede">La misma línea fija y el mismo cajón que en el glosario. Una decisión, dos páginas.</p>
+  </header>
+  <div class="cols">
+    <div>
+      <div class="phone">
+<div class="stick-wrap">
+  <div class="mnav"><b>MUSUBI</b><i></i></div>
+  <div class="bar">
+    <div class="bar-row">
+      <input id="q" type="search" placeholder="Buscar un documento o un vídeo…" aria-label="Buscar en los recursos" autocomplete="off">
+      <p class="tally" id="count">54</p>
+      <button class="fbtn" id="fbtn" type="button" aria-expanded="false" aria-controls="drawer">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor"
+          d="M1 3h14v2H1zM3.5 7h9v2h-9zM6 11h4v2H6z"/></svg>
+        <span id="fbtn-l">Filtrar</span>
+      </button>
+    </div>
+    <div class="drawer" id="drawer" hidden>
+      <div class="chips" role="group" aria-label="Filtrar por categoría"><button data-cat="all" data-label="Todas" data-on>Todas <i>54</i></button><button data-cat="tramites" data-label="Trámites">Trámites <i>4</i></button><button data-cat="examen" data-label="Programa de examen">Programa de examen <i>6</i></button><button data-cat="videos" data-label="Vídeos de práctica">Vídeos de práctica <i>7</i></button><button data-cat="armas" data-label="Armas">Armas <i>6</i></button><button data-cat="etiqueta" data-label="Etiqueta y normas">Etiqueta y normas <i>4</i></button><button data-cat="lecturas" data-label="Lecturas">Lecturas <i>27</i></button></div>
+    </div>
+  </div>
+</div>
+<div class="head"><h2>Recursos</h2><p>Los papeles, los programas de examen, las guías de armas y lo que hay para leer.</p></div>
+<section class="grp" id="g-tramites"><div class="gh"><h3>Trámites</h3><span>Los papeles que se firman una vez</span></div><div class="t" data-cat="tramites" data-s="Hoja de inscripción Datos, actividad y cuota. Se entrega firmada en el dojo o por correo."><p class="kind">Formulario</p><p class="r">Hoja de inscripción</p><p class="d">Datos, actividad y cuota. Se entrega firmada en el dojo o por correo.</p></div><div class="t" data-cat="tramites" data-s="Autorización de uso de imagen Para aparecer en fotos y vídeos del dojo. Se puede retirar cuando quieras."><p class="kind">Formulario</p><p class="r">Autorización de uso de imagen</p><p class="d">Para aparecer en fotos y vídeos del dojo. Se puede retirar cuando quieras.</p></div><div class="t" data-cat="tramites" data-s="Autorización para menores La firman padres, madres o tutores. Obligatoria por debajo de 14 años."><p class="kind">Formulario</p><p class="r">Autorización para menores</p><p class="d">La firman padres, madres o tutores. Obligatoria por debajo de 14 años.</p></div><div class="t" data-cat="tramites" data-s="Orden de domiciliación SEPA Sólo si eliges pagar la cuota por banco."><p class="kind">Formulario</p><p class="r">Orden de domiciliación SEPA</p><p class="d">Sólo si eliges pagar la cuota por banco.</p></div></section><section class="grp" id="g-examen"><div class="gh"><h3>Programa de examen</h3><span>De 5.º a 1.er kyū</span></div><div class="t" data-cat="examen" data-s="Programa de 5.º kyū El primero. Ikkyo a yonkyo en suwari waza, seis ataques de pie y los cuatro primeros suburis."><p class="kind">Página</p><p class="r">Programa de 5.º kyū</p><p class="d">El primero. Ikkyo a yonkyo en suwari waza, seis ataques de pie y los cuatro primeros suburis.</p></div><div class="t" data-cat="examen" data-s="Programa de 4.º kyū Llega el ushiro ryote-dori, irimi-nage en suwari waza y el bokken sube a seis suburis."><p class="kind">Página</p><p class="r">Programa de 4.º kyū</p><p class="d">Llega el ushiro ryote-dori, irimi-nage en suwari waza y el bokken sube a seis suburis.</p></div><div class="t" data-cat="examen" data-s="Programa de 3.er kyū Entran los kokyu-nage, el jō empieza a pedir uchiotoshi y el randori arranca en futari-dori."><p class="kind">Página</p><p class="r">Programa de 3.er kyū</p><p class="d">Entran los kokyu-nage, el jō empieza a pedir uchiotoshi y el randori arranca en futari-dori.</p></div><div class="t" data-cat="examen" data-s="Programa de 2.º kyū Aparecen gokyo, koshi-nage y juji-nage, y el randori pasa a tres personas."><p class="kind">Página</p><p class="r">Programa de 2.º kyū</p><p class="d">Aparecen gokyo, koshi-nage y juji-nage, y el randori pasa a tres personas.</p></div><div class="t" data-cat="examen" data-s="Programa de 1.er kyū El programa se recorta y se ensancha: hiji-kime-osae y gokyo en todos los ataques, ju-waza y el sansho de jō."><p class="kind">Página</p><p class="r">Programa de 1.er kyū</p><p class="d">El programa se recorta y se ensancha: hiji-kime-osae y gokyo en todos los ataques, ju-waza y el sansho de jō.</p></div><div class="t" data-cat="examen" data-s="Todo el programa, de 5.º a 1.er kyū Las cinco listas en una. Cada técnica aparece una vez, en el color del grado en que se pide por primera vez."><p class="kind">Página</p><p class="r">Todo el programa, de 5.º a 1.er kyū</p><p class="d">Las cinco listas en una. Cada técnica aparece una vez, en el color del grado en que se pide por primera vez.</p></div></section><section class="grp" id="g-videos"><div class="gh"><h3>Vídeos de práctica</h3><span>Ejercicios, ukemi y clases grabadas</span></div><div class="t" data-cat="videos" data-s="Vídeo de aikido 1 · Preparación El calentamiento entero, en el orden en que se hace en clase."><p class="kind">Vídeo</p><p class="r">Vídeo de aikido 1 · Preparación</p><p class="d">El calentamiento entero, en el orden en que se hace en clase.</p></div><div class="t" data-cat="videos" data-s="Vídeo de aikido 2 · Equilibrio Ejercicios para sostenerse sobre un pie y encontrar el centro. Se hacen solo y en poco espacio."><p class="kind">Vídeo</p><p class="r">Vídeo de aikido 2 · Equilibrio</p><p class="d">Ejercicios para sostenerse sobre un pie y encontrar el centro. Se hacen solo y en poco espacio.</p></div><div class="t" data-cat="videos" data-s="Vídeo de aikido 3 · Ushiro-ukemi La caída hacia atrás por partes: desde sentado, desde cuclillas y de pie."><p class="kind">Vídeo</p><p class="r">Vídeo de aikido 3 · Ushiro-ukemi</p><p class="d">La caída hacia atrás por partes: desde sentado, desde cuclillas y de pie.</p></div><div class="t" data-cat="videos" data-s="Mae-mawari-ukemi La caída rodando hacia delante, que es la que más cuesta al principio y la que más se usa."><p class="kind">Vídeo</p><p class="r">Mae-mawari-ukemi</p><p class="d">La caída rodando hacia delante, que es la que más cuesta al principio y la que más se usa.</p></div><div class="t" data-cat="videos" data-s="Practicar solo Ejercicios para mantener el cuerpo y el hábito cuando no hay con quién practicar."><p class="kind">Vídeo</p><p class="r">Practicar solo</p><p class="d">Ejercicios para mantener el cuerpo y el hábito cuando no hay con quién practicar.</p></div><div class="t" data-cat="videos" data-s="El camino a la nueva normalidad Un año de Aikido Kyoto contado desde dentro: qué se dejó de hacer, qué se cambió y con qué se siguió."><p class="kind">Vídeo</p><p class="r">El camino a la nueva normalidad</p><p class="d">Un año de Aikido Kyoto contado desde dentro: qué se dejó de hacer, qué se cambió y con qué se siguió.</p></div><div class="t" data-cat="videos" data-s="Una clase entera, en línea Clase completa de junio de 2020, con Lisi Baldwin de uke. Se puede seguir de principio a fin."><p class="kind">Vídeo</p><p class="r">Una clase entera, en línea</p><p class="d">Clase completa de junio de 2020, con Lisi Baldwin de uke. Se puede seguir de principio a fin.</p></div></section><section class="grp" id="g-armas"><div class="gh"><h3>Armas</h3><span>Jō, bokken y tantō</span></div><div class="t" data-cat="armas" data-s="36 técnicas básicas de jō Las 36 técnicas numeradas, en tres columnas —kesa, tsuki, shōmen— con el kanji y la posición inicial de la mano."><p class="kind">Documento</p><p class="r">36 técnicas básicas de jō</p><p class="d">Las 36 técnicas numeradas, en tres columnas —kesa, tsuki, shōmen— con el kanji y la posición inicial de la mano.</p></div><div class="t" data-cat="armas" data-s="Guía de entrenamiento de bokken Movimientos de pies, posturas, suburi, kiri-otoshi y kiri-gaeshi, los cinco kumi-tachi y ki-musubi-no-tachi."><p class="kind">Documento</p><p class="r">Guía de entrenamiento de bokken</p><p class="d">Movimientos de pies, posturas, suburi, kiri-otoshi y kiri-gaeshi, los cinco kumi-tachi y ki-musubi-no-tachi.</p></div><div class="t" data-cat="armas" data-s="Guía de entrenamiento de jō Manejo, ataques, las 36 técnicas, kumi-jō y kumi-gata con los sanshō, jō-waza y jō-dori."><p class="kind">Documento</p><p class="r">Guía de entrenamiento de jō</p><p class="d">Manejo, ataques, las 36 técnicas, kumi-jō y kumi-gata con los sanshō, jō-waza y jō-dori.</p></div><div class="t" data-cat="armas" data-s="Los ocho suburi de bokken, seguidos Los ocho cortes uno detrás de otro, en un solo vídeo. Para repasar el orden antes de un examen."><p class="kind">Vídeo</p><p class="r">Los ocho suburi de bokken, seguidos</p><p class="d">Los ocho cortes uno detrás de otro, en un solo vídeo. Para repasar el orden antes de un examen.</p></div><div class="t" data-cat="armas" data-s="Los ocho suburi, uno por vídeo Cada suburi por separado y dos pasadas completas. Doce vídeos para mirar el que se te resiste sin buscarlo dentro de otro."><p class="kind">Vídeo</p><p class="r">Los ocho suburi, uno por vídeo</p><p class="d">Cada suburi por separado y dos pasadas completas. Doce vídeos para mirar el que se te resiste sin buscarlo dentro de otro.</p></div><div class="t" data-cat="armas" data-s="Introducción al sistema de armas de Chiba Sensei Tres vídeos de partida: el jō en dos partes y el bokken en una. Explica de dónde salen las formas que están en las guías de arriba."><p class="kind">Vídeo</p><p class="r">Introducción al sistema de armas de Chiba Sensei</p><p class="d">Tres vídeos de partida: el jō en dos partes y el bokken en una. Explica de dónde salen las formas que están en las guías de arriba.</p></div></section><section class="grp" id="g-etiqueta"><div class="gh"><h3>Etiqueta y normas</h3><span>Cómo funciona el tatami</span></div><div class="t" data-cat="etiqueta" data-s="Reglas durante la práctica Las seis reglas del fundador expuestas en el Hombu Dojo, con el comentario del segundo Dōshu."><p class="kind">Página</p><p class="r">Reglas durante la práctica</p><p class="d">Las seis reglas del fundador expuestas en el Hombu Dojo, con el comentario del segundo Dōshu.</p></div><div class="t" data-cat="etiqueta" data-s="Reglas del dojo El lugar, la pertenencia y la gente: cómo se rige esta casa y qué se espera de quien entra."><p class="kind">Página</p><p class="r">Reglas del dojo</p><p class="d">El lugar, la pertenencia y la gente: cómo se rige esta casa y qué se espera de quien entra.</p></div><div class="t" data-cat="etiqueta" data-s="Compromiso de quien practica Para qué sirve la técnica, cómo se cuida al compañero y cómo se aprende."><p class="kind">Página</p><p class="r">Compromiso de quien practica</p><p class="d">Para qué sirve la técnica, cómo se cuida al compañero y cómo se aprende.</p></div><div class="t" data-cat="etiqueta" data-s="Etiqueta en el tatami · reihō El orden de una clase, de la puerta a la puerta. Para las dos primeras semanas."><p class="kind">Página</p><p class="r">Etiqueta en el tatami · reihō</p><p class="d">El orden de una clase, de la puerta a la puerta. Para las dos primeras semanas.</p></div></section><section class="grp" id="g-lecturas"><div class="gh"><h3>Lecturas</h3><span>Libros y material de estudio</span></div><div class="t" data-cat="lecturas" data-s="Budo. Enseñanzas del fundador del Aikido El manual de 1938, con fotografías del propio Ō-Sensei."><p class="kind">Libro</p><p class="r">Budo. Enseñanzas del fundador del Aikido</p><p class="d">El manual de 1938, con fotografías del propio Ō-Sensei.</p></div><div class="t" data-cat="lecturas" data-s="La esencia del Aikido Las enseñanzas espirituales del fundador, recogidas por su hijo."><p class="kind">Libro</p><p class="r">La esencia del Aikido</p><p class="d">Las enseñanzas espirituales del fundador, recogidas por su hijo.</p></div><div class="t" data-cat="lecturas" data-s="El espíritu del Aikido El hijo del fundador explicando qué se hereda y qué se cambia."><p class="kind">Libro</p><p class="r">El espíritu del Aikido</p><p class="d">El hijo del fundador explicando qué se hereda y qué se cambia.</p></div><div class="t" data-cat="lecturas" data-s="El arte del Aikido Principios y técnicas esenciales, explicados por el segundo Dōshu."><p class="kind">Libro</p><p class="r">El arte del Aikido</p><p class="d">Principios y técnicas esenciales, explicados por el segundo Dōshu.</p></div><div class="t" data-cat="lecturas" data-s="Aikido El libro con el que varias generaciones aprendieron el programa."><p class="kind">Libro</p><p class="r">Aikido</p><p class="d">El libro con el que varias generaciones aprendieron el programa.</p></div><div class="t" data-cat="lecturas" data-s="Una vida en el Aikido La biografía del fundador escrita por su hijo."><p class="kind">Libro</p><p class="r">Una vida en el Aikido</p><p class="d">La biografía del fundador escrita por su hijo.</p></div><div class="t" data-cat="lecturas" data-s="Aikido Complete Uno de los primeros manuales de Yamada Sensei, de sus años en Nueva York."><p class="kind">Libro</p><p class="r">Aikido Complete</p><p class="d">Uno de los primeros manuales de Yamada Sensei, de sus años en Nueva York.</p></div><div class="t" data-cat="lecturas" data-s="Ultimate Aikido Técnica y principio, con el detalle de quien enseñó cuarenta años fuera de Japón."><p class="kind">Libro</p><p class="r">Ultimate Aikido</p><p class="d">Técnica y principio, con el detalle de quien enseñó cuarenta años fuera de Japón.</p></div><div class="t" data-cat="lecturas" data-s="Takemusu Aikido, vol. 1 Fundamentos y contexto. La serie con la que se documentó el Aikido de Iwama."><p class="kind">Libro</p><p class="r">Takemusu Aikido, vol. 1</p><p class="d">Fundamentos y contexto. La serie con la que se documentó el Aikido de Iwama.</p></div><div class="t" data-cat="lecturas" data-s="Evil Heart Cuatro volúmenes sobre un chico con mal genio que entra en un dojo de aikido."><p class="kind">Libro</p><p class="r">Evil Heart</p><p class="d">Cuatro volúmenes sobre un chico con mal genio que entra en un dojo de aikido.</p></div><div class="t" data-cat="lecturas" data-s="合気道入門 El libro del Dōjō-chō: el básico llevado con precisión. Naigai, 2019."><p class="kind">Libro</p><p class="r">合気道入門</p><p class="d">El libro del Dōjō-chō: el básico llevado con precisión. Naigai, 2019.</p></div><div class="t" data-cat="lecturas" data-s="DVD 合気道入門 El DVD que acompaña al libro del Dōjō-chō. Naigai, 2020."><p class="kind">Recurso</p><p class="r">DVD 合気道入門</p><p class="d">El DVD que acompaña al libro del Dōjō-chō. Naigai, 2020.</p></div><div class="t" data-cat="lecturas" data-s="Best Aikido. Los fundamentos El manual de referencia de Hombu, firmado por el segundo y el tercer Dōshu."><p class="kind">Libro</p><p class="r">Best Aikido. Los fundamentos</p><p class="d">El manual de referencia de Hombu, firmado por el segundo y el tercer Dōshu.</p></div><div class="t" data-cat="lecturas" data-s="Progressive Aikido El Dōshu actual sobre el movimiento correcto, de lo básico a lo avanzado."><p class="kind">Libro</p><p class="r">Progressive Aikido</p><p class="d">El Dōshu actual sobre el movimiento correcto, de lo básico a lo avanzado.</p></div><div class="t" data-cat="lecturas" data-s="Aïkido. Etiquette et transmission Tamura Sensei sobre la etiqueta y sobre qué se transmite realmente. Sólo en francés."><p class="kind">Libro</p><p class="r">Aïkido. Etiquette et transmission</p><p class="d">Tamura Sensei sobre la etiqueta y sobre qué se transmite realmente. Sólo en francés.</p></div><div class="t" data-cat="lecturas" data-s="生命の力を高める「呼吸」 Tada Sensei sobre el «ki no renma», del método respiratorio a la meditación. Edición japonesa, 2024."><p class="kind">Libro</p><p class="r">生命の力を高める「呼吸」</p><p class="d">Tada Sensei sobre el «ki no renma», del método respiratorio a la meditación. Edición japonesa, 2024.</p></div><div class="t" data-cat="lecturas" data-s="The Aikido Master Course · Best Aikido 2 La continuación de Best Aikido: las formas avanzadas, por el Dōshu actual."><p class="kind">Libro</p><p class="r">The Aikido Master Course · Best Aikido 2</p><p class="d">La continuación de Best Aikido: las formas avanzadas, por el Dōshu actual.</p></div><div class="t" data-cat="lecturas" data-s="The Secret Teachings of Aikido Charlas del fundador sobre el fondo espiritual del arte, recopiladas por Hombu."><p class="kind">Libro</p><p class="r">The Secret Teachings of Aikido</p><p class="d">Charlas del fundador sobre el fondo espiritual del arte, recopiladas por Hombu.</p></div><div class="t" data-cat="lecturas" data-s="The Heart of Aikido La filosofía del takemusu aiki, en palabras del propio fundador."><p class="kind">Libro</p><p class="r">The Heart of Aikido</p><p class="d">La filosofía del takemusu aiki, en palabras del propio fundador.</p></div><div class="t" data-cat="lecturas" data-s="合気道 ― 稽古とこころ El Dōshu actual sobre la práctica y el ánimo con que se hace. Naigai."><p class="kind">Libro</p><p class="r">合気道 ― 稽古とこころ</p><p class="d">El Dōshu actual sobre la práctica y el ánimo con que se hace. Naigai.</p></div><div class="t" data-cat="lecturas" data-s="合気道開祖 植芝盛平伝 La biografía del fundador en su edición japonesa. Shuppan Geijutsu."><p class="kind">Libro</p><p class="r">合気道開祖 植芝盛平伝</p><p class="d">La biografía del fundador en su edición japonesa. Shuppan Geijutsu.</p></div><div class="t" data-cat="lecturas" data-s="規範合気道 ― 基本編 El manual de referencia de Hombu en japonés, del que sale Best Aikido."><p class="kind">Libro</p><p class="r">規範合気道 ― 基本編</p><p class="d">El manual de referencia de Hombu en japonés, del que sale Best Aikido.</p></div><div class="t" data-cat="lecturas" data-s="DVD 規範合気道 ― 応用編 1 y 2 Las dos entregas en vídeo del programa aplicado de Hombu."><p class="kind">Recurso</p><p class="r">DVD 規範合気道 ― 応用編 1 y 2</p><p class="d">Las dos entregas en vídeo del programa aplicado de Hombu.</p></div><div class="t" data-cat="lecturas" data-s="劇画 合気道開祖 植芝盛平物語 La vida de Ueshiba Morihei contada en viñetas. Shuppan Geijutsu."><p class="kind">Libro</p><p class="r">劇画 合気道開祖 植芝盛平物語</p><p class="d">La vida de Ueshiba Morihei contada en viñetas. Shuppan Geijutsu.</p></div><div class="t" data-cat="lecturas" data-s="Out of the World ― 武道は世界を駆けめぐる Okamoto Sensei sobre Togo, Portland, París y Kioto, y sobre qué son la cultura y el budō vistos desde fuera."><p class="kind">Libro</p><p class="r">Out of the World ― 武道は世界を駆けめぐる</p><p class="d">Okamoto Sensei sobre Togo, Portland, París y Kioto, y sobre qué son la cultura y el budō vistos desde fuera.</p></div><div class="t" data-cat="lecturas" data-s="Aikido Journal Archivo histórico y entrevistas. Décadas de material, en abierto."><p class="kind">Recurso</p><p class="r">Aikido Journal</p><p class="d">Archivo histórico y entrevistas. Décadas de material, en abierto.</p></div><div class="t" data-cat="lecturas" data-s="Escritos de Chiba Sensei · Biran Chiba Sensei no dejó libro, pero sí conferencias y ensayos, reunidos en el diario de Birankai."><p class="kind">Recurso</p><p class="r">Escritos de Chiba Sensei · Biran</p><p class="d">Chiba Sensei no dejó libro, pero sí conferencias y ensayos, reunidos en el diario de Birankai.</p></div></section><p class="empty" id="empty" hidden>Nada coincide con la búsqueda.</p><div class="tail">El pie de página va aquí.</div>
+</div>
+      <p class="phone-cap">375 &times; 667 &middot; desplázalo</p>
+    </div>
+    <div class="notes">
+<section>
+  <h2>La medida</h2>
+  <div class="fig">
+    <div><b>274px</b><span>Barra actual</span></div>
+    <div class="down"><b>55px</b><span>Propuesta A</span></div>
+    <div class="down"><b>&minus;80%</b><span>De alto</span></div>
+  </div>
+  <p>En una pantalla de 667px de alto, la barra de Recursos ocupa hoy
+     <strong>274px, el 41% de la ventana</strong>: 7 chips repartidos
+     en 4 filas, más el buscador y el recuento. Con los 49px de la
+     navegación encima, la mayor parte del móvil es mobiliario.</p>
+</section>
+<section>
+  <h2>Qué hace</h2>
+  <p>La barra fija es siempre <strong>una sola línea</strong>: buscador, recuento y un
+     botón de filtro. Los chips viven en un cajón que se abre debajo y empuja la
+     lista, no la tapa. Al elegir uno, el cajón se cierra y el botón pasa a llevar
+     el nombre de la categoría activa, así que el estado se ve sin abrir nada.</p>
+  <ul>
+    <li><span class="tick">&#10003;</span> Nada se esconde tras un borde: al abrir el cajón están los 7.</li>
+    <li><span class="tick">&#10003;</span> El recuento sigue a la vista mientras escribes.</li>
+    <li><span class="tick">&#10003;</span> Sin JavaScript la barra no se muestra, igual que ahora.</li>
+    <li><span class="cross">&#10007;</span> Filtrar cuesta dos toques en vez de uno.</li>
+    <li><span class="cross">&#10007;</span> El conjunto de categorías deja de verse de un vistazo.</li>
+    <li><span class="cross">&#10007;</span> Un nombre largo en el botón se corta: «Programa de exam…».</li>
+  </ul>
+</section>
+<section>
+  <h2>En el escritorio</h2>
+  <p>No cambia. Por encima de 768px los chips caben en una o dos filas y la barra
+     completa es mejor que un cajón: el botón y el cajón son una regla de móvil,
+     no un modo nuevo.</p>
+</section>
+<section>
+  <h2>Lo que costaría</h2>
+  <p>El marcado ya existe. Los chips se envuelven en el cajón, se añade el botón
+     y unas quince líneas de LESS bajo el punto de ruptura. El script gana una
+     función: abrir, cerrar y escribir la etiqueta activa.</p>
+</section>
+</div>
+  </div>
+</div>
+<script>
+(function(){
+  var q=document.getElementById('q'), fb=document.getElementById('fbtn'),
+      fl=document.getElementById('fbtn-l'), dr=document.getElementById('drawer'),
+      chips=[].slice.call(document.querySelectorAll('.chips button')),
+      items=[].slice.call(document.querySelectorAll('.t')),
+      groups=[].slice.call(document.querySelectorAll('.grp')),
+      count=document.getElementById('count'), cat='all', TOTAL=54;
+  function norm(s){return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();}
+  function run(){
+    var term=norm(q.value.trim()), n=0;
+    items.forEach(function(it){
+      var on=(cat==='all'||it.dataset.cat===cat)&&(!term||norm(it.dataset.s).indexOf(term)>-1);
+      it.hidden=!on; if(on)n++;
+    });
+    groups.forEach(function(g){g.hidden=!g.querySelector('.t:not([hidden])');});
+    count.textContent=n;
+    document.getElementById('empty').hidden=n>0;
+  }
+  fb.addEventListener('click',function(){
+    var open=fb.getAttribute('aria-expanded')==='true';
+    fb.setAttribute('aria-expanded',String(!open)); dr.hidden=open;
+  });
+  chips.forEach(function(c){c.addEventListener('click',function(){
+    chips.forEach(function(x){x.removeAttribute('data-on');});
+    c.setAttribute('data-on',''); cat=c.dataset.cat;
+    if(cat==='all'){fl.textContent='Filtrar'; fb.removeAttribute('data-active');}
+    else{fl.textContent=c.dataset.label; fb.setAttribute('data-active','');}
+    dr.hidden=true; fb.setAttribute('aria-expanded','false');
+    run();
+  });});
+  q.addEventListener('input',run);
+  run();
+})();
+</script>
+</body></html>

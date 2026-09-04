@@ -12,7 +12,8 @@
 (function () {
   'use strict';
 
-  var bar, chips, input, groups, terms, countEl, emptyEl, countTpl;
+  var bar, chips, input, groups, terms, countEl, numEl, emptyEl;
+  var filterBtn, filterLabel;
   var cat = 'all', q = '';
 
   // Accents are part of how these words are written but not of how people
@@ -37,7 +38,7 @@
       groups[j].hidden = !groups[j].querySelector('.gl-t:not([hidden])');
     }
 
-    countEl.textContent = countTpl.replace('N', shown);
+    numEl.textContent = shown;
     emptyEl.hidden = shown > 0;
   }
 
@@ -51,9 +52,17 @@
     emptyEl = document.querySelector('[data-gl-empty]');
     groups = document.querySelectorAll('.gl-grp');
 
-    // The count line is rendered as "123 entradas"; keep the noun and replace
-    // only the number, so the four languages stay in the data.
-    countTpl = countEl.textContent.replace(/^\s*\d+/, 'N');
+    // The number is its own element, so nothing has to reconstruct the
+    // sentence around it. This used to read the rendered text back out and
+    // substitute the digits, which worked but meant the four languages had to
+    // survive a regular expression.
+    numEl = countEl.querySelector('[data-gl-n]');
+
+    // The phone's one-line bar: a button, and the chips in a drawer under it.
+    // Above @bp-md the CSS hides the button and keeps the drawer open, so this
+    // runs there too and changes nothing anybody can see.
+    filterBtn = bar.querySelector('[data-gl-filter]');
+    filterLabel = bar.querySelector('[data-gl-filter-label]');
 
     terms = [].map.call(document.querySelectorAll('.gl-t'), function (el) {
       return { el: el, dataset: el.dataset, hay: fold(el.dataset.s || '') };
@@ -71,9 +80,30 @@
       input.focus();
     });
 
+    if (filterBtn) {
+      filterBtn.addEventListener('click', function () {
+        var open = bar.classList.toggle('is-open');
+        filterBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+
     [].forEach.call(chips, function (b) {
       b.addEventListener('click', function () {
         cat = b.dataset.cat;
+
+        // The button becomes the chip: it carries the label, and `data-active`
+        // paints it like a chosen chip so the state reads without opening the
+        // drawer. `all` is a filter like any other, so it is shown the same way
+        // and simply is not marked active.
+        if (filterLabel) filterLabel.textContent = b.dataset.label || '';
+        if (filterBtn) filterBtn.toggleAttribute('data-active', cat !== 'all');
+
+        // Picking closes it. The drawer exists to be got out of the way.
+        if (filterBtn && bar.classList.contains('is-open')) {
+          bar.classList.remove('is-open');
+          filterBtn.setAttribute('aria-expanded', 'false');
+        }
+
         [].forEach.call(chips, function (o) {
           var on = o === b;
           o.toggleAttribute('data-on', on);

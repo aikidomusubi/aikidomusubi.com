@@ -239,7 +239,14 @@
               {%- endcomment -%}
               {%- assign starting = m_entries | where: "date", iso -%}
               {%- assign spanning = m_entries | where_exp: "e", "e.until" | where_exp: "e", "e.date < iso" | where_exp: "e", "e.until >= iso" -%}
-              {%- assign day_entries = starting | concat: spanning -%}
+              {%- comment -%}
+                Sorted by clock. `C.entries` is sorted by date and Liquid's sort
+                is not stable, so within one day the order was whatever the sort
+                happened to leave behind: 12 December drew its 21:00 dinner
+                above its 11:00 open mat. An entry with no `start` has none to
+                sort on and lands first, which is where an all-day entry belongs.
+              {%- endcomment -%}
+              {%- assign day_entries = starting | concat: spanning | sort: 'start' -%}
 
               {%- comment -%} Same two questions of both collections. {%- endcomment -%}
               {%- assign ev_start = m_coll | where: "date_from", iso -%}

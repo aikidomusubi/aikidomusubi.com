@@ -38,6 +38,7 @@ import os
 import re
 import sys
 import glob
+import datetime
 import gzip
 import html
 import subprocess
@@ -354,7 +355,19 @@ def check_sitemap():
                if not os.path.isfile(SITE + u.replace('https://aikidomusubi.com', ''))]
     for u in missing[:5]:
         fail('sitemap image missing', u)
-    print(f'  {"sitemap":<34} {len(urls)} urls, {len(imgs)} images, {len(missing)} missing')
+
+    # A lastmod cannot be in the future — a page has not changed on a day that
+    # has not arrived, and Google discounts a lastmod it decides is unreliable.
+    # This is here because the Seminars pages produced one without anybody
+    # typing it: the sitemap advances a collection-backed index to its newest
+    # item, and a seminar's date is when it WILL happen. Booking a masterclass
+    # five months out dated the page 2027-01-30.
+    today = datetime.date.today().isoformat()
+    ahead = sorted(set(d for d in re.findall(r'<lastmod>(.*?)</lastmod>', s) if d > today))
+    for d in ahead[:5]:
+        fail('sitemap lastmod in the future', d)
+    print(f'  {"sitemap":<34} {len(urls)} urls, {len(imgs)} images, '
+          f'{len(missing)} missing, {len(ahead)} dated ahead')
 
 
 # ---------------------------------------------------------------------------

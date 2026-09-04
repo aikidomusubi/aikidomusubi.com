@@ -14,8 +14,24 @@
   and "all day" would be asserting something the record does not support — it
   also read as a contradiction next to a note naming an evening class.
 {%- endcomment -%}
+{%- comment -%}
+  `data-start` is for the script, which sorts the agenda. Date alone left the
+  five entries on 12 December in the order two unstable sorts happened to
+  produce. A zero-padded 24-hour time sorts as a string, and an entry without
+  one sorts first.
+
+  AND THE COMMENT IS OUT HERE, not inside the tag where it reads better. A
+  whitespace-stripping comment tag between two attributes eats the space on
+  both sides of itself, which closed the gap between them and produced
+  `data-date="…"data-type="…"`. Browsers cope; kramdown does not, and escaped
+  the whole element to `&lt;li class="cal-item"&gt;` on all 719 entries.
+
+  (Writing that tag out here would not have worked either: Liquid parses tags
+  inside a comment block, so a nested comment opens a second one and the first
+  `endcomment` closes the wrong half.)
+{%- endcomment -%}
 <li class="cal-item" data-date="{{ include.date }}"{% if include.until %} data-until="{{ include.until }}"{% endif %}
-    data-type="{{ include.type }}" style="--colour: {{ include.colour }}">
+    {% if include.start %}data-start="{{ include.start }}" {% endif %}data-type="{{ include.type }}" style="--colour: {{ include.colour }}">
   <p class="cal-item-date">
     <time datetime="{{ include.date }}">{{ include.date | date: '%-d' }} {{ include.month_from }}</time>
     {%- if include.until %} – <time datetime="{{ include.until }}">{{ include.until | date: '%-d' }} {{ include.month_to }}</time>{% endif -%}

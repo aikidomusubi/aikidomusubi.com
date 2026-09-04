@@ -68,7 +68,12 @@ the script, not to a list somewhere.
    Check 4 reads only `href`, which is how 374 broken variant URLs shipped.
 6. **Exam syllabus** — the cumulative kyū sheet still matches the five grades
    it is generated from. Warns rather than fails when PyYAML is absent.
-7. **Sitemap** — every image it names exists on disk.
+7. **Sitemap** — every image it names exists on disk, and no `lastmod` is
+   dated in the future. The second half is there because the Seminars pages
+   produced one without anybody typing it: the sitemap advances a
+   collection-backed index to its newest item, and a seminar's date is when
+   it *will* happen, so booking a masterclass five months out dated the page
+   2027-01-30. `sitemap.xml` clamps to the build day; this is the guard.
 8. **Accessibility (markup half)** — `alt`, accessible names on links and
    buttons, `aria-*` pointing at real ids, one `<main>`, `lang`, the skip link,
    positive `tabindex`.
@@ -399,6 +404,147 @@ Amazon and some shops answer `403` to a bare `curl` — that is a bot check, not
 a dead link, so open those in a browser before removing anything. What matters
 is `404` and `410`.
 
+## The search-and-filter bar is one line on a phone
+
+`/glosario/` and `/recursos/` carry the same control: a search box, a set of
+category chips and a count, sticky under the nav. Measured at 375x667 with the
+nav shrunk, it was **389px of a 667px viewport on the glossary** (twelve chips
+over five rows) and **274px on Resources** (seven over four). With the 49px nav
+above it, two thirds of a small phone was furniture before a single entry was
+read. It is **60px** now, on both.
+
+Below `@bp-md` the sticky line is the search, the count and a filter button, and
+the chips live in a drawer that opens under it, pushes the list rather than
+covering it, and closes when a chip is picked. The button then carries that
+chip's label and `data-active` paints it like a chosen chip, so the state reads
+without opening anything.
+
+**From `@bp-md` nothing changed, and that is done with `display: contents`.**
+The tree is `.gl-bar-in > .gl-bar-line(search, count, filter) + .gl-drawer(chips)`.
+At desktop `.gl-bar-line` becomes `display: contents`, which dissolves it and
+hands its three children back to `.gl-bar-in` as flex items, so `order` puts
+them in the order the page has always had — search, chips, count. One tree, two
+layouts, no second copy of the markup.
+
+Three details that are load-bearing:
+
+- **`.gl-bar-line` and `.rs-bar-line`, never `.gl-row`/`.rs-row`.** `.rs-row` is
+  already *a resource* — one row of the list — so the bar's own line matched
+  `.rs-wrap .rs-row`, was collected by the script as a searchable term, and had
+  `hidden` set on it the moment a filter matched nothing inside it. The bar
+  measured 18px and the search field measured zero. **The list owns the
+  unprefixed names; prefix anything belonging to the bar with `-bar-`.**
+- **`flex: 1` on the search stays inside the mobile media query.** At desktop
+  the parent is a column, where `flex: 1` grows on the *vertical* axis and
+  stretches the search row to fill the bar.
+- **The count's unit goes off-screen on mobile, not to `display: none`.** It is
+  a live region, and a hidden node is not announced: the screen reader keeps
+  "12 entradas" while the eye sees "12".
+
+The button's accessible name is a `.sr-only` phrase plus the label, so it reads
+"Filtrar por categoría: Todas" and then "Filtrar por categoría: En el dojo".
+That is why the visible label starts at "Todas" rather than at the word
+"Filtrar" — the button always says which filter is on, and "all of them" is a
+filter like any other.
+
+**Change one of the two pages and change the other with it.** They are one
+component with two sets of labels.
+
+## "Próximamente" reads forwards; everything else reads backwards
+
+Both `/seminarios/` and `/fuera-del-dojo/` render newest first, which is the
+right reading order for a record. "Upcoming" is not a record, it is a queue, and
+the useful end of a queue is the front — rendered in page order it put the
+seminar fifteen months out above the one this Saturday.
+
+`scripts/seminars.js` (which drives both pages) computes both orders once from
+the DOM and reorders with `insertBefore` against `.seminar-empty`, so that
+paragraph stays last where the markup puts it. "All" and "Past" are untouched.
+Each card carries `data-date` for this and nothing else.
+
+## The calendar's vocabulary, and the things easy to get wrong
+
+`_data/calendar.yml` is the only place a dated fact is written. Everything that
+has a page of its own — every seminar, masterclass and collaboration — comes
+from `_events/` instead and is never copied here.
+
+**A `change` has two shapes, and `affects` is what tells them apart.** Without
+`affects` the change is day-wide: the whole timetable is on a different footing,
+which is what the August entries are, and Ura's day strip replaces the day with
+it. With `affects` it substitutes the one class it names — a guest teacher, a
+weapons session in place of the usual open class — and the rest of that day runs
+as printed. The data file documented both from the start; Ura only implemented
+the first, so the monthly weapons Wednesday deleted judo, the two Barcelona
+classes and Marina-Besòs from the evening along with the class it replaced.
+
+**The match is category + start + `location`.** Not decoration: on a Wednesday,
+aikido at 20:00 is one class at the dojo and a different one at CxEM Espronceda,
+and matching on the first two alone swaps both.
+
+**`routine: true` keeps an entry out of Ura's "what is coming".** That section
+answers *what is news*, and something on a fixed rhythm is not news however many
+times it is written down: the Saturday grading class is nineteen entries and the
+weapons Wednesday is four, and between them they filled the section with two
+sentences repeated. Both stay on the calendar and in Ura's day strip, which is
+where a date is looked up. It sits beside `holiday: true`, which does the same
+job for the thirteen statutory closures and for the same reason.
+
+An earlier attempt folded repeats by title instead, which looked equivalent and
+was not: it silently cost the monthly weapons class three of its four dates.
+Suppress the repetition at the source; do not dedupe the output.
+
+**Ura's "what is coming" sorts on date AND time.** The row is
+`date|time|type|title|detail|url|key`, string-sorted. Without the time field the
+rest of the row decided, which meant the *type*: 12 December read dinner,
+karate, exams, open mat, masterclass — five things in alphabetical order of a
+word the reader never sees. An entry with no time sorts first, which is where an
+all-day entry belongs.
+
+**A cancellation has no title, and whatever renders one has to build it.** What
+is cancelled is the class named in `affects`, so the title is the category plus
+the hour: "Sin clase: Aikido 19:30". The label comes from the calendar's own
+`types`, in `_includes/calendar.html` and `_includes/ura.html` alike, so the two
+cannot drift.
+
+**`announce_cancellations` in `_data/ura.yml` says which of them Ura's "what is
+coming" speaks for, and it lists aikido only.** Judo, iaijutsu and karate are
+taught here too, and when one of them is off — most Saturdays the dojo is given
+over to a masterclass or to gradings, karate is — that belongs on the calendar
+and it is on the calendar. It is not news on the aikido dojo's own aside. It is
+a list and not a flag so that adding a fifth art cannot silently start
+announcing it. The day strip is untouched by this: a cancelled class disappears
+from its day there whatever its category, because that grid answers "is there a
+class on Saturday" and the honest answer is no.
+
+**Saturday karate is cancelled by hand on the Saturdays something else has the
+mat.** The overlap is derivable in principle — a Saturday `_events/` entry
+against the Saturday class in `schedule.yml` — but "the mat is busy" and "the
+class is off" are not the same statement, and only the dojo knows which it is. A
+rule that guessed would cancel karate for a 07:30 morning class it never
+touches.
+
+**`association` is the life of the association rather than the life of the
+tatami** — the general assembly, the deadline for standing for the board, the
+group photograph, the two dinners a year. It exists because the only other type
+that fits the shape of an added event is `extra`, which renders as "Clase
+extra", and calling the winter dinner an extra class would simply be false.
+
+**Two sorts had to be fixed to put five things on one day in order.** Liquid's
+`sort` is not stable, so `C.entries | sort: 'date'` left 12 December drawing its
+21:00 dinner above its 11:00 open mat. The month grid sorts each day's entries
+by `start`; the agenda list carries `data-start` and `scripts/calendar.js` sorts
+on date *and* clock. An entry with no time sorts first, which is where an
+all-day entry belongs.
+
+**A seminar with no poster yet is a real state.** `_layouts/event.html` renders
+`.seminar-poster-soon` when `image_*` is empty: the card keeps the shape it will
+have, so nothing reflows the day the artwork lands. The three alternatives were
+all worse — a link to a missing JPEG, the flat yellow `placeholder.jpg` (which
+tells a screen reader the instructor's name is a picture), or leaving the event
+off the calendar until the poster exists, which is the one thing a calendar must
+not do. `sitemap.xml` and the JSON-LD both test `img != ''` rather than `img`,
+because an empty string is truthy in Liquid.
+
 ## The grading programme is content, not a PDF
 
 `_data/exams.yml` holds the five kyū sheets, transcribed from the dojo's own
@@ -520,7 +666,7 @@ and `courses` was renamed `events`. `photos.md`, `videos.md`, `courses.md` and
 | `_data/assets.yml` | **Generated** by `gulp stamp` — the `?v=` cache tokens |
 | `_data/exams.yml` | The five kyū syllabus sheets — see the syllabus section |
 | `_data/exams-cumulative.yml` | **Generated** by `tools/exam-cumulative.py` |
-| `_data/calendar.yml` | Dated entries — gradings, closures, changes. Seminars come from `_events/` instead |
+| `_data/calendar.yml` | Dated entries — gradings, closures, changes, and the association's own dates. Seminars come from `_events/` instead |
 | `_data/classes.yml` | The Classes page: the four disciplines and their programmes |
 | `_data/about.yml` | The four About topics, plus the instructors-in-training band that closes the Association page |
 | `_data/gallery.yml` | Every album, post and reel, plus the filter chips |

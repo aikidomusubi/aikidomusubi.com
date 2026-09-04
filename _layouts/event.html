@@ -122,6 +122,7 @@
       <article class="seminar" id="event-{{ slug }}"
                data-category="{{ event.category }}"
                data-state="{{ state }}"
+               data-date="{{ event.date_from }}"
                style="--seminar-colour: {{ cat.color }}">
 
         {%- comment -%}
@@ -136,6 +137,21 @@
           Both forms are a plain <a> to the JPEG, so with JavaScript off the
           card still shows a poster and the link still opens one. The rotation
           and the picker are upgrades, not the mechanism.
+        {%- endcomment -%}
+        {%- comment -%}
+          NO POSTER YET.
+
+          A masterclass is announced weeks before its poster is drawn, and the
+          card has to work in the meantime: the date, the instructor and the
+          time are the information, and the poster is decoration on top of it.
+          The three earlier ways of handling this were all worse — a link to a
+          missing JPEG (a 404 in the layout), the flat yellow `placeholder.jpg`
+          (which tells a sighted reader nothing and tells a screen reader the
+          instructor's name is a picture), or leaving the event out until the
+          artwork lands (which is the one thing a calendar must not do).
+
+          So the poster column keeps its shape and says what it is waiting for.
+          Fill `image_*` in and this branch is never taken again.
         {%- endcomment -%}
         {%- assign shots = event.posters -%}
         {%- if shots and shots.size > 1 -%}
@@ -164,6 +180,15 @@
           </picture>
           {%- endfor %}
         </a>
+        {%- elsif img == nil or img == '' -%}
+        <p class="seminar-poster seminar-poster-soon">
+          <span>
+            {%- if L == 'ca' -%}Cartell en preparació
+            {%- elsif L == 'en' -%}Poster on the way
+            {%- elsif L == 'ja' -%}ポスター準備中
+            {%- else -%}Cartel en preparación{%- endif -%}
+          </span>
+        </p>
         {%- else -%}
         <a class="seminar-poster event-lightbox" href="/images/{{ img }}.jpg"
            aria-label="{% if L == 'ca' %}Cartell: {% elsif L == 'en' %}Poster: {% elsif L == 'ja' %}ポスター：{% else %}Cartel: {% endif %}{{ title }}">
@@ -304,7 +329,9 @@
           "name": {{ title | jsonify }},
           "description": {{ desc | strip | jsonify }},
           "url": {{ page.url | prepend: site.url | append: '#event-' | append: slug | jsonify }},
+          {% if img and img != '' -%}
           "image": {{ img | prepend: '/images/' | append: '.jpg' | prepend: site.url | jsonify }},
+          {% endif -%}
           "startDate": "{{ event.date_from }}{% if event.time_from %}T{{ event.time_from }}:00+02:00{% endif %}",
           {% if event.date_to and event.date_to != "blank" -%}
           "endDate": "{{ event.date_to }}{% if event.time_to %}T{{ event.time_to }}:00+02:00{% endif %}",

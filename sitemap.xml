@@ -61,6 +61,31 @@ permalink: /sitemap.xml
       {%- assign newest = site.resources | map: 'date' | sort | last | date: "%Y-%m-%d" -%}
       {%- assign lastmod = lastmod | append: "," | append: newest | split: "," | sort | last -%}
     {%- endif -%}
+    {%- comment -%}
+      NEVER IN THE FUTURE.
+
+      The four rules above take the newest item in a collection so that
+      publishing one bumps its index page without anyone editing front matter.
+      That is right for a photo album, whose date is when it was taken, and
+      wrong for a seminar, whose date is when it WILL happen: booking a
+      masterclass five months out set the Seminars pages' lastmod to
+      2027-01-30. `lastmod` says when the page changed, and a page cannot have
+      changed on a day that has not arrived. Google discounts a lastmod it
+      decides is unreliable, and a date in the future is the clearest possible
+      way to look unreliable.
+
+      Clamping rather than special-casing the events rule: a hand-typed
+      `last_modified` in the future is just as wrong, and this catches that too.
+    {%- endcomment -%}
+    {%- comment -%}
+      Normalised to a string first. An unquoted `last_modified: 2026-09-04` in
+      front matter reaches Liquid as a Ruby Date, and comparing a Date with a
+      String raises. The collection branches above never hit it because their
+      `append: ","` had already coerced the value.
+    {%- endcomment -%}
+    {%- if lastmod %}{% assign lastmod = lastmod | date: '%Y-%m-%d' %}{% endif -%}
+    {%- assign build_day = site.time | date: '%Y-%m-%d' -%}
+    {%- if lastmod and lastmod > build_day %}{% assign lastmod = build_day %}{% endif -%}
     {%- if lastmod %}
     <lastmod>{{ lastmod }}</lastmod>
     {%- endif -%}
@@ -79,7 +104,14 @@ permalink: /sitemap.xml
           {%- when 'ja' -%}{%- assign img = item.image_ja -%}{%- assign t = item.title_ja -%}
           {%- else -%}{%- assign img = item.image_es -%}{%- assign t = item.title_es -%}
         {%- endcase -%}
-        {%- if img %}
+        {%- comment -%}
+          `img != ''` and not just `img`. An empty string is truthy in Liquid,
+          and a seminar whose poster is still being drawn carries `image_es: ""`
+          — which emitted <image:loc>…/images/.jpg</image:loc>, a sitemap entry
+          for a file that cannot exist. qa.py's sitemap check is what would have
+          caught it; this is what stops it being written.
+        {%- endcomment -%}
+        {%- if img and img != '' %}
     <image:image>
       <image:loc>{{ site.url }}/images/{{ img }}.jpg</image:loc>
       <image:title>{{ t | xml_escape }}</image:title>

@@ -37,6 +37,7 @@ Run it again after any `npx gulp build`, which wipes `_site`.
 | `final.html` | Separator, section title, shidoin wording, chain subtitle. |
 | `names.html` | The six candidate names for the aside. **Ura was chosen.** |
 | `switch.html` | Three ways to open the aside. |
+| `bar-glosario-a/-b.html`, `bar-recursos-a/-b.html` | The sticky search-and-filter bar on a phone, two proposals, each shown on both pages. **A was chosen** and is built: one line, chips in a drawer. B kept the chips visible by scrolling them, which hides options behind an edge. |
 
 ## Editing them
 
@@ -47,5 +48,10 @@ The HTML in this directory is **generated**. The sources are in `src/`:
 - `_home2.py` — the home page
 - `_gloss.py` — the 123 glossary terms
 - `build3.py`, `build_gloss.py`, `build_about.py`, `build_extra.py` — the builders
+- `_bar.py` / `build_bar.py` — the sticky-bar proposals. `build_bar.py` reads
+  `_data/resources.yml` directly rather than keeping a second copy of it, so the
+  chip counts and the label lengths in the mockup are the ones that really have
+  to wrap. The measurements quoted in it were taken off the built pages at
+  375x667, not estimated.
 
 Edit the source, run `render.sh`, review, then implement in the site proper.

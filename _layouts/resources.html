@@ -33,24 +33,44 @@
   {% include page-head.html %}
 
   <div class="rs-wrap">
+  {%- comment -%}
+    ONE LINE ON A PHONE, chips behind the button. The glossary carries the same
+    control and the same treatment, and the long note explaining why is in
+    `_layouts/glossary.html`; the short version is that this bar was 274px of a
+    667px viewport at 375 wide, seven chips over four rows, and it is 55px now.
+
+    Whichever of the two pages you are changing, change the other one with it.
+    They are one component with two sets of labels, and a reader who has learnt
+    one has learnt the other.
+  {%- endcomment -%}
   <div class="rs-bar" data-rs-bar hidden>
     <div class="rs-bar-in">
-      <div class="rs-search">
-        <input id="rs-q" type="search" autocomplete="off"
-               placeholder="{{ R.ui.search[L] }}" aria-label="{{ R.ui.search_lab[L] }}">
-        <button type="button" data-rs-clear>{{ R.ui.clear[L] }}</button>
+      <div class="rs-bar-line">
+        <div class="rs-search">
+          <input id="rs-q" type="search" autocomplete="off"
+                 placeholder="{{ R.ui.search[L] }}" aria-label="{{ R.ui.search_lab[L] }}">
+          <button type="button" data-rs-clear>{{ R.ui.clear[L] }}</button>
+        </div>
+        <p class="rs-count" data-rs-count aria-live="polite"><span data-rs-n>{{ total }}</span> <span class="rs-count-unit">{{ R.ui.entries[L] }}</span></p>
+        <button type="button" class="rs-filter" data-rs-filter
+                aria-expanded="false" aria-controls="rs-drawer">
+          <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M1 3h14v2H1zM3.5 7h9v2h-9zM6 11h4v2H6z"/></svg>
+          <span class="sr-only">{{ R.ui.filters[L] }}:</span>
+          <span data-rs-filter-label>{{ R.ui.all[L] }}</span>
+        </button>
       </div>
-      <div class="rs-chips" role="group" aria-label="{{ R.ui.filters[L] }}">
-        <button type="button" data-cat="all" data-on aria-pressed="true">{{ R.ui.all[L] }}</button>
-        {%- for g in R.groups -%}
-          {%- assign n = 0 -%}
-          {%- for it in g.items %}{% unless it.draft %}{% assign n = n | plus: 1 %}{% endunless %}{% endfor -%}
-          {%- if n > 0 %}
-        <button type="button" data-cat="{{ g.id }}" aria-pressed="false">{{ g.name[L] }} <i>{{ n }}</i></button>
-          {%- endif -%}
-        {%- endfor %}
+      <div class="rs-drawer" id="rs-drawer">
+        <div class="rs-chips" role="group" aria-label="{{ R.ui.filters[L] }}">
+          <button type="button" data-cat="all" data-on aria-pressed="true" data-label="{{ R.ui.all[L] }}">{{ R.ui.all[L] }}</button>
+          {%- for g in R.groups -%}
+            {%- assign n = 0 -%}
+            {%- for it in g.items %}{% unless it.draft %}{% assign n = n | plus: 1 %}{% endunless %}{% endfor -%}
+            {%- if n > 0 %}
+          <button type="button" data-cat="{{ g.id }}" aria-pressed="false" data-label="{{ g.name[L] }}">{{ g.name[L] }} <i>{{ n }}</i></button>
+            {%- endif -%}
+          {%- endfor %}
+        </div>
       </div>
-      <p class="rs-count" data-rs-count aria-live="polite">{{ total }} {{ R.ui.entries[L] }}</p>
     </div>
   </div>
   {%- comment -%}

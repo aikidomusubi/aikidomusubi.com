@@ -31,10 +31,41 @@
     return on ? on.value : 'all';
   }
 
+  /* ORDER DEPENDS ON THE FILTER, and only on this one.
+   *
+   * The page is authored newest first, which is the right reading order for a
+   * record: "All" and "Past" are a history, and a history reads backwards from
+   * now. "Upcoming" is not a history — it is a queue, and the useful end of a
+   * queue is the front. Rendered in page order it put the seminar fifteen
+   * months out above the one this Saturday.
+   *
+   * Both orders are computed once from the DOM. Reordering is `insertBefore`
+   * against the empty-state paragraph so that paragraph stays last, where the
+   * markup puts it.
+   */
+  var docOrder = cards.slice();
+  var dateAsc = cards.slice().sort(function (a, b) {
+    var x = a.dataset.date || '', y = b.dataset.date || '';
+    return x < y ? -1 : x > y ? 1 : 0;
+  });
+  var orderNow = null;
+
+  function reorder(when) {
+    var wanted = when === 'upcoming' ? 'asc' : 'doc';
+    if (wanted === orderNow) return;      // nothing to move
+    orderNow = wanted;
+    (wanted === 'asc' ? dateAsc : docOrder).forEach(function (card) {
+      if (empty) list.insertBefore(card, empty);
+      else list.appendChild(card);
+    });
+  }
+
   function apply() {
     var cats = activeCategories();
     var when = activeWhen();
     var shown = 0;
+
+    reorder(when);
 
     cards.forEach(function (card) {
       var okCat = cats.indexOf(card.dataset.category) !== -1;

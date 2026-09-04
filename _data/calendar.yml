@@ -24,9 +24,32 @@
 #   place:     { es:, ... }        optional, for venues not in schedule.yml
 #   note:      { es:, ... }        optional second line
 #   link:      "/cursos/"          optional. Where to read more.
+#   routine:   true                optional. Keeps the entry off Ura's "what
+#                                  is coming". That section answers "what is
+#                                  news", and something that runs on a fixed
+#                                  rhythm is not news however many times it is
+#                                  written down: the Saturday grading class is
+#                                  nineteen entries and the weapons Wednesday
+#                                  is four, and between them they filled the
+#                                  section with two sentences repeated. They
+#                                  stay on the calendar and in Ura's day strip,
+#                                  which is where you look a date up.
 #   affects:                       optional. Marks a regular class as not
 #     category: aikido             running, or running differently, that day.
-#     start:    "18:30"            Matches a class in schedule.yml.
+#     start:    "18:30"            Matches a class in schedule.yml — together
+#                                  with the entry's own `location:`, which is
+#                                  part of the match and not decoration: on a
+#                                  Wednesday, aikido at 20:00 is one class at
+#                                  the dojo and a different one at CxEM
+#                                  Espronceda.
+#
+# A `change` COMES IN TWO SHAPES, and `affects` is what tells them apart.
+# WITHOUT it the change is day-wide: the whole timetable is on a different
+# footing, which is what the August entries are, and Ura replaces the day with
+# it. WITH it, one named class runs differently — a guest teacher, a weapons
+# session instead of the regular class — and everything else on that
+# day is untouched. Ura substitutes that single row and leaves the rest of the
+# day alone.
 #
 # A `cancellation` with `affects` is what communicates "no Aikido class on
 # Thursday the 24th". The weekly grid keeps showing the class — it is still
@@ -62,6 +85,20 @@ types:
   closure:
     color: "#34454C"
     label: { es: "Dojo cerrado", ca: "Dojo tancat",   en: "Dojo closed", ja: "道場休み" }
+  # The life of the association rather than the life of the tatami: the general
+  # assembly, the deadline for standing for the board, the group photograph,
+  # the two dinners a year. None of them is a class, and calling the winter
+  # dinner an "extra class" — the only other type that fits the shape of an
+  # added event — would be simply false.
+  #
+  # A plum, and it is the hue the seven types above leave free: the blues are
+  # seminars, the violet is a visiting instructor, the bronze is an exam, the
+  # rust a change, the green an extra, the red a cancellation and the slate a
+  # closure. 8.2:1 on the entry card's #F8F8F8, comfortably clear of the 4.8:1
+  # floor the others were darkened to hold.
+  association:
+    color: "#71375B"
+    label: { es: "Asociación",   ca: "Associació",    en: "Association", ja: "協会行事" }
 
 ui:
   title:        { es: "Calendario",   ca: "Calendari",    en: "Calendar",     ja: "カレンダー" }
@@ -184,6 +221,276 @@ entries:
       en: "Because of the Emilio Cardia Shihan seminar."
       ja: "エミリオ・カルディア師範の講習会のため。"
     location: musubi
+
+  # -------------------------------------------------------------------------
+  # One Wednesday a month is a weapons class
+  #
+  # The second Wednesday of September, October, November and December, taught
+  # by Guanlong Zheng instead of the regular class. Four dates and not
+  # a rule in _data/schedule.yml, because the weekly grid answers "what happens
+  # every week" and this happens four times.
+  #
+  # `change` WITH `affects`, which substitutes the one class it names: judo at
+  # 18:30, the UB at 19:00, CxEM Espronceda at 20:00 and Marina-Besòs at 20:15
+  # all run as usual on those evenings. `location:` is part of the match, and
+  # it has to be — aikido at 20:00 on a Wednesday is this class at the dojo and
+  # a different one at CxEM Espronceda.
+  #
+  # `routine: true` keeps them out of Ura's "what is coming" for the same
+  # reason as the Saturday grading class: four rows of the same sentence is a
+  # rhythm, not news. The day strip still draws each one on its Wednesday.
+  # -------------------------------------------------------------------------
+  - date: "2026-09-09"
+    type: change
+    routine: true
+    location: musubi
+    affects: { category: aikido, start: "20:00" }
+    start: "20:00"
+    end:   "21:30"
+    title:
+      es: "Clase de armas con G. Zheng"
+      ca: "Classe d'armes amb G. Zheng"
+      en: "Weapons class with G. Zheng"
+      ja: "武器稽古（グアンロン　ジェン）"
+    note:
+      es: "En lugar de la clase regular del miércoles."
+      ca: "En lloc de la classe regular del dimecres."
+      en: "In place of the regular Wednesday class."
+      ja: "水曜日の通常稽古に代えて行います。"
+
+  - date: "2026-10-14"
+    type: change
+    routine: true
+    location: musubi
+    affects: { category: aikido, start: "20:00" }
+    start: "20:00"
+    end:   "21:30"
+    title:
+      es: "Clase de armas con G. Zheng"
+      ca: "Classe d'armes amb G. Zheng"
+      en: "Weapons class with G. Zheng"
+      ja: "武器稽古（グアンロン　ジェン）"
+    note:
+      es: "En lugar de la clase regular del miércoles."
+      ca: "En lloc de la classe regular del dimecres."
+      en: "In place of the regular Wednesday class."
+      ja: "水曜日の通常稽古に代えて行います。"
+
+  - date: "2026-11-11"
+    type: change
+    routine: true
+    location: musubi
+    affects: { category: aikido, start: "20:00" }
+    start: "20:00"
+    end:   "21:30"
+    title:
+      es: "Clase de armas con G. Zheng"
+      ca: "Classe d'armes amb G. Zheng"
+      en: "Weapons class with G. Zheng"
+      ja: "武器稽古（グアンロン　ジェン）"
+    note:
+      es: "En lugar de la clase regular del miércoles."
+      ca: "En lloc de la classe regular del dimecres."
+      en: "In place of the regular Wednesday class."
+      ja: "水曜日の通常稽古に代えて行います。"
+
+  - date: "2026-12-09"
+    type: change
+    routine: true
+    location: musubi
+    affects: { category: aikido, start: "20:00" }
+    start: "20:00"
+    end:   "21:30"
+    title:
+      es: "Clase de armas con G. Zheng"
+      ca: "Classe d'armes amb G. Zheng"
+      en: "Weapons class with G. Zheng"
+      ja: "武器稽古（グアンロン　ジェン）"
+    note:
+      es: "En lugar de la clase regular del miércoles."
+      ca: "En lloc de la classe regular del dimecres."
+      en: "In place of the regular Wednesday class."
+      ja: "水曜日の通常稽古に代えて行います。"
+
+  # -------------------------------------------------------------------------
+  # Saturday karate, on the Saturdays the dojo is given over to something else
+  #
+  # Karate runs 11:00 to 13:00 every Saturday, and a masterclass or a grading
+  # takes the tatami for part of that. It is the same mat, so the class does not
+  # run, and the calendar is where that gets said: the weekly grid keeps
+  # printing Karate on Saturday because that is still the normal week.
+  #
+  # ONE PER AFFECTED SATURDAY, and they have to be written by hand. The overlap
+  # is derivable in principle — a Saturday _events/ entry against a Saturday
+  # class in schedule.yml — but "the mat is busy" and "the class is off" are not
+  # the same statement, and only the dojo knows which it is. A rule that guessed
+  # would cancel karate for a 07:30 morning class it never touches.
+  # -------------------------------------------------------------------------
+  - date: "2026-09-12"
+    type: cancellation
+    affects: { category: karate, start: "11:00" }
+    location: musubi
+    note:
+      es: "Por la masterclass de Pedro Fortes."
+      ca: "Per la masterclass de Pedro Fortes."
+      en: "Because of the Pedro Fortes masterclass."
+      ja: "ペドロ・フォルテスによるマスタークラスのため。"
+
+  - date: "2026-10-10"
+    type: cancellation
+    affects: { category: karate, start: "11:00" }
+    location: musubi
+    note:
+      es: "Por la masterclass de Arturo Fernández."
+      ca: "Per la masterclass d'Arturo Fernández."
+      en: "Because of the Arturo Fernández masterclass."
+      ja: "アルトゥーロ・フェルナンデスによるマスタークラスのため。"
+
+  - date: "2026-11-21"
+    type: cancellation
+    affects: { category: karate, start: "11:00" }
+    location: musubi
+    note:
+      es: "Por la masterclass de Francesc Castellanos."
+      ca: "Per la masterclass de Francesc Castellanos."
+      en: "Because of the Francesc Castellanos masterclass."
+      ja: "フランセスク・カステヤノスによるマスタークラスのため。"
+
+  - date: "2026-12-12"
+    type: cancellation
+    affects: { category: karate, start: "11:00" }
+    location: musubi
+    note:
+      es: "Por la masterclass de Pablo Martín y los exámenes de kyū."
+      ca: "Per la masterclass de Pablo Martín i els exàmens de kyū."
+      en: "Because of the Pablo Martín masterclass and the kyū gradings."
+      ja: "パブロ・マルティンによるマスタークラスと昇級審査のため。"
+
+  - date: "2027-01-30"
+    type: cancellation
+    affects: { category: karate, start: "11:00" }
+    location: musubi
+    note:
+      es: "Por la masterclass de Michelle Feilen."
+      ca: "Per la masterclass de Michelle Feilen."
+      en: "Because of the Michelle Feilen masterclass."
+      ja: "ミシェル・フェイレンによるマスタークラスのため。"
+
+  # -------------------------------------------------------------------------
+  # The general assembly, and the week around it
+  #
+  # These are the association rather than the tatami, which is what the
+  # `association` type is for. Three of them have no time yet and are all-day
+  # entries: an entry with no `start` renders without one, which is honest,
+  # where inventing 20:00 would not be.
+  #
+  # The order they happen in is the order they are read in: the deadline for
+  # standing comes first, then the assembly that elects, then the grading day
+  # that ends with the dinner.
+  # -------------------------------------------------------------------------
+  - date: "2026-11-30"
+    type: association
+    title:
+      es: "Último día para presentar candidaturas"
+      ca: "Últim dia per presentar candidatures"
+      en: "Last day to stand for the board"
+      ja: "役員立候補の締切"
+    note:
+      es: "Quien quiera optar a presidencia, secretaría, tesorería o cualquier otro cargo de la junta tiene hasta hoy para presentar su candidatura, de cara a la Asamblea General del 10 de diciembre."
+      ca: "Qui vulgui optar a presidència, secretaria, tresoreria o qualsevol altre càrrec de la junta té fins avui per presentar la seva candidatura, de cara a l'Assemblea General del 10 de desembre."
+      en: "Anyone standing for president, secretary, treasurer or any other post on the board has until today to put their name forward, ahead of the general assembly on 10 December."
+      ja: "会長・書記・会計などの役員に立候補する方は、１２月１０日の総会に向けて本日までにお申し出ください。"
+
+  - date: "2026-12-10"
+    type: association
+    location: musubi
+    title:
+      es: "Asamblea General"
+      ca: "Assemblea General"
+      en: "General assembly"
+      ja: "総会"
+    note:
+      es: "Cuentas del año, votaciones y dirección de la asociación. Se espera la asistencia de todos los socios. Hora por confirmar."
+      ca: "Comptes de l'any, votacions i direcció de l'associació. S'espera l'assistència de tots els socis. Hora per confirmar."
+      en: "The year's accounts, the votes and the direction of the association. All members are expected. Time to be confirmed."
+      ja: "年度の決算報告、選挙、協会の方針について話し合います。会員全員の出席をお願いします。時間は後日お知らせします。"
+
+  - date: "2026-12-10"
+    type: association
+    location: musubi
+    title:
+      es: "Foto de grupo"
+      ca: "Foto de grup"
+      en: "Group photograph"
+      ja: "全員集合写真"
+    note:
+      es: "La foto anual con todos los miembros, el mismo día de la Asamblea General. Es el único día del año en que estamos todos, así que ven."
+      ca: "La foto anual amb tots els membres, el mateix dia de l'Assemblea General. És l'únic dia de l'any que hi som tots, així que vine."
+      en: "The yearly photograph of the whole association, on the day of the general assembly. It is the one day of the year everybody is in the room, so come."
+      ja: "総会と同じ日に、会員全員で撮る毎年恒例の集合写真です。全員がそろう年に一度の日ですので、ぜひご参加ください。"
+
+  # -------------------------------------------------------------------------
+  # 12 December: the grading day
+  #
+  # The masterclass that opens it at 10:00 is NOT here. It is a masterclass and
+  # so it lives in _events/, which the calendar already reads: putting it here
+  # too would be the second copy this file exists to avoid.
+  # -------------------------------------------------------------------------
+  - date: "2026-12-12"
+    type: extra
+    location: musubi
+    start: "11:00"
+    end:   "12:00"
+    title:
+      es: "Tatami libre para preparar el examen"
+      ca: "Tatami lliure per preparar l'examen"
+      en: "Open mat for grading preparation"
+      ja: "審査準備のための自由稽古"
+    note:
+      es: "Entre la masterclass y el primer turno de exámenes, el tatami queda libre para repasar."
+      ca: "Entre la masterclass i el primer torn d'exàmens, el tatami queda lliure per repassar."
+      en: "Between the masterclass and the first round of gradings, the mat is free to go over things."
+      ja: "マスタークラスと審査の第一部のあいだ、復習のために道場を開放します。"
+
+  - date: "2026-12-12"
+    type: exam
+    location: musubi
+    start: "12:00"
+    end:   "13:00"
+    title:
+      es: "Exámenes de 5.º y 4.º kyū"
+      ca: "Exàmens de 5è i 4t kyū"
+      en: "5th and 4th kyū gradings"
+      ja: "五級・四級審査"
+
+  - date: "2026-12-12"
+    type: exam
+    location: musubi
+    start: "16:00"
+    end:   "20:00"
+    title:
+      es: "Exámenes de 3.er, 2.º y 1.er kyū"
+      ca: "Exàmens de 3r, 2n i 1r kyū"
+      en: "3rd, 2nd and 1st kyū gradings"
+      ja: "三級・二級・一級審査"
+
+  # The winter one of the two dinners the association holds every year. The
+  # other is in July. It has always been "the Christmas dinner" out loud; the
+  # calendar calls it by the season instead, because the people at the table do
+  # not all keep the same December.
+  - date: "2026-12-12"
+    type: association
+    start: "21:00"
+    title:
+      es: "Cena de invierno"
+      ca: "Sopar d'hivern"
+      en: "Winter dinner"
+      ja: "忘年会"
+    note:
+      es: "La cena con la que cerramos el día de exámenes y el año. La otra es en julio. Lugar por confirmar."
+      ca: "El sopar amb què tanquem el dia d'exàmens i l'any. L'altre és al juliol. Lloc per confirmar."
+      en: "The dinner that closes the grading day and the year. The other one is in July. Venue to be confirmed."
+      ja: "審査の日と一年を締めくくる食事会です。もう一回は７月に行います。会場は後日お知らせします。"
 
   # -------------------------------------------------------------------------
   # Public holidays — the dojo is closed
@@ -577,9 +884,15 @@ entries:
   #
   # Public holidays need no handling here — a closure suppresses everything
   # else on its day automatically.
+  #
+  # `routine: true` on every one of them, which keeps them out of Ura's "what is
+  # coming". Nineteen identical rows is not a list anybody reads, and a class
+  # that runs every Saturday until December is a rhythm rather than news. The
+  # calendar and Ura's own day strip still carry every one.
   # -------------------------------------------------------------------------
   - date: "2026-08-01"
     type: extra
+    routine: true
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -596,6 +909,7 @@ entries:
 
   - date: "2026-08-08"
     type: extra
+    routine: true
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -612,6 +926,7 @@ entries:
 
   - date: "2026-08-15"
     type: extra
+    routine: true
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -628,6 +943,7 @@ entries:
 
   - date: "2026-08-22"
     type: extra
+    routine: true
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -644,6 +960,7 @@ entries:
 
   - date: "2026-08-29"
     type: extra
+    routine: true
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -660,6 +977,7 @@ entries:
 
   - date: "2026-09-05"
     type: extra
+    routine: true
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -676,6 +994,7 @@ entries:
 
   - date: "2026-09-12"
     type: extra
+    routine: true
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -692,6 +1011,7 @@ entries:
 
   - date: "2026-09-19"
     type: extra
+    routine: true
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -708,6 +1028,7 @@ entries:
 
   - date: "2026-09-26"
     type: extra
+    routine: true
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -724,6 +1045,7 @@ entries:
 
   - date: "2026-10-03"
     type: extra
+    routine: true
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -740,6 +1062,7 @@ entries:
 
   - date: "2026-10-10"
     type: extra
+    routine: true
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -756,6 +1079,7 @@ entries:
 
   - date: "2026-10-17"
     type: extra
+    routine: true
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -772,6 +1096,7 @@ entries:
 
   - date: "2026-10-24"
     type: extra
+    routine: true
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -788,6 +1113,7 @@ entries:
 
   - date: "2026-10-31"
     type: extra
+    routine: true
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -804,6 +1130,7 @@ entries:
 
   - date: "2026-11-07"
     type: extra
+    routine: true
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -820,6 +1147,7 @@ entries:
 
   - date: "2026-11-14"
     type: extra
+    routine: true
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -836,6 +1164,7 @@ entries:
 
   - date: "2026-11-21"
     type: extra
+    routine: true
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -852,6 +1181,7 @@ entries:
 
   - date: "2026-11-28"
     type: extra
+    routine: true
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -868,6 +1198,7 @@ entries:
 
   - date: "2026-12-05"
     type: extra
+    routine: true
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"

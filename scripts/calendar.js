@@ -108,8 +108,14 @@
     // then the dated facts — so it is only sorted within each. Sort the whole
     // thing before splitting, or September lands after October.
     var items = Array.prototype.slice.call(source.children);
+    // Date, then clock. Sorting on the date alone left the five entries on
+    // 12 December in whatever order two unstable Liquid sorts produced —
+    // the 21:00 dinner above the 11:00 open mat. `data-start` is absent on an
+    // all-day entry, and '' sorts before any time, which is where it belongs.
     items.sort(function (a, b) {
-      return a.dataset.date < b.dataset.date ? -1 : a.dataset.date > b.dataset.date ? 1 : 0;
+      var ka = a.dataset.date + (a.dataset.start || '');
+      var kb = b.dataset.date + (b.dataset.start || '');
+      return ka < kb ? -1 : ka > kb ? 1 : 0;
     });
     items.forEach(function (li) {
       var ends = li.dataset.until || li.dataset.date;

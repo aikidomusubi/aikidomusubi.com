@@ -74,7 +74,14 @@
     {%- assign MO = U.months -%}
     {%- assign live = '' -%}
     {%- for e in cal -%}
-      {%- if e.type == 'change' and e.date >= todayStr and live == '' -%}
+      {%- comment -%}
+        Day-wide changes only. `change` now comes in two shapes — with
+        `affects`, meaning one class runs differently, and without, meaning the
+        whole week is on a different footing (August). This banner is for the
+        second kind; a single class taught by a guest is a row in the strip
+        below, not a notice across the top of it.
+      {%- endcomment -%}
+      {%- if e.type == 'change' and e.affects == nil and e.date >= todayStr and live == '' -%}
         {%- assign gap = e.date | append: 'T12:00:00Z' | date: '%s' | plus: 0 | minus: base -%}
         {%- if gap <= 1209600 %}{% assign live = e %}{% endif -%}
       {%- endif -%}
@@ -131,9 +138,34 @@
         {%- assign n = 0 -%}
         {%- assign DAY = '' -%}
 
+        {%- comment -%}
+          A `change` IS NOT ALWAYS A CHANGE TO THE WHOLE DAY.
+
+          _data/calendar.yml has always documented `affects` as marking a class
+          "not running, OR RUNNING DIFFERENTLY, that day" — but this strip only
+          implemented the first half. Any `change` at all replaced every class
+          on the date, which is right for August (the whole timetable is on a
+          different footing) and wrong for "the Wednesday aikido class is a
+          weapons class with a guest this week": it deleted judo, the two
+          Barcelona classes and Marina-Besòs from the day along with it.
+
+          So the two shapes are told apart here. A change WITHOUT `affects` is
+          day-wide and still replaces the day. A change WITH it substitutes the
+          one class it names and leaves the rest of the day alone.
+
+          The match is category + start + LOCATION, and the location is not
+          optional padding: on a Wednesday, aikido at 20:00 is a class at the
+          dojo and another one at CxEM Espronceda. Matching on the first two
+          alone would swap both.
+        {%- endcomment -%}
+        {%- assign wide = 0 -%}
+        {%- for ch in changes -%}
+          {%- unless ch.affects %}{% assign wide = wide | plus: 1 %}{% endunless -%}
+        {%- endfor -%}
         {%- unless closed -%}
-          {%- if changes.size > 0 -%}
+          {%- if wide > 0 -%}
             {%- for c in changes -%}
+              {%- if c.affects %}{% continue %}{% endif -%}
               {%- if c.link.es %}{% assign curl = c.link[L] %}{% elsif c.link %}{% assign curl = c.link %}{% else %}{% assign curl = '' %}{% endif -%}
               {%- capture row -%}{{ c.start }}¦#FFF200¦{{ c.title[L] }}¦{{ c.start }}–{{ c.end }}¦{{ curl }}{%- endcapture -%}
               {%- assign DAY = DAY | append: row | append: '§' -%}
@@ -143,14 +175,36 @@
             {%- for c in cls -%}
               {%- if c.days contains day -%}
                 {%- assign killed = false -%}
+                {%- comment -%}
+                  Location is part of the match here for the same reason it is
+                  part of the `change` match below: two venues can run the same
+                  category at the same hour on the same day. An entry that names
+                  no location still matches anywhere, which is what the older
+                  cancellations were written expecting.
+                {%- endcomment -%}
                 {%- for k in cancels -%}
-                  {%- if k.affects.category == c.category and k.affects.start == c.start %}{% assign killed = true %}{% endif -%}
+                  {%- if k.affects.category == c.category and k.affects.start == c.start -%}
+                    {%- if k.location == nil or k.location == c.location %}{% assign killed = true %}{% endif -%}
+                  {%- endif -%}
+                {%- endfor -%}
+                {%- assign swap = '' -%}
+                {%- for ch in changes -%}
+                  {%- if ch.affects.category == c.category and ch.affects.start == c.start -%}
+                    {%- if ch.location == nil or ch.location == c.location %}{% assign swap = ch %}{% endif -%}
+                  {%- endif -%}
                 {%- endfor -%}
                 {%- unless killed -%}
                   {%- assign cat = SC.categories | where: 'id', c.category | first -%}
                   {%- assign loc = SC.locations | where: 'id', c.location | first -%}
-                  {%- capture meta -%}{{ c.start }} / {{ loc.abbr[L] }}{% if c.frequency == 'monthly' %} / {{ U.ui.monthly[L] }}{% endif %}{%- endcapture -%}
-                  {%- capture row -%}{{ c.start }}¦{{ cat.color }}¦{{ cat.name[L] }}¦{{ meta }}¦{%- endcapture -%}
+                  {%- if swap != '' -%}
+                    {%- if swap.link.es %}{% assign surl = swap.link[L] %}{% elsif swap.link %}{% assign surl = swap.link %}{% else %}{% assign surl = '' %}{% endif -%}
+                    {%- assign s_start = swap.start | default: c.start -%}
+                    {%- capture meta -%}{{ s_start }} / {{ loc.abbr[L] }}{%- endcapture -%}
+                    {%- capture row -%}{{ s_start }}¦#FFF200¦{{ swap.title[L] }}¦{{ meta }}¦{{ surl }}{%- endcapture -%}
+                  {%- else -%}
+                    {%- capture meta -%}{{ c.start }} / {{ loc.abbr[L] }}{% if c.frequency == 'monthly' %} / {{ U.ui.monthly[L] }}{% endif %}{%- endcapture -%}
+                    {%- capture row -%}{{ c.start }}¦{{ cat.color }}¦{{ cat.name[L] }}¦{{ meta }}¦{%- endcapture -%}
+                  {%- endif -%}
                   {%- assign DAY = DAY | append: row | append: '§' -%}
                 {%- endunless -%}
               {%- endif -%}
@@ -203,17 +257,25 @@
     `site.elsewhere` (what we travel to). The three carry different field
     names — `date` against `date_from`, `title[L]` against `title_es` — and
     Liquid cannot sort one array of three shapes by three different keys. Each
-    entry is flattened to a delimited row instead, `date|type|title|detail|url`,
-    and the rows are sorted as strings: an ISO date leads every one of them, so
-    a plain sort is a sort by date.
+    entry is flattened to a delimited row instead,
+    `date|time|type|title|detail|url|key`, and the rows are sorted as strings:
+    a zero-padded ISO date and a 24-hour clock lead every one of them, so a
+    plain sort is a sort by date and then by time.
+
+    THE TIME IS THE SECOND FIELD, and it earns its place. Sorting on the date
+    alone left the rest of the row deciding, which meant the type: 12 December
+    read dinner, karate, exams, open mat, masterclass — five things in
+    alphabetical order of a word the reader never sees. An entry with no time
+    sorts first, which is where an all-day entry belongs.
 
     `¦` (U+00A6, broken bar) is the field separator on purpose — it is not a
     character that appears in a seminar title, a place name or a note.
 
-    Repeated entries are still collapsed to their first occurrence: the grading
-    class runs every Saturday until December, and thirty-five identical rows is
-    a list nobody reads. The first five are rendered visible so the section
-    says something without JavaScript; the script re-filters as days pass.
+    Nothing is folded here any more. Repetition is handled at the source by
+    `routine: true` in _data/calendar.yml, which keeps a thing that runs on a
+    fixed rhythm out of this section altogether; everything that reaches here is
+    a distinct occasion. The first five are rendered visible so the section says
+    something without JavaScript; the script re-filters as days pass.
   {%- endcomment -%}
   {%- assign S = U.sections[1] %}
 
@@ -228,8 +290,43 @@
     flag is something unexpected, and that is exactly what this section is for.
   {%- endcomment -%}
   {%- for e in cal -%}
-    {%- if e.date >= todayStr and e.holiday != true -%}
-      {%- assign txt = e.title[L] | default: e.note[L] -%}
+    {%- comment -%}
+      `routine: true` joins `holiday: true` here, and for the same reason. This
+      section answers "what is news"; a public holiday is a lookup, and so is a
+      class that runs every Saturday until December or a weapons Wednesday that
+      comes round once a month. Between them they were nineteen and four rows of
+      two repeated sentences. Both stay on the calendar and in the day strip
+      above, which is where a date is looked up.
+    {%- endcomment -%}
+    {%- if e.date >= todayStr and e.holiday != true and e.routine != true -%}
+      {%- comment -%}
+        NOT EVERY CANCELLATION IS ANNOUNCED HERE. `announce_cancellations` in
+        _data/ura.yml lists the categories this section speaks for, and it lists
+        aikido only: karate off on a Saturday given over to gradings is a fact
+        for /calendario/ and for the day strip above, not news on the aikido
+        dojo's own aside. Skipped before the row is built, so it costs nothing.
+      {%- endcomment -%}
+      {%- if e.type == 'cancellation' and e.affects -%}
+        {%- unless U.announce_cancellations contains e.affects.category -%}
+          {%- continue -%}
+        {%- endunless -%}
+      {%- endif -%}
+      {%- comment -%}
+        A CANCELLATION HAS NO TITLE, and it should not need one: what is
+        cancelled is the class it names in `affects`. The calendar page has
+        always built that title out of the category and the hour; this section
+        did not, so it printed the note on its own and the reader got the
+        sentence "Por la masterclass de Pedro Fortes." with nothing to say what
+        it was about. Same construction as _includes/calendar.html, and the
+        label comes from the calendar's own `types` so the two cannot drift.
+      {%- endcomment -%}
+      {%- if e.type == 'cancellation' and e.affects -%}
+        {%- assign ac = SC.categories | where: 'id', e.affects.category | first -%}
+        {%- assign noLab = site.data.calendar.types.cancellation.label[L] -%}
+        {%- capture txt -%}{{ noLab }}: {{ ac.name[L] }} {{ e.affects.start }}{%- endcapture -%}
+      {%- else -%}
+        {%- assign txt = e.title[L] | default: e.note[L] -%}
+      {%- endif -%}
       {%- if txt -%}
         {%- assign rtitle = txt | strip_html -%}
         {%- if e.type == 'closure' -%}
@@ -242,13 +339,37 @@
           {%- assign rdetail = '' -%}
         {%- endif -%}
         {%- comment -%}
+          A cancellation borrows the time of the class it replaces; everything
+          else uses its own. Blank for an all-day entry, which then sorts to the
+          front of its day.
+        {%- endcomment -%}
+        {%- if e.type == 'cancellation' and e.affects -%}{%- assign rtime = e.affects.start -%}
+        {%- else -%}{%- assign rtime = e.start | default: '' -%}{%- endif -%}
+        {%- comment -%}
           A calendar entry may carry `link:` — four per-language URLs, or one
           string if it is the same everywhere. Entries that name one become
           clickable; closures and timetable changes, which are facts and not
           destinations, stay as plain text.
         {%- endcomment -%}
         {%- if e.link.es %}{% assign rurl = e.link[L] %}{% elsif e.link %}{% assign rurl = e.link %}{% else %}{% assign rurl = '' %}{% endif -%}
-        {%- capture row -%}{{ e.date }}¦{{ e.type }}¦{{ rtitle }}¦{{ rdetail }}¦{{ rurl }}¦{{ rtitle }}{%- endcapture -%}
+        {%- comment -%}
+          THE DEDUPE KEY IS THE DATE AND THE TITLE, not the title alone.
+
+          It used to be the title, to fold a grading class entered as nineteen
+          identical Saturdays into one row — and that quietly cost the monthly
+          weapons class three of its four dates: four entries, four different
+          months, one row. Repetition is now handled where it belongs, by
+          `routine: true` keeping the repeated thing out of this section
+          altogether, so every row that reaches here is a distinct occasion and
+          the key can simply be what makes it distinct.
+
+          No separator between the two: `¦` is the field separator of the row
+          this key is about to be packed into, and putting one inside the key
+          would split it into two fields and leave f[6] holding the date alone.
+          Every entry on 12 December would then have been the same entry.
+        {%- endcomment -%}
+        {%- assign rkey = e.date | append: rtitle -%}
+        {%- capture row -%}{{ e.date }}¦{{ rtime }}¦{{ e.type }}¦{{ rtitle }}¦{{ rdetail }}¦{{ rurl }}¦{{ rkey }}{%- endcapture -%}
         {%- assign ROWS = ROWS | append: row | append: '§' -%}
       {%- endif -%}
     {%- endif -%}
@@ -268,7 +389,7 @@
       {%- else -%}{%- assign rtitle = e.title_es -%}{%- endif -%}
       {%- assign ecat = site.data.events.categories | where: 'id', e.category | first -%}
       {%- assign eslug = e.path | split: '/' | last | remove: '.md' -%}
-      {%- capture row -%}{{ e.date_from }}¦{{ e.category }}¦{{ rtitle | strip_html }}¦{{ ecat.name[L] }}¦{{ gEvNav.items[0].url[L] }}#event-{{ eslug }}¦{{ eslug }}{%- endcapture -%}
+      {%- capture row -%}{{ e.date_from }}¦{{ e.time_from | default: '' }}¦{{ e.category }}¦{{ rtitle | strip_html }}¦{{ ecat.name[L] }}¦{{ gEvNav.items[0].url[L] }}#event-{{ eslug }}¦{{ eslug }}{%- endcapture -%}
       {%- assign ROWS = ROWS | append: row | append: '§' -%}
     {%- endif -%}
   {%- endfor -%}
@@ -285,7 +406,7 @@
       {%- elsif L == 'ja' -%}{%- assign rtitle = e.title_ja -%}{%- assign rdetail = e.place_ja -%}
       {%- else -%}{%- assign rtitle = e.title_es -%}{%- assign rdetail = e.place_es -%}{%- endif -%}
       {%- assign aslug = e.path | split: '/' | last | remove: '.md' -%}
-      {%- capture row -%}{{ e.date_from }}¦away¦{{ rtitle | strip_html }}¦{{ rdetail | strip_html | truncate: 40 }}¦{{ gEvNav.items[1].url[L] }}#elsewhere-{{ aslug }}¦{{ aslug }}{%- endcapture -%}
+      {%- capture row -%}{{ e.date_from }}¦{{ e.time_from | default: '' }}¦away¦{{ rtitle | strip_html }}¦{{ rdetail | strip_html | truncate: 40 }}¦{{ gEvNav.items[1].url[L] }}#elsewhere-{{ aslug }}¦{{ aslug }}{%- endcapture -%}
       {%- assign ROWS = ROWS | append: row | append: '§' -%}
     {%- endif -%}
   {%- endfor -%}
@@ -299,19 +420,21 @@
       {%- for r in ahead -%}
         {%- assign f = r | split: '¦' -%}
         {%- assign rdate = f[0] -%}
-        {%- assign rtype = f[1] -%}
-        {%- assign rtitle = f[2] -%}
-        {%- assign rdetail = f[3] -%}
-        {%- assign rurl = f[4] -%}
+        {%- assign rtype = f[2] -%}
+        {%- assign rtitle = f[3] -%}
+        {%- assign rdetail = f[4] -%}
+        {%- assign rurl = f[5] -%}
         {%- comment -%}
           The dedupe key, and it is NOT the title. Collapsing by title is right
           for the calendar, where the same grading class is thirty-five
           entries; it is wrong for a seminar, where the title is the
           instructor's name and grade. Miyamoto Shihan teaches in Bucharest in
           September and in Barcelona in November, and the second one silently
-          vanished. Calendar rows key on their title, seminars on their slug.
+          vanished. Seminars key on their slug; calendar rows key on their date
+          and title together, unless the entry asks to `collapse:` — see the
+          note where the calendar rows are built.
         {%- endcomment -%}
-        {%- assign rkey = f[5] -%}
+        {%- assign rkey = f[6] -%}
         {%- unless seen contains rkey -%}
           {%- assign one = rkey | split: '¦' -%}
           {%- assign seen = seen | concat: one -%}

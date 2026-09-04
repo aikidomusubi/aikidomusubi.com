@@ -12,6 +12,25 @@
 # what is coming from _data/calendar.yml, the archive from _data/gallery.yml and
 # the seminar log from _events/. Only the labels below are written by hand.
 
+# ---------------------------------------------------------------------------
+# Which class cancellations "what is coming" announces
+#
+# Ura is the aikido dojo's own aside, and this section is read by the people on
+# the aikido mat. Judo, iaijutsu and karate are taught here too, and when one of
+# them is off — most Saturdays that the dojo is given over to a masterclass or
+# to gradings, karate is — that is a real fact, it belongs on the calendar and
+# it is on the calendar. It is not news here.
+#
+# A LIST AND NOT A FLAG, so that adding a fifth art does not silently start
+# announcing it. Aikido is the only entry, and anything not named here is
+# carried by /calendario/ and by the day strip above and nowhere else.
+#
+# This does not touch the day strip: a cancelled class disappears from its day
+# there whatever its category, because that grid answers "is there a class on
+# Saturday" and the honest answer is no.
+# ---------------------------------------------------------------------------
+announce_cancellations: [aikido]
+
 ui:
   name:      { es: "Ura", ca: "Ura", en: "Ura", ja: "裏" }
   kanji:     "裏"
