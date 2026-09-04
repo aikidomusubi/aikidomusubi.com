@@ -41,6 +41,21 @@ ui:
 venues:
   - id: aikido-musubi
     slug: aikido-musubi
+    # The same address as `address:` below, in parts.
+    #
+    # `address:` is one string with a <br> in it, written for a human reading
+    # the Access page. schema.org wants a PostalAddress with named fields, and
+    # Search Console reported 44 Event items with no usable location at all
+    # while the only machine-readable address on the site was the one hardcoded
+    # in _includes/header.html for the club itself. Written out rather than
+    # split from the string above, because a <br> is a line break and not a
+    # field separator, and "Les Corts" is a district rather than a town.
+    postal:
+      street:   "Av. d'Alfons XIII, 351"
+      postcode: "08918"
+      town:     "Badalona"
+      region:   "Barcelona"
+      country:  "ES"
     map_section: aikido_musubi
     maps_url: "https://g.page/aikidomusubi"
     apple_url: "https://maps.apple/p/dfbfrqjpcpKB0m"
@@ -137,6 +152,21 @@ venues:
 
   - id: sant-adria-de-besos
     slug: sant-adria-de-besos
+    # The same address as `address:` below, in parts.
+    #
+    # `address:` is one string with a <br> in it, written for a human reading
+    # the Access page. schema.org wants a PostalAddress with named fields, and
+    # Search Console reported 44 Event items with no usable location at all
+    # while the only machine-readable address on the site was the one hardcoded
+    # in _includes/header.html for the club itself. Written out rather than
+    # split from the string above, because a <br> is a line break and not a
+    # field separator, and "Les Corts" is a district rather than a town.
+    postal:
+      street:   "Carrer de Dolores Ibarruri Pasionaria, s/n"
+      postcode: "08930"
+      town:     "Sant Adrià de Besòs"
+      region:   "Barcelona"
+      country:  "ES"
     map_section: sant_adria_de_besos
     maps_url: "https://maps.app.goo.gl/P1VC1JDquzXWdgXQ8"
     apple_url: "https://maps.apple/p/HqxcEdEyXCrcsG"
@@ -215,6 +245,21 @@ venues:
 
   - id: cxem-espronceda
     slug: cxem-espronceda
+    # The same address as `address:` below, in parts.
+    #
+    # `address:` is one string with a <br> in it, written for a human reading
+    # the Access page. schema.org wants a PostalAddress with named fields, and
+    # Search Console reported 44 Event items with no usable location at all
+    # while the only machine-readable address on the site was the one hardcoded
+    # in _includes/header.html for the club itself. Written out rather than
+    # split from the string above, because a <br> is a line break and not a
+    # field separator, and "Les Corts" is a district rather than a town.
+    postal:
+      street:   "C/ Espronceda, 326"
+      postcode: "08027"
+      town:     "Barcelona"
+      region:   "Barcelona"
+      country:  "ES"
     map_section: cxem_espronceda
     maps_url: "https://maps.app.goo.gl/xE1cHD7zRygTG78z9"
     apple_url: "https://maps.apple/p/czWeasADhbQc~p"
@@ -279,6 +324,21 @@ venues:
 
   - id: university-of-barcelona
     slug: university-of-barcelona
+    # The same address as `address:` below, in parts.
+    #
+    # `address:` is one string with a <br> in it, written for a human reading
+    # the Access page. schema.org wants a PostalAddress with named fields, and
+    # Search Console reported 44 Event items with no usable location at all
+    # while the only machine-readable address on the site was the one hardcoded
+    # in _includes/header.html for the club itself. Written out rather than
+    # split from the string above, because a <br> is a line break and not a
+    # field separator, and "Les Corts" is a district rather than a town.
+    postal:
+      street:   "Av. Diagonal, 684"
+      postcode: "08034"
+      town:     "Barcelona"
+      region:   "Barcelona"
+      country:  "ES"
     map_section: university_of_barcelona
     # The old short link (maps.app.goo.gl/8CqSPLZqLPBQoLDS6) returns 404. This
     # is the documented Maps URL scheme instead, which resolves from the name

@@ -35,6 +35,13 @@ file_en: ""
 file_es: ""
 file_ja: ""
 
+# The page's own copy says "Entrada libre" in all four languages, and this is
+# that same statement in machine form: it fills schema.org's `offers`, which
+# Search Console had flagged as missing on all 44 events. Anything with a fee
+# carries the real number here instead; anything unwritten stays silent rather
+# than being guessed at.
+price: 0
+
 date_from: "2027-01-30"
 date_to: "blank"
 

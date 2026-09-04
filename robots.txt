@@ -1,13 +1,23 @@
 User-agent: *
-
 Allow: /
 
-Disallow: /assets/
-Disallow: /fonts/
-Disallow: /graphics/
-Disallow: /icons/
-Disallow: /plugins/
-Disallow: /scripts/
-Disallow: /styles/
+# NOTHING IS DISALLOWED, AND THAT IS DELIBERATE.
+#
+# This file used to block /scripts/ and /styles/ along with /assets/, /fonts/,
+# /graphics/, /icons/ and /plugins/. Blocking the stylesheets and the scripts
+# stops Googlebot rendering the page at all: it fetches the HTML, cannot fetch
+# the CSS or the JS, and indexes an unstyled document with none of the content
+# the page scripts build — the timetable, the calendar, the glossary filtering,
+# the seminar list. Google's own guidance has said not to do this since 2014,
+# and Search Console reported 53 pages "Crawled - currently not indexed" while
+# it was in place.
+#
+# The rest were pointless rather than harmful, and two were untrue: /graphics/
+# holds the logos twelve pages reference and /icons/ holds the favicons every
+# page references, so both were blocked while being needed to render. /assets/
+# is an empty directory and /plugins/ has never existed on this site.
+#
+# There is nothing here worth hiding from a crawler. If something ever is, add
+# it back one line at a time and say why.
 
 Sitemap: https://aikidomusubi.com/sitemap.xml

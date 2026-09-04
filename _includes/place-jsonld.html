@@ -1,0 +1,46 @@
+{%- comment -%}
+  One venue as a schema.org Place, for embedding inside an Event's `location`.
+
+  WHY THIS EXISTS. Search Console reported 44 Event items with `Missing field
+  "location"` — every masterclass and seminar on /seminarios/, because the
+  Event markup there emitted a name, a date and an organiser and stopped. An
+  Event with no location is not eligible for a rich result at all, so the whole
+  block was doing nothing.
+
+  The dojo's address was already written out as a PostalAddress in
+  _includes/header.html for the SportsClub block, and again as a flat string on
+  /acceso/. This is the third place that needs it, which is two too many: the
+  parts live in `postal:` in _data/venues.yml now and every surface reads them
+  from there.
+
+  Parameters:
+    id     a venue id from _data/venues.yml — `location:` in _data/calendar.yml
+           and _data/schedule.yml both use the schedule ids, which differ from
+           the venue ids, so callers map them first (see `venue_of` below).
+    lang   the page language, for the venue's own name.
+
+  Emits the JSON fragment only, with no trailing comma, so the caller decides
+  where it sits.
+{%- endcomment -%}
+{%- assign V = site.data.venues -%}
+{%- assign vid = include.id | default: 'aikido-musubi' -%}
+{%- assign v = V.venues | where: 'id', vid | first -%}
+{%- unless v %}{% assign v = V.venues | where: 'id', 'aikido-musubi' | first %}{% endunless -%}
+{%- assign PL = include.lang | default: 'es' -%}
+{
+        "@type": "Place",
+        "name": {{ v.name[PL] | jsonify }},
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": {{ v.postal.street | jsonify }},
+          "postalCode": {{ v.postal.postcode | jsonify }},
+          "addressLocality": {{ v.postal.town | jsonify }},
+          "addressRegion": {{ v.postal.region | jsonify }},
+          "addressCountry": {{ v.postal.country | jsonify }}
+        }{% if v.lat and v.lng %},
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": {{ v.lat }},
+          "longitude": {{ v.lng }}
+        }{% endif %}
+      }

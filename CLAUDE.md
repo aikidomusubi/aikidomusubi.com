@@ -912,10 +912,61 @@ whitespace or a typo — Google discounts `lastmod` it decides is unreliable.
 
 Other rules:
 
-- opt a page out with `sitemap: false` (set on the four 404 pages)
+- opt a page out with `sitemap: false` (set on the four 404 pages). It also
+  emits `<meta name="robots" content="noindex, follow">` — a page not worth
+  listing is not worth indexing, and the four 404s were four near-copies in
+  the index. One flag, both meanings, so they cannot drift apart.
 - `changefreq` and `priority` are deliberately omitted; Google ignores both
 - every image entry must resolve to a file that exists — the generator only
   emits files it can see, so a broken entry means a broken reference on the page
+
+## What Search Console found, and what robots.txt was doing
+
+**`robots.txt` was blocking `/scripts/` and `/styles/`.** Googlebot fetched the
+HTML, could not fetch the CSS or the JS, and indexed an unstyled document with
+none of the content the page scripts build. Search Console reported 53 pages
+"Crawled - currently not indexed" while that was true. It also blocked
+`/graphics/` and `/icons/`, which twelve pages and all ninety-six pages
+respectively need in order to render, and `/plugins/`, which has never existed.
+Nothing is disallowed now. Do not add a `Disallow` back without writing down
+what it is protecting.
+
+**Structured data is checked in Search Console, not by `qa.py`.** `qa.py`
+validates that the JSON parses; it cannot know that schema.org wants a field.
+The Events report had 44 items with `Missing field "location"` — a critical
+error, because an Event with no place is not eligible for a rich result, so the
+whole block was decoration for as long as it shipped. Also missing: `endDate` on
+35, `performer` and `offers` on all 44.
+
+Three things came out of fixing it:
+
+- **The address lives once, in `postal:` in `_data/venues.yml`**, and
+  `_includes/place-jsonld.html` renders it. It had been written three times —
+  a `PostalAddress` hardcoded in `header.html`, a flat string on `/acceso/`, and
+  nothing at all on the events.
+- **A false location is worse than a missing one.** Everything the dojo hosts
+  defaults to the dojo; `venue:` names another id and `place_*` a plain string.
+  The four `collaboration` entries happen in trade-fair halls this repo does not
+  know the address of, so they keep the warning rather than claiming the dojo.
+  Same for `offers`: it is emitted only where `price:` is written down, and the
+  masterclasses carry `price: 0` because their own copy says "entrada libre" in
+  four languages.
+- **The UTC offset is computed with `%:z`, never typed.** It was `+02:00`
+  everywhere, which is correct in summer and an hour wrong from late October to
+  late March; a January masterclass was published as starting at 11:00 UTC.
+  `timezone: Europe/Madrid` in `_config.yml` is what `%:z` resolves against.
+
+**Public holidays are not Events.** The calendar was publishing every
+`holiday: true` closure as a schema.org Event with `EventCancelled`, the dojo as
+organiser and a location — thirty-eight of them across two years, saying the
+association had cancelled Christmas. They are skipped.
+
+**The renamed pages redirect; the renamed PDFs do not.** `jekyll-redirect-from`
+covers `/cursos/`, `/fotos/`, `/videos/` and their translations, which is where
+the traffic is. The `_courses/` to `_events/` rename also renamed sixty PDFs,
+and `/files/courses-hFZ2XXIp-*.pdf` now 404s — twenty-one of them with
+impressions. Jekyll cannot redirect a static file, and GitHub Pages has no
+server config, so that one belongs in Cloudflare as a redirect rule.
 
 ## Resource front-matter schema
 

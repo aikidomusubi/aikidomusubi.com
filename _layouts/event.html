@@ -307,6 +307,36 @@
     so Google reads the page as a list rather than guessing which Event the page
     is "about". Only the fields we actually hold are emitted — an invented
     location or price is worse than an absent one.
+
+    THE LOCATION WAS ABSENT FOR EVERY ONE OF THEM, and that is not the same as
+    not holding it. Search Console reported 44 items with `Missing field
+    "location"`, which is a critical error: an Event with no place is not
+    eligible for a rich result at all, so the whole block was decoration. The
+    dojo's address has been on the site in three different shapes for years.
+    `_includes/place-jsonld.html` reads the one copy in _data/venues.yml.
+
+    WHERE THE EVENT IS. Everything the dojo hosts is at the dojo, so that is the
+    default. `venue:` in the front matter overrides it with another id from
+    _data/venues.yml, and `place_*` gives a plain name for somewhere that is
+    nobody's venue — a trade fair hall. A collaboration gets NEITHER by default:
+    Japan Weekend and Manga Barcelona happen in halls this repo does not know
+    the address of, and saying they happened at the dojo to silence a warning
+    would be putting a false statement into machine-readable markup. Those four
+    keep the warning until somebody fills the key in.
+
+    `performer` is the instructor, and only where `instructor_*` is a person: on
+    a collaboration that field carries the event's title, and a Person named
+    "Aikido Musubi Open Class at Japan Weekend" is worse than no performer.
+
+    `offers` is emitted only where `price:` is written down. The five
+    masterclasses whose own copy says "entrada libre" in four languages carry
+    `price: 0`, which is that same statement in machine form; everything else
+    stays silent rather than guessing at a fee.
+
+    THE UTC OFFSET IS COMPUTED, NOT TYPED. It was `+02:00` on every event, which
+    is right in summer and an hour wrong for the whole of winter — a January
+    masterclass was being published as starting at 11:00 UTC. `%:z` resolves it
+    against `timezone: Europe/Madrid` in _config.yml, per date.
   {%- endcomment -%}
   <script type="application/ld+json">
   {
@@ -321,6 +351,18 @@
       {%- elsif L == 'en' -%}{%- assign title = event.title_en -%}{%- assign desc = event.desc_en -%}{%- assign img = event.image_en -%}
       {%- elsif L == 'ja' -%}{%- assign title = event.title_ja -%}{%- assign desc = event.desc_ja -%}{%- assign img = event.image_ja -%}
       {%- else -%}{%- assign title = event.title_es -%}{%- assign desc = event.desc_es -%}{%- assign img = event.image_es -%}{%- endif -%}
+      {%- comment -%} The offset for THIS date, in the site's own timezone. {%- endcomment -%}
+      {%- assign tz_from = event.date_from | date: '%:z' -%}
+      {%- if event.date_to and event.date_to != 'blank' -%}
+        {%- assign end_day = event.date_to -%}
+      {%- else -%}
+        {%- assign end_day = event.date_from -%}
+      {%- endif -%}
+      {%- assign tz_to = end_day | date: '%:z' -%}
+      {%- if L == 'ca' -%}{%- assign who = event.instructor_ca -%}{%- assign wplace = event.place_ca -%}
+      {%- elsif L == 'en' -%}{%- assign who = event.instructor_en -%}{%- assign wplace = event.place_en -%}
+      {%- elsif L == 'ja' -%}{%- assign who = event.instructor_ja -%}{%- assign wplace = event.place_ja -%}
+      {%- else -%}{%- assign who = event.instructor_es -%}{%- assign wplace = event.place_es -%}{%- endif -%}
       {
         "@type": "ListItem",
         "position": {{ n }},
@@ -332,9 +374,30 @@
           {% if img and img != '' -%}
           "image": {{ img | prepend: '/images/' | append: '.jpg' | prepend: site.url | jsonify }},
           {% endif -%}
-          "startDate": "{{ event.date_from }}{% if event.time_from %}T{{ event.time_from }}:00+02:00{% endif %}",
-          {% if event.date_to and event.date_to != "blank" -%}
-          "endDate": "{{ event.date_to }}{% if event.time_to %}T{{ event.time_to }}:00+02:00{% endif %}",
+          "startDate": "{{ event.date_from }}{% if event.time_from %}T{{ event.time_from }}:00{{ tz_from }}{% endif %}",
+          {% comment %}
+            An end date on every event, not only the multi-day ones. Google
+            treats a missing endDate as a warning on all 35 single-session
+            entries, and the honest value is the same day at the closing time.
+          {% endcomment -%}
+          "endDate": "{{ end_day }}{% if event.time_to %}T{{ event.time_to }}:00{{ tz_to }}{% endif %}",
+          {% if wplace and wplace != '' -%}
+          "location": { "@type": "Place", "name": {{ wplace | jsonify }} },
+          {% elsif event.category != 'collaboration' -%}
+          "location": {% include place-jsonld.html id=event.venue lang=L %},
+          {% endif -%}
+          {% if who and who != '' and event.category != 'collaboration' -%}
+          "performer": { "@type": "Person", "name": {{ who | jsonify }} },
+          {% endif -%}
+          {% if event.price -%}
+          "offers": {
+            "@type": "Offer",
+            "price": "{{ event.price }}",
+            "priceCurrency": "{{ event.currency | default: 'EUR' }}",
+            "availability": "https://schema.org/InStock",
+            "validFrom": "{{ event.date_from }}",
+            "url": {{ page.url | prepend: site.url | append: '#event-' | append: slug | jsonify }}
+          },
           {% endif -%}
           "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
           "eventStatus": "https://schema.org/EventScheduled",

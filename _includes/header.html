@@ -36,6 +36,22 @@
     <meta name="twitter:description" content="{{ og_description }}">
     <meta name="twitter:image" content="{{ site.url }}/images/index-8oGCaMDs-01.jpg">
     <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
+    {%- comment -%}
+      A page kept out of the sitemap is kept out of the index too.
+
+      `sitemap: false` is set on exactly four pages, the 404s, and it used to do
+      only half the job: they were absent from sitemap.xml but still crawlable
+      at /404.html, still carrying a self-canonical, and still four near-copies
+      of each other in four languages. Search Console reported seven pages as
+      "Duplicate without user-selected canonical". One flag, both meanings, so
+      the two cannot drift apart.
+
+      `follow` and not `none`: the 404 page carries the nav, and a crawler that
+      lands on it should still find its way to the real pages.
+    {%- endcomment -%}
+    {%- if page.sitemap == false %}
+    <meta name="robots" content="noindex, follow">
+    {%- endif %}
     {% assign posts=site.posts | where:"i18n-ref", page.i18n-ref | sort: 'lang' %}
     {% for post in posts %}
       <link rel="alternate" hreflang="{{ post.lang }}" href="{{ site.url }}{{ post.url }}" />

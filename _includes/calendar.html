@@ -512,6 +512,22 @@
   Schedule-based entries — these really are single occurrences, so a plain
   Event with startDate is the honest description. Cancellations carry
   eventStatus so an aggregator does not advertise a class that is not running.
+
+  PUBLIC HOLIDAYS ARE NOT EVENTS, and they were being published as thirty-eight
+  of them: every `holiday: true` closure across two years, each an Event named
+  "Año Nuevo" or "Reyes" with `EventCancelled` and the dojo as its organiser and
+  its location. Nobody searches for that, no aggregator wants it, and it says
+  the association cancelled Christmas. They are skipped now. What remains is
+  what a reader could turn up for or needs to know is off: gradings, extra
+  classes, the association's own dates, and a genuine unplanned closure.
+
+  The location carries a full PostalAddress rather than a bare name, from the
+  same `_data/venues.yml` entry the Seminars page uses — `location` with only a
+  `name` is what Search Console counts as present but unusable. The venue ids in
+  _data/schedule.yml and _data/venues.yml differ, and `slug` is the bridge.
+
+  The UTC offset is computed per date rather than typed: it was `+02:00` on
+  every entry, an hour wrong for everything between late October and late March.
 {%- endcomment -%}
 <script type="application/ld+json">
 {
@@ -519,6 +535,7 @@
   "@graph": [
   {%- assign first_out = true -%}
   {%- for e in entries -%}
+    {%- if e.holiday %}{% continue %}{% endif -%}
     {%- assign t = C.types[e.type] -%}
     {%- assign loc = nil -%}{%- if e.location -%}{%- assign loc = S.locations | where: "id", e.location | first -%}{%- endif -%}
     {%- assign title = e.title[L] -%}
@@ -526,19 +543,24 @@
       {%- assign ac = S.categories | where: "id", e.affects.category | first -%}
       {%- assign title = ac.name[L] | append: ' ' | append: e.affects.start -%}
     {%- endif -%}
+    {%- assign tz_a = e.date | date: '%:z' -%}
+    {%- assign e_until = e.until | default: e.date -%}
+    {%- assign tz_b = e_until | date: '%:z' -%}
     {%- unless first_out %},{% endunless -%}{%- assign first_out = false -%}
     {
       "@type": "Event",
       "name": {{ title | jsonify }},
-      "startDate": "{{ e.date }}{% if e.start %}T{{ e.start }}:00+02:00{% endif %}",
-      "endDate": "{{ e.until | default: e.date }}{% if e.end %}T{{ e.end }}:00+02:00{% endif %}",
+      "startDate": "{{ e.date }}{% if e.start %}T{{ e.start }}:00{{ tz_a }}{% endif %}",
+      "endDate": "{{ e_until }}{% if e.end %}T{{ e.end }}:00{{ tz_b }}{% endif %}",
       "eventStatus": "https://schema.org/Event{% if e.type == 'cancellation' or e.type == 'closure' %}Cancelled{% else %}Scheduled{% endif %}",
       "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
       "organizer": { "@type": "SportsClub", "name": "Aikido Musubi", "url": "{{ site.url }}" },
-      "location": {
-        "@type": "Place",
-        "name": {%- if loc %} {{ loc.name[L] | jsonify }}{%- elsif e.place %} {{ e.place[L] | jsonify }}{%- else %} "Aikido Musubi"{%- endif %}
-      }
+      {%- if e.place %}
+      "location": { "@type": "Place", "name": {{ e.place[L] | jsonify }} },
+      {%- else %}
+      "location": {% include place-jsonld.html id=loc.slug lang=L %},
+      {%- endif %}
+      "description": {% if e.note %}{{ e.note[L] | strip_html | jsonify }}{% else %}{{ title | jsonify }}{% endif %}
       {%- if e.link %},
       "url": "{{ site.url }}{{ e.link }}"
       {%- endif %}
