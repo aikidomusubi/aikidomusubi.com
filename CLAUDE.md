@@ -141,6 +141,15 @@ bugs were actually found:
   than two left edges.
 - **Focus and keyboard** — tab order, the skip link, submenus reachable with
   JavaScript blocked.
+- **Lighthouse, or any axe run, on a phone viewport.** `qa.py` reads the built
+  HTML, so a control that does not exist until a script has run is invisible to
+  it — and the calendar's day-entry trigger is exactly that. `calendar.js` wraps
+  each entry's spans in a `<button>`, the narrow layout then hides those spans
+  with `display: none`, and the result was ten buttons a month with no
+  accessible name at all: a plain 4.1.2 failure on the page a phone is most
+  likely to be reading, sitting under a green QA run for as long as it existed.
+  The button takes its name from the text it wraps now. Anything the scripts
+  build has to be checked in a browser.
 
 ## Build & develop
 
@@ -821,6 +830,22 @@ the italic or latin-ext faces: preloading a face the page never paints costs a
 download for nothing. The `crossorigin` attribute is required even though the
 fonts are same-origin — without it the preload and the CSS request use
 different modes and the file is fetched twice.
+
+**THE FOUR `latin-ext` FACES ARE NOT SUBSET, and they are expensive.** They are
+Google's originals and carry the whole of Latin Extended-A and B — 62 to 66 KB
+each, against 13 KB for the corresponding `latin` face. The site needs about six
+characters out of that range (ō ū ā ē ī and the odd capital), and a page pays
+the whole face the moment it paints one of them in that style. Measured per page
+by Lighthouse:
+
+    most pages    26 KB of font   two roman latin faces, as intended
+    /ura/         88 KB           + 400-latin-ext, 62 KB
+    home         106 KB           + 400-italic-latin-ext, 64 KB
+
+So a macron inside an italic on the home page costs 64 KB. The fix is the one
+this repo already uses for Japanese: run the faces through a subsetter and keep
+the handful of codepoints in use. `tools/subset-ja-fonts.py` is the model, and
+it would take roughly 250 KB across the four faces down to a few. Not done.
 
 **Japanese (`/ja/` pages only).** `Noto Sans JP` and `M PLUS 1p` are applied
 exclusively inside `html[lang="ja"]` blocks in `default.less`, so they are

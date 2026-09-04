@@ -381,6 +381,22 @@
       }
       entry.insertBefore(trigger, pop);
 
+      // AND IT NEEDS A NAME OF ITS OWN.
+      //
+      // On a phone the month grid shrinks an entry to a 0.35rem coloured bar
+      // and hides all three of its spans with `display: none` (see the narrow
+      // rule in styles/calendar.less). The button wrapped round them is then a
+      // control with no text a screen reader can reach — ten unnamed buttons in
+      // a month, and a plain WCAG 4.1.2 failure on the page a phone is most
+      // likely to be reading.
+      //
+      // The name is the text the entry already carries, read before anything
+      // hides it. On a wide screen that text is visible and the label repeats
+      // it exactly, which is what 2.5.3 wants; on a narrow one it is the only
+      // name there is.
+      var label = (trigger.textContent || '').replace(/\s+/g, ' ').trim();
+      if (label) trigger.setAttribute('aria-label', label);
+
       trigger.setAttribute('aria-expanded', 'false');
       trigger.setAttribute('aria-controls', pop.id);
 
