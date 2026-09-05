@@ -831,21 +831,42 @@ download for nothing. The `crossorigin` attribute is required even though the
 fonts are same-origin — without it the preload and the CSS request use
 different modes and the file is fetched twice.
 
-**THE FOUR `latin-ext` FACES ARE NOT SUBSET, and they are expensive.** They are
-Google's originals and carry the whole of Latin Extended-A and B — 62 to 66 KB
-each, against 13 KB for the corresponding `latin` face. The site needs about six
-characters out of that range (ō ū ā ē ī and the odd capital), and a page pays
-the whole face the moment it paints one of them in that style. Measured per page
-by Lighthouse:
+**The four `latin-ext` faces are subset too**, by
+`tools/subset-latin-fonts.py`. Served whole they are Google's originals and
+carry all of Latin Extended-A and B, the IPA extensions and a run of currency
+signs — 62 to 66 KB each against 13 KB for the corresponding `latin` face,
+while the site uses **four characters** out of the lot: ō ū Ō ī. A page paid the
+whole face the moment it painted one of them in that style, so the home page
+carried 106 KB of font and /ura/ 88 KB against 26 KB everywhere else.
 
-    most pages    26 KB of font   two roman latin faces, as intended
-    /ura/         88 KB           + 400-latin-ext, 62 KB
-    home         106 KB           + 400-italic-latin-ext, 64 KB
+    256 KB across the four faces  ->  28 KB
+    home    106 KB of font -> 49 KB    Lighthouse mobile 81 -> 90
+    /ura/    88 KB         -> 34 KB    Lighthouse mobile 78 -> 90
 
-So a macron inside an italic on the home page costs 64 KB. The fix is the one
-this repo already uses for Japanese: run the faces through a subsetter and keep
-the handful of codepoints in use. `tools/subset-ja-fonts.py` is the model, and
-it would take roughly 250 KB across the four faces down to a few. Not done.
+The margin is the whole of Latin Extended-A (U+0100-017F), not just the four in
+use, so a Polish surname or a Czech place name in the copy tomorrow is already
+covered and no re-subset is needed for ordinary editing. The script prints any
+in-use character it could not cover. **The `latin` faces are deliberately left
+alone** — they are 13 KB, every page loads them, and there is nothing to remove.
+
+**Re-run it after adding copy in a language with unusual diacritics:**
+
+```bash
+npx gulp build && python3 tools/subset-latin-fonts.py
+```
+
+Same dependencies as the Japanese subsetter, same throwaway venv, same reason
+they are not project dependencies. The unsubset originals are the input and live
+in `tools/latin-font-sources/`.
+
+**FONT FILES CARRY NO `?v=` AND CANNOT BE CACHE-BUSTED.** `gulp stamp` hashes
+the bundles; the `url()`s in the compiled CSS and the preloads in
+`_includes/preload.html` name the fonts by plain path. With Cloudflare's browser
+cache TTL at a year, a returning visitor keeps whatever face they already have
+until it expires. That is harmless for a subset — the old file is a superset and
+renders identically, so nobody breaks and nobody gains until their cache turns
+over — but it would NOT be harmless for a face whose glyphs changed. If that
+ever happens, rename the file rather than trusting a purge.
 
 **Japanese (`/ja/` pages only).** `Noto Sans JP` and `M PLUS 1p` are applied
 exclusively inside `html[lang="ja"]` blocks in `default.less`, so they are
@@ -919,6 +940,35 @@ Other rules:
 - `changefreq` and `priority` are deliberately omitted; Google ignores both
 - every image entry must resolve to a file that exists — the generator only
   emits files it can see, so a broken entry means a broken reference on the page
+
+## Where this site is going: Aikikai Barcelona
+
+A new association, **Aikikai Barcelona**, has been registered and the site
+transitions to it once it is operational. **Aikido Musubi becomes the name of
+the Badalona dojo** — the main venue and the headquarters — and stops being the
+name of the organisation. The association runs four locations across the
+province of Barcelona and expects more.
+
+Until then everything ships under the Aikido Musubi name. **Barcelona is the
+primary location word from now on**; Badalona, Sant Adrià de Besòs and any town
+with a linked dojo stay present and secondary. `areaServed` on the SportsClub
+block already names all three, read from `_data/venues.yml`, so adding a fifth
+venue adds a fifth town without touching a template.
+
+**Do not introduce anything that hardcodes "Aikido Musubi" as the organisation.**
+It is already once in `_config.yml` as `title`, once in `_data/footer.yml` as
+`org`, and in the `SportsClub` block in `header.html`; those are the three that
+will need editing at the rename, and the number should not grow. The site
+description and the home-page title live in `_data/translations.yml` as
+`tagline`, `about` and `home_title` — they used to be written out five times
+between them in `header.html` and had already drifted apart, one saying
+"en Badalona" while another said "en Badalona, Barcelona".
+
+**Per-location pages go in subdirectories, never on subdomains.** A subdomain
+starts its authority at zero and has to earn it again; `/barcelona/` inherits
+what the domain already has. And a location page has to carry its own
+timetable, teacher, address and transport — a page that only rearranges the
+same words for a different town name is a doorway page, which Google penalises.
 
 ## What Search Console found, and what robots.txt was doing
 

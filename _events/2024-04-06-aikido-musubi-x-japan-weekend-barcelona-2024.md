@@ -29,6 +29,17 @@ file_en: "events-hFZ2XXIp-2024-04-06-aikido-musubi-x-japan-weekend-barcelona-202
 file_es: "events-hFZ2XXIp-2024-04-06-aikido-musubi-x-japan-weekend-barcelona-2024-es.pdf"
 file_ja: "events-hFZ2XXIp-2024-04-06-aikido-musubi-x-japan-weekend-barcelona-2024-es.pdf"
 
+# Where it happened. A collaboration is the one kind of event this dojo does
+# not host, so it does not inherit the dojo as its location the way every
+# other entry does — and without this it had none at all, which is the
+# critical "Missing field location" Search Console reports. A name and no
+# postal address: the hall is real and named, the street is not ours to
+# assert. See _layouts/event.html.
+place_ca: "Fira de Barcelona, Pavelló 6"
+place_en: "Fira de Barcelona, Hall 6"
+place_es: "Fira de Barcelona, Pabellón 6"
+place_ja: "フィラ・デ・バルセロナ 第6ホール"
+
 date_from: "2024-04-06"
 date_to: "2024-04-07"
 event_link: "https://www.japanweekend.com/barcelona/"

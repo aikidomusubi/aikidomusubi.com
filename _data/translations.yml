@@ -1,3 +1,55 @@
+# ---------------------------------------------------------------------------
+# The site's own description and home-page title
+#
+# THESE WERE WRITTEN OUT FIVE TIMES BETWEEN THEM, inline in header.html: once
+# for <meta name="description">, once for og:description and twitter, and once
+# in the SportsClub JSON-LD. They had already drifted — the meta description
+# said "en Badalona" while og:description said "en Badalona, Barcelona" — which
+# is what happens to any string kept in more than one place.
+#
+# `tagline` is the brand voice, hashtag and all, and it is what a searcher sees
+# under the link. Google strips emoji from a snippet more often than not, so
+# the melon is for the social cards rather than for the SERP; nothing depends
+# on it surviving.
+#
+# `about` is the same statement without the decoration, for schema.org, where a
+# description is data rather than copy.
+#
+# WHY "BARCELONA Y ALREDEDORES" AND NOT "BADALONA". The association trains in
+# four rooms across three towns now and the site's own opening line has said so
+# for months; only these strings still claimed one town. Badalona keeps its
+# place in the home-page title, which is the other half of the pair — see the
+# note on `home_title` below.
+# ---------------------------------------------------------------------------
+tagline:
+  ca: "Aikido Musubi és una associació cultural autogestionada i sense ànim de lucre que promou l'#aikido a Barcelona i rodalies. よろしくお願いします！🍉"
+  en: "Aikido Musubi is a self-managed, non-profit cultural association promoting #aikido in Barcelona and the surrounding area. よろしくお願いします！🍉"
+  es: "Aikido Musubi es una asociación cultural autogestionada y sin ánimo de lucro que promueve el #aikido en Barcelona y alrededores. よろしくお願いします！🍉"
+  ja: "合気道産靈（合気道むすび）は、バルセロナとその近郊で合気道を推進する、自己管理の非営利文化協会です。 よろしくお願いします！🍉"
+
+about:
+  ca: "Aikido Musubi és una associació cultural autogestionada i sense ànim de lucre que promou l'aikido a Barcelona i rodalies."
+  en: "Aikido Musubi is a self-managed, non-profit cultural association promoting aikido in Barcelona and the surrounding area."
+  es: "Aikido Musubi es una asociación cultural autogestionada y sin ánimo de lucro que promueve el aikido en Barcelona y alrededores."
+  ja: "合気道産靈（合気道むすび）は、バルセロナとその近郊で合気道を推進する、自己管理の非営利文化協会です。"
+
+# The home page's <title>, and the only one on the site that is not
+# "Aikido Musubi - <page>".
+#
+# It was the bare brand name, which asks the reader to already know who we are
+# and tells a search engine nothing. Search Console has the dojo third for
+# "aikido badalona" and tenth for "aikido barcelona" off five times the volume,
+# and the town was in neither the title nor the description.
+#
+# Both towns, brand first, and under sixty characters so nothing is cut off in
+# a result. Barcelona leads because that is where the association is going;
+# Badalona stays because that is the ranking there is to protect.
+home_title:
+  ca: "Aikido Musubi · Aikido a Barcelona i Badalona"
+  en: "Aikido Musubi · Aikido in Barcelona and Badalona"
+  es: "Aikido Musubi · Aikido en Barcelona y Badalona"
+  ja: "合気道産靈 · バルセロナとバダロナの合気道"
+
 dTHNhID1:
   ca: "Llegeix aquesta pàgina en una altra llengua"
   en: "Read this page in a different language"

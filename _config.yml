@@ -16,8 +16,12 @@
 title: Aikido Musubi
 email: info@aikidomusubi.com
 phone: 34717171177
+# Jekyll's own site-level description. The per-language ones a reader actually
+# sees are `tagline` and `about` in _data/translations.yml; this is the fallback
+# for anything that reaches for site.description, and it is kept in step by hand
+# because there is only one of it.
 description: >-
-  Aikido Musubi is a self-managed, non-profit cultural association that promotes aikido in Badalona, Barcelona.
+  Aikido Musubi is a self-managed, non-profit cultural association promoting aikido in Barcelona and the surrounding area.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://aikidomusubi.com" # the base hostname & protocol for your site, e.g. http://example.com
 github:
