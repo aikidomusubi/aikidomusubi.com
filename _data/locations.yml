@@ -26,7 +26,21 @@
 # let the strip grow into a claim the sentence does not support.
 # ---------------------------------------------------------------------------
 
-# THE HERO PHOTOGRAPH, one for all three pages.
+# THE HERO IS A MAP OF THE TOWN, and `hero_style` is the switch.
+#
+# Set it to `slate` or `sumi`. Both sets are rendered and committed, so flipping
+# this one line changes all twelve pages and you can look at the real thing
+# rather than a mockup. Once one is chosen, delete the other set from /images/
+# and this key can go with it — see docs/mockups/maps.html for what they are and
+# docs/mockups/src/build_maps_gl.py for how they are made.
+#
+# ATTRIBUTION IS NOT OPTIONAL. The data is OpenStreetMap's under ODbL and the
+# hero prints "© OpenStreetMap contributors" bottom-right. If the hero ever
+# stops being a map, remove the credit with it; while it is a map, the credit
+# stays.
+hero_style: slate
+
+# THE OLD HERO PHOTOGRAPH, kept for reference.
 #
 # It is the home page's own hero art, which is why it is named once here rather
 # than three times below: until each town has a picture of its own room, three

@@ -62,6 +62,29 @@ main {
   @media (max-width: @bp-md - .02px) { min-height: 21rem; }
 }
 
+// The ODbL credit. Bottom-right, above the scrim, small but not hidden: the
+// licence asks for it to be visible, and 4.6:1 on the scrim's darkest stop is
+// visible for something that is not body copy.
+.page main .lo-credit {
+  position: absolute;
+  right: .8rem;
+  bottom: .5rem;
+  z-index: 2;
+  margin: 0;
+  max-width: none;
+  font-size: .58rem;
+  letter-spacing: .04em;
+  color: fade(#E4E6E7, 70%);
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+    background-color: transparent;
+
+    &:hover, &:focus { color: @White; background-color: transparent; }
+  }
+}
+
 .lo-hero-in {
   position: relative;
   z-index: 1;

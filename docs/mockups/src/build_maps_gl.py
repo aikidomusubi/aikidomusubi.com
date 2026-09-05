@@ -49,13 +49,18 @@ TILES = 'https://tiles.openfreemap.org/planet'
 # smudge and the other as a street corner. `bearing` is 0 everywhere — a
 # rotated map is a design flourish that makes a place harder to recognise.
 # ---------------------------------------------------------------------------
+# The centres are pulled SOUTH of each town centre on purpose. Only rows 30-44%
+# of the rendered image survive the crop and the scrim, so whatever should be
+# seen has to sit in the upper third of the frame — and content rides higher when
+# the map centre is south of it. Centred on the town itself, the readable band
+# fell on the hills behind it.
 TOWNS = [
     {'id': 'badalona',            'name': 'Badalona',
-     'center': [2.2430, 41.4460], 'zoom': 12.6},
+     'center': [2.2430, 41.4180], 'zoom': 12.6},
     {'id': 'sant-adria-de-besos', 'name': 'Sant Adrià de Besòs',
-     'center': [2.2245, 41.4270], 'zoom': 13.2},
+     'center': [2.2245, 41.4120], 'zoom': 13.2},
     {'id': 'barcelona',           'name': 'Barcelona',
-     'center': [2.1700, 41.3960], 'zoom': 11.6},
+     'center': [2.1700, 41.3350], 'zoom': 11.6},
 ]
 
 # THE HERO ONLY EVER SHOWS THE MIDDLE THIRD OF THESE, and the framing above is
@@ -153,23 +158,19 @@ def style(st):
              "paint": {"line-color": st['border'], "line-width": 1.1,
                        "line-dasharray": [4, 3], "line-opacity": 0.9}},
 
-            # ---- labels: place names only, as in the Google styles ----------
-            {"id": "place", "type": "symbol", "source": "osm",
-             "source-layer": "place",
-             "filter": ["in", "class", "city", "town"],
-             "layout": {
-                 "text-field": ["get", "name"],
-                 "text-font": ["Noto Sans Bold"],
-                 "text-size": ["interpolate", ["linear"], ["zoom"], 10, 11, 14, 20],
-                 "text-letter-spacing": 0.18,
-                 "text-transform": "uppercase",
-                 "text-max-width": 9
-             },
-             "paint": {
-                 "text-color": st['label'],
-                 "text-halo-color": st['halo'],
-                 "text-halo-width": 1.6
-             }},
+            # ---- NO LABELS, and this was decided by looking at the page ----
+            #
+            # The hero band is 26rem and the scrim is 86% black by 78% of it, so
+            # the only part of the map anyone reads is the top third. Place
+            # labels landed below that, which meant the Barcelona hero showed
+            # Rubí, Cerdanyola, Montcada, La Llagosta, Alella, El Masnou and
+            # Premià — every town except Barcelona — and Badalona's showed four
+            # neighbours and not Badalona. A hero that names the wrong places is
+            # worse than one that names none.
+            #
+            # The h1 and the eyebrow already say which town this is. Without
+            # labels the map is what it should be here: the coastline, the grid
+            # and the motorways as texture behind the words.
         ]
     }
 

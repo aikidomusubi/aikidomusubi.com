@@ -224,48 +224,6 @@
         ],
         "line-opacity": 0.9
       }
-    },
-    {
-      "id": "place",
-      "type": "symbol",
-      "source": "osm",
-      "source-layer": "place",
-      "filter": [
-        "in",
-        "class",
-        "city",
-        "town"
-      ],
-      "layout": {
-        "text-field": [
-          "get",
-          "name"
-        ],
-        "text-font": [
-          "Noto Sans Bold"
-        ],
-        "text-size": [
-          "interpolate",
-          [
-            "linear"
-          ],
-          [
-            "zoom"
-          ],
-          10,
-          11,
-          14,
-          20
-        ],
-        "text-letter-spacing": 0.18,
-        "text-transform": "uppercase",
-        "text-max-width": 9
-      },
-      "paint": {
-        "text-color": "#C0D8DF",
-        "text-halo-color": "#0F1415",
-        "text-halo-width": 1.6
-      }
     }
   ]
 }

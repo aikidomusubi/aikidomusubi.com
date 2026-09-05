@@ -1049,6 +1049,34 @@ that this is the **site-map page**, `/mapa-del-sitio/`, and not `sitemap.xml`,
 which is generated from every page carrying an `i18n-ref` and had them from the
 first build.
 
+### The location heroes are maps, and `hero_style` is the switch
+
+`hero_style: slate | sumi` in `_data/locations.yml` picks which of two rendered
+sets all twelve pages use. Both are committed while the choice is open; when one
+wins, delete the other from `/images/` and the key can go with it.
+
+The maps are rendered from OpenStreetMap by
+`docs/mockups/src/build_maps_gl.py` — MapLibre over OpenFreeMap vector tiles,
+no key, no quota — and **not** from Google, for two reasons that are limits
+rather than preferences. Static Maps tops out at 1280 effective pixels and the
+hero asks for 2880. And Google requires its attribution to stay visible in the
+image, which a 4:3 crop under an 86% scrim is designed to destroy. **ODbL wants
+one line of credit and `.lo-credit` prints it; while the hero is a map, that
+line stays.**
+
+**They carry no place labels, and that was decided by looking at the built
+page.** The hero band is 26rem and the scrim is 86% black by 78% of it, so the
+only part of a map anyone reads is its top third. Labels landed below that: the
+Barcelona hero named Rubí, Cerdanyola, Montcada, La Llagosta, Alella, El Masnou
+and Premià — every town except Barcelona — and Badalona's named four
+neighbours and not Badalona. **A hero that names the wrong places is worse than
+one that names none.** The `h1` and the eyebrow already say which town it is.
+
+For the same reason the map centres sit **south of each town**: only rows 30-44%
+of the render survive the crop and the scrim, and content rides higher in the
+frame when the centre is south of it. Centred on the town itself, the readable
+band fell on the hills behind it.
+
 ### The access page's venue links are deep links, and they need a script
 
 `/acceso/` is a picker: four radios and a `:has()` rule that shows the one panel

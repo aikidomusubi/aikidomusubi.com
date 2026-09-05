@@ -134,21 +134,35 @@
     result: the room has to be visible before anything is read.
   {%- endcomment -%}
   {%- comment -%}
-    The home page's hero art, on all three pages, until each town has a
-    photograph of its own room. `_data/imgw.yml` has no entry for it: the file
-    exists only at the four hero widths and has no base variant, so the srcset
-    is written here from the naming convention rather than read from the map.
-    The map is generated from what exists, and what exists is these four.
+    A MAP OF THE TOWN, rendered from OpenStreetMap in the site's own palette.
+    `hero_style` in _data/locations.yml picks which of the two, and changing
+    that one line changes all twelve pages.
+
+    `_data/imgw.yml` has no entry for these: like the home page's hero art they
+    exist only at the four hero widths and have no base variant, so the srcset
+    is written from the naming convention rather than read from the map, which
+    only ever names files it can see.
   {%- endcomment -%}
-  {%- assign hero = LO.hero_image -%}
+  {%- assign hero = loc.ref | append: '-map-' | append: LO.hero_style -%}
   {%- capture heroset -%}/images/{{ hero }}-1200.SFX 1200w, /images/{{ hero }}-1920.SFX 1920w, /images/{{ hero }}-2560.SFX 2560w, /images/{{ hero }}-2880.SFX 2880w{%- endcapture -%}
   <div class="lo-hero">
     <picture>
       <source type="image/webp" sizes="100vw" srcset="{{ heroset | replace: 'SFX', 'webp' }}">
       <source type="image/jpeg" sizes="100vw" srcset="{{ heroset | replace: 'SFX', 'jpg' }}">
+      {%- comment -%}
+        `alt` is empty and that is correct: the map is decoration here. Every
+        fact it carries — the town, the rooms, the addresses — is written out
+        below in text, so describing it would repeat the page to a screen
+        reader rather than add to it.
+      {%- endcomment -%}
       <img src="/images/{{ hero }}-1200.jpg" alt="" width="1200" height="900"
            fetchpriority="high" decoding="sync">
     </picture>
+    {%- comment -%}
+      ODbL. One line, and it has to stay visible while the hero is a map.
+    {%- endcomment -%}
+    <p class="lo-credit">© <a href="https://www.openstreetmap.org/copyright"
+       target="_blank" rel="noopener">OpenStreetMap</a> contributors</p>
     <div class="lo-hero-in">
       <p class="lo-kick">{{ loc.eyebrow[L] }}</p>
       <h1>{{ loc.title[L] }}</h1>
