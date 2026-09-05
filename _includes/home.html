@@ -78,6 +78,13 @@
           {%- endif -%}
         {%- endfor -%}
       {%- endif -%}
+      {%- comment -%}
+        The card links to that town's page when there is one. `page` is an
+        i18n-ref, resolved to the reader's own language — the internal link
+        those pages need in order to be crawled at all.
+      {%- endcomment -%}
+      {%- assign vpage = nil -%}
+      {%- if v.page %}{% assign vpage = site.pages | where: 'i18n-ref', v.page | where: 'lang', L | first %}{% endif -%}
       <figure>
         {%- comment -%}
           A venue plan is drawn at about 300px in a three-up row, and the file
@@ -94,7 +101,7 @@
                width="600" height="600">
         </picture>
         <figcaption>
-          <b>{{ v.name[L] }}</b>
+          <b>{% if vpage %}<a href="{{ vpage.url }}">{{ v.name[L] }}</a>{% else %}{{ v.name[L] }}{% endif %}</b>
           <small>{{ v.note[L] }}</small>
           {%- if days != '' %}<small>{{ days }}</small>{% endif %}
         </figcaption>

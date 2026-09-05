@@ -554,3 +554,29 @@
   .vn-panel { display: block !important; break-inside: avoid; margin-bottom: 2rem; }
   .vn-map { display: none; }
 }
+
+// The link across to that town's location page. The Access page answers "how do
+// I get in"; the location page answers "what happens here and when".
+.page main .vn-more {
+  margin: .5rem 0 0;
+  max-width: none;
+  font-size: .88rem;
+
+  a {
+    .Futura;
+    font-size: .68rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-bottom: 2px solid @Yellow;
+    padding-bottom: .1rem;
+    color: @Black;
+
+    &:hover, &:focus {
+      background-color: transparent;
+      border-bottom-color: @Black;
+      text-decoration: none;
+      color: @Black;
+    }
+  }
+}

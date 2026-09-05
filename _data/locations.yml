@@ -1,0 +1,366 @@
+# ---------------------------------------------------------------------------
+# The three location pages: /badalona/, /barcelona/, /sant-adria-de-besos/
+#
+# One page per town where the association actually teaches, in four languages,
+# rendered by _layouts/location.html. Three and no more: a town with a real
+# room, a real timetable and a real teacher has a page; a town we would merely
+# like to rank in does not. A page that only rearranges the same words under a
+# different place name is a doorway page, and Google acts on those.
+#
+# WHAT IS WRITTEN HERE AND WHAT IS NOT. Everything factual comes from the data
+# the rest of the site already reads:
+#
+#   the rooms, addresses, plans, entrances, maps   _data/venues.yml
+#   the classes, hours, levels, instructors        _data/schedule.yml
+#   the fee and what the fee includes              _data/fees.yml
+#   how many instructors, seminars, rooms          counted at build time
+#
+# So a class that moves an hour moves on these pages too, and nobody has to
+# remember. What is written below is the part that cannot be derived: the lede,
+# the questions people actually ask about that town, and the labels.
+#
+# THE FOURTH FIGURE SAYS "AIKIKAI". The association belongs to Aikido Arashi
+# Group and it is Arashi Group that holds the Aikikai recognition. Four words in
+# a figure cell cannot carry that qualification, so the strip names the lineage
+# and the sentence under "Quién lo organiza" states the chain in full. Do not
+# let the strip grow into a claim the sentence does not support.
+# ---------------------------------------------------------------------------
+
+ui:
+  # ---- breadcrumb ----
+  home:     { es: "Inicio",  ca: "Inici",  en: "Home",  ja: "ホーム" }
+
+  # ---- the figures band ----
+  since:    { es: "Entrenando desde", ca: "Entrenant des de",
+              en: "Training since",   ja: "創立" }
+  teachers_n: { es: "Instructores titulados", ca: "Instructors titulats",
+                en: "Qualified instructors", ja: "有資格指導者" }
+  courses_n:  { es: "Cursos desde 2020", ca: "Cursos des del 2020",
+                en: "Seminars since 2020", ja: "2020年以降の講習会" }
+  lineage:    { es: "Hombu Dojo, Tokio", ca: "Hombu Dojo, Tòquio",
+                en: "Hombu Dojo, Tokyo",  ja: "本部道場（東京）" }
+
+  # ---- section headings, with their eyebrows ----
+  lab_essentials: { es: "Lo esencial", ca: "L'essencial", en: "The essentials", ja: "要点" }
+  h_essentials:   { es: "Lo esencial", ca: "L'essencial", en: "The essentials", ja: "要点" }
+  lab_first:  { es: "Cómo empezar", ca: "Com començar", en: "How to start", ja: "はじめ方" }
+  h_first:    { es: "Tu primera clase, paso a paso", ca: "La teva primera classe, pas a pas",
+                en: "Your first class, step by step", ja: "はじめての稽古の流れ" }
+  lab_when:   { es: "Horario", ca: "Horari", en: "Timetable", ja: "稽古時間" }
+  h_when:
+    es: "Las clases en TOWN"
+    ca: "Les classes a TOWN"
+    en: "The classes in TOWN"
+    ja: "TOWNの稽古"
+  lab_where:  { es: "Los espacios", ca: "Els espais", en: "The spaces", ja: "稽古場所" }
+  h_where:    { es: "Dónde entrenamos", ca: "On entrenem",
+                en: "Where we train", ja: "稽古する場所" }
+  lab_who:    { es: "Quién enseña", ca: "Qui ensenya", en: "Who teaches", ja: "指導者" }
+  h_who:      { es: "Los instructores", ca: "Els instructors",
+                en: "The instructors", ja: "指導者について" }
+  lab_faq:    { es: "Dudas", ca: "Dubtes", en: "Questions", ja: "よくある質問" }
+  h_faq:      { es: "Preguntas frecuentes", ca: "Preguntes freqüents",
+                en: "Frequently asked questions", ja: "よくある質問" }
+  lab_also:   { es: "Y también", ca: "I també", en: "And also", ja: "そのほか" }
+  h_also:     { es: "También entrenamos en", ca: "També entrenem a",
+                en: "We also train in", ja: "ほかの稽古場所" }
+
+  # ---- the fact block ----
+  f_where:  { es: "Dónde",     ca: "On",        en: "Where",      ja: "場所" }
+  f_when:   { es: "Cuándo",    ca: "Quan",      en: "When",       ja: "日時" }
+  f_who:    { es: "Para quién", ca: "Per a qui", en: "Who for",   ja: "対象" }
+  f_price:  { es: "Cuánto",    ca: "Quant",     en: "How much",   ja: "月謝" }
+  f_bring:  { es: "Qué llevar", ca: "Què portar", en: "What to bring", ja: "持ち物" }
+  f_teach:  { es: "Quién enseña", ca: "Qui ensenya", en: "Who teaches", ja: "指導" }
+  f_org:    { es: "Quién lo organiza", ca: "Qui ho organitza",
+              en: "Who runs it", ja: "主催" }
+
+  # ---- the timetable ----
+  th_when:  { es: "Cuándo", ca: "Quan",  en: "When",  ja: "日時" }
+  th_where: { es: "Dónde",  ca: "On",    en: "Where", ja: "場所" }
+  th_level: { es: "Nivel",  ca: "Nivell", en: "Level", ja: "レベル" }
+  th_who:   { es: "Quién",  ca: "Qui",   en: "Who",   ja: "指導" }
+
+  # ---- the recurring sentences ----
+  price_line:
+    es: "PRICE € al mes. Inscripción gratuita y dos clases de prueba."
+    ca: "PRICE € al mes. Inscripció gratuïta i dues classes de prova."
+    en: "PRICE € a month. Free registration and two trial classes."
+    ja: "月額 PRICE ユーロ。入会金は無料、体験稽古は2回まで。"
+  who_line:
+    es: "Adultos y jóvenes desde 12 años, con o sin experiencia previa."
+    ca: "Adults i joves des dels 12 anys, amb o sense experiència prèvia."
+    en: "Adults and young people from the age of 12, with or without previous experience."
+    ja: "12歳以上の方。経験の有無は問いません。"
+  bring_line:
+    es: "Ropa cómoda de manga y pantalón largos. El keikogi no hace falta para empezar."
+    ca: "Roba còmoda de màniga i pantalons llargs. El keikogi no cal per començar."
+    en: "Comfortable long-sleeved top and long trousers. You do not need a keikogi to start."
+    ja: "長袖・長ズボンの動きやすい服装で。稽古着は最初から必要ありません。"
+  org_line:
+    es: "Aikido Musubi, asociación cultural sin ánimo de lucro fundada en YEAR. Formamos parte de Aikido Arashi Group, reconocido por la Aikikai Foundation (Hombu Dojo, Tokio)."
+    ca: "Aikido Musubi, associació cultural sense ànim de lucre fundada el YEAR. Formem part d'Aikido Arashi Group, reconegut per l'Aikikai Foundation (Hombu Dojo, Tòquio)."
+    en: "Aikido Musubi, a non-profit cultural association founded in YEAR. We are part of Aikido Arashi Group, recognised by the Aikikai Foundation (Hombu Dojo, Tokyo)."
+    ja: "合気道産靈は、YEAR年に設立された非営利の文化協会です。合気会（本部道場・東京）の承認を受けた Aikido Arashi Group に所属しています。"
+  full_timetable:
+    es: "El horario completo de los COUNT espacios incluye el dojo de Badalona, que abre de lunes a sábado."
+    ca: "L'horari complet dels COUNT espais inclou el dojo de Badalona, obert de dilluns a dissabte."
+    en: "The full timetable for all COUNT spaces includes the Badalona dojo, open Monday to Saturday."
+    ja: "COUNTか所すべての稽古時間はこちら。バダロナの道場は月曜から土曜まで開いています。"
+  team_more:
+    es: "Los instructores de la asociación"
+    ca: "Els instructors de l'associació"
+    en: "The association's instructors"
+    ja: "協会の指導者について"
+
+  # ---- calls to action ----
+  cta_try:      { es: "Ven a probar", ca: "Vine a provar",
+                  en: "Come and try", ja: "体験に来る" }
+  cta_schedule: { es: "Ver el horario", ca: "Veure l'horari",
+                  en: "See the timetable", ja: "稽古時間を見る" }
+  cta_write:    { es: "Escríbenos", ca: "Escriu-nos", en: "Write to us", ja: "お問い合わせ" }
+  cta_fees:     { es: "Ver las cuotas", ca: "Veure les quotes",
+                  en: "See the fees", ja: "月謝を見る" }
+  cta_note:     { es: "Respondemos el mismo día.", ca: "Responem el mateix dia.",
+                  en: "We reply the same day.", ja: "当日中にご返信します。" }
+  trial_note:
+    es: "Dos clases de prueba · inscripción gratuita"
+    ca: "Dues classes de prova · inscripció gratuïta"
+    en: "Two trial classes · free registration"
+    ja: "体験稽古2回・入会金無料"
+  door_label: { es: "Cómo se entra", ca: "Com s'entra", en: "Getting in", ja: "入口" }
+  with_label: { es: "Con", ca: "Amb", en: "With", ja: "指導" }
+
+# The three steps. The same three the home page tells, in the same order, so a
+# reader who has seen one has seen the other.
+steps:
+  - heading: { es: "Escríbenos", ca: "Escriu-nos", en: "Write to us", ja: "連絡する" }
+    text:
+      es: "Un correo o un WhatsApp. Te decimos qué día viene mejor y quién te va a recibir."
+      ca: "Un correu o un WhatsApp. Et diem quin dia va millor i qui et rebrà."
+      en: "An email or a WhatsApp. We will tell you which day suits and who will meet you."
+      ja: "メールかWhatsAppでご連絡ください。おすすめの日と、当日お迎えする者をお伝えします。"
+  - heading: { es: "Ven quince minutos antes", ca: "Vine quinze minuts abans",
+               en: "Arrive fifteen minutes early", ja: "15分前にお越しください" }
+    text:
+      es: "Te enseñamos el vestuario y el tatami, y te presentamos a quien va a entrenar contigo."
+      ca: "T'ensenyem el vestidor i el tatami, i et presentem qui entrenarà amb tu."
+      en: "We will show you the changing room and the mat, and introduce whoever will train with you."
+      ja: "更衣室と道場をご案内し、一緒に稽古する者を紹介します。"
+  - heading: { es: "Ropa cómoda y nada más", ca: "Roba còmoda i res més",
+               en: "Comfortable clothes, nothing else", ja: "動きやすい服装だけで" }
+    text:
+      es: "Manga larga, pantalón largo y pies descalzos. Una hora, y nadie te va a poner a prueba el primer día."
+      ca: "Màniga llarga, pantalons llargs i peus descalços. Una hora, i ningú no et posarà a prova el primer dia."
+      en: "Long sleeves, long trousers, bare feet. One hour, and nobody is going to test you on day one."
+      ja: "長袖・長ズボン・裸足で。稽古は1時間、初日に試されるようなことはありません。"
+
+# ---------------------------------------------------------------------------
+# The three towns
+#
+# `venues` holds ids from _data/schedule.yml's `locations`, because that is what
+# the classes are keyed on. The layout maps each to its `slug`, which is the id
+# in _data/venues.yml, to reach the address and the plan.
+# ---------------------------------------------------------------------------
+locations:
+  - id: badalona
+    # The town on its own, for headings that name it mid-sentence.
+    town_name:
+      es: "Badalona"
+      ca: "Badalona"
+      en: "Badalona"
+      ja: "バダロナ"
+    ref: badalona-Vh4kR7wQ
+    venues: [musubi]
+    image: access-information-NdxqmVbV-00
+    title:
+      es: "Aikido en Badalona"
+      ca: "Aikido a Badalona"
+      en: "Aikido in Badalona"
+      ja: "バダロナの合気道"
+    eyebrow:
+      es: "Badalona · Aikido Musubi"
+      ca: "Badalona · Aikido Musubi"
+      en: "Badalona · Aikido Musubi"
+      ja: "バダロナ · 合気道産靈"
+    lede:
+      es: "Aikido Musubi es nuestro dojo, en Badalona, y está abierto de lunes a sábado desde 2008. Además del aikido se practican aquí judo, iaijutsu y karate, y es donde se celebran los exámenes, los cursos y las masterclass."
+      ca: "Aikido Musubi és el nostre dojo, a Badalona, i és obert de dilluns a dissabte des del 2008. A més de l'aikido, aquí s'hi practiquen judo, iaijutsu i karate, i és on se celebren els exàmens, els cursos i les masterclass."
+      en: "Aikido Musubi is our dojo, in Badalona, and it has been open Monday to Saturday since 2008. Judo, iaijutsu and karate are practised here as well as aikido, and it is where the gradings, the seminars and the masterclasses take place."
+      ja: "合気道産靈はバダロナにある私たちの道場で、2008年から月曜日から土曜日まで開いています。合気道のほかに柔道・居合術・空手も稽古しており、審査や講習会、マスタークラスもここで行います。"
+    hero_line:
+      es: "De lunes a sábado, en el dojo. Aikido, judo, iaijutsu y karate, sin experiencia previa y sin comprar nada para empezar."
+      ca: "De dilluns a dissabte, al dojo. Aikido, judo, iaijutsu i karate, sense experiència prèvia i sense comprar res per començar."
+      en: "Monday to Saturday, at the dojo. Aikido, judo, iaijutsu and karate, with no previous experience and nothing to buy to start."
+      ja: "月曜から土曜まで、道場で。合気道・柔道・居合術・空手。経験も、はじめに買うものも必要ありません。"
+
+    faq_local:
+      q:
+        es: "¿En qué se diferencia del resto de espacios?"
+        ca: "En què es diferencia de la resta d'espais?"
+        en: "How is it different from the other spaces?"
+        ja: "ほかの稽古場所とどう違いますか。"
+      a:
+        es: "Badalona es el dojo: un espacio dedicado por completo a las artes marciales, abierto de lunes a sábado y con las cuatro disciplinas. Los exámenes, los cursos y las masterclass se celebran aquí. En Barcelona y en Sant Adrià de Besòs hay aikido dos días por semana, con el mismo programa."
+        ca: "Badalona és el dojo: un espai dedicat completament a les arts marcials, obert de dilluns a dissabte i amb les quatre disciplines. Els exàmens, els cursos i les masterclass s'hi celebren. A Barcelona i a Sant Adrià de Besòs hi ha aikido dos dies per setmana, amb el mateix programa."
+        en: "Badalona is the dojo: a space given over entirely to martial arts, open Monday to Saturday and with all four disciplines. The gradings, the seminars and the masterclasses happen here. Barcelona and Sant Adrià de Besòs have aikido two days a week, with the same programme."
+        ja: "バダロナは道場そのものです。武道のためだけの場所で、月曜から土曜まで開いており、4つの武道すべてを稽古できます。審査・講習会・マスタークラスもここで行います。バルセロナとサント・アドリア・ダ・バゾスでは、同じ内容の合気道を週2日稽古しています。"
+    teachers_line:
+      es: "El dojo lo dirige <b>Pablo Martín</b>, 4.º dan Aikikai y shidōin. Con él enseñan Alberto Sancho, Pedro Fortes, Juanma Pérez y Andreu Villar en aikido, además de los instructores de judo, iaijutsu y karate. Ambos se formaron en Aikido Musubi y siguen la línea del Aikikai Hombu Dojo de Tokio."
+      ca: "El dojo el dirigeix <b>Pablo Martín</b>, 4t dan Aikikai i shidōin. Amb ell hi ensenyen Alberto Sancho, Pedro Fortes, Juanma Pérez i Andreu Villar en aikido, a més dels instructors de judo, iaijutsu i karate. Tots ells s'han format a Aikido Musubi i segueixen la línia de l'Aikikai Hombu Dojo de Tòquio."
+      en: "The dojo is led by <b>Pablo Martín</b>, 4th dan Aikikai and shidōin. Teaching alongside him are Alberto Sancho, Pedro Fortes, Juanma Pérez and Andreu Villar in aikido, as well as the judo, iaijutsu and karate instructors. All of them trained at Aikido Musubi and follow the line of the Aikikai Hombu Dojo in Tokyo."
+      ja: "道場は合気会四段・指導員の<b>パブロ・マルティン</b>が率いています。合気道ではアルベルト・サンチョ、ペドロ・フォルテス、フアンマ・ペレス、アンドレウ・ビヤルが指導し、柔道・居合術・空手にもそれぞれ指導者がいます。いずれも合気道産靈で稽古を重ね、東京の合気会本部道場の流れを汲んでいます。"
+  - id: barcelona
+    # The town on its own, for headings that name it mid-sentence.
+    town_name:
+      es: "Barcelona"
+      ca: "Barcelona"
+      en: "Barcelona"
+      ja: "バルセロナ"
+    ref: barcelona-Nq8pL3xB
+    venues: [espronceda, ub]
+    image: access-information-NdxqmVbV-03
+    title:
+      es: "Aikido en Barcelona"
+      ca: "Aikido a Barcelona"
+      en: "Aikido in Barcelona"
+      ja: "バルセロナの合気道"
+    eyebrow:
+      es: "Barcelona · CxEM Espronceda y UB"
+      ca: "Barcelona · CxEM Espronceda i UB"
+      en: "Barcelona · CxEM Espronceda and UB"
+      ja: "バルセロナ · エスプロンセダとUB"
+    lede:
+      es: "Entrenamos aikido en dos espacios de Barcelona, los lunes y los miércoles: el Complex Esportiu Municipal Espronceda y la Facultad de Derecho de la Universidad de Barcelona. Es la misma asociación que abre cada día el dojo de Badalona."
+      ca: "Entrenem aikido en dos espais de Barcelona, els dilluns i els dimecres: el Complex Esportiu Municipal Espronceda i la Facultat de Dret de la Universitat de Barcelona. És la mateixa associació que obre cada dia el dojo de Badalona."
+      en: "We train aikido in two spaces in Barcelona, on Mondays and Wednesdays: the Complex Esportiu Municipal Espronceda and the Faculty of Law at the University of Barcelona. It is the same association that opens the Badalona dojo every day."
+      ja: "バルセロナでは月曜と水曜に、2か所で合気道を稽古しています。エスプロンセダ市立スポーツ施設と、バルセロナ大学法学部です。バダロナの道場を毎日開いているのと同じ協会です。"
+    hero_line:
+      es: "Lunes y miércoles, en dos espacios. Sin experiencia previa, sin competición y sin comprar nada para empezar."
+      ca: "Dilluns i dimecres, en dos espais. Sense experiència prèvia, sense competició i sense comprar res per començar."
+      en: "Mondays and Wednesdays, in two spaces. No previous experience, no competition, and nothing to buy to start."
+      ja: "月曜と水曜、2か所で。経験も、試合も、はじめに買うものもありません。"
+
+    faq_local:
+      q:
+        es: "¿En qué se diferencia de las clases de Badalona?"
+        ca: "En què es diferencia de les classes de Badalona?"
+        en: "How is it different from the classes in Badalona?"
+        ja: "バダロナの稽古とどう違いますか。"
+      a:
+        es: "Es la misma asociación, el mismo programa y los mismos exámenes; cambian el espacio y el horario. Badalona es el dojo principal, abre de lunes a sábado y añade judo, iaijutsu y karate. En Barcelona hay aikido los lunes y los miércoles. Mucha gente entrena en los dos sitios."
+        ca: "És la mateixa associació, el mateix programa i els mateixos exàmens; canvien l'espai i l'horari. Badalona és el dojo principal, obre de dilluns a dissabte i hi ha també judo, iaijutsu i karate. A Barcelona hi ha aikido els dilluns i els dimecres. Molta gent entrena als dos llocs."
+        en: "Same association, same programme, same gradings; the space and the hours are what change. Badalona is the main dojo, open Monday to Saturday, and adds judo, iaijutsu and karate. Barcelona has aikido on Mondays and Wednesdays. Plenty of people train at both."
+        ja: "協会も稽古内容も審査も同じで、違うのは場所と時間だけです。バダロナは本部の道場で、月曜から土曜まで開いており、柔道・居合術・空手もあります。バルセロナでは月曜と水曜に合気道を稽古します。両方に通っている人も多くいます。"
+    teachers_line:
+      es: "<b>Daniil Mikhaylov</b>, 3.er dan Aikikai, lleva la clase del Complex Esportiu Municipal Espronceda. <b>Pablo Martín</b>, 4.º dan Aikikai y responsable del dojo, lleva la de la Facultad de Derecho de la Universidad de Barcelona. Ambos se formaron en Aikido Musubi y siguen la línea del Aikikai Hombu Dojo de Tokio."
+      ca: "<b>Daniil Mikhaylov</b>, 3r dan Aikikai, porta la classe del Complex Esportiu Municipal Espronceda. <b>Pablo Martín</b>, 4t dan Aikikai i responsable del dojo, porta la de la Facultat de Dret de la Universitat de Barcelona. Tots dos s'han format a Aikido Musubi i segueixen la línia de l'Aikikai Hombu Dojo de Tòquio."
+      en: "<b>Daniil Mikhaylov</b>, 3rd dan Aikikai, leads the class at the Complex Esportiu Municipal Espronceda. <b>Pablo Martín</b>, 4th dan Aikikai and head of the dojo, leads the one at the Faculty of Law, University of Barcelona. Both trained at Aikido Musubi and follow the line of the Aikikai Hombu Dojo in Tokyo."
+      ja: "エスプロンセダ市立スポーツ施設の稽古は、合気会三段の<b>ダニール・ミハイロフ</b>が担当します。バルセロナ大学法学部の稽古は、合気会四段で道場責任者の<b>パブロ・マルティン</b>が担当します。二人とも合気道産靈で稽古を重ね、東京の合気会本部道場の流れを汲んでいます。"
+  - id: sant-adria-de-besos
+    # The town on its own, for headings that name it mid-sentence.
+    town_name:
+      es: "Sant Adrià de Besòs"
+      ca: "Sant Adrià de Besòs"
+      en: "Sant Adrià de Besòs"
+      ja: "サント・アドリア・ダ・バゾス"
+    ref: sant-adria-de-besos-Wk2tD9vM
+    venues: [sant-adria]
+    image: access-information-NdxqmVbV-01
+    title:
+      es: "Aikido en Sant Adrià de Besòs"
+      ca: "Aikido a Sant Adrià de Besòs"
+      en: "Aikido in Sant Adrià de Besòs"
+      ja: "サント・アドリア・ダ・バゾスの合気道"
+    eyebrow:
+      es: "Sant Adrià de Besòs · Marina-Besòs"
+      ca: "Sant Adrià de Besòs · Marina-Besòs"
+      en: "Sant Adrià de Besòs · Marina-Besòs"
+      ja: "サント・アドリア・ダ・バゾス · マリナ・バゾス"
+    lede:
+      es: "Entrenamos aikido en el polideportivo municipal Marina-Besòs, en Sant Adrià de Besòs, los lunes y los miércoles. Es la misma asociación que abre cada día el dojo de Badalona, con el mismo programa y los mismos exámenes."
+      ca: "Entrenem aikido al poliesportiu municipal Marina-Besòs, a Sant Adrià de Besòs, els dilluns i els dimecres. És la mateixa associació que obre cada dia el dojo de Badalona, amb el mateix programa i els mateixos exàmens."
+      en: "We train aikido at the Marina-Besòs municipal sports centre in Sant Adrià de Besòs, on Mondays and Wednesdays. It is the same association that opens the Badalona dojo every day, with the same programme and the same gradings."
+      ja: "サント・アドリア・ダ・バゾスのマリナ・バゾス市立スポーツセンターで、月曜と水曜に合気道を稽古しています。バダロナの道場を毎日開いているのと同じ協会で、稽古内容も審査も同じです。"
+    hero_line:
+      es: "Lunes y miércoles, a diez minutos del dojo. Sin experiencia previa, sin competición y sin comprar nada para empezar."
+      ca: "Dilluns i dimecres, a deu minuts del dojo. Sense experiència prèvia, sense competició i sense comprar res per començar."
+      en: "Mondays and Wednesdays, ten minutes from the dojo. No previous experience, no competition, and nothing to buy to start."
+      ja: "月曜と水曜、道場から10分。経験も、試合も、はじめに買うものもありません。"
+
+    faq_local:
+      q:
+        es: "¿En qué se diferencia de las clases de Badalona?"
+        ca: "En què es diferencia de les classes de Badalona?"
+        en: "How is it different from the classes in Badalona?"
+        ja: "バダロナの稽古とどう違いますか。"
+      a:
+        es: "Es la misma asociación, el mismo programa y los mismos exámenes; cambian el espacio y el horario. Marina-Besòs está a diez minutos del dojo de Badalona, así que mucha gente entrena en los dos y aprovecha los dos horarios."
+        ca: "És la mateixa associació, el mateix programa i els mateixos exàmens; canvien l'espai i l'horari. Marina-Besòs és a deu minuts del dojo de Badalona, així que molta gent entrena als dos llocs i aprofita els dos horaris."
+        en: "Same association, same programme, same gradings; the space and the hours are what change. Marina-Besòs is ten minutes from the Badalona dojo, so plenty of people train at both and use both timetables."
+        ja: "協会も稽古内容も審査も同じで、違うのは場所と時間だけです。マリナ・バゾスはバダロナの道場から10分ほどなので、両方に通って両方の時間帯を活用している人も多くいます。"
+    teachers_line:
+      es: "Las clases de Marina-Besòs las lleva el equipo de instructores del dojo, con el mismo programa y los mismos criterios de examen que en Badalona. Todos se formaron en Aikido Musubi y siguen la línea del Aikikai Hombu Dojo de Tokio."
+      ca: "Les classes de Marina-Besòs les porta l'equip d'instructors del dojo, amb el mateix programa i els mateixos criteris d'examen que a Badalona. Tots s'han format a Aikido Musubi i segueixen la línia de l'Aikikai Hombu Dojo de Tòquio."
+      en: "The Marina-Besòs classes are led by the dojo's instructors, with the same programme and the same grading criteria as in Badalona. All of them trained at Aikido Musubi and follow the line of the Aikikai Hombu Dojo in Tokyo."
+      ja: "マリナ・バゾスの稽古は道場の指導者陣が担当し、稽古内容も審査の基準もバダロナと同じです。いずれも合気道産靈で稽古を重ね、東京の合気会本部道場の流れを汲んでいます。"
+# ---------------------------------------------------------------------------
+# The questions
+#
+# Five are the same everywhere because they are the same questions: they are
+# written once here and rendered on all three pages. The sixth is per town and
+# is the one that keeps these pages honest — "how is this different from the
+# others" is the question a real reader has and the one a doorway page cannot
+# answer.
+# ---------------------------------------------------------------------------
+faq_common:
+  - q:
+      es: "¿Necesito experiencia previa?"
+      ca: "Necessito experiència prèvia?"
+      en: "Do I need previous experience?"
+      ja: "経験がなくても大丈夫ですか。"
+    a:
+      es: "No. Quien empieza entrena junto a quien lleva años, y en aikido no hay competición, así que nadie está midiéndose contigo."
+      ca: "No. Qui comença entrena al costat de qui fa anys que practica, i en aikido no hi ha competició, així que ningú no s'està mesurant amb tu."
+      en: "No. Someone starting out trains alongside someone with years behind them, and there is no competition in aikido, so nobody is measuring themselves against you."
+      ja: "はい、大丈夫です。はじめての方も長年稽古している人と一緒に稽古します。合気道に試合はありませんので、誰かと競い合うことはありません。"
+  - q:
+      es: "¿Tengo que comprar un keikogi para empezar?"
+      ca: "He de comprar un keikogi per començar?"
+      en: "Do I have to buy a keikogi to start?"
+      ja: "はじめに稽古着を買う必要はありますか。"
+    a:
+      es: "No. Para las primeras clases basta con ropa cómoda de manga larga y pantalón largo. Si después te matriculas por trimestre, semestre o año, el keikogi lo pone el dojo."
+      ca: "No. Per a les primeres classes n'hi ha prou amb roba còmoda de màniga llarga i pantalons llargs. Si després t'hi matricules per trimestre, semestre o any, el keikogi el posa el dojo."
+      en: "No. Comfortable long-sleeved clothes and long trousers are enough for the first classes. If you then enrol by the quarter, half-year or year, the dojo provides the keikogi."
+      ja: "必要ありません。最初の数回は長袖・長ズボンの動きやすい服装で十分です。その後、3か月・6か月・1年単位でお申し込みの場合は、稽古着を道場からお渡しします。"
+  - q:
+      es: "¿Puedo probar antes de apuntarme?"
+      ca: "Puc provar-ho abans d'apuntar-m'hi?"
+      en: "Can I try before signing up?"
+      ja: "入会前に体験できますか。"
+    a:
+      es: "Sí: dos clases de prueba, y la inscripción no cuesta nada. Escríbenos y te decimos qué día venir."
+      ca: "Sí: dues classes de prova, i la inscripció no costa res. Escriu-nos i et diem quin dia venir."
+      en: "Yes: two trial classes, and registration costs nothing. Write to us and we will tell you which day to come."
+      ja: "はい。体験稽古を2回まで受けられ、入会金もかかりません。ご連絡いただければ、お越しいただく日をお伝えします。"
+  - q:
+      es: "¿Cuánto cuesta?"
+      ca: "Quant costa?"
+      en: "How much does it cost?"
+      ja: "費用はどのくらいですか。"
+    a:
+      es: "35 € al mes para adultos y 25 € para menores de 12 años, con descuentos por trimestre, semestre y año y una cuota familiar. El detalle completo está en la página de cuotas."
+      ca: "35 € al mes per a adults i 25 € per a menors de 12 anys, amb descomptes per trimestre, semestre i any i una quota familiar. El detall complet és a la pàgina de quotes."
+      en: "35 € a month for adults and 25 € for under-12s, with discounts by the quarter, half-year and year and a family rate. The full detail is on the fees page."
+      ja: "大人は月額35ユーロ、12歳未満は25ユーロです。3か月・6か月・1年単位の割引と家族割もあります。詳しくは月謝のページをご覧ください。"
+  - q:
+      es: "¿En qué idioma se dan las clases?"
+      ca: "En quin idioma es fan les classes?"
+      en: "What language are the classes in?"
+      ja: "稽古は何語で行われますか。"
+    a:
+      es: "En español y en catalán, y en inglés siempre que hace falta. La terminología es japonesa, como en cualquier dojo, y se aprende sobre la marcha."
+      ca: "En català i en castellà, i en anglès sempre que cal. La terminologia és japonesa, com a qualsevol dojo, i s'aprèn sobre la marxa."
+      en: "In Spanish and Catalan, and in English whenever it is needed. The terminology is Japanese, as in any dojo, and you pick it up as you go."
+      ja: "スペイン語とカタルーニャ語、必要に応じて英語でも行います。用語はどの道場とも同じく日本語で、稽古しながら自然に覚えられます。"

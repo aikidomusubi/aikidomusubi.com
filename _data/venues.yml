@@ -346,15 +346,20 @@ venues:
     maps_url: "https://www.google.com/maps/search/?api=1&query=Facultat+de+Dret+Universitat+de+Barcelona"
     apple_url: "https://maps.apple/p/WpkTJqkJdjE~RE"
     logo: "/graphics/Logotip_UB.svg"
+    # THE WORD FOR "UNIVERSITY" FOLLOWS THE LANGUAGE, like every other common
+    # noun on the site. The Catalan name of the institution was standing in all
+    # four columns, so a Spanish reader got "Facultat de Dret" and an English one
+    # got "Universitat". The institution's own name stays where it is a proper
+    # noun in a sentence; the descriptive part is translated.
     name:
-      es: "Facultat de Dret de la UB"
+      es: "Facultad de Derecho de la UB"
       ca: "Facultat de Dret de la UB"
       en: "Faculty of Law, UB"
       ja: "バルセロナ大学法学部"
     town:
-      es: "Universitat de Barcelona"
+      es: "Universidad de Barcelona"
       ca: "Universitat de Barcelona"
-      en: "Universitat de Barcelona"
+      en: "University of Barcelona"
       ja: "バルセロナ大学"
     address:
       es: "Av. Diagonal, 684, Les Corts<br>08034 Barcelona"

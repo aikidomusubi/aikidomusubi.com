@@ -88,8 +88,14 @@ sections:
     # under it is what it is called once you are there. Four of them now, which
     # the grid wraps 3 + 1.
     venues:
+    # `page` is the i18n-ref of the location page each card links to. It is the
+    # internal linking those pages need: a page reachable only from the sitemap
+    # is crawled rarely, ranks badly, and looks like exactly the kind of page it
+    # is not. Two of the cards point at the same page, because CxEM Espronceda
+    # and the Faculty of Law are both in Barcelona.
       - image: access-information-NdxqmVbV-00
         location: musubi
+        page: badalona-Vh4kR7wQ
         name: { es: "Badalona", ca: "Badalona", en: "Badalona", ja: "バダロナ" }
         note:
           es: "Aikido Musubi"
@@ -98,6 +104,7 @@ sections:
           ja: "合気道産靈"
       - image: access-information-NdxqmVbV-01
         location: sant-adria
+        page: sant-adria-de-besos-Wk2tD9vM
         name: { es: "Sant Adrià de Besòs", ca: "Sant Adrià de Besòs",
                 en: "Sant Adrià de Besòs", ja: "サント・アドリア・ダ・バゾス" }
         note:
@@ -107,6 +114,7 @@ sections:
           ja: "マリナ・バゾス"
       - image: access-information-NdxqmVbV-03
         location: espronceda
+        page: barcelona-Nq8pL3xB
         name: { es: "Barcelona", ca: "Barcelona", en: "Barcelona", ja: "バルセロナ" }
         note:
           es: "CxEM Espronceda"
@@ -115,6 +123,7 @@ sections:
           ja: "エスプロンセダ"
       - image: access-information-NdxqmVbV-02
         location: ub
+        page: barcelona-Nq8pL3xB
         name: { es: "Universitat de Barcelona", ca: "Universitat de Barcelona",
                 en: "University of Barcelona", ja: "バルセロナ大学" }
         note:

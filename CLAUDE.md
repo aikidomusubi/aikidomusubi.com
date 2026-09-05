@@ -941,6 +941,59 @@ Other rules:
 - every image entry must resolve to a file that exists — the generator only
   emits files it can see, so a broken entry means a broken reference on the page
 
+## The three location pages
+
+`/badalona/`, `/barcelona/`, `/sant-adria-de-besos/`, in four languages, from
+`_layouts/location.html` and `_data/locations.yml`. The town is a proper noun so
+the slug is the same in every language.
+
+**Three, and only where the association actually teaches.** A town with a real
+room, a real timetable and a real teacher gets a page; a town we would like to
+rank in does not. A page that only rearranges the same words under a different
+place name is a doorway page and Google acts on those. Four guards keep these
+on the right side of it:
+
+- every fact is specific to that town's rooms — address, hours, teacher, the
+  way in, the floor plan
+- nothing is copied from `/clases/` or `/cuotas/`; the long version is a link,
+  which is also the internal linking these pages need to be crawled at all
+- the last question is per town and answers "how is this different from the
+  others", which a doorway page cannot answer honestly
+- what is not offered is said plainly
+
+**Almost nothing on them is written.** The rooms come from `_data/venues.yml`,
+the classes from `_data/schedule.yml`, the fee from `_data/fees.yml`, and the
+three figures are counted at build time — instructors from `_data/about.yml`,
+seminars from `_events/`, rooms from `venues.yml`. Move a class an hour and the
+pages move with it. `_data/locations.yml` holds only what cannot be derived: the
+lede, the questions, the labels and the per-town paragraph about who teaches.
+
+**`person:` in `_data/schedule.yml` is the join to the dan grades.** The
+timetable holds `P. Martín` and the association page holds `Pablo Martín` with
+his grade; `person` is the key between them, so the grade is written once and
+the day somebody grades there is one file to edit.
+
+**They are linked from four places each** — the home page's venue cards (via
+`page:` in `_data/home.yml`, an i18n-ref resolved per language), `/acceso/`, and
+each other. A page reachable only from the sitemap is crawled rarely, ranks
+badly and looks like exactly the thing it is not.
+
+**`styles/locations.less` reproduces four components rather than importing
+them.** `.lo-facts`, `.lo-steps` and the section rhythm are `home.less`'s
+`.hm-facts`, `.hm-steps` and `.hm-sec` copied value for value, because those
+live in a per-page bundle this page does not load and pulling in two more
+stylesheets to borrow four components costs more than the components weigh.
+**So keep them in step.** `.ab-faq` is the exception and is deliberately the
+same class name as the About pages': one accordion on this site, not two.
+
+The one genuinely new component is `.lo-tt`, a four-row timetable. `/horarios/`
+has the full weekly grid and there was nothing smaller.
+
+The hero is the only photograph-first opening on the site, and that is on
+purpose: a location page is landed on cold from a search result by somebody
+deciding whether a place is for them. Everywhere else opens with
+`page-head.html` and should stay that way.
+
 ## Where this site is going: Aikikai Barcelona
 
 A new association, **Aikikai Barcelona**, has been registered and the site

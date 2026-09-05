@@ -1,0 +1,574 @@
+// out: false
+//
+// ---------------------------------------------------------------------------
+// The location pages: /badalona/, /barcelona/, /sant-adria-de-besos/
+//
+// Almost nothing here is new. The section rhythm, the fact list, the steps and
+// the accordion are the home page's and the About pages', reproduced under
+// `lo-` names rather than reused under `hm-` and `ab-` ones for a single
+// reason: `home.less` and `about.less` are per-page bundles that this page does
+// not load, and loading two more stylesheets to borrow four components would
+// cost more than the components weigh.
+//
+// SO KEEP THEM IN STEP. If `.hm-step` or `.ab-faq` changes, this changes with
+// it. The values below are copied, not reinvented — same numbers, same tokens,
+// same measure. `.ab-faq` is the exception and is genuinely shared: it is
+// declared here under its own name so the markup is identical to the About
+// pages' and a reader meets one accordion on this site, not two.
+// ---------------------------------------------------------------------------
+
+main {
+  --lo-mute: mix(@White, @Dark, 13.1%);   // 6.8:1 on white, the glossary's mute
+  --lo-line: fade(@Black, 13%);
+  --lo-hair: fade(@Black, 8%);
+}
+
+// ---- the hero --------------------------------------------------------------
+//
+// The only page type on the site that opens with a photograph, and it earns it:
+// a location page is landed on cold from a search result by somebody deciding
+// whether a place is for them, and the room answers that faster than a
+// paragraph can. Everywhere else the site opens with `page-head.html`, and it
+// should stay that way.
+.lo-hero {
+  .full-bleed();
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 26rem;
+  overflow: hidden;
+  background-color: @Black;
+
+  picture, img {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    object-fit: cover;
+  }
+
+  // The scrim. Two stops rather than one because a single flat tint over a
+  // photograph either washes out the image or fails the text; this leaves the
+  // top of the picture alone and only darkens where words sit.
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, fade(@Black, 12%) 0%, fade(@Black, 86%) 78%);
+  }
+
+  @media (max-width: @bp-md - .02px) { min-height: 21rem; }
+}
+
+.lo-hero-in {
+  position: relative;
+  z-index: 1;
+  .page-measure();
+  padding-top: 3rem;
+  padding-bottom: 2.5rem;
+  color: @White;
+}
+
+.page main .lo-hero-in h1 {
+  margin: .5rem 0 .7rem;
+  padding: 0;
+  font-size: 2.6rem;
+  line-height: 1.1;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  text-align: left;
+  color: @White;
+
+  @media (max-width: @bp-md - .02px) { font-size: 1.9rem; }
+}
+
+.page main .lo-kick {
+  margin: 0;
+  max-width: none;
+  .Futura;
+  font-size: .62rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: @Yellow;
+}
+
+.page main .lo-line {
+  margin: 0;
+  max-width: 34rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: fade(@White, 88%);
+}
+
+// ---- the figures band ------------------------------------------------------
+//
+// The association, not the timetable. The fact list below already carries the
+// hours and the fee; when this band carried them too the same four numbers
+// appeared twice inside one screen.
+.lo-figs {
+  .full-bleed();
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background-color: @Black;
+  color: @White;
+
+  @media (max-width: @bp-md - .02px) { grid-template-columns: 1fr 1fr; }
+
+  > div {
+    padding: 1.15rem 1rem;
+    text-align: center;
+    border-left: 1px solid fade(@White, 12%);
+
+    &:first-child { border-left: 0; }
+    @media (max-width: @bp-md - .02px) {
+      &:nth-child(odd) { border-left: 0; }
+      &:nth-child(n+3) { border-top: 1px solid fade(@White, 12%); }
+    }
+  }
+
+  b {
+    display: block;
+    .Futura;
+    font-size: 1.35rem;
+    line-height: 1.1;
+    color: @Yellow;
+  }
+
+  span {
+    display: block;
+    margin-top: .3rem;
+    font-size: .62rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    // 5.6:1 on @Black. NOT @White at an opacity: this is small uppercase text
+    // over a solid ground and a translucent grey is the one thing that keeps
+    // failing on this site.
+    color: #9AA1A4;
+  }
+}
+
+// ---- the page body ---------------------------------------------------------
+.page main .lo-crumb {
+  margin: 1.6rem 0 0;
+  max-width: none;
+  font-size: .72rem;
+  color: var(--lo-mute);
+
+  span { margin: 0 .35rem; }
+}
+
+.lo-sec { margin: 3.2rem 0 0; }
+
+.page main .lo-lab {
+  margin: 0 0 .5rem;
+  max-width: none;
+  .Futura;
+  font-size: .62rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--lo-mute);
+}
+
+// No rule under the heading. The eyebrow above it already separates one
+// section from the next, and a second signal saying the same thing is what
+// `page-head.html` removed from every other page on the site.
+.page main .lo-sec h2 {
+  margin: 0 0 1.2rem;
+  padding: 0;
+  border: 0;
+  .Futura; .regular;
+  font-size: 1.6rem;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  text-align: left;
+  color: @Black;
+
+  @media (max-width: @bp-md - .02px) { font-size: 1.3rem; }
+}
+
+.page main .lo-prose p,
+.page main .lo-note {
+  max-width: @measure;
+  margin: 0 0 1rem;
+  font-size: .95rem;
+  line-height: 1.8;
+  color: @Dark;
+}
+
+// ---- the fact list ---------------------------------------------------------
+//
+// The home page's `.hm-facts` with rules between the rows. The rules are what
+// make it read as a table rather than a list, which is what it is: seven
+// questions a reader arrives with, answered in the order they are asked.
+.lo-facts {
+  display: grid;
+  grid-template-columns: 11rem 1fr;
+  max-width: @measure;
+  margin: 0;
+  border-top: 1px solid @Black;
+
+  dt {
+    padding: .95rem 1.5rem .95rem 0;
+    border-bottom: 1px solid var(--lo-hair);
+    .Futura;
+    font-size: .62rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--lo-mute);
+  }
+
+  dd {
+    margin: 0;
+    padding: .95rem 0;
+    border-bottom: 1px solid var(--lo-hair);
+    font-size: .92rem;
+    line-height: 1.7;
+    color: @Dark;
+
+    b { .bold; color: @Black; }
+  }
+
+  @media (max-width: @bp-sm - .02px) {
+    grid-template-columns: 1fr;
+
+    dt { padding: .85rem 0 .15rem; border-bottom: 0; }
+    dd { padding: 0 0 .85rem; }
+  }
+}
+
+// ---- the three steps -------------------------------------------------------
+// Copied from `.hm-steps`. Same grid, same numerals, same type.
+.lo-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+
+  @media (max-width: @bp-md - .02px) { grid-template-columns: 1fr; gap: 1.6rem; }
+}
+
+.lo-step {
+  border-top: 1px solid @Black;
+  padding-top: .95rem;
+}
+
+.page main .lo-step .n {
+  .Futura;
+  margin: 0 0 .6rem;
+  max-width: none;
+  font-size: .66rem;
+  letter-spacing: .2em;
+  color: var(--lo-mute);
+}
+
+.page main .lo-step h3 {
+  .Futura; .regular;
+  margin: 0 0 .45rem;
+  padding: 0;
+  font-size: 1.05rem;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  text-align: left;
+  color: @Black;
+}
+
+.page main .lo-step p {
+  margin: 0;
+  max-width: none;
+  font-size: .88rem;
+  line-height: 1.7;
+  color: var(--lo-mute);
+}
+
+// ---- the timetable ---------------------------------------------------------
+//
+// Four rows, not the weekly grid. `/horarios/` has the grid and there is
+// nothing smaller on the site, so this is the one genuinely new component.
+.page main .lo-tt {
+  width: 100%;
+  max-width: @measure;
+  margin: 0;
+  border-collapse: collapse;
+  font-size: .92rem;
+
+  th {
+    padding: 0 1rem .5rem 0;
+    border-bottom: 1px solid @Black;
+    .Futura;
+    font-size: .62rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    text-align: left;
+    color: var(--lo-mute);
+  }
+
+  td {
+    padding: .8rem 1rem .8rem 0;
+    border-bottom: 1px solid var(--lo-hair);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  td:first-child { .Futura; white-space: nowrap; }
+
+  small {
+    display: block;
+    font-size: .8rem;
+    color: var(--lo-mute);
+  }
+
+  // A table cannot reflow, so below the small breakpoint it scrolls inside its
+  // own box rather than pushing the page sideways.
+  @media (max-width: @bp-sm - .02px) {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+// ---- the rooms -------------------------------------------------------------
+.lo-vens {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.6rem;
+
+  @media (max-width: @bp-lg - .02px) { grid-template-columns: 1fr; }
+}
+
+.lo-ven {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--lo-line);
+}
+
+.page main .lo-ven picture {
+  display: block;
+  margin: 0;
+}
+
+.page main .lo-ven img {
+  display: block;
+  width: 100%;
+  height: 11rem;
+  object-fit: cover;
+  background-color: fade(@Black, 4%);
+}
+
+.lo-ven-in {
+  display: flex;
+  flex-direction: column;
+  gap: .55rem;
+  padding: 1.2rem;
+  flex: 1;
+}
+
+.page main .lo-ven h3 {
+  .Futura; .regular;
+  margin: 0;
+  padding: 0;
+  font-size: 1.05rem;
+  letter-spacing: .04em;
+  text-align: left;
+  color: @Black;
+}
+
+.page main .lo-ven .addr {
+  margin: 0;
+  max-width: none;
+  font-size: .85rem;
+  line-height: 1.6;
+  color: var(--lo-mute);
+
+  b { .bold; color: @Black; }
+}
+
+.page main .lo-ven .maps {
+  display: flex;
+  gap: .5rem;
+  margin: auto 0 0;
+  padding-top: .6rem;
+  max-width: none;
+
+  a {
+    padding: .45rem .8rem;
+    box-shadow: inset 0 0 0 1px var(--lo-line);
+    .Futura;
+    font-size: .6rem;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--lo-mute);
+
+    &:hover, &:focus {
+      background-color: transparent;
+      color: @Black;
+      text-decoration: none;
+      box-shadow: inset 0 0 0 1px @Black;
+    }
+  }
+}
+
+// ---- the other towns -------------------------------------------------------
+.lo-others {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.4rem;
+
+  @media (max-width: @bp-md - .02px) { grid-template-columns: 1fr; }
+}
+
+.page main a.lo-other {
+  display: block;
+  text-decoration: none;
+  color: @Black;
+
+  &:hover, &:focus {
+    background-color: transparent;
+    text-decoration: none;
+
+    b { border-bottom-color: @Black; }
+  }
+
+  picture { display: block; margin: 0; }
+
+  img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+
+  b {
+    display: inline-block;
+    margin-top: .8rem;
+    padding-bottom: .1rem;
+    border-bottom: 2px solid @Yellow;
+    .Futura; .regular;
+    font-size: 1.05rem;
+    letter-spacing: .04em;
+  }
+
+  small {
+    display: block;
+    margin-top: .3rem;
+    font-size: .78rem;
+    line-height: 1.5;
+    color: var(--lo-mute);
+  }
+}
+
+// ---- calls to action -------------------------------------------------------
+.page main .lo-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .7rem;
+  align-items: center;
+  margin: 1.6rem 0 0;
+  max-width: none;
+
+  small { font-size: .75rem; color: var(--lo-mute); }
+}
+
+.page main a.lo-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: .75rem 1.4rem;
+  background-color: @Black;
+  border: 0;
+  .Futura;
+  font-size: .68rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: @White;
+
+  &:hover, &:focus {
+    background-color: @Dark;
+    color: @White;
+    text-decoration: none;
+  }
+
+  // Inside the hero the primary control is yellow on the photograph, which is
+  // the site's own accent doing the job it does on the home page's door.
+  .lo-hero-in & {
+    background-color: @Yellow;
+    color: @Black;
+
+    &:hover, &:focus { background-color: @White; color: @Black; }
+  }
+}
+
+.page main a.lo-btn-2 {
+  background-color: transparent;
+  box-shadow: inset 0 0 0 1px var(--lo-line);
+  color: @Black;
+
+  &:hover, &:focus { background-color: transparent; box-shadow: inset 0 0 0 1px @Black; color: @Black; }
+
+  .lo-hero-in & {
+    background-color: transparent;
+    box-shadow: inset 0 0 0 1px fade(@White, 45%);
+    color: @White;
+
+    // @White and not @Blue for the ring: @Blue measures 2.09:1 on @Black, under
+    // the 3:1 floor for a non-text indicator. Same fix as `.hm-door-go`.
+    &:hover, &:focus { background-color: transparent; box-shadow: inset 0 0 0 1px @White; color: @White; }
+  }
+}
+
+.lo-hero-in .lo-cta small { color: fade(@White, 75%); }
+
+// ---- the accordion ---------------------------------------------------------
+// The About pages' component, markup and all, so the site has one accordion.
+.ab-faq {
+  max-width: 44rem;
+  margin: 0 auto;
+  border-top: 1px solid var(--lo-line);
+
+  details { border-bottom: 1px solid var(--lo-line); }
+
+  summary {
+    position: relative;
+    padding: 1rem 2.2rem 1rem 0;
+    cursor: pointer;
+    list-style: none;
+    font-size: 1.02rem;
+    line-height: 1.5;
+    color: @Black;
+
+    &::-webkit-details-marker { display: none; }
+
+    &::after {
+      content: '+';
+      position: absolute;
+      right: .3rem;
+      top: .95rem;
+      font-size: 1.1rem;
+      color: var(--lo-mute);
+      transition: transform .2s;
+    }
+
+    &:hover { color: @Rust; }
+    &:focus-visible { outline: 2px solid @Blue; outline-offset: 2px; }
+  }
+
+  details[open] > summary::after { transform: rotate(45deg); color: @Rust; }
+
+  .a { padding: 0 0 1.1rem; }
+
+  .page main & .a p,
+  .a p {
+    margin: 0 0 .8rem;
+    max-width: none;
+    font-size: .94rem;
+    line-height: 1.8;
+    color: @Dark;
+
+    &:last-child { margin-bottom: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    summary::after { transition: none; }
+  }
+}

@@ -180,10 +180,12 @@ locations:
       ja: "バルセロナ"
   - id: ub
     slug: university-of-barcelona
+    # See the note on the same venue in _data/venues.yml: the word for
+    # "university" follows the language.
     name:
-      es: "Universitat de Barcelona"
+      es: "Universidad de Barcelona"
       ca: "Universitat de Barcelona"
-      en: "Universitat de Barcelona"
+      en: "University of Barcelona"
       ja: "バルセロナ大学"
     abbr:
       es: "UB"
@@ -247,16 +249,21 @@ levels:
 #
 # The katakana is Juanma's own, not a transliteration invented here.
 instructors:
-  - { id: sancho,     name: "A. Sancho",  ja: "アルベルト　サンチョ",       rank: 4 }
-  - { id: martin,     name: "P. Martín",  ja: "パブロ　マルティン",         rank: 1 }
-  - { id: perez,      name: "J.M. Pérez", ja: "フアンマ　ペレス",           rank: 5 }
-  - { id: fortes,     name: "P. Fortes",  ja: "ペドロ　フォルテス",         rank: 2 }
-  - { id: villar,     name: "A. Villar",  ja: "アンドレウ　ビヤル",         rank: 6 }
+# `person` is the join key to _data/about.yml's instructor list, whose entries
+# carry the dan grade. The grade is written once, there, and the timetable and
+# the location pages read it from there rather than keeping a second copy that
+# would go out of date the day somebody grades. Only the people who appear in
+# both lists need it.
+  - { id: sancho,     name: "A. Sancho",  ja: "アルベルト　サンチョ",       rank: 4, person: "Alberto Sancho" }
+  - { id: martin,     name: "P. Martín",  ja: "パブロ　マルティン",         rank: 1, person: "Pablo Martín" }
+  - { id: perez,      name: "J.M. Pérez", ja: "フアンマ　ペレス",           rank: 5, person: "Juanma Pérez" }
+  - { id: fortes,     name: "P. Fortes",  ja: "ペドロ　フォルテス",         rank: 2, person: "Pedro Fortes" }
+  - { id: villar,     name: "A. Villar",  ja: "アンドレウ　ビヤル",         rank: 6, person: "Andreu Villar" }
   # Joan Manel has no class of his own yet, so he is here without a `rank`:
   # the rank only orders the people who appear in the timetable legend.
-  - { id: molina-jm,  name: "J. M. Molina", ja: "ジョアン・マネル　モリナ" }
-  - { id: zheng,      name: "G. Zheng",   ja: "グアンロン　ジェン",         rank: 7 }
-  - { id: mikhaylov,  name: "D. Mikhaylov", ja: "ダニール　ミハイロフ",     rank: 8 }
+  - { id: molina-jm,  name: "J. M. Molina", ja: "ジョアン・マネル　モリナ", person: "Joan Manel Molina" }
+  - { id: zheng,      name: "G. Zheng",   ja: "グアンロン　ジェン",         rank: 7, person: "Guanlong Zheng" }
+  - { id: mikhaylov,  name: "D. Mikhaylov", ja: "ダニール　ミハイロフ",     rank: 8, person: "Daniil Mikhaylov" }
   - { id: zafra,      name: "J.L. Zafra", ja: "ホセ・ルイス　サフラ",       rank: 3 }
   - { id: serra,      name: "X. Serra" }
   # A different Molina from the aikido one above, and the reason that one is

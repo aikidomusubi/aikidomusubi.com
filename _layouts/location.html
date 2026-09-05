@@ -1,0 +1,417 @@
+{% include header.html %}
+
+<main id="main" tabindex="-1">
+  {%- comment -%}
+    A location page: /badalona/, /barcelona/, /sant-adria-de-besos/.
+
+    Everything factual is read, not written. The rooms come from
+    _data/venues.yml, the classes from _data/schedule.yml, the fee from
+    _data/fees.yml, and the three figures are counted. What _data/locations.yml
+    holds is the part that cannot be derived — the lede, the questions and the
+    labels. Move a class an hour and these pages move with it.
+
+    WHY THESE PAGES ARE NOT DOORWAY PAGES, since that is the thing to get right
+    and the reason to keep it that way:
+
+      * every fact is specific to that town's rooms — address, hours, teacher,
+        the way in, the floor plan
+      * nothing is copied from /clases/ or /cuotas/; where the long version is
+        wanted there is a link, which is also the internal linking these pages
+        need in order to be crawled at all
+      * the last question is per town and answers "how is this different from
+        the others", which a doorway page cannot answer honestly
+      * there are three, one per town where the association actually teaches.
+        A fourth for a town with no room in it would be the thing Google acts on.
+  {%- endcomment -%}
+  {%- assign L = page.lang | default: 'es' -%}
+  {%- assign LO = site.data.locations -%}
+  {%- assign U = LO.ui -%}
+  {%- assign S = site.data.schedule -%}
+  {%- assign V = site.data.venues -%}
+  {%- assign loc = LO.locations | where: 'id', page.location | first -%}
+
+  {%- comment -%}
+    The figures. Counted, never typed — the same rule the calendar and the
+    timetable follow. `foundingDate` lives in the SportsClub block in
+    header.html and is the one constant here.
+  {%- endcomment -%}
+  {%- assign n_events = site.events | size -%}
+  {%- assign n_venues = V.venues | size -%}
+  {%- assign ab = site.data.about.topics | where: 'id', 'association' | first -%}
+  {%- assign n_teach = 0 -%}
+  {%- assign people = '' | split: '' -%}
+  {%- for b in ab.blocks -%}
+    {%- if b.people -%}
+      {%- assign people = b.people -%}
+      {%- assign n_teach = b.people | size -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- assign founded = '2008' -%}
+  {%- assign gContact = site.data.nav.groups | where: 'id', 'contact' | first -%}
+  {%- assign gClasses = site.data.nav.groups | where: 'id', 'classes' | first -%}
+  {%- assign gAbout   = site.data.nav.groups | where: 'id', 'about'   | first -%}
+
+  {%- comment -%} The classes in this town, in clock order. {%- endcomment -%}
+  {%- assign rows = '' -%}
+  {%- for vid in loc.venues -%}
+    {%- for c in S.classes -%}
+      {%- if c.location == vid -%}
+        {%- assign lo = S.locations | where: 'id', c.location | first -%}
+        {%- assign cat = S.categories | where: 'id', c.category | first -%}
+        {%- assign lvl = S.levels | where: 'id', c.level | first -%}
+        {%- assign dnames = '' -%}
+        {%- for d in c.days -%}
+          {%- assign dn = S.day_names[d][L].short -%}
+          {%- if dnames == '' %}{% assign dnames = dn %}{% else %}{% assign dnames = dnames | append: ' · ' | append: dn %}{% endif -%}
+        {%- endfor -%}
+        {%- comment -%}
+          The name from _data/schedule.yml, the grade from _data/about.yml,
+          joined on `person`. The grade is written once, in about.yml, so it
+          cannot disagree with the association page the day somebody grades.
+        {%- endcomment -%}
+        {%- assign who = '' -%}{%- assign grade = '' -%}
+        {%- if c.instructor -%}
+          {%- assign p = S.instructors | where: 'id', c.instructor | first -%}
+          {%- if p.name.es %}{% assign who = p.name[L] %}
+          {%- elsif L == 'ja' and p.ja %}{% assign who = p.ja %}
+          {%- else %}{% assign who = p.name %}{% endif -%}
+          {%- if p.person -%}
+            {%- assign pr = people | where: 'name', p.person | first -%}
+            {%- if pr -%}
+              {%- if L == 'ja' and pr.name_ja %}{% assign who = pr.name_ja %}{% else %}{% assign who = pr.name %}{% endif -%}
+              {%- assign grade = pr.grade[L] -%}
+            {%- endif -%}
+          {%- endif -%}
+        {%- endif -%}
+        {%- capture row -%}{{ c.start }}¦{{ dnames }}¦{{ c.end }}¦{{ lo.name[L] }}¦{{ cat.name[L] }} · {{ lvl.name[L] }}¦{{ who }}¦{{ grade }}{%- endcapture -%}
+        {%- assign rows = rows | append: row | append: '§' -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endfor -%}
+  {%- assign rows = rows | split: '§' | sort -%}
+
+  {%- comment -%}
+    The hero. Its own element rather than page-head.html, because this is the
+    only page type on the site whose job is to be landed on cold from a search
+    result: the room has to be visible before anything is read.
+  {%- endcomment -%}
+  {%- assign ss = site.data.imgw[loc.image] -%}
+  <div class="lo-hero">
+    <picture>
+      <source type="image/webp"
+              srcset="{% if ss %}{{ ss }}{% else %}/images/{{ loc.image }}.webp{% endif %}"
+              {% if ss %}sizes="100vw"{% endif %}>
+      <source type="image/jpeg" srcset="/images/{{ loc.image }}.jpg">
+      <img src="/images/{{ loc.image }}.jpg" alt="" width="1000" height="1000"
+           fetchpriority="high" decoding="sync">
+    </picture>
+    <div class="lo-hero-in">
+      <p class="lo-kick">{{ loc.eyebrow[L] }}</p>
+      <h1>{{ loc.title[L] }}</h1>
+      <p class="lo-line">{{ loc.hero_line[L] }}</p>
+      <p class="lo-cta">
+        <a class="lo-btn" href="{{ gContact.items[0].url[L] }}">{{ U.cta_try[L] }}</a>
+        <a class="lo-btn lo-btn-2" href="#{{ loc.ref }}-horario">{{ U.cta_schedule[L] }}</a>
+        <small>{{ U.trial_note[L] }}</small>
+      </p>
+    </div>
+  </div>
+
+  {%- comment -%}
+    The figures band says who we are, not when the class is: the fact block
+    below already carries the hours and the fee, and having both say it put the
+    same four numbers on screen twice within a screen's height.
+  {%- endcomment -%}
+  <div class="lo-figs">
+    <div><b>{{ founded }}</b><span>{{ U.since[L] }}</span></div>
+    <div><b>{{ n_teach }}</b><span>{{ U.teachers_n[L] }}</span></div>
+    <div><b>{{ n_events }}</b><span>{{ U.courses_n[L] }}</span></div>
+    <div><b>Aikikai</b><span>{{ U.lineage[L] }}</span></div>
+  </div>
+
+  <p class="lo-crumb">
+    <a href="{% if L == 'es' %}/{% else %}/{{ L }}/{% endif %}">{{ U.home[L] }}</a>
+    <span aria-hidden="true">·</span> {{ loc.title[L] }}
+  </p>
+
+  {%- comment -%} ── lo esencial ───────────────────────────────────────── {%- endcomment -%}
+  <section class="lo-sec">
+    <p class="lo-lab">{{ U.lab_essentials[L] }}</p>
+    <h2>{{ U.h_essentials[L] }}</h2>
+    <dl class="lo-facts">
+      <dt>{{ U.f_where[L] }}</dt>
+      <dd>
+        {%- for vid in loc.venues -%}
+          {%- assign lo2 = S.locations | where: 'id', vid | first -%}
+          {%- assign v = V.venues | where: 'id', lo2.slug | first -%}
+          <b>{{ v.name[L] }}</b>, {{ v.postal.street }}, {{ v.postal.postcode }} {{ v.postal.town }}.{% unless forloop.last %}<br>{% endunless %}
+        {%- endfor -%}
+      </dd>
+      <dt>{{ U.f_when[L] }}</dt>
+      <dd>
+        {%- for r in rows -%}{%- assign f = r | split: '¦' -%}
+          {{ f[1] }}, {{ f[0] }}–{{ f[2] }} · {{ f[3] }}{% unless forloop.last %}<br>{% endunless %}
+        {%- endfor -%}
+      </dd>
+      <dt>{{ U.f_who[L] }}</dt><dd>{{ U.who_line[L] }}</dd>
+      {%- assign fee = site.data.fees.prices.monthly.adults.fee -%}
+      <dt>{{ U.f_price[L] }}</dt><dd>{{ U.price_line[L] | replace: 'PRICE', fee }}</dd>
+      <dt>{{ U.f_bring[L] }}</dt><dd>{{ U.bring_line[L] }}</dd>
+      {%- comment -%}
+        Each teacher once, whatever how many classes they take. Built as a
+        delimited string because Liquid has no set and no way to push onto an
+        array; `uniq` on the split does the rest.
+      {%- endcomment -%}
+      {%- assign whos = '' -%}
+      {%- for r in rows -%}{%- assign f = r | split: '¦' -%}
+        {%- if f[5] and f[5] != '' -%}
+          {%- capture one -%}{{ f[5] }}{% if f[6] and f[6] != '' %} ({{ f[6] }}){% endif %}{%- endcapture -%}
+          {%- assign whos = whos | append: one | append: '§' -%}
+        {%- endif -%}
+      {%- endfor -%}
+      {%- comment -%}
+        The row only exists when somebody is named. Marina-Besòs has no
+        instructor assigned at the moment — Guanlong Zheng taught it and a
+        replacement is being appointed — and a "Quién enseña" row containing a
+        single full stop is worse than no row.
+      {%- endcomment -%}
+      {%- assign wholist = whos | split: '§' | uniq | join: ', ' -%}
+      {%- if wholist != '' %}
+      <dt>{{ U.f_teach[L] }}</dt>
+      <dd>{{ wholist }}.</dd>
+      {%- endif %}
+      <dt>{{ U.f_org[L] }}</dt><dd>{{ U.org_line[L] | replace: 'YEAR', founded }}</dd>
+    </dl>
+  </section>
+
+  {%- comment -%} ── tu primera clase ──────────────────────────────────── {%- endcomment -%}
+  <section class="lo-sec">
+    <p class="lo-lab">{{ U.lab_first[L] }}</p>
+    <h2>{{ U.h_first[L] }}</h2>
+    <div class="lo-steps">
+      {%- for st in LO.steps %}
+      <div class="lo-step">
+        <p class="n">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</p>
+        <h3>{{ st.heading[L] }}</h3>
+        <p>{{ st.text[L] }}</p>
+      </div>
+      {%- endfor %}
+    </div>
+  </section>
+
+  {%- comment -%} ── el horario ────────────────────────────────────────── {%- endcomment -%}
+  <section class="lo-sec" id="{{ loc.ref }}-horario">
+    <p class="lo-lab">{{ U.lab_when[L] }}</p>
+    {%- assign town = loc.title[L] | split: ' ' | last -%}
+    <h2>{{ U.h_when[L] | replace: 'TOWN', loc.town_name[L] }}</h2>
+    <table class="lo-tt">
+      <thead>
+        <tr>
+          <th>{{ U.th_when[L] }}</th><th>{{ U.th_where[L] }}</th>
+          <th>{{ U.th_level[L] }}</th><th>{{ U.th_who[L] }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {%- for r in rows -%}{%- assign f = r | split: '¦' %}
+        <tr>
+          <td>{{ f[0] }}–{{ f[2] }}<small>{{ f[1] }}</small></td>
+          <td>{{ f[3] }}</td>
+          <td>{{ f[4] }}</td>
+          <td>{{ f[5] }}{% if f[6] and f[6] != '' %}<small>{{ f[6] }}</small>{% endif %}</td>
+        </tr>
+        {%- endfor %}
+      </tbody>
+    </table>
+    <p class="lo-note">
+      <a href="{{ gClasses.items[1].url[L] }}">{{ U.full_timetable[L] | replace: 'COUNT', n_venues }}</a>
+    </p>
+  </section>
+
+  {%- comment -%} ── dónde entrenamos ──────────────────────────────────── {%- endcomment -%}
+  <section class="lo-sec">
+    <p class="lo-lab">{{ U.lab_where[L] }}</p>
+    <h2>{{ U.h_where[L] }}</h2>
+    <div class="lo-vens">
+      {%- for vid in loc.venues -%}
+        {%- assign lo2 = S.locations | where: 'id', vid | first -%}
+        {%- assign v = V.venues | where: 'id', lo2.slug | first -%}
+        {%- assign pss = site.data.imgw[v.plan] -%}
+      <article class="lo-ven">
+        <picture>
+          <source type="image/webp"
+                  srcset="{% if pss %}{{ pss }}{% else %}/images/{{ v.plan }}.webp{% endif %}"
+                  {% if pss %}sizes="(min-width: 992px) 33vw, 90vw"{% endif %}>
+          <source type="image/jpeg" srcset="/images/{{ v.plan }}.jpg">
+          <img src="/images/{{ v.plan }}.jpg" loading="lazy" decoding="async"
+               width="1000" height="1000" alt="">
+        </picture>
+        <div class="lo-ven-in">
+          <h3>{{ v.name[L] }}</h3>
+          <p class="addr">{{ v.facility[L] }}<br>{{ v.postal.street }} · {{ v.postal.postcode }} {{ v.postal.town }}</p>
+          {%- for e in v.entrances limit: 1 %}
+          <p class="addr"><b>{{ U.door_label[L] }}:</b> {{ e.desc[L] }}</p>
+          {%- endfor %}
+          <p class="maps">
+            <a href="{{ v.maps_url }}" target="_blank" rel="noopener">Google Maps</a>
+            {%- if v.apple_url %}
+            <a href="{{ v.apple_url }}" target="_blank" rel="noopener">Apple Maps</a>
+            {%- endif %}
+          </p>
+        </div>
+      </article>
+      {%- endfor %}
+    </div>
+  </section>
+
+  {%- comment -%} ── quién enseña ──────────────────────────────────────── {%- endcomment -%}
+  <section class="lo-sec">
+    <p class="lo-lab">{{ U.lab_who[L] }}</p>
+    <h2>{{ U.h_who[L] }}</h2>
+    <div class="lo-prose">
+      <p>{{ loc.teachers_line[L] }}</p>
+      <p><a href="{{ gAbout.items[2].url[L] }}">{{ U.team_more[L] }}</a>.</p>
+    </div>
+  </section>
+
+  {%- comment -%} ── preguntas frecuentes ──────────────────────────────── {%- endcomment -%}
+  <section class="lo-sec">
+    <p class="lo-lab">{{ U.lab_faq[L] }}</p>
+    <h2>{{ U.h_faq[L] }}</h2>
+    {%- comment -%}
+      The site's own accordion: <details name>, so only one is open at a time
+      and it costs no JavaScript. Same component as the About pages.
+    {%- endcomment -%}
+    <div class="ab-faq">
+      {%- for f in LO.faq_common %}
+      <details name="{{ loc.ref }}-faq">
+        <summary>{{ f.q[L] }}</summary>
+        <div class="a"><p>{{ f.a[L] }}</p></div>
+      </details>
+      {%- endfor %}
+      <details name="{{ loc.ref }}-faq">
+        <summary>{{ loc.faq_local.q[L] }}</summary>
+        <div class="a"><p>{{ loc.faq_local.a[L] }}</p></div>
+      </details>
+    </div>
+  </section>
+
+  {%- comment -%} ── también entrenamos en ─────────────────────────────── {%- endcomment -%}
+  <section class="lo-sec">
+    <p class="lo-lab">{{ U.lab_also[L] }}</p>
+    <h2>{{ U.h_also[L] }}</h2>
+    <div class="lo-others">
+      {%- for o in LO.locations -%}
+        {%- if o.id == loc.id %}{% continue %}{% endif -%}
+        {%- assign otherPage = site.pages | where: 'i18n-ref', o.ref | where: 'lang', L | first -%}
+        {%- assign oss = site.data.imgw[o.image] -%}
+      <a class="lo-other" href="{{ otherPage.url }}">
+        <picture>
+          <source type="image/webp"
+                  srcset="{% if oss %}{{ oss }}{% else %}/images/{{ o.image }}.webp{% endif %}"
+                  {% if oss %}sizes="(min-width: 768px) 33vw, 90vw"{% endif %}>
+          <source type="image/jpeg" srcset="/images/{{ o.image }}.jpg">
+          <img src="/images/{{ o.image }}.jpg" loading="lazy" decoding="async"
+               width="1000" height="1000" alt="">
+        </picture>
+        <b>{{ o.title[L] }}</b>
+        <small>{{ o.eyebrow[L] }}</small>
+      </a>
+      {%- endfor %}
+    </div>
+    <p class="lo-cta">
+      <a class="lo-btn" href="{{ gContact.items[0].url[L] }}">{{ U.cta_write[L] }}</a>
+      <a class="lo-btn lo-btn-2" href="{{ gClasses.items[2].url[L] }}">{{ U.cta_fees[L] }}</a>
+      <small>{{ U.cta_note[L] }}</small>
+    </p>
+  </section>
+
+  {%- comment -%}
+    Structured data. A SportsClub per room with its address, coordinates and
+    opening hours, a FAQPage for the six questions, and a BreadcrumbList. All
+    of it is the same information the page shows a reader — a machine-readable
+    claim the page does not make is the one thing Google does penalise.
+  {%- endcomment -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {%- for vid in loc.venues -%}
+      {%- assign lo2 = S.locations | where: 'id', vid | first -%}
+      {%- assign v = V.venues | where: 'id', lo2.slug | first -%}
+      {
+        "@type": "SportsClub",
+        "name": {{ v.name[L] | jsonify }},
+        "url": {{ page.url | prepend: site.url | jsonify }},
+        "parentOrganization": { "@type": "SportsClub", "name": "Aikido Musubi", "url": "{{ site.url }}/" },
+        "sport": "Aikido",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": {{ v.postal.street | jsonify }},
+          "postalCode": {{ v.postal.postcode | jsonify }},
+          "addressLocality": {{ v.postal.town | jsonify }},
+          "addressRegion": {{ v.postal.region | jsonify }},
+          "addressCountry": {{ v.postal.country | jsonify }}
+        },
+        {%- comment -%}
+          Guarded: the Faculty of Law has no coordinates in _data/venues.yml,
+          and an empty `latitude` is not a number — it made the whole block
+          invalid JSON and therefore invisible. Same guard as
+          _includes/place-jsonld.html.
+        {%- endcomment -%}
+        {%- if v.lat and v.lng %}
+        "geo": { "@type": "GeoCoordinates", "latitude": {{ v.lat }}, "longitude": {{ v.lng }} },
+        {%- endif %}
+        "openingHoursSpecification": [
+          {%- assign first_h = true -%}
+          {%- for c in S.classes -%}
+            {%- if c.location == vid -%}
+              {%- for d in c.days -%}
+                {%- unless first_h %},{% endunless %}{% assign first_h = false %}
+                {%- assign dayName = 'Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday' | split: ',' -%}
+                {%- assign di = 0 -%}
+                {%- for k in S.days -%}{%- if k == d %}{% assign di = forloop.index0 %}{% endif -%}{%- endfor -%}
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "https://schema.org/{{ dayName[di] }}",
+            "opens": "{{ c.start }}",
+            "closes": "{{ c.end }}"
+          }
+              {%- endfor -%}
+            {%- endif -%}
+          {%- endfor %}
+        ]
+      },
+      {%- endfor %}
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {%- for f in LO.faq_common %}
+          {
+            "@type": "Question",
+            "name": {{ f.q[L] | jsonify }},
+            "acceptedAnswer": { "@type": "Answer", "text": {{ f.a[L] | jsonify }} }
+          },
+          {%- endfor %}
+          {
+            "@type": "Question",
+            "name": {{ loc.faq_local.q[L] | jsonify }},
+            "acceptedAnswer": { "@type": "Answer", "text": {{ loc.faq_local.a[L] | jsonify }} }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": {{ U.home[L] | jsonify }},
+            "item": "{{ site.url }}{% if L == 'es' %}/{% else %}/{{ L }}/{% endif %}" },
+          { "@type": "ListItem", "position": 2, "name": {{ loc.title[L] | jsonify }},
+            "item": {{ page.url | prepend: site.url | jsonify }} }
+        ]
+      }
+    ]
+  }
+  </script>
+
+</main>
+
+{% include footer.html %}

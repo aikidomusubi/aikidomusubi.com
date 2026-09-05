@@ -79,6 +79,28 @@
 
           <h2 class="vn-name" id="vn-name-{{ v.id }}">{{ v.name[L] }}</h2>
           <p class="vn-address">{{ v.address[L] }}</p>
+          {%- comment -%}
+            To that town's own page, when there is one. This page answers "how
+            do I get in"; the location page answers "what happens here and
+            when", and the two want to be one click apart. It is also the
+            internal linking those pages need in order to be crawled.
+
+            Matched on the venue id rather than the town, because two of the
+            four venues are in Barcelona and both point at the same page.
+          {%- endcomment -%}
+          {%- assign vloc = nil -%}
+          {%- for lc in site.data.locations.locations -%}
+            {%- for lv in lc.venues -%}
+              {%- assign sl = site.data.schedule.locations | where: 'id', lv | first -%}
+              {%- if sl.slug == v.id %}{% assign vloc = lc %}{% endif -%}
+            {%- endfor -%}
+          {%- endfor -%}
+          {%- if vloc -%}
+            {%- assign vlpage = site.pages | where: 'i18n-ref', vloc.ref | where: 'lang', L | first -%}
+            {%- if vlpage %}
+          <p class="vn-more"><a href="{{ vlpage.url }}">{{ vloc.title[L] }}</a></p>
+            {%- endif -%}
+          {%- endif -%}
 
           {%- if v.facts %}
           <ul class="vn-facts">
