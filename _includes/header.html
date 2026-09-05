@@ -248,6 +248,36 @@
       "description": "Aikido Musubi is a self-managed, non-profit cultural association that promotes aikido in Badalona, Barcelona.",
       "sport": "Aikido",
       "foundingDate": "2008",
+      {%- comment -%}
+        THE CLUB TRAINS IN THREE TOWNS AND ONLY SAID ONE.
+
+        The address is the dojo's, and it should stay the dojo's — that is where
+        the association is registered and where most of the week happens. But
+        `address` is the only place this block named a town, so the machine-
+        readable description of the club claimed Badalona and nothing else,
+        while the home page's own opening line has said "Badalona, Sant Adrià de
+        Besòs and Barcelona" since the venues were added. Search Console has the
+        club at position 3 for "aikido badalona" and 9.8 for "aikido barcelona",
+        which is roughly the shape of that omission.
+
+        `areaServed` is the field for this: where the organisation operates, as
+        against where its front door is. Read from _data/venues.yml so adding a
+        fifth venue adds a fifth town here, and deduplicated by town rather than
+        by venue, because two of the four are in Barcelona.
+      {%- endcomment -%}
+      {%- assign seen_towns = '' -%}
+      "areaServed": [
+      {%- assign first_town = true -%}
+      {%- for v in site.data.venues.venues -%}
+        {%- assign t = v.postal.town -%}
+        {%- assign probe = '|' | append: t | append: '|' -%}
+        {%- unless seen_towns contains probe -%}
+          {%- assign seen_towns = seen_towns | append: probe -%}
+          {%- unless first_town %},{% endunless %}{% assign first_town = false %}
+        { "@type": "City", "name": {{ t | jsonify }} }
+        {%- endunless -%}
+      {%- endfor %}
+      ],
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Av. d'Alfons XIII, 351",
