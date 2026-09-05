@@ -48,6 +48,14 @@
   summary { cursor:pointer; font-size:.8rem; color:#AE5224; }
   pre { background:#111314; color:#E4E6E7; padding:1rem; overflow:auto; font-size:.72rem;
         line-height:1.5; max-height:22rem; }
+  .h2 { font-size:1.35rem; letter-spacing:.05em; text-transform:uppercase; margin:3rem 0 .6rem; }
+  .reals { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; margin-top:1.6rem; }
+  @media (max-width: 900px) { .reals { grid-template-columns:1fr; } }
+  .real { margin:0; }
+  .real .hero { position:relative; aspect-ratio:4/3; overflow:hidden; background:#111314; }
+  .real img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .osm { position:absolute; right:.4rem; bottom:.3rem; margin:0; font-size:.5rem;
+         color:rgba(255,255,255,.7); }
 </style></head><body><div class="wrap">
 <h1>Three map styles for the location heroes</h1>
 <p class="lede">Sanzo Wada dictionary entries where a colour is chosen, and
@@ -701,7 +709,7 @@ geography is Google&rsquo;s. Paste the JSON into
     <path d="M0 66 H400 M0 110 H400 M0 178 H400 M0 214 H400"/>
     <path d="M56 0 V232 M140 0 V240 M228 0 V246 M312 0 V250 M370 0 V252"/>
   </g>
-  <g stroke="#A8A000" stroke-width="3.2" fill="none">
+  <g stroke="#454D51" stroke-width="3.2" fill="none">
     <path d="M0 140 H400"/><path d="M186 0 V244"/>
   </g>
   <path d="M-10 20 C 90 42, 150 96, 214 130 C 280 166, 340 190, 410 196"
@@ -736,7 +744,7 @@ geography is Google&rsquo;s. Paste the JSON into
     <path d="M0 66 H400 M0 110 H400 M0 178 H400 M0 214 H400"/>
     <path d="M56 0 V232 M140 0 V240 M228 0 V246 M312 0 V250 M370 0 V252"/>
   </g>
-  <g stroke="#A8A000" stroke-width="3.2" fill="none">
+  <g stroke="#454D51" stroke-width="3.2" fill="none">
     <path d="M0 140 H400"/><path d="M186 0 V244"/>
   </g>
   <path d="M-10 20 C 90 42, 150 96, 214 130 C 280 166, 340 190, 410 196"
@@ -764,7 +772,7 @@ geography is Google&rsquo;s. Paste the JSON into
     </figure>
   </div>
 
-  <ul class="sw"><li><i style="background:#111314"></i><b>Land</b><code>#111314</code></li><li><i style="background:#043042"></i><b>Water</b><code>#043042</code></li><li><i style="background:#0E3E24"></i><b>Parks</b><code>#0E3E24</code></li><li><i style="background:#1A1D1F"></i><b>Built-up</b><code>#1A1D1F</code></li><li><i style="background:#FFF200"></i><b>Motorway</b><code>#FFF200</code></li><li><i style="background:#A8A000"></i><b>Arterial</b><code>#A8A000</code></li><li><i style="background:#2D3235"></i><b>Streets</b><code>#2D3235</code></li><li><i style="background:#7B3A1A"></i><b>Boundary</b><code>#7B3A1A</code></li><li><i style="background:#8F9AA0"></i><b>Label</b><code>#8F9AA0</code></li></ul>
+  <ul class="sw"><li><i style="background:#111314"></i><b>Land</b><code>#111314</code></li><li><i style="background:#043042"></i><b>Water</b><code>#043042</code></li><li><i style="background:#0E3E24"></i><b>Parks</b><code>#0E3E24</code></li><li><i style="background:#1A1D1F"></i><b>Built-up</b><code>#1A1D1F</code></li><li><i style="background:#FFF200"></i><b>Motorway</b><code>#FFF200</code></li><li><i style="background:#454D51"></i><b>Arterial</b><code>#454D51</code></li><li><i style="background:#2D3235"></i><b>Streets</b><code>#2D3235</code></li><li><i style="background:#7B3A1A"></i><b>Boundary</b><code>#7B3A1A</code></li><li><i style="background:#8F9AA0"></i><b>Label</b><code>#8F9AA0</code></li></ul>
 
   <p class="meas">Ground under the scrim: <code>#0F1112</code> at the top,
      <code>#020303</code> where the type sits. White on that measures
@@ -850,7 +858,7 @@ geography is Google&rsquo;s. Paste the JSON into
     "elementType": "geometry.fill",
     "stylers": [
       {
-        "color": "#A8A000"
+        "color": "#454D51"
       }
     ]
   },
@@ -976,5 +984,44 @@ geography is Google&rsquo;s. Paste the JSON into
   }
 ]</pre>
   </details>
-</section>
+</section><h2 class="h2">The three on real data</h2><p class="lede">Badalona, rendered through MapLibre over OpenFreeMap tiles, under the hero scrim. Two things only this view could say: <b>Kuroki’s arterials had to go neutral</b> — as a darkened yellow they swamped the frame and left nothing for the motorways or the yellow button — and <b>Slate is far greener here than the swatches suggest</b>, because Collserola and the Serralada de Marina are most of the picture.</p><div class="reals">
+  <figure class="real">
+    <div class="hero">
+      <img src="maps/samples/badalona-sumi.jpg" alt="Badalona in the Musubi Sumi style">
+      <div class="scrim"></div>
+      <div class="hero-in">
+        <p class="kick">BADALONA · AIKIDO MUSUBI</p>
+        <h3>AIKIDO EN BADALONA</h3>
+        <p class="cta"><a class="btn">Ven a probar</a><a class="btn btn2">Ver el horario</a></p>
+      </div>
+      <p class="osm">© OpenStreetMap contributors</p>
+    </div>
+    <figcaption>Musubi Sumi</figcaption>
+  </figure>
+  <figure class="real">
+    <div class="hero">
+      <img src="maps/samples/badalona-slate.jpg" alt="Badalona in the Musubi Slate style">
+      <div class="scrim"></div>
+      <div class="hero-in">
+        <p class="kick">BADALONA · AIKIDO MUSUBI</p>
+        <h3>AIKIDO EN BADALONA</h3>
+        <p class="cta"><a class="btn">Ven a probar</a><a class="btn btn2">Ver el horario</a></p>
+      </div>
+      <p class="osm">© OpenStreetMap contributors</p>
+    </div>
+    <figcaption>Musubi Slate</figcaption>
+  </figure>
+  <figure class="real">
+    <div class="hero">
+      <img src="maps/samples/badalona-kuroki.jpg" alt="Badalona in the Musubi Kuroki style">
+      <div class="scrim"></div>
+      <div class="hero-in">
+        <p class="kick">BADALONA · AIKIDO MUSUBI</p>
+        <h3>AIKIDO EN BADALONA</h3>
+        <p class="cta"><a class="btn">Ven a probar</a><a class="btn btn2">Ver el horario</a></p>
+      </div>
+      <p class="osm">© OpenStreetMap contributors</p>
+    </div>
+    <figcaption>Musubi Kuroki</figcaption>
+  </figure></div>
 </div></body></html>

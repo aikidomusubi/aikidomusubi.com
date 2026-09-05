@@ -164,7 +164,14 @@ STYLES = [
         'park':      darken(GREEN, 13),
         'building':  lighten(BLACK, 4),
         'highway':   YELLOW,
-        'arterial':  darken(YELLOW, 17),
+        # NEUTRAL, and this was decided by rendering it. The arterial was a
+        # darkened Yellow, which looked fine on a synthetic map carrying two of
+        # them and was unusable on Badalona, which has dozens: the whole frame
+        # went yellow and there was nothing left for the motorways — or for the
+        # hero button, which is also Yellow. The signature of this style is
+        # yellow motorways on black, and it only reads if everything else is not
+        # yellow.
+        'arterial':  lighten(BLACK, 22),
         'local':     lighten(BLACK, 12),
         'border':    darken(RUST, 12),
         'label':     lighten(BLACK, 52),
@@ -343,6 +350,40 @@ def build():
   </details>
 </section>''')
 
+    # ---- the same three on real OpenStreetMap data ----------------------
+    # The synthetic city above compares palettes. This compares STYLES, which
+    # is not the same thing and is the comparison that actually decides it:
+    # Badalona has dozens of arterials and two big wooded ranges, and both
+    # facts changed the answer. Rendered by docs/mockups/src/build_maps_gl.py.
+    real = []
+    for st in STYLES:
+        short = st['id'].split('-')[-1]
+        real.append(f"""
+  <figure class="real">
+    <div class="hero">
+      <img src="maps/samples/badalona-{short}.jpg" alt="Badalona in the {st['name']} style">
+      <div class="scrim"></div>
+      <div class="hero-in">
+        <p class="kick">BADALONA · AIKIDO MUSUBI</p>
+        <h3>AIKIDO EN BADALONA</h3>
+        <p class="cta"><a class="btn">Ven a probar</a><a class="btn btn2">Ver el horario</a></p>
+      </div>
+      <p class="osm">© OpenStreetMap contributors</p>
+    </div>
+    <figcaption>{st['name']}</figcaption>
+  </figure>""")
+
+    realblock = ('<h2 class="h2">The three on real data</h2>'
+                 '<p class="lede">Badalona, rendered through MapLibre over '
+                 'OpenFreeMap tiles, under the hero scrim. Two things only this '
+                 'view could say: <b>Kuroki\u2019s arterials had to go neutral</b> '
+                 '\u2014 as a darkened yellow they swamped the frame and left '
+                 'nothing for the motorways or the yellow button \u2014 and '
+                 '<b>Slate is far greener here than the swatches suggest</b>, '
+                 'because Collserola and the Serralada de Marina are most of the '
+                 'picture.</p>'
+                 '<div class="reals">' + ''.join(real) + '</div>')
+
     html = '''<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -393,6 +434,14 @@ def build():
   summary { cursor:pointer; font-size:.8rem; color:#AE5224; }
   pre { background:#111314; color:#E4E6E7; padding:1rem; overflow:auto; font-size:.72rem;
         line-height:1.5; max-height:22rem; }
+  .h2 { font-size:1.35rem; letter-spacing:.05em; text-transform:uppercase; margin:3rem 0 .6rem; }
+  .reals { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; margin-top:1.6rem; }
+  @media (max-width: 900px) { .reals { grid-template-columns:1fr; } }
+  .real { margin:0; }
+  .real .hero { position:relative; aspect-ratio:4/3; overflow:hidden; background:#111314; }
+  .real img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .osm { position:absolute; right:.4rem; bottom:.3rem; margin:0; font-size:.5rem;
+         color:rgba(255,255,255,.7); }
 </style></head><body><div class="wrap">
 <h1>Three map styles for the location heroes</h1>
 <p class="lede">Sanzo Wada dictionary entries where a colour is chosen, and
@@ -404,7 +453,7 @@ with the real furniture, because the second is the only view that matters.</p>
 would invite you to judge the geography instead of the palette, and the
 geography is Google&rsquo;s. Paste the JSON into
 <code>snazzymaps.com/editor</code> to see each style on the real place.</p>
-''' + '\n'.join(cards) + '''
+''' + '\n'.join(cards) + realblock + '''
 </div></body></html>
 '''
     io.open(OUT_HTML, 'w', encoding='utf-8').write(html)

@@ -18,5 +18,8 @@ python3 docs/mockups/src/build_shidoin.py
 python3 docs/mockups/src/build_bar.py
 python3 docs/mockups/src/build_loc.py
 python3 docs/mockups/src/build_maps.py
+python3 docs/mockups/src/build_maps_gl.py
 for f in docs/mockups/*.html; do cp "$f" _site/mockups/; done
+# the map styles and their samples, which maps.html and maps-render.html read
+cp -R docs/mockups/maps _site/mockups/
 echo "→ http://localhost:4000/mockups/  ($(ls _site/mockups | wc -l | tr -d ' ') files)"
