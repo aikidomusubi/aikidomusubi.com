@@ -1,0 +1,14 @@
+# Labels for the video watch pages, /prensa-y-tv/<slug>/ and its translations.
+#
+# The titles, descriptions, dates and YouTube ids live in _videos/. Only the
+# furniture is here: the pager and the link back to the index.
+ui:
+  # "Newer" and "Older", not "Previous" and "Next". There is no ambiguity about
+  # which way time runs and plenty about which way a "next" arrow points on a
+  # list that is already sorted newest first.
+  newer: { es: "Más reciente", ca: "Més recent", en: "Newer", ja: "新しい" }
+  older: { es: "Anterior",     ca: "Anterior",   en: "Older", ja: "古い" }
+  pager: { es: "Otros vídeos", ca: "Altres vídeos",
+           en: "More videos",  ja: "ほかの動画" }
+  all:   { es: "Ver todos los vídeos", ca: "Veure tots els vídeos",
+           en: "See all the videos",   ja: "すべての動画を見る" }

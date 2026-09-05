@@ -260,36 +260,15 @@
 .pv-single {
   display: block;
   max-width: @measure;
-  margin: 0 0 3rem;
+  // CENTRED, because the h1 above it is. `.page main h1` is centred in the full
+  // column on every page of this site; the card sat flush left under it and the
+  // two read as belonging to different layouts.
+  margin: 0 auto 3rem;
 
   // `.pv-body` carries a 20.5rem min-height from 992px so that two cards side
   // by side line their dates up. One card has nothing to line up with, and the
   // min-height showed as a hole between the description and the date.
   .pv-body { min-height: 0; }
-}
-
-.page main .pv-back {
-  margin: 1.6rem 0 0;
-  max-width: none;
-
-  a {
-    display: inline-block;
-    padding-bottom: .25rem;
-    border-bottom: 2px solid @Yellow;
-    .Futura;
-    font-size: .66rem;
-    letter-spacing: .15em;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: @Black;
-
-    &:hover, &:focus {
-      background-color: transparent;
-      border-bottom-color: @Black;
-      color: @Black;
-      text-decoration: none;
-    }
-  }
 }
 
 // The index's titles are links now — each card points at that video's page.
@@ -301,6 +280,109 @@
   &:hover, &:focus {
     background-color: transparent;
     color: @Rust;
+    text-decoration: none;
+  }
+}
+
+
+// ---- the pager -------------------------------------------------------------
+//
+// Newer on the left, older on the right, which is the direction the index
+// reads. Each side carries its own thumbnail: a title alone gives no idea what
+// you are about to open, and these six are visually distinct pieces.
+.pv-pager {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1.6rem 0 0;
+  padding-top: 1.4rem;
+  border-top: 1px solid fadeout(@Black, 88%);
+}
+
+.page main a.pv-step {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  padding: .6rem;
+  text-decoration: none;
+  color: @Black;
+  background-color: transparent;
+  border: 1px solid fadeout(@Black, 90%);
+
+  &:hover, &:focus {
+    background-color: transparent;
+    text-decoration: none;
+    border-color: fadeout(@Black, 60%);
+    b { color: @Rust; }
+  }
+
+  &:focus-visible { outline: 2px solid @Blue; outline-offset: 2px; }
+
+  picture { display: block; margin: 0; flex: none; }
+
+  img {
+    display: block;
+    width: 5rem;
+    height: 2.8rem;
+    object-fit: cover;
+    background-color: fadeout(@Black, 94%);
+  }
+
+  span { min-width: 0; }
+
+  small {
+    display: block;
+    .Futura;
+    font-size: .58rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: mix(@White, @Dark, 13.1%);   // 6.8:1 on white
+  }
+
+  b {
+    display: block;
+    margin-top: .15rem;
+    .bold;
+    font-size: .82rem;
+    line-height: 1.35;
+  }
+}
+
+// The older side reads right to left, so the arrow of the layout matches the
+// direction of travel.
+.page main a.pv-step-next {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+// One end of the list has no neighbour. The cell still occupies its column so
+// the surviving link stays on its own side instead of sliding across.
+.pv-step.is-end { display: block; }
+
+@media (max-width: @bp-sm - .02px) {
+  .pv-pager { grid-template-columns: 1fr; }
+  .pv-step.is-end { display: none; }
+  .page main a.pv-step-next { flex-direction: row; text-align: left; }
+}
+
+.page main .pv-back { margin-top: 1.6rem; text-align: center; max-width: none; }
+
+.page main a.pv-all {
+  display: inline-block;
+  padding-bottom: .25rem;
+  border-bottom: 2px solid @Yellow;
+  .Futura;
+  font-size: .66rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: @Black;
+  background-color: transparent;
+
+  &:hover, &:focus {
+    background-color: transparent;
+    border-bottom-color: @Black;
+    color: @Black;
     text-decoration: none;
   }
 }

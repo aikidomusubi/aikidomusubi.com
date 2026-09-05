@@ -43,6 +43,23 @@
 
   <h1>{{ t }}</h1>
 
+  {%- comment -%}
+    PREVIOUS AND NEXT, in the order the index shows — `site.videos reversed`,
+    newest first. Computed here rather than stored, so adding a video to
+    _videos/ re-links its neighbours without anyone editing a stub.
+
+    Liquid has no index-of, so the walk carries the previous item forward and
+    catches the following one on the next turn.
+  {%- endcomment -%}
+  {%- assign ordered = site.videos | sort: 'date' | reverse -%}
+  {%- assign prev = nil -%}{%- assign next = nil -%}{%- assign seen = false -%}
+  {%- for o in ordered -%}
+    {%- assign oslug = o.path | split: '/' | last | replace: '.md', '' -%}
+    {%- if seen and next == nil -%}{%- assign next = o -%}{%- endif -%}
+    {%- if oslug == page.video -%}{%- assign seen = true -%}{%- endif -%}
+    {%- unless seen -%}{%- assign prev = o -%}{%- endunless -%}
+  {%- endfor -%}
+
   <div class="pv-list pv-single">
     <article class="pv-item">
       <div class="pv-player">
@@ -78,9 +95,67 @@
       <div class="pv-body">
         <p class="pv-desc">{{ d }}</p>
         <p class="pv-date"><time datetime="{{ v.date | date: '%Y-%m-%d' }}">{% include date.html date=v.date %}</time></p>
-        <p class="pv-back"><a href="{{ idx.url[L] }}">{{ idx.label[L] }}</a></p>
       </div>
     </article>
+
+    {%- comment -%}
+      The pager. Newer on the left and older on the right, which is the
+      direction the index reads, and each side carries its own thumbnail —
+      a title alone gives no idea what you are about to open, and these are
+      six visually distinct pieces.
+
+      <nav> with an accessible name, and the two links are the only ones in
+      it, so a screen reader can skip the whole thing. The labels say
+      "Newer"/"Older" rather than "Previous"/"Next": there is no ambiguity
+      about which way time runs, and there is plenty about which way a
+      "next" arrow points.
+    {%- endcomment -%}
+    {%- assign U = site.data.videos.ui -%}
+    {%- if prev or next %}
+    {%- comment -%}
+      `for x in 'a,b' | split: ','` is not valid Liquid — a filter cannot appear
+      in the loop expression — and Jekyll only warns, so the loop silently never
+      runs and the pager renders as an empty <nav>.
+    {%- endcomment -%}
+    {%- assign sides = 'prev,next' | split: ',' -%}
+    <nav class="pv-pager" aria-label="{{ U.pager[L] }}">
+      {%- for side in sides -%}
+        {%- if side == 'prev' %}{% assign o = prev %}{% else %}{% assign o = next %}{% endif -%}
+        {%- if o -%}
+          {%- assign oslug = o.path | split: '/' | last | replace: '.md', '' -%}
+          {%- assign opage = site.pages | where_exp: 'p', 'p.video == oslug' | where: 'lang', L | first -%}
+          {%- if L == 'ca' %}{% assign ot = o.title_ca %}
+          {%- elsif L == 'en' %}{% assign ot = o.title_en %}
+          {%- elsif L == 'ja' %}{% assign ot = o.title_ja %}
+          {%- else %}{% assign ot = o.title_es %}{% endif -%}
+      <a class="pv-step pv-step-{{ side }}" href="{{ opage.url }}"
+         rel="{% if side == 'prev' %}prev{% else %}next{% endif %}">
+        {%- comment -%}
+          Through _data/imgw.yml, not a hand-written `-480`: only three of the
+          six thumbnails have variants, and naming one that does not exist is
+          a 404 the image-reference check would have caught on the next build.
+        {%- endcomment -%}
+        {%- assign oss = site.data.imgw[o.thumb] -%}
+        <picture>
+          <source type="image/webp"
+                  srcset="{% if oss %}{{ oss }}{% else %}/images/{{ o.thumb }}.webp{% endif %}"
+                  {% if oss %}sizes="160px"{% endif %}>
+          <img src="/images/{{ o.thumb }}.jpg" loading="lazy" decoding="async"
+               width="160" height="90" alt="">
+        </picture>
+        <span>
+          <small>{% if side == 'prev' %}{{ U.newer[L] }}{% else %}{{ U.older[L] }}{% endif %}</small>
+          <b>{{ ot }}</b>
+        </span>
+      </a>
+        {%- else %}
+      <span class="pv-step pv-step-{{ side }} is-end" aria-hidden="true"></span>
+        {%- endif -%}
+      {%- endfor %}
+    </nav>
+    {%- endif %}
+
+    <p class="pv-back"><a class="pv-all" href="{{ idx.url[L] }}">{{ U.all[L] }}</a></p>
   </div>
 
   {%- comment -%}
