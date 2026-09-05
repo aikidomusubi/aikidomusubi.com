@@ -40,6 +40,14 @@
 # stays.
 hero_style: slate
 
+# THE SAME MAPS, A DIFFERENT PALETTE, on the "we also train in" cards at the
+# foot of each page. A separate key because they are a different job: the hero
+# is a full-bleed band under an 86% scrim, and these are 300px squares in the
+# open with a caption under them, so what reads well in one does not
+# necessarily read well in the other. Set it to the same value as `hero_style`
+# if you want them to match.
+others_style: slate
+
 # THE OLD HERO PHOTOGRAPH, kept for reference.
 #
 # It is the home page's own hero art, which is why it is named once here rather

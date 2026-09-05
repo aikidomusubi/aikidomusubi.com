@@ -396,7 +396,7 @@
                     srcset="{% if fss %}{{ fss }}{% else %}/images/{{ v.facade }}.webp{% endif %}"
                     {% if fss %}sizes="160px"{% endif %}>
             <img src="/images/{{ v.facade }}.jpg" loading="lazy" decoding="async"
-                 width="160" height="107" alt="{{ U.facade_alt[L] | replace: 'PLACE', v.name[L] }}">
+                 width="1200" height="800" alt="{{ U.facade_alt[L] | replace: 'PLACE', v.name[L] }}">
           </picture>
           {%- endif %}
           <p class="maps">
@@ -451,15 +451,26 @@
       {%- for o in LO.locations -%}
         {%- if o.id == loc.id %}{% continue %}{% endif -%}
         {%- assign otherPage = site.pages | where: 'i18n-ref', o.ref | where: 'lang', L | first -%}
-        {%- assign oss = site.data.imgw[o.image] -%}
+        {%- comment -%}
+          That town's own map, in `others_style` — the same rendered files the
+          heroes use, cropped square by the CSS. It was the orthophoto, which is
+          the one image on the page that told the reader nothing: a satellite
+          crop of a town they have not been to looks like a satellite crop of
+          any other. The map at least has a shape they might recognise.
+
+          Only the 1200 and 1920 candidates: the box is ~300px, so offering
+          2880 invites the browser to fetch a 2.2 MB file for a thumbnail.
+        {%- endcomment -%}
+        {%- assign omap = o.ref | append: '-map-' | append: LO.others_style -%}
+        {%- capture oset -%}/images/{{ omap }}-1200.SFX 1200w, /images/{{ omap }}-1920.SFX 1920w{%- endcapture -%}
       <a class="lo-other" href="{{ otherPage.url }}">
         <picture>
-          <source type="image/webp"
-                  srcset="{% if oss %}{{ oss }}{% else %}/images/{{ o.image }}.webp{% endif %}"
-                  {% if oss %}sizes="(min-width: 768px) 33vw, 90vw"{% endif %}>
-          <source type="image/jpeg" srcset="/images/{{ o.image }}.jpg">
-          <img src="/images/{{ o.image }}.jpg" loading="lazy" decoding="async"
-               width="1000" height="1000" alt="">
+          <source type="image/webp" sizes="(min-width: 768px) 33vw, 85vw"
+                  srcset="{{ oset | replace: 'SFX', 'webp' }}">
+          <source type="image/jpeg" sizes="(min-width: 768px) 33vw, 85vw"
+                  srcset="{{ oset | replace: 'SFX', 'jpg' }}">
+          <img src="/images/{{ omap }}-1200.jpg" loading="lazy" decoding="async"
+               width="1200" height="900" alt="">
         </picture>
         <b>{{ o.title[L] }}</b>
         <small>{{ o.eyebrow[L] }}</small>

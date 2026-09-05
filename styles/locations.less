@@ -483,8 +483,15 @@ main {
   b { .bold; color: @Black; }
 }
 
-// The facade, small. It is a second answer and not a second picture: at 160px
+// The facade, small. It is a second answer and not a second picture: at 10rem
 // it says "this is the building" and nothing else, which is all it needs to.
+//
+// WIDTH AND HEIGHT ARE BOTH FIXED, and the sources are all cropped to 3:2, so
+// every one of these boxes is exactly the same size on every card. `height:
+// auto` left them varying with whatever the photographer's aspect ratio
+// happened to be, and two cards side by side with two different picture heights
+// read as a mistake. `object-fit: cover` is what keeps the fixed box from
+// distorting a source that is not quite 3:2.
 .page main .lo-ven-facade {
   display: block;
   margin: .2rem 0 .1rem;
@@ -492,8 +499,8 @@ main {
   img {
     display: block;
     width: 10rem;
-    max-width: 100%;
-    height: auto;
+    height: 6.667rem;   // 3:2, the ratio every facade is cropped to
+    object-fit: cover;
     border: 1px solid var(--lo-line);
   }
 }

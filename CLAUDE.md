@@ -973,6 +973,20 @@ timetable holds `P. Martín` and the association page holds `Pablo Martín` with
 his grade; `person` is the key between them, so the grade is written once and
 the day somebody grades there is one file to edit.
 
+**The venue cards carry photographs, not the aerial plan.** `photo:` per venue
+in `_data/venues.yml`, with `facade:` as an optional second image for the two
+rooms that are hard to find from the street. The plan keeps its place on
+`/acceso/`, where it carries the entrance letters and the floor overlay and
+answers "where is the door"; at an 11rem crop anywhere else it is a grey
+rectangle with a road through it. The same swap applies on the dojo page and
+the home page's venue cards.
+
+**The facade thumbnails are a fixed box, and both dimensions are set.** Every
+source is cropped 3:2 and the CSS pins `10rem × 6.667rem` with `object-fit:
+cover`. `height: auto` left them varying with whatever the photographer's
+aspect ratio happened to be, and two cards side by side with two different
+picture heights read as a mistake.
+
 **They are linked from four places each** — the home page's venue cards (via
 `page:` in `_data/home.yml`, an i18n-ref resolved per language), `/acceso/`, and
 each other. A page reachable only from the sitemap is crawled rarely, ranks
@@ -1082,6 +1096,19 @@ For the same reason the map centres sit **south of each town**: only rows 30-44%
 of the render survive the crop and the scrim, and content rides higher in the
 frame when the centre is south of it. Centred on the town itself, the readable
 band fell on the hills behind it.
+
+**Two switches, not one.** `hero_style` picks the full-bleed band; `others_style`
+picks the small squares on the "we also train in" cards at the foot of each
+page. They are separate because the jobs are: the hero sits under an 86% scrim
+and the cards sit in the open with a caption, so what reads in one does not
+necessarily read in the other. Set them to the same value to match. Those cards
+used to carry the orthophoto, which was the one image on the page that told the
+reader nothing — a satellite crop of a town you have not been to looks like a
+satellite crop of any other.
+
+**Every palette is rendered and committed, so any of the six can be switched on
+without a render.** That is about 40 MB of `/images/`. When the choice settles,
+delete the sets that lost; nothing but those two keys refers to them.
 
 #### Rendering a new map: everything you need
 
