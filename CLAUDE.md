@@ -1064,6 +1064,12 @@ image, which a 4:3 crop under an 86% scrim is designed to destroy. **ODbL wants
 one line of credit and `.lo-credit` prints it; while the hero is a map, that
 line stays.**
 
+**`humans.txt` is where a new dependency gets recorded.** MapLibre, OpenFreeMap,
+OpenStreetMap, fontTools and Puppeteer are all in it because the maps and the
+font subsetting introduced them. **Add the entry in the same commit that adds
+the dependency** — a credits file nobody updates is worse than none, and the
+MAP DATA block there is part of how the ODbL credit is satisfied.
+
 **They carry no place labels, and that was decided by looking at the built
 page.** The hero band is 26rem and the scrim is 86% black by 78% of it, so the
 only part of a map anyone reads is its top third. Labels landed below that: the
@@ -1076,6 +1082,62 @@ For the same reason the map centres sit **south of each town**: only rows 30-44%
 of the render survive the crop and the scrim, and content rides higher in the
 frame when the centre is south of it. Centred on the town itself, the readable
 band fell on the hills behind it.
+
+#### Rendering a new map: everything you need
+
+The generator is `docs/mockups/src/build_maps_gl.py`; the palettes it imports
+live in `docs/mockups/src/build_maps.py`. Nothing is typed twice.
+
+```bash
+# 1. write the MapLibre styles and the render harness
+python3 docs/mockups/src/build_maps_gl.py
+# 2. the harness reads from the built site, so it has to be served
+npx gulp build && ./docs/mockups/render.sh
+RUBYOPT="-E utf-8:utf-8" bundle exec jekyll serve --skip-initial-build --no-watch &
+# 3. by hand: open /mockups/maps-render.html and press "Render all"
+#    or headless, which is what was actually used:
+node <scratchpad>/render/shoot.js <out-dir> musubi-slate
+```
+
+**The renderer is headless Chrome, and it is not in this repo.** `puppeteer-core`
+pointed at the system Chrome, installed into a throwaway directory — the same
+rule `tools/subset-ja-fonts.py` follows for fontTools. It needs
+`--use-gl=angle --use-angle=swiftshader --enable-unsafe-swiftshader`, because
+headless Chrome has no GPU and MapLibre draws nothing without WebGL. The map
+must be created with `preserveDrawingBuffer: true` or `toDataURL` returns a
+blank image and says nothing about why.
+
+**The Browser pane cannot do this.** It is hidden, so `requestAnimationFrame`
+never fires, so MapLibre never draws a frame and the canvas reads back pure
+black. Do not spend an hour on that a second time.
+
+| what | value | why |
+|---|---|---|
+| tiles | `https://tiles.openfreemap.org/planet` | OpenMapTiles schema, no key, no quota |
+| glyphs | `.../fonts/{fontstack}/{range}.pbf` | only needed if labels are turned on |
+| projection | north-up, `bearing: 0` | a rotated map is harder to recognise |
+| aspect | 4:3 | `height = width * 0.75` |
+| widths | 1200 / 1920 / 2560 / 2880 | what `preload.html` and the layout expect |
+| reference zoom | `ZOOM` in the generator, at **1200px** | |
+| zoom per width | `ZOOM + log2(width / 1200)` | **see below** |
+| labels | off | see below |
+| centre | ~0.011° **south** of the town | see below |
+
+**THE ZOOM HAS TO RISE WITH THE WIDTH.** MapLibre's zoom is pixels-per-degree,
+not a field of view: at a fixed zoom a 2880px canvas covers 2.4× the ground a
+1200px one does. Rendered without the correction, the four files in one
+`srcset` were **four different maps** — `badalona-1200` was the Besòs mouth and
+`badalona-2880` was the whole coast from Barcelona to Montgat — and which one a
+reader saw depended on their screen. `zoom + log2(w/1200)` holds the ground
+fixed and varies only resolution, which is what `srcset` means.
+
+**Filenames** are `{i18n-ref}-map-{style}-{width}.jpg|.webp`, JPEG at quality
+74 via `sips`, WebP at 76 via `cwebp`. They exist **only** at the four widths
+and have no base variant, so `tools/image-widths.py` never sees them and
+`_data/imgw.yml` has no entry; the layout writes its own srcset.
+
+**Rolling back a set** costs nothing, because they are committed:
+`git checkout <sha> -- images/` restores whichever generation you want.
 
 ### The access page's venue links are deep links, and they need a script
 

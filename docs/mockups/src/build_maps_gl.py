@@ -49,19 +49,41 @@ TILES = 'https://tiles.openfreemap.org/planet'
 # smudge and the other as a street corner. `bearing` is 0 everywhere — a
 # rotated map is a design flourish that makes a place harder to recognise.
 # ---------------------------------------------------------------------------
-# The centres are pulled SOUTH of each town centre on purpose. Only rows 30-44%
-# of the rendered image survive the crop and the scrim, so whatever should be
-# seen has to sit in the upper third of the frame — and content rides higher when
-# the map centre is south of it. Centred on the town itself, the readable band
-# fell on the hills behind it.
+# ONE ZOOM FOR ALL THREE, and the centres pulled a little south of each town.
+#
+# `zoom` is the zoom AT THE 1200px REFERENCE WIDTH. See ZOOM_FOR below: the
+# other three widths add log2(w/1200) so that all four files are the same map at
+# four resolutions instead of four different maps.
+#
+# South, because only rows 30-44% of the render survive the crop and the scrim,
+# so whatever should be seen has to sit in the upper third of the frame — and
+# content rides higher when the map centre is south of it. The offset is about
+# 13% of the frame height; at this zoom that is 0.011 degrees of latitude.
+ZOOM = 13.8
 TOWNS = [
     {'id': 'badalona',            'name': 'Badalona',
-     'center': [2.2430, 41.4180], 'zoom': 12.6},
+     'center': [2.2450, 41.4390], 'zoom': ZOOM},
     {'id': 'sant-adria-de-besos', 'name': 'Sant Adrià de Besòs',
-     'center': [2.2245, 41.4120], 'zoom': 13.2},
+     'center': [2.2200, 41.4190], 'zoom': ZOOM},
     {'id': 'barcelona',           'name': 'Barcelona',
-     'center': [2.1700, 41.3350], 'zoom': 11.6},
+     'center': [2.1650, 41.3790], 'zoom': ZOOM},
 ]
+
+# THE ZOOM HAS TO RISE WITH THE WIDTH, and this was a real bug for one render
+# cycle. MapLibre's zoom is pixels-per-degree, not a field of view: at a fixed
+# zoom a 2880px canvas covers 2.4 times the ground a 1200px one does. So the
+# four files in the srcset were four different maps — badalona-1200 was the
+# Besòs mouth and badalona-2880 was the whole coast from Barcelona to Montgat —
+# and which one a reader saw depended on their screen. Adding log2(w/1200)
+# holds the ground extent fixed and varies only the resolution, which is what
+# srcset means.
+REF_WIDTH = 1200
+
+
+def zoom_for(base, width):
+    import math
+    return base + math.log(float(width) / REF_WIDTH, 2)
+
 
 # THE HERO ONLY EVER SHOWS THE MIDDLE THIRD OF THESE, and the framing above is
 # set for that. `.lo-hero` is full-bleed at a 26rem min-height, and the image is
@@ -300,7 +322,11 @@ async function shot(styleKey, town, width) {
   stage.style.cssText = 'position:fixed;left:-99999px;top:0;width:' + width +
                         'px;height:' + Math.round(width * 0.75) + 'px;';
   map.setStyle(STYLES[styleKey]);
-  map.jumpTo({ center: town.center, zoom: town.zoom });
+  // The zoom rises with the width so that every file in the srcset is the same
+  // map at a different resolution. See the note beside ZOOM_FOR in the
+  // generator: at a fixed zoom, a wider canvas simply covers more ground.
+  map.jumpTo({ center: town.center,
+               zoom: town.zoom + Math.log2(width / 1200) });
   map.resize();
   await idle();
   const url = map.getCanvas().toDataURL('image/png');

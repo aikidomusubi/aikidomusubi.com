@@ -27,12 +27,17 @@ Google Maps (maps.google.com)
 Google Tag Manager (tagmanager.google.com)
 Hover (hover.com)
 Jekyll (jekyllrb.com)
+MapLibre GL (maplibre.org)
+OpenFreeMap (openfreemap.org)
+OpenStreetMap (openstreetmap.org)
 
 TOOLS
 Adobe Illustrator (adobe.com)
 Colibri (colibri.opqr.co)
+fontTools (fonttools.readthedocs.io)
 Gulp (gulpjs.com)
 Hyper (hyper.is)
+Puppeteer (pptr.dev)
 
 FONTS
 Futura (linotype.com/1212991/futura-family.html)
@@ -46,7 +51,14 @@ Icons by Font Awesome
 Institutional emblems belong to the bodies they identify
 
 IMAGES
-All images by Aikido Musubi and Alba Serra Ferrer
+All photographs by Aikido Musubi and Alba Serra Ferrer
+
+MAP DATA
+The town maps on the location pages are rendered from OpenStreetMap data,
+(c) OpenStreetMap contributors, available under the Open Database License
+(opendatacommons.org/licenses/odbl). Tiles by OpenFreeMap, rendered with
+MapLibre GL in a palette of our own. The credit also appears on each page
+that shows one.
 
 LICENSE
 GNU General Public License v3.0 (github.com/aikidomusubi/aikidomusubi.com/blob/master/LICENSE)

@@ -93,7 +93,7 @@ sections:
     # is crawled rarely, ranks badly, and looks like exactly the kind of page it
     # is not. Two of the cards point at the same page, because CxEM Espronceda
     # and the Faculty of Law are both in Barcelona.
-      - image: access-information-NdxqmVbV-00
+      - image: access-information-NdxqmVbV-aikido-musubi-room
         location: musubi
         page: badalona-Vh4kR7wQ
         name: { es: "Badalona", ca: "Badalona", en: "Badalona", ja: "バダロナ" }
@@ -102,7 +102,7 @@ sections:
           ca: "Aikido Musubi"
           en: "Aikido Musubi"
           ja: "合気道産靈"
-      - image: access-information-NdxqmVbV-01
+      - image: access-information-NdxqmVbV-sant-adria-de-besos-room
         location: sant-adria
         page: sant-adria-de-besos-Wk2tD9vM
         name: { es: "Sant Adrià de Besòs", ca: "Sant Adrià de Besòs",
@@ -112,7 +112,7 @@ sections:
           ca: "Marina-Besòs"
           en: "Marina-Besòs"
           ja: "マリナ・バゾス"
-      - image: access-information-NdxqmVbV-03
+      - image: access-information-NdxqmVbV-cxem-espronceda-room
         location: espronceda
         page: barcelona-Nq8pL3xB
         name: { es: "Barcelona", ca: "Barcelona", en: "Barcelona", ja: "バルセロナ" }
@@ -121,7 +121,7 @@ sections:
           ca: "CxEM Espronceda"
           en: "CxEM Espronceda"
           ja: "エスプロンセダ"
-      - image: access-information-NdxqmVbV-02
+      - image: access-information-NdxqmVbV-university-of-barcelona-room
         location: ub
         page: barcelona-Nq8pL3xB
         name: { es: "Universidad de Barcelona", ca: "Universitat de Barcelona",

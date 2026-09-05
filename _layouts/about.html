@@ -124,11 +124,16 @@
           {%- endfor %}
         <figure>
           <picture>
-            {%- assign ss = site.data.imgw[v.plan] -%}
+            {%- comment -%}
+              The photograph, for the same reason the location pages carry it:
+              this list answers "what are the rooms like", and the aerial plan
+              answers a question this page does not ask.
+            {%- endcomment -%}
+            {%- assign ss = site.data.imgw[v.photo] -%}
             <source type="image/webp"
-                    srcset="{% if ss %}{{ ss }}{% else %}/images/{{ v.plan }}.webp{% endif %}"
+                    srcset="{% if ss %}{{ ss }}{% else %}/images/{{ v.photo }}.webp{% endif %}"
                     {% if ss %}sizes="(min-width: 992px) 300px, (min-width: 576px) 30vw, 90vw"{% endif %}>
-            <img src="/images/{{ v.plan }}.jpg" width="300" height="300" loading="lazy"
+            <img src="/images/{{ v.photo }}.jpg" width="1200" height="800" loading="lazy"
                  decoding="async" alt="{{ v.town[L] }} · {{ v.name[L] }}">
           </picture>
           <figcaption>

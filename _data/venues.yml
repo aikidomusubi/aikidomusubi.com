@@ -93,6 +93,19 @@ venues:
       en: "The dojo is inside the sports complex and can be hard to find. Study the plan and allow extra time on your first visit."
       ja: "道場は運動施設の敷地内にあり、見つけにくい場所です。地図をご確認のうえ、初回は余裕をもってお越しください。"
     plan: "access-information-NdxqmVbV-00"
+    # `photo` IS WHAT THIS PLACE LOOKS LIKE; `plan` is how you get in.
+    #
+    # They are different questions and they were being answered by the same
+    # image. The aerial plan carries the entrance letters and the floor overlay
+    # and belongs on /acceso/, which asks "where is the door". Everywhere else —
+    # the location pages, the home page's venue cards, the dojo page — the
+    # question is "what is this place", and at an 11rem crop a satellite view is
+    # a grey rectangle with a road through it.
+    #
+    # `facade` is the second answer, for the two rooms that are hard to find
+    # from the street. Absent where there is no photograph, and the templates
+    # render nothing rather than a placeholder.
+    photo: "access-information-NdxqmVbV-aikido-musubi-room"
     # Overlay shapes, as SVG polygon points in % of the image. Traced from the
     # outlines Juanma drew over the orthophotos, so they follow the actual
     # footprint rather than a bounding box — the Badalona parking is a triangle.
@@ -204,6 +217,19 @@ venues:
       en: "The dojo is inside the sports centre and can be hard to find. Study the plan and allow extra time on your first visit."
       ja: "道場はスポーツセンターの施設内にあり、見つけにくい場所です。地図をご確認のうえ、初回は余裕をもってお越しください。"
     plan: "access-information-NdxqmVbV-01"
+    # `photo` IS WHAT THIS PLACE LOOKS LIKE; `plan` is how you get in.
+    #
+    # They are different questions and they were being answered by the same
+    # image. The aerial plan carries the entrance letters and the floor overlay
+    # and belongs on /acceso/, which asks "where is the door". Everywhere else —
+    # the location pages, the home page's venue cards, the dojo page — the
+    # question is "what is this place", and at an 11rem crop a satellite view is
+    # a grey rectangle with a road through it.
+    #
+    # `facade` is the second answer, for the two rooms that are hard to find
+    # from the street. Absent where there is no photograph, and the templates
+    # render nothing rather than a placeholder.
+    photo: "access-information-NdxqmVbV-sant-adria-de-besos-room"
     areas:
       - points: "44.6,63.5 54.5,48.1 60.7,52.0 50.8,67.6"
         label_at: [52.7, 57.8]
@@ -311,6 +337,20 @@ venues:
       en: "Classes are held in the tatami room inside the sports complex. Study the plan and allow extra time on your first visit."
       ja: "稽古はスポーツ施設内の畳の間で行います。地図をご確認のうえ、初回は余裕をもってお越しください。"
     plan: "access-information-NdxqmVbV-03"
+    # `photo` IS WHAT THIS PLACE LOOKS LIKE; `plan` is how you get in.
+    #
+    # They are different questions and they were being answered by the same
+    # image. The aerial plan carries the entrance letters and the floor overlay
+    # and belongs on /acceso/, which asks "where is the door". Everywhere else —
+    # the location pages, the home page's venue cards, the dojo page — the
+    # question is "what is this place", and at an 11rem crop a satellite view is
+    # a grey rectangle with a road through it.
+    #
+    # `facade` is the second answer, for the two rooms that are hard to find
+    # from the street. Absent where there is no photograph, and the templates
+    # render nothing rather than a placeholder.
+    photo: "access-information-NdxqmVbV-cxem-espronceda-room"
+    facade: "access-information-NdxqmVbV-cxem-espronceda-facade"
     # Traced from the outline Juanma drew over the orthophoto: the corners were
     # read off the yellow polygon and the green pin by sampling the pixels, not
     # estimated by eye.
@@ -390,6 +430,20 @@ venues:
       en: "All classes are held in the «La Capella» multipurpose hall, inside the Faculty of Law."
       ja: "稽古はすべて、法学部内の多目的ホール「La Capella」で行います。"
     plan: "access-information-NdxqmVbV-02"
+    # `photo` IS WHAT THIS PLACE LOOKS LIKE; `plan` is how you get in.
+    #
+    # They are different questions and they were being answered by the same
+    # image. The aerial plan carries the entrance letters and the floor overlay
+    # and belongs on /acceso/, which asks "where is the door". Everywhere else —
+    # the location pages, the home page's venue cards, the dojo page — the
+    # question is "what is this place", and at an 11rem crop a satellite view is
+    # a grey rectangle with a road through it.
+    #
+    # `facade` is the second answer, for the two rooms that are hard to find
+    # from the street. Absent where there is no photograph, and the templates
+    # render nothing rather than a placeholder.
+    photo: "access-information-NdxqmVbV-university-of-barcelona-room"
+    facade: "access-information-NdxqmVbV-university-of-barcelona-facade"
     # The institution goes in the facility name because the facility name is
     # what names the map button and the "how you get in" heading, and both have
     # to stand on their own: "Mapa de Facultad de Derecho" is a faculty of law

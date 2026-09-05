@@ -32,6 +32,15 @@ main {
 // should stay that way.
 .lo-hero {
   .full-bleed();
+  // AND UP, THROUGH `main`'s TOP INSET.
+  //
+  // `.full-bleed()` only does the horizontal half. `.page main` carries
+  // `padding: 3rem 0 6rem` and the hero is its first child, so the page opened
+  // with a 48px white band between the black nav and the image: the hero looked
+  // as if it did not reach the top of the page because it did not. Pulling it
+  // up by that same 3rem is the whole fix, and the inset still applies to
+  // everything after it.
+  margin-top: -3rem;
   position: relative;
   display: flex;
   align-items: flex-end;
@@ -62,27 +71,20 @@ main {
   @media (max-width: @bp-md - .02px) { min-height: 21rem; }
 }
 
-// The ODbL credit. Bottom-right, above the scrim, small but not hidden: the
-// licence asks for it to be visible, and 4.6:1 on the scrim's darkest stop is
-// visible for something that is not body copy.
+// The ODbL credit, at the foot of the page rather than on the image.
+//
+// It cannot be removed — the map is OpenStreetMap data and the licence requires
+// the credit — but it does NOT have to sit on top of the picture. OSM's own
+// guidance asks for it "next to the work, or in a place where credits
+// customarily appear", and the foot of the page that shows the map is exactly
+// that. Off the hero, still on the page, still honest.
 .page main .lo-credit {
-  position: absolute;
-  right: .8rem;
-  bottom: .5rem;
-  z-index: 2;
-  margin: 0;
+  margin: 2.8rem 0 0;
   max-width: none;
-  font-size: .58rem;
-  letter-spacing: .04em;
-  color: fade(#E4E6E7, 70%);
+  font-size: .68rem;
+  color: var(--lo-mute);
 
-  a {
-    color: inherit;
-    text-decoration: underline;
-    background-color: transparent;
-
-    &:hover, &:focus { color: @White; background-color: transparent; }
-  }
+  a { color: inherit; }
 }
 
 .lo-hero-in {
@@ -479,6 +481,21 @@ main {
   color: var(--lo-mute);
 
   b { .bold; color: @Black; }
+}
+
+// The facade, small. It is a second answer and not a second picture: at 160px
+// it says "this is the building" and nothing else, which is all it needs to.
+.page main .lo-ven-facade {
+  display: block;
+  margin: .2rem 0 .1rem;
+
+  img {
+    display: block;
+    width: 10rem;
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--lo-line);
+  }
 }
 
 .page main .lo-ven .maps {

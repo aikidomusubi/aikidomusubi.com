@@ -177,6 +177,76 @@ STYLES = [
         'label':     lighten(BLACK, 52),
         'halo':      BLACK,
     },
+    # -----------------------------------------------------------------------
+    # THREE LIGHTER VARIATIONS ON SLATE, since Slate is the one chosen.
+    #
+    # They are variations and not new directions on purpose: the question asked
+    # was "a bit more contrast, a bit lighter", and answering it with three
+    # unrelated ideas would make the comparison about taste rather than about
+    # the one variable being tested.
+    #
+    # THE CONSTRAINT THEY ALL HAVE TO MEET is not the hero text — the scrim is
+    # 86% black where the words are, so almost any map is legible under it. It
+    # is the TOP of the hero, where the scrim is only 12%: a map that is too
+    # light there stops looking like part of a site whose nav and footer are
+    # black, and starts looking like a window cut into the page. The measured
+    # figure printed under each card is the ground at the top of the band.
+    {
+        'id': 'musubi-slate-lit',
+        'name': 'Slate Claro',
+        'jp': '淡',
+        'blurb': 'Slate con la tierra dos pasos más clara y el agua un punto más '
+                 'viva. El mismo mapa, con más aire. Es el cambio más pequeño de '
+                 'los tres y el que menos toca la relación con la barra negra.',
+        'land':      lighten(DARK, 9),
+        'water':     lighten(BLUE, 7),
+        'park':      darken(GLAUCOUS_G, 24),
+        'building':  lighten(DARK, 4),
+        'highway':   lighten(DARK, 40),
+        'arterial':  lighten(DARK, 30),
+        'local':     lighten(DARK, 20),
+        'border':    lighten(DARK, 24),
+        'label':     lighten(GLAUCOUS_B, 8),
+        'halo':      darken(DARK, 18),
+    },
+    {
+        'id': 'musubi-slate-ink',
+        'name': 'Slate Contraste',
+        'jp': '強',
+        'blurb': 'La tierra se queda donde está y sube la red: calles, arterias y '
+                 'autopistas mucho más claras sobre el mismo fondo. Es el que '
+                 'mejor dibuja la trama del Eixample, porque lo que se ve es la '
+                 'trama y no el suelo.',
+        'land':      DARK,
+        'water':     darken(BLUE, 4),
+        'park':      darken(GLAUCOUS_G, 28),
+        'building':  lighten(DARK, 6),
+        'highway':   lighten(DARK, 52),
+        'arterial':  lighten(DARK, 40),
+        'local':     lighten(DARK, 26),
+        'border':    lighten(DARK, 30),
+        'label':     GLAUCOUS_B,
+        'halo':      darken(DARK, 20),
+    },
+    {
+        'id': 'musubi-glaucous',
+        'name': 'Glauco',
+        'jp': '碧',
+        'blurb': 'El más claro de los tres, construido desde Light Glaucous Blue '
+                 'en vez de desde Slate Color. Frío y luminoso; el que más se '
+                 'aleja del negro del sitio y el que hay que mirar con más '
+                 'cuidado en la parte alta del hero.',
+        'land':      darken(GLAUCOUS_B, 42),
+        'water':     darken(BLUE, 2),
+        'park':      darken(GLAUCOUS_G, 22),
+        'building':  darken(GLAUCOUS_B, 38),
+        'highway':   darken(GLAUCOUS_B, 6),
+        'arterial':  darken(GLAUCOUS_B, 16),
+        'local':     darken(GLAUCOUS_B, 28),
+        'border':    darken(GLAUCOUS_B, 24),
+        'label':     lighten(GLAUCOUS_B, 12),
+        'halo':      darken(GLAUCOUS_B, 44),
+    },
 ]
 
 

@@ -162,6 +162,13 @@ ui:
   # "・" and takes no word, which the layout handles rather than storing an
   # empty string that would read as a missing translation.
   and_word: { es: "y", ca: "i", en: "and", ja: "" }
+  # The ODbL credit's lead-in. The licence wants the credit, not a particular
+  # sentence, so this says what the credit is for.
+  facade_alt: { es: "La fachada de PLACE desde la calle",
+                ca: "La façana de PLACE des del carrer",
+                en: "The street frontage of PLACE",
+                ja: "PLACEの外観" }
+  map_credit: { es: "Mapa:", ca: "Mapa:", en: "Map:", ja: "地図：" }
   door_label: { es: "Cómo se entra", ca: "Com s'entra", en: "Getting in", ja: "入口" }
   with_label: { es: "Con", ca: "Amb", en: "With", ja: "指導" }
 

@@ -1,0 +1,229 @@
+{
+  "version": 8,
+  "name": "Musubi Contraste",
+  "sources": {
+    "osm": {
+      "type": "vector",
+      "url": "https://tiles.openfreemap.org/planet",
+      "attribution": "© OpenStreetMap contributors"
+    }
+  },
+  "glyphs": "https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf",
+  "layers": [
+    {
+      "id": "ground",
+      "type": "background",
+      "paint": {
+        "background-color": "#34454C"
+      }
+    },
+    {
+      "id": "landcover",
+      "type": "fill",
+      "source": "osm",
+      "source-layer": "landcover",
+      "paint": {
+        "fill-color": "#70815B",
+        "fill-opacity": 0.55
+      }
+    },
+    {
+      "id": "landuse-park",
+      "type": "fill",
+      "source": "osm",
+      "source-layer": "landuse",
+      "filter": [
+        "in",
+        "class",
+        "park",
+        "cemetery",
+        "pitch"
+      ],
+      "paint": {
+        "fill-color": "#70815B",
+        "fill-opacity": 0.7
+      }
+    },
+    {
+      "id": "park",
+      "type": "fill",
+      "source": "osm",
+      "source-layer": "park",
+      "paint": {
+        "fill-color": "#70815B",
+        "fill-opacity": 0.8
+      }
+    },
+    {
+      "id": "water",
+      "type": "fill",
+      "source": "osm",
+      "source-layer": "water",
+      "paint": {
+        "fill-color": "#05415B"
+      }
+    },
+    {
+      "id": "waterway",
+      "type": "line",
+      "source": "osm",
+      "source-layer": "waterway",
+      "paint": {
+        "line-color": "#05415B",
+        "line-width": 1.6
+      }
+    },
+    {
+      "id": "building",
+      "type": "fill",
+      "source": "osm",
+      "source-layer": "building",
+      "minzoom": 13,
+      "paint": {
+        "fill-color": "#40555E",
+        "fill-opacity": 0.85
+      }
+    },
+    {
+      "id": "road-minor",
+      "type": "line",
+      "source": "osm",
+      "source-layer": "transportation",
+      "filter": [
+        "in",
+        "class",
+        "minor",
+        "service",
+        "track"
+      ],
+      "minzoom": 12,
+      "paint": {
+        "line-color": "#6B8C9A",
+        "line-width": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          12,
+          0.4,
+          16,
+          2.4
+        ]
+      }
+    },
+    {
+      "id": "road-secondary",
+      "type": "line",
+      "source": "osm",
+      "source-layer": "transportation",
+      "filter": [
+        "in",
+        "class",
+        "secondary",
+        "tertiary"
+      ],
+      "paint": {
+        "line-color": "#95ADB7",
+        "line-width": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          10,
+          0.5,
+          16,
+          4
+        ]
+      }
+    },
+    {
+      "id": "road-primary",
+      "type": "line",
+      "source": "osm",
+      "source-layer": "transportation",
+      "filter": [
+        "in",
+        "class",
+        "primary",
+        "trunk"
+      ],
+      "paint": {
+        "line-color": "#95ADB7",
+        "line-width": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          8,
+          0.8,
+          16,
+          6
+        ]
+      }
+    },
+    {
+      "id": "road-motorway",
+      "type": "line",
+      "source": "osm",
+      "source-layer": "transportation",
+      "filter": [
+        "==",
+        "class",
+        "motorway"
+      ],
+      "paint": {
+        "line-color": "#BAC9D0",
+        "line-width": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          8,
+          1.0,
+          16,
+          7
+        ]
+      }
+    },
+    {
+      "id": "boundary",
+      "type": "line",
+      "source": "osm",
+      "source-layer": "boundary",
+      "filter": [
+        "all",
+        [
+          ">=",
+          "admin_level",
+          4
+        ],
+        [
+          "<=",
+          "admin_level",
+          8
+        ]
+      ],
+      "paint": {
+        "line-color": "#7795A2",
+        "line-width": 1.1,
+        "line-dasharray": [
+          4,
+          3
+        ],
+        "line-opacity": 0.9
+      }
+    }
+  ]
+}
