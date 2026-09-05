@@ -49,9 +49,17 @@
       `sitemap: false` is set on exactly four pages, the 404s, and it used to do
       only half the job: they were absent from sitemap.xml but still crawlable
       at /404.html, still carrying a self-canonical, and still four near-copies
-      of each other in four languages. Search Console reported seven pages as
-      "Duplicate without user-selected canonical". One flag, both meanings, so
-      the two cannot drift apart.
+      of each other in four languages. One flag, both meanings, so the two
+      cannot drift apart.
+
+      THIS WAS NOT WHAT SEARCH CONSOLE'S SEVEN "Duplicate without user-selected
+      canonical" WERE, and the guess is left here as a correction rather than
+      deleted. The seven turned out to be PDFs — /files/courses-hFZ2XXIp-*.pdf,
+      the names those files had before the `_courses/` to `_events/` rename,
+      crawled between May and July 2026 while both sets were still reachable.
+      They are covered by a Cloudflare redirect rule now, and there is nothing
+      in this repository to fix. The 404 pages still deserve the noindex on
+      their own merits.
 
       `follow` and not `none`: the 404 page carries the nav, and a crawler that
       lands on it should still find its way to the real pages.
@@ -134,7 +142,7 @@
       press.less carries both the players and the map facades, so the access
       page needs it too.
     {%- endcomment -%}
-    {% if page.i18n-ref == 'press-and-tv-Rm4zW8dL' or page.i18n-ref == 'access-information-NdxqmVbV' %}
+    {% if page.i18n-ref == 'press-and-tv-Rm4zW8dL' or page.i18n-ref == 'access-information-NdxqmVbV' or page.layout == 'videopage' %}
       <link href="/styles/press.min.css?v={{ site.data.assets["press.min.css"] }}" rel="stylesheet">
       <script src="/scripts/press.min.js?v={{ site.data.assets["press.min.js"] }}" defer></script>
     {% endif %}
@@ -249,7 +257,19 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "SportsClub",
+      {%- comment -%}
+        TWO TYPES, AND `sport` IS THE REASON.
+
+        `sport` is a property of SportsOrganization. SportsClub is NOT a
+        subtype of it — it descends from LocalBusiness — so schema.org's own
+        validator warned that `sport` "is not recognised by the schema as a
+        property of SportsClub". A node can declare more than one type, and
+        both are true here: this is a club with an address, opening hours and
+        an area it serves, AND it is the organisation that runs the aikido.
+        Declaring both makes `sport` legal without giving up anything
+        LocalBusiness provides.
+      {%- endcomment -%}
+      "@type": ["SportsClub", "SportsOrganization"],
       "name": "Aikido Musubi",
       "alternateName": "Asociación Cultural Musubi Aikido",
       "url": "{{ site.url }}",

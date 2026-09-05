@@ -8,11 +8,16 @@
   Hero is a CSS background-image swapped at 1200/1920/2560px (see default.less).
   Each preload carries the matching media query so the browser fetches exactly
   the one variant the stylesheet will actually paint — never a wasted download.
+
+  `fetchpriority="high"` because this IS the largest contentful paint: it is a
+  CSS background on `.fixedHead`, so the browser cannot know from the markup
+  that it matters, and a preload without it queues at the same priority as
+  everything else. Lighthouse's LCP-request-discovery audit asks for it by name.
 {% endcomment %}
-<link rel="preload" as="image" href="/images/index-8oGCaMDs-00-1200.webp" media="(max-width: 1199px)">
-<link rel="preload" as="image" href="/images/index-8oGCaMDs-00-1920.webp" media="(min-width: 1200px) and (max-width: 1919px)">
-<link rel="preload" as="image" href="/images/index-8oGCaMDs-00-2560.webp" media="(min-width: 1920px) and (max-width: 2559px)">
-<link rel="preload" as="image" href="/images/index-8oGCaMDs-00-2880.webp" media="(min-width: 2560px)">
+<link rel="preload" as="image" href="/images/index-8oGCaMDs-00-1200.webp" media="(max-width: 1199px)" fetchpriority="high">
+<link rel="preload" as="image" href="/images/index-8oGCaMDs-00-1920.webp" media="(min-width: 1200px) and (max-width: 1919px)" fetchpriority="high">
+<link rel="preload" as="image" href="/images/index-8oGCaMDs-00-2560.webp" media="(min-width: 1920px) and (max-width: 2559px)" fetchpriority="high">
+<link rel="preload" as="image" href="/images/index-8oGCaMDs-00-2880.webp" media="(min-width: 2560px)" fetchpriority="high">
 {% endif %}
 <link rel="preload" href="/styles/all.min.css?v={{ site.data.assets["all.min.css"] }}" as="style">
 {% comment %}

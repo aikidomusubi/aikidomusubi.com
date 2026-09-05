@@ -51,7 +51,14 @@
         </div>
 
         <div class="pv-body">
-          <h2 class="pv-title">{{ t }}</h2>
+          {%- comment -%}
+            To the video's own page. Resolved through `i18n-ref` the way every
+            cross-language link on this site is, so it lands on the reader's
+            language rather than on Spanish.
+          {%- endcomment -%}
+          {%- assign vslug = video.path | split: '/' | last | replace: '.md', '' -%}
+          {%- assign vpage = site.pages | where_exp: 'p', 'p.video == vslug' | where: 'lang', L | first -%}
+          <h2 class="pv-title">{% if vpage %}<a href="{{ vpage.url }}">{{ t }}</a>{% else %}{{ t }}{% endif %}</h2>
           <p class="pv-desc">{{ d }}</p>
           <p class="pv-date"><time datetime="{{ video.date | date: '%Y-%m-%d' }}">{% include date.html date=video.date %}</time></p>
         </div>
@@ -61,8 +68,16 @@
   </div>
 
   {%- comment -%}
-    One VideoObject per item. An embed gives a crawler an iframe and nothing
-    else; this gives it the title, the date and the thumbnail.
+    AN ITEMLIST OF LINKS, NOT SIX VideoObjects.
+
+    It used to emit a VideoObject per card, which was this one URL claiming to
+    be the watch page for six different videos. Google will treat at most one
+    video as a given page's main content, so five of the six could never be
+    indexed however the markup was written — Search Console reported exactly
+    that, as "Video isn't on a watch page".
+
+    Each VideoObject now lives on the video's own page, and this page says what
+    it honestly is: a list pointing at them.
   {%- endcomment -%}
   <script type="application/ld+json">
   {
@@ -76,17 +91,13 @@
       {%- elsif L == 'en' %}{% assign t = video.title_en %}{% assign d = video.desc_en %}
       {%- elsif L == 'ja' %}{% assign t = video.title_ja %}{% assign d = video.desc_ja %}
       {%- else %}{% assign t = video.title_es %}{% assign d = video.desc_es %}{% endif -%}
+      {%- assign vslug = video.path | split: '/' | last | replace: '.md', '' -%}
+      {%- assign vpage = site.pages | where_exp: 'p', 'p.video == vslug' | where: 'lang', L | first -%}
       {
         "@type": "ListItem",
         "position": {{ n }},
-        "item": {
-          "@type": "VideoObject",
-          "name": {{ t | jsonify }},
-          "description": {{ d | strip_html | strip | jsonify }},
-          "thumbnailUrl": {{ video.thumb | prepend: '/images/' | append: '.jpg' | prepend: site.url | jsonify }},
-          "uploadDate": "{{ video.date | date: '%Y-%m-%d' }}",
-          "embedUrl": "https://www.youtube-nocookie.com/embed/{{ video.youtube_id }}"
-        }
+        "name": {{ t | jsonify }},
+        "url": {{ vpage.url | prepend: site.url | jsonify }}
       }{% unless forloop.last %},{% endunless %}
       {%- endfor -%}
     ]

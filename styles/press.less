@@ -237,3 +237,70 @@
   color: lighten(@Dark, 18%);   // 5.9:1
   text-align: center;
 }
+
+
+// ---- one video, on its own page --------------------------------------------
+//
+// The watch pages reuse `.pv-item` whole; what differs is that there is one of
+// them and it is the page rather than a row in a list. See
+// _layouts/videopage.html for why they exist.
+.page main .pv-crumb {
+  margin: 0 0 1.2rem;
+  max-width: none;
+  font-size: .72rem;
+  color: mix(@White, @Dark, 13.1%);
+
+  span { margin: 0 .35rem; }
+}
+
+// One video and no list. `.pv-list` becomes two columns from 992px, which on a
+// page holding a single card left it at half width with the other half empty;
+// and the card is held to the reading measure so the still does not run to
+// 1140px on a desktop when everything else on the site stops at 692.
+.pv-single {
+  display: block;
+  max-width: @measure;
+  margin: 0 0 3rem;
+
+  // `.pv-body` carries a 20.5rem min-height from 992px so that two cards side
+  // by side line their dates up. One card has nothing to line up with, and the
+  // min-height showed as a hole between the description and the date.
+  .pv-body { min-height: 0; }
+}
+
+.page main .pv-back {
+  margin: 1.6rem 0 0;
+  max-width: none;
+
+  a {
+    display: inline-block;
+    padding-bottom: .25rem;
+    border-bottom: 2px solid @Yellow;
+    .Futura;
+    font-size: .66rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: @Black;
+
+    &:hover, &:focus {
+      background-color: transparent;
+      border-bottom-color: @Black;
+      color: @Black;
+      text-decoration: none;
+    }
+  }
+}
+
+// The index's titles are links now — each card points at that video's page.
+.page main .pv-title a {
+  color: inherit;
+  text-decoration: none;
+  background-color: transparent;
+
+  &:hover, &:focus {
+    background-color: transparent;
+    color: @Rust;
+    text-decoration: none;
+  }
+}

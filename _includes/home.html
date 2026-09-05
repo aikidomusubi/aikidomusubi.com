@@ -26,12 +26,18 @@
         Three widths, not one. A section image is drawn at 948px at most and
         much less on a phone; it was shipping the 960px file to everything.
         Variants come from tools/image-widths.py.
+
+        85vw is MEASURED, at 412x823 with the page built: the figure draws at
+        348px, which is 84.5vw. It said 92vw, which is the gutter arithmetic
+        rather than the box, and an over-declared `sizes` makes the browser
+        fetch a size up on every viewport. Same correction on the venue cards
+        below. See CLAUDE.md: measure `sizes`, never read it off the grid.
       {%- endcomment -%}
       {%- assign ss = site.data.imgw[s.image] -%}
       <picture>
         <source type="image/webp"
                 srcset="{% if ss %}{{ ss }}{% else %}/images/{{ s.image }}.webp{% endif %}"
-                {% if ss %}sizes="(min-width: 1200px) 948px, 92vw"{% endif %}>
+                {% if ss %}sizes="(min-width: 1200px) 948px, 85vw"{% endif %}>
         <source type="image/jpeg" srcset="/images/{{ s.image }}.jpg">
         <img src="/images/{{ s.image }}.jpg" loading="lazy" alt=""
              width="948" height="632">
@@ -95,7 +101,7 @@
         <picture>
           <source type="image/webp"
                   srcset="{% if ss %}{{ ss }}{% else %}/images/{{ v.image }}.webp{% endif %}"
-                  {% if ss %}sizes="(min-width: 992px) 300px, (min-width: 576px) 30vw, 90vw"{% endif %}>
+                  {% if ss %}sizes="(min-width: 992px) 300px, (min-width: 576px) 30vw, 85vw"{% endif %}>
           <source type="image/jpeg" srcset="/images/{{ v.image }}.jpg">
           <img src="/images/{{ v.image }}.jpg" loading="lazy" alt=""
                width="600" height="600">

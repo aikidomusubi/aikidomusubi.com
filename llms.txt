@@ -1,0 +1,70 @@
+---
+permalink: /llms.txt
+layout: null
+sitemap: false
+---
+{%- comment -%}
+  llms.txt — https://llmstxt.org
+
+  A Markdown summary of the site for language models and answer engines, at a
+  fixed path they are starting to look for. PageSpeed's Agentic Browsing
+  category audits it ("llms.txt follows recommendations"), and it was the one
+  of that category's four checks that actually applied here: the other three
+  are WebMCP, which describes tools a page exposes for an agent to *operate*,
+  and this site has no forms to operate — contact is a mailto and a WhatsApp
+  link. Annotating tools that do not exist would be an invention.
+
+  GENERATED, like sitemap.xml, and for the same reason. Everything below is
+  read from the data the site already renders: the menu from _data/nav.yml, the
+  rooms from _data/venues.yml, the classes from _data/schedule.yml, the fee
+  from _data/fees.yml. Rename a page and this follows on the next build. Do not
+  hand-write facts into it.
+
+  English, and only English. The pages themselves exist in four languages and
+  say so; a model asking "where can I train aikido in Barcelona" needs one
+  legible answer, not the same answer four times.
+{%- endcomment -%}
+{%- assign N = site.data.nav -%}
+{%- assign V = site.data.venues -%}
+{%- assign S = site.data.schedule -%}
+{%- assign LO = site.data.locations -%}
+{%- assign fee = site.data.fees.prices.monthly.adults.fee -%}
+{%- assign kids = site.data.fees.prices.monthly.children.fee -%}
+# Aikido Musubi
+
+> A self-managed, non-profit cultural association teaching aikido in the
+> Barcelona area since 2008. Four training spaces across Badalona, Sant Adrià
+> de Besòs and Barcelona. Aikikai lineage, through Aikido Arashi Group, which
+> is recognised by the Aikikai Foundation (Hombu Dojo, Tokyo).
+
+Every page exists in four languages: Spanish at the root, Catalan under `/ca/`,
+English under `/en/`, Japanese under `/ja/`. The English URLs are given below.
+
+Judo, iaijutsu and karate are also taught at the Badalona dojo, by their own
+instructors. There is no competition in aikido and none is held here.
+
+Adults and young people from the age of 12, with or without previous
+experience. {{ fee }} € a month for adults, {{ kids }} € for under-12s.
+Registration is free and there are two trial classes. Enrolment is open all
+year round.
+
+## Where we train
+{% for v in V.venues %}
+- [{{ v.name.en }}]({{ site.url }}/en/access-information/#{{ v.slug }}): {{ v.facility.en }}, {{ v.postal.street }}, {{ v.postal.postcode }} {{ v.postal.town }}.
+{%- endfor %}
+
+## Towns
+{% for lc in LO.locations -%}
+{%- assign lp = site.pages | where: 'i18n-ref', lc.ref | where: 'lang', 'en' | first %}
+- [{{ lc.title.en }}]({{ site.url }}{{ lp.url }}): {{ lc.lede.en | strip_html }}
+{% endfor %}
+## Main pages
+{% for g in N.groups %}{% if g.items %}{% for it in g.items %}
+- [{{ it.label.en }}]({{ site.url }}{{ it.url.en }}){% assign tp = site.pages | where: 'url', it.url.en | first %}{% if tp.description %}: {{ tp.description }}{% endif %}
+{%- endfor %}{% endif %}{% endfor %}
+
+## Contact
+
+- Email: {{ site.email }}
+- Site: {{ site.url }}/en/
+- Sitemap: {{ site.url }}/sitemap.xml

@@ -1,0 +1,126 @@
+{% include header.html %}
+
+<main id="main" tabindex="-1">
+  {%- comment -%}
+    ONE VIDEO, ON ITS OWN PAGE — a "watch page".
+
+    WHY THIS EXISTS. Search Console reported four videos as "Video isn't on a
+    watch page", and that was structural rather than a mistake: all six live on
+    /prensa-y-tv/, and Google will treat at most one video per URL as that
+    URL's main content. Five of the six could never be indexed as video however
+    the markup was written. A page whose main content IS the video is the only
+    answer, and it is also the honest one — each of these is a television
+    appearance worth its own address.
+
+    /prensa-y-tv/ stays exactly what it was, the showcase, and every card on it
+    now links here. What changed there is its structured data: it used to emit
+    a VideoObject per card, which was the page claiming to be six watch pages
+    at once. It emits an ItemList of links now, and the VideoObject lives on
+    the page the video is actually on.
+
+    THE STUB CARRIES ONLY `video:` AND A LANGUAGE. Everything else — the four
+    titles, the four descriptions, the date, the YouTube id, the thumbnail — is
+    already in _videos/ and is read from there. Adding a video is one file in
+    _videos/ plus four stubs, the same shape as the three location pages.
+  {%- endcomment -%}
+  {%- assign L = page.lang | default: 'es' -%}
+  {%- assign v = site.videos | where: 'slug', page.video | first -%}
+  {%- if v == nil -%}
+    {%- assign v = site.videos | where_exp: 'x', 'x.path contains page.video' | first -%}
+  {%- endif -%}
+  {%- if L == 'ca' %}{% assign t = v.title_ca %}{% assign d = v.desc_ca %}
+  {%- elsif L == 'en' %}{% assign t = v.title_en %}{% assign d = v.desc_en %}
+  {%- elsif L == 'ja' %}{% assign t = v.title_ja %}{% assign d = v.desc_ja %}
+  {%- else %}{% assign t = v.title_es %}{% assign d = v.desc_es %}{% endif -%}
+  {%- assign gMedia = site.data.nav.groups | where: 'id', 'media' | first -%}
+  {%- assign idx = gMedia.items[1] -%}
+
+  <p class="pv-crumb">
+    <a href="{% if L == 'es' %}/{% else %}/{{ L }}/{% endif %}">{{ site.data.locations.ui.home[L] }}</a>
+    <span aria-hidden="true">·</span>
+    <a href="{{ idx.url[L] }}">{{ idx.label[L] }}</a>
+  </p>
+
+  <h1>{{ t }}</h1>
+
+  <div class="pv-list pv-single">
+    <article class="pv-item">
+      <div class="pv-player">
+        {%- comment -%}
+          The same facade as the index, and for the same reason: a YouTube
+          embed contacts Google and sets cookies the moment the page loads,
+          which the cookie policy promises it will not do before consent.
+          Pressing it swaps in the youtube-nocookie player with autoplay.
+        {%- endcomment -%}
+        <button type="button" class="pv-facade"
+                data-id="{{ v.youtube_id }}" data-params="{{ v.youtube_params }}"
+                aria-label="{% if L == 'ca' %}Reproduir{% elsif L == 'en' %}Play{% elsif L == 'ja' %}再生{% else %}Reproducir{% endif %}: {{ t | escape }}">
+          <picture>
+            {%- assign ss = site.data.imgw[v.thumb] -%}
+            <source type="image/webp"
+                    srcset="{% if ss %}{{ ss }}{% else %}/images/{{ v.thumb }}.webp{% endif %}"
+                    {% if ss %}sizes="(min-width: 992px) 692px, 85vw"{% endif %}>
+            <source type="image/jpeg" srcset="/images/{{ v.thumb }}.jpg">
+            {%- comment -%}
+              Not lazy and not low priority: on this page the still IS the
+              largest contentful paint, and `loading="lazy"` on an LCP element
+              is the exact thing Lighthouse's LCP audit fails a page for.
+            {%- endcomment -%}
+            <img src="/images/{{ v.thumb }}.jpg" decoding="sync" fetchpriority="high"
+                 width="1280" height="720" alt="">
+          </picture>
+          <span class="pv-play" aria-hidden="true">
+            <svg viewBox="0 0 384 512" fill="currentColor"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.3-23-41L73 39z"/></svg>
+          </span>
+        </button>
+      </div>
+
+      <div class="pv-body">
+        <p class="pv-desc">{{ d }}</p>
+        <p class="pv-date"><time datetime="{{ v.date | date: '%Y-%m-%d' }}">{% include date.html date=v.date %}</time></p>
+        <p class="pv-back"><a href="{{ idx.url[L] }}">{{ idx.label[L] }}</a></p>
+      </div>
+    </article>
+  </div>
+
+  {%- comment -%}
+    The VideoObject, on the page the video is on. `uploadDate` is the broadcast
+    date, which is what the archive records and what the page shows.
+  {%- endcomment -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "VideoObject",
+        "name": {{ t | jsonify }},
+        "description": {{ d | strip_html | strip | jsonify }},
+        "thumbnailUrl": {{ v.thumb | prepend: '/images/' | append: '.jpg' | prepend: site.url | jsonify }},
+        "uploadDate": "{{ v.date | date: '%Y-%m-%d' }}",
+        "embedUrl": "https://www.youtube-nocookie.com/embed/{{ v.youtube_id }}",
+        "url": {{ page.url | prepend: site.url | jsonify }},
+        "publisher": {
+          "@type": "Organization",
+          "name": "Aikido Musubi",
+          "url": "{{ site.url }}/"
+        },
+        "inLanguage": "{{ L }}"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": {{ site.data.locations.ui.home[L] | jsonify }},
+            "item": "{{ site.url }}{% if L == 'es' %}/{% else %}/{{ L }}/{% endif %}" },
+          { "@type": "ListItem", "position": 2, "name": {{ idx.label[L] | jsonify }},
+            "item": "{{ site.url }}{{ idx.url[L] }}" },
+          { "@type": "ListItem", "position": 3, "name": {{ t | jsonify }},
+            "item": {{ page.url | prepend: site.url | jsonify }} }
+        ]
+      }
+    ]
+  }
+  </script>
+
+</main>
+
+{% include footer.html %}

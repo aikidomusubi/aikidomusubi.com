@@ -1111,6 +1111,51 @@ Group, which is **嵐グループ** everywhere — the Latin name in Japanese co
 bug, except inside `_data/gallery.yml`, where the captions are the Instagram
 posts verbatim and are a record rather than our own writing.
 
+### Every video has a page of its own; /prensa-y-tv/ is the showcase
+
+Search Console reported four videos as "Video isn't on a watch page", and that
+was structural rather than a mistake. All six live on `/prensa-y-tv/`, and
+**Google treats at most one video as a given URL's main content** — five of the
+six could never be indexed as video however the markup was written.
+
+So `_layouts/videopage.html` renders one video per page at
+`/prensa-y-tv/<slug>/` (and the three translations), and the `VideoObject`
+moved there. The index page is unchanged in what it shows: it is still the
+showcase, its cards still carry the click-to-load facade, and each title is now
+a link. What changed on it is its structured data — six `VideoObject`s became
+an `ItemList` of links, because six of them was the page claiming to be six
+watch pages at once.
+
+**The stub carries `video:` and a language, nothing else.** The titles,
+descriptions, date, YouTube id and thumbnail stay in `_videos/`, and the layout
+reads them. Adding a video is one file in `_videos/` plus four stubs — the same
+shape as the three location pages. `tools/` has no generator for them; they
+were written once by a throwaway script and are ordinary files now.
+
+Two things that bit while building them, both worth knowing:
+
+- **Titles carry colons** — "Televisió de Badalona: la inauguración del dojo" —
+  and an unquoted colon-space in YAML front matter starts a mapping. Quote them.
+- **The source descriptions carry markup**, `<i>Via 15</i>`, and a `description`
+  goes into `content="…"` of a meta tag. Truncating one mid-tag put a stray
+  `</i>` inside an attribute on nine pages, which is what `qa.py`'s tag-balance
+  check is for. Strip HTML from anything destined for an attribute.
+
+### llms.txt is generated, and it is the only Agentic Browsing item that applies
+
+PageSpeed's Agentic Browsing category lists four checks as "not applicable".
+Three are **WebMCP**, which describes tools a page exposes for an agent to
+operate — and this site has no forms to operate: contact is a `mailto:` and a
+WhatsApp link. Annotating tools that do not exist would be an invention, so
+they stay not applicable on purpose.
+
+The fourth, `llms.txt`, does apply and now exists. It is a **Liquid template**
+like `sitemap.xml`, not a written file: the rooms come from `_data/venues.yml`,
+the fee from `_data/fees.yml`, the pages from `_data/nav.yml` and their own
+descriptions. Rename a page and it follows on the next build. English only —
+a model asking "where can I train aikido in Barcelona" needs one legible
+answer, not the same answer four times.
+
 ## Where this site is going: Aikikai Barcelona
 
 A new association, **Aikikai Barcelona**, has been registered and the site
@@ -1139,6 +1184,31 @@ starts its authority at zero and has to earn it again; `/barcelona/` inherits
 what the domain already has. And a location page has to carry its own
 timetable, teacher, address and transport — a page that only rearranges the
 same words for a different town name is a doorway page, which Google penalises.
+
+## Render-blocking CSS is deliberate, and inlining it was measured and rejected
+
+Lighthouse reports the two stylesheets as render-blocking and offers ~580 ms
+back for inlining them. **It was tried, measured, and it was worse:**
+
+    external   home 95   ura 94   glosario 95
+    inlined    home 94   ura 79   glosario 91
+
+The cost moves rather than disappearing. Parsing 11 KB of CSS inside the
+document happens on the main thread while it is also parsing the document, and
+Ura's total blocking time went from 0 ms to 653 ms. TBT is 30% of the
+performance score and the round trip is worth less than that. The full note is
+in `_includes/header.html`. **Do not "fix" this audit.**
+
+What is worth doing, and is done: `fetchpriority="high"` on the hero preloads,
+because the hero is a CSS background on `.fixedHead` and nothing in the markup
+tells the browser it is the LCP element; and `sizes` values measured in a
+browser rather than read off the grid.
+
+**The largest single number PageSpeed reports is not ours to fix.** "Use
+efficient cache lifetimes — 313 KiB" is a `Cache-TTL` of **10 minutes** on
+every asset, which is GitHub Pages' own `max-age=600` reaching the browser
+untouched. Cloudflare's Browser Cache TTL only overrides it when it is not set
+to "Respect Existing Headers". That is a dashboard setting, not a commit.
 
 ## What Search Console found, and what robots.txt was doing
 

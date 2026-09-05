@@ -452,7 +452,11 @@
       {%- assign lo2 = S.locations | where: 'id', vid | first -%}
       {%- assign v = V.venues | where: 'id', lo2.slug | first -%}
       {
-        "@type": "SportsClub",
+        {%- comment -%}
+          Both types, so `sport` below is a property this node is allowed to
+          carry — see the note in _includes/header.html.
+        {%- endcomment -%}
+        "@type": ["SportsClub", "SportsOrganization"],
         "name": {{ v.name[L] | jsonify }},
         "url": {{ page.url | prepend: site.url | jsonify }},
         "parentOrganization": { "@type": "SportsClub", "name": "Aikido Musubi", "url": "{{ site.url }}/" },
