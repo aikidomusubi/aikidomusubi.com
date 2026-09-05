@@ -95,14 +95,106 @@ FAQ = [
      "entrenan en las dos."),
 ]
 
+# THREE, not four. `.hm-steps` is a three-column grid on the home page and a
+# fourth step drops one orphan onto a second row. The content lost nothing: the
+# old third and fourth said "bring nothing" and "it lasts an hour", which is one
+# thought.
 STEPS = [
     ("Escríbenos", "Un correo o un WhatsApp. Te decimos qué día viene mejor y quién te va a recibir."),
     ("Ven quince minutos antes", "Te enseñamos el vestuario y la sala, y te presentamos a quien va a entrenar contigo."),
-    ("Ropa cómoda y nada más", "Manga larga, pantalón largo, pies descalzos. No hace falta keikogi ni material."),
-    ("Entrena", "Una hora. Nadie te va a poner a prueba el primer día."),
+    ("Ropa cómoda y nada más", "Manga larga, pantalón largo y pies descalzos. Una hora, y nadie te va a poner a prueba el primer día."),
 ]
 
+
 # ---------------------------------------------------------------------------
+# The association's own figures, COUNTED FROM THE REPO rather than typed.
+#
+# On the real page these are Liquid, so they cannot go stale — the note panel
+# in the mockup carries the exact expressions. Here the builder counts the same
+# things so what you review is what you would ship.
+# ---------------------------------------------------------------------------
+def figures():
+    import glob, re
+    root = os.path.dirname(os.path.dirname(OUT))
+    about = io.open(os.path.join(root, '_data', 'about.yml'), encoding='utf-8').read()
+    people = about[about.find('        people:'):]
+    people = people[:people.find('\n      -', 10)] if '\n      -' in people[10:] else people
+    n_inst = len(re.findall(r'- \{ name: "', people))
+    n_events = len(glob.glob(os.path.join(root, '_events', '*.md')))
+    venues = io.open(os.path.join(root, '_data', 'venues.yml'), encoding='utf-8').read()
+    n_ven = len(re.findall(r'^  - id: ', venues, re.M))
+    hdr = io.open(os.path.join(root, '_includes', 'header.html'), encoding='utf-8').read()
+    year = re.search(r'"foundingDate": "(\d{4})"', hdr).group(1)
+    return dict(year=year, inst=n_inst, events=n_events, venues=n_ven)
+
+
+# ---------------------------------------------------------------------------
+
+# ---------------------------------------------------------------------------
+# D reuses the site's own classes and adds NO new ones. Everything below is
+# copied out of styles/home.less and styles/about.less so the mockup looks like
+# the site without needing the whole bundle; on the real page none of it is
+# written, because `.hm-*` and `.ab-faq` already exist.
+# ---------------------------------------------------------------------------
+CSS_SITE = """
+.pg-head h1{font-size:2.6rem;text-transform:uppercase;letter-spacing:.05em;text-align:center;
+  margin:3.2rem 0 0}
+.pg-head > p{max-width:none;text-align:center;font-size:1.12rem;line-height:1.75;
+  color:#2c3437;margin:1.1rem auto 0;max-width:46rem}
+.hm-sec{margin:4rem 0 0}
+.hm-fig{margin:0 0 1.6rem}
+.hm-fig img{width:100%;display:block;aspect-ratio:948/632;object-fit:cover}
+.hm-lab{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.62rem;letter-spacing:.2em;
+  text-transform:uppercase;color:#6a7478;margin:0 0 .5rem}
+.hm-sec h2{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-weight:400;font-size:1.6rem;
+  text-transform:uppercase;letter-spacing:.05em;margin:0 0 1.2rem;border:0;padding:0}
+.hm-prose p{max-width:43.25rem;font-size:.95rem;line-height:1.8;color:#2c3437;margin:0 0 1rem}
+.hm-facts{display:grid;grid-template-columns:auto 1fr;gap:.55rem 2rem;max-width:43.25rem;
+  margin:1.8rem 0 0}
+.hm-facts dt{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.62rem;
+  letter-spacing:.16em;text-transform:uppercase;color:#6a7478;padding-top:.2rem}
+.hm-facts dd{margin:0;font-size:.92rem;line-height:1.7;color:#2c3437}
+.hm-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:1.6rem}
+@media(max-width:767.98px){.hm-steps{grid-template-columns:1fr;gap:1.6rem}}
+.hm-step{border-top:1px solid #111314;padding-top:.95rem}
+.hm-step .n{font-family:Futura,'Trebuchet MS',Arial,sans-serif;margin:0 0 .6rem;font-size:.66rem;
+  letter-spacing:.2em;color:#6a7478}
+.hm-step h3{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-weight:400;margin:0 0 .45rem;
+  font-size:1.05rem;letter-spacing:.05em;text-transform:uppercase;color:#111314}
+.hm-step p{margin:0;font-size:.88rem;line-height:1.7;color:#6a7478}
+.hm-ven{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:1.8rem}
+@media(max-width:767.98px){.hm-ven{grid-template-columns:1fr}}
+.hm-ven figure{margin:0}
+.hm-ven img{width:100%;display:block;aspect-ratio:1;object-fit:cover}
+.hm-ven b{display:block;margin-top:.8rem;font-size:.95rem;color:#111314}
+.hm-ven small{display:block;font-size:.78rem;line-height:1.5;color:#6a7478}
+.hm-btn{display:inline-block;margin-top:1.4rem;padding-bottom:.25rem;
+  border-bottom:2px solid #FFF200;font-family:Futura,'Trebuchet MS',Arial,sans-serif;
+  font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;
+  color:#111314}
+.hm-btn:hover{border-bottom-color:#111314}
+.ab-faq{max-width:44rem;margin:1.8rem auto 0;border-top:1px solid rgba(17,19,20,.13)}
+.ab-faq details{border-bottom:1px solid rgba(17,19,20,.13)}
+.ab-faq summary{position:relative;padding:1rem 2.2rem 1rem 0;cursor:pointer;list-style:none;
+  font-size:1.02rem;line-height:1.5;color:#111314}
+.ab-faq summary::-webkit-details-marker{display:none}
+.ab-faq summary::after{content:'+';position:absolute;right:.3rem;top:.95rem;font-size:1.1rem;
+  color:#6a7478;transition:transform .2s}
+.ab-faq summary:hover{color:#AE5224}
+.ab-faq details[open] > summary::after{transform:rotate(45deg);color:#AE5224}
+.ab-faq .a{padding:0 0 1.1rem}
+.ab-faq .a p{margin:0 0 .8rem;font-size:.94rem;line-height:1.8;color:#34454C;max-width:none}
+.lo-tt{width:100%;border-collapse:collapse;font-size:.92rem;margin-top:1.6rem;
+  max-width:43.25rem}
+.lo-tt th{text-align:left;font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.62rem;
+  letter-spacing:.16em;text-transform:uppercase;color:#6a7478;padding:0 1rem .5rem 0;
+  border-bottom:1px solid #111314}
+.lo-tt td{padding:.8rem 1rem .8rem 0;border-bottom:1px solid rgba(17,19,20,.08);
+  vertical-align:top;line-height:1.6}
+.lo-tt td:first-child{font-family:Futura,'Trebuchet MS',Arial,sans-serif;white-space:nowrap}
+.lo-tt small{display:block;color:#6a7478;font-size:.8rem}
+"""
+
 CSS = """
 :root{
   --ink:#111314; --mute:#4f5d63; --line:rgba(17,19,20,.13);
@@ -612,12 +704,187 @@ WHY_C = """
 </ul>"""
 
 
+# ===========================================================================
+# D — C, built out of the site's own components
+# ===========================================================================
+def page_d():
+    F = figures()
+
+    steps = ''.join(
+        '<div class="hm-step"><p class="n">%02d</p><h3>%s</h3><p>%s</p></div>'
+        % (i + 1, t, d) for i, (t, d) in enumerate(STEPS))
+
+    faq = '<div class="ab-faq">' + ''.join(
+        '<details name="loc-faq"><summary>%s</summary><div class="a"><p>%s</p></div></details>'
+        % (q, a) for q, a in FAQ) + '</div>'
+
+    vens = '<div class="hm-ven">' + ''.join(
+        '<figure><img src="%(plan)s" alt="" loading="lazy">'
+        '<figcaption><b>%(name)s</b><small>%(room)s &middot; %(street)s</small>'
+        '<small>%(days)s &middot; %(time)s</small></figcaption></figure>' % v
+        for v in VENUES) + '</div>'
+
+    others = """<div class="hm-ven">
+      <figure><img src="/images/access-information-NdxqmVbV-00-480.webp" alt="" loading="lazy">
+        <figcaption><b>Badalona</b><small>Aikido Musubi &middot; el dojo principal</small>
+        <small>Lun &middot; Mar &middot; Mié &middot; Jue &middot; Vie &middot; Sáb</small></figcaption></figure>
+      <figure><img src="/images/access-information-NdxqmVbV-01-480.webp" alt="" loading="lazy">
+        <figcaption><b>Sant Adrià de Besòs</b><small>Marina-Besòs</small>
+        <small>Lun &middot; Mié</small></figcaption></figure>
+    </div>"""
+
+    rows = ''.join(
+        '<tr><td>%s<small>%s</small></td><td>%s</td><td>%s</td>'
+        '<td>%s<small>%s</small></td></tr>'
+        % (v['time'], v['days'], v['name'], v['level'], v['teacher'], v['grade'])
+        for v in VENUES)
+    tt = ('<table class="lo-tt"><thead><tr><th>Cuándo</th><th>Dónde</th><th>Nivel</th>'
+          '<th>Quién</th></tr></thead><tbody>%s</tbody></table>' % rows)
+
+    return """
+%(nav)s
+<div class="wrap">
+  <div class="pg-head">
+    <h1>Aikido en Barcelona</h1>
+    <p>Entrenamos aikido en dos salas de Barcelona, los lunes y los miércoles: el complejo
+       deportivo municipal de Espronceda y la Facultad de Derecho de la Universitat de
+       Barcelona. Somos el mismo dojo que abre cada día en Badalona desde %(year)s.</p>
+  </div>
+
+  <section class="hm-sec">
+    <figure class="hm-fig">
+      <img src="/images/index-8oGCaMDs-00-1200.webp" alt="Tatami durante una clase de aikido">
+    </figure>
+    <p class="hm-lab">Barcelona</p>
+    <h2>Lo esencial</h2>
+    <dl class="hm-facts">
+      <dt>Dónde</dt><dd><b>CxEM Espronceda</b>, C/ Espronceda 326, 08027 Barcelona.
+        <b>Facultat de Dret de la UB</b>, Av. Diagonal 684, 08034 Barcelona.</dd>
+      <dt>Cuándo</dt><dd>Lunes y miércoles. De 19:00 a 20:00 en la Facultad de Derecho
+        (principiantes) y de 20:00 a 21:00 en Espronceda (todos los niveles).</dd>
+      <dt>Para quién</dt><dd>Adultos y jóvenes desde 12 años, con o sin experiencia previa.</dd>
+      <dt>Cuánto</dt><dd>35 &euro; al mes para adultos. Inscripción gratuita y dos clases
+        de prueba.</dd>
+      <dt>Qué llevar</dt><dd>Ropa cómoda de manga y pantalón largos. El keikogi no hace falta
+        para empezar.</dd>
+      <dt>Quién enseña</dt><dd>Daniil Mikhaylov, 3.er dan Aikikai, y Pablo Martín, 4.º dan
+        Aikikai y responsable del dojo.</dd>
+      <dt>Quién lo organiza</dt><dd>Aikido Musubi, asociación cultural sin ánimo de lucro
+        fundada en %(year)s. Formamos parte de Aikido Arashi Group, reconocido por la
+        Aikikai Foundation (Hombu Dojo, Tokio).</dd>
+    </dl>
+    <a class="hm-btn" href="/contacto/">Ven a probar</a>
+  </section>
+
+  <section class="hm-sec">
+    <p class="hm-lab">Cómo empezar</p>
+    <h2>Tu primera clase</h2>
+    <div class="hm-steps">%(steps)s</div>
+  </section>
+
+  <section class="hm-sec">
+    <p class="hm-lab">Horario</p>
+    <h2>Las clases en Barcelona</h2>
+    %(tt)s
+    <div class="hm-prose" style="margin-top:1.2rem">
+      <p>Estas son las clases de Barcelona.
+         <a href="/horarios/">El horario completo de las %(venues)s salas</a> incluye el dojo
+         de Badalona, que abre de lunes a sábado.</p>
+    </div>
+  </section>
+
+  <section class="hm-sec">
+    <p class="hm-lab">Las salas</p>
+    <h2>Dónde entrenamos</h2>
+    %(vens)s
+  </section>
+
+  <section class="hm-sec">
+    <p class="hm-lab">Quiénes somos</p>
+    <h2>La asociación</h2>
+    <div class="hm-prose">
+      <p>Aikido Musubi es una asociación cultural autogestionada y sin ánimo de lucro. El
+         dojo de Badalona abre de lunes a sábado y las clases de Barcelona son parte de la
+         misma asociación: el mismo programa, los mismos exámenes y los mismos instructores.</p>
+    </div>
+    <dl class="hm-facts">
+      <dt>Entrenando desde</dt><dd>%(year)s</dd>
+      <dt>Instructores</dt><dd>%(inst)s titulados</dd>
+      <dt>Cursos y masterclass</dt><dd>%(events)s desde 2020</dd>
+      <dt>Reconocimiento</dt><dd>Aikido Arashi Group, reconocido por la Aikikai Foundation
+        (Hombu Dojo, Tokio)</dd>
+    </dl>
+    <a class="hm-btn" href="/sobre-nosotros/la-asociacion/">Sobre la asociación</a>
+  </section>
+
+  <section class="hm-sec">
+    <p class="hm-lab">Dudas</p>
+    <h2>Preguntas frecuentes</h2>
+    %(faq)s
+  </section>
+
+  <section class="hm-sec">
+    <p class="hm-lab">Y también</p>
+    <h2>Entrenamos en</h2>
+    %(others)s
+    <a class="hm-btn" href="/contacto/">Escríbenos</a>
+  </section>
+</div>
+<div class="tail">Pie de página.</div>""" % dict(nav=NAV, steps=steps, tt=tt, vens=vens,
+                                                faq=faq, others=others, year=F['year'],
+                                                inst=F['inst'], events=F['events'],
+                                                venues=F['venues'])
+
+
+WHY_D = """
+<h2>Enfoque D &middot; lo mismo que C, con las piezas del sitio</h2>
+<p>C funcionaba pero estaba escrito de nuevo: un h&eacute;roe, una banda de cifras, unos
+   pasos numerados y un acorde&oacute;n que se parec&iacute;an a los del sitio sin serlo. D no
+   inventa ning&uacute;n componente. Todo lo de esta p&aacute;gina ya existe y se usa tal cual:</p>
+<ul>
+  <li><code>page-head</code> &mdash; el h1 centrado y la entradilla, como en las 60 p&aacute;ginas.</li>
+  <li><code>.hm-sec</code> + <code>.hm-lab</code> + <code>h2</code> &mdash; el ritmo de secci&oacute;n de la portada.</li>
+  <li><code>.hm-fig</code> &mdash; la figura 948&times;632 de las secciones de portada, en vez de un h&eacute;roe a sangre que el sitio no tiene en ninguna p&aacute;gina interior.</li>
+  <li><code>.hm-facts</code> &mdash; el <code>dl</code> que la portada ya usa para «los datos de la asociaci&oacute;n». Es literalmente el componente para esto, y sustituye a la ficha dibujada a mano de A y C.</li>
+  <li><code>.hm-steps</code> / <code>.hm-step</code> &mdash; los pasos con <code>01 02 03</code> en Futura micro. Id&eacute;nticos a los de la portada, que adem&aacute;s cuentan los mismos tres pasos.</li>
+  <li><code>.hm-ven</code> &mdash; las tarjetas de espacio con foto cuadrada, nombre y d&iacute;as. Sirven para las dos salas y para las otras dos ciudades.</li>
+  <li><code>.ab-faq</code> con <code>&lt;details name&gt;</code> &mdash; el acorde&oacute;n de las FAQ, sin una l&iacute;nea de JavaScript, y con el <code>name</code> que hace que s&oacute;lo una est&eacute; abierta.</li>
+  <li><code>.hm-btn</code> &mdash; el bot&oacute;n subrayado en amarillo.</li>
+</ul>
+<p><b>Lo &uacute;nico nuevo es <code>.lo-tt</code></b>, la tabla del horario, porque el sitio s&oacute;lo
+   tiene la rejilla semanal completa de <code>/horarios/</code> y aqu&iacute; hacen falta cuatro filas.
+   Hereda los tokens de tipograf&iacute;a y las l&iacute;neas de todo lo dem&aacute;s.</p>
+
+<h2>Las cifras se calculan solas</h2>
+<p>En este mockup las cuenta el generador leyendo el repositorio; en la p&aacute;gina real son
+   Liquid y no pueden quedarse atr&aacute;s:</p>
+<ul>
+  <li><b>Instructores</b> &mdash; <code>{{ site.data.about... people | size }}</code></li>
+  <li><b>Cursos</b> &mdash; <code>{{ site.events | size }}</code></li>
+  <li><b>Salas</b> &mdash; <code>{{ site.data.venues.venues | size }}</code></li>
+  <li><b>A&ntilde;o</b> &mdash; una sola constante, la misma que <code>foundingDate</code> en el JSON-LD</li>
+</ul>
+<p>A&ntilde;adir un instructor o un seminario cambia la p&aacute;gina en el siguiente build. Es la
+   misma regla que ya siguen el calendario, el horario y el glosario: <em>si un n&uacute;mero se
+   puede contar, no se escribe.</em></p>
+
+<h2>Cambios de contenido respecto a C</h2>
+<ul>
+  <li>Fuera «Las clases infantiles se imparten en Badalona» de la ficha.</li>
+  <li>«Qui&eacute;n lo organiza» dice ahora la verdad de la cadena: Arashi Group tiene el
+      reconocimiento de la Aikikai, no el dojo directamente. Lo mismo en la banda de la
+      asociaci&oacute;n, donde antes pon&iacute;a «Aikikai» a secas.</li>
+  <li>La columna <b>Qui&eacute;n</b> del horario lleva nombre y grado.</li>
+</ul>"""
+
+
 def build(name, title, kick, h1, lede, page, why):
     html = """<!doctype html><html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>%s</title>
 <link rel="stylesheet" href="/styles/all.min.css">
-<style>%s</style></head><body>
+<style>%s
+%s</style></head><body>
 <div class="sheet">
   <header>
     <p class="kick">%s</p>
@@ -627,7 +894,7 @@ def build(name, title, kick, h1, lede, page, why):
   <div class="frame">%s</div>
 </div>
 <div class="why"><div class="why-in">%s%s</div></div>
-</body></html>""" % (title, CSS, kick, h1, lede, page, why, WHY_SHARED)
+</body></html>""" % (title, CSS, CSS_SITE, kick, h1, lede, page, why, WHY_SHARED)
     io.open(os.path.join(OUT, name), 'w', encoding='utf-8').write(html)
     print('  ->', name)
 
@@ -654,4 +921,12 @@ if __name__ == '__main__':
           'La estructura de B con el bloque de datos de A debajo de la banda. La banda pasa '
           'a llevar las cifras de la asociación para no repetir lo que dice la ficha.',
           page_c(), WHY_C)
-    print('location mockups -> docs/mockups/loc-barcelona-{a,b,c}.html')
+    build('loc-barcelona-d.html',
+          'Barcelona · enfoque D — Aikido Musubi',
+          'Página de localidad · propuesta D · recomendada',
+          'Barcelona &middot; con las piezas del sitio',
+          'La misma estructura que C, sin inventar un solo componente: page-head, '
+          '.hm-sec, .hm-fig, .hm-facts, .hm-steps, .hm-ven, .ab-faq y .hm-btn, tal como '
+          'ya se usan en la portada y en Sobre nosotros.',
+          page_d(), WHY_D)
+    print('location mockups -> docs/mockups/loc-barcelona-{a,b,c,d}.html')
