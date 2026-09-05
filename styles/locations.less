@@ -630,8 +630,14 @@ main {
 // ---- the accordion ---------------------------------------------------------
 // The About pages' component, markup and all, so the site has one accordion.
 .ab-faq {
-  max-width: 44rem;
-  margin: 0 auto;
+  // @measure and flush left, NOT the About pages' 44rem centred. The component
+  // is shared; the column it sits in is the page's own. On About every block is
+  // 44rem centred and the accordion matches its neighbours; here every block is
+  // @measure flush left, so 44rem centred was the one element on the page with
+  // a different left edge and a different width — three left edges on a page
+  // that should have two.
+  max-width: @measure;
+  margin: 0;
   border-top: 1px solid var(--lo-line);
 
   details { border-bottom: 1px solid var(--lo-line); }

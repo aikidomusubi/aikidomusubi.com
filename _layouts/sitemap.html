@@ -73,6 +73,37 @@
     </section>
     {%- endfor %}
 
+    {%- comment -%}
+      The three town pages. They are not in _data/nav.yml — they are reached
+      from the home page's venue cards, from /acceso/ and from each other — so
+      a map built from the menu alone was missing them, exactly the way it was
+      missing the front page before the block at the top of this file.
+
+      Built from _data/locations.yml and resolved to this language's page
+      through `i18n-ref`, so adding a fourth town adds a fourth cell. The
+      heading is the footer's own venue-column label, so the two cannot end up
+      calling the same thing two different things.
+    {%- endcomment -%}
+    {%- assign LOC = site.data.locations.locations -%}
+    {%- assign gWhere = F.columns | where: 'id', 'where' | first %}
+    <section class="sm-row">
+      <div class="sm-lab">
+        <h2>{{ gWhere.label[L] }}</h2>
+        <p class="n">{{ LOC | size }}</p>
+      </div>
+      <div class="sm-cells">
+        {%- for lc in LOC -%}
+          {%- assign target = site.pages | where: 'i18n-ref', lc.ref | where: 'lang', L | first %}
+        <a class="sm-cell" href="{{ target.url }}">
+          <b>{{ lc.title[L] }}</b>
+          <span class="u">{{ target.url }}</span>
+          {%- if target.description %}<span class="d">{{ target.description }}</span>{% endif %}
+          <span class="lg">{%- for lang in site.data.languages %}<span>{{ lang[0] }}</span>{% endfor %}</span>
+        </a>
+        {%- endfor %}
+      </div>
+    </section>
+
     <section class="sm-row">
       <div class="sm-lab">
         <h2>{{ site.data.sitemap.legal[L] }}</h2>

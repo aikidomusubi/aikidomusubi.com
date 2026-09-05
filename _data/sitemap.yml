@@ -20,5 +20,9 @@ home:
     en: "The dojo, aikido and the association on one page, with what is happening this week and the door into Ura."
     ja: "道場、合気道、協会を一枚に。今週の予定と、「裏」への入口。" 
 
+# The location pages have no nav entry either — they are reached from the home
+# page's venue cards, from /acceso/ and from each other — so, like the home,
+# they are a group the menu cannot supply. The heading is the same one the
+# footer's venue column uses, read from _data/footer.yml rather than repeated.
 legal: { es: "Legal", ca: "Legal", en: "Legal", ja: "法的事項" }
 pages: { es: "páginas", ca: "pàgines", en: "pages", ja: "ページ" }

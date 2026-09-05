@@ -21,7 +21,7 @@ desc_en: >-
 desc_es: >-
  Tenemos el honor de recibir a Emilio Cardia Sensei en nuestro dojo para una clase magistral de Aikido el 13 de octubre a las 19:30, antes de su curso de Aikido organizado por Arashi Group en Barcelona los días 14 y 15 de octubre. Las plazas son limitadas y se asignarán por riguroso orden de inscripción.
 desc_ja: >-
- １０月１３日（金）１９時３０分より、私たちの道場にてエミリオ・カルディア先生の合気道特別稽古を開催いたします。これは、１０月１４日・１５日にバルセロナでArashi Groupが主催する合気道講習会に先立つものです。 定員に限りがあり、申し込み順で参加が確定します。
+ １０月１３日（金）１９時３０分より、私たちの道場にてエミリオ・カルディア先生の合気道特別稽古を開催いたします。これは、１０月１４日・１５日にバルセロナで嵐グループが主催する合気道講習会に先立つものです。 定員に限りがあり、申し込み順で参加が確定します。
 
 image_ca: "events-hFZ2XXIp-2023-10-13-emilio-cardia-6th-dan-en"
 image_en: "events-hFZ2XXIp-2023-10-13-emilio-cardia-6th-dan-en"

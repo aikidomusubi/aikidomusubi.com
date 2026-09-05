@@ -128,11 +128,11 @@ topics:
                    en: "Our spaces", ja: "私たちの稽古場" }
         body:
           es:
-            - "Además de nuestra actividad en el dojo, <strong>Aikido Musubi</strong> ofrece clases en otros espacios de Barcelona y sus alrededores. Actualmente impartimos clases en el Polideportivo Municipal Marina-Besòs, en el Complex Esportiu Municipal Espronceda y en la Facultad de Derecho de la Universidad de Barcelona, acercando la práctica del aikido a nuevos entornos y comunidades."
+            - "Además de nuestra actividad en el dojo, <strong>Aikido Musubi</strong> ofrece clases en otros espacios de Barcelona y sus alrededores. Actualmente impartimos clases en el Polideportivo Municipal Marina-Besòs, en el Complejo Deportivo Municipal Espronceda y en la Facultad de Derecho de la Universidad de Barcelona, acercando la práctica del aikido a nuevos entornos y comunidades."
           ca:
             - "A més de l'activitat al dojo, <strong>Aikido Musubi</strong> ofereix classes en altres espais de Barcelona i rodalia. Actualment fem classes al Poliesportiu Municipal Marina-Besòs, al Complex Esportiu Municipal Espronceda i a la Facultat de Dret de la Universitat de Barcelona, acostant la pràctica de l'aikido a nous entorns i comunitats."
           en:
-            - "Beyond the dojo itself, <strong>Aikido Musubi</strong> teaches in other spaces around Barcelona. We currently run classes at the Marina-Besòs municipal sports centre, at the Complex Esportiu Municipal Espronceda and at the Faculty of Law of the University of Barcelona, bringing aikido to new places and communities."
+            - "Beyond the dojo itself, <strong>Aikido Musubi</strong> teaches in other spaces around Barcelona. We currently run classes at the Marina-Besòs Municipal Sports Centre, at the Espronceda Municipal Sports Complex and at the Faculty of Law of the University of Barcelona, bringing aikido to new places and communities."
           ja:
             - "道場での活動に加え、<strong>産靈合気道文化協会</strong>はバルセロナ周辺の他の施設でも稽古を行っています。現在はマリナ・バゾス市立スポーツセンター、エスプロンセダ市立スポーツ複合施設、そしてバルセロナ大学法学部で稽古を開いており、合気道を新しい場所と人びとに届けています。"
         # The three cards come from _data/venues.yml and the days from
@@ -338,7 +338,7 @@ topics:
             - "We started with one mat in Badalona and have not missed a season since. Along the way the Sant Adrià de Besòs classes opened, and the ones at the Faculty of Law of the University of Barcelona; the first dan grades came out of the dojo; and we went from hosting a visiting teacher now and then to running several seminars a year."
             - "We do not keep the count solemnly, but we do keep it: the archive and the seminar log live in Ura, and the log starts in 2020. It is a story better told in photographs than in dates."
           ja:
-            - "バダロナの一枚の畳から始まり、以来ひと年も稽古を絶やしていません。その間にサント・アドリアー・ダ・バゾスの稽古と、バルセロナ大学法学部の稽古が始まり、道場から最初の有段者が出て、たまに講師を招く道場から、年に何度も講習会を開く道場になりました。"
+            - "バダロナの一枚の畳から始まり、以来ひと年も稽古を絶やしていません。その間にサント・アドリア・ダ・バゾスの稽古と、バルセロナ大学法学部の稽古が始まり、道場から最初の有段者が出て、たまに講師を招く道場から、年に何度も講習会を開く道場になりました。"
             - "大げさに数えてはいませんが、記録は残しています。写真の記録と講習会の記録は「裏」にあり、講習会の記録は2020年から始まります。日付より写真のほうがよく伝わる歴史です。"
         more:
           - label: { es: "El archivo, en Ura", ca: "L'arxiu, a Ura",

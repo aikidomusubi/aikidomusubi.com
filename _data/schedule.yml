@@ -264,11 +264,25 @@ instructors:
   - { id: molina-jm,  name: "J. M. Molina", ja: "ジョアン・マネル　モリナ", person: "Joan Manel Molina" }
   - { id: zheng,      name: "G. Zheng",   ja: "グアンロン　ジェン",         rank: 7, person: "Guanlong Zheng" }
   - { id: mikhaylov,  name: "D. Mikhaylov", ja: "ダニール　ミハイロフ",     rank: 8, person: "Daniil Mikhaylov" }
-  - { id: zafra,      name: "J.L. Zafra", ja: "ホセ・ルイス　サフラ",       rank: 3 }
+  # `grade` ON AN INSTRUCTOR, AND WHY IT IS HERE RATHER THAN IN about.yml.
+  #
+  # The aikido instructors carry their grade in _data/about.yml, because they
+  # are the association's own teaching team and that page is where the team is
+  # written down; `person` above is the join. The iaijutsu, judo and karate
+  # instructors are guests — they are not on that list and should not be added
+  # to it — so their grade lives beside their name, here, and the location
+  # pages fall back to it when there is no `person`.
+  #
+  # An instructor with no `grade` and no `person` prints no grade line at all,
+  # which is a state and not an omission: P. Llorens's is not recorded, and a
+  # blank line is the honest rendering of that.
+  - { id: zafra,      name: "J.L. Zafra", ja: "ホセ・ルイス　サフラ",       rank: 3,
+      grade: { es: "1.er dan", ca: "1r dan", en: "1st dan", ja: "初段" } }
   - { id: serra,      name: "X. Serra" }
   # A different Molina from the aikido one above, and the reason that one is
   # `molina-jm`: this id was here first, for judo.
-  - { id: molina,     name: "A. Molina" }
+  - { id: molina,     name: "A. Molina",
+      grade: { es: "2.º dan", ca: "2n dan", en: "2nd dan", ja: "二段" } }
   - { id: llorens,    name: "P. Llorens" }
   - id: trainee
     name:
@@ -311,7 +325,7 @@ classes:
   - { category: judo,     location: musubi,     level: all,       days: [mon, wed], start: "18:30", end: "20:00", instructor: molina }
 
   - { category: karate,   location: musubi,     level: all,       days: [tue],      start: "21:30", end: "22:30", instructor: llorens }
-  - { category: karate,   location: musubi,     level: all,       days: [fri],      start: "20:00", end: "21:00", instructor: llorens }
+  - { category: karate,   location: musubi,     level: all,       days: [fri],      start: "20:00", end: "21:30", instructor: llorens }
   - { category: karate,   location: musubi,     level: all,       days: [sat],      start: "11:00", end: "13:00", instructor: llorens }
 
   # ---- Sant Adrià de Besòs ----

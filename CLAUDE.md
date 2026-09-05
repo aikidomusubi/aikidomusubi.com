@@ -1010,6 +1010,15 @@ aikido, iaijutsu, judo, karate. It used to print one line per class, so the
 dojo's fact list was the fourteen-row timetable again, above the actual
 timetable and without the columns that make it readable.
 
+**Instructor grades: the aikido team's are in `_data/about.yml`, everyone
+else's are in `_data/schedule.yml`.** The aikido instructors are the
+association's own teaching team and `about.yml` is where that team is written
+down; `person:` on the instructor is the join. The iaijutsu, judo and karate
+instructors are guests and do not belong on that list, so they carry `grade:`
+beside their name in `schedule.yml` instead, and the location layout falls back
+to it when there is no `person`. An instructor with neither prints no grade
+line, which is a state and not an omission — P. Llorens's is not recorded.
+
 **Badalona's "quién enseña" row is the roster; the other two towns' is derived.**
 `aikido_roster: true` in `_data/locations.yml` switches it. The derived list is
 right for Barcelona — it names the two people who take its two classes — but on
@@ -1029,6 +1038,16 @@ has a photograph of its own room — three different photographs of somewhere el
 would be three different promises. It exists only at the four hero widths and
 has no base variant, so `_data/imgw.yml` has no entry and the layout writes its
 own srcset.
+
+**The site-map page is built from `_data/nav.yml`, so anything not in the menu
+has to be added to it by hand.** The home page was the first such case — the
+wordmark is its link — and the three location pages are the second: they are
+reached from the home page's venue cards, from `/acceso/` and from each other.
+`_layouts/sitemap.html` renders them from `_data/locations.yml`, resolved per
+language through `i18n-ref`, under the footer's own venue-column heading. Note
+that this is the **site-map page**, `/mapa-del-sitio/`, and not `sitemap.xml`,
+which is generated from every page carrying an `i18n-ref` and had them from the
+first build.
 
 ### The access page's venue links are deep links, and they need a script
 
@@ -1061,20 +1080,36 @@ something interrupts it.
 
 ### Facility names are in `_data/venues.yml` and nowhere else
 
-`_includes/map.html` used to carry its own `case` over `map_section` with the
-four facilities spelled out in four languages: sixteen strings that were a copy
-of `facility:`. They drifted the day Espronceda's entry was corrected — the map
-button still said "Mapa de Complejo Deportivo Municipal Espronceda" a few
-hundred pixels below the corrected name, on the same page. It reads
-`facility[page.lang]` across `map_section` now.
+**`name` is the short form and is fixed; `facility` is the descriptive name and
+is translated.** "CxEM Espronceda" reads the same in all four languages;
+`facility` is "Complejo Deportivo Municipal Espronceda" / "Complex Esportiu
+Municipal Espronceda" / "Espronceda Municipal Sports Complex" /
+「エスプロンセダ市立スポーツ複合施設」. What is fixed is *Espronceda*; "complex
+esportiu municipal" is three common nouns describing it, and the same goes for
+*poliesportiu* at Marina-Besòs (センター, not 複合施設) and for *university* at the
+UB (universidad / universitat / university / 大学).
 
-**A facility's own name is not translated; the common nouns around it are.**
-Espronceda is "Complex Esportiu Municipal Espronceda" in all four languages,
-because that is what is on the building, on the council's listings and on the
-door somebody is standing at — "Complejo Deportivo Municipal Espronceda" and
-"Espronceda Municipal Sports Complex" appear nowhere. The word for *university*
-does follow the reader's language (universidad / universitat / university /
-大学), because it is a common noun.
+**Three places used to keep their own copy of those names, and all three
+drifted.** `_includes/map.html` had a `case` over `map_section` with the four
+facilities in four languages — sixteen strings — and it still said "Mapa de
+Complejo Deportivo Municipal Espronceda" a few hundred pixels below the
+corrected name on the same page. `_data/links.yml` had a `name` plus a
+`name_ja` per venue, which printed the *Catalan* name to all four languages and
+disagreed with `venues.yml` in kana besides: マリナ・バゾス in one, マリナ・ベソス in
+the other; エスプロンセダ…複合施設 in one, …施設 on the location pages. Neither
+spelling is wrong on its own. Having both is.
+
+Both read `facility[L]` now — `map.html` across `map_section`, `links.yml`
+across a `venue:` id — so /acceso/, the map buttons, /ura/'s links, the home
+page and the three location pages print one string per language.
+
+**Japanese proper nouns are a live source of this.** Sant Adrià de Besòs was
+サント・アドリアー・ダ・バゾス in two files and サント・アドリア・ダ・バゾス in
+fifteen. When a place name is added, grep the kana across `_data/`, `_includes/`
+and the four `*.md` sets before assuming it is new. The same applies to Arashi
+Group, which is **嵐グループ** everywhere — the Latin name in Japanese copy is a
+bug, except inside `_data/gallery.yml`, where the captions are the Instagram
+posts verbatim and are a record rather than our own writing.
 
 ## Where this site is going: Aikikai Barcelona
 

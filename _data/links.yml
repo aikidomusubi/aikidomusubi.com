@@ -28,6 +28,7 @@ places:
   ro:   { es: "Rumanía", ca: "Romania", en: "Romania", ja: "ルーマニア" }
   ca_:  { es: "Canadá", ca: "Canadà", en: "Canada", ja: "カナダ" }
   bcn:  { es: "Barcelona", ca: "Barcelona", en: "Barcelona", ja: "バルセロナ" }
+  tgn:  { es: "Tarragona", ca: "Tarragona", en: "Tarragona", ja: "タラゴナ" }
 
 orgs:
   - { name: "Aikikai Foundation", name_ja: "公益財団法人 合気会", host: "aikikai.or.jp", url: "http://www.aikikai.or.jp/" }
@@ -35,6 +36,11 @@ orgs:
   - { name: "Arashi Group", name_ja: "嵐グループ", host: "aikidoarashigroup.com", url: "http://aikidoarashigroup.com/" }
 
 dojos:
+  - name: "Aikido Aikikai Tarragona"
+    name_ja: "タラゴナ合気道合気会"
+    place: tgn
+    url: { es: "https://aikidotarragona.com/es/", ca: "https://aikidotarragona.com/",
+           en: "https://aikidotarragona.com/en/", ja: "https://aikidotarragona.com/ja/" }
   - { name: "Aikido Harukaze", name_ja: "春風 合気道会", host: "aikido-harukaze.com", url: "https://aikido-harukaze.com/", place: jp }
   - { name: "Aikido of London", host: "aikidooflondon.com", url: "https://aikidooflondon.com/", place: uk }
   - { name: "Aikido Palestra Fujiyama Pietrasanta", name_ja: "合気道 富士山ジム ピエトラサンタ", host: "aikido.palestrafujiyama.com", url: "https://aikido.palestrafujiyama.com/", place: it }
@@ -54,12 +60,23 @@ dojos:
   - { name: "Venice Aikikai Birankai", name_ja: "ヴェネツィア 合気会 毘嵐会", host: "facebook.com", url: "https://www.facebook.com/veniceaikikai.birankai/", place: it }
   - { name: "Wabi Aikido House", name_ja: "ワビ 合気道 ハウス", host: "taplink.cc", url: "https://taplink.cc/wabiaikidohouse", place: it }
 
+# THE VENUE NAMES ARE NOT WRITTEN HERE. `venue:` is an id from
+# _data/venues.yml and _includes/ura.html reads `facility[L]` across it.
+#
+# They used to be a `name` plus a `name_ja` per entry, which is a second copy of
+# a name that also appears on /acceso/, on the home page, on the three location
+# pages and in the map buttons. Copies drift, and these had: Marina-Besòs was
+# マリナ・バゾス市立スポーツセンター here and マリナ・ベソス市立スポーツセンター in
+# venues.yml, and Espronceda was 複合施設 here and 施設 on the location pages.
+# Neither is wrong on its own; having both is.
+#
+# Reading them across also gets the Spanish, Catalan and English right, which a
+# single `name` never could — this list printed the Catalan name to all four
+# languages.
 venues:
-  - { name: "Poliesportiu Municipal Marina-Besòs", name_ja: "マリナ・バゾス市立スポーツセンター", host: "marinabesos.net", url: "https://marinabesos.net/" }
-  - { name: "CxEM Espronceda", name_ja: "エスプロンセダ市立スポーツ複合施設", host: "asme.cat", url: "https://www.asme.cat/cxemespronceda/" }
-  - name: "Facultat de Dret, Universitat de Barcelona"
-    name_ja: "バルセロナ大学法学部"
-    host: "web.ub.edu"
+  - { venue: sant-adria-de-besos, url: "https://marinabesos.net/" }
+  - { venue: cxem-espronceda, url: "https://www.asme.cat/cxemespronceda/" }
+  - venue: university-of-barcelona
     url: { es: "https://web.ub.edu/es/web/facultat-dret/", ca: "https://web.ub.edu/ca/web/facultat-dret",
            en: "https://web.ub.edu/en/web/facultat-dret/", ja: "https://web.ub.edu/en/web/facultat-dret/" }
 

@@ -861,12 +861,20 @@
     </div>
     <p class="ur-lk-h">{{ K.headings.dojos[L] }}</p>
     <div class="ur-lk-grid">
+      {%- comment -%}
+        `url` is a plain string on most of these and a map of four on the ones
+        whose own site is translated, so it is resolved before it is used —
+        both for the href and for the visible text. Writing `{{ k.url }}`
+        straight out prints the whole hash, which is the bug the venues column
+        below already carries a note about.
+      {%- endcomment -%}
       {%- for k in K.dojos %}
-      {%- assign d = k.url | remove_first: 'https://' | remove_first: 'http://' | remove_first: 'www.' -%}
+      {%- if k.url.es %}{% assign ku = k.url[L] %}{% else %}{% assign ku = k.url %}{% endif -%}
+      {%- assign d = ku | remove_first: 'https://' | remove_first: 'http://' | remove_first: 'www.' -%}
       {%- assign dn = d.size | minus: 1 -%}{%- assign dl = d | slice: dn -%}
       {%- if dl == '/' %}{% assign d = d | slice: 0, dn %}{% endif -%}
       {%- if L == 'ja' and k.name_ja %}{% assign kname = k.name_ja %}{% else %}{% assign kname = k.name %}{% endif -%}
-      <a href="{{ k.url }}" target="_blank" rel="noopener"><b>{{ kname }}</b>
+      <a href="{{ ku }}" target="_blank" rel="noopener"><b>{{ kname }}</b>
         <span><i>{{ K.places[k.place][L] }}</i>{{ d }}</span></a>
       {%- endfor %}
     </div>
@@ -877,13 +885,21 @@
           One entry has a URL per language, so both the href and the visible
           text have to come from the resolved value. They did not: the label
           printed the whole hash.
+
+          The NAME is not in _data/links.yml at all. `venue:` is an id from
+          _data/venues.yml and the facility name is read across it, in the
+          reader's language — so this column, /acceso/, the map buttons, the
+          home page and the three location pages all print one string, and the
+          Japanese cannot say マリナ・バゾス in one place and マリナ・ベソス in
+          another. It did.
         {%- endcomment -%}
         {%- for k in K.venues %}
         {%- if k.url.es %}{% assign ku = k.url[L] %}{% else %}{% assign ku = k.url %}{% endif -%}
         {%- assign kd = ku | remove_first: 'https://' | remove_first: 'http://' | remove_first: 'www.' -%}
         {%- assign kn = kd.size | minus: 1 -%}{%- assign kl = kd | slice: kn -%}
         {%- if kl == '/' %}{% assign kd = kd | slice: 0, kn %}{% endif -%}
-        {%- if L == 'ja' and k.name_ja %}{% assign kname = k.name_ja %}{% else %}{% assign kname = k.name %}{% endif -%}
+        {%- assign kv = site.data.venues.venues | where: 'id', k.venue | first -%}
+        {%- assign kname = kv.facility[L] -%}
         <a href="{{ ku }}" target="_blank" rel="noopener"><b>{{ kname }}</b><span>{{ kd }}</span></a>
         {%- endfor %}
       </div>

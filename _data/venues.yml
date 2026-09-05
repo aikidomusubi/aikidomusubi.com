@@ -182,7 +182,7 @@ venues:
       es: "Sant Adrià de Besòs"
       ca: "Sant Adrià de Besòs"
       en: "Sant Adrià de Besòs"
-      ja: "サント・アドリアー・ダ・バゾス"
+      ja: "サント・アドリア・ダ・バゾス"
     address:
       es: "Carrer de Dolores Ibarruri Pasionaria, s/n<br>08930 Sant Adrià de Besòs, Barcelona"
       ca: "Carrer de Dolores Ibarruri Pasionaria, s/n<br>08930 Sant Adrià de Besòs, Barcelona"
@@ -196,8 +196,8 @@ venues:
     facility:
       es: "Polideportivo Municipal Marina-Besòs"
       ca: "Poliesportiu Municipal Marina-Besòs"
-      en: "Marina-Besòs Municipal Sports Center"
-      ja: "マリナ・ベソス市立スポーツセンター"
+      en: "Marina-Besòs Municipal Sports Centre"
+      ja: "マリナ・バゾス市立スポーツセンター"
     note:
       es: "El dojo está dentro del polideportivo y puede costar encontrarlo. Mira bien el plano y ven con tiempo la primera vez."
       ca: "El dojo és dins del poliesportiu i pot costar de trobar. Mira bé el plànol i vine amb temps el primer dia."
@@ -287,22 +287,24 @@ venues:
       ca: ["Obert dilluns i dimecres"]
       en: ["Open Monday and Wednesday"]
       ja: ["月・水営業"]
-    # THE FACILITY'S OWN NAME, NOT A TRANSLATION OF IT.
+    # `facility` IS THE DESCRIPTIVE NAME AND IT IS TRANSLATED. `name` above is
+    # the short form, "CxEM Espronceda", and that one is not.
     #
-    # It is a Barcelona city facility and "Complex Esportiu Municipal
-    # Espronceda" is what is written on the building, on the council's own
-    # listings and on the door somebody is standing at. Translating it gave a
-    # Spanish reader "Complejo Deportivo Municipal Espronceda" and an English
-    # one "Espronceda Municipal Sports Complex" — two names that appear
-    # nowhere, on the page whose whole job is getting a stranger to the right
-    # entrance. Same reasoning as the venue slugs: a proper noun is not
-    # translated. The Japanese keeps a reading in kana after the name for the
-    # same reason it is there elsewhere.
+    # This is the pattern every venue here follows — "Poliesportiu Municipal
+    # Marina-Besòs" / "Polideportivo Municipal…" / "…Municipal Sports Centre" —
+    # and it is the right one: what is fixed is Espronceda, the name of the
+    # street the complex is on and of the complex itself; "complex esportiu
+    # municipal" is three common nouns describing it.
+    #
+    # The Japanese is 複合施設, "complex", matching the Catalan; Marina-Besòs is
+    # a poliesportiu and takes センター. Both are what /ura/'s links section was
+    # already publishing, which is now where this is read from rather than
+    # copied to.
     facility:
-      es: "Complex Esportiu Municipal Espronceda"
+      es: "Complejo Deportivo Municipal Espronceda"
       ca: "Complex Esportiu Municipal Espronceda"
-      en: "Complex Esportiu Municipal Espronceda"
-      ja: "Complex Esportiu Municipal Espronceda（エスプロンセダ市立スポーツ施設）"
+      en: "Espronceda Municipal Sports Complex"
+      ja: "エスプロンセダ市立スポーツ複合施設"
     note:
       es: "Las clases se hacen en la sala de tatami del complejo deportivo. Mira bien el plano y ven con tiempo la primera vez."
       ca: "Les classes es fan a la sala de tatami del complex esportiu. Mira bé el plànol i vine amb temps el primer dia."

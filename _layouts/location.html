@@ -107,6 +107,12 @@
           {%- if p.name.es %}{% assign who = p.name[L] %}
           {%- elsif L == 'ja' and p.ja %}{% assign who = p.ja %}
           {%- else %}{% assign who = p.name %}{% endif -%}
+          {%- comment -%}
+            A guest instructor's grade sits on the instructor in schedule.yml;
+            the association's own aikido team take theirs from about.yml through
+            `person`, below, which overwrites this. Neither is typed here.
+          {%- endcomment -%}
+          {%- if p.grade %}{% assign grade = p.grade[L] %}{% endif -%}
           {%- if p.person -%}
             {%- assign pr = people | where: 'name', p.person | first -%}
             {%- if pr -%}

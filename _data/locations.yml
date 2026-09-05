@@ -114,7 +114,7 @@ ui:
     es: "Aikido Musubi, asociación cultural sin ánimo de lucro fundada en YEAR. Formamos parte de Aikido Arashi Group, reconocido por la Aikikai Foundation (Hombu Dojo, Tokio)."
     ca: "Aikido Musubi, associació cultural sense ànim de lucre fundada el YEAR. Formem part d'Aikido Arashi Group, reconegut per l'Aikikai Foundation (Hombu Dojo, Tòquio)."
     en: "Aikido Musubi, a non-profit cultural association founded in YEAR. We are part of Aikido Arashi Group, recognised by the Aikikai Foundation (Hombu Dojo, Tokyo)."
-    ja: "合気道産靈は、YEAR年に設立された非営利の文化協会です。合気会（本部道場・東京）の承認を受けた Aikido Arashi Group に所属しています。"
+    ja: "合気道産靈は、YEAR年に設立された非営利の文化協会です。合気会（本部道場・東京）の承認を受けた嵐グループに所属しています。"
   # One sentence for the three pages. It used to end "…incluye el dojo de
   # Badalona, que abre de lunes a sábado", which on /badalona/ told the reader
   # about the page they were already on.
@@ -239,10 +239,10 @@ locations:
         en: "Badalona is the dojo: a space given over entirely to martial arts, open Monday to Saturday and with all four disciplines. The gradings, the seminars and the masterclasses happen here. Barcelona and Sant Adrià de Besòs have aikido two days a week, with the same programme."
         ja: "バダロナは道場そのものです。武道のためだけの場所で、月曜から土曜まで開いており、4つの武道すべてを稽古できます。審査・講習会・マスタークラスもここで行います。バルセロナとサント・アドリア・ダ・バゾスでは、同じ内容の合気道を週2日稽古しています。"
     teachers_line:
-      es: "El dojo lo dirige <b>Pablo Martín</b>, 4.º dan Aikikai y shidōin, que fundó la asociación en 2008. El equipo de aikido son ocho instructores con grado dan del Aikikai, y son los mismos que dan clase en Barcelona y en Sant Adrià de Besòs. El iaijutsu, el judo y el karate tienen sus propios instructores. Todos siguen la línea del Aikikai Hombu Dojo de Tokio."
-      ca: "El dojo el dirigeix <b>Pablo Martín</b>, 4t dan Aikikai i shidōin, que va fundar l'associació el 2008. L'equip d'aikido són vuit instructors amb grau dan de l'Aikikai, i són els mateixos que fan classe a Barcelona i a Sant Adrià de Besòs. L'iaijutsu, el judo i el karate tenen els seus propis instructors. Tots segueixen la línia de l'Aikikai Hombu Dojo de Tòquio."
-      en: "The dojo is led by <b>Pablo Martín</b>, 4th dan Aikikai and shidōin, who founded the association in 2008. The aikido team is eight instructors holding Aikikai dan grades, and they are the same people who teach in Barcelona and in Sant Adrià de Besòs. Iaijutsu, judo and karate have instructors of their own. All of them follow the line of the Aikikai Hombu Dojo in Tokyo."
-      ja: "道場は合気会四段・指導員の<b>パブロ・マルティン</b>が率いています。2008年に協会を設立した人物です。合気道の指導陣は合気会の段位を持つ8名で、バルセロナやサント・アドリア・ダ・バゾスで指導しているのも同じ顔ぶれです。居合術・柔道・空手にもそれぞれ指導者がいます。いずれも東京の合気会本部道場の流れを汲んでいます。"
+      es: "El dojo lo dirige <b>Pablo Martín</b>, 4.º dan Aikikai y shidōin, que fundó la asociación en 2008. El equipo de aikido son ocho instructores con grado dan del Aikikai, y son los mismos que dan clase en Barcelona y en Sant Adrià de Besòs. Todos siguen la línea del Aikikai Hombu Dojo de Tokio. El iaijutsu, el judo y el karate tienen sus propios instructores."
+      ca: "El dojo el dirigeix <b>Pablo Martín</b>, 4t dan Aikikai i shidōin, que va fundar l'associació el 2008. L'equip d'aikido són vuit instructors amb grau dan de l'Aikikai, i són els mateixos que fan classe a Barcelona i a Sant Adrià de Besòs. Tots segueixen la línia de l'Aikikai Hombu Dojo de Tòquio. L'iaijutsu, el judo i el karate tenen els seus propis instructors."
+      en: "The dojo is led by <b>Pablo Martín</b>, 4th dan Aikikai and shidōin, who founded the association in 2008. The aikido team is eight instructors holding Aikikai dan grades, and they are the same people who teach in Barcelona and in Sant Adrià de Besòs. All of them follow the line of the Aikikai Hombu Dojo in Tokyo. Iaijutsu, judo and karate have instructors of their own."
+      ja: "道場は合気会四段・指導員の<b>パブロ・マルティン</b>が率いています。2008年に協会を設立した人物です。合気道の指導陣は合気会の段位を持つ8名で、バルセロナやサント・アドリア・ダ・バゾスで指導しているのも同じ顔ぶれです。いずれも東京の合気会本部道場の流れを汲んでいます。居合術・柔道・空手にもそれぞれ指導者がいます。"
   - id: barcelona
     # The town on its own, for headings that name it mid-sentence.
     town_name:
@@ -264,10 +264,10 @@ locations:
       en: "Barcelona · CxEM Espronceda and UB"
       ja: "バルセロナ · エスプロンセダとUB"
     lede:
-      es: "Entrenamos aikido en dos espacios de Barcelona, los lunes y los miércoles: el Complex Esportiu Municipal Espronceda y la Facultad de Derecho de la Universidad de Barcelona. Es la misma asociación que abre cada día el dojo de Badalona."
+      es: "Entrenamos aikido en dos espacios de Barcelona, los lunes y los miércoles: el Complejo Deportivo Municipal Espronceda y la Facultad de Derecho de la Universidad de Barcelona. Es la misma asociación que abre cada día el dojo de Badalona."
       ca: "Entrenem aikido en dos espais de Barcelona, els dilluns i els dimecres: el Complex Esportiu Municipal Espronceda i la Facultat de Dret de la Universitat de Barcelona. És la mateixa associació que obre cada dia el dojo de Badalona."
-      en: "We train aikido in two spaces in Barcelona, on Mondays and Wednesdays: the Complex Esportiu Municipal Espronceda and the Faculty of Law at the University of Barcelona. It is the same association that opens the Badalona dojo every day."
-      ja: "バルセロナでは月曜と水曜に、2か所で合気道を稽古しています。エスプロンセダ市立スポーツ施設と、バルセロナ大学法学部です。バダロナの道場を毎日開いているのと同じ協会です。"
+      en: "We train aikido in two spaces in Barcelona, on Mondays and Wednesdays: the Espronceda Municipal Sports Complex and the Faculty of Law at the University of Barcelona. It is the same association that opens the Badalona dojo every day."
+      ja: "バルセロナでは月曜と水曜に、2か所で合気道を稽古しています。エスプロンセダ市立スポーツ複合施設と、バルセロナ大学法学部です。バダロナの道場を毎日開いているのと同じ協会です。"
     hero_line:
       es: "Lunes y miércoles, en dos espacios. Sin experiencia previa, sin competición y sin comprar nada para empezar."
       ca: "Dilluns i dimecres, en dos espais. Sense experiència prèvia, sense competició i sense comprar res per començar."
@@ -286,10 +286,10 @@ locations:
         en: "Same association, same programme, same gradings; the space and the hours are what change. Badalona is the main dojo, open Monday to Saturday, and adds iaijutsu, judo and karate. Barcelona has aikido on Mondays and Wednesdays. Plenty of people train at both."
         ja: "協会も稽古内容も審査も同じで、違うのは場所と時間だけです。バダロナは本部の道場で、月曜から土曜まで開いており、居合術・柔道・空手もあります。バルセロナでは月曜と水曜に合気道を稽古します。両方に通っている人も多くいます。"
     teachers_line:
-      es: "<b>Daniil Mikhaylov</b>, 3.er dan Aikikai, lleva la clase del Complex Esportiu Municipal Espronceda. <b>Pablo Martín</b>, 4.º dan Aikikai y responsable del dojo, lleva la de la Facultad de Derecho de la Universidad de Barcelona. Ambos se formaron en Aikido Musubi y siguen la línea del Aikikai Hombu Dojo de Tokio."
+      es: "<b>Daniil Mikhaylov</b>, 3.er dan Aikikai, lleva la clase del Complejo Deportivo Municipal Espronceda. <b>Pablo Martín</b>, 4.º dan Aikikai y responsable del dojo, lleva la de la Facultad de Derecho de la Universidad de Barcelona. Ambos se formaron en Aikido Musubi y siguen la línea del Aikikai Hombu Dojo de Tokio."
       ca: "<b>Daniil Mikhaylov</b>, 3r dan Aikikai, porta la classe del Complex Esportiu Municipal Espronceda. <b>Pablo Martín</b>, 4t dan Aikikai i responsable del dojo, porta la de la Facultat de Dret de la Universitat de Barcelona. Tots dos s'han format a Aikido Musubi i segueixen la línia de l'Aikikai Hombu Dojo de Tòquio."
-      en: "<b>Daniil Mikhaylov</b>, 3rd dan Aikikai, leads the class at the Complex Esportiu Municipal Espronceda. <b>Pablo Martín</b>, 4th dan Aikikai and head of the dojo, leads the one at the Faculty of Law, University of Barcelona. Both trained at Aikido Musubi and follow the line of the Aikikai Hombu Dojo in Tokyo."
-      ja: "エスプロンセダ市立スポーツ施設の稽古は、合気会三段の<b>ダニール・ミハイロフ</b>が担当します。バルセロナ大学法学部の稽古は、合気会四段で道場責任者の<b>パブロ・マルティン</b>が担当します。二人とも合気道産靈で稽古を重ね、東京の合気会本部道場の流れを汲んでいます。"
+      en: "<b>Daniil Mikhaylov</b>, 3rd dan Aikikai, leads the class at the Espronceda Municipal Sports Complex. <b>Pablo Martín</b>, 4th dan Aikikai and head of the dojo, leads the one at the Faculty of Law, University of Barcelona. Both trained at Aikido Musubi and follow the line of the Aikikai Hombu Dojo in Tokyo."
+      ja: "エスプロンセダ市立スポーツ複合施設の稽古は、合気会三段の<b>ダニール・ミハイロフ</b>が担当します。バルセロナ大学法学部の稽古は、合気会四段で道場責任者の<b>パブロ・マルティン</b>が担当します。二人とも合気道産靈で稽古を重ね、東京の合気会本部道場の流れを汲んでいます。"
   - id: sant-adria-de-besos
     # The town on its own, for headings that name it mid-sentence.
     town_name:
