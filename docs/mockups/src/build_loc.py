@@ -1037,6 +1037,222 @@ WHY_E = """
 </ul>"""
 
 
+# ===========================================================================
+# F — E, con los nombres, el género y los títulos revisados
+#
+# Its own copy rather than edits to the shared constants: A-E stay exactly as
+# they were reviewed, so the five can still be compared side by side.
+# ===========================================================================
+VENUES_F = [
+    dict(VENUES[0], name="CxEM Espronceda",
+         facility="Complex Esportiu Municipal Espronceda"),
+    dict(VENUES[1], name="Facultat de Dret de la UB",
+         facility="Facultat de Dret, Universitat de Barcelona"),
+]
+
+FAQ_F = [
+    ("¿Necesito experiencia previa?",
+     "No. La clase de la Facultat de Dret de la UB es de nivel principiante y la de CxEM "
+     "Espronceda es de todos los niveles, lo que significa que quien empieza entrena junto a "
+     "quien lleva años. En aikido no hay competición, así que nadie está midiéndose contigo."),
+    ("¿Tengo que comprar un keikogi para empezar?",
+     "No. Para las primeras clases basta con ropa cómoda de manga larga y pantalón largo. "
+     "Si después te matriculas por trimestre, semestre o año, el keikogi lo pone el dojo."),
+    ("¿Puedo probar antes de apuntarme?",
+     "Sí: dos clases de prueba, y la inscripción no cuesta nada. Escríbenos y te decimos "
+     "qué día venir."),
+    ("¿Cuánto cuesta?",
+     "35 € al mes a partir de los 12 años y 25 € por debajo, con descuentos por trimestre, "
+     "semestre y año y una cuota familiar. El detalle completo está en la página de cuotas."),
+    ("¿Hay clases para niños y niñas en Barcelona?",
+     "Todavía no. Las clases para niños y niñas se imparten en el dojo de Badalona. En "
+     "CxEM Espronceda y en la Universitat de Barcelona las clases son a partir de los 12 años."),
+    ("¿En qué se diferencia de las clases de Badalona?",
+     "Es la misma asociación, el mismo programa y los mismos exámenes; cambian el espacio y "
+     "el horario. Badalona es el dojo principal y abre de lunes a sábado, con aikido, judo, "
+     "iaijutsu y karate. En Barcelona hay aikido los lunes y los miércoles. Muchas personas "
+     "entrenan en los dos sitios."),
+]
+
+RELATED_F = """
+<div class="rel">
+  <a href="/badalona/"><b>Badalona</b><span>El dojo principal &middot; aikido, judo, iaijutsu y karate</span></a>
+  <a href="/sant-adria-de-besos/"><b>Sant Adrià de Besòs</b><span>Marina-Besòs &middot; aikido los lunes y miércoles</span></a>
+  <a href="/horarios/"><b>Horario completo</b><span>Los cuatro espacios, semana a semana</span></a>
+</div>"""
+
+
+def page_f():
+    F = figures()
+
+    steps = ''.join(
+        '<div class="hm-step"><p class="n">%02d</p><h3>%s</h3><p>%s</p></div>'
+        % (i + 1, t, d) for i, (t, d) in enumerate(STEPS))
+
+    faq = '<div class="ab-faq">' + ''.join(
+        '<details name="loc-faq"><summary>%s</summary><div class="a"><p>%s</p></div></details>'
+        % (q, a) for q, a in FAQ_F) + '</div>'
+
+    rows = ''.join(
+        '<tr><td>%s<small>%s</small></td><td>%s</td><td>%s</td>'
+        '<td>%s<small>%s</small></td></tr>'
+        % (v['time'], v['days'], v['name'], v['level'], v['teacher'], v['grade'])
+        for v in VENUES_F)
+    tt = ('<table class="lo-tt"><thead><tr><th>Cuándo</th><th>Dónde</th><th>Nivel</th>'
+          '<th>Quién</th></tr></thead><tbody>%s</tbody></table>' % rows)
+
+    vens = '<div class="vens">' + ''.join("""
+        <article class="ven">
+          <img src="%(plan)s" alt="Plano de acceso a %(name)s" loading="lazy">
+          <div class="ven-in">
+            <h3>%(name)s</h3>
+            <p class="addr">%(facility)s<br>%(street)s &middot; %(post)s<br>%(room)s</p>
+            <p class="when"><b>%(days)s</b> %(time)s <span class="tag">%(level)s</span></p>
+            <p class="who">Con <b>%(teacher)s</b>, %(grade)s</p>
+            <p class="who">%(door)s</p>
+            <p class="maps"><a href="%(gmaps)s">Google Maps</a><a href="%(amaps)s">Apple Maps</a></p>
+          </div>
+        </article>""" % v for v in VENUES_F) + '</div>'
+
+    return """
+%(nav)s
+<div class="hero" style="background-image:url('/images/index-8oGCaMDs-00-1200.webp')">
+  <div class="hero-in">
+    <p class="kick">Barcelona &middot; CxEM Espronceda y UB</p>
+    <h1>Aikido en Barcelona</h1>
+    <p>Lunes y miércoles, en dos espacios. Sin experiencia previa, sin competición
+       y sin comprar nada para empezar.</p>
+    <p class="cta"><a class="btn" href="/contacto/">Ven a probar</a>
+       <a class="btn btn-2" href="#horario">Ver el horario</a>
+       <small>Dos clases de prueba &middot; inscripción gratuita</small></p>
+  </div>
+</div>
+<div class="auth">
+  <div><b>%(year)s</b><span>Entrenando desde</span></div>
+  <div><b>%(inst)s</b><span>Equipo docente titulado</span></div>
+  <div><b>%(events)s</b><span>Cursos desde 2020</span></div>
+  <div><b>Aikikai</b><span>Hombu Dojo, Tokio</span></div>
+</div>
+<div class="wrap">
+  <p class="crumb"><a href="/">Inicio</a> &middot; <a href="/acceso/">Dónde entrenamos</a> &middot; Barcelona</p>
+
+  <section class="hm-sec">
+    <p class="hm-lab">Barcelona</p>
+    <h2>Lo esencial</h2>
+    <dl class="lo-facts">
+      <dt>Dónde</dt><dd><b>CxEM Espronceda</b>, C/ Espronceda 326, 08027 Barcelona.<br>
+        <b>Facultat de Dret de la UB</b>, Av. Diagonal 684, 08034 Barcelona.</dd>
+      <dt>Cuándo</dt><dd>Lunes y miércoles. De 19:00 a 20:00 en la Facultat de Dret de la UB
+        (nivel principiante) y de 20:00 a 21:00 en CxEM Espronceda (todos los niveles).</dd>
+      <dt>Para quién</dt><dd>Personas de 12 años en adelante, con o sin experiencia previa.</dd>
+      <dt>Cuánto</dt><dd>35 &euro; al mes. Inscripción gratuita y dos clases de prueba.</dd>
+      <dt>Qué llevar</dt><dd>Ropa cómoda de manga y pantalón largos. El keikogi no hace falta
+        para empezar.</dd>
+      <dt>Quién enseña</dt><dd>Daniil Mikhaylov, 3.er dan Aikikai, y Pablo Martín, 4.º dan
+        Aikikai y responsable del dojo.</dd>
+      <dt>Quién lo organiza</dt><dd>Aikido Musubi, asociación cultural sin ánimo de lucro
+        fundada en %(year)s. Formamos parte de Aikido Arashi Group, reconocido por la
+        Aikikai Foundation (Hombu Dojo, Tokio).</dd>
+    </dl>
+  </section>
+
+  <section class="hm-sec">
+    <p class="hm-lab">Cómo empezar</p>
+    <h2>Tu primera clase, paso a paso</h2>
+    <div class="hm-steps">%(steps)s</div>
+  </section>
+
+  <section class="hm-sec" id="horario">
+    <p class="hm-lab">Horario</p>
+    <h2>Las clases en Barcelona</h2>
+    %(tt)s
+    <div class="body" style="margin-top:1.2rem">
+      <p>Estas son las clases de Barcelona.
+         <a href="/horarios/">El horario completo de los %(venues)s espacios</a> incluye el
+         dojo de Badalona, que abre de lunes a sábado.</p>
+    </div>
+  </section>
+
+  <section class="hm-sec">
+    <p class="hm-lab">Los espacios</p>
+    <h2>Dónde entrenamos</h2>
+    %(vens)s
+  </section>
+
+  <section class="hm-sec">
+    <p class="hm-lab">Quién enseña</p>
+    <h2>El equipo docente</h2>
+    <div class="body">
+      <p><b>Daniil Mikhaylov</b>, 3.er dan Aikikai, lleva la clase de CxEM Espronceda.
+         <b>Pablo Martín</b>, 4.º dan Aikikai y responsable del dojo, lleva la de la
+         Facultat de Dret de la UB. Las dos personas se formaron en Aikido Musubi y siguen
+         la línea del Aikikai Hombu Dojo de Tokio a través de Aikido Arashi Group.</p>
+      <p><a href="/sobre-nosotros/la-asociacion/">El equipo docente de la asociación</a>.</p>
+    </div>
+  </section>
+
+  <section class="hm-sec">
+    <p class="hm-lab">Dudas</p>
+    <h2>Preguntas frecuentes</h2>
+    %(faq)s
+  </section>
+
+  <section class="hm-sec">
+    <p class="hm-lab">Y también</p>
+    <h2>También entrenamos en</h2>
+    %(rel)s
+    <div class="body" style="margin-top:2.5rem">
+      <p class="cta"><a class="btn" href="/contacto/">Escríbenos</a>
+         <a class="btn btn-2" href="/cuotas/">Ver las cuotas</a>
+         <small>Respondemos el mismo día.</small></p>
+    </div>
+  </section>
+</div>
+<div class="tail">Pie de página.</div>""" % dict(nav=NAV, steps=steps, tt=tt, vens=vens,
+                                                faq=faq, rel=RELATED_F, year=F['year'],
+                                                inst=F['inst'], events=F['events'],
+                                                venues=F['venues'])
+
+
+WHY_F = """
+<h2>Enfoque F &middot; E con los cinco ajustes</h2>
+<ul>
+  <li><b>El h&eacute;roe no menciona Arashi Group.</b> La cuarta cifra vuelve a decir
+      «Aikikai &middot; Hombu Dojo, Tokio», como en C. La cadena completa y exacta &mdash; que
+      es Arashi Group quien tiene el reconocimiento, y que el dojo pertenece a Arashi
+      Group &mdash; sigue escrita entera en «Qui&eacute;n lo organiza» y en «El equipo docente»,
+      que es donde hay sitio para decirla bien. Cuatro palabras en una celda no dan para
+      un matiz; una frase, s&iacute;.</li>
+  <li><b>Los t&iacute;tulos son los de D:</b> antet&iacute;tulo en Futura micro y <code>h2</code> sin
+      subrayado, dentro de <code>.hm-sec</code>. Fuera la regla de 2px bajo cada
+      encabezado.</li>
+  <li><b>Los nombres, completos siempre.</b> Nunca «Espronceda» ni «Universitat» a
+      secas: <b>CxEM Espronceda</b> o <b>Complex Esportiu Municipal Espronceda</b>, y
+      <b>Facultat de Dret de la UB</b> o <b>Universitat de Barcelona</b>. Tambi&eacute;n en el
+      antet&iacute;tulo del h&eacute;roe, que en E dec&iacute;a «Espronceda y Universitat».</li>
+  <li><b>«Espacios», no «salas»</b>, que adem&aacute;s es la palabra que ya usa la portada en
+      «Nuestros espacios». Se mantienen «sala de tatami» y «sala polivalente La Capella»
+      porque son los nombres propios de esas dos habitaciones.</li>
+  <li><b>Lenguaje inclusivo.</b> «Personas de 12 a&ntilde;os en adelante» en lugar de «adultos
+      y j&oacute;venes»; «clases para ni&ntilde;os y ni&ntilde;as» en lugar de «clase infantil», tanto en la
+      pregunta como en la respuesta; «equipo docente» en lugar de «instructores», en la
+      banda de cifras, en el t&iacute;tulo de secci&oacute;n y en el enlace; y «las dos personas se
+      formaron» en lugar de «los dos se formaron».</li>
+</ul>
+
+<h2>Dos cosas que te devuelvo</h2>
+<ul>
+  <li><b>No he puesto la info de B en la banda.</b> B llevaba ah&iacute; Lun&middot;Mi&eacute;, 2
+      espacios, desde 12 y 35 &euro; &mdash; y las cuatro son filas de la ficha que va justo
+      debajo, a trescientos p&iacute;xeles. Es la duplicaci&oacute;n que hizo cambiar la banda cuando
+      constru&iacute; C. Si aun as&iacute; la prefieres, es una l&iacute;nea.</li>
+  <li><b><code>_data/venues.yml</code> dice «Complejo Deportivo Municipal Espronceda»</b> en
+      castellano. El nombre oficial del equipamiento es el catal&aacute;n, «Complex Esportiu
+      Municipal Espronceda», y es el que usa esta p&aacute;gina. Si lo confirmas, lo cambio
+      tambi&eacute;n en los datos y con ello en /acceso/ y en el resto del sitio.</li>
+</ul>"""
+
+
 def build(name, title, kick, h1, lede, page, why):
     html = """<!doctype html><html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -1096,4 +1312,11 @@ if __name__ == '__main__':
           'La base y el orden de C, con la ficha redibujada en el lenguaje del sitio y con '
           'los pasos y el horario de D. Las tarjetas de las salas se quedan como en C.',
           page_e(), WHY_E)
-    print('location mockups -> docs/mockups/loc-barcelona-{a,b,c,d,e}.html')
+    build('loc-barcelona-f.html',
+          'Barcelona · enfoque F — Aikido Musubi',
+          'Página de localidad · propuesta F · recomendada',
+          'Barcelona &middot; E, revisada',
+          'La base de E con los títulos de D, los nombres completos de los espacios, '
+          '«espacios» en lugar de «salas», lenguaje inclusivo y sin Arashi Group en el héroe.',
+          page_f(), WHY_F)
+    print('location mockups -> docs/mockups/loc-barcelona-{a,b,c,d,e,f}.html')
