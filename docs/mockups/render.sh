@@ -17,5 +17,6 @@ python3 docs/mockups/src/build_ura_arch.py
 python3 docs/mockups/src/build_shidoin.py
 python3 docs/mockups/src/build_bar.py
 python3 docs/mockups/src/build_loc.py
+python3 docs/mockups/src/build_maps.py
 for f in docs/mockups/*.html; do cp "$f" _site/mockups/; done
 echo "→ http://localhost:4000/mockups/  ($(ls _site/mockups | wc -l | tr -d ' ') files)"
