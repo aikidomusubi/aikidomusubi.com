@@ -128,11 +128,11 @@ topics:
                    en: "Our spaces", ja: "私たちの稽古場" }
         body:
           es:
-            - "Además de nuestra actividad en el dojo, <strong>Aikido Musubi</strong> ofrece clases en otros espacios de Barcelona y sus alrededores. Actualmente impartimos clases en el Polideportivo Municipal Marina-Besòs, en el Complejo Deportivo Municipal Espronceda y en la Facultad de Derecho de la Universidad de Barcelona, acercando la práctica del aikido a nuevos entornos y comunidades."
+            - "Además de nuestra actividad en el dojo, <strong>Aikido Musubi</strong> ofrece clases en otros espacios de Barcelona y sus alrededores. Actualmente impartimos clases en el Polideportivo Municipal Marina-Besòs, en el Complex Esportiu Municipal Espronceda y en la Facultad de Derecho de la Universidad de Barcelona, acercando la práctica del aikido a nuevos entornos y comunidades."
           ca:
             - "A més de l'activitat al dojo, <strong>Aikido Musubi</strong> ofereix classes en altres espais de Barcelona i rodalia. Actualment fem classes al Poliesportiu Municipal Marina-Besòs, al Complex Esportiu Municipal Espronceda i a la Facultat de Dret de la Universitat de Barcelona, acostant la pràctica de l'aikido a nous entorns i comunitats."
           en:
-            - "Beyond the dojo itself, <strong>Aikido Musubi</strong> teaches in other spaces around Barcelona. We currently run classes at the Marina-Besòs municipal sports centre, at the Espronceda municipal sports complex and at the Faculty of Law of the University of Barcelona, bringing aikido to new places and communities."
+            - "Beyond the dojo itself, <strong>Aikido Musubi</strong> teaches in other spaces around Barcelona. We currently run classes at the Marina-Besòs municipal sports centre, at the Complex Esportiu Municipal Espronceda and at the Faculty of Law of the University of Barcelona, bringing aikido to new places and communities."
           ja:
             - "道場での活動に加え、<strong>産靈合気道文化協会</strong>はバルセロナ周辺の他の施設でも稽古を行っています。現在はマリナ・バゾス市立スポーツセンター、エスプロンセダ市立スポーツ複合施設、そしてバルセロナ大学法学部で稽古を開いており、合気道を新しい場所と人びとに届けています。"
         # The three cards come from _data/venues.yml and the days from

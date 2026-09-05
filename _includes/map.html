@@ -24,26 +24,26 @@
   neither what is on the map nor a place anyone would search for. And it was
   the last em dash on the site.
 {%- endcomment -%}
-{%- case include.section -%}
-  {%- when 'aikido_musubi' -%}{%- assign map_place = 'Instalaciones Deportivas Badalona Sud' -%}
-    {%- if page.lang == 'ca' -%}{%- assign map_place = 'Instal·lacions Esportives Badalona Sud' -%}
-    {%- elsif page.lang == 'en' -%}{%- assign map_place = 'Badalona Sud Sports Facilities' -%}
-    {%- elsif page.lang == 'ja' -%}{%- assign map_place = 'バダロナ・スッド体育施設' -%}{%- endif -%}
-  {%- when 'sant_adria_de_besos' -%}{%- assign map_place = 'Polideportivo Municipal Marina-Besòs' -%}
-    {%- if page.lang == 'ca' -%}{%- assign map_place = 'Poliesportiu Municipal Marina-Besòs' -%}
-    {%- elsif page.lang == 'en' -%}{%- assign map_place = 'Marina-Besòs Municipal Sports Centre' -%}
-    {%- elsif page.lang == 'ja' -%}{%- assign map_place = 'マリナ・バゾス市立スポーツセンター' -%}{%- endif -%}
-  {%- when 'cxem_espronceda' -%}{%- assign map_place = 'Complejo Deportivo Municipal Espronceda' -%}
-    {%- if page.lang == 'ca' -%}{%- assign map_place = 'Complex Esportiu Municipal Espronceda' -%}
-    {%- elsif page.lang == 'en' -%}{%- assign map_place = 'Espronceda Municipal Sports Complex' -%}
-    {%- elsif page.lang == 'ja' -%}{%- assign map_place = 'エスプロンセダ市立スポーツ複合施設' -%}{%- endif -%}
-  {%- when 'university_of_barcelona' -%}{%- assign map_place = 'la Facultat de Dret de la Universitat de Barcelona' -%}
-    {%- if page.lang == 'ca' -%}{%- assign map_place = 'la Facultat de Dret de la Universitat de Barcelona' -%}
-    {%- elsif page.lang == 'en' -%}{%- assign map_place = 'the Faculty of Law, Universitat de Barcelona' -%}
-    {%- elsif page.lang == 'ja' -%}{%- assign map_place = 'バルセロナ大学法学部' -%}{%- endif -%}
-  {%- when 'marina_besos' -%}{%- assign map_place = 'Polideportivo Municipal Marina-Besòs' -%}
-  {%- else -%}{%- assign map_place = 'Aikido Musubi' -%}
-{%- endcase -%}
+{%- comment -%}
+  THE FACILITY NAME COMES FROM _data/venues.yml, NOT FROM HERE.
+
+  It used to be a `case` over `include.section` with the four facilities spelled
+  out in four languages — sixteen strings that were a copy of `facility:` in
+  _data/venues.yml, and copies drift. They did: the moment Espronceda's entry
+  was corrected to the name on the building, this button was still announcing
+  "Mapa de Complejo Deportivo Municipal Espronceda", on the same page, a few
+  hundred pixels below the corrected one.
+
+  `map_section` is already the key that joins the two — access.html passes
+  `v.map_section` — so the name is read across it. A section with no venue
+  behind it (contact.html asks for one by name) falls back to the association.
+{%- endcomment -%}
+{%- assign map_venue = site.data.venues.venues | where: 'map_section', include.section | first -%}
+{%- if map_venue and map_venue.facility -%}
+  {%- assign map_place = map_venue.facility[page.lang] | default: map_venue.facility.es -%}
+{%- else -%}
+  {%- assign map_place = 'Aikido Musubi' -%}
+{%- endif -%}
 {%- if page.lang == 'ja' -%}
   {%- assign map_title = map_place | append: 'の' | append: map_word -%}
 {%- else -%}

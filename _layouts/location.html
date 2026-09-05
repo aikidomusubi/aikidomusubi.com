@@ -51,7 +51,21 @@
   {%- assign gClasses = site.data.nav.groups | where: 'id', 'classes' | first -%}
   {%- assign gAbout   = site.data.nav.groups | where: 'id', 'about'   | first -%}
 
-  {%- comment -%} The classes in this town, in clock order. {%- endcomment -%}
+  {%- comment -%}
+    THE CLASSES IN THIS TOWN, IN THE ORDER THE WEEK RUNS.
+
+    They used to be sorted on `start` alone, which put the 07:30 Saturday class
+    above the 18:30 Tuesday one and read as a list of hours rather than a week.
+    The key now begins with the position of the class's first day in
+    `week_start`'s rotation — Monday first in es and ca, Sunday first in en and
+    ja, the same rotation `/horarios/` and the calendar use — so the table reads
+    top to bottom the way the week does. `d0` is that position, zero-padded so a
+    string sort orders it; the clock follows it and breaks the ties.
+  {%- endcomment -%}
+  {%- assign WD = S.days -%}
+  {%- assign wstart = S.week_start[L] | default: 'mon' -%}
+  {%- assign woff = 0 -%}
+  {%- for k in WD -%}{%- if k == wstart %}{% assign woff = forloop.index0 %}{% endif -%}{%- endfor -%}
   {%- assign rows = '' -%}
   {%- for vid in loc.venues -%}
     {%- for c in S.classes -%}
@@ -59,10 +73,28 @@
         {%- assign lo = S.locations | where: 'id', c.location | first -%}
         {%- assign cat = S.categories | where: 'id', c.category | first -%}
         {%- assign lvl = S.levels | where: 'id', c.level | first -%}
+        {%- comment -%}
+          The days in the week's own order, not the order they happen to be
+          written in `classes:`, and the position of the first of them as the
+          row's sort key. A class on [mon, wed] sorts under Monday.
+        {%- endcomment -%}
         {%- assign dnames = '' -%}
-        {%- for d in c.days -%}
-          {%- assign dn = S.day_names[d][L].short -%}
-          {%- if dnames == '' %}{% assign dnames = dn %}{% else %}{% assign dnames = dnames | append: ' · ' | append: dn %}{% endif -%}
+        {%- assign d0 = 99 -%}
+        {%- for k in WD -%}
+          {%- assign pos = forloop.index0 | minus: woff -%}
+          {%- if pos < 0 %}{% assign pos = pos | plus: WD.size %}{% endif -%}
+          {%- if c.days contains k -%}
+            {%- if pos < d0 %}{% assign d0 = pos %}{% endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+        {%- for i in (0..6) -%}
+          {%- assign j = i | plus: woff -%}
+          {%- if j >= WD.size %}{% assign j = j | minus: WD.size %}{% endif -%}
+          {%- assign k = WD[j] -%}
+          {%- if c.days contains k -%}
+            {%- assign dn = S.day_names[k][L].short -%}
+            {%- if dnames == '' %}{% assign dnames = dn %}{% else %}{% assign dnames = dnames | append: ' · ' | append: dn %}{% endif -%}
+          {%- endif -%}
         {%- endfor -%}
         {%- comment -%}
           The name from _data/schedule.yml, the grade from _data/about.yml,
@@ -83,7 +115,7 @@
             {%- endif -%}
           {%- endif -%}
         {%- endif -%}
-        {%- capture row -%}{{ c.start }}¦{{ dnames }}¦{{ c.end }}¦{{ lo.name[L] }}¦{{ cat.name[L] }} · {{ lvl.name[L] }}¦{{ who }}¦{{ grade }}{%- endcapture -%}
+        {%- capture row -%}{{ d0 }}{{ c.start }}¦{{ dnames }}¦{{ c.end }}¦{{ lo.name[L] }}¦{{ cat.name[L] }} · {{ lvl.name[L] }}¦{{ who }}¦{{ grade }}¦{{ c.category }}¦{{ c.start }}{%- endcapture -%}
         {%- assign rows = rows | append: row | append: '§' -%}
       {%- endif -%}
     {%- endfor -%}
@@ -95,14 +127,20 @@
     only page type on the site whose job is to be landed on cold from a search
     result: the room has to be visible before anything is read.
   {%- endcomment -%}
-  {%- assign ss = site.data.imgw[loc.image] -%}
+  {%- comment -%}
+    The home page's hero art, on all three pages, until each town has a
+    photograph of its own room. `_data/imgw.yml` has no entry for it: the file
+    exists only at the four hero widths and has no base variant, so the srcset
+    is written here from the naming convention rather than read from the map.
+    The map is generated from what exists, and what exists is these four.
+  {%- endcomment -%}
+  {%- assign hero = LO.hero_image -%}
+  {%- capture heroset -%}/images/{{ hero }}-1200.SFX 1200w, /images/{{ hero }}-1920.SFX 1920w, /images/{{ hero }}-2560.SFX 2560w, /images/{{ hero }}-2880.SFX 2880w{%- endcapture -%}
   <div class="lo-hero">
     <picture>
-      <source type="image/webp"
-              srcset="{% if ss %}{{ ss }}{% else %}/images/{{ loc.image }}.webp{% endif %}"
-              {% if ss %}sizes="100vw"{% endif %}>
-      <source type="image/jpeg" srcset="/images/{{ loc.image }}.jpg">
-      <img src="/images/{{ loc.image }}.jpg" alt="" width="1000" height="1000"
+      <source type="image/webp" sizes="100vw" srcset="{{ heroset | replace: 'SFX', 'webp' }}">
+      <source type="image/jpeg" sizes="100vw" srcset="{{ heroset | replace: 'SFX', 'jpg' }}">
+      <img src="/images/{{ hero }}-1200.jpg" alt="" width="1200" height="900"
            fetchpriority="high" decoding="sync">
     </picture>
     <div class="lo-hero-in">
@@ -147,28 +185,89 @@
           <b>{{ v.name[L] }}</b>, {{ v.postal.street }}, {{ v.postal.postcode }} {{ v.postal.town }}.{% unless forloop.last %}<br>{% endunless %}
         {%- endfor -%}
       </dd>
+      {%- comment -%}
+        ONE LINE PER DISCIPLINE, NOT ONE PER CLASS.
+
+        Badalona has fourteen classes across four arts, and this row printed all
+        fourteen — "Mar · Jue, 18:30–19:30 · Aikido Musubi" and so on down — which
+        is the timetable rendered twice on one page, the second time without the
+        columns that make it readable. A fact list answers "when could I come";
+        the table two sections down answers "what is on at 20:30 on a Thursday".
+
+        So: the days each art runs, in the week's order, in `S.categories`
+        order — aikido, iaijutsu, judo, karate, which is the order the site
+        names them in everywhere. On the two towns that have only aikido it is
+        one line, which is the true answer there.
+      {%- endcomment -%}
       <dt>{{ U.f_when[L] }}</dt>
       <dd>
-        {%- for r in rows -%}{%- assign f = r | split: '¦' -%}
-          {{ f[1] }}, {{ f[0] }}–{{ f[2] }} · {{ f[3] }}{% unless forloop.last %}<br>{% endunless %}
+        <ul class="lo-when">
+        {%- for cat in S.categories -%}
+          {%- assign days_on = '' -%}
+          {%- for i in (0..6) -%}
+            {%- assign j = i | plus: woff -%}
+            {%- if j >= WD.size %}{% assign j = j | minus: WD.size %}{% endif -%}
+            {%- assign k = WD[j] -%}
+            {%- assign hit = false -%}
+            {%- for vid in loc.venues -%}
+              {%- for c in S.classes -%}
+                {%- if c.location == vid and c.category == cat.id and c.days contains k %}{% assign hit = true %}{% endif -%}
+              {%- endfor -%}
+            {%- endfor -%}
+            {%- if hit -%}
+              {%- assign dn = S.day_names[k][L].long -%}
+              {%- if days_on == '' %}{% assign days_on = dn %}{% else %}{% assign days_on = days_on | append: '§' | append: dn %}{% endif -%}
+            {%- endif -%}
+          {%- endfor -%}
+          {%- if days_on != '' -%}
+            {%- assign dl = days_on | split: '§' -%}
+          <li><b>{{ cat.name[L] }}</b>
+            <span>
+            {%- for d in dl -%}
+              {%- if forloop.first -%}{{ d }}
+              {%- elsif forloop.last -%}{% if L == 'ja' %}・{{ d }}{% else %} {{ U.and_word[L] }} {{ d }}{% endif %}
+              {%- else -%}{% if L == 'ja' %}・{{ d }}{% else %}, {{ d }}{% endif %}
+              {%- endif -%}
+            {%- endfor -%}
+            </span>
+          </li>
+          {%- endif -%}
         {%- endfor -%}
+        </ul>
       </dd>
       <dt>{{ U.f_who[L] }}</dt><dd>{{ U.who_line[L] }}</dd>
       {%- assign fee = site.data.fees.prices.monthly.adults.fee -%}
       <dt>{{ U.f_price[L] }}</dt><dd>{{ U.price_line[L] | replace: 'PRICE', fee }}</dd>
       <dt>{{ U.f_bring[L] }}</dt><dd>{{ U.bring_line[L] }}</dd>
       {%- comment -%}
-        Each teacher once, whatever how many classes they take. Built as a
-        delimited string because Liquid has no set and no way to push onto an
-        array; `uniq` on the split does the rest.
+        Each teacher once, however many classes they take. Built as a delimited
+        string because Liquid has no set and no way to push onto an array;
+        `uniq` on the split does the rest.
+
+        Two sources, and which one is used is a fact about the town rather than
+        a preference. Where `aikido_roster` is set — the dojo — the list is the
+        association's aikido instructors in full, straight from _data/about.yml,
+        in the order that file keeps them, which is by grade. Everywhere else it
+        is derived from the classes that town actually has, filtered to aikido:
+        Barcelona names the two people who take its two classes, and the judo,
+        iaijutsu and karate instructors do not appear on a line the reader takes
+        as "who will be teaching me".
       {%- endcomment -%}
       {%- assign whos = '' -%}
-      {%- for r in rows -%}{%- assign f = r | split: '¦' -%}
-        {%- if f[5] and f[5] != '' -%}
-          {%- capture one -%}{{ f[5] }}{% if f[6] and f[6] != '' %} ({{ f[6] }}){% endif %}{%- endcapture -%}
+      {%- if loc.aikido_roster -%}
+        {%- for pr in people -%}
+          {%- if L == 'ja' and pr.name_ja %}{% assign nm = pr.name_ja %}{% else %}{% assign nm = pr.name %}{% endif -%}
+          {%- capture one -%}{{ nm }} ({{ pr.grade[L] }}){%- endcapture -%}
           {%- assign whos = whos | append: one | append: '§' -%}
-        {%- endif -%}
-      {%- endfor -%}
+        {%- endfor -%}
+      {%- else -%}
+        {%- for r in rows -%}{%- assign f = r | split: '¦' -%}
+          {%- if f[7] == 'aikido' and f[5] and f[5] != '' -%}
+            {%- capture one -%}{{ f[5] }}{% if f[6] and f[6] != '' %} ({{ f[6] }}){% endif %}{%- endcapture -%}
+            {%- assign whos = whos | append: one | append: '§' -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
       {%- comment -%}
         The row only exists when somebody is named. Marina-Besòs has no
         instructor assigned at the moment — Guanlong Zheng taught it and a
@@ -204,18 +303,26 @@
     <p class="lo-lab">{{ U.lab_when[L] }}</p>
     {%- assign town = loc.title[L] | split: ' ' | last -%}
     <h2>{{ U.h_when[L] | replace: 'TOWN', loc.town_name[L] }}</h2>
+    {%- comment -%}
+      The "where" column only exists where there is a choice to make. Badalona
+      and Sant Adrià each have one room, so it printed the same venue name on
+      every row — thirteen of them on the dojo's page — and pushed the three
+      columns that differ into less width for no information.
+    {%- endcomment -%}
+    {%- assign many = false -%}
+    {%- if loc.venues.size > 1 %}{% assign many = true %}{% endif -%}
     <table class="lo-tt">
       <thead>
         <tr>
-          <th>{{ U.th_when[L] }}</th><th>{{ U.th_where[L] }}</th>
+          <th>{{ U.th_when[L] }}</th>{% if many %}<th>{{ U.th_where[L] }}</th>{% endif %}
           <th>{{ U.th_level[L] }}</th><th>{{ U.th_who[L] }}</th>
         </tr>
       </thead>
       <tbody>
         {%- for r in rows -%}{%- assign f = r | split: '¦' %}
         <tr>
-          <td>{{ f[0] }}–{{ f[2] }}<small>{{ f[1] }}</small></td>
-          <td>{{ f[3] }}</td>
+          <td><small>{{ f[1] }}</small>{{ f[8] }}–{{ f[2] }}</td>
+          {%- if many %}<td>{{ f[3] }}</td>{% endif %}
           <td>{{ f[4] }}</td>
           <td>{{ f[5] }}{% if f[6] and f[6] != '' %}<small>{{ f[6] }}</small>{% endif %}</td>
         </tr>
@@ -223,7 +330,7 @@
       </tbody>
     </table>
     <p class="lo-note">
-      <a href="{{ gClasses.items[1].url[L] }}">{{ U.full_timetable[L] | replace: 'COUNT', n_venues }}</a>
+      <a class="lo-more" href="{{ gClasses.items[1].url[L] }}">{{ U.full_timetable[L] | replace: 'COUNT', n_venues }}</a>
     </p>
   </section>
 
@@ -269,7 +376,7 @@
     <h2>{{ U.h_who[L] }}</h2>
     <div class="lo-prose">
       <p>{{ loc.teachers_line[L] }}</p>
-      <p><a href="{{ gAbout.items[2].url[L] }}">{{ U.team_more[L] }}</a>.</p>
+      <p class="lo-note"><a class="lo-more" href="{{ gAbout.items[2].url[L] }}">{{ U.team_more[L] }}</a></p>
     </div>
   </section>
 
@@ -318,7 +425,7 @@
       </a>
       {%- endfor %}
     </div>
-    <p class="lo-cta">
+    <p class="lo-cta lo-end">
       <a class="lo-btn" href="{{ gContact.items[0].url[L] }}">{{ U.cta_write[L] }}</a>
       <a class="lo-btn lo-btn-2" href="{{ gClasses.items[2].url[L] }}">{{ U.cta_fees[L] }}</a>
       <small>{{ U.cta_note[L] }}</small>

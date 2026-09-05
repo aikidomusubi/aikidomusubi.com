@@ -70,8 +70,12 @@ columns:
       - label: { es: "Barcelona", ca: "Barcelona", en: "Barcelona", ja: "バルセロナ" }
         url:   { es: "/acceso/#cxem-espronceda", ca: "/ca/acces/#cxem-espronceda",
                  en: "/en/access-information/#cxem-espronceda", ja: "/ja/access-information/#cxem-espronceda" }
-      - label: { es: "Universitat de Barcelona", ca: "Universitat de Barcelona",
-                 en: "Universitat de Barcelona", ja: "バルセロナ大学" }
+      # The word for "university" follows the reader's language, as it does in
+      # _data/venues.yml and _data/schedule.yml. It was the Catalan name in all
+      # four columns here, so a Spanish reader met "Universitat" and an English
+      # one met it too.
+      - label: { es: "Universidad de Barcelona", ca: "Universitat de Barcelona",
+                 en: "University of Barcelona", ja: "バルセロナ大学" }
         url:   { es: "/acceso/#university-of-barcelona", ca: "/ca/acces/#university-of-barcelona",
                  en: "/en/access-information/#university-of-barcelona", ja: "/ja/access-information/#university-of-barcelona" }
       - label: { es: "Cómo llegar", ca: "Com arribar", en: "Directions", ja: "行き方" }

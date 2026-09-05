@@ -87,6 +87,10 @@
 
             Matched on the venue id rather than the town, because two of the
             four venues are in Barcelona and both point at the same page.
+
+            Resolved here, next to the venue, and rendered below the buttons —
+            `.vn-actions` carries `margin-top: auto`, so anything after it in
+            the markup sits under the pair rather than above them.
           {%- endcomment -%}
           {%- assign vloc = nil -%}
           {%- for lc in site.data.locations.locations -%}
@@ -95,11 +99,9 @@
               {%- if sl.slug == v.id %}{% assign vloc = lc %}{% endif -%}
             {%- endfor -%}
           {%- endfor -%}
+          {%- assign vlpage = nil -%}
           {%- if vloc -%}
             {%- assign vlpage = site.pages | where: 'i18n-ref', vloc.ref | where: 'lang', L | first -%}
-            {%- if vlpage %}
-          <p class="vn-more"><a href="{{ vlpage.url }}">{{ vloc.title[L] }}</a></p>
-            {%- endif -%}
           {%- endif -%}
 
           {%- if v.facts %}
@@ -123,6 +125,9 @@
             </a>
             {% include directions.html venue=v class="vn-btn vn-btn-o" %}
           </p>
+          {%- if vlpage %}
+          <p class="vn-more"><a href="{{ vlpage.url }}">{{ vloc.title[L] }}</a></p>
+          {%- endif %}
         </div>
 
         <div class="vn-map">

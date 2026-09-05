@@ -986,13 +986,95 @@ stylesheets to borrow four components costs more than the components weigh.
 **So keep them in step.** `.ab-faq` is the exception and is deliberately the
 same class name as the About pages': one accordion on this site, not two.
 
-The one genuinely new component is `.lo-tt`, a four-row timetable. `/horarios/`
-has the full weekly grid and there was nothing smaller.
+The one genuinely new component is `.lo-tt`, a small timetable. `/horarios/`
+has the full weekly grid and there was nothing smaller. It **sorts on the day
+first and the clock second**, in `week_start`'s rotation — Monday first in es
+and ca, Sunday first in en and ja — so it reads as a week rather than as a list
+of hours, and it **drops the "where" column on a town with one room**, which was
+thirteen identical cells on the dojo's page.
+
+**`&` in a LESS parent selector is the whole compiled selector, not a class.**
+The hero's controls were written `.lo-hero-in & { }` inside `.page main
+a.lo-btn`, which compiles to `.lo-hero-in .page main a.lo-btn` — a `.page`
+inside the hero, which cannot exist. Not one of those rules ever matched, so
+what shipped was the black-on-white pair over a dark photograph: the secondary
+button drew @Black text in a 13%-black ring on the scrim and the note beside it
+drew `--lo-mute` on the same ground, both illegible, and the primary was black
+where the design is yellow. **When the rule is "this element inside that
+ancestor", write the ancestor on the left.** They are `.page main .lo-hero-in
+a.lo-btn` now and measure 15.9:1, 17.8:1 and 14.2:1.
+
+**"Lo esencial" answers "when could I come", not "what is on at 20:30".** It
+lists one line per discipline — the days, in `S.categories` order, which is
+aikido, iaijutsu, judo, karate. It used to print one line per class, so the
+dojo's fact list was the fourteen-row timetable again, above the actual
+timetable and without the columns that make it readable.
+
+**Badalona's "quién enseña" row is the roster; the other two towns' is derived.**
+`aikido_roster: true` in `_data/locations.yml` switches it. The derived list is
+right for Barcelona — it names the two people who take its two classes — but on
+the dojo it mixed four arts into a line the reader takes as "who will be
+teaching me", and left out the aikido instructors who teach at the other spaces
+and are the same team. With the flag the row is `_data/about.yml`'s instructor
+list in full, in the order that file keeps them, which is by grade. Still not
+typed here, still cannot disagree with the About page. Everywhere else the
+derived list is **filtered to aikido**.
 
 The hero is the only photograph-first opening on the site, and that is on
 purpose: a location page is landed on cold from a search result by somebody
 deciding whether a place is for them. Everywhere else opens with
-`page-head.html` and should stay that way.
+`page-head.html` and should stay that way. All three carry **the home page's
+hero art**, named once as `hero_image` in `_data/locations.yml`, until each town
+has a photograph of its own room — three different photographs of somewhere else
+would be three different promises. It exists only at the four hero widths and
+has no base variant, so `_data/imgw.yml` has no entry and the layout writes its
+own srcset.
+
+### The access page's venue links are deep links, and they need a script
+
+`/acceso/` is a picker: four radios and a `:has()` rule that shows the one panel
+whose radio is checked. Every other panel is `display: none`, **and a fragment
+cannot scroll to a box that is not drawn**. The footer's "Dónde entrenamos"
+column points straight at those four ids, so three of its four links landed on
+the page with the first venue showing and no scroll — nothing appeared to
+happen. `initVenueLinks()` in `scripts/press.js` (already loaded there, for the
+map facades and the entrance dialog) checks the right radio and then scrolls.
+
+Three cases, and the third is the one that is easy to miss:
+
+- **arriving from another page.** The browser tries its own scroll, finds a
+  hidden element and gives up. The script is `defer`, so it runs with the DOM
+  parsed and scrolls itself.
+- **`hashchange`**, for the back button or a pasted address.
+- **clicking one of those links while already on `/acceso/`.** Nothing
+  navigates, so there is no load; and if the hash already names that panel there
+  is no `hashchange` either. That is why the click is intercepted rather than
+  left to the browser — it was the case where only the currently-open venue's
+  link appeared to work, because only that one was already in view.
+
+The offset is **not computed**: `.vn-panel` carries `scroll-margin-top:
+@anchor-clear` like every other anchor on the site, and `scrollIntoView` honours
+it. It is called with **`behavior: 'instant'`**, not the document's own
+`scroll-behavior: smooth` — a fragment should arrive, the panel did not exist a
+frame ago, and a smooth scroll is an animation that simply does not finish when
+something interrupts it.
+
+### Facility names are in `_data/venues.yml` and nowhere else
+
+`_includes/map.html` used to carry its own `case` over `map_section` with the
+four facilities spelled out in four languages: sixteen strings that were a copy
+of `facility:`. They drifted the day Espronceda's entry was corrected — the map
+button still said "Mapa de Complejo Deportivo Municipal Espronceda" a few
+hundred pixels below the corrected name, on the same page. It reads
+`facility[page.lang]` across `map_section` now.
+
+**A facility's own name is not translated; the common nouns around it are.**
+Espronceda is "Complex Esportiu Municipal Espronceda" in all four languages,
+because that is what is on the building, on the council's listings and on the
+door somebody is standing at — "Complejo Deportivo Municipal Espronceda" and
+"Espronceda Municipal Sports Complex" appear nowhere. The word for *university*
+does follow the reader's language (universidad / universitat / university /
+大学), because it is a common noun.
 
 ## Where this site is going: Aikikai Barcelona
 

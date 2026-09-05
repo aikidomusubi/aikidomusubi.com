@@ -287,11 +287,22 @@ venues:
       ca: ["Obert dilluns i dimecres"]
       en: ["Open Monday and Wednesday"]
       ja: ["月・水営業"]
+    # THE FACILITY'S OWN NAME, NOT A TRANSLATION OF IT.
+    #
+    # It is a Barcelona city facility and "Complex Esportiu Municipal
+    # Espronceda" is what is written on the building, on the council's own
+    # listings and on the door somebody is standing at. Translating it gave a
+    # Spanish reader "Complejo Deportivo Municipal Espronceda" and an English
+    # one "Espronceda Municipal Sports Complex" — two names that appear
+    # nowhere, on the page whose whole job is getting a stranger to the right
+    # entrance. Same reasoning as the venue slugs: a proper noun is not
+    # translated. The Japanese keeps a reading in kana after the name for the
+    # same reason it is there elsewhere.
     facility:
-      es: "Complejo Deportivo Municipal Espronceda"
+      es: "Complex Esportiu Municipal Espronceda"
       ca: "Complex Esportiu Municipal Espronceda"
-      en: "Espronceda Municipal Sports Complex"
-      ja: "エスプロンセダ市立スポーツ複合施設"
+      en: "Complex Esportiu Municipal Espronceda"
+      ja: "Complex Esportiu Municipal Espronceda（エスプロンセダ市立スポーツ施設）"
     note:
       es: "Las clases se hacen en la sala de tatami del complejo deportivo. Mira bien el plano y ven con tiempo la primera vez."
       ca: "Les classes es fan a la sala de tatami del complex esportiu. Mira bé el plànol i vine amb temps el primer dia."
@@ -377,11 +388,16 @@ venues:
       en: "All classes are held in the «La Capella» multipurpose hall, inside the Faculty of Law."
       ja: "稽古はすべて、法学部内の多目的ホール「La Capella」で行います。"
     plan: "access-information-NdxqmVbV-02"
+    # The institution goes in the facility name because the facility name is
+    # what names the map button and the "how you get in" heading, and both have
+    # to stand on their own: "Mapa de Facultad de Derecho" is a faculty of law
+    # somewhere. The word for university follows the reader's language; the
+    # rest of the institution's name does not change.
     facility:
-      es: "Facultad de Derecho"
-      ca: "Facultat de Dret"
-      en: "Faculty of Law"
-      ja: "法学部"
+      es: "Facultad de Derecho de la Universidad de Barcelona"
+      ca: "Facultat de Dret de la Universitat de Barcelona"
+      en: "Faculty of Law, University of Barcelona"
+      ja: "バルセロナ大学法学部"
     areas:
       - points: "64.9,50.3 72.2,47.6 74.3,53.2 66.8,56.2"
         label_at: [69.6, 51.8]

@@ -188,13 +188,51 @@ main {
   @media (max-width: @bp-md - .02px) { font-size: 1.3rem; }
 }
 
-.page main .lo-prose p,
-.page main .lo-note {
+.page main .lo-prose p {
   max-width: @measure;
   margin: 0 0 1rem;
   font-size: .95rem;
   line-height: 1.8;
   color: @Dark;
+}
+
+// The line under the timetable. It is a link out of the section rather than a
+// sentence in it, so it needs the air a paragraph would not: at `margin: 0` it
+// sat directly on the table's last hairline and read as a thirteenth row.
+.page main .lo-note {
+  max-width: @measure;
+  margin: 1.9rem 0 0;
+  line-height: 1.8;
+}
+
+// The link to the long version, wherever one appears on the page. It is
+// `.hm-btn` from home.less — uppercase Futura on a yellow rule — because that is
+// what this link looks like everywhere else on the site: "Su trayectoria",
+// "Sobre la asociación". These two were prose links with an underline, which is
+// a third treatment for the one job.
+.page main a.lo-more {
+  display: inline-block;
+  padding-bottom: .25rem;
+  border-bottom: 2px solid @Yellow;
+  .Futura;
+  font-size: .66rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: @Black;
+  background-color: transparent;
+
+  // `.page main a:hover` is (0,2,2) and would draw its own underline on top of
+  // the yellow rule — two lines, which is what looks broken. Same note as
+  // `.hm-btn`, and it has to say `none` explicitly.
+  &:hover, &:focus {
+    border-bottom-color: @Black;
+    background-color: transparent;
+    color: @Black;
+    text-decoration: none;
+  }
+
+  &:focus-visible { outline: 2px solid @Blue; outline-offset: 3px; }
 }
 
 // ---- the fact list ---------------------------------------------------------
@@ -235,6 +273,31 @@ main {
 
     dt { padding: .85rem 0 .15rem; border-bottom: 0; }
     dd { padding: 0 0 .85rem; }
+  }
+}
+
+// The "when" row: one line per discipline. A two-column grid rather than a
+// bullet list, so the four art names line up and the days start at one left
+// edge — the thing that made fourteen ragged lines hard to read.
+.page main .lo-when {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: none;
+  display: grid;
+  gap: .3rem;
+
+  li {
+    display: grid;
+    grid-template-columns: 6.5rem 1fr;
+    gap: .3rem 1rem;
+    margin: 0;
+  }
+
+  b { .bold; color: @Black; }
+
+  @media (max-width: @bp-sm - .02px) {
+    li { grid-template-columns: 1fr; gap: 0; }
   }
 }
 
@@ -311,6 +374,18 @@ main {
   }
 
   td:first-child { .Futura; white-space: nowrap; }
+
+  // The day above the hour in the first column. The table reads in week order
+  // now, so the day is what the eye is scanning for and the clock is the
+  // detail; it used to be the other way round, from when the sort was on the
+  // hour alone.
+  td:first-child small {
+    .bold;
+    font-size: .78rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: @Black;
+  }
 
   small {
     display: block;
@@ -439,14 +514,19 @@ main {
     object-fit: cover;
   }
 
+  // `.hm-btn`, the home page's link to the long version — uppercase Futura at
+  // .66rem on a yellow rule. It was set at 1.05rem in sentence case here, which
+  // is a heading's treatment on something that is a link, and the only place on
+  // the site where that pairing appeared.
   b {
     display: inline-block;
-    margin-top: .8rem;
-    padding-bottom: .1rem;
+    margin-top: .9rem;
+    padding-bottom: .25rem;
     border-bottom: 2px solid @Yellow;
-    .Futura; .regular;
-    font-size: 1.05rem;
-    letter-spacing: .04em;
+    .Futura;
+    font-size: .66rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
   }
 
   small {
@@ -470,6 +550,15 @@ main {
   small { font-size: .75rem; color: var(--lo-mute); }
 }
 
+// The pair that closes the page is not part of the section above it — it is the
+// page asking for the click. At the shared 1.6rem it sat against the bottom of
+// the other-towns cards and read as their caption.
+.page main .lo-end {
+  margin-top: 3.4rem;
+  padding-top: 2.2rem;
+  border-top: 1px solid var(--lo-line);
+}
+
 .page main a.lo-btn {
   display: inline-flex;
   align-items: center;
@@ -488,15 +577,6 @@ main {
     color: @White;
     text-decoration: none;
   }
-
-  // Inside the hero the primary control is yellow on the photograph, which is
-  // the site's own accent doing the job it does on the home page's door.
-  .lo-hero-in & {
-    background-color: @Yellow;
-    color: @Black;
-
-    &:hover, &:focus { background-color: @White; color: @Black; }
-  }
 }
 
 .page main a.lo-btn-2 {
@@ -505,19 +585,47 @@ main {
   color: @Black;
 
   &:hover, &:focus { background-color: transparent; box-shadow: inset 0 0 0 1px @Black; color: @Black; }
-
-  .lo-hero-in & {
-    background-color: transparent;
-    box-shadow: inset 0 0 0 1px fade(@White, 45%);
-    color: @White;
-
-    // @White and not @Blue for the ring: @Blue measures 2.09:1 on @Black, under
-    // the 3:1 floor for a non-text indicator. Same fix as `.hm-door-go`.
-    &:hover, &:focus { background-color: transparent; box-shadow: inset 0 0 0 1px @White; color: @White; }
-  }
 }
 
-.lo-hero-in .lo-cta small { color: fade(@White, 75%); }
+// THE HERO CONTROLS ARE WRITTEN OUT IN FULL, NOT NESTED, AND THAT IS THE POINT.
+//
+// They used to be `.lo-hero-in & { ... }` inside the two blocks above. `&` there
+// is the whole compiled selector, `.page main a.lo-btn`, so LESS emitted
+// `.lo-hero-in .page main a.lo-btn` — the hero asked for a `.page` inside
+// itself, which cannot exist, and not one of these rules ever matched. What
+// shipped was the black-on-white pair over a dark photograph: the secondary
+// button drew @Black text inside a 13%-black ring on the scrim, and the note
+// beside it drew --lo-mute on the same ground. Both were illegible, and the
+// primary was black where the design is yellow.
+//
+// `&` in a parent selector is a whole-selector substitution, not a class. When
+// the wanted rule is "this element inside that ancestor", write the ancestor on
+// the left where it belongs.
+.page main .lo-hero-in a.lo-btn {
+  // The site's own accent, doing the job it does on the home page's door.
+  // @Yellow on @Black measures 16.7:1.
+  background-color: @Yellow;
+  color: @Black;
+
+  &:hover, &:focus { background-color: @White; color: @Black; }
+}
+
+.page main .lo-hero-in a.lo-btn-2 {
+  background-color: transparent;
+  // 45% white on the scrim is under the 3:1 a non-text indicator needs, and the
+  // label inside it has to read against a photograph rather than a flat tint.
+  // Solid white for both.
+  box-shadow: inset 0 0 0 1px fade(@White, 70%);
+  color: @White;
+
+  &:hover, &:focus { background-color: fade(@White, 12%); box-shadow: inset 0 0 0 1px @White; color: @White; }
+}
+
+// Not fade(@White, 75%): translucent small text over a photograph is the one
+// thing that keeps failing on this site. @White at 88% of nothing is still a
+// gamble; this is a flat light grey that measures 11.4:1 on the scrim's darkest
+// stop and never gets thinner than it looks.
+.page main .lo-hero-in .lo-cta small { color: #E4E6E7; }
 
 // ---- the accordion ---------------------------------------------------------
 // The About pages' component, markup and all, so the site has one accordion.

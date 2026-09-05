@@ -26,6 +26,19 @@
 # let the strip grow into a claim the sentence does not support.
 # ---------------------------------------------------------------------------
 
+# THE HERO PHOTOGRAPH, one for all three pages.
+#
+# It is the home page's own hero art, which is why it is named once here rather
+# than three times below: until each town has a picture of its own room, three
+# pages carrying three different photographs of somewhere else would be three
+# different promises. `image:` on each town stays what it was — the access
+# photograph, used small on the other towns' cards at the foot of the page.
+#
+# The file exists ONLY at the four hero widths (1200/1920/2560/2880) and has no
+# base variant, so `_data/imgw.yml` has no entry for it and the layout writes
+# its own srcset. That is the naming convention for a hero; see CLAUDE.md.
+hero_image: index-8oGCaMDs-00
+
 ui:
   # ---- breadcrumb ----
   home:     { es: "Inicio",  ca: "Inici",  en: "Home",  ja: "ホーム" }
@@ -102,11 +115,14 @@ ui:
     ca: "Aikido Musubi, associació cultural sense ànim de lucre fundada el YEAR. Formem part d'Aikido Arashi Group, reconegut per l'Aikikai Foundation (Hombu Dojo, Tòquio)."
     en: "Aikido Musubi, a non-profit cultural association founded in YEAR. We are part of Aikido Arashi Group, recognised by the Aikikai Foundation (Hombu Dojo, Tokyo)."
     ja: "合気道産靈は、YEAR年に設立された非営利の文化協会です。合気会（本部道場・東京）の承認を受けた Aikido Arashi Group に所属しています。"
+  # One sentence for the three pages. It used to end "…incluye el dojo de
+  # Badalona, que abre de lunes a sábado", which on /badalona/ told the reader
+  # about the page they were already on.
   full_timetable:
-    es: "El horario completo de los COUNT espacios incluye el dojo de Badalona, que abre de lunes a sábado."
-    ca: "L'horari complet dels COUNT espais inclou el dojo de Badalona, obert de dilluns a dissabte."
-    en: "The full timetable for all COUNT spaces includes the Badalona dojo, open Monday to Saturday."
-    ja: "COUNTか所すべての稽古時間はこちら。バダロナの道場は月曜から土曜まで開いています。"
+    es: "Ver el horario completo de los COUNT espacios"
+    ca: "Veure l'horari complet dels COUNT espais"
+    en: "See the full timetable for all COUNT spaces"
+    ja: "COUNTか所すべての稽古時間を見る"
   team_more:
     es: "Los instructores de la asociación"
     ca: "Els instructors de l'associació"
@@ -128,6 +144,10 @@ ui:
     ca: "Dues classes de prova · inscripció gratuïta"
     en: "Two trial classes · free registration"
     ja: "体験稽古2回・入会金無料"
+  # The conjunction before the last item of a list of days. Japanese joins with
+  # "・" and takes no word, which the layout handles rather than storing an
+  # empty string that would read as a missing translation.
+  and_word: { es: "y", ca: "i", en: "and", ja: "" }
   door_label: { es: "Cómo se entra", ca: "Com s'entra", en: "Getting in", ja: "入口" }
   with_label: { es: "Con", ca: "Amb", en: "With", ja: "指導" }
 
@@ -172,6 +192,19 @@ locations:
       ja: "バダロナ"
     ref: badalona-Vh4kR7wQ
     venues: [musubi]
+    # THE ONE TOWN WHOSE "QUIÉN ENSEÑA" ROW IS NOT DERIVED FROM THE WEEK.
+    #
+    # Everywhere else the row is built from the classes that town actually has,
+    # which is right: Barcelona's names the two people who take those two
+    # classes. Badalona is the dojo, and its week has judo, iaijutsu and karate
+    # in it, so the derived row mixed four arts into a line the reader takes as
+    # "who will teach my aikido class". It also left out the aikido instructors
+    # who teach at the other spaces, who are the same team.
+    #
+    # With this flag the row is the association's aikido roster in full, read
+    # from `_data/about.yml` in the order that file keeps them — by grade — so
+    # it is still not typed here and still cannot disagree with the About page.
+    aikido_roster: true
     image: access-information-NdxqmVbV-00
     title:
       es: "Aikido en Badalona"
@@ -184,15 +217,15 @@ locations:
       en: "Badalona · Aikido Musubi"
       ja: "バダロナ · 合気道産靈"
     lede:
-      es: "Aikido Musubi es nuestro dojo, en Badalona, y está abierto de lunes a sábado desde 2008. Además del aikido se practican aquí judo, iaijutsu y karate, y es donde se celebran los exámenes, los cursos y las masterclass."
-      ca: "Aikido Musubi és el nostre dojo, a Badalona, i és obert de dilluns a dissabte des del 2008. A més de l'aikido, aquí s'hi practiquen judo, iaijutsu i karate, i és on se celebren els exàmens, els cursos i les masterclass."
-      en: "Aikido Musubi is our dojo, in Badalona, and it has been open Monday to Saturday since 2008. Judo, iaijutsu and karate are practised here as well as aikido, and it is where the gradings, the seminars and the masterclasses take place."
-      ja: "合気道産靈はバダロナにある私たちの道場で、2008年から月曜日から土曜日まで開いています。合気道のほかに柔道・居合術・空手も稽古しており、審査や講習会、マスタークラスもここで行います。"
+      es: "Aikido Musubi es nuestro dojo, en Badalona, y está abierto de lunes a sábado desde 2008. Además del aikido se practican aquí iaijutsu, judo y karate, y es donde se celebran los exámenes, los cursos y las masterclass."
+      ca: "Aikido Musubi és el nostre dojo, a Badalona, i és obert de dilluns a dissabte des del 2008. A més de l'aikido, aquí s'hi practiquen iaijutsu, judo i karate, i és on se celebren els exàmens, els cursos i les masterclass."
+      en: "Aikido Musubi is our dojo, in Badalona, and it has been open Monday to Saturday since 2008. Iaijutsu, judo and karate are practised here as well as aikido, and it is where the gradings, the seminars and the masterclasses take place."
+      ja: "合気道産靈はバダロナにある私たちの道場で、2008年から月曜日から土曜日まで開いています。合気道のほかに居合術・柔道・空手も稽古しており、審査や講習会、マスタークラスもここで行います。"
     hero_line:
-      es: "De lunes a sábado, en el dojo. Aikido, judo, iaijutsu y karate, sin experiencia previa y sin comprar nada para empezar."
-      ca: "De dilluns a dissabte, al dojo. Aikido, judo, iaijutsu i karate, sense experiència prèvia i sense comprar res per començar."
-      en: "Monday to Saturday, at the dojo. Aikido, judo, iaijutsu and karate, with no previous experience and nothing to buy to start."
-      ja: "月曜から土曜まで、道場で。合気道・柔道・居合術・空手。経験も、はじめに買うものも必要ありません。"
+      es: "De lunes a sábado, en el dojo. Aikido, iaijutsu, judo y karate, sin experiencia previa y sin comprar nada para empezar."
+      ca: "De dilluns a dissabte, al dojo. Aikido, iaijutsu, judo i karate, sense experiència prèvia i sense comprar res per començar."
+      en: "Monday to Saturday, at the dojo. Aikido, iaijutsu, judo and karate, with no previous experience and nothing to buy to start."
+      ja: "月曜から土曜まで、道場で。合気道・居合術・柔道・空手。経験も、はじめに買うものも必要ありません。"
 
     faq_local:
       q:
@@ -206,10 +239,10 @@ locations:
         en: "Badalona is the dojo: a space given over entirely to martial arts, open Monday to Saturday and with all four disciplines. The gradings, the seminars and the masterclasses happen here. Barcelona and Sant Adrià de Besòs have aikido two days a week, with the same programme."
         ja: "バダロナは道場そのものです。武道のためだけの場所で、月曜から土曜まで開いており、4つの武道すべてを稽古できます。審査・講習会・マスタークラスもここで行います。バルセロナとサント・アドリア・ダ・バゾスでは、同じ内容の合気道を週2日稽古しています。"
     teachers_line:
-      es: "El dojo lo dirige <b>Pablo Martín</b>, 4.º dan Aikikai y shidōin. Con él enseñan Alberto Sancho, Pedro Fortes, Juanma Pérez y Andreu Villar en aikido, además de los instructores de judo, iaijutsu y karate. Ambos se formaron en Aikido Musubi y siguen la línea del Aikikai Hombu Dojo de Tokio."
-      ca: "El dojo el dirigeix <b>Pablo Martín</b>, 4t dan Aikikai i shidōin. Amb ell hi ensenyen Alberto Sancho, Pedro Fortes, Juanma Pérez i Andreu Villar en aikido, a més dels instructors de judo, iaijutsu i karate. Tots ells s'han format a Aikido Musubi i segueixen la línia de l'Aikikai Hombu Dojo de Tòquio."
-      en: "The dojo is led by <b>Pablo Martín</b>, 4th dan Aikikai and shidōin. Teaching alongside him are Alberto Sancho, Pedro Fortes, Juanma Pérez and Andreu Villar in aikido, as well as the judo, iaijutsu and karate instructors. All of them trained at Aikido Musubi and follow the line of the Aikikai Hombu Dojo in Tokyo."
-      ja: "道場は合気会四段・指導員の<b>パブロ・マルティン</b>が率いています。合気道ではアルベルト・サンチョ、ペドロ・フォルテス、フアンマ・ペレス、アンドレウ・ビヤルが指導し、柔道・居合術・空手にもそれぞれ指導者がいます。いずれも合気道産靈で稽古を重ね、東京の合気会本部道場の流れを汲んでいます。"
+      es: "El dojo lo dirige <b>Pablo Martín</b>, 4.º dan Aikikai y shidōin, que fundó la asociación en 2008. El equipo de aikido son ocho instructores con grado dan del Aikikai, y son los mismos que dan clase en Barcelona y en Sant Adrià de Besòs. El iaijutsu, el judo y el karate tienen sus propios instructores. Todos siguen la línea del Aikikai Hombu Dojo de Tokio."
+      ca: "El dojo el dirigeix <b>Pablo Martín</b>, 4t dan Aikikai i shidōin, que va fundar l'associació el 2008. L'equip d'aikido són vuit instructors amb grau dan de l'Aikikai, i són els mateixos que fan classe a Barcelona i a Sant Adrià de Besòs. L'iaijutsu, el judo i el karate tenen els seus propis instructors. Tots segueixen la línia de l'Aikikai Hombu Dojo de Tòquio."
+      en: "The dojo is led by <b>Pablo Martín</b>, 4th dan Aikikai and shidōin, who founded the association in 2008. The aikido team is eight instructors holding Aikikai dan grades, and they are the same people who teach in Barcelona and in Sant Adrià de Besòs. Iaijutsu, judo and karate have instructors of their own. All of them follow the line of the Aikikai Hombu Dojo in Tokyo."
+      ja: "道場は合気会四段・指導員の<b>パブロ・マルティン</b>が率いています。2008年に協会を設立した人物です。合気道の指導陣は合気会の段位を持つ8名で、バルセロナやサント・アドリア・ダ・バゾスで指導しているのも同じ顔ぶれです。居合術・柔道・空手にもそれぞれ指導者がいます。いずれも東京の合気会本部道場の流れを汲んでいます。"
   - id: barcelona
     # The town on its own, for headings that name it mid-sentence.
     town_name:
@@ -248,10 +281,10 @@ locations:
         en: "How is it different from the classes in Badalona?"
         ja: "バダロナの稽古とどう違いますか。"
       a:
-        es: "Es la misma asociación, el mismo programa y los mismos exámenes; cambian el espacio y el horario. Badalona es el dojo principal, abre de lunes a sábado y añade judo, iaijutsu y karate. En Barcelona hay aikido los lunes y los miércoles. Mucha gente entrena en los dos sitios."
-        ca: "És la mateixa associació, el mateix programa i els mateixos exàmens; canvien l'espai i l'horari. Badalona és el dojo principal, obre de dilluns a dissabte i hi ha també judo, iaijutsu i karate. A Barcelona hi ha aikido els dilluns i els dimecres. Molta gent entrena als dos llocs."
-        en: "Same association, same programme, same gradings; the space and the hours are what change. Badalona is the main dojo, open Monday to Saturday, and adds judo, iaijutsu and karate. Barcelona has aikido on Mondays and Wednesdays. Plenty of people train at both."
-        ja: "協会も稽古内容も審査も同じで、違うのは場所と時間だけです。バダロナは本部の道場で、月曜から土曜まで開いており、柔道・居合術・空手もあります。バルセロナでは月曜と水曜に合気道を稽古します。両方に通っている人も多くいます。"
+        es: "Es la misma asociación, el mismo programa y los mismos exámenes; cambian el espacio y el horario. Badalona es el dojo principal, abre de lunes a sábado y añade iaijutsu, judo y karate. En Barcelona hay aikido los lunes y los miércoles. Mucha gente entrena en los dos sitios."
+        ca: "És la mateixa associació, el mateix programa i els mateixos exàmens; canvien l'espai i l'horari. Badalona és el dojo principal, obre de dilluns a dissabte i hi ha també iaijutsu, judo i karate. A Barcelona hi ha aikido els dilluns i els dimecres. Molta gent entrena als dos llocs."
+        en: "Same association, same programme, same gradings; the space and the hours are what change. Badalona is the main dojo, open Monday to Saturday, and adds iaijutsu, judo and karate. Barcelona has aikido on Mondays and Wednesdays. Plenty of people train at both."
+        ja: "協会も稽古内容も審査も同じで、違うのは場所と時間だけです。バダロナは本部の道場で、月曜から土曜まで開いており、居合術・柔道・空手もあります。バルセロナでは月曜と水曜に合気道を稽古します。両方に通っている人も多くいます。"
     teachers_line:
       es: "<b>Daniil Mikhaylov</b>, 3.er dan Aikikai, lleva la clase del Complex Esportiu Municipal Espronceda. <b>Pablo Martín</b>, 4.º dan Aikikai y responsable del dojo, lleva la de la Facultad de Derecho de la Universidad de Barcelona. Ambos se formaron en Aikido Musubi y siguen la línea del Aikikai Hombu Dojo de Tokio."
       ca: "<b>Daniil Mikhaylov</b>, 3r dan Aikikai, porta la classe del Complex Esportiu Municipal Espronceda. <b>Pablo Martín</b>, 4t dan Aikikai i responsable del dojo, porta la de la Facultat de Dret de la Universitat de Barcelona. Tots dos s'han format a Aikido Musubi i segueixen la línia de l'Aikikai Hombu Dojo de Tòquio."

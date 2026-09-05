@@ -162,6 +162,13 @@
 
 // Pushed to the bottom of the card rather than following the copy, so the three
 // venues line up whatever the length of their note.
+// The panels are deep-link targets: the footer's "Dónde entrenamos" column
+// points at /acceso/#aikido-musubi and the three siblings. `scroll-margin-top`
+// is what keeps the sticky nav off the heading when the browser — or
+// scripts/press.js, which opens the right panel first — scrolls to one. Same
+// token as every other anchor on the site.
+.vn-panel { scroll-margin-top: @anchor-clear; }
+
 .vn-actions {
   display: flex;
   flex-wrap: wrap;
@@ -557,8 +564,12 @@
 
 // The link across to that town's location page. The Access page answers "how do
 // I get in"; the location page answers "what happens here and when".
+// It sits under the two buttons now rather than under the address, so it needs
+// the gap that says it is a third thing and not a caption on the second.
+// `.vn-actions` has `margin-top: auto`, which is what pushes the pair to the
+// bottom of the column; this rides below it.
 .page main .vn-more {
-  margin: .5rem 0 0;
+  margin: 1.4rem 0 0;
   max-width: none;
   font-size: .88rem;
 
