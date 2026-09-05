@@ -497,6 +497,53 @@ def check_build_output():
 
 
 # ---------------------------------------------------------------------------
+# 7b. Generated redirects that lead nowhere worth going.
+#
+#     `redirect_from:` makes jekyll-redirect-from write a REAL, crawlable HTML
+#     page at each old path. That is right for a page that was renamed and has
+#     inbound links — /cursos/ -> /seminarios/ is twelve of those and they earn
+#     their keep.
+#
+#     The four 404 pages carried thirty-six more, added in July 2020: every
+#     asset directory, once per language — /images/, /ca/scripts/, /ja/fonts/
+#     and so on. Half of those paths have never existed in any language. Each
+#     one answered 200 with a meta-refresh to a noindex page, so Googlebot
+#     fetched thirty-six URLs, followed thirty-six redirects and was told at the
+#     end of each not to index what it found. Deleting them lets those paths do
+#     the honest thing and return a real 404.
+#
+#     The rule this checks is the general one: a redirect whose destination is
+#     noindex is a URL that exists only to be crawled.
+# ---------------------------------------------------------------------------
+def check_redirects():
+    targets, bad = {}, []
+    for f in glob.glob(SITE + '/**/*.html', recursive=True):
+        raw = open(f, encoding='utf-8', errors='ignore').read()
+        if 'Redirecting&hellip;' not in raw:
+            continue
+        m = re.search(r'<link rel="canonical" href="([^"]+)"', raw)
+        if m:
+            targets[f] = m.group(1)
+
+    for src, dest in targets.items():
+        path = re.sub(r'^https?://[^/]+', '', dest)
+        local = SITE + path
+        if local.endswith('/'):
+            local += 'index.html'
+        if not os.path.exists(local):
+            bad.append((src, dest, 'destino inexistente'))
+            continue
+        raw = open(local, encoding='utf-8', errors='ignore').read()
+        if re.search(r'<meta name="robots" content="[^"]*noindex', raw):
+            bad.append((src, dest, 'destino noindex'))
+
+    for src, dest, why in bad:
+        fail('redirect to a page that cannot be indexed',
+             f'{src[len(SITE):]} -> {dest}  ({why})')
+    print(f'  {"generated redirects":<34} {len(targets)} pages, {len(bad)} pointing at a noindex or missing target')
+
+
+# ---------------------------------------------------------------------------
 # 8. Dead code — CSS and JS that no built page can ever use. Purging hides most
 #    of it, so it accumulates in the sources unnoticed.
 # ---------------------------------------------------------------------------
@@ -618,6 +665,7 @@ def main():
     check_a11y(pages)
     check_seo(pages)
     check_build_output()
+    check_redirects()
     check_dead_code(pages)
     check_weight(pages)
     check_lastmod()

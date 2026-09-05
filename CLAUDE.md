@@ -1181,6 +1181,23 @@ Three things came out of fixing it:
 organiser and a location — thirty-eight of them across two years, saying the
 association had cancelled Christmas. They are skipped.
 
+**A redirect to a `noindex` page is a URL that exists only to be crawled.** The
+four `404.md` files carried thirty-six `redirect_from:` entries added in July
+2020 — every asset directory, once per language: `/images/`, `/ca/scripts/`,
+`/ja/fonts/` and so on, half of them paths that have never existed in any
+language. `jekyll-redirect-from` writes a **real, crawlable HTML page** at each,
+so those thirty-six answered `200` with a meta-refresh to a page whose own
+`<meta robots>` says `noindex`. Googlebot fetched thirty-six URLs, followed
+thirty-six redirects, and was told at the end of each one not to index what it
+found. They are gone, and those paths return an honest 404 now — which is what
+GitHub Pages does for any path with no file behind it, and what `404.html` at
+the root is for.
+
+`qa.py`'s **generated redirects** check is the guard: it reads every emitted
+redirect page and fails if the destination is missing or `noindex`. Twelve
+remain and all twelve earn their keep — `/cursos/`, `/fotos/`, `/videos/` and
+their translations are renamed pages with inbound links.
+
 **The renamed pages redirect; the renamed PDFs do not.** `jekyll-redirect-from`
 covers `/cursos/`, `/fotos/`, `/videos/` and their translations, which is where
 the traffic is. The `_courses/` to `_events/` rename also renamed sixty PDFs,
