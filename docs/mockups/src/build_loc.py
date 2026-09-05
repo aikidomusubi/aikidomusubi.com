@@ -233,6 +233,16 @@ h3{font-size:1rem;letter-spacing:.05em}
 .tt td{padding:.75rem .8rem .75rem 0;border-bottom:1px solid var(--hair);vertical-align:top}
 .tt td:first-child{font-family:Futura,'Trebuchet MS',Arial,sans-serif;white-space:nowrap}
 
+/* the authority strip, approach C */
+.auth{display:grid;grid-template-columns:repeat(4,1fr);background:var(--ink);color:#fff}
+@media(max-width:760px){.auth{grid-template-columns:1fr 1fr}}
+.auth div{padding:1.15rem 1rem;text-align:center;border-left:1px solid rgba(255,255,255,.12)}
+.auth div:first-child{border-left:0}
+.auth b{display:block;font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:1.35rem;
+  color:var(--acc)}
+.auth span{display:block;margin-top:.3rem;font-size:.62rem;letter-spacing:.14em;
+  text-transform:uppercase;color:#9aa1a4}
+
 /* related */
 .rel{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1rem}
 .rel a{text-decoration:none;padding:.7rem 1.1rem;box-shadow:inset 0 0 0 1px var(--line);
@@ -302,11 +312,7 @@ NAV = """<div class="nv"><b>MUSUBI</b><nav><span>Clases y horarios</span>
 <span data-on>Dónde entrenamos</span><span>Eventos</span><span>Contacto</span></nav></div>"""
 
 
-# ===========================================================================
-# A — la respuesta primero
-# ===========================================================================
-def page_a():
-    ficha = """
+FICHA = """
     <div class="ficha">
       <div class="ficha-h">Aikido en Barcelona · lo esencial</div>
       <dl>
@@ -326,6 +332,12 @@ def page_a():
       </dl>
     </div>"""
 
+
+# ===========================================================================
+# A — la respuesta primero
+# ===========================================================================
+def page_a():
+    ficha = FICHA
     return """
 %(nav)s
 <div class="wrap">
@@ -439,6 +451,77 @@ def page_b():
                                                 vens=venue_cards(), faq=faq_html(), rel=RELATED)
 
 
+# ===========================================================================
+# C — la visita, con la ficha
+# ===========================================================================
+def page_c():
+    steps = ''.join(
+        '<div class="step"><b>%d</b><h3>%s</h3><p>%s</p></div>' % (i + 1, t, d)
+        for i, (t, d) in enumerate(STEPS))
+
+    return """
+%(nav)s
+<div class="hero" style="background-image:url('/images/index-8oGCaMDs-00-1200.webp')">
+  <div class="hero-in">
+    <p class="kick">Barcelona &middot; Espronceda y Universitat</p>
+    <h1>Aikido en Barcelona</h1>
+    <p>Lunes y miércoles, en dos salas. Sin experiencia previa, sin competición
+       y sin comprar nada para empezar.</p>
+    <p class="cta"><a class="btn" href="/contacto/">Ven a probar</a>
+       <a class="btn btn-2" href="#horario">Ver el horario</a>
+       <small>Dos clases de prueba &middot; inscripción gratuita</small></p>
+  </div>
+</div>
+<div class="auth">
+  <div><b>2008</b><span>Entrenando desde</span></div>
+  <div><b>8</b><span>Instructores titulados</span></div>
+  <div><b>49</b><span>Cursos desde 2020</span></div>
+  <div><b>Aikikai</b><span>Hombu Dojo, Tokio</span></div>
+</div>
+<div class="wrap">
+  <p class="crumb"><a href="/">Inicio</a> &middot; <a href="/acceso/">Dónde entrenamos</a> &middot; Barcelona</p>
+  %(ficha)s
+
+  <h2>Tu primera clase, paso a paso</h2>
+  <div class="steps">%(steps)s</div>
+
+  <h2 id="horario">El horario en Barcelona</h2>
+  %(tt)s
+  <div class="body" style="margin-top:1rem">
+    <p>Estas son las clases de Barcelona.
+       <a href="/horarios/">El horario completo de las cuatro salas</a> incluye el dojo de
+       Badalona, que abre de lunes a sábado.</p>
+  </div>
+
+  <h2>Dónde entrenamos</h2>
+  %(vens)s
+
+  <h2>Quién enseña</h2>
+  <div class="body">
+    <p><b>Daniil Mikhaylov</b>, 3.er dan Aikikai, lleva la clase de Espronceda.
+       <b>Pablo Martín</b>, 4.º dan Aikikai y responsable del dojo, lleva la de la Facultad
+       de Derecho. Los dos se formaron en Aikido Musubi y siguen la línea del
+       Aikikai Hombu Dojo de Tokio.</p>
+    <p><a href="/sobre-nosotros/la-asociacion/">Los ocho instructores de la asociación</a>.</p>
+  </div>
+
+  <h2>Preguntas frecuentes</h2>
+  %(faq)s
+
+  <h2>También entrenamos en</h2>
+  %(rel)s
+
+  <div class="body" style="margin-top:2.5rem">
+    <p class="cta"><a class="btn" href="/contacto/">Escríbenos</a>
+       <a class="btn btn-2" href="/cuotas/">Ver las cuotas</a>
+       <small>Respondemos el mismo día.</small></p>
+  </div>
+</div>
+<div class="tail">Pie de página.</div>""" % dict(nav=NAV, ficha=FICHA, steps=steps,
+                                                tt=timetable(), vens=venue_cards(),
+                                                faq=faq_html(), rel=RELATED)
+
+
 # ---------------------------------------------------------------------------
 WHY_SHARED = """
 <h2>Lo que las dos comparten</h2>
@@ -504,6 +587,31 @@ WHY_B = """
    y entonces B gana casi todo lo que le falta a cambio de una pantalla más de altura.</p>"""
 
 
+WHY_C = """
+<h2>Enfoque C &middot; la estructura de B con la ficha de A</h2>
+<p>La sala y el botón primero, porque quien no ha entrenado nunca decide con la foto y no
+   con la tabla. Después la ficha completa, para quien ya sabe lo que busca y para que un
+   buscador generativo tenga los datos juntos y citables. Y sólo entonces el relato.</p>
+<ul>
+  <li><b>La banda oscura cambió de trabajo.</b> En B llevaba las cifras logísticas
+      (Lun&middot;Mié, 2 salas, desde 12, 35 &euro;) y con la ficha debajo las repetía a
+      trescientos píxeles de distancia. Ahora lleva las cifras de la asociación: 2008, ocho
+      instructores, cuarenta y nueve cursos, Aikikai. No duplica nada y hace el trabajo que
+      B no hacía: dar credibilidad antes de pedir nada.</li>
+  <li><b>Es el único de los tres que sirve a los dos objetivos a la vez.</b> La banda habla
+      al que compara dojos; la ficha, al que ya ha decidido y busca el horario; el paso a
+      paso, al que nunca ha pisado un tatami.</li>
+  <li><b>Cuesta una pantalla más de alto</b> que B antes de llegar al relato. Es el precio,
+      y es el motivo por el que la ficha va después de la banda y no antes del botón.</li>
+  <li><b>Las cuatro cifras tienen que ser verdad y verificables.</b> 2008 es la fundación,
+      ocho son los instructores listados en <code>_data/about.yml</code>, cuarenta y nueve
+      son los archivos de <code>_events/</code>, y la pertenencia a Aikikai está en el pie
+      desde siempre. Si una cifra deja de ser cierta hay que cambiarla el mismo día: una
+      cifra inflada en una página de localidad es exactamente el tipo de señal que convierte
+      una página legítima en una sospechosa.</li>
+</ul>"""
+
+
 def build(name, title, kick, h1, lede, page, why):
     html = """<!doctype html><html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -539,4 +647,11 @@ if __name__ == '__main__':
           'La sala, una frase y el botón. Después el primer día paso a paso, y luego los '
           'datos. Pensada para convertir a quien nunca ha entrenado.',
           page_b(), WHY_B)
-    print('location mockups -> docs/mockups/loc-barcelona-{a,b}.html')
+    build('loc-barcelona-c.html',
+          'Barcelona · enfoque C — Aikido Musubi',
+          'Página de localidad · propuesta C · recomendada',
+          'Barcelona &middot; la visita, con la ficha',
+          'La estructura de B con el bloque de datos de A debajo de la banda. La banda pasa '
+          'a llevar las cifras de la asociación para no repetir lo que dice la ficha.',
+          page_c(), WHY_C)
+    print('location mockups -> docs/mockups/loc-barcelona-{a,b,c}.html')

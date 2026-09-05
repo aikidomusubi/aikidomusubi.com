@@ -132,6 +132,16 @@ h3{font-size:1rem;letter-spacing:.05em}
 .tt td{padding:.75rem .8rem .75rem 0;border-bottom:1px solid var(--hair);vertical-align:top}
 .tt td:first-child{font-family:Futura,'Trebuchet MS',Arial,sans-serif;white-space:nowrap}
 
+/* the authority strip, approach C */
+.auth{display:grid;grid-template-columns:repeat(4,1fr);background:var(--ink);color:#fff}
+@media(max-width:760px){.auth{grid-template-columns:1fr 1fr}}
+.auth div{padding:1.15rem 1rem;text-align:center;border-left:1px solid rgba(255,255,255,.12)}
+.auth div:first-child{border-left:0}
+.auth b{display:block;font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:1.35rem;
+  color:var(--acc)}
+.auth span{display:block;margin-top:.3rem;font-size:.62rem;letter-spacing:.14em;
+  text-transform:uppercase;color:#9aa1a4}
+
 /* related */
 .rel{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1rem}
 .rel a{text-decoration:none;padding:.7rem 1.1rem;box-shadow:inset 0 0 0 1px var(--line);
