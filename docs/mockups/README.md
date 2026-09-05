@@ -37,6 +37,7 @@ Run it again after any `npx gulp build`, which wipes `_site`.
 | `final.html` | Separator, section title, shidoin wording, chain subtitle. |
 | `names.html` | The six candidate names for the aside. **Ura was chosen.** |
 | `switch.html` | Three ways to open the aside. |
+| `loc-barcelona-e.html` | **The recommendation.** C's structure and order, with the fact block redrawn in the site's own tokens and the steps and timetable taken from D. |
 | `loc-barcelona-a/-b/-c/-d.html` | The location page. A is a reference entry with the facts first, B a landing page that opens with the room, C the two combined — and **D is C rebuilt out of the site's own components** (`page-head`, `.hm-sec`, `.hm-fig`, `.hm-facts`, `.hm-steps`, `.hm-ven`, `.ab-faq`, `.hm-btn`), which is the recommendation. Barcelona is the template for `/badalona/` and `/sant-adria-de-besos/`. **Undecided.** |
 | `bar-glosario-a/-b.html`, `bar-recursos-a/-b.html` | The sticky search-and-filter bar on a phone, two proposals, each shown on both pages. **A was chosen** and is built: one line, chips in a drawer. B kept the chips visible by scrolling them, which hides options behind an edge. |
 

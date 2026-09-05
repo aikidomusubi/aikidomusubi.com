@@ -130,6 +130,27 @@ def figures():
 
 # ---------------------------------------------------------------------------
 
+
+# The one thing E redraws: the fact block. It keeps C's two-column table, which
+# is what was asked for, and drops C's boxed-and-black-barred look for the
+# site's own — `.hm-facts` tokens (Futura micro label, 43.25rem measure) plus
+# the hairline row rules that give it back the table feel.
+CSS_LOFACTS = """
+.lo-facts{display:grid;grid-template-columns:11rem 1fr;max-width:43.25rem;margin:1.8rem 0 0;
+  border-top:1px solid #111314}
+@media(max-width:640px){.lo-facts{grid-template-columns:1fr;gap:0}}
+.lo-facts dt{font-family:Futura,'Trebuchet MS',Arial,sans-serif;font-size:.62rem;
+  letter-spacing:.16em;text-transform:uppercase;color:#6a7478;
+  padding:.95rem 1.5rem .95rem 0;border-bottom:1px solid rgba(17,19,20,.08)}
+.lo-facts dd{margin:0;font-size:.92rem;line-height:1.7;color:#2c3437;
+  padding:.95rem 0;border-bottom:1px solid rgba(17,19,20,.08)}
+@media(max-width:640px){
+  .lo-facts dt{padding-bottom:.2rem;border-bottom:0}
+  .lo-facts dd{padding-top:.1rem}
+}
+.lo-facts dd b{font-weight:600;color:#111314}
+"""
+
 # ---------------------------------------------------------------------------
 # D reuses the site's own classes and adds NO new ones. Everything below is
 # copied out of styles/home.less and styles/about.less so the mockup looks like
@@ -878,12 +899,151 @@ WHY_D = """
 </ul>"""
 
 
+# ===========================================================================
+# E — C, with the pieces from D that were asked for
+# ===========================================================================
+def page_e():
+    F = figures()
+
+    steps = ''.join(
+        '<div class="hm-step"><p class="n">%02d</p><h3>%s</h3><p>%s</p></div>'
+        % (i + 1, t, d) for i, (t, d) in enumerate(STEPS))
+
+    faq = '<div class="ab-faq">' + ''.join(
+        '<details name="loc-faq"><summary>%s</summary><div class="a"><p>%s</p></div></details>'
+        % (q, a) for q, a in FAQ) + '</div>'
+
+    rows = ''.join(
+        '<tr><td>%s<small>%s</small></td><td>%s</td><td>%s</td>'
+        '<td>%s<small>%s</small></td></tr>'
+        % (v['time'], v['days'], v['name'], v['level'], v['teacher'], v['grade'])
+        for v in VENUES)
+    tt = ('<table class="lo-tt"><thead><tr><th>Cuándo</th><th>Dónde</th><th>Nivel</th>'
+          '<th>Quién</th></tr></thead><tbody>%s</tbody></table>' % rows)
+
+    return """
+%(nav)s
+<div class="hero" style="background-image:url('/images/index-8oGCaMDs-00-1200.webp')">
+  <div class="hero-in">
+    <p class="kick">Barcelona &middot; Espronceda y Universitat</p>
+    <h1>Aikido en Barcelona</h1>
+    <p>Lunes y miércoles, en dos salas. Sin experiencia previa, sin competición
+       y sin comprar nada para empezar.</p>
+    <p class="cta"><a class="btn" href="/contacto/">Ven a probar</a>
+       <a class="btn btn-2" href="#horario">Ver el horario</a>
+       <small>Dos clases de prueba &middot; inscripción gratuita</small></p>
+  </div>
+</div>
+<div class="auth">
+  <div><b>%(year)s</b><span>Entrenando desde</span></div>
+  <div><b>%(inst)s</b><span>Instructores titulados</span></div>
+  <div><b>%(events)s</b><span>Cursos desde 2020</span></div>
+  <div><b>Arashi Group</b><span>Reconocido por Aikikai</span></div>
+</div>
+<div class="wrap">
+  <p class="crumb"><a href="/">Inicio</a> &middot; <a href="/acceso/">Dónde entrenamos</a> &middot; Barcelona</p>
+
+  <h2>Lo esencial</h2>
+  <dl class="lo-facts">
+    <dt>Dónde</dt><dd><b>CxEM Espronceda</b>, C/ Espronceda 326, 08027 Barcelona.<br>
+      <b>Facultat de Dret de la UB</b>, Av. Diagonal 684, 08034 Barcelona.</dd>
+    <dt>Cuándo</dt><dd>Lunes y miércoles. De 19:00 a 20:00 en la Facultad de Derecho
+      (principiantes) y de 20:00 a 21:00 en Espronceda (todos los niveles).</dd>
+    <dt>Para quién</dt><dd>Adultos y jóvenes desde 12 años, con o sin experiencia previa.</dd>
+    <dt>Cuánto</dt><dd>35 &euro; al mes para adultos. Inscripción gratuita y dos clases
+      de prueba.</dd>
+    <dt>Qué llevar</dt><dd>Ropa cómoda de manga y pantalón largos. El keikogi no hace falta
+      para empezar.</dd>
+    <dt>Quién enseña</dt><dd>Daniil Mikhaylov, 3.er dan Aikikai, y Pablo Martín, 4.º dan
+      Aikikai y responsable del dojo.</dd>
+    <dt>Quién lo organiza</dt><dd>Aikido Musubi, asociación cultural sin ánimo de lucro
+      fundada en %(year)s. Formamos parte de Aikido Arashi Group, reconocido por la
+      Aikikai Foundation (Hombu Dojo, Tokio).</dd>
+  </dl>
+
+  <h2>Tu primera clase, paso a paso</h2>
+  <div class="hm-steps">%(steps)s</div>
+
+  <h2 id="horario">El horario en Barcelona</h2>
+  %(tt)s
+  <div class="body" style="margin-top:1.2rem">
+    <p>Estas son las clases de Barcelona.
+       <a href="/horarios/">El horario completo de las %(venues)s salas</a> incluye el dojo de
+       Badalona, que abre de lunes a sábado.</p>
+  </div>
+
+  <h2>Dónde entrenamos</h2>
+  %(vens)s
+
+  <h2>Quién enseña</h2>
+  <div class="body">
+    <p><b>Daniil Mikhaylov</b>, 3.er dan Aikikai, lleva la clase de Espronceda.
+       <b>Pablo Martín</b>, 4.º dan Aikikai y responsable del dojo, lleva la de la Facultad
+       de Derecho. Los dos se formaron en Aikido Musubi y siguen la línea del
+       Aikikai Hombu Dojo de Tokio a través de Aikido Arashi Group.</p>
+    <p><a href="/sobre-nosotros/la-asociacion/">Los %(inst)s instructores de la asociación</a>.</p>
+  </div>
+
+  <h2>Preguntas frecuentes</h2>
+  %(faq)s
+
+  <h2>También entrenamos en</h2>
+  %(rel)s
+
+  <div class="body" style="margin-top:2.5rem">
+    <p class="cta"><a class="btn" href="/contacto/">Escríbenos</a>
+       <a class="btn btn-2" href="/cuotas/">Ver las cuotas</a>
+       <small>Respondemos el mismo día.</small></p>
+  </div>
+</div>
+<div class="tail">Pie de página.</div>""" % dict(nav=NAV, steps=steps, tt=tt,
+                                                vens=venue_cards(), faq=faq, rel=RELATED,
+                                                year=F['year'], inst=F['inst'],
+                                                events=F['events'], venues=F['venues'])
+
+
+WHY_E = """
+<h2>Enfoque E &middot; la base de C con los arreglos pedidos</h2>
+<ul>
+  <li><b>«Lo esencial» conserva la tabla de C con otro dibujo.</b> Fuera la caja con
+      borde negro y la barra de t&iacute;tulo invertida, que no se parec&iacute;an a nada del sitio.
+      Quedan los tokens de <code>.hm-facts</code> &mdash; etiqueta en Futura micro, medida de
+      43,25rem &mdash; con filetes entre filas para que siga leyendo como una tabla.</li>
+  <li><b>«Tu primera clase» y «El horario» son los de D.</b> <code>.hm-steps</code> con
+      <code>01 02 03</code>, id&eacute;ntico a la portada, y la tabla de cuatro filas con la
+      tipograf&iacute;a y los filetes del sitio. Tres pasos y no cuatro, porque la rejilla es
+      de tres columnas.</li>
+  <li><b>Las tarjetas de «D&oacute;nde entrenamos» son las de C</b>, con el plano, la
+      direcci&oacute;n completa, el horario, el profesor, c&oacute;mo se entra y los dos enlaces de
+      mapas. Es m&aacute;s informaci&oacute;n de la que cabe en <code>.hm-ven</code>.</li>
+  <li><b>El orden de secciones es el de C</b>, sin tocar.</li>
+</ul>
+
+<h2>Lo que cambi&oacute; del contenido</h2>
+<ul>
+  <li>Fuera «Las clases infantiles se imparten en Badalona» de la ficha.</li>
+  <li>La afiliaci&oacute;n dice lo que es verdad: pertenecemos a Arashi Group, y es Arashi
+      Group quien tiene el reconocimiento de la Aikikai. Lo mismo en la cuarta cifra de
+      la banda, donde C pon&iacute;a «Aikikai» a secas.</li>
+  <li>La columna <b>Qui&eacute;n</b> lleva nombre y grado.</li>
+  <li><b>Las cifras se cuentan solas.</b> El generador lee <code>_data/about.yml</code>,
+      <code>_events/</code> y <code>_data/venues.yml</code>; en la p&aacute;gina real ser&aacute; Liquid
+      (<code>{{ site.events | size }}</code> y compa&ntilde;&iacute;a). A&ntilde;adir un instructor o un
+      seminario cambia la p&aacute;gina en el siguiente build.</li>
+  <li><b>Una decisi&oacute;n que no me pediste:</b> el FAQ es ahora <code>.ab-faq</code> con
+      <code>&lt;details name&gt;</code>, el acorde&oacute;n real de Sobre nosotros, en vez de la lista
+      abierta que dibuj&eacute; en C. Es el mismo componente del sitio y no cuesta JavaScript.
+      Si lo prefieres abierto, es una l&iacute;nea.</li>
+</ul>"""
+
+
 def build(name, title, kick, h1, lede, page, why):
     html = """<!doctype html><html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>%s</title>
 <link rel="stylesheet" href="/styles/all.min.css">
 <style>%s
+%s
 %s</style></head><body>
 <div class="sheet">
   <header>
@@ -894,7 +1054,7 @@ def build(name, title, kick, h1, lede, page, why):
   <div class="frame">%s</div>
 </div>
 <div class="why"><div class="why-in">%s%s</div></div>
-</body></html>""" % (title, CSS, CSS_SITE, kick, h1, lede, page, why, WHY_SHARED)
+</body></html>""" % (title, CSS, CSS_SITE, CSS_LOFACTS, kick, h1, lede, page, why, WHY_SHARED)
     io.open(os.path.join(OUT, name), 'w', encoding='utf-8').write(html)
     print('  ->', name)
 
@@ -929,4 +1089,11 @@ if __name__ == '__main__':
           '.hm-sec, .hm-fig, .hm-facts, .hm-steps, .hm-ven, .ab-faq y .hm-btn, tal como '
           'ya se usan en la portada y en Sobre nosotros.',
           page_d(), WHY_D)
-    print('location mockups -> docs/mockups/loc-barcelona-{a,b,c,d}.html')
+    build('loc-barcelona-e.html',
+          'Barcelona · enfoque E — Aikido Musubi',
+          'Página de localidad · propuesta E · recomendada',
+          'Barcelona &middot; C, ajustada',
+          'La base y el orden de C, con la ficha redibujada en el lenguaje del sitio y con '
+          'los pasos y el horario de D. Las tarjetas de las salas se quedan como en C.',
+          page_e(), WHY_E)
+    print('location mockups -> docs/mockups/loc-barcelona-{a,b,c,d,e}.html')

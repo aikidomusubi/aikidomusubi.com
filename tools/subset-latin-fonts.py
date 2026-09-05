@@ -109,7 +109,22 @@ def main():
     except ImportError:
         sys.exit(__doc__.split('USAGE')[1])
 
+    # THE SOURCES ARE THE INPUT AND THEY MUST BE THE ORIGINALS.
+    #
+    # On the very first run there is no sources directory and the files in
+    # /fonts/ are still Google's, so seeding from there is right. On every run
+    # after that /fonts/ holds the SUBSET, and seeding from it would subset a
+    # subset — narrowing the coverage a little more each time, silently, until
+    # a macron one day fails to paint. The size check is the guard: an original
+    # latin-ext face is 60 KB and up, a subset is under 10.
     if not os.path.isdir(SOURCES):
+        seed = [os.path.join(FONTS, f) for f in FACES]
+        if any(os.path.getsize(f) < 30 * 1024 for f in seed):
+            sys.exit('tools/latin-font-sources/ is missing and the faces in /fonts/ are\n'
+                     'already subset, so there is nothing to subset FROM. Restore the\n'
+                     'directory from git, or re-fetch the four originals from\n'
+                     'fonts.google.com/noto/specimen/Noto+Sans (weights 400 and 700,\n'
+                     'roman and italic, the latin-ext unicode-range).')
         os.makedirs(SOURCES)
         for face in FACES:
             shutil.copy2(os.path.join(FONTS, face), os.path.join(SOURCES, face))

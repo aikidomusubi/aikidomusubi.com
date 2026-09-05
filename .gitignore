@@ -30,3 +30,40 @@ temp/
 # the whole set once.
 docs/mockups/renders/
 __pycache__/
+
+# ---------------------------------------------------------------------------
+# Local-only, machine-specific, and never wanted in a public repo
+#
+# NOTE, because it is the thing people get wrong about this file: .gitignore
+# only stops something being ADDED. It does not hide, remove or unpublish
+# anything that has already been committed — that stays in the repository and
+# in its history until somebody deliberately takes it out. Everything below was
+# never tracked, which is why adding it here costs nothing.
+# ---------------------------------------------------------------------------
+
+# Claude Code's per-machine settings: permission allowlists and local paths.
+# `.claude/dev-start.sh` IS tracked on purpose — it is the shared dev-start
+# script and CLAUDE.md documents it.
+.claude/settings.local.json
+
+# Editors and operating systems
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+Thumbs.db
+Desktop.ini
+
+# Logs and crash droppings from the toolchain
+*.log
+npm-debug.log*
+yarn-error.log*
+.eslintcache
+
+# Scratch space. Anything here is working material, not the site.
+scratch/
+scratchpad/
+*.bak
+*.orig
+*.rej
