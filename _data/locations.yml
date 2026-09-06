@@ -46,7 +46,7 @@ hero_style: slate
 # open with a caption under them, so what reads well in one does not
 # necessarily read well in the other. Set it to the same value as `hero_style`
 # if you want them to match.
-others_style: slate
+others_style: slate-ink
 
 # THE OLD HERO PHOTOGRAPH, kept for reference.
 #
