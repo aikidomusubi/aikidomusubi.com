@@ -5,7 +5,7 @@ description: "Seminaris, exàmens, canvis d'horari i dies sense classe: tot el q
 permalink: /ca/calendari/
 lang: ca
 i18n-ref: calendar-Qv7mK2xR
-last_modified: 2026-09-04
+last_modified: 2026-09-06
 ---
 
 # Calendari

@@ -5,7 +5,7 @@ description: 詳しくは、以下の方法でお問い合わせください。
 permalink: /ja/contact/
 lang: ja
 i18n-ref: contact-mu1FDiTN
-last_modified: 2026-08-20
+last_modified: 2026-09-06
 ---
 
 # お問合せ

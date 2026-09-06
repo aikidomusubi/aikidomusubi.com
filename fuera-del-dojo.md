@@ -5,7 +5,7 @@ description: Seminarios y encuentros a los que asistimos en otros dojos y ciudad
 permalink: /fuera-del-dojo/
 lang: es
 i18n-ref: elsewhere-Kp8vR2Qs
-last_modified: 2026-08-30
+last_modified: 2026-09-06
 ---
 
 # Fuera del dojo

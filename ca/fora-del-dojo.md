@@ -5,7 +5,7 @@ description: Seminaris i trobades on assistim en altres dojos i ciutats.
 permalink: /ca/fora-del-dojo/
 lang: ca
 i18n-ref: elsewhere-Kp8vR2Qs
-last_modified: 2026-08-30
+last_modified: 2026-09-06
 ---
 
 # Fora del dojo

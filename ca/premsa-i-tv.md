@@ -8,7 +8,7 @@ redirect_from:
   - /ca/videos/
 lang: ca
 i18n-ref: press-and-tv-Rm4zW8dL
-last_modified: 2026-08-18
+last_modified: 2026-09-06
 ---
 
 # Premsa i TV

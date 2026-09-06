@@ -6,5 +6,5 @@ permalink: /ja/ura/
 bare: true
 lang: ja
 i18n-ref: ura-Xk9pR3Wm
-last_modified: 2026-09-01
+last_modified: 2026-09-06
 ---

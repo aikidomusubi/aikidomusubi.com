@@ -5,7 +5,7 @@ description: Currently, we offer aikido classes (adults and children) from Monda
 permalink: /en/training-schedule/
 lang: en
 i18n-ref: training-schedule-IFMn5oCc
-last_modified: 2026-09-01
+last_modified: 2026-09-06
 ---
 
 # Training Schedule

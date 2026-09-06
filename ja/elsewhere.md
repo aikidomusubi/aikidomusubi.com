@@ -5,7 +5,7 @@ description: 他道場や他都市で参加する講習会・稽古会のご案�
 permalink: /ja/elsewhere/
 lang: ja
 i18n-ref: elsewhere-Kp8vR2Qs
-last_modified: 2026-08-30
+last_modified: 2026-09-06
 ---
 
 # 出稽古

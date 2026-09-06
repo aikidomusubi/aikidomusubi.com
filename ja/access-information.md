@@ -5,7 +5,7 @@ description: "稽古場所と行き方のご案内です。道場を選ぶと、
 permalink: /ja/access-information/
 lang: ja
 i18n-ref: access-information-NdxqmVbV
-last_modified: 2026-09-01
+last_modified: 2026-09-06
 ---
 
 # アクセス

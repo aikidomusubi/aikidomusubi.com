@@ -6,5 +6,5 @@ description: 稽古の場、その手入れ、そして訪れたときに目に�
 permalink: /ja/about/the-dojo/
 lang: ja
 i18n-ref: about-dojo-Qv7mK2Ld
-last_modified: 2026-09-01
+last_modified: 2026-09-06
 ---

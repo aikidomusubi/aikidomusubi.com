@@ -10,7 +10,7 @@ i18n-ref: index-8oGCaMDs
 # pages, which pointed at nothing anybody had ever linked to.
 redirect_from:
   - /home
-last_modified: 2026-09-01
+last_modified: 2026-09-06
 ---
 
 {% include stickyBar.html %}

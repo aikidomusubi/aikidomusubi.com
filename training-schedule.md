@@ -5,7 +5,7 @@ description: Actualmente, ofrecemos clases de Aikido (adultos e infantil) de lun
 permalink: /horarios/
 lang: es
 i18n-ref: training-schedule-IFMn5oCc
-last_modified: 2026-09-01
+last_modified: 2026-09-06
 ---
 
 # Horarios

@@ -472,6 +472,11 @@
     line-height: 1.1;
     text-transform: uppercase;
     letter-spacing: .015em;
+    // Air between the three lines of a class block. `line-height: 1.1` is
+    // tight because the name itself often wraps to two lines and has to stay
+    // one object; the room the block needed was between the name and the time
+    // above it and the level below, which is padding rather than leading.
+    padding: .05rem 0 .25rem 0;
   }
 
   .tt-level {

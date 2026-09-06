@@ -259,8 +259,8 @@ entries:
   - date: "2026-12-19"
     type: exam
     title:
-      es: "Exámenes de dan"
-      ca: "Exàmens de dan"
+      es: "Exámenes de grados dan"
+      ca: "Exàmens de graus dan"
       en: "Dan gradings"
       ja: "段位審査"
     place:

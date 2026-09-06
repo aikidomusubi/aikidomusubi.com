@@ -5,7 +5,7 @@ description: "On entrenem i com arribar-hi. Tria el dojo per veure l'adreça, el
 permalink: /ca/acces/
 lang: ca
 i18n-ref: access-information-NdxqmVbV
-last_modified: 2026-09-01
+last_modified: 2026-09-06
 ---
 
 # Accés
