@@ -2,8 +2,18 @@
  *
  * Every seminar is in the HTML, rendered at build time. This file hides the
  * ones that do not match the current filter and keeps that filter in the URL so
- * a filtered view can be linked to. With JavaScript off, every chip is checked
- * and every seminar is visible — which is also what a crawler sees.
+ * a filtered view can be linked to. With JavaScript off nothing is hidden and
+ * every seminar is visible — which is also what a crawler sees. The `when`
+ * radio starts on "upcoming", but that attribute hides nothing on its own: the
+ * no-script page is still the whole list.
+ *
+ * "UPCOMING" IS THE DEFAULT because the first question the page is opened with
+ * is "what is on next", not "what has this dojo ever hosted". Two things follow
+ * from moving the default off "all", and both are in here: the URL now omits
+ * `when` for `upcoming` and spells out `all` (an unfiltered URL is the one that
+ * gets shared, and it has to survive being pasted back), and the default falls
+ * back to "all" when nothing is upcoming, so a quiet month opens on the archive
+ * rather than on an empty page.
  *
  * The nav this replaces linked to #show-all, #upcoming and #ended: three
  * anchors that existed nowhere in the document, with no script behind them.
@@ -20,6 +30,7 @@
   var whenInputs = Array.prototype.slice.call(root.querySelectorAll('input[name="when"]'));
   var count = root.querySelector('.seminar-count');
   var empty = list.querySelector('.seminar-empty');
+  var asked = false;              // did the URL name a `when`?
 
   function activeCategories() {
     return catInputs.filter(function (i) { return i.checked; })
@@ -90,12 +101,14 @@
 
   // Both parameters are omitted when they carry no information — an unfiltered
   // page keeps a clean URL, which is also the one that gets shared and indexed.
+  // The `when` default is "upcoming", so that is the value that carries no
+  // information and "all" is the one that has to be written down.
   function syncUrl(cats, when) {
     try {
       var url = new URL(window.location.href);
       if (cats.length === catInputs.length) url.searchParams.delete('category');
       else url.searchParams.set('category', cats.join(','));
-      if (when === 'all') url.searchParams.delete('when');
+      if (when === 'upcoming') url.searchParams.delete('when');
       else url.searchParams.set('when', when);
       window.history.replaceState({}, '', url);
     } catch (err) { /* filtering still works */ }
@@ -117,9 +130,12 @@
       }
     }
 
+    // "all" is accepted now that it is no longer the default — without it a
+    // shared ?when=all link would silently open on "upcoming".
     var when = params.get('when');
-    if (when === 'upcoming' || when === 'ended') {
+    if (when === 'all' || when === 'upcoming' || when === 'ended') {
       whenInputs.forEach(function (i) { i.checked = i.value === when; });
+      asked = true;
     }
   }
 
@@ -127,6 +143,21 @@
 
   readUrl();
   apply();
+
+  /* THE EMPTY DEFAULT, WHICH IS THE ONE FAILURE THE NEW DEFAULT CAN CAUSE.
+   *
+   * Between seasons there is nothing upcoming, and a page whose default filter
+   * matches nothing opens as a heading and an apology over a list the reader
+   * cannot see. So if the reader did not ask for a filter and "upcoming" turned
+   * out to be empty, fall back to "all". Only on load: once somebody picks
+   * "Próximamente" themselves, an empty result is the honest answer to what
+   * they asked.
+   */
+  if (!asked && activeWhen() === 'upcoming' &&
+      !cards.some(function (c) { return !c.hidden; })) {
+    whenInputs.forEach(function (i) { i.checked = i.value === 'all'; });
+    apply();
+  }
 })();
 
 /* Multi-poster cards.

@@ -176,6 +176,23 @@
               {%- if c.days contains day -%}
                 {%- assign killed = false -%}
                 {%- comment -%}
+                  A VENUE THAT HAS NOT OPENED YET DRAWS NOTHING.
+
+                  `starts` in _data/calendar.yml gives a location the date its
+                  season begins. schedule.yml is right about the ordinary week
+                  and says nothing about when that week starts, so before this
+                  the strip printed "Aikido 20:00 / Marina-Besòs" on evenings
+                  the room was shut. Written as cancellations instead it took
+                  one entry per empty evening and struck the class through on
+                  /calendario/, which claims something was scheduled and is
+                  off; nothing was ever scheduled.
+                {%- endcomment -%}
+                {%- for st in site.data.calendar.starts -%}
+                  {%- if st.location == c.location and dstr < st.date -%}
+                    {%- assign killed = true -%}
+                  {%- endif -%}
+                {%- endfor -%}
+                {%- comment -%}
                   Location is part of the match here for the same reason it is
                   part of the `change` match below: two venues can run the same
                   category at the same hour on the same day. An entry that names
@@ -499,7 +516,13 @@
     {%- assign byYear = recent | group_by_exp: 'e', 'e.date_iso | slice: 0, 4' -%}
     <p class="ur-lab">{{ U.ui.jump[L] }}</p>
     <div class="ur-jump" data-ura-years>
-      <a href="{{ gal }}" data-year="recent" data-on>{{ U.ui.all_years[L] }} <i>64</i></a>
+      {%- comment -%}
+        NO COUNT ON THIS ONE. Every other chip counts the year it filters to,
+        which is a fact about the archive; "64" was a fact about this sheet's
+        own cut-off, and printed beside eighteen real counts it read as though
+        2008 to 2026 held sixty-four things between them.
+      {%- endcomment -%}
+      <a href="{{ gal }}" data-year="recent" data-on>{{ U.ui.all_years[L] }}</a>
       {%- for g in byYear %}
       <a href="{{ gal }}?y={{ g.name }}" data-year="{{ g.name }}">{{ g.name }} <i>{{ g.items | size }}</i></a>
       {%- endfor %}

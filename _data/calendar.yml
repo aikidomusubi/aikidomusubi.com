@@ -147,6 +147,25 @@ months:
 #
 # One line per closed run. Add next year's alongside the holidays.
 # ---------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
+# Season starts, per venue
+#
+# `seasons` above is the whole dojo; this is one room. A venue listed here has
+# no classes at all before its date, and Ura's day strip draws none — the
+# weekly grid in _data/schedule.yml is right about the ordinary week and wrong
+# only about the weeks before that week begins.
+#
+# It exists because the alternative was writing every empty evening out as a
+# `cancellation`, which put a struck-through class on /calendario/ for a class
+# that was never scheduled, and took eight entries to say what these two lines
+# say. Delete a line once its date is comfortably past.
+# ---------------------------------------------------------------------------
+starts:
+  - location: sant-adria
+    date: "2026-09-21"
+  - location: espronceda
+    date: "2026-09-21"
+
 seasons:
   - from: "2026-08-01"
     to:   "2026-08-31"
@@ -183,121 +202,16 @@ entries:
   # The two Barcelona-side venues start their season on Monday 21 September
   #
   # Marina-Besòs comes back after the summer; CxEM Espronceda opens for the
-  # first time. _data/schedule.yml is untouched and stays untouched: it answers
-  # "what happens every week", and from the 21st both of these do. What is
-  # different about THESE weeks belongs here.
+  # first time. From that Monday both run every Monday and Wednesday, which is
+  # exactly what _data/schedule.yml already says, so schedule.yml is untouched.
   #
-  # WHICH IS WHY THE FOUR EMPTY DATES ARE WRITTEN OUT and not left implied.
-  # Without them Ura's day strip would draw "Aikido 20:00 / Marina-Besòs" on
-  # Monday the 7th from the weekly grid, directly under a notice saying the
-  # classes start on the 21st — the same "two different things on one screen"
-  # that the `seasons` block above exists to stop. `seasons` cannot do it: it
-  # blanks the whole timetable for a run of days, and Badalona is running.
-  #
-  # THEY CARRY `routine: true`, and the reason is the one that flag was written
-  # for. Eight rows of "Sin clase: Aikido 20:00" would be the first five things
-  # Ura's "what is coming" said for a fortnight — a dojo training six days a
-  # week reading as a dojo that is shut. The absence is a lookup and the day
-  # strip answers it honestly by simply not drawing the class; the news is the
-  # two entries on the 21st, which is where a reader is sent.
-  #
-  # The match is category + start + location, and the location is doing real
-  # work: on a Monday, aikido at 20:00 is Marina-Besòs AND Espronceda, so an
-  # entry without it would cancel both.
+  # THE FORTNIGHT BEFORE IT IS NOT A CANCELLATION, and writing it as one was
+  # wrong twice over. It struck the class through on /calendario/ — which says
+  # "this was going to happen and is off", when nothing was ever going to
+  # happen — and it took eight entries to say one thing. `starts` below says
+  # it once per venue, and Ura's day strip simply does not draw a class before
+  # its venue has opened.
   # -------------------------------------------------------------------------
-  - date: "2026-09-07"
-    type: cancellation
-    routine: true
-    location: sant-adria
-    affects: { category: aikido, start: "20:00" }
-    note:
-      es: "Las clases en Marina-Besòs se retoman el lunes 21 de septiembre."
-      ca: "Les classes a Marina-Besòs es reprenen el dilluns 21 de setembre."
-      en: "Classes at Marina-Besòs resume on Monday 21 September."
-      ja: "マリナ・バゾスの稽古は9月21日（月）から再開します。"
-
-  - date: "2026-09-09"
-    type: cancellation
-    routine: true
-    location: sant-adria
-    affects: { category: aikido, start: "20:15" }
-    note:
-      es: "Las clases en Marina-Besòs se retoman el lunes 21 de septiembre."
-      ca: "Les classes a Marina-Besòs es reprenen el dilluns 21 de setembre."
-      en: "Classes at Marina-Besòs resume on Monday 21 September."
-      ja: "マリナ・バゾスの稽古は9月21日（月）から再開します。"
-
-  - date: "2026-09-14"
-    type: cancellation
-    routine: true
-    location: sant-adria
-    affects: { category: aikido, start: "20:00" }
-    note:
-      es: "Las clases en Marina-Besòs se retoman el lunes 21 de septiembre."
-      ca: "Les classes a Marina-Besòs es reprenen el dilluns 21 de setembre."
-      en: "Classes at Marina-Besòs resume on Monday 21 September."
-      ja: "マリナ・バゾスの稽古は9月21日（月）から再開します。"
-
-  - date: "2026-09-16"
-    type: cancellation
-    routine: true
-    location: sant-adria
-    affects: { category: aikido, start: "20:15" }
-    note:
-      es: "Las clases en Marina-Besòs se retoman el lunes 21 de septiembre."
-      ca: "Les classes a Marina-Besòs es reprenen el dilluns 21 de setembre."
-      en: "Classes at Marina-Besòs resume on Monday 21 September."
-      ja: "マリナ・バゾスの稽古は9月21日（月）から再開します。"
-
-  - date: "2026-09-07"
-    type: cancellation
-    routine: true
-    location: espronceda
-    affects: { category: aikido, start: "20:00" }
-    note:
-      es: "Las clases en el CxEM Espronceda empiezan el lunes 21 de septiembre."
-      ca: "Les classes al CxEM Espronceda comencen el dilluns 21 de setembre."
-      en: "Classes at CxEM Espronceda begin on Monday 21 September."
-      ja: "エスプロンセダの稽古は9月21日（月）から始まります。"
-
-  - date: "2026-09-09"
-    type: cancellation
-    routine: true
-    location: espronceda
-    affects: { category: aikido, start: "20:00" }
-    note:
-      es: "Las clases en el CxEM Espronceda empiezan el lunes 21 de septiembre."
-      ca: "Les classes al CxEM Espronceda comencen el dilluns 21 de setembre."
-      en: "Classes at CxEM Espronceda begin on Monday 21 September."
-      ja: "エスプロンセダの稽古は9月21日（月）から始まります。"
-
-  - date: "2026-09-14"
-    type: cancellation
-    routine: true
-    location: espronceda
-    affects: { category: aikido, start: "20:00" }
-    note:
-      es: "Las clases en el CxEM Espronceda empiezan el lunes 21 de septiembre."
-      ca: "Les classes al CxEM Espronceda comencen el dilluns 21 de setembre."
-      en: "Classes at CxEM Espronceda begin on Monday 21 September."
-      ja: "エスプロンセダの稽古は9月21日（月）から始まります。"
-
-  - date: "2026-09-16"
-    type: cancellation
-    routine: true
-    location: espronceda
-    affects: { category: aikido, start: "20:00" }
-    note:
-      es: "Las clases en el CxEM Espronceda empiezan el lunes 21 de septiembre."
-      ca: "Les classes al CxEM Espronceda comencen el dilluns 21 de setembre."
-      en: "Classes at CxEM Espronceda begin on Monday 21 September."
-      ja: "エスプロンセダの稽古は9月21日（月）から始まります。"
-
-  # And the two that ARE news. A `change` WITH `affects` substitutes the one
-  # class it names and leaves the rest of the day alone, so Monday the 21st
-  # reads "Vuelve el aikido en Marina-Besòs — 20:00 / Marina-Besòs" in Ura's
-  # day strip instead of a bare "Aikido", and the same for Espronceda. The
-  # class is running; what is different is that it is the first one.
   - date: "2026-09-21"
     type: change
     location: sant-adria
@@ -305,18 +219,18 @@ entries:
     start: "20:00"
     end:   "21:00"
     title:
-      es: "Vuelve el aikido en Marina-Besòs"
-      ca: "Torna l'aikido a Marina-Besòs"
-      en: "Aikido returns at Marina-Besòs"
-      ja: "マリナ・バゾスで稽古再開"
+      es: "Inicio de las clases de Aikido en Marina-Besòs"
+      ca: "Inici de les classes d'Aikido a Marina-Besòs"
+      en: "Aikido classes start at Marina-Besòs"
+      ja: "マリナ・バゾスでの合気道稽古開始"
     note:
       es: "Primera clase de la temporada. Lunes de 20:00 a 21:00 y miércoles de 20:15 a 21:15."
       ca: "Primera classe de la temporada. Dilluns de 20:00 a 21:00 i dimecres de 20:15 a 21:15."
       en: "First class of the season. Mondays 20:00–21:00 and Wednesdays 20:15–21:15."
       ja: "今季最初の稽古。月曜20:00〜21:00、水曜20:15〜21:15。"
-    # Per language: the town slug is a proper noun and does not change, but
-    # the language prefix does. A plain string here would send a Catalan
-    # reader to the Spanish page.
+    # Per language: the town slug is a proper noun and does not change, but the
+    # language prefix does. A plain string here would send a Catalan reader to
+    # the Spanish page.
     link: { es: "/sant-adria-de-besos/",    ca: "/ca/sant-adria-de-besos/",
             en: "/en/sant-adria-de-besos/", ja: "/ja/sant-adria-de-besos/" }
 
@@ -327,20 +241,33 @@ entries:
     start: "20:00"
     end:   "21:00"
     title:
-      es: "Empieza el aikido en el CxEM Espronceda"
-      ca: "Comença l'aikido al CxEM Espronceda"
-      en: "Aikido begins at CxEM Espronceda"
-      ja: "エスプロンセダで稽古開始"
+      es: "Inicio de las clases de Aikido en el CxEM Espronceda"
+      ca: "Inici de les classes d'Aikido al CxEM Espronceda"
+      en: "Aikido classes start at CxEM Espronceda"
+      ja: "エスプロンセダでの合気道稽古開始"
     note:
       es: "Primera clase en el CxEM Espronceda. Lunes y miércoles de 20:00 a 21:00."
       ca: "Primera classe al CxEM Espronceda. Dilluns i dimecres de 20:00 a 21:00."
       en: "First class at CxEM Espronceda. Mondays and Wednesdays 20:00–21:00."
       ja: "エスプロンセダでの最初の稽古。月曜・水曜20:00〜21:00。"
-    # Per language: the town slug is a proper noun and does not change, but
-    # the language prefix does. A plain string here would send a Catalan
-    # reader to the Spanish page.
     link: { es: "/barcelona/",    ca: "/ca/barcelona/",
             en: "/en/barcelona/", ja: "/ja/barcelona/" }
+
+  # Dan gradings, run by the Arashi Group at the school in Sarrià where its
+  # Barcelona seminars are held. Not our mat, so `place` rather than
+  # `location`; the string is the one _elsewhere/ uses for the same school.
+  - date: "2026-12-19"
+    type: exam
+    title:
+      es: "Exámenes de dan"
+      ca: "Exàmens de dan"
+      en: "Dan gradings"
+      ja: "段位審査"
+    place:
+      es: "Escuela Jesuïtes Sarrià - Sant Ignasi, Barcelona"
+      ca: "Escola Jesuïtes Sarrià - Sant Ignasi, Barcelona"
+      en: "Jesuïtes Sarrià - Sant Ignasi school, Barcelona"
+      ja: "ジェズイタス・サリア＝サン・イグナシ校（バルセロナ）"
 
   # Regular classes displaced by a masterclass that evening. The masterclass
   # itself comes from _events/; these say which classes made way for it.

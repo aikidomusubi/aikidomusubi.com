@@ -362,8 +362,20 @@
                   {%- endif -%}
                   {%- assign en_note = nil -%}
                   {%- if e.note %}{% assign en_note = e.note[L] %}{% endif -%}
+                  {%- comment -%}
+                    `link` is either one URL for every language or a hash of
+                    four. Passed through unresolved, a hash reaches the panel's
+                    href as Ruby's own inspect output — `{"es"=>"/barcelona/",
+                    …}` — whose first quote closes the attribute and spills the
+                    rest of the anchor into the page as visible text. Same
+                    resolution the events branch above already does, and the
+                    same _includes/ura.html does for its own rows.
+                  {%- endcomment -%}
+                  {%- if e.link.es %}{% assign en_link = e.link[L] %}
+                  {%- elsif e.link %}{% assign en_link = e.link %}
+                  {%- else %}{% assign en_link = nil %}{% endif -%}
                   {%- include calendar-entry.html type=e.type title=title colour=ty.color
-                        label=ty_label start=e.start end=e.end link=e.link
+                        label=ty_label start=e.start end=e.end link=en_link
                         iso=iso place=en_place desc=en_note -%}
                 {%- endfor -%}
               </div>
@@ -499,9 +511,15 @@
         {%- if loc -%}{%- assign place = loc.name[L] -%}
         {%- elsif e.place -%}{%- assign place = e.place[L] -%}{%- endif -%}
         {%- assign note = nil -%}{%- if e.note -%}{%- assign note = e.note[L] -%}{%- endif -%}
+        {%- comment -%} One URL or a hash of four — see the note in the month
+        grid above; unresolved, a hash lands in the href as Ruby inspect
+        output. {%- endcomment -%}
+        {%- if e.link.es %}{% assign it_link = e.link[L] %}
+        {%- elsif e.link %}{% assign it_link = e.link %}
+        {%- else %}{% assign it_link = nil %}{% endif -%}
         {%- include calendar-item.html date=e.date until=e.until type=e.type
               title=title colour=ty.color label=ty_label start=e_start end=e_end
-              place=place note=note link=e.link month_from=m_from month_to=m_to -%}
+              place=place note=note link=it_link month_from=m_from month_to=m_to -%}
       {%- endfor -%}
     </ol>
   </div>
@@ -561,8 +579,14 @@
       "location": {% include place-jsonld.html id=loc.slug lang=L %},
       {%- endif %}
       "description": {% if e.note %}{{ e.note[L] | strip_html | jsonify }}{% else %}{{ title | jsonify }}{% endif %}
-      {%- if e.link %},
-      "url": "{{ site.url }}{{ e.link }}"
+      {%- comment -%} Third place `link` has to be resolved: a hash reaching
+      jsonify-less string interpolation would put Ruby inspect output in the
+      structured data. {%- endcomment -%}
+      {%- if e.link.es %}{% assign ld_link = e.link[L] %}
+      {%- elsif e.link %}{% assign ld_link = e.link %}
+      {%- else %}{% assign ld_link = nil %}{% endif -%}
+      {%- if ld_link %},
+      "url": "{{ site.url }}{{ ld_link }}"
       {%- endif %}
     }
   {%- endfor %}

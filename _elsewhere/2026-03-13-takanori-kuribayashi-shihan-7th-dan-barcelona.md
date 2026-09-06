@@ -12,9 +12,9 @@ title_es: "Takanori Kuribayashi Shihan 7.º Dan Aikikai"
 title_ja: "栗林 孝典 師範 七段 合気会"
 
 place_ca: "Escola Jesuïtes Sarrià - Sant Ignasi, Barcelona"
-place_en: "Escola Jesuïtes Sarrià - Sant Ignasi, Barcelona"
-place_es: "Escola Jesuïtes Sarrià - Sant Ignasi, Barcelona"
-place_ja: "サリア・ジェズイタス校＝サン・イグナシ（バルセロナ）"
+place_en: "Jesuïtes Sarrià - Sant Ignasi school, Barcelona"
+place_es: "Escuela Jesuïtes Sarrià - Sant Ignasi, Barcelona"
+place_ja: "ジェズイタス・サリア＝サン・イグナシ校（バルセロナ）"
 
 desc_ca: >-
   Seminari d'aikido de Barcelona, organitzat pel Dojo Feilen Meishūkan amb Takanori Kuribayashi Shihan. Quatre sessions repartides entre divendres al vespre, dissabte matí i tarda i diumenge al migdia. Places limitades i inscripció prèvia.

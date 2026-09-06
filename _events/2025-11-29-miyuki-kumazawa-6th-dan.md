@@ -17,7 +17,7 @@ grade_ja: "六段 合気会"
 desc_ca: >-
  Ja estan obertes les inscripcions per al seminari de Kumazawa Sensei a Barcelona els dies 28, 29 i 30 de novembre de 2025! La sessió del divendres 28 tindrà lloc a Aikido Musubi (Av. d'Alfons XIII, 351, 08918 Badalona) i les dels dies 29 i 30 a l'escola Jesuïtes Sarrià - Sant Ignasi. Les places són limitades, així que reserva la teva plaça avui mateix!
 desc_en: >-
- Registration is now open for Kumazawa Sensei's seminar in Barcelona on November 28, 29, and 30, 2025! The Friday 28th session will take place at Aikido Musubi (Av. d'Alfons XIII, 351, 08918 Badalona), and the sessions on the 29th and 30th will be held at Jesuitas Sarrià - Sant Ignasi School. Spaces are limited, so reserve your spot today!
+ Registration is now open for Kumazawa Sensei's seminar in Barcelona on November 28, 29, and 30, 2025! The Friday 28th session will take place at Aikido Musubi (Av. d'Alfons XIII, 351, 08918 Badalona), and the sessions on the 29th and 30th will be held at the Jesuïtes Sarrià - Sant Ignasi school. Spaces are limited, so reserve your spot today!
 desc_es: >-
  ¡Ya están abiertas las inscripciones para el seminario de Kumazawa Sensei en Barcelona los días 28, 29 y 30 de noviembre de 2025! La sesión del viernes 28 tendrá lugar en Aikido Musubi (Av. d'Alfons XIII, 351, 08918 Badalona), y las sesiones de los días 29 y 30 en la escuela Jesuïtes Sarrià - Sant Ignasi. ¡Las plazas son limitadas, así que reserva tu lugar hoy mismo!
 desc_ja: >-
