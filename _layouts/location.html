@@ -383,22 +383,6 @@
           {%- for e in v.entrances limit: 1 %}
           <p class="addr"><b>{{ U.door_label[L] }}:</b> {{ e.desc[L] }}</p>
           {%- endfor %}
-          {%- if v.facade %}
-          {%- comment -%}
-            A second, smaller image for the two rooms that are hard to find from
-            the street: the CxEM's facade carries its name, and the UB's is the
-            ramp you actually walk up. Absent elsewhere, and nothing is drawn in
-            its place.
-          {%- endcomment -%}
-          <picture class="lo-ven-facade">
-            {%- assign fss = site.data.imgw[v.facade] -%}
-            <source type="image/webp"
-                    srcset="{% if fss %}{{ fss }}{% else %}/images/{{ v.facade }}.webp{% endif %}"
-                    {% if fss %}sizes="160px"{% endif %}>
-            <img src="/images/{{ v.facade }}.jpg" loading="lazy" decoding="async"
-                 width="1200" height="800" alt="{{ U.facade_alt[L] | replace: 'PLACE', v.name[L] }}">
-          </picture>
-          {%- endif %}
           <p class="maps">
             <a href="{{ v.maps_url }}" target="_blank" rel="noopener">Google Maps</a>
             {%- if v.apple_url %}

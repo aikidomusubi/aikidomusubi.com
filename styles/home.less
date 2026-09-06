@@ -179,6 +179,11 @@
 }
 
 .page main .hm-ven img {
+  // The same grade as the location pages. It is repeated rather than shared
+  // because `home.less` and `locations.less` are separate per-page bundles;
+  // KEEP THE THREE VALUES IN STEP — see the note beside `.venue-grade()` in
+  // styles/locations.less for what each one is doing.
+  filter: saturate(.86) contrast(1.06) sepia(.09);
   width: 100%;
   display: block;
   aspect-ratio: 1;

@@ -163,7 +163,16 @@ def main():
             if target >= w:
                 continue
             dst = src[:-5] + '-%d.webp' % target
-            if os.path.exists(dst) and not force:
+            # STALE MEANS OLDER THAN ITS SOURCE, not merely absent.
+            #
+            # This used to be `if os.path.exists(dst)` alone, which meant that
+            # re-cropping an image and re-running this reported success and
+            # changed nothing: the base was new and every variant was the old
+            # picture. The page then served the old one, because at a 550px card
+            # the browser picks the 800w candidate and never looks at the base.
+            # Cache-clearing does not help — it is a different file.
+            if os.path.exists(dst) and not force \
+                    and os.path.getmtime(dst) >= os.path.getmtime(src):
                 skipped += 1
                 continue
             r = subprocess.run(['cwebp', '-quiet', '-q', '80', '-resize', str(target), '0',

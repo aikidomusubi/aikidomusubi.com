@@ -859,6 +859,23 @@ Same dependencies as the Japanese subsetter, same throwaway venv, same reason
 they are not project dependencies. The unsubset originals are the input and live
 in `tools/latin-font-sources/`.
 
+**NEITHER DO IMAGES, AND THAT IS THE BIGGER TRAP.** `<img src>` and every
+`srcset` candidate name a plain path. Cloudflare's browser cache TTL is a year,
+so **overwriting an image while keeping its filename leaves every visitor who
+already has it with the old picture for up to twelve months**, and purging
+Cloudflare clears the edge but not their browsers. **If the content of an image
+changes, rename it.** Re-cropping, re-rendering a map in a new palette or at a
+new zoom, swapping which photograph a venue uses — all of those are new names,
+not overwrites. Only a genuinely identical re-encode may keep its name.
+
+**And re-run `tools/image-widths.py` after changing any base image, because a
+stale variant is invisible.** The variants (`-480`, `-800`) are what the browser
+actually picks at ordinary sizes — the base is only used above 800px — so an
+overwritten base with old variants serves the OLD picture at every real
+viewport, and no amount of cache-clearing helps because it is a different file.
+The tool used to skip any variant that merely existed; it compares mtimes now,
+so a newer base regenerates them. That check is the guard, not the memory.
+
 **FONT FILES CARRY NO `?v=` AND CANNOT BE CACHE-BUSTED.** `gulp stamp` hashes
 the bundles; the `url()`s in the compiled CSS and the preloads in
 `_includes/preload.html` name the fonts by plain path. With Cloudflare's browser
@@ -972,6 +989,16 @@ lede, the questions, the labels and the per-town paragraph about who teaches.
 timetable holds `P. Martín` and the association page holds `Pablo Martín` with
 his grade; `person` is the key between them, so the grade is written once and
 the day somebody grades there is one file to edit.
+
+**One CSS grade over four photographers.** The venue photographs come from four
+sources on four days — warm cream at the dojo, a cold black box at the CxEM,
+orange brick at Marina-Besòs, blue sky at the UB — and in one row they read as
+four pictures rather than one association. `filter: saturate(.86) contrast(1.06)
+sepia(.09)` settles them; the trace of sepia is the part that does the work,
+pulling four white balances a few degrees together. It is deliberately weak.
+Declared as `.venue-grade()` in `styles/locations.less` and **repeated by hand
+in `home.less` and `about.less`**, which are separate per-page bundles — keep
+the three in step.
 
 **The venue cards carry photographs, not the aerial plan.** `photo:` per venue
 in `_data/venues.yml`, with `facade:` as an optional second image for the two

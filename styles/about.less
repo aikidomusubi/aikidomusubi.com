@@ -254,6 +254,11 @@
       width: 100%;
       aspect-ratio: 1;
       object-fit: cover;
+      // The same grade the location pages and the home page put on these
+      // photographs. Repeated because these are separate per-page bundles;
+      // KEEP THE THREE VALUES IN STEP — the note is beside `.venue-grade()`
+      // in styles/locations.less.
+      filter: saturate(.86) contrast(1.06) sepia(.09);
     }
 
     b { display: block; margin-top: .6rem; font-size: .92rem; font-weight: 400; color: @Black; }
