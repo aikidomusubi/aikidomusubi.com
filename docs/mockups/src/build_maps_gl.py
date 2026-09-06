@@ -98,6 +98,34 @@ def zoom_for(base, width):
 WIDTHS = [1200, 1920, 2560, 2880]
 
 
+# ---------------------------------------------------------------------------
+# THE VENUE PLANS on /acceso/, square, to replace the orthophotos.
+#
+# `zoom` here is at the 1000px reference; shotSquare adds log2(size/1000).
+#
+# THE FRAMING FOR AIKIDO MUSUBI WAS MATCHED TO THE ORTHOPHOTO BY EYE, in four
+# passes, because the orthophoto is a JPEG and carries no bounds: the overlay in
+# _data/venues.yml is percentages of ITS frame, so a map that does not sit where
+# it sat puts every door in the wrong place. Landmarks used were the sports
+# ground, the C-31 down the right-hand side and the street grid top-left. It is
+# close but not exact — the OSM polygon is the whole sports ground where the
+# orthophoto's green is the pitch alone, so there is no pixel-perfect match to
+# be had from that feature.
+#
+# The other three are simply centred on the venue: their overlays have to be
+# re-derived either way.
+#
+# The UB has no lat/lng in venues.yml. These come from the `pb` string of the
+# Google embed already in _includes/map.html — the site's own data, not a guess.
+VENUE_ZOOM = 17.78
+VENUES = [
+    {'id': 'aikido-musubi',           'center': [2.224248, 41.436432], 'zoom': VENUE_ZOOM},
+    {'id': 'sant-adria-de-besos',     'center': [2.2318006, 41.4232868], 'zoom': VENUE_ZOOM},
+    {'id': 'cxem-espronceda',         'center': [2.1897692, 41.4167705], 'zoom': VENUE_ZOOM},
+    {'id': 'university-of-barcelona', 'center': [2.1208071, 41.3876438], 'zoom': VENUE_ZOOM},
+]
+
+
 def style(st):
     """One MapLibre GL style. Same six roles as the Google version, expressed
     in the OpenMapTiles schema."""
@@ -364,7 +392,27 @@ document.getElementById('all').addEventListener('click', async () => {
 });
 
 map.on('load', () => log('tiles ready — OpenFreeMap / OpenStreetMap'));
-window.__shot = shot; window.__STYLES = STYLES; window.__TOWNS = TOWNS;
+// SQUARE, for the venue plans on /acceso/, which replace a square orthophoto.
+// Same rule about zoom rising with the size: the caller passes the zoom at the
+// 1000px reference and this adds log2(size/1000).
+async function shotSquare(styleKey, center, zoom, size) {
+  const stage = document.getElementById('stage');
+  const prev = stage.style.cssText;
+  stage.style.cssText = 'position:fixed;left:-99999px;top:0;width:' + size +
+                        'px;height:' + size + 'px;';
+  map.setStyle(STYLES[styleKey]);
+  map.jumpTo({ center: center, zoom: zoom + Math.log2(size / 1000) });
+  map.resize();
+  await idle();
+  const url = map.getCanvas().toDataURL('image/png');
+  stage.style.cssText = prev;
+  map.resize();
+  return url;
+}
+
+window.__shot = shot; window.__shotSquare = shotSquare;
+window.__STYLES = STYLES; window.__TOWNS = TOWNS;
+window.__VENUES = __VENUES__;
 </script>
 </body></html>
 """
@@ -383,6 +431,7 @@ def build():
     html = html.replace('__STYLES__', json.dumps(styles, ensure_ascii=False))
     html = html.replace('__TOWNS__', json.dumps(TOWNS, ensure_ascii=False))
     html = html.replace('__WIDTHS__', json.dumps(WIDTHS))
+    html = html.replace('__VENUES__', json.dumps(VENUES, ensure_ascii=False))
     html = html.replace('__STYLE_OPTS__', ''.join(
         '<option value="%s">%s</option>' % (s['id'], s['name']) for s in BM.STYLES))
     html = html.replace('__TOWN_OPTS__', ''.join(

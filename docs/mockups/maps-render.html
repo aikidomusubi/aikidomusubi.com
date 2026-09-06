@@ -165,6 +165,26 @@ document.getElementById('all').addEventListener('click', async () => {
 });
 
 map.on('load', () => log('tiles ready — OpenFreeMap / OpenStreetMap'));
-window.__shot = shot; window.__STYLES = STYLES; window.__TOWNS = TOWNS;
+// SQUARE, for the venue plans on /acceso/, which replace a square orthophoto.
+// Same rule about zoom rising with the size: the caller passes the zoom at the
+// 1000px reference and this adds log2(size/1000).
+async function shotSquare(styleKey, center, zoom, size) {
+  const stage = document.getElementById('stage');
+  const prev = stage.style.cssText;
+  stage.style.cssText = 'position:fixed;left:-99999px;top:0;width:' + size +
+                        'px;height:' + size + 'px;';
+  map.setStyle(STYLES[styleKey]);
+  map.jumpTo({ center: center, zoom: zoom + Math.log2(size / 1000) });
+  map.resize();
+  await idle();
+  const url = map.getCanvas().toDataURL('image/png');
+  stage.style.cssText = prev;
+  map.resize();
+  return url;
+}
+
+window.__shot = shot; window.__shotSquare = shotSquare;
+window.__STYLES = STYLES; window.__TOWNS = TOWNS;
+window.__VENUES = [{"id": "aikido-musubi", "center": [2.224248, 41.436432], "zoom": 17.78}, {"id": "sant-adria-de-besos", "center": [2.2318006, 41.4232868], "zoom": 17.78}, {"id": "cxem-espronceda", "center": [2.1897692, 41.4167705], "zoom": 17.78}, {"id": "university-of-barcelona", "center": [2.1208071, 41.3876438], "zoom": 17.78}];
 </script>
 </body></html>
