@@ -379,6 +379,20 @@
   color: @Black;
   text-shadow: 0 0 3px @White, 0 0 3px @White, 0 0 5px fadeout(@White, 20%);
   pointer-events: none;
+
+  // The complex, not the room. It is context rather than the answer, so it is
+  // set lighter and wider and carries no highlight: bold on both would make
+  // the reader choose between two things shouting equally, when the job is to
+  // read the building first and then find the room inside it. Still @Black —
+  // it sits on the same near-white plan as the room label and greying it for
+  // hierarchy is the fadeout-over-a-tint trap this codebase keeps falling into.
+  &[data-kind="site"] {
+    max-width: 11rem;
+    .regular;
+    font-size: .62rem;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
 }
 
 // Each pin is a <details>. `position: static` on the marker would drop the

@@ -111,6 +111,8 @@ venues:
     # footprint rather than a bounding box — the Badalona parking is a triangle.
     # `label_at` is where the name sits; labels live here rather than baked into
     # the JPEG, which is what let the four per-language plans become one.
+    # Where facility[L] prints, unhighlighted, over the complex itself.
+    site_label_at: [43.1, 47.5]
     areas:
       # THESE PERCENTAGES ARE OF THE OSM PLAN, NOT OF THE ORTHOPHOTO.
       #
@@ -121,15 +123,23 @@ venues:
       # the orthophoto's own numbers are in the history if they are ever wanted
       # (git log -- _data/venues.yml).
       #
-      # NO `label` ON THE VENUE'S OWN AREA, and that is the point.
+      # TWO LABELS, BECAUSE THERE ARE TWO QUESTIONS.
       #
-      # It was written out four times per venue in four languages, and three of
-      # the four were wrong or stale: Marina-Besòs said "Aikido Musubi",
-      # Espronceda said "Sala de tatami" and the UB said "«La Capella»" — a room
-      # inside the building rather than the building somebody is looking for.
-      # The template prints `name[L]` when a `dojo` area has no label, so the
-      # highlight is called what the card above it and the map button beside it
-      # already call the place, in the reader's language, written once.
+      # The highlight answers "which room", so a `dojo` area's `label` is the
+      # room's own name — Sala de tatami, Sala «La Capella». `site_label_at`
+      # below answers "which building", printing `facility[L]` unhighlighted
+      # over the complex the room is inside. Somebody standing at the gate
+      # needs the second to find the first.
+      #
+      # This is why the room name is not simply left to drift: it used to be
+      # written per venue with no counterpart, and three of the four named the
+      # room where the reader needed the building — Espronceda said "Sala de
+      # tatami" and nothing said Espronceda. Naming both fixes that; naming
+      # only one just moves which half is missing.
+      #
+      # A `dojo` area with no `label` still prints `name[L]`, which is right in
+      # Badalona: the room IS Aikido Musubi and the complex around it is the
+      # Instalaciones Deportivas Badalona Sur.
       #
       # `parking` keeps its own label: "free parking" is not a name.
       - points: "62.2,37.8 70.0,46.6 67.4,49.4 60.0,40.6"
@@ -248,10 +258,14 @@ venues:
     # from the street. Absent where there is no photograph, and the templates
     # render nothing rather than a placeholder.
     photo: "access-information-NdxqmVbV-sant-adria-de-besos-room"
+    # Where facility[L] prints, unhighlighted, over the complex itself.
+    site_label_at: [65.0, 44.5]
     areas:
       - points: "47.6,53.6 52.1,56.8 44.1,70.1 39.3,67.4"
         label_at: [56.1, 63.0]
         kind: dojo
+        label: { es: "Sala de tatami", ca: "Sala de tatami",
+                 en: "Tatami room", ja: "畳の間" }
       - points: "14.3,58.3 29.5,68.6 15.6,90.2 0.0,81.1"
         label_at: [17.2, 71.1]
         kind: parking
@@ -370,10 +384,14 @@ venues:
     # Traced from the outline Juanma drew over the orthophoto: the corners were
     # read off the yellow polygon and the green pin by sampling the pixels, not
     # estimated by eye.
+    # Where facility[L] prints, unhighlighted, over the complex itself.
+    site_label_at: [54.7, 40.8]
     areas:
       - points: "63.3,26.8 68.6,32.2 65.0,36.1 59.7,30.6"
         label_at: [72.0, 27.5]
         kind: dojo
+        label: { es: "Sala de tatami", ca: "Sala de tatami",
+                 en: "Tatami room", ja: "畳の間" }
     entrances:
       - letter: "A"
         at: [45.7, 50.0]
@@ -468,10 +486,14 @@ venues:
       ca: "Facultat de Dret de la Universitat de Barcelona"
       en: "Faculty of Law, University of Barcelona"
       ja: "バルセロナ大学法学部"
+    # Where facility[L] prints, unhighlighted, over the complex itself.
+    site_label_at: [46.6, 49.8]
     areas:
       - points: "50.6,31.1 53.5,30.8 55.6,37.8 52.1,38.0"
         label_at: [39.6, 34.8]
         kind: dojo
+        label: { es: "Sala «La Capella»", ca: "Sala «La Capella»",
+                 en: "«La Capella» hall", ja: "「La Capella」ホール" }
     entrances:
       - letter: "A"
         at: [60.8, 55.3]

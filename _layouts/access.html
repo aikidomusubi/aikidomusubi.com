@@ -231,15 +231,24 @@
                 {%- endfor %}
               </svg>
               {%- comment -%}
-                A `dojo` area carries no label of its own; it prints the venue's
-                name. See the note in _data/venues.yml: written out per venue it
-                drifted, and three of the four were naming a room inside the
-                building rather than the building.
+                Two labels with two jobs. The highlight says which ROOM — an
+                area's own `label`, falling back to the venue name, which is
+                right in Badalona where the room is the dojo. `site_label_at`
+                says which BUILDING, printing `facility[L]` unhighlighted over
+                the complex: the room cannot be found without it, and naming
+                only one of the two just moves which half is missing.
               {%- endcomment -%}
               {%- for a in v.areas %}
               <span class="vn-label" data-kind="{{ a.kind }}" aria-hidden="true"
                     style="--x:{{ a.label_at[0] }}%; --y:{{ a.label_at[1] }}%">{%- if a.label -%}{{ a.label[L] }}{%- else -%}{{ v.name[L] }}{%- endif -%}</span>
               {%- endfor %}
+              {%- endif %}
+
+              {%- comment -%} Outside the `areas` test: the building is named
+              whether or not a room inside it is traced. {%- endcomment -%}
+              {%- if v.site_label_at %}
+              <span class="vn-label" data-kind="site" aria-hidden="true"
+                    style="--x:{{ v.site_label_at[0] }}%; --y:{{ v.site_label_at[1] }}%">{{ v.facility[L] }}</span>
               {%- endif %}
 
               {%- for e in v.entrances %}
