@@ -55,18 +55,12 @@ others_style: slate-lit
 #   photo    the orthophotos, as shipped
 #   papel · suiboku · glauco    the OpenStreetMap plans
 #
-# `photo` IS THE DEFAULT AND THAT IS DELIBERATE. The overlay in _data/venues.yml
-# — the dojo and parking polygons, their labels, each lettered door — is
-# percentages of the ORTHOPHOTO's frame, and that JPEG carries no geographic
-# bounds, so nothing here says what those percentages are of. The maps are
-# framed as closely as could be matched by eye, which is close and not exact:
-# switch to one of the three and the doors move by a few per cent. Fine for
-# choosing a palette, not fine to publish on the page whose whole job is getting
-# somebody who is already late to the right entrance.
-#
-# When the overlay has been re-drawn against the maps, change this and delete
-# this paragraph.
-plan_style: photo
+# THE OVERLAY IS NOW CALIBRATED TO THE MAPS, not to the orthophotos. The
+# polygons and doors in _data/venues.yml were re-derived from marked-up renders,
+# so `papel`, `suiboku` and `glauco` all place them correctly — the three share
+# one framing. `photo` still works as an image but its overlay is a few per cent
+# out; the orthophoto's own numbers are in the history if they are wanted.
+plan_style: papel
 
 # The highlight colours each plan palette carries. Yellow Ocher over Apricot
 # Yellow was chosen against a dark aerial photograph and disappears on any of
