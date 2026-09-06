@@ -43,6 +43,8 @@ GREEN        = '#1a7444'   # Sanzo Wada "Diamine Green"
 RUST         = '#ae5224'   # Sanzo Wada "Burnt Sienna"
 GLAUCOUS_G   = '#B7C2A9'   # Sanzo Wada "Dark Greenish Glaucous"
 GLAUCOUS_B   = '#A5C8D1'   # Sanzo Wada "Light Glaucous Blue"
+VANDYKE      = '#82241f'   # Sanzo Wada "Vandyke Red"
+YELLOW_OCHER = '#e2b540'   # Sanzo Wada "Yellow Ocher"
 WHITE        = '#ffffff'
 
 
@@ -72,6 +74,16 @@ def lighten(hexv, pct):
 def desaturate(hexv, pct):
     h, s, l = _hsl(hexv)
     return _hex(h, max(0.0, s - pct / 100.0), l)
+
+
+def mix_hex(a, b, pct):
+    """`pct` per cent of a, the rest b — LESS's own `mix`."""
+    a, b = a.lstrip('#'), b.lstrip('#')
+    out = []
+    for i in (0, 2, 4):
+        ca, cb = int(a[i:i + 2], 16), int(b[i:i + 2], 16)
+        out.append(round(ca * pct / 100.0 + cb * (100 - pct) / 100.0))
+    return '#%02X%02X%02X' % tuple(out)
 
 
 def lum(hexv):
@@ -246,6 +258,122 @@ STYLES = [
         'border':    darken(GLAUCOUS_B, 24),
         'label':     lighten(GLAUCOUS_B, 12),
         'halo':      darken(GLAUCOUS_B, 44),
+    },
+]
+
+
+# ---------------------------------------------------------------------------
+# THE ACCESS-PLAN PALETTES, and why they are their own list.
+#
+# A hero map sits under an 86% scrim at 26rem and is read for two seconds; a
+# venue plan is looked AT, close, by somebody trying to find a door. They want
+# opposite things. The hero styles are dark and spare on purpose. These are
+# light, and they carry a layer set the hero styles do not: building outlines,
+# footpaths and steps, parking aisles, rail, and landuse told apart by class
+# rather than lumped into one "park" tint. See plan_style() in build_maps_gl.py.
+#
+# Roles beyond the hero six:
+#   built      building fill        outline    building stroke
+#   path       footways and steps   aisle      parking aisles and service roads
+#   rail       railway
+#   sport      pitches and sports ground
+#   civic      school / university / hospital grounds
+#   ink        street labels
+#
+# THE HIGHLIGHT COLOURS CHANGE WITH THEM. @YellowOcher was chosen against a
+# dark orthophoto; on a near-white ground it is barely there. Each palette
+# carries its own `hl_dojo`, `hl_park` and `hl_door`, all measured against that
+# palette's own ground.
+PLAN_STYLES = [
+    {
+        'id': 'plan-papel',
+        'name': 'Papel',
+        'jp': '紙',
+        'blurb': 'Fondo casi blanco, edificios en gris cálido con su contorno, '
+                 'agua en Vandar Poel\'s Blue y verde en Diamine Green rebajado. '
+                 'Es la guía de ciudad impresa: el que más se parece a un plano '
+                 'que te dan en un mostrador.',
+        'land':      '#F2EFE9',
+        'water':     mix_hex(BLUE, '#F2EFE9', 30),
+        'park':      mix_hex(GREEN, '#F2EFE9', 20),
+        'sport':     mix_hex(GREEN, '#F2EFE9', 30),
+        'civic':     mix_hex(RUST, '#F2EFE9', 9),
+        'building':  '#E2DDD4',
+        'built':     '#E2DDD4',
+        'outline':   '#C8C0B4',
+        'highway':   '#FFFFFF',
+        'arterial':  '#FFFFFF',
+        'local':     '#FAF8F5',
+        'aisle':     '#EDE9E2',
+        'path':      '#D6CEC2',
+        'rail':      '#BDB3A5',
+        'border':    darken(RUST, 6),
+        'label':     darken(DARK, 6),
+        'ink':       mix_hex(DARK, '#F2EFE9', 74),
+        'halo':      '#F2EFE9',
+        'hl_dojo':   RUST,
+        'hl_park':   '#7A8C5A',
+        'hl_door':   VANDYKE,
+    },
+    {
+        'id': 'plan-suiboku',
+        'name': 'Suiboku',
+        'jp': '淡墨',
+        'blurb': 'Un solo tono sobre marfil: los edificios oscuros con contorno, '
+                 'las calles en blanco y todo lo demás en grises de Slate Color. '
+                 'Sin color propio, así que el resaltado del dojo y las puertas '
+                 'es lo único que tiene color en la imagen.',
+        'land':      '#EFEDE8',
+        'water':     mix_hex(DARK, '#EFEDE8', 26),
+        'park':      mix_hex(DARK, '#EFEDE8', 12),
+        'sport':     mix_hex(DARK, '#EFEDE8', 17),
+        'civic':     mix_hex(DARK, '#EFEDE8', 9),
+        'building':  mix_hex(DARK, '#EFEDE8', 30),
+        'built':     mix_hex(DARK, '#EFEDE8', 30),
+        'outline':   mix_hex(DARK, '#EFEDE8', 52),
+        'highway':   '#FFFFFF',
+        'arterial':  '#FFFFFF',
+        'local':     '#FBFAF8',
+        'aisle':     mix_hex(DARK, '#EFEDE8', 8),
+        'path':      mix_hex(DARK, '#EFEDE8', 34),
+        'rail':      mix_hex(DARK, '#EFEDE8', 44),
+        'border':    mix_hex(DARK, '#EFEDE8', 40),
+        'label':     DARK,
+        'ink':       mix_hex(DARK, '#EFEDE8', 80),
+        'halo':      '#EFEDE8',
+        'hl_dojo':   VANDYKE,
+        'hl_park':   mix_hex(DARK, '#EFEDE8', 62),
+        'hl_door':   VANDYKE,
+    },
+    {
+        'id': 'plan-glauco',
+        'name': 'Glauco claro',
+        'jp': '淡碧',
+        'blurb': 'Construido desde Light Glaucous Blue: fondo frío muy claro, '
+                 'agua en el azul del diccionario y verdes en Greenish Glaucous. '
+                 'El más luminoso de los tres y el que mejor separa el agua del '
+                 'suelo, que en Barcelona y Sant Adrià importa.',
+        'land':      lighten(GLAUCOUS_B, 22),
+        'water':     mix_hex(BLUE, lighten(GLAUCOUS_B, 22), 26),
+        'park':      mix_hex(GLAUCOUS_G, lighten(GLAUCOUS_B, 22), 55),
+        'sport':     mix_hex(GLAUCOUS_G, lighten(GLAUCOUS_B, 22), 72),
+        'civic':     mix_hex(YELLOW_OCHER, lighten(GLAUCOUS_B, 22), 16),
+        'building':  mix_hex(GLAUCOUS_B, '#FFFFFF', 62),
+        'built':     mix_hex(GLAUCOUS_B, '#FFFFFF', 62),
+        'outline':   mix_hex(BLUE, '#FFFFFF', 34),
+        'highway':   '#FFFFFF',
+        'arterial':  '#FFFFFF',
+        'local':     mix_hex(GLAUCOUS_B, '#FFFFFF', 14),
+        'aisle':     mix_hex(GLAUCOUS_B, '#FFFFFF', 30),
+        'path':      mix_hex(BLUE, '#FFFFFF', 40),
+        'rail':      mix_hex(BLUE, '#FFFFFF', 52),
+        'border':    mix_hex(BLUE, '#FFFFFF', 60),
+        'label':     darken(BLUE, 4),
+        'ink':       darken(BLUE, 2),
+        'halo':      lighten(GLAUCOUS_B, 24),
+        'hl_dojo':   VANDYKE,
+        'hl_park':   darken(GREEN, 4),
+        'hl_door':   RUST,
     },
 ]
 

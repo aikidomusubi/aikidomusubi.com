@@ -225,6 +225,110 @@ def style(st):
     }
 
 
+def plan_style(st):
+    """A venue plan. Same schema, many more layers than the hero styles.
+
+    A hero is read for two seconds under a scrim; a plan is looked at closely by
+    somebody hunting for a door, so it can carry — and wants — everything the
+    hero deliberately drops: building outlines, footways and steps, parking
+    aisles, rail, and landuse told apart by class instead of one flat tint.
+
+    Street names are ON here. On a hero they were noise; on an access plan the
+    street name IS the answer to the question the page asks.
+    """
+    return {
+        "version": 8,
+        "name": "Musubi plan %s" % st['name'],
+        "sources": {"osm": {"type": "vector", "url": TILES,
+                            "attribution": "© OpenStreetMap contributors"}},
+        "glyphs": "https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf",
+        "layers": [
+            {"id": "ground", "type": "background",
+             "paint": {"background-color": st['land']}},
+
+            # ---- ground cover, told apart rather than lumped -----------------
+            {"id": "landcover", "type": "fill", "source": "osm",
+             "source-layer": "landcover",
+             "paint": {"fill-color": st['park']}},
+            {"id": "lu-civic", "type": "fill", "source": "osm",
+             "source-layer": "landuse",
+             "filter": ["in", "class", "school", "university", "hospital",
+                        "kindergarten", "college"],
+             "paint": {"fill-color": st['civic']}},
+            {"id": "lu-sport", "type": "fill", "source": "osm",
+             "source-layer": "landuse",
+             "filter": ["in", "class", "pitch", "stadium", "track"],
+             "paint": {"fill-color": st['sport']}},
+            {"id": "lu-park", "type": "fill", "source": "osm",
+             "source-layer": "landuse",
+             "filter": ["in", "class", "park", "cemetery", "grass"],
+             "paint": {"fill-color": st['park']}},
+            {"id": "park", "type": "fill", "source": "osm",
+             "source-layer": "park",
+             "paint": {"fill-color": st['park']}},
+            {"id": "water", "type": "fill", "source": "osm",
+             "source-layer": "water",
+             "paint": {"fill-color": st['water']}},
+
+            # ---- the network, five weights ---------------------------------
+            {"id": "rail", "type": "line", "source": "osm",
+             "source-layer": "transportation",
+             "filter": ["==", "class", "rail"],
+             "paint": {"line-color": st['rail'], "line-width":
+                       ["interpolate", ["linear"], ["zoom"], 14, 0.6, 19, 2.6]}},
+            {"id": "path", "type": "line", "source": "osm",
+             "source-layer": "transportation",
+             "filter": ["in", "class", "path"],
+             "minzoom": 15,
+             "paint": {"line-color": st['path'], "line-dasharray": [2, 2],
+                       "line-width": ["interpolate", ["linear"], ["zoom"], 15, 0.6, 19, 2]}},
+            {"id": "aisle", "type": "line", "source": "osm",
+             "source-layer": "transportation",
+             "filter": ["in", "class", "service", "track"],
+             "minzoom": 15,
+             "paint": {"line-color": st['aisle'],
+                       "line-width": ["interpolate", ["linear"], ["zoom"], 15, 1, 19, 5]}},
+            {"id": "road-minor", "type": "line", "source": "osm",
+             "source-layer": "transportation",
+             "filter": ["==", "class", "minor"],
+             "paint": {"line-color": st['local'],
+                       "line-width": ["interpolate", ["linear"], ["zoom"], 13, 1.2, 19, 11]}},
+            {"id": "road-major", "type": "line", "source": "osm",
+             "source-layer": "transportation",
+             "filter": ["in", "class", "secondary", "tertiary", "primary", "trunk", "motorway"],
+             "paint": {"line-color": st['arterial'],
+                       "line-width": ["interpolate", ["linear"], ["zoom"], 13, 2.4, 19, 20]}},
+
+            # ---- buildings, WITH THEIR OUTLINE ------------------------------
+            # The outline is most of what "more detail" means at this zoom: a
+            # block of flats and the sports hall beside it are one shape without
+            # it and two buildings with it.
+            {"id": "building", "type": "fill", "source": "osm",
+             "source-layer": "building", "minzoom": 14,
+             "paint": {"fill-color": st['built'],
+                       "fill-outline-color": st['outline']}},
+
+            {"id": "boundary", "type": "line", "source": "osm",
+             "source-layer": "boundary",
+             "filter": ["all", [">=", "admin_level", 4], ["<=", "admin_level", 8]],
+             "paint": {"line-color": st['border'], "line-width": 1,
+                       "line-dasharray": [4, 3], "line-opacity": .8}},
+
+            # ---- street names ----------------------------------------------
+            {"id": "street", "type": "symbol", "source": "osm",
+             "source-layer": "transportation_name",
+             "minzoom": 15,
+             "layout": {"text-field": ["get", "name"],
+                        "text-font": ["Noto Sans Regular"],
+                        "symbol-placement": "line",
+                        "text-size": ["interpolate", ["linear"], ["zoom"], 15, 9, 19, 13],
+                        "text-letter-spacing": .04},
+             "paint": {"text-color": st['ink'], "text-halo-color": st['halo'],
+                       "text-halo-width": 1.6}},
+        ]
+    }
+
+
 HARNESS = """<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -424,6 +528,9 @@ def build():
     for st in BM.STYLES:
         key = st['id']
         styles[key] = style(st)
+    # the access-plan palettes ride in the same map, under their own ids
+    for st in BM.PLAN_STYLES:
+        styles[st['id']] = plan_style(st)
         io.open(os.path.join(OUT, key + '.gl.json'), 'w', encoding='utf-8').write(
             json.dumps(styles[key], indent=2, ensure_ascii=False) + '\n')
 
