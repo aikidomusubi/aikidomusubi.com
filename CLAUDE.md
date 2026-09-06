@@ -1137,6 +1137,34 @@ satellite crop of any other.
 without a render.** That is about 40 MB of `/images/`. When the choice settles,
 delete the sets that lost; nothing but those two keys refers to them.
 
+**Three switches now, not two.** `plan_style` in the same file picks what
+`/acceso/` draws under its overlay: `photo` for the orthophotos, or `papel`,
+`suiboku` or `glauco` for the OpenStreetMap plans. Those three are their own
+palette list — `PLAN_STYLES` — because a plan is looked at closely by somebody
+hunting for a door while a hero is glanced at under an 86% scrim, so
+`plan_style()` carries what the hero styles drop: building outlines, footways,
+parking aisles, rail, landuse by class, **and street names**.
+
+**`photo` is the default until the overlay is recalibrated.** The polygons,
+labels and lettered doors in `_data/venues.yml` are percentages of the
+orthophoto's frame, and that JPEG carries no bounds, so switching to a map moves
+every door by a few per cent. Fine for choosing a palette, not fine on the page
+whose job is getting somebody who is already late to the right entrance.
+
+**The highlight colours travel with the palette.** Yellow Ocher over Apricot
+Yellow was measured against a dark aerial photograph and vanishes on a
+near-white plan, so each palette carries `hl_dojo`, `hl_park` and `hl_door`.
+`access.html` emits them as `--hl-*` custom properties and `venues.less` keeps
+the orthophoto's colours as the fallback. They are **copied into
+`plan_highlights` in `_data/locations.yml`** because `build_maps.py` is not read
+at build time — keep the two in step.
+
+**A `dojo` area carries no label of its own.** It prints the venue's `name[L]`.
+Written out per venue it drifted: Marina-Besòs said "Aikido Musubi", Espronceda
+said "Sala de tatami" and the UB said "«La Capella»" — a room inside the
+building rather than the building anybody is looking for. `parking` keeps its
+own label, because "free parking" is not a name.
+
 #### Rendering a new map: everything you need
 
 The generator is `docs/mockups/src/build_maps_gl.py`; the palettes it imports

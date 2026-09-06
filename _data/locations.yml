@@ -38,7 +38,7 @@
 # hero prints "© OpenStreetMap contributors" bottom-right. If the hero ever
 # stops being a map, remove the credit with it; while it is a map, the credit
 # stays.
-hero_style: slate
+hero_style: slate-lit
 
 # THE SAME MAPS, A DIFFERENT PALETTE, on the "we also train in" cards at the
 # foot of each page. A separate key because they are a different job: the hero
@@ -46,7 +46,40 @@ hero_style: slate
 # open with a caption under them, so what reads well in one does not
 # necessarily read well in the other. Set it to the same value as `hero_style`
 # if you want them to match.
-others_style: slate-ink
+others_style: slate-lit
+
+# THE VENUE PLANS ON /acceso/, which is not a location page — the key lives here
+# because this file is already where the map themes are set and one place to
+# look beats three.
+#
+#   photo    the orthophotos, as shipped
+#   papel · suiboku · glauco    the OpenStreetMap plans
+#
+# `photo` IS THE DEFAULT AND THAT IS DELIBERATE. The overlay in _data/venues.yml
+# — the dojo and parking polygons, their labels, each lettered door — is
+# percentages of the ORTHOPHOTO's frame, and that JPEG carries no geographic
+# bounds, so nothing here says what those percentages are of. The maps are
+# framed as closely as could be matched by eye, which is close and not exact:
+# switch to one of the three and the doors move by a few per cent. Fine for
+# choosing a palette, not fine to publish on the page whose whole job is getting
+# somebody who is already late to the right entrance.
+#
+# When the overlay has been re-drawn against the maps, change this and delete
+# this paragraph.
+plan_style: photo
+
+# The highlight colours each plan palette carries. Yellow Ocher over Apricot
+# Yellow was chosen against a dark aerial photograph and disappears on any of
+# these near-white grounds, so every palette brings its own.
+#
+# COPIED FROM `PLAN_STYLES` IN docs/mockups/src/build_maps.py, which is where
+# they are designed and measured — that file is not read at build time. KEEP THE
+# TWO IN STEP; the preview at /mockups/plans-palettes.html draws from the
+# generator, so a drift shows up as the preview and the page disagreeing.
+plan_highlights:
+  papel:   { dojo: "#ae5224", park: "#7A8C5A", door: "#82241f" }
+  suiboku: { dojo: "#82241f", park: "#7B8587", door: "#82241f" }
+  glauco:  { dojo: "#82241f", park: "#16633A", door: "#ae5224" }
 
 # THE OLD HERO PHOTOGRAPH, kept for reference.
 #

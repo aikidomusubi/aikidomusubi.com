@@ -350,8 +350,16 @@
   // colours now: Yellow Ocher over Apricot Yellow for the dojo, and @Blue —
   // Vandar Poel's Blue — for the parking, which replaces a bright sky blue
   // that belonged to no palette at all.
-  [data-kind="dojo"]    { --vn-line: @YellowOcher; --vn-fill: fadeout(@ApricotYellow, 62%); }
-  [data-kind="parking"] { --vn-line: @Blue;        --vn-fill: fadeout(@Blue, 74%); }
+  // The values below are the ORTHOPHOTO's. When `plan_style` in
+  // _data/locations.yml selects one of the OpenStreetMap plans, access.html
+  // emits an inline <style> that overrides --hl-dojo / --hl-park / --hl-door
+  // with that palette's own — Yellow Ocher was chosen against a dark aerial
+  // photograph and is invisible on a near-white plan. These stay as the
+  // fallback so the photo keeps the colours it was tuned for.
+  [data-kind="dojo"]    { --vn-line: var(--hl-dojo, @YellowOcher);
+                          --vn-fill: var(--hl-dojo-fill, fadeout(@ApricotYellow, 62%)); }
+  [data-kind="parking"] { --vn-line: var(--hl-park, @Blue);
+                          --vn-fill: var(--hl-park-fill, fadeout(@Blue, 74%)); }
 }
 
 // The name is HTML, not SVG text: it stays level, wraps sensibly, and picks up
@@ -390,7 +398,9 @@
     height: 1.75rem;
     border-radius: 50%;
     border: 2px solid @White;
-    background-color: @Green;
+    // Overridden per palette when `plan_style` is a map — see the note on
+    // the dojo/parking colours above.
+    background-color: var(--hl-door, @Green);
     box-shadow: 0 1px 4px fadeout(@Black, 60%);
     color: @White;
     .NotoSans; .bold;

@@ -55,6 +55,17 @@
       every panel — long rather than wrong.
     {%- endcomment -%}
     <style>{% for v in V.venues %}.venues:has(#vn-{{ v.id }}:checked) .vn-panel[data-venue="{{ v.id }}"]{display:block}{% endfor %}</style>
+    {%- comment -%}
+      The highlight colours for whichever plan palette is on. Emitted here
+      rather than compiled into venues.less because the choice is data: the
+      stylesheet ships the orthophoto's colours as the fallback and this
+      overrides them only when `plan_style` names a map.
+    {%- endcomment -%}
+    {%- assign PSTY = site.data.locations.plan_style | default: 'photo' -%}
+    {%- assign HL = site.data.locations.plan_highlights[PSTY] -%}
+    {%- if HL %}
+    <style>.venues{--hl-dojo:{{ HL.dojo }};--hl-park:{{ HL.park }};--hl-door:{{ HL.door }};--hl-dojo-fill:{{ HL.dojo }}2E;--hl-park-fill:{{ HL.park }}2E}</style>
+    {%- endif %}
 
     {%- for v in V.venues -%}
     <section class="vn-panel" data-venue="{{ v.id }}" id="{{ v.slug }}"
@@ -176,6 +187,17 @@
             {%- endfor %}
           </ol>
 
+          {%- comment -%}
+            The orthophoto, or that venue's OpenStreetMap plan — see
+            `plan_style` in _data/locations.yml, which also says why `photo` is
+            still the default.
+          {%- endcomment -%}
+          {%- assign PS = site.data.locations.plan_style | default: 'photo' -%}
+          {%- if PS == 'photo' -%}
+            {%- assign planimg = v.plan -%}
+          {%- else -%}
+            {%- assign planimg = 'access-information-NdxqmVbV-' | append: v.id | append: '-plan-' | append: PS -%}
+          {%- endif -%}
           {%- if v.plan %}
           {%- comment -%}
             The labels and pins sit on top of the image rather than inside it.
@@ -190,8 +212,8 @@
           <figure class="vn-plan">
             <div class="vn-stage">
               <picture>
-                <source type="image/webp" srcset="/images/{{ v.plan }}.webp">
-                <img src="/images/{{ v.plan }}.jpg" loading="lazy" decoding="async"
+                <source type="image/webp" srcset="/images/{{ planimg }}.webp">
+                <img src="/images/{{ planimg }}.jpg" loading="lazy" decoding="async"
                      width="1000" height="1000" alt="{{ v.facility[L] }}">
               </picture>
 
@@ -208,9 +230,15 @@
                 <polygon data-kind="{{ a.kind }}" points="{{ a.points }}" />
                 {%- endfor %}
               </svg>
+              {%- comment -%}
+                A `dojo` area carries no label of its own; it prints the venue's
+                name. See the note in _data/venues.yml: written out per venue it
+                drifted, and three of the four were naming a room inside the
+                building rather than the building.
+              {%- endcomment -%}
               {%- for a in v.areas %}
               <span class="vn-label" data-kind="{{ a.kind }}" aria-hidden="true"
-                    style="--x:{{ a.label_at[0] }}%; --y:{{ a.label_at[1] }}%">{{ a.label[L] }}</span>
+                    style="--x:{{ a.label_at[0] }}%; --y:{{ a.label_at[1] }}%">{%- if a.label -%}{{ a.label[L] }}{%- else -%}{{ v.name[L] }}{%- endif -%}</span>
               {%- endfor %}
               {%- endif %}
 

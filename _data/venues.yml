@@ -112,11 +112,20 @@ venues:
     # `label_at` is where the name sits; labels live here rather than baked into
     # the JPEG, which is what let the four per-language plans become one.
     areas:
+      # NO `label` ON THE VENUE'S OWN AREA, and that is the point.
+      #
+      # It was written out four times per venue in four languages, and three of
+      # the four were wrong or stale: Marina-Besòs said "Aikido Musubi",
+      # Espronceda said "Sala de tatami" and the UB said "«La Capella»" — a room
+      # inside the building rather than the building somebody is looking for.
+      # The template prints `name[L]` when a `dojo` area has no label, so the
+      # highlight is called what the card above it and the map button beside it
+      # already call the place, in the reader's language, written once.
+      #
+      # `parking` keeps its own label: "free parking" is not a name.
       - points: "61.4,38.3 65.8,35.0 74.8,46.8 70.4,49.9"
         label_at: [68.1, 42.5]
         kind: dojo
-        label: { es: "Aikido Musubi", ca: "Aikido Musubi",
-                 en: "Aikido Musubi", ja: "合気道産靈" }
       - points: "48.0,78.6 69.5,62.4 61.5,96.4"
         label_at: [59.7, 80.5]
         kind: parking
@@ -234,8 +243,6 @@ venues:
       - points: "44.6,63.5 54.5,48.1 60.7,52.0 50.8,67.6"
         label_at: [52.7, 57.8]
         kind: dojo
-        label: { es: "Aikido Musubi", ca: "Aikido Musubi",
-                 en: "Aikido Musubi", ja: "合気道産靈" }
       - points: "7.3,98.5 14.0,49.9 35.2,64.0 11.1,99.4"
         label_at: [17.5, 76.0]
         kind: parking
@@ -358,8 +365,6 @@ venues:
       - points: "56.2,37.6 65.8,47.0 51.1,61.4 41.8,51.8"
         label_at: [53.7, 49.5]
         kind: dojo
-        label: { es: "Sala de tatami", ca: "Sala de tatami",
-                 en: "Tatami room",    ja: "畳の間" }
     entrances:
       - letter: "A"
         at: [39.1, 64.3]
@@ -458,8 +463,6 @@ venues:
       - points: "64.9,50.3 72.2,47.6 74.3,53.2 66.8,56.2"
         label_at: [69.6, 51.8]
         kind: dojo
-        label: { es: "«La Capella»", ca: "«La Capella»",
-                 en: "«La Capella»",  ja: "「La Capella」" }
     entrances:
       - letter: "A"
         at: [73.1, 77.1]
