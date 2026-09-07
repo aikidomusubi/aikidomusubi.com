@@ -35,10 +35,7 @@ file_ja: "events-hFZ2XXIp-2025-03-15-aikido-musubi-x-japan-weekend-barcelona-202
 # critical "Missing field location" Search Console reports. A name and no
 # postal address: the hall is real and named, the street is not ours to
 # assert. See _layouts/event.html.
-place_ca: "Fira de Barcelona, Pavelló 6"
-place_en: "Fira de Barcelona, Hall 6"
-place_es: "Fira de Barcelona, Pabellón 6"
-place_ja: "フィラ・デ・バルセロナ 第6ホール"
+place_id: fira-barcelona-h6
 
 date_from: "2025-03-15"
 date_to: "blank"

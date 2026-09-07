@@ -357,6 +357,9 @@
                   {%- if e.location -%}
                     {%- assign vloc = S.locations | where: "id", e.location | first -%}
                     {%- if vloc %}{% assign en_place = vloc.name[L] %}{% endif -%}
+                  {%- elsif e.place_id -%}
+                    {%- assign eplc = site.data.places.places | where: 'id', e.place_id | first -%}
+                    {%- if eplc %}{% assign en_place = eplc.name[L] %}{% endif -%}
                   {%- elsif e.place -%}
                     {%- assign en_place = e.place[L] -%}
                   {%- endif -%}
@@ -509,6 +512,9 @@
         {%- assign ty_label = ty.label[L] -%}
         {%- assign place = nil -%}
         {%- if loc -%}{%- assign place = loc.name[L] -%}
+        {%- elsif e.place_id -%}
+          {%- assign aplc = site.data.places.places | where: 'id', e.place_id | first -%}
+          {%- if aplc %}{% assign place = aplc.name[L] %}{% endif -%}
         {%- elsif e.place -%}{%- assign place = e.place[L] -%}{%- endif -%}
         {%- assign note = nil -%}{%- if e.note -%}{%- assign note = e.note[L] -%}{%- endif -%}
         {%- comment -%} One URL or a hash of four — see the note in the month
@@ -573,7 +579,9 @@
       "eventStatus": "https://schema.org/Event{% if e.type == 'cancellation' or e.type == 'closure' %}Cancelled{% else %}Scheduled{% endif %}",
       "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
       "organizer": { "@type": "SportsClub", "name": "Aikido Musubi", "url": "{{ site.url }}" },
-      {%- if e.place %}
+      {%- if e.place_id %}
+      "location": {% include place-jsonld.html id=e.place_id lang=L %},
+      {%- elsif e.place %}
       "location": { "@type": "Place", "name": {{ e.place[L] | jsonify }} },
       {%- else %}
       "location": {% include place-jsonld.html id=loc.slug lang=L %},
@@ -593,13 +601,18 @@
         with a free-text `place` is somewhere this repo has no photograph of,
         so it gets none rather than a picture of a different building.
       {%- endcomment -%}
-      {%- unless e.place -%}
+      {%- if e.place_id -%}
+        {%- assign cv = site.data.places.places | where: 'id', e.place_id | first -%}
+      {%- elsif e.place -%}
+        {%- comment -%} Free text: nowhere this repo has a photograph of. {%- endcomment -%}
+        {%- assign cv = nil -%}
+      {%- else -%}
         {%- assign cv = site.data.venues.venues | where: 'id', loc.slug | first -%}
         {%- unless cv %}{% assign cv = site.data.venues.venues | where: 'id', 'aikido-musubi' | first %}{% endunless -%}
-        {%- if cv.photo %}
+      {%- endif -%}
+      {%- if cv.photo %}
       "image": "{{ site.url }}/images/{{ cv.photo }}.jpg",
-        {%- endif -%}
-      {%- endunless %}
+      {%- endif %}
       "description": {% if e.note %}{{ e.note[L] | strip_html | jsonify }}{% else %}{{ title | jsonify }}{% endif %}
       {%- comment -%} Third place `link` has to be resolved: a hash reaching
       jsonify-less string interpolation would put Ruby inspect output in the

@@ -396,8 +396,15 @@
           {%- if img and img != '' -%}
             {%- assign ld_img = img -%}
           {%- else -%}
-            {%- assign ld_v = site.data.venues.venues | where: 'id', event.venue | first -%}
-            {%- unless ld_v %}{% assign ld_v = site.data.venues.venues | where: 'id', 'aikido-musubi' | first %}{% endunless -%}
+            {%- if event.place_id and event.place_id != '' -%}
+              {%- assign ld_v = site.data.places.places | where: 'id', event.place_id | first -%}
+            {%- elsif wplace and wplace != '' -%}
+              {%- comment -%} Free text: somewhere with no photograph here. {%- endcomment -%}
+              {%- assign ld_v = nil -%}
+            {%- else -%}
+              {%- assign ld_v = site.data.venues.venues | where: 'id', event.venue | first -%}
+              {%- unless ld_v %}{% assign ld_v = site.data.venues.venues | where: 'id', 'aikido-musubi' | first %}{% endunless -%}
+            {%- endif -%}
             {%- if ld_v.photo %}{% assign ld_img = ld_v.photo %}{% endif -%}
           {%- endif -%}
           {% if ld_img != '' -%}
@@ -410,7 +417,22 @@
             entries, and the honest value is the same day at the closing time.
           {% endcomment -%}
           "endDate": "{{ end_day }}{% if event.time_to %}T{{ event.time_to }}:00{{ tz_to }}{% endif %}",
-          {% if wplace and wplace != '' -%}
+          {%- comment -%}
+            THREE WAYS TO SAY WHERE, IN ORDER OF HOW MUCH THEY KNOW.
+
+            `place_id` names an entry in _data/places.yml and produces a full
+            Place with whatever address that entry holds. `place_*` is the old
+            free-text pair, kept because it still says the right thing on the
+            page and produces a name-only Place. Neither, and it is one of our
+            own rooms, so venues.yml answers.
+
+            A collaboration with no place at all still emits nothing: those
+            happen in halls this repo does not know, and claiming the dojo
+            would be a false location, which is worse than a missing one.
+          {%- endcomment -%}
+          {% if event.place_id and event.place_id != '' -%}
+          "location": {% include place-jsonld.html id=event.place_id lang=L %},
+          {% elsif wplace and wplace != '' -%}
           "location": { "@type": "Place", "name": {{ wplace | jsonify }} },
           {% elsif event.category != 'collaboration' -%}
           "location": {% include place-jsonld.html id=event.venue lang=L %},

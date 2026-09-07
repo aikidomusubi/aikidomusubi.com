@@ -263,11 +263,11 @@ entries:
       ca: "Exàmens de graus dan"
       en: "Dan gradings"
       ja: "段位審査"
-    place:
-      es: "Escuela Jesuïtes Sarrià - Sant Ignasi, Barcelona"
-      ca: "Escola Jesuïtes Sarrià - Sant Ignasi, Barcelona"
-      en: "Jesuïtes Sarrià - Sant Ignasi school, Barcelona"
-      ja: "ジェズイタス・サリア＝サン・イグナシ校（バルセロナ）"
+    # `place_id` and not `place`: an id into _data/places.yml carries the
+    # school's photograph and whatever of its address is known, so the Event
+    # gets a location that resolves and an image. A free-text `place` is still
+    # supported and still produces a name-only Place — see places.yml.
+    place_id: jesuites-sarria
 
   # Regular classes displaced by a masterclass that evening. The masterclass
   # itself comes from _events/; these say which classes made way for it.

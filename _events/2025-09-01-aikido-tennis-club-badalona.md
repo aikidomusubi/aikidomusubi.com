@@ -1,11 +1,8 @@
 ---
 time_from: "20:00"
 time_to: "21:00"
+place_id: tennis-club-badalona
 category: course
-place_es: "Tennis Club Badalona"
-place_ca: "Tennis Club Badalona"
-place_en: "Tennis Club Badalona"
-place_ja: "テニスクラブ・バダロナ"
 title_ca: "Aikido al Tennis Club Badalona"
 title_en: "Aikido at Tennis Club Badalona"
 title_es: "Aikido en el Tennis Club Badalona"

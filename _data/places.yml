@@ -1,0 +1,83 @@
+# Venues that are NOT ours, for the events that happen in them.
+#
+# _data/venues.yml is the four rooms the association teaches in, and it carries
+# an address, a photograph, a floor plan and lettered doors because /acceso/
+# has to get somebody through the right door. This file is the other kind of
+# place: a trade-fair hall, a school, a tennis club — somewhere we hold or take
+# part in one event and then leave.
+#
+# WHY IT EXISTS. Those places were free text — `place_es:` and its three
+# siblings on an event, or `place:` on a calendar entry — so the schema.org
+# Place they produced was a name and nothing else. Search Console reports that
+# as `Missing field "address" (in "location")`, and it is right to: a Place with
+# no address cannot be resolved to anywhere on earth. Same for `image`, which
+# is why the dan gradings had none.
+#
+# HOW IT IS USED. An event or a calendar entry names `place_id:` instead of
+# writing the place out. _includes/place-jsonld.html resolves it here after
+# looking in venues.yml, so one id works everywhere.
+#
+#   name      what is PRINTED, per language. It carries the town the way the
+#             old free-text strings did, so nothing on the page moves.
+#   photo     an image stem in /images/, no extension. Used as the Event's
+#             `image` in structured data. Optional — an event at a place with
+#             no photograph gets none rather than a picture of somewhere else.
+#   postal    street / postcode / town / region / country. EVERY FIELD IS
+#             OPTIONAL and each is emitted only when it is filled: a blank
+#             `streetAddress: ""` in the JSON is worse than no streetAddress,
+#             because it asserts that the place has no street.
+#   lat/lng   optional, emitted as GeoCoordinates.
+#   url       optional, the venue's own site.
+#
+# ---------------------------------------------------------------------------
+# BLANKS ARE DELIBERATE AND THEY ARE A TO-DO LIST.
+#
+# Filling one in is the whole fix for that event's Search Console warning, and
+# nothing else has to change. Do not guess: an address that is nearly right
+# sends somebody to the wrong building, which is worse than sending them to
+# look it up. Leave it blank until it is known.
+# ---------------------------------------------------------------------------
+places:
+  - id: jesuites-sarria
+    name:
+      es: "Escuela Jesuïtes Sarrià - Sant Ignasi, Barcelona"
+      ca: "Escola Jesuïtes Sarrià - Sant Ignasi, Barcelona"
+      en: "Jesuïtes Sarrià - Sant Ignasi school, Barcelona"
+      ja: "ジェズイタス・サリア＝サン・イグナシ校（バルセロナ）"
+    photo: "access-information-NdxqmVbV-jesuites-sarria"
+    postal:
+      street:   ""
+      postcode: ""
+      town:     "Barcelona"
+      region:   "Barcelona"
+      country:  "ES"
+
+  # Two different Fira sites trade under this name — Montjuïc and Gran Via, in
+  # two different municipalities — so the town is blank rather than assumed.
+  # If Japan Weekend and Manga Barcelona were in different halls, split this
+  # into two entries and point each event at its own.
+  - id: fira-barcelona-h6
+    name:
+      es: "Fira de Barcelona, Pabellón 6"
+      ca: "Fira de Barcelona, Pavelló 6"
+      en: "Fira de Barcelona, Hall 6"
+      ja: "フィラ・デ・バルセロナ 第6ホール"
+    postal:
+      street:   ""
+      postcode: ""
+      town:     ""
+      region:   "Barcelona"
+      country:  "ES"
+
+  - id: tennis-club-badalona
+    name:
+      es: "Tennis Club Badalona"
+      ca: "Tennis Club Badalona"
+      en: "Tennis Club Badalona"
+      ja: "テニスクラブ・バダロナ"
+    postal:
+      street:   ""
+      postcode: ""
+      town:     "Badalona"
+      region:   "Barcelona"
+      country:  "ES"

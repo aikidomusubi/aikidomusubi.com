@@ -74,16 +74,24 @@ the script, not to a list somewhere.
    collection-backed index to its newest item, and a seminar's date is when
    it *will* happen, so booking a masterclass five months out dated the page
    2027-01-30. `sitemap.xml` clamps to the build day; this is the guard.
-8. **Accessibility (markup half)** — `alt`, accessible names on links and
+8. **Structured data parses.** Every `<script type="application/ld+json">`
+   block is `json.loads`ed. Syntax only — whether Google wants a field it is
+   not getting is a Search Console question and stays there. This check did
+   not exist while this file claimed it did, and the gap cost a build:
+   rewriting `place-jsonld.html` to omit empty address fields left a bare
+   comma after `"@type": "PostalAddress"` in every Place on the site, killing
+   the ld+json on four calendar pages and four seminar pages, and both
+   `build` and `qa` were green.
+9. **Accessibility (markup half)** — `alt`, accessible names on links and
    buttons, `aria-*` pointing at real ids, one `<main>`, `lang`, the skip link,
    positive `tabindex`.
-9. **SEO tags** — `title`, description, canonical, hreflang; duplicates counted
+10. **SEO tags** — `title`, description, canonical, hreflang; duplicates counted
    **within a language only**, because the same title in `ca` and `en` is a
    legitimate hreflang pair, not duplicate content.
-10. **Build hygiene** — no `.less` or unminified `.js` in `_site`.
-11. **Dead CSS** (informational) — classes with no matching markup anywhere.
-12. **Page weight** (informational) — gzipped total and render-blocking bytes.
-13. **`last_modified`** (asks, does not assert) — it can see the source changed;
+11. **Build hygiene** — no `.less` or unminified `.js` in `_site`.
+12. **Dead CSS** (informational) — classes with no matching markup anywhere.
+13. **Page weight** (informational) — gzipped total and render-blocking bytes.
+14. **`last_modified`** (asks, does not assert) — it can see the source changed;
     it cannot see whether the *rendered* page did. Most large diffs here are
     refactors that move content into a layout and render identically. Bump only
     where the reader would notice.
@@ -680,6 +688,7 @@ and `courses` was renamed `events`. `photos.md`, `videos.md`, `courses.md` and
 | `_data/about.yml` | The four About topics, plus the instructors-in-training band that closes the Association page |
 | `_data/gallery.yml` | Every album, post and reel, plus the filter chips |
 | `_data/venues.yml` | The three dojos: addresses, entrances, plan overlays |
+| `_data/places.yml` | Venues that are **not** ours — a hall, a school, a club. Name, photo and whatever of the address is known; blanks are deliberate |
 | `styles/nav.less` | The nav, and the `.page-measure()` mixin everything aligns to |
 | `styles/footer.less` | The footer and the pinned strip |
 | `scripts/nav.js` | Dropdowns, the mobile panel, the shrink on scroll |
@@ -1394,7 +1403,9 @@ Nothing is disallowed now. Do not add a `Disallow` back without writing down
 what it is protecting.
 
 **Structured data is checked in Search Console, not by `qa.py`.** `qa.py`
-validates that the JSON parses; it cannot know that schema.org wants a field.
+validates that every ld+json block IS JSON — see check 8, which exists now
+and did not when this paragraph first claimed it — but it cannot know that
+schema.org wants a field.
 The Events report had 44 items with `Missing field "location"` — a critical
 error, because an Event with no place is not eligible for a rich result, so the
 whole block was decoration for as long as it shipped. Also missing: `endDate` on
@@ -1402,6 +1413,22 @@ whole block was decoration for as long as it shipped. Also missing: `endDate` on
 
 Three things came out of fixing it:
 
+- **Somewhere that is not ours lives in `_data/places.yml`.** `venues.yml` is
+  the four rooms we teach in; a trade-fair hall, a school or a tennis club we
+  use once is the other kind of place, and it used to be free text — a
+  `place_*` pair on an event or a `place:` on a calendar entry — which produced
+  a schema.org Place with a name and nothing else. An event names `place_id:`
+  and `_includes/place-jsonld.html` resolves it, looking in `venues.yml` first
+  and `places.yml` second, so one id space serves both. The place carries a
+  `photo:` too, which is what gives an event at somebody else's building an
+  `image`.
+
+  **Every address field is optional and each is emitted only when filled**, and
+  the blanks are a to-do list rather than an oversight: `"streetAddress": ""`
+  does not say "unknown", it asserts that the building has no street. `address`
+  itself is dropped when nothing is known, so the Search Console warning stays
+  visible instead of being papered over with an empty object. **Do not guess an
+  address** — one that is nearly right sends somebody to the wrong building.
 - **The address lives once, in `postal:` in `_data/venues.yml`**, and
   `_includes/place-jsonld.html` renders it. It had been written three times —
   a `PostalAddress` hardcoded in `header.html`, a flat string on `/acceso/`, and

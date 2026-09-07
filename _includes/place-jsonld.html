@@ -22,22 +22,59 @@
   Emits the JSON fragment only, with no trailing comma, so the caller decides
   where it sits.
 {%- endcomment -%}
-{%- assign V = site.data.venues -%}
+{%- comment -%}
+  TWO REGISTRIES, ONE ID SPACE. _data/venues.yml is the rooms we teach in;
+  _data/places.yml is everywhere else an event happens — a school, a hall, a
+  club. Venues are looked up first because they are the common case and their
+  ids are the ones `location:` in schedule.yml and calendar.yml already use.
+
+  The fallback to the dojo applies only when NEITHER holds the id, which means
+  a typo. An id that resolves to a place must not silently become the dojo:
+  putting our own address on somebody else's building is the one wrong answer
+  that looks right.
+{%- endcomment -%}
 {%- assign vid = include.id | default: 'aikido-musubi' -%}
-{%- assign v = V.venues | where: 'id', vid | first -%}
-{%- unless v %}{% assign v = V.venues | where: 'id', 'aikido-musubi' | first %}{% endunless -%}
+{%- assign v = site.data.venues.venues | where: 'id', vid | first -%}
+{%- unless v %}{% assign v = site.data.places.places | where: 'id', vid | first %}{% endunless -%}
+{%- unless v %}{% assign v = site.data.venues.venues | where: 'id', 'aikido-musubi' | first %}{% endunless -%}
 {%- assign PL = include.lang | default: 'es' -%}
+{%- comment -%}
+  EVERY ADDRESS FIELD IS EMITTED ONLY WHEN IT IS FILLED. A place in places.yml
+  may know its town and not its street, and `"streetAddress": ""` does not say
+  "unknown" — it asserts that the building has no street, which is a worse
+  answer than saying nothing. `address` itself is dropped when nothing is
+  known, so the warning stays visible rather than being papered over with an
+  empty object.
+{%- endcomment -%}
+{%- comment -%}
+  The fields are collected into a `|`-separated string and split back into an
+  array so `join` can put the commas in. Liquid 4 has no `remove_last`, and
+  appending a comma per field then trimming it is the kind of thing that ships
+  a trailing comma into JSON the day the field order changes.
+
+  THE SEPARATOR GOES AFTER EACH FIELD, NEVER BEFORE IT. Ruby's `split` drops
+  trailing empty strings and keeps leading ones, so `|a|b` splits to
+  ["", "a", "b"] and the join then writes a comma with nothing in front of it:
+  every Place on the site emitted `"@type": "PostalAddress",\n,` and every
+  block of structured data on four calendar pages and four seminar pages
+  stopped being JSON. `a|b|` splits to ["a", "b"].
+{%- endcomment -%}
+{%- assign P = v.postal -%}
+{%- assign bits = '' -%}
+{%- if P.street and P.street != '' %}{% capture bits %}{{ bits }}"streetAddress": {{ P.street | jsonify }}|{% endcapture %}{% endif -%}
+{%- if P.postcode and P.postcode != '' %}{% capture bits %}{{ bits }}"postalCode": {{ P.postcode | jsonify }}|{% endcapture %}{% endif -%}
+{%- if P.town and P.town != '' %}{% capture bits %}{{ bits }}"addressLocality": {{ P.town | jsonify }}|{% endcapture %}{% endif -%}
+{%- if P.region and P.region != '' %}{% capture bits %}{{ bits }}"addressRegion": {{ P.region | jsonify }}|{% endcapture %}{% endif -%}
+{%- if P.country and P.country != '' %}{% capture bits %}{{ bits }}"addressCountry": {{ P.country | jsonify }}|{% endcapture %}{% endif -%}
+{%- assign parts = bits | split: '|' -%}
 {
         "@type": "Place",
-        "name": {{ v.name[PL] | jsonify }},
+        "name": {{ v.name[PL] | jsonify }}{% if parts.size > 0 %},
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": {{ v.postal.street | jsonify }},
-          "postalCode": {{ v.postal.postcode | jsonify }},
-          "addressLocality": {{ v.postal.town | jsonify }},
-          "addressRegion": {{ v.postal.region | jsonify }},
-          "addressCountry": {{ v.postal.country | jsonify }}
-        }{% if v.lat and v.lng %},
+          {{ parts | join: ',
+          ' }}
+        }{% endif %}{% if v.lat and v.lng %},
         "geo": {
           "@type": "GeoCoordinates",
           "latitude": {{ v.lat }},

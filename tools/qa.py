@@ -41,6 +41,7 @@ import glob
 import datetime
 import gzip
 import html
+import json
 import subprocess
 import tempfile
 from collections import Counter, defaultdict
@@ -371,6 +372,44 @@ def check_sitemap():
 
 
 # ---------------------------------------------------------------------------
+# 4b. Structured data — that it PARSES, and nothing beyond that.
+#
+#     CLAUDE.md has claimed for some time that "qa.py validates that the JSON
+#     parses". It did not; there was no such check, and the sentence was the
+#     same kind of drift as the `exclude:` list and the purge safelist before
+#     it — a written promise with nothing behind it.
+#
+#     It cost a build. Rewriting _includes/place-jsonld.html to omit empty
+#     address fields left a bare comma after "@type": "PostalAddress" on every
+#     Place on the site, which broke the ld+json block on four calendar pages
+#     and four seminar pages at once. `npx gulp build` was green and so was
+#     every check in this file.
+#
+#     THIS CHECKS SYNTAX, NOT SCHEMA. Whether Google wants a field it is not
+#     getting is a question for Search Console and it stays there — see the
+#     note in CLAUDE.md. What a script can know is whether the bytes between
+#     the script tags are JSON at all, and a block that is not is worth
+#     nothing however good its fields would have been.
+# ---------------------------------------------------------------------------
+def check_jsonld(pages):
+    blocks = 0
+    broken = 0
+    for p, raw in pages:
+        for m in re.finditer(
+                r'<script[^>]+type="application/ld\+json"[^>]*>(.*?)</script>',
+                raw, re.S):
+            blocks += 1
+            try:
+                json.loads(m.group(1))
+            except ValueError as e:
+                broken += 1
+                if broken <= 5:
+                    fail('structured data is not valid JSON',
+                         f'{p}: {str(e)[:80]}')
+    print(f'  {"structured data (ld+json)":<34} {blocks} blocks, {broken} not valid JSON')
+
+
+# ---------------------------------------------------------------------------
 # 5. Accessibility — the machine-checkable half. Contrast and focus behaviour
 #    are browser checks and live in CLAUDE.md, not here.
 # ---------------------------------------------------------------------------
@@ -662,6 +701,7 @@ def main():
     check_orphan_layouts()
     check_less_selectors()
     check_sitemap()
+    check_jsonld(pages)
     check_a11y(pages)
     check_seo(pages)
     check_build_output()
