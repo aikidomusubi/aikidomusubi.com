@@ -371,8 +371,37 @@
           "name": {{ title | jsonify }},
           "description": {{ desc | strip | jsonify }},
           "url": {{ page.url | prepend: site.url | append: '#event-' | append: slug | jsonify }},
-          {% if img and img != '' -%}
-          "image": {{ img | prepend: '/images/' | append: '.jpg' | prepend: site.url | jsonify }},
+          {%- comment -%}
+            AN EVENT WITH NO POSTER YET STILL NEEDS AN IMAGE HERE.
+
+            `image_*` is empty until the artwork lands, which is a real state
+            the card renders as `.seminar-poster-soon` — see _layouts/event.html
+            above. It is also, every time, one of the events that has not
+            happened yet, and those are the only ones a rich result can ever be
+            drawn for: Search Console reported `Missing field "image"` on
+            exactly five items in each language, the five upcoming
+            masterclasses, and on nothing else.
+
+            So the fallback is the photograph of the room the class is held in,
+            from `photo:` in _data/venues.yml. It is not a stand-in for the
+            poster and the page still does not show it — the card keeps the
+            shape it will have. It is an honest answer to "show me this event":
+            1200x800, and a picture of the tatami somebody would be standing on.
+
+            Not the flat yellow placeholder.jpg, for the reason the card does
+            not use it either: it tells a reader nothing and a screen reader
+            something false.
+          {%- endcomment -%}
+          {%- assign ld_img = '' -%}
+          {%- if img and img != '' -%}
+            {%- assign ld_img = img -%}
+          {%- else -%}
+            {%- assign ld_v = site.data.venues.venues | where: 'id', event.venue | first -%}
+            {%- unless ld_v %}{% assign ld_v = site.data.venues.venues | where: 'id', 'aikido-musubi' | first %}{% endunless -%}
+            {%- if ld_v.photo %}{% assign ld_img = ld_v.photo %}{% endif -%}
+          {%- endif -%}
+          {% if ld_img != '' -%}
+          "image": {{ ld_img | prepend: '/images/' | append: '.jpg' | prepend: site.url | jsonify }},
           {% endif -%}
           "startDate": "{{ event.date_from }}{% if event.time_from %}T{{ event.time_from }}:00{{ tz_from }}{% endif %}",
           {% comment %}

@@ -578,6 +578,28 @@
       {%- else %}
       "location": {% include place-jsonld.html id=loc.slug lang=L %},
       {%- endif %}
+      {%- comment -%}
+        AN IMAGE, FOR THE SAME REASON _layouts/event.html HAS ONE.
+
+        A calendar entry is a grading or a closure or a change to the week —
+        none of them has artwork and none ever will, so `image` was simply
+        absent from all fifty items here. Search Console has not reported it
+        yet only because /calendario/ is one of the sixty-four URLs it has
+        discovered and never crawled; the same warning is waiting for the day
+        it does.
+
+        The honest image is the room: `photo:` in _data/venues.yml, resolved
+        through the same venue this entry's `location` already names. An entry
+        with a free-text `place` is somewhere this repo has no photograph of,
+        so it gets none rather than a picture of a different building.
+      {%- endcomment -%}
+      {%- unless e.place -%}
+        {%- assign cv = site.data.venues.venues | where: 'id', loc.slug | first -%}
+        {%- unless cv %}{% assign cv = site.data.venues.venues | where: 'id', 'aikido-musubi' | first %}{% endunless -%}
+        {%- if cv.photo %}
+      "image": "{{ site.url }}/images/{{ cv.photo }}.jpg",
+        {%- endif -%}
+      {%- endunless %}
       "description": {% if e.note %}{{ e.note[L] | strip_html | jsonify }}{% else %}{{ title | jsonify }}{% endif %}
       {%- comment -%} Third place `link` has to be resolved: a hash reaching
       jsonify-less string interpolation would put Ruby inspect output in the
