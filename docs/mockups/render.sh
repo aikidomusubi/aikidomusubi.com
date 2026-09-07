@@ -21,6 +21,7 @@ python3 docs/mockups/src/build_maps.py
 python3 docs/mockups/src/build_maps_gl.py
 python3 docs/mockups/src/build_venuepics.py
 python3 docs/mockups/src/build_plans.py
+python3 docs/mockups/src/build_poster.py
 for f in docs/mockups/*.html; do cp "$f" _site/mockups/; done
 # the map styles and their samples, which maps.html and maps-render.html read
 cp -R docs/mockups/maps docs/mockups/venuepics docs/mockups/plans _site/mockups/
