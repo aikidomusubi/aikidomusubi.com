@@ -25,15 +25,18 @@ desc_es: >-
 desc_ja: >-
   ９月１２日（土）12:00～13:00に、合気道産靈でペドロ・フォルテスによるマスタークラスを開催します。参加無料、どなたでもご参加いただけます！
 
-image_ca: ""
-image_en: ""
-image_es: ""
-image_ja: ""
+# One poster, in Catalan, shown in all four languages — the same as the
+# Pablo Martín and Koji Watanabe cards. A per-language set exists only
+# where one was actually drawn.
+image_ca: "events-hFZ2XXIp-2026-09-12-pedro-fortes-4th-dan-ca"
+image_en: "events-hFZ2XXIp-2026-09-12-pedro-fortes-4th-dan-ca"
+image_es: "events-hFZ2XXIp-2026-09-12-pedro-fortes-4th-dan-ca"
+image_ja: "events-hFZ2XXIp-2026-09-12-pedro-fortes-4th-dan-ca"
 
-file_ca: ""
-file_en: ""
-file_es: ""
-file_ja: ""
+file_ca: "events-hFZ2XXIp-2026-09-12-pedro-fortes-4th-dan-ca.pdf"
+file_en: "events-hFZ2XXIp-2026-09-12-pedro-fortes-4th-dan-ca.pdf"
+file_es: "events-hFZ2XXIp-2026-09-12-pedro-fortes-4th-dan-ca.pdf"
+file_ja: "events-hFZ2XXIp-2026-09-12-pedro-fortes-4th-dan-ca.pdf"
 
 # The page's own copy says "Entrada libre" in all four languages, and this is
 # that same statement in machine form: it fills schema.org's `offers`, which
@@ -45,6 +48,9 @@ price: 0
 date_from: "2026-09-12"
 date_to: "blank"
 
-event_link:
+# The Facebook event. `event_link` is the "Más información" button; there is
+# no registration for a free class, so `registration_link` stays empty and
+# the layout draws no "Inscríbete".
+event_link: "https://fb.me/e/6ITzN2Hn5"
 registration_link:
 ---
