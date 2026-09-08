@@ -978,7 +978,10 @@
           <dt>{{ r.label[L] }}</dt><dd>{{ r.value[L] }}</dd>
         {%- endfor %}
         </dl>
-        <a class="go" href="{{ gClasses.items[2].url[L] }}">{{ gClasses.items[2].label[L] }}</a>
+        {%- comment -%} By URL, not by index: see the note in _layouts/location.html.
+        A new item at the top of the classes group used to move this link. {%- endcomment -%}
+        {%- assign navFees = gClasses.items | where_exp: 'i', "i.url.en contains '/fees/'" | first -%}
+        <a class="go" href="{{ navFees.url[L] }}">{{ navFees.label[L] }}</a>
       </div>
       <div class="ur-cell"><h3>{{ E.start[L] }}</h3>
         <p>{{ E.start_text[L] }}</p>

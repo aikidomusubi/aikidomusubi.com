@@ -155,7 +155,12 @@
     {% if page.i18n-ref == 'classes-CJc2lhFv' %}
       <link href="/styles/classes.min.css?v={{ site.data.assets["classes.min.css"] }}" rel="stylesheet">
     {% endif %}
-    {% if page.layout == 'location' %}
+    {%- comment -%}
+      /como-es-una-clase/ reuses this stylesheet whole rather than getting one
+      of its own: same hero, same figures band, same .lo-sec rhythm, same fact
+      list. The one component it adds lives at the end of page-locations.less.
+    {%- endcomment -%}
+    {% if page.layout == 'location' or page.layout == 'firstclass' %}
       <link href="/styles/locations.min.css?v={{ site.data.assets["locations.min.css"] }}" rel="stylesheet">
     {% endif %}
     {% if page.layout == 'about' %}

@@ -5,3 +5,104 @@
 @import (reference) 'base.less';
 @import (reference) 'nav.less';
 @import 'locations.less';
+
+// ---------------------------------------------------------------------------
+// /como-es-una-clase/ — the one component _layouts/firstclass.html adds
+//
+// That page reuses this stylesheet whole: same hero, same figures band, same
+// .lo-sec rhythm, same fact list, same accordion. What it needs that a location
+// page does not is a clock, and a two-column variant of .lo-steps for the four
+// room blocks and the two "is there room for me" blocks. Four items in the
+// three-column grid leave a 3+1 orphan row.
+// ---------------------------------------------------------------------------
+.lo-steps-2 {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.6rem 2.6rem;
+
+  @media (max-width: @bp-md - .02px) { grid-template-columns: 1fr; }
+}
+
+// The hour, as an ordered list. The dot and the rule are drawn with
+// pseudo-elements on the row rather than a border on the list, so the line
+// stops at the last step instead of running past it.
+.fc-tl {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: @measure;
+}
+
+.fc-row {
+  display: grid;
+  grid-template-columns: 4.4rem 1fr;
+  gap: 1.2rem;
+  padding: 0 0 1.4rem;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 4.7rem;
+    top: .6rem;
+    bottom: 0;
+    width: 1px;
+    background: var(--lo-hair);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 4.45rem;
+    top: .45rem;
+    width: .5rem;
+    height: .5rem;
+    border-radius: 50%;
+    background: @Rust;
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+    &::before { display: none; }
+  }
+
+  // On a phone the clock stacks: a 4.4rem gutter beside a 2.5rem viewport of
+  // text is a column of orphans.
+  @media (max-width: @bp-sm - .02px) {
+    grid-template-columns: 1fr;
+    gap: .2rem;
+    padding-left: 1.4rem;
+    &::before { left: .25rem; }
+    &::after  { left: 0; }
+  }
+}
+
+.page main .fc-h {
+  margin: 0;
+  max-width: none;
+  .bold;
+  font-size: .8rem;
+  line-height: 1.6;
+  letter-spacing: .05em;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+
+  @media (max-width: @bp-sm - .02px) { text-align: left; }
+}
+
+.fc-b { padding-left: .9rem; }
+
+.page main .fc-b {
+  b { display: block; font-size: 1rem; margin-bottom: .1rem; }
+  p { margin: 0; max-width: none; font-size: .94rem; color: inherit; }
+
+  @media (max-width: @bp-sm - .02px) { padding-left: 0; }
+}
+
+// The accordion borrows .ab-faq from the About pages, which is deliberate:
+// one accordion on this site, not two. It only needs its top rule here.
+.fc-faq {
+  max-width: @measure;
+  border-top: 1px solid @Black;
+}
+
+.page main .lo-after { margin-top: 1.4rem; font-size: .95rem; }

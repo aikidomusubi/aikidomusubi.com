@@ -346,7 +346,12 @@
       </tbody>
     </table>
     <p class="lo-note">
-      <a class="lo-more" href="{{ gClasses.items[1].url[L] }}">{{ U.full_timetable[L] | replace: 'COUNT', n_venues }}</a>
+      {%- comment -%} By URL and not by index: adding an item to the classes
+        group in nav.yml silently repoints every positional lookup, which is
+        exactly what happened when "Cómo es una clase" went in first.
+      {%- endcomment -%}
+      {%- assign navSched = gClasses.items | where_exp: 'i', "i.url.en contains '/training-schedule/'" | first -%}
+      <a class="lo-more" href="{{ navSched.url[L] }}">{{ U.full_timetable[L] | replace: 'COUNT', n_venues }}</a>
     </p>
   </section>
 
@@ -463,7 +468,8 @@
     </div>
     <p class="lo-cta lo-end">
       <a class="lo-btn" href="{{ gContact.items[0].url[L] }}">{{ U.cta_write[L] }}</a>
-      <a class="lo-btn lo-btn-2" href="{{ gClasses.items[2].url[L] }}">{{ U.cta_fees[L] }}</a>
+      {%- assign navFees = gClasses.items | where_exp: 'i', "i.url.en contains '/fees/'" | first -%}
+      <a class="lo-btn lo-btn-2" href="{{ navFees.url[L] }}">{{ U.cta_fees[L] }}</a>
       <small>{{ U.cta_note[L] }}</small>
     </p>
   </section>

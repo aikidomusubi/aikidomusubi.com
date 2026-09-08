@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cómo es una clase — maqueta</title>
+<style>
+:root{
+  --Black:#111314; --White:#fff; --Yellow:#FFF200; --Rust:#ae5224;
+  --Paper:#FBFAF7; --Mute:#5A686E; --Ink:#3D4A50; --Hair:rgba(17,19,20,.14);
+}
+*{box-sizing:border-box}
+body{margin:0;background:#F7F7F5;color:#111314;
+     font:16px/1.7 "Noto Sans",-apple-system,BlinkMacSystemFont,sans-serif}
+.wrap{max-width:1500px;margin:0 auto;padding:2.5rem 2rem 6rem}
+.pg{font-size:1.8rem;letter-spacing:.04em;text-transform:uppercase;margin:0 0 .6rem}
+.top-lede{max-width:46rem;color:var(--Ink);margin:0 0 1rem;font-size:.95rem}
+.key{max-width:46rem;font-size:.93rem;color:var(--Ink);background:#fff;
+     border-left:3px solid var(--Yellow);padding:.8rem 1.1rem;margin:0 0 1rem}
+.warn{max-width:46rem;font-size:.93rem;color:var(--Ink);background:#fff;
+      border-left:3px solid var(--Rust);padding:.8rem 1.1rem;margin:0 0 2.4rem}
+.row{display:grid;grid-template-columns:1000px 1fr;gap:2.6rem;align-items:start}
+@media(max-width:1460px){.row{grid-template-columns:1fr}}
+.note h2{font-size:1.1rem;letter-spacing:.05em;text-transform:uppercase;margin:1.6rem 0 .5rem}
+.note h2:first-child{margin-top:0}
+.note p{max-width:34rem;font-size:.92rem;color:var(--Ink);margin:0 0 .8rem}
+.note b{color:var(--Black)}
+.note code{font:.8rem ui-monospace,Menlo,monospace}
+.note ol{max-width:34rem;font-size:.92rem;color:var(--Ink);padding-left:1.1rem}
+.note li{margin:0 0 .35rem}
+
+/* ------------------------------------------------------------------ */
+/* The mocked page. Class names and values are _layouts/location.html's */
+/* and styles/locations.less's, so this reads as the same site.         */
+/* ------------------------------------------------------------------ */
+.mock{width:1000px;background:#fff;overflow:hidden;
+      box-shadow:0 1px 2px rgba(17,19,20,.14),0 12px 34px rgba(17,19,20,.11)}
+.mock-nav{background:var(--Black);color:#fff;padding:.9rem 2.2rem;
+          display:flex;align-items:baseline;gap:1.6rem}
+.mock-nav b{font-family:Futura,"Century Gothic",sans-serif;letter-spacing:.03em;
+            font-size:1.05rem}
+.mock-nav span{font-size:.62rem;letter-spacing:.06em;color:rgba(255,255,255,.6)}
+
+.lo-hero{position:relative;display:flex;align-items:flex-end;min-height:26rem;
+         overflow:hidden;background:var(--Black)}
+.lo-hero picture,.lo-hero img{position:absolute;inset:0;display:block;
+         width:100%;height:100%;object-fit:cover}
+.lo-hero::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(17,19,20,.12) 0%,rgba(17,19,20,.86) 78%)}
+.lo-hero-in{position:relative;z-index:1;padding:3rem 2.2rem 2.5rem;color:#fff;
+            max-width:46rem}
+.lo-kick{margin:0;font-family:Futura,"Century Gothic",sans-serif;font-size:.62rem;
+         letter-spacing:.2em;text-transform:uppercase;color:var(--Yellow)}
+.lo-hero-in h1{margin:.5rem 0 .7rem;font-size:2.6rem;line-height:1.1;
+   letter-spacing:.04em;text-transform:uppercase;color:#fff;
+   font-family:Futura,"Century Gothic",sans-serif;font-weight:700}
+.lo-line{margin:0;max-width:34rem;font-size:1.05rem;line-height:1.7;
+         color:rgba(255,255,255,.88)}
+.lo-cta{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;margin:1.4rem 0 0}
+.lo-btn{display:inline-block;background:var(--Yellow);color:var(--Black);
+        text-decoration:none;font-weight:700;font-size:.68rem;letter-spacing:.16em;
+        text-transform:uppercase;padding:.85rem 1.4rem}
+.lo-btn-2{background:transparent;color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.5)}
+.lo-cta small{font-size:.66rem;letter-spacing:.1em;color:rgba(255,255,255,.7)}
+.lo-end .lo-btn-2{color:var(--Black);box-shadow:inset 0 0 0 1px var(--Hair)}
+
+.lo-figs{display:grid;grid-template-columns:repeat(4,1fr);background:var(--Black);
+         color:#fff}
+.lo-figs>div{padding:1.5rem 1.6rem;border-left:1px solid rgba(255,255,255,.14)}
+.lo-figs>div:first-child{border-left:0}
+.lo-figs b{display:block;font-family:Futura,"Century Gothic",sans-serif;
+           font-size:2.1rem;line-height:1;letter-spacing:-.01em}
+.lo-figs span{display:block;margin-top:.45rem;font-size:.7rem;line-height:1.4;
+              color:rgba(255,255,255,.7)}
+
+.body{padding:0 2.2rem 3rem}
+.lo-crumb{margin:1.4rem 0 0;font-size:.72rem;color:var(--Mute)}
+.lo-crumb a{color:inherit}
+.lo-sec{margin:3.2rem 0 0}
+.lo-lab{margin:0 0 .5rem;font-family:Futura,"Century Gothic",sans-serif;
+        font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--Mute)}
+.lo-sec h2{margin:0 0 1.1rem;font-size:1.6rem;letter-spacing:.01em;line-height:1.2}
+.lo-p{max-width:43.25rem;color:var(--Ink);margin:0 0 1.2rem}
+.lo-more{margin-top:1.2rem;font-size:.9rem}
+
+.lo-facts{display:grid;grid-template-columns:11rem 1fr;max-width:43.25rem;margin:0;
+          border-top:1px solid var(--Black)}
+.lo-facts dt{padding:.95rem 1.5rem .95rem 0;border-bottom:1px solid var(--Hair);
+             font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
+             color:var(--Mute);font-weight:700}
+.lo-facts dd{margin:0;padding:.95rem 0;border-bottom:1px solid var(--Hair);
+             color:var(--Ink);font-size:.95rem}
+
+/* the clock — the one component this page adds */
+.fc-tl{list-style:none;margin:0;padding:0;max-width:43.25rem}
+.fc-row{display:grid;grid-template-columns:4.4rem 1fr;gap:1.2rem;
+        padding:0 0 1.4rem;position:relative}
+.fc-row::before{content:"";position:absolute;left:4.7rem;top:.6rem;bottom:0;
+                width:1px;background:var(--Hair)}
+.fc-row:last-child{padding-bottom:0}
+.fc-row:last-child::before{display:none}
+.fc-row::after{content:"";position:absolute;left:4.45rem;top:.45rem;width:.5rem;
+               height:.5rem;background:var(--Rust);border-radius:50%}
+.fc-h{font-weight:700;font-size:.8rem;letter-spacing:.05em;text-align:right;
+      font-variant-numeric:tabular-nums;line-height:1.6}
+.fc-b{padding-left:.9rem}
+.fc-b b{display:block;font-size:1rem;margin-bottom:.1rem}
+.fc-b p{margin:0;font-size:.92rem;color:var(--Ink)}
+
+.lo-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
+          max-width:none}
+.lo-steps-4{grid-template-columns:repeat(2,1fr);gap:1.5rem 2.4rem}
+.lo-steps-2{grid-template-columns:repeat(2,1fr);gap:1.5rem 2.4rem}
+.lo-step{border-top:1px solid var(--Black);padding-top:.9rem}
+.lo-step h3{margin:0 0 .45rem;font-size:1rem}
+.lo-step p{margin:0;font-size:.9rem;color:var(--Ink)}
+
+.fc-faq{max-width:43.25rem;border-top:1px solid var(--Black)}
+.ab-faq{border-bottom:1px solid var(--Hair)}
+.ab-faq summary{cursor:pointer;padding:.9rem 0;font-size:.98rem;font-weight:600;
+                list-style:none;position:relative;padding-right:2rem}
+.ab-faq summary::-webkit-details-marker{display:none}
+.ab-faq summary::after{content:"+";position:absolute;right:.3rem;top:.85rem;
+                       color:var(--Rust);font-weight:700}
+.ab-faq[open] summary::after{content:"–"}
+.ab-faq div{padding:0 0 1rem}
+.ab-faq p{margin:0;font-size:.93rem;color:var(--Ink);max-width:40rem}
+
+.lo-end{border-top:2px solid var(--Black);padding-top:1.6rem}
+</style></head><body><div class="wrap">
+<h1 class="pg">Cómo es una clase</h1>
+<p class="top-lede">Las tres propuestas anteriores en una sola página, con la
+forma de <code>/badalona/</code>: mismo hero, misma banda de cifras, mismo
+ritmo de <code>.lo-sec</code>, misma lista de datos y mismo acordeón. Quien
+llegue desde una página de ciudad no debe notar que ha cambiado de sitio, y el
+CSS ya existe.</p>
+
+<p class="key"><b>El orden es el de las preguntas que se hace alguien que no ha
+entrenado nunca:</b> qué es esto → cuánto y cuándo → qué pasa durante una hora
+→ cómo es la sala → lo que me frena → cómo vengo. El reloj va antes que la
+sala porque es el título de la página; la sala va antes que las dudas porque
+media duda se disuelve al saber que hay 120&nbsp;m² y cuarenta personas de
+aforo.</p>
+
+<p class="warn"><b>Lo que queda por decidir es una sola cosa.</b> Cuánta gente
+hay de verdad un martes. Dijiste 20 o 25 y no lo he puesto, porque compartes la
+duda y creo que tienes razón: un número exacto invita a compararlo con el aforo
+y a sacar conclusiones que no controlas. «Bastantes menos» dice lo único que le
+importa a quien lee —que hay sitio— sin abrir esa puerta. Si prefieres el
+número, se cambia en una línea.</p>
+
+<div class="row">
+
+<div class="mock">
+  <div class="mock-nav"><b>MUSUBI</b><span>Clases y Horarios · Sobre nosotros ·
+    Eventos · Media y Recursos · Contacto y Acceso</span></div>
+
+  <div class="lo-hero">
+    <picture><img src="/images/access-information-NdxqmVbV-aikido-musubi-room.jpg" alt=""></picture>
+    <div class="lo-hero-in">
+      <p class="lo-kick">Empezar · Aikido Musubi</p>
+      <h1>Cómo es una clase</h1>
+      <p class="lo-line">Una hora en el tatami, de principio a fin y sin
+      adornos: a qué hora llegas, qué pasa en los primeros quince minutos y
+      cómo es la sala. Si nunca has hecho aikido, esta es la página.</p>
+      <p class="lo-cta">
+        <a class="lo-btn" href="#">Ven a probar</a>
+        <a class="lo-btn lo-btn-2" href="#">Ver horarios</a>
+        <small>Dos clases de prueba · inscripción gratuita</small>
+      </p>
+    </div>
+  </div>
+
+  <div class="lo-figs"><div><b>120 m²</b><span>De tatami, solo nuestro</span></div><div><b>6</b><span>Días de entrenamiento a la semana</span></div><div><b>2</b><span>Clases de prueba, sin coste</span></div><div><b>2008</b><span>Entrenando sin parar desde</span></div></div>
+
+  <div class="body">
+    <p class="lo-crumb"><a href="#">Inicio</a> <span>·</span> Cómo es una clase</p>
+
+    <section class="lo-sec">
+      <p class="lo-lab">Lo esencial</p>
+      <h2>Lo esencial</h2>
+      <dl class="lo-facts"><dt>Cuándo</dt><dd>La clase de principiantes es los <b>martes de 19:30 a 20:30</b> en Aikido Musubi, con Pablo Martín.</dd><dt>Dónde</dt><dd><b>Aikido Musubi</b>, Av. d'Alfons XIII, 351, 08918 Badalona. Vestuarios y aparcamiento gratuito.</dd><dt>Para quién</dt><dd>Adultos y jóvenes desde 12 años, con o sin experiencia previa. No hay pruebas físicas ni mínimos.</dd><dt>Qué llevar</dt><dd>Ropa cómoda de manga y pantalón largos y chanclas para pisar fuera del tatami. Nada más.</dd><dt>Cuánto</dt><dd>Las dos primeras clases no cuestan nada y la inscripción es gratuita. Después, 35 € al mes.</dd></dl>
+    </section>
+
+    <section class="lo-sec">
+      <p class="lo-lab">Minuto a minuto</p>
+      <h2>La primera hora</h2>
+      <p class="lo-p">Esta es la clase de principiantes de los martes, de 19:30
+      a 20:30, en el dojo de Badalona. Las otras se parecen bastante.</p>
+      <ol class="fc-tl">
+        <li class="fc-row">
+          <span class="fc-h">19:15</span>
+          <div class="fc-b"><b>Llegas</b><p>Vestuario a la izquierda. No hace falta venir con el keikogi puesto.</p></div>
+        </li>
+        <li class="fc-row">
+          <span class="fc-h">19:25</span>
+          <div class="fc-b"><b>Entras al tatami</b><p>Las chanclas se quedan en el borde, con las puntas hacia fuera. Se entra descalzo y se saluda: una inclinación breve mirando al frente del dojo.</p></div>
+        </li>
+        <li class="fc-row">
+          <span class="fc-h">19:30</span>
+          <div class="fc-b"><b>Empieza</b><p>Todos en <em>seiza</em>, de rodillas y en línea. Un saludo al kamiza y otro al profesor. Dura veinte segundos.</p></div>
+        </li>
+        <li class="fc-row">
+          <span class="fc-h">19:33</span>
+          <div class="fc-b"><b>Calentamiento</b><p>Movilidad de muñecas, hombros y cadera —en aikido las muñecas trabajan mucho, así que se preparan a conciencia— y después desplazamientos: moverse desde el centro, girar sin cruzar los pies, entrar y salir de la línea del ataque.</p></div>
+        </li>
+        <li class="fc-row">
+          <span class="fc-h">19:45</span>
+          <div class="fc-b"><b>Ukemi</b><p>Aprender a caer. Es lo primero y durante meses es lo principal. Se empieza rodando desde el suelo, sin altura y sin prisa.</p></div>
+        </li>
+        <li class="fc-row">
+          <span class="fc-h">19:55</span>
+          <div class="fc-b"><b>La primera técnica</b><p>Por parejas. Uno ataca, el otro responde, y a los cuatro intentos se cambia el papel. Tu pareja llevará años practicando y ajustará su práctica a la tuya.</p></div>
+        </li>
+        <li class="fc-row">
+          <span class="fc-h">20:10</span>
+          <div class="fc-b"><b>Y las siguientes</b><p>En una clase se trabajan varias técnicas, casi siempre emparentadas entre sí o partiendo del mismo ataque. Ahí es donde se empieza a ver que no son técnicas sueltas sino variaciones de una misma idea.</p></div>
+        </li>
+        <li class="fc-row">
+          <span class="fc-h">20:25</span>
+          <div class="fc-b"><b>Se cierra</b><p>Seiza otra vez, saludo, y entre todos se pasa la mopa al tatami. Eso también es la clase.</p></div>
+        </li>
+        <li class="fc-row">
+          <span class="fc-h">20:35</span>
+          <div class="fc-b"><b>Después</b><p>Alguien te va a preguntar qué tal. Es el momento de decir que no has entendido nada: todos empezamos ahí.</p></div>
+        </li></ol>
+    </section>
+
+    <section class="lo-sec">
+      <p class="lo-lab">La sala</p>
+      <h2>El dojo</h2>
+      <div class="lo-steps lo-steps-4"><div class="lo-step"><h3>El tatami es solo nuestro</h3><p>No compartimos la sala con otras asociaciones. Nuestro dojo es un espacio independiente dedicado al 100&nbsp;% a las artes marciales y gestionado únicamente por la asociación, así que el tatami está montado siempre: no hay que montarlo ni recogerlo para entrenar.</p></div><div class="lo-step"><h3>120 m², techos altos y aire acondicionado</h3><p>La sala es alta y está bien ventilada, y en verano hay aire acondicionado. Sobre el tatami caben 40 personas; en una clase normal sois bastantes menos, así que hay sitio para caer sin calcular dónde está el de al lado.</p></div><div class="lo-step"><h3>Antes y después de la clase</h3><p>Además del tatami hay una sala con sofás, nevera y bebidas frías donde se acaba casi siempre. El dojo está entero renovado y en revisión constante, y esa parte —la de después— es la mitad de lo que hace que la gente vuelva.</p></div><div class="lo-step"><h3>Vestuarios, parking y cómo llegar</h3><p>Vestuarios en el propio recinto y aparcamiento gratuito. El dojo está dentro de las Instalaciones Deportivas Badalona Sur y cuesta encontrarlo la primera vez: hay un plano con las tres entradas en Acceso.</p></div></div>
+    </section>
+
+    <section class="lo-sec">
+      <p class="lo-lab">¿Quepo yo aquí?</p>
+      <h2>Un espacio seguro</h2>
+      <div class="lo-steps lo-steps-2"><div class="lo-step"><h3>Se llega en silla de ruedas</h3><p>El dojo está en una sola planta y no hay ni un escalón, ni en las instalaciones ni en la sala. No está <em>adaptado</em> —no hay mecanismos específicos— pero es accesible: se entra y se circula sin ayuda. Si necesitas saber algo concreto antes de venir, pregúntanos y te lo contamos tal cual es.</p></div><div class="lo-step"><h3>Aquí cabe todo el mundo</h3><p>Se entrena con quien te toque, y toca de todo: edades, cuerpos, orígenes y maneras de vivir. Este es un espacio seguro para las personas LGTBI+ y para cualquiera, y no como un lema: es la condición para practicar aquí. Si alguien no lo entiende, el problema lo tiene con nosotros y no contigo.</p></div></div>
+    </section>
+
+    <section class="lo-sec">
+      <p class="lo-lab">Dudas</p>
+      <h2>Lo que te frena</h2>
+      <div class="fc-faq">
+        <details class="ab-faq" open>
+          <summary>«No estoy en forma»</summary>
+          <div><p>No hace falta estarlo. Se empieza por caer y por desplazarse, y la forma llega de practicar, no al revés.</p></div>
+        </details>
+        <details class="ab-faq">
+          <summary>«Me voy a hacer daño»</summary>
+          <div><p>Los primeros meses son <em>ukemi</em>: aprender a caer sin hacerte daño, desde el suelo y sin altura. Nadie te va a lanzar el primer día ni el primer mes.</p></div>
+        </details>
+        <details class="ab-faq">
+          <summary>«No conozco a nadie»</summary>
+          <div><p>Se practica por parejas y se cambia varias veces por clase. En una hora habrás entrenado con media clase, quieras o no.</p></div>
+        </details>
+        <details class="ab-faq">
+          <summary>«Voy a ser el mayor, o el más joven»</summary>
+          <div><p>Desde 12 años y sin tope. En el mismo tatami hay gente que empezó este mes y gente que lleva veinte años, y eso es deliberado.</p></div>
+        </details>
+        <details class="ab-faq">
+          <summary>«No sé japonés»</summary>
+          <div><p>Las palabras se aprenden oyéndolas. Y si quieres ir por delante, el glosario tiene todas las que se dicen en clase.</p></div>
+        </details>
+        <details class="ab-faq">
+          <summary>«¿Y si no vuelvo?»</summary>
+          <div><p>Dos clases de prueba sin coste, inscripción gratuita y sin permanencia. Lo raro sería saber si te gusta antes de probarlo.</p></div>
+        </details></div>
+      <p class="lo-p lo-more"><a href="#">Todas las preguntas frecuentes</a></p>
+    </section>
+
+    <section class="lo-sec lo-end">
+      <h2>Te esperamos</h2>
+      <p class="lo-p">Escríbenos con un día de antelación, dinos qué clase te
+      interesa y te decimos cuándo venir.</p>
+      <p class="lo-cta">
+        <a class="lo-btn" href="#">Escríbenos</a>
+        <a class="lo-btn lo-btn-2" href="#">Cómo llegar</a>
+      </p>
+    </section>
+  </div>
+</div>
+  <div class="note">
+    <h2>Qué viene de dónde</h2>
+    <ol>
+      <li><b>Hero + cifras</b> — la foto del tatami, como pediste, y las cuatro
+      cifras de la propuesta C. Es literalmente la mitad que nadie podía
+      verificar desde fuera.</li>
+      <li><b>Lo esencial</b> — el mismo <code>dl</code> con el que abren las
+      páginas de ciudad. Todo sale de <code>_data/</code>.</li>
+      <li><b>La primera hora</b> — la propuesta A entera. El corazón de la
+      página y lo único que no está en ninguna otra parte del sitio.</li>
+      <li><b>El tatami</b> — la prosa de la propuesta C, en los tres
+      <code>.lo-step</code> que ya usan las páginas de ciudad.</li>
+      <li><b>Lo que te frena</b> — la propuesta B, acortada y en acordeón, con
+      enlace a la FAQ completa debajo.</li>
+    </ol>
+
+    <h2>Por qué B va en acordeón y no abierta</h2>
+    <p>Cinco de sus seis respuestas existen ya en la FAQ. Plegadas y con enlace
+    a la versión larga son un resumen; desplegadas y a la misma longitud serían
+    una segunda copia compitiendo por la misma consulta. La FAQ sigue siendo el
+    sitio con la respuesta larga.</p>
+
+    <h2>Lo que cambió respecto al anterior</h2>
+    <p><b>El 40 sale de la banda de cifras y se queda solo en la prosa.</b> Era
+    tu duda y tiene fundamento: suelto y en grande, «40 de aforo» se lee como un
+    límite y corta en las dos direcciones. Junto a los 120&nbsp;m² y a
+    «bastantes menos» solo se puede leer de una manera. En su lugar va 2008, que
+    es la cifra que más confianza da y que ya usan las páginas de ciudad.</p>
+    <p><b>No se publica el 9 × 13.</b> Multiplica 117 y la página invita a
+    medir la sala. Se publica el área, que además es lo que se quiere saber.</p>
+    <p><b>«Un espacio seguro» es sección propia</b> y junta accesibilidad y
+    LGTBI+, porque las dos contestan la misma pregunta: «¿quepo yo aquí?».
+    Sobre la silla de ruedas digo <i>accesible</i> y digo que no está
+    <i>adaptado</i>, que no es lo mismo y a quien lo lee le importa la
+    diferencia. No menciono aseo adaptado porque no me has dicho que lo haya.</p>
+    <p><b>El calentamiento</b> es movilidad de muñecas, hombros y cadera más
+    desplazamientos. Si no es así, corrígeme: lo he escrito desde lo que es
+    habitual en aikido, no desde lo que me hayas contado.</p>
+
+    <h2>Forma técnica</h2>
+    <p>Como <code>/badalona/</code>: un <code>_layouts/firstclass.html</code>,
+    la prosa en <code>_data/firstclass.yml</code>, las horas leídas de
+    <code>_data/schedule.yml</code> para que la página siga al horario sola,
+    cuatro idiomas con su <code>i18n-ref</code>, entrada en el sitemap y enlace
+    desde <code>/clases/</code>, <code>/cuotas/</code> y la portada.</p>
+    <p><b>El slug.</b> <code>/como-es-una-clase/</code> en castellano,
+    <code>/com-es-una-classe/</code>, <code>/what-a-class-is-like/</code> y
+    <code>/ja/what-a-class-is-like/</code>. A diferencia de las páginas de
+    ciudad, aquí el slug no es un nombre propio y sí se traduce.</p>
+  </div>
+</div>
+</div></body></html>

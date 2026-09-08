@@ -1,0 +1,262 @@
+{% include header.html %}
+
+<main id="main" tabindex="-1">
+  {%- comment -%}
+    /como-es-una-clase/ and its three translations.
+
+    THE ONE QUESTION THE SITE DID NOT ANSWER. /clases/ says which disciplines
+    there are, /horarios/ when, /cuotas/ how much, /visitantes/ is written for
+    aikidoka passing through Barcelona. None of them says what an hour on the
+    mat is actually like, which is the thing somebody deciding whether to walk
+    in wants to know and the thing an outside reader said could not be verified
+    about this dojo.
+
+    WHY IT IS NOT A DOORWAY PAGE, since that is the risk with any page added to
+    rank for a phrase:
+
+      * the clock is a description, not a fact, so it cannot be a rearrangement
+        of anything the site already publishes
+      * the room is new: 120 m², the mat being ours alone, the ceilings, the
+        air conditioning and the sofas appear nowhere else on the site
+      * `doubts` IS mostly the FAQ, and it is deliberately the short version,
+        closed, with a link to the long one directly underneath. A page that
+        repeated the FAQ at the FAQ's length would be two pages competing for
+        one query
+      * everything factual is read rather than written: the address from
+        venues.yml, the fee from fees.yml, the beginners' class and the number
+        of training days from schedule.yml
+
+    IT BORROWS locations.min.css WHOLE. The shape is _layouts/location.html's
+    on purpose — same hero, same figures band, same .lo-sec rhythm, same fact
+    list, same accordion — so a reader arriving from /badalona/ does not feel
+    they have left the site, and so this page costs one new component rather
+    than a stylesheet. The one new component is .fc-tl, the clock.
+  {%- endcomment -%}
+  {%- assign L = page.lang | default: 'es' -%}
+  {%- assign F = site.data.firstclass -%}
+  {%- assign S = site.data.schedule -%}
+  {%- assign V = site.data.venues -%}
+  {%- assign gContact = site.data.nav.groups | where: 'id', 'contact' | first -%}
+  {%- assign gClasses = site.data.nav.groups | where: 'id', 'classes' | first -%}
+  {%- assign gAbout   = site.data.nav.groups | where: 'id', 'about'   | first -%}
+  {%- comment -%}
+    BY URL AND NOT BY INDEX. Adding this page to the top of the classes group
+    shifted every positional lookup in the site: /badalona/'s "full timetable"
+    link and its fees button, and Ura's fees link, all quietly moved one along.
+    Nothing here uses `items[n]`.
+  {%- endcomment -%}
+  {%- assign navSched = gClasses.items | where_exp: 'i', "i.url.en contains '/training-schedule/'" | first -%}
+
+  {%- comment -%}
+    COUNTED, NOT TYPED. The days figure is the number of distinct days the
+    dojo teaches anything, straight from schedule.yml. Written as "6" it would
+    be wrong the first time a Sunday class appeared or a Monday one stopped.
+  {%- endcomment -%}
+  {%- assign daykeys = '' -%}
+  {%- for c in S.classes -%}
+    {%- if c.location == 'musubi' -%}
+      {%- for d in c.days -%}
+        {%- unless daykeys contains d -%}
+          {%- assign daykeys = daykeys | append: d | append: ' ' -%}
+        {%- endunless -%}
+      {%- endfor -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- assign n_days = daykeys | split: ' ' | size -%}
+
+  {%- comment -%}
+    The beginners' class itself, so the hour in the prose and the hour in the
+    timetable cannot disagree. There is one at the dojo; if a second is ever
+    added this takes the earliest.
+  {%- endcomment -%}
+  {%- assign beg = S.classes | where: 'location', 'musubi' | where: 'level', 'beginners' | sort: 'start' | first -%}
+  {%- assign beg_who = S.instructors | where: 'id', beg.instructor | first -%}
+  {%- assign dojo = V.venues | where: 'id', 'aikido-musubi' | first -%}
+  {%- assign fee = site.data.fees.prices.monthly.adults.fee -%}
+
+  {%- comment -%}
+    The hero is the photograph of the tatami, which is the only image on the
+    site that shows the thing this page is about. `alt` is empty: every fact it
+    carries is written out below, so describing it would repeat the page to a
+    screen reader rather than add to it.
+  {%- endcomment -%}
+  {%- assign hero = F.hero_image -%}
+  {%- assign hss = site.data.imgw[hero] -%}
+  <div class="lo-hero">
+    <picture>
+      <source type="image/webp" sizes="100vw"
+              srcset="{% if hss %}{{ hss }}{% else %}/images/{{ hero }}.webp{% endif %}">
+      <img src="/images/{{ hero }}.jpg" alt=""
+           width="1200" height="800" fetchpriority="high" decoding="sync">
+    </picture>
+
+    <div class="lo-hero-in">
+      <p class="lo-kick">{{ F.kick[L] }}</p>
+      <h1>{{ F.title[L] }}</h1>
+      <p class="lo-line">{{ F.lede[L] }}</p>
+      <p class="lo-cta">
+        <a class="lo-btn" href="{{ gContact.items[0].url[L] }}">{{ F.cta_try[L] }}</a>
+        <a class="lo-btn lo-btn-2" href="{{ navSched.url[L] }}">{{ F.cta_when[L] }}</a>
+        <small>{{ F.cta_small[L] }}</small>
+      </p>
+    </div>
+  </div>
+
+  {%- comment -%}
+    THE CAPACITY IS NOT IN THIS BAND. On its own and set at 2rem, "40" reads as
+    a limit and cuts both ways: crowded to one reader, roomy to another. It is
+    in the room section instead, next to the 120 m² and next to "somos
+    bastantes menos", where it can only be read one way.
+  {%- endcomment -%}
+  <div class="lo-figs">
+    <div><b>{{ F.figs.area.n }}</b><span>{{ F.figs.area.t[L] }}</span></div>
+    <div><b>{{ n_days }}</b><span>{{ F.figs.days.t[L] }}</span></div>
+    <div><b>{{ F.figs.trial.n }}</b><span>{{ F.figs.trial.t[L] }}</span></div>
+    <div><b>{{ F.figs.since.n }}</b><span>{{ F.figs.since.t[L] }}</span></div>
+  </div>
+
+  <p class="lo-crumb">
+    <a href="{% if L == 'es' %}/{% else %}/{{ L }}/{% endif %}">{{ site.data.locations.ui.home[L] }}</a>
+    <span aria-hidden="true">·</span> {{ F.title[L] }}
+  </p>
+
+  {%- comment -%} ── lo esencial ───────────────────────────────────────── {%- endcomment -%}
+  <section class="lo-sec">
+    <p class="lo-lab">{{ F.lab_facts[L] }}</p>
+    <h2>{{ F.lab_facts[L] }}</h2>
+    <dl class="lo-facts">
+      {%- comment -%}
+        "Cuándo" is built from the class in schedule.yml, not written: the day,
+        the hours and the teacher all come from the timetable, so moving the
+        beginners' class moves this line with it.
+      {%- endcomment -%}
+      <dt>{{ site.data.locations.ui.f_when[L] }}</dt>
+      <dd>
+        {%- comment -%}
+          `S.day_names[beg.days[0]]` LOOKS RIGHT AND SILENTLY RENDERS NOTHING.
+          Liquid does not resolve a subscript inside a subscript, so the whole
+          lookup came back nil and the line read "es los  de 19:30 a 20:30"
+          with a hole where the day should be. The index has to be a variable.
+        {%- endcomment -%}
+        {%- assign begday = beg.days | first -%}
+        {%- assign dayname = S.day_names[begday][L].long -%}
+        {%- if L == 'ca' -%}La classe de principiants és els <b>{{ dayname | downcase }} de {{ beg.start }} a {{ beg.end }}</b> a {{ dojo.name[L] }}, amb {{ beg_who.person }}.
+        {%- elsif L == 'en' -%}The beginners' class is <b>{{ dayname }}s, {{ beg.start }} to {{ beg.end }}</b> at {{ dojo.name[L] }}, with {{ beg_who.person }}.
+        {%- elsif L == 'ja' -%}初心者クラスは<b>{{ dayname }} {{ beg.start }}〜{{ beg.end }}</b>、{{ dojo.name[L] }}にて。指導は{{ beg_who.ja | strip }}。
+        {%- else -%}La clase de principiantes es los <b>{{ dayname | downcase }} de {{ beg.start }} a {{ beg.end }}</b> en {{ dojo.name[L] }}, con {{ beg_who.person }}.
+        {%- endif -%}
+      </dd>
+
+      <dt>{{ site.data.locations.ui.f_where[L] }}</dt>
+      <dd><b>{{ dojo.name[L] }}</b>, {{ dojo.address[L] | replace: '<br>', ', ' }}</dd>
+
+      <dt>{{ site.data.locations.ui.f_who[L] }}</dt>
+      <dd>{{ F.facts.who.v[L] }}</dd>
+
+      <dt>{{ site.data.locations.ui.f_bring[L] }}</dt>
+      <dd>{{ F.facts.bring.v[L] }}</dd>
+
+      {%- comment -%}
+        The fee is read from fees.yml for the same reason as everywhere else:
+        it is written once, and /cuotas/ has the long version.
+      {%- endcomment -%}
+      <dt>{{ site.data.locations.ui.f_price[L] }}</dt>
+      <dd>
+        {%- if L == 'ca' -%}Les dues primeres classes no costen res i la inscripció és gratuïta. Després, {{ fee }} € al mes.
+        {%- elsif L == 'en' -%}The first two classes cost nothing and enrolment is free. After that, {{ fee }} € a month.
+        {%- elsif L == 'ja' -%}最初の二回は無料、入会金もかかりません。その後は月{{ fee }}ユーロです。
+        {%- else -%}Las dos primeras clases no cuestan nada y la inscripción es gratuita. Después, {{ fee }} € al mes.
+        {%- endif -%}
+      </dd>
+    </dl>
+  </section>
+
+  {%- comment -%} ── la primera hora ───────────────────────────────────── {%- endcomment -%}
+  <section class="lo-sec">
+    <p class="lo-lab">{{ F.lab_hour[L] }}</p>
+    <h2>{{ F.h_hour[L] }}</h2>
+    <p class="lo-p">{{ F.hour_note[L] }}</p>
+    {%- comment -%}
+      An <ol>: the steps are in order and the order is the point. The times are
+      a <span> rather than a heading because the heading of each step is what
+      happens, not when.
+    {%- endcomment -%}
+    <ol class="fc-tl">
+      {%- for s in F.hour %}
+      <li class="fc-row">
+        <span class="fc-h"><time datetime="{{ s.at }}">{{ s.at }}</time></span>
+        <div class="fc-b">
+          <b>{{ s.t[L] }}</b>
+          <p>{{ s.d[L] }}</p>
+        </div>
+      </li>
+      {%- endfor %}
+    </ol>
+  </section>
+
+  {%- comment -%} ── el dojo ───────────────────────────────────────────── {%- endcomment -%}
+  <section class="lo-sec">
+    <p class="lo-lab">{{ F.lab_room[L] }}</p>
+    <h2>{{ F.h_room[L] }}</h2>
+    <div class="lo-steps lo-steps-2">
+      {%- for r in F.room %}
+      <div class="lo-step">
+        <h3>{{ r.t[L] }}</h3>
+        <p>{{ r.d[L] }}</p>
+      </div>
+      {%- endfor %}
+    </div>
+  </section>
+
+  {%- comment -%} ── un espacio seguro ─────────────────────────────────── {%- endcomment -%}
+  <section class="lo-sec">
+    <p class="lo-lab">{{ F.lab_safe[L] }}</p>
+    <h2>{{ F.h_safe[L] }}</h2>
+    <div class="lo-steps lo-steps-2">
+      {%- for r in F.safe %}
+      <div class="lo-step">
+        <h3>{{ r.t[L] }}</h3>
+        <p>{{ r.d[L] }}</p>
+      </div>
+      {%- endfor %}
+    </div>
+  </section>
+
+  {%- comment -%} ── lo que te frena ───────────────────────────────────── {%- endcomment -%}
+  <section class="lo-sec">
+    <p class="lo-lab">{{ F.lab_doubts[L] }}</p>
+    <h2>{{ F.h_doubts[L] }}</h2>
+    {%- comment -%}
+      CLOSED, AND THE LINK UNDERNEATH IS THE POINT. Five of these six answers
+      exist at greater length in the FAQ. Closed and pointing at it they are a
+      summary; open and at the FAQ's length they would be a second copy
+      competing with it for the same query.
+    {%- endcomment -%}
+    <div class="fc-faq">
+      {%- for d in F.doubts %}
+      <details class="ab-faq">
+        <summary>«{{ d.q[L] }}»</summary>
+        <div><p>{{ d.a[L] }}</p></div>
+      </details>
+      {%- endfor %}
+    </div>
+    {%- comment -%}
+      Found by its URL, not by its index: `| last` is the glossary and any new
+      About item would silently move it again.
+    {%- endcomment -%}
+    {%- assign faq = gAbout.items | where_exp: 'i', "i.url.en contains '/faq/'" | first %}
+    <p class="lo-p lo-after"><a href="{{ faq.url[L] }}">{{ F.all_faq[L] }}</a></p>
+  </section>
+
+  {%- comment -%} ── cierre ────────────────────────────────────────────── {%- endcomment -%}
+  <section class="lo-sec lo-end">
+    <h2>{{ F.h_end[L] }}</h2>
+    <p class="lo-p">{{ F.end_text[L] }}</p>
+    <p class="lo-cta">
+      <a class="lo-btn" href="{{ gContact.items[0].url[L] }}">{{ F.cta_write[L] }}</a>
+      <a class="lo-btn lo-btn-2" href="{{ gContact.items[1].url[L] }}">{{ F.cta_where[L] }}</a>
+    </p>
+  </section>
+</main>
+
+{% include footer.html %}

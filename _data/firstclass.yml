@@ -1,0 +1,285 @@
+# /como-es-una-clase/ — the prose. Everything else the page shows is derived.
+#
+# WHY THE PAGE EXISTS. Asked what could not be verified about this dojo from
+# outside, the answer was the room and the hour: how big the mat is, how many
+# people are on it, and what actually happens during a class. /clases/ says
+# which disciplines there are, /horarios/ when, /cuotas/ how much, /visitantes/
+# is written for aikidoka passing through. Nobody said what an hour is like.
+#
+# WHAT IS WRITTEN HERE AND WHAT IS NOT. The clock, the room and the doubts are
+# written; the address, the fee, the beginners' class and the number of
+# training days are read from _data/venues.yml, _data/fees.yml and
+# _data/schedule.yml by the layout. Move the beginners' class an hour in
+# schedule.yml and this page moves with it.
+#
+# HOW IT STAYS OFF THE DOORWAY-PAGE SIDE OF THE LINE. CLAUDE.md is blunt about
+# pages that rearrange words the site already has under a new heading. The
+# clock and the room are new and exist nowhere else. `doubts` IS mostly the
+# FAQ, and it is deliberately the short version in a closed accordion with a
+# link to the long one, not a second copy competing for the same query.
+#
+# NO EM DASHES ANYWHERE IN THIS FILE. House rule, and this page in particular
+# has to read as though a person at the dojo wrote it.
+
+hero_image: "access-information-NdxqmVbV-aikido-musubi-room"
+
+kick:
+  es: "Empezar · Aikido Musubi"
+  ca: "Començar · Aikido Musubi"
+  en: "Getting started · Aikido Musubi"
+  ja: "はじめる ｜ 合気道産靈"
+
+title:
+  es: "Cómo es una clase"
+  ca: "Com és una classe"
+  en: "What a class is like"
+  ja: "稽古の一時間"
+
+lede:
+  es: "Una hora en el tatami, de principio a fin y sin adornos: a qué hora llegas, qué pasa en los primeros quince minutos y cómo es la sala. Si nunca has hecho aikido, esta es la página."
+  ca: "Una hora al tatami, de principi a fi i sense adorns: a quina hora arribes, què passa als primers quinze minuts i com és la sala. Si no has fet mai aikido, aquesta és la pàgina."
+  en: "An hour on the mat, start to finish and with nothing dressed up: when you arrive, what happens in the first fifteen minutes and what the room is like. If you have never done aikido, this is the page for you."
+  ja: "畳の上での一時間を、そのままお伝えします。何時に来るのか、最初の十五分に何をするのか、道場はどんな場所なのか。合気道がはじめての方のためのページです。"
+
+cta_try:   { es: "Ven a probar", ca: "Vine a provar", en: "Come and try", ja: "体験してみる" }
+cta_when:  { es: "Ver horarios", ca: "Veure horaris", en: "See the schedule", ja: "稽古時間を見る" }
+cta_small: { es: "Dos clases de prueba · inscripción gratuita",
+             ca: "Dues classes de prova · inscripció gratuïta",
+             en: "Two trial classes · free enrolment",
+             ja: "体験二回無料 ｜ 入会金なし" }
+
+# The section labels and headings.
+lab_facts:  { es: "Lo esencial", ca: "L'essencial", en: "The essentials", ja: "基本" }
+lab_hour:   { es: "Minuto a minuto", ca: "Minut a minut", en: "Minute by minute", ja: "時間の流れ" }
+h_hour:     { es: "La primera hora", ca: "La primera hora", en: "Your first hour", ja: "はじめの一時間" }
+lab_room:   { es: "La sala", ca: "La sala", en: "The room", ja: "道場" }
+h_room:     { es: "El dojo", ca: "El dojo", en: "The dojo", ja: "道場について" }
+lab_safe:   { es: "¿Quepo yo aquí?", ca: "Hi cabo, jo?", en: "Is there room for me?", ja: "だれでも来られますか" }
+h_safe:     { es: "Un espacio seguro", ca: "Un espai segur", en: "A safe place", ja: "安心して稽古できる場所" }
+lab_doubts: { es: "Dudas", ca: "Dubtes", en: "Doubts", ja: "よくある不安" }
+h_doubts:   { es: "Lo que te frena", ca: "El que et frena", en: "What holds you back", ja: "一歩が出ない理由" }
+h_end:      { es: "Te esperamos", ca: "T'esperem", en: "We will be expecting you", ja: "お待ちしています" }
+
+all_faq: { es: "Todas las preguntas frecuentes", ca: "Totes les preguntes freqüents",
+           en: "All the frequently asked questions", ja: "よくある質問をすべて見る" }
+
+end_text:
+  es: "Escríbenos con un día de antelación, dinos qué clase te interesa y te decimos cuándo venir."
+  ca: "Escriu-nos amb un dia d'antelació, digues-nos quina classe t'interessa i et diem quan venir."
+  en: "Write to us a day ahead, tell us which class interests you and we will tell you when to come."
+  ja: "前日までにご連絡ください。ご希望のクラスを伺い、お越しいただく日をお伝えします。"
+
+cta_where: { es: "Cómo llegar", ca: "Com arribar-hi", en: "How to get here", ja: "アクセス" }
+cta_write: { es: "Escríbenos", ca: "Escriu-nos", en: "Write to us", ja: "問い合わせる" }
+
+# ---------------------------------------------------------------------------
+# The figures. THE AFORO IS NOT ONE OF THEM, AND THAT IS DELIBERATE: on its own
+# and set large, "40" reads as a limit and cuts both ways, "how crowded" for one
+# reader and "how big" for another. It appears in `room` below instead, beside
+# the 120 m² and beside "somos bastantes menos", where it can only be read one
+# way.
+#
+# `days` is not written here at all: the layout counts the distinct days the
+# dojo teaches from _data/schedule.yml, so it cannot drift from the timetable.
+#
+# 120 m² is the dojo's own figure. The 9 x 13 it came from multiplies out to
+# 117, and a page that invites somebody to check the room with a tape measure
+# should not print two numbers that disagree, so only the area is published.
+# ---------------------------------------------------------------------------
+figs:
+  area:  { n: "120 m²", t: { es: "De tatami, solo nuestro", ca: "De tatami, només nostre",
+                             en: "Of mat, ours alone", ja: "の畳、私たち専用" } }
+  days:  { t: { es: "Días de entrenamiento a la semana", ca: "Dies d'entrenament a la setmana",
+                en: "Training days a week", ja: "週の稽古日数" } }
+  trial: { n: "2", t: { es: "Clases de prueba, sin coste", ca: "Classes de prova, sense cost",
+                        en: "Trial classes, free", ja: "無料体験の回数" } }
+  since: { n: "2008", t: { es: "Entrenando sin parar desde", ca: "Entrenant sense parar des del",
+                           en: "Training without a break since", ja: "から休まず稽古" } }
+
+# The labels are locations.yml's own `f_who` and `f_bring`: the same five rows
+# open every location page and there is no reason for this page to keep a
+# second set of words for them.
+facts:
+  who:
+    v:
+      es: "Adultos y jóvenes desde 12 años, con o sin experiencia previa. No hay pruebas físicas ni mínimos."
+      ca: "Adults i joves des dels 12 anys, amb experiència prèvia o sense. No hi ha proves físiques ni mínims."
+      en: "Adults and young people from 12, with or without previous experience. There are no fitness tests and no minimums."
+      ja: "12歳以上の方ならどなたでも。経験の有無は問いません。体力テストや条件はありません。"
+  bring:
+    v:
+      es: "Ropa cómoda de manga y pantalón largos y chanclas para pisar fuera del tatami. Nada más."
+      ca: "Roba còmoda de màniga i pantaló llargs i xancletes per trepitjar fora del tatami. Res més."
+      en: "Comfortable long sleeves and long trousers, and flip-flops for walking off the mat. Nothing else."
+      ja: "長袖・長ズボンの動きやすい服装と、畳の外で履くサンダル。それだけです。"
+
+# ---------------------------------------------------------------------------
+# The clock. The hours are the beginners' class as it stands in schedule.yml,
+# written out because the steps between them are not derivable from anything:
+# they are a description rather than a fact, which is exactly why this page is
+# not a rearrangement of pages the site already has.
+# ---------------------------------------------------------------------------
+hour_note:
+  es: "Esta es la clase de principiantes de los martes, de 19:30 a 20:30, en el dojo de Badalona. Las otras se parecen bastante."
+  ca: "Aquesta és la classe de principiants dels dimarts, de 19:30 a 20:30, al dojo de Badalona. Les altres s'hi assemblen força."
+  en: "This is the Tuesday beginners' class, 19:30 to 20:30, at the Badalona dojo. The others are much the same."
+  ja: "バダロナ道場の火曜日、19:30から20:30までの初心者クラスの流れです。ほかのクラスもだいたい同じです。"
+
+hour:
+  - at: "19:15"
+    t: { es: "Llegas", ca: "Arribes", en: "You arrive", ja: "到着" }
+    d:
+      es: "Vestuario a la izquierda. No hace falta venir con el keikogi puesto."
+      ca: "Vestidor a l'esquerra. No cal venir amb el keikogi posat."
+      en: "Changing rooms on the left. You do not need to arrive already wearing a keikogi."
+      ja: "更衣室は左手です。稽古着を着てくる必要はありません。"
+  - at: "19:25"
+    t: { es: "Entras al tatami", ca: "Entres al tatami", en: "You step onto the mat", ja: "畳に上がる" }
+    d:
+      es: "Las chanclas se quedan en el borde, con las puntas hacia fuera. Se entra descalzo y se saluda: una inclinación breve mirando al frente del dojo."
+      ca: "Les xancletes es queden a la vora, amb les puntes cap enfora. S'hi entra descalç i se saluda: una inclinació breu mirant al front del dojo."
+      en: "Flip-flops stay at the edge, pointing outwards. You step on barefoot and you bow: a short bow facing the front of the dojo."
+      ja: "サンダルは畳の際に、つま先を外に向けて置きます。裸足で上がり、道場の正面に向かって短く礼をします。"
+  - at: "19:30"
+    t: { es: "Empieza", ca: "Comença", en: "It starts", ja: "はじまり" }
+    d:
+      es: "Todos en <em>seiza</em>, de rodillas y en línea. Un saludo al kamiza y otro al profesor. Dura veinte segundos."
+      ca: "Tothom en <em>seiza</em>, de genolls i en línia. Una salutació al kamiza i una altra al professor. Dura vint segons."
+      en: "Everyone in <em>seiza</em>, kneeling in a line. One bow to the kamiza and one to the teacher. It takes twenty seconds."
+      ja: "全員が<em>正座</em>で一列に並びます。上座に一礼、そして指導者に一礼。二十秒ほどです。"
+  - at: "19:33"
+    t: { es: "Calentamiento", ca: "Escalfament", en: "Warm-up", ja: "準備運動" }
+    d:
+      es: "Movilidad de muñecas, hombros y cadera, que en aikido las muñecas trabajan mucho y se preparan a conciencia. Después, desplazamientos: moverse desde el centro, girar sin cruzar los pies, entrar y salir de la línea del ataque."
+      ca: "Mobilitat de canells, espatlles i maluc, que en aikido els canells treballen molt i es preparen a consciència. Després, desplaçaments: moure's des del centre, girar sense creuar els peus, entrar i sortir de la línia de l'atac."
+      en: "Mobility for the wrists, shoulders and hips, because aikido asks a great deal of the wrists and they get prepared properly. Then footwork: moving from the centre, turning without crossing your feet, stepping in and out of the line of an attack."
+      ja: "手首、肩、股関節をほぐします。合気道は手首をよく使うので、念入りに準備します。そのあとは体さばき。中心から動くこと、足を交差させずに回ること、攻撃の線から出入りすることを学びます。"
+  - at: "19:45"
+    t: { es: "Ukemi", ca: "Ukemi", en: "Ukemi", ja: "受け身" }
+    d:
+      es: "Aprender a caer. Es lo primero y durante meses es lo principal. Se empieza rodando desde el suelo, sin altura y sin prisa."
+      ca: "Aprendre a caure. És el primer i durant mesos és el principal. Es comença rodolant des de terra, sense altura i sense pressa."
+      en: "Learning to fall. It comes first and for months it is the main thing. You start by rolling from the floor, with no height and no hurry."
+      ja: "受け身の練習です。最初に習い、数か月はこれが中心になります。床の上から転がるところから、高さも急ぎもなくはじめます。"
+  - at: "19:55"
+    t: { es: "La primera técnica", ca: "La primera tècnica", en: "The first technique", ja: "はじめの技" }
+    d:
+      es: "Por parejas. Uno ataca, el otro responde, y a los cuatro intentos se cambia el papel. Tu pareja llevará años practicando y ajustará su práctica a la tuya."
+      ca: "Per parelles. Un ataca, l'altre respon, i cada quatre intents es canvia el paper. La teva parella farà anys que practica i ajustarà la seva pràctica a la teva."
+      en: "In pairs. One attacks, the other answers, and after four goes you swap roles. Your partner will have been practising for years and will adjust to you."
+      ja: "二人一組で行います。一方が技をかけ、もう一方が受けます。四回で役割を交代します。相手は長く稽古している人で、あなたに合わせてくれます。"
+  - at: "20:10"
+    t: { es: "Y las siguientes", ca: "I les següents", en: "And the ones after it", ja: "そして次の技へ" }
+    d:
+      es: "En una clase se trabajan varias técnicas, casi siempre emparentadas entre sí o partiendo del mismo ataque. Ahí es donde se empieza a ver que no son técnicas sueltas sino variaciones de una misma idea."
+      ca: "En una classe es treballen diverses tècniques, gairebé sempre emparentades entre si o que parteixen del mateix atac. És aquí on comences a veure que no són tècniques soltes sinó variacions d'una mateixa idea."
+      en: "A class works through several techniques, nearly always related to one another or starting from the same attack. That is where you begin to see that they are not separate techniques but variations on one idea."
+      ja: "一回の稽古では、いくつかの技を続けて行います。多くは互いに関連しているか、同じ攻撃からはじまる技です。ばらばらの技ではなく、ひとつの考え方の変化なのだと見えてくるのはこのあたりです。"
+  - at: "20:25"
+    t: { es: "Se cierra", ca: "Es tanca", en: "It closes", ja: "終わりの礼" }
+    d:
+      es: "Seiza otra vez, saludo, y entre todos se pasa la mopa al tatami. Eso también es la clase."
+      ca: "Seiza un altre cop, salutació, i entre tots es passa la mopa al tatami. Això també és la classe."
+      en: "Seiza again, a bow, and everyone helps mop the mat. That is part of the class too."
+      ja: "ふたたび正座して礼をし、みんなで畳を拭きます。これも稽古のうちです。"
+  - at: "20:35"
+    t: { es: "Después", ca: "Després", en: "Afterwards", ja: "そのあと" }
+    d:
+      es: "Alguien te va a preguntar qué tal. Es el momento de decir que no has entendido nada: todos empezamos ahí."
+      ca: "Algú et preguntarà què tal. És el moment de dir que no has entès res: tots hi vam començar."
+      en: "Somebody will ask you how it went. That is the moment to say you understood nothing: everyone started there."
+      ja: "だれかが「どうでしたか」と声をかけてくれます。何もわからなかった、と言っていい場面です。みんなそこからはじめました。"
+
+room:
+  - t: { es: "El tatami es solo nuestro", ca: "El tatami és només nostre",
+         en: "The mat is ours alone", ja: "畳は私たちのものだけ" }
+    d:
+      es: "No compartimos la sala con otras asociaciones. Nuestro dojo es un espacio independiente dedicado al 100% a las artes marciales y gestionado únicamente por la asociación, así que el tatami está montado siempre: no hay que montarlo ni recogerlo para entrenar."
+      ca: "No compartim la sala amb altres associacions. El nostre dojo és un espai independent dedicat al 100% a les arts marcials i gestionat únicament per l'associació, així que el tatami està muntat sempre: no cal muntar-lo ni recollir-lo per entrenar."
+      en: "We do not share the room with other associations. Our dojo is an independent space given over 100% to martial arts and run by the association alone, so the mat is always down: nobody lays it out or takes it up in order to train."
+      ja: "ほかの団体と道場を共有していません。私たちの道場は武道のためだけの独立した空間で、運営も当協会が単独で行っています。畳は常に敷いたままで、稽古のたびに出し入れする必要はありません。"
+  - t: { es: "120 m², techos altos y aire acondicionado", ca: "120 m², sostres alts i aire condicionat",
+         en: "120 m², high ceilings and air conditioning", ja: "120平米、高い天井、冷房あり" }
+    d:
+      es: "La sala es alta y está bien ventilada, y en verano hay aire acondicionado. Sobre el tatami caben 40 personas; en una clase normal somos bastantes menos, así que hay sitio para caer sin calcular dónde está el de al lado."
+      ca: "La sala és alta i està ben ventilada, i a l'estiu hi ha aire condicionat. Sobre el tatami hi caben 40 persones; en una classe normal som força menys, així que hi ha lloc per caure sense calcular on és el del costat."
+      en: "The room is high and well ventilated, and in summer there is air conditioning. Forty people fit on the mat; in an ordinary class there are considerably fewer of us, so there is room to fall without working out where the next person is."
+      ja: "天井が高く風通しがよく、夏は冷房が入ります。畳の上には40人まで入れますが、通常の稽古はそれよりずっと少ない人数です。隣の人の位置を気にせずに受け身が取れます。"
+  - t: { es: "Antes y después de la clase", ca: "Abans i després de la classe",
+         en: "Before and after class", ja: "稽古の前と後" }
+    d:
+      es: "Además del tatami hay una sala con sofás, nevera y bebidas frías donde se acaba casi siempre. El dojo está entero renovado y en revisión constante, y esa parte, la de después, es la mitad de lo que hace que la gente vuelva."
+      ca: "A més del tatami hi ha una sala amb sofàs, nevera i begudes fredes on s'acaba gairebé sempre. El dojo està tot renovat i en revisió constant, i aquesta part, la de després, és la meitat del que fa que la gent torni."
+      en: "Besides the mat there is a room with sofas, a fridge and cold drinks, which is where the evening usually ends up. The dojo has been fully refurbished and is looked after constantly, and that part, the part afterwards, is half of what brings people back."
+      ja: "畳のほかに、ソファと冷蔵庫、冷たい飲み物のある部屋があります。稽古のあとはたいていそこに集まります。道場は全面的に改装され、いまも手を入れ続けています。この「あと」の時間が、また来たくなる理由の半分です。"
+  - t: { es: "Vestuarios, parking y cómo llegar", ca: "Vestidors, pàrquing i com arribar-hi",
+         en: "Changing rooms, parking and finding us", ja: "更衣室、駐車場、道順" }
+    d:
+      es: "Vestuarios en el propio recinto y aparcamiento gratuito. El dojo está dentro de las Instalaciones Deportivas Badalona Sur y cuesta encontrarlo la primera vez: hay un plano con las tres entradas en Acceso."
+      ca: "Vestidors al mateix recinte i aparcament gratuït. El dojo és dins de les Instal·lacions Esportives Badalona Sud i costa de trobar el primer dia: hi ha un plànol amb les tres entrades a Accés."
+      en: "Changing rooms on site and free parking. The dojo is inside the Badalona Sud sports facilities and it is hard to find the first time: there is a plan with the three entrances on the Access page."
+      ja: "施設内に更衣室があり、駐車場は無料です。道場は南バダロナ運動施設の敷地内にあり、初回は見つけにくい場所です。三つの入口を示した地図がアクセスのページにあります。"
+
+# ---------------------------------------------------------------------------
+# "Do I fit here?" is one question with two halves, so it is one section.
+#
+# THE ACCESSIBILITY WORDING IS NOT A CLAIM OF ADAPTATION, and the two words are
+# not interchangeable. The dojo is on one floor with no steps, so a wheelchair
+# gets in and moves around; there is no adapted equipment and nobody has said
+# there is an adapted toilet, so neither is claimed. Somebody planning a first
+# visit needs the difference stated rather than smoothed over.
+# ---------------------------------------------------------------------------
+safe:
+  - t: { es: "Se llega en silla de ruedas", ca: "S'hi arriba en cadira de rodes",
+         en: "You can get in by wheelchair", ja: "車いすで来られます" }
+    d:
+      es: "El dojo está en una sola planta y no hay ni un escalón, ni en las instalaciones ni en la sala. No está <em>adaptado</em>, porque no hay mecanismos específicos, pero es accesible: se entra y se circula sin ayuda. Si necesitas saber algo concreto antes de venir, pregúntanos y te lo contamos tal cual es."
+      ca: "El dojo és en una sola planta i no hi ha ni un esglaó, ni a les instal·lacions ni a la sala. No està <em>adaptat</em>, perquè no hi ha mecanismes específics, però és accessible: s'hi entra i s'hi circula sense ajuda. Si necessites saber alguna cosa concreta abans de venir, pregunta-ho i t'ho expliquem tal com és."
+      en: "The dojo is on one floor and there is not a single step, either in the facilities or in the room itself. It is not <em>adapted</em>, because there is no specific equipment, but it is accessible: you can get in and move around unaided. If you need to know something particular before you come, ask us and we will tell you exactly how it is."
+      ja: "道場は平屋で、施設にも稽古場にも段差がひとつもありません。専用の設備がないため<em>バリアフリー対応</em>とは言えませんが、車いすでの出入りと移動はできます。来場前に確認したいことがあれば、遠慮なくお尋ねください。ありのままをお伝えします。"
+  - t: { es: "Aquí cabe todo el mundo", ca: "Aquí hi cap tothom",
+         en: "There is room for everyone", ja: "だれにでも居場所があります" }
+    d:
+      es: "Se entrena con quien te toque, y toca de todo: edades, cuerpos, orígenes y maneras de vivir. Este es un espacio seguro para las personas LGTBI+ y para cualquiera, y no como un lema: es la condición para practicar aquí. Si alguien no lo entiende, el problema lo tiene con nosotros y no contigo."
+      ca: "S'entrena amb qui et toqui, i toca de tot: edats, cossos, orígens i maneres de viure. Aquest és un espai segur per a les persones LGTBI+ i per a qualsevol, i no com un lema: és la condició per practicar aquí. Si algú no ho entén, el problema el té amb nosaltres i no amb tu."
+      en: "You train with whoever you are paired with, and that means everyone: ages, bodies, backgrounds and ways of living. This is a safe place for LGBTQ+ people and for anybody else, and not as a slogan: it is the condition for practising here. If somebody does not understand that, their problem is with us and not with you."
+      ja: "組む相手は毎回変わり、年齢も体つきも生い立ちも生き方もさまざまです。ここはLGBTQ+の方にとっても、どなたにとっても安心して稽古できる場所です。これは標語ではなく、ここで稽古するための条件です。それを理解しない人がいれば、その人が向き合うのは私たちであって、あなたではありません。"
+
+doubts:
+  - q: { es: "No estoy en forma", ca: "No estic en forma", en: "I am not fit enough", ja: "体力に自信がありません" }
+    a:
+      es: "No hace falta estarlo. Se empieza por caer y por desplazarse, y la forma llega de practicar, no al revés."
+      ca: "No cal estar-hi. Es comença per caure i per desplaçar-se, i la forma arriba de practicar, no al revés."
+      en: "You do not need to be. You start by falling and by moving, and fitness comes from practising rather than the other way round."
+      ja: "その必要はありません。受け身と体さばきからはじめます。体力は稽古を続けるうちについてくるもので、順序は逆ではありません。"
+  - q: { es: "Me voy a hacer daño", ca: "Em faré mal", en: "I am going to get hurt", ja: "けがをしませんか" }
+    a:
+      es: "Los primeros meses son <em>ukemi</em>: aprender a caer sin hacerte daño, desde el suelo y sin altura. Nadie te va a lanzar el primer día ni el primer mes."
+      ca: "Els primers mesos són <em>ukemi</em>: aprendre a caure sense fer-te mal, des de terra i sense altura. Ningú et llançarà el primer dia ni el primer mes."
+      en: "The first months are <em>ukemi</em>: learning to fall without hurting yourself, from the floor and with no height. Nobody is going to throw you on your first day or in your first month."
+      ja: "はじめの数か月は<em>受け身</em>が中心です。床の上から、高さのないところで、けがをしない転がり方を覚えます。初日にも、はじめの一か月にも、投げられることはありません。"
+  - q: { es: "No conozco a nadie", ca: "No conec ningú", en: "I do not know anyone", ja: "知り合いがいません" }
+    a:
+      es: "Se practica por parejas y se cambia varias veces por clase. En una hora habrás entrenado con media clase, quieras o no."
+      ca: "Es practica per parelles i es canvia diverses vegades per classe. En una hora hauràs entrenat amb mitja classe, vulguis o no."
+      en: "You practise in pairs and swap partners several times a class. In an hour you will have trained with half the room whether you meant to or not."
+      ja: "稽古は二人一組で行い、相手は一回のうちに何度も変わります。一時間もすれば、いやでも半分の人と組んでいます。"
+  - q: { es: "Voy a ser el mayor, o el más joven", ca: "Seré el més gran, o el més jove",
+         en: "I will be the oldest, or the youngest", ja: "年齢が浮きませんか" }
+    a:
+      es: "Desde 12 años y sin tope. En el mismo tatami hay gente que empezó este mes y gente que lleva veinte años, y eso es deliberado."
+      ca: "Des dels 12 anys i sense límit. Al mateix tatami hi ha gent que va començar aquest mes i gent que fa vint anys que practica, i això és volgut."
+      en: "From 12 and with no upper limit. On the same mat there are people who started this month and people who have been at it for twenty years, and that is on purpose."
+      ja: "12歳から、上限はありません。同じ畳の上に、今月はじめた人と二十年続けている人がいます。それは意図してそうしています。"
+  - q: { es: "No sé japonés", ca: "No sé japonès", en: "I do not speak Japanese", ja: "日本語がわかりません" }
+    a:
+      es: "Las palabras se aprenden oyéndolas. Y si quieres ir por delante, el glosario tiene todas las que se dicen en clase."
+      ca: "Les paraules s'aprenen escoltant-les. I si vols anar per davant, el glossari té totes les que es diuen a classe."
+      en: "The words are learned by hearing them. And if you want a head start, the glossary has every one of them that gets said in class."
+      ja: "言葉は耳で覚えていきます。先に知っておきたい方は、稽古で使う言葉をすべて用語集にまとめてあります。"
+  - q: { es: "¿Y si no vuelvo?", ca: "I si no hi torno?", en: "What if I do not come back?", ja: "続かなかったら" }
+    a:
+      es: "Dos clases de prueba sin coste, inscripción gratuita y sin permanencia. Lo raro sería saber si te gusta antes de probarlo."
+      ca: "Dues classes de prova sense cost, inscripció gratuïta i sense permanència. El rar seria saber si t'agrada abans de provar-ho."
+      en: "Two free trial classes, free enrolment and no tie-in. The odd thing would be knowing whether you like it before trying it."
+      ja: "体験は二回まで無料、入会金はなく、継続の義務もありません。試す前に好きかどうかわかるほうが不思議です。"

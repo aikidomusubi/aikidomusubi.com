@@ -14,6 +14,18 @@ groups:
     label: { es: "Clases y Horarios", ca: "Classes i Horaris",
              en: "Classes and Schedule", ja: "クラス・スケジュール" }
     items:
+      # FIRST, AND IN THE NAV RATHER THAN ONLY LINKED FROM A PAGE OR TWO.
+      #
+      # It is the page for somebody who has never trained, which is who this
+      # group is for, and it belongs ahead of "Clases" for the same reason: you
+      # read what an hour is like before you read which four disciplines there
+      # are. Being in the menu also puts it on every page of the site, which is
+      # the strongest internal link there is and the thing the pages Google has
+      # discovered and never crawled do not have.
+      - label: { es: "Cómo es una clase", ca: "Com és una classe",
+                 en: "What a class is like", ja: "稽古の一時間" }
+        url:   { es: "/como-es-una-clase/", ca: "/ca/com-es-una-classe/",
+                 en: "/en/what-a-class-is-like/", ja: "/ja/what-a-class-is-like/" }
       - label: { es: "Clases", ca: "Classes", en: "Classes", ja: "各クラスの紹介" }
         url:   { es: "/clases/", ca: "/ca/classes/", en: "/en/classes/", ja: "/ja/classes/" }
       - label: { es: "Horarios", ca: "Horaris", en: "Training Schedule", ja: "稽古時間" }
