@@ -406,45 +406,88 @@ entries:
   # Saturday karate, on the Saturdays the dojo is given over to something else
   #
   # Karate runs 11:00 to 13:00 every Saturday, and a masterclass or a grading
-  # takes the tatami for part of that. It is the same mat, so the class does not
-  # run, and the calendar is where that gets said: the weekly grid keeps
-  # printing Karate on Saturday because that is still the normal week.
+  # takes the tatami for part of that. The weekly grid keeps printing Karate on
+  # Saturday because that is still the normal week; this is where the exception
+  # gets said.
+  #
+  # IT MOVES, IT IS NOT CANCELLED — that is the change of 8 September 2026.
+  # A masterclass at 12:00 pulls the whole morning an hour earlier instead of
+  # deleting a two-hour class: grading preparation runs 09:00–10:00 rather than
+  # 10:00–11:00, karate runs 10:00–12:00 rather than 11:00–13:00, and the
+  # masterclass takes 12:00. Nobody loses a session and the morning has no gap.
+  #
+  # THE RULE IS NOT "EVERY MASTERCLASS SATURDAY", and 12 December is why. That
+  # masterclass is at 10:00–11:00, not 12:00, and the day already runs
+  # masterclass, kyū gradings at 12:00 and again at 16:00, and the winter
+  # dinner. Karate genuinely does not run, so that one stays a cancellation.
+  # Read the hour before applying the pattern.
   #
   # ONE PER AFFECTED SATURDAY, and they have to be written by hand. The overlap
   # is derivable in principle — a Saturday _events/ entry against a Saturday
-  # class in schedule.yml — but "the mat is busy" and "the class is off" are not
-  # the same statement, and only the dojo knows which it is. A rule that guessed
-  # would cancel karate for a 07:30 morning class it never touches.
+  # class in schedule.yml — but "the mat is busy", "the class is off" and "the
+  # class is an hour earlier" are three different statements and only the dojo
+  # knows which one applies. A rule that guessed would cancel karate for a
+  # 07:30 morning class it never touches.
+  #
+  # `routine: true` for the same reason the weapons Wednesday carries it: four
+  # rows of "Karate" would be the first thing Ura's "what is coming" said, and
+  # a karate time on the aikido dojo's own aside is a lookup rather than news.
+  # The day strip still draws every one of them on its own Saturday, which is
+  # where somebody checks whether there is a class.
   # -------------------------------------------------------------------------
   - date: "2026-09-12"
-    type: cancellation
-    affects: { category: karate, start: "11:00" }
+    type: change
+    routine: true
     location: musubi
+    affects: { category: karate, start: "11:00" }
+    start: "10:00"
+    end:   "12:00"
+    title:
+      es: "Karate"
+      ca: "Karate"
+      en: "Karate"
+      ja: "空手"
     note:
-      es: "Por la masterclass de Pedro Fortes."
-      ca: "Per la masterclass de Pedro Fortes."
-      en: "Because of the Pedro Fortes masterclass."
-      ja: "ペドロ・フォルテスによるマスタークラスのため。"
+      es: "De 10:00 a 12:00, una hora antes de lo habitual, por la masterclass de Pedro Fortes."
+      ca: "De 10:00 a 12:00, una hora abans de l'habitual, per la masterclass de Pedro Fortes."
+      en: "10:00 to 12:00, an hour earlier than usual, because of the Pedro Fortes masterclass."
+      ja: "ペドロ・フォルテスによるマスタークラスのため、通常より1時間早い10:00〜12:00に行います。"
 
   - date: "2026-10-10"
-    type: cancellation
-    affects: { category: karate, start: "11:00" }
+    type: change
+    routine: true
     location: musubi
+    affects: { category: karate, start: "11:00" }
+    start: "10:00"
+    end:   "12:00"
+    title:
+      es: "Karate"
+      ca: "Karate"
+      en: "Karate"
+      ja: "空手"
     note:
-      es: "Por la masterclass de Arturo Fernández."
-      ca: "Per la masterclass d'Arturo Fernández."
-      en: "Because of the Arturo Fernández masterclass."
-      ja: "アルトゥーロ・フェルナンデスによるマスタークラスのため。"
+      es: "De 10:00 a 12:00, una hora antes de lo habitual, por la masterclass de Arturo Fernández."
+      ca: "De 10:00 a 12:00, una hora abans de l'habitual, per la masterclass de Arturo Fernández."
+      en: "10:00 to 12:00, an hour earlier than usual, because of the Arturo Fernández masterclass."
+      ja: "アルトゥーロ・フェルナンデスによるマスタークラスのため、通常より1時間早い10:00〜12:00に行います。"
 
   - date: "2026-11-21"
-    type: cancellation
-    affects: { category: karate, start: "11:00" }
+    type: change
+    routine: true
     location: musubi
+    affects: { category: karate, start: "11:00" }
+    start: "10:00"
+    end:   "12:00"
+    title:
+      es: "Karate"
+      ca: "Karate"
+      en: "Karate"
+      ja: "空手"
     note:
-      es: "Por la masterclass de Francesc Castellanos."
-      ca: "Per la masterclass de Francesc Castellanos."
-      en: "Because of the Francesc Castellanos masterclass."
-      ja: "フランセスク・カステヤノスによるマスタークラスのため。"
+      es: "De 10:00 a 12:00, una hora antes de lo habitual, por la masterclass de Francesc Castellanos."
+      ca: "De 10:00 a 12:00, una hora abans de l'habitual, per la masterclass de Francesc Castellanos."
+      en: "10:00 to 12:00, an hour earlier than usual, because of the Francesc Castellanos masterclass."
+      ja: "フランセスク・カステヤノスによるマスタークラスのため、通常より1時間早い10:00〜12:00に行います。"
 
   - date: "2026-12-12"
     type: cancellation
@@ -457,14 +500,22 @@ entries:
       ja: "パブロ・マルティンによるマスタークラスと昇級審査のため。"
 
   - date: "2027-01-30"
-    type: cancellation
-    affects: { category: karate, start: "11:00" }
+    type: change
+    routine: true
     location: musubi
+    affects: { category: karate, start: "11:00" }
+    start: "10:00"
+    end:   "12:00"
+    title:
+      es: "Karate"
+      ca: "Karate"
+      en: "Karate"
+      ja: "空手"
     note:
-      es: "Por la masterclass de Michelle Feilen."
-      ca: "Per la masterclass de Michelle Feilen."
-      en: "Because of the Michelle Feilen masterclass."
-      ja: "ミシェル・フェイレンによるマスタークラスのため。"
+      es: "De 10:00 a 12:00, una hora antes de lo habitual, por la masterclass de Michelle Feilen."
+      ca: "De 10:00 a 12:00, una hora abans de l'habitual, per la masterclass de Michelle Feilen."
+      en: "10:00 to 12:00, an hour earlier than usual, because of the Michelle Feilen masterclass."
+      ja: "ミシェル・フェイレンによるマスタークラスのため、通常より1時間早い10:00〜12:00に行います。"
 
   # -------------------------------------------------------------------------
   # The general assembly, and the week around it
@@ -526,21 +577,11 @@ entries:
   # so it lives in _events/, which the calendar already reads: putting it here
   # too would be the second copy this file exists to avoid.
   # -------------------------------------------------------------------------
-  - date: "2026-12-12"
-    type: extra
-    location: musubi
-    start: "11:00"
-    end:   "12:00"
-    title:
-      es: "Tatami libre para preparar el examen"
-      ca: "Tatami lliure per preparar l'examen"
-      en: "Open mat for grading preparation"
-      ja: "審査準備のための自由稽古"
-    note:
-      es: "Entre la masterclass y el primer turno de exámenes, el tatami queda libre para repasar."
-      ca: "Entre la masterclass i el primer torn d'exàmens, el tatami queda lliure per repassar."
-      en: "Between the masterclass and the first round of gradings, the mat is free to go over things."
-      ja: "マスタークラスと審査の第一部のあいだ、復習のために道場を開放します。"
+  # NO OPEN MAT ON 12 DECEMBER. It used to run 11:00–12:00, between the
+  # masterclass and the first round of kyū gradings. It is off, and so is
+  # karate above: the last grading-preparation session of the season is
+  # Saturday 5 December, which is where the run of `extra` entries below
+  # already ends.
 
   - date: "2026-12-12"
     type: exam
@@ -1090,14 +1131,14 @@ entries:
       ca: "Preparació d'exàmens"
       en: "Grading preparation"
       ja: "審査準備稽古"
-    start: "10:00"
-    end: "11:00"
+    start: "09:00"
+    end: "10:00"
     location: musubi
     note:
-      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
-      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
-      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
-      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
+      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual. Hoy, de 9:00 a 10:00: la mañana se adelanta una hora por la masterclass."
+      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual. Avui, de 9:00 a 10:00: el matí s'avança una hora per la masterclass."
+      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable. Today 09:00–10:00: the morning runs an hour early for the masterclass."
+      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。本日はマスタークラスのため9:00〜10:00に繰り上げます。"
 
   - date: "2026-09-19"
     type: extra
@@ -1158,14 +1199,14 @@ entries:
       ca: "Preparació d'exàmens"
       en: "Grading preparation"
       ja: "審査準備稽古"
-    start: "10:00"
-    end: "11:00"
+    start: "09:00"
+    end: "10:00"
     location: musubi
     note:
-      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
-      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
-      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
-      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
+      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual. Hoy, de 9:00 a 10:00: la mañana se adelanta una hora por la masterclass."
+      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual. Avui, de 9:00 a 10:00: el matí s'avança una hora per la masterclass."
+      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable. Today 09:00–10:00: the morning runs an hour early for the masterclass."
+      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。本日はマスタークラスのため9:00〜10:00に繰り上げます。"
 
   - date: "2026-10-17"
     type: extra
@@ -1260,14 +1301,14 @@ entries:
       ca: "Preparació d'exàmens"
       en: "Grading preparation"
       ja: "審査準備稽古"
-    start: "10:00"
-    end: "11:00"
+    start: "09:00"
+    end: "10:00"
     location: musubi
     note:
-      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
-      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
-      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
-      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
+      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual. Hoy, de 9:00 a 10:00: la mañana se adelanta una hora por la masterclass."
+      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual. Avui, de 9:00 a 10:00: el matí s'avança una hora per la masterclass."
+      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable. Today 09:00–10:00: the morning runs an hour early for the masterclass."
+      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。本日はマスタークラスのため9:00〜10:00に繰り上げます。"
 
   - date: "2026-11-28"
     type: extra
