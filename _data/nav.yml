@@ -14,18 +14,6 @@ groups:
     label: { es: "Clases y Horarios", ca: "Classes i Horaris",
              en: "Classes and Schedule", ja: "クラス・スケジュール" }
     items:
-      # FIRST, AND IN THE NAV RATHER THAN ONLY LINKED FROM A PAGE OR TWO.
-      #
-      # It is the page for somebody who has never trained, which is who this
-      # group is for, and it belongs ahead of "Clases" for the same reason: you
-      # read what an hour is like before you read which four disciplines there
-      # are. Being in the menu also puts it on every page of the site, which is
-      # the strongest internal link there is and the thing the pages Google has
-      # discovered and never crawled do not have.
-      - label: { es: "Cómo es una clase", ca: "Com és una classe",
-                 en: "What a class is like", ja: "稽古の一時間" }
-        url:   { es: "/como-es-una-clase/", ca: "/ca/com-es-una-classe/",
-                 en: "/en/what-a-class-is-like/", ja: "/ja/what-a-class-is-like/" }
       - label: { es: "Clases", ca: "Classes", en: "Classes", ja: "各クラスの紹介" }
         url:   { es: "/clases/", ca: "/ca/classes/", en: "/en/classes/", ja: "/ja/classes/" }
       - label: { es: "Horarios", ca: "Horaris", en: "Training Schedule", ja: "稽古時間" }
@@ -34,6 +22,19 @@ groups:
         url:   { es: "/cuotas/", ca: "/ca/quotes/", en: "/en/fees/", ja: "/ja/fees/" }
       - label: { es: "Visitantes", ca: "Visitants", en: "Visitors", ja: "ビジターの方へ" }
         url:   { es: "/visitantes/", ca: "/ca/visitants/", en: "/en/visitors/", ja: "/ja/visitors/" }
+      # IN THE NAV RATHER THAN LINKED FROM A PAGE OR TWO, because being in the
+      # menu puts it on every page of the site, which is the strongest internal
+      # link there is and exactly what the pages Google has discovered and
+      # never crawled do not have.
+      #
+      # Nothing here may be looked up by position again: this group used to be
+      # read as items[1] and items[2] in three places, and inserting an entry
+      # silently repointed /badalona/'s timetable link, its fees button and
+      # Ura's fees link. Every one of them is a where_exp on the URL now.
+      - label: { es: "Cómo es una clase", ca: "Com és una classe",
+                 en: "What a class is like", ja: "稽古の一時間" }
+        url:   { es: "/como-es-una-clase/", ca: "/ca/com-es-una-classe/",
+                 en: "/en/what-a-class-is-like/", ja: "/ja/what-a-class-is-like/" }
 
   # New. The four topics that used to run down the homepage as long sections;
   # each is now a page another dojo or a federation can link to directly.

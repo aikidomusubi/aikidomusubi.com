@@ -82,7 +82,7 @@
   {%- endcomment -%}
   {%- assign hero = F.hero_image -%}
   {%- assign hss = site.data.imgw[hero] -%}
-  <div class="lo-hero">
+  <div class="lo-hero fc-hero">
     <picture>
       <source type="image/webp" sizes="100vw"
               srcset="{% if hss %}{{ hss }}{% else %}/images/{{ hero }}.webp{% endif %}">
@@ -234,7 +234,13 @@
     {%- endcomment -%}
     <div class="fc-faq">
       {%- for d in F.doubts %}
-      <details class="ab-faq">
+      {%- comment -%}
+        `name` is how every accordion on this site is exclusive: the About
+        pages use name="about-faq" and Ura uses name="ura-years". It is the
+        platform's own grouping, so opening one closes the last without a line
+        of JavaScript, and the component behaves the same wherever it appears.
+      {%- endcomment -%}
+      <details class="ab-faq" name="firstclass-doubts">
         <summary>«{{ d.q[L] }}»</summary>
         <div><p>{{ d.a[L] }}</p></div>
       </details>

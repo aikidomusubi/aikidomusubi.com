@@ -106,3 +106,15 @@
 }
 
 .page main .lo-after { margin-top: 1.4rem; font-size: .95rem; }
+
+// The kamiza, not the ceiling.
+//
+// The shared hero pins `object-position: top` because the three map heroes
+// were composed for it. This page's hero is a photograph of the room, and the
+// thing worth seeing in it — the kamiza with the calligraphy — sits between
+// 33% and 52% of the frame. A centred cover crop lands it between 27% and 36%
+// of the band across every width from 1200 to 2560, which is the part that
+// reads above the scrim. Measured, not guessed.
+.page main .fc-hero {
+  picture, img { object-position: center; }
+}
