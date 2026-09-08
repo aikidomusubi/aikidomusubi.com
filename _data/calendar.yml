@@ -330,7 +330,7 @@ entries:
   # reason as the Saturday grading class: four rows of the same sentence is a
   # rhythm, not news. The day strip still draws each one on its Wednesday.
   # -------------------------------------------------------------------------
-  - date: "2026-09-09"
+  - date: "2026-09-16"
     type: change
     routine: true
     location: musubi
