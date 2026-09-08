@@ -25,15 +25,18 @@ desc_es: >-
 desc_ja: >-
   １０月１０日（土）12:00～13:00に、合気道産靈でアルトゥーロ・フェルナンデスによるマスタークラスを開催します。参加無料、どなたでもご参加いただけます！
 
-image_ca: ""
-image_en: ""
-image_es: ""
-image_ja: ""
+# One poster, in Catalan, shown in all four languages — same as Pedro
+# Fortes and Pablo Martín. A per-language set exists only where one
+# was actually drawn.
+image_ca: "events-hFZ2XXIp-2026-10-10-arturo-fernandez-4th-dan-ca"
+image_en: "events-hFZ2XXIp-2026-10-10-arturo-fernandez-4th-dan-ca"
+image_es: "events-hFZ2XXIp-2026-10-10-arturo-fernandez-4th-dan-ca"
+image_ja: "events-hFZ2XXIp-2026-10-10-arturo-fernandez-4th-dan-ca"
 
-file_ca: ""
-file_en: ""
-file_es: ""
-file_ja: ""
+file_ca: "events-hFZ2XXIp-2026-10-10-arturo-fernandez-4th-dan-ca.pdf"
+file_en: "events-hFZ2XXIp-2026-10-10-arturo-fernandez-4th-dan-ca.pdf"
+file_es: "events-hFZ2XXIp-2026-10-10-arturo-fernandez-4th-dan-ca.pdf"
+file_ja: "events-hFZ2XXIp-2026-10-10-arturo-fernandez-4th-dan-ca.pdf"
 
 # The page's own copy says "Entrada libre" in all four languages, and this is
 # that same statement in machine form: it fills schema.org's `offers`, which

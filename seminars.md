@@ -9,7 +9,7 @@ redirect_from:
   - /cursos/
 lang: es
 i18n-ref: events-hFZ2XXIp
-last_modified: 2026-09-07
+last_modified: 2026-09-08
 ---
 
 # Seminarios
