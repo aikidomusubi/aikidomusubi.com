@@ -43,6 +43,8 @@ posters:
   - "events-hFZ2XXIp-2021-11-27-open-doors-badalona-ca-4"
   - "events-hFZ2XXIp-2021-11-27-open-doors-badalona-ca-5"
 
+price: 0
+
 date_from: "2021-11-27"
 date_to: "blank"
 

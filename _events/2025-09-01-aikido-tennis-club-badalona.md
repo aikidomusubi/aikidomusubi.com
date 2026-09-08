@@ -31,6 +31,9 @@ image_en: "events-hFZ2XXIp-2025-09-01-aikido-tennis-club-badalona-es"
 image_es: "events-hFZ2XXIp-2025-09-01-aikido-tennis-club-badalona-es"
 image_ja: "events-hFZ2XXIp-2025-09-01-aikido-tennis-club-badalona-es"
 
+prices:
+  - { label: monthly,  amount: 50 }
+
 date_from: "2025-09-01"
 date_to: "blank"
 

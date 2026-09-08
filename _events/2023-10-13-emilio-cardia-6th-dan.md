@@ -33,6 +33,8 @@ file_en: "events-hFZ2XXIp-2023-10-13-emilio-cardia-6th-dan-en.pdf"
 file_es: "events-hFZ2XXIp-2023-10-13-emilio-cardia-6th-dan-en.pdf"
 file_ja: "events-hFZ2XXIp-2023-10-13-emilio-cardia-6th-dan-en.pdf"
 
+price: 0
+
 date_from: "2023-10-13"
 date_to: "blank"
 

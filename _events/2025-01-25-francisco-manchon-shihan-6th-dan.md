@@ -33,6 +33,8 @@ file_en: "events-hFZ2XXIp-2025-01-25-francisco-manchon-shihan-6th-dan-ca.pdf"
 file_es: "events-hFZ2XXIp-2025-01-25-francisco-manchon-shihan-6th-dan-ca.pdf"
 file_ja: "events-hFZ2XXIp-2025-01-25-francisco-manchon-shihan-6th-dan-ca.pdf"
 
+price: 0
+
 date_from: "2025-01-25"
 date_to: "blank"
 

@@ -33,6 +33,8 @@ file_en: "events-hFZ2XXIp-2020-02-01-ricard-coll-4th-dan-ca.pdf"
 file_es: "events-hFZ2XXIp-2020-02-01-ricard-coll-4th-dan-ca.pdf"
 file_ja: "events-hFZ2XXIp-2020-02-01-ricard-coll-4th-dan-ca.pdf"
 
+price: 10
+
 date_from: "2020-02-01"
 date_to: "blank"
 

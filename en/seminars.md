@@ -9,7 +9,7 @@ redirect_from:
   - /en/courses/
 lang: en
 i18n-ref: events-hFZ2XXIp
-last_modified: 2026-09-08
+last_modified: 2026-09-09
 ---
 
 # Seminars

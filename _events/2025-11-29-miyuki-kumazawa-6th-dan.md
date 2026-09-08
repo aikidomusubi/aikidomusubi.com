@@ -33,6 +33,11 @@ file_en: "events-hFZ2XXIp-2025-11-29-miyuki-kumazawa-6th-dan-en.pdf"
 file_es: "events-hFZ2XXIp-2025-11-29-miyuki-kumazawa-6th-dan-en.pdf"
 file_ja: "events-hFZ2XXIp-2025-11-29-miyuki-kumazawa-6th-dan-en.pdf"
 
+prices:
+  - { label: full,     amount: 70 }
+  - { label: single,   amount: 30 }
+  - { label: friday,   amount: 10 }
+
 date_from: "2025-11-28"
 date_to: "2025-11-30"
 event_link: "https://aikidoarashigroup.com/cursos-aikido-arashi-group.html"

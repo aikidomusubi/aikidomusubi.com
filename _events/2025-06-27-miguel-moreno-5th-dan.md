@@ -33,6 +33,10 @@ file_en: "events-hFZ2XXIp-2025-06-27-miguel-moreno-5th-dan-en.pdf"
 file_es: "events-hFZ2XXIp-2025-06-27-miguel-moreno-5th-dan-en.pdf"
 file_ja: "events-hFZ2XXIp-2025-06-27-miguel-moreno-5th-dan-en.pdf"
 
+prices:
+  - { label: full,     amount: 50 }
+  - { label: single,   amount: 20 }
+
 date_from: "2025-06-27"
 date_to: "2025-06-29"
 event_link: "https://fb.me/e/JJDW6bgQZ"

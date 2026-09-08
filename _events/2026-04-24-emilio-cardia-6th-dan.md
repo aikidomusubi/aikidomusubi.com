@@ -33,6 +33,14 @@ file_en: "events-hFZ2XXIp-2026-04-24-emilio-cardia-shihan-6th-dan-en.pdf"
 file_es: "events-hFZ2XXIp-2026-04-24-emilio-cardia-shihan-6th-dan-en.pdf"
 file_ja: "events-hFZ2XXIp-2026-04-24-emilio-cardia-shihan-6th-dan-en.pdf"
 
+# Under-25s get 25% off. NOT published: the dojo said "25% de descuento"
+# without saying which of the three prices it comes off, and a discount
+# applied to the wrong line is a wrong price. Ask, then add it as a label.
+prices:
+  - { label: full,     amount: 60 }
+  - { label: single,   amount: 20 }
+  - { label: friday,   amount: 10 }
+
 date_from: "2026-04-24"
 date_to: "2026-04-26"
 event_link: "https://fb.me/e/48WcZYa1K"

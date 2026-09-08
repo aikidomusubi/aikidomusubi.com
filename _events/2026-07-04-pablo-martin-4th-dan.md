@@ -35,6 +35,8 @@ file_en: "events-hFZ2XXIp-2026-07-04-pablo-martin-4th-dan-ca.pdf"
 file_es: "events-hFZ2XXIp-2026-07-04-pablo-martin-4th-dan-ca.pdf"
 file_ja: "events-hFZ2XXIp-2026-07-04-pablo-martin-4th-dan-ca.pdf"
 
+price: 0
+
 date_from: "2026-07-04"
 date_to: "blank"
 

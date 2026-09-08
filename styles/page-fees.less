@@ -5,3 +5,60 @@
 // copy of the @font-face block and the Bootstrap import.
 @import (reference) 'base.less';
 @import 'fees.less';
+
+// ---------------------------------------------------------------------------
+// What the fee does not cover, and the seminar support
+//
+// The cards answer "how much are the classes"; these two answer "what will
+// practising actually cost me", which is the question an outside review found
+// the page opening and not closing. The list borrows .lo-facts' shape rather
+// than inventing a third one: same 11rem term column, same hairlines.
+// ---------------------------------------------------------------------------
+.fee-extras { margin: 3.2rem 0 0; }
+
+.page main .fee-extras-eyebrow {
+  margin: 0 0 .4rem;
+  max-width: none;
+  .Futura;
+  font-size: .62rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: @Dark;
+}
+
+.page main .fee-extras-h { margin: 0 0 .7rem; }
+.page main .fee-extras-i { margin: 0 0 1.4rem; }
+
+.fee-extras-l {
+  display: grid;
+  grid-template-columns: 13rem 1fr;
+  max-width: @measure;
+  margin: 0;
+  border-top: 1px solid @Black;
+
+  dt {
+    padding: .95rem 1.5rem .95rem 0;
+    border-bottom: 1px solid fade(@Black, 8%);
+    .bold;
+    font-size: .8rem;
+    line-height: 1.5;
+  }
+
+  dd {
+    margin: 0;
+    padding: .95rem 0;
+    border-bottom: 1px solid fade(@Black, 8%);
+    font-size: .92rem;
+  }
+
+  // One column on a phone: a 13rem term beside what is left of 375px is a
+  // column of orphans.
+  @media (max-width: @bp-md - .02px) {
+    grid-template-columns: 1fr;
+
+    dt { padding: .9rem 0 .2rem; border-bottom: 0; }
+    dd { padding: 0 0 .9rem; }
+  }
+}
+
+.fee-support { margin-top: 2.4rem; }

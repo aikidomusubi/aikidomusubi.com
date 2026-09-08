@@ -104,6 +104,108 @@ offer:
     en: "One set per person, on your first enrolment."
     ja: "お一人につき一式、初回入会時のみ。"
 
+# ---------------------------------------------------------------------------
+# WHAT IS NOT IN THE FEE
+#
+# The page used to end with "las cuotas indicadas son únicamente para las clases
+# de Aikido", which opens a question and does not answer it. An outside reader
+# scored the site down for exactly that: the class fee is published and the cost
+# of practising is not.
+#
+# Nothing here is new money. It is what the dojo already tells people at the
+# door, written down.
+# ---------------------------------------------------------------------------
+extras:
+  eyebrow: { es: "Lo que no está en la cuota", ca: "El que no és a la quota",
+             en: "What the fee does not cover", ja: "月謝に含まれないもの" }
+  title:   { es: "El coste real de practicar", ca: "El cost real de practicar",
+             en: "What practising actually costs", ja: "稽古にかかる費用のすべて" }
+  intro:
+    es: "La cuota mensual paga las clases de aikido y nada más. Esto es todo lo demás, sin letra pequeña."
+    ca: "La quota mensual paga les classes d'aikido i res més. Això és tota la resta, sense lletra petita."
+    en: "The monthly fee pays for the aikido classes and nothing else. This is everything else, with no small print."
+    ja: "月謝に含まれるのは合気道の稽古のみです。それ以外にかかる費用を、隠さずすべて挙げます。"
+  items:
+    - k: { es: "Licencia federativa y seguro", ca: "Llicència federativa i assegurança",
+           en: "Federation licence and insurance", ja: "連盟登録料と保険" }
+      v:
+        es: "45 € al año, que se pagan en marzo y van aparte de la cuota. Se tramitan desde el dojo a través de Arashi Group, incluyen el seguro deportivo, que es obligatorio, y dan derecho a examen."
+        ca: "45 € l'any, que es paguen al març i van a part de la quota. Es tramiten des del dojo a través d'Arashi Group, inclouen l'assegurança esportiva, que és obligatòria, i donen dret a examen."
+        en: "45 € a year, paid in March and separate from the fee. The dojo handles it through Arashi Group; it includes the sports insurance, which is compulsory, and it carries the right to be examined."
+        ja: "年額45ユーロ。3月に納め、月謝とは別です。道場が嵐グループを通じて手続きします。加入が義務づけられているスポーツ保険が含まれ、審査を受ける資格が伴います。"
+    - k: { es: "Exámenes de kyū", ca: "Exàmens de kyū", en: "Kyū gradings", ja: "級位審査" }
+      v:
+        es: "Sin coste. Se hacen en el propio dojo, dos veces al año, en julio y en diciembre, y el tribunal es la dirección técnica de Aikido Musubi."
+        ca: "Sense cost. Es fan al mateix dojo, dues vegades l'any, al juliol i al desembre, i el tribunal és la direcció tècnica d'Aikido Musubi."
+        en: "Free. They are held at the dojo twice a year, in July and in December, and the panel is Aikido Musubi's own technical direction."
+        ja: "無料です。年二回、7月と12月に当道場で行い、審査は合気道産靈の技術指導部が担当します。"
+    - k: { es: "Exámenes de dan", ca: "Exàmens de dan", en: "Dan gradings", ja: "段位審査" }
+      v:
+        es: "Se presentan a través de Arashi Group, y el tribunal es su dirección técnica. El precio lo fija la Aikikai."
+        ca: "Es presenten a través d'Arashi Group, i el tribunal és la seva direcció tècnica. El preu el fixa l'Aikikai."
+        en: "They go through Arashi Group, and the panel is its technical direction. The price is set by the Aikikai."
+        ja: "嵐グループを通じて受審し、審査は同グループの技術指導部が担当します。料金は合気会が定めます。"
+    - k: { es: "Keikogi", ca: "Keikogi", en: "Keikogi", ja: "稽古着" }
+      v:
+        es: "Lo pone el dojo si eliges trimestre, semestre o año en lugar de mes a mes. Para empezar no hace falta: ropa cómoda de manga y pantalón largos."
+        ca: "El posa el dojo si tries trimestre, semestre o any en comptes de mes a mes. Per començar no cal: roba còmoda de màniga i pantaló llargs."
+        en: "The dojo provides it if you choose a quarter, six months or a year instead of month by month. You do not need one to start: comfortable long sleeves and long trousers will do."
+        ja: "3か月・6か月・年払いを選ばれた場合は道場からお渡しします。始めるだけなら不要で、長袖・長ズボンの動きやすい服装で構いません。"
+    - k: { es: "Armas", ca: "Armes", en: "Weapons", ja: "武器" }
+      v:
+        es: "El dojo tiene bokken y jō para usar. Es recomendable acabar teniendo los tuyos, pero no es una compra obligatoria y no hace ninguna falta el primer día."
+        ca: "El dojo té bokken i jō per fer servir. És recomanable acabar tenint els teus, però no és una compra obligatòria i no cal gens el primer dia."
+        en: "The dojo has bokken and jō to use. Owning your own is recommended in the end, but it is not a compulsory purchase and it is not needed on day one."
+        ja: "道場に木刀と杖があり、自由に使えます。いずれご自身のものを持つことをおすすめしますが、購入は義務ではなく、初日には必要ありません。"
+    - k: { es: "Seminarios y cursos", ca: "Seminaris i cursos", en: "Seminars and courses", ja: "講習会" }
+      v:
+        es: "Se pagan aparte, y cada uno publica su precio. Los miembros del dojo, los menores de 25 años y los estudiantes tienen descuento. Las masterclass son gratuitas salvo que se indique lo contrario."
+        ca: "Es paguen a part, i cadascun publica el seu preu. Els membres del dojo, els menors de 25 anys i els estudiants tenen descompte. Les masterclass són gratuïtes llevat que s'indiqui el contrari."
+        en: "Paid separately, and each one publishes its price. Dojo members, under-25s and students get a discount. Masterclasses are free unless stated otherwise."
+        ja: "別途お支払いいただきます。料金は講習会ごとに公開しています。道場の会員、25歳未満の方、学生の方は割引があります。マスタークラスは、特に記載がない限り無料です。"
+
+# ---------------------------------------------------------------------------
+# THE THING THE DOJO DOES AND NEVER SAID ANYWHERE.
+#
+# It has funded a significant share of its members' seminar fees elsewhere for
+# years, to push people to train with other organisations. It is the strongest
+# single fact on this page and it was not on the site at all, so it gets a block
+# of its own rather than a line in the list above.
+# ---------------------------------------------------------------------------
+support:
+  eyebrow: { es: "Formación", ca: "Formació", en: "Training beyond the dojo", ja: "道場の外での学び" }
+  title:   { es: "El dojo paga parte de los seminarios de fuera",
+             ca: "El dojo paga part dels seminaris de fora",
+             en: "The dojo pays part of the seminars you attend elsewhere",
+             ja: "外部講習会の費用を道場が一部負担します" }
+  body:
+    es: "Desde hace años el dojo financia una parte significativa del precio de los seminarios que sus miembros hacen con otras organizaciones. No es una ayuda puntual: es una manera de entender la formación, que no se acaba en el propio tatami."
+    ca: "Des de fa anys el dojo finança una part significativa del preu dels seminaris que els seus membres fan amb altres organitzacions. No és un ajut puntual: és una manera d'entendre la formació, que no s'acaba al propi tatami."
+    en: "For years the dojo has funded a significant share of what its members pay for seminars run by other organisations. It is not an occasional favour: it is what the association thinks training is, and training does not stop at our own mat."
+    ja: "当道場では長年、会員がほかの団体の講習会に参加する際の費用の相当部分を負担しています。一時的な補助ではありません。稽古は自分の道場の畳の上だけで完結しないという考え方によるものです。"
+  note:
+    es: "Pregúntanos antes de inscribirte en uno y te decimos cómo funciona."
+    ca: "Pregunta'ns abans d'inscriure't en un i t'expliquem com funciona."
+    en: "Ask us before you sign up for one and we will tell you how it works."
+    ja: "お申し込みの前にご相談ください。仕組みをご説明します。"
+
+# ---------------------------------------------------------------------------
+# The labels an event's `prices:` list refers to. Written once here rather than
+# four times in each of forty-nine event files.
+# ---------------------------------------------------------------------------
+offer_labels:
+  full:      { es: "Seminario completo", ca: "Seminari complet", en: "Full seminar", ja: "全日程" }
+  single:    { es: "Una clase suelta", ca: "Una classe solta", en: "Single class", ja: "1回のみ" }
+  friday:    { es: "Masterclass del viernes", ca: "Masterclass del divendres",
+               en: "Friday masterclass", ja: "金曜のマスタークラス" }
+  free:      { es: "Entrada libre", ca: "Entrada lliure", en: "Free entry", ja: "参加無料" }
+  monthly:   { es: "Al mes", ca: "Al mes", en: "Per month", ja: "月額" }
+  course:    { es: "Curso completo", ca: "Curs complet", en: "Full course", ja: "全課程" }
+  under30:   { es: "Menores de 30 años, seminario completo", ca: "Menors de 30 anys, seminari complet",
+               en: "Under 30, full seminar", ja: "30歳未満・全日程" }
+  ub_grant:  { es: "Alumnado becado de la UB", ca: "Alumnat becat de la UB",
+               en: "UB students on a grant", ja: "バルセロナ大学の奨学生" }
+
 ui:
   period:    { es: "Periodo",           ca: "Període",          en: "Billing period",   ja: "支払い方法" }
   save:      { es: "Ahorras",           ca: "Estalvies",        en: "You save",         ja: "割引" }

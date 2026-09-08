@@ -5,7 +5,7 @@ description: "Dónde entrenamos y cómo llegar. Elige el dojo para ver la direcc
 permalink: /acceso/
 lang: es
 i18n-ref: access-information-NdxqmVbV
-last_modified: 2026-09-06
+last_modified: 2026-09-09
 ---
 
 # Acceso

@@ -35,6 +35,8 @@ file_en: "events-hFZ2XXIp-2026-03-12-simone-corridoni-4th-dan-en.pdf"
 file_es: "events-hFZ2XXIp-2026-03-12-simone-corridoni-4th-dan-es.pdf"
 file_ja: "events-hFZ2XXIp-2026-03-12-simone-corridoni-4th-dan-en.pdf"
 
+price: 0
+
 date_from: "2026-03-12"
 date_to: "blank"
 

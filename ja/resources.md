@@ -5,5 +5,5 @@ description: 稽古の資料、審査要項、各種申込書、そのほかの�
 permalink: /ja/resources/
 lang: ja
 i18n-ref: resources-uStNjtHz
-last_modified: 2026-09-01
+last_modified: 2026-09-09
 ---

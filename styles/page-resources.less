@@ -4,3 +4,13 @@
 @import (reference) 'base.less';
 @import (reference) 'nav.less';
 @import 'resources.less';
+
+// An optional paragraph under a section heading. Only the grading section has
+// one, and it carries the facts the five syllabus sheets never did: the two
+// yearly sittings, the panel, and that kyū gradings are free.
+.page main .rs-gnote {
+  max-width: @measure;
+  margin: -.4rem 0 1.4rem;
+  font-size: .92rem;
+  color: var(--rs-mute, @Dark);
+}

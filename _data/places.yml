@@ -52,20 +52,26 @@ places:
       region:   "Barcelona"
       country:  "ES"
 
-  # Two different Fira sites trade under this name — Montjuïc and Gran Via, in
-  # two different municipalities — so the town is blank rather than assumed.
-  # If Japan Weekend and Manga Barcelona were in different halls, split this
-  # into two entries and point each event at its own.
+  # ANSWERED 2026-09-09: every edition of Japan Weekend and Manga Barcelona was
+  # in the same hall of the same site, Fira de Barcelona GRAN VIA. That is the
+  # one in L'Hospitalet de Llobregat, not the Montjuïc site, which is why the
+  # town here is not Barcelona and why the name says Gran Via.
+  #
+  # The street and postcode stay blank on purpose. The town follows from "Gran
+  # Via" and is certain; a street number typed from memory is not, and CLAUDE.md
+  # is blunt about it: an address that is nearly right sends somebody to the
+  # wrong building. Fill it from firabarcelona.com when convenient.
   - id: fira-barcelona-h6
     name:
-      es: "Fira de Barcelona, Pabellón 6"
-      ca: "Fira de Barcelona, Pavelló 6"
-      en: "Fira de Barcelona, Hall 6"
-      ja: "フィラ・デ・バルセロナ 第6ホール"
+      es: "Fira de Barcelona Gran Via, Pabellón 6"
+      ca: "Fira de Barcelona Gran Via, Pavelló 6"
+      en: "Fira de Barcelona Gran Via, Hall 6"
+      ja: "フィラ・デ・バルセロナ グランビア会場 第6ホール"
+    url: "https://www.firabarcelona.com/es/gran-via/"
     postal:
       street:   ""
       postcode: ""
-      town:     ""
+      town:     "L'Hospitalet de Llobregat"
       region:   "Barcelona"
       country:  "ES"
 

@@ -31,6 +31,12 @@ image_en: "events-hFZ2XXIp-2026-03-04-aikido-course-ub-faculty-of-law-2026-ca"
 image_es: "events-hFZ2XXIp-2026-03-04-aikido-course-ub-faculty-of-law-2026-ca"
 image_ja: "events-hFZ2XXIp-2026-03-04-aikido-course-ub-faculty-of-law-2026-ca"
 
+# 50 EUR covers the 26 sessions of the course, and it is free for UB
+# students holding a grant, which is the second offer rather than a note.
+prices:
+  - { label: course,   amount: 50 }
+  - { label: ub_grant, amount: 0 }
+
 date_from: "2026-03-04"
 date_to: "2026-06-10"
 

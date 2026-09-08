@@ -5,7 +5,7 @@ description: "入会金は無料です。ご家族割引もございます。ま
 permalink: /ja/fees/
 lang: ja
 i18n-ref: fees-UjbuGtGz
-last_modified: 2026-08-30
+last_modified: 2026-09-09
 ---
 
 # 料金

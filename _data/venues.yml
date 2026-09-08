@@ -77,11 +77,31 @@ venues:
       ca: "Av. d'Alfons XIII, 351<br>08918 Badalona, Barcelona"
       en: "Av. d'Alfons XIII, 351<br>08918 Badalona, Barcelona"
       ja: "Av. d'Alfons XIII, 351<br>08918 Badalona, Barcelona"
+    # THE DOJO'S OWN ROOM, WHICH NOTHING ON THE SITE USED TO DESCRIBE. An
+    # outside reader could not tell a permanent dojo from a club renting two
+    # hours in a municipal hall, and that is the difference these four lines
+    # carry: 120 m² of mat that is ours alone, laid permanently, in a space
+    # given over to martial arts and run by the association by itself.
+    #
+    # THE CAPACITY IS HERE AND NOT IN ANY FIGURES BAND. On its own and set
+    # large, "40" reads as a limit and cuts both ways; beside the area it can
+    # only be read one way. Same reasoning as _data/firstclass.yml.
+    #
+    # 120 m² is the dojo's figure. The 9 x 13 it came from multiplies out to
+    # 117, so only the area is published: a page that invites somebody to
+    # measure the room must not print two numbers that disagree.
     facts:
-      es: ["Parking gratuito", "Abierto de lunes a sábado"]
-      ca: ["Parking gratuït", "Obert de dilluns a dissabte"]
-      en: ["Free parking", "Open Monday to Saturday"]
-      ja: ["駐車場無料", "月〜土営業"]
+      es: ["120 m² de tatami, solo nuestro", "Aforo de 40 personas en el tatami",
+           "Techos altos y aire acondicionado", "Parking gratuito",
+           "Abierto de lunes a sábado"]
+      ca: ["120 m² de tatami, només nostre", "Aforament de 40 persones al tatami",
+           "Sostres alts i aire condicionat", "Parking gratuït",
+           "Obert de dilluns a dissabte"]
+      en: ["120 m² of mat, ours alone", "Forty people fit on the mat",
+           "High ceilings and air conditioning", "Free parking",
+           "Open Monday to Saturday"]
+      ja: ["120平米の畳、私たち専用", "畳の上の定員は40名",
+           "高い天井と冷房", "駐車場無料", "月〜土営業"]
     facility:
       es: "Instalaciones Deportivas Badalona Sur"
       ca: "Instal·lacions Esportives Badalona Sud"

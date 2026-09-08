@@ -33,6 +33,8 @@ file_en: "events-hFZ2XXIp-2024-06-28-laura-benevelli-5th-dan-en.pdf"
 file_es: "events-hFZ2XXIp-2024-06-28-laura-benevelli-5th-dan-en.pdf"
 file_ja: "events-hFZ2XXIp-2024-06-28-laura-benevelli-5th-dan-en.pdf"
 
+price: 0
+
 date_from: "2024-06-28"
 date_to: "blank"
 

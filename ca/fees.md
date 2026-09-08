@@ -5,7 +5,7 @@ description: "La inscripció és gratuïta. Oferim descomptes per a famílies. I
 permalink: /ca/quotes/
 lang: ca
 i18n-ref: fees-UjbuGtGz
-last_modified: 2026-08-30
+last_modified: 2026-09-09
 ---
 
 # Quotes

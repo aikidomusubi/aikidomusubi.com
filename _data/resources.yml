@@ -117,6 +117,10 @@ groups:
         file: "sepa"
         langs: "ES CA"
 
+  # HOW THE EXAMS ACTUALLY WORK, which the five programmes never said. An
+  # outside reader had the syllabus in front of it and still could not answer
+  # "when are they, who sits on the panel, what do they cost" — the questions
+  # anybody weighing up a dojo asks. `note` renders under the section heading.
   - id: examen
     name: { es: "Programa de examen", ca: "Programa d'examen",
             en: "Grading programme", ja: "審査要項" }
@@ -125,6 +129,11 @@ groups:
       ca: "De 5è a 1r kyū"
       en: "From 5th to 1st kyū"
       ja: "五級から一級まで"
+    note:
+      es: "Los exámenes de kyū se hacen en el propio dojo dos veces al año, en julio y en diciembre, ante la dirección técnica de Aikido Musubi, y no tienen coste. Los de dan se presentan a través de Arashi Group, ante su dirección técnica y con su propio programa; el precio lo fija la Aikikai. Para examinarse hace falta la licencia federativa, que está detallada en Cuotas."
+      ca: "Els exàmens de kyū es fan al mateix dojo dues vegades l'any, al juliol i al desembre, davant la direcció tècnica d'Aikido Musubi, i no tenen cost. Els de dan es presenten a través d'Arashi Group, davant la seva direcció tècnica i amb el seu propi programa; el preu el fixa l'Aikikai. Per examinar-se cal la llicència federativa, que està detallada a Quotes."
+      en: "Kyū gradings are held at the dojo twice a year, in July and in December, before Aikido Musubi's own technical direction, and they are free. Dan gradings go through Arashi Group, before its technical direction and to its own syllabus; the price is set by the Aikikai. Sitting any grading requires the federation licence, which is set out on the Fees page."
+      ja: "級位審査は年二回、7月と12月に当道場で行い、合気道産靈の技術指導部が審査します。費用はかかりません。段位審査は嵐グループを通じて受審し、同グループの技術指導部が審査を担当します。要項も同グループのものです。料金は合気会が定めます。審査を受けるには連盟登録が必要です。詳細は月謝のページに記載しています。"
     items:
       - kind: page
         title: { es: "Programa de 5.º kyū", ca: "Programa de 5è kyū",

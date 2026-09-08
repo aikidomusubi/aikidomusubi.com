@@ -33,6 +33,8 @@ file_en: "events-hFZ2XXIp-2024-07-27-arturo-fernandez-4th-dan-ca.pdf"
 file_es: "events-hFZ2XXIp-2024-07-27-arturo-fernandez-4th-dan-ca.pdf"
 file_ja: "events-hFZ2XXIp-2024-07-27-arturo-fernandez-4th-dan-ca.pdf"
 
+price: 0
+
 date_from: "2024-07-27"
 date_to: "blank"
 

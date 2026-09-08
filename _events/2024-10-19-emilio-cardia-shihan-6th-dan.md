@@ -33,6 +33,10 @@ file_en: "events-hFZ2XXIp-2024-10-19-emilio-cardia-shihan-6th-dan-en.pdf"
 file_es: "events-hFZ2XXIp-2024-10-19-emilio-cardia-shihan-6th-dan-es.pdf"
 file_ja: "events-hFZ2XXIp-2024-10-19-emilio-cardia-shihan-6th-dan-en.pdf"
 
+prices:
+  - { label: full,     amount: 60 }
+  - { label: single,   amount: 20 }
+
 date_from: "2024-10-19"
 date_to: "2024-10-20"
 event_link: "https://www.facebook.com/events/702193068594840"

@@ -33,6 +33,11 @@ file_en: "events-hFZ2XXIp-2025-05-03-pablo-martin-4th-dan-it.pdf"
 file_es: "events-hFZ2XXIp-2025-05-03-pablo-martin-4th-dan-it.pdf"
 file_ja: "events-hFZ2XXIp-2025-05-03-pablo-martin-4th-dan-it.pdf"
 
+prices:
+  - { label: full,     amount: 40 }
+  - { label: single,   amount: 35 }
+  - { label: under30,  amount: 30 }
+
 date_from: "2025-05-03"
 date_to: "2025-05-04"
 event_link: "https://aikido.palestrafujiyama.com"

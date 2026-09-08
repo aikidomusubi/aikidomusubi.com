@@ -118,6 +118,44 @@
     </aside>
 
     {%- comment -%}
+      WHAT THE FEE DOES NOT COVER.
+
+      The page used to end the cards with "las cuotas indicadas son únicamente
+      para las clases de Aikido", which opens a question and answers none of
+      it: the licence, the gradings, the weapons, the seminars. An outside
+      review scored the site down for exactly that gap, and every answer was
+      already known at the door. It sits above the standing offer's sibling
+      block because a reader asking "what will this actually cost me" should
+      not have to open the detail panel to find out.
+    {%- endcomment -%}
+    {%- assign X = F.extras -%}
+    <section class="fee-extras">
+      <p class="fee-extras-eyebrow">{{ X.eyebrow[L] }}</p>
+      <h2 class="fee-extras-h">{{ X.title[L] }}</h2>
+      <p class="fee-extras-i">{{ X.intro[L] }}</p>
+      <dl class="fee-extras-l">
+        {%- for i in X.items %}
+        <dt>{{ i.k[L] }}</dt>
+        <dd>{{ i.v[L] }}</dd>
+        {%- endfor %}
+      </dl>
+    </section>
+
+    {%- comment -%}
+      Its own block and not a line in the list above, because it is the one
+      thing on this page that costs the reader nothing and was written nowhere
+      on the site: the dojo funds a significant share of what its members pay
+      to train with other organisations.
+    {%- endcomment -%}
+    {%- assign SP = F.support -%}
+    <aside class="fee-offer fee-support">
+      <p class="fee-offer-eyebrow">{{ SP.eyebrow[L] }}</p>
+      <h2 class="fee-offer-h">{{ SP.title[L] }}</h2>
+      <p class="fee-offer-b">{{ SP.body[L] }}</p>
+      <p class="fee-offer-n">{{ SP.note[L] }}</p>
+    </aside>
+
+    {%- comment -%}
       What the two PDFs used to hold. Open by nobody's default, but present in
       the document: a crawler reads it, a printer prints it, and it needs no
       script to work.

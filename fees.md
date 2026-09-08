@@ -5,7 +5,7 @@ description: "La inscripción es gratuita. Ofrecemos descuentos para familias. Y
 permalink: /cuotas/
 lang: es
 i18n-ref: fees-UjbuGtGz
-last_modified: 2026-08-30
+last_modified: 2026-09-09
 ---
 
 # Cuotas

@@ -440,14 +440,46 @@
           {% if who and who != '' and event.category != 'collaboration' -%}
           "performer": { "@type": "Person", "name": {{ who | jsonify }} },
           {% endif -%}
-          {% if event.price -%}
+          {%- comment -%}
+            OFFERS COME IN TWO SHAPES, because the events do.
+
+            A masterclass has one price and usually it is zero, so `price: 0` is
+            the whole story and it stays. A seminar has three or four — the full
+            weekend, a single class, the Friday masterclass, a concession — and
+            publishing only the first would be incomplete rather than wrong.
+            `prices:` is a list of `{ label, amount }`; the label is an id into
+            `offer_labels` in _data/fees.yml, so the four translations of
+            "Seminario completo" are written once and not once per event.
+
+            `price: 0` and `prices:` are mutually exclusive. Anything with
+            neither stays silent: a price nobody wrote down is not a price, and
+            inventing one to quiet a Search Console warning would be inventing a
+            fact about somebody's seminar.
+          {%- endcomment -%}
+          {%- assign OL = site.data.fees.offer_labels -%}
+          {%- assign evurl = page.url | prepend: site.url | append: '#event-' | append: slug -%}
+          {% if event.prices -%}
+          "offers": [
+            {%- for pr in event.prices %}
+            {
+              "@type": "Offer",
+              "name": {{ OL[pr.label][L] | jsonify }},
+              "price": "{{ pr.amount }}",
+              "priceCurrency": "{{ event.currency | default: 'EUR' }}",
+              "availability": "https://schema.org/InStock",
+              "validFrom": "{{ event.date_from }}",
+              "url": {{ evurl | jsonify }}
+            }{% unless forloop.last %},{% endunless %}
+            {%- endfor %}
+          ],
+          {% elsif event.price -%}
           "offers": {
             "@type": "Offer",
             "price": "{{ event.price }}",
             "priceCurrency": "{{ event.currency | default: 'EUR' }}",
             "availability": "https://schema.org/InStock",
             "validFrom": "{{ event.date_from }}",
-            "url": {{ page.url | prepend: site.url | append: '#event-' | append: slug | jsonify }}
+            "url": {{ evurl | jsonify }}
           },
           {% endif -%}
           "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
