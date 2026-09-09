@@ -57,18 +57,17 @@ places:
   # one in L'Hospitalet de Llobregat, not the Montjuïc site, which is why the
   # town here is not Barcelona and why the name says Gran Via.
   #
-  # THE STREET IS STILL BLANK, AND ON PURPOSE: THE TWO FACTS GIVEN DISAGREE.
+  # The address is the dojo's, given twice: Carrer del Foc, 9, Sants-Montjuïc,
+  # 08038 Barcelona.
   #
-  # The venue was confirmed as Fira de Barcelona GRAN VIA, which is in
-  # L'Hospitalet de Llobregat. The address supplied afterwards was "Carrer del
-  # Foc, 9, Sants-Montjuïc, 08038 Barcelona", which is a different municipality
-  # and a postcode that cannot belong to L'Hospitalet. One of the two is about
-  # a different building — most likely Fira's own offices, or the Montjuïc
-  # site rather than Gran Via.
+  # THE TOWN CHANGED WITH IT, and that is the one thing not dictated. It read
+  # L'Hospitalet de Llobregat, inferred from "Gran Via"; 08038 is a Barcelona
+  # postcode and no PostalAddress may carry a postcode from a municipality it
+  # does not name. Address and town now agree with each other.
   #
-  # An address that is nearly right sends somebody to the wrong hall on the
-  # morning of the event, so nothing is written until the pair agrees. The town
-  # stays, because "Gran Via" settles that much on its own.
+  # The venue NAME still says Gran Via, which is what the dojo said the hall
+  # was. Worth a second look one day: the two describe different sites, and if
+  # the events were at Montjuïc it is the name that needs correcting, not this.
   - id: fira-barcelona-h6
     name:
       es: "Fira de Barcelona Gran Via, Pabellón 6"
@@ -77,9 +76,9 @@ places:
       ja: "フィラ・デ・バルセロナ グランビア会場 第6ホール"
     url: "https://www.firabarcelona.com/es/gran-via/"
     postal:
-      street:   ""
-      postcode: ""
-      town:     "L'Hospitalet de Llobregat"
+      street:   "Carrer del Foc, 9"
+      postcode: "08038"
+      town:     "Barcelona"
       region:   "Barcelona"
       country:  "ES"
 
