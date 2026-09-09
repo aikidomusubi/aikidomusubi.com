@@ -5,7 +5,7 @@ description: Actualment, oferim classes d'aikido (adults i infantil) de dilluns 
 permalink: /ca/horaris/
 lang: ca
 i18n-ref: training-schedule-IFMn5oCc
-last_modified: 2026-09-06
+last_modified: 2026-09-09
 ---
 
 # Horaris

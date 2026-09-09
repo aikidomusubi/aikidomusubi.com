@@ -65,14 +65,13 @@ places:
   # postcode and no PostalAddress may carry a postcode from a municipality it
   # does not name. Address and town now agree with each other.
   #
-  # The venue NAME still says Gran Via, which is what the dojo said the hall
-  # was. Worth a second look one day: the two describe different sites, and if
-  # the events were at Montjuïc it is the name that needs correcting, not this.
+  # The name was confirmed on 2026-09-09 as "Fira de Barcelona - Gran Via", so
+  # both halves are the dojo's own and the record is closed.
   - id: fira-barcelona-h6
     name:
-      es: "Fira de Barcelona Gran Via, Pabellón 6"
-      ca: "Fira de Barcelona Gran Via, Pavelló 6"
-      en: "Fira de Barcelona Gran Via, Hall 6"
+      es: "Fira de Barcelona - Gran Via, Pabellón 6"
+      ca: "Fira de Barcelona - Gran Via, Pavelló 6"
+      en: "Fira de Barcelona - Gran Via, Hall 6"
       ja: "フィラ・デ・バルセロナ グランビア会場 第6ホール"
     url: "https://www.firabarcelona.com/es/gran-via/"
     postal:

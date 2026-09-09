@@ -364,10 +364,30 @@
 </div>
 
 {%- comment -%}
-  Structured data. Each class is one Event with an eventSchedule describing the
-  weekly repeat, which is how Google is meant to read a recurring timetable —
-  a plain list of Events would claim eighteen one-off classes. Emitted from the
-  same data as the grid above, so the two cannot disagree.
+  Structured data.
+
+  THESE ARE COURSES, NOT EVENTS, AND CALLING THEM EVENTS WAS A CRITICAL ERROR.
+
+  Each class used to be an `Event` with an `eventSchedule` describing the weekly
+  repeat. That reads well and it is invalid: Google requires `startDate` on
+  every Event and a class that runs every Tuesday has no single one. Search
+  Console reported all seventeen as `Missing field "startDate"` and, with it,
+  endDate, offers, image and performer — so the whole block was seventeen
+  permanent errors attached to markup that could never produce a rich result.
+  Same reasoning that took the Events report from 44 invalid to 0 in September:
+  an item that is not eligible is decoration, and decoration with errors on it
+  is worse than none.
+
+  A recurring class offered by an organisation is a `Course` whose
+  `hasCourseInstance` carries the `Schedule`. `CourseInstance` is defined to
+  need no start date, which is the whole point of it, and the same repeat
+  information survives unchanged.
+
+  Inventing a startDate was the other option and it is the wrong one: the next
+  Tuesday is a fact that goes stale on Wednesday, and a static site cannot
+  regenerate it.
+
+  Emitted from the same data as the grid above, so the two cannot disagree.
 {%- endcomment -%}
 {%- assign DAYMAP = 'mon:Monday,tue:Tuesday,wed:Wednesday,thu:Thursday,fri:Friday,sat:Saturday,sun:Sunday' | split: ',' -%}
 <script type="application/ld+json">
@@ -379,43 +399,51 @@
     {%- assign cat = S.categories | where: "id", c.category | first -%}
     {%- assign lvl = S.levels | where: "id", c.level | first -%}
     {%- assign loc = S.locations | where: "id", c.location | first -%}
+    {%- assign who = S.instructors | where: "id", c.instructor | first -%}
+    {%- comment -%}
+      The days, written out, so the description says something a reader would
+      recognise rather than repeating "weekly class" seventeen times.
+    {%- endcomment -%}
+    {%- capture daylist -%}
+      {%- for d in c.days -%}{{ S.day_names[d][L].long }}{%- unless forloop.last -%}, {% endunless -%}{%- endfor -%}
+    {%- endcapture -%}
     {%- unless first %},{% endunless %}{%- assign first = false -%}
     {
-      "@type": "Event",
+      "@type": "Course",
       "name": {{ cat.name[L] | append: " — " | append: lvl.name[L] | jsonify }},
-      "description": {{ S.ui.weekly[L] | jsonify }},
-      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-      "eventStatus": "https://schema.org/EventScheduled",
-      "organizer": { "@type": "SportsClub", "name": "Aikido Musubi", "url": "{{ site.url }}" },
-      "location": {
-        "@type": "Place",
-        "name": {{ loc.name[L] | jsonify }}
-        {%- if loc.id == 'musubi' -%},
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Av. d'Alfons XIII, 351",
-          "addressLocality": "Badalona",
-          "addressRegion": "Barcelona",
-          "postalCode": "08918",
-          "addressCountry": "ES"
-        }
-        {%- endif -%}
-      },
-      "eventSchedule": {
-        "@type": "Schedule",
-        "repeatFrequency": "P1W",
-        "byDay": [
-          {%- for d in c.days -%}
-            {%- for m in DAYMAP -%}
-              {%- assign kv = m | split: ':' -%}
-              {%- if kv[0] == d -%}"https://schema.org/{{ kv[1] }}"{%- endif -%}
+      "description": {{ daylist | strip | append: ", " | append: c.start | append: "–" | append: c.end | append: ". " | append: loc.name[L] | append: "." | jsonify }},
+      "provider": { "@type": "SportsClub", "name": "Aikido Musubi", "url": "{{ site.url }}" },
+      "hasCourseInstance": {
+        "@type": "CourseInstance",
+        "courseMode": "Onsite",
+        {%- if who and who.person %}
+        "instructor": { "@type": "Person", "name": {{ who.person | jsonify }} },
+        {%- endif %}
+        {%- comment -%}
+          THE ADDRESS COMES FROM venues.yml, which is the rule this file was
+          quietly breaking. The dojo's was hardcoded here — the fourth copy
+          CLAUDE.md says there should be none of — and the other three venues
+          got a name and no address at all, which is what Search Console
+          reported as `Missing field "address"` on four of the seventeen.
+          `loc.slug` is the venue id; place-jsonld.html does the rest.
+        {%- endcomment -%}
+        "location": {% include place-jsonld.html id=loc.slug lang=L %},
+        "courseSchedule": {
+          "@type": "Schedule",
+          "repeatFrequency": "P1W",
+          "byDay": [
+            {%- for d in c.days -%}
+              {%- for m in DAYMAP -%}
+                {%- assign kv = m | split: ':' -%}
+                {%- if kv[0] == d -%}"https://schema.org/{{ kv[1] }}"{%- endif -%}
+              {%- endfor -%}
+              {%- unless forloop.last -%},{%- endunless -%}
             {%- endfor -%}
-            {%- unless forloop.last -%},{%- endunless -%}
-          {%- endfor -%}
-        ],
-        "startTime": "{{ c.start }}",
-        "endTime": "{{ c.end }}",
-        "scheduleTimezone": "Europe/Madrid"
+          ],
+          "startTime": "{{ c.start }}",
+          "endTime": "{{ c.end }}",
+          "scheduleTimezone": "Europe/Madrid"
+        }
       }
     }
   {%- endfor %}
