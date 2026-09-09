@@ -205,6 +205,18 @@ offer_labels:
                en: "Under 30, full seminar", ja: "30歳未満・全日程" }
   ub_grant:  { es: "Alumnado becado de la UB", ca: "Alumnat becat de la UB",
                en: "UB students on a grant", ja: "バルセロナ大学の奨学生" }
+  # The under-25 concession is 50% and it comes off every line, so it is three
+  # more offers rather than a footnote: a discount stated as a percentage is a
+  # rule, and schema.org wants prices.
+  full_u25:   { es: "Seminario completo, menores de 25 años",
+                ca: "Seminari complet, menors de 25 anys",
+                en: "Full seminar, under 25", ja: "全日程・25歳未満" }
+  single_u25: { es: "Una clase suelta, menores de 25 años",
+                ca: "Una classe solta, menors de 25 anys",
+                en: "Single class, under 25", ja: "1回のみ・25歳未満" }
+  friday_u25: { es: "Masterclass del viernes, menores de 25 años",
+                ca: "Masterclass del divendres, menors de 25 anys",
+                en: "Friday masterclass, under 25", ja: "金曜のマスタークラス・25歳未満" }
 
 ui:
   period:    { es: "Periodo",           ca: "Període",          en: "Billing period",   ja: "支払い方法" }

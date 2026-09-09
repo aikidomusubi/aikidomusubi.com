@@ -46,8 +46,8 @@ places:
       ja: "ジェズイタス・サリア＝サン・イグナシ校（バルセロナ）"
     photo: "access-information-NdxqmVbV-jesuites-sarria"
     postal:
-      street:   ""
-      postcode: ""
+      street:   "Carrer de Carrasco i Formiguera, 32"
+      postcode: "08017"
       town:     "Barcelona"
       region:   "Barcelona"
       country:  "ES"
@@ -57,10 +57,18 @@ places:
   # one in L'Hospitalet de Llobregat, not the Montjuïc site, which is why the
   # town here is not Barcelona and why the name says Gran Via.
   #
-  # The street and postcode stay blank on purpose. The town follows from "Gran
-  # Via" and is certain; a street number typed from memory is not, and CLAUDE.md
-  # is blunt about it: an address that is nearly right sends somebody to the
-  # wrong building. Fill it from firabarcelona.com when convenient.
+  # THE STREET IS STILL BLANK, AND ON PURPOSE: THE TWO FACTS GIVEN DISAGREE.
+  #
+  # The venue was confirmed as Fira de Barcelona GRAN VIA, which is in
+  # L'Hospitalet de Llobregat. The address supplied afterwards was "Carrer del
+  # Foc, 9, Sants-Montjuïc, 08038 Barcelona", which is a different municipality
+  # and a postcode that cannot belong to L'Hospitalet. One of the two is about
+  # a different building — most likely Fira's own offices, or the Montjuïc
+  # site rather than Gran Via.
+  #
+  # An address that is nearly right sends somebody to the wrong hall on the
+  # morning of the event, so nothing is written until the pair agrees. The town
+  # stays, because "Gran Via" settles that much on its own.
   - id: fira-barcelona-h6
     name:
       es: "Fira de Barcelona Gran Via, Pabellón 6"
@@ -82,8 +90,8 @@ places:
       en: "Tennis Club Badalona"
       ja: "テニスクラブ・バダロナ"
     postal:
-      street:   ""
-      postcode: ""
+      street:   "Carrer de Joan d'Àustria, 58-60"
+      postcode: "08915"
       town:     "Badalona"
       region:   "Barcelona"
       country:  "ES"

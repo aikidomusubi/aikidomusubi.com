@@ -33,13 +33,16 @@ file_en: "events-hFZ2XXIp-2026-04-24-emilio-cardia-shihan-6th-dan-en.pdf"
 file_es: "events-hFZ2XXIp-2026-04-24-emilio-cardia-shihan-6th-dan-en.pdf"
 file_ja: "events-hFZ2XXIp-2026-04-24-emilio-cardia-shihan-6th-dan-en.pdf"
 
-# Under-25s get 25% off. NOT published: the dojo said "25% de descuento"
-# without saying which of the three prices it comes off, and a discount
-# applied to the wrong line is a wrong price. Ask, then add it as a label.
+# The under-25 concession is 50% and it comes off EVERY line, confirmed
+# 2026-09-09. It was first given as 25% and corrected in the same breath, so
+# these three pairs are the ones to trust: 60/20/10 becomes 30/10/5.
 prices:
-  - { label: full,     amount: 60 }
-  - { label: single,   amount: 20 }
-  - { label: friday,   amount: 10 }
+  - { label: full,        amount: 60 }
+  - { label: full_u25,    amount: 30 }
+  - { label: single,      amount: 20 }
+  - { label: single_u25,  amount: 10 }
+  - { label: friday,      amount: 10 }
+  - { label: friday_u25,  amount: 5 }
 
 date_from: "2026-04-24"
 date_to: "2026-04-26"
