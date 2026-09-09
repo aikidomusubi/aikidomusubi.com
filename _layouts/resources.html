@@ -94,12 +94,6 @@
       {%- if shown > 0 %}
     <section class="rs-grp" id="rs-{{ g.id }}" data-cat="{{ g.id }}">
       <div class="rs-gh"><h2>{{ g.name[L] }}</h2><span>{{ g.sub[L] }}</span></div>
-      {%- comment -%}
-        An optional paragraph under a section heading. Only the grading section
-        has one: the five syllabus sheets say what is asked and said nothing
-        about when the exams are, who sits on the panel or what they cost.
-      {%- endcomment -%}
-      {%- if g.note %}<p class="rs-gnote">{{ g.note[L] }}</p>{% endif -%}
 
       {%- for it in g.items -%}
         {%- if it.draft %}{% continue %}{% endif -%}

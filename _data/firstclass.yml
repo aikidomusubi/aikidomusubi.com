@@ -198,13 +198,13 @@ room:
       ca: "No compartim la sala amb altres associacions. El nostre dojo és un espai independent dedicat al 100% a les arts marcials i gestionat únicament per l'associació, així que el tatami està muntat sempre: no cal muntar-lo ni recollir-lo per entrenar."
       en: "We do not share the room with other associations. Our dojo is an independent space given over 100% to martial arts and run by the association alone, so the mat is always down: nobody lays it out or takes it up in order to train."
       ja: "ほかの団体と道場を共有していません。私たちの道場は武道のためだけの独立した空間で、運営も当協会が単独で行っています。畳は常に敷いたままで、稽古のたびに出し入れする必要はありません。"
-  - t: { es: "120 m², techos altos y aire acondicionado", ca: "120 m², sostres alts i aire condicionat",
-         en: "120 m², high ceilings and air conditioning", ja: "120平米、高い天井、冷房あり" }
+  - t: { es: "120 m², techos altos y climatizado", ca: "120 m², sostres alts i climatitzat",
+         en: "120 m², high ceilings, heated and cooled", ja: "120平米、高い天井、冷暖房完備" }
     d:
-      es: "La sala es alta y está bien ventilada, y en verano hay aire acondicionado. Sobre el tatami caben 40 personas; en una clase normal somos bastantes menos, así que hay sitio para caer sin calcular dónde está el de al lado."
-      ca: "La sala és alta i està ben ventilada, i a l'estiu hi ha aire condicionat. Sobre el tatami hi caben 40 persones; en una classe normal som força menys, així que hi ha lloc per caure sense calcular on és el del costat."
-      en: "The room is high and well ventilated, and in summer there is air conditioning. Forty people fit on the mat; in an ordinary class there are considerably fewer of us, so there is room to fall without working out where the next person is."
-      ja: "天井が高く風通しがよく、夏は冷房が入ります。畳の上には40人まで入れますが、通常の稽古はそれよりずっと少ない人数です。隣の人の位置を気にせずに受け身が取れます。"
+      es: "Muchas artes marciales se enseñan en salas pequeñas de techo bajo, a veces en un sótano y sin una sola ventana. Esta no: techos altos y ventanas, así que el aire corre, y climatizada en invierno y en verano. Sobre el tatami caben 40 personas y en una clase normal somos bastantes menos, así que hay sitio para caer sin calcular dónde está el de al lado."
+      ca: "Moltes arts marcials s'ensenyen en sales petites de sostre baix, de vegades en un soterrani i sense ni una finestra. Aquesta no: sostres alts i finestres, així que l'aire corre, i climatitzada a l'hivern i a l'estiu. Sobre el tatami hi caben 40 persones i en una classe normal som força menys, així que hi ha lloc per caure sense calcular on és el del costat."
+      en: "A great many martial arts are taught in small low rooms, sometimes in a basement without a single window. This one is not: high ceilings and windows, so the air moves, and heating in winter as well as air conditioning in summer. Forty people fit on the mat and an ordinary class is considerably fewer, so there is room to fall without working out where the next person is."
+      ja: "武道の稽古場は、天井の低い狭い部屋や、窓のない地下であることが少なくありません。ここは違います。天井が高く窓があるので空気が動き、冬は暖房、夏は冷房が入ります。畳の上には40人まで入れますが、通常の稽古はそれよりずっと少ない人数なので、隣の人の位置を気にせずに受け身が取れます。"
   - t: { es: "Antes y después de la clase", ca: "Abans i després de la classe",
          en: "Before and after class", ja: "稽古の前と後" }
     d:

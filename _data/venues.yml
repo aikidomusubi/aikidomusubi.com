@@ -90,18 +90,29 @@ venues:
     # 120 m² is the dojo's figure. The 9 x 13 it came from multiplies out to
     # 117, so only the area is published: a page that invites somebody to
     # measure the room must not print two numbers that disagree.
+    #
+    # "CLIMATIZADO" AND NOT "AIRE ACONDICIONADO", because the same units heat
+    # in winter, and the Spanish word covers both where the English phrase does
+    # not. Japanese has the exact term: 冷暖房.
+    #
+    # AND THE CEILINGS ARE PAIRED WITH THE WINDOWS ON PURPOSE. On its own
+    # "techos altos" is a feature and a reader who has never trained anywhere
+    # else does not know what it buys. Beside the windows it reads as what it
+    # is: the air moves. That is the real claim, and it is worth making because
+    # a great many martial arts are taught in small low rooms and basements
+    # with no window at all.
     facts:
-      es: ["120 m² de tatami, solo nuestro", "Aforo de 40 personas en el tatami",
-           "Techos altos y aire acondicionado", "Parking gratuito",
-           "Abierto de lunes a sábado"]
-      ca: ["120 m² de tatami, només nostre", "Aforament de 40 persones al tatami",
-           "Sostres alts i aire condicionat", "Parking gratuït",
-           "Obert de dilluns a dissabte"]
+      es: ["120 m² de tatami, solo nuestro", "Aforo de 40 en el tatami",
+           "Climatizado, frío y calor", "Techos altos y ventanas",
+           "Parking gratuito", "Abierto de lunes a sábado"]
+      ca: ["120 m² de tatami, només nostre", "Aforament de 40 al tatami",
+           "Climatitzat, fred i calor", "Sostres alts i finestres",
+           "Parking gratuït", "Obert de dilluns a dissabte"]
       en: ["120 m² of mat, ours alone", "Forty people fit on the mat",
-           "High ceilings and air conditioning", "Free parking",
-           "Open Monday to Saturday"]
+           "Heated and air conditioned", "High ceilings and windows",
+           "Free parking", "Open Monday to Saturday"]
       ja: ["120平米の畳、私たち専用", "畳の上の定員は40名",
-           "高い天井と冷房", "駐車場無料", "月〜土営業"]
+           "冷暖房完備", "高い天井と窓", "駐車場無料", "月〜土営業"]
     facility:
       es: "Instalaciones Deportivas Badalona Sur"
       ca: "Instal·lacions Esportives Badalona Sud"

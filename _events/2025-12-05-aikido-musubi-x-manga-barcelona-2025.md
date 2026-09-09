@@ -37,6 +37,13 @@ file_ja: "events-hFZ2XXIp-2025-12-05-aikido-musubi-x-manga-barcelona-2025-ca-es-
 # assert. See _layouts/event.html.
 place_id: fira-barcelona-h6
 
+# FREE ON OUR SIDE, WHICH IS THE ONLY SIDE WE CAN PRICE. The open class costs
+# nothing to take part in; getting into the hall means buying the fair's own
+# ticket, which Japan Weekend and Manga Barcelona set and we do not. The title
+# says the class is inside the fair, so `0` reads as "our class is free"
+# rather than "walk in free", and leaving it out would have said nothing at all.
+price: 0
+
 date_from: "2025-12-05"
 date_to: "2025-12-08"
 event_link: "https://www.manga-barcelona.com/"
