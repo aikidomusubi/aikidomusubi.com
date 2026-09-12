@@ -40,15 +40,47 @@ categories:
   - id: adults
     name: { es: "Adultos", ca: "Adults", en: "Adults", ja: "一般" }
     who:  { es: "Mayores de 12 años", ca: "Majors de 12 anys", en: "Ages 12 and up", ja: "12歳以上" }
+  # SUSPENDED, AND THE PRICE STAYS ON THE PAGE ON PURPOSE.
+  #
+  # The children's group is not running. Taking the row out would be the tidy
+  # thing and it is the wrong thing twice over: a parent searching "aikido para
+  # niños" would find no answer at all rather than "not right now, write to
+  # us", and the dojo would lose the only measurement it has of whether there
+  # is enough interest to reopen the class. The enquiries ARE the measurement.
+  #
+  # So the row renders with its price and carries `suspended:`, which prints a
+  # note on the card and on the detail row, and turns the schema.org Offer's
+  # availability to OutOfStock. A price published as available for a class
+  # nobody can join is a false statement, and it is worse in machine-readable
+  # markup than in prose because nothing there is read in context.
+  #
+  # Anyone about 12 may fit the adult classes instead, which is a judgement per
+  # child rather than a rule, so the note says to write rather than stating an
+  # age. _data/about.yml's FAQ answers the same question the same way.
+  #
+  # TO REOPEN: delete the two `suspended:` keys. Nothing else changes.
   - id: children
     name: { es: "Infantil", ca: "Infantil", en: "Children", ja: "こども" }
     who:  { es: "Menores de 12 años", ca: "Menors de 12 anys", en: "Under 12", ja: "12歳未満" }
+    suspended:
+      es: "Grupo suspendido por ahora. Escríbenos y te avisamos cuando vuelva a abrirse. Si tu hijo o hija ronda los 12, puede que encaje ya en la clase de adultos: lo miramos contigo."
+      ca: "Grup suspès de moment. Escriu-nos i t'avisem quan torni a obrir-se. Si el teu fill o filla ronda els 12, pot ser que ja encaixi a la classe d'adults: ho mirem amb tu."
+      en: "This group is suspended for now. Write to us and we will let you know when it reopens. A child of around 12 may already fit the adult class, and we will look at that with you."
+      ja: "こどもクラスは現在休講しています。再開の際にお知らせしますのでご連絡ください。12歳前後のお子さんは一般クラスに参加できる場合があります。ご相談ください。"
   - id: family-adults
     name: { es: "Familiar adultos", ca: "Familiar adults", en: "Family adults", ja: "家族（一般）" }
     who:  { es: "Mismo núcleo familiar, mayores de 12 años", ca: "Mateix nucli familiar, majors de 12 anys", en: "Same household, ages 12 and up", ja: "同一世帯（12歳以上）" }
   - id: family-children
     name: { es: "Familiar infantil", ca: "Familiar infantil", en: "Family children", ja: "家族（こども）" }
     who:  { es: "Mismo núcleo familiar, menores de 12 años", ca: "Mateix nucli familiar, menors de 12 anys", en: "Same household, under 12", ja: "同一世帯（12歳未満）" }
+    # Every member of this one is under 12, so it is suspended with the group.
+    # `family` is NOT: it is a household of adults and children together, and
+    # the adults in it can still train.
+    suspended:
+      es: "Suspendido mientras no haya grupo infantil."
+      ca: "Suspès mentre no hi hagi grup infantil."
+      en: "Suspended while there is no children's group."
+      ja: "こどもクラス休講中は受付を停止しています。"
   - id: family
     name: { es: "Familiar", ca: "Familiar", en: "Family", ja: "家族" }
     who:  { es: "Mismo núcleo familiar, adultos e infantil", ca: "Mateix nucli familiar, adults i infantil", en: "Same household, adults and children", ja: "同一世帯（一般・こども）" }
@@ -231,6 +263,8 @@ ui:
   th_fee:    { es: "Cuota",             ca: "Quota",            en: "Fee",              ja: "料金" }
   th_base:   { es: "Precio base",       ca: "Preu base",        en: "Base price",       ja: "通常料金" }
   th_save:   { es: "Descuento",         ca: "Descompte",        en: "Discount",         ja: "割引" }
+  notify:    { es: "Avísame cuando abra", ca: "Avisa’m quan obri", en: "Tell me when it reopens", ja: "再開時に連絡する" }
+  suspended: { es: "suspendido",        ca: "suspès",           en: "suspended",        ja: "休講中" }
   base_note: { es: "El precio base es el mismo periodo pagado mes a mes.",
                ca: "El preu base és el mateix període pagat mes a mes.",
                en: "The base price is the same period paid month by month.",

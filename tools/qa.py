@@ -448,6 +448,22 @@ def check_fee_descriptions(pages):
         warn('fee descriptions not verified', 'could not read monthly adult/child fee')
         return
 
+    # A SUSPENDED CATEGORY MUST NOT BE ADVERTISED, which is the other half of
+    # this check and the half that fired first. The children's group is not
+    # running, so "25 € para ninos" in a meta description is a price for a
+    # class nobody can join — the check would otherwise have insisted on
+    # keeping exactly the sentence that had to go. A category carrying
+    # `suspended:` in _data/fees.yml is required to be ABSENT from the
+    # description instead of present in it, so reopening the class by deleting
+    # that key turns the requirement back round on its own.
+    cat = re.search(r'^categories:\s*$(.*?)^\w', src, re.M | re.S)
+    suspended = set()
+    if cat:
+        for chunk in re.split(r'^  - id: ', cat.group(1), flags=re.M)[1:]:
+            name = chunk.split(chr(10))[0].strip()
+            if re.search(r'^\s+suspended:', chunk, re.M):
+                suspended.add(name)
+
     bad, seen = [], 0
     for url, html in pages:
         if not re.search(r'/(cuotas|quotes|fees)/index\.html$', url.replace(os.sep, '/')):
@@ -459,12 +475,18 @@ def check_fee_descriptions(pages):
         nums = set(re.findall(r'(\d+)\s*(?:&#8364;|\u20ac|EUR)', m.group(1)))
         nums |= set(re.findall(r'(\d+)\u30e6\u30fc\u30ed', m.group(1)))
         for who, amount in want.items():
-            if amount not in nums:
+            if who in suspended:
+                if amount in nums:
+                    bad.append(f'{url} advertises the {who} fee of {amount}, '
+                               f'but that category is suspended in _data/fees.yml')
+            elif amount not in nums:
                 bad.append(f'{url} does not state the monthly {who} fee of {amount}')
     if bad:
         fail('fee descriptions', '; '.join(bad[:4]))
     elif seen:
-        print(f'  {"fee descriptions":<34} {seen} pages state {want["adults"]} / {want["children"]}, as fees.yml does')
+        live = ', '.join(f'{w} {a}' for w, a in want.items() if w not in suspended)
+        note = f'; {len(suspended)} suspended and correctly absent' if suspended else ''
+        print(f'  {"fee descriptions":<34} {seen} pages state {live}, as fees.yml does{note}')
 
 
 def check_a11y(pages):

@@ -463,10 +463,18 @@ topics:
       - q: { es: "¿Desde qué edad? ¿Hay clases para niños?", ca: "A partir de quina edat? Hi ha classes per a nens?",
              en: "From what age? Are there children's classes?", ja: "何歳から始められますか。子ども向けの稽古はありますか。" }
         a:
-          es: ["Escríbenos y te decimos qué grupo encaja. Hay adultos de todas las edades practicando a la vez, que es una de las cosas buenas de que no haya categorías por peso ni por edad."]
-          ca: ["Escriu-nos i et diem quin grup encaixa. Hi ha adults de totes les edats practicant alhora, que és una de les coses bones que no hi hagi categories per pes ni per edat."]
-          en: ["Write to us and we will tell you which group fits. Adults of every age practise together, which is one of the good things about having no weight or age categories."]
-          ja: ["ご連絡ください。どの稽古が合うかお伝えします。年齢の幅は広く、いろいろな世代が同じ時間に稽古しています。体重別も年齢別もない稽古の、良いところの一つです。"]
+          es: ["<strong>El grupo infantil, de 6 a 12 años, está suspendido por ahora.</strong> Seguimos anotando a quien pregunta: cuando haya niños suficientes, se reabre, así que escribirnos es lo que hace que vuelva.",
+               "Si tu hijo o hija ronda los 12, puede que ya encaje en la clase de adultos. Depende del niño más que del año que tenga, así que lo miramos contigo antes de nada.",
+               "En adultos no hay edad máxima ni categorías por peso ni por edad: practican todas las edades a la vez, que es una de las cosas buenas de este arte."]
+          ca: ["<strong>El grup infantil, de 6 a 12 anys, està suspès de moment.</strong> Continuem anotant qui ho pregunta: quan hi hagi prou nens, es reobre, així que escriure'ns és el que fa que torni.",
+               "Si el teu fill o filla ronda els 12, pot ser que ja encaixi a la classe d'adults. Depèn més del nen que de l'any que tingui, així que ho mirem amb tu abans de res.",
+               "En adults no hi ha edat màxima ni categories per pes ni per edat: hi practiquen totes les edats alhora, que és una de les coses bones d'aquest art."]
+          en: ["<strong>The children's group, ages 6 to 12, is suspended for now.</strong> We are still noting down everyone who asks: when there are enough children it reopens, so writing to us is what brings it back.",
+               "A child of around 12 may already fit the adult class. That depends on the child rather than the birthday, so we look at it with you first.",
+               "Among adults there is no upper age and no weight or age categories: every age trains together, which is one of the good things about this art."]
+          ja: ["<strong>6歳から12歳までのこどもクラスは、現在休講しています。</strong>お問い合わせはすべて記録しています。人数がそろえば再開しますので、ご連絡いただくことが再開への一歩になります。",
+               "12歳前後のお子さんは、一般クラスに参加できる場合があります。年齢そのものよりお子さん次第ですので、まずはご相談ください。",
+               "一般クラスに年齢の上限はなく、体重別も年齢別もありません。さまざまな世代が同じ時間に稽古しています。"]
       - q: { es: "¿Cuánto cuesta empezar?", ca: "Quant costa començar?",
              en: "What does it cost to start?", ja: "始めるのにいくらかかりますか。" }
         a:
