@@ -437,8 +437,29 @@
           {% elsif event.category != 'collaboration' -%}
           "location": {% include place-jsonld.html id=event.venue lang=L %},
           {% endif -%}
+          {%- comment -%}
+            PERFORMER IS A PERSON OR IT IS THE ASSOCIATION, and which one is
+            not a formatting choice.
+
+            `instructor_*` is a person's name on a seminar and a masterclass,
+            and that is the performer. On a collaboration it carries the
+            event's own title, because there is no single teacher: the four
+            trade-fair open classes and the open-doors day are given by the
+            association's instructors together. A Person named "Aikido Musubi
+            Open Class at Japan Weekend Barcelona 2025" would be a false
+            statement, so those emitted nothing at all and Search Console
+            reported five of them, in every language, as `Missing field
+            "performer"`.
+
+            schema.org takes an Organization there as readily as a Person, and
+            for a class the association gives collectively the association IS
+            the performer. That is the true answer rather than a silencing
+            one, so it is emitted and the warning goes.
+          {%- endcomment -%}
           {% if who and who != '' and event.category != 'collaboration' -%}
           "performer": { "@type": "Person", "name": {{ who | jsonify }} },
+          {% else -%}
+          "performer": { "@type": "SportsOrganization", "name": "Aikido Musubi", "url": "{{ site.url }}" },
           {% endif -%}
           {%- comment -%}
             OFFERS COME IN TWO SHAPES, because the events do.

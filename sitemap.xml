@@ -36,7 +36,7 @@ permalink: /sitemap.xml
 {%- assign indexable = site.pages | where_exp: "p", "p.i18n-ref" | where_exp: "p", "p.sitemap != false" -%}
 {%- assign refs = indexable | map: "i18n-ref" | uniq | sort -%}
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 {%- for ref in refs -%}
   {%- assign group = indexable | where: "i18n-ref", ref | sort: "lang" -%}
   {%- assign xdefault = group | where: "lang", "es" | first -%}
@@ -194,6 +194,45 @@ permalink: /sitemap.xml
     </image:image>
         {%- endunless -%}
       {%- endfor -%}
+    {%- endif -%}
+    {%- comment -%}
+      VIDEO. A watch page carries `video:` in its front matter naming a record
+      in _videos/, and the page already emits a VideoObject. This is the same
+      six facts in the sitemap's own vocabulary.
+
+      IT IS NOT A DUPLICATE OF THAT MARKUP AND IT WAS NOT OPTIONAL. Search
+      Console's Video indexing report read "Video indexed: 0" for the whole of
+      a 90-day window and the Sitemaps report read "Discovered videos: 0" —
+      Google had found no video anywhere on the site, on a property with six
+      of them on twenty-four pages. The watch pages fixed "Video isn't on a
+      watch page"; nothing told Google the videos existed in the first place.
+
+      `content_loc` is deliberately absent. We do not host the file — YouTube
+      does — and `player_loc` is the correct field for an embed. Claiming a
+      content URL we cannot serve would be the same class of error as an empty
+      streetAddress.
+
+      The description is stripped of HTML and truncated: the source carries
+      <i>Via 15</i> and the spec caps the field at 2048 characters.
+    {%- endcomment -%}
+    {%- if p.video -%}
+      {%- assign vid = site.videos | where_exp: 'x', 'x.path contains p.video' | first -%}
+      {%- if vid -%}
+        {%- if p.lang == 'ca' %}{% assign vt = vid.title_ca %}{% assign vd = vid.desc_ca %}
+        {%- elsif p.lang == 'en' %}{% assign vt = vid.title_en %}{% assign vd = vid.desc_en %}
+        {%- elsif p.lang == 'ja' %}{% assign vt = vid.title_ja %}{% assign vd = vid.desc_ja %}
+        {%- else %}{% assign vt = vid.title_es %}{% assign vd = vid.desc_es %}{% endif -%}
+        {%- assign vd = vd | strip_html | strip | truncate: 2000 %}
+    <video:video>
+      <video:thumbnail_loc>{{ site.url }}/images/{{ vid.thumb }}.jpg</video:thumbnail_loc>
+      <video:title>{{ vt | xml_escape }}</video:title>
+      <video:description>{{ vd | xml_escape }}</video:description>
+      <video:player_loc>https://www.youtube-nocookie.com/embed/{{ vid.youtube_id }}</video:player_loc>
+      <video:publication_date>{{ vid.date | date: '%Y-%m-%d' }}</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:live>no</video:live>
+    </video:video>
+      {%- endif -%}
     {%- endif -%}
     {%- for s in group %}
     <xhtml:link rel="alternate" hreflang="{{ s.lang }}" href="{{ site.url }}{{ s.url }}" />

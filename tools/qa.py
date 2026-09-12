@@ -413,6 +413,60 @@ def check_jsonld(pages):
 # 5. Accessibility — the machine-checkable half. Contrast and focus behaviour
 #    are browser checks and live in CLAUDE.md, not here.
 # ---------------------------------------------------------------------------
+def check_fee_descriptions(pages):
+    """The fee stated in the fees pages' meta description must match fees.yml.
+
+    The description used to open "La inscripcion es gratuita" and never name a
+    price, on the page that holds every price on the site. Search Console for
+    the 90 days to 2026-09-10 showed /cuotas/ at position 13.2 against a
+    cluster of explicit price queries (precio, cuanto cuesta, aikido price,
+    how much does aikido classes cost), so the number is in the description
+    now.
+
+    That puts a price in a second place, which is the drift this codebase keeps
+    being bitten by: the venue address was written three times, the ?v= tokens
+    twenty-two times, and the facility names three times, and every one of them
+    disagreed with itself in the end. A meta description cannot be Liquid, so
+    the number cannot be derived. This is the guard instead: change the fee in
+    _data/fees.yml and the build tells you which four files still say the old
+    one.
+    """
+    fees = os.path.join('_data', 'fees.yml')
+    if not os.path.exists(fees):
+        return
+    src = open(fees, encoding='utf-8').read()
+    block = re.search(r'^\s*monthly:\s*$(.*?)^\s*quarterly:', src, re.M | re.S)
+    if not block:
+        warn('fee descriptions not verified', 'monthly: block not found in _data/fees.yml')
+        return
+    want = {}
+    for who in ('adults', 'children'):
+        m = re.search(rf'^\s*{who}:\s*\{{\s*fee:\s*(\d+)', block.group(1), re.M)
+        if m:
+            want[who] = m.group(1)
+    if len(want) != 2:
+        warn('fee descriptions not verified', 'could not read monthly adult/child fee')
+        return
+
+    bad, seen = [], 0
+    for url, html in pages:
+        if not re.search(r'/(cuotas|quotes|fees)/index\.html$', url.replace(os.sep, '/')):
+            continue
+        m = re.search(r'<meta name="description" content="([^"]*)"', html)
+        if not m:
+            continue
+        seen += 1
+        nums = set(re.findall(r'(\d+)\s*(?:&#8364;|\u20ac|EUR)', m.group(1)))
+        nums |= set(re.findall(r'(\d+)\u30e6\u30fc\u30ed', m.group(1)))
+        for who, amount in want.items():
+            if amount not in nums:
+                bad.append(f'{url} does not state the monthly {who} fee of {amount}')
+    if bad:
+        fail('fee descriptions', '; '.join(bad[:4]))
+    elif seen:
+        print(f'  {"fee descriptions":<34} {seen} pages state {want["adults"]} / {want["children"]}, as fees.yml does')
+
+
 def check_a11y(pages):
     found = Counter()
     for p, raw in pages:
@@ -702,6 +756,7 @@ def main():
     check_less_selectors()
     check_sitemap()
     check_jsonld(pages)
+    check_fee_descriptions(pages)
     check_a11y(pages)
     check_seo(pages)
     check_build_output()

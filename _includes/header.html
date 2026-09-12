@@ -21,13 +21,34 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     {%- comment -%}
-      The home page's title names the towns; every other page is
-      "Aikido Musubi - <page>" as before. See the note on `home_title` in
-      _data/translations.yml for why.
+      THREE WAYS A TITLE IS BUILT, in order of precedence.
+
+      1. `seo_title:` in the page's front matter, used verbatim.
+      2. The home page, which names the towns — see `home_title` in
+         _data/translations.yml.
+      3. Everything else: "Aikido Musubi - <page>".
+
+      WHY (1) EXISTS. `page.title` is the menu label, because the menu and the
+      heading should agree, and a menu label is a noun: "Clases", "Cuotas",
+      "Horarios". That produced <title>Aikido Musubi - Cuotas</title> on the
+      page that owns every price on the site, and nobody searches "cuotas".
+      They search "precio aikido barcelona".
+
+      Search Console for the 90 days to 2026-09-10 measured what that costs.
+      /cuotas/ held position 13.2 with the best CTR of any real page on the
+      site, 6.34% — it converts when it is seen and it is rarely seen. The one
+      page whose title already reads like a search — /badalona/, "Aikido
+      Musubi - Aikido en Badalona" — holds position 5.69, the best on the
+      site. One data point is not a proof, but the shape of it is clear.
+
+      `seo_title` is opt-in and per page, so a page that does not set it is
+      byte-for-byte what it was. It changes the <title>, og:title and
+      twitter:title, and NOT the <h1>: the heading belongs to the reader who
+      is already here and "Cuotas" is the right word for them.
     {%- endcomment -%}
     {%- assign T = site.data.translations -%}
     {%- assign HL = page.lang | default: 'es' -%}
-    {% capture og_title %}{% if page.i18n-ref == 'index-8oGCaMDs' %}{{ T.home_title[HL] }}{% else %}{% if page.lang == 'ja' %}合気道産靈 - {{ page.title }}{% else %}{{ site.title }} - {{ page.title }}{% endif %}{% endif %}{% endcapture %}
+    {% capture og_title %}{% if page.seo_title %}{{ page.seo_title }}{% elsif page.i18n-ref == 'index-8oGCaMDs' %}{{ T.home_title[HL] }}{% else %}{% if page.lang == 'ja' %}合気道産靈 - {{ page.title }}{% else %}{{ site.title }} - {{ page.title }}{% endif %}{% endif %}{% endcapture %}
     <title>{{ og_title }}</title>
     <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ T.tagline[HL] }}{% endif %}">
     {% capture og_description %}{% if page.description %}{{ page.description }}{% else %}{{ T.tagline[HL] }}{% endif %}{% endcapture %}

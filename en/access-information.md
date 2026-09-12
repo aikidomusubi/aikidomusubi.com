@@ -1,11 +1,12 @@
 ---
 layout: access
 title: Access information
+seo_title: "How to find our dojos in Barcelona and Badalona"
 description: "Where we train and how to get there. Pick a dojo for the address, the map and the way in."
 permalink: /en/access-information/
 lang: en
 i18n-ref: access-information-NdxqmVbV
-last_modified: 2026-09-09
+last_modified: 2026-09-13
 ---
 
 # Access information

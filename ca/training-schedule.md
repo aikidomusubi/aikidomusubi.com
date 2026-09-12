@@ -1,11 +1,12 @@
 ---
 layout: page
 title: Horaris
+seo_title: "Horaris d’aikido a Badalona i Barcelona | Aikido Musubi"
 description: Actualment, oferim classes d'aikido (adults i infantil) de dilluns a dissabte. A més, també oferim classes d'altres arts marcials del Japó.
 permalink: /ca/horaris/
 lang: ca
 i18n-ref: training-schedule-IFMn5oCc
-last_modified: 2026-09-09
+last_modified: 2026-09-13
 ---
 
 # Horaris

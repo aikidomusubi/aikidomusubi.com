@@ -1,11 +1,12 @@
 ---
 layout: page
 title: Visitors
+seo_title: "Train with us while you are visiting Barcelona"
 description: "Aikidoka from anywhere are welcome. Come and watch a class, train with us for a few days, or join the dojo."
 permalink: /en/visitors/
 lang: en
 i18n-ref: visitors-Smz3N4U0
-last_modified: 2026-08-28
+last_modified: 2026-09-13
 ---
 
 # Visitors

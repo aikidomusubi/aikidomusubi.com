@@ -1,11 +1,12 @@
 ---
 layout: page
 title: Training Schedule
+seo_title: "Aikido timetable in Barcelona and Badalona | Aikido Musubi"
 description: Currently, we offer aikido classes (adults and children) from Monday to Saturday. In addition, we also offer classes in other Japanese martial arts.
 permalink: /en/training-schedule/
 lang: en
 i18n-ref: training-schedule-IFMn5oCc
-last_modified: 2026-09-09
+last_modified: 2026-09-13
 ---
 
 # Training Schedule

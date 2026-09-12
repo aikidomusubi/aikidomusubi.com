@@ -1,11 +1,12 @@
 ---
 layout: access
 title: Accés
+seo_title: "Com arribar als nostres dojos a Badalona i Barcelona"
 description: "On entrenem i com arribar-hi. Tria el dojo per veure l'adreça, el mapa i per on s'entra."
 permalink: /ca/acces/
 lang: ca
 i18n-ref: access-information-NdxqmVbV
-last_modified: 2026-09-09
+last_modified: 2026-09-13
 ---
 
 # Accés
