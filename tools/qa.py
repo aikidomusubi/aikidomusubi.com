@@ -413,6 +413,71 @@ def check_jsonld(pages):
 # 5. Accessibility — the machine-checkable half. Contrast and focus behaviour
 #    are browser checks and live in CLAUDE.md, not here.
 # ---------------------------------------------------------------------------
+def check_listings():
+    """The map listings carry facts from this repo, and nothing syncs them.
+
+    Google, Apple and Bing hold the address, the opening hours, which arts are
+    taught, how many instructors there are and what a first visit costs. All of
+    that lives in _data/ and all of it is copied into three dashboards by hand.
+
+    A wrong opening hour on the site is a page somebody may not read that day.
+    A wrong opening hour on Google is somebody standing outside a locked door,
+    then a one-star review, then "temporarily closed" reports that Google reads
+    as a signal against the listing. The listings are the version people act
+    on, and they are the version nothing here updates.
+
+    So: every file _data/listings.yml names in `fed_by:` is asked for its last
+    commit date, and anything newer than that listing's `reviewed:` is
+    reported. WARN and never FAIL — a dashboard needing a visit must not block
+    a build, and a check that blocks gets commented out.
+
+    Parsed with regex rather than PyYAML for the reason check 6 gives: PyYAML
+    is deliberately not a project dependency, and a missing library must not be
+    able to redden a build.
+    """
+    f = os.path.join('_data', 'listings.yml')
+    if not os.path.exists(f):
+        return
+    src = read(f)
+
+    fed = re.findall(r'^\s+-\s+(_data/[\w.-]+)', src, re.M)
+    if not fed:
+        return
+
+    # last commit date per file, one git call
+    changed = {}
+    for path in fed:
+        r = subprocess.run(['git', 'log', '-1', '--format=%ad', '--date=short', '--', path],
+                           capture_output=True, text=True)
+        d = r.stdout.strip()
+        if d:
+            changed[path] = d
+
+    stale = []
+    for block in re.split(r'(?=^  - id: )', src[src.index('listings:'):], flags=re.M)[1:]:
+        lid = re.search(r'id: (\S+)', block)
+        name = re.search(r'name: "([^"]+)"', block)
+        rev = re.search(r'^\s+reviewed: (\d{4}-\d{2}-\d{2})', block, re.M)
+        status = re.search(r'status: (\S+)', block)
+        if not (lid and rev):
+            continue
+        newer = sorted(p for p, d in changed.items() if d > rev.group(1))
+        if newer:
+            stale.append((name.group(1) if name else lid.group(1), rev.group(1), newer))
+        if status and status.group(1) != 'live':
+            warn('listing not live', '%s is %s' % (name.group(1) if name else lid.group(1),
+                                                   status.group(1)))
+
+    if stale:
+        for nm, rev, newer in stale:
+            warn('listing may be out of date',
+                 '%s last reviewed %s; changed since: %s'
+                 % (nm, rev, ', '.join(os.path.basename(x) for x in newer)))
+    else:
+        n = len(re.findall(r'^  - id: ', src[src.index('listings:'):], re.M))
+        print(f'  {"map listings":<34} {n} listings, none older than their data')
+
+
 def check_retired_urls(pages):
     """No internal link may point at a URL that only exists as a redirect.
 
@@ -846,6 +911,7 @@ def main():
     check_sitemap()
     check_jsonld(pages)
     check_retired_urls(pages)
+    check_listings()
     check_video_sitemap()
     check_fee_descriptions(pages)
     check_a11y(pages)

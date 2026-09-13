@@ -1,0 +1,65 @@
+# The map listings, and what the site owes them.
+#
+# Google Business Profile, Apple Business Connect and Bing Places carry the
+# same handful of facts the site carries — address, opening hours, what is
+# taught, how many instructors, what a first visit costs. Nothing pushes a
+# change from here to there: they are three separate dashboards, edited by
+# hand, and they go stale silently.
+#
+# THAT IS THE WHOLE PROBLEM. A wrong opening hour on the site is one page
+# nobody may read that day. A wrong opening hour on Google is somebody standing
+# outside a locked door, and then a one-star review, and then "temporarily
+# closed" reports that Google reads as a signal against the listing. The site
+# is the version that gets corrected; the listings are the version people act
+# on.
+#
+# So `tools/qa.py` compares `reviewed:` below against the last commit date of
+# every file in `fed_by:`, and says so when the data has moved on. It is a
+# WARN, never a FAIL: nobody should be blocked from building because a
+# dashboard needs visiting.
+#
+# WHEN YOU HAVE UPDATED THE LISTINGS, set `reviewed:` to that day. That is the
+# entire maintenance burden, and it is the honest record of when a human last
+# looked — not of when the data changed, which git already knows.
+
+# Everything on a listing that comes from somewhere in this repo. Adding a file
+# here adds it to the check; there is no second list to keep in step.
+fed_by:
+  - _data/venues.yml      # address, the facts, the accessibility attributes
+  - _data/schedule.yml    # opening hours, and which arts are taught
+  - _data/about.yml       # the instructor count in the description
+  - _data/fees.yml        # the two free trial classes
+  - _data/calendar.yml    # the statutory closures, which are Special Hours
+
+listings:
+  - id: google
+    name: "Google Business Profile"
+    url: "https://maps.app.goo.gl/zxNCWtsXshA3CHLAA"
+    admin: "https://business.google.com"
+    status: live
+    # 2026-09-14: the listing exists and is verified. What it still wants is
+    # the long description, the service areas, the attributes, ten or more
+    # photographs, and reviews — which are the largest single lever on local
+    # ranking and the one no amount of markup can substitute for.
+    reviewed: 2026-09-14
+
+  - id: apple
+    name: "Apple Business Connect"
+    url: "https://maps.apple/p/dfbfrqjpcpKB0m"
+    admin: "https://businessconnect.apple.com"
+    status: pending-verification
+    # PENDING FOR WEEKS as of 2026-09-14 and no way to hurry it from here.
+    # Apple's queue is opaque and gives no estimate. If it has not moved by
+    # mid-October, the route is Apple Business Connect support rather than
+    # resubmitting, which puts you at the back of the same queue.
+    reviewed: 2026-09-14
+
+  - id: bing
+    name: "Bing Places"
+    url: ""
+    admin: "https://www.bing.com/business"
+    status: awaiting-pin
+    # A verification PIN is coming by post from Microsoft. Until it arrives and
+    # is entered, the listing is not live. Bing feeds DuckDuckGo, Yahoo, Ecosia
+    # and Copilot, so it is one entry for several destinations.
+    reviewed: 2026-09-14

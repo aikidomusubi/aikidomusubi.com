@@ -1530,6 +1530,43 @@ and `/files/courses-hFZ2XXIp-*.pdf` now 404s — twenty-one of them with
 impressions. Jekyll cannot redirect a static file, and GitHub Pages has no
 server config, so that one belongs in Cloudflare as a redirect rule.
 
+## The map listings go stale silently, so a check watches them
+
+Google Business Profile, Apple Business Connect and Bing Places carry the same
+facts this repo carries — the address, the opening hours, which arts are
+taught, how many instructors, what a first visit costs. **Nothing syncs them.**
+They are three dashboards edited by hand.
+
+That asymmetry is the danger. A wrong opening hour on the site is a page
+somebody may not read today. A wrong opening hour on Google is somebody
+standing outside a locked door, then a one-star review, then "temporarily
+closed" reports that Google reads as a signal against the listing. **The
+listings are the version people act on.**
+
+`_data/listings.yml` records each listing, its status, and the files that feed
+it. `tools/qa.py` compares each `reviewed:` date against the last commit date
+of every file in `fed_by:` and reports anything newer:
+
+```
+listing may be out of date
+    Google Business Profile last reviewed 2026-09-01; changed since:
+    about.yml, calendar.yml, fees.yml, schedule.yml, venues.yml
+```
+
+**WARN, never FAIL.** A dashboard needing a visit must not block a build, and a
+check that blocks a build gets commented out. After updating a listing, set
+that listing's `reviewed:` to the day you did it — the date records when a
+human last looked, which is the thing git cannot know.
+
+Adding a file to `fed_by:` adds it to the check; there is no second list.
+
+**Only the Badalona dojo has a listing, and that is deliberate.** Marina-Besòs
+and CxEM Espronceda are rooms rented inside municipal complexes — 2 classes a
+week and 1 — and those complexes hold their own listings at the same addresses.
+A listing at an address you do not control risks suspension of the account, and
+the account holds the one listing worth having. The other two towns are covered
+by service areas and by `/barcelona/` and `/sant-adria-de-besos/`.
+
 ## Resource front-matter schema
 
 ```yaml
