@@ -1,7 +1,8 @@
 # Connecting Instagram and Facebook to the gallery
 
 One-off setup. Once it is done, `tools/fetch-social.py` can collect everything
-you have ever posted, and the nightly workflow keeps it up to date.
+you have ever posted, and four commands keep it up to date whenever you feel
+like running them.
 
 Everything below happens in your own Meta account, on your own posts. **No App
 Review is needed** — an app in Development mode can read the assets its own
@@ -170,118 +171,111 @@ newest.
 
 ---
 
-## 5. Approve what you want, 50 at a time
+## 5. Fetch review thumbnails
 
-773 entries is too many to face in a text editor. `tools/triage.py` walks them
-in batches, newest first:
-
-```bash
-.venv/bin/python tools/triage.py
-```
-
-```
-773 to review — showing 50  (0 of 773 done, 0 kept so far)
-
-  1  reel   2026-07-12  💐 PART 2
-  2  reel   2026-07-11  🎤 ¥€$
-  3  reel   2026-07-05  A warrior of the gentlest kind. Welcome, mama! ✨
-  4  reel   2026-06-27  How was Michelle Feilen Sensei's class last Saturday…
-  …
-
-Keep which?  numbers / ranges / all / none / q
-> 3,4,7-9
-```
-
-It writes `show: true` on the ones you named, `seen: true` on all of them, and
-stops. Run it again for the next 50. Nothing is deleted — a decision is one word
-in a text file, changeable at any time — and rejected items are remembered, so
-they will not come back in a later batch or when the nightly job runs.
-
-Useful arguments:
-
-| | |
-|---|---|
-| `--size 25` | smaller batches |
-| `--type reel` | only reels — 198 of them, and the best of your recent work |
-| `--from 2024-01-01` | skip the deep archive for now |
-| `--tags demo` | tag this batch's keepers (default `training`) |
-| `--stats` | how far through you are |
-| `q` at the prompt | stop without writing anything |
-
-Since `--tags` applies to a whole batch, the quickest way through is to make
-each batch one kind of thing: `--type reel --from 2025-01-01 --tags training`
-for recent mat clips, then a pass with `--tags demo` for the fairs, and so on.
-Anything you get wrong is one word in `_data/gallery.yml`.
-
-**Then fetch the images for exactly what you kept:**
+You cannot decide whether a photograph belongs in a gallery without seeing the
+photograph. Eleven of the posts have the word "Post" as their entire caption.
 
 ```bash
+source .env.local
+.venv/bin/python tools/fetch-social.py --review-thumbs
+```
+
+Small 400px copies of every entry nobody has looked at yet, into `.cache/review/`.
+That directory is **gitignored and never published** — these are throwaway
+copies of posts that have not been decided on. `--limit 50` if you would rather
+do it in batches.
+
+This is separate from the 960px images an approved entry publishes, and it has
+to be, because the ordering runs the other way: deciding comes before
+downloading, and you cannot decide on a caption alone.
+
+---
+
+## 6. Review them, with the pictures
+
+```bash
+.venv/bin/python tools/review.py
+```
+
+Opens <http://localhost:8765>. A grid of thumbnails, 60 at a time, newest
+first. **Click a picture to keep it**, click again to drop it, pick a category
+from the menu under it, press **Save**. Decisions go straight into
+`_data/gallery.yml` and the server stops.
+
+No token, no network, no dependencies — it reads two things already on your
+disk and binds to `127.0.0.1`, so nothing outside your machine can reach it.
+
+```
+keep      show: true,  seen: true    it will appear on /galeria/
+drop      show: false, seen: true    reviewed and passed over
+untouched show: false                comes back next time
+```
+
+Nothing is deleted. A decision is one word in a text file and can be changed at
+any time. Rejections are remembered, so they never come back in a later batch.
+
+Useful arguments: `--size 100`, `--type reel`, `--from 2024-01-01`, `--all`
+(re-review things you have already decided), `--stats` (where you are, writes
+nothing).
+
+---
+
+## 7. Images for what survived
+
+```bash
+source .env.local
 .venv/bin/python tools/fetch-social.py --thumbs
 ```
 
-An entry that is `show: true` but has no image yet is skipped by the page rather
-than rendering broken, so there is no wrong order to work in.
+Every entry marked `show: true` with no image yet, at the size the site
+publishes. Meta's URLs expire within days, so each one is re-requested by id at
+the moment it is needed — which is why an entry keeps its `ref:`.
 
-Finally, tidy the `name:` on the ones you kept. Captions make mediocre titles —
-`💐 PART 2` says nothing on a tile. Only the kept ones matter, so this is a short
-list, and the tags are already set.
+---
 
-Build and look:
+## 8. Categories
+
+Everything arrives tagged `training`, which leaves the gallery filter with one
+value and so nothing to filter. You set the category per item in the reviewer;
+this is the bulk version for anything you did not:
 
 ```bash
-RUBYOPT="-E utf-8:utf-8" bundle exec jekyll serve
+.venv/bin/python tools/retag.py --dry-run
+.venv/bin/python tools/retag.py
 ```
 
----
-
-## 6. Turn on the nightly job
-
-1. On GitHub: **Settings → Secrets and variables → Actions → New repository
-   secret**. Add:
-
-   | Name | Value |
-   |---|---|
-   | `FB_TOKEN` | the Page token from `--discover` |
-   | `FB_PAGE_ID` | the Page id |
-   | `IG_USER_ID` | the Instagram account id |
-
-2. **Actions** tab → **Gallery** → **Run workflow** to try it once by hand.
-3. It runs by itself at 03:17 UTC every night from then on.
-
-Each run commits anything new with `show: false`. Your job becomes: once a week,
-open `_data/gallery.yml`, flip the good ones, push.
+It reads the captions — a shihan's name means a seminar, 審査 a grading, a city
+that is not Badalona means travel. **Always `--dry-run` first.**
 
 ---
 
-## About expiry
+## 9. Build and commit
 
-On this route, nothing expires. A Page access token derived from a long-lived
-user token stays valid until you change your Facebook password, remove the app,
-or revoke the permissions.
+```bash
+npx gulp build && python3 tools/image-widths.py && npx gulp build && npx gulp qa
+```
 
-If you ever do have to redo it, that is steps 2 and 3 again — about five
-minutes — followed by updating the `FB_TOKEN` secret.
-
-The workflow still watches for trouble and opens an issue titled *"Gallery: the
-Instagram token needs renewing"* if a run fails, so a broken connection surfaces
-within a day rather than months later.
+The middle step regenerates `_data/imgw.yml` so the new thumbnails get a real
+`srcset` instead of a broken one. Then `git status`, stage what you meant to,
+commit. **Never `git add -A`.**
 
 ---
 
-## If something goes wrong
+## Doing it again, later
 
-- **"Insufficient developer role"** — you are on the Instagram-login route.
-  Use the Page route in step 2 instead; it does not involve app roles at all.
-- **`Graph API 190`** — the token was revoked or the password changed.
-  Regenerate it from step 2.
-- **`Graph API 200`** — a permission is missing. Re-generate the token with all
-  four permissions from step 2.4 ticked.
-- **`Graph API 100`** — a field name Meta has changed. Tell me the message and
-  I will adjust the script.
-- **No Instagram items** — `IG_USER_ID` is unset or wrong. Run `--discover`
-  again and check the account is Business and linked to the Page.
-- **No albums** — check `FB_PAGE_ID` is the numeric id from `me/accounts`, not
-  the page's vanity name.
+There is no scheduled job and that is deliberate: a nightly workflow needed
+three GitHub secrets, a token that could expire without anybody noticing, and
+an automation watching an account that posts a few times a month. Running four
+commands when you feel like it is less machinery and the same result.
 
-The script never deletes anything and never publishes anything. The worst a bad
-run can do is add entries you then delete.
+```bash
+source .env.local
+.venv/bin/python tools/fetch-social.py --metadata-only   # what is new
+.venv/bin/python tools/fetch-social.py --review-thumbs   # pictures for it
+.venv/bin/python tools/review.py                         # decide
+.venv/bin/python tools/fetch-social.py --thumbs          # publish-size images
+```
+
+Then build and commit. After the backlog is cleared this is a handful of items
+at a time and takes a couple of minutes.

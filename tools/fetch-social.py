@@ -1,8 +1,15 @@
 #!/usr/bin/env python3
 """Collect Instagram posts/reels and Facebook albums into the gallery.
 
-Used twice: once by hand to load the back catalogue, then nightly by
-.github/workflows/gallery.yml. Both runs do the same thing.
+Run by hand, whenever you want to. There is no scheduled job: a nightly
+workflow meant three GitHub secrets and a token that could expire unnoticed,
+for an account that posts a few times a month.
+
+    --metadata-only   what is new, as text, nothing downloaded
+    --review-thumbs   400px copies into .cache/review/ so you can look
+    --thumbs          publish-size images, for what you approved
+
+Between the second and the third: tools/review.py.
 
 WHAT IT DOES
 
@@ -386,6 +393,90 @@ def fetch_thumbs(token, ig_user_id=None):
 
 
 # ---------------------------------------------------------------------------
+REVIEW_CACHE = os.path.join(".cache", "review")
+REVIEW_W = 400
+
+
+def fetch_review_thumbs(token, ig_user_id=None, limit=None):
+    """Small thumbnails for the entries nobody has looked at yet.
+
+    Separate from fetch_thumbs and deliberately so. That one downloads the
+    960px image an APPROVED entry will publish, into images/, where it is
+    committed. This downloads a 400px copy of an entry NOBODY HAS DECIDED ON,
+    into .cache/review/, which is gitignored and never reaches the repository.
+
+    The reason the two cannot be one is the ordering. Deciding needs to happen
+    before downloading — 769 published thumbnails would be about 100 MB of
+    images for posts that will mostly never appear — but you cannot decide on a
+    caption alone. "Post" is the name of eleven of them. So: a cheap throwaway
+    copy to decide from, then the real one for what survives.
+
+    Meta's CDN URLs are signed and expire within days, which is why each entry
+    keeps its `ref:` and the URL is re-requested at the moment it is wanted.
+    """
+    text = io.open(DATA, encoding="utf-8").read()
+    entries = re.split(r"(?=^  - type: )", text[text.index("\nentries:"):], flags=re.M)[1:]
+    os.makedirs(REVIEW_CACHE, exist_ok=True)
+
+    pending = []
+    for e in entries:
+        if "seen: true" in e:
+            continue
+        ref = re.search(r'ref: "([^"]+)"', e)
+        kind = re.search(r"type: (\w+)", e)
+        date = re.search(r'date_iso: "([^"]+)"', e)
+        if not (ref and kind and date):
+            continue
+        if os.path.exists(os.path.join(REVIEW_CACHE, ref.group(1) + ".jpg")):
+            continue
+        pending.append((kind.group(1), date.group(1), ref.group(1)))
+
+    if not pending:
+        print("Every unreviewed entry already has a review thumbnail.")
+        return 0
+    if limit:
+        pending = pending[:limit]
+
+    print("%d review thumbnails to fetch into %s" % (len(pending), REVIEW_CACHE))
+    done = 0
+    for kind, date, ref in pending:
+        fields = "cover_photo{source}" if kind == "album" else "thumbnail_url,media_url"
+        host = GRAPH_FB if (kind == "album" or ig_user_id) else GRAPH_IG
+        try:
+            r = requests.get("%s/%s" % (host, ref),
+                             params={"fields": fields, "access_token": token}, timeout=30)
+        except Exception as exc:                       # a long run should not die on one item
+            print("  ! %s %s: %s" % (date, ref, exc))
+            continue
+        if r.status_code != 200:
+            print("  ! %s %s: %s" % (date, ref, r.text[:120]))
+            continue
+        body = r.json()
+        src = ((body.get("cover_photo") or {}).get("source")
+               or body.get("thumbnail_url") or body.get("media_url"))
+        if not src:
+            # A reel whose thumbnail Meta no longer serves. The reviewer shows a
+            # placeholder for it rather than skipping the entry: a post with no
+            # picture is still a decision to make.
+            print("  - %s %s: no image offered" % (date, ref))
+            continue
+        try:
+            img = requests.get(src, timeout=60)
+            im = Image.open(io.BytesIO(img.content))
+            if im.mode not in ("RGB", "L"):
+                im = im.convert("RGB")
+            if im.width > REVIEW_W:
+                im = im.resize((REVIEW_W, round(im.height * REVIEW_W / im.width)), Image.LANCZOS)
+            im.save(os.path.join(REVIEW_CACHE, ref + ".jpg"), "JPEG", quality=72, optimize=True)
+            done += 1
+            if done % 25 == 0:
+                print("    %d/%d" % (done, len(pending)))
+        except Exception as exc:
+            print("  ! %s %s: %s" % (date, ref, exc))
+    print("%d fetched." % done)
+    return done
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--csv", action="store_true", help="list everything, write nothing")
@@ -402,6 +493,8 @@ def main():
                     help="download images for approved entries that lack one")
     ap.add_argument("--audit-albums", action="store_true",
                     help="check every approved album link is reachable by a visitor")
+    ap.add_argument("--review-thumbs", action="store_true",
+                    help="small throwaway thumbnails for unreviewed entries, into .cache/review/")
     args = ap.parse_args()
 
     ig_token = os.environ.get("IG_TOKEN")
@@ -440,6 +533,14 @@ def main():
               "blocks scripted\nrequests, so neither can be checked from here. "
               "Open two or three of those links\nin a private window: if they "
               "open, they are public.")
+        return
+
+    if args.review_thumbs:
+        token = fb_token or ig_token
+        if not token:
+            sys.exit("Set FB_TOKEN (or IG_TOKEN) first.")
+        fetch_review_thumbs(token, ig_user, args.limit)
+        print("\nNow look at them:  .venv/bin/python tools/review.py")
         return
 
     if args.thumbs:
