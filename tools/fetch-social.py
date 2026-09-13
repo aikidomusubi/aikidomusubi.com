@@ -397,7 +397,7 @@ REVIEW_CACHE = os.path.join(".cache", "review")
 REVIEW_W = 400
 
 
-def fetch_review_thumbs(token, ig_user_id=None, limit=None):
+def fetch_review_thumbs(token, ig_user_id=None, limit=None, every_entry=False):
     """Small thumbnails for the entries nobody has looked at yet.
 
     Separate from fetch_thumbs and deliberately so. That one downloads the
@@ -420,13 +420,20 @@ def fetch_review_thumbs(token, ig_user_id=None, limit=None):
 
     pending = []
     for e in entries:
-        if "seen: true" in e:
+        # Default: only what nobody has looked at. With every_entry, anything
+        # with no picture in EITHER place — which is what a re-review of the
+        # categories needs, because an approved entry already has its published
+        # image in images/ and only the gaps have to be filled.
+        if not every_entry and "seen: true" in e:
             continue
         ref = re.search(r'ref: "([^"]+)"', e)
         kind = re.search(r"type: (\w+)", e)
         date = re.search(r'date_iso: "([^"]+)"', e)
         if not (ref and kind and date):
             continue
+        stem = re.search(r'thumb: "([^"]*)"', e)
+        if stem and stem.group(1) and os.path.exists(os.path.join(IMAGES, stem.group(1) + ".jpg")):
+            continue                           # already has a published image
         if os.path.exists(os.path.join(REVIEW_CACHE, ref.group(1) + ".jpg")):
             continue
         pending.append((kind.group(1), date.group(1), ref.group(1)))
@@ -495,6 +502,9 @@ def main():
                     help="check every approved album link is reachable by a visitor")
     ap.add_argument("--review-thumbs", action="store_true",
                     help="small throwaway thumbnails for unreviewed entries, into .cache/review/")
+    ap.add_argument("--all", action="store_true",
+                    help="with --review-thumbs: every entry with no picture anywhere, "
+                         "not just the unreviewed ones")
     args = ap.parse_args()
 
     ig_token = os.environ.get("IG_TOKEN")
@@ -539,7 +549,7 @@ def main():
         token = fb_token or ig_token
         if not token:
             sys.exit("Set FB_TOKEN (or IG_TOKEN) first.")
-        fetch_review_thumbs(token, ig_user, args.limit)
+        fetch_review_thumbs(token, ig_user, args.limit, args.all)
         print("\nNow look at them:  .venv/bin/python tools/review.py")
         return
 

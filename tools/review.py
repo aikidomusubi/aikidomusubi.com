@@ -35,6 +35,23 @@ WHAT A DECISION MEANS
     neither  show: false               — not yet looked at; comes back next time
 
 Nothing is ever deleted. A decision is one word in a text file.
+
+GOING BACK OVER DECISIONS ALREADY MADE. The filters below all imply --all, so
+the same tool re-reviews what is already published:
+
+    review.py --published --tag training   the 324 still on the default
+    review.py --published                  everything on the site
+    review.py --untagged                   anything with no category
+    review.py --all --type album
+
+A card opens showing WHAT THE FILE SAYS — its categories lit, its border green
+if it is live, an "on the site" label — so a re-review is a correction rather
+than a blank slate, and "Keep all shown" cannot silently unpublish the lot.
+
+CATEGORIES ARE MULTI-SELECT, and that is not decoration: 22 entries are
+`travel, seminar` and both are true of them. The first version of this used a
+<select>, which would have quietly thrown the second one away on every entry it
+touched.
 """
 
 import argparse
@@ -75,6 +92,7 @@ def parse(block):
         "name": g("name"),
         "url": g("url"),
         "ref": g("ref"),
+        "thumb": g("thumb"),
         "tags": [t.strip() for t in (tags.group(1) if tags else "").split(",") if t.strip()],
         "show": "show: true" in block,
         "seen": "seen: true" in block,
@@ -86,6 +104,29 @@ def tag_ids(text):
     return re.findall(r"^  - id: (\w+)", text[i:j], re.M)
 
 
+IMAGES = os.path.join(ROOT, "images")
+
+
+def thumb_for(d):
+    """Where this entry's picture is, if it has one anywhere.
+
+    An entry that was approved carries a `thumb:` stem and a real published
+    image in images/. One that has not been decided on has, at most, a 400px
+    copy in .cache/review/ keyed by media id. Re-reviewing walks over both
+    kinds at once, so it asks for whichever exists — published first, because
+    it is the better picture and it is already on disk.
+    """
+    if d["thumb"]:
+        f = os.path.join(IMAGES, d["thumb"] + ".jpg")
+        if os.path.exists(f):
+            return "/p/" + d["thumb"] + ".jpg"
+    if d["ref"]:
+        f = os.path.join(CACHE, d["ref"] + ".jpg")
+        if os.path.exists(f):
+            return "/t/" + d["ref"] + ".jpg"
+    return ""
+
+
 def load():
     text = io.open(DATA, encoding="utf-8").read()
     _, _, blocks = split_entries(text)
@@ -93,7 +134,8 @@ def load():
     for n, b in enumerate(blocks):
         d = parse(b)
         d["i"] = n
-        d["has_thumb"] = bool(d["ref"]) and os.path.exists(os.path.join(CACHE, d["ref"] + ".jpg"))
+        d["src"] = thumb_for(d)
+        d["has_thumb"] = bool(d["src"])
         items.append(d)
     return text, items, tag_ids(text)
 
@@ -124,8 +166,11 @@ def apply(decisions):
         if "seen: true" not in b:
             # `seen` goes last, after show, and the block ends with a newline.
             b = b.rstrip("\n") + "\n    seen: true\n"
-        tags = dec.get("tags") or []
-        if tags:
+        # Written even when empty: deselecting every category is a decision
+        # ("this one is not any of them"), and silently keeping the old value
+        # would make the chips lie about what is stored.
+        tags = dec.get("tags")
+        if tags is not None:
             b = re.sub(r"\n    tags: \[[^\]]*\]", "\n    tags: [%s]" % ", ".join(tags), b, count=1)
         if b != blocks[n]:
             changed += 1
@@ -170,8 +215,13 @@ PAGE = """<!doctype html>
  .sub{font-size:.68rem;color:var(--mute);letter-spacing:.04em;text-transform:uppercase;
       display:flex;gap:.4rem;align-items:center;justify-content:space-between}
  .sub a{color:var(--mute)}
- select{font:inherit;font-size:.75rem;width:100%;padding:.25rem;border:1px solid var(--line);
-        border-radius:.2rem;background:#fff;margin-top:auto}
+ .tags{display:flex;flex-wrap:wrap;gap:.25rem;margin-top:auto;padding-top:.4rem}
+ .tag{font:inherit;font-size:.66rem;letter-spacing:.04em;text-transform:uppercase;
+      padding:.2rem .45rem;border:1px solid var(--line);border-radius:.2rem;
+      background:#fff;color:var(--mute)}
+ .tag[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+ .card.was{background:#fbfbf9}
+ .flag{font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
  .done{padding:3rem 1.1rem;color:var(--mute)}
  kbd{background:#fff;border:1px solid var(--line);border-bottom-width:2px;border-radius:.2rem;
      padding:0 .3rem;font:inherit;font-size:.8em}
@@ -190,6 +240,15 @@ const TAGS = __TAGS__, ITEMS = __ITEMS__;
 const state = new Map();          // i -> {keep, tags}
 const g = document.getElementById('g');
 
+// The card opens showing what the FILE says, not a blank slate. In a
+// re-review most entries are already published and already tagged, and a grid
+// that showed them all as unkept would invite you to wipe the lot with one
+// "Keep all shown". `state` is seeded per card on first touch.
+function cur(it){
+  if(!state.has(it.i)) state.set(it.i, {keep: it.show, tags: it.tags.slice()});
+  return state.get(it.i);
+}
+
 function draw(){
   g.innerHTML = '';
   if(!ITEMS.length){
@@ -198,43 +257,51 @@ function draw(){
     return;
   }
   for(const it of ITEMS){
-    const s = state.get(it.i) || {keep:false, tags:it.tags.slice()};
+    const s = cur(it);
     const card = document.createElement('div');
-    card.className = 'card' + (s.keep ? ' keep' : '');
-    const shot = it.has_thumb
-      ? `<img class="shot" loading="lazy" src="/t/${it.ref}.jpg" alt="">`
-      : `<div class="shot none">no image<br>offered by Meta</div>`;
+    card.className = 'card' + (s.keep ? ' keep' : '') + (it.show ? ' was' : '');
+    const shot = it.src
+      ? `<img class="shot" loading="lazy" src="${it.src}" alt="">`
+      : `<div class="shot none">no image on disk</div>`;
     card.innerHTML = shot
       + `<div class="meta">
            <div class="sub"><span>${it.type} · ${it.date}</span>
              <a href="${it.url}" target="_blank" rel="noopener">open</a></div>
            <div class="nm">${it.name ? it.name.replace(/</g,'&lt;') : '<i>no caption</i>'}</div>
-           <select>${TAGS.map(t =>
-              `<option value="${t}"${s.tags[0]===t?' selected':''}>${t}</option>`).join('')}</select>
+           ${it.show ? '<span class="flag">on the site</span>' : ''}
+           <div class="tags">${TAGS.map(t =>
+              `<button class="tag" type="button" data-t="${t}" aria-pressed="${s.tags.includes(t)}">${t}</button>`
+            ).join('')}</div>
          </div>`;
     card.querySelector('.shot').addEventListener('click', () => {
-      const cur = state.get(it.i) || {keep:false, tags:it.tags.slice()};
-      cur.keep = !cur.keep; state.set(it.i, cur); draw(); tally();
+      const c = cur(it); c.keep = !c.keep; state.set(it.i, c); draw(); tally();
     });
-    card.querySelector('select').addEventListener('change', e => {
-      const cur = state.get(it.i) || {keep:false, tags:it.tags.slice()};
-      cur.tags = [e.target.value]; state.set(it.i, cur); tally();
-    });
+    card.querySelectorAll('.tag').forEach(b => b.addEventListener('click', () => {
+      const c = cur(it), t = b.dataset.t;
+      const n = c.tags.indexOf(t);
+      if(n === -1) c.tags.push(t); else c.tags.splice(n, 1);
+      state.set(it.i, c); draw(); tally();
+    }));
     g.appendChild(card);
   }
 }
 function tally(){
-  const k = [...state.values()].filter(v => v.keep).length;
+  let k = 0, ch = 0;
+  for(const it of ITEMS){
+    const s = state.get(it.i);
+    if(s ? s.keep : it.show) k++;
+    if(s && (s.keep !== it.show || s.tags.join() !== it.tags.join())) ch++;
+  }
   document.getElementById('c').textContent =
-    `${ITEMS.length} shown · ${k} kept · ${state.size} decided`;
+    `${ITEMS.length} shown · ${k} kept · ${ch} changed`;
   document.getElementById('save').disabled = state.size === 0;
 }
 document.getElementById('all').onclick = () => {
-  ITEMS.forEach(it => state.set(it.i, {keep:true, tags:(state.get(it.i)||{}).tags || it.tags.slice()}));
+  ITEMS.forEach(it => { const c = cur(it); c.keep = true; });
   draw(); tally();
 };
 document.getElementById('none').onclick = () => {
-  ITEMS.forEach(it => state.set(it.i, {keep:false, tags:(state.get(it.i)||{}).tags || it.tags.slice()}));
+  ITEMS.forEach(it => { const c = cur(it); c.keep = false; });
   draw(); tally();
 };
 document.getElementById('save').onclick = async () => {
@@ -267,6 +334,17 @@ class Handler(http.server.BaseHTTPRequestHandler):
         self.wfile.write(raw)
 
     def do_GET(self):
+        if self.path.startswith("/p/"):
+            # A published thumbnail, addressed by its stem. Same shape of guard
+            # as /t/: basename, then a whitelist, so nothing outside images/ is
+            # reachable however the path is spelled.
+            name = os.path.basename(self.path[3:])
+            if not re.fullmatch(r"[0-9A-Za-z._-]+\.jpg", name) or ".." in name:
+                return self._send(400, b"no", "text/plain")
+            f = os.path.join(IMAGES, name)
+            if not os.path.exists(f):
+                return self._send(404, b"no", "text/plain")
+            return self._send(200, io.open(f, "rb").read(), "image/jpeg")
         if self.path.startswith("/t/"):
             # Only ever a cached review thumbnail, addressed by its media id.
             name = os.path.basename(self.path[3:])
@@ -300,6 +378,11 @@ def main():
     ap.add_argument("--type", choices=["reel", "post", "album"])
     ap.add_argument("--from", dest="since", help="only items on or after YYYY-MM-DD")
     ap.add_argument("--all", action="store_true", help="include already-reviewed items")
+    ap.add_argument("--tag", help="only entries currently carrying this category")
+    ap.add_argument("--untagged", action="store_true",
+                    help="only entries with no category at all")
+    ap.add_argument("--published", action="store_true",
+                    help="only what is live on /galeria/ — the set to re-categorise")
     ap.add_argument("--port", type=int, default=PORT)
     ap.add_argument("--no-open", action="store_true")
     ap.add_argument("--stats", action="store_true", help="where you are; writes nothing")
@@ -317,7 +400,17 @@ def main():
         print("remaining  %d" % (len(items) - seen))
         print("           %d of those have a review thumbnail" % cached)
         return
+    # --published, --tag and --untagged are re-review filters, so each implies
+    # --all: the entries they are about have all been seen already.
+    if a.published or a.tag or a.untagged:
+        a.all = True
     pool = [i for i in items if (a.all or not i["seen"])]
+    if a.published:
+        pool = [i for i in pool if i["show"]]
+    if a.tag:
+        pool = [i for i in pool if a.tag in i["tags"]]
+    if a.untagged:
+        pool = [i for i in pool if not i["tags"]]
     if a.type:
         pool = [i for i in pool if i["type"] == a.type]
     if a.since:

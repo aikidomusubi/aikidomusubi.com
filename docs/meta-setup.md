@@ -221,6 +221,47 @@ nothing).
 
 ---
 
+## 6b. Going back over the categories
+
+Everything `--metadata-only` collects arrives tagged `training`, because that
+is the default and nothing else can be known from a caption at collection time.
+So the gallery's filter is lopsided: **324 of the 462 published entries are on
+`training`**, which is a filter with one value and therefore nothing to filter.
+
+The reviewer does this job too. It opens on what the file already says — the
+categories a card carries are lit, and an entry already on the site opens with
+its green border and an "on the site" label — so you are correcting rather than
+starting from nothing.
+
+```bash
+.venv/bin/python tools/review.py --published --tag training
+```
+
+Every published entry still on the default, newest first. **Categories are
+chips and more than one can be on**: 22 entries are `travel, seminar` and that
+is right, so click to add and click to remove rather than choosing one.
+
+Other ways in:
+
+```bash
+.venv/bin/python tools/review.py --published          # everything on the site
+.venv/bin/python tools/review.py --untagged           # anything with no category
+.venv/bin/python tools/review.py --all --type album   # albums, decided or not
+```
+
+**No token and no fetching.** All 462 published entries already have their
+pictures in `images/`, and the reviewer serves those directly. The only case
+that needs the network is an entry with no picture in either place:
+
+```bash
+source .env.local
+.venv/bin/python tools/fetch-social.py --review-thumbs --all
+```
+
+`tools/retag.py` still exists and still guesses categories from the captions in
+bulk. Use it if you would rather start from a machine's guess and correct it;
+use the reviewer if you would rather look. They write the same field.
+
 ## 7. Images for what survived
 
 ```bash
