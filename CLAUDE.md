@@ -100,11 +100,20 @@ FAIL fails the run. WARN and INFO never do — they are trends, not errors.
 
 ### Two traps in the toolchain itself
 
-**`jekyll serve` and `npx gulp build` fight over `_site`.** The dev server
-watches and rebuilds, and it sets `site.url` to `http://localhost:4000`. Run it
-while building and it overwrites the build, so `qa` audits a dev build with
-localhost URLs in the sitemap. `qa.py` now fails loudly when it sees that, but
-the habit is: stop the server, `rm -rf _site && npx gulp build`.
+**`jekyll serve` and `npx gulp build` used to fight over `_site`, and no longer
+can.** The dev server's destination is `_dev`; `_site` belongs to the build
+alone. Start it with `bin/dev start` and nothing else.
+
+What that fixed, so it is not reintroduced: the server rewrites its destination
+continuously while watching, the build wipes and rewrites, and run together they
+interleave. The visible symptom was `localhost` URLs in the sitemap — `qa.py`
+fails on that. The invisible one was a page truncated to **zero bytes**, which
+built without error and passed `check-assets`; only `qa.py`'s own checks, which
+read the built HTML, caught it.
+
+`bin/dev start` refuses while `gulp build` or `gulp qa` is running, because
+`site.url` becomes `http://localhost:4000` under the server and a racing build
+can still pick it up.
 
 **clean-css in this pipeline is from 2018 and silently drops values it does not
 know.** `overflow: clip` disappears — inside `@supports` too. It was wanted to
@@ -124,7 +133,9 @@ begins with `rm -rf _site`. **The whole set was lost that way** and had to be
 recovered out of a conversation transcript. Never keep the only copy of
 anything under `_site/`.
 
-To look at them, render into `_site` and open `localhost:4000/mockups/`:
+To look at them, run the script and open `localhost:4000/mockups/`. It copies
+into `_dev` and `_site` alike, whichever exist, so the link works whether you
+are running the dev server or have just built:
 
 ```bash
 ./docs/mockups/render.sh
@@ -162,12 +173,29 @@ bugs were actually found:
 ## Build & develop
 
 ```bash
-RUBYOPT="-E utf-8:utf-8" bundle exec jekyll serve
+bin/dev start      # jekyll serve + gulp watch, detached, only what is missing
+bin/dev status     # what is running, on what port, where it logs
+bin/dev logs       # follow both logs
+bin/dev stop
+bin/dev doctor     # check the environment and say what is wrong
 ```
+
+**The dev server writes to `_dev`, never to `_site`.** That is the whole point
+of it and it is not a preference: `jekyll serve` rewrites its destination as it
+watches, `npx gulp build` wipes and rewrites the same directory, and run
+together they interleave. On 2026-09-13 that truncated
+`_site/badalona/index.html` to **zero bytes** — a page that built without error,
+passed `check-assets`, and was caught only because `qa.py` reads the built HTML.
+Separate destinations make the collision impossible rather than unlikely.
+
+`bin/dev` also refuses to start while a build is in flight, because
+`jekyll serve` still sets `site.url` to `http://localhost:4000` and a build that
+races it can pick that up. Both `_dev/` and `.dev/` (pidless logs) are
+gitignored.
 
 `RUBYOPT` is required: the shell has an empty `LANG`, so without it the Sass
 converter treats files as US-ASCII and the build dies on the first non-ASCII
-character. The dev-start script sets it.
+character. `bin/dev` exports it; so does `npx gulp jekyll`.
 
 ### URLs: relative for the site, absolute only for SEO
 
@@ -273,7 +301,16 @@ changes do get recorded, despite what the ignore file suggests.
 
 Jekyll does **not** prune `_site`; after changing `exclude:`, `rm -rf _site` before rebuilding or deleted files linger and look like leaks.
 
-`.claude/dev-start.sh` opens Jekyll and Gulp in a Hyper split pane and runs automatically on the first message of a session (`UserPromptSubmit` hook in `.claude/settings.local.json`). It is idempotent.
+`.claude/dev-start.sh` is a three-line wrapper around `bin/dev start --quiet`,
+fired by the `UserPromptSubmit` hook in `.claude/settings.local.json` — so it
+runs on **every** message and has to be cheap. It is: two `pgrep`s and a return
+when everything is already up.
+
+It used to drive Hyper through AppleScript, pasting commands from the clipboard
+with nine seconds of `delay`, and its idempotence test was an `AND` — it exited
+early only when BOTH processes were running, so losing either started BOTH
+again. Five stacked processes at the worst, and stolen keyboard focus every
+time. Do not reintroduce a GUI-driving hook.
 
 ## Images: one generated map, and no hand-written `srcset`
 

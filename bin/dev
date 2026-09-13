@@ -1,0 +1,283 @@
+#!/bin/bash
+#
+# The development environment: one command, one place, and out of the way of
+# the build.
+#
+#     bin/dev start      jekyll serve + gulp watch, if not already up
+#     bin/dev stop       stop both
+#     bin/dev restart
+#     bin/dev status     what is running, where it is logging, on what port
+#     bin/dev logs       follow both logs (Ctrl-C to stop following)
+#     bin/dev doctor     check the environment and say what is wrong
+#
+# ---------------------------------------------------------------------------
+# WHY THIS EXISTS, and what it replaces.
+#
+# The dev server used to be started by an AppleScript that activated Hyper,
+# opened a tab, pasted a command from the clipboard and pressed return, twice,
+# with nine seconds of `delay` in it. It was fired from a UserPromptSubmit
+# hook, so it ran on EVERY message. Three things went wrong with that, and all
+# three cost real time:
+#
+#   1. THE IDEMPOTENCE TEST WAS AN `AND`. It exited early only when BOTH
+#      processes were already running, so if either had gone it started BOTH
+#      again. Processes stacked: five of them at once, at the worst.
+#
+#   2. `jekyll serve` AND `gulp build` SHARED `_site`. The server watches and
+#      rewrites its destination; the build wipes and rewrites the same
+#      directory. Run at the same time they interleave, and on 2026-09-13 that
+#      truncated _site/badalona/index.html to ZERO BYTES — a page that built
+#      without error, passed check-assets, and was caught only because qa.py
+#      reads the built HTML. It would have shipped as an empty file.
+#
+#   3. It drove a GUI. Focus was stolen mid-typing, and any change to Hyper's
+#      keybindings or startup time broke it silently.
+#
+# So: the server writes to `_dev`, which nothing else touches, and the build
+# keeps `_site` to itself. The two cannot collide any more — not "should not",
+# cannot. Processes are started detached with their output in .dev/*.log, and
+# both directories are gitignored.
+#
+# THE SERVER STILL MUST NOT BE RUNNING DURING A RELEASE BUILD, for a different
+# reason: `jekyll serve` sets site.url to http://localhost:4000, and a build
+# that races it can still pick that up. `start` refuses while a build is in
+# flight, and `npx gulp build` is unaffected either way because it no longer
+# shares a directory.
+# ---------------------------------------------------------------------------
+set -u
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+RUN="$ROOT/.dev"
+DEST="$ROOT/_dev"
+PORT="${JEKYLL_PORT:-4000}"
+
+mkdir -p "$RUN"
+
+# RUBYOPT: the shell has an empty LANG, so without it the Sass converter reads
+# files as US-ASCII and the build dies on the first non-ASCII character. Every
+# entry point that runs Jekyll has to set it; this is one of them.
+export RUBYOPT='-E utf-8:utf-8'
+
+c_ok=$'\033[32m'; c_no=$'\033[31m'; c_dim=$'\033[2m'; c_off=$'\033[0m'
+[ -t 1 ] || { c_ok=''; c_no=''; c_dim=''; c_off=''; }
+
+logfile() { echo "$RUN/$1.log"; }
+
+# WHAT IS RUNNING IS ASKED OF THE PROCESS TABLE, NOT OF A PIDFILE.
+#
+# The first version of this wrote `$!` to .dev/<name>.pid and trusted it. It
+# recorded the wrong number: `( nohup CMD & echo $! )` inside a subshell hands
+# back the subshell's own context, and both pidfiles ended up containing the
+# pid of `bin/dev start` itself. Both servers were running perfectly and
+# `status` reported them stopped, which is the worst possible answer — it
+# invites you to start a second copy of something that is already up.
+#
+# pgrep against a pattern only this script produces cannot drift from reality,
+# and it also sees a server started by hand in another terminal, which a
+# pidfile never would.
+pattern() {
+  case "$1" in
+    jekyll) echo "jekyll serve --destination $DEST" ;;
+    gulp)   echo "gulp watch" ;;
+  esac
+}
+
+# ONE PASS OVER THE PROCESS TABLE, NOT ONE PER QUESTION.
+#
+# Spawning a process is not free on a loaded machine, and this runs from a
+# UserPromptSubmit hook — on every message. Measured here with a load average
+# around 40: a single `pgrep` took 1.2 s and even `bash -c "exit 0"` took
+# 0.75 s, so the three pgreps the fast path used to do were most of a
+# four-second no-op. The table is read once and matched in the shell.
+# THE SNAPSHOT EXCLUDES THIS SCRIPT AND THE SHELL THAT LAUNCHED IT, and it has
+# to: `ps` lists every command line, including the one asking the question. Run
+# `bin/dev status` from a shell whose own command line happens to contain the
+# words "gulp watch" — which is what happens when anything greps for them — and
+# a plain substring match finds itself and reports a dead server as running.
+# That is worse than no check at all: it invites you to trust an environment
+# that is not there. pgrep avoids this by excluding itself; reading the table
+# by hand means doing it by hand.
+PS_SNAP=""
+snapshot() {
+  [ -n "$PS_SNAP" ] && return 0
+  PS_SNAP="$(ps -Ao pid=,command= 2>/dev/null \
+    | grep -v -e "^[[:space:]]*$$[[:space:]]" -e "^[[:space:]]*$PPID[[:space:]]")"
+}
+
+alive() {
+  snapshot
+  case "$PS_SNAP" in *"$(pattern "$1")"*) return 0 ;; *) return 1 ;; esac
+}
+
+building() {
+  snapshot
+  case "$PS_SNAP" in *"gulp build"*|*"gulp qa"*) return 0 ;; *) return 1 ;; esac
+}
+
+# After starting or stopping something the snapshot is stale and has to go.
+refresh() { PS_SNAP=""; }
+
+start_one() {
+  local name="$1"; shift
+  alive "$name" && return 0
+  rm -f "$(logfile "$name")"
+  ( cd "$ROOT" && exec nohup "$@" >"$(logfile "$name")" 2>&1 ) &
+  disown 2>/dev/null || true
+  refresh
+  # Jekyll takes a moment to appear in the process table under its own name.
+  local n=0
+  while [ "$n" -lt 20 ]; do
+    refresh
+    alive "$name" && return 0
+    sleep 0.5
+    n=$((n + 1))
+  done
+  return 1
+}
+
+# The hook fires on every message and the answer is almost always "everything
+# is already running". Reading the process table to learn that costs about two
+# seconds on a loaded machine, so a successful check leaves a stamp and the
+# next --quiet call inside FRESH seconds believes it and returns immediately.
+#
+# The cost of being wrong is one minute of not noticing that a server died,
+# against two seconds on every message. `bin/dev start` typed by hand, and
+# `status`, ignore the stamp and always look.
+FRESH=60
+
+fresh_enough() {
+  local f="$RUN/ok"
+  [ -f "$f" ] || return 1
+  local age=$(( $(date +%s) - $(stat -f %m "$f" 2>/dev/null || echo 0) ))
+  [ "$age" -lt "$FRESH" ]
+}
+
+cmd_start() {
+  local quiet="${1:-}"
+  [ -n "$quiet" ] && fresh_enough && return 0
+  if building; then
+    [ -n "$quiet" ] || echo "${c_no}A build is running.${c_off} Not starting the dev server:" \
+      "it would race \`gulp build\` for site.url. Try again when it finishes."
+    return 0
+  fi
+
+  local started=0
+  alive jekyll || {
+    start_one jekyll bundle exec jekyll serve \
+      --destination "$DEST" --port "$PORT" --livereload-port 35729 && started=1
+  }
+  alive gulp || {
+    start_one gulp npx gulp watch && started=1
+  }
+
+  # Stamp only when both are genuinely up; a half-started environment must be
+  # looked at again next time rather than cached as fine.
+  if alive jekyll && alive gulp; then touch "$RUN/ok"; else rm -f "$RUN/ok"; fi
+
+  if [ -z "$quiet" ]; then
+    cmd_status
+  elif [ "$started" = "1" ]; then
+    echo "dev server started — bin/dev status"
+  fi
+}
+
+stop_one() {
+  local name="$1"
+  alive "$name" || return 0
+  pkill -f "$(pattern "$name")" 2>/dev/null
+  local n=0
+  refresh
+  while alive "$name" && [ "$n" -lt 10 ]; do sleep 0.5; refresh; done
+  alive "$name" && pkill -9 -f "$(pattern "$name")" 2>/dev/null
+  return 0
+}
+
+cmd_stop() {
+  rm -f "$RUN/ok"
+  stop_one jekyll
+  stop_one gulp
+  # A server started by hand, or one left from before this script existed,
+  # collides just as badly. Catch those too.
+  pkill -f "jekyll serve" 2>/dev/null
+  pkill -f "gulp watch"   2>/dev/null
+  sleep 1
+  echo "stopped"
+}
+
+cmd_status() {
+  local j g
+  alive jekyll && j="${c_ok}running${c_off}" || j="${c_no}stopped${c_off}"
+  alive gulp   && g="${c_ok}running${c_off}" || g="${c_no}stopped${c_off}"
+  echo "  jekyll serve   $j   ${c_dim}http://localhost:$PORT  ->  _dev/${c_off}"
+  echo "  gulp watch     $g   ${c_dim}styles/ and scripts/ only${c_off}"
+  echo "  ${c_dim}logs: .dev/jekyll.log  .dev/gulp.log     bin/dev logs${c_off}"
+  # Counted per process, not as one total. `npx gulp watch` legitimately shows
+  # up twice — npm's wrapper and gulp itself — so a bare count of everything
+  # matching reads three as a stray when three is normal. What is actually
+  # wrong is two SERVERS, which is the thing that used to stack.
+  local nj ng
+  # `pgrep -c` is a Linux extension and macOS does not have it: it prints a
+  # usage message to stderr and nothing to stdout, so the count came back empty
+  # and the comparison below errored. Counting the lines works on both.
+  snapshot
+  nj="$(printf '%s\n' "$PS_SNAP" | grep -c 'jekyll serve')"
+  ng="$(printf '%s\n' "$PS_SNAP" | grep -c 'gulp watch')"
+  if [ "$nj" -gt 1 ] || [ "$ng" -gt 2 ]; then
+    echo "  ${c_no}stacked: $nj jekyll, $ng gulp — bin/dev stop, then bin/dev start${c_off}"
+  fi
+  return 0
+}
+
+cmd_logs() {
+  echo "${c_dim}following .dev/*.log — Ctrl-C to stop${c_off}"
+  tail -n 30 -f "$RUN/jekyll.log" "$RUN/gulp.log" 2>/dev/null
+}
+
+cmd_doctor() {
+  local bad=0
+  printf '  %-34s' "bundler + jekyll"
+  if (cd "$ROOT" && bundle exec jekyll --version >/dev/null 2>&1); then echo "${c_ok}ok${c_off}"
+  else echo "${c_no}missing${c_off} — run: bundle install"; bad=1; fi
+
+  printf '  %-34s' "node + gulp"
+  if (cd "$ROOT" && npx --no-install gulp --version >/dev/null 2>&1); then echo "${c_ok}ok${c_off}"
+  else echo "${c_no}missing${c_off} — run: npm install"; bad=1; fi
+
+  printf '  %-34s' "RUBYOPT utf-8"
+  [ "${RUBYOPT:-}" = '-E utf-8:utf-8' ] && echo "${c_ok}ok${c_off}" || { echo "${c_no}not set${c_off}"; bad=1; }
+
+  # Tested on a path INSIDE each directory, not on the directory name. The
+  # patterns end in a slash so they only match directories, and git cannot tell
+  # that `_dev` is one until it exists — so `git check-ignore _dev` says "not
+  # ignored" on a clean checkout while everything that would ever be written
+  # there is ignored perfectly well.
+  printf '  %-34s' "_dev and .dev gitignored"
+  # One path per call: `git check-ignore -q` refuses more than one and exits
+  # 128, which reads exactly like "not ignored" and is not.
+  if (cd "$ROOT" && git check-ignore -q _dev/index.html 2>/dev/null) \
+     && (cd "$ROOT" && git check-ignore -q .dev/jekyll.pid 2>/dev/null); then
+    echo "${c_ok}ok${c_off}"
+  else echo "${c_no}NOT ignored${c_off} — add _dev/ and .dev/ to .gitignore"; bad=1; fi
+
+  printf '  %-34s' "port $PORT free or ours"
+  if alive jekyll || ! lsof -ti ":$PORT" >/dev/null 2>&1; then echo "${c_ok}ok${c_off}"
+  else echo "${c_no}in use by something else${c_off} — lsof -ti :$PORT"; bad=1; fi
+
+  printf '  %-34s' "committed CSS is the purged one"
+  if (cd "$ROOT" && git diff --quiet -- styles/all.min.css 2>/dev/null); then echo "${c_ok}ok${c_off}"
+  else echo "${c_no}styles/all.min.css is modified${c_off} — gulp watch leaves it UNPURGED."
+       echo "  ${c_dim}Run \`npx gulp build\` before committing, or the bundle ships ~180 KB too big.${c_off}"; bad=1; fi
+
+  [ "$bad" = "0" ] && echo "  ${c_ok}environment looks right${c_off}"
+  return 0
+}
+
+case "${1:-status}" in
+  start)   cmd_start "${2:-}" ;;
+  stop)    cmd_stop ;;
+  restart) cmd_stop; cmd_start ;;
+  status)  cmd_status ;;
+  logs)    cmd_logs ;;
+  doctor)  cmd_doctor ;;
+  *) echo "usage: bin/dev {start|stop|restart|status|logs|doctor}"; exit 2 ;;
+esac

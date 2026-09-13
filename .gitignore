@@ -71,3 +71,8 @@ scratchpad/
 # Throwaway review thumbnails for tools/review.py. Never published, never
 # committed: they are 400px copies of posts nobody has decided on yet.
 .cache/
+
+# The dev server writes here, never to _site: sharing one destination with
+# `gulp build` truncated a page to zero bytes. .dev/ holds its pidfiles and logs.
+_dev/
+.dev/
