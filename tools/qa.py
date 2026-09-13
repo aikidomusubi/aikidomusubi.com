@@ -413,6 +413,73 @@ def check_jsonld(pages):
 # 5. Accessibility — the machine-checkable half. Contrast and focus behaviour
 #    are browser checks and live in CLAUDE.md, not here.
 # ---------------------------------------------------------------------------
+def check_retired_urls(pages):
+    """No internal link may point at a URL that only exists as a redirect.
+
+    The `_courses/` to `_events/` rename moved /cursos/, /fotos/ and /videos/
+    and their translations. jekyll-redirect-from keeps the old paths answering,
+    so a stale internal link does not 404 and nothing notices — it just spends
+    a redirect hop and hands Google a URL that carries a noindex stub.
+
+    The list is not typed: it is every `redirect_from` key in the sources, so
+    renaming another page protects that one too without editing this check.
+    """
+    retired = set()
+    for f in glob.glob('*.md') + glob.glob('*/*.md') + glob.glob('*/*/*.md'):
+        if f.startswith(('docs' + os.sep, 'node_modules' + os.sep)):
+            continue
+        src = read(f)
+        m = re.search(r'^redirect_from:\s*$((?:\n\s+-\s*\S+)+)', src, re.M)
+        if m:
+            retired |= {u.strip('"\'') for u in re.findall(r'-\s*(\S+)', m.group(1))}
+    if not retired:
+        return
+
+    bad = []
+    for p, raw in pages:
+        for href in set(re.findall(r'href="([^"]+)"', raw)):
+            if href in retired:
+                bad.append(f'{os.path.relpath(p, SITE)} -> {href}')
+    if bad:
+        fail('internal link to a retired URL', '; '.join(sorted(bad)[:5]))
+    else:
+        print(f'  {"retired urls":<34} {len(retired)} redirects, 0 internal links point at one')
+
+
+def check_video_sitemap():
+    """The sitemap's video entries must match the _videos/ collection.
+
+    Search Console read "Video indexed: 0" for a whole 90-day window and the
+    Sitemaps report read "Discovered videos: 0" — Google had found no video
+    anywhere on a property with six of them on twenty-four pages, because the
+    sitemap declared none. Adding a seventh video is one file in _videos/ plus
+    four stubs, and nothing would say the sitemap had been left behind.
+
+    Six videos on four language stubs each is 24 entries. The arithmetic is
+    done from what is on disk rather than from a number written here.
+    """
+    sm = os.path.join(SITE, 'sitemap.xml')
+    if not os.path.exists(sm) or not os.path.isdir('_videos'):
+        return
+    videos = [f for f in os.listdir('_videos') if f.endswith('.md')]
+    langs = {'es', 'ca', 'en', 'ja'}
+    want = len(videos) * len(langs)
+    got = read(sm).count('<video:video>')
+    if got != want:
+        fail('video sitemap',
+             f'{got} <video:video> entries for {len(videos)} videos x {len(langs)} '
+             f'languages — expected {want}')
+        return
+    # every declared thumbnail has to be a file that exists, the same rule the
+    # image entries are already held to
+    missing = [u for u in re.findall(r'<video:thumbnail_loc>([^<]+)</video:thumbnail_loc>', read(sm))
+               if not os.path.exists(os.path.join(SITE, u.split('/images/')[-1] and 'images', u.rsplit('/', 1)[1]))]
+    if missing:
+        fail('video sitemap thumbnails', f'{len(missing)} missing: {missing[0]}')
+    else:
+        print(f'  {"video sitemap":<34} {got} entries, {len(videos)} videos x 4 languages, thumbnails present')
+
+
 def check_fee_descriptions(pages):
     """The fee stated in the fees pages' meta description must match fees.yml.
 
@@ -778,6 +845,8 @@ def main():
     check_less_selectors()
     check_sitemap()
     check_jsonld(pages)
+    check_retired_urls(pages)
+    check_video_sitemap()
     check_fee_descriptions(pages)
     check_a11y(pages)
     check_seo(pages)

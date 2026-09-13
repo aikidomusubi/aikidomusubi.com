@@ -94,6 +94,13 @@
     {%- endif %}
 
     {%- assign cls = SC.classes | sort: 'start' -%}
+    {%- comment -%}
+      The seminars page, resolved by i18n-ref and language. NOT by position in
+      the nav: `gEvNav.items[0]` is how this file used to find it, and that is
+      the lookup CLAUDE.md forbids after inserting one menu entry silently
+      repointed three links. One assign, outside the loop, used 21 times.
+    {%- endcomment -%}
+    {%- assign SEMP = site.pages | where: 'i18n-ref', 'events-hFZ2XXIp' | where: 'lang', L | first -%}
     <div class="ur-days" data-ura-week>
       {%- for i in (0..20) -%}
         {%- assign ts = i | times: 86400 | plus: base -%}
@@ -227,6 +234,63 @@
               {%- endif -%}
             {%- endfor -%}
           {%- endif -%}
+        {%- endunless -%}
+
+        {%- comment -%}
+          SEMINARS AND MASTERCLASSES ARE ON THE MAT TOO.
+
+          This strip is titled "Lo que hay en el tatami" and it was built from
+          _data/schedule.yml and _data/calendar.yml and nothing else, so no
+          seminar and no masterclass has ever appeared in it. Pedro Fortes
+          taught here on Saturday 12 September 2026 and the seven-day strip
+          showed the ordinary Saturday. The event was on /calendario/, on
+          /seminarios/ and in "Lo que viene" below — everywhere except the one
+          section that answers "what is on this week".
+
+          _events/ is deliberately NOT copied into calendar.yml (CLAUDE.md:
+          "everything that has a page of its own comes from _events/ and is
+          never copied here"), so the fix is to read the collection here, the
+          way "Lo que viene" already does.
+
+          ONLY WHAT HAPPENS ON OUR OWN TATAMI. An event defaults to the dojo;
+          `venue:` names another of our rooms; `place_id:` or `place_*` names
+          somewhere that is not ours — a trade-fair hall, a school, a tennis
+          club. The first two belong on this strip and the third does not: the
+          dan gradings at Jesuïtes Sarrià and the open class at the Fira are
+          real and they are not on this mat, which is what the reader is asking
+          about. They stay in "Lo que viene", which is about what is coming
+          rather than about where.
+
+          A MULTI-DAY SEMINAR DRAWS ON EVERY ONE OF ITS DAYS. `date_to` is the
+          string "blank" on a one-day event rather than empty, so it is tested
+          for explicitly; comparing dates as strings works because they are all
+          zero-padded ISO.
+
+          The colour is the category's own, from _data/events.yml, so a
+          masterclass reads violet here exactly as it does on /seminarios/ and
+          on /calendario/ rather than becoming another yellow row.
+        {%- endcomment -%}
+        {%- unless closed -%}
+          {%- for ev in site.events -%}
+            {%- if ev.place_id and ev.place_id != '' %}{% continue %}{% endif -%}
+            {%- if ev.place_es or ev.place_en or ev.place_ca or ev.place_ja %}{% continue %}{% endif -%}
+            {%- if ev.date_to and ev.date_to != 'blank' -%}
+              {%- assign ev_end = ev.date_to -%}
+            {%- else -%}
+              {%- assign ev_end = ev.date_from -%}
+            {%- endif -%}
+            {%- if dstr < ev.date_from or dstr > ev_end %}{% continue %}{% endif -%}
+            {%- assign ecat = site.data.events.categories | where: 'id', ev.category | first -%}
+            {%- if L == 'ca' %}{% assign etitle = ev.instructor_ca %}
+            {%- elsif L == 'en' %}{% assign etitle = ev.instructor_en %}
+            {%- elsif L == 'ja' %}{% assign etitle = ev.instructor_ja %}
+            {%- else %}{% assign etitle = ev.instructor_es %}{% endif -%}
+            {%- assign eslug = ev.path | split: '/' | last | remove: '.md' -%}
+            {%- assign eurl = SEMP.url | append: '#event-' | append: eslug -%}
+            {%- capture emeta -%}{% if ev.time_from %}{{ ev.time_from }}{% if ev.time_to %}–{{ ev.time_to }}{% endif %} / {% endif %}{{ ecat.name[L] }}{%- endcapture -%}
+            {%- capture erow -%}{% if ev.time_from %}{{ ev.time_from }}{% else %}00:00{% endif %}¦{{ ecat.color }}¦{{ etitle }}¦{{ emeta }}¦{{ eurl }}{%- endcapture -%}
+            {%- assign DAY = DAY | append: erow | append: '§' -%}
+          {%- endfor -%}
         {%- endunless -%}
 
         {%- comment -%}
