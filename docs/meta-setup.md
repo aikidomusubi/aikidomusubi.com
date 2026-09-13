@@ -268,6 +268,33 @@ thing CLAUDE.md is most insistent about.
 
 ---
 
+## 6c. The same picture posted twice
+
+Set **Status** to *same picture twice*. It finds entries that carry the same
+image and puts each pair side by side, labelled `PAIR 1`, `PAIR 2` and so on —
+by date they can be years apart, which is how they went unnoticed.
+
+**It compares the pictures, not the captions or the dates.** Both of those lie:
+eleven entries are captioned "Post", a clip reposted as a reel gets a new date,
+and the commonest case here is a Facebook album whose cover is also an
+Instagram post, with nothing in common but the image itself.
+
+The method is a perceptual hash — the image is reduced to greyscale and 9x8,
+and what is recorded is whether each pixel is brighter than the one to its
+right. That keeps the gradient structure a person recognises and throws away
+resolution, compression and brightness, which are exactly the differences Meta
+introduces when it serves the same picture at two sizes. Two entries match when
+their 64-bit hashes differ in at most three places.
+
+On the current gallery it finds **10 pairs**, matching at a distance of 0 to 3.
+Decide by looking: drop one of each pair, or keep both if they really are two
+different photographs.
+
+The hashes are cached in `.cache/hashes.json` against each file's modification
+time, so the first run takes about twenty seconds and later ones under two.
+
+---
+
 ## 6b. Going back over the categories
 
 Everything `--metadata-only` collects arrives tagged `training`, because that is

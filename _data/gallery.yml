@@ -60,6 +60,16 @@ tags:
   - id: exams
     color: "#BC892B"
     name: { es: "Exámenes",      ca: "Exàmens",       en: "Examinations",   ja: "審査" }
+  # Sanzo Wada "Vandyke Red", @VandykeRed in styles/base.less. 9.45:1 on white,
+  # and ΔE 23.7 from the nearest tag already in this list (demo, Burnt Sienna),
+  # which is far enough apart to read as its own colour in a row of dots.
+  #
+  # NOT THE SAME THING AS `travel`. Travel is going somewhere to train; this is
+  # Japan itself — the Hombu Dojo, the teachers, the place the art comes from —
+  # and an entry can honestly be both.
+  - id: japan
+    color: "#82241F"
+    name: { es: "Japón",         ca: "Japó",          en: "Japan",          ja: "日本" }
 
 ui:
   what:      { es: "Qué",         ca: "Què",          en: "What",    ja: "内容" }

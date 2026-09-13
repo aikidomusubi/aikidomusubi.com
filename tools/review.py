@@ -39,10 +39,14 @@ Nothing is ever deleted. A decision is one word in a text file.
 EVERY ENTRY IS LOADED AND THE FILTERS ARE IN THE PAGE. There is nothing to
 choose on the command line and no restart to change your mind:
 
-    Status     all / on the site / not on the site / never reviewed / reviewed
-    Category   all / no category / seminar / training / demo / travel / exams
+    Status     all / on the site / not on the site / never reviewed /
+               reviewed / no picture / same picture twice
+    Category   all / no category / and one per tag in _data/gallery.yml
     Type       all / post / reel / album
     Show       128 / 256 / 512 / 1024 / everything
+
+"same picture twice" compares the IMAGES, never the captions or the dates, and
+lays each pair side by side — see the dHash note further down.
 
 A card opens showing WHAT THE FILE SAYS — its categories lit, its border green
 if it is live, an "on the site" label — so a re-review is a correction rather
@@ -147,7 +151,130 @@ def thumb_for(d):
     return ""
 
 
-def load():
+# ---------------------------------------------------------------------------
+# Finding the same picture twice
+#
+# BY THE PICTURE, NOT THE CAPTION OR THE DATE. Both lie: eleven entries are
+# captioned "Post", a clip reposted as a reel gets a new date, and the same
+# photograph appears in a Facebook album and as an Instagram post with nothing
+# in common but the image.
+#
+# dHash. Reduce to greyscale, resize to 9x8, and record for each of the 64
+# adjacent pairs whether the left pixel is brighter than the right. What
+# survives is the gradient structure of the image, which is what a person
+# recognises, and what is thrown away is resolution, compression, overall
+# brightness and small colour shifts — every difference Meta introduces
+# serving the same picture twice at two sizes.
+#
+# Two entries are the same picture when their hashes differ in at most
+# THRESHOLD of those 64 bits. 0 would only catch a byte-identical re-encode; 3
+# tolerates a resize and a re-compression and is still far short of what two
+# genuinely different photographs of the same class would score.
+# ---------------------------------------------------------------------------
+try:
+    from PIL import Image
+except ImportError:                       # the filter turns itself off instead
+    Image = None
+
+HASHES = os.path.join(ROOT, ".cache", "hashes.json")
+THRESHOLD = 3
+
+
+def dhash(path):
+    im = Image.open(path).convert("L").resize((9, 8), Image.LANCZOS)
+    px = list(im.getdata())
+    bits = 0
+    for r in range(8):
+        row = px[r * 9:(r + 1) * 9]
+        for c in range(8):
+            bits = (bits << 1) | (1 if row[c] > row[c + 1] else 0)
+    return bits
+
+
+def hashes_for(items):
+    """{entry index: hash}, cached against each file's path and mtime.
+
+    Opening 769 JPEGs takes a few seconds, which is fine once and tiresome on
+    every page load, so the answers are kept in .cache/hashes.json and only
+    recomputed for files that are new or have changed.
+    """
+    if Image is None:
+        return {}
+    try:
+        cache = json.load(io.open(HASHES, encoding="utf-8"))
+    except Exception:
+        cache = {}
+    out, dirty = {}, False
+    for d in items:
+        src = d["src"]
+        if not src:
+            continue
+        base = IMAGES if src.startswith("/p/") else CACHE
+        f = os.path.join(base, urllib.parse.unquote(src[3:]))
+        if not os.path.isfile(f):
+            continue
+        key = os.path.relpath(f, ROOT)
+        mt = int(os.path.getmtime(f))
+        hit = cache.get(key)
+        if hit and hit[0] == mt:
+            out[d["i"]] = hit[1]
+            continue
+        try:
+            h = dhash(f)
+        except Exception:
+            continue
+        cache[key] = [mt, h]
+        out[d["i"]] = h
+        dirty = True
+    if dirty:
+        os.makedirs(os.path.dirname(HASHES), exist_ok=True)
+        json.dump(cache, io.open(HASHES, "w", encoding="utf-8"))
+    return out
+
+
+def mark_duplicates(items):
+    """Give every entry that shares its picture with another a group number.
+
+    Union-find rather than "compare each against the first of its group": two
+    pictures each within the threshold of a third belong together even when
+    they are not within it of each other, and 769 entries is small enough that
+    the honest O(n^2) pass costs nothing.
+    """
+    h = hashes_for(items)
+    for d in items:
+        d["dup"] = None
+    idx = sorted(h)
+    parent = {i: i for i in idx}
+
+    def find(x):
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+
+    for a in range(len(idx)):
+        for b in range(a + 1, len(idx)):
+            i, j = idx[a], idx[b]
+            if bin(h[i] ^ h[j]).count("1") <= THRESHOLD:
+                ra, rb = find(i), find(j)
+                if ra != rb:
+                    parent[rb] = ra
+
+    groups = {}
+    for i in idx:
+        groups.setdefault(find(i), []).append(i)
+    n = 0
+    by_i = {d["i"]: d for d in items}
+    for members in groups.values():
+        if len(members) < 2:
+            continue
+        n += 1
+        for i in members:
+            by_i[i]["dup"] = n
+    return n
+
+
+def load(with_dups=True):
     text = io.open(DATA, encoding="utf-8").read()
     _, _, blocks = split_entries(text)
     items = []
@@ -156,7 +283,10 @@ def load():
         d["i"] = n
         d["src"] = thumb_for(d)
         d["has_thumb"] = bool(d["src"])
+        d["dup"] = None
         items.append(d)
+    if with_dups:
+        mark_duplicates(items)
     return text, items, tag_ids(text)
 
 
@@ -289,6 +419,8 @@ PAGE = r"""<!doctype html>
  .wrap{position:relative}
  .card.sel{outline:3px solid var(--warn);outline-offset:-3px}
  .redated{color:var(--warn);font-weight:700}
+ .dup{background:var(--warn);color:#fff;padding:.05rem .3rem;border-radius:.15rem;
+      font-weight:700;letter-spacing:.03em}
  input[type=text].dt{font:inherit;font-size:.78rem;width:7.5rem;padding:.25rem .4rem;
       border-radius:.2rem;border:1px solid rgba(255,255,255,.3);background:#1e2325;color:#fff}
  input[type=text].dt::placeholder{color:#8b9296}
@@ -322,6 +454,7 @@ PAGE = r"""<!doctype html>
         <option value="unseen">never reviewed</option>
         <option value="seen">reviewed</option>
         <option value="nopic">no picture</option>
+        <option value="dup">same picture twice</option>
       </select></label>
     <label class="f">Category <select id="fTag"></select></label>
     <label class="f">Type
@@ -336,8 +469,6 @@ PAGE = r"""<!doctype html>
       </select></label>
     <span class="sp"></span>
     <span class="fig" id="range"></span>
-    <button class="ghost" id="keepPage">Keep page</button>
-    <button class="ghost" id="dropPage">Drop page</button>
   </div>
   <div class="bar two">
     <label class="f"><input type="checkbox" id="selAll"> select page</label>
@@ -396,18 +527,24 @@ function normDate(v){
 
 function filtered(){
   const st = $('fStatus').value, tg = $('fTag').value, ty = $('fType').value;
-  return ITEMS.filter(it => {
+  const list = ITEMS.filter(it => {
     const s = now(it);
     if(st === 'pub'    && !s.keep) return false;
     if(st === 'notpub' &&  s.keep) return false;
     if(st === 'unseen' &&  it.seen) return false;
     if(st === 'seen'   && !it.seen) return false;
     if(st === 'nopic'  &&  it.src) return false;
+    if(st === 'dup'    && !it.dup) return false;
     if(tg === 'none'   && s.tags.length) return false;
     if(tg !== 'all' && tg !== 'none' && !s.tags.includes(tg)) return false;
     if(ty !== 'all' && it.type !== ty) return false;
     return true;
   });
+  // Matching pictures have to sit next to each other or the view is useless:
+  // by date they can be years apart, which is exactly how the pairs went
+  // unnoticed. Everything else keeps the newest-first order.
+  if(st === 'dup') list.sort((a, b) => a.dup - b.dup || (a.date < b.date ? 1 : -1));
+  return list;
 }
 const pageSize = () => { const v = +$('fSize').value; return v === 0 ? 1e9 : v; };
 
@@ -434,6 +571,7 @@ function draw(){
         picked.has(it.i) ? ' checked' : ''} title="select for redating">` + shot + `</div>`
       + `<div class="meta">
         <div class="sub"><span>${it.type} · <span class="${moved ? 'redated' : ''}">${s.date}</span></span>
+          ${it.dup ? `<span class="dup">pair ${it.dup}</span>` : ''}
           <a href="${it.url}" target="_blank" rel="noopener">open</a></div>
         <div class="nm">${it.name ? it.name.replace(/</g,'&lt;') : '<i>no caption</i>'}</div>
         <div class="st ${s.keep?'on':'off'}">${s.keep ? 'on the site' : 'not shown'}${
@@ -500,16 +638,6 @@ function sync(){
 ['fStatus','fTag','fType','fSize'].forEach(id =>
   $(id).addEventListener('change', () => { page = 0; sync(); }));
 
-$('keepPage').onclick = () => {
-  const size = pageSize();
-  filtered().slice(page*size, page*size+size).forEach(it => { edit(it).keep = true; });
-  sync();
-};
-$('dropPage').onclick = () => {
-  const size = pageSize();
-  filtered().slice(page*size, page*size+size).forEach(it => { edit(it).keep = false; });
-  sync();
-};
 $('revert').onclick = () => { state.clear(); sync(); };
 
 // ---- selection and redating ------------------------------------------------
