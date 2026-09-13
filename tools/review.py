@@ -36,17 +36,24 @@ WHAT A DECISION MEANS
 
 Nothing is ever deleted. A decision is one word in a text file.
 
-GOING BACK OVER DECISIONS ALREADY MADE. The filters below all imply --all, so
-the same tool re-reviews what is already published:
+EVERY ENTRY IS LOADED AND THE FILTERS ARE IN THE PAGE. There is nothing to
+choose on the command line and no restart to change your mind:
 
-    review.py --published --tag training   the 324 still on the default
-    review.py --published                  everything on the site
-    review.py --untagged                   anything with no category
-    review.py --all --type album
+    Status     all / on the site / not on the site / never reviewed / reviewed
+    Category   all / no category / seminar / training / demo / travel / exams
+    Type       all / post / reel / album
+    Show       128 / 256 / 512 / 1024 / everything
 
 A card opens showing WHAT THE FILE SAYS — its categories lit, its border green
 if it is live, an "on the site" label — so a re-review is a correction rather
-than a blank slate, and "Keep all shown" cannot silently unpublish the lot.
+than a blank slate, and "Keep page" cannot silently unpublish the lot.
+
+SAVING DOES NOT END THE SESSION, which is the other reason this was confusing.
+The first version shut the server down on the first save, so there was no way
+to tell from the page whether anything had been written. Now the header says
+"all saved" or "N unsaved" at all times, changed cards carry an orange border,
+Save writes and then re-reads the file so the page shows what is on disk, and
+closing the tab with pending edits warns first.
 
 CATEGORIES ARE MULTI-SELECT, and that is not decoration: 22 entries are
 `travel, seminar` and both are true of them. The first version of this used a
@@ -61,7 +68,7 @@ import json
 import os
 import re
 import socketserver
-import threading
+import urllib.parse
 import webbrowser
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -188,132 +195,251 @@ PAGE = """<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gallery review</title>
 <style>
- :root{--ink:#111314;--mute:#4f5d63;--line:rgba(17,19,20,.13);--keep:#1a7444;--paper:#faf9f7}
+ :root{--ink:#111314;--mute:#4f5d63;--line:rgba(17,19,20,.13);--keep:#1a7444;
+       --paper:#faf9f7;--warn:#ae5224;--yellow:#FFF200}
  *{box-sizing:border-box}
  body{margin:0;background:var(--paper);color:var(--ink);
       font:14px/1.5 "Noto Sans",system-ui,sans-serif}
- header{position:sticky;top:0;z-index:5;background:var(--ink);color:#fff;
-        padding:.7rem 1.1rem;display:flex;gap:1.1rem;align-items:center;flex-wrap:wrap}
+ header{position:sticky;top:0;z-index:6;background:var(--ink);color:#fff}
+ .bar{display:flex;gap:.8rem;align-items:center;flex-wrap:wrap;padding:.6rem 1rem}
+ .bar.two{border-top:1px solid rgba(255,255,255,.14);font-size:.8rem}
  header b{font-size:1rem;letter-spacing:.02em}
- header .sp{flex:1}
- button{font:inherit;cursor:pointer;border-radius:.25rem;border:1px solid transparent;padding:.42rem .85rem}
- .save{background:#FFF200;color:#111314;font-weight:700}
- .save[disabled]{opacity:.35;cursor:default}
- .ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.45)}
- .count{color:#c9cdcf;font-variant-numeric:tabular-nums}
- main{padding:1.1rem;display:grid;gap:1rem;
-      grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
+ .sp{flex:1}
+ .fig{color:#c9cdcf;font-variant-numeric:tabular-nums}
+ .fig em{color:#fff;font-style:normal;font-weight:700}
+ label.f{display:flex;gap:.35rem;align-items:center;color:#c9cdcf;font-size:.76rem}
+ select{font:inherit;font-size:.78rem;padding:.25rem .4rem;border-radius:.2rem;
+        border:1px solid rgba(255,255,255,.3);background:#1e2325;color:#fff}
+ button{font:inherit;cursor:pointer;border-radius:.25rem;border:1px solid transparent;
+        padding:.38rem .8rem}
+ .save{background:var(--yellow);color:#111314;font-weight:700}
+ .save[disabled]{opacity:.3;cursor:default}
+ .ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.4);font-size:.78rem;
+        padding:.3rem .6rem}
+ .ghost[disabled]{opacity:.3;cursor:default}
+ .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:1.4rem;z-index:20;
+        background:var(--keep);color:#fff;padding:.7rem 1.2rem;border-radius:.3rem;
+        box-shadow:0 6px 24px rgba(0,0,0,.25);font-weight:700}
+ main{padding:1rem;display:grid;gap:.9rem;
+      grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
  .card{border:1px solid var(--line);border-radius:.4rem;background:#fff;overflow:hidden;
        display:flex;flex-direction:column}
  .card.keep{border-color:var(--keep);box-shadow:0 0 0 2px var(--keep) inset}
+ .card.dirty{border-color:var(--warn);box-shadow:0 0 0 2px var(--warn) inset}
  .shot{display:block;width:100%;aspect-ratio:1;object-fit:cover;background:#e9e9e7;
        border:0;padding:0;cursor:pointer}
  .none{display:flex;align-items:center;justify-content:center;color:var(--mute);
-       font-size:.72rem;text-align:center;padding:.5rem}
- .meta{padding:.6rem .7rem;display:flex;flex-direction:column;gap:.3rem;flex:1}
- .nm{font-size:.8rem;line-height:1.35;max-height:3.5em;overflow:hidden}
- .sub{font-size:.68rem;color:var(--mute);letter-spacing:.04em;text-transform:uppercase;
-      display:flex;gap:.4rem;align-items:center;justify-content:space-between}
+       font-size:.7rem;text-align:center;padding:.5rem;cursor:pointer}
+ .meta{padding:.55rem .65rem;display:flex;flex-direction:column;gap:.28rem;flex:1}
+ .nm{font-size:.78rem;line-height:1.35;max-height:3.4em;overflow:hidden}
+ .sub{font-size:.66rem;color:var(--mute);letter-spacing:.04em;text-transform:uppercase;
+      display:flex;gap:.4rem;justify-content:space-between}
  .sub a{color:var(--mute)}
- .tags{display:flex;flex-wrap:wrap;gap:.25rem;margin-top:auto;padding-top:.4rem}
- .tag{font:inherit;font-size:.66rem;letter-spacing:.04em;text-transform:uppercase;
-      padding:.2rem .45rem;border:1px solid var(--line);border-radius:.2rem;
+ .st{font-size:.62rem;letter-spacing:.07em;text-transform:uppercase;font-weight:700}
+ .st.on{color:var(--keep)} .st.off{color:var(--mute)}
+ .tags{display:flex;flex-wrap:wrap;gap:.22rem;margin-top:auto;padding-top:.4rem}
+ .tag{font:inherit;font-size:.64rem;letter-spacing:.04em;text-transform:uppercase;
+      padding:.18rem .4rem;border:1px solid var(--line);border-radius:.2rem;
       background:#fff;color:var(--mute)}
  .tag[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
- .card.was{background:#fbfbf9}
- .flag{font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
- .done{padding:3rem 1.1rem;color:var(--mute)}
- kbd{background:#fff;border:1px solid var(--line);border-bottom-width:2px;border-radius:.2rem;
-     padding:0 .3rem;font:inherit;font-size:.8em}
+ .pager{display:flex;gap:.6rem;align-items:center;justify-content:center;
+        padding:1.4rem 1rem 3rem;color:var(--mute);font-size:.8rem}
+ .pager button{border-color:var(--line);background:#fff;color:var(--ink)}
+ .pager button[disabled]{opacity:.35;cursor:default}
+ .empty{padding:3rem 1rem;color:var(--mute)}
 </style></head><body>
 <header>
-  <b>Gallery review</b>
-  <span class="count" id="c"></span>
-  <span class="sp"></span>
-  <button class="ghost" id="all">Keep all shown</button>
-  <button class="ghost" id="none">Drop all shown</button>
-  <button class="save" id="save" disabled>Save</button>
+  <div class="bar">
+    <b>Gallery review</b>
+    <span class="fig" id="totals"></span>
+    <span class="sp"></span>
+    <span class="fig" id="dirty"></span>
+    <button class="ghost" id="revert" disabled>Undo unsaved</button>
+    <button class="save" id="save" disabled>Save</button>
+  </div>
+  <div class="bar two">
+    <label class="f">Status
+      <select id="fStatus">
+        <option value="all">all</option>
+        <option value="pub">on the site</option>
+        <option value="notpub">not on the site</option>
+        <option value="unseen">never reviewed</option>
+        <option value="seen">reviewed</option>
+      </select></label>
+    <label class="f">Category <select id="fTag"></select></label>
+    <label class="f">Type
+      <select id="fType">
+        <option value="all">all</option><option>post</option>
+        <option>reel</option><option>album</option>
+      </select></label>
+    <label class="f">Show
+      <select id="fSize">
+        <option>128</option><option selected>256</option>
+        <option>512</option><option>1024</option><option value="0">everything</option>
+      </select></label>
+    <span class="sp"></span>
+    <span class="fig" id="range"></span>
+    <button class="ghost" id="keepPage">Keep page</button>
+    <button class="ghost" id="dropPage">Drop page</button>
+  </div>
 </header>
 <main id="g"></main>
+<div class="pager" id="pager"></div>
 <script>
-const TAGS = __TAGS__, ITEMS = __ITEMS__;
-const state = new Map();          // i -> {keep, tags}
-const g = document.getElementById('g');
+const TAGS = __TAGS__;
+let ITEMS = __ITEMS__;
+const state = new Map();              // i -> {keep, tags}   only while unsaved
+let page = 0;
 
-// The card opens showing what the FILE says, not a blank slate. In a
-// re-review most entries are already published and already tagged, and a grid
-// that showed them all as unkept would invite you to wipe the lot with one
-// "Keep all shown". `state` is seeded per card on first touch.
-function cur(it){
+const $ = id => document.getElementById(id);
+const g = $('g');
+
+$('fTag').innerHTML = '<option value="all">all</option>'
+  + '<option value="none">no category</option>'
+  + TAGS.map(t => `<option value="${t}">${t}</option>`).join('');
+
+// What an entry looks like right now: the unsaved edit if there is one,
+// otherwise what the file says. Nothing is ever seeded into `state` just by
+// being drawn, so `state.size` is exactly the number of unsaved edits.
+const now = it => state.get(it.i) || {keep: it.show, tags: it.tags};
+const dirty = it => {
+  const s = state.get(it.i);
+  return !!s && (s.keep !== it.show || s.tags.join() !== it.tags.join());
+};
+function edit(it){
   if(!state.has(it.i)) state.set(it.i, {keep: it.show, tags: it.tags.slice()});
   return state.get(it.i);
 }
 
+function filtered(){
+  const st = $('fStatus').value, tg = $('fTag').value, ty = $('fType').value;
+  return ITEMS.filter(it => {
+    const s = now(it);
+    if(st === 'pub'    && !s.keep) return false;
+    if(st === 'notpub' &&  s.keep) return false;
+    if(st === 'unseen' &&  it.seen) return false;
+    if(st === 'seen'   && !it.seen) return false;
+    if(tg === 'none'   && s.tags.length) return false;
+    if(tg !== 'all' && tg !== 'none' && !s.tags.includes(tg)) return false;
+    if(ty !== 'all' && it.type !== ty) return false;
+    return true;
+  });
+}
+const pageSize = () => { const v = +$('fSize').value; return v === 0 ? 1e9 : v; };
+
 function draw(){
+  const list = filtered(), size = pageSize();
+  const pages = Math.max(1, Math.ceil(list.length / size));
+  if(page >= pages) page = pages - 1;
+  const slice = list.slice(page * size, page * size + size);
+
   g.innerHTML = '';
-  if(!ITEMS.length){
-    g.innerHTML = '<p class="done">Nothing left to review. '
-                + 'Run <kbd>fetch-social.py --metadata-only</kbd> to pull new posts.</p>';
-    return;
+  if(!slice.length){
+    g.innerHTML = '<p class="empty">Nothing matches those filters.</p>';
   }
-  for(const it of ITEMS){
-    const s = cur(it);
+  for(const it of slice){
+    const s = now(it);
     const card = document.createElement('div');
-    card.className = 'card' + (s.keep ? ' keep' : '') + (it.show ? ' was' : '');
+    card.className = 'card' + (s.keep ? ' keep' : '') + (dirty(it) ? ' dirty' : '');
     const shot = it.src
       ? `<img class="shot" loading="lazy" src="${it.src}" alt="">`
-      : `<div class="shot none">no image on disk</div>`;
-    card.innerHTML = shot
-      + `<div class="meta">
-           <div class="sub"><span>${it.type} · ${it.date}</span>
-             <a href="${it.url}" target="_blank" rel="noopener">open</a></div>
-           <div class="nm">${it.name ? it.name.replace(/</g,'&lt;') : '<i>no caption</i>'}</div>
-           ${it.show ? '<span class="flag">on the site</span>' : ''}
-           <div class="tags">${TAGS.map(t =>
-              `<button class="tag" type="button" data-t="${t}" aria-pressed="${s.tags.includes(t)}">${t}</button>`
-            ).join('')}</div>
-         </div>`;
+      : `<div class="shot none">no picture<br>on disk</div>`;
+    card.innerHTML = shot + `<div class="meta">
+        <div class="sub"><span>${it.type} · ${it.date}</span>
+          <a href="${it.url}" target="_blank" rel="noopener">open</a></div>
+        <div class="nm">${it.name ? it.name.replace(/</g,'&lt;') : '<i>no caption</i>'}</div>
+        <div class="st ${s.keep?'on':'off'}">${s.keep ? 'on the site' : 'not shown'}${
+          dirty(it) ? ' · unsaved' : ''}${!it.seen ? ' · new' : ''}</div>
+        <div class="tags">${TAGS.map(t =>
+           `<button class="tag" type="button" data-t="${t}" aria-pressed="${s.tags.includes(t)}">${t}</button>`
+         ).join('')}</div></div>`;
     card.querySelector('.shot').addEventListener('click', () => {
-      const c = cur(it); c.keep = !c.keep; state.set(it.i, c); draw(); tally();
+      const c = edit(it); c.keep = !c.keep; sync();
     });
-    card.querySelectorAll('.tag').forEach(b => b.addEventListener('click', () => {
-      const c = cur(it), t = b.dataset.t;
-      const n = c.tags.indexOf(t);
+    card.querySelectorAll('.tag').forEach(btn => btn.addEventListener('click', () => {
+      const c = edit(it), t = btn.dataset.t, n = c.tags.indexOf(t);
       if(n === -1) c.tags.push(t); else c.tags.splice(n, 1);
-      state.set(it.i, c); draw(); tally();
+      sync();
     }));
     g.appendChild(card);
   }
-}
-function tally(){
-  let k = 0, ch = 0;
-  for(const it of ITEMS){
-    const s = state.get(it.i);
-    if(s ? s.keep : it.show) k++;
-    if(s && (s.keep !== it.show || s.tags.join() !== it.tags.join())) ch++;
+
+  $('range').textContent = list.length
+    ? `${page*size+1}\u2013${Math.min((page+1)*size, list.length)} of ${list.length}`
+    : '0 of 0';
+  $('pager').innerHTML = pages > 1
+    ? `<button id="prev" ${page===0?'disabled':''}>\u2190 previous</button>
+       <span>page ${page+1} of ${pages}</span>
+       <button id="next" ${page>=pages-1?'disabled':''}>next \u2192</button>` : '';
+  if(pages > 1){
+    $('prev').onclick = () => { page--; draw(); scrollTo(0,0); };
+    $('next').onclick = () => { page++; draw(); scrollTo(0,0); };
   }
-  document.getElementById('c').textContent =
-    `${ITEMS.length} shown · ${k} kept · ${ch} changed`;
-  document.getElementById('save').disabled = state.size === 0;
 }
-document.getElementById('all').onclick = () => {
-  ITEMS.forEach(it => { const c = cur(it); c.keep = true; });
-  draw(); tally();
+
+function sync(){
+  // A card edited back to what the file already says is not an edit.
+  for(const [i, s] of [...state]){
+    const it = ITEMS.find(x => x.i === +i);
+    if(it && s.keep === it.show && s.tags.join() === it.tags.join()) state.delete(+i);
+  }
+  const pub = ITEMS.filter(it => now(it).keep).length;
+  const unseen = ITEMS.filter(it => !it.seen).length;
+  $('totals').innerHTML =
+    `<em>${ITEMS.length}</em> entries \u00b7 <em>${pub}</em> on the site \u00b7 `
+    + `<em>${unseen}</em> never reviewed`;
+  $('dirty').innerHTML = state.size
+    ? `<em>${state.size}</em> unsaved` : 'all saved';
+  $('save').disabled = state.size === 0;
+  $('revert').disabled = state.size === 0;
+  draw();
+}
+
+['fStatus','fTag','fType','fSize'].forEach(id =>
+  $(id).addEventListener('change', () => { page = 0; sync(); }));
+
+$('keepPage').onclick = () => {
+  const size = pageSize();
+  filtered().slice(page*size, page*size+size).forEach(it => { edit(it).keep = true; });
+  sync();
 };
-document.getElementById('none').onclick = () => {
-  ITEMS.forEach(it => { const c = cur(it); c.keep = false; });
-  draw(); tally();
+$('dropPage').onclick = () => {
+  const size = pageSize();
+  filtered().slice(page*size, page*size+size).forEach(it => { edit(it).keep = false; });
+  sync();
 };
-document.getElementById('save').onclick = async () => {
+$('revert').onclick = () => { state.clear(); sync(); };
+
+function toast(msg, bad){
+  const t = document.createElement('div');
+  t.className = 'toast'; t.textContent = msg;
+  if(bad) t.style.background = '#ae5224';
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 3200);
+}
+
+$('save').onclick = async () => {
   const body = {};
   for(const [i, v] of state) body[i] = v;
-  const r = await fetch('/save', {method:'POST', body: JSON.stringify(body)});
-  const t = await r.text();
-  if(r.ok){ document.body.innerHTML =
-      '<p class="done">' + t + '<br><br>Close this tab and stop the server with Ctrl-C.</p>'; }
-  else { alert(t); }
+  $('save').disabled = true;
+  try{
+    const r = await fetch('/save', {method:'POST', body: JSON.stringify(body)});
+    const msg = await r.text();
+    if(!r.ok){ toast(msg, true); $('save').disabled = false; return; }
+    // Re-read from disk so the page shows what is actually in the file.
+    const fresh = await (await fetch('/state')).json();
+    ITEMS = fresh.items;
+    state.clear();
+    sync();
+    toast(msg);
+  }catch(e){ toast(String(e), true); $('save').disabled = false; }
 };
-draw(); tally();
+
+addEventListener('beforeunload', e => {
+  if(state.size){ e.preventDefault(); e.returnValue = ''; }
+});
+
+sync();
 </script></body></html>
 """
 
@@ -333,56 +459,72 @@ class Handler(http.server.BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(raw)
 
+    def _serve_image(self, base, raw):
+        """One .jpg out of one directory, and provably not out of any other.
+
+        THE GUARD IS NOT A CHARACTER WHITELIST ANY MORE, and that was a real
+        bug rather than a theoretical one: image stems are slugified from
+        captions and captions are not ASCII. `gallery-2026-04-27-saturday-
+        evening-土曜夜.jpg` exists on disk and the site serves it, and this
+        route answered 400 to it because 土 is not in [0-9A-Za-z._-]. Every
+        Japanese-titled post in the gallery was invisible in the reviewer.
+
+        So the test is where the file actually resolves to, which is what the
+        question really was. realpath collapses `..`, symlinks and any spelling
+        of the separator, and commonpath then says whether the result is still
+        inside the directory we meant. Nothing outside it is reachable however
+        the path is written, and every filename that legitimately exists works.
+        """
+        name = os.path.basename(urllib.parse.unquote(raw))
+        if not name.endswith(".jpg"):
+            return self._send(400, b"no", "text/plain")
+        f = os.path.realpath(os.path.join(base, name))
+        if os.path.commonpath([f, os.path.realpath(base)]) != os.path.realpath(base):
+            return self._send(400, b"no", "text/plain")
+        if not os.path.isfile(f):
+            return self._send(404, b"no", "text/plain")
+        return self._send(200, io.open(f, "rb").read(), "image/jpeg")
+
     def do_GET(self):
         if self.path.startswith("/p/"):
-            # A published thumbnail, addressed by its stem. Same shape of guard
-            # as /t/: basename, then a whitelist, so nothing outside images/ is
-            # reachable however the path is spelled.
-            name = os.path.basename(self.path[3:])
-            if not re.fullmatch(r"[0-9A-Za-z._-]+\.jpg", name) or ".." in name:
-                return self._send(400, b"no", "text/plain")
-            f = os.path.join(IMAGES, name)
-            if not os.path.exists(f):
-                return self._send(404, b"no", "text/plain")
-            return self._send(200, io.open(f, "rb").read(), "image/jpeg")
+            return self._serve_image(IMAGES, self.path[3:])
         if self.path.startswith("/t/"):
-            # Only ever a cached review thumbnail, addressed by its media id.
-            name = os.path.basename(self.path[3:])
-            if not re.fullmatch(r"[0-9A-Za-z_-]+\.jpg", name):
-                return self._send(400, b"no", "text/plain")
-            f = os.path.join(CACHE, name)
-            if not os.path.exists(f):
-                return self._send(404, b"no", "text/plain")
-            return self._send(200, io.open(f, "rb").read(), "image/jpeg")
+            return self._serve_image(CACHE, self.path[3:])
+        if self.path == "/state":
+            _, items, tags = load()
+            return self._send(200, json.dumps({"items": items, "tags": tags}),
+                              "application/json; charset=utf-8")
         page = (PAGE.replace("__TAGS__", json.dumps(self.tags))
                     .replace("__ITEMS__", json.dumps(self.items)))
         self._send(200, page)
 
     def do_POST(self):
+        """Save, and KEEP THE SERVER UP.
+
+        It used to shut down on the first save, which is why it was not obvious
+        whether anything had been written: the page was replaced by a sentence
+        and the session was over. Now the file is written, the page re-reads
+        /state so it shows what is actually on disk, and the header goes back to
+        "all saved". Reviewing 769 entries is many sittings, not one.
+        """
         n = int(self.headers.get("Content-Length", 0))
         try:
             decisions = json.loads(self.rfile.read(n) or b"{}")
             changed = apply(decisions)
         except Exception as exc:
-            return self._send(500, str(exc), "text/plain; charset=utf-8")
-        kept = sum(1 for v in decisions.values() if v.get("keep"))
-        msg = "Saved %d decisions, %d kept." % (changed, kept)
-        print("\n  " + msg)
+            return self._send(500, "NOT saved: %s" % exc, "text/plain; charset=utf-8")
+        msg = "Saved. %d entr%s written to _data/gallery.yml." % (
+            changed, "y" if changed == 1 else "ies")
+        print("  " + msg)
         self._send(200, msg, "text/plain; charset=utf-8")
-        threading.Thread(target=self.server.shutdown, daemon=True).start()
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--size", type=int, default=60, help="how many to show at once")
-    ap.add_argument("--type", choices=["reel", "post", "album"])
+    # Status, category, type and page size are controls IN the page. The only
+    # thing left here is a hard cutoff, for the rare case of not wanting the
+    # first fifteen years loaded at all.
     ap.add_argument("--from", dest="since", help="only items on or after YYYY-MM-DD")
-    ap.add_argument("--all", action="store_true", help="include already-reviewed items")
-    ap.add_argument("--tag", help="only entries currently carrying this category")
-    ap.add_argument("--untagged", action="store_true",
-                    help="only entries with no category at all")
-    ap.add_argument("--published", action="store_true",
-                    help="only what is live on /galeria/ — the set to re-categorise")
     ap.add_argument("--port", type=int, default=PORT)
     ap.add_argument("--no-open", action="store_true")
     ap.add_argument("--stats", action="store_true", help="where you are; writes nothing")
@@ -400,32 +542,25 @@ def main():
         print("remaining  %d" % (len(items) - seen))
         print("           %d of those have a review thumbnail" % cached)
         return
-    # --published, --tag and --untagged are re-review filters, so each implies
-    # --all: the entries they are about have all been seen already.
-    if a.published or a.tag or a.untagged:
-        a.all = True
-    pool = [i for i in items if (a.all or not i["seen"])]
-    if a.published:
-        pool = [i for i in pool if i["show"]]
-    if a.tag:
-        pool = [i for i in pool if a.tag in i["tags"]]
-    if a.untagged:
-        pool = [i for i in pool if not i["tags"]]
-    if a.type:
-        pool = [i for i in pool if i["type"] == a.type]
+    # EVERY ENTRY GOES TO THE PAGE. The command line used to do the filtering,
+    # which meant choosing the question before you could see the answers and
+    # restarting the server to change your mind. Status, category, type and how
+    # many to show are controls in the page now; 769 entries of metadata is
+    # about 200 KB of JSON and the pictures load lazily.
+    pool = sorted(items, key=lambda i: i["date"], reverse=True)
     if a.since:
         pool = [i for i in pool if i["date"] >= a.since]
-    pool.sort(key=lambda i: i["date"], reverse=True)
-    total = len(pool)
-    pool = pool[:a.size]
 
     missing = sum(1 for i in pool if not i["has_thumb"])
-    print("%d to review, showing %d." % (total, len(pool)))
+    print("%d entries \u00b7 %d on the site \u00b7 %d never reviewed"
+          % (len(pool), sum(1 for i in pool if i["show"]),
+             sum(1 for i in pool if not i["seen"])))
     if missing:
-        print("%d of them have no thumbnail yet. To fetch:" % missing)
-        print("    source .env.local && .venv/bin/python tools/fetch-social.py --review-thumbs")
+        print("\n%d have no picture on disk. To fetch them:" % missing)
+        print("    source .env.local && "
+              ".venv/bin/python tools/fetch-social.py --review-thumbs --all")
     if not pool:
-        print("Nothing to do.")
+        print("Nothing collected yet.")
         return
 
     Handler.items, Handler.tags = pool, tags
@@ -439,7 +574,7 @@ def main():
         try:
             srv.serve_forever()
         except KeyboardInterrupt:
-            print("\nStopped. Nothing saved unless you pressed Save.")
+            print("\nStopped.")
 
 
 if __name__ == "__main__":

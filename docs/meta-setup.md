@@ -198,69 +198,71 @@ downloading, and you cannot decide on a caption alone.
 .venv/bin/python tools/review.py
 ```
 
-Opens <http://localhost:8765>. A grid of thumbnails, 60 at a time, newest
-first. **Click a picture to keep it**, click again to drop it, pick a category
-from the menu under it, press **Save**. Decisions go straight into
-`_data/gallery.yml` and the server stops.
-
-No token, no network, no dependencies — it reads two things already on your
-disk and binds to `127.0.0.1`, so nothing outside your machine can reach it.
+Opens <http://localhost:8765> with **every entry loaded**, newest first. No
+arguments to choose in advance: status, category, type and how many to show are
+controls in the page.
 
 ```
-keep      show: true,  seen: true    it will appear on /galeria/
-drop      show: false, seen: true    reviewed and passed over
-untouched show: false                comes back next time
+Status     all · on the site · not on the site · never reviewed · reviewed
+Category   all · no category · seminar · training · demo · travel · exams
+Type       all · post · reel · album
+Show       128 · 256 · 512 · 1024 · everything
 ```
 
-Nothing is deleted. A decision is one word in a text file and can be changed at
-any time. Rejections are remembered, so they never come back in a later batch.
+**Click a picture** to put an entry on the site or take it off. **Click a
+category chip** to add or remove it — more than one can be on, and 22 entries
+legitimately carry two.
 
-Useful arguments: `--size 100`, `--type reel`, `--from 2024-01-01`, `--all`
-(re-review things you have already decided), `--stats` (where you are, writes
-nothing).
+The header always says where you are and whether anything is pending:
+
+```
+769 entries · 462 on the site · 297 never reviewed        all saved   [Save]
+```
+
+When you change something it reads `3 unsaved`, the changed cards get an orange
+border and say `unsaved`, and **Save** lights up. Press it and the file is
+written, the page re-reads what is actually on disk, a green confirmation
+appears and the header goes back to `all saved`. **The server keeps running** —
+reviewing 769 entries is many sittings, not one. Closing the tab with unsaved
+changes warns you first.
+
+`Undo unsaved` throws away pending edits without touching the file. `Keep page`
+and `Drop page` apply to the entries currently shown, which is why the filters
+matter: they make "everything of this kind" a two-click operation.
+
+A card carries its own state under the caption — `on the site` or `not shown`,
+plus `new` if nobody has reviewed it and `unsaved` if you have just changed it.
 
 ---
 
 ## 6b. Going back over the categories
 
-Everything `--metadata-only` collects arrives tagged `training`, because that
-is the default and nothing else can be known from a caption at collection time.
-So the gallery's filter is lopsided: **324 of the 462 published entries are on
-`training`**, which is a filter with one value and therefore nothing to filter.
+Everything `--metadata-only` collects arrives tagged `training`, because that is
+the default and nothing else can be known from a caption at collection time. So
+the gallery's filter is lopsided: most published entries sit on `training`,
+which is a filter with one dominant value and therefore not much of a filter.
 
-The reviewer does this job too. It opens on what the file already says — the
-categories a card carries are lit, and an entry already on the site opens with
-its green border and an "on the site" label — so you are correcting rather than
-starting from nothing.
+Set **Status** to *on the site* and **Category** to *training*. That is the set
+to work through. The reviewer opens on what the file already says — the
+categories a card carries are lit, an entry already published has its green
+border and an `on the site` label — so this is correcting rather than starting
+from nothing, and `Keep page` cannot silently unpublish anything.
 
-```bash
-.venv/bin/python tools/review.py --published --tag training
-```
-
-Every published entry still on the default, newest first. **Categories are
-chips and more than one can be on**: 22 entries are `travel, seminar` and that
-is right, so click to add and click to remove rather than choosing one.
-
-Other ways in:
-
-```bash
-.venv/bin/python tools/review.py --published          # everything on the site
-.venv/bin/python tools/review.py --untagged           # anything with no category
-.venv/bin/python tools/review.py --all --type album   # albums, decided or not
-```
-
-**No token and no fetching.** All 462 published entries already have their
-pictures in `images/`, and the reviewer serves those directly. The only case
-that needs the network is an entry with no picture in either place:
+**No token and no fetching.** Published entries already have their pictures in
+`images/` and the reviewer serves those directly. The only case needing the
+network is an entry with a picture in neither place — a handful that were
+reviewed, dropped, and so never had one downloaded:
 
 ```bash
 source .env.local
 .venv/bin/python tools/fetch-social.py --review-thumbs --all
 ```
 
-`tools/retag.py` still exists and still guesses categories from the captions in
-bulk. Use it if you would rather start from a machine's guess and correct it;
-use the reviewer if you would rather look. They write the same field.
+`tools/retag.py` still guesses categories from captions in bulk. Use it if you
+would rather start from a machine's guess and correct it; use the reviewer if
+you would rather look. They write the same field.
+
+---
 
 ## 7. Images for what survived
 
