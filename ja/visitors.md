@@ -1,7 +1,7 @@
 ---
 layout: page
 title: ご見学・出稽古
-seo_title: "バルセロナ滞在中の稽古について | 合気道産靈"
+seo_title: "バルセロナ滞在中の稽古について"
 description: "世界中の合気道実践者を歓迎します。稽古の見学、出稽古、入会のいずれもお気軽にどうぞ。"
 permalink: /ja/visitors/
 lang: ja

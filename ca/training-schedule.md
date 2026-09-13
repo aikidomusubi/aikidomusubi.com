@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Horaris
-seo_title: "Horaris d’aikido a Badalona i Barcelona | Aikido Musubi"
+seo_title: "Horaris d’aikido a Badalona i Barcelona"
 description: "Classes d'aikido de dilluns a dissabte a Badalona, Barcelona i Sant Adrià de Besòs, a més de judo, iaijutsu i karate. Horari complet per sala i per nivell."
 permalink: /ca/horaris/
 lang: ca

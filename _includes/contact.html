@@ -15,6 +15,34 @@
 
 {%- assign L = page.lang -%}
 {%- assign tel = site.phone | to_integer -%}
+{%- assign C = site.data.contact -%}
+
+{%- comment -%}
+  WHAT HAPPENS AFTER YOU WRITE, above the channels.
+
+  Everything below this band says HOW to reach the dojo. None of it said what
+  happens next, which is the only thing somebody hesitating wants to know, and
+  this is the last page before they either write or leave: Search Console for
+  the 90 days to 2026-09-10 put /contacto/ at position 20.48 with 63
+  impressions and NO clicks, and /en/contact/ at 20.20 with 35 and none. It is
+  also where every fee card's button points.
+
+  The four answers are in _data/contact.yml, one place per language, because
+  the reply time is the kind of fact that changes and must not be hunted for in
+  four files. Nothing here is inferred: all four were answered by the dojo.
+{%- endcomment -%}
+
+<section class="ct-when" aria-labelledby="ct-when-h">
+  <h2 class="ct-when-h" id="ct-when-h">{{ C.ui.heading[L] }}</h2>
+  <ul class="ct-when-list">
+    {%- for a in C.answers %}
+    <li>
+      <h3>{{ a.title[L] }}</h3>
+      <p>{{ a.body[L] }}</p>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
 
 <div class="ct-wrap">
 
@@ -83,3 +111,29 @@
   </aside>
 
 </div>
+
+{%- comment -%}
+  THE THREE QUESTIONS THAT FOLLOW. /acceso/ answers how to get there,
+  /horarios/ when, and /como-es-una-clase/ what actually happens on the mat.
+  All three existed and this page pointed at none of them, which left the
+  reader at a phone number with nowhere to go.
+
+  Resolved through `ref` and the i18n-ref index rather than written as four
+  sets of URLs — the slugs are localised (/acceso/ but /en/access-information/)
+  and a hand-written set of twelve would be twelve chances to be wrong, of the
+  kind that repointed three nav links the last time something was looked up by
+  position.
+{%- endcomment -%}
+<ul class="ct-next">
+  {%- for n in C.next -%}
+    {%- assign dest = site.pages | where: "i18n-ref", n.ref | where: "lang", L | first -%}
+    {%- if dest %}
+  <li>
+    <a href="{{ dest.url }}">
+      <strong>{{ n.title[L] }}</strong>
+      <span>{{ n.body[L] }}</span>
+    </a>
+  </li>
+    {%- endif -%}
+  {%- endfor %}
+</ul>

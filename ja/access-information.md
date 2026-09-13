@@ -1,7 +1,7 @@
 ---
 layout: access
 title: アクセス
-seo_title: "道場へのアクセス（バダロナ・バルセロナ） | 合気道産靈"
+seo_title: "道場へのアクセス（バダロナ・バルセロナ）"
 description: "稽古場所と行き方のご案内です。道場を選ぶと、住所・地図・入口をご覧いただけます。"
 permalink: /ja/access-information/
 lang: ja

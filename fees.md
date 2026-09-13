@@ -1,7 +1,7 @@
 ---
 layout: fees
 title: Cuotas
-seo_title: "Cuánto cuesta el aikido: cuotas y descuentos | Aikido Musubi"
+seo_title: "Cuánto cuesta el aikido: cuotas y descuentos"
 description: "Aikido desde 35 € al mes para adultos y 25 € para niños, con descuentos por familia y por trimestre, semestre o año. Inscripción gratuita y 2 clases de prueba."
 permalink: /cuotas/
 lang: es

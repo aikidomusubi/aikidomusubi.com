@@ -1,0 +1,96 @@
+# What happens after somebody writes.
+#
+# WHY THIS EXISTS. _includes/contact.html says HOW to reach the dojo — three
+# channels, the social accounts, the map, the address — and never said what
+# happens next, which is the only thing somebody hesitating actually wants to
+# know. Search Console for the 90 days to 2026-09-10: /contacto/ at position
+# 20.48 with 63 impressions and no clicks, /en/contact/ at 20.20 with 35 and
+# none. It is also where every fee card's button points, and where a parent
+# asking about the suspended children's group arrives.
+#
+# EVERY LINE HERE WAS ANSWERED BY THE DOJO ON 2026-09-13. Nothing is inferred
+# and nothing is rounded up. If one of them stops being true — the reply time
+# above all — this file is the one place to change it.
+#
+#   answers   the four reassurances, printed above the channels
+#   next      three pages that answer the three questions that follow
+#
+# NO NAME APPEARS. Juanma answers in practice and asked whether it should say
+# so. It should not: nothing on this site carries a personal byline, "the
+# association" is the accurate answer, and a page that names a person has to be
+# edited the day somebody else starts answering.
+
+answers:
+  - title:
+      es: "Respondemos el mismo día"
+      ca: "Responem el mateix dia"
+      en: "We reply the same day"
+      ja: "当日中にお返事します"
+    body:
+      es: "Escribas por donde escribas. Si es fin de semana puede caer más tarde, pero no se queda para el lunes."
+      ca: "Escriguis per on escriguis. Si és cap de setmana pot caure més tard, però no es queda per dilluns."
+      en: "Whichever way you write. At the weekend it may come later in the day, but it does not wait until Monday."
+      ja: "どの方法でご連絡いただいても同じです。週末は少し遅くなることがありますが、月曜まで持ち越すことはありません。"
+
+  - title:
+      es: "En cuatro idiomas"
+      ca: "En quatre idiomes"
+      en: "In four languages"
+      ja: "4か国語で対応します"
+    body:
+      es: "Puedes escribirnos en <b>español</b>, <b>català</b>, <b>English</b> o <b>日本語</b>. Contesta la asociación, no un formulario."
+      ca: "Pots escriure'ns en <b>català</b>, <b>español</b>, <b>English</b> o <b>日本語</b>. Contesta l'associació, no pas un formulari."
+      en: "Write to us in <b>English</b>, <b>español</b>, <b>català</b> or <b>日本語</b>. The association answers, not a form."
+      ja: "<b>日本語</b>・<b>español</b>・<b>català</b>・<b>English</b> のいずれでもご連絡いただけます。自動返信ではなく、協会が直接お返事します。"
+
+  - title:
+      es: "El teléfono se coge"
+      ca: "El telèfon es despenja"
+      en: "The phone is answered"
+      ja: "電話にも出ます"
+    body:
+      es: "El número es real y lo contestamos, igual que el WhatsApp. No es un buzón ni un desvío a nada."
+      ca: "El número és real i el contestem, igual que el WhatsApp. No és una bústia ni un desviament a res."
+      en: "The number is real and we pick it up, and so is the WhatsApp. It is not a voicemail or a diversion to anywhere."
+      ja: "電話番号は実際に使われており、WhatsApp と同じく人が応対します。留守番電話でも転送でもありません。"
+
+  - title:
+      es: "Puedes venir sin avisar"
+      ca: "Pots venir sense avisar"
+      en: "You can just turn up"
+      ja: "予約なしでお越しいただけます"
+    body:
+      es: "Las clases están abiertas y nadie va a pedirte cita. Aun así, escribir antes es mejor: te decimos qué clase te encaja y te esperamos."
+      ca: "Les classes són obertes i ningú no et demanarà cita. Tot i així, escriure abans és millor: et diem quina classe t'encaixa i t'esperem."
+      en: "The classes are open and nobody will ask you for an appointment. Even so, writing first is better: we tell you which class fits you, and we expect you."
+      ja: "稽古は開かれており、予約を求めることはありません。それでも事前にご連絡いただくほうが確実です。合うクラスをお伝えし、お待ちしています。"
+
+# The three questions that follow "how do I reach you". All three pages exist,
+# all three are good, and this page pointed at none of them. They are also
+# contextual links from a page Google already crawls, into pages that need them.
+next:
+  - ref: access-information-NdxqmVbV
+    title: { es: "Cómo llegar", ca: "Com arribar", en: "How to get there", ja: "アクセス" }
+    body:
+      es: "Las cuatro salas, con plano, puerta y transporte."
+      ca: "Les quatre sales, amb plànol, porta i transport."
+      en: "All four rooms, with a plan, the door and the transport."
+      ja: "4つの道場の地図・入口・交通案内。"
+  - ref: training-schedule-IFMn5oCc
+    title: { es: "Horarios", ca: "Horaris", en: "Timetable", ja: "稽古時間" }
+    body:
+      es: "Qué hay cada día, en qué sala y con quién."
+      ca: "Què hi ha cada dia, a quina sala i amb qui."
+      en: "What runs each day, in which room and with whom."
+      ja: "曜日ごとの稽古内容・道場・指導者。"
+  - ref: what-a-class-is-like-pfI2A5uH
+    title: { es: "Cómo es una clase", ca: "Com és una classe", en: "What a class is like", ja: "稽古の一時間" }
+    body:
+      es: "La primera hora sobre el tatami, minuto a minuto."
+      ca: "La primera hora sobre el tatami, minut a minut."
+      en: "Your first hour on the mat, minute by minute."
+      ja: "初めての一時間を、時間を追って。"
+
+ui:
+  heading: { es: "Cuando escribes", ca: "Quan escrius",
+             en: "When you write", ja: "ご連絡いただいたら" }

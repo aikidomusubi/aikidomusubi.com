@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Training Schedule
-seo_title: "Aikido timetable in Barcelona and Badalona | Aikido Musubi"
+seo_title: "Aikido timetable in Barcelona and Badalona"
 description: "Aikido classes Monday to Saturday in Badalona, Barcelona and Sant Adrià de Besòs, plus judo, iaijutsu and karate. The full timetable by room and by level."
 permalink: /en/training-schedule/
 lang: en

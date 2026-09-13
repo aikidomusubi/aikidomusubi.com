@@ -1,7 +1,7 @@
 ---
 layout: classes
 title: 各クラスの紹介
-seo_title: "バルセロナの合気道・柔道・居合術・空手のクラス | 合気道産靈"
+seo_title: "バルセロナの合気道・柔道・居合術・空手のクラス"
 description: バダロナ、サント・アドリア・ダ・バゾス、バルセロナで行う合気道・居合術・柔道・空手。それぞれの稽古の内容、対象、指導者をご紹介します。
 permalink: /ja/classes/
 lang: ja

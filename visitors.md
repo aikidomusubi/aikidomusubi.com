@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Visitantes
-seo_title: "Entrenar con nosotros de paso por Barcelona | Aikido Musubi"
+seo_title: "Entrenar con nosotros de paso por Barcelona"
 description: "Damos la bienvenida a quienes practican aikido en todo el mundo. Ven a observar una clase, entrena con nosotros unos días o únete al dojo."
 permalink: /visitantes/
 lang: es

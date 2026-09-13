@@ -1345,6 +1345,25 @@ the Badalona dojo** — the main venue and the headquarters — and stops being 
 name of the organisation. The association runs four locations across the
 province of Barcelona and expects more.
 
+**THERE IS A DATE NOW, AND IT CHANGES WHAT IS WORTH BUILDING.** The migration
+begins in weeks or months and is progressive, but **not later than six months
+from 2026-09-13**, so anything committed from here lives most of its life under
+the new name. Two consequences, both practical:
+
+- **The rename must stay at three files.** It is `title` in `_config.yml`, `org`
+  in `_data/footer.yml`, and the `SportsClub` block in `header.html`. That was
+  already the rule below and it was already broken once: thirteen `seo_title`
+  values shipped ending in "| Aikido Musubi", taking the count to sixteen.
+  `seo_title` holds the descriptive half only and `header.html` appends the
+  organisation from `site.title`. **Do not type the organisation's name into
+  content or front matter.**
+- **Barcelona leads in new copy, and the surrounding towns stay.** The goal is
+  to rank for Barcelona *and* its area — Badalona, Sant Adrià de Besòs and
+  whatever comes next — so a new title names Barcelona first and a second town
+  after it where it fits. This is not a reason to invent town pages: the three
+  that exist have real rooms, real timetables and real teachers, and that is
+  still the test.
+
 Until then everything ships under the Aikido Musubi name. **Barcelona is the
 primary location word from now on**; Badalona, Sant Adrià de Besòs and any town
 with a linked dojo stay present and secondary. `areaServed` on the SportsClub

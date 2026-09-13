@@ -45,10 +45,31 @@
       byte-for-byte what it was. It changes the <title>, og:title and
       twitter:title, and NOT the <h1>: the heading belongs to the reader who
       is already here and "Cuotas" is the right word for them.
+
+      IT CARRIES NO ORGANISATION NAME, AND THAT IS NOT A STYLE CHOICE. Aikido
+      Musubi becomes the name of the Badalona dojo and Aikikai Barcelona
+      becomes the name of the association, progressively and within six months
+      of 2026-09-13. CLAUDE.md says the rename must stay at three files —
+      _config.yml's `title`, _data/footer.yml's `org`, and the SportsClub block
+      below — and that "the number should not grow". Thirteen seo_title values
+      ending in "| Aikido Musubi" grew it to sixteen. They hold the descriptive
+      half only and the brand is appended here, from site.title, so the rename
+      is three files again.
+
+      THE SUFFIX IS DROPPED WHEN IT WOULD NOT FIT. Google shows about 60
+      characters; past that the tail is cut, and the tail is where the brand
+      sits. A suffix that is always truncated is not a brand mention, it is
+      wasted characters — so a long title keeps the searchable phrase and goes
+      without. 34 is `site.title` at its longest plus the separator, which is
+      the widest the Japanese name can be; comparing against a constant means
+      no arithmetic on a string Liquid cannot measure.
     {%- endcomment -%}
     {%- assign T = site.data.translations -%}
     {%- assign HL = page.lang | default: 'es' -%}
-    {% capture og_title %}{% if page.seo_title %}{{ page.seo_title }}{% elsif page.i18n-ref == 'index-8oGCaMDs' %}{{ T.home_title[HL] }}{% else %}{% if page.lang == 'ja' %}合気道産靈 - {{ page.title }}{% else %}{{ site.title }} - {{ page.title }}{% endif %}{% endif %}{% endcapture %}
+    {%- if page.lang == 'ja' %}{% assign ORG = '合気道産靈' %}{% else %}{% assign ORG = site.title %}{% endif -%}
+    {%- capture seo_full %}{{ page.seo_title }} | {{ ORG }}{% endcapture -%}
+    {%- assign seo_fits = seo_full | size | divided_by: 61 -%}
+    {% capture og_title %}{% if page.seo_title %}{% if seo_fits == 0 %}{{ seo_full }}{% else %}{{ page.seo_title }}{% endif %}{% elsif page.i18n-ref == 'index-8oGCaMDs' %}{{ T.home_title[HL] }}{% else %}{% if page.lang == 'ja' %}{{ ORG }} - {{ page.title }}{% else %}{{ site.title }} - {{ page.title }}{% endif %}{% endif %}{% endcapture %}
     <title>{{ og_title }}</title>
     <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ T.tagline[HL] }}{% endif %}">
     {% capture og_description %}{% if page.description %}{{ page.description }}{% else %}{{ T.tagline[HL] }}{% endif %}{% endcapture %}
