@@ -9,7 +9,7 @@ redirect_from:
   - /fotos/
 lang: es
 i18n-ref: gallery-Xk9pQ2vT
-last_modified: 2026-08-18
+last_modified: 2026-09-13
 ---
 
 # Galería

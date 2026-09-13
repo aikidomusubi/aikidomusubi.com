@@ -149,9 +149,22 @@
       {%- endcomment -%}
       {%- assign mi = it.date_iso | date: '%-m' | minus: 1 -%}
 
+      {%- comment -%}
+        `nofollow`, on all 712 of these.
+
+        Every tile points at Instagram or Facebook, so this one page carries
+        more outbound links than the rest of the site put together. They are
+        real links and they stay clickable; what `nofollow` says is that the
+        dojo is not vouching for Meta and does not intend to hand it the
+        standing this domain has earned. That is what the attribute is for.
+
+        It is not a performance measure and does not pretend to be — the page
+        is fast where it matters: four images load, not 708. It is about where
+        a page's weight of recommendation points.
+      {%- endcomment -%}
       <a class="gx-tile gx-{{ kind }}"
          data-tags="{{ tag_attr }}" data-kind="{{ kind }}" data-year="{{ year }}"
-         href="{{ href }}" target="_blank" rel="noopener">
+         href="{{ href }}" target="_blank" rel="noopener nofollow">
         {%- comment -%}
           A bare <img>, not a <picture> with two <source>s.
 

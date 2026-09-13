@@ -122,7 +122,7 @@ entries:
     url: "https://www.facebook.com/album.php?fbid=159616314133247&id=1707211621409694&aid=36628"
     thumb: "gallery-2011-10-12-ricard-coll-sensei-andorra-2008-133247"
     ref: "159616314133247"
-    tags: [travel, seminar]
+    tags: [travel, training]
     count: 17
     show: true
     seen: true
@@ -142,7 +142,7 @@ entries:
     url: "https://www.facebook.com/album.php?fbid=159919034102975&id=1707211621409694&aid=36733"
     thumb: "gallery-2011-10-13-ricard-coll-sensei-andorra-2009-102975"
     ref: "159919034102975"
-    tags: [travel, seminar]
+    tags: [travel, training]
     count: 30
     show: true
     seen: true
@@ -157,7 +157,7 @@ entries:
     show: true
     seen: true
   - type: album
-    date_iso: "2012-02-14"
+    date_iso: "2012-03-04"
     name: "Osawa H. Shihan @ Milán (2012)"
     url: "https://www.facebook.com/album.php?fbid=229527437142134&id=1707211621409694&aid=52703"
     thumb: "gallery-2012-02-14-osawa-h-shihan-milán-2012-142134"
@@ -166,6 +166,7 @@ entries:
     count: 87
     show: true
     seen: true
+    posted: "2012-02-14"
   - type: album
     date_iso: "2012-03-04"
     name: "Osawa H. Shihan @ Milán (2012)"
@@ -284,7 +285,7 @@ entries:
     ref: "364854396942770"
     tags: [travel]
     count: 5
-    show: true
+    show: false
     seen: true
   - type: album
     date_iso: "2012-12-22"
@@ -312,7 +313,7 @@ entries:
     url: "https://www.facebook.com/album.php?fbid=481713128590229&id=1707211621409694&aid=1073741826"
     thumb: "gallery-2013-07-21-ricard-coll-sensei-pedrafroca-2013-590229"
     ref: "481713128590229"
-    tags: [seminar, travel]
+    tags: [travel, training]
     count: 13
     show: true
     seen: true
@@ -382,7 +383,7 @@ entries:
     url: "https://www.facebook.com/album.php?fbid=843250395769832&id=1707211621409694&aid=1073741838"
     thumb: "gallery-2015-05-17-francisco-manchón-sensei-2015-769832"
     ref: "843250395769832"
-    tags: [seminar, training]
+    tags: [training]
     count: 27
     show: true
     seen: true
@@ -392,12 +393,12 @@ entries:
     url: "https://www.facebook.com/album.php?fbid=926884887406382&id=1707211621409694&aid=1073741839"
     thumb: "gallery-2015-10-10-ricard-coll-sensei-2015-406382"
     ref: "926884887406382"
-    tags: [seminar, training]
+    tags: [training]
     count: 100
     show: true
     seen: true
   - type: album
-    date_iso: "2014-01-01"
+    date_iso: "2014-05-22"
     name: "Exhibición @ Sant Adrià de Besòs (2014)"
     url: "https://www.facebook.com/album.php?fbid=930427583718779&id=1707211621409694&aid=1073741840"
     thumb: "gallery-2015-10-18-exhibición-sant-adrià-de-besòs-2014-718779"
@@ -406,13 +407,14 @@ entries:
     count: 38
     show: true
     seen: true
+    posted: "2014-01-01"
   - type: album
     date_iso: "2015-12-14"
     name: "Exámenes de kyū (2015)"
     url: "https://www.facebook.com/album.php?fbid=956508571110680&id=1707211621409694&aid=1073741841"
     thumb: "gallery-2015-12-14-exámenes-de-kyū-2015-110680"
     ref: "956508571110680"
-    tags: [exams, training]
+    tags: [exams]
     count: 43
     show: true
     seen: true
@@ -432,7 +434,7 @@ entries:
     url: "https://www.facebook.com/album.php?fbid=1013811482047055&id=1707211621409694&aid=1073741844"
     thumb: "gallery-2016-03-22-michelle-feilen-sensei-2016-047055"
     ref: "1013811482047055"
-    tags: [seminar, training]
+    tags: [training]
     count: 21
     show: true
     seen: true
@@ -462,7 +464,7 @@ entries:
     url: "https://www.facebook.com/album.php?fbid=1224120801016121&id=1707211621409694&aid=1073741847"
     thumb: "gallery-2016-12-09-exámenes-de-kyū-2016-016121"
     ref: "1224120801016121"
-    tags: [exams, training]
+    tags: [exams]
     count: 63
     show: true
     seen: true
@@ -470,1234 +472,1390 @@ entries:
     date_iso: "2017-09-21"
     name: "Post"
     url: "https://www.instagram.com/p/BZTOUuol0xE/"
-    thumb: ""
+    thumb: "gallery-2017-09-21-post-012602"
     ref: "17899178479012602"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2017-09-21"
     name: "Clases de aikido en Badalona!!"
     url: "https://www.instagram.com/p/BZTOGHSFPT0/"
-    thumb: ""
+    thumb: "gallery-2017-09-21-clases-de-aikido-en-badalona-026329"
     ref: "17898953281026329"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2017-11-12"
     name: "Clase de armas"
     url: "https://www.instagram.com/p/BbZWHmyF02U/"
-    thumb: ""
+    thumb: "gallery-2017-11-12-clase-de-armas-212409"
     ref: "17848504777212409"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2017-11-12"
     name: "Post"
     url: "https://www.instagram.com/p/BbZVzyeFMIm/"
-    thumb: ""
+    thumb: "gallery-2017-11-12-post-218711"
     ref: "17848086700218711"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2017-11-12"
     name: "Post"
     url: "https://www.instagram.com/p/BbZVl4llKRi/"
-    thumb: ""
+    thumb: "gallery-2017-11-12-post-024722"
     ref: "17908474240024722"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2017-11-12"
     name: "Clase de boken!"
     url: "https://www.instagram.com/p/BbZUaD5lGek/"
-    thumb: ""
+    thumb: "gallery-2017-11-12-clase-de-boken-169576"
     ref: "17878522423169576"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2018-02-17"
     name: "Post"
     url: "https://www.instagram.com/p/BfTQUxkFob3/"
-    thumb: ""
+    thumb: "gallery-2018-02-17-post-029251"
     ref: "17924838832029251"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2018-02-17"
     name: "Post"
     url: "https://www.instagram.com/p/BfTQHehFkCp/"
-    thumb: ""
+    thumb: "gallery-2018-02-17-post-135003"
     ref: "17900477140135003"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2018-02-17"
     name: "Clase de aikido marciales"
     url: "https://www.instagram.com/p/BfTP3islfgq/"
-    thumb: ""
+    thumb: "gallery-2018-02-17-clase-de-aikido-marciales-246531"
     ref: "17847720037246531"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2018-02-17"
     name: "Clase de jueves marciales"
     url: "https://www.instagram.com/p/BfTPjkcF1xR/"
-    thumb: ""
+    thumb: "gallery-2018-02-17-clase-de-jueves-marciales-017360"
     ref: "17925207079017360"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2018-10-11"
     name: "Post"
     url: "https://www.instagram.com/p/BozoHDwDb0Z/"
-    thumb: ""
+    thumb: "gallery-2018-10-11-post-132821"
     ref: "17960454058132821"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2018-11-18"
     name: "Más fotos de un magnifico curso de Miyamoto Sensei en Barcelona. Desde"
     url: "https://www.instagram.com/p/BqVlhyslkkd/"
-    thumb: ""
+    thumb: "gallery-2018-11-18-más-fotos-de-un-magnifico-curso-de-miyam-278574"
     ref: "17893964089278574"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
   - type: post
     date_iso: "2018-11-18"
     name: "badalona"
     url: "https://www.instagram.com/p/BqVko5flZGk/"
-    thumb: ""
+    thumb: "gallery-2018-11-18-badalona-262287"
     ref: "17909049283262287"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
   - type: post
     date_iso: "2018-11-18"
     name: "Post"
     url: "https://www.instagram.com/p/BqVkVMTlW4o/"
-    thumb: ""
+    thumb: "gallery-2018-11-18-post-023127"
     ref: "18000258286023127"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
   - type: post
     date_iso: "2018-11-18"
     name: "Post"
     url: "https://www.instagram.com/p/BqVilqqF8AG/"
-    thumb: ""
+    thumb: "gallery-2018-11-18-post-169753"
     ref: "17965081540169753"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
   - type: post
     date_iso: "2018-11-18"
     name: "Curso de Miayamoto Sensei 16/11/2018"
     url: "https://www.instagram.com/p/BqViUhAlrNX/"
-    thumb: ""
+    thumb: "gallery-2018-11-18-curso-de-miayamoto-sensei-16112018-158812"
     ref: "17971044760158812"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
   - type: post
     date_iso: "2018-11-18"
     name: "Curso de Miyamoto Sensei 16/11/2018 Barcelona"
     url: "https://www.instagram.com/p/BqVhqTvFIeA/"
-    thumb: ""
+    thumb: "gallery-2018-11-18-curso-de-miyamoto-sensei-16112018-barcel-228702"
     ref: "17927303890228702"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
   - type: post
     date_iso: "2018-12-13"
     name: "Aikido training"
     url: "https://www.instagram.com/p/BrVz00glpC1/"
-    thumb: ""
+    thumb: "gallery-2018-12-13-aikido-training-162412"
     ref: "17976656338162412"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2018-12-13"
     name: "Aikido"
     url: "https://www.instagram.com/p/BrVzmgnFZqf/"
-    thumb: ""
+    thumb: "gallery-2018-12-13-aikido-130970"
     ref: "17982383251130970"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2018-12-13"
     name: "Aikido training"
     url: "https://www.instagram.com/p/BrVyvCylP0-/"
-    thumb: ""
+    thumb: "gallery-2018-12-13-aikido-training-304110"
     ref: "17892311113304110"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2018-12-24"
     name: "Más fotos del examen de este sábado pasado!"
     url: "https://www.instagram.com/p/BrxqIExlO0r/"
-    thumb: ""
+    thumb: "gallery-2018-12-24-más-fotos-del-examen-de-este-sábado-pasa-319632"
     ref: "17848378624319632"
-    tags: [training]
-    show: false
+    tags: [exams]
+    show: true
+    seen: true
   - type: post
     date_iso: "2018-12-24"
     name: "Enhorabuena a todos los examinados!! Domingo! Manel! Alex! Carlos! y L"
     url: "https://www.instagram.com/p/BrxpxkaFcwd/"
-    thumb: ""
+    thumb: "gallery-2018-12-24-enhorabuena-a-todos-los-examinados-domin-084275"
     ref: "17991238636084275"
-    tags: [training]
-    show: false
+    tags: [exams]
+    show: true
+    seen: true
   - type: post
     date_iso: "2018-12-24"
     name: "Examen de Hakama en Musubi."
     url: "https://www.instagram.com/p/BrxpEVzj8gw/"
-    thumb: ""
+    thumb: "gallery-2018-12-24-examen-de-hakama-en-musubi-098207"
     ref: "17999700685098207"
-    tags: [training]
-    show: false
+    tags: [exams]
+    show: true
+    seen: true
   - type: post
     date_iso: "2018-12-24"
     name: "Examen de Hakama en Musubi."
     url: "https://www.instagram.com/p/Brxo5K1jFKh/"
-    thumb: ""
+    thumb: "gallery-2018-12-24-examen-de-hakama-en-musubi-163008"
     ref: "17980316476163008"
-    tags: [training]
-    show: false
+    tags: [exams]
+    show: true
+    seen: true
   - type: post
     date_iso: "2018-12-24"
     name: "Examen de Hakama en Musubi."
     url: "https://www.instagram.com/p/BrxotRYjCrx/"
-    thumb: ""
+    thumb: "gallery-2018-12-24-examen-de-hakama-en-musubi-244438"
     ref: "17936081131244438"
-    tags: [training]
-    show: false
+    tags: [exams]
+    show: true
+    seen: true
   - type: post
     date_iso: "2018-12-24"
     name: "Examen de Hakama en Musubi."
     url: "https://www.instagram.com/p/BrxoN0gjwYt/"
-    thumb: ""
+    thumb: "gallery-2018-12-24-examen-de-hakama-en-musubi-282317"
     ref: "17896555228282317"
-    tags: [training]
-    show: false
+    tags: [exams]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-01-15"
     name: "Desde el dojo Musubi Aikido Badalona retomamos las clases de este años"
     url: "https://www.instagram.com/p/BspZjoQlVf1/"
     thumb: ""
     ref: "17958339649220658"
-    tags: [training]
+    tags: []
     show: false
+    seen: true
   - type: post
     date_iso: "2019-03-12"
     name: "Este fin de semana pasado, Musubi Aikido Badalona, asistió al curso de"
     url: "https://www.instagram.com/p/Bu6DEYPFc_3/"
-    thumb: ""
+    thumb: "gallery-2019-03-12-este-fin-de-semana-pasado-musubi-aikido-212497"
     ref: "17979309652212497"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-03-31"
     name: "Ricard Coll de @aikidojo_desarrollo_personal"
     url: "https://www.instagram.com/p/BvryEtKHPny/"
-    thumb: ""
+    thumb: "gallery-2019-03-31-ricard-coll-de-aikidojo-desarrollo-perso-155384"
     ref: "18017510803155384"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-03-31"
     name: "Ayer celebramos un curso espléndido a cargo de Ricard Coll de @aikidoj"
     url: "https://www.instagram.com/p/Bvrx1fWnKx3/"
-    thumb: ""
+    thumb: "gallery-2019-03-31-ayer-celebramos-un-curso-espléndido-a-ca-326157"
     ref: "17879602750326157"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-04-06"
     name: "Daily training 3."
     url: "https://www.instagram.com/p/Bv6AJaslw4o/"
-    thumb: ""
+    thumb: "gallery-2019-04-06-daily-training-3-355245"
     ref: "17866345921355245"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-04-06"
     name: "Daily training 2."
     url: "https://www.instagram.com/p/Bv5_iKDFm3l/"
-    thumb: ""
+    thumb: "gallery-2019-04-06-daily-training-2-177530"
     ref: "18020424496177530"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-04-06"
     name: "Daily training Aikido Musubi Badalona."
     url: "https://www.instagram.com/p/Bv5-8V3FuV_/"
-    thumb: ""
+    thumb: "gallery-2019-04-06-daily-training-aikido-musubi-badalona-103763"
     ref: "18036551068103763"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-04-28"
     name: "Ayer celebramos el 11r aniversario de nuestro Dojo. Fue una jornada es"
     url: "https://www.instagram.com/p/BwywBPcFAMN/"
-    thumb: ""
+    thumb: "gallery-2019-04-28-ayer-celebramos-el-11r-aniversario-de-nu-288113"
     ref: "17925908269288113"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-05-03"
     name: "11r Aniversario del Dojo. Parte 3."
     url: "https://www.instagram.com/p/BxAsKWClqvG/"
-    thumb: ""
+    thumb: "gallery-2019-05-03-11r-aniversario-del-dojo-parte-3-100700"
     ref: "18045764905100700"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-05-03"
     name: "11r Aniversario del Dojo. Parte 2."
     url: "https://www.instagram.com/p/BxArogtlfy-/"
-    thumb: ""
+    thumb: "gallery-2019-05-03-11r-aniversario-del-dojo-parte-2-353094"
     ref: "17877953791353094"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-05-03"
     name: "11r Aniversario del Dojo. Parte 1."
     url: "https://www.instagram.com/p/BxArKEZFzq-/"
-    thumb: ""
+    thumb: "gallery-2019-05-03-11r-aniversario-del-dojo-parte-1-395025"
     ref: "17855602072395025"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-06-01"
     name: "Post"
     url: "https://www.instagram.com/p/ByL0DQDJrcL/"
-    thumb: ""
+    thumb: "gallery-2019-06-01-post-224159"
     ref: "17993401693224159"
-    tags: [training]
-    show: false
+    tags: [demo]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-06-01"
     name: "Marca Musubi!!"
     url: "https://www.instagram.com/p/ByLz9ZvJ4Dq/"
-    thumb: ""
+    thumb: "gallery-2019-06-01-marca-musubi-193785"
     ref: "18040068520193785"
-    tags: [training]
-    show: false
+    tags: [demo]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-06-01"
     name: "Post"
     url: "https://www.instagram.com/p/ByLz4TrptNi/"
-    thumb: ""
+    thumb: "gallery-2019-06-01-post-295574"
     ref: "17936812000295574"
-    tags: [training]
-    show: false
+    tags: [demo]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-06-01"
     name: "Musubi Aikido Badalona"
     url: "https://www.instagram.com/p/ByLzxWYJz3V/"
-    thumb: ""
+    thumb: "gallery-2019-06-01-musubi-aikido-badalona-368573"
     ref: "17879278648368573"
-    tags: [training]
-    show: false
+    tags: [demo]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-06-01"
     name: "Post"
     url: "https://www.instagram.com/p/ByLzi7cJQ7y/"
-    thumb: ""
+    thumb: "gallery-2019-06-01-post-400739"
     ref: "17865566113400739"
-    tags: [training]
-    show: false
+    tags: [demo]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-06-01"
     name: "Post"
     url: "https://www.instagram.com/p/ByLzeraJVHD/"
-    thumb: ""
+    thumb: "gallery-2019-06-01-post-404456"
     ref: "17863307764404456"
-    tags: [training]
-    show: false
+    tags: [demo]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-06-01"
     name: "Post"
     url: "https://www.instagram.com/p/ByLzcHcJJ9c/"
-    thumb: ""
+    thumb: "gallery-2019-06-01-post-318743"
     ref: "17899513456318743"
-    tags: [training]
-    show: false
+    tags: [demo]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-06-01"
     name: "Post"
     url: "https://www.instagram.com/p/ByLzKbZjTe3/"
-    thumb: ""
+    thumb: "gallery-2019-06-01-post-219488"
     ref: "18003164239219488"
-    tags: [training]
-    show: false
+    tags: [demo]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-06-01"
     name: "Post"
     url: "https://www.instagram.com/p/ByLy8f9jHH0/"
-    thumb: ""
+    thumb: "gallery-2019-06-01-post-469703"
     ref: "17842896259469703"
-    tags: [training]
-    show: false
+    tags: [demo]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-06-01"
     name: "Más!!"
     url: "https://www.instagram.com/p/ByLyvPdDSJQ/"
-    thumb: ""
+    thumb: "gallery-2019-06-01-más-188751"
     ref: "18042332593188751"
-    tags: [training]
-    show: false
+    tags: [demo]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-06-01"
     name: "Y sigue!!"
     url: "https://www.instagram.com/p/ByLyfD1DhM0/"
-    thumb: ""
+    thumb: "gallery-2019-06-01-y-sigue-190311"
     ref: "18043789438190311"
-    tags: [training]
-    show: false
+    tags: [demo]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-06-01"
     name: "Más videos de la embukai! También quisiéramos agradecer a todos los re"
     url: "https://www.instagram.com/p/ByLyOvrDiNh/"
-    thumb: ""
+    thumb: "gallery-2019-06-01-más-videos-de-la-embukai-también-quisiér-100482"
     ref: "18054463762100482"
-    tags: [training]
-    show: false
+    tags: [demo]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-06-01"
     name: "Ese sábado, Musubi Aikido Badalona ha participado en la embukai2019 en"
     url: "https://www.instagram.com/p/ByLxzuSDCzf/"
-    thumb: ""
+    thumb: "gallery-2019-06-01-ese-sábado-musubi-aikido-badalona-ha-par-067652"
     ref: "18069341635067652"
-    tags: [training]
-    show: false
+    tags: [demo]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-07-11"
     name: "Clase de armas. Todo un éxito."
     url: "https://www.instagram.com/p/BzyFZxUJefb/"
-    thumb: ""
+    thumb: "gallery-2019-07-11-clase-de-armas-todo-un-éxito-318939"
     ref: "17911912309318939"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-07-11"
     name: "Clase de armas - jo."
     url: "https://www.instagram.com/p/BzyEoaTnMAo/"
-    thumb: ""
+    thumb: "gallery-2019-07-11-clase-de-armas-jo-458049"
     ref: "17856391411458049"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-07-23"
     name: "Post"
     url: "https://www.instagram.com/p/B0QI3mDozeE/"
-    thumb: ""
+    thumb: "gallery-2019-07-23-post-377101"
     ref: "17883018328377101"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-07-24"
     name: "Post"
     url: "https://www.instagram.com/p/B0S7WfNpbPn/"
-    thumb: ""
+    thumb: "gallery-2019-07-24-post-095602"
     ref: "18057418999095602"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-07-25"
     name: "Post"
     url: "https://www.instagram.com/p/B0VjDOvJ2S6/"
-    thumb: ""
+    thumb: "gallery-2019-07-25-post-343489"
     ref: "17903429755343489"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-07-26"
     name: "Te Sabaki (手捌き) o 'Movimientos de las manos' es una de las partes más "
     url: "https://www.instagram.com/p/B0X97CinyPk/"
-    thumb: ""
+    thumb: "gallery-2019-07-26-te-sabaki-手捌き-o-movimientos-de-las-manos-305548"
     ref: "17927637403305548"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-07-29"
     name: "Post"
     url: "https://www.instagram.com/p/B0fe6g5ooch/"
-    thumb: ""
+    thumb: "gallery-2019-07-29-post-526474"
     ref: "17845967224526474"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-07-30"
     name: "We train hard but we have fun!"
     url: "https://www.instagram.com/p/B0jEYf8p3xO/"
-    thumb: ""
+    thumb: "gallery-2019-07-30-we-train-hard-but-we-have-fun-036902"
     ref: "18088813174036902"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-07-31"
     name: "Post"
     url: "https://www.instagram.com/p/B0lR3z9JaxH/"
-    thumb: ""
+    thumb: "gallery-2019-07-31-post-248653"
     ref: "17992543291248653"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-08-01"
     name: "In Aikido you take and receive!-nage"
     url: "https://www.instagram.com/p/B0oKakWJCvj/"
-    thumb: ""
+    thumb: "gallery-2019-08-01-in-aikido-you-take-and-receive-nage-367640"
     ref: "17894652688367640"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-08-01"
     name: "@de_bolson_cerrado (取) と @aikijuanma (受) は入身投げを楽しんでいます！"
     url: "https://www.instagram.com/p/B0oJ1iXJSfe/"
-    thumb: ""
+    thumb: "gallery-2019-08-01-de-bolson-cerrado-取-と-aikijuanma-受-は入身投げ-471924"
     ref: "17859002170471924"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-08-06"
     name: "Post"
     url: "https://www.instagram.com/p/B00HSxTJN1r/"
-    thumb: ""
+    thumb: "gallery-2019-08-06-post-413988"
     ref: "17876830096413988"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-08-09"
     name: "Nonstop Kote-gaeshi!"
     url: "https://www.instagram.com/p/B07wYhMo8cr/"
-    thumb: ""
+    thumb: "gallery-2019-08-09-nonstop-kote-gaeshi-572486"
     ref: "17844646306572486"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-08-14"
     name: "-waza"
     url: "https://www.instagram.com/p/B1Ik260p8cB/"
-    thumb: ""
+    thumb: "gallery-2019-08-14-waza-256804"
     ref: "17992789342256804"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-08-26"
     name: "Clases para principiantes los sábados de 9:15 a 10:15! Classes for beg"
     url: "https://www.instagram.com/p/B1oxRsuoiAa/"
-    thumb: ""
+    thumb: "gallery-2019-08-26-clases-para-principiantes-los-sábados-de-315816"
     ref: "17925360253315816"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-08-27"
     name: "こきゅう、こきゅう、こきゅう、… Kokyu, Kokyu, Kokyu, ..."
     url: "https://www.instagram.com/p/B1qp96AH6fa/"
-    thumb: ""
+    thumb: "gallery-2019-08-27-こきゅうこきゅうこきゅう-kokyu-kokyu-kokyu-468001"
     ref: "17866062310468001"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-08-28"
     name: "Long Beach 🏖"
     url: "https://www.instagram.com/p/B1t_HPBoCbP/"
-    thumb: ""
+    thumb: "gallery-2019-08-28-long-beach-222159"
     ref: "18024654190222159"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-08-29"
     name: "Las caídas son el 50% de la práctica! Taking fall is 50% of practice! "
     url: "https://www.instagram.com/p/B1v3TY_nkvX/"
-    thumb: ""
+    thumb: "gallery-2019-08-29-las-caídas-son-el-50-de-la-práctica-taki-145275"
     ref: "18048868651145275"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-09-22"
     name: "パブロ先輩とロングビーチは両手取の呼吸法を練習するところです。"
     url: "https://www.instagram.com/p/B2uErumoq0h/"
-    thumb: ""
+    thumb: "gallery-2019-09-22-パブロ先輩とロングビーチは両手取の呼吸法を練習するところです-654691"
     ref: "17844901666654691"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-09-22"
     name: "上座に礼！"
     url: "https://www.instagram.com/p/B2uEIHWIhnm/"
-    thumb: ""
+    thumb: "gallery-2019-09-22-上座に礼-271151"
     ref: "17995928596271151"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-10-17"
     name: "🍑&Destroy"
     url: "https://www.instagram.com/p/B3uG8j0pd0E/"
-    thumb: ""
+    thumb: "gallery-2019-10-17-destroy-324003"
     ref: "17929516750324003"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-10-22"
     name: "Tanto-Dori. Do you know how to immobilize properly?"
     url: "https://www.instagram.com/p/B37gdr0JN6J/"
-    thumb: ""
+    thumb: "gallery-2019-10-22-tanto-dori-do-you-know-how-to-immobilize-344496"
     ref: "17921491828344496"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-10-22"
     name: "Tanto-Dori Kote-gaeshi by Michael Flynn Sensei at @aikidomusubi."
     url: "https://www.instagram.com/p/B37eOaJpdx6/"
-    thumb: ""
+    thumb: "gallery-2019-10-22-tanto-dori-kote-gaeshi-by-michael-flynn-697020"
     ref: "17847396847697020"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-10-22"
     name: "Past Saturday we had the privilege to welcome Michael Flynn Sensei in "
     url: "https://www.instagram.com/p/B37c9SGpYqT/"
-    thumb: ""
+    thumb: "gallery-2019-10-22-past-saturday-we-had-the-privilege-to-we-746112"
     ref: "17842653661746112"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-10-24"
     name: "本部道場で稽古後で大澤勇人師範と一緒に写真を撮りました！ 🙇‍♂️"
     url: "https://www.instagram.com/p/B4BRXWvp54Y/"
-    thumb: ""
+    thumb: "gallery-2019-10-24-本部道場で稽古後で大澤勇人師範と一緒に写真を撮りました-301628"
     ref: "17987402275301628"
-    tags: [training]
-    show: false
+    tags: [training, travel, japan]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-10-24"
     name: "本部道部で稽古後で宮本師範と一緒に写真を撮りました！ 🙇‍♂️"
     url: "https://www.instagram.com/p/B3_GVsioUUQ/"
-    thumb: ""
+    thumb: "gallery-2019-10-24-本部道部で稽古後で宮本師範と一緒に写真を撮りました-422813"
     ref: "17887810957422813"
-    tags: [training]
-    show: false
+    tags: [training, travel, japan]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-10-26"
     name: "本部道場で稽古後で道主と一緒に写真を撮りました！ 🙇‍♂️"
     url: "https://www.instagram.com/p/B4EivKoo-4J/"
-    thumb: ""
+    thumb: "gallery-2019-10-26-本部道場で稽古後で道主と一緒に写真を撮りました-274300"
     ref: "17994032305274300"
-    tags: [training]
-    show: false
+    tags: [training, travel, japan]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-10-27"
     name: "Momentos del examen de Nidan."
     url: "https://www.instagram.com/p/B4Iy9gfp9yO/"
-    thumb: ""
+    thumb: "gallery-2019-10-27-momentos-del-examen-de-nidan-537862"
     ref: "17862210394537862"
-    tags: [training]
-    show: false
+    tags: [exams]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-10-27"
     name: "Momentos del examen de Nidan."
     url: "https://www.instagram.com/p/B4Ix8R8pBPx/"
-    thumb: ""
+    thumb: "gallery-2019-10-27-momentos-del-examen-de-nidan-482268"
     ref: "17874327637482268"
-    tags: [training]
-    show: false
+    tags: [exams]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-10-27"
     name: "Momentos del examen de Nidan."
     url: "https://www.instagram.com/p/B4IxbaKpiN1/"
-    thumb: ""
+    thumb: "gallery-2019-10-27-momentos-del-examen-de-nidan-498739"
     ref: "17870750302498739"
-    tags: [training]
-    show: false
+    tags: [exams]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-10-27"
     name: "Momentos del examen de Nidan. Futari-dori!"
     url: "https://www.instagram.com/p/B4IwzTip5Nq/"
-    thumb: ""
+    thumb: "gallery-2019-10-27-momentos-del-examen-de-nidan-futari-dori-348808"
     ref: "17917410388348808"
-    tags: [training]
-    show: false
+    tags: [exams]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-10-27"
     name: "Koshi-nage en color!"
     url: "https://www.instagram.com/p/B4IwOT8J6jN/"
-    thumb: ""
+    thumb: "gallery-2019-10-27-koshi-nage-en-color-218802"
     ref: "18035091856218802"
-    tags: [training]
-    show: false
+    tags: [exams]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-10-27"
     name: "Momento de examen de Nidan. Futari-dori!"
     url: "https://www.instagram.com/p/B4IvT6RJM36/"
-    thumb: ""
+    thumb: "gallery-2019-10-27-momento-de-examen-de-nidan-futari-dori-395764"
     ref: "17898136339395764"
-    tags: [training]
-    show: false
+    tags: [exams]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-10-27"
     name: "Momentos del examen de Nidan. Jo-waza!"
     url: "https://www.instagram.com/p/B4IvFPup8dk/"
-    thumb: ""
+    thumb: "gallery-2019-10-27-momentos-del-examen-de-nidan-jo-waza-078851"
     ref: "18099148054078851"
-    tags: [training]
-    show: false
+    tags: [exams]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-11-02"
     name: "Ude garami (jiju-nage)"
     url: "https://www.instagram.com/p/B4XzssDp9fO/"
-    thumb: ""
+    thumb: "gallery-2019-11-02-ude-garami-jiju-nage-137110"
     ref: "18078826006137110"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-11-05"
     name: "Tanto-Dori Yokomen uchi Gokyo!!"
     url: "https://www.instagram.com/p/B4fZLbcpvba/"
-    thumb: ""
+    thumb: "gallery-2019-11-05-tanto-dori-yokomen-uchi-gokyo-709514"
     ref: "17849260192709514"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-11-09"
     name: "Tanto-Dori Shomen uchi Gokyo by Michael Flynn Shihan at Musubi Dojo."
     url: "https://www.instagram.com/p/B4pP-qOJnnR/"
-    thumb: ""
+    thumb: "gallery-2019-11-09-tanto-dori-shomen-uchi-gokyo-by-michael-624503"
     ref: "17854785985624503"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-11-15"
     name: "宮本先生、今年もバルセロナに来てくださりありがとございます！ 🙇‍♂️"
     url: "https://www.instagram.com/p/B446TN9JMiD/"
-    thumb: ""
+    thumb: "gallery-2019-11-15-宮本先生今年もバルセロナに来てくださりありがとございます-093053"
     ref: "18081112117093053"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-11-16"
     name: "Post"
     url: "https://www.instagram.com/p/B47kapwp_2U/"
-    thumb: ""
+    thumb: "gallery-2019-11-16-post-006357"
     ref: "18114657346006357"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-11-16"
     name: "Post"
     url: "https://www.instagram.com/p/B47jzUUJirV/"
-    thumb: ""
+    thumb: "gallery-2019-11-16-post-286546"
     ref: "17985363577286546"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-11-19"
     name: "Miyamoto Sensei, Nov. 2019 (INEFC, Barcelona)"
     url: "https://www.instagram.com/p/B5DSQyfJBRH/"
-    thumb: ""
+    thumb: "gallery-2019-11-19-miyamoto-sensei-nov-2019-inefc-barcelona-316844"
     ref: "17934020320316844"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-12-13"
     name: "Tanto-dori Hiji Kime Osae aka Rokkyo! Our regular training at Aikido M"
     url: "https://www.instagram.com/p/B6AlQCIJEgK/"
-    thumb: ""
+    thumb: "gallery-2019-12-13-tanto-dori-hiji-kime-osae-aka-rokkyo-our-223103"
     ref: "18041898289223103"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-12-15"
     name: "Entrega de diplomas Kyū y Dan! Felicidades a todos y todas! おめでとうございます"
     url: "https://www.instagram.com/p/B6GPsyBoYrJ/"
-    thumb: ""
+    thumb: "gallery-2019-12-15-entrega-de-diplomas-kyū-y-dan-felicidade-075653"
     ref: "18107372077075653"
-    tags: [training]
-    show: false
+    tags: [exams]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-12-15"
     name: "👯‍♀️"
     url: "https://www.instagram.com/p/B6GPPxuIG5N/"
-    thumb: ""
+    thumb: "gallery-2019-12-15-post-395436"
     ref: "17903868376395436"
-    tags: [training]
-    show: false
+    tags: [exams]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-12-15"
     name: "😁"
     url: "https://www.instagram.com/p/B6GO3i0I3TA/"
-    thumb: ""
+    thumb: "gallery-2019-12-15-post-017834"
     ref: "18121289908017834"
-    tags: [training]
-    show: false
+    tags: [exams]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-12-15"
     name: "😎"
     url: "https://www.instagram.com/p/B6GOrKQIwP4/"
-    thumb: ""
+    thumb: "gallery-2019-12-15-post-833158"
     ref: "17846041864833158"
-    tags: [training]
-    show: false
+    tags: [exams]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-12-15"
     name: "可愛いですね！ 😍 Like father, like son!"
     url: "https://www.instagram.com/p/B6GOWmoI4xU/"
-    thumb: ""
+    thumb: "gallery-2019-12-15-可愛いですね-like-father-like-son-493548"
     ref: "17878180933493548"
-    tags: [training]
-    show: false
+    tags: [exams]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-12-15"
     name: "😉"
     url: "https://www.instagram.com/p/B6GN8yvIsTh/"
-    thumb: ""
+    thumb: "gallery-2019-12-15-post-854601"
     ref: "17844452284854601"
-    tags: [training]
-    show: false
+    tags: [exams]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-12-24"
     name: "Dan Grade examinations at @ Dojo Central Arashi Group! アラシ・グループの道場で昇段審"
     url: "https://www.instagram.com/p/B6cAZzkJrTa/"
-    thumb: ""
+    thumb: "gallery-2019-12-24-dan-grade-examinations-at-dojo-central-a-466109"
     ref: "17884767097466109"
-    tags: [training]
-    show: false
+    tags: [exams]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-12-24"
     name: "Dan Grade examinations at @ Dojo Central Arashi Group! アラシ・グループの道場で昇段審"
     url: "https://www.instagram.com/p/B6cAKJCJiWC/"
-    thumb: ""
+    thumb: "gallery-2019-12-24-dan-grade-examinations-at-dojo-central-a-196178"
     ref: "18067493059196178"
-    tags: [training]
-    show: false
+    tags: [exams]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-12-24"
     name: "Dan Grade examinations at @ Dojo Central Arashi Group! アラシ・グループの道場で昇段審"
     url: "https://www.instagram.com/p/B6cAD-UJMZp/"
-    thumb: ""
+    thumb: "gallery-2019-12-24-dan-grade-examinations-at-dojo-central-a-744796"
     ref: "17851620256744796"
-    tags: [training]
-    show: false
+    tags: [exams]
+    show: true
+    seen: true
   - type: post
     date_iso: "2019-12-24"
     name: "Taninzugake (多人数掛) y Randori (乱取)! @pablo_martin_martin at his best! パ"
     url: "https://www.instagram.com/p/B6b_oy8Jyna/"
     thumb: ""
     ref: "18098569555099913"
-    tags: [training]
+    tags: [exams]
     show: false
+    seen: true
   - type: post
     date_iso: "2019-12-24"
     name: "Jō-dori (杖取), Jō-nage (杖投), Tachi-dori (太刀取)! @pablo_martin_martin at "
     url: "https://www.instagram.com/p/B6b_FnjJpl3/"
     thumb: ""
     ref: "18045264412213203"
-    tags: [training]
+    tags: [exams]
     show: false
+    seen: true
   - type: post
     date_iso: "2019-12-24"
     name: "Jiyū-waza (自由技)! @pablo_martin_martin at his best! パブロ先生はその試験ときが全盛でした！"
     url: "https://www.instagram.com/p/B6b-yHZpLu2/"
     thumb: ""
     ref: "17856431491687150"
-    tags: [training]
+    tags: [exams]
     show: false
+    seen: true
   - type: post
     date_iso: "2019-12-24"
     name: "Kokyū-hō (呼吸法)! @pablo_martin_martin at his best! パブロ先生はその試験ときが全盛でした！ "
     url: "https://www.instagram.com/p/B6b-YpYpw2U/"
     thumb: ""
     ref: "18121034626011128"
-    tags: [training]
+    tags: [exams]
     show: false
+    seen: true
   - type: post
     date_iso: "2019-12-24"
     name: "@pablo_martin_martin at his best! パブロ先生はその試験ときが全盛でした！ Dan Grade examin"
     url: "https://www.instagram.com/p/B6b-IMjJx-t/"
     thumb: ""
     ref: "17848554406803956"
-    tags: [training]
+    tags: [exams]
     show: false
+    seen: true
   - type: post
     date_iso: "2019-12-24"
     name: "@pablo_martin_martin at his best! パブロ先生はその試験ときが全盛でした！ Dan Grade examin"
     url: "https://www.instagram.com/p/B6b9a3ZpTQa/"
     thumb: ""
     ref: "17850094075776831"
-    tags: [training]
+    tags: [exams]
     show: false
+    seen: true
   - type: post
     date_iso: "2019-12-24"
     name: "Jiyū-waza (自由技) y Futari-gake (二人掛) 💦💦 Dan Grade examinations at @ Doj"
     url: "https://www.instagram.com/p/B6b9GiDJ3xf/"
     thumb: ""
     ref: "17847029302840661"
-    tags: [training]
+    tags: [exams]
     show: false
+    seen: true
   - type: post
     date_iso: "2019-12-24"
     name: "Nage-waza (投技) 💦 Dan Grade examinations at @ Dojo Central Arashi Group"
     url: "https://www.instagram.com/p/B6b83UzpLVD/"
     thumb: ""
     ref: "17883003544473423"
-    tags: [training]
+    tags: [exams]
     show: false
+    seen: true
   - type: post
     date_iso: "2019-12-24"
     name: "Tachi-waza Shōmen-uchi Katame-waza (立技 正面打 固技) bajo la atenta mirada d"
     url: "https://www.instagram.com/p/B6b8k2yJDaS/"
     thumb: ""
     ref: "18075469732162110"
-    tags: [training]
+    tags: [exams]
     show: false
+    seen: true
   - type: post
     date_iso: "2019-12-24"
     name: "Suwari-waza Shōmen-uchi Katame-waza (座技 正面打 固技) bajo la atenta mirada "
     url: "https://www.instagram.com/p/B6b8DNjJBU2/"
     thumb: ""
     ref: "17909624080378981"
-    tags: [training]
+    tags: [exams]
     show: false
+    seen: true
   - type: post
     date_iso: "2019-12-24"
     name: "Dan Grade examinations at @ Dojo Central Arashi Group! アラシ・グループの道場で昇段審"
     url: "https://www.instagram.com/p/B6b7-Tfp6uJ/"
     thumb: ""
     ref: "17922452410361006"
-    tags: [training]
+    tags: [exams]
     show: false
+    seen: true
   - type: post
     date_iso: "2020-01-02"
     name: "Karate Infantil los martes y los viernes de 18:00 a 19:00! 🥋"
     url: "https://www.instagram.com/p/B60nrUkImNn/"
-    thumb: ""
+    thumb: "gallery-2020-01-02-karate-infantil-los-martes-y-los-viernes-445767"
     ref: "17891121079445767"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-01-08"
     name: "José Luís Zafra is tough but careful and attentive! 🐅 稽古を終わったら、もうお楽しみな"
     url: "https://www.instagram.com/p/B7ED9sMoshT/"
-    thumb: ""
+    thumb: "gallery-2020-01-08-josé-luís-zafra-is-tough-but-careful-and-130155"
     ref: "18086068453130155"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-01-08"
     name: "Taron Hamkhiyan has no mercy! 💥 Having fun after regular training. 😁 稽"
     url: "https://www.instagram.com/p/B7ECryoIWGJ/"
-    thumb: ""
+    thumb: "gallery-2020-01-08-taron-hamkhiyan-has-no-mercy-having-fun-441524"
     ref: "17894848471441524"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-01-15"
     name: "Kids, don't try this at home. Part 3."
     url: "https://www.instagram.com/p/B7WEsGLJ8Pl/"
-    thumb: ""
+    thumb: "gallery-2020-01-15-kids-dont-try-this-at-home-part-3-255266"
     ref: "18021341920255266"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-01-15"
     name: "Kids, don't try this at home. Part 2. 危ない！"
     url: "https://www.instagram.com/p/B7WEN2cJL4-/"
-    thumb: ""
+    thumb: "gallery-2020-01-15-kids-dont-try-this-at-home-part-2-危ない-356112"
     ref: "17928194350356112"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-01-15"
     name: "Kids, don't try this at home. 気をつけてください！"
     url: "https://www.instagram.com/p/B7WDcbwJGic/"
-    thumb: ""
+    thumb: "gallery-2020-01-15-kids-dont-try-this-at-home-気をつけてください-069450"
     ref: "18117576271069450"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-02-02"
     name: "Increíble clase impartida por Ricard Coll (4.º Dan Aikikai). ¡Muchas g"
     url: "https://www.instagram.com/p/B8EbXVdp292/"
-    thumb: ""
+    thumb: "gallery-2020-02-02-increíble-clase-impartida-por-ricard-col-355364"
     ref: "17930221015355364"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-02-05"
     name: "Clases de Aikido todas las tardes de lunes a viernes y los sábados por"
     url: "https://www.instagram.com/p/B8LzI_koIFN/"
-    thumb: ""
+    thumb: "gallery-2020-02-05-clases-de-aikido-todas-las-tardes-de-lun-822098"
     ref: "17852603335822098"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-02-11"
     name: "パブロ・マルティン先生は自由技を説明します！ Jiyū-waza by @pablo_martin_martin 💥"
     url: "https://www.instagram.com/p/B8bYPZtIUep/"
-    thumb: ""
+    thumb: "gallery-2020-02-11-パブロマルティン先生は自由技を説明します-jiyū-waza-by-pablo-324483"
     ref: "17944307992324483"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-02-12"
     name: "入身投！Irimi-nage! ⬇️↘️➡️🅰️🅱️"
     url: "https://www.instagram.com/p/B8eSiUbJadl/"
-    thumb: ""
+    thumb: "gallery-2020-02-12-入身投irimi-nage-943855"
     ref: "17845988533943855"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-02-15"
     name: "It's been a great class, a great lesson, and great advice for life! Th"
     url: "https://www.instagram.com/p/B8l1A4OJ7_1/"
-    thumb: ""
+    thumb: "gallery-2020-02-15-its-been-a-great-class-a-great-lesson-an-426200"
     ref: "17903115172426200"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-02-15"
     name: "Mike Flynn Shihan on Shiho-giri (四方切) and directions! ⬅️↙️⬇️↘️➡️🅰️🅱️"
     url: "https://www.instagram.com/p/B8l0YJuJINC/"
-    thumb: ""
+    thumb: "gallery-2020-02-15-mike-flynn-shihan-on-shiho-giri-四方切-and-170987"
     ref: "18076667980170987"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-02-15"
     name: "This morning was about Ikkyo (一教) and Shiho-giri (四方切). And directions"
     url: "https://www.instagram.com/p/B8lyzPGJc4k/"
-    thumb: ""
+    thumb: "gallery-2020-02-15-this-morning-was-about-ikkyo-一教-and-shih-672740"
     ref: "17863424434672740"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-02-16"
     name: "Astounding Seminar! Thank you very much, Flynn Sensei! 🙇‍♂️🙇🙇‍♀️"
     url: "https://www.instagram.com/p/B8oN6E7IR7E/"
-    thumb: ""
+    thumb: "gallery-2020-02-16-astounding-seminar-thank-you-very-much-f-325046"
     ref: "17942168485325046"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-02-17"
     name: "Great people on the mat at Mike Flynn's seminar in Badalona! 💥"
     url: "https://www.instagram.com/p/B8q91t-IhQ4/"
-    thumb: ""
+    thumb: "gallery-2020-02-17-great-people-on-the-mat-at-mike-flynns-s-936941"
     ref: "17847508768936941"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-02-18"
     name: "Tachi-waza Shōmen-uchi Irimi-nage Ura (立技 正面打 入身投 裏)! 💥"
     url: "https://www.instagram.com/p/B8t42RQJRmU/"
-    thumb: ""
+    thumb: "gallery-2020-02-18-tachi-waza-shōmen-uchi-irimi-nage-ura-立技-827400"
     ref: "17852883304827400"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-02-20"
     name: "No ukes were hurt during this training. 😊"
     url: "https://www.instagram.com/p/B8yyXCoIAo0/"
-    thumb: ""
+    thumb: "gallery-2020-02-20-no-ukes-were-hurt-during-this-training-327732"
     ref: "17941130512327732"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-02-20"
     name: "練習がどんなに厳しくても、私たちは決して泣きません！💪"
     url: "https://www.instagram.com/p/B8ywPm0oAwD/"
-    thumb: ""
+    thumb: "gallery-2020-02-20-練習がどんなに厳しくても私たちは決して泣きません-885703"
     ref: "17850830104885703"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-03-01"
     name: "正面打! ⚡️"
     url: "https://www.instagram.com/p/B9MgmaxoPsj/"
-    thumb: ""
+    thumb: "gallery-2020-03-01-正面打-068779"
     ref: "18123520921068779"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-03-01"
     name: "呼吸投! 💥"
     url: "https://www.instagram.com/p/B9MgMhqIltr/"
-    thumb: ""
+    thumb: "gallery-2020-03-01-呼吸投-666544"
     ref: "17865903904666544"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-03-01"
     name: "呼吸法! 🌬"
     url: "https://www.instagram.com/p/B9Mf0nBolwa/"
-    thumb: ""
+    thumb: "gallery-2020-03-01-呼吸法-017011"
     ref: "18134109940017011"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-03-01"
     name: "¡Muchas gracias a todos y todas! Ha sido un lujo poder tener a Xavi Se"
     url: "https://www.instagram.com/p/B9MeVBmIFJe/"
-    thumb: ""
+    thumb: "gallery-2020-03-01-muchas-gracias-a-todos-y-todas-ha-sido-u-348453"
     ref: "17935509985348453"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-03-03"
     name: "押技! ✨"
     url: "https://www.instagram.com/p/B9Rg_DpJfr9/"
-    thumb: ""
+    thumb: "gallery-2020-03-03-押技-652888"
     ref: "17867843332652888"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-03-03"
     name: "正面打! ⚡️"
     url: "https://www.instagram.com/p/B9RgfQZJ0yJ/"
-    thumb: ""
+    thumb: "gallery-2020-03-03-正面打-629309"
     ref: "17867656924629309"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-03-03"
     name: "呼吸法! 🌬"
     url: "https://www.instagram.com/p/B9RgQL8JTSa/"
-    thumb: ""
+    thumb: "gallery-2020-03-03-呼吸法-218196"
     ref: "18051961807218196"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-03-05"
     name: "武器技! 🏒"
     url: "https://www.instagram.com/p/B9WrqWSpYm_/"
-    thumb: ""
+    thumb: "gallery-2020-03-05-武器技-123023"
     ref: "18102010102123023"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-03-05"
     name: "二教! 💫"
     url: "https://www.instagram.com/p/B9WrWL9J-LA/"
-    thumb: ""
+    thumb: "gallery-2020-03-05-二教-914269"
     ref: "17848511575914269"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-03-05"
     name: "入身投! 🌊"
     url: "https://www.instagram.com/p/B9WrF_apZUf/"
-    thumb: ""
+    thumb: "gallery-2020-03-05-入身投-633595"
     ref: "17867918548633595"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
-    date_iso: "2020-05-31"
+    date_iso: "2016-06-19"
     name: "💦"
     url: "https://www.instagram.com/p/CA27pqUIAIc/"
-    thumb: ""
+    thumb: "gallery-2016-06-19-post-587985"
     ref: "17884818829587985"
-    tags: [training]
-    show: false
+    tags: [demo]
+    show: true
+    seen: true
+    posted: "2020-05-31"
   - type: post
-    date_iso: "2020-05-31"
+    date_iso: "2016-06-19"
     name: "💥"
     url: "https://www.instagram.com/p/CA27esNINHt/"
-    thumb: ""
+    thumb: "gallery-2016-06-19-post-009677"
     ref: "17855427335009677"
-    tags: [training]
-    show: false
+    tags: [demo]
+    show: true
+    seen: true
+    posted: "2020-05-31"
   - type: post
     date_iso: "2020-06-20"
     name: "道場の正面 (上座)。🍶゙゙ 📸 @albaserra__"
     url: "https://www.instagram.com/p/CBqY-ujIebp/"
-    thumb: ""
+    thumb: "gallery-2020-06-20-道場の正面-上座-albaserra-943980"
     ref: "17860564654943980"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-06-21"
     name: "Haishin Undō/Seshin Undō (背伸運動). 🅰️🅱️⬆️↗️➡️゙゙ 📸 @albaserra__"
     url: "https://www.instagram.com/p/CBs8DpsogPl/"
-    thumb: ""
+    thumb: "gallery-2020-06-21-haishin-undoseshin-undo-背伸運動-albaserra-103763"
     ref: "18122942104103763"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-06-22"
     name: "Domingo aka Diumenge aka Dominick!💥 Hanmi-handachi Kiri-otoshi (半身半立切落"
     url: "https://www.instagram.com/p/CBvJriLoBQp/"
-    thumb: ""
+    thumb: "gallery-2020-06-22-domingo-aka-diumenge-aka-dominick-hanmi-268208"
     ref: "17842464116268208"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-06-23"
     name: "Irimi-nage con mucho ímpetu! 🌪゙゙ 📸 @albaserra__"
     url: "https://www.instagram.com/p/CByEPpvIjiP/"
-    thumb: ""
+    thumb: "gallery-2020-06-23-irimi-nage-con-mucho-impetu-albaserra-765506"
     ref: "17873070244765506"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-06-25"
     name: "Hanmi-handachi Shihō-nage! 半身半立 四方投! ➡️↩️⬅️↪️⤵️ 📸 @albaserra__"
     url: "https://www.instagram.com/p/CB2rH6MoLbk/"
-    thumb: ""
+    thumb: "gallery-2020-06-25-hanmi-handachi-shihō-nage-半身半立-四方投-albas-291132"
     ref: "18000112801291132"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-06-28"
     name: "🤸‍♀️🤸🤸‍♂️゙゙゙゙ 📸 @albaserra__"
     url: "https://www.instagram.com/p/CB-x8ZWop40/"
-    thumb: ""
+    thumb: "gallery-2020-06-28-albaserra-492626"
     ref: "17902051495492626"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-07-01"
     name: "Irimi-nage No Mercy! ⬅️↙️⬇️💥゙゙ 📸 @albaserra__"
     url: "https://www.instagram.com/p/CCGhfduJ3aJ/"
-    thumb: ""
+    thumb: "gallery-2020-07-01-irimi-nage-no-mercy-albaserra-588428"
     ref: "17888268973588428"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-07-04"
     name: "Hanmi-handachi Waza!゙゙ 📸 @albaserra__"
     url: "https://www.instagram.com/p/CCOd26_oYuS/"
-    thumb: ""
+    thumb: "gallery-2020-07-04-hanmi-handachi-waza-albaserra-767614"
     ref: "17872933294767614"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-07-06"
     name: "Hanmi-handachi Shihō-nage! 🔢💥゙゙ 📸 @albaserra__"
     url: "https://www.instagram.com/p/CCTeSHhIuwU/"
-    thumb: ""
+    thumb: "gallery-2020-07-06-hanmi-handachi-shiho-nage-albaserra-235251"
     ref: "17845500986235251"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-07-07"
     name: "固技! 🦅゙゙ 📸 @albaserra__"
     url: "https://www.instagram.com/p/CCVylpIImyr/"
-    thumb: ""
+    thumb: "gallery-2020-07-07-固技-albaserra-220580"
     ref: "18067609894220580"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-07-09"
     name: "豪爽 (gōsō).゙うそう 📸 @albaserra__"
     url: "https://www.instagram.com/p/CCbVsynILye/"
-    thumb: ""
+    thumb: "gallery-2020-07-09-豪爽-gosoうそう-albaserra-283272"
     ref: "18019119484283272"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-07-12"
     name: "光 (hikari) or if Johannes Vermeer painted an interior scene in our doj"
     url: "https://www.instagram.com/p/CCijns5IKHO/"
-    thumb: ""
+    thumb: "gallery-2020-07-12-光-hikari-or-if-johannes-vermeer-painted-067473"
     ref: "17857596605067473"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-07-14"
     name: "Ukemi basics 🔂 📸 @albaserra__"
@@ -1706,6 +1864,7 @@ entries:
     ref: "17907973402471029"
     tags: [training]
     show: false
+    seen: true
   - type: post
     date_iso: "2020-07-15"
     name: "Ikkyō (一教) ➡️↘️⬇️ 📸 @albaserra__"
@@ -1714,6 +1873,7 @@ entries:
     ref: "18029182693276164"
     tags: [training]
     show: false
+    seen: true
   - type: post
     date_iso: "2020-07-16"
     name: "Kote-gaeshi-nage (小手返投) ⬅️➡️🅱️ 📸 @albaserra__"
@@ -1722,422 +1882,509 @@ entries:
     ref: "17857251164055394"
     tags: [training]
     show: false
+    seen: true
   - type: post
-    date_iso: "2020-07-21"
+    date_iso: "2016-06-19"
     name: "Pedro Fortes petándolo! 🔥"
     url: "https://www.instagram.com/p/CC6BTi8I2Pk/"
-    thumb: ""
+    thumb: "gallery-2016-06-19-pedro-fortes-petándolo-767014"
     ref: "17874867355767014"
-    tags: [training]
-    show: false
+    tags: [demo]
+    show: true
+    seen: true
+    posted: "2020-07-21"
   - type: post
-    date_iso: "2020-07-22"
+    date_iso: "2016-06-19"
     name: "立法 呼吸法! Rippō Kokyū-hō! ペドロ・フォルテス! Pedro Fortes! 🐲"
     url: "https://www.instagram.com/p/CC8ZXlEo9-M/"
-    thumb: ""
+    thumb: "gallery-2016-06-19-立法-呼吸法-rippo-kokyu-ho-ヘトロフォルテス-pedro-for-431099"
     ref: "17921534581431099"
-    tags: [training]
-    show: false
+    tags: [demo]
+    show: true
+    seen: true
+    posted: "2020-07-22"
   - type: post
-    date_iso: "2020-07-24"
+    date_iso: "2016-06-19"
     name: "Alberto Sancho! 🥤 アルベルト先輩はコカコーラを読むだけです！"
     url: "https://www.instagram.com/p/CDB34WroFpI/"
-    thumb: ""
+    thumb: "gallery-2016-06-19-alberto-sancho-アルベルト先輩はコカコーラを読むだけです-559693"
     ref: "17893098868559693"
-    tags: [training]
-    show: false
+    tags: [demo]
+    show: true
+    seen: true
+    posted: "2020-07-24"
   - type: post
-    date_iso: "2020-07-25"
+    date_iso: "2016-06-19"
     name: "Alberto Sancho! ⚡️"
     url: "https://www.instagram.com/p/CDD92M2omCx/"
-    thumb: ""
+    thumb: "gallery-2016-06-19-alberto-sancho-102879"
     ref: "18127399984102879"
-    tags: [training]
-    show: false
+    tags: [demo]
+    show: true
+    seen: true
+    posted: "2020-07-25"
   - type: post
-    date_iso: "2020-07-26"
+    date_iso: "2016-06-19"
     name: "Kote-gaeshi! ⬅️➡️↩️🅱️"
     url: "https://www.instagram.com/p/CDGox2jJAeO/"
-    thumb: ""
+    thumb: "gallery-2016-06-19-kote-gaeshi-243808"
     ref: "17848247237243808"
-    tags: [training]
-    show: false
+    tags: [demo]
+    show: true
+    seen: true
+    posted: "2020-07-26"
   - type: post
-    date_iso: "2020-07-27"
+    date_iso: "2016-06-19"
     name: "Irimi-nage! 入身投！Pablo Martín! パブロ・マルティン！🌪"
     url: "https://www.instagram.com/p/CDJYdlep2tB/"
-    thumb: ""
+    thumb: "gallery-2016-06-19-irimi-nage-入身投pablo-martín-パブロマルティン-236626"
     ref: "18064042105236626"
-    tags: [training]
-    show: false
+    tags: [demo]
+    show: true
+    seen: true
+    posted: "2020-07-27"
   - type: post
     date_iso: "2020-07-28"
     name: "Aikido classes for children! 🐣 For boys and girls from 6 to 12 years o"
     url: "https://www.instagram.com/p/CDLhr02Ia1d/"
-    thumb: ""
+    thumb: "gallery-2020-07-28-aikido-classes-for-children-for-boys-and-548449"
     ref: "17896852951548449"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-07-29"
     name: "Aikido classes for children! 🐣 For boys and girls from 6 to 12 years o"
     url: "https://www.instagram.com/p/CDOezMUp6Lf/"
-    thumb: ""
+    thumb: "gallery-2020-07-29-aikido-classes-for-children-for-boys-and-725612"
     ref: "17881338628725612"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-07-30"
     name: "Classes d'Aikido per a nens i nenes! 🐣 A partir dels 6 fins els 12 any"
     url: "https://www.instagram.com/p/CDRKjZfohIe/"
-    thumb: ""
+    thumb: "gallery-2020-07-30-classes-daikido-per-a-nens-i-nenes-a-par-798856"
     ref: "17873945980798856"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-07-31"
     name: "Pablo Martín @ Aikido Musubi! パブロ・マルティン先生 @ 合気道産靈。Tsuki Kaiten-nage"
     url: "https://www.instagram.com/p/CDTueHspDQj/"
-    thumb: ""
+    thumb: "gallery-2020-07-31-pablo-martin-aikido-musubi-ハフロマルティン先生-合気-084280"
     ref: "18113768053084280"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-08-01"
     name: "Pablo Martín @ Aikido Musubi! パブロ・マルティン先生 @ 合気道産靈。Tsuki Irimi-nage "
     url: "https://www.instagram.com/p/CDWPx85Jb1g/"
-    thumb: ""
+    thumb: "gallery-2020-08-01-pablo-martin-aikido-musubi-ハフロマルティン先生-合気-260479"
     ref: "18045333730260479"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-08-02"
     name: "Pablo Martín @ Aikido Musubi! パブロ・マルティン先生 @ 合気道産靈。Shōmen-uchi Irimi"
     url: "https://www.instagram.com/p/CDY5f2XoWAb/"
-    thumb: ""
+    thumb: "gallery-2020-08-02-pablo-martin-aikido-musubi-ハフロマルティン先生-合気-955598"
     ref: "17864605351955598"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
-    date_iso: "2020-08-03"
+    date_iso: "2013-11-11"
     name: "Osawa H. Shihan (大澤 勇人) posee una elegancia natural que se refleja en "
     url: "https://www.instagram.com/p/CDbBGEgoLxm/"
-    thumb: ""
+    thumb: "gallery-2013-11-11-osawa-h-shihan-大澤-勇人-posee-una-elegancia-655317"
     ref: "17885037241655317"
-    tags: [training]
-    show: false
+    tags: [seminar, travel]
+    show: true
+    seen: true
+    posted: "2020-08-03"
   - type: post
-    date_iso: "2020-08-04"
+    date_iso: "2013-11-11"
     name: "Osawa H. Shihan exige a sus estudiantes precisión en la postura, empez"
     url: "https://www.instagram.com/p/CDd3nj-Jse6/"
-    thumb: ""
+    thumb: "gallery-2013-11-11-osawa-h-shihan-exige-a-sus-estudiantes-p-252176"
     ref: "17848502006252176"
-    tags: [training]
-    show: false
+    tags: [seminar, travel]
+    show: true
+    seen: true
+    posted: "2020-08-04"
   - type: post
-    date_iso: "2020-08-05"
+    date_iso: "2013-11-11"
     name: "Osawa H. Shihan nos demuestra la importancia de mantener una velocidad"
     url: "https://www.instagram.com/p/CDgmPSLoajC/"
-    thumb: ""
+    thumb: "gallery-2013-11-11-osawa-h-shihan-nos-demuestra-la-importan-089986"
     ref: "18114420898089986"
-    tags: [training]
-    show: false
+    tags: [seminar, travel]
+    show: true
+    seen: true
+    posted: "2020-08-05"
   - type: post
-    date_iso: "2020-08-06"
+    date_iso: "2013-11-11"
     name: "Liberar el cuerpo de tensión a través de la relajación y la respiració"
     url: "https://www.instagram.com/p/CDjNgPapYhB/"
-    thumb: ""
+    thumb: "gallery-2013-11-11-liberar-el-cuerpo-de-tensión-a-través-de-541554"
     ref: "17898098623541554"
-    tags: [training]
-    show: false
+    tags: [seminar, travel]
+    show: true
+    seen: true
+    posted: "2020-08-06"
   - type: post
     date_iso: "2020-08-07"
     name: "Miyamoto T. Shihan (宮本 鶴蔵) showing Shihō-giri (四方切り). @ Barcelona, 20"
     url: "https://www.instagram.com/p/CDlifIPpEq8/"
-    thumb: ""
+    thumb: "gallery-2020-08-07-miyamoto-t-shihan-宮本-鶴蔵-showing-shiho-gi-013009"
     ref: "17863203371013009"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-08-08"
     name: "Miyamoto T. Shihan (宮本 鶴蔵) showing Shihō-giri (四方切り) from Gyaku-hanmi"
     url: "https://www.instagram.com/p/CDn2AUzJ1vp/"
-    thumb: ""
+    thumb: "gallery-2020-08-08-miyamoto-t-shihan-宮本-鶴蔵-showing-shiho-gi-458590"
     ref: "17914768183458590"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-08-09"
     name: "Miyamoto T. Shihan (宮本 鶴蔵) showing Shihō-giri (四方切り) with Christian M"
     url: "https://www.instagram.com/p/CDqwLAGIAsv/"
-    thumb: ""
+    thumb: "gallery-2020-08-09-miyamoto-t-shihan-宮本-鶴蔵-showing-shiho-gi-107098"
     ref: "17858111408107098"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-08-10"
     name: "Miyamoto T. Shihan (宮本 鶴蔵) showing Shihō-nage (四方投げ) from Gyaku-hanmi"
     url: "https://www.instagram.com/p/CDtbozGIDEM/"
-    thumb: ""
+    thumb: "gallery-2020-08-10-miyamoto-t-shihan-宮本-鶴蔵-showing-shiho-na-690210"
     ref: "17883766792690210"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
   - type: post
-    date_iso: "2020-08-11"
+    date_iso: "2019-10-22"
     name: "礼 (Rei) 🙇‍♀️🙇🙇‍♂️ Mike Flynn Shihan 7.th Dan Aikikai @ Barcelona, 2019"
     url: "https://www.instagram.com/p/CDv4QvspvSX/"
-    thumb: ""
+    thumb: "gallery-2019-10-22-礼-rei-mike-flynn-shihan-7th-dan-aikikai-069738"
     ref: "17861227820069738"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
+    posted: "2020-08-11"
   - type: post
-    date_iso: "2020-08-12"
+    date_iso: "2019-10-22"
     name: "短刀取り (tantō-dori) 💥 Mike Flynn Shihan 7.th Dan Aikikai @ Barcelona, 20"
     url: "https://www.instagram.com/p/CDygk4qozYl/"
-    thumb: ""
+    thumb: "gallery-2019-10-22-短刀取り-tantō-dori-mike-flynn-shihan-7th-da-032009"
     ref: "17863126148032009"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
+    posted: "2020-08-12"
   - type: post
-    date_iso: "2020-08-13"
+    date_iso: "2019-10-22"
     name: "短刀取り (tantō-dori) 送襟絞 (okuri-eri-jime) 🐍 Mike Flynn Shihan with @carl"
     url: "https://www.instagram.com/p/CD1I4ayJpl3/"
-    thumb: ""
+    thumb: "gallery-2019-10-22-短刀取り-tanto-dori-送襟絞-okuri-eri-jime-mike-952261"
     ref: "17867038111952261"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
+    posted: "2020-08-13"
   - type: post
-    date_iso: "2020-08-14"
+    date_iso: "2019-10-22"
     name: "短刀取り (tantō-dori) 💥 Shihan 7.th Dan Aikikai @ Barcelona, 2019"
     url: "https://www.instagram.com/p/CD3slIxIGGT/"
-    thumb: ""
+    thumb: "gallery-2019-10-22-短刀取り-tanto-dori-shihan-7th-dan-aikikai-b-075161"
     ref: "18143765674075161"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
+    posted: "2020-08-14"
   - type: post
-    date_iso: "2020-08-15"
+    date_iso: "2019-10-22"
     name: "腰投 (koshi-nage) performed by @jl.zafragarcia during his 2nd Dan grade "
     url: "https://www.instagram.com/p/CD6Q1JYIeRK/"
-    thumb: ""
+    thumb: "gallery-2019-10-22-腰投-koshi-nage-performed-by-jlzafragarcia-311784"
     ref: "17845920299311784"
-    tags: [training]
-    show: false
+    tags: [exams]
+    show: true
+    seen: true
+    posted: "2020-08-15"
   - type: post
-    date_iso: "2020-08-16"
+    date_iso: "2019-10-22"
     name: "座技 入身投 (suwari-waza irimi-nage) performed by @maydihorse during his 2n"
     url: "https://www.instagram.com/p/CD87WYaIEGk/"
-    thumb: ""
+    thumb: "gallery-2019-10-22-座技-入身投-suwari-waza-irimi-nage-performed-191914"
     ref: "17853240056191914"
-    tags: [training]
-    show: false
+    tags: [exams]
+    show: true
+    seen: true
+    posted: "2020-08-16"
   - type: post
-    date_iso: "2020-08-17"
+    date_iso: "2019-10-22"
     name: "座技 一教 (suwari-waza ikkyō) performed by @de_bolson_cerrado during his 2"
     url: "https://www.instagram.com/p/CD_ckb_JDJo/"
-    thumb: ""
+    thumb: "gallery-2019-10-22-座技-一教-suwari-waza-ikkyō-performed-by-de-282955"
     ref: "18025761730282955"
-    tags: [training]
-    show: false
+    tags: [exams]
+    show: true
+    seen: true
+    posted: "2020-08-17"
   - type: post
-    date_iso: "2020-08-18"
+    date_iso: "2019-10-22"
     name: "座技 一教 (suwari-waza ikkyō) performed by Alberto Sancho (aka Alan Silve"
     url: "https://www.instagram.com/p/CEB3n4DpXzH/"
-    thumb: ""
+    thumb: "gallery-2019-10-22-座技-一教-suwari-waza-ikkyo-performed-by-alb-788928"
     ref: "17876061553788928"
-    tags: [training]
-    show: false
+    tags: [exams]
+    show: true
+    seen: true
+    posted: "2020-08-18"
   - type: post
-    date_iso: "2020-08-19"
+    date_iso: "2019-10-22"
     name: "Shihan 7th Dan Aikikai @ Barcelona, 2019"
     url: "https://www.instagram.com/p/CEEuKKIo0Yl/"
-    thumb: ""
+    thumb: "gallery-2019-10-22-shihan-7th-dan-aikikai-barcelona-2019-194106"
     ref: "18100658632194106"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
+    posted: "2020-08-19"
   - type: post
-    date_iso: "2020-08-20"
+    date_iso: "2019-10-22"
     name: "Shihan 7th Dan Aikikai @ Barcelona, 2019"
     url: "https://www.instagram.com/p/CEHUwn9JJcf/"
-    thumb: ""
+    thumb: "gallery-2019-10-22-shihan-7th-dan-aikikai-barcelona-2019-003896"
     ref: "17865766082003896"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
+    posted: "2020-08-20"
   - type: post
-    date_iso: "2020-08-21"
+    date_iso: "2014-05-22"
     name: "Pepe (取) and David (受) giving their all for Irimi-nage! 🦾 @aikidomusub"
     url: "https://www.instagram.com/p/CEJ4fgeJ85o/"
-    thumb: ""
+    thumb: "gallery-2014-05-22-pepe-取-and-david-受-giving-their-all-for-129808"
     ref: "17857678961129808"
-    tags: [training]
-    show: false
+    tags: [demo]
+    show: true
+    seen: true
+    posted: "2020-08-21"
   - type: post
-    date_iso: "2020-08-21"
+    date_iso: "2014-05-22"
     name: "Pepe (取) and David (受) giving their all for Irimi-nage! 🦾 @aikidomusub"
     url: "https://www.instagram.com/p/CEJ4WTDpysz/"
-    thumb: ""
+    thumb: "gallery-2014-05-22-pepe-取-and-david-受-giving-their-all-for-902453"
     ref: "17870109799902453"
-    tags: [training]
-    show: false
+    tags: [demo]
+    show: true
+    seen: true
+    posted: "2020-08-21"
   - type: post
-    date_iso: "2020-08-22"
+    date_iso: "2014-05-22"
     name: "Taron (取) and Jose (受) giving their all for Irimi-nage! 🦾 @aikidomusub"
     url: "https://www.instagram.com/p/CEMZSmgIxLl/"
-    thumb: ""
+    thumb: "gallery-2014-05-22-taron-取-and-jose-受-giving-their-all-for-147177"
     ref: "18112406515147177"
-    tags: [training]
-    show: false
+    tags: [demo]
+    show: true
+    seen: true
+    posted: "2020-08-22"
   - type: post
-    date_iso: "2020-08-22"
+    date_iso: "2014-05-22"
     name: "Taron (取) and Jose (受) giving their all for Irimi-nage! 🦾 @aikidomusub"
     url: "https://www.instagram.com/p/CEMZNfWIf6f/"
-    thumb: ""
+    thumb: "gallery-2014-05-22-taron-取-and-jose-受-giving-their-all-for-189134"
     ref: "17854646054189134"
-    tags: [training]
-    show: false
+    tags: [demo]
+    show: true
+    seen: true
+    posted: "2020-08-22"
   - type: post
-    date_iso: "2020-08-23"
+    date_iso: "2014-05-22"
     name: "Pedro Fortes (取) and David Ballara (受) giving their all! 🌪 @aikidomusu"
     url: "https://www.instagram.com/p/CEO7hxcoYGf/"
-    thumb: ""
+    thumb: "gallery-2014-05-22-pedro-fortes-取-and-david-ballara-受-givin-077221"
     ref: "17860174952077221"
-    tags: [training]
-    show: false
+    tags: [demo]
+    show: true
+    seen: true
+    posted: "2020-08-23"
   - type: post
-    date_iso: "2020-08-23"
+    date_iso: "2014-05-22"
     name: "Pedro Fortes (取) and David Ballara (受) giving their all! 🌪 @aikidomusu"
     url: "https://www.instagram.com/p/CEO7bMcoh9z/"
-    thumb: ""
+    thumb: "gallery-2014-05-22-pedro-fortes-取-and-david-ballara-受-givin-091639"
     ref: "17860848101091639"
-    tags: [training]
-    show: false
+    tags: [demo]
+    show: true
+    seen: true
+    posted: "2020-08-23"
   - type: post
-    date_iso: "2020-08-24"
+    date_iso: "2014-05-22"
     name: "Alberto Sancho (取) and David Ballara (受) giving their all! ⚡️ @aikidom"
     url: "https://www.instagram.com/p/CERU5xGI2h9/"
-    thumb: ""
+    thumb: "gallery-2014-05-22-alberto-sancho-取-and-david-ballara-受-giv-919240"
     ref: "17870641126919240"
-    tags: [training]
-    show: false
+    tags: [demo]
+    show: true
+    seen: true
+    posted: "2020-08-24"
   - type: post
-    date_iso: "2020-08-24"
+    date_iso: "2014-05-22"
     name: "Alberto Sancho (取) and David Ballara (受) giving their all! ⚡️ @aikidom"
     url: "https://www.instagram.com/p/CERUwhfoS6J/"
-    thumb: ""
+    thumb: "gallery-2014-05-22-alberto-sancho-取-and-david-ballara-受-giv-504331"
     ref: "17905456639504331"
-    tags: [training]
-    show: false
+    tags: [demo]
+    show: true
+    seen: true
+    posted: "2020-08-24"
   - type: post
-    date_iso: "2020-08-25"
+    date_iso: "2014-05-22"
     name: "Rippō Kokyū-hō (立法 呼吸法)? Aiki-otoshi (合気落)? Only Pedro Fortes knows"
     url: "https://www.instagram.com/p/CET72IWptsV/"
-    thumb: ""
+    thumb: "gallery-2014-05-22-rippo-kokyu-ho-立法-呼吸法-aiki-otoshi-合気落-on-947070"
     ref: "17869572640947070"
-    tags: [training]
-    show: false
+    tags: [demo]
+    show: true
+    seen: true
+    posted: "2020-08-25"
   - type: post
-    date_iso: "2020-08-25"
+    date_iso: "2014-05-22"
     name: "Pedro Fortes death stare! 😒 @aikidomusubi Exhibition @ Sant Adrià del"
     url: "https://www.instagram.com/p/CET7PgnJN9V/"
-    thumb: ""
+    thumb: "gallery-2014-05-22-pedro-fortes-death-stare-aikidomusubi-ex-786407"
     ref: "17877504766786407"
-    tags: [training]
-    show: false
+    tags: [demo]
+    show: true
+    seen: true
+    posted: "2020-08-25"
   - type: post
-    date_iso: "2020-08-26"
+    date_iso: "2014-05-22"
     name: "Pablo (取) and Jose (受) go for Ushiro-ryōtekubi-dori (後両手首取)! 🪐 @aikido"
     url: "https://www.instagram.com/p/CEWorGjo-f7/"
-    thumb: ""
+    thumb: "gallery-2014-05-22-pablo-取-and-jose-受-go-for-ushiro-ryōteku-018268"
     ref: "17863849076018268"
-    tags: [training]
-    show: false
+    tags: [demo]
+    show: true
+    seen: true
+    posted: "2020-08-26"
   - type: post
-    date_iso: "2020-08-27"
+    date_iso: "2014-05-22"
     name: "Pepe (取) and Jose (受) show Nage-waza (投技)! ☄️ @aikidomusubi Exhibition"
     url: "https://www.instagram.com/p/CEZChk1out3/"
-    thumb: ""
+    thumb: "gallery-2014-05-22-pepe-取-and-jose-受-show-nage-waza-投技-aiki-491202"
     ref: "17906380252491202"
-    tags: [training]
-    show: false
+    tags: [demo]
+    show: true
+    seen: true
+    posted: "2020-08-27"
   - type: post
     date_iso: "2020-08-28"
     name: "A brief look at the details that Pablo Martín Sensei gives to make ko"
     url: "https://www.instagram.com/p/CEbPoLrp0DK/"
-    thumb: ""
+    thumb: "gallery-2020-08-28-a-brief-look-at-the-details-that-pablo-m-902137"
     ref: "17870950333902137"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-08-28"
     name: "A brief look at the details that Pablo Martín Sensei gives to make ko"
     url: "https://www.instagram.com/p/CEbPUmjJDIn/"
-    thumb: ""
+    thumb: "gallery-2020-08-28-a-brief-look-at-the-details-that-pablo-m-552485"
     ref: "17900136667552485"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-08-29"
     name: "A fleeting glimpse of Pablo Martín Sensei on how to pull and push; ab"
     url: "https://www.instagram.com/p/CEeFIhdp89J/"
-    thumb: ""
+    thumb: "gallery-2020-08-29-a-fleeting-glimpse-of-pablo-martin-sense-429992"
     ref: "17925445021429992"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-08-30"
     name: "Interesting insights into kokyū-hō rippō (呼吸法 立法) by Pablo Martín S"
     url: "https://www.instagram.com/p/CEg54Nfo5YW/"
-    thumb: ""
+    thumb: "gallery-2020-08-30-interesting-insights-into-kokyu-ho-rippo-017030"
     ref: "18156650131017030"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-08-31"
     name: "Ushiro-mae-kaiten-ukemi or Front Roll When Falling Backward (後前回転 受身) "
     url: "https://www.instagram.com/p/CEjXnYCJ_gS/"
-    thumb: ""
+    thumb: "gallery-2020-08-31-ushiro-mae-kaiten-ukemi-or-front-roll-wh-228226"
     ref: "18068387089228226"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-09-01"
     name: "An straightforward explanation given by Pablo Martín Sensei on how to "
     url: "https://www.instagram.com/p/CEmEQ6RITU_/"
-    thumb: ""
+    thumb: "gallery-2020-09-01-an-straightforward-explanation-given-by-472437"
     ref: "17913577867472437"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-09-02"
     name: "Strike First. Strike Hard. No Mercy. 🐍"
     url: "https://www.instagram.com/p/CEonO-WpSdb/"
-    thumb: ""
+    thumb: "gallery-2020-09-02-strike-first-strike-hard-no-mercy-934415"
     ref: "17871262231934415"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-09-03"
     name: "Young Eric giving his best for Irimi-nage (入身投げ). Rule Number 1: Karat"
     url: "https://www.instagram.com/p/CErUnbZJPgd/"
-    thumb: ""
+    thumb: "gallery-2020-09-03-young-eric-giving-his-best-for-irimi-nag-186287"
     ref: "17855799512186287"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
-    date_iso: "2020-09-04"
+    date_iso: "2012-03-04"
     name: "Osawa H. Shihan (大澤勇人) showing Tai no henkō (体の変更)/Tenkan (転換) with @c"
     url: "https://www.instagram.com/p/CEt0oVdJVdP/"
-    thumb: ""
+    thumb: "gallery-2012-03-04-osawa-h-shihan-大澤勇人-showing-tai-no-henkō-447384"
     ref: "17920746502447384"
-    tags: [training]
-    show: false
+    tags: [seminar, travel]
+    show: true
+    seen: true
+    posted: "2020-09-04"
   - type: post
-    date_iso: "2020-09-04"
+    date_iso: "2012-03-04"
     name: "Osawa H. Shihan (大澤勇人) showing Tai no henkō (体の変更)/Tenkan (転換) with @c"
     url: "https://www.instagram.com/p/CEt0fyPJlxl/"
-    thumb: ""
+    thumb: "gallery-2012-03-04-osawa-h-shihan-大澤勇人-showing-tai-no-henkō-015102"
     ref: "18159563560015102"
-    tags: [training]
-    show: false
+    tags: [seminar, travel]
+    show: true
+    seen: true
+    posted: "2020-09-04"
   - type: album
     date_iso: "2020-09-04"
     name: "Aikido Infantil (2020)"
@@ -2194,7 +2441,7 @@ entries:
     url: "https://www.facebook.com/album.php?fbid=3380844482010398&id=1707211621409694&aid=1073741855"
     thumb: "gallery-2020-09-04-exámenes-de-kyū-2019-010398"
     ref: "3380844482010398"
-    tags: [exams, training]
+    tags: [exams]
     count: 15
     show: true
     seen: true
@@ -2204,7 +2451,7 @@ entries:
     url: "https://www.facebook.com/album.php?fbid=3380897128671800&id=1707211621409694&aid=1073741860"
     thumb: "gallery-2020-09-04-hombu-dojo-2019-671800"
     ref: "3380897128671800"
-    tags: [travel]
+    tags: [travel, training, japan]
     count: 19
     show: true
     seen: true
@@ -2229,237 +2476,276 @@ entries:
     show: true
     seen: true
   - type: post
-    date_iso: "2020-09-05"
+    date_iso: "2012-03-04"
     name: "Osawa H. Shihan (大澤勇人) showing Tenkan (転換)! @ Milan, 2012"
     url: "https://www.instagram.com/p/CEv2M1Fpzvk/"
-    thumb: ""
+    thumb: "gallery-2012-03-04-osawa-h-shihan-大澤勇人-showing-tenkan-転換-mi-091401"
     ref: "17861992349091401"
-    tags: [training]
-    show: false
+    tags: [seminar, travel]
+    show: true
+    seen: true
+    posted: "2020-09-05"
   - type: post
-    date_iso: "2020-09-05"
+    date_iso: "2012-03-04"
     name: "Osawa H. Shihan (大澤勇人) showing Tenkan (転換)! @ Milan, 2012"
     url: "https://www.instagram.com/p/CEv1_2WpXv7/"
-    thumb: ""
+    thumb: "gallery-2012-03-04-osawa-h-shihan-大澤勇人-showing-tenkan-転換-mi-454659"
     ref: "17919162004454659"
-    tags: [training]
-    show: false
+    tags: [seminar, travel]
+    show: true
+    seen: true
+    posted: "2020-09-05"
   - type: post
-    date_iso: "2020-09-06"
+    date_iso: "2012-03-04"
     name: "Osawa H. Shihan (大澤勇人) showing Ikkyō (一教) with Pedro Fortes! @ Milan, "
     url: "https://www.instagram.com/p/CEzC1NYors6/"
-    thumb: ""
+    thumb: "gallery-2012-03-04-osawa-h-shihan-大澤勇人-showing-ikkyō-一教-wit-589266"
     ref: "17895792622589266"
-    tags: [training]
-    show: false
+    tags: [seminar, travel]
+    show: true
+    seen: true
+    posted: "2020-09-06"
   - type: post
-    date_iso: "2020-09-06"
+    date_iso: "2012-03-04"
     name: "Osawa H. Shihan (大澤勇人) showing Tenchi-nage (天地投げ) with Pedro Fortes! @"
     url: "https://www.instagram.com/p/CEzCQW-oWAy/"
-    thumb: ""
+    thumb: "gallery-2012-03-04-osawa-h-shihan-大澤勇人-showing-tenchi-nage-018876"
     ref: "17866517519018876"
-    tags: [training]
-    show: false
+    tags: [seminar, travel]
+    show: true
+    seen: true
+    posted: "2020-09-06"
   - type: post
-    date_iso: "2020-09-07"
+    date_iso: "2012-03-04"
     name: "We're always amazed at how accurate, effective Osawa H. Shihan is! He "
     url: "https://www.instagram.com/p/CE1WyDcJYCe/"
-    thumb: ""
+    thumb: "gallery-2012-03-04-were-always-amazed-at-how-accurate-effec-218392"
     ref: "17854182863218392"
-    tags: [training]
-    show: false
+    tags: [seminar, travel]
+    show: true
+    seen: true
+    posted: "2020-09-07"
   - type: post
-    date_iso: "2020-09-07"
+    date_iso: "2012-03-04"
     name: "Osawa H. Shihan teaching the basics! @ Milan, 2012"
     url: "https://www.instagram.com/p/CE1U63opA_U/"
-    thumb: ""
+    thumb: "gallery-2012-03-04-osawa-h-shihan-teaching-the-basics-milan-396856"
     ref: "17936085733396856"
-    tags: [training]
-    show: false
+    tags: [seminar, travel]
+    show: true
+    seen: true
+    posted: "2020-09-07"
   - type: post
     date_iso: "2020-09-08"
     name: "Struggling to take Ukemi (受け身)! 💦 Irimi-nage (入身投げ) by @pablo_martin_m"
     url: "https://www.instagram.com/p/CE387X_oaEO/"
-    thumb: ""
+    thumb: "gallery-2020-09-08-struggling-to-take-ukemi-受け身-irimi-nage-013873"
     ref: "18159560665013873"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-09-09"
     name: "Struggling to take Ukemi (受け身)! 💦 Irimi-nage (入身投げ) by @pablo_martin_"
     url: "https://www.instagram.com/p/CE6o5fBJOgJ/"
-    thumb: ""
+    thumb: "gallery-2020-09-09-struggling-to-take-ukemi-受け身-irimi-nage-146286"
     ref: "17858855234146286"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-09-10"
     name: "Irimi-nage? Shime-waza? Only Domingo aka Diumenge aka Dominique knows!"
     url: "https://www.instagram.com/p/CE9RhpPJWu3/"
-    thumb: ""
+    thumb: "gallery-2020-09-10-irimi-nage-shime-waza-only-domingo-aka-d-610100"
     ref: "17893831201610100"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-09-11"
     name: "Kokyū-hō (呼吸法) or breathing technique or breath control! 📸 @victrool"
     url: "https://www.instagram.com/p/CE_2i1sJ5AB/"
-    thumb: ""
+    thumb: "gallery-2020-09-11-kokyu-ho-呼吸法-or-breathing-technique-or-b-276174"
     ref: "17852286224276174"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-09-11"
     name: "Kaiten-nage (回転投げ) or the technique where tori sweeps the arm back un"
     url: "https://www.instagram.com/p/CE_1xjHp-ED/"
-    thumb: ""
+    thumb: "gallery-2020-09-11-kaiten-nage-回転投け-or-the-technique-where-513927"
     ref: "17904341254513927"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-09-12"
     name: "Jiyū-waza (自由技) time! 💥 📸 @victrooll"
     url: "https://www.instagram.com/p/CFCZ_Qqp9fQ/"
-    thumb: ""
+    thumb: "gallery-2020-09-12-jiyu-waza-自由技-time-victrooll-226508"
     ref: "17853227420226508"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-09-13"
     name: "Bow to the front: Shōmen ni rei (正面に礼); Bow to the teacher: Sensei ni"
     url: "https://www.instagram.com/p/CFFFpxNJhrH/"
-    thumb: ""
+    thumb: "gallery-2020-09-13-bow-to-the-front-shomen-ni-rei-正面に礼-bow-127895"
     ref: "18126196522127895"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-09-14"
     name: "Kokyū-ho (呼吸法) by @pablo_martin_martin Sensei during a class about Iri"
     url: "https://www.instagram.com/p/CFHb5wkIXYl/"
-    thumb: ""
+    thumb: "gallery-2020-09-14-kokyū-ho-呼吸法-by-pablo-martin-martin-sens-324395"
     ref: "17848891967324395"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-09-15"
     name: "Useful insights into Irimi (入見), distance (appropriate opportunity), a"
     url: "https://www.instagram.com/p/CFKGcYqJgUG/"
-    thumb: ""
+    thumb: "gallery-2020-09-15-useful-insights-into-irimi-入見-distance-a-727488"
     ref: "17886233983727488"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-09-16"
     name: "Warm-up exercises or Jumbi Undō (準備運動) or Jumbi Taisō (準備体操)!゚ 📸 @vi"
     url: "https://www.instagram.com/p/CFMWE3GIdIA/"
-    thumb: ""
+    thumb: "gallery-2020-09-16-warm-up-exercises-or-jumbi-undo-準備運動-or-234363"
     ref: "17855158682234363"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-09-17"
     name: "Folding the hakama (袴) and chatting after class!"
     url: "https://www.instagram.com/p/CFPWOK-pmka/"
-    thumb: ""
+    thumb: "gallery-2020-09-17-folding-the-hakama-袴-and-chatting-after-201112"
     ref: "18084541843201112"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-09-18"
     name: "Miyamoto T. Shihan (宮本 鶴蔵) showing Ryōte-dori Shihō-nage (両手取り 四方投げ)."
     url: "https://www.instagram.com/p/CFRiny9ogBY/"
-    thumb: ""
+    thumb: "gallery-2020-09-18-miyamoto-t-shihan-宮本-鶴蔵-showing-ryōte-do-017627"
     ref: "17867713427017627"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-09-19"
     name: "Miyamoto T. Shihan (宮本 鶴蔵) showing Ryōte-dori Shihō-giri (両手取り 四方切り)."
     url: "https://www.instagram.com/p/CFT3NDdJOSq/"
-    thumb: ""
+    thumb: "gallery-2020-09-19-miyamoto-t-shihan-宮本-鶴蔵-showing-ryōte-do-089810"
     ref: "17863767782089810"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-09-20"
     name: "Miyamoto T. Shihan (宮本 鶴蔵) showing Kokyū-nage (呼吸投げ) and Kokyū-hō (呼吸法"
     url: "https://www.instagram.com/p/CFXEQvXoE4a/"
-    thumb: ""
+    thumb: "gallery-2020-09-20-miyamoto-t-shihan-宮本-鶴蔵-showing-kokyū-na-183424"
     ref: "18119063680183424"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-09-21"
     name: "Miyamoto T. Shihan (宮本 鶴蔵) showing Ryōte-dori Shihō-giri (両手取り 四方切り) w"
     url: "https://www.instagram.com/p/CFZCBeqJINu/"
-    thumb: ""
+    thumb: "gallery-2020-09-21-miyamoto-t-shihan-宮本-鶴蔵-showing-ryōte-do-214659"
     ref: "18080483326214659"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-09-22"
     name: "Miyamoto T. Shihan (宮本 鶴蔵) showing Ryōte-dori Kokyū-nage (両手取り 呼吸投げ) w"
     url: "https://www.instagram.com/p/CFcDToPJPiq/"
-    thumb: ""
+    thumb: "gallery-2020-09-22-miyamoto-t-shihan-宮本-鶴蔵-showing-ryōte-do-938690"
     ref: "17872805923938690"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-09-23"
     name: "Miyamoto T. Shihan (宮本 鶴蔵) showing Ryōte-dori Kokyū-nage (両手取り 呼吸投げ) w"
     url: "https://www.instagram.com/p/CFejF7XIzh5/"
-    thumb: ""
+    thumb: "gallery-2020-09-23-miyamoto-t-shihan-宮本-鶴蔵-showing-ryōte-do-935276"
     ref: "17873475697935276"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-09-24"
     name: "(Very) Interesting insights into body work or Tai Sabaki (体さばき) and Ry"
     url: "https://www.instagram.com/p/CFhL3H2JSGX/"
-    thumb: ""
+    thumb: "gallery-2020-09-24-very-interesting-insights-into-body-work-566057"
     ref: "17898143824566057"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-09-25"
     name: "(Very) Interesting insights into body work or Tai Sabaki (体さばき) and Ry"
     url: "https://www.instagram.com/p/CFj1n2_pqZ5/"
-    thumb: ""
+    thumb: "gallery-2020-09-25-very-interesting-insights-into-body-work-334342"
     ref: "17963522479334342"
-    tags: [training]
-    show: false
+    tags: [seminar]
+    show: true
+    seen: true
   - type: post
-    date_iso: "2020-09-26"
+    date_iso: "2015-12-14"
     name: "Melo is performing the control for Dai-Nikyō (第二教) or Kote-mawashi (小手"
     url: "https://www.instagram.com/p/CFnN21fJ6Yp/"
-    thumb: ""
+    thumb: "gallery-2015-12-14-melo-is-performing-the-control-for-dai-n-376776"
     ref: "17943183847376776"
-    tags: [training]
-    show: false
+    tags: [exams]
+    show: true
+    seen: true
+    posted: "2020-09-26"
   - type: post
-    date_iso: "2020-09-26"
+    date_iso: "2015-12-14"
     name: "Melo is performing Hanmi-handachi (半身半立ち) Katate-dori (片手取り) Shihō-nag"
     url: "https://www.instagram.com/p/CFmepBaJ45l/"
-    thumb: ""
+    thumb: "gallery-2015-12-14-melo-is-performing-hanmi-handachi-半身半立ち-734794"
     ref: "17884217656734794"
-    tags: [training]
-    show: false
+    tags: [exams]
+    show: true
+    seen: true
+    posted: "2020-09-26"
   - type: post
-    date_iso: "2020-09-27"
+    date_iso: "2015-12-14"
     name: "Miriam (aka Kukich) is performing Dai-ikkyō (第一教) or Ude-osae (腕押さえ)! "
     url: "https://www.instagram.com/p/CFpviT3Ju0Q/"
-    thumb: ""
+    thumb: "gallery-2015-12-14-miriam-aka-kukich-is-performing-dai-ikky-154465"
     ref: "17860353380154465"
-    tags: [training]
-    show: false
+    tags: [exams]
+    show: true
+    seen: true
+    posted: "2020-09-27"
   - type: post
-    date_iso: "2020-09-27"
+    date_iso: "2015-12-14"
     name: "Miriam (aka Kukich) is performing Dai-Yonkyō (第四教) or Tekubi-osae (手首押"
     url: "https://www.instagram.com/p/CFpHwhqpPfT/"
-    thumb: ""
+    thumb: "gallery-2015-12-14-miriam-aka-kukich-is-performing-dai-yonk-997265"
     ref: "17869928377997265"
-    tags: [training]
-    show: false
+    tags: [exams]
+    show: true
+    seen: true
+    posted: "2020-09-27"
   - type: post
     date_iso: "2020-09-28"
     name: "Cuando tu hakama te cuenta un chiste! / When your hakama tells you a j"
@@ -2468,6 +2754,7 @@ entries:
     ref: "18081861574210625"
     tags: [training]
     show: false
+    seen: true
   - type: post
     date_iso: "2020-09-29"
     name: "The emotional intensity, and range of emotions before class —terror, f"
@@ -2476,6 +2763,7 @@ entries:
     ref: "17855071682217150"
     tags: [training]
     show: false
+    seen: true
   - type: post
     date_iso: "2020-09-30"
     name: "Senpai and kōhai are and essential element of Japanese seniority-based"
@@ -2484,367 +2772,423 @@ entries:
     ref: "17904975709521759"
     tags: [training]
     show: false
+    seen: true
   - type: post
     date_iso: "2020-10-01"
     name: "When receiving personal instruction, sit in seiza () and watch intentl"
     url: "https://www.instagram.com/p/CFzXo2cpbcX/"
-    thumb: ""
+    thumb: "gallery-2020-10-01-when-receiving-personal-instruction-sit-607531"
     ref: "17896216915607531"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-10-02"
     name: "Pablo Martín Sensei (@pablo_martin_martin) is showing Irimi-nage (入り身投"
     url: "https://www.instagram.com/p/CF19sUnp80S/"
-    thumb: ""
+    thumb: "gallery-2020-10-02-pablo-martín-sensei-pablo-martin-martin-073521"
     ref: "18147981937073521"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-10-03"
     name: "Kaiten-nage (回転投げ)! ⬅️↙️⬇️↘️➡️・➡️🅱️"
     url: "https://www.instagram.com/p/CF4dPu9pSd9/"
-    thumb: ""
+    thumb: "gallery-2020-10-03-kaiten-nage-回転投げ-589414"
     ref: "17898492160589414"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-10-04"
     name: "Katate-dori (片手取り) Gyaku-hanmi (逆半身) Irimi (入身)! 💨"
     url: "https://www.instagram.com/p/CF7D9DLJKqi/"
-    thumb: ""
+    thumb: "gallery-2020-10-04-katate-dori-片手取り-gyaku-hanmi-逆半身-irimi-入-011610"
     ref: "17869405382011610"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-10-05"
     name: "Katate-dori (片手取り) Gyaku-hanmi (逆半身) Irimi (入身)! ⏩"
     url: "https://www.instagram.com/p/CF9UYwKpEuz/"
-    thumb: ""
+    thumb: "gallery-2020-10-05-katate-dori-片手取り-gyaku-hanmi-逆半身-irimi-入-195252"
     ref: "18106115359195252"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-10-06"
     name: "Katate-dori (片手取り) Gyaku-hanmi (逆半身) Irimi (入身)! ⏩"
     url: "https://www.instagram.com/p/CGAOB6VJN3S/"
-    thumb: ""
+    thumb: "gallery-2020-10-06-katate-dori-片手取り-gyaku-hanmi-逆半身-irimi-入-197193"
     ref: "18107960899197193"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-10-07"
     name: "Kaiten-nage (回転投げ) or rotary throw; tori sweeps the arm back until it "
     url: "https://www.instagram.com/p/CGCz8xepNRf/"
-    thumb: ""
+    thumb: "gallery-2020-10-07-kaiten-nage-回転投げ-or-rotary-throw-tori-sw-597192"
     ref: "17899081516597192"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-10-08"
     name: "Shihō-nage (四方投げ) or four-direction throw; tori folds back uke's hand "
     url: "https://www.instagram.com/p/CGE6uuHJxJp/"
-    thumb: ""
+    thumb: "gallery-2020-10-08-shihō-nage-四方投げ-or-four-direction-throw-142741"
     ref: "17862530348142741"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-10-09"
     name: "👑 And Haishin-Undō"
     url: "https://www.instagram.com/p/CGH9KHrJgMZ/"
-    thumb: ""
+    thumb: "gallery-2020-10-09-and-haishin-undō-189131"
     ref: "18131983423189131"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-10-10"
     name: "Katate-dori Ai-hanmi Irimi-nage (片手取り 相半身 入り身投げ). Sometimes entering a"
     url: "https://www.instagram.com/p/CGKk7BrI9IZ/"
-    thumb: ""
+    thumb: "gallery-2020-10-10-katate-dori-ai-hanmi-irimi-nage-片手取り-相半身-221922"
     ref: "18079511677221922"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-10-11"
     name: "Katate-dori Ai-hanmi Irimi-nage (片手取り 相半身 入り身投げ)."
     url: "https://www.instagram.com/p/CGNRgl2JFlX/"
-    thumb: ""
+    thumb: "gallery-2020-10-11-katate-dori-ai-hanmi-irimi-nage-片手取り-相半身-744452"
     ref: "17885957476744452"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-10-12"
     name: "Interesting insights about distance and timing into Katate-dori Ai-han"
     url: "https://www.instagram.com/p/CGPx_kQpa6f/"
-    thumb: ""
+    thumb: "gallery-2020-10-12-interesting-insights-about-distance-and-654510"
     ref: "17893665715654510"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-10-13"
     name: "Jiyū-waza (自由技) or free practice as controlling one attacker at a time"
     url: "https://www.instagram.com/p/CGSTKHzpYXR/"
-    thumb: ""
+    thumb: "gallery-2020-10-13-jiyū-waza-自由技-or-free-practice-as-contro-596374"
     ref: "17899670299596374"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-10-14"
     name: "Jiyū-waza (自由技) or free practice as controlling one attacker at a time"
     url: "https://www.instagram.com/p/CGU2s9uJ6wK/"
-    thumb: ""
+    thumb: "gallery-2020-10-14-jiyū-waza-自由技-or-free-practice-as-contro-319533"
     ref: "17977024657319533"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-10-15"
     name: "👑 Keep Calm And Jumbi Undō."
     url: "https://www.instagram.com/p/CGXkD1dpUPm/"
-    thumb: ""
+    thumb: "gallery-2020-10-15-keep-calm-and-jumbi-undō-929411"
     ref: "17875975831929411"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-10-15"
     name: "👑 Keep Calm And Jumbi Undō."
     url: "https://www.instagram.com/p/CGXidatph9c/"
-    thumb: ""
+    thumb: "gallery-2020-10-15-keep-calm-and-jumbi-undō-510072"
     ref: "17910551635510072"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-10-16"
     name: "👑 Keep Calm And Te Sabaki."
     url: "https://www.instagram.com/p/CGaDqkXItvI/"
-    thumb: ""
+    thumb: "gallery-2020-10-16-keep-calm-and-te-sabaki-301664"
     ref: "17855606594301664"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-10-17"
     name: "Shōmen-uchi Kote-gaeshi (正面打ち 小手返し) o torsión exterior de la muñeca"
     url: "https://www.instagram.com/p/CGcP77vJXDi/"
-    thumb: ""
+    thumb: "gallery-2020-10-17-shomen-uchi-kote-gaeshi-正面打ち-小手返し-o-tors-257387"
     ref: "18053650150257387"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
     date_iso: "2020-10-18"
     name: "Interesting insights into Kokyū-hō Zahō (呼吸法 坐法) by @pablo_martin_m"
     url: "https://www.instagram.com/p/CGfRyFjognu/"
-    thumb: ""
+    thumb: "gallery-2020-10-18-interesting-insights-into-kokyu-ho-zaho-527365"
     ref: "17906183821527365"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: post
-    date_iso: "2020-10-19"
+    date_iso: "2019-10-22"
     name: "Futari-gake (二人掛け) performed by @maydihorse during his 2nd Dan grade e"
     url: "https://www.instagram.com/p/CGh_uS1ptbn/"
     thumb: ""
     ref: "17933535910424660"
-    tags: [training]
+    tags: [exams]
     show: false
+    seen: true
+    posted: "2020-10-19"
   - type: post
-    date_iso: "2020-10-20"
+    date_iso: "2019-10-22"
     name: "Futari-gake (二人掛け) performed by Alberto Sancho aka Alan Silver during "
     url: "https://www.instagram.com/p/CGkbko9p5FG/"
     thumb: ""
     ref: "18137585854104634"
-    tags: [training]
+    tags: [exams]
     show: false
+    seen: true
+    posted: "2020-10-20"
   - type: post
-    date_iso: "2020-10-21"
+    date_iso: "2019-10-22"
     name: "Shōmen-uchi (正面打ち) Zagi or Suwari-waza (座技) performed by @jl.zafragarc"
     url: "https://www.instagram.com/p/CGml0YHJ9Xi/"
     thumb: ""
     ref: "17872751365988217"
-    tags: [training]
+    tags: [exams]
     show: false
+    seen: true
+    posted: "2020-10-21"
   - type: post
-    date_iso: "2020-10-22"
+    date_iso: "2019-10-22"
     name: "Koshi-nage (腰投げ) performed by @de_bolson_cerrado during his 2nd Dan gr"
     url: "https://www.instagram.com/p/CGprDT-p9oy/"
     thumb: ""
     ref: "17901070639596051"
-    tags: [training]
+    tags: [exams]
     show: false
+    seen: true
+    posted: "2020-10-22"
   - type: post
-    date_iso: "2020-10-23"
+    date_iso: "2019-10-22"
     name: "1 year ago @aikidomusubi dojo in Badalona (Barcelona) hosted Shihan 7t"
     url: "https://www.instagram.com/p/CGsQj9EJK3z/"
     thumb: ""
     ref: "17860551872167216"
-    tags: [training]
+    tags: [seminar]
     show: false
+    seen: true
+    posted: "2020-10-23"
   - type: post
-    date_iso: "2020-10-24"
+    date_iso: "2009-01-01"
     name: "Buki-waza (武器技) in the woods! 🌲 Into the wild for a few days: Eat, Sle"
     url: "https://www.instagram.com/p/CGuw2KspYTa/"
-    thumb: ""
+    thumb: "gallery-2009-01-01-buki-waza-武器技-in-the-woods-into-the-wild-937706"
     ref: "17876841847937706"
-    tags: [training]
-    show: false
+    tags: [training, travel]
+    show: true
+    seen: true
+    posted: "2020-10-24"
   - type: post
-    date_iso: "2020-10-25"
+    date_iso: "2009-01-01"
     name: "Buki-waza (武器技) in the outer wilds! 🏔 Out in the nature for a few days"
     url: "https://www.instagram.com/p/CGxZIFzpzQx/"
-    thumb: ""
+    thumb: "gallery-2009-01-01-buki-waza-武器技-in-the-outer-wilds-out-in-021131"
     ref: "17869989422021131"
-    tags: [training]
-    show: false
+    tags: [training, travel]
+    show: true
+    seen: true
+    posted: "2020-10-25"
   - type: post
-    date_iso: "2020-10-26"
+    date_iso: "2009-01-01"
     name: "Buki-waza (武器技) in the countryside! 🌾 Fresh air for a few days: Eat, S"
     url: "https://www.instagram.com/p/CGz-lh7pedi/"
-    thumb: ""
+    thumb: "gallery-2009-01-01-buki-waza-武器技-in-the-countryside-fresh-a-321156"
     ref: "17854772588321156"
-    tags: [training]
-    show: false
+    tags: [training, travel]
+    show: true
+    seen: true
+    posted: "2020-10-26"
   - type: post
-    date_iso: "2020-10-27"
+    date_iso: "2009-01-01"
     name: "Aikido outdoors! 🚞 Alfresco for a few days: Eat, Sleep, 合気道, Repeat!"
     url: "https://www.instagram.com/p/CG2gYi5JYPH/"
-    thumb: ""
+    thumb: "gallery-2009-01-01-aikido-outdoors-alfresco-for-a-few-days-259136"
     ref: "18055413178259136"
-    tags: [training]
-    show: false
+    tags: [travel, training]
+    show: true
+    seen: true
+    posted: "2020-10-27"
   - type: post
     date_iso: "2020-10-28"
     name: "Osawa H. Shihan (大澤 勇人) showing Tai no henka (体の変化) or alteration of t"
     url: "https://www.instagram.com/p/CG5GhcBJrDC/"
     thumb: ""
     ref: "17861140145176845"
-    tags: [training]
+    tags: [seminar, travel]
     show: false
+    seen: true
   - type: post
     date_iso: "2020-10-29"
     name: "Osawa H. Shihan (大澤 勇人) pointing out some details on how to practice T"
     url: "https://www.instagram.com/p/CG7OFpbpzGP/"
     thumb: ""
     ref: "17885685850790562"
-    tags: [training]
+    tags: [seminar, travel]
     show: false
+    seen: true
   - type: post
     date_iso: "2020-10-30"
     name: "Osawa H. Shihan (大澤 勇人) showing Irimi-nage (入り身投げ) or entering throw i"
     url: "https://www.instagram.com/p/CG-GitzJSSR/"
     thumb: ""
     ref: "17849435003378623"
-    tags: [training]
+    tags: [seminar, travel]
     show: false
+    seen: true
   - type: post
     date_iso: "2020-10-31"
     name: "Osawa H. Shihan (大澤 勇人) showing Irimi-nage (入り身投げ)."
     url: "https://www.instagram.com/p/CHAqCnUpfd7/"
     thumb: ""
     ref: "17888250337743564"
-    tags: [training]
+    tags: [seminar, travel]
     show: false
+    seen: true
   - type: post
     date_iso: "2020-11-01"
     name: "Osawa H. Shihan (大澤 勇人) showing Kokyū-hō Zahō (呼吸法 坐法), the method for"
     url: "https://www.instagram.com/p/CHDVnEBJK_f/"
     thumb: ""
     ref: "17871543020044560"
-    tags: [training]
+    tags: [seminar, travel]
     show: false
+    seen: true
   - type: post
-    date_iso: "2020-11-02"
+    date_iso: "2012-03-04"
     name: "Osawa H. Shihan (大澤 勇人) showing proper shisei (姿勢) or posture; and han"
     url: "https://www.instagram.com/p/CHF3CnNJ1l9/"
-    thumb: ""
+    thumb: "gallery-2012-03-04-osawa-h-shihan-大澤-勇人-showing-proper-shis-408690"
     ref: "17847690497408690"
-    tags: [training]
-    show: false
+    tags: [seminar, travel]
+    show: true
+    seen: true
+    posted: "2020-11-02"
   - type: post
-    date_iso: "2020-11-03"
+    date_iso: "2012-03-04"
     name: "Osawa H. Shihan (大澤 勇人) showing Tai No Henka (体の変化) with Pedro Fortes "
     url: "https://www.instagram.com/p/CHIoRKNJppr/"
-    thumb: ""
+    thumb: "gallery-2012-03-04-osawa-h-shihan-大澤-勇人-showing-tai-no-henk-806190"
     ref: "17884046008806190"
-    tags: [training]
-    show: false
+    tags: [seminar, travel]
+    show: true
+    seen: true
+    posted: "2020-11-03"
   - type: post
-    date_iso: "2020-11-04"
+    date_iso: "2012-03-04"
     name: "Osawa H. Shihan (大澤 勇人) showing Tai No Henka (体の変化) with Pedro Fortes "
     url: "https://www.instagram.com/p/CHLCQDRJw_W/"
-    thumb: ""
+    thumb: "gallery-2012-03-04-osawa-h-shihan-大澤-勇人-showing-tai-no-henk-620338"
     ref: "17898309553620338"
-    tags: [training]
-    show: false
+    tags: [seminar, travel]
+    show: true
     seen: true
+    posted: "2020-11-04"
   - type: post
-    date_iso: "2020-11-05"
+    date_iso: "2012-03-04"
     name: "Osawa H. Shihan (大澤 勇人) teaching proper Tai Sabaki (体さばき) rigorously a"
     url: "https://www.instagram.com/p/CHNpf2eJIxN/"
-    thumb: ""
+    thumb: "gallery-2012-03-04-osawa-h-shihan-大澤-勇人-teaching-proper-tai-232686"
     ref: "17858881979232686"
-    tags: [training]
-    show: false
+    tags: [seminar, travel]
+    show: true
     seen: true
+    posted: "2020-11-05"
   - type: post
-    date_iso: "2020-11-06"
+    date_iso: "2012-03-04"
     name: "🙋‍♀️🙋🙋‍♂️"
     url: "https://www.instagram.com/p/CHQbdorJX2m/"
-    thumb: ""
+    thumb: "gallery-2012-03-04-post-188145"
     ref: "18131786605188145"
-    tags: [training]
-    show: false
+    tags: [seminar, travel]
+    show: true
     seen: true
+    posted: "2020-11-06"
   - type: post
-    date_iso: "2020-11-07"
+    date_iso: "2012-03-04"
     name: "Osawa H. Shihan (大澤 勇人) showing Shōmen-uchi (正面打ち). He starts his expl"
     url: "https://www.instagram.com/p/CHS4T7lp8Lp/"
-    thumb: ""
+    thumb: "gallery-2012-03-04-osawa-h-shihan-大澤-勇人-showing-shōmen-uchi-280176"
     ref: "17856432257280176"
-    tags: [training]
-    show: false
+    tags: [seminar, travel]
+    show: true
     seen: true
+    posted: "2020-11-07"
   - type: post
-    date_iso: "2020-11-08"
+    date_iso: "2012-11-04"
     name: "Exhibició d'Aikido al XVIII Saló del Manga de Barcelona (@manga.bcn)"
     url: "https://www.instagram.com/p/CHVN7SBJLKY/"
-    thumb: ""
+    thumb: "gallery-2012-11-04-exhibicio-daikido-al-xviii-salo-del-mang-583862"
     ref: "17903098177583862"
-    tags: [training]
-    show: false
+    tags: [demo]
+    show: true
     seen: true
+    posted: "2020-11-08"
   - type: post
-    date_iso: "2020-11-09"
+    date_iso: "2012-11-04"
     name: "Exhibició d'Aikido al XVIII Saló del Manga de Barcelona (@manga.bcn)"
     url: "https://www.instagram.com/p/CHX7J0Zp-fa/"
-    thumb: ""
+    thumb: "gallery-2012-11-04-exhibicio-daikido-al-xviii-salo-del-mang-103582"
     ref: "17865944477103582"
-    tags: [training]
-    show: false
+    tags: [demo]
+    show: true
     seen: true
+    posted: "2020-11-09"
   - type: post
-    date_iso: "2020-11-10"
+    date_iso: "2012-11-04"
     name: "Exhibició d'Aikido al XVIII Saló del Manga de Barcelona (@manga.bcn)"
     url: "https://www.instagram.com/p/CHahH9QpvzW/"
-    thumb: ""
+    thumb: "gallery-2012-11-04-exhibicio-daikido-al-xviii-salo-del-mang-237754"
     ref: "18077410891237754"
-    tags: [training]
-    show: false
+    tags: [demo]
+    show: true
     seen: true
+    posted: "2020-11-10"
   - type: post
-    date_iso: "2020-11-11"
+    date_iso: "2012-11-04"
     name: "Exhibició d'Aikido al XVIII Saló del Manga de Barcelona (@manga.bcn)!"
     url: "https://www.instagram.com/p/CHdD2AmJi8W/"
-    thumb: ""
+    thumb: "gallery-2012-11-04-exhibició-daikido-al-xviii-saló-del-mang-003951"
     ref: "17874534335003951"
-    tags: [training]
-    show: false
+    tags: [demo]
+    show: true
     seen: true
+    posted: "2020-11-11"
   - type: post
-    date_iso: "2020-11-12"
+    date_iso: "2012-11-04"
     name: "Exhibició d'Aikido al XVIII Saló del Manga de Barcelona (@manga.bcn)!"
     url: "https://www.instagram.com/p/CHfp4TgpDV6/"
-    thumb: ""
+    thumb: "gallery-2012-11-04-exhibició-daikido-al-xviii-saló-del-mang-937204"
     ref: "17879040115937204"
-    tags: [training]
-    show: false
+    tags: [demo]
+    show: true
     seen: true
+    posted: "2020-11-12"
   - type: post
     date_iso: "2020-11-13"
     name: "Irimi-nage (入身投げ) during regular class."
@@ -2852,7 +3196,7 @@ entries:
     thumb: "gallery-2020-11-13-irimi-nage-入身投げ-during-regular-class"
     ref: "17892854047699513"
     tags: [training]
-    show: true
+    show: false
     seen: true
   - type: post
     date_iso: "2020-11-14"
@@ -3266,7 +3610,7 @@ entries:
     thumb: "gallery-2021-01-01-tai-no-henka-体の変化-or-learning-to-turn-th"
     ref: "17970735094358538"
     tags: [training]
-    show: true
+    show: false
     seen: true
   - type: post
     date_iso: "2021-01-02"
@@ -3275,7 +3619,7 @@ entries:
     thumb: "gallery-2021-01-02-dai-ikkyō-第一教-aka-ude-osae-腕おさえ-is-a-tec"
     ref: "17973044251348038"
     tags: [training]
-    show: true
+    show: false
     seen: true
   - type: post
     date_iso: "2021-01-03"
@@ -3284,7 +3628,7 @@ entries:
     thumb: "gallery-2021-01-03-this-is-me-a-few-years-ago-taking-ukemi"
     ref: "17882302010006881"
     tags: [training]
-    show: true
+    show: false
     seen: true
   - type: post
     date_iso: "2021-01-04"
@@ -3293,7 +3637,7 @@ entries:
     thumb: "gallery-2021-01-04-this-is-me-a-few-years-ago-taking-ukemi"
     ref: "18060250855271109"
     tags: [training]
-    show: true
+    show: false
     seen: true
   - type: post
     date_iso: "2021-01-05"
@@ -3302,7 +3646,7 @@ entries:
     thumb: "gallery-2021-01-05-so-proud-of-my-senpai-on-the-foreground"
     ref: "17854984172481928"
     tags: [training]
-    show: true
+    show: false
     seen: true
   - type: post
     date_iso: "2021-01-06"
@@ -3311,7 +3655,7 @@ entries:
     thumb: "gallery-2021-01-06-drones-are-more-dangerous-than-kote-gaes"
     ref: "18140186248137332"
     tags: [training]
-    show: true
+    show: false
     seen: true
   - type: post
     date_iso: "2021-01-07"
@@ -3320,7 +3664,7 @@ entries:
     thumb: "gallery-2021-01-07-lo-fi-atmospheric-music-to-reach-the-end"
     ref: "17904888592634330"
     tags: [training]
-    show: true
+    show: false
     seen: true
   - type: post
     date_iso: "2021-01-09"
@@ -3373,7 +3717,7 @@ entries:
     url: "https://www.instagram.com/tv/CKCDj-6Iyuj/"
     thumb: "gallery-2021-01-14-mike-flynn-sensei-showing-tanto-dori-yok"
     ref: "17856508127454077"
-    tags: [training]
+    tags: [seminar]
     show: true
     seen: true
   - type: post
@@ -3382,7 +3726,7 @@ entries:
     url: "https://www.instagram.com/p/CKEm7y2oax8/"
     thumb: "gallery-2021-01-15-mike-flynn-sensei-showing-morote-dori-ud"
     ref: "17854971599436373"
-    tags: [training]
+    tags: [seminar]
     show: true
     seen: true
   - type: post
@@ -3391,7 +3735,7 @@ entries:
     url: "https://www.instagram.com/tv/CKGyldgJsOz/"
     thumb: "gallery-2021-01-16-mike-flynn-sensei-showing-tantō-dori-shō"
     ref: "17882112632023835"
-    tags: [training]
+    tags: [seminar]
     show: true
     seen: true
   - type: post
@@ -3400,7 +3744,7 @@ entries:
     url: "https://www.instagram.com/tv/CKKNSzDp6nC/"
     thumb: "gallery-2021-01-17-mike-flynn-sensei-showing-shōmen-uchi-da"
     ref: "17880623219076351"
-    tags: [training]
+    tags: [seminar]
     show: true
     seen: true
   - type: post
@@ -3409,7 +3753,7 @@ entries:
     url: "https://www.instagram.com/tv/CKMLGp1pIhL/"
     thumb: "gallery-2021-01-18-mike-flynn-sensei-showing-tanto-dori-tsu"
     ref: "18089608207238562"
-    tags: [training]
+    tags: [seminar]
     show: true
     seen: true
   - type: post
@@ -3418,7 +3762,7 @@ entries:
     url: "https://www.instagram.com/tv/CKOyI8EJmEM/"
     thumb: "gallery-2021-01-19-mike-flynn-sensei-showing-tanto-dori-shō"
     ref: "17858458976411503"
-    tags: [training]
+    tags: [seminar]
     show: true
     seen: true
   - type: post
@@ -3427,7 +3771,7 @@ entries:
     url: "https://www.instagram.com/tv/CKRUtmSIVgp/"
     thumb: "gallery-2021-01-20-mike-flynn-sensei-showing-tanto-dori-sho"
     ref: "17953053319398582"
-    tags: [training]
+    tags: [seminar]
     show: true
     seen: true
   - type: post
@@ -3635,7 +3979,7 @@ entries:
     thumb: "gallery-2021-02-17-this-is-probably-one-of-my-favourite-vid"
     ref: "18102709441211879"
     tags: [training]
-    show: true
+    show: false
     seen: true
   - type: post
     date_iso: "2021-02-18"
@@ -3644,7 +3988,7 @@ entries:
     thumb: "gallery-2021-02-18-this-is-a-most-cherished-picture-of-mine"
     ref: "17859159305410946"
     tags: [training]
-    show: true
+    show: false
     seen: true
   - type: post
     date_iso: "2021-03-01"
@@ -3742,7 +4086,7 @@ entries:
     url: "https://www.instagram.com/p/CRN-nhDJTpD/"
     thumb: "gallery-2021-07-12-congratulations-おめでとうございます"
     ref: "17939177752532897"
-    tags: [training]
+    tags: [exams]
     show: true
     seen: true
   - type: post
@@ -3751,7 +4095,7 @@ entries:
     url: "https://www.instagram.com/p/CRN-aKnJvzn/"
     thumb: "gallery-2021-07-12-congratulations-ernestobarreraorozco-おめで"
     ref: "18160514374093907"
-    tags: [training]
+    tags: [exams]
     show: true
     seen: true
   - type: post
@@ -3760,7 +4104,7 @@ entries:
     url: "https://www.instagram.com/p/CRN-TBppoFF/"
     thumb: "gallery-2021-07-12-congratulations-raúl-おめでとうございます"
     ref: "17866035260532579"
-    tags: [training]
+    tags: [exams]
     show: true
     seen: true
   - type: post
@@ -3769,7 +4113,7 @@ entries:
     url: "https://www.instagram.com/p/CRN-Ms2JM8B/"
     thumb: "gallery-2021-07-12-congratulations-cristianrodriguezhiguera"
     ref: "18185335117114609"
-    tags: [training]
+    tags: [exams]
     show: true
     seen: true
   - type: post
@@ -3815,7 +4159,7 @@ entries:
     thumb: "gallery-2021-08-22-daniilmikhaiilov-aka-the-russian-kid"
     ref: "17934748801581603"
     tags: [training]
-    show: true
+    show: false
     seen: true
   - type: post
     date_iso: "2021-09-01"
@@ -3868,7 +4212,7 @@ entries:
     url: "https://www.facebook.com/album.php?fbid=4531861666908668&id=1707211621409694&aid=1073741862"
     thumb: "gallery-2021-10-09-mike-flynn-shihan-barcelona-2021"
     ref: "4531861666908668"
-    tags: [seminar]
+    tags: [exams]
     count: 59
     show: true
     seen: true
@@ -3878,7 +4222,7 @@ entries:
     url: "https://www.instagram.com/p/CWlg4cRhBbK/"
     thumb: "gallery-2021-11-22-武士道"
     ref: "17957023414497847"
-    tags: [training]
+    tags: [demo]
     show: true
     seen: true
   - type: post
@@ -3914,7 +4258,7 @@ entries:
     url: "https://www.instagram.com/p/CW5gn1fIfg9/"
     thumb: "gallery-2021-11-30-get-ready"
     ref: "17877225698524871"
-    tags: [training]
+    tags: [demo]
     show: true
     seen: true
   - type: post
@@ -4168,7 +4512,7 @@ entries:
     url: "https://www.instagram.com/p/ChPJe5dooCs/"
     thumb: "gallery-2022-08-14-amazing-seminar-at-spa-belgium-with-miya"
     ref: "18224577514151475"
-    tags: [seminar]
+    tags: [seminar, travel]
     show: true
     seen: true
   - type: post
@@ -4177,7 +4521,7 @@ entries:
     url: "https://www.instagram.com/p/ChRBqrNo8xJ/"
     thumb: "gallery-2022-08-15-our-friends-per6tim-and-cdominguezsantos"
     ref: "17917961303549502"
-    tags: [seminar]
+    tags: [seminar, travel]
     show: true
     seen: true
   - type: post
@@ -4339,7 +4683,7 @@ entries:
     url: "https://www.instagram.com/p/ClMJmfkoths/"
     thumb: "gallery-2022-11-20-mitsuteru-ueshiba-aikikai-hombu-dojo-cho-459302"
     ref: "18009055429459302"
-    tags: [travel, seminar]
+    tags: [seminar, travel]
     show: true
     seen: true
   - type: post
@@ -4348,7 +4692,7 @@ entries:
     url: "https://www.instagram.com/p/ClMJSu0o7B3/"
     thumb: "gallery-2022-11-20-mitsuteru-ueshiba-aikikai-hombu-dojo-cho-629544"
     ref: "17918810210629544"
-    tags: [travel, seminar]
+    tags: [seminar, travel]
     show: true
     seen: true
   - type: post
@@ -4501,7 +4845,7 @@ entries:
     url: "https://www.instagram.com/p/CpYQkSjoHjp/"
     thumb: "gallery-2023-03-04-okamoto-y-shihan-seminar-held-at-thomas-281656"
     ref: "17969421938281656"
-    tags: [seminar]
+    tags: [seminar, travel]
     show: true
     seen: true
   - type: post
@@ -4510,7 +4854,7 @@ entries:
     url: "https://www.instagram.com/p/CpYQNBXIccQ/"
     thumb: "gallery-2023-03-04-okamoto-y-shihan-seminar-held-at-thomas-728094"
     ref: "17889953204728094"
-    tags: [seminar]
+    tags: [seminar, travel]
     show: true
     seen: true
   - type: post
@@ -4519,7 +4863,7 @@ entries:
     url: "https://www.instagram.com/p/CpXp2TuItEs/"
     thumb: "gallery-2023-03-04-okamoto-y-shihan-seminar-held-at-thomas-411606"
     ref: "17956022741411606"
-    tags: [seminar]
+    tags: [seminar, travel]
     show: true
     seen: true
   - type: reel
@@ -4591,7 +4935,7 @@ entries:
     url: "https://www.instagram.com/p/CrB_ae0ILTk/"
     thumb: "gallery-2023-04-14-sasaki-teiju-shihan-佐々木-貞樹-waraku-dojo-d"
     ref: "17906972609748728"
-    tags: [seminar]
+    tags: [seminar, travel]
     show: true
     seen: true
   - type: reel
@@ -4897,7 +5241,7 @@ entries:
     url: "https://www.instagram.com/reel/Cv4gbFvIEgh/"
     thumb: "gallery-2023-08-13-amazing-seminar-at-spa-belgium-with-miya"
     ref: "17998865948016748"
-    tags: [seminar]
+    tags: [seminar, travel]
     show: true
     seen: true
   - type: post
@@ -4915,7 +5259,7 @@ entries:
     url: "https://www.instagram.com/p/Cv4b_93IYHp/"
     thumb: "gallery-2023-08-13-astounding-seminar-at-spa-belgium-with-m"
     ref: "17984764865122153"
-    tags: [seminar]
+    tags: [seminar, travel]
     show: true
     seen: true
   - type: reel
@@ -5005,7 +5349,7 @@ entries:
     url: "https://www.instagram.com/p/Cyokos2IQbZ/"
     thumb: "gallery-2023-10-20-a-visitor-from-japan-from-the-manyōjuku"
     ref: "17984089100302279"
-    tags: [travel]
+    tags: [training]
     show: true
     seen: true
   - type: post
@@ -5014,7 +5358,7 @@ entries:
     url: "https://www.instagram.com/p/Cy_-vODo9b8/"
     thumb: "gallery-2023-10-29-astounding-aikido-seminar-by-suzuki-t-sh"
     ref: "18024924958695105"
-    tags: [seminar]
+    tags: [seminar, travel]
     show: true
     seen: true
   - type: reel
@@ -5041,7 +5385,7 @@ entries:
     url: "https://www.instagram.com/p/CzBYw81oDmv/"
     thumb: "gallery-2023-10-30-sharing-is-caring-with-our-dear-friends"
     ref: "18003350543120815"
-    tags: [travel]
+    tags: [seminar, travel]
     show: true
     seen: true
   - type: reel
@@ -5131,7 +5475,7 @@ entries:
     url: "https://www.instagram.com/reel/C0B7xlsPY-K/"
     thumb: "gallery-2023-11-24-tōkyō-東京-part-2-of-2"
     ref: "18323710138099304"
-    tags: [travel]
+    tags: [travel, training, japan]
     show: true
     seen: true
   - type: reel
@@ -5140,7 +5484,7 @@ entries:
     url: "https://www.instagram.com/reel/C0B6pDjvZm3/"
     thumb: "gallery-2023-11-24-kyōto-京都-part-1-of-2"
     ref: "18026817178782921"
-    tags: [travel]
+    tags: [travel, training, japan]
     show: true
     seen: true
   - type: post
@@ -5149,7 +5493,7 @@ entries:
     url: "https://www.instagram.com/p/C0BtvRWP1NW/"
     thumb: "gallery-2023-11-24-we-had-the-great-honour-and-pleasure-to"
     ref: "18217809001250388"
-    tags: [travel]
+    tags: [travel, training, japan]
     show: true
     seen: true
   - type: post
@@ -5158,7 +5502,7 @@ entries:
     url: "https://www.instagram.com/p/C0EZF9nv-5P/"
     thumb: "gallery-2023-11-25-at-hombu-dojos-after-miyamoto-shihan-reg"
     ref: "18320505505111085"
-    tags: [travel, seminar]
+    tags: [travel, training, japan]
     show: true
     seen: true
   - type: reel
@@ -5185,7 +5529,7 @@ entries:
     url: "https://www.instagram.com/p/C0MdgGGPApZ/"
     thumb: "gallery-2023-11-28-we-had-the-great-honour-and-pleasure-to"
     ref: "18111132157341394"
-    tags: [travel]
+    tags: [travel, training, japan]
     show: true
     seen: true
   - type: post
@@ -5221,7 +5565,7 @@ entries:
     url: "https://www.instagram.com/reel/C0bq0G5vjCf/"
     thumb: "gallery-2023-12-04-tokyo-vice"
     ref: "18019755757766891"
-    tags: [travel]
+    tags: [travel, training, japan]
     show: true
     seen: true
   - type: post
@@ -5230,7 +5574,7 @@ entries:
     url: "https://www.instagram.com/p/C0d6P93P6Mt/"
     thumb: "gallery-2023-12-05-at-hombu-dojo-after-doshu-morning-class"
     ref: "17940956798757962"
-    tags: [travel]
+    tags: [travel, training, japan]
     show: true
     seen: true
   - type: post
@@ -5239,7 +5583,7 @@ entries:
     url: "https://www.instagram.com/p/C0iHL3JvIaA/"
     thumb: "gallery-2023-12-07-at-hombu-dojo-after-dojo-cho-morning-cla"
     ref: "18000280169105002"
-    tags: [travel]
+    tags: [travel, training, japan]
     show: true
     seen: true
   - type: post
@@ -5257,7 +5601,7 @@ entries:
     url: "https://www.instagram.com/p/C1FJadMo7UE/"
     thumb: "gallery-2023-12-20-at-hombu-dojo-after-osawa-h-shihan-morni"
     ref: "17982833711403098"
-    tags: [travel, seminar]
+    tags: [travel, training, japan]
     show: true
     seen: true
   - type: reel
@@ -5356,7 +5700,7 @@ entries:
     url: "https://www.instagram.com/p/C5b5C1SIK0C/"
     thumb: "gallery-2024-04-06-muchísimas-gracias-al-montonazo-de-perso"
     ref: "17949074387783836"
-    tags: [training]
+    tags: [demo]
     show: true
     seen: true
   - type: reel
@@ -5365,7 +5709,7 @@ entries:
     url: "https://www.instagram.com/reel/C5bydh_oKpQ/"
     thumb: "gallery-2024-04-06-71920990"
     ref: "18033217771920990"
-    tags: [training]
+    tags: [demo]
     show: true
     seen: true
   - type: reel
@@ -5374,7 +5718,7 @@ entries:
     url: "https://www.instagram.com/reel/C5gh46XIwGR/"
     thumb: "gallery-2024-04-08-vamos-a-atesorar-siempre-el-recuerdo-de"
     ref: "18276703666201194"
-    tags: [training]
+    tags: [demo]
     show: true
     seen: true
   - type: post
@@ -5383,7 +5727,7 @@ entries:
     url: "https://www.instagram.com/p/C5gEIhpI6pQ/"
     thumb: "gallery-2024-04-08-gracias-a-todos-los-que-se-animaron-a-pr-275721"
     ref: "18002803247275721"
-    tags: [training]
+    tags: [demo]
     show: true
     seen: true
   - type: post
@@ -5392,7 +5736,7 @@ entries:
     url: "https://www.instagram.com/p/C5gCVZDoL6b/"
     thumb: "gallery-2024-04-08-gracias-a-todos-los-que-se-animaron-a-pr-276815"
     ref: "18028727612276815"
-    tags: [training]
+    tags: [demo]
     show: true
     seen: true
   - type: post
@@ -5401,7 +5745,7 @@ entries:
     url: "https://www.instagram.com/p/C5gBC_eo6xv/"
     thumb: "gallery-2024-04-08-mil-gracias-a-todos-los-que-vinieron-al"
     ref: "18022727671900929"
-    tags: [training]
+    tags: [demo]
     show: true
     seen: true
   - type: reel
@@ -5410,7 +5754,7 @@ entries:
     url: "https://www.instagram.com/reel/C5iBCj-oOsG/"
     thumb: "gallery-2024-04-09-muchísimas-gracias-al-montonazo-de-perso"
     ref: "18061039228557660"
-    tags: [training]
+    tags: [demo]
     show: true
     seen: true
   - type: reel
@@ -5446,7 +5790,7 @@ entries:
     url: "https://www.instagram.com/p/C53gbh9oq8x/"
     thumb: "gallery-2024-04-17-emilio-cardia-shihan-at-aikikai-corsico-021635"
     ref: "17885381940021635"
-    tags: [travel, seminar]
+    tags: [seminar, travel]
     show: true
     seen: true
   - type: reel
@@ -5464,7 +5808,7 @@ entries:
     url: "https://www.instagram.com/p/C6CHmFbIv1O/"
     thumb: "gallery-2024-04-21-yamada-sensei-memorial-lead-by-osawa-h-s"
     ref: "17896955480993849"
-    tags: [travel, seminar]
+    tags: [seminar, travel]
     show: true
     seen: true
   - type: reel
@@ -5473,7 +5817,7 @@ entries:
     url: "https://www.instagram.com/reel/C6CFpr2oq6P/"
     thumb: "gallery-2024-04-21-part-2-of-2-夜"
     ref: "18031151221803803"
-    tags: [training]
+    tags: [seminar, travel]
     show: true
     seen: true
   - type: reel
@@ -5482,7 +5826,7 @@ entries:
     url: "https://www.instagram.com/reel/C6CBzQqIomw/"
     thumb: "gallery-2024-04-21-part-1-of-2-朝"
     ref: "18020810174168463"
-    tags: [training]
+    tags: [seminar, travel]
     show: true
     seen: true
   - type: reel
@@ -5491,7 +5835,7 @@ entries:
     url: "https://www.instagram.com/reel/C6Dn2afo8dh/"
     thumb: "gallery-2024-04-22-nobody-do-you-ever-get-tired-of-aikido"
     ref: "17927360771849715"
-    tags: [training]
+    tags: [seminar, travel]
     show: true
     seen: true
   - type: reel
@@ -5590,7 +5934,7 @@ entries:
     url: "https://www.instagram.com/reel/C7Z3vf_Ihxn/"
     thumb: "gallery-2024-05-25-reaching-nidan-because-one-black-belt"
     ref: "18014130470136551"
-    tags: [training]
+    tags: [exams]
     show: true
     seen: true
   - type: reel
@@ -5608,7 +5952,7 @@ entries:
     url: "https://www.instagram.com/p/C7enxsrISjv/"
     thumb: "gallery-2024-05-27-scottish-and-borders-birankai-spring-cam-724271"
     ref: "18051949090724271"
-    tags: [training]
+    tags: [seminar, travel]
     show: true
     seen: true
   - type: post
@@ -5617,7 +5961,7 @@ entries:
     url: "https://www.instagram.com/p/C7ekgygI5X3/"
     thumb: "gallery-2024-05-27-scottish-and-borders-birankai-spring-cam-123222"
     ref: "18324127051123222"
-    tags: [training]
+    tags: [seminar, travel]
     show: true
     seen: true
   - type: reel
@@ -5626,7 +5970,7 @@ entries:
     url: "https://www.instagram.com/reel/C7wUKWiosey/"
     thumb: "gallery-2024-06-03-part-1-from-milano-to-corsico"
     ref: "18104729686396155"
-    tags: [travel]
+    tags: [travel, seminar]
     show: true
     seen: true
   - type: reel
@@ -5635,7 +5979,7 @@ entries:
     url: "https://www.instagram.com/reel/C7zPp9ho3_U/"
     thumb: "gallery-2024-06-04-part-2-miyamoto-sensei-monza-ronin-dojo"
     ref: "18347698336109328"
-    tags: [training]
+    tags: [seminar, travel]
     show: true
     seen: true
   - type: post
@@ -5644,7 +5988,7 @@ entries:
     url: "https://www.instagram.com/p/C71q_UXI-6Q/"
     thumb: "gallery-2024-06-05-really-looking-forward-to-training-with"
     ref: "17865955953117948"
-    tags: [training]
+    tags: [seminar, travel]
     show: true
     seen: true
   - type: post
@@ -5653,7 +5997,7 @@ entries:
     url: "https://www.instagram.com/p/C71mBxiIoy1/"
     thumb: "gallery-2024-06-05-miyamoto-t-shihan-seminar-in-monza-on-ju"
     ref: "18052113316650595"
-    tags: [seminar]
+    tags: [seminar, travel]
     show: true
     seen: true
   - type: reel
@@ -5671,7 +6015,7 @@ entries:
     url: "https://www.instagram.com/reel/C8UnW9doxZr/"
     thumb: "gallery-2024-06-17-part-1-of-2-how-many-cups-of-italian-esp"
     ref: "18000319691383428"
-    tags: [training]
+    tags: [seminar, travel]
     show: true
     seen: true
   - type: reel
@@ -5680,7 +6024,7 @@ entries:
     url: "https://www.instagram.com/reel/C8W535CoXl-/"
     thumb: "gallery-2024-06-18-part-2-of-2-solo-bud-power-ti-dará-forza"
     ref: "18059184991552335"
-    tags: [training]
+    tags: [seminar, travel]
     show: true
     seen: true
   - type: post
@@ -5689,7 +6033,7 @@ entries:
     url: "https://www.instagram.com/p/C8cZh59IHo2/"
     thumb: "gallery-2024-06-20-yamada-sensei-memorial-lead-by-osawa-h-s"
     ref: "18004893794539674"
-    tags: [seminar]
+    tags: [seminar, travel]
     show: true
     seen: true
   - type: reel
@@ -5698,7 +6042,7 @@ entries:
     url: "https://www.instagram.com/reel/C82agXNIXFt/"
     thumb: "gallery-2024-06-30-aikido-masterclass-led-by-laura-benevell-100400"
     ref: "18031911656100400"
-    tags: [travel, seminar]
+    tags: [training]
     show: true
     seen: true
   - type: reel
@@ -5707,7 +6051,7 @@ entries:
     url: "https://www.instagram.com/reel/C81RSQzIL6o/"
     thumb: "gallery-2024-06-30-aikido-masterclass-led-by-laura-benevell-099353"
     ref: "18359796745099353"
-    tags: [travel, seminar]
+    tags: [training]
     show: true
     seen: true
   - type: reel
@@ -5716,7 +6060,7 @@ entries:
     url: "https://www.instagram.com/reel/C84StWxIi3G/"
     thumb: "gallery-2024-07-01-aikido-masterclass-led-by-laura-benevell"
     ref: "18007473878575156"
-    tags: [travel, seminar]
+    tags: [training]
     show: true
     seen: true
   - type: reel
@@ -5734,7 +6078,7 @@ entries:
     url: "https://www.instagram.com/reel/C897CwsokJV/"
     thumb: "gallery-2024-07-03-aikido-masterclass-led-by-marilène-gélin"
     ref: "18055027174578674"
-    tags: [seminar]
+    tags: [training]
     show: true
     seen: true
   - type: post
@@ -5743,7 +6087,7 @@ entries:
     url: "https://www.instagram.com/p/C89frqVIOw3/"
     thumb: "gallery-2024-07-03-aikido-masterclass-led-by-laura-benevell"
     ref: "17928855869793342"
-    tags: [travel, seminar]
+    tags: [training]
     show: true
     seen: true
   - type: reel
@@ -5752,7 +6096,7 @@ entries:
     url: "https://www.instagram.com/reel/C9AfyASIbyW/"
     thumb: "gallery-2024-07-04-aikido-masterclass-led-by-marilène-gélin"
     ref: "18049743709783619"
-    tags: [seminar]
+    tags: [training]
     show: true
     seen: true
   - type: reel
@@ -5761,7 +6105,7 @@ entries:
     url: "https://www.instagram.com/reel/C9DJPE9IVzL/"
     thumb: "gallery-2024-07-05-aikido-masterclass-led-by-marilène-gélin"
     ref: "18061548835608210"
-    tags: [seminar]
+    tags: [training]
     show: true
     seen: true
   - type: reel
@@ -5770,7 +6114,7 @@ entries:
     url: "https://www.instagram.com/reel/C9FvqiII3FN/"
     thumb: "gallery-2024-07-06-aikido-masterclass-led-by-marilène-gélin"
     ref: "18013271081234626"
-    tags: [seminar]
+    tags: [training]
     show: true
     seen: true
   - type: reel
@@ -5779,7 +6123,7 @@ entries:
     url: "https://www.instagram.com/reel/C9Ip_7MIXIu/"
     thumb: "gallery-2024-07-07-aikido-masterclass-led-by-marilène-gélin"
     ref: "18118310089373157"
-    tags: [seminar]
+    tags: [training]
     show: true
     seen: true
   - type: reel
@@ -5797,7 +6141,7 @@ entries:
     url: "https://www.instagram.com/p/C9M_--wIN6q/"
     thumb: "gallery-2024-07-09-aikido-masterclass-led-by-marilène-gélin"
     ref: "18031814207284515"
-    tags: [seminar]
+    tags: [training]
     show: true
     seen: true
   - type: reel
@@ -5806,7 +6150,7 @@ entries:
     url: "https://www.instagram.com/reel/C9Pu6EfoQkj/"
     thumb: "gallery-2024-07-10-part-1-of"
     ref: "17872156836130497"
-    tags: [training]
+    tags: [seminar]
     show: true
     seen: true
   - type: reel
@@ -5815,7 +6159,7 @@ entries:
     url: "https://www.instagram.com/reel/C9SYnb4IxNu/"
     thumb: "gallery-2024-07-11-part-2-of-2"
     ref: "18192023581295638"
-    tags: [training]
+    tags: [seminar]
     show: true
     seen: true
   - type: post
@@ -5824,7 +6168,7 @@ entries:
     url: "https://www.instagram.com/p/C9VG3QqoKsG/"
     thumb: "gallery-2024-07-12-our-dojo-members-answering-the-call-by-a"
     ref: "18131958454352815"
-    tags: [training]
+    tags: [seminar]
     show: true
     seen: true
   - type: reel
@@ -5914,7 +6258,7 @@ entries:
     url: "https://www.instagram.com/reel/C-xiAU0o3hk/"
     thumb: "gallery-2024-08-17-hi"
     ref: "18044975080822340"
-    tags: [training]
+    tags: [seminar, travel]
     show: true
     seen: true
   - type: reel
@@ -5923,7 +6267,7 @@ entries:
     url: "https://www.instagram.com/reel/C-zPUg4IeU3/"
     thumb: "gallery-2024-08-18-part-1-of-who-knows"
     ref: "17957817581799976"
-    tags: [training]
+    tags: [seminar, travel]
     show: true
     seen: true
   - type: reel
@@ -5932,7 +6276,7 @@ entries:
     url: "https://www.instagram.com/reel/C-13cB_oJfd/"
     thumb: "gallery-2024-08-19-part-2-of-most-probably-3"
     ref: "18459226147035119"
-    tags: [training]
+    tags: [seminar, travel]
     show: true
     seen: true
   - type: reel
@@ -5941,7 +6285,7 @@ entries:
     url: "https://www.instagram.com/reel/C--llknIGCx/"
     thumb: "gallery-2024-08-22-part-3-of-3-b-sides"
     ref: "18449661058004548"
-    tags: [training]
+    tags: [seminar, travel]
     show: true
     seen: true
   - type: reel
@@ -5959,7 +6303,7 @@ entries:
     url: "https://www.instagram.com/reel/DBTjWEqoEwi/"
     thumb: "gallery-2024-10-19-sing-with-me-sing-for-the-yeyaah"
     ref: "18011268503402654"
-    tags: [training]
+    tags: [seminar]
     show: true
     seen: true
   - type: reel
@@ -5977,7 +6321,7 @@ entries:
     url: "https://www.instagram.com/reel/DBa10XOP3L_/"
     thumb: "gallery-2024-10-22-part-1-of"
     ref: "18079175098539633"
-    tags: [training]
+    tags: [seminar]
     show: true
     seen: true
   - type: reel
@@ -5986,7 +6330,7 @@ entries:
     url: "https://www.instagram.com/reel/DBifQH2Pbsh/"
     thumb: "gallery-2024-10-25-part-2-of-2"
     ref: "18026947379181484"
-    tags: [training]
+    tags: [seminar]
     show: true
     seen: true
   - type: reel
@@ -5995,7 +6339,7 @@ entries:
     url: "https://www.instagram.com/reel/DBm0l_VxwVo/"
     thumb: "gallery-2024-10-27-aikido-musubi-tokyo-part"
     ref: "18071544196538759"
-    tags: [travel]
+    tags: [travel, training, japan]
     show: true
     seen: true
   - type: reel
@@ -6004,7 +6348,7 @@ entries:
     url: "https://www.instagram.com/reel/DB3ybcRo6Dr/"
     thumb: "gallery-2024-11-02-aikido-musubi-tokyo-part"
     ref: "18011376851453482"
-    tags: [travel]
+    tags: [travel, training, japan]
     show: true
     seen: true
   - type: reel
@@ -6013,7 +6357,7 @@ entries:
     url: "https://www.instagram.com/reel/DB6fD8tByP1/"
     thumb: "gallery-2024-11-03-aikido-musubi-tokyoosaka-part-電車でgogo"
     ref: "18467917399028251"
-    tags: [travel]
+    tags: [travel, training, japan]
     show: true
     seen: true
   - type: reel
@@ -6022,7 +6366,7 @@ entries:
     url: "https://www.instagram.com/reel/DB-oSNLvzdl/"
     thumb: "gallery-2024-11-05-aikido-musubi-osaka-part-learn-bear-safe"
     ref: "17892158394098091"
-    tags: [travel]
+    tags: [travel, training, japan]
     show: true
     seen: true
   - type: reel
@@ -6031,7 +6375,7 @@ entries:
     url: "https://www.instagram.com/reel/DCGpaGivojq/"
     thumb: "gallery-2024-11-08-aikido-musubi-osakakyoto-part-あなたの未来を大予言"
     ref: "17938926050921632"
-    tags: [travel]
+    tags: [travel, training, japan]
     show: true
     seen: true
   - type: reel
@@ -6040,7 +6384,7 @@ entries:
     url: "https://www.instagram.com/reel/DCJz_jFIAyT/"
     thumb: "gallery-2024-11-09-aikido-musubi-kyotosanda-part-a-chubby-c"
     ref: "17858399004291116"
-    tags: [travel]
+    tags: [travel, training, japan]
     show: true
     seen: true
   - type: reel
@@ -6049,7 +6393,7 @@ entries:
     url: "https://www.instagram.com/reel/DCeveQVoXiZ/"
     thumb: "gallery-2024-11-17-aikido-musubi-nara-part-シカとの事故多発中"
     ref: "18346004992123917"
-    tags: [training]
+    tags: [travel, training, japan]
     show: true
     seen: true
   - type: reel
@@ -6058,7 +6402,7 @@ entries:
     url: "https://www.instagram.com/reel/DCoyrENoAjo/"
     thumb: "gallery-2024-11-21-aikido-musubi-kyotoosaka-part-of-8-またこんど"
     ref: "17933404688956285"
-    tags: [travel]
+    tags: [travel, training, japan]
     show: true
     seen: true
   - type: post
@@ -6067,7 +6411,7 @@ entries:
     url: "https://www.instagram.com/p/DCrIfiLoIGh/"
     thumb: "gallery-2024-11-22-12186034"
     ref: "18039755312186034"
-    tags: [training]
+    tags: [training, travel, japan]
     show: true
     seen: true
   - type: post
@@ -6076,7 +6420,7 @@ entries:
     url: "https://www.instagram.com/p/DCrH1jWIg41/"
     thumb: "gallery-2024-11-22-02137619"
     ref: "18031608902137619"
-    tags: [training]
+    tags: [training, travel, japan]
     show: true
     seen: true
   - type: post
@@ -6085,7 +6429,7 @@ entries:
     url: "https://www.instagram.com/p/DCvlumQI3lT/"
     thumb: "gallery-2024-11-24-had-such-a-great-time-at-horii-sensei-se-947423"
     ref: "17935566272947423"
-    tags: [travel, seminar]
+    tags: [seminar, travel]
     show: true
     seen: true
   - type: reel
@@ -6103,7 +6447,7 @@ entries:
     url: "https://www.instagram.com/p/DC1L_65oiwe/"
     thumb: "gallery-2024-11-26-aikido-masterclass-led-by-joshua-layton-211274"
     ref: "18288985366211274"
-    tags: [seminar]
+    tags: [training]
     show: true
     seen: true
   - type: reel
@@ -6112,7 +6456,7 @@ entries:
     url: "https://www.instagram.com/reel/DC0uHVtoN9t/"
     thumb: "gallery-2024-11-26-aikido-masterclass-led-by-joshua-layton-465800"
     ref: "18099340345465800"
-    tags: [seminar]
+    tags: [training]
     show: true
     seen: true
   - type: reel
@@ -6148,7 +6492,7 @@ entries:
     url: "https://www.instagram.com/p/DFDDaGcol5y/"
     thumb: "gallery-2025-01-20-٩๑ᴗ๑۶-had-such-a-great-time-at-kumazawa"
     ref: "18297155728238010"
-    tags: [travel, seminar]
+    tags: [seminar, travel]
     show: true
     seen: true
   - type: reel
@@ -6157,7 +6501,7 @@ entries:
     url: "https://www.instagram.com/reel/DFC9-CrIhzE/"
     thumb: "gallery-2025-01-20-paris-vous-aime"
     ref: "18046241393237674"
-    tags: [travel]
+    tags: [travel, seminar]
     show: true
     seen: true
   - type: reel
@@ -6184,7 +6528,7 @@ entries:
     url: "https://www.instagram.com/reel/DFxTwB2IJEM/"
     thumb: "gallery-2025-02-07-we-made-a-tv-appearance"
     ref: "18329756668085993"
-    tags: [training]
+    tags: [demo]
     show: true
     seen: true
   - type: post
@@ -6193,7 +6537,7 @@ entries:
     url: "https://www.instagram.com/p/DGYq9phIC2C/"
     thumb: "gallery-2025-02-22-awesome-training-this-week-with-our-frie"
     ref: "18143236081371832"
-    tags: [travel]
+    tags: [training]
     show: true
     seen: true
   - type: reel
@@ -6202,7 +6546,7 @@ entries:
     url: "https://www.instagram.com/reel/DHTfpljIy-9/"
     thumb: "gallery-2025-03-17-this-weekend-was-an-absolute-blast-at-ja"
     ref: "18058008908034656"
-    tags: [training]
+    tags: [demo]
     show: true
     seen: true
   - type: reel
@@ -6211,7 +6555,7 @@ entries:
     url: "https://www.instagram.com/reel/DHdgFFOIsOb/"
     thumb: "gallery-2025-03-21-what-an-incredible-weekend-at-japanweeke"
     ref: "18075484510812999"
-    tags: [training]
+    tags: [demo]
     show: true
     seen: true
   - type: reel
@@ -6220,7 +6564,7 @@ entries:
     url: "https://www.instagram.com/reel/DIUIekgoxK4/"
     thumb: "gallery-2025-04-11-part-2-we-train-hard-we-laugh-harder"
     ref: "18063267689074497"
-    tags: [training]
+    tags: [seminar, travel]
     show: true
     seen: true
   - type: reel
@@ -6229,7 +6573,7 @@ entries:
     url: "https://www.instagram.com/reel/DIT4tMwIV1U/"
     thumb: "gallery-2025-04-11-part-1-we-travel-and-we-dance"
     ref: "18146747080338816"
-    tags: [training]
+    tags: [seminar, travel]
     show: true
     seen: true
   - type: reel
@@ -6238,7 +6582,7 @@ entries:
     url: "https://www.instagram.com/reel/DIW86B_OhDG/"
     thumb: "gallery-2025-04-12-interlude-laundry-day-chronicles-episode"
     ref: "18059562491033804"
-    tags: [training]
+    tags: [travel, seminar]
     show: true
     seen: true
   - type: reel
@@ -6247,7 +6591,7 @@ entries:
     url: "https://www.instagram.com/reel/DIV2xb6oVCs/"
     thumb: "gallery-2025-04-12-part-3-kissed-by-the-sun"
     ref: "17906299242111270"
-    tags: [training]
+    tags: [travel, seminar]
     show: true
     seen: true
   - type: reel
@@ -6256,7 +6600,7 @@ entries:
     url: "https://www.instagram.com/reel/DIY6-DrI6ni/"
     thumb: "gallery-2025-04-13-part-4-in-the-name-of-the-moon-well-trai"
     ref: "17891265435216127"
-    tags: [training]
+    tags: [seminar, travel]
     show: true
     seen: true
   - type: reel
@@ -6265,7 +6609,7 @@ entries:
     url: "https://www.instagram.com/reel/DJSLlfAOXru/"
     thumb: "gallery-2025-05-05-part-0-fooling-around-florence-before-he"
     ref: "17951066564953071"
-    tags: [training]
+    tags: [travel, seminar]
     show: true
     seen: true
   - type: reel
@@ -6274,7 +6618,7 @@ entries:
     url: "https://www.instagram.com/reel/DJU6D7SosHH/"
     thumb: "gallery-2025-05-06-part-1-arriving-to-pietrasanta-la-città"
     ref: "17870662983262738"
-    tags: [training]
+    tags: [travel, seminar]
     show: true
     seen: true
   - type: reel
@@ -6283,7 +6627,7 @@ entries:
     url: "https://www.instagram.com/reel/DJcqICgIAyp/"
     thumb: "gallery-2025-05-09-part-2-thanos-infinity-gauntlet-or-super"
     ref: "18191046058309900"
-    tags: [training]
+    tags: [seminar, travel]
     show: true
     seen: true
   - type: reel
@@ -6292,7 +6636,7 @@ entries:
     url: "https://www.instagram.com/reel/DJdioK1IbCP/"
     thumb: "gallery-2025-05-10-bonus-interlude-drinking-monkeys-lit"
     ref: "18067392971479652"
-    tags: [training]
+    tags: [travel, seminar]
     show: true
     seen: true
   - type: reel
@@ -6301,7 +6645,7 @@ entries:
     url: "https://www.instagram.com/reel/DKdRlvAIlRH/"
     thumb: "gallery-2025-06-03-part-3-may-the-4th-be-with-you"
     ref: "18059727494332411"
-    tags: [training]
+    tags: [seminar, travel]
     show: true
     seen: true
   - type: reel
@@ -6337,7 +6681,7 @@ entries:
     url: "https://www.instagram.com/reel/DLxAA_hIy4L/"
     thumb: "gallery-2025-07-06-were-incredibly-proud-of-emily-and-all-t"
     ref: "18364313863194876"
-    tags: [training]
+    tags: [exams]
     show: true
     seen: true
   - type: reel
@@ -6355,7 +6699,7 @@ entries:
     url: "https://www.instagram.com/reel/DMFSUMModJU/"
     thumb: "gallery-2025-07-14-part-1-train-hard-friday-harder"
     ref: "17914418949033243"
-    tags: [training]
+    tags: [travel, seminar]
     show: true
     seen: true
   - type: reel
@@ -6364,7 +6708,7 @@ entries:
     url: "https://www.instagram.com/reel/DMHqQzjI-rx/"
     thumb: "gallery-2025-07-15-part-2-fill-your-saturday-with-intense-k"
     ref: "18068866511040347"
-    tags: [training]
+    tags: [travel, seminar]
     show: true
     seen: true
   - type: reel
@@ -6373,7 +6717,7 @@ entries:
     url: "https://www.instagram.com/reel/DMLWrm7oQde/"
     thumb: "gallery-2025-07-16-reel"
     ref: "18147974404381198"
-    tags: [training]
+    tags: [travel, seminar]
     show: true
     seen: true
   - type: post
@@ -6382,7 +6726,7 @@ entries:
     url: "https://www.instagram.com/p/DNN7JpPIEeX/"
     thumb: "gallery-2025-08-11-out-pf-the-blue-photo-duel-with-francois"
     ref: "18126227878415619"
-    tags: [training]
+    tags: [seminar, travel]
     show: true
     seen: true
   - type: reel
@@ -6391,7 +6735,7 @@ entries:
     url: "https://www.instagram.com/reel/DNRMVpqI_vn/"
     thumb: "gallery-2025-08-12-part-0-waffles-space-invaders-other-brus"
     ref: "18077081653770002"
-    tags: [travel]
+    tags: [travel, seminar]
     show: true
     seen: true
   - type: reel
@@ -6400,7 +6744,7 @@ entries:
     url: "https://www.instagram.com/reel/DNYOtJhoIuf/"
     thumb: "gallery-2025-08-15-part-1-of-many-grwu-or"
     ref: "18079937947820871"
-    tags: [training]
+    tags: [travel, seminar]
     show: true
     seen: true
   - type: reel
@@ -6409,7 +6753,7 @@ entries:
     url: "https://www.instagram.com/reel/DNidBSbPzwc/"
     thumb: "gallery-2025-08-19-part-2-of-many-we-do-the-laundry-to-prac"
     ref: "18040631258382322"
-    tags: [training]
+    tags: [travel, seminar]
     show: true
     seen: true
   - type: reel
@@ -6418,7 +6762,7 @@ entries:
     url: "https://www.instagram.com/reel/DQw9FCXjAg7/"
     thumb: "gallery-2025-11-07-lucifer"
     ref: "18244116739295643"
-    tags: [training]
+    tags: [travel, training, japan]
     show: true
     seen: true
   - type: reel
@@ -6427,7 +6771,7 @@ entries:
     url: "https://www.instagram.com/reel/DQymHezDLjL/"
     thumb: "gallery-2025-11-08-the-dojo-is-calm-but-my-ukemi-is-not"
     ref: "18085846618796459"
-    tags: [training]
+    tags: [travel, training, japan]
     show: true
     seen: true
   - type: reel
@@ -6436,7 +6780,7 @@ entries:
     url: "https://www.instagram.com/reel/DQ_ILngjGeQ/"
     thumb: "gallery-2025-11-13-わたしの献血宣言"
     ref: "18079610750153909"
-    tags: [training]
+    tags: [travel, training, japan]
     show: true
     seen: true
   - type: reel
@@ -6445,7 +6789,7 @@ entries:
     url: "https://www.instagram.com/reel/DRDzjsyiHG4/"
     thumb: "gallery-2025-11-15-julius-k9"
     ref: "18151596340410768"
-    tags: [training]
+    tags: [travel, training, japan]
     show: true
     seen: true
   - type: reel
@@ -6454,7 +6798,7 @@ entries:
     url: "https://www.instagram.com/reel/DRXvob1DL25/"
     thumb: "gallery-2025-11-22-part-1-of-2-kyoto-京都-extended-ver-direct"
     ref: "18067123382113032"
-    tags: [travel]
+    tags: [travel, training, japan]
     show: true
     seen: true
   - type: reel
@@ -6499,7 +6843,7 @@ entries:
     url: "https://www.instagram.com/reel/DSx-xaTDP6i/"
     thumb: "gallery-2025-12-27-bro-why-am-i-crying"
     ref: "18092095828760519"
-    tags: [training]
+    tags: [exams]
     show: true
     seen: true
   - type: reel
@@ -6508,7 +6852,7 @@ entries:
     url: "https://www.instagram.com/reel/DSx3VdSjADB/"
     thumb: "gallery-2025-12-27-you-just-witnessed-the-next-best-aikidok"
     ref: "18088225307288237"
-    tags: [training]
+    tags: [exams]
     show: true
     seen: true
   - type: reel
@@ -6526,7 +6870,7 @@ entries:
     url: "https://www.instagram.com/reel/DXJfAfmDCaA/"
     thumb: "gallery-2026-04-15-リ-リリリ"
     ref: "18318848014268838"
-    tags: [training]
+    tags: [seminar, travel]
     show: true
     seen: true
   - type: reel
@@ -6535,7 +6879,7 @@ entries:
     url: "https://www.instagram.com/reel/DXpqJ-JjHQC/"
     thumb: "gallery-2026-04-27-saturday-evening-土曜夜"
     ref: "18098512190467831"
-    tags: [training]
+    tags: [seminar]
     show: true
     seen: true
   - type: reel
@@ -6544,7 +6888,7 @@ entries:
     url: "https://www.instagram.com/reel/DXpnOuLDJk_/"
     thumb: "gallery-2026-04-27-saturday-morning-土曜朝"
     ref: "17933281095247372"
-    tags: [training]
+    tags: [seminar]
     show: true
     seen: true
   - type: post
@@ -6598,7 +6942,7 @@ entries:
     url: "https://www.instagram.com/reel/DasCTZpsxsN/"
     thumb: ""
     ref: "18018909260857450"
-    tags: [training]
+    tags: []
     show: false
     seen: true
   - type: reel
@@ -6609,6 +6953,7 @@ entries:
     ref: "17920977922486291"
     tags: [training]
     show: false
+    seen: true
   - type: reel
     date_iso: "2020-12-07"
     name: "Pablo Martín Sensei is showing Shōmen-uchi Jiyū-waza (正面打ち 自由技)!"
@@ -6617,6 +6962,7 @@ entries:
     ref: "18137069089125750"
     tags: [training]
     show: false
+    seen: true
   - type: reel
     date_iso: "2020-12-14"
     name: "Pablo Martín Sensei is showing Katate-dori Jiyū-waza (片手取り 自由技)! Coinc"
@@ -6625,6 +6971,7 @@ entries:
     ref: "17878109630008388"
     tags: [training]
     show: false
+    seen: true
   - type: reel
     date_iso: "2021-01-08"
     name: "Nage-katame-waza Shōmen-uchi Kote-gaeshi (投げ固め技 正面打ち 小手返し). Sometime"
@@ -6633,139 +6980,157 @@ entries:
     ref: "17869736591227853"
     tags: [training]
     show: false
+    seen: true
   - type: reel
     date_iso: "2021-02-11"
     name: "Pedro Fortes Sensei showing Katate-dori Dai-ikkyō (片手取り 第一教) with @jua"
     url: "https://www.instagram.com/reel/CLJ_8PwoWum/"
-    thumb: ""
+    thumb: "gallery-2021-02-11-pedro-fortes-sensei-showing-katate-dori-760928"
     ref: "17900080693760928"
     tags: [training]
-    show: false
+    show: true
+    seen: true
   - type: reel
     date_iso: "2022-05-16"
     name: "Pablo Martín Sensei at All Spain Enbutaikai 2022! 💨"
     url: "https://www.instagram.com/reel/Cdoj0QKoO2O/"
     thumb: ""
     ref: "18291912982031302"
-    tags: [training]
+    tags: []
     show: false
+    seen: true
   - type: reel
     date_iso: "2022-10-06"
     name: "🍑"
     url: "https://www.instagram.com/reel/CjZCFKnoUtc/"
     thumb: ""
     ref: "17938317275270714"
-    tags: [training]
+    tags: []
     show: false
+    seen: true
   - type: reel
     date_iso: "2022-12-09"
     name: "🤯 Empty your mind. 🫖 Become a tea pot."
     url: "https://www.instagram.com/reel/Cl9gmLqIUbV/"
     thumb: ""
     ref: "17880672680775236"
-    tags: [training]
+    tags: []
     show: false
+    seen: true
   - type: reel
     date_iso: "2022-12-10"
     name: "Reel"
     url: "https://www.instagram.com/reel/Cl_N3dDIFhz/"
     thumb: ""
     ref: "17950130129465960"
-    tags: [training]
+    tags: []
     show: false
+    seen: true
   - type: reel
     date_iso: "2022-12-22"
     name: "🏖️"
     url: "https://www.instagram.com/reel/CmcygGijPzh/"
     thumb: ""
     ref: "17974723090901600"
-    tags: [training]
+    tags: []
     show: false
+    seen: true
   - type: reel
     date_iso: "2023-03-22"
     name: "Reel"
     url: "https://www.instagram.com/reel/CqGeV0NIvVi/"
     thumb: ""
     ref: "18278382481112896"
-    tags: [training]
+    tags: []
     show: false
+    seen: true
   - type: reel
     date_iso: "2023-04-08"
     name: "Rock Lee vs. Gaara Full Fight Legendary Battle Live Action No Sub 1080"
     url: "https://www.instagram.com/reel/CqyMT0go5Vu/"
     thumb: ""
     ref: "18022689370513531"
-    tags: [training]
+    tags: []
     show: false
+    seen: true
   - type: reel
     date_iso: "2023-04-11"
     name: "This new trend doesn't understand you either."
     url: "https://www.instagram.com/reel/Cq5oSOjo_PT/"
     thumb: ""
     ref: "18042934318437956"
-    tags: [training]
+    tags: []
     show: false
+    seen: true
   - type: reel
     date_iso: "2023-04-23"
     name: "This one is for my one and only true love... 👑🍑"
     url: "https://www.instagram.com/reel/CrY9bQnIbyH/"
     thumb: ""
     ref: "17973281228255514"
-    tags: [training]
+    tags: []
     show: false
+    seen: true
   - type: reel
     date_iso: "2023-07-19"
     name: "Cuando haces long ya no hay stop. 🏖️"
     url: "https://www.instagram.com/reel/Cu5Q4Lnoxtt/"
     thumb: ""
     ref: "18227169706215505"
-    tags: [training]
+    tags: []
     show: false
+    seen: true
   - type: reel
     date_iso: "2023-08-17"
     name: "何？"
     url: "https://www.instagram.com/reel/CwCtG0WIiFQ/"
     thumb: ""
     ref: "18028243177596968"
-    tags: [training]
+    tags: []
     show: false
+    seen: true
   - type: reel
     date_iso: "2024-02-21"
     name: "A man has to do what a man has to do."
     url: "https://www.instagram.com/reel/C3m3TAvoLZk/"
     thumb: ""
     ref: "17959344854685099"
-    tags: [training]
+    tags: []
     show: false
+    seen: true
   - type: reel
     date_iso: "2024-03-13"
     name: "The Defensive Power of Aikido (1975)"
     url: "https://www.instagram.com/reel/C4dhCCYoFwn/"
     thumb: ""
     ref: "17999545964291999"
-    tags: [training]
+    tags: []
     show: false
+    seen: true
   - type: reel
     date_iso: "2026-04-17"
     name: "what you won't do, do for love 🎤"
     url: "https://www.instagram.com/reel/DXQAVUHjIgf/"
     thumb: ""
     ref: "18456300700108820"
-    tags: [training]
+    tags: []
     show: false
+    seen: true
   - type: reel
     date_iso: "2026-07-11"
     name: "🎤 ¥€$"
     url: "https://www.instagram.com/reel/Dap32vsMTS4/"
     thumb: ""
     ref: "18123928585683103"
-    tags: [training]
+    tags: []
     show: false
+    seen: true
   - type: post
     date_iso: "2026-08-31"
     name: "🎁 SABIES QUE EL KEIKOGI VA A CÀRREC DEL DOJO?"
     url: "https://www.instagram.com/p/DcsgGnQjIFq/"
     thumb: ""
     ref: "18097910369068409"
-    tags: [training]
+    tags: []
     show: false
+    seen: true
