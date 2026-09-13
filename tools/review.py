@@ -59,6 +59,18 @@ CATEGORIES ARE MULTI-SELECT, and that is not decoration: 22 entries are
 `travel, seminar` and both are true of them. The first version of this used a
 <select>, which would have quietly thrown the second one away on every entry it
 touched.
+
+DATES CAN BE THE DAY THE MEDIA WAS RECORDED rather than the day it was posted.
+A clip of a 2015 seminar put up last month is honestly dated on Instagram and
+wrong here, because the gallery sorts on `date_iso` and groups by its year.
+Tick the cards, type 2015 / 2015-06 / 2015-06-20, Apply. A bare year means the
+year and nothing narrower is known, so it becomes 2015-01-01; anything that is
+not one of those three shapes is refused rather than guessed.
+
+The posting date survives in `posted:`, which is appended after `show:` and
+`seen:` ON PURPOSE — fetch-social.py's fetch_thumbs matches entry blocks with a
+positional regex ending at `show: true`, and a field inserted higher up would
+stop it finding anything.
 """
 
 import argparse
@@ -100,6 +112,7 @@ def parse(block):
         "url": g("url"),
         "ref": g("ref"),
         "thumb": g("thumb"),
+        "posted": g("posted"),
         "tags": [t.strip() for t in (tags.group(1) if tags else "").split(",") if t.strip()],
         "show": "show: true" in block,
         "seen": "seen: true" in block,
@@ -179,6 +192,39 @@ def apply(decisions):
         tags = dec.get("tags")
         if tags is not None:
             b = re.sub(r"\n    tags: \[[^\]]*\]", "\n    tags: [%s]" % ", ".join(tags), b, count=1)
+
+        # THE DATE, when the media was recorded rather than when it was posted.
+        #
+        # A reel of a 2015 seminar put up last month is honestly dated on
+        # Instagram and wrong here: _layouts/gallery.html sorts on `date_iso`
+        # and groups the page by `date_iso | slice: 0, 4`, and Ura's archive
+        # does the same, so the clip lands under the wrong year in both.
+        #
+        # The posting date is not deleted. The first time an entry is redated
+        # its original goes into `posted:`, which is appended AFTER `show:` and
+        # `seen:` on purpose: fetch-social.py's fetch_thumbs matches entry
+        # blocks with a positional regex that ends at `show: true`, and a field
+        # inserted higher up would stop it finding anything.
+        #
+        # The `thumb:` stem keeps the date it was minted with. It is an
+        # identifier, not a claim — the file exists under that name, imgw.yml
+        # indexes it and the sitemap names it, and renaming images to chase a
+        # metadata edit is the one thing CLAUDE.md is most insistent about.
+        date = dec.get("date")
+        if date:
+            was = re.search(r'date_iso: "([^"]+)"', b)
+            if was and was.group(1) != date:
+                if "\n    posted:" not in b:
+                    b = b.rstrip("\n") + '\n    posted: "%s"\n' % was.group(1)
+                b = re.sub(r'date_iso: "[^"]+"', 'date_iso: "%s"' % date, b, count=1)
+            # Put a date back to the day it was posted and the record of the
+            # posting date has nothing left to record. Leaving it behind would
+            # litter the file with `posted:` lines equal to their own
+            # `date_iso:`, and make "has this been redated?" unanswerable.
+            orig = re.search(r'posted: "([^"]+)"', b)
+            if orig and orig.group(1) == date:
+                b = re.sub(r'\n    posted: "[^"]+"', "", b, count=1)
+
         if b != blocks[n]:
             changed += 1
         blocks[n] = b
@@ -190,7 +236,7 @@ def apply(decisions):
 # ---------------------------------------------------------------------------
 # The page
 # ---------------------------------------------------------------------------
-PAGE = """<!doctype html>
+PAGE = r"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gallery review</title>
@@ -238,6 +284,14 @@ PAGE = """<!doctype html>
       display:flex;gap:.4rem;justify-content:space-between}
  .sub a{color:var(--mute)}
  .st{font-size:.62rem;letter-spacing:.07em;text-transform:uppercase;font-weight:700}
+ .pick{position:absolute;top:.4rem;left:.4rem;z-index:2;width:1.1rem;height:1.1rem;
+       accent-color:var(--warn);cursor:pointer}
+ .wrap{position:relative}
+ .card.sel{outline:3px solid var(--warn);outline-offset:-3px}
+ .redated{color:var(--warn);font-weight:700}
+ input[type=text].dt{font:inherit;font-size:.78rem;width:7.5rem;padding:.25rem .4rem;
+      border-radius:.2rem;border:1px solid rgba(255,255,255,.3);background:#1e2325;color:#fff}
+ input[type=text].dt::placeholder{color:#8b9296}
  .st.on{color:var(--keep)} .st.off{color:var(--mute)}
  .tags{display:flex;flex-wrap:wrap;gap:.22rem;margin-top:auto;padding-top:.4rem}
  .tag{font:inherit;font-size:.64rem;letter-spacing:.04em;text-transform:uppercase;
@@ -285,6 +339,16 @@ PAGE = """<!doctype html>
     <button class="ghost" id="keepPage">Keep page</button>
     <button class="ghost" id="dropPage">Drop page</button>
   </div>
+  <div class="bar two">
+    <label class="f"><input type="checkbox" id="selAll"> select page</label>
+    <span class="fig" id="selCount">0 selected</span>
+    <span class="sp"></span>
+    <label class="f">Set date
+      <input type="text" class="dt" id="dtVal" placeholder="2015 or 2015-06-20"></label>
+    <button class="ghost" id="dtApply" disabled>Apply to selected</button>
+    <button class="ghost" id="dtUndo" disabled>Restore posted date</button>
+    <button class="ghost" id="selNone" disabled>Clear selection</button>
+  </div>
 </header>
 <main id="g"></main>
 <div class="pager" id="pager"></div>
@@ -304,14 +368,30 @@ $('fTag').innerHTML = '<option value="all">all</option>'
 // What an entry looks like right now: the unsaved edit if there is one,
 // otherwise what the file says. Nothing is ever seeded into `state` just by
 // being drawn, so `state.size` is exactly the number of unsaved edits.
-const now = it => state.get(it.i) || {keep: it.show, tags: it.tags};
+const now = it => state.get(it.i) || {keep: it.show, tags: it.tags, date: it.date};
 const dirty = it => {
   const s = state.get(it.i);
-  return !!s && (s.keep !== it.show || s.tags.join() !== it.tags.join());
+  return !!s && (s.keep !== it.show || s.tags.join() !== it.tags.join() || s.date !== it.date);
 };
 function edit(it){
-  if(!state.has(it.i)) state.set(it.i, {keep: it.show, tags: it.tags.slice()});
+  if(!state.has(it.i))
+    state.set(it.i, {keep: it.show, tags: it.tags.slice(), date: it.date});
   return state.get(it.i);
+}
+
+// Selection is separate from keep/drop on purpose: picking entries out in
+// order to redate them has nothing to do with whether they are published.
+const picked = new Set();
+
+// "2015" means the year and nothing narrower is known, so it becomes
+// 2015-01-01 and the gallery groups it under 2015. "2015-06" is the month.
+// Anything else must be a full ISO date or it is refused rather than guessed.
+function normDate(v){
+  v = (v || '').trim();
+  if(/^\d{4}$/.test(v)) return v + '-01-01';
+  if(/^\d{4}-\d{2}$/.test(v)) return v + '-01';
+  if(/^\d{4}-\d{2}-\d{2}$/.test(v)) return v;
+  return null;
 }
 
 function filtered(){
@@ -344,21 +424,30 @@ function draw(){
   for(const it of slice){
     const s = now(it);
     const card = document.createElement('div');
-    card.className = 'card' + (s.keep ? ' keep' : '') + (dirty(it) ? ' dirty' : '');
+    card.className = 'card' + (s.keep ? ' keep' : '') + (dirty(it) ? ' dirty' : '')
+                   + (picked.has(it.i) ? ' sel' : '');
     const shot = it.src
       ? `<img class="shot" loading="lazy" src="${it.src}" alt="">`
       : `<div class="shot none">no picture yet<br><small>fetch-social.py<br>--review-thumbs --all</small></div>`;
-    card.innerHTML = shot + `<div class="meta">
-        <div class="sub"><span>${it.type} · ${it.date}</span>
+    const moved = s.date !== (it.posted || it.date);
+    card.innerHTML = `<div class="wrap"><input type="checkbox" class="pick"${
+        picked.has(it.i) ? ' checked' : ''} title="select for redating">` + shot + `</div>`
+      + `<div class="meta">
+        <div class="sub"><span>${it.type} · <span class="${moved ? 'redated' : ''}">${s.date}</span></span>
           <a href="${it.url}" target="_blank" rel="noopener">open</a></div>
         <div class="nm">${it.name ? it.name.replace(/</g,'&lt;') : '<i>no caption</i>'}</div>
         <div class="st ${s.keep?'on':'off'}">${s.keep ? 'on the site' : 'not shown'}${
-          dirty(it) ? ' · unsaved' : ''}${!it.seen ? ' · new' : ''}</div>
+          dirty(it) ? ' · unsaved' : ''}${!it.seen ? ' · new' : ''}${
+          moved ? ' · posted ' + (it.posted || it.date) : ''}</div>
         <div class="tags">${TAGS.map(t =>
            `<button class="tag" type="button" data-t="${t}" aria-pressed="${s.tags.includes(t)}">${t}</button>`
          ).join('')}</div></div>`;
     card.querySelector('.shot').addEventListener('click', () => {
       const c = edit(it); c.keep = !c.keep; sync();
+    });
+    card.querySelector('.pick').addEventListener('change', e => {
+      if(e.target.checked) picked.add(it.i); else picked.delete(it.i);
+      sync();
     });
     card.querySelectorAll('.tag').forEach(btn => btn.addEventListener('click', () => {
       const c = edit(it), t = btn.dataset.t, n = c.tags.indexOf(t);
@@ -382,10 +471,15 @@ function draw(){
 }
 
 function sync(){
-  // A card edited back to what the file already says is not an edit.
+  // A card edited back to what the file already says is not an edit. Every
+  // field that can be edited has to be compared here or the pruning throws the
+  // edit away: the date was missing from this test, so a date-only change was
+  // written into `state` and deleted again by the next sync(), which made the
+  // Apply button look like it had done nothing at all.
   for(const [i, s] of [...state]){
     const it = ITEMS.find(x => x.i === +i);
-    if(it && s.keep === it.show && s.tags.join() === it.tags.join()) state.delete(+i);
+    if(it && s.keep === it.show && s.tags.join() === it.tags.join()
+          && s.date === it.date) state.delete(+i);
   }
   const pub = ITEMS.filter(it => now(it).keep).length;
   const unseen = ITEMS.filter(it => !it.seen).length;
@@ -396,6 +490,10 @@ function sync(){
     ? `<em>${state.size}</em> unsaved` : 'all saved';
   $('save').disabled = state.size === 0;
   $('revert').disabled = state.size === 0;
+  $('selCount').innerHTML = picked.size ? `<em>${picked.size}</em> selected` : '0 selected';
+  $('selNone').disabled = !picked.size;
+  $('dtUndo').disabled = !picked.size;
+  $('dtApply').disabled = !picked.size || !normDate($('dtVal').value);
   draw();
 }
 
@@ -414,6 +512,47 @@ $('dropPage').onclick = () => {
 };
 $('revert').onclick = () => { state.clear(); sync(); };
 
+// ---- selection and redating ------------------------------------------------
+$('selAll').onchange = e => {
+  const size = pageSize();
+  filtered().slice(page*size, page*size+size)
+    .forEach(it => e.target.checked ? picked.add(it.i) : picked.delete(it.i));
+  sync();
+};
+$('selNone').onclick = () => { picked.clear(); sync(); };
+
+$('dtVal').addEventListener('input', () => {
+  $('dtApply').disabled = !picked.size || !normDate($('dtVal').value);
+});
+
+$('dtApply').onclick = () => {
+  const d = normDate($('dtVal').value);
+  if(!d){ toast('Type a year, a year-month, or a full date: 2015 / 2015-06 / 2015-06-20', true); return; }
+  let n = 0;
+  for(const i of picked){
+    const it = ITEMS.find(x => x.i === i);
+    if(!it) continue;
+    edit(it).date = d;
+    n++;
+  }
+  sync();
+  toast(`${n} entr${n===1?'y':'ies'} dated ${d} — not saved yet`);
+};
+
+// The posting date is kept in `posted:` the first time an entry is redated, so
+// putting one back is possible rather than a matter of remembering.
+$('dtUndo').onclick = () => {
+  let n = 0;
+  for(const i of picked){
+    const it = ITEMS.find(x => x.i === i);
+    if(!it || !it.posted) continue;
+    edit(it).date = it.posted;
+    n++;
+  }
+  sync();
+  toast(n ? `${n} restored to the date they were posted` : 'None of those were redated', !n);
+};
+
 function toast(msg, bad){
   const t = document.createElement('div');
   t.className = 'toast'; t.textContent = msg;
@@ -424,7 +563,7 @@ function toast(msg, bad){
 
 $('save').onclick = async () => {
   const body = {};
-  for(const [i, v] of state) body[i] = v;
+  for(const [i, v] of state) body[i] = {keep: v.keep, tags: v.tags, date: v.date};
   $('save').disabled = true;
   try{
     const r = await fetch('/save', {method:'POST', body: JSON.stringify(body)});

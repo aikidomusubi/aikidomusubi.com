@@ -235,6 +235,39 @@ plus `new` if nobody has reviewed it and `unsaved` if you have just changed it.
 
 ---
 
+## 6a. Dating media by when it was recorded
+
+A clip of a 2015 seminar put up last month is honestly dated on Instagram and
+wrong here: `_layouts/gallery.html` sorts on `date_iso` and groups the page by
+its year, and Ura's archive does the same, so it lands under the wrong year in
+both.
+
+Tick the checkbox on each card you want, type a date in **Set date**, press
+**Apply to selected**:
+
+```
+2015          the year, and nothing narrower is known   ->  2015-01-01
+2015-06       the month                                 ->  2015-06-01
+2015-06-20    the day                                   ->  2015-06-20
+```
+
+Anything else is refused rather than guessed. `select page` ticks everything
+currently shown, so filtering first makes a whole category or a whole year a
+two-click job.
+
+**The posting date is not lost.** The first time an entry is redated its
+original is kept in `posted:`, the card shows `posted 2026-07-05` under the
+caption and the new date turns orange. **Restore posted date** puts it back for
+whatever is selected, and the `posted:` line is removed once it has nothing
+left to record.
+
+The `thumb:` stem keeps the date it was minted with. It is an identifier rather
+than a claim: the file exists under that name, `_data/imgw.yml` indexes it and
+`sitemap.xml` names it, and renaming images to chase a metadata edit is the one
+thing CLAUDE.md is most insistent about.
+
+---
+
 ## 6b. Going back over the categories
 
 Everything `--metadata-only` collects arrives tagged `training`, because that is
