@@ -43,7 +43,13 @@ choose on the command line and no restart to change your mind:
                reviewed / no picture / same picture twice
     Category   all / no category / and one per tag in _data/gallery.yml
     Type       all / post / reel / album
+    Year       all / one per year present
+    Order      newest first / oldest first
     Show       128 / 256 / 512 / 1024 / everything
+
+Year and Order go by the EDITED date and do so before it is saved, so redating
+a clip to 1998 moves it out of 2026 and to the front of oldest-first straight
+away.
 
 "same picture twice" compares the IMAGES, never the captions or the dates, and
 lays each pair side by side — see the dHash note further down.
@@ -462,6 +468,12 @@ PAGE = r"""<!doctype html>
         <option value="all">all</option><option>post</option>
         <option>reel</option><option>album</option>
       </select></label>
+    <label class="f">Year <select id="fYear"></select></label>
+    <label class="f">Order
+      <select id="fSort">
+        <option value="desc">newest first</option>
+        <option value="asc">oldest first</option>
+      </select></label>
     <label class="f">Show
       <select id="fSize">
         <option>128</option><option selected>256</option>
@@ -525,8 +537,15 @@ function normDate(v){
   return null;
 }
 
+// THE DATE THAT COUNTS IS THE EDITED ONE, everywhere. A redated entry is
+// filtered, sorted and counted by the date you gave it, not the day it was
+// posted — including while the edit is still unsaved, because otherwise you
+// would redate a 2015 clip and watch it stay put among last month's.
+const dateOf = it => now(it).date;
+
 function filtered(){
   const st = $('fStatus').value, tg = $('fTag').value, ty = $('fType').value;
+  const yr = $('fYear').value, dir = $('fSort').value === 'asc' ? 1 : -1;
   const list = ITEMS.filter(it => {
     const s = now(it);
     if(st === 'pub'    && !s.keep) return false;
@@ -538,12 +557,19 @@ function filtered(){
     if(tg === 'none'   && s.tags.length) return false;
     if(tg !== 'all' && tg !== 'none' && !s.tags.includes(tg)) return false;
     if(ty !== 'all' && it.type !== ty) return false;
+    if(yr !== 'all' && dateOf(it).slice(0, 4) !== yr) return false;
     return true;
   });
+  // Dates are zero-padded ISO, so comparing them as strings IS comparing them
+  // as dates. The index is the tie-break, so two entries on the same day never
+  // swap places between draws.
+  const byDate = (a, b) =>
+    (dateOf(a) < dateOf(b) ? -1 : dateOf(a) > dateOf(b) ? 1 : a.i - b.i) * dir;
   // Matching pictures have to sit next to each other or the view is useless:
   // by date they can be years apart, which is exactly how the pairs went
-  // unnoticed. Everything else keeps the newest-first order.
-  if(st === 'dup') list.sort((a, b) => a.dup - b.dup || (a.date < b.date ? 1 : -1));
+  // unnoticed. The chosen order still applies inside each pair.
+  if(st === 'dup') list.sort((a, b) => a.dup - b.dup || byDate(a, b));
+  else list.sort(byDate);
   return list;
 }
 const pageSize = () => { const v = +$('fSize').value; return v === 0 ? 1e9 : v; };
@@ -628,6 +654,7 @@ function sync(){
     ? `<em>${state.size}</em> unsaved` : 'all saved';
   $('save').disabled = state.size === 0;
   $('revert').disabled = state.size === 0;
+  years();
   $('selCount').innerHTML = picked.size ? `<em>${picked.size}</em> selected` : '0 selected';
   $('selNone').disabled = !picked.size;
   $('dtUndo').disabled = !picked.size;
@@ -635,7 +662,23 @@ function sync(){
   draw();
 }
 
-['fStatus','fTag','fType','fSize'].forEach(id =>
+// The year list is built from the EFFECTIVE dates, so redating an entry to
+// 1998 puts 1998 in the menu straight away. Rebuilding a <select> throws away
+// its value, so the current choice is put back — and if that year no longer
+// exists because the last entry in it was just moved, it falls back to "all"
+// rather than silently showing nothing.
+function years(){
+  const sel = $('fYear'), had = sel.value || 'all';
+  const ys = [...new Set(ITEMS.map(dateOf).map(d => d.slice(0, 4)))].sort().reverse();
+  const want = ys.map(y => `<option value="${y}">${y}</option>`).join('');
+  const html = '<option value="all">all</option>' + want;
+  if(sel.innerHTML !== html){
+    sel.innerHTML = html;
+    sel.value = (had === 'all' || ys.includes(had)) ? had : 'all';
+  }
+}
+
+['fStatus','fTag','fType','fSize','fYear','fSort'].forEach(id =>
   $(id).addEventListener('change', () => { page = 0; sync(); }));
 
 $('revert').onclick = () => { state.clear(); sync(); };

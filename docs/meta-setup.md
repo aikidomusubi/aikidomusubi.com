@@ -203,11 +203,20 @@ arguments to choose in advance: status, category, type and how many to show are
 controls in the page.
 
 ```
-Status     all · on the site · not on the site · never reviewed · reviewed
-Category   all · no category · seminar · training · demo · travel · exams
+Status     all · on the site · not on the site · never reviewed ·
+           reviewed · no picture · same picture twice
+Category   all · no category · one per tag in _data/gallery.yml
 Type       all · post · reel · album
+Year       all · one per year present
+Order      newest first · oldest first
 Show       128 · 256 · 512 · 1024 · everything
 ```
+
+**Year and Order both go by the edited date**, not the day a thing was posted,
+and they do so the moment you change it rather than after saving. Redate a clip
+to 1998 and 1998 appears in the Year menu, the clip leaves the year it used to
+sit in, and oldest-first puts it at the front. Undo the edit and the year
+disappears again.
 
 **Click a picture** to put an entry on the site or take it off. **Click a
 category chip** to add or remove it — more than one can be on, and 22 entries
