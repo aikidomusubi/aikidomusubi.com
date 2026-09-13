@@ -228,8 +228,10 @@ PAGE = """<!doctype html>
  .card.dirty{border-color:var(--warn);box-shadow:0 0 0 2px var(--warn) inset}
  .shot{display:block;width:100%;aspect-ratio:1;object-fit:cover;background:#e9e9e7;
        border:0;padding:0;cursor:pointer}
- .none{display:flex;align-items:center;justify-content:center;color:var(--mute);
-       font-size:.7rem;text-align:center;padding:.5rem;cursor:pointer}
+ .none{display:flex;flex-direction:column;gap:.35rem;align-items:center;
+       justify-content:center;color:var(--mute);font-size:.72rem;text-align:center;
+       padding:.5rem;cursor:pointer}
+ .none small{font-size:.6rem;line-height:1.4;opacity:.75;font-family:ui-monospace,monospace}
  .meta{padding:.55rem .65rem;display:flex;flex-direction:column;gap:.28rem;flex:1}
  .nm{font-size:.78rem;line-height:1.35;max-height:3.4em;overflow:hidden}
  .sub{font-size:.66rem;color:var(--mute);letter-spacing:.04em;text-transform:uppercase;
@@ -265,6 +267,7 @@ PAGE = """<!doctype html>
         <option value="notpub">not on the site</option>
         <option value="unseen">never reviewed</option>
         <option value="seen">reviewed</option>
+        <option value="nopic">no picture</option>
       </select></label>
     <label class="f">Category <select id="fTag"></select></label>
     <label class="f">Type
@@ -319,6 +322,7 @@ function filtered(){
     if(st === 'notpub' &&  s.keep) return false;
     if(st === 'unseen' &&  it.seen) return false;
     if(st === 'seen'   && !it.seen) return false;
+    if(st === 'nopic'  &&  it.src) return false;
     if(tg === 'none'   && s.tags.length) return false;
     if(tg !== 'all' && tg !== 'none' && !s.tags.includes(tg)) return false;
     if(ty !== 'all' && it.type !== ty) return false;
@@ -343,7 +347,7 @@ function draw(){
     card.className = 'card' + (s.keep ? ' keep' : '') + (dirty(it) ? ' dirty' : '');
     const shot = it.src
       ? `<img class="shot" loading="lazy" src="${it.src}" alt="">`
-      : `<div class="shot none">no picture<br>on disk</div>`;
+      : `<div class="shot none">no picture yet<br><small>fetch-social.py<br>--review-thumbs --all</small></div>`;
     card.innerHTML = shot + `<div class="meta">
         <div class="sub"><span>${it.type} · ${it.date}</span>
           <a href="${it.url}" target="_blank" rel="noopener">open</a></div>
