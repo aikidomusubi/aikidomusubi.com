@@ -27,21 +27,27 @@
   impressions and NO clicks, and /en/contact/ at 20.20 with 35 and none. It is
   also where every fee card's button points.
 
-  The four answers are in _data/contact.yml, one place per language, because
+  THE COMPONENTS ARE THE LOCATION PAGES'. `.ct-sec` + `.ct-lab` + h2 + a
+  `.ct-facts` list is /badalona/'s opening section, value for value: eyebrow
+  above, Futura regular heading, no rule under it, then a two-column dl with a
+  hairline per row. The first draft of this band invented its own treatment —
+  bold headings in a two-column grid over a 2px black rule — which exists
+  nowhere else on the site.
+
+  The four answers live in _data/contact.yml, one place per language, because
   the reply time is the kind of fact that changes and must not be hunted for in
   four files. Nothing here is inferred: all four were answered by the dojo.
 {%- endcomment -%}
 
-<section class="ct-when" aria-labelledby="ct-when-h">
-  <h2 class="ct-when-h" id="ct-when-h">{{ C.ui.heading[L] }}</h2>
-  <ul class="ct-when-list">
-    {%- for a in C.answers %}
-    <li>
-      <h3>{{ a.title[L] }}</h3>
-      <p>{{ a.body[L] }}</p>
-    </li>
+<section class="ct-sec" aria-labelledby="ct-when-h">
+  <p class="ct-lab">{{ C.ui.lab_when[L] }}</p>
+  <h2 id="ct-when-h">{{ C.ui.h_when[L] }}</h2>
+  <dl class="ct-facts">
+    {%- for f in C.facts %}
+    <dt>{{ f.label[L] }}</dt>
+    <dd>{{ f.body[L] }}</dd>
     {%- endfor %}
-  </ul>
+  </dl>
 </section>
 
 <div class="ct-wrap">
@@ -118,22 +124,33 @@
   All three existed and this page pointed at none of them, which left the
   reader at a phone number with nowhere to go.
 
+  `.ct-other` is `.lo-other` from the location pages without its photograph:
+  the uppercase Futura link on a yellow rule that every "read the long version"
+  link on this site uses, with the one-line description under it. It was a
+  bordered card with a green arrow, which is a fourth treatment for a job that
+  already has one.
+
   Resolved through `ref` and the i18n-ref index rather than written as four
   sets of URLs — the slugs are localised (/acceso/ but /en/access-information/)
   and a hand-written set of twelve would be twelve chances to be wrong, of the
   kind that repointed three nav links the last time something was looked up by
   position.
 {%- endcomment -%}
-<ul class="ct-next">
-  {%- for n in C.next -%}
-    {%- assign dest = site.pages | where: "i18n-ref", n.ref | where: "lang", L | first -%}
-    {%- if dest %}
-  <li>
-    <a href="{{ dest.url }}">
-      <strong>{{ n.title[L] }}</strong>
-      <span>{{ n.body[L] }}</span>
-    </a>
-  </li>
-    {%- endif -%}
-  {%- endfor %}
-</ul>
+
+<section class="ct-sec" aria-labelledby="ct-next-h">
+  <p class="ct-lab">{{ C.ui.lab_next[L] }}</p>
+  <h2 id="ct-next-h">{{ C.ui.h_next[L] }}</h2>
+  <ul class="ct-others">
+    {%- for n in C.next -%}
+      {%- assign dest = site.pages | where: "i18n-ref", n.ref | where: "lang", L | first -%}
+      {%- if dest %}
+    <li>
+      <a class="ct-other" href="{{ dest.url }}">
+        <b>{{ n.title[L] }}</b>
+        <small>{{ n.body[L] }}</small>
+      </a>
+    </li>
+      {%- endif -%}
+    {%- endfor %}
+  </ul>
+</section>

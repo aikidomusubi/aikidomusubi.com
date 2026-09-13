@@ -12,58 +12,65 @@
 # and nothing is rounded up. If one of them stops being true — the reply time
 # above all — this file is the one place to change it.
 #
-#   answers   the four reassurances, printed above the channels
-#   next      three pages that answer the three questions that follow
+# THE SHAPE IS THE LOCATION PAGES'. `facts` is a `.lo-facts` list: a short
+# uppercase label in the left column and the answer in the right, which is the
+# same component /badalona/ opens with and the same one /acceso/ and
+# /como-es-una-clase/ use. That is why the labels are one or two words. The
+# first draft made them sentences and set them as bold headings over a 2px
+# rule, which is a treatment that appears nowhere else on this site.
+#
+#   facts   label + answer, rendered as a <dl>
+#   next    three pages that answer the three questions that follow
 #
 # NO NAME APPEARS. Juanma answers in practice and asked whether it should say
 # so. It should not: nothing on this site carries a personal byline, "the
 # association" is the accurate answer, and a page that names a person has to be
 # edited the day somebody else starts answering.
 
-answers:
-  - title:
-      es: "Respondemos el mismo día"
-      ca: "Responem el mateix dia"
-      en: "We reply the same day"
-      ja: "当日中にお返事します"
+facts:
+  - label:
+      es: "Respuesta"
+      ca: "Resposta"
+      en: "Reply"
+      ja: "返信"
     body:
-      es: "Escribas por donde escribas. Si es fin de semana puede caer más tarde, pero no se queda para el lunes."
-      ca: "Escriguis per on escriguis. Si és cap de setmana pot caure més tard, però no es queda per dilluns."
-      en: "Whichever way you write. At the weekend it may come later in the day, but it does not wait until Monday."
-      ja: "どの方法でご連絡いただいても同じです。週末は少し遅くなることがありますが、月曜まで持ち越すことはありません。"
+      es: "<b>El mismo día</b>, escribas por donde escribas. Si es fin de semana puede caer más tarde, pero no se queda para el lunes."
+      ca: "<b>El mateix dia</b>, escriguis per on escriguis. Si és cap de setmana pot caure més tard, però no es queda per dilluns."
+      en: "<b>The same day</b>, whichever way you write. At the weekend it may come later on, but it does not wait until Monday."
+      ja: "<b>当日中</b>にお返事します。週末は少し遅くなることがありますが、月曜まで持ち越すことはありません。"
 
-  - title:
-      es: "En cuatro idiomas"
-      ca: "En quatre idiomes"
-      en: "In four languages"
-      ja: "4か国語で対応します"
+  - label:
+      es: "Idiomas"
+      ca: "Idiomes"
+      en: "Languages"
+      ja: "対応言語"
     body:
-      es: "Puedes escribirnos en <b>español</b>, <b>català</b>, <b>English</b> o <b>日本語</b>. Contesta la asociación, no un formulario."
-      ca: "Pots escriure'ns en <b>català</b>, <b>español</b>, <b>English</b> o <b>日本語</b>. Contesta l'associació, no pas un formulari."
-      en: "Write to us in <b>English</b>, <b>español</b>, <b>català</b> or <b>日本語</b>. The association answers, not a form."
-      ja: "<b>日本語</b>・<b>español</b>・<b>català</b>・<b>English</b> のいずれでもご連絡いただけます。自動返信ではなく、協会が直接お返事します。"
+      es: "<b>Español</b>, <b>català</b>, <b>English</b> o <b>日本語</b>. Contesta la asociación, no un formulario."
+      ca: "<b>Català</b>, <b>español</b>, <b>English</b> o <b>日本語</b>. Contesta l'associació, no pas un formulari."
+      en: "<b>English</b>, <b>español</b>, <b>català</b> or <b>日本語</b>. The association answers, not a form."
+      ja: "<b>日本語</b>・<b>español</b>・<b>català</b>・<b>English</b>。自動返信ではなく、協会が直接お答えします。"
 
-  - title:
-      es: "El teléfono se coge"
-      ca: "El telèfon es despenja"
-      en: "The phone is answered"
-      ja: "電話にも出ます"
+  - label:
+      es: "Teléfono"
+      ca: "Telèfon"
+      en: "Phone"
+      ja: "電話"
     body:
-      es: "El número es real y lo contestamos, igual que el WhatsApp. No es un buzón ni un desvío a nada."
-      ca: "El número és real i el contestem, igual que el WhatsApp. No és una bústia ni un desviament a res."
+      es: "El número es real y lo cogemos, igual que el WhatsApp. No es un buzón ni un desvío a nada."
+      ca: "El número és real i el despengem, igual que el WhatsApp. No és una bústia ni un desviament a res."
       en: "The number is real and we pick it up, and so is the WhatsApp. It is not a voicemail or a diversion to anywhere."
       ja: "電話番号は実際に使われており、WhatsApp と同じく人が応対します。留守番電話でも転送でもありません。"
 
-  - title:
-      es: "Puedes venir sin avisar"
-      ca: "Pots venir sense avisar"
-      en: "You can just turn up"
-      ja: "予約なしでお越しいただけます"
+  - label:
+      es: "Sin cita"
+      ca: "Sense cita"
+      en: "No booking"
+      ja: "予約"
     body:
-      es: "Las clases están abiertas y nadie va a pedirte cita. Aun así, escribir antes es mejor: te decimos qué clase te encaja y te esperamos."
-      ca: "Les classes són obertes i ningú no et demanarà cita. Tot i així, escriure abans és millor: et diem quina classe t'encaixa i t'esperem."
-      en: "The classes are open and nobody will ask you for an appointment. Even so, writing first is better: we tell you which class fits you, and we expect you."
-      ja: "稽古は開かれており、予約を求めることはありません。それでも事前にご連絡いただくほうが確実です。合うクラスをお伝えし、お待ちしています。"
+      es: "Puedes venir a una clase sin avisar; nadie va a pedirte cita. Aun así, escribir antes es mejor: te decimos qué clase te encaja y te esperamos."
+      ca: "Pots venir a una classe sense avisar; ningú no et demanarà cita. Tot i així, escriure abans és millor: et diem quina classe t'encaixa i t'esperem."
+      en: "You can come to a class unannounced; nobody will ask you for an appointment. Even so, writing first is better: we tell you which class fits you, and we expect you."
+      ja: "不要です。予約なしでお越しいただけます。ただ、事前にご連絡いただくほうが確実です。合うクラスをお伝えし、お待ちしています。"
 
 # The three questions that follow "how do I reach you". All three pages exist,
 # all three are good, and this page pointed at none of them. They are also
@@ -91,6 +98,13 @@ next:
       en: "Your first hour on the mat, minute by minute."
       ja: "初めての一時間を、時間を追って。"
 
+# Eyebrow + heading, the pair every section on a location page carries: a short
+# category label above, a descriptive heading below, and no rule between them.
 ui:
-  heading: { es: "Cuando escribes", ca: "Quan escrius",
-             en: "When you write", ja: "ご連絡いただいたら" }
+  lab_when:  { es: "Cuando escribes", ca: "Quan escrius",
+               en: "When you write",  ja: "ご連絡いただいたら" }
+  h_when:    { es: "Qué puedes esperar", ca: "Què pots esperar",
+               en: "What to expect",     ja: "お返事について" }
+  lab_next:  { es: "Y también", ca: "I també", en: "And also", ja: "そのほか" }
+  h_next:    { es: "Antes de venir", ca: "Abans de venir",
+               en: "Before you come",  ja: "お越しになる前に" }
