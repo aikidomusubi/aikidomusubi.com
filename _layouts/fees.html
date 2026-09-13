@@ -62,16 +62,7 @@
           {%- assign row = F.prices[p.id][c.id] -%}
           {%- assign saving = row.base | minus: row.fee -%}
           {%- assign pct = saving | times: 100 | divided_by: row.base -%}
-          {%- comment -%}
-            A suspended category keeps its card, its price and its shape. The
-            note goes BELOW the price rather than above it: every card in a row
-            reserves the same height for name, who and price, and a paragraph
-            inserted before the price would push this one card's price out of
-            line with its four neighbours and read as a bug. The left border
-            says "this one is different" at a glance, the way fee-card-deal
-            already does for a saving, and the button says what to do about it.
-          {%- endcomment -%}
-          <li class="fee-card{% if saving > 0 %} fee-card-deal{% endif %}{% if c.suspended %} fee-card-susp{% endif %}">
+          <li class="fee-card{% if saving > 0 %} fee-card-deal{% endif %}">
             <h2 class="fee-name">{{ c.name[L] }}</h2>
             <p class="fee-who">{{ c.who[L] }}</p>
 
@@ -90,18 +81,14 @@
             <p class="fee-save fee-save-none" aria-hidden="true">&nbsp;</p>
             {%- endif %}
 
-            {%- if c.suspended %}
-            <p class="fee-susp">{{ c.suspended[L] }}</p>
-            {%- else %}
             <ul class="fee-included">
               {%- for i in F.included -%}
               <li>{{ i[L] }}</li>
               {%- endfor -%}
             </ul>
-            {%- endif %}
 
             <a class="fee-btn" href="{% if L == 'es' %}/contacto/{% elsif L == 'ca' %}/ca/contacte/{% else %}/{{ L }}/contact/{% endif %}">
-              {% if c.suspended %}{{ F.ui.notify[L] }}{% else %}{{ F.ui.signup[L] }}{% endif %}
+              {{ F.ui.signup[L] }}
               <span class="fee-sr"> — {{ c.name[L] }}, {{ p.name[L] }}</span>
             </a>
           </li>
@@ -170,7 +157,7 @@
               {%- assign saving = row.base | minus: row.fee -%}
               {%- assign pct = saving | times: 100 | divided_by: row.base -%}
             <tr>
-              <th scope="row">{{ c.name[L] }} <span class="fee-th-who">{{ c.who[L] }}{% if c.suspended %} · {{ F.ui.suspended[L] }}{% endif %}</span></th>
+              <th scope="row">{{ c.name[L] }} <span class="fee-th-who">{{ c.who[L] }}</span></th>
               <td>{{ row.fee }}{{ F.symbol }}</td>
               <td>{{ row.base }}{{ F.symbol }}</td>
               <td>{% if saving > 0 %}{{ saving }}{{ F.symbol }} <span class="fee-pct">−{{ pct }}%</span>{% else %}—{% endif %}</td>
@@ -230,14 +217,6 @@
       {
         "@type": "Offer",
         "name": {{ c.name[L] | append: ' — ' | append: p.name[L] | jsonify }},
-        {%- comment -%}
-          A price published without an availability reads as available. The
-          children's rows stay on the page so a parent gets an answer and so
-          the dojo can measure the interest, but saying in machine-readable
-          markup that a suspended class can be bought is a false statement,
-          and nothing reads JSON-LD in context the way a reader reads a note.
-        {%- endcomment -%}
-        "availability": "https://schema.org/{% if c.suspended %}OutOfStock{% else %}InStock{% endif %}",
         "priceCurrency": "{{ F.currency }}",
         "price": "{{ row.fee }}",
         "priceSpecification": {

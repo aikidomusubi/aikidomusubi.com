@@ -12,7 +12,6 @@
 // ---------------------------------------------------------------------------
 
 @fee-deal: @Green;   // 6.25:1 on white, and >5.5:1 on the tint it sits on
-@fee-susp: @Rust;    // Sanzo Wada "Burnt Sienna". 5.21:1 on white
 
 .fees {
   margin: 0 0 3rem;
@@ -149,15 +148,6 @@
 
 .fee-card-deal { border-left: 4px solid @fee-deal; }
 
-// A suspended category. @Rust is Sanzo Wada's Burnt Sienna and measures 5.21:1
-// on @White, so the note passes AA at this size without a weight bump. It is
-// deliberately not @Red: the class is not an error or a warning, it is simply
-// not running this term, and red would read as something having gone wrong.
-// The border wins over fee-card-deal's because it is declared after it and
-// both are single-class selectors — a suspended card that also shows a saving
-// should say suspended first.
-.fee-card-susp { border-left: 4px solid @fee-susp; }
-
 .page main {
 
   // Two lines of name and three of description, reserved whether or not this
@@ -182,18 +172,6 @@
     line-height: 1.4;
     min-height: 4.2em;          // 3 lines
     color: lighten(@Dark, 18%);
-    text-align: left;
-  }
-
-  // Sits where .fee-included sits on every other card, so it occupies the same
-  // slot in the column and the buttons stay on one line across the row.
-  .fee-susp {
-    .NotoSans;
-    margin: 0 0 1rem;
-    padding: 0;
-    font-size: .8rem;
-    line-height: 1.45;
-    color: @fee-susp;
     text-align: left;
   }
 

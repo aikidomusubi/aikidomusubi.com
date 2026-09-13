@@ -2,7 +2,7 @@
 layout: fees
 title: Fees
 seo_title: "How much aikido costs: fees and discounts | Aikido Musubi"
-description: "Aikido from 35 € a month, with family discounts and lower rates by the quarter, half year or year. Free registration and two trial classes. The children's group is suspended for now."
+description: "Aikido from 35 € a month for adults and 25 € for children, with family discounts and lower rates by the quarter, half year or year. Free registration and two trial classes."
 permalink: /en/fees/
 lang: en
 i18n-ref: fees-UjbuGtGz
