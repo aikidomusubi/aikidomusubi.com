@@ -17,39 +17,6 @@
 {%- assign tel = site.phone | to_integer -%}
 {%- assign C = site.data.contact -%}
 
-{%- comment -%}
-  WHAT HAPPENS AFTER YOU WRITE, above the channels.
-
-  Everything below this band says HOW to reach the dojo. None of it said what
-  happens next, which is the only thing somebody hesitating wants to know, and
-  this is the last page before they either write or leave: Search Console for
-  the 90 days to 2026-09-10 put /contacto/ at position 20.48 with 63
-  impressions and NO clicks, and /en/contact/ at 20.20 with 35 and none. It is
-  also where every fee card's button points.
-
-  THE COMPONENTS ARE THE LOCATION PAGES'. `.ct-sec` + `.ct-lab` + h2 + a
-  `.ct-facts` list is /badalona/'s opening section, value for value: eyebrow
-  above, Futura regular heading, no rule under it, then a two-column dl with a
-  hairline per row. The first draft of this band invented its own treatment —
-  bold headings in a two-column grid over a 2px black rule — which exists
-  nowhere else on the site.
-
-  The four answers live in _data/contact.yml, one place per language, because
-  the reply time is the kind of fact that changes and must not be hunted for in
-  four files. Nothing here is inferred: all four were answered by the dojo.
-{%- endcomment -%}
-
-<section class="ct-sec" aria-labelledby="ct-when-h">
-  <p class="ct-lab">{{ C.ui.lab_when[L] }}</p>
-  <h2 id="ct-when-h">{{ C.ui.h_when[L] }}</h2>
-  <dl class="ct-facts">
-    {%- for f in C.facts %}
-    <dt>{{ f.label[L] }}</dt>
-    <dd>{{ f.body[L] }}</dd>
-    {%- endfor %}
-  </dl>
-</section>
-
 <div class="ct-wrap">
 
   <div class="ct-direct">
@@ -117,6 +84,47 @@
   </aside>
 
 </div>
+
+
+{%- comment -%}
+  WHAT HAPPENS AFTER YOU WRITE, under the channels.
+
+  Everything above says HOW to reach the dojo. None of it said what happens
+  next, which is the only thing somebody hesitating wants to know, and this is
+  the last page before they either write or leave: Search Console for the 90
+  days to 2026-09-10 put /contacto/ at position 20.48 with 63 impressions and
+  NO clicks, and /en/contact/ at 20.20 with 35 and none. It is also where every
+  fee card's button points.
+
+  IT SITS UNDER THEM RATHER THAN OVER THEM. Somebody arriving here has already
+  decided to make contact; the channels are what they came for and they should
+  be the first thing on the page, not the second. These four answers are what
+  settles the hesitation of the reader who scrolls past them, and the three
+  links after that are for the reader who is not ready to write at all. The
+  page reads act, then reassure, then offer somewhere else to go.
+
+  THE COMPONENTS ARE THE LOCATION PAGES'. `.ct-sec` + `.ct-lab` + h2 + a
+  `.ct-facts` list is /badalona/'s opening section, value for value: eyebrow
+  above, Futura regular heading, no rule under it, then a two-column dl with a
+  hairline per row. The first draft of this band invented its own treatment —
+  bold headings in a two-column grid over a 2px black rule — which exists
+  nowhere else on the site.
+
+  The four answers live in _data/contact.yml, one place per language, because
+  the reply time is the kind of fact that changes and must not be hunted for in
+  four files. Nothing here is inferred: all four were answered by the dojo.
+{%- endcomment -%}
+
+<section class="ct-sec" aria-labelledby="ct-when-h">
+  <p class="ct-lab">{{ C.ui.lab_when[L] }}</p>
+  <h2 id="ct-when-h">{{ C.ui.h_when[L] }}</h2>
+  <dl class="ct-facts">
+    {%- for f in C.facts %}
+    <dt>{{ f.label[L] }}</dt>
+    <dd>{{ f.body[L] }}</dd>
+    {%- endfor %}
+  </dl>
+</section>
 
 {%- comment -%}
   THE THREE QUESTIONS THAT FOLLOW. /acceso/ answers how to get there,
