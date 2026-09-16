@@ -499,6 +499,64 @@ entries:
       en: "Because of the Pablo Martín masterclass and the kyū gradings."
       ja: "パブロ・マルティンによるマスタークラスと昇級審査のため。"
 
+  # -------------------------------------------------------------------------
+  # The monthly Saturday iaijutsu session, and the two consequences of it
+  #
+  # IT IS NOT IN _data/schedule.yml, and the note there says why: written as
+  # `frequency: monthly` it drew on EVERY Saturday in Ura's day strip and
+  # became `RRULE:FREQ=MONTHLY;BYDAY=1SA` in the .ics feed, promising
+  # subscribers the first Saturday of every month for ever. Neither is true.
+  # It runs when a date is set for it, so the date is written here, one
+  # `extra` at a time.
+  #
+  # TWO HOURS OF IT DISPLACE THE REST OF THE MORNING, and both consequences
+  # are written down beside it rather than left for the reader to work out:
+  # the regular aikido class is half an hour shorter (the `change` below) and
+  # the grading class does not run (the `cancellation` further down, with the
+  # rest of its Saturdays). Karate at 11:00 is untouched and so has no entry.
+  #
+  # NONE OF THE THREE IS `routine: true`. The weapons Wednesday and the
+  # grading class carry it because they are a fixed rhythm and four or
+  # nineteen rows of one sentence is not news. This is one date that has been
+  # set, which is exactly what Ura's "what is coming" is for.
+  # -------------------------------------------------------------------------
+  - date: "2026-09-19"
+    type: extra
+    location: musubi
+    start: "08:30"
+    end:   "10:30"
+    title:
+      es: "Iaijutsu con X. Serra"
+      ca: "Iaijutsu amb X. Serra"
+      en: "Iaijutsu with X. Serra"
+      ja: "居合術（シャビ・セラ）"
+    note:
+      es: "La sesión de Iaijutsu que se hace una vez al mes, de 8:30 a 10:30."
+      ca: "La sessió d'Iaijutsu que es fa un cop al mes, de 8:30 a 10:30."
+      en: "The iaijutsu session held once a month, 08:30 to 10:30."
+      ja: "月に一度の居合術の稽古です。8:30〜10:30。"
+
+  # The regular Saturday aikido class hands the mat over half an hour early.
+  # `change` WITH `affects`, so it substitutes that one class and leaves the
+  # rest of the Saturday alone; `location` is part of the match here as
+  # everywhere else.
+  - date: "2026-09-19"
+    type: change
+    location: musubi
+    affects: { category: aikido, start: "07:30" }
+    start: "07:30"
+    end:   "08:30"
+    title:
+      es: "Aikido"
+      ca: "Aikido"
+      en: "Aikido"
+      ja: "合気道"
+    note:
+      es: "De 7:30 a 8:30, media hora menos de lo habitual, por la sesión de Iaijutsu."
+      ca: "De 7:30 a 8:30, mitja hora menys de l'habitual, per la sessió d'Iaijutsu."
+      en: "07:30 to 08:30, half an hour shorter than usual, because of the iaijutsu session."
+      ja: "居合術の稽古のため、通常より30分短い7:30〜8:30に行います。"
+
   - date: "2027-01-30"
     type: change
     routine: true
@@ -1140,9 +1198,23 @@ entries:
       en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable. Today 09:00–10:00: the morning runs an hour early for the masterclass."
       ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。本日はマスタークラスのため9:00〜10:00に繰り上げます。"
 
+  # 19 September is the one Saturday of the run that does not run. The
+  # iaijutsu session has the mat from 08:30 to 10:30 and karate follows at
+  # 11:00, so the 10:00 hour is not free. It is back on the 26th.
+  #
+  # IT CARRIES A TITLE, WHICH A CANCELLATION USUALLY DOES NOT, and `affects`
+  # is the reason. `affects` names a class in _data/schedule.yml and the
+  # renderers build "Sin clase: Aikido 19:30" out of the category and the
+  # hour — but this class is not in schedule.yml, it is an `extra` on this
+  # same calendar, so there is nothing for `affects` to point at. The title
+  # is the one the other eighteen Saturdays carry, so the reader sees the
+  # words they know with "Sin clase" against them.
+  #
+  # AND IT IS NOT `routine: true`, which the eighteen others are. What is
+  # routine is the class; a Saturday it does not happen on is precisely the
+  # thing somebody who comes every week needs told.
   - date: "2026-09-19"
-    type: extra
-    routine: true
+    type: cancellation
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -1152,10 +1224,10 @@ entries:
     end: "11:00"
     location: musubi
     note:
-      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
-      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
-      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
-      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
+      es: "Hoy no hay clase de preparación de exámenes: la mañana es para el Iaijutsu, de 8:30 a 10:30. Vuelve el sábado 26."
+      ca: "Avui no hi ha classe de preparació d'exàmens: el matí és per a l'Iaijutsu, de 8:30 a 10:30. Torna dissabte 26."
+      en: "No grading preparation class today: the morning is given to iaijutsu, 08:30 to 10:30. It is back on Saturday the 26th."
+      ja: "本日は居合術の稽古（8:30〜10:30）のため、審査準備稽古はお休みです。26日（土）に再開します。"
 
   - date: "2026-09-26"
     type: extra
