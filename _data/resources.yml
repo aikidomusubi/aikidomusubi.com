@@ -403,6 +403,31 @@ groups:
         meta: { es: "12 vídeos", ca: "12 vídeos", en: "12 videos", ja: "動画12本" }
         src_name: "Aikido Zanshin Dojo"
         src_url: "https://www.youtube.com/@Aikidozanshindojo"
+      # THE ONLY ONE OF THE FOUR THAT SITS DOWN. The three around it are all
+      # tachi-waza, and the eight suburi are examined seated as well; this is
+      # 1992 footage from Chiba Sensei's own dojo with both halves in it, which
+      # is why it earns a row of its own beside two videos of the same eight.
+      #
+      # THE URL IS THE SHORT FORM AND THAT IS DELIBERATE. It has to carry a
+      # start time — the first fourteen seconds are the title card — and
+      # `youtube.com/watch?v=…&t=14s` puts an ampersand into an href that
+      # _layouts/resources.html prints unescaped. `youtu.be/…?t=14` is one
+      # parameter, no `&`, same second.
+      - kind: video
+        title: { es: "Los ocho suburi, de pie y de rodillas",
+                 ca: "Els vuit suburi, drets i de genolls",
+                 en: "The eight suburi, standing and seated",
+                 ja: "素振り八本、立技と坐技" }
+        by: "Ismail Hasan, Yahe Salomon"
+        desc:
+          es: "Grabación de 1992 en el San Diego Aikikai. Ismail Hasan hace los ocho de pie (tachi-waza) y Yahe Salomon los mismos ocho de rodillas (suwari-waza), que es lo que no enseñan los otros vídeos."
+          ca: "Enregistrament del 1992 al San Diego Aikikai. Ismail Hasan fa els vuit drets (tachi-waza) i Yahe Salomon els mateixos vuit de genolls (suwari-waza), que és el que no mostren els altres vídeos."
+          en: "Footage from 1992 at San Diego Aikikai. Ismail Hasan takes the eight standing (tachi-waza) and Yahe Salomon the same eight seated (suwari-waza), which is what the other videos here do not show."
+          ja: "1992年、サンディエゴ合気会での記録。イスマイル・ハサンが立技で八本、ヤヘ・サロモンが同じ八本を坐技で行います。ほかの動画にはない部分です。"
+        url: "https://youtu.be/VKAQ_VWEtWc?t=14"
+        meta: { es: "7 min", ca: "7 min", en: "7 min", ja: "7分" }
+        src_name: "Aikido Unlimited"
+        src_url: "https://www.youtube.com/@aikidounlimited1542"
       - kind: video
         title: { es: "Introducción al sistema de armas de Chiba Sensei",
                  ca: "Introducció al sistema d'armes de Chiba Sensei",
