@@ -2,14 +2,14 @@
 layout: video
 title: Premsa i TV
 seo_title: "Aikido a la televisió: vídeos i entrevistes"
-description: "Entrevistes, reportatges i aparicions a televisió."
+description: "Sis vídeos sobre el dojo, del 2009 al 2025: la inauguració a Televisió de Badalona, la sèrie Shugyō de BudoCool i el reportatge de Via 15 a betevé."
 permalink: /ca/premsa-i-tv/
 # The videos page lived here for years; the stub keeps those links working.
 redirect_from:
   - /ca/videos/
 lang: ca
 i18n-ref: press-and-tv-Rm4zW8dL
-last_modified: 2026-09-17
+last_modified: 2026-09-18
 ---
 
 # Premsa i TV

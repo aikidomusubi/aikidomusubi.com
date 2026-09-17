@@ -2,14 +2,14 @@
 layout: video
 title: メディア掲載
 seo_title: "テレビの合気道：映像とインタビュー"
-description: "インタビュー・取材・テレビ出演の記録です。"
+description: "2009年から2025年までの、道場をめぐる映像6本。バダロナのテレビが伝えた道場開き、BudoCoolのShugyōシリーズ、betevéの番組Via 15の取材。"
 permalink: /ja/press-and-tv/
 # The videos page lived here for years; the stub keeps those links working.
 redirect_from:
   - /ja/videos/
 lang: ja
 i18n-ref: press-and-tv-Rm4zW8dL
-last_modified: 2026-09-17
+last_modified: 2026-09-18
 ---
 
 # メディア掲載
