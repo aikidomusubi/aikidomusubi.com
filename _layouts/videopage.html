@@ -99,59 +99,68 @@
     </article>
 
     {%- comment -%}
-      The pager. Newer on the left and older on the right, which is the
-      direction the index reads, and each side carries its own thumbnail —
-      a title alone gives no idea what you are about to open, and these are
-      six visually distinct pieces.
+      EVERY OTHER VIDEO, NOT THE TWO NEIGHBOURS.
 
-      <nav> with an accessible name, and the two links are the only ones in
-      it, so a screen reader can skip the whole thing. The labels say
-      "Newer"/"Older" rather than "Previous"/"Next": there is no ambiguity
-      about which way time runs, and there is plenty about which way a
-      "next" arrow points.
+      This was a pager: newer on the left, older on the right, and nothing
+      else. With six videos that named two siblings and left three of them
+      unreachable from here — so each of the twenty-four watch pages had ONE
+      editorial link pointing at it, its own index, and twenty-one of the
+      twenty-four were among the forty-five pages Google had discovered and
+      never crawled. Approved as proposal B in docs/mockups/video-siblings.html.
+
+      WHAT WAS GIVEN UP, because it was a real decision and not an accident.
+      The pager said "Más reciente" and "Anterior" rather than "Anterior" and
+      "Siguiente": there is no ambiguity about which way time runs and plenty
+      about which way a "next" arrow points on a list already sorted by date.
+      That reasoning was right, and it stops applying here — every tile carries
+      its own year, so there is no direction left to be ambiguous about.
+
+      WHERE THIS STOPS WORKING. "All the others" is five and they fit. At a
+      dozen it is a wall, and the answer then is to cap the grid at the five
+      most recent and let "see all the videos" below be the real way out. That
+      is not a change to make today against six, but it should not have to be
+      rediscovered either.
+
+      `ordered` is already the index's order, newest first.
     {%- endcomment -%}
     {%- assign U = site.data.videos.ui -%}
-    {%- if prev or next %}
-    {%- comment -%}
-      `for x in 'a,b' | split: ','` is not valid Liquid — a filter cannot appear
-      in the loop expression — and Jekyll only warns, so the loop silently never
-      runs and the pager renders as an empty <nav>.
-    {%- endcomment -%}
-    {%- assign sides = 'prev,next' | split: ',' -%}
-    <nav class="pv-pager" aria-label="{{ U.pager[L] }}">
-      {%- for side in sides -%}
-        {%- if side == 'prev' %}{% assign o = prev %}{% else %}{% assign o = next %}{% endif -%}
-        {%- if o -%}
+    {%- if ordered.size > 1 %}
+    <nav class="pv-more" aria-labelledby="pv-more-h">
+      <h2 class="pv-more-h" id="pv-more-h">{{ U.others[L] }}</h2>
+      <div class="pv-sibs">
+        {%- for o in ordered -%}
           {%- assign oslug = o.path | split: '/' | last | replace: '.md', '' -%}
+          {%- if oslug == page.video %}{% continue %}{% endif -%}
           {%- assign opage = site.pages | where_exp: 'p', 'p.video == oslug' | where: 'lang', L | first -%}
+          {%- if opage == nil %}{% continue %}{% endif -%}
           {%- if L == 'ca' %}{% assign ot = o.title_ca %}
           {%- elsif L == 'en' %}{% assign ot = o.title_en %}
           {%- elsif L == 'ja' %}{% assign ot = o.title_ja %}
           {%- else %}{% assign ot = o.title_es %}{% endif -%}
-      <a class="pv-step pv-step-{{ side }}" href="{{ opage.url }}"
-         rel="{% if side == 'prev' %}prev{% else %}next{% endif %}">
-        {%- comment -%}
-          Through _data/imgw.yml, not a hand-written `-480`: only three of the
-          six thumbnails have variants, and naming one that does not exist is
-          a 404 the image-reference check would have caught on the next build.
-        {%- endcomment -%}
-        {%- assign oss = site.data.imgw[o.thumb] -%}
-        <picture>
-          <source type="image/webp"
-                  srcset="{% if oss %}{{ oss }}{% else %}/images/{{ o.thumb }}.webp{% endif %}"
-                  {% if oss %}sizes="160px"{% endif %}>
-          <img src="/images/{{ o.thumb }}.jpg" loading="lazy" decoding="async"
-               width="160" height="90" alt="">
-        </picture>
-        <span>
-          <small>{% if side == 'prev' %}{{ U.newer[L] }}{% else %}{{ U.older[L] }}{% endif %}</small>
+        <a class="pv-sib" href="{{ opage.url }}">
+          {%- comment -%}
+            Through _data/imgw.yml, not a hand-written `-480`: only three of the
+            six thumbnails have variants, and naming one that does not exist is
+            a 404 the image-reference check would have caught on the next build.
+            `sizes` is MEASURED, not read off the minmax. Taken off the built
+            page with getBoundingClientRect: 220px at 1440, 203px at 768,
+            248px at 576 and 311px at 375. The widest the tile ever gets is on
+            the NARROWEST screen, where it is one column of 83vw, which is
+            exactly the case a sizes copied from `minmax(11rem, …)` gets wrong.
+          {%- endcomment -%}
+          {%- assign oss = site.data.imgw[o.thumb] -%}
+          <picture>
+            <source type="image/webp"
+                    srcset="{% if oss %}{{ oss }}{% else %}/images/{{ o.thumb }}.webp{% endif %}"
+                    {% if oss %}sizes="(min-width: 768px) 220px, (min-width: 576px) 248px, 83vw"{% endif %}>
+            <img src="/images/{{ o.thumb }}.jpg" loading="lazy" decoding="async"
+                 width="320" height="180" alt="">
+          </picture>
           <b>{{ ot }}</b>
-        </span>
-      </a>
-        {%- else %}
-      <span class="pv-step pv-step-{{ side }} is-end" aria-hidden="true"></span>
-        {%- endif -%}
-      {%- endfor %}
+          <span>{{ o.date | date: '%Y' }}</span>
+        </a>
+        {%- endfor %}
+      </div>
     </nav>
     {%- endif %}
 

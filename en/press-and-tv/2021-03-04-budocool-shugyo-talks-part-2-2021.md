@@ -8,5 +8,5 @@ description: "The second part of Shugyō in English discusses the changes caused
 permalink: /en/press-and-tv/2021-03-04-budocool-shugyo-talks-part-2-2021/
 lang: en
 i18n-ref: video-lIZaM8WK
-last_modified: 2026-09-05
+last_modified: 2026-09-18
 ---

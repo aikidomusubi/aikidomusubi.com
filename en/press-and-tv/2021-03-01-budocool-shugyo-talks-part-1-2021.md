@@ -8,5 +8,5 @@ description: "Our first Shugyō talk in English brings together 5 stories, 3 cou
 permalink: /en/press-and-tv/2021-03-01-budocool-shugyo-talks-part-1-2021/
 lang: en
 i18n-ref: video-qy0ZPpuk
-last_modified: 2026-09-05
+last_modified: 2026-09-18
 ---

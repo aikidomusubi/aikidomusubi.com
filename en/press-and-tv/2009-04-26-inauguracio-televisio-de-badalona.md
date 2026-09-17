@@ -8,5 +8,5 @@ description: "On 26 April 2009, Televisió de Badalona covers the opening of Aik
 permalink: /en/press-and-tv/2009-04-26-inauguracio-televisio-de-badalona/
 lang: en
 i18n-ref: video-4KS3052r
-last_modified: 2026-09-05
+last_modified: 2026-09-18
 ---

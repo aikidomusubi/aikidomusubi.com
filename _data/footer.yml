@@ -55,30 +55,53 @@ columns:
   - from_nav: about
     label: { es: "Sobre nosotros", ca: "Sobre nosaltres", en: "About us", ja: "私たちについて" }
 
-  # The three dojos. These anchors are venue slugs and are the same in all four
-  # languages, so only the page path changes.
+  # THE TOWNS, NOT THE ROOMS, and each one to its own page.
+  #
+  # This column used to list four venues and point every one of them at an
+  # anchor on /acceso/. Two things were wrong with that. /acceso/ answers
+  # "which door", and a column headed "where we train" is asking a different
+  # question — what happens in this town, who teaches there, when. That is the
+  # location page. And the fourth row was a ROOM: the Faculty of Law is inside
+  # Barcelona, so the column named three towns and one lecture hall as if they
+  # were the same kind of thing.
+  #
+  # The rule everywhere else on this site is to name the towns where there is a
+  # presence rather than every room, and this column now follows it. Barcelona
+  # leads, because it is the location word the site is moving towards. The
+  # university keeps its place on /acceso/ and on /barcelona/, which carries
+  # its timetable and its address.
+  #
+  # WHAT THIS IS FOR. /badalona/, /barcelona/ and /sant-adria-de-besos/ had
+  # NINE inbound internal links each, against 37 to 38 for everything else, and
+  # /badalona/ sat at position 5.64 with 88 impressions and no clicks at all.
+  # The footer is on all 136 pages. Approved as proposal B in
+  # docs/mockups/footer-venues.html.
+  #
+  # A footer link is worth less to Google than one written inside a sentence,
+  # so this is not the end of it; it is the floor.
+  #
+  # The last row keeps its four strings from _data/about.yml, where the same
+  # sentence is already written and already translated. A fifth phrasing of one
+  # idea is how the kana for Sant Adrià came to be spelled two ways.
   - id: where
     label: { es: "Dónde entrenamos", ca: "On entrenem", en: "Where we train", ja: "稽古場所" }
     items:
-      - label: { es: "Badalona", ca: "Badalona", en: "Badalona", ja: "バダロナ" }
-        url:   { es: "/acceso/#aikido-musubi", ca: "/ca/acces/#aikido-musubi",
-                 en: "/en/access-information/#aikido-musubi", ja: "/ja/access-information/#aikido-musubi" }
-      - label: { es: "Sant Adrià de Besòs", ca: "Sant Adrià de Besòs",
-                 en: "Sant Adrià de Besòs", ja: "サン・アドリア・ダ・バゾス" }
-        url:   { es: "/acceso/#sant-adria-de-besos", ca: "/ca/acces/#sant-adria-de-besos",
-                 en: "/en/access-information/#sant-adria-de-besos", ja: "/ja/access-information/#sant-adria-de-besos" }
       - label: { es: "Barcelona", ca: "Barcelona", en: "Barcelona", ja: "バルセロナ" }
-        url:   { es: "/acceso/#cxem-espronceda", ca: "/ca/acces/#cxem-espronceda",
-                 en: "/en/access-information/#cxem-espronceda", ja: "/ja/access-information/#cxem-espronceda" }
-      # The word for "university" follows the reader's language, as it does in
-      # _data/venues.yml and _data/schedule.yml. It was the Catalan name in all
-      # four columns here, so a Spanish reader met "Universitat" and an English
-      # one met it too.
-      - label: { es: "Universidad de Barcelona", ca: "Universitat de Barcelona",
-                 en: "University of Barcelona", ja: "バルセロナ大学" }
-        url:   { es: "/acceso/#university-of-barcelona", ca: "/ca/acces/#university-of-barcelona",
-                 en: "/en/access-information/#university-of-barcelona", ja: "/ja/access-information/#university-of-barcelona" }
-      - label: { es: "Cómo llegar", ca: "Com arribar", en: "Directions", ja: "行き方" }
+        url:   { es: "/barcelona/", ca: "/ca/barcelona/",
+                 en: "/en/barcelona/", ja: "/ja/barcelona/" }
+      - label: { es: "Badalona", ca: "Badalona", en: "Badalona", ja: "バダロナ" }
+        url:   { es: "/badalona/", ca: "/ca/badalona/",
+                 en: "/en/badalona/", ja: "/ja/badalona/" }
+      # サント, with the ト. Seventeen places in this repo spell it that way and
+      # this line was the only one that did not — the exact drift CLAUDE.md
+      # records for this place name, found by grepping the kana before touching
+      # the row rather than after.
+      - label: { es: "Sant Adrià de Besòs", ca: "Sant Adrià de Besòs",
+                 en: "Sant Adrià de Besòs", ja: "サント・アドリア・ダ・バゾス" }
+        url:   { es: "/sant-adria-de-besos/", ca: "/ca/sant-adria-de-besos/",
+                 en: "/en/sant-adria-de-besos/", ja: "/ja/sant-adria-de-besos/" }
+      - label: { es: "Cómo llegar a cada uno", ca: "Com arribar a cadascun",
+                 en: "How to get to each one", ja: "それぞれへの行き方" }
         url:   { es: "/acceso/", ca: "/ca/acces/",
                  en: "/en/access-information/", ja: "/ja/access-information/" }
 

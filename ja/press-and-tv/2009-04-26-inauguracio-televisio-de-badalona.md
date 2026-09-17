@@ -8,5 +8,5 @@ description: "2009年4月26日、バダロナ・テレビが合気道産靈の�
 permalink: /ja/press-and-tv/2009-04-26-inauguracio-televisio-de-badalona/
 lang: ja
 i18n-ref: video-4KS3052r
-last_modified: 2026-09-05
+last_modified: 2026-09-18
 ---

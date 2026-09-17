@@ -8,5 +8,5 @@ description: "「Shugyō」の第2部では、パンデミックが伝統武道�
 permalink: /ja/press-and-tv/2021-03-04-budocool-shugyo-talks-part-2-2021/
 lang: ja
 i18n-ref: video-lIZaM8WK
-last_modified: 2026-09-05
+last_modified: 2026-09-18
 ---

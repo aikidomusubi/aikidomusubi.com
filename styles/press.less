@@ -285,84 +285,82 @@
 }
 
 
-// ---- the pager -------------------------------------------------------------
+// ---- the other videos ------------------------------------------------------
 //
-// Newer on the left, older on the right, which is the direction the index
-// reads. Each side carries its own thumbnail: a title alone gives no idea what
-// you are about to open, and these six are visually distinct pieces.
-.pv-pager {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+// Was a two-cell pager, newer on the left and older on the right. It named two
+// of the six and left three of them unreachable from here; this names every
+// one that is not the page you are on. See the note in _layouts/videopage.html
+// and docs/mockups/video-siblings.html.
+//
+// `.pv-pager`, `.pv-step`, `.pv-step-next` and `.pv-step.is-end` went with it.
+// Nothing creates those classes at runtime, so nothing has to be safelisted;
+// purge drops whatever the markup stops naming.
+.pv-more {
   margin: 1.6rem 0 0;
   padding-top: 1.4rem;
   border-top: 1px solid fadeout(@Black, 88%);
 }
 
-.page main a.pv-step {
-  display: flex;
-  align-items: center;
-  gap: .8rem;
-  padding: .6rem;
+.page main .pv-more-h {
+  .Futura;
+  margin: 0 0 1rem;
+  max-width: none;
+  font-size: .68rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: mix(@White, @Dark, 13.1%);   // 6.8:1 on white
+}
+
+.pv-sibs {
+  display: grid;
+  // 11rem is the smallest a 16:9 thumbnail can be and still read; at 692px of
+  // measure that gives three across on a desktop and two on a phone.
+  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+  gap: 1.2rem 1rem;
+}
+
+.page main a.pv-sib {
+  display: block;
   text-decoration: none;
   color: @Black;
   background-color: transparent;
-  border: 1px solid fadeout(@Black, 90%);
 
   &:hover, &:focus {
     background-color: transparent;
     text-decoration: none;
-    border-color: fadeout(@Black, 60%);
     b { color: @Rust; }
   }
 
-  &:focus-visible { outline: 2px solid @Blue; outline-offset: 2px; }
+  &:focus-visible { outline: 2px solid @Blue; outline-offset: 3px; }
 
-  picture { display: block; margin: 0; flex: none; }
+  picture { display: block; margin: 0; }
 
   img {
     display: block;
-    width: 5rem;
-    height: 2.8rem;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
     object-fit: cover;
     background-color: fadeout(@Black, 94%);
   }
 
-  span { min-width: 0; }
-
-  small {
-    display: block;
-    .Futura;
-    font-size: .58rem;
-    letter-spacing: .16em;
-    text-transform: uppercase;
-    color: mix(@White, @Dark, 13.1%);   // 6.8:1 on white
-  }
-
   b {
     display: block;
-    margin-top: .15rem;
+    margin-top: .45rem;
     .bold;
     font-size: .82rem;
     line-height: 1.35;
   }
-}
 
-// The older side reads right to left, so the arrow of the layout matches the
-// direction of travel.
-.page main a.pv-step-next {
-  flex-direction: row-reverse;
-  text-align: right;
-}
-
-// One end of the list has no neighbour. The cell still occupies its column so
-// the surviving link stays on its own side instead of sliding across.
-.pv-step.is-end { display: block; }
-
-@media (max-width: @bp-sm - .02px) {
-  .pv-pager { grid-template-columns: 1fr; }
-  .pv-step.is-end { display: none; }
-  .page main a.pv-step-next { flex-direction: row; text-align: left; }
+  // The year does the work "Más reciente" and "Anterior" used to do, and does
+  // it without needing the reader to know where they are in the list.
+  span {
+    display: block;
+    margin-top: .1rem;
+    font-size: .72rem;
+    font-variant-numeric: tabular-nums;
+    color: mix(@White, @Dark, 13.1%);   // 6.8:1 on white
+  }
 }
 
 .page main .pv-back { margin-top: 1.6rem; text-align: center; max-width: none; }

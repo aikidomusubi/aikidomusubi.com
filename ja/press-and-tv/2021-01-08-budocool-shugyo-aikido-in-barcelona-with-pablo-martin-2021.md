@@ -8,5 +8,5 @@ description: "パンデミックは合気道産靈の創設者パブロ・マル
 permalink: /ja/press-and-tv/2021-01-08-budocool-shugyo-aikido-in-barcelona-with-pablo-martin-2021/
 lang: ja
 i18n-ref: video-X4DomXj3
-last_modified: 2026-09-05
+last_modified: 2026-09-18
 ---

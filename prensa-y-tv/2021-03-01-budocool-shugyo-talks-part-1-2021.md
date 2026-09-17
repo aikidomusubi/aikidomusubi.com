@@ -8,5 +8,5 @@ description: "Nuestra primera charla de Shugyō en español reúne 5 historias, 
 permalink: /prensa-y-tv/2021-03-01-budocool-shugyo-talks-part-1-2021/
 lang: es
 i18n-ref: video-qy0ZPpuk
-last_modified: 2026-09-05
+last_modified: 2026-09-18
 ---

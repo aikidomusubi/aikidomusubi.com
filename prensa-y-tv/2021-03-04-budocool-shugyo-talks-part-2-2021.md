@@ -8,5 +8,5 @@ description: "La segunda parte de Shugyō en español discute los cambios que ha
 permalink: /prensa-y-tv/2021-03-04-budocool-shugyo-talks-part-2-2021/
 lang: es
 i18n-ref: video-lIZaM8WK
-last_modified: 2026-09-05
+last_modified: 2026-09-18
 ---

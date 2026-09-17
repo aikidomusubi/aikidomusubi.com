@@ -8,5 +8,5 @@ description: "La segona part de Shugyō en català discuteix els canvis que ha p
 permalink: /ca/premsa-i-tv/2021-03-04-budocool-shugyo-talks-part-2-2021/
 lang: ca
 i18n-ref: video-lIZaM8WK
-last_modified: 2026-09-05
+last_modified: 2026-09-18
 ---

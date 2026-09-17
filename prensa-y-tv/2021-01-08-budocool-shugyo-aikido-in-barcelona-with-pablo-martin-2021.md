@@ -8,5 +8,5 @@ description: "Aunque la pandemia ha afectado la vida de Pablo Martín, el fundad
 permalink: /prensa-y-tv/2021-01-08-budocool-shugyo-aikido-in-barcelona-with-pablo-martin-2021/
 lang: es
 i18n-ref: video-X4DomXj3
-last_modified: 2026-09-05
+last_modified: 2026-09-18
 ---

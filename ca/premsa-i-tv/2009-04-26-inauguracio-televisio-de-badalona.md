@@ -8,5 +8,5 @@ description: "El 26 d'abril de 2009, Televisió de Badalona cobreix la inaugurac
 permalink: /ca/premsa-i-tv/2009-04-26-inauguracio-televisio-de-badalona/
 lang: ca
 i18n-ref: video-4KS3052r
-last_modified: 2026-09-05
+last_modified: 2026-09-18
 ---
