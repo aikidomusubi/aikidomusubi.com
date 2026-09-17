@@ -245,13 +245,28 @@
   {%- comment -%}
     Breadcrumbs, so a search result for one of these four shows where it sits
     rather than as a bare page floating on its own.
+
+    EVERY ListItem EXCEPT THE LAST NEEDS AN `item`, and this block shipped
+    without one on position 1: it named "Sobre nosotros" and stopped there.
+    Search Console reported `Missing field "item" (in "itemListElement")` as a
+    CRITICAL breadcrumb error on all four Spanish pages the day it first
+    crawled them — 12 September 2026 — and the other three languages were
+    only spared because they had not been crawled yet.
+
+    The reason it had no `item` is that there is no page to point at: "Sobre
+    nosotros" is a group in _data/nav.yml, not a URL, and /sobre-nosotros/
+    holds the four topics and no index. A ListItem that names a level the site
+    does not have is the invention, so the level goes rather than getting a
+    fabricated URL. Home then the topic, which is the trail this page actually
+    has, and the same two-level shape _layouts/location.html uses.
   {%- endcomment -%}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": {{ A.ui.section[L] | jsonify }} },
+      { "@type": "ListItem", "position": 1, "name": {{ site.data.locations.ui.home[L] | jsonify }},
+        "item": "{{ site.url }}{% if L == 'es' %}/{% else %}/{{ L }}/{% endif %}" },
       { "@type": "ListItem", "position": 2, "name": {{ t.title[L] | jsonify }},
         "item": {{ site.url | append: page.url | jsonify }} }
     ]
