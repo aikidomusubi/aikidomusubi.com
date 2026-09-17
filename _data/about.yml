@@ -349,6 +349,20 @@ topics:
                      en: "The seminar log", ja: "講習会の記録" }
             url:   { es: "/ura/#ura-seminars", ca: "/ca/ura/#ura-seminars",
                      en: "/en/ura/#ura-seminars", ja: "/ja/ura/#ura-seminars" }
+          # The oldest thing the association has. Televisió de Badalona
+          # filmed the tatami being opened on 26 April 2009 and _videos/
+          # calls that footage "el documento más antiguo que conservamos de
+          # la casa" — so a block headed "Desde 2008" that already points at
+          # the photograph archive and the seminar log should point at it
+          # too. It is also the only editorial link any of the six watch
+          # pages has besides their own index; see the note in
+          # _layouts/sitemap.html.
+          - label: { es: "La inauguración, en vídeo", ca: "La inauguració, en vídeo",
+                     en: "The opening, on video", ja: "道場開きの映像" }
+            url:   { es: "/prensa-y-tv/2009-04-26-inauguracio-televisio-de-badalona/",
+                     ca: "/ca/premsa-i-tv/2009-04-26-inauguracio-televisio-de-badalona/",
+                     en: "/en/press-and-tv/2009-04-26-inauguracio-televisio-de-badalona/",
+                     ja: "/ja/press-and-tv/2009-04-26-inauguracio-televisio-de-badalona/" }
 
       - heading: { es: "Cómo funciona", ca: "Com funciona", en: "How it works", ja: "運営のしくみ" }
         body:

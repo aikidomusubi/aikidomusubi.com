@@ -74,6 +74,51 @@
     {%- endfor %}
 
     {%- comment -%}
+      The six video watch pages, which are the third case of something the menu
+      cannot show. The home page was the first and the three town pages below
+      are the second; CLAUDE.md's rule is that anything not in _data/nav.yml has
+      to be added here by hand, and twenty-four pages had been missing since
+      they were built.
+
+      A MAP MISSING A QUARTER OF THE SITE IS A BROKEN MAP, which is reason
+      enough. It also happens to be the only structural link they have: the
+      17 September Search Console export lists twenty-one of the twenty-four
+      among the forty-five pages Google has discovered and never crawled, and
+      measured on the built site each one had six inbound links of which
+      exactly ONE was editorial — its own index. The rest were the language
+      switcher pointing at its three translations and at itself, plus the
+      pager's neighbour. Everything hung off one page.
+
+      Twenty-four sub-pages have no business in a menu, so this is where they
+      belong. Resolved the way _layouts/videopage.html's pager resolves them,
+      by matching the stub's `video:` key against the record's slug, so a
+      seventh video adds a seventh cell and nothing here is a second copy of a
+      title. `reversed` matches the index, which reads newest first.
+    {%- endcomment -%}
+    {%- assign gMedia = N.groups | where: 'id', 'media' | first -%}
+    {%- assign itPress = gMedia.items[1] %}
+    <section class="sm-row">
+      <div class="sm-lab">
+        <h2>{{ itPress.label[L] }}</h2>
+        <p class="n">{{ site.videos | size }}</p>
+      </div>
+      <div class="sm-cells">
+        {%- for vd in site.videos reversed -%}
+          {%- assign vslug = vd.path | split: '/' | last | replace: '.md', '' -%}
+          {%- assign vpage = site.pages | where_exp: 'p', 'p.video == vslug' | where: 'lang', L | first -%}
+          {%- if vpage %}
+        <a class="sm-cell" href="{{ vpage.url }}">
+          <b>{{ vpage.title }}</b>
+          <span class="u">{{ vpage.url }}</span>
+          {%- if vpage.description %}<span class="d">{{ vpage.description }}</span>{% endif %}
+          <span class="lg">{%- for lang in site.data.languages %}<span>{{ lang[0] }}</span>{% endfor %}</span>
+        </a>
+          {%- endif -%}
+        {%- endfor %}
+      </div>
+    </section>
+
+    {%- comment -%}
       The three town pages. They are not in _data/nav.yml — they are reached
       from the home page's venue cards, from /acceso/ and from each other — so
       a map built from the menu alone was missing them, exactly the way it was
