@@ -41,4 +41,13 @@ for d in "${DESTS[@]}"; do
   # the map styles and their samples, which maps.html and maps-render.html read
   cp -R docs/mockups/maps docs/mockups/venuepics docs/mockups/plans "$d/mockups/"
 done
-echo "→ http://localhost:4000/mockups/  ($(ls "${DESTS[0]}/mockups" | wc -l | tr -d ' ') files in ${DESTS[*]})"
+# ZSH ARRAYS ARE 1-INDEXED. This line read `${DESTS[0]}`, which is empty in zsh
+# — so it ran `ls /mockups`, printed "No such file or directory" and reported
+# "0 files" every single time, on a run that had just copied 57 of them
+# correctly. The copy above was never broken; only the report of it was.
+# Counting per destination inside a loop avoids the subscript altogether and
+# says more besides.
+for d in "${DESTS[@]}"; do
+  echo "  $d/mockups  $(ls "$d/mockups"/*.html | wc -l | tr -d ' ') pages"
+done
+echo "→ http://localhost:4000/mockups/"
