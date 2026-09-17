@@ -1,6 +1,7 @@
 ---
 layout: gallery
 title: Galeria
+seo_title: "Fotos i vídeos d'aikido des del 2008"
 description: "Àlbums, publicacions i reels: el que fem, tal com ho expliquem."
 permalink: /ca/galeria/
 # The photos page lived here for years. jekyll-redirect-from leaves a stub
@@ -9,7 +10,7 @@ redirect_from:
   - /ca/fotos/
 lang: ca
 i18n-ref: gallery-Xk9pQ2vT
-last_modified: 2026-09-13
+last_modified: 2026-09-17
 ---
 
 # Galeria

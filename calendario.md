@@ -1,11 +1,12 @@
 ---
 layout: page
 title: Calendario
+seo_title: "Calendario de aikido: seminarios y exámenes"
 description: "Seminarios, exámenes, cambios de horario y días sin clase: todo lo que se sale de la semana habitual."
 permalink: /calendario/
 lang: es
 i18n-ref: calendar-Qv7mK2xR
-last_modified: 2026-09-16
+last_modified: 2026-09-17
 ---
 
 # Calendario

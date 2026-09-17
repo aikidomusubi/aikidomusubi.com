@@ -1,11 +1,12 @@
 ---
 layout: page
 title: Calendar
+seo_title: "Aikido calendar: seminars and gradings"
 description: "Seminars, examinations, schedule changes and days without class. Everything that falls outside the regular week."
 permalink: /en/calendar/
 lang: en
 i18n-ref: calendar-Qv7mK2xR
-last_modified: 2026-09-16
+last_modified: 2026-09-17
 ---
 
 # Calendar

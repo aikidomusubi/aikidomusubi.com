@@ -2,9 +2,10 @@
 layout: about
 topic: association
 title: 協会について
+seo_title: "私たちについて：成り立ちと運営"
 description: 私たちの成り立ち、運営のかたち、そして所属について。
 permalink: /ja/about/the-association/
 lang: ja
 i18n-ref: about-association-Tz6bR3Xe
-last_modified: 2026-09-09
+last_modified: 2026-09-17
 ---

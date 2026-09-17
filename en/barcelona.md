@@ -4,7 +4,8 @@ location: barcelona
 lang: en
 i18n-ref: barcelona-Nq8pL3xB
 title: "Aikido in Barcelona"
+seo_title: "Aikido in Barcelona: Mondays and Wednesdays"
 description: "Aikido in Barcelona on Mondays and Wednesdays, at the Espronceda Municipal Sports Complex and the Faculty of Law, UB. Timetable, addresses and two trial classes."
 permalink: /en/barcelona/
-last_modified: 2026-09-05
+last_modified: 2026-09-17
 ---

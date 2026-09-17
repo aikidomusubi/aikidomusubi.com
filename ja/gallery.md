@@ -1,6 +1,7 @@
 ---
 layout: gallery
 title: ギャラリー
+seo_title: "合気道の写真と動画：2008年から"
 description: "アルバム・投稿・リール。当道場の日々の活動の記録です。"
 permalink: /ja/gallery/
 # The photos page lived here for years. jekyll-redirect-from leaves a stub
@@ -9,7 +10,7 @@ redirect_from:
   - /ja/photos/
 lang: ja
 i18n-ref: gallery-Xk9pQ2vT
-last_modified: 2026-09-13
+last_modified: 2026-09-17
 ---
 
 # ギャラリー

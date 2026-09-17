@@ -1,11 +1,12 @@
 ---
 layout: elsewhere
 title: Fuera del dojo
+seo_title: "Seminarios de aikido a los que asistimos"
 description: Seminarios y encuentros a los que asistimos en otros dojos y ciudades.
 permalink: /fuera-del-dojo/
 lang: es
 i18n-ref: elsewhere-Kp8vR2Qs
-last_modified: 2026-09-06
+last_modified: 2026-09-17
 ---
 
 # Fuera del dojo

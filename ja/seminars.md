@@ -1,6 +1,7 @@
 ---
 layout: event
 title: 講習会
+seo_title: "バルセロナとバダロナの合気道講習会"
 description: 当道場が主催する講習会・特別稽古・協力イベントのご案内。
 permalink: /ja/seminars/
 # Four years of inbound links point at the old path. jekyll-redirect-from
@@ -9,7 +10,7 @@ redirect_from:
   - /ja/courses/
 lang: ja
 i18n-ref: events-hFZ2XXIp
-last_modified: 2026-09-09
+last_modified: 2026-09-17
 ---
 
 # 講習会

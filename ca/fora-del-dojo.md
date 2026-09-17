@@ -1,11 +1,12 @@
 ---
 layout: elsewhere
 title: Fora del dojo
+seo_title: "Seminaris d'aikido on assistim"
 description: Seminaris i trobades on assistim en altres dojos i ciutats.
 permalink: /ca/fora-del-dojo/
 lang: ca
 i18n-ref: elsewhere-Kp8vR2Qs
-last_modified: 2026-09-06
+last_modified: 2026-09-17
 ---
 
 # Fora del dojo

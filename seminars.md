@@ -1,6 +1,7 @@
 ---
 layout: event
 title: Seminarios
+seo_title: "Seminarios de aikido en Barcelona y Badalona"
 description: Seminarios, masterclasses y colaboraciones que organizamos en nuestro dojo.
 permalink: /seminarios/
 # Four years of inbound links point at the old path. jekyll-redirect-from
@@ -9,7 +10,7 @@ redirect_from:
   - /cursos/
 lang: es
 i18n-ref: events-hFZ2XXIp
-last_modified: 2026-09-09
+last_modified: 2026-09-17
 ---
 
 # Seminarios

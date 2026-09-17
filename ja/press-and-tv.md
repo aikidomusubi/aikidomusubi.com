@@ -1,6 +1,7 @@
 ---
 layout: video
 title: メディア掲載
+seo_title: "テレビの合気道：映像とインタビュー"
 description: "インタビュー・取材・テレビ出演の記録です。"
 permalink: /ja/press-and-tv/
 # The videos page lived here for years; the stub keeps those links working.
@@ -8,7 +9,7 @@ redirect_from:
   - /ja/videos/
 lang: ja
 i18n-ref: press-and-tv-Rm4zW8dL
-last_modified: 2026-09-06
+last_modified: 2026-09-17
 ---
 
 # メディア掲載

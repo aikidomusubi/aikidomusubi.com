@@ -1,6 +1,7 @@
 ---
 layout: video
 title: Premsa i TV
+seo_title: "Aikido a la televisió: vídeos i entrevistes"
 description: "Entrevistes, reportatges i aparicions a televisió."
 permalink: /ca/premsa-i-tv/
 # The videos page lived here for years; the stub keeps those links working.
@@ -8,7 +9,7 @@ redirect_from:
   - /ca/videos/
 lang: ca
 i18n-ref: press-and-tv-Rm4zW8dL
-last_modified: 2026-09-06
+last_modified: 2026-09-17
 ---
 
 # Premsa i TV

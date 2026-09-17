@@ -1,6 +1,7 @@
 ---
 layout: event
 title: Seminaris
+seo_title: "Seminaris d'aikido a Barcelona i Badalona"
 description: Seminaris, masterclasses i col·laboracions que organitzem al nostre dojo.
 permalink: /ca/seminaris/
 # Four years of inbound links point at the old path. jekyll-redirect-from
@@ -9,7 +10,7 @@ redirect_from:
   - /ca/cursos/
 lang: ca
 i18n-ref: events-hFZ2XXIp
-last_modified: 2026-09-09
+last_modified: 2026-09-17
 ---
 
 # Seminaris

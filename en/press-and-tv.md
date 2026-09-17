@@ -1,6 +1,7 @@
 ---
 layout: video
 title: Press & TV
+seo_title: "Aikido on television: videos and interviews"
 description: "Interviews, features and television appearances."
 permalink: /en/press-and-tv/
 # The videos page lived here for years; the stub keeps those links working.
@@ -8,7 +9,7 @@ redirect_from:
   - /en/videos/
 lang: en
 i18n-ref: press-and-tv-Rm4zW8dL
-last_modified: 2026-09-06
+last_modified: 2026-09-17
 ---
 
 # Press & TV

@@ -1,11 +1,12 @@
 ---
 layout: elsewhere
 title: Elsewhere
+seo_title: "Aikido seminars we travel to"
 description: Seminars and gatherings we attend at other dojos and in other cities.
 permalink: /en/elsewhere/
 lang: en
 i18n-ref: elsewhere-Kp8vR2Qs
-last_modified: 2026-09-06
+last_modified: 2026-09-17
 ---
 
 # Elsewhere

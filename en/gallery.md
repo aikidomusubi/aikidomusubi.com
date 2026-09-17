@@ -1,6 +1,7 @@
 ---
 layout: gallery
 title: Gallery
+seo_title: "Aikido photos and videos since 2008"
 description: "Albums, posts and reels: what we do, the way we tell it."
 permalink: /en/gallery/
 # The photos page lived here for years. jekyll-redirect-from leaves a stub
@@ -9,7 +10,7 @@ redirect_from:
   - /en/photos/
 lang: en
 i18n-ref: gallery-Xk9pQ2vT
-last_modified: 2026-09-13
+last_modified: 2026-09-17
 ---
 
 # Gallery
