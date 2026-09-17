@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mockup · La columna de salas del pie</title>
+<link rel="stylesheet" href="/styles/all.min.css">
+<style>
+  /* `all.min.css` paints `html` @Black, for the overscroll at the end of a
+     dark footer, and constrains `body` to the viewport for the scroll lock the
+     Ura panel uses. A mockup has no `.page` wrapper, so the body stopped at
+     900px and the black canvas showed through everything below the first
+     screen: two proposals and all their reasoning were dark grey on near
+     black. Found by looking at it, which is the point of rendering these. */
+  html, body { background: #fff; height: auto; min-height: 100%; }
+  .mk { max-width: 60rem; margin: 0 auto; padding: 3rem 2rem 6rem; }
+  .mk h1 { font-size: 2rem; margin: 0 0 .4rem; }
+  .mk > p.lede { max-width: 42rem; color: #444; margin: 0 0 2.4rem; }
+  .mk h2 { font-size: 1.15rem; margin: 3.2rem 0 .3rem; }
+  .mk h2 .tag { font-size: .68rem; letter-spacing: .1em; text-transform: uppercase;
+                padding: .18rem .45rem; margin-left: .5rem; vertical-align: .18em;
+                border: 1px solid currentColor; }
+  .mk h2 .now  { color: #6b6b6b; }
+  .mk h2 .rec  { color: #1A7444; }
+  .mk > p.note { max-width: 42rem; color: #444; font-size: .92rem; margin: .5rem 0 1.2rem; }
+  .mk table { border-collapse: collapse; margin: 1rem 0 0; font-size: .88rem; width: 100%; }
+  .mk th, .mk td { text-align: left; padding: .45rem .7rem .45rem 0;
+                   border-bottom: 1px solid rgba(0,0,0,.08); vertical-align: top; }
+  .mk th { font-weight: 700; color: #333; }
+  .mk td.n { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .mk .frame { border: 1px solid rgba(0,0,0,.14); padding: 1.6rem;
+               background: #111; color: #fff; }
+  .mk .frame.light { background: #fff; color: #111; }
+  .mk .why { max-width: 42rem; margin: 1rem 0 0; font-size: .92rem; color: #444; }
+  .mk .why b { color: #111; }
+  .mk hr { border: 0; border-top: 1px solid rgba(0,0,0,.12); margin: 3.6rem 0 0; }
+
+  /* the footer column, lifted out of footer.less so the mockup can stand alone */
+  .mkft { display: flex; gap: 4rem; flex-wrap: wrap; }
+  .mkft nav { min-width: 13rem; }
+  .mkft h3 { font-family: Futura, 'Noto Sans', sans-serif; font-size: .82rem;
+             letter-spacing: .06em; text-transform: uppercase;
+             color: rgba(255,255,255,.62); margin: 0 0 .8rem; }
+  .mkft ul { list-style: none; margin: 0; padding: 0; }
+  .mkft li { margin: 0 0 .42rem; }
+  .mkft a { color: #fff; text-decoration: none; font-size: .95rem;
+            border-bottom: 1px solid transparent; }
+  .mkft a:hover { border-bottom-color: rgba(255,255,255,.5); }
+  .mkft .u { display: block; font-size: .7rem; color: #FFF200;
+             font-variant-numeric: tabular-nums; letter-spacing: .01em; }
+  .mkft .gone { opacity: .38; text-decoration: line-through; }
+
+  /* the watch-page tail */
+  .mkpv { max-width: 44rem; }
+  .mkpv .pager { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+                 padding-top: 1.4rem; border-top: 1px solid rgba(0,0,0,.12); }
+  .mkpv .step { display: flex; align-items: center; gap: .8rem; padding: .6rem;
+                border: 1px solid rgba(0,0,0,.10); text-decoration: none; color: #111; }
+  .mkpv .step img { width: 160px; height: 90px; object-fit: cover; flex: none; }
+  .mkpv .step small { display: block; font-size: .7rem; letter-spacing: .08em;
+                      text-transform: uppercase; color: #6b6b6b; }
+  .mkpv .step b { font-size: .92rem; line-height: 1.25; }
+  .mkpv .sibs { display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+                gap: 1rem; margin: 1rem 0 0; }
+  .mkpv .sib { text-decoration: none; color: #111; display: block; }
+  .mkpv .sib img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
+  .mkpv .sib b { display: block; font-size: .86rem; line-height: 1.25; margin: .4rem 0 0; }
+  .mkpv .sib span { font-size: .72rem; color: #6b6b6b; font-variant-numeric: tabular-nums; }
+  .mkpv .sib:hover b { color: #AE5224; }
+  .mkpv .lab { font-family: Futura, 'Noto Sans', sans-serif; font-size: .82rem;
+               letter-spacing: .06em; text-transform: uppercase; color: #6b6b6b;
+               margin: 1.8rem 0 0; padding-top: 1.4rem;
+               border-top: 1px solid rgba(0,0,0,.12); }
+  .mkpv .back { margin: 1.4rem 0 0; font-size: .9rem; }
+</style>
+</head>
+<body>
+<div class="mk">
+
+<h1>El pie: «Dónde entrenamos»</h1>
+<p class="lede">La columna ya existe y ya nombra los cuatro sitios. Lo que hace es llevar a <code>/acceso/</code> con un ancla, no a las páginas de cada ciudad. Cambiarlo son tres URL en <code>_data/footer.yml</code>: ni una etiqueta nueva, ni una línea de marcado, ni una cadena que traducir cuatro veces.</p>
+<p class="note"><b>Por qué importa.</b> El pie sale en las 136 páginas del sitio. <code>/badalona/</code> tiene hoy <b>9</b> enlaces internos entrantes y es la página que aparece en posición 5,64 con 88 impresiones y <b>cero clics</b>; <code>/barcelona/</code> es la que persigue las 405 impresiones de «aikido barcelona». Son las dos páginas peor enlazadas del sitio y las dos que más tráfico tienen delante.</p>
+<h2>Ahora <span class="tag now">actual</span></h2>
+<p class="note">Cinco filas. Las cuatro primeras van al selector de <code>/acceso/</code>, que responde «por dónde se entra». Ninguna lleva a la página de la ciudad.</p>
+<div class="frame"><div class="mkft"><nav><h3>Dónde entrenamos</h3><ul>
+<li><a href="#">Badalona<span class="u">/acceso/#aikido-musubi</span></a></li>
+<li><a href="#">Sant Adrià de Besòs<span class="u">/acceso/#sant-adria-de-besos</span></a></li>
+<li><a href="#">Barcelona<span class="u">/acceso/#cxem-espronceda</span></a></li>
+<li><a href="#">Universidad de Barcelona<span class="u">/acceso/#university-of-barcelona</span></a></li>
+<li><a href="#">Cómo llegar<span class="u">/acceso/</span></a></li>
+</ul></nav></div></div>
+<h2>Propuesta A · mínima <span class="tag">3 URL</span></h2>
+<p class="note">Las mismas cinco filas y las mismas etiquetas. Sólo cambian tres destinos: cada ciudad va a su página. La Universidad de Barcelona mantiene su ancla porque es una sala dentro de Barcelona, y «Cómo llegar» sigue yendo a <code>/acceso/</code>, que es donde están las puertas.</p>
+<div class="frame"><div class="mkft"><nav><h3>Dónde entrenamos</h3><ul>
+<li><a href="#">Badalona<span class="u">/badalona/</span></a></li>
+<li><a href="#">Sant Adrià de Besòs<span class="u">/sant-adria-de-besos/</span></a></li>
+<li><a href="#">Barcelona<span class="u">/barcelona/</span></a></li>
+<li><a href="#">Universidad de Barcelona<span class="u">/acceso/#university-of-barcelona</span></a></li>
+<li><a href="#">Cómo llegar<span class="u">/acceso/</span></a></li>
+</ul></nav></div></div>
+<p class="why"><b>A favor.</b> Es el cambio más pequeño que existe y no toca nada que un lector reconozca. <b>En contra.</b> El pie deja de llevar directamente a la ficha de la sala: quien quiera la puerta tiene que pasar por «Cómo llegar». Y la columna se queda con cinco filas, una de las cuales nombra una sala y no una ciudad.</p>
+<h2>Propuesta B · cuatro filas <span class="tag rec">recomendada</span></h2>
+<p class="note">Tres ciudades y una salida. La Universidad de Barcelona deja de tener fila propia: es una sala dentro de Barcelona y <code>/barcelona/</code> la nombra, con su horario y su dirección. Coincide además con el criterio que ya seguimos en todo lo demás: <b>se nombran las ciudades donde hay presencia, no todas las salas</b>. Barcelona va primero.</p>
+<div class="frame"><div class="mkft"><nav><h3>Dónde entrenamos</h3><ul>
+<li><a href="#">Barcelona<span class="u">/barcelona/</span></a></li>
+<li><a href="#">Badalona<span class="u">/badalona/</span></a></li>
+<li><a href="#">Sant Adrià de Besòs<span class="u">/sant-adria-de-besos/</span></a></li>
+<li><a href="#">Cómo llegar a cada sala<span class="u">/acceso/</span></a></li>
+<li class="gone"><a href="#">Universidad de Barcelona<span class="u">se pliega dentro de /barcelona/</span></a></li>
+</ul></nav></div></div>
+<p class="why"><b>A favor.</b> La columna dice lo que su título promete: dónde entrenamos, por ciudades. Una fila menos, y la última es explícita sobre a qué lleva. <b>En contra.</b> Quien entrena en la UB pierde el atajo a su propia sala desde el pie. Sigue estando en <code>/acceso/</code> y en <code>/barcelona/</code>, a un clic más.</p>
+<h2>Lo que cambia, en números</h2>
+<table><tr><th>Página</th><th class="n">Enlaces entrantes hoy</th><th class="n">Con A o con B</th></tr>
+<tr><td><code>/badalona/</code></td><td class="n">9</td><td class="n">~140</td></tr>
+<tr><td><code>/barcelona/</code></td><td class="n">9</td><td class="n">~140</td></tr>
+<tr><td><code>/sant-adria-de-besos/</code></td><td class="n">9</td><td class="n">~140</td></tr>
+<tr><td><code>/acceso/</code></td><td class="n">~140</td><td class="n">~140 (A) · ~140 (B)</td></tr>
+</table>
+<p class="why">El pie está en las 136 páginas, así que cualquiera de las dos lleva las tres páginas de ciudad de 9 enlaces a todas las del sitio. <code>/acceso/</code> no pierde nada: conserva su fila en las dos propuestas, y las tres páginas de ciudad enlazan a <code>/acceso/</code> desde su propio cuerpo.</p>
+<p class="why"><b>Un aviso honesto.</b> Un enlace repetido en todas las páginas vale menos, para Google, que un enlace escrito dentro de un texto. Esto no sustituye a enlazar las ciudades desde donde vengan a cuento; lo que hace es que dejen de ser las páginas peor conectadas del sitio.</p>
+</div>
+</body>
+</html>

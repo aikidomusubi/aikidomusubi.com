@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mockup · Vídeos hermanos en la página de un vídeo</title>
+<link rel="stylesheet" href="/styles/all.min.css">
+<link rel="stylesheet" href="/styles/press.min.css">
+<style>
+  /* `all.min.css` paints `html` @Black, for the overscroll at the end of a
+     dark footer, and constrains `body` to the viewport for the scroll lock the
+     Ura panel uses. A mockup has no `.page` wrapper, so the body stopped at
+     900px and the black canvas showed through everything below the first
+     screen: two proposals and all their reasoning were dark grey on near
+     black. Found by looking at it, which is the point of rendering these. */
+  html, body { background: #fff; height: auto; min-height: 100%; }
+  .mk { max-width: 60rem; margin: 0 auto; padding: 3rem 2rem 6rem; }
+  .mk h1 { font-size: 2rem; margin: 0 0 .4rem; }
+  .mk > p.lede { max-width: 42rem; color: #444; margin: 0 0 2.4rem; }
+  .mk h2 { font-size: 1.15rem; margin: 3.2rem 0 .3rem; }
+  .mk h2 .tag { font-size: .68rem; letter-spacing: .1em; text-transform: uppercase;
+                padding: .18rem .45rem; margin-left: .5rem; vertical-align: .18em;
+                border: 1px solid currentColor; }
+  .mk h2 .now  { color: #6b6b6b; }
+  .mk h2 .rec  { color: #1A7444; }
+  .mk > p.note { max-width: 42rem; color: #444; font-size: .92rem; margin: .5rem 0 1.2rem; }
+  .mk table { border-collapse: collapse; margin: 1rem 0 0; font-size: .88rem; width: 100%; }
+  .mk th, .mk td { text-align: left; padding: .45rem .7rem .45rem 0;
+                   border-bottom: 1px solid rgba(0,0,0,.08); vertical-align: top; }
+  .mk th { font-weight: 700; color: #333; }
+  .mk td.n { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .mk .frame { border: 1px solid rgba(0,0,0,.14); padding: 1.6rem;
+               background: #111; color: #fff; }
+  .mk .frame.light { background: #fff; color: #111; }
+  .mk .why { max-width: 42rem; margin: 1rem 0 0; font-size: .92rem; color: #444; }
+  .mk .why b { color: #111; }
+  .mk hr { border: 0; border-top: 1px solid rgba(0,0,0,.12); margin: 3.6rem 0 0; }
+
+  /* the footer column, lifted out of footer.less so the mockup can stand alone */
+  .mkft { display: flex; gap: 4rem; flex-wrap: wrap; }
+  .mkft nav { min-width: 13rem; }
+  .mkft h3 { font-family: Futura, 'Noto Sans', sans-serif; font-size: .82rem;
+             letter-spacing: .06em; text-transform: uppercase;
+             color: rgba(255,255,255,.62); margin: 0 0 .8rem; }
+  .mkft ul { list-style: none; margin: 0; padding: 0; }
+  .mkft li { margin: 0 0 .42rem; }
+  .mkft a { color: #fff; text-decoration: none; font-size: .95rem;
+            border-bottom: 1px solid transparent; }
+  .mkft a:hover { border-bottom-color: rgba(255,255,255,.5); }
+  .mkft .u { display: block; font-size: .7rem; color: #FFF200;
+             font-variant-numeric: tabular-nums; letter-spacing: .01em; }
+  .mkft .gone { opacity: .38; text-decoration: line-through; }
+
+  /* the watch-page tail */
+  .mkpv { max-width: 44rem; }
+  .mkpv .pager { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+                 padding-top: 1.4rem; border-top: 1px solid rgba(0,0,0,.12); }
+  .mkpv .step { display: flex; align-items: center; gap: .8rem; padding: .6rem;
+                border: 1px solid rgba(0,0,0,.10); text-decoration: none; color: #111; }
+  .mkpv .step img { width: 160px; height: 90px; object-fit: cover; flex: none; }
+  .mkpv .step small { display: block; font-size: .7rem; letter-spacing: .08em;
+                      text-transform: uppercase; color: #6b6b6b; }
+  .mkpv .step b { font-size: .92rem; line-height: 1.25; }
+  .mkpv .sibs { display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+                gap: 1rem; margin: 1rem 0 0; }
+  .mkpv .sib { text-decoration: none; color: #111; display: block; }
+  .mkpv .sib img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
+  .mkpv .sib b { display: block; font-size: .86rem; line-height: 1.25; margin: .4rem 0 0; }
+  .mkpv .sib span { font-size: .72rem; color: #6b6b6b; font-variant-numeric: tabular-nums; }
+  .mkpv .sib:hover b { color: #AE5224; }
+  .mkpv .lab { font-family: Futura, 'Noto Sans', sans-serif; font-size: .82rem;
+               letter-spacing: .06em; text-transform: uppercase; color: #6b6b6b;
+               margin: 1.8rem 0 0; padding-top: 1.4rem;
+               border-top: 1px solid rgba(0,0,0,.12); }
+  .mkpv .back { margin: 1.4rem 0 0; font-size: .9rem; }
+</style>
+</head>
+<body>
+<div class="mk">
+
+<h1>La página de un vídeo: qué va al final</h1>
+<p class="lede">Hay seis vídeos y cada uno tiene su página en cuatro idiomas: veinticuatro páginas. Hoy cada una enlaza a <b>una</b> hermana por el paginador y al índice. Veintiuna de las veinticuatro están entre las cuarenta y cinco páginas que Google ha descubierto y no ha rastreado nunca: es el grupo más grande de esa lista.</p>
+<p class="note">Se dibuja el final de <i>Shugyō TALKS: Budo en español Parte 2</i>, que es el tercero de seis y por tanto tiene vecino a los dos lados y tres vídeos que el paginador no alcanza.</p>
+<h2>Ahora <span class="tag now">actual</span></h2>
+<div class="frame light"><div class="mkpv">
+<div class="pager">
+<a class="step" href="#"><img src="/images/press-and-tv-Rm4zW8dL-2021-03-19-budocool-shugyo-talks-part-3-2021.jpg" alt=""><span><small>Más reciente</small><b>Shugyō TALKS: Budo en español Parte 3</b></span></a>
+<a class="step" href="#"><img src="/images/press-and-tv-Rm4zW8dL-2021-03-01-budocool-shugyo-talks-part-1-2021.jpg" alt=""><span><small>Anterior</small><b>Shugyō TALKS: Budo en español Parte 1</b></span></a>
+</div>
+<p class="back"><a href="#">Ver todos los vídeos</a></p>
+</div></div>
+<p class="why">Dos hermanas nombradas, tres invisibles, y un enlace al índice. <b>Dos enlaces editoriales entrantes por página</b>, contando el mapa del sitio que se añadió el 18 de septiembre.</p>
+<h2>Propuesta A · el paginador se queda <span class="tag">+3</span></h2>
+<p class="note">El paginador sigue igual y debajo aparecen los vídeos que no alcanza.</p>
+<div class="frame light"><div class="mkpv">
+<div class="pager">
+<a class="step" href="#"><img src="/images/press-and-tv-Rm4zW8dL-2021-03-19-budocool-shugyo-talks-part-3-2021.jpg" alt=""><span><small>Más reciente</small><b>Shugyō TALKS: Budo en español Parte 3</b></span></a>
+<a class="step" href="#"><img src="/images/press-and-tv-Rm4zW8dL-2021-03-01-budocool-shugyo-talks-part-1-2021.jpg" alt=""><span><small>Anterior</small><b>Shugyō TALKS: Budo en español Parte 1</b></span></a>
+</div>
+<p class="lab">Los demás vídeos</p><div class="sibs">
+<a class="sib" href="#"><img src="/images/press-and-tv-Rm4zW8dL-2025-02-04-via-15-beteve.jpg" alt=""><b>Via 15: 4 de febrero de 2025</b><span>2025</span></a>
+<a class="sib" href="#"><img src="/images/press-and-tv-Rm4zW8dL-2021-01-08-budocool-shugyo-aikido-in-barcelona-with-pablo-martin-2021.jpg" alt=""><b>Shugyō - Aikido en Barcelona con Pablo Martín</b><span>2021</span></a>
+<a class="sib" href="#"><img src="/images/press-and-tv-Rm4zW8dL-2009-04-26-inauguracio-televisio-de-badalona.jpg" alt=""><b>Televisió de Badalona: la inauguración del dojo</b><span>2009</span></a>
+</div>
+<p class="back"><a href="#">Ver todos los vídeos</a></p>
+</div></div>
+<p class="why"><b>A favor.</b> No quita nada. <b>En contra.</b> Dos componentes haciendo el mismo trabajo, uno encima del otro, y el lector tiene que entender por qué dos de los cinco están arriba con marco y los otros tres abajo sin él. La respuesta —que uno es cronológico y el otro no— es verdadera y no se ve.</p>
+<h2>Propuesta B · una sola rejilla <span class="tag rec">recomendada</span></h2>
+<p class="note">El paginador se retira y en su lugar van los cinco, del más reciente al más antiguo, cada uno con su año. El orden sigue siendo cronológico; lo que desaparece es la pareja de flechas, no la cronología.</p>
+<div class="frame light"><div class="mkpv">
+<p class="lab">Los otros cinco vídeos</p><div class="sibs">
+<a class="sib" href="#"><img src="/images/press-and-tv-Rm4zW8dL-2025-02-04-via-15-beteve.jpg" alt=""><b>Via 15: 4 de febrero de 2025</b><span>2025</span></a>
+<a class="sib" href="#"><img src="/images/press-and-tv-Rm4zW8dL-2021-03-19-budocool-shugyo-talks-part-3-2021.jpg" alt=""><b>Shugyō TALKS: Budo en español Parte 3</b><span>2021</span></a>
+<a class="sib" href="#"><img src="/images/press-and-tv-Rm4zW8dL-2021-03-01-budocool-shugyo-talks-part-1-2021.jpg" alt=""><b>Shugyō TALKS: Budo en español Parte 1</b><span>2021</span></a>
+<a class="sib" href="#"><img src="/images/press-and-tv-Rm4zW8dL-2021-01-08-budocool-shugyo-aikido-in-barcelona-with-pablo-martin-2021.jpg" alt=""><b>Shugyō - Aikido en Barcelona con Pablo Martín</b><span>2021</span></a>
+<a class="sib" href="#"><img src="/images/press-and-tv-Rm4zW8dL-2009-04-26-inauguracio-televisio-de-badalona.jpg" alt=""><b>Televisió de Badalona: la inauguración del dojo</b><span>2009</span></a>
+</div>
+<p class="back"><a href="#">Ver todos los vídeos</a></p>
+</div></div>
+<p class="why"><b>A favor.</b> Un componente en lugar de dos, la colección entera visible, y el año hace el trabajo que hacían «Más reciente» y «Anterior». <b>En contra.</b> Retira algo que se decidió a conciencia: CLAUDE.md explica que el paginador dice «Más reciente / Anterior» y no «Anterior / Siguiente» porque una flecha en una lista ordenada por fecha es ambigua. Esa decisión sigue siendo buena; lo que cambia es que con cinco fechas a la vista ya no hay nada ambiguo que resolver.</p>
+<p class="why"><b>Dónde deja de servir.</b> Con seis vídeos «todos los demás» son cinco y caben. Con veinte no. Si la colección crece, la rejilla se recorta a los cinco más recientes y «Ver todos los vídeos» pasa a ser la salida de verdad. No hay que decidirlo hoy, pero conviene que esté escrito.</p>
+<h2>Lo que cambia, en números</h2>
+<table><tr><th>Por página de vídeo</th><th class="n">Hoy</th><th class="n">A</th><th class="n">B</th></tr><tr><td>Enlaces editoriales entrantes</td><td class="n">2</td><td class="n">7</td><td class="n">7</td></tr><tr><td>Enlaces hermanos salientes</td><td class="n">2</td><td class="n">5</td><td class="n">5</td></tr><tr><td>Componentes al final de la página</td><td class="n">2</td><td class="n">3</td><td class="n">2</td></tr></table>
+<p class="why">Las dos dan el mismo resultado de enlaces: seis vídeos enlazándose entre todos son treinta enlaces hermanos, vengan en uno o en dos componentes. La diferencia entre A y B es de diseño, no de SEO.</p>
+</div>
+</body>
+</html>

@@ -40,6 +40,8 @@ Run it again after any `npx gulp build`, which wipes `_site`.
 | `loc-barcelona-f.html` | **The recommendation.** E plus D's un-underlined headings, the venues named in full everywhere, «espacios» for «salas», inclusive wording, and no Arashi Group in the hero. |
 | `loc-barcelona-e.html` | C's structure and order, with the fact block redrawn in the site's own tokens and the steps and timetable taken from D. |
 | `loc-barcelona-a/-b/-c/-d.html` | The location page. A is a reference entry with the facts first, B a landing page that opens with the room, C the two combined — and **D is C rebuilt out of the site's own components** (`page-head`, `.hm-sec`, `.hm-fig`, `.hm-facts`, `.hm-steps`, `.hm-ven`, `.ab-faq`, `.hm-btn`), which is the recommendation. Barcelona is the template for `/badalona/` and `/sant-adria-de-besos/`. **Undecided.** |
+| `footer-venues.html` | The footer's "Dónde entrenamos" column. It already names the four venues and already points at `/acceso/` anchors; the question is whether the three towns should point at their own pages instead. **A** repoints three URLs and changes nothing else; **B** drops to four rows, folds the UB into `/barcelona/` and puts Barcelona first. **B is the recommendation. Undecided.** |
+| `video-siblings.html` | What goes at the foot of a video watch page. Each of the 24 links one sibling through the pager and nothing else, and 21 of them are among the pages Google has never crawled. **A** keeps the pager and adds the three it cannot reach; **B** replaces both with one dated grid of the other five. **B is the recommendation. Undecided.** |
 | `bar-glosario-a/-b.html`, `bar-recursos-a/-b.html` | The sticky search-and-filter bar on a phone, two proposals, each shown on both pages. **A was chosen** and is built: one line, chips in a drawer. B kept the chips visible by scrolling them, which hides options behind an edge. |
 
 ## Editing them
@@ -55,6 +57,10 @@ The HTML in this directory is **generated**. The sources are in `src/`:
   of `_data/venues.yml`, `_data/schedule.yml` and `_data/fees.yml`; nothing is
   invented, because a location page that invents anything is the exact thing
   Google penalises.
+- `build_links.py` — the two internal-linking proposals. Reads the venue column
+  straight out of `_data/footer.yml` and the six records out of `_videos/`, so the
+  rows and the thumbnails in the mockup are the real ones. The link counts quoted
+  in it were measured on the built site, not estimated.
 - `_bar.py` / `build_bar.py` — the sticky-bar proposals. `build_bar.py` reads
   `_data/resources.yml` directly rather than keeping a second copy of it, so the
   chip counts and the label lengths in the mockup are the ones that really have

@@ -34,6 +34,7 @@ python3 docs/mockups/src/build_venuepics.py
 python3 docs/mockups/src/build_plans.py
 python3 docs/mockups/src/build_poster.py
 python3 docs/mockups/src/build_firstclass.py
+python3 docs/mockups/src/build_links.py
 for d in "${DESTS[@]}"; do
   mkdir -p "$d/mockups"
   for f in docs/mockups/*.html; do cp "$f" "$d/mockups/"; done
