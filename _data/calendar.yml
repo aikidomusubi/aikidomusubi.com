@@ -79,11 +79,32 @@ types:
   extra:
     color: "#1A7444"
     label: { es: "Clase extra",  ca: "Classe extra",  en: "Extra class", ja: "臨時稽古" }
+  # `event: false` KEEPS A TYPE OUT OF THE schema.org OUTPUT, and these two are
+  # the types that are not happenings at all.
+  #
+  # A closure is the absence of events: "Dojo cerrado · Navidad" published as
+  # an Event asserts a happening whose entire content is that nothing happens.
+  # A cancellation is the same shape one class down, and it has a second
+  # problem besides — the weekly classes are published as `Course` and
+  # `CourseInstance`, never as Events, so an `EventCancelled` node here was
+  # correcting a rich result that has never existed. It announced an event in
+  # order to say the event was off.
+  #
+  # BOTH STAY ON THE PAGE. This changes the machine-readable claim and nothing
+  # a reader sees: the month grid, the agenda, the day strip on Ura and the
+  # .ics feed are untouched. "Is there a class on Thursday" is answered exactly
+  # as before.
+  #
+  # An entry may override its type with `event: true` or `event: false` of its
+  # own; see the candidacy deadline further down, which is the one case in the
+  # file where the type is right and the individual entry is not.
   cancellation:
     color: "#A62C37"
+    event: false
     label: { es: "Sin clase",    ca: "Sense classe",  en: "No class",    ja: "休講" }
   closure:
     color: "#34454C"
+    event: false
     label: { es: "Dojo cerrado", ca: "Dojo tancat",   en: "Dojo closed", ja: "道場休み" }
   # The life of the association rather than the life of the tatami: the general
   # assembly, the deadline for standing for the board, the group photograph,
@@ -587,8 +608,15 @@ entries:
   # standing comes first, then the assembly that elects, then the grading day
   # that ends with the dinner.
   # -------------------------------------------------------------------------
+  # A DEADLINE IS A DATE, NOT A GATHERING. `association` is the right type —
+  # this is the life of the association — and everything else of that type is
+  # something you turn up to: the assembly, the group photograph, the two
+  # dinners. Nobody attends a closing date, so this one entry opts out of the
+  # schema.org output while keeping its type, its colour and its place on the
+  # calendar.
   - date: "2026-11-30"
     type: association
+    event: false
     title:
       es: "Último día para presentar candidaturas"
       ca: "Últim dia per presentar candidatures"

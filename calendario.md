@@ -6,7 +6,7 @@ description: "Seminarios, exámenes, cambios de horario y días sin clase: todo 
 permalink: /calendario/
 lang: es
 i18n-ref: calendar-Qv7mK2xR
-last_modified: 2026-09-17
+last_modified: 2026-09-20
 ---
 
 # Calendario

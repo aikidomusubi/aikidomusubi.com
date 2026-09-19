@@ -557,16 +557,40 @@
 {
   "@context": "https://schema.org",
   "@graph": [
+  {%- comment -%}
+    ONLY WHAT SOMEBODY COULD TURN UP TO.
+
+    This loop used to publish every entry that was not a public holiday, which
+    meant schema.org Events reading "Dojo cerrado" and "Sin clase: Aikido
+    19:30" — nodes asserting a happening whose whole content is that nothing
+    happens. The holiday skip was the same insight applied to one case; the
+    rule below is that insight written down once.
+
+    The test is `event`, declared per type in _data/calendar.yml and
+    overridable per entry. A type that says nothing is an event, which is
+    right for `change`, `extra`, `exam`, `seminar`, `visit` and `association`:
+    a weapons class with a guest, an added session, a grading, the general
+    assembly and the winter dinner are all things a person attends.
+
+    `holiday: true` needs no separate test any more. Every holiday in this
+    file is a `closure`, and `closure` is now `event: false`, so the one rule
+    covers what two did. `holiday` still does its other job, keeping the
+    thirteen statutory dates out of Ura's "what is coming".
+
+    NOTHING A READER SEES CHANGES. Every entry keeps its place on the month
+    grid, in the agenda, in Ura's day strip and in the .ics feed. What changes
+    is only what the page claims to a machine.
+  {%- endcomment -%}
   {%- assign first_out = true -%}
   {%- for e in entries -%}
-    {%- if e.holiday %}{% continue %}{% endif -%}
     {%- assign t = C.types[e.type] -%}
+    {%- assign is_event = true -%}
+    {%- if t.event == false %}{% assign is_event = false %}{% endif -%}
+    {%- if e.event == false %}{% assign is_event = false %}{% endif -%}
+    {%- if e.event == true %}{% assign is_event = true %}{% endif -%}
+    {%- unless is_event %}{% continue %}{% endunless -%}
     {%- assign loc = nil -%}{%- if e.location -%}{%- assign loc = S.locations | where: "id", e.location | first -%}{%- endif -%}
     {%- assign title = e.title[L] -%}
-    {%- if e.type == 'cancellation' and e.affects -%}
-      {%- assign ac = S.categories | where: "id", e.affects.category | first -%}
-      {%- assign title = ac.name[L] | append: ' ' | append: e.affects.start -%}
-    {%- endif -%}
     {%- assign tz_a = e.date | date: '%:z' -%}
     {%- assign e_until = e.until | default: e.date -%}
     {%- assign tz_b = e_until | date: '%:z' -%}
@@ -576,7 +600,15 @@
       "name": {{ title | jsonify }},
       "startDate": "{{ e.date }}{% if e.start %}T{{ e.start }}:00{{ tz_a }}{% endif %}",
       "endDate": "{{ e_until }}{% if e.end %}T{{ e.end }}:00{{ tz_b }}{% endif %}",
-      "eventStatus": "https://schema.org/Event{% if e.type == 'cancellation' or e.type == 'closure' %}Cancelled{% else %}Scheduled{% endif %}",
+      {%- comment -%}
+        Always Scheduled. The two types that could reach `EventCancelled` are
+        the two the loop above no longer publishes, so the branch tested a
+        condition that can no longer be true. If a single `extra` or `change`
+        ever has to be called off, it is written as a `cancellation` like any
+        other and disappears from here, which is the same answer by a
+        different route.
+      {%- endcomment -%}
+      "eventStatus": "https://schema.org/EventScheduled",
       "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
       "organizer": { "@type": "SportsClub", "name": "Aikido Musubi", "url": "{{ site.url }}" },
       {%- if e.place_id %}
