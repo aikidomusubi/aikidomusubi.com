@@ -23,6 +23,36 @@
 #   location:  musubi              optional, a location id from schedule.yml
 #   place:     { es:, ... }        optional, for venues not in schedule.yml
 #   note:      { es:, ... }        optional second line
+#   instructors: [perez]         optional. Who teaches it, as ids from
+#                                _data/schedule.yml's `instructors:` list. A
+#                                list even when there is one, because the
+#                                August evenings genuinely have two. It is
+#                                what becomes `performer` in the schema.org
+#                                Event, and nothing else reads it yet.
+#
+#                                WRITE IT ONLY WHERE THE DOJO KNOWS. A name in
+#                                a `note` is not evidence: "por la masterclass
+#                                de Pedro Fortes" is the REASON the karate
+#                                class moved, and Fortes does not teach it.
+#                                Reading names out of prose would have got
+#                                that one wrong, which is why the key is typed
+#                                rather than derived.
+#
+#                                NOR IS IT DERIVABLE FROM `affects`. The class
+#                                being changed is in schedule.yml with its own
+#                                instructor, but a change is sometimes a
+#                                change OF instructor: the weapons Wednesday
+#                                replaces J. M. Pérez's class with G. Zheng.
+#                                A rule that is right for the karate moves and
+#                                wrong for the weapons class is worse than no
+#                                rule.
+#
+#                                Absent is a real state, not an omission. The
+#                                gradings have no recorded panel, the assembly
+#                                and the group photograph have no performer at
+#                                all, and Marina-Besòs and CxEM Espronceda are
+#                                between teachers, which schedule.yml already
+#                                records by leaving `instructor` out.
 #   link:      "/cursos/"          optional. Where to read more.
 #   routine:   true                optional. Keeps the entry off Ura's "what
 #                                  is coming". That section answers "what is
@@ -208,7 +238,6 @@ seasons:
 # classes that are not running on a given day.
 # ---------------------------------------------------------------------------
 entries:
-  # 2026 — the rest of the year is in the holiday block further down.
   - date: "2026-09-11"
     type: closure
     holiday: true
@@ -358,6 +387,7 @@ entries:
     affects: { category: aikido, start: "20:00" }
     start: "20:00"
     end:   "21:30"
+    instructors: [zheng]
     title:
       es: "Clase de armas con G. Zheng"
       ca: "Classe d'armes amb G. Zheng"
@@ -376,6 +406,7 @@ entries:
     affects: { category: aikido, start: "20:00" }
     start: "20:00"
     end:   "21:30"
+    instructors: [zheng]
     title:
       es: "Clase de armas con G. Zheng"
       ca: "Classe d'armes amb G. Zheng"
@@ -394,6 +425,7 @@ entries:
     affects: { category: aikido, start: "20:00" }
     start: "20:00"
     end:   "21:30"
+    instructors: [zheng]
     title:
       es: "Clase de armas con G. Zheng"
       ca: "Classe d'armes amb G. Zheng"
@@ -412,6 +444,7 @@ entries:
     affects: { category: aikido, start: "20:00" }
     start: "20:00"
     end:   "21:30"
+    instructors: [zheng]
     title:
       es: "Clase de armas con G. Zheng"
       ca: "Classe d'armes amb G. Zheng"
@@ -463,6 +496,7 @@ entries:
     affects: { category: karate, start: "11:00" }
     start: "10:00"
     end:   "12:00"
+    instructors: [llorens]
     title:
       es: "Karate"
       ca: "Karate"
@@ -481,6 +515,7 @@ entries:
     affects: { category: karate, start: "11:00" }
     start: "10:00"
     end:   "12:00"
+    instructors: [llorens]
     title:
       es: "Karate"
       ca: "Karate"
@@ -499,6 +534,7 @@ entries:
     affects: { category: karate, start: "11:00" }
     start: "10:00"
     end:   "12:00"
+    instructors: [llorens]
     title:
       es: "Karate"
       ca: "Karate"
@@ -546,6 +582,7 @@ entries:
     location: musubi
     start: "08:30"
     end:   "10:30"
+    instructors: [serra]
     title:
       es: "Iaijutsu con X. Serra"
       ca: "Iaijutsu amb X. Serra"
@@ -567,6 +604,7 @@ entries:
     affects: { category: aikido, start: "07:30" }
     start: "07:30"
     end:   "08:30"
+    instructors: [villar]
     title:
       es: "Aikido"
       ca: "Aikido"
@@ -585,6 +623,7 @@ entries:
     affects: { category: karate, start: "11:00" }
     start: "10:00"
     end:   "12:00"
+    instructors: [llorens]
     title:
       es: "Karate"
       ca: "Karate"
@@ -967,6 +1006,7 @@ entries:
   # -------------------------------------------------------------------------
   - date: "2026-08-04"
     type: change
+    instructors: [molina-jm, perez]
     title:
       es: "Horario de agosto"
       ca: "Horari d'agost"
@@ -983,6 +1023,7 @@ entries:
 
   - date: "2026-08-06"
     type: change
+    instructors: [molina-jm, perez]
     title:
       es: "Horario de agosto"
       ca: "Horari d'agost"
@@ -999,6 +1040,7 @@ entries:
 
   - date: "2026-08-11"
     type: change
+    instructors: [molina-jm, perez]
     title:
       es: "Horario de agosto"
       ca: "Horari d'agost"
@@ -1015,6 +1057,7 @@ entries:
 
   - date: "2026-08-13"
     type: change
+    instructors: [molina-jm, perez]
     title:
       es: "Horario de agosto"
       ca: "Horari d'agost"
@@ -1031,6 +1074,7 @@ entries:
 
   - date: "2026-08-18"
     type: change
+    instructors: [molina-jm, perez]
     title:
       es: "Horario de agosto"
       ca: "Horari d'agost"
@@ -1047,6 +1091,7 @@ entries:
 
   - date: "2026-08-20"
     type: change
+    instructors: [molina-jm, perez]
     title:
       es: "Horario de agosto"
       ca: "Horari d'agost"
@@ -1063,6 +1108,7 @@ entries:
 
   - date: "2026-08-25"
     type: change
+    instructors: [molina-jm, perez]
     title:
       es: "Horario de agosto"
       ca: "Horari d'agost"
@@ -1079,6 +1125,7 @@ entries:
 
   - date: "2026-08-27"
     type: change
+    instructors: [molina-jm, perez]
     title:
       es: "Horario de agosto"
       ca: "Horari d'agost"
@@ -1110,6 +1157,7 @@ entries:
   - date: "2026-08-01"
     type: extra
     routine: true
+    instructors: [perez]
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -1127,6 +1175,7 @@ entries:
   - date: "2026-08-08"
     type: extra
     routine: true
+    instructors: [perez]
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -1144,6 +1193,7 @@ entries:
   - date: "2026-08-15"
     type: extra
     routine: true
+    instructors: [perez]
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -1161,6 +1211,7 @@ entries:
   - date: "2026-08-22"
     type: extra
     routine: true
+    instructors: [perez]
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -1178,6 +1229,7 @@ entries:
   - date: "2026-08-29"
     type: extra
     routine: true
+    instructors: [perez]
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -1195,6 +1247,7 @@ entries:
   - date: "2026-09-05"
     type: extra
     routine: true
+    instructors: [perez]
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -1212,6 +1265,7 @@ entries:
   - date: "2026-09-12"
     type: extra
     routine: true
+    instructors: [perez]
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -1260,6 +1314,7 @@ entries:
   - date: "2026-09-26"
     type: extra
     routine: true
+    instructors: [perez]
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -1277,6 +1332,7 @@ entries:
   - date: "2026-10-03"
     type: extra
     routine: true
+    instructors: [perez]
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -1294,6 +1350,7 @@ entries:
   - date: "2026-10-10"
     type: extra
     routine: true
+    instructors: [perez]
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -1311,6 +1368,7 @@ entries:
   - date: "2026-10-17"
     type: extra
     routine: true
+    instructors: [perez]
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -1328,6 +1386,7 @@ entries:
   - date: "2026-10-24"
     type: extra
     routine: true
+    instructors: [perez]
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -1345,6 +1404,7 @@ entries:
   - date: "2026-10-31"
     type: extra
     routine: true
+    instructors: [perez]
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -1362,6 +1422,7 @@ entries:
   - date: "2026-11-07"
     type: extra
     routine: true
+    instructors: [perez]
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -1379,6 +1440,7 @@ entries:
   - date: "2026-11-14"
     type: extra
     routine: true
+    instructors: [perez]
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -1396,6 +1458,7 @@ entries:
   - date: "2026-11-21"
     type: extra
     routine: true
+    instructors: [perez]
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -1413,6 +1476,7 @@ entries:
   - date: "2026-11-28"
     type: extra
     routine: true
+    instructors: [perez]
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -1430,6 +1494,7 @@ entries:
   - date: "2026-12-05"
     type: extra
     routine: true
+    instructors: [perez]
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"

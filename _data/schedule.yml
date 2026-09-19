@@ -256,7 +256,7 @@ instructors:
 # both lists need it.
   - { id: sancho,     name: "A. Sancho",  ja: "アルベルト　サンチョ",       rank: 4, person: "Alberto Sancho" }
   - { id: martin,     name: "P. Martín",  ja: "パブロ　マルティン",         rank: 1, person: "Pablo Martín" }
-  - { id: perez,      name: "J.M. Pérez", ja: "フアンマ　ペレス",           rank: 5, person: "Juanma Pérez" }
+  - { id: perez,      name: "J. M. Pérez", ja: "フアンマ　ペレス",           rank: 5, person: "Juanma Pérez" }
   - { id: fortes,     name: "P. Fortes",  ja: "ペドロ　フォルテス",         rank: 2, person: "Pedro Fortes" }
   - { id: villar,     name: "A. Villar",  ja: "アンドレウ　ビヤル",         rank: 6, person: "Andreu Villar" }
   # Joan Manel has no class of his own yet, so he is here without a `rank`:
@@ -276,7 +276,7 @@ instructors:
   # An instructor with no `grade` and no `person` prints no grade line at all,
   # which is a state and not an omission: P. Llorens's is not recorded, and a
   # blank line is the honest rendering of that.
-  - { id: zafra,      name: "J.L. Zafra", ja: "ホセ・ルイス　サフラ",       rank: 3,
+  - { id: zafra,      name: "J. L. Zafra", ja: "ホセ・ルイス　サフラ",       rank: 3,
       grade: { es: "1.er dan", ca: "1r dan", en: "1st dan", ja: "初段" } }
   - { id: serra,      name: "X. Serra" }
   # A different Molina from the aikido one above, and the reason that one is

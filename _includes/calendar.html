@@ -611,6 +611,26 @@
       "eventStatus": "https://schema.org/EventScheduled",
       "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
       "organizer": { "@type": "SportsClub", "name": "Aikido Musubi", "url": "{{ site.url }}" },
+      {%- comment -%}
+        WHO TEACHES IT, where the dojo knows. `instructors:` on the entry is a
+        list of ids into _data/schedule.yml, so the name is written once and
+        the Japanese reading comes with it; see the note on the key in
+        _data/calendar.yml for why it is typed rather than read out of the
+        prose or derived from `affects`.
+
+        Emitted only when the key is there. Thirty-six of the forty-four
+        events have it; the gradings, the assembly, the group photograph, the
+        winter dinner and the two season openings do not, and an absent
+        `performer` is the honest rendering of a performer nobody has
+        recorded. Search Console counts that as a non-critical warning, which
+        is the correct price for not inventing a name.
+      {%- endcomment -%}
+      {%- if e.instructors %}
+      "performer": [{% for iid in e.instructors %}{% unless forloop.first %}, {% endunless %}
+        {%- assign ins = S.instructors | where: 'id', iid | first -%}
+        {%- if L == 'ja' and ins.ja %}{% assign iname = ins.ja %}{% else %}{% assign iname = ins.name %}{% endif -%}
+        { "@type": "Person", "name": {{ iname | jsonify }} }{% endfor %}],
+      {%- endif %}
       {%- if e.place_id %}
       "location": {% include place-jsonld.html id=e.place_id lang=L %},
       {%- elsif e.place %}
