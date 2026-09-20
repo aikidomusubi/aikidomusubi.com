@@ -242,7 +242,7 @@ levels:
 # because at least one of them departs from the ranking on purpose (the
 # iaijutsu list leads with the Ryūshin Shōchi-ryū instructor).
 # NAMES CARRY A `ja`. The Japanese timetable was printing "P. Martín" and
-# "J.M. Pérez" in the Latin alphabet in the middle of a Japanese page; every
+# "J. M. Pérez" in the Latin alphabet in the middle of a Japanese page; every
 # other proper noun on the site is transliterated. `name` stays the short Latin
 # form the grid is laid out for, and `ja` is the katakana that replaces it on
 # /ja/ pages. See _includes/schedule.html and _includes/ura.html for the lookup.

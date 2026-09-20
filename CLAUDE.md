@@ -435,6 +435,36 @@ Where a name genuinely disagrees with this — a proper noun, a kata title the
 federation writes its own way — the document wins and the exception is worth a
 comment. Everything else follows the rules above.
 
+### A person's initials take a full stop AND a space
+
+`J. M. Pérez`, never `J.M. Pérez`. It is what the RAE prescribes for Spanish
+and what Chicago prescribes for English, so one rule covers all four languages.
+
+It is written down because one list drifted three ways: `_data/schedule.yml`
+had `J. M. Molina` spaced beside `J.M. Pérez` and `J.L. Zafra` unspaced, in
+the same block, while the prose in `_data/calendar.yml` wrote `J. M. Pérez`
+seventy-nine times. Two spellings of one person is the same failure as
+サント・アドリア vs サン・アドリア, and it is caught the same way — grep the
+name before typing it.
+
+```bash
+git ls-files -z '*.yml' '*.html' '*.md' | grep -zv '^CLAUDE.md$' | \
+  xargs -0 grep -hoE '\b[A-ZÀ-Ý]\.[ ]?[A-ZÀ-Ý]\.[ ]?[A-ZÀ-ÝÑ][a-zà-ÿñ]+' | sort | uniq -c
+```
+
+It reads `git ls-files` rather than the working tree so that `_site`, `_dev`,
+the render PNGs and `__pycache__` cannot answer, and it drops this file,
+because the rule has to be able to quote the spelling it forbids without
+counting as a violation of itself. Everything it prints should be spaced;
+`U.S.` is the one expected exception and is explained below.
+
+Two conventions it deliberately does NOT touch. **A country abbreviation stays
+closed up** — `EU-U.S. Data Privacy Framework` on `/politica-privacidad/` is
+the framework's own name and `U.S.` is not somebody's initials. And **the
+Japanese readings have their own rule**, which is already consistent: a
+katakana middle dot inside a compound given name and an ideographic space
+before the surname, `ジョアン・マネル　モリナ`, `ホセ・ルイス　サフラ`.
+
 ### External links rot, and nothing here notices
 
 `qa.py` checks every **internal** link on every build. It does not touch
