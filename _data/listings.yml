@@ -37,22 +37,46 @@ listings:
     url: "https://maps.app.goo.gl/zxNCWtsXshA3CHLAA"
     admin: "https://business.google.com"
     status: live
-    # 2026-09-14: the listing exists and is verified. What it still wants is
-    # the long description, the service areas, the attributes, ten or more
-    # photographs, and reviews — which are the largest single lever on local
-    # ranking and the one no amount of markup can substitute for.
-    reviewed: 2026-09-14
+    # 2026-09-20: description, info and recent photographs updated. Checked on
+    # the public listing the same day: 4.9 from 36 reviews, 30 photographs,
+    # address and phone correct, hours correct, category "Martial arts school".
+    #
+    # THE GAP IS NOT THE NUMBER OF REVIEWS, IT IS THEIR AGE. Thirty-six is a
+    # good total for a dojo this size; the three Google shows first are six,
+    # six and three years old. Google weighs recency, and a listing whose
+    # newest review predates the current timetable reads as dormant. Ask a few
+    # members at a time over weeks rather than all of them in one evening — a
+    # sudden burst is what review filtering is built to catch — and never in
+    # exchange for anything.
+    #
+    # TWO ATTRIBUTES TO VERIFY RATHER THAN ASSUME. The listing claims an
+    # assistive hearing loop and four kinds of wheelchair access. _data/venues.yml
+    # records 120 m² of mat, capacity, climate control, high ceilings and free
+    # parking, and says nothing about either. If the loop is not really there
+    # it has to come off: somebody hard of hearing could choose this dojo on
+    # the strength of it.
+    reviewed: 2026-09-20
 
   - id: apple
     name: "Apple Business Connect"
     url: "https://maps.apple/p/dfbfrqjpcpKB0m"
     admin: "https://businessconnect.apple.com"
-    status: pending-verification
-    # PENDING FOR WEEKS as of 2026-09-14 and no way to hurry it from here.
-    # Apple's queue is opaque and gives no estimate. If it has not moved by
-    # mid-October, the route is Apple Business Connect support rather than
-    # resubmitting, which puts you at the back of the same queue.
-    reviewed: 2026-09-14
+    status: live
+    # VERIFIED on 2026-09-20, after several weeks in Apple's queue. Checked on
+    # the public listing the same day: name, category, address, phone and
+    # hours correct, "From the Business" and the photographs both present,
+    # one rating at 100%.
+    #
+    # ITS WEBSITE FIELD POINTS AT /badalona/ RATHER THAN THE ROOT, which is
+    # the better answer of the two and worth keeping: somebody arriving from
+    # Apple Maps is standing in Badalona looking at this dojo, and that page
+    # carries its timetable, its address and its way in. Google's points at
+    # the root.
+    #
+    # ONE CLAIM TO VERIFY: "Accepts Apple Pay" and "Accepts Contactless
+    # Payments". _data/fees.yml documents SEPA direct debit and bank payment
+    # and nothing about a card terminal at the door.
+    reviewed: 2026-09-20
 
   - id: bing
     name: "Bing Places"
