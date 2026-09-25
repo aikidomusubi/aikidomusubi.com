@@ -374,10 +374,34 @@
       {%- endif %}
       "telephone": "+{{ site.phone }}",
       "email": "{{ site.email }}",
+      {%- comment -%}
+        `sameAs` IS HOW GOOGLE KNOWS THESE ARE ONE ENTITY and not several
+        organisations that happen to share a name. It listed the three social
+        profiles and stopped there, which left the three map listings — the
+        verified Google Business Profile, Apple Business Connect and Bing
+        Places — unconnected to the site that describes them.
+
+        They are read from _data/listings.yml rather than typed, so a listing
+        that goes live by having its `url` filled in joins this list on the
+        next build, and one that is still `awaiting-pin` with an empty `url`
+        stays out of it without a second flag to remember. That file is
+        already the record of which listing is in what state; this is the
+        second thing it feeds.
+
+        This is also the honest answer to "should we have a Wikipedia article".
+        A Wikipedia external link is `rel="nofollow"` and carries no link
+        equity; what it would actually be wanted for is entity recognition,
+        and for a local business that is built from a verified listing plus
+        consistent name, address and phone plus exactly this property.
+      {%- endcomment -%}
       "sameAs": [
         "https://www.facebook.com/{{ site.facebook_username }}/",
         "https://www.instagram.com/{{ site.instagram_username }}/",
         "https://www.youtube.com/user/{{ site.youtube_username }}/"
+        {%- for lst in site.data.listings.listings -%}
+          {%- if lst.url and lst.url != '' %},
+        {{ lst.url | jsonify }}{% endif -%}
+        {%- endfor %}
       ]
     }
     </script>

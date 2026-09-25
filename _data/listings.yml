@@ -82,8 +82,23 @@ listings:
     name: "Bing Places"
     url: ""
     admin: "https://www.bing.com/business"
-    status: awaiting-pin
-    # A verification PIN is coming by post from Microsoft. Until it arrives and
-    # is entered, the listing is not live. Bing feeds DuckDuckGo, Yahoo, Ecosia
-    # and Copilot, so it is one entry for several destinations.
-    reviewed: 2026-09-14
+    status: live
+    # VERIFIED on 2026-09-26, and the profile is being filled in from there.
+    # Bing feeds DuckDuckGo, Yahoo, Ecosia and Copilot, so this one entry
+    # reaches several destinations for the effort of one.
+    #
+    # WHAT BING'S OWN REPORTS ASK FOR, from the 2026-09-19 export, so the
+    # profile is filled in knowing which of it is real: 21 pages flagged for a
+    # short meta description, 11 for a short title, 6 for thin content. Four
+    # of the 21 are redirect stubs with no description by design, six are
+    # Japanese pages counted by character where Japanese runs two to three
+    # times denser than Latin script, and all six "thin" pages are PDFs. The
+    # genuinely short ones are about eight Spanish and English descriptions,
+    # listed in the 2026-09-19 notes.
+    #
+    # AND ONE THING THAT IS NOT BING'S FAULT: Cloudflare Crawler Hints was
+    # submitting 3.9K URLs to IndexNow, of which 359 were images, 53 PDFs and
+    # 32 actual pages. That is what "Content quality: 266" and "Dead links: 64"
+    # in the IndexNow panel are. Turn Crawler Hints off in Cloudflare; the
+    # site's own IndexNow key file stays.
+    reviewed: 2026-09-26
