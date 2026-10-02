@@ -48,6 +48,6 @@ price: 0
 date_from: "2026-10-10"
 date_to: "blank"
 
-event_link:
+event_link: "https://www.facebook.com/events/1405679827753983"
 registration_link:
 ---
