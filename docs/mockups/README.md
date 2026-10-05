@@ -38,6 +38,8 @@ Run it again after any `npx gulp build`, which wipes `_site`.
 | `names.html` | The six candidate names for the aside. **Ura was chosen.** |
 | `switch.html` | Three ways to open the aside. |
 | `loc-barcelona-f.html` | **The recommendation.** E plus D's un-underlined headings, the venues named in full everywhere, «espacios» for «salas», inclusive wording, and no Arashi Group in the hero. |
+| `venue-photos.html` | The October 2026 venue photographs on /barcelona/ and /sant-adria-de-besos/: three layouts and four colour grades. Crops are CSS on the whole file. Photos in `venuephotos/`. |
+| `venue-espronceda-a/b/c.html` | A page per venue, drawn for CxEM Espronceda: Twin, Photo first, Arrival guide. Built around the real /barcelona/ shell, so build first. |
 | `loc-barcelona-e.html` | C's structure and order, with the fact block redrawn in the site's own tokens and the steps and timetable taken from D. |
 | `loc-barcelona-a/-b/-c/-d.html` | The location page. A is a reference entry with the facts first, B a landing page that opens with the room, C the two combined — and **D is C rebuilt out of the site's own components** (`page-head`, `.hm-sec`, `.hm-fig`, `.hm-facts`, `.hm-steps`, `.hm-ven`, `.ab-faq`, `.hm-btn`), which is the recommendation. Barcelona is the template for `/badalona/` and `/sant-adria-de-besos/`. **Undecided.** |
 | `footer-venues.html` | The footer's "Dónde entrenamos" column. It already names the four venues and already points at `/acceso/` anchors; the question is whether the three towns should point at their own pages instead. **A** repoints three URLs and changes nothing else; **B** drops to four rows, folds the UB into `/barcelona/` and puts Barcelona first. **B is the recommendation. Undecided.** |

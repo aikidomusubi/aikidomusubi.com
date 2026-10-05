@@ -35,11 +35,14 @@ python3 docs/mockups/src/build_plans.py
 python3 docs/mockups/src/build_poster.py
 python3 docs/mockups/src/build_firstclass.py
 python3 docs/mockups/src/build_links.py
+python3 docs/mockups/src/build_venuephotos.py
+# reads the built /barcelona/ page for its shell, so it needs a build first
+[[ -f _site/barcelona/index.html ]] && python3 docs/mockups/src/build_venuepage.py
 for d in "${DESTS[@]}"; do
   mkdir -p "$d/mockups"
   for f in docs/mockups/*.html; do cp "$f" "$d/mockups/"; done
   # the map styles and their samples, which maps.html and maps-render.html read
-  cp -R docs/mockups/maps docs/mockups/venuepics docs/mockups/plans "$d/mockups/"
+  cp -R docs/mockups/maps docs/mockups/venuepics docs/mockups/venuephotos docs/mockups/plans "$d/mockups/"
 done
 # ZSH ARRAYS ARE 1-INDEXED. This line read `${DESTS[0]}`, which is empty in zsh
 # — so it ran `ls /mockups`, printed "No such file or directory" and reported
