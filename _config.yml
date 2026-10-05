@@ -57,6 +57,16 @@ collections:
     output: false
     layout: "video"
 
+# Keep the rendered mockups through a rebuild.
+#
+# docs/mockups/render.sh copies them into _dev/mockups/, and `jekyll serve`
+# empties its destination of anything it did not generate every time it
+# regenerates, so the next edit to any page made /mockups/… a 404. Nothing in
+# the repo is called `mockups`, so this keeps only that copy and changes
+# nothing that ships. `.git` and `.svn` are Jekyll's own defaults, restated
+# because setting the key replaces them.
+keep_files: [.git, .svn, mockups]
+
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
