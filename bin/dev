@@ -163,7 +163,8 @@ cmd_start() {
 
   local started=0
   alive jekyll || {
-    start_one jekyll bundle exec jekyll serve \
+    # _config.dev.yml is layered on top for the server only; see the note in it.
+    start_one jekyll bundle exec jekyll serve --config _config.yml,_config.dev.yml \
       --destination "$DEST" --port "$PORT" --livereload-port 35729 && started=1
   }
   alive gulp || {
