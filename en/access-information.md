@@ -1,8 +1,8 @@
 ---
 layout: access
 title: Access information
-seo_title: "How to find our dojos in Barcelona and Badalona"
-description: "Where we train and how to get there. Pick a dojo for the address, the map and the way in."
+seo_title: "How to get there: Barcelona, Badalona and Sant Adrià"
+description: "Address, map and entrance for each space: the Badalona dojo, the Marina-Besòs sports centre in Sant Adrià, CxEM Espronceda and the UB Faculty of Law in Barcelona."
 permalink: /en/access-information/
 lang: en
 i18n-ref: access-information-NdxqmVbV

@@ -16,7 +16,7 @@ desc_es: >-
 desc_ja: >-
   「Shugyō」の第3部、最終章では、武道における正しい姿勢について解説します。日本の伝統武道の実践に関する逸話や思い出を交えたセッションです。
 
-date: 20210319
+date: 2021-03-19
 
 youtube_url: "https://www.youtube.com/embed/T4ktx-gE0sg"
 youtube_id: "T4ktx-gE0sg"

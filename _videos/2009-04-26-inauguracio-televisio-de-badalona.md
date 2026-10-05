@@ -16,7 +16,7 @@ desc_es: >-
 desc_ja: >-
   2009年4月26日、バダロナ・テレビが合気道産靈の道場開きを取材します。協会が設立されたのはその前年。この日曜日、道場の書が壁に掛けられ、他道場から招かれた稽古仲間で埋まった部屋で、畳がカメラの前で初めて使われます。当道場に残る最も古い記録です。
 
-date: 20090426
+date: 2009-04-26
 
 youtube_url: "https://www.youtube.com/embed/astjvcIu-es"
 youtube_id: "astjvcIu-es"

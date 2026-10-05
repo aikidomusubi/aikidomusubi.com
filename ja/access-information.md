@@ -1,8 +1,8 @@
 ---
 layout: access
 title: アクセス
-seo_title: "道場へのアクセス（バダロナ・バルセロナ）"
-description: "稽古場所と行き方のご案内です。道場を選ぶと、住所・地図・入口をご覧いただけます。"
+seo_title: "アクセス（バルセロナ・バダロナ・サント・アドリア・ダ・バゾス）"
+description: "各稽古場所の住所・地図・入口のご案内。バダロナの道場、サント・アドリア・ダ・バゾスのマリナ・バゾス、バルセロナのエスプロンセダとバルセロナ大学法学部。"
 permalink: /ja/access-information/
 lang: ja
 i18n-ref: access-information-NdxqmVbV

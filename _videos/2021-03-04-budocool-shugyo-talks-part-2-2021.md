@@ -16,7 +16,7 @@ desc_es: >-
 desc_ja: >-
   「Shugyō」の第2部では、パンデミックが伝統武道の実践に及ぼした変化、その利点と欠点、そして武道のポジティブおよびネガティブな側面を促進する手段としてのソーシャルメディアの役割について解説します。
 
-date: 20210304
+date: 2021-03-04
 
 youtube_url: "https://www.youtube.com/embed/4ldsBG3O7s0"
 youtube_id: "4ldsBG3O7s0"

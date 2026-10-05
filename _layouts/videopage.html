@@ -169,7 +169,9 @@
 
   {%- comment -%}
     The VideoObject, on the page the video is on. `uploadDate` is the broadcast
-    date, which is what the archive records and what the page shows.
+    date, which is what the archive records and what the page shows. It is a
+    full datetime with an offset because Search Console flags a bare date as
+    "missing a timezone"; midnight is the honest time for a date with no hour.
   {%- endcomment -%}
   <script type="application/ld+json">
   {
@@ -180,7 +182,7 @@
         "name": {{ t | jsonify }},
         "description": {{ d | strip_html | strip | jsonify }},
         "thumbnailUrl": {{ v.thumb | prepend: '/images/' | append: '.jpg' | prepend: site.url | jsonify }},
-        "uploadDate": "{{ v.date | date: '%Y-%m-%d' }}",
+        "uploadDate": "{{ v.date | date: '%Y-%m-%dT00:00:00%:z' }}",
         "embedUrl": "https://www.youtube-nocookie.com/embed/{{ v.youtube_id }}",
         "url": {{ page.url | prepend: site.url | jsonify }},
         "publisher": {

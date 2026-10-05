@@ -16,7 +16,7 @@ desc_es: >-
 desc_ja: >-
   私たちの最初の「Shugyō」の講話では、5つの物語、3つの国、1つの言語、そして日本の伝統武道への同じ愛情が集まります。スペイン語圏の友人たちが、自身の武道の始まりやパンデミックが練習に与えた影響について語り合う集まりです。
 
-date: 20210301
+date: 2021-03-01
 
 youtube_url: "https://www.youtube.com/embed/PYAWHo6cBT8"
 youtube_id: "PYAWHo6cBT8"

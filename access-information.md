@@ -1,8 +1,8 @@
 ---
 layout: access
 title: Acceso
-seo_title: "Cómo llegar a nuestros dojos en Badalona y Barcelona"
-description: "Dónde entrenamos y cómo llegar. Elige el dojo para ver la dirección, el mapa y por dónde entrar."
+seo_title: "Cómo llegar: Barcelona, Badalona y Sant Adrià de Besòs"
+description: "Dirección, mapa y entrada de cada espacio: el dojo de Badalona, el polideportivo Marina-Besòs en Sant Adrià, CxEM Espronceda y la Facultad de Derecho de la UB en Barcelona."
 permalink: /acceso/
 lang: es
 i18n-ref: access-information-NdxqmVbV

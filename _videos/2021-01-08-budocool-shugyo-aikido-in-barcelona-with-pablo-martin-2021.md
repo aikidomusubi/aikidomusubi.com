@@ -16,7 +16,7 @@ desc_es: >-
 desc_ja: >-
   パンデミックは合気道産靈の創設者パブロ・マルティンの生活に影響を与えましたが、彼の合気道への愛とつながりは止められません。
 
-date: 20210121
+date: 2021-01-21
 
 youtube_url: "https://www.youtube.com/embed/K4eME9XlSG4"
 youtube_id: "K4eME9XlSG4"
