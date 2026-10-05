@@ -224,6 +224,10 @@ levels:
     name: { es: "Principiantes",     ca: "Principiants",     en: "Beginners",  ja: "初心者" }
   - id: weapons
     name: { es: "Armas",             ca: "Armes",            en: "Weapons",    ja: "武器" }
+  # A class for young people only, from 12. Not `all`: "Todos los niveles"
+  # tells an adult reading the timetable that the class is open to them.
+  - id: youth
+    name: { es: "Jóvenes, desde 12 años", ca: "Joves, des de 12 anys", en: "Young people, 12 and up", ja: "12歳以上の青少年" }
 
 # Who teaches what.
 #
@@ -255,15 +259,16 @@ instructors:
 # would go out of date the day somebody grades. Only the people who appear in
 # both lists need it.
   - { id: sancho,     name: "A. Sancho",  ja: "アルベルト　サンチョ",       rank: 4, person: "Alberto Sancho" }
+  - { id: nova,       name: "C. Nova",    ja: "カルロス　ノバ",             rank: 5, person: "Carlos Nova" }
   - { id: martin,     name: "P. Martín",  ja: "パブロ　マルティン",         rank: 1, person: "Pablo Martín" }
-  - { id: perez,      name: "J. M. Pérez", ja: "フアンマ　ペレス",           rank: 5, person: "Juanma Pérez" }
+  - { id: perez,      name: "J. M. Pérez", ja: "フアンマ　ペレス",           rank: 6, person: "Juanma Pérez" }
   - { id: fortes,     name: "P. Fortes",  ja: "ペドロ　フォルテス",         rank: 2, person: "Pedro Fortes" }
-  - { id: villar,     name: "A. Villar",  ja: "アンドレウ　ビヤル",         rank: 6, person: "Andreu Villar" }
+  - { id: villar,     name: "A. Villar",  ja: "アンドレウ　ビヤル",         rank: 7, person: "Andreu Villar" }
   # Joan Manel has no class of his own yet, so he is here without a `rank`:
   # the rank only orders the people who appear in the timetable legend.
   - { id: molina-jm,  name: "J. M. Molina", ja: "ジョアン・マネル　モリナ", person: "Joan Manel Molina" }
-  - { id: zheng,      name: "G. Zheng",   ja: "グアンロン　ジェン",         rank: 7, person: "Guanlong Zheng" }
-  - { id: mikhaylov,  name: "D. Mikhaylov", ja: "ダニール　ミハイロフ",     rank: 8, person: "Daniil Mikhaylov" }
+  - { id: zheng,      name: "G. Zheng",   ja: "グアンロン　ジェン",         rank: 8, person: "Guanlong Zheng" }
+  - { id: mikhaylov,  name: "D. Mikhaylov", ja: "ダニール　ミハイロフ",     rank: 9, person: "Daniil Mikhaylov" }
   # `grade` ON AN INSTRUCTOR, AND WHY IT IS HERE RATHER THAN IN about.yml.
   #
   # The aikido instructors carry their grade in _data/about.yml, because they
@@ -293,6 +298,8 @@ instructors:
 
 classes:
   # ---- Aikido Musubi (the dojo) ----
+  # The morning class, the dojo's first on a weekday.
+  - { category: aikido,   location: musubi,     level: all,       days: [tue, thu], start: "10:00", end: "11:00", instructor: nova }
   - { category: aikido,   location: musubi,     level: all,       days: [tue, thu], start: "18:30", end: "19:30", instructor: sancho }
   - { category: aikido,   location: musubi,     level: beginners, days: [tue],      start: "19:30", end: "20:30", instructor: martin }
   - { category: aikido,   location: musubi,     level: weapons,   days: [thu],      start: "19:30", end: "20:30", instructor: martin }
@@ -329,14 +336,10 @@ classes:
   - { category: karate,   location: musubi,     level: all,       days: [sat],      start: "11:00", end: "13:00", instructor: llorens }
 
   # ---- Sant Adrià de Besòs ----
-  # NO `instructor:` ON EITHER OF THESE, and that is a state rather than an
-  # omission. Guanlong Zheng taught both and no longer does; a new teacher is
-  # being assigned. The timetable renders the instructor line only when the key
-  # is present (see _includes/schedule.html), so leaving it out prints the class
-  # without a name instead of printing a name that has stopped being true.
-  # Put the id back when there is one.
-  - { category: aikido,   location: sant-adria, level: all,       days: [mon],      start: "20:00", end: "21:00" }
-  - { category: aikido,   location: sant-adria, level: all,       days: [wed],      start: "20:15", end: "21:15" }
+  # From October 2026 Marina-Besòs is a class for young people, from 12, and
+  # nothing else: the two adult evening classes (Mon 20:00, Wed 20:15) it
+  # replaced are gone, not moved. Alberto Sancho teaches it.
+  - { category: aikido,   location: sant-adria, level: youth,     days: [mon, wed], start: "18:30", end: "19:30", instructor: sancho }
 
   # ---- Barcelona · CxEM Espronceda ----
   # In the tatami room of the municipal sports complex, both days the same hour

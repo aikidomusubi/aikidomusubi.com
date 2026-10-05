@@ -6,7 +6,7 @@ description: "Classes d'aikido de dilluns a dissabte a Badalona, Barcelona i San
 permalink: /ca/horaris/
 lang: ca
 i18n-ref: training-schedule-IFMn5oCc
-last_modified: 2026-09-13
+last_modified: 2026-10-06
 ---
 
 # Horaris

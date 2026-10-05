@@ -6,7 +6,7 @@ description: "バダロナ・バルセロナ・サント・アドリア・デ・
 permalink: /ja/training-schedule/
 lang: ja
 i18n-ref: training-schedule-IFMn5oCc
-last_modified: 2026-09-13
+last_modified: 2026-10-06
 ---
 
 # 稽古時間

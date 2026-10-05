@@ -251,9 +251,15 @@
         {%- endfor -%}
         </ul>
       </dd>
-      <dt>{{ U.f_who[L] }}</dt><dd>{{ U.who_line[L] }}</dd>
+      {%- comment -%}
+        `who_line` and `price_line` on a town override the shared ones, for a
+        town whose classes are not the general adult class at the general fee.
+        Marina-Besòs is a class for young people at its own price, and "Adultos
+        y jóvenes desde 12 años · 35 € al mes" printed over it was false twice.
+      {%- endcomment -%}
+      <dt>{{ U.f_who[L] }}</dt><dd>{% if loc.who_line %}{{ loc.who_line[L] }}{% else %}{{ U.who_line[L] }}{% endif %}</dd>
       {%- assign fee = site.data.fees.prices.monthly.adults.fee -%}
-      <dt>{{ U.f_price[L] }}</dt><dd>{{ U.price_line[L] | replace: 'PRICE', fee }}</dd>
+      <dt>{{ U.f_price[L] }}</dt><dd>{% if loc.price_line %}{{ loc.price_line[L] }}{% else %}{{ U.price_line[L] | replace: 'PRICE', fee }}{% endif %}</dd>
       <dt>{{ U.f_bring[L] }}</dt><dd>{{ U.bring_line[L] }}</dd>
       {%- comment -%}
         Each teacher once, however many classes they take. Built as a delimited
@@ -285,10 +291,10 @@
         {%- endfor -%}
       {%- endif -%}
       {%- comment -%}
-        The row only exists when somebody is named. Marina-Besòs has no
-        instructor assigned at the moment — Guanlong Zheng taught it and a
-        replacement is being appointed — and a "Quién enseña" row containing a
-        single full stop is worse than no row.
+        The row only exists when somebody is named. A class can be on the
+        timetable with no instructor yet (Marina-Besòs was, for a month in
+        2026), and a "Quién enseña" row containing a single full stop is worse
+        than no row.
       {%- endcomment -%}
       {%- assign wholist = whos | split: '§' | uniq | join: ', ' -%}
       {%- if wholist != '' %}
@@ -420,9 +426,10 @@
     {%- endcomment -%}
     <div class="ab-faq">
       {%- for f in LO.faq_common %}
+      {%- if f.id and loc.faq[f.id] %}{% assign fa = loc.faq[f.id][L] %}{% else %}{% assign fa = f.a[L] %}{% endif %}
       <details name="{{ loc.ref }}-faq">
         <summary>{{ f.q[L] }}</summary>
-        <div class="a"><p>{{ f.a[L] }}</p></div>
+        <div class="a"><p>{{ fa }}</p></div>
       </details>
       {%- endfor %}
       <details name="{{ loc.ref }}-faq">
@@ -552,10 +559,11 @@
         "@type": "FAQPage",
         "mainEntity": [
           {%- for f in LO.faq_common %}
+          {%- if f.id and loc.faq[f.id] %}{% assign fa = loc.faq[f.id][L] %}{% else %}{% assign fa = f.a[L] %}{% endif %}
           {
             "@type": "Question",
             "name": {{ f.q[L] | jsonify }},
-            "acceptedAnswer": { "@type": "Answer", "text": {{ f.a[L] | jsonify }} }
+            "acceptedAnswer": { "@type": "Answer", "text": {{ fa | jsonify }} }
           },
           {%- endfor %}
           {

@@ -113,7 +113,7 @@ disciplines:
           en: "The dojo's regular practice, and where everybody ends up training. Empty-hand technique in pairs, with every grade on the same mat: whoever has been at it for years adjusts their practice to whoever just walked in. From 12 years old."
           ja: "道場の中心となる稽古で、最終的には全員がここで稽古します。二人一組の体術を、段級を問わず同じ畳の上で行います。長く稽古している者が、来たばかりの人に合わせます。12歳以上。"
         # Rank order. See the `rank` field on _data/schedule.yml instructors.
-        instructors: [martin, fortes, sancho, perez, villar, trainee]
+        instructors: [martin, fortes, sancho, nova, perez, villar, trainee]
       - id: beginners
         level: beginners
         badge: { es: "Por aquí se empieza", ca: "Per aquí es comença",

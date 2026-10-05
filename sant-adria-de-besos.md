@@ -7,5 +7,5 @@ title: "Aikido en Sant Adrià de Besòs"
 seo_title: "Aikido en Sant Adrià de Besòs: Marina-Besòs"
 description: "Aikido en Sant Adrià de Besòs los lunes y miércoles, en el polideportivo Marina-Besòs. Horario, dirección, cuotas y dos clases de prueba."
 permalink: /sant-adria-de-besos/
-last_modified: 2026-09-17
+last_modified: 2026-10-06
 ---

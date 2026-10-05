@@ -397,6 +397,7 @@ topics:
           - { name: "Pablo Martín",   name_ja: "パブロ　マルティン",       grade: { es: "4.º dan / shidōin", ca: "4t dan / shidōin", en: "4th dan / shidōin", ja: "四段・指導員" } }
           - { name: "Pedro Fortes",   name_ja: "ペドロ　フォルテス",       grade: { es: "4.º dan", ca: "4t dan", en: "4th dan", ja: "四段" } }
           - { name: "Alberto Sancho", name_ja: "アルベルト　サンチョ",     grade: { es: "4.º dan", ca: "4t dan", en: "4th dan", ja: "四段" } }
+          - { name: "Carlos Nova",    name_ja: "カルロス　ノバ",           grade: { es: "4.º dan", ca: "4t dan", en: "4th dan", ja: "四段" } }
           - { name: "Juanma Pérez",   name_ja: "フアンマ　ペレス",         grade: { es: "3.er dan", ca: "3r dan", en: "3rd dan", ja: "三段" } }
           - { name: "Andreu Villar",  name_ja: "アンドレウ　ビヤル",       grade: { es: "3.er dan", ca: "3r dan", en: "3rd dan", ja: "三段" } }
           - { name: "Joan Manel Molina", name_ja: "ジョアン・マネル　モリナ", grade: { es: "3.er dan", ca: "3r dan", en: "3rd dan", ja: "三段" } }

@@ -295,10 +295,10 @@ locations:
         en: "Badalona is the dojo: a space given over entirely to martial arts, open Monday to Saturday and with all four disciplines. The gradings, the seminars and the masterclasses happen here. Barcelona and Sant Adrià de Besòs have aikido two days a week, with the same programme."
         ja: "バダロナは道場そのものです。武道のためだけの場所で、月曜から土曜まで開いており、4つの武道すべてを稽古できます。審査・講習会・マスタークラスもここで行います。バルセロナとサント・アドリア・ダ・バゾスでは、同じ内容の合気道を週2日稽古しています。"
     teachers_line:
-      es: "El dojo lo dirige <b>Pablo Martín</b>, 4.º dan Aikikai y shidōin, que fundó la asociación en 2008. El equipo de aikido son ocho instructores con grado dan del Aikikai, y son los mismos que dan clase en Barcelona y en Sant Adrià de Besòs. Todos siguen la línea del Aikikai Hombu Dojo de Tokio. El iaijutsu, el judo y el karate tienen sus propios instructores."
-      ca: "El dojo el dirigeix <b>Pablo Martín</b>, 4t dan Aikikai i shidōin, que va fundar l'associació el 2008. L'equip d'aikido són vuit instructors amb grau dan de l'Aikikai, i són els mateixos que fan classe a Barcelona i a Sant Adrià de Besòs. Tots segueixen la línia de l'Aikikai Hombu Dojo de Tòquio. L'iaijutsu, el judo i el karate tenen els seus propis instructors."
-      en: "The dojo is led by <b>Pablo Martín</b>, 4th dan Aikikai and shidōin, who founded the association in 2008. The aikido team is eight instructors holding Aikikai dan grades, and they are the same people who teach in Barcelona and in Sant Adrià de Besòs. All of them follow the line of the Aikikai Hombu Dojo in Tokyo. Iaijutsu, judo and karate have instructors of their own."
-      ja: "道場は合気会四段・指導員の<b>パブロ・マルティン</b>が率いています。2008年に協会を設立した人物です。合気道の指導陣は合気会の段位を持つ8名で、バルセロナやサント・アドリア・ダ・バゾスで指導しているのも同じ顔ぶれです。いずれも東京の合気会本部道場の流れを汲んでいます。居合術・柔道・空手にもそれぞれ指導者がいます。"
+      es: "El dojo lo dirige <b>Pablo Martín</b>, 4.º dan Aikikai y shidōin, que fundó la asociación en 2008. El equipo de aikido son nueve instructores con grado dan del Aikikai, y son los mismos que dan clase en Barcelona y en Sant Adrià de Besòs. Todos siguen la línea del Aikikai Hombu Dojo de Tokio. El iaijutsu, el judo y el karate tienen sus propios instructores."
+      ca: "El dojo el dirigeix <b>Pablo Martín</b>, 4t dan Aikikai i shidōin, que va fundar l'associació el 2008. L'equip d'aikido són nou instructors amb grau dan de l'Aikikai, i són els mateixos que fan classe a Barcelona i a Sant Adrià de Besòs. Tots segueixen la línia de l'Aikikai Hombu Dojo de Tòquio. L'iaijutsu, el judo i el karate tenen els seus propis instructors."
+      en: "The dojo is led by <b>Pablo Martín</b>, 4th dan Aikikai and shidōin, who founded the association in 2008. The aikido team is nine instructors holding Aikikai dan grades, and they are the same people who teach in Barcelona and in Sant Adrià de Besòs. All of them follow the line of the Aikikai Hombu Dojo in Tokyo. Iaijutsu, judo and karate have instructors of their own."
+      ja: "道場は合気会四段・指導員の<b>パブロ・マルティン</b>が率いています。2008年に協会を設立した人物です。合気道の指導陣は合気会の段位を持つ9名で、バルセロナやサント・アドリア・ダ・バゾスで指導しているのも同じ顔ぶれです。いずれも東京の合気会本部道場の流れを汲んでいます。居合術・柔道・空手にもそれぞれ指導者がいます。"
   - id: barcelona
     # The town on its own, for headings that name it mid-sentence.
     town_name:
@@ -367,15 +367,39 @@ locations:
       en: "Sant Adrià de Besòs · Marina-Besòs"
       ja: "サント・アドリア・ダ・バゾス · マリナ・バゾス"
     lede:
-      es: "Entrenamos aikido en el polideportivo municipal Marina-Besòs, en Sant Adrià de Besòs, los lunes y los miércoles. Es la misma asociación que abre cada día el dojo de Badalona, con el mismo programa y los mismos exámenes."
-      ca: "Entrenem aikido al poliesportiu municipal Marina-Besòs, a Sant Adrià de Besòs, els dilluns i els dimecres. És la mateixa associació que obre cada dia el dojo de Badalona, amb el mateix programa i els mateixos exàmens."
-      en: "We train aikido at the Marina-Besòs municipal sports centre in Sant Adrià de Besòs, on Mondays and Wednesdays. It is the same association that opens the Badalona dojo every day, with the same programme and the same gradings."
-      ja: "サント・アドリア・ダ・バゾスのマリナ・バゾス市立スポーツセンターで、月曜と水曜に合気道を稽古しています。バダロナの道場を毎日開いているのと同じ協会で、稽古内容も審査も同じです。"
+      es: "Entrenamos aikido en el polideportivo municipal Marina-Besòs, en Sant Adrià de Besòs, los lunes y los miércoles por la tarde, en una clase para jóvenes a partir de 12 años. Es la misma asociación que abre cada día el dojo de Badalona, con el mismo programa y los mismos exámenes."
+      ca: "Entrenem aikido al poliesportiu municipal Marina-Besòs, a Sant Adrià de Besòs, els dilluns i els dimecres a la tarda, en una classe per a joves a partir de 12 anys. És la mateixa associació que obre cada dia el dojo de Badalona, amb el mateix programa i els mateixos exàmens."
+      en: "We train aikido at the Marina-Besòs municipal sports centre in Sant Adrià de Besòs on Monday and Wednesday afternoons, in a class for young people from the age of 12. It is the same association that opens the Badalona dojo every day, with the same programme and the same gradings."
+      ja: "サント・アドリア・ダ・バゾスのマリナ・バゾス市立スポーツセンターで、月曜と水曜の夕方に、12歳以上の青少年を対象とした合気道の稽古を行っています。バダロナの道場を毎日開いているのと同じ協会で、稽古内容も審査も同じです。"
     hero_line:
-      es: "Lunes y miércoles, a diez minutos del dojo. Sin experiencia previa, sin competición y sin comprar nada para empezar."
-      ca: "Dilluns i dimecres, a deu minuts del dojo. Sense experiència prèvia, sense competició i sense comprar res per començar."
-      en: "Mondays and Wednesdays, ten minutes from the dojo. No previous experience, no competition, and nothing to buy to start."
-      ja: "月曜と水曜、道場から10分。経験も、試合も、はじめに買うものもありません。"
+      es: "Lunes y miércoles por la tarde, para jóvenes desde 12 años. Sin experiencia previa, sin competición y sin comprar nada para empezar."
+      ca: "Dilluns i dimecres a la tarda, per a joves des de 12 anys. Sense experiència prèvia, sense competició i sense comprar res per començar."
+      en: "Monday and Wednesday afternoons, for young people from 12. No previous experience, no competition, and nothing to buy to start."
+      ja: "月曜と水曜の夕方、12歳以上の青少年が対象です。経験も、試合も、はじめに買うものもありません。"
+
+    # The class here is for young people at its own fee, so the shared lines
+    # in `ui` would be false on this page. See _layouts/location.html.
+    who_line:
+      es: "Jóvenes a partir de 12 años, con o sin experiencia previa."
+      ca: "Joves a partir de 12 anys, amb o sense experiència prèvia."
+      en: "Young people from the age of 12, with or without previous experience."
+      ja: "12歳以上の青少年。経験の有無は問いません。"
+    price_line:
+      es: "29 € al mes para menores de 16 años, o 9 € para los abonados del polideportivo Marina-Besòs. Inscripción gratuita y dos clases de prueba."
+      ca: "29 € al mes per a menors de 16 anys, o 9 € per als abonats del poliesportiu Marina-Besòs. Inscripció gratuïta i dues classes de prova."
+      en: "29 € a month for under-16s, or 9 € for members of the Marina-Besòs sports centre. Free registration and two trial classes."
+      ja: "16歳未満は月額29ユーロ、マリナ・バゾスのスポーツセンター会員は9ユーロ。入会金は無料、体験稽古は2回まで。"
+    faq:
+      price:
+        es: "29 € al mes para menores de 16 años, o 9 € al mes para los abonados del polideportivo Marina-Besòs. La inscripción es gratuita y hay dos clases de prueba. Las cuotas del dojo de Badalona están en la página de cuotas."
+        ca: "29 € al mes per a menors de 16 anys, o 9 € al mes per als abonats del poliesportiu Marina-Besòs. La inscripció és gratuïta i hi ha dues classes de prova. Les quotes del dojo de Badalona són a la pàgina de quotes."
+        en: "29 € a month for under-16s, or 9 € a month for members of the Marina-Besòs sports centre. Registration is free and there are two trial classes. The fees for the Badalona dojo are on the fees page."
+        ja: "16歳未満は月額29ユーロ、マリナ・バゾスのスポーツセンター会員は月額9ユーロです。入会金は無料で、体験稽古は2回まで受けられます。バダロナの道場の月謝は月謝のページをご覧ください。"
+      keikogi:
+        es: "No. Para las dos clases de prueba basta con ropa cómoda de manga y pantalón largos. Al formalizar la inscripción hay que adquirir el keikogi, el uniforme de aikido; te decimos dónde y cuál."
+        ca: "No. Per a les dues classes de prova n'hi ha prou amb roba còmoda de màniga i pantalons llargs. En formalitzar la inscripció cal adquirir el keikogi, l'uniforme de l'aikido; et diem on i quin."
+        en: "No. Comfortable clothes with long sleeves and long trousers are enough for the two trial classes. When you enrol, you need a keikogi, the aikido uniform; we will tell you which one and where."
+        ja: "必要ありません。2回の体験稽古は、長袖・長ズボンの動きやすい服装で十分です。入会の際には合気道の稽古着をご用意いただきます。どれをどこで買えばよいかはお伝えします。"
 
     faq_local:
       q:
@@ -384,15 +408,15 @@ locations:
         en: "How is it different from the classes in Badalona?"
         ja: "バダロナの稽古とどう違いますか。"
       a:
-        es: "Es la misma asociación, el mismo programa y los mismos exámenes; cambian el espacio y el horario. Marina-Besòs está a diez minutos del dojo de Badalona, así que mucha gente entrena en los dos y aprovecha los dos horarios."
-        ca: "És la mateixa associació, el mateix programa i els mateixos exàmens; canvien l'espai i l'horari. Marina-Besòs és a deu minuts del dojo de Badalona, així que molta gent entrena als dos llocs i aprofita els dos horaris."
-        en: "Same association, same programme, same gradings; the space and the hours are what change. Marina-Besòs is ten minutes from the Badalona dojo, so plenty of people train at both and use both timetables."
-        ja: "協会も稽古内容も審査も同じで、違うのは場所と時間だけです。マリナ・バゾスはバダロナの道場から10分ほどなので、両方に通って両方の時間帯を活用している人も多くいます。"
+        es: "Es la misma asociación, el mismo programa y los mismos exámenes; lo que cambia es que en Marina-Besòs la clase es solo para jóvenes, a partir de 12 años. Los adultos que quieran entrenar cerca tienen el dojo de Badalona a diez minutos, con clases cada día."
+        ca: "És la mateixa associació, el mateix programa i els mateixos exàmens; el que canvia és que a Marina-Besòs la classe és només per a joves, a partir de 12 anys. Els adults que vulguin entrenar a prop tenen el dojo de Badalona a deu minuts, amb classes cada dia."
+        en: "Same association, same programme, same gradings; what changes is that the Marina-Besòs class is for young people only, from the age of 12. Adults who want to train nearby have the Badalona dojo ten minutes away, with classes every day."
+        ja: "協会も稽古内容も審査も同じです。違うのは、マリナ・バゾスの稽古が12歳以上の青少年だけを対象にしていることです。近くで稽古したい大人の方には、10分ほどのところに毎日稽古のあるバダロナの道場があります。"
     teachers_line:
-      es: "Las clases de Marina-Besòs las lleva el equipo de instructores del dojo, con el mismo programa y los mismos criterios de examen que en Badalona. Todos se formaron en Aikido Musubi y siguen la línea del Aikikai Hombu Dojo de Tokio."
-      ca: "Les classes de Marina-Besòs les porta l'equip d'instructors del dojo, amb el mateix programa i els mateixos criteris d'examen que a Badalona. Tots s'han format a Aikido Musubi i segueixen la línia de l'Aikikai Hombu Dojo de Tòquio."
-      en: "The Marina-Besòs classes are led by the dojo's instructors, with the same programme and the same grading criteria as in Badalona. All of them trained at Aikido Musubi and follow the line of the Aikikai Hombu Dojo in Tokyo."
-      ja: "マリナ・バゾスの稽古は道場の指導者陣が担当し、稽古内容も審査の基準もバダロナと同じです。いずれも合気道産靈で稽古を重ね、東京の合気会本部道場の流れを汲んでいます。"
+      es: "La clase de Marina-Besòs la lleva el equipo de instructores del dojo, con el mismo programa y los mismos criterios de examen que en Badalona. Como exige la ley a quien trabaja con menores, el instructor tiene el certificado negativo del Registro Central de Delincuentes Sexuales. Todos se formaron en Aikido Musubi y siguen la línea del Aikikai Hombu Dojo de Tokio."
+      ca: "La classe de Marina-Besòs la porta l'equip d'instructors del dojo, amb el mateix programa i els mateixos criteris d'examen que a Badalona. Com exigeix la llei a qui treballa amb menors, l'instructor té el certificat negatiu del Registre Central de Delinqüents Sexuals. Tots s'han format a Aikido Musubi i segueixen la línia de l'Aikikai Hombu Dojo de Tòquio."
+      en: "The Marina-Besòs class is led by the dojo's instructors, with the same programme and the same grading criteria as in Badalona. As the law requires of anyone who works with minors, the instructor holds a clear certificate from Spain's Central Register of Sex Offenders. All of them trained at Aikido Musubi and follow the line of the Aikikai Hombu Dojo in Tokyo."
+      ja: "マリナ・バゾスの稽古は道場の指導者陣が担当し、稽古内容も審査の基準もバダロナと同じです。未成年を指導する者に法律で求められているとおり、指導者は性犯罪者中央登録の無犯罪証明書を取得しています。いずれも合気道産靈で稽古を重ね、東京の合気会本部道場の流れを汲んでいます。"
 # ---------------------------------------------------------------------------
 # The questions
 #
@@ -413,7 +437,8 @@ faq_common:
       ca: "No. Qui comença entrena al costat de qui fa anys que practica, i en aikido no hi ha competició, així que ningú no s'està mesurant amb tu."
       en: "No. Someone starting out trains alongside someone with years behind them, and there is no competition in aikido, so nobody is measuring themselves against you."
       ja: "はい、大丈夫です。はじめての方も長年稽古している人と一緒に稽古します。合気道に試合はありませんので、誰かと競い合うことはありません。"
-  - q:
+  - id: keikogi
+    q:
       es: "¿Tengo que comprar un keikogi para empezar?"
       ca: "He de comprar un keikogi per començar?"
       en: "Do I have to buy a keikogi to start?"
@@ -433,7 +458,9 @@ faq_common:
       ca: "Sí: dues classes de prova, i la inscripció no costa res. Escriu-nos i et diem quin dia venir."
       en: "Yes: two trial classes, and registration costs nothing. Write to us and we will tell you which day to come."
       ja: "はい。体験稽古を2回まで受けられ、入会金もかかりません。ご連絡いただければ、お越しいただく日をお伝えします。"
-  - q:
+  # An `id` lets a town answer this one itself, under `faq:` on the town.
+  - id: price
+    q:
       es: "¿Cuánto cuesta?"
       ca: "Quant costa?"
       en: "How much does it cost?"

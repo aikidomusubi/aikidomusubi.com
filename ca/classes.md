@@ -6,7 +6,7 @@ description: Aikido, iaijutsu, judo i karate a Badalona, Sant Adrià de Besòs i
 permalink: /ca/classes/
 lang: ca
 i18n-ref: classes-CJc2lhFv
-last_modified: 2026-09-13
+last_modified: 2026-10-06
 ---
 
 # Classes
