@@ -18,6 +18,21 @@ year: 2026
 currency: EUR
 symbol: "€"
 
+# ---------------------------------------------------------------------------
+# THE OCTOBER 2026 REVISION, approved by the association on 6 October 2026.
+#
+#   one fee, every space    the general fee gives access to all the venues
+#   two age groups          up to 16, and 17 and over: one cut-off everywhere,
+#                           so a 14-year-old pays the same at any venue
+#   three periods           month, quarter, year; the six-month plan is gone
+#   one family rule         replaces three family categories and fifteen prices
+#   members' rate           for holders of a municipal sports-centre membership,
+#                           at that centre only (see `members` below)
+#
+# The age groups are named by age and not by "adults"/"children" ("niños",
+# "adultos"): it is the clearer fact and it is gender neutral in Spanish and
+# Catalan. The ids stay `adults` and `children`, which tools/qa.py reads.
+# ---------------------------------------------------------------------------
 periods:
   - id: monthly
     months: 1
@@ -27,10 +42,6 @@ periods:
     months: 3
     name:  { es: "Trimestral",  ca: "Trimestral",  en: "Quarterly",   ja: "3か月" }
     unit:  { es: "al trimestre",ca: "al trimestre",en: "per quarter", ja: "／3か月" }
-  - id: biannual
-    months: 6
-    name:  { es: "Semestral",   ca: "Semestral",   en: "Six months",  ja: "6か月" }
-    unit:  { es: "al semestre", ca: "al semestre", en: "per 6 months",ja: "／6か月" }
   - id: annual
     months: 12
     name:  { es: "Anual",       ca: "Anual",       en: "Annual",      ja: "年額" }
@@ -38,52 +49,91 @@ periods:
 
 categories:
   - id: adults
-    name: { es: "Adultos", ca: "Adults", en: "Adults", ja: "一般" }
-    who:  { es: "Mayores de 12 años", ca: "Majors de 12 anys", en: "Ages 12 and up", ja: "12歳以上" }
+    name: { es: "17 años o más", ca: "17 anys o més", en: "17 and over", ja: "17歳以上" }
+    who:  { es: "Todas las clases, en todos los espacios", ca: "Totes les classes, a tots els espais",
+            en: "Every class, at every space", ja: "すべての稽古場所・すべての稽古" }
   - id: children
-    name: { es: "Infantil", ca: "Infantil", en: "Children", ja: "こども" }
-    who:  { es: "Menores de 12 años", ca: "Menors de 12 anys", en: "Under 12", ja: "12歳未満" }
-  - id: family-adults
-    name: { es: "Familiar adultos", ca: "Familiar adults", en: "Family adults", ja: "家族（一般）" }
-    who:  { es: "Mismo núcleo familiar, mayores de 12 años", ca: "Mateix nucli familiar, majors de 12 anys", en: "Same household, ages 12 and up", ja: "同一世帯（12歳以上）" }
-  - id: family-children
-    name: { es: "Familiar infantil", ca: "Familiar infantil", en: "Family children", ja: "家族（こども）" }
-    who:  { es: "Mismo núcleo familiar, menores de 12 años", ca: "Mateix nucli familiar, menors de 12 anys", en: "Same household, under 12", ja: "同一世帯（12歳未満）" }
-  - id: family
-    name: { es: "Familiar", ca: "Familiar", en: "Family", ja: "家族" }
-    who:  { es: "Mismo núcleo familiar, adultos e infantil", ca: "Mateix nucli familiar, adults i infantil", en: "Same household, adults and children", ja: "同一世帯（一般・こども）" }
+    name: { es: "Hasta 16 años", ca: "Fins a 16 anys", en: "Up to 16", ja: "16歳まで" }
+    who:  { es: "Todas las clases, en todos los espacios", ca: "Totes les classes, a tots els espais",
+            en: "Every class, at every space", ja: "すべての稽古場所・すべての稽古" }
 
 # fee  = what you pay for the period
 # base = the same period paid month by month, which is what the saving is against
 prices:
   monthly:
-    adults:          { fee: 35,  base: 35 }
-    children:        { fee: 25,  base: 25 }
-    family:          { fee: 50,  base: 60 }
-    family-adults:   { fee: 55,  base: 70 }
-    family-children: { fee: 40,  base: 50 }
+    adults:   { fee: 39,  base: 39 }
+    children: { fee: 29,  base: 29 }
   quarterly:
-    adults:          { fee: 85,  base: 105 }
-    children:        { fee: 60,  base: 75 }
-    family:          { fee: 140, base: 180 }
-    family-adults:   { fee: 165, base: 210 }
-    family-children: { fee: 110, base: 150 }
-  biannual:
-    adults:          { fee: 160, base: 210 }
-    children:        { fee: 110, base: 150 }
-    family:          { fee: 260, base: 360 }
-    family-adults:   { fee: 310, base: 420 }
-    family-children: { fee: 200, base: 300 }
+    adults:   { fee: 99,  base: 117 }
+    children: { fee: 75,  base: 87 }
   annual:
-    adults:          { fee: 290, base: 420 }
-    children:        { fee: 180, base: 250 }
-    family:          { fee: 430, base: 720 }
-    family-adults:   { fee: 500, base: 840 }
-    family-children: { fee: 325, base: 500 }
+    adults:   { fee: 360, base: 468 }
+    children: { fee: 270, base: 348 }
 
 included:
+  - { es: "Acceso a todos los espacios", ca: "Accés a tots els espais", en: "Access to every space", ja: "すべての稽古場所に通える" }
   - { es: "Inscripción gratuita",  ca: "Inscripció gratuïta",  en: "Free registration",       ja: "入会金無料" }
   - { es: "2 clases de prueba",    ca: "2 classes de prova",   en: "Two trial classes",       ja: "体験稽古2回" }
+
+# ---------------------------------------------------------------------------
+# FAMILIES: ONE RULE INSTEAD OF THREE CATEGORIES.
+#
+# Every member of the same household after the first pays `amount` less per
+# month, on whichever plan they are on: 45 € less a quarter, 180 € less a year.
+# A flat amount rather than a percentage, so it reads the same on every card
+# and nobody has to work out which member is "the second".
+# ---------------------------------------------------------------------------
+family:
+  amount: 15
+  eyebrow: { es: "Familias", ca: "Famílies", en: "Families", ja: "家族割" }
+  title:   { es: "Cada persona más de la familia, 15 € menos al mes",
+             ca: "Cada persona més de la família, 15 € menys al mes",
+             en: "Each extra family member pays 15 € less a month",
+             ja: "2人目からは、ひとりにつき月15ユーロ引き" }
+  body:
+    es: "A partir de la segunda persona del mismo núcleo familiar, cada una paga 15 € menos al mes, con cualquier modalidad: 45 € menos al trimestre o 180 € menos al año. Vale para todas las edades y todos los espacios."
+    ca: "A partir de la segona persona del mateix nucli familiar, cadascuna paga 15 € menys al mes, amb qualsevol modalitat: 45 € menys al trimestre o 180 € menys a l'any. Val per a totes les edats i tots els espais."
+    en: "From the second person in the same household on, each pays 15 € less a month, on any plan: 45 € less a quarter or 180 € less a year. It applies at every age and at every space."
+    ja: "同じ世帯の2人目からは、どの支払い方法でもひとりにつき月15ユーロ引きです（3か月なら45ユーロ引き、1年なら180ユーロ引き）。年齢や稽古場所を問いません。"
+  # Worked examples, monthly, computed on the page from the prices above.
+  examples:
+    - { label: { es: "Dos personas de 17 años o más", ca: "Dues persones de 17 anys o més", en: "Two people aged 17 or over", ja: "17歳以上が2人" }, people: [adults, adults] }
+    - { label: { es: "Una de 17 o más y una hasta 16", ca: "Una de 17 o més i una fins a 16", en: "One aged 17 or over and one up to 16", ja: "17歳以上と16歳までが1人ずつ" }, people: [adults, children] }
+    - { label: { es: "Dos hasta 16 años", ca: "Dues fins a 16 anys", en: "Two up to 16", ja: "16歳までが2人" }, people: [children, children] }
+  note:
+    es: "Los ejemplos son mes a mes. El descuento no se suma a la cuota con abono."
+    ca: "Els exemples són mes a mes. El descompte no se suma a la quota amb abonament."
+    en: "The examples are month by month. The discount does not combine with the members' rate."
+    ja: "例は月払いの場合です。施設会員料金との併用はできません。"
+
+# ---------------------------------------------------------------------------
+# THE MEMBERS' RATE, AND WHY IT COVERS ONE SPACE.
+#
+# Two of our spaces are municipal sports centres. Their own members get a
+# reduced fee for the classes held THERE: it is part of the arrangement with
+# each centre. If it covered every space it would undercut the general fee for
+# everyone: buying a sports-centre membership would become the cheap way to
+# train at the Badalona dojo. So it is the fee for that centre's classes, and
+# the general fee is the one that opens every door.
+# ---------------------------------------------------------------------------
+members:
+  eyebrow: { es: "Con abono municipal", ca: "Amb abonament municipal", en: "Sports-centre members", ja: "市立施設の会員" }
+  title:   { es: "Si ya tienes abono del polideportivo", ca: "Si ja tens abonament del poliesportiu",
+             en: "If you already hold a sports-centre membership", ja: "スポーツセンターの会員の方" }
+  body:
+    es: "Si tienes el abono del CxEM Espronceda o del polideportivo Marina-Besòs, pagas una cuota reducida, mes a mes, por las clases de ese espacio. Es parte del acuerdo con cada polideportivo, y por eso cubre solo ese espacio: para entrenar también en Badalona o en los otros espacios, la cuota general da acceso a todos."
+    ca: "Si tens l'abonament del CxEM Espronceda o del poliesportiu Marina-Besòs, pagues una quota reduïda, mes a mes, per les classes d'aquell espai. Forma part de l'acord amb cada poliesportiu, i per això cobreix només aquell espai: per entrenar també a Badalona o als altres espais, la quota general dona accés a tots."
+    en: "If you hold a membership of CxEM Espronceda or of the Marina-Besòs sports centre, you pay a reduced fee, month by month, for the classes at that space. It is part of our arrangement with each centre, which is why it covers that space only: to train in Badalona or at the other spaces as well, the general fee covers them all."
+    ja: "エスプロンセダまたはマリナ・バゾスのスポーツセンターの会員の方は、その施設での稽古について、月払いの会員料金をご利用いただけます。各施設との取り決めによるもので、対象はその施設のみです。バダロナなどほかの稽古場所にも通う場合は、すべての稽古場所に有効な一般の月謝となります。"
+  rows:
+    - { venue: espronceda, adults: 19, children: 9 }
+    # No 17-and-over price at Marina-Besòs: its only class is for ages 6 to 16.
+    - { venue: sant-adria, children: 9 }
+  note:
+    es: "Hay que acreditar el abono al apuntarse. Solo mes a mes; no se combina con el descuento familiar."
+    ca: "Cal acreditar l'abonament en apuntar-s'hi. Només mes a mes; no es combina amb el descompte familiar."
+    en: "Show your membership when you sign up. Month by month only; it does not combine with the family discount."
+    ja: "入会時に会員証をご提示ください。月払いのみで、家族割との併用はできません。"
 
 # THE STANDING OFFER. Not a `included:` line, because that list is the same on
 # every card and this is not: it is what you get for choosing a billing period
@@ -94,10 +144,10 @@ offer:
   title:   { es: "El keikogi, de regalo", ca: "El keikogi, de regal",
              en: "The keikogi is on us", ja: "稽古着を進呈" }
   body:
-    es: "Al matricularte, si eliges trimestre, semestre o año en lugar de mes a mes, el keikogi lo pone el dojo. Vale para todas las cuotas."
-    ca: "En matricular-te, si tries trimestre, semestre o any en comptes de mes a mes, el keikogi el posa el dojo. Val per a totes les quotes."
-    en: "Sign up and choose a quarter, six months or a year instead of month by month, and the dojo provides the keikogi. It applies to every fee."
-    ja: "入会の際、月払いではなく3か月・6か月・年払いを選ばれた方には、道場から稽古着を一式お渡しします。すべての区分が対象です。"
+    es: "Si te apuntas por trimestre o por año en lugar de mes a mes, el keikogi lo pone el dojo. Vale para todas las cuotas y en todos los espacios."
+    ca: "Si t'apuntes per trimestre o per any en comptes de mes a mes, el keikogi el posa el dojo. Val per a totes les quotes i a tots els espais."
+    en: "Sign up by the quarter or the year instead of month by month, and the dojo provides the keikogi. It applies to every fee, at every space."
+    ja: "月払いではなく3か月払い・年払いでお申し込みの方には、道場から稽古着を一式お渡しします。すべての区分・すべての稽古場所が対象です。"
   note:
     es: "Un equipo por persona, en la primera matrícula."
     ca: "Un equip per persona, en la primera matrícula."
@@ -147,10 +197,10 @@ extras:
         ja: "嵐グループを通じて受審し、審査は同グループの技術指導部が担当します。料金は合気会が定めます。"
     - k: { es: "Keikogi", ca: "Keikogi", en: "Keikogi", ja: "稽古着" }
       v:
-        es: "Lo pone el dojo si eliges trimestre, semestre o año en lugar de mes a mes. Para empezar no hace falta: ropa cómoda de manga y pantalón largos."
-        ca: "El posa el dojo si tries trimestre, semestre o any en comptes de mes a mes. Per començar no cal: roba còmoda de màniga i pantaló llargs."
-        en: "The dojo provides it if you choose a quarter, six months or a year instead of month by month. You do not need one to start: comfortable long sleeves and long trousers will do."
-        ja: "3か月・6か月・年払いを選ばれた場合は道場からお渡しします。始めるだけなら不要で、長袖・長ズボンの動きやすい服装で構いません。"
+        es: "Lo pone el dojo si te apuntas por trimestre o por año en lugar de mes a mes. Para empezar no hace falta: ropa cómoda de manga y pantalón largos."
+        ca: "El posa el dojo si t'apuntes per trimestre o per any en comptes de mes a mes. Per començar no cal: roba còmoda de màniga i pantaló llargs."
+        en: "The dojo provides it if you sign up by the quarter or the year instead of month by month. You do not need one to start: comfortable long sleeves and long trousers will do."
+        ja: "3か月払い・年払いを選ばれた場合は道場からお渡しします。始めるだけなら不要で、長袖・長ズボンの動きやすい服装で構いません。"
     - k: { es: "Armas", ca: "Armes", en: "Weapons", ja: "武器" }
       v:
         es: "El dojo tiene bokken y jō para usar. Es recomendable acabar teniendo los tuyos, pero no es una compra obligatoria y no hace ninguna falta el primer día."
@@ -159,8 +209,8 @@ extras:
         ja: "道場に木刀と杖があり、自由に使えます。いずれご自身のものを持つことをおすすめしますが、購入は義務ではなく、初日には必要ありません。"
     - k: { es: "Seminarios y cursos", ca: "Seminaris i cursos", en: "Seminars and courses", ja: "講習会" }
       v:
-        es: "Se pagan aparte, y cada uno publica su precio. Los miembros del dojo, los menores de 25 años y los estudiantes tienen descuento. Las masterclass son gratuitas salvo que se indique lo contrario."
-        ca: "Es paguen a part, i cadascun publica el seu preu. Els membres del dojo, els menors de 25 anys i els estudiants tenen descompte. Les masterclass són gratuïtes llevat que s'indiqui el contrari."
+        es: "Se pagan aparte, y cada uno publica su precio. Las personas socias del dojo, quien tenga menos de 25 años y el alumnado tienen descuento. Las masterclass son gratuitas salvo que se indique lo contrario."
+        ca: "Es paguen a part, i cadascun publica el seu preu. Les persones sòcies del dojo, qui tingui menys de 25 anys i l'alumnat tenen descompte. Les masterclass són gratuïtes llevat que s'indiqui el contrari."
         en: "Paid separately, and each one publishes its price. Dojo members, under-25s and students get a discount. Masterclasses are free unless stated otherwise."
         ja: "別途お支払いいただきます。料金は講習会ごとに公開しています。道場の会員、25歳未満の方、学生の方は割引があります。マスタークラスは、特に記載がない限り無料です。"
 
@@ -227,6 +277,9 @@ ui:
                ca: "Veure el detall complet de quotes i descomptes",
                en: "See the full breakdown of fees and discounts",
                ja: "料金と割引の詳細を見る" }
+  no_class:  { es: "No hay clase para esta edad", ca: "No hi ha classe per a aquesta edat", en: "No class for this age", ja: "この年齢の稽古はありません" }
+  th_without: { es: "Sin descuento", ca: "Sense descompte", en: "Without it", ja: "割引前" }
+  th_venue:  { es: "Espacio",           ca: "Espai",            en: "Space",            ja: "稽古場所" }
   th_cat:    { es: "Categoría",         ca: "Categoria",        en: "Category",         ja: "区分" }
   th_fee:    { es: "Cuota",             ca: "Quota",            en: "Fee",              ja: "料金" }
   th_base:   { es: "Precio base",       ca: "Preu base",        en: "Base price",       ja: "通常料金" }

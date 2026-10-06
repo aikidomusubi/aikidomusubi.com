@@ -98,6 +98,76 @@
     {%- endfor -%}
 
     {%- comment -%}
+      FAMILIES. One rule, with three worked examples computed from the prices
+      above, so the example and the cards cannot disagree. A flat amount per
+      extra person: the total is the sum less `amount` for everyone after the
+      first, whichever order they are counted in.
+    {%- endcomment -%}
+    {%- assign FM = F.family -%}
+    <section class="fee-offer fee-family">
+      <p class="fee-offer-eyebrow">{{ FM.eyebrow[L] }}</p>
+      <h2 class="fee-offer-h">{{ FM.title[L] }}</h2>
+      <p class="fee-offer-b">{{ FM.body[L] }}</p>
+      <table class="fee-table fee-fam-table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">{{ F.ui.th_fee[L] }}</th>
+            <th scope="col">{{ F.ui.th_without[L] }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%- for ex in FM.examples -%}
+            {%- assign sum = 0 -%}
+            {%- for who in ex.people %}{% assign sum = sum | plus: F.prices.monthly[who].fee %}{% endfor -%}
+            {%- assign extra = ex.people.size | minus: 1 | times: FM.amount -%}
+            {%- assign tot = sum | minus: extra %}
+          <tr>
+            <th scope="row">{{ ex.label[L] }}</th>
+            <td>{{ tot }}{{ F.symbol }} <span class="fee-th-who">{{ F.periods[0].unit[L] }}</span></td>
+            <td><s>{{ sum }}{{ F.symbol }}</s></td>
+          </tr>
+          {%- endfor %}
+        </tbody>
+      </table>
+      <p class="fee-offer-n">{{ FM.note[L] }}</p>
+    </section>
+
+    {%- comment -%}
+      THE MEMBERS' RATE, explained rather than footnoted: what it is, who it is
+      for and why it covers one space. The reasoning is in _data/fees.yml.
+    {%- endcomment -%}
+    {%- assign MB = F.members -%}
+    <section class="fee-offer fee-members">
+      <p class="fee-offer-eyebrow">{{ MB.eyebrow[L] }}</p>
+      <h2 class="fee-offer-h">{{ MB.title[L] }}</h2>
+      <p class="fee-offer-b">{{ MB.body[L] }}</p>
+      <table class="fee-table fee-mem-table">
+        <thead>
+          <tr>
+            <th scope="col">{{ F.ui.th_venue[L] }}</th>
+            {%- for c in F.categories %}
+            <th scope="col">{{ c.name[L] }}</th>
+            {%- endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          {%- for r in MB.rows -%}
+            {%- assign slo = site.data.schedule.locations | where: 'id', r.venue | first -%}
+            {%- assign mv = site.data.venues.venues | where: 'id', slo.slug | first %}
+          <tr>
+            <th scope="row">{{ mv.name[L] }} <span class="fee-th-who">{{ mv.facility[L] }}</span></th>
+            {%- for c in F.categories %}
+            <td>{% if r[c.id] %}{{ r[c.id] }}{{ F.symbol }} <span class="fee-th-who">{{ F.periods[0].unit[L] }}</span>{% else %}<span aria-hidden="true">—</span><span class="sr-only">{{ F.ui.no_class[L] }}</span>{% endif %}</td>
+            {%- endfor %}
+          </tr>
+          {%- endfor %}
+        </tbody>
+      </table>
+      <p class="fee-offer-n">{{ MB.note[L] }}</p>
+    </section>
+
+    {%- comment -%}
       The standing offer.
 
       It sits UNDER the cards and not inside them: it is the same offer in
@@ -208,7 +278,7 @@
     "name": {{ page.title | jsonify }},
     "serviceType": "Aikido classes",
     "provider": { "@type": "SportsClub", "name": "Aikido Musubi", "url": "{{ site.url }}/" },
-    "areaServed": "Badalona, Barcelona",
+    "areaServed": "Barcelona, Badalona, Sant Adrià de Besòs",
     "offers": [
       {%- assign first = true -%}
       {%- for p in F.periods -%}{%- for c in F.categories -%}

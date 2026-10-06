@@ -45,6 +45,14 @@
     {%- assign parent = LO.locations | where: 'id', loc.parent | first -%}
     {%- assign parentPage = site.pages | where: 'i18n-ref', parent.ref | where: 'lang', L | first -%}
   {%- endif -%}
+  {%- comment -%}
+    THE FEES ARE READ, NOT TYPED: PRICE, KIDS and FAM in the price lines and
+    the price answer are the monthly fees and the family discount from
+    _data/fees.yml, so a change of price is one line there.
+  {%- endcomment -%}
+  {%- assign fee = site.data.fees.prices.monthly.adults.fee -%}
+  {%- assign kids = site.data.fees.prices.monthly.children.fee -%}
+  {%- assign fam = site.data.fees.family.amount -%}
   {%- assign accessPage = site.pages | where: 'i18n-ref', 'access-information-NdxqmVbV' | where: 'lang', L | first -%}
 
   {%- comment -%}
@@ -313,9 +321,8 @@
         y jóvenes desde 12 años · 35 € al mes" printed over it was false twice.
       {%- endcomment -%}
       <dt>{{ U.f_who[L] }}</dt><dd>{% if loc.who_line %}{{ loc.who_line[L] }}{% else %}{{ U.who_line[L] }}{% endif %}</dd>
-      {%- comment -%} LO.fee: see the note on `fee` in _data/locations.yml. {%- endcomment -%}
-      {%- assign fee = LO.fee | default: site.data.fees.prices.monthly.adults.fee -%}
-      <dt>{{ U.f_price[L] }}</dt><dd>{% if loc.price_line %}{{ loc.price_line[L] }}{% else %}{{ U.price_line[L] | replace: 'PRICE', fee }}{% endif %}</dd>
+
+      <dt>{{ U.f_price[L] }}</dt><dd>{% if loc.price_line %}{% assign pl = loc.price_line[L] %}{% else %}{% assign pl = U.price_line[L] %}{% endif %}{{ pl | replace: 'PRICE', fee | replace: 'KIDS', kids }}</dd>
       <dt>{{ U.f_bring[L] }}</dt><dd>{{ U.bring_line[L] }}</dd>
       {%- comment -%}
         Each teacher once, however many classes they take. Built as a delimited
@@ -509,11 +516,27 @@
   {%- for vid in loc.venues -%}
     {%- assign lo3 = S.locations | where: 'id', vid | first -%}
     {%- assign v3 = site.data.venues.venues | where: 'id', lo3.slug | first -%}
-    {%- if v3.gallery %}
+    {%- if v3.galleries -%}
+      {%- comment -%}
+        Several galleries, one section each with its own heading: the dojo has
+        a full session, sorted into the room, the start of a class and the
+        technique. The credit names the photographer.
+      {%- endcomment -%}
+      {%- for gal in v3.galleries %}
+  <section class="lo-sec" id="{{ loc.ref }}-{{ gal.id }}">
+    <p class="lo-lab">{{ gal.lab[L] }}</p>
+    <h2>{{ gal.h[L] }}</h2>
+    {% include venue-gallery.html photos=gal.photos lang=L %}
+    {%- if v3.credit and forloop.last %}
+    <p class="lo-gal-credit">{{ U.photo_credit[L] }} {{ v3.credit }}</p>
+    {%- endif %}
+  </section>
+      {%- endfor -%}
+    {%- elsif v3.gallery %}
   <section class="lo-sec">
     <p class="lo-lab">{{ U.lab_inside[L] }}</p>
     <h2>{{ U.h_inside[L] | replace: 'NAME', v3.name[L] }}</h2>
-    {% include venue-gallery.html venue=v3 lang=L %}
+    {% include venue-gallery.html photos=v3.gallery lang=L %}
   </section>
     {%- endif -%}
   {%- endfor %}
@@ -551,7 +574,7 @@
       {%- endfor %}
       {%- else -%}
       {%- for f in LO.faq_common %}
-      {%- if f.id and loc.faq[f.id] %}{% assign fa = loc.faq[f.id][L] %}{% else %}{% assign fa = f.a[L] %}{% endif %}
+      {%- if f.id and loc.faq[f.id] %}{% assign fa = loc.faq[f.id][L] %}{% else %}{% assign fa = f.a[L] %}{% endif %}{% assign fa = fa | replace: 'PRICE', fee | replace: 'KIDS', kids | replace: 'FAM', fam %}
       <details name="{{ loc.ref }}-faq">
         <summary>{{ f.q[L] }}</summary>
         <div class="a"><p>{{ fa }}</p></div>
@@ -668,16 +691,26 @@
           The gallery, as ImageObjects with credit and copyright: what Google
           Images reads for an image's details. Only for rooms that have one.
         {%- endcomment -%}
-        {%- if v.gallery %}
+        {%- assign allph = v.gallery | default: '' -%}
+        {%- if v.galleries -%}
+          {%- assign allph = '' | split: '' -%}
+          {%- for gal in v.galleries %}{% assign allph = allph | concat: gal.photos %}{% endfor -%}
+        {%- endif -%}
+        {%- if allph != '' and allph.size > 0 %}
         "photo": [
-          {%- for g in v.gallery %}
+          {%- for g in allph %}
           {
             "@type": "ImageObject",
             "contentUrl": "{{ site.url }}/images/{{ g.img }}.jpg",
             "caption": {{ g.alt[L] | jsonify }},
+            {%- if v.credit %}
+            "creditText": {{ v.credit | jsonify }},
+            "creator": { "@type": "Person", "name": {{ v.credit | jsonify }} },
+            {%- else %}
             "creditText": {{ site.title | jsonify }},
-            "copyrightNotice": {{ site.title | prepend: '© ' | jsonify }},
-            "creator": { "@type": "Organization", "name": {{ site.title | jsonify }} }
+            "creator": { "@type": "Organization", "name": {{ site.title | jsonify }} },
+            {%- endif %}
+            "copyrightNotice": {{ site.title | prepend: '© ' | jsonify }}
           }{% unless forloop.last %},{% endunless %}
           {%- endfor %}
         ],
@@ -716,7 +749,7 @@
           {%- endfor %}
           {%- else -%}
           {%- for f in LO.faq_common %}
-          {%- if f.id and loc.faq[f.id] %}{% assign fa = loc.faq[f.id][L] %}{% else %}{% assign fa = f.a[L] %}{% endif %}
+          {%- if f.id and loc.faq[f.id] %}{% assign fa = loc.faq[f.id][L] %}{% else %}{% assign fa = f.a[L] %}{% endif %}{% assign fa = fa | replace: 'PRICE', fee | replace: 'KIDS', kids | replace: 'FAM', fam %}
           {
             "@type": "Question",
             "name": {{ f.q[L] | jsonify }},

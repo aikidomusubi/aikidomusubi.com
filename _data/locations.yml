@@ -88,14 +88,6 @@ plan_highlights:
 # its own srcset. That is the naming convention for a hero; see CLAUDE.md.
 hero_image: index-8oGCaMDs-00
 
-# THE FEE THE LOCATION PAGES PRINT, and only they.
-#
-# From October 2026 the monthly fee is 39 € and it gives access to every
-# space; the annual sports insurance is paid apart. /cuotas/ is being revised
-# separately and still reads _data/fees.yml, so until that revision lands the
-# two disagree ON PURPOSE, and this key is the one line to change when they
-# are brought back together (ideally by deleting it and reading fees.yml).
-fee: 39
 
 ui:
   # ---- breadcrumb ----
@@ -142,6 +134,7 @@ ui:
   per_month:   { es: "al mes", ca: "al mes", en: "a month", ja: "／月" }
   venue_more:  { es: "La página de NAME", ca: "La pàgina de NAME", en: "The NAME page", ja: "NAMEのページ" }
   plan_more:   { es: "El plano con la entrada marcada", ca: "El plànol amb l'entrada marcada", en: "The plan with the entrance marked", ja: "入口を示した地図" }
+  photo_credit: { es: "Fotografías:", ca: "Fotografies:", en: "Photographs:", ja: "写真：" }
   lab_inside: { es: "El espacio por dentro", ca: "L'espai per dins", en: "Inside the space", ja: "稽古場所の様子" }
   h_inside:   { es: "NAME, por dentro", ca: "NAME, per dins", en: "Inside NAME", ja: "NAMEの様子" }
   lab_also:   { es: "Y también", ca: "I també", en: "And also", ja: "そのほか" }
@@ -166,15 +159,15 @@ ui:
 
   # ---- the recurring sentences ----
   price_line:
-    es: "PRICE € al mes, con acceso a todos nuestros espacios. El seguro deportivo anual va aparte. Inscripción gratuita y dos clases de prueba."
-    ca: "PRICE € al mes, amb accés a tots els nostres espais. L'assegurança esportiva anual va a part. Inscripció gratuïta i dues classes de prova."
-    en: "PRICE € a month, with access to all our spaces. The annual sports insurance is paid separately. Free registration and two trial classes."
-    ja: "月額 PRICE ユーロで、すべての稽古場所に通えます。年間のスポーツ保険は別途です。入会金は無料、体験稽古は2回まで。"
+    es: "PRICE € al mes, o KIDS € hasta los 16 años, con acceso a todos nuestros espacios. El seguro deportivo anual va aparte. Inscripción gratuita y dos clases de prueba."
+    ca: "PRICE € al mes, o KIDS € fins als 16 anys, amb accés a tots els nostres espais. L'assegurança esportiva anual va a part. Inscripció gratuïta i dues classes de prova."
+    en: "PRICE € a month, or KIDS € up to age 16, with access to all our spaces. The annual sports insurance is paid separately. Free registration and two trial classes."
+    ja: "月額PRICEユーロ（16歳まではKIDSユーロ）で、すべての稽古場所に通えます。年間のスポーツ保険は別途です。入会金は無料、体験稽古は2回まで。"
   who_line:
-    es: "Adultos y jóvenes a partir de 12 años, con o sin experiencia previa. Para niños y niñas de 6 a 12 años, la clase es en <a href='/sant-adria-de-besos/marina-besos/'>Marina-Besòs</a>."
-    ca: "Adults i joves a partir de 12 anys, amb o sense experiència prèvia. Per a nens i nenes de 6 a 12 anys, la classe és a <a href='/ca/sant-adria-de-besos/marina-besos/'>Marina-Besòs</a>."
-    en: "Adults and young people from the age of 12, with or without previous experience. For children aged 6 to 12, the class is at <a href='/en/sant-adria-de-besos/marina-besos/'>Marina-Besòs</a>."
-    ja: "12歳以上の方。経験の有無は問いません。6歳から12歳のお子さまは<a href='/ja/sant-adria-de-besos/marina-besos/'>マリナ・バゾス</a>の稽古へどうぞ。"
+    es: "A partir de 12 años, con o sin experiencia previa. Entre 6 y 11 años, la clase es en <a href='/sant-adria-de-besos/marina-besos/'>Marina-Besòs</a>."
+    ca: "A partir de 12 anys, amb o sense experiència prèvia. Entre 6 i 11 anys, la classe és a <a href='/ca/sant-adria-de-besos/marina-besos/'>Marina-Besòs</a>."
+    en: "From age 12, with or without previous experience. Ages 6 to 11 train at <a href='/en/sant-adria-de-besos/marina-besos/'>Marina-Besòs</a>."
+    ja: "12歳以上。経験の有無は問いません。6歳から11歳は<a href='/ja/sant-adria-de-besos/marina-besos/'>マリナ・バゾス</a>の稽古へどうぞ。"
   bring_line:
     es: "Ropa cómoda de manga y pantalón largos. El keikogi no hace falta para empezar."
     ca: "Roba còmoda de màniga i pantalons llargs. El keikogi no cal per començar."
@@ -315,8 +308,8 @@ locations:
         en: "How is it different from the other spaces?"
         ja: "ほかの稽古場所とどう違いますか。"
       a:
-        es: "Badalona es el dojo: un espacio dedicado por completo a las artes marciales, con aikido de martes a sábado, de mañana y de tarde. Los exámenes, los cursos y las masterclass se celebran aquí. En Barcelona hay aikido dos días por semana, y en Sant Adrià de Besòs está la clase de niños y jóvenes."
-        ca: "Badalona és el dojo: un espai dedicat completament a les arts marcials, amb aikido de dimarts a dissabte, al matí i a la tarda. Els exàmens, els cursos i les masterclass s'hi celebren. A Barcelona hi ha aikido dos dies per setmana, i a Sant Adrià de Besòs hi ha la classe d'infants i joves."
+        es: "Badalona es el dojo: un espacio dedicado por completo a las artes marciales, con aikido de martes a sábado, de mañana y de tarde. Los exámenes, los cursos y las masterclass se celebran aquí. En Barcelona hay aikido dos días por semana, y en Sant Adrià de Besòs está la clase infantil y juvenil."
+        ca: "Badalona és el dojo: un espai dedicat completament a les arts marcials, amb aikido de dimarts a dissabte, al matí i a la tarda. Els exàmens, els cursos i les masterclass s'hi celebren. A Barcelona hi ha aikido dos dies per setmana, i a Sant Adrià de Besòs hi ha la classe infantil i juvenil."
         en: "Badalona is the dojo: a space given over entirely to martial arts, with aikido Tuesday to Saturday, mornings and evenings. The gradings, the seminars and the masterclasses happen here. Barcelona has aikido two days a week, and Sant Adrià de Besòs has the class for children and young people."
         ja: "バダロナは道場そのものです。武道のためだけの場所で、火曜から土曜まで朝と夕方に合気道の稽古があります。審査・講習会・マスタークラスもここで行います。バルセロナでは週2日、サント・アドリア・ダ・バゾスではこども・青少年の稽古を行っています。"
     teachers_line:
@@ -357,16 +350,16 @@ locations:
 
     # The CxEM Espronceda members' rate is a fact about this town's rooms.
     price_line:
-      es: "39 € al mes, con acceso a todos nuestros espacios; 19 € si eres abonado del CxEM Espronceda. El seguro deportivo anual va aparte. Inscripción gratuita y dos clases de prueba."
-      ca: "39 € al mes, amb accés a tots els nostres espais; 19 € si ets abonat del CxEM Espronceda. L'assegurança esportiva anual va a part. Inscripció gratuïta i dues classes de prova."
-      en: "39 € a month, with access to all our spaces; 19 € if you are a member of CxEM Espronceda. The annual sports insurance is paid separately. Free registration and two trial classes."
-      ja: "月額39ユーロで、すべての稽古場所に通えます。エスプロンセダの会員は19ユーロ。年間のスポーツ保険は別途です。入会金は無料、体験稽古は2回まで。"
+      es: "PRICE € al mes, o KIDS € hasta los 16 años, con acceso a todos nuestros espacios. Con el abono del CxEM Espronceda, 19 € (9 € hasta los 16), solo para las clases de ese espacio. El seguro deportivo anual va aparte. Inscripción gratuita y dos clases de prueba."
+      ca: "PRICE € al mes, o KIDS € fins als 16 anys, amb accés a tots els nostres espais. Amb l'abonament del CxEM Espronceda, 19 € (9 € fins als 16), només per a les classes d'aquell espai. L'assegurança esportiva anual va a part. Inscripció gratuïta i dues classes de prova."
+      en: "PRICE € a month, or KIDS € up to age 16, with access to all our spaces. With a CxEM Espronceda membership, 19 € (9 € up to 16), for that space's classes only. The annual sports insurance is paid separately. Free registration and two trial classes."
+      ja: "月額PRICEユーロ（16歳まではKIDSユーロ）で、すべての稽古場所に通えます。エスプロンセダの会員は19ユーロ（16歳までは9ユーロ）で、同施設の稽古のみが対象です。年間のスポーツ保険は別途です。入会金は無料、体験稽古は2回まで。"
     faq:
       price:
-        es: "39 € al mes, con acceso a todos nuestros espacios: Badalona, Barcelona y Sant Adrià de Besòs. Si eres abonado del CxEM Espronceda, 19 €. La inscripción es gratuita y hay dos clases de prueba. El seguro deportivo anual va aparte."
-        ca: "39 € al mes, amb accés a tots els nostres espais: Badalona, Barcelona i Sant Adrià de Besòs. Si ets abonat del CxEM Espronceda, 19 €. La inscripció és gratuïta i hi ha dues classes de prova. L'assegurança esportiva anual va a part."
-        en: "39 € a month, with access to all our spaces: Badalona, Barcelona and Sant Adrià de Besòs. If you are a member of CxEM Espronceda, 19 €. Registration is free and there are two trial classes. The annual sports insurance is paid separately."
-        ja: "月額39ユーロで、バダロナ・バルセロナ・サント・アドリア・ダ・バゾスのすべての稽古場所に通えます。エスプロンセダの会員は19ユーロです。入会金は無料で、体験稽古は2回まで受けられます。年間のスポーツ保険は別途です。"
+        es: "PRICE € al mes, o KIDS € hasta los 16 años, con acceso a todos nuestros espacios: Badalona, Barcelona y Sant Adrià de Besòs. Con el abono del CxEM Espronceda pagas 19 € (9 € hasta los 16), solo por las clases de ese espacio. Por trimestre o por año sale más a cuenta, y cada persona más de la familia paga FAM € menos al mes. La inscripción es gratuita y hay dos clases de prueba. El seguro deportivo anual va aparte."
+        ca: "PRICE € al mes, o KIDS € fins als 16 anys, amb accés a tots els nostres espais: Badalona, Barcelona i Sant Adrià de Besòs. Amb l'abonament del CxEM Espronceda pagues 19 € (9 € fins als 16), només per les classes d'aquell espai. Per trimestre o per any surt més a compte, i cada persona més de la família paga FAM € menys al mes. La inscripció és gratuïta i hi ha dues classes de prova. L'assegurança esportiva anual va a part."
+        en: "PRICE € a month, or KIDS € up to age 16, with access to all our spaces: Badalona, Barcelona and Sant Adrià de Besòs. With a CxEM Espronceda membership you pay 19 € (9 € up to 16), for that space's classes only. Paying by the quarter or the year costs less, and each extra family member pays FAM € less a month. Registration is free and there are two trial classes. The annual sports insurance is paid separately."
+        ja: "月額PRICEユーロ（16歳まではKIDSユーロ）で、バダロナ・バルセロナ・サント・アドリア・ダ・バゾスのすべての稽古場所に通えます。エスプロンセダの会員は19ユーロ（16歳までは9ユーロ）で、同施設の稽古のみが対象です。3か月払い・年払いはさらにお得で、ご家族は2人目からひとりにつき月FAMユーロ引きです。入会金は無料で、体験稽古は2回まで受けられます。年間のスポーツ保険は別途です。"
 
     faq_local:
       q:
@@ -405,34 +398,34 @@ locations:
       en: "Sant Adrià de Besòs · Marina-Besòs"
       ja: "サント・アドリア・ダ・バゾス · マリナ・バゾス"
     lede:
-      es: "Entrenamos aikido en el polideportivo municipal Marina-Besòs, en Sant Adrià de Besòs, los lunes y los miércoles por la tarde, en una clase para niños y niñas de 6 a 12 años. Los adolescentes de 12 a 16 años también son bienvenidos. Es la misma asociación que abre cada día el dojo de Badalona."
-      ca: "Entrenem aikido al poliesportiu municipal Marina-Besòs, a Sant Adrià de Besòs, els dilluns i els dimecres a la tarda, en una classe per a nens i nenes de 6 a 12 anys. Els adolescents de 12 a 16 anys també hi són benvinguts. És la mateixa associació que obre cada dia el dojo de Badalona."
-      en: "We train aikido at the Marina-Besòs municipal sports centre in Sant Adrià de Besòs on Monday and Wednesday afternoons, in a class for children aged 6 to 12. Teenagers from 12 to 16 are welcome too. It is the same association that opens the Badalona dojo every day."
-      ja: "サント・アドリア・ダ・バゾスのマリナ・バゾス市立スポーツセンターで、月曜と水曜の夕方に、6歳から12歳のこどもを対象とした合気道の稽古を行っています。12歳から16歳の青少年も歓迎します。バダロナの道場を毎日開いているのと同じ協会です。"
+      es: "Entrenamos aikido en el polideportivo municipal Marina-Besòs, en Sant Adrià de Besòs, los lunes y los miércoles por la tarde, en una clase infantil y juvenil de 6 a 16 años. Es la misma asociación que abre cada día el dojo de Badalona."
+      ca: "Entrenem aikido al poliesportiu municipal Marina-Besòs, a Sant Adrià de Besòs, els dilluns i els dimecres a la tarda, en una classe infantil i juvenil de 6 a 16 anys. És la mateixa associació que obre cada dia el dojo de Badalona."
+      en: "We train aikido at the Marina-Besòs municipal sports centre in Sant Adrià de Besòs on Monday and Wednesday afternoons, in a class for ages 6 to 16. It is the same association that opens the Badalona dojo every day."
+      ja: "サント・アドリア・ダ・バゾスのマリナ・バゾス市立スポーツセンターで、月曜と水曜の夕方に、6歳から16歳までを対象とした合気道の稽古を行っています。バダロナの道場を毎日開いているのと同じ協会です。"
     hero_line:
-      es: "Lunes y miércoles por la tarde, de 6 a 12 años, y adolescentes hasta los 16. Sin competición y sin comprar nada para empezar."
-      ca: "Dilluns i dimecres a la tarda, de 6 a 12 anys, i adolescents fins als 16. Sense competició i sense comprar res per començar."
-      en: "Monday and Wednesday afternoons, ages 6 to 12, and teenagers up to 16. No competition, and nothing to buy to start."
-      ja: "月曜と水曜の夕方、6歳から12歳、そして16歳までの青少年が対象です。試合も、はじめに買うものもありません。"
+      es: "Lunes y miércoles por la tarde, de 6 a 16 años. Sin competición y sin comprar nada para empezar."
+      ca: "Dilluns i dimecres a la tarda, de 6 a 16 anys. Sense competició i sense comprar res per començar."
+      en: "Monday and Wednesday afternoons, ages 6 to 16. No competition, and nothing to buy to start."
+      ja: "月曜と水曜の夕方、6歳から16歳まで。試合も、はじめに買うものもありません。"
 
     # The class here is for children and teenagers at its own fee, so the
     # shared lines in `ui` would be false on this page. See _layouts/location.html.
     who_line:
-      es: "Niños y niñas de 6 a 12 años; los adolescentes de 12 a 16 también son bienvenidos. Si tienes más de 16, tu sitio es el <a href='/badalona/'>dojo de Badalona</a>, a diez minutos."
-      ca: "Nens i nenes de 6 a 12 anys; els adolescents de 12 a 16 també hi són benvinguts. Si tens més de 16 anys, el teu lloc és el <a href='/ca/badalona/'>dojo de Badalona</a>, a deu minuts."
-      en: "Children aged 6 to 12; teenagers from 12 to 16 are welcome too. If you are over 16, your place is the <a href='/en/badalona/'>Badalona dojo</a>, ten minutes away."
-      ja: "6歳から12歳のこども。12歳から16歳の青少年も歓迎します。16歳を超える方は、10分ほどの<a href='/ja/badalona/'>バダロナの道場</a>へどうぞ。"
+      es: "De 6 a 16 años, con o sin experiencia previa. Con más de 16 años, el sitio es el <a href='/badalona/'>dojo de Badalona</a>, a diez minutos."
+      ca: "De 6 a 16 anys, amb o sense experiència prèvia. Amb més de 16 anys, el lloc és el <a href='/ca/badalona/'>dojo de Badalona</a>, a deu minuts."
+      en: "Ages 6 to 16, with or without previous experience. Over 16, the place to train is the <a href='/en/badalona/'>Badalona dojo</a>, ten minutes away."
+      ja: "6歳から16歳まで。経験の有無は問いません。16歳を超える方は、10分ほどの<a href='/ja/badalona/'>バダロナの道場</a>へどうぞ。"
     price_line:
-      es: "29 € al mes, o 9 € para los abonados del polideportivo Marina-Besòs. El seguro deportivo anual va aparte. Inscripción gratuita y dos clases de prueba."
-      ca: "29 € al mes, o 9 € per als abonats del poliesportiu Marina-Besòs. L'assegurança esportiva anual va a part. Inscripció gratuïta i dues classes de prova."
-      en: "29 € a month, or 9 € for members of the Marina-Besòs sports centre. The annual sports insurance is paid separately. Free registration and two trial classes."
-      ja: "月額29ユーロ、マリナ・バゾスのスポーツセンター会員は9ユーロ。年間のスポーツ保険は別途です。入会金は無料、体験稽古は2回まで。"
+      es: "KIDS € al mes hasta los 16 años, con acceso a todos nuestros espacios. Con el abono del polideportivo Marina-Besòs, 9 €, solo para las clases de ese espacio. El seguro deportivo anual va aparte. Inscripción gratuita y dos clases de prueba."
+      ca: "KIDS € al mes fins als 16 anys, amb accés a tots els nostres espais. Amb l'abonament del poliesportiu Marina-Besòs, 9 €, només per a les classes d'aquell espai. L'assegurança esportiva anual va a part. Inscripció gratuïta i dues classes de prova."
+      en: "KIDS € a month up to age 16, with access to all our spaces. With a Marina-Besòs sports centre membership, 9 €, for that space's classes only. The annual sports insurance is paid separately. Free registration and two trial classes."
+      ja: "16歳までは月額KIDSユーロで、すべての稽古場所に通えます。マリナ・バゾスのスポーツセンター会員は9ユーロで、同施設の稽古のみが対象です。年間のスポーツ保険は別途です。入会金は無料、体験稽古は2回まで。"
     faq:
       price:
-        es: "29 € al mes, o 9 € al mes para los abonados del polideportivo Marina-Besòs, para niños, niñas y adolescentes hasta 16 años. La inscripción es gratuita y hay dos clases de prueba. El seguro deportivo anual va aparte."
-        ca: "29 € al mes, o 9 € al mes per als abonats del poliesportiu Marina-Besòs, per a nens, nenes i adolescents fins a 16 anys. La inscripció és gratuïta i hi ha dues classes de prova. L'assegurança esportiva anual va a part."
-        en: "29 € a month, or 9 € a month for members of the Marina-Besòs sports centre, for children and teenagers up to 16. Registration is free and there are two trial classes. The annual sports insurance is paid separately."
-        ja: "16歳までのこども・青少年は月額29ユーロ、マリナ・バゾスのスポーツセンター会員は月額9ユーロです。入会金は無料で、体験稽古は2回まで受けられます。年間のスポーツ保険は別途です。"
+        es: "KIDS € al mes hasta los 16 años, con acceso a todos nuestros espacios. Con el abono del polideportivo Marina-Besòs, 9 € al mes, solo por las clases de ese espacio. Por trimestre o por año sale más a cuenta, y cada persona más de la familia paga FAM € menos al mes. La inscripción es gratuita y hay dos clases de prueba. El seguro deportivo anual va aparte."
+        ca: "KIDS € al mes fins als 16 anys, amb accés a tots els nostres espais. Amb l'abonament del poliesportiu Marina-Besòs, 9 € al mes, només per les classes d'aquell espai. Per trimestre o per any surt més a compte, i cada persona més de la família paga FAM € menys al mes. La inscripció és gratuïta i hi ha dues classes de prova. L'assegurança esportiva anual va a part."
+        en: "KIDS € a month up to age 16, with access to all our spaces. With a Marina-Besòs sports centre membership, 9 € a month, for that space's classes only. Paying by the quarter or the year costs less, and each extra family member pays FAM € less a month. Registration is free and there are two trial classes. The annual sports insurance is paid separately."
+        ja: "16歳までは月額KIDSユーロで、すべての稽古場所に通えます。マリナ・バゾスのスポーツセンター会員は月額9ユーロで、同施設の稽古のみが対象です。3か月払い・年払いはさらにお得で、ご家族は2人目からひとりにつき月FAMユーロ引きです。入会金は無料で、体験稽古は2回まで受けられます。年間のスポーツ保険は別途です。"
 
     faq_local:
       q:
@@ -441,14 +434,14 @@ locations:
         en: "How is it different from the classes in Badalona?"
         ja: "バダロナの稽古とどう違いますか。"
       a:
-        es: "Marina-Besòs es nuestra clase para niños y niñas, de 6 a 12 años, y los adolescentes de hasta 16 también son bienvenidos. Los mayores de 16 entrenan en el dojo de Badalona, a diez minutos, que tiene aikido de martes a sábado."
-        ca: "Marina-Besòs és la nostra classe per a nens i nenes, de 6 a 12 anys, i els adolescents de fins a 16 també hi són benvinguts. Els més grans de 16 entrenen al dojo de Badalona, a deu minuts, que té aikido de dimarts a dissabte."
-        en: "Marina-Besòs is our class for children aged 6 to 12, and teenagers up to 16 are welcome too. Anyone over 16 trains at the Badalona dojo, ten minutes away, which has aikido Tuesday to Saturday."
-        ja: "マリナ・バゾスは6歳から12歳のこどものための稽古で、16歳までの青少年も歓迎します。16歳を超える方は、10分ほどのバダロナの道場で稽古します。道場では火曜から土曜まで合気道の稽古があります。"
+        es: "Marina-Besòs es nuestra clase infantil y juvenil, de 6 a 16 años. Con más de 16 años se entrena en el dojo de Badalona, a diez minutos, que tiene aikido de martes a sábado."
+        ca: "Marina-Besòs és la nostra classe infantil i juvenil, de 6 a 16 anys. Amb més de 16 anys s'entrena al dojo de Badalona, a deu minuts, que té aikido de dimarts a dissabte."
+        en: "Marina-Besòs is our class for ages 6 to 16. Over 16, training is at the Badalona dojo, ten minutes away, which has aikido Tuesday to Saturday."
+        ja: "マリナ・バゾスは6歳から16歳までの稽古です。16歳を超える方は、10分ほどのバダロナの道場で稽古します。道場では火曜から土曜まで合気道の稽古があります。"
     teachers_line:
-      es: "La clase de Marina-Besòs la lleva el equipo de instructores del dojo, con un programa de grados propio para niños y la misma línea que en Badalona. Como exige la ley a quien trabaja con menores, el instructor tiene el certificado negativo del Registro Central de Delincuentes Sexuales. Todos se formaron en Aikido Musubi y siguen la línea del Aikikai Hombu Dojo de Tokio."
-      ca: "La classe de Marina-Besòs la porta l'equip d'instructors del dojo, amb un programa de graus propi per a infants i la mateixa línia que a Badalona. Com exigeix la llei a qui treballa amb menors, l'instructor té el certificat negatiu del Registre Central de Delinqüents Sexuals. Tots s'han format a Aikido Musubi i segueixen la línia de l'Aikikai Hombu Dojo de Tòquio."
-      en: "The Marina-Besòs class is led by the dojo's instructors, with a grading programme of its own for children and the same line as in Badalona. As the law requires of anyone who works with minors, the instructor holds a clear certificate from Spain's Central Register of Sex Offenders. All of them trained at Aikido Musubi and follow the line of the Aikikai Hombu Dojo in Tokyo."
+      es: "La clase de Marina-Besòs la lleva el equipo de instructores del dojo, con un programa de grados propio para esta clase y la misma línea que en Badalona. Como exige la ley a quien trabaja con menores, el instructor tiene el certificado negativo del Registro Central de Delincuentes Sexuales. Todos se formaron en Aikido Musubi y siguen la línea del Aikikai Hombu Dojo de Tokio."
+      ca: "La classe de Marina-Besòs la porta l'equip d'instructors del dojo, amb un programa de graus propi per a aquesta classe i la mateixa línia que a Badalona. Com exigeix la llei a qui treballa amb menors, l'instructor té el certificat negatiu del Registre Central de Delinqüents Sexuals. Tots s'han format a Aikido Musubi i segueixen la línia de l'Aikikai Hombu Dojo de Tòquio."
+      en: "The Marina-Besòs class is led by the dojo's instructors, with a grading programme of its own and the same line as in Badalona. As the law requires of anyone who works with minors, the instructor holds a clear certificate from Spain's Central Register of Sex Offenders. All of them trained at Aikido Musubi and follow the line of the Aikikai Hombu Dojo in Tokyo."
       ja: "マリナ・バゾスの稽古は道場の指導者陣が担当し、こども向けの独自の級位制度のもと、バダロナと同じ流れで指導します。未成年を指導する者に法律で求められているとおり、指導者は性犯罪者中央登録の無犯罪証明書を取得しています。いずれも合気道産靈で稽古を重ね、東京の合気会本部道場の流れを汲んでいます。"
 # ---------------------------------------------------------------------------
 # The venue pages: /barcelona/cxem-espronceda/ and
@@ -497,57 +490,64 @@ venue_pages:
       en: "Monday and Wednesday evenings, in the sports complex's tatami room. No previous experience and no competition."
       ja: "月曜と水曜の夜、スポーツ複合施設の畳の間で。経験も試合もありません。"
     price_line:
-      es: "39 € al mes, con acceso a todos nuestros espacios; 19 € si eres abonado del CxEM Espronceda. El seguro deportivo anual va aparte. Inscripción gratuita y dos clases de prueba."
-      ca: "39 € al mes, amb accés a tots els nostres espais; 19 € si ets abonat del CxEM Espronceda. L'assegurança esportiva anual va a part. Inscripció gratuïta i dues classes de prova."
-      en: "39 € a month, with access to all our spaces; 19 € if you are a member of CxEM Espronceda. The annual sports insurance is paid separately. Free registration and two trial classes."
-      ja: "月額39ユーロで、すべての稽古場所に通えます。エスプロンセダの会員は19ユーロ。年間のスポーツ保険は別途です。入会金は無料、体験稽古は2回まで。"
+      es: "PRICE € al mes, o KIDS € hasta los 16 años, con acceso a todos nuestros espacios. Con el abono del CxEM Espronceda, 19 € (9 € hasta los 16), solo para las clases de ese espacio. El seguro deportivo anual va aparte. Inscripción gratuita y dos clases de prueba."
+      ca: "PRICE € al mes, o KIDS € fins als 16 anys, amb accés a tots els nostres espais. Amb l'abonament del CxEM Espronceda, 19 € (9 € fins als 16), només per a les classes d'aquell espai. L'assegurança esportiva anual va a part. Inscripció gratuïta i dues classes de prova."
+      en: "PRICE € a month, or KIDS € up to age 16, with access to all our spaces. With a CxEM Espronceda membership, 19 € (9 € up to 16), for that space's classes only. The annual sports insurance is paid separately. Free registration and two trial classes."
+      ja: "月額PRICEユーロ（16歳まではKIDSユーロ）で、すべての稽古場所に通えます。エスプロンセダの会員は19ユーロ（16歳までは9ユーロ）で、同施設の稽古のみが対象です。年間のスポーツ保険は別途です。入会金は無料、体験稽古は2回まで。"
     fees:
       members_head:
-        es: "Abonados del CxEM Espronceda"
-        ca: "Abonats del CxEM Espronceda"
-        en: "CxEM Espronceda members"
+        es: "Con abono del CxEM Espronceda"
+        ca: "Amb abonament del CxEM Espronceda"
+        en: "With a CxEM Espronceda membership"
         ja: "エスプロンセダ会員"
       members_short:
-        es: "Abonados del CxEM"
-        ca: "Abonats del CxEM"
+        es: "Con abono del CxEM"
+        ca: "Amb abonament del CxEM"
         en: "CxEM members"
         ja: "施設会員"
       rows:
-        - who: { es: "A partir de 12 años", ca: "A partir de 12 anys", en: "From the age of 12", ja: "12歳以上" }
+        - who: { es: "17 años o más", ca: "17 anys o més", en: "17 and over", ja: "17歳以上" }
           general: 39
           members: 19
+        - who: { es: "Hasta 16 años", ca: "Fins a 16 anys", en: "Up to 16", ja: "16歳まで" }
+          general: 29
+          members: 9
       notes:
-        - es: "<b>La cuota da acceso a todos nuestros espacios</b>: Badalona, Barcelona y Sant Adrià de Besòs."
-          ca: "<b>La quota dona accés a tots els nostres espais</b>: Badalona, Barcelona i Sant Adrià de Besòs."
-          en: "<b>The fee covers all our spaces</b>: Badalona, Barcelona and Sant Adrià de Besòs."
-          ja: "<b>月謝ですべての稽古場所に通えます</b>：バダロナ、バルセロナ、サント・アドリア・ダ・バゾス。"
-        - es: "<b>Abonados:</b> la cuota reducida es para quien ya tiene el abono del Complejo Deportivo Municipal Espronceda, y hay que acreditarlo al apuntarse."
-          ca: "<b>Abonats:</b> la quota reduïda és per a qui ja té l'abonament del Complex Esportiu Municipal Espronceda, i cal acreditar-ho en apuntar-s'hi."
-          en: "<b>Members:</b> the reduced fee is for anyone who already holds a membership of the Espronceda Municipal Sports Complex, shown when signing up."
-          ja: "<b>施設会員：</b>エスプロンセダ市立スポーツ複合施設の会員の方が対象です。入会時に会員証をご提示ください。"
-        - es: "<b>Sin coste:</b> la inscripción y las dos clases de prueba. Si te apuntas por tres meses o más, el keikogi lo pone el dojo."
-          ca: "<b>Sense cost:</b> la inscripció i les dues classes de prova. Si t'apuntes per tres mesos o més, el keikogi el posa el dojo."
-          en: "<b>Free:</b> registration and the two trial classes. Sign up for three months or more and the dojo provides the keikogi."
-          ja: "<b>無料：</b>入会金と2回の体験稽古。3か月以上でお申し込みの場合は、稽古着を道場からお渡しします。"
-        - es: "<b>Aparte:</b> el seguro deportivo anual."
-          ca: "<b>A part:</b> l'assegurança esportiva anual."
-          en: "<b>Separately:</b> the annual sports insurance."
-          ja: "<b>別途：</b>年間のスポーツ保険。"
-        - es: "<b>Para niños y niñas de 6 a 12 años</b>, la clase es en <a href='/sant-adria-de-besos/marina-besos/'>Marina-Besòs</a>."
-          ca: "<b>Per a nens i nenes de 6 a 12 anys</b>, la classe és a <a href='/ca/sant-adria-de-besos/marina-besos/'>Marina-Besòs</a>."
-          en: "<b>For children aged 6 to 12</b>, the class is at <a href='/en/sant-adria-de-besos/marina-besos/'>Marina-Besòs</a>."
-          ja: "<b>6歳から12歳のお子さま</b>は<a href='/ja/sant-adria-de-besos/marina-besos/'>マリナ・バゾス</a>の稽古へどうぞ。"
+        - es: "<b>La cuota general da acceso a todos nuestros espacios</b>: Badalona, Barcelona y Sant Adrià de Besòs."
+          ca: "<b>La quota general dona accés a tots els nostres espais</b>: Badalona, Barcelona i Sant Adrià de Besòs."
+          en: "<b>The general fee covers all our spaces</b>: Badalona, Barcelona and Sant Adrià de Besòs."
+          ja: "<b>一般の月謝ですべての稽古場所に通えます</b>：バダロナ、バルセロナ、サント・アドリア・ダ・バゾス。"
+        - es: "<b>Con abono:</b> la cuota reducida es para quien ya tiene el abono del Complejo Deportivo Municipal Espronceda y cubre solo las clases de este espacio. Hay que acreditarlo al apuntarse."
+          ca: "<b>Amb abonament:</b> la quota reduïda és per a qui ja té l'abonament del Complex Esportiu Municipal Espronceda i cobreix només les classes d'aquest espai. Cal acreditar-ho en apuntar-s'hi."
+          en: "<b>With a membership:</b> the reduced fee is for holders of an Espronceda Municipal Sports Complex membership and covers this space's classes only. Show it when you sign up."
+          ja: "<b>施設会員：</b>エスプロンセダ市立スポーツ複合施設の会員の方が対象で、この施設での稽古のみ有効です。入会時に会員証をご提示ください。"
+        - es: "<b>Por trimestre o por año</b> sale más a cuenta, y el keikogi lo pone el dojo. <a href='/cuotas/'>Todas las cuotas</a>."
+          ca: "<b>Per trimestre o per any</b> surt més a compte, i el keikogi el posa el dojo. <a href='/ca/quotes/'>Totes les quotes</a>."
+          en: "<b>By the quarter or the year</b> it costs less, and the dojo provides the keikogi. <a href='/en/fees/'>All the fees</a>."
+          ja: "<b>3か月払い・年払い</b>はさらにお得で、稽古着を道場からお渡しします。<a href='/ja/fees/'>月謝の一覧</a>。"
+        - es: "<b>Familias:</b> cada persona más de la misma familia paga 15 € menos al mes."
+          ca: "<b>Famílies:</b> cada persona més de la mateixa família paga 15 € menys al mes."
+          en: "<b>Families:</b> each extra member of the same household pays 15 € less a month."
+          ja: "<b>家族割：</b>同じ世帯の2人目からは、ひとりにつき月15ユーロ引き。"
+        - es: "<b>Sin coste:</b> la inscripción y las dos clases de prueba. <b>Aparte:</b> el seguro deportivo anual."
+          ca: "<b>Sense cost:</b> la inscripció i les dues classes de prova. <b>A part:</b> l'assegurança esportiva anual."
+          en: "<b>Free:</b> registration and the two trial classes. <b>Separately:</b> the annual sports insurance."
+          ja: "<b>無料：</b>入会金と2回の体験稽古。<b>別途：</b>年間のスポーツ保険。"
+        - es: "<b>Entre 6 y 11 años</b>, la clase es en <a href='/sant-adria-de-besos/marina-besos/'>Marina-Besòs</a>."
+          ca: "<b>Entre 6 i 11 anys</b>, la classe és a <a href='/ca/sant-adria-de-besos/marina-besos/'>Marina-Besòs</a>."
+          en: "<b>Ages 6 to 11</b> train at <a href='/en/sant-adria-de-besos/marina-besos/'>Marina-Besòs</a>."
+          ja: "<b>6歳から11歳</b>は<a href='/ja/sant-adria-de-besos/marina-besos/'>マリナ・バゾス</a>の稽古へどうぞ。"
     teachers_line:
       es: "<b>Daniil Mikhaylov</b>, 3.er dan Aikikai, lleva la clase del CxEM Espronceda. Se formó en Aikido Musubi y sigue la línea del Aikikai Hombu Dojo de Tokio, con el mismo programa y los mismos exámenes que el dojo de Badalona."
       ca: "<b>Daniil Mikhaylov</b>, 3r dan Aikikai, porta la classe del CxEM Espronceda. S'ha format a Aikido Musubi i segueix la línia de l'Aikikai Hombu Dojo de Tòquio, amb el mateix programa i els mateixos exàmens que el dojo de Badalona."
       en: "<b>Daniil Mikhaylov</b>, 3rd dan Aikikai, leads the class at CxEM Espronceda. He trained at Aikido Musubi and follows the line of the Aikikai Hombu Dojo in Tokyo, with the same programme and the same gradings as the Badalona dojo."
       ja: "エスプロンセダの稽古は合気会三段の<b>ダニール・ミハイロフ</b>が担当します。合気道産靈で稽古を重ね、東京の合気会本部道場の流れを汲み、バダロナの道場と同じ稽古内容・同じ審査で指導しています。"
     faq_list:
-      - q: { es: "¿Tengo que ser abonado del CxEM Espronceda?", ca: "He de ser abonat del CxEM Espronceda?", en: "Do I have to be a member of CxEM Espronceda?", ja: "エスプロンセダの会員である必要はありますか。" }
+      - q: { es: "¿Necesito el abono del CxEM Espronceda?", ca: "Necessito l'abonament del CxEM Espronceda?", en: "Do I need a CxEM Espronceda membership?", ja: "エスプロンセダの会員である必要はありますか。" }
         a:
-          es: "No. Cualquiera puede apuntarse con la cuota general. Si ya tienes el abono del complejo, pagas la cuota de abonados."
-          ca: "No. Qualsevol s'hi pot apuntar amb la quota general. Si ja tens l'abonament del complex, pagues la quota d'abonats."
-          en: "No. Anyone can sign up at the standard fee. If you already hold a membership of the complex, you pay the members' fee."
+          es: "No. Cualquier persona puede apuntarse con la cuota general, que da acceso a todos los espacios. Si ya tienes el abono del complejo, puedes pagar la cuota con abono, que cubre solo las clases de este espacio."
+          ca: "No. Qualsevol persona s'hi pot apuntar amb la quota general, que dona accés a tots els espais. Si ja tens l'abonament del complex, pots pagar la quota amb abonament, que cobreix només les classes d'aquest espai."
+          en: "No. Anyone can sign up at the general fee, which covers every space. If you already hold a membership of the complex, you can pay the members' fee instead, which covers this space's classes only."
           ja: "いいえ。どなたでも一般の月謝でお申し込みいただけます。施設の会員の方は会員料金になります。"
       - q: { es: "¿Cómo encuentro la sala?", ca: "Com trobo la sala?", en: "How do I find the room?", ja: "畳の間はどこですか。" }
         a:
@@ -567,12 +567,12 @@ venue_pages:
           ca: "Sí. La quota dona accés a tots els nostres espais, i el dojo de Badalona té aikido de dimarts a dissabte, al matí i a la tarda."
           en: "Yes. The fee covers all our spaces, and the Badalona dojo has aikido Tuesday to Saturday, mornings and evenings."
           ja: "はい。月謝ですべての稽古場所に通えます。バダロナの道場では火曜から土曜まで、朝と夕方に合気道の稽古があります。"
-      - q: { es: "¿Hay clase para niños?", ca: "Hi ha classe per a infants?", en: "Is there a class for children?", ja: "こどもの稽古はありますか。" }
+      - q: { es: "¿Hay clase antes de los 12 años?", ca: "Hi ha classe abans dels 12 anys?", en: "Is there a class for under-12s?", ja: "12歳未満の稽古はありますか。" }
         a:
-          es: "Aquí no: la clase es a partir de 12 años. Para niños y niñas de 6 a 12 años, la clase es en el polideportivo Marina-Besòs, en Sant Adrià de Besòs, los lunes y los miércoles por la tarde."
-          ca: "Aquí no: la classe és a partir de 12 anys. Per a nens i nenes de 6 a 12 anys, la classe és al poliesportiu Marina-Besòs, a Sant Adrià de Besòs, els dilluns i els dimecres a la tarda."
-          en: "Not here: this class is from the age of 12. For children aged 6 to 12, the class is at the Marina-Besòs sports centre in Sant Adrià de Besòs, on Monday and Wednesday afternoons."
-          ja: "ここでは12歳以上が対象です。6歳から12歳のお子さまは、サント・アドリア・ダ・バゾスのマリナ・バゾス市立スポーツセンターで、月曜と水曜の夕方に稽古しています。"
+          es: "Aquí no: la clase es a partir de 12 años. De 6 a 16 años está la clase infantil y juvenil del polideportivo Marina-Besòs, en Sant Adrià de Besòs, los lunes y los miércoles por la tarde."
+          ca: "Aquí no: la classe és a partir de 12 anys. De 6 a 16 anys hi ha la classe infantil i juvenil del poliesportiu Marina-Besòs, a Sant Adrià de Besòs, els dilluns i els dimecres a la tarda."
+          en: "Not here: this class is from age 12. Ages 6 to 16 have their own class at the Marina-Besòs sports centre in Sant Adrià de Besòs, on Monday and Wednesday afternoons."
+          ja: "ここでは12歳以上が対象です。6歳から16歳は、サント・アドリア・ダ・バゾスのマリナ・バゾス市立スポーツセンターで、月曜と水曜の夕方に稽古しています。"
 
   - id: marina-besos
     parent: sant-adria-de-besos
@@ -586,39 +586,39 @@ venue_pages:
       en: "The class at Marina-Besòs"
       ja: "マリナ・バゾスの稽古"
     title:
-      es: "Aikido para niños en Marina-Besòs"
-      ca: "Aikido per a infants a Marina-Besòs"
-      en: "Children's aikido at Marina-Besòs"
-      ja: "マリナ・バゾスのこども合気道"
+      es: "Aikido infantil y juvenil en Marina-Besòs"
+      ca: "Aikido infantil i juvenil a Marina-Besòs"
+      en: "Aikido for children and teens at Marina-Besòs"
+      ja: "マリナ・バゾスのこども・青少年合気道"
     eyebrow:
       es: "Sant Adrià de Besòs · Polideportivo Municipal Marina-Besòs"
       ca: "Sant Adrià de Besòs · Poliesportiu Municipal Marina-Besòs"
       en: "Sant Adrià de Besòs · Marina-Besòs Municipal Sports Centre"
       ja: "サント・アドリア・ダ・バゾス · マリナ・バゾス市立スポーツセンター"
     hero_line:
-      es: "Lunes y miércoles por la tarde, de 6 a 12 años, y adolescentes hasta los 16. Aprender a caer, a moverse y a respetar al otro, sin competición."
-      ca: "Dilluns i dimecres a la tarda, de 6 a 12 anys, i adolescents fins als 16. Aprendre a caure, a moure's i a respectar l'altre, sense competició."
-      en: "Monday and Wednesday afternoons, ages 6 to 12, and teenagers up to 16. Learning to fall, to move and to respect each other, with no competition."
-      ja: "月曜と水曜の夕方、6歳から12歳、そして16歳までの青少年。受け身、体の動かし方、相手を思いやることを、試合なしで学びます。"
+      es: "Lunes y miércoles por la tarde, de 6 a 16 años. Aprender a caer, a moverse y a respetar a la otra persona, sin competición."
+      ca: "Dilluns i dimecres a la tarda, de 6 a 16 anys. Aprendre a caure, a moure's i a respectar l'altra persona, sense competició."
+      en: "Monday and Wednesday afternoons, ages 6 to 16. Learning to fall, to move and to respect each other, with no competition."
+      ja: "月曜と水曜の夕方、6歳から16歳まで。受け身、体の動かし方、相手を思いやることを、試合なしで学びます。"
     who_line:
-      es: "Niños y niñas de 6 a 12 años; los adolescentes de 12 a 16 también son bienvenidos. Si tienes más de 16, tu sitio es el <a href='/badalona/'>dojo de Badalona</a>, a diez minutos."
-      ca: "Nens i nenes de 6 a 12 anys; els adolescents de 12 a 16 també hi són benvinguts. Si tens més de 16 anys, el teu lloc és el <a href='/ca/badalona/'>dojo de Badalona</a>, a deu minuts."
-      en: "Children aged 6 to 12; teenagers from 12 to 16 are welcome too. If you are over 16, your place is the <a href='/en/badalona/'>Badalona dojo</a>, ten minutes away."
-      ja: "6歳から12歳のこども。12歳から16歳の青少年も歓迎します。16歳を超える方は、10分ほどの<a href='/ja/badalona/'>バダロナの道場</a>へどうぞ。"
+      es: "De 6 a 16 años, con o sin experiencia previa. Con más de 16 años, el sitio es el <a href='/badalona/'>dojo de Badalona</a>, a diez minutos."
+      ca: "De 6 a 16 anys, amb o sense experiència prèvia. Amb més de 16 anys, el lloc és el <a href='/ca/badalona/'>dojo de Badalona</a>, a deu minuts."
+      en: "Ages 6 to 16, with or without previous experience. Over 16, the place to train is the <a href='/en/badalona/'>Badalona dojo</a>, ten minutes away."
+      ja: "6歳から16歳まで。経験の有無は問いません。16歳を超える方は、10分ほどの<a href='/ja/badalona/'>バダロナの道場</a>へどうぞ。"
     price_line:
-      es: "29 € al mes, o 9 € para los abonados del polideportivo Marina-Besòs. El seguro deportivo anual va aparte. Inscripción gratuita y dos clases de prueba."
-      ca: "29 € al mes, o 9 € per als abonats del poliesportiu Marina-Besòs. L'assegurança esportiva anual va a part. Inscripció gratuïta i dues classes de prova."
-      en: "29 € a month, or 9 € for members of the Marina-Besòs sports centre. The annual sports insurance is paid separately. Free registration and two trial classes."
-      ja: "月額29ユーロ、マリナ・バゾスのスポーツセンター会員は9ユーロ。年間のスポーツ保険は別途です。入会金は無料、体験稽古は2回まで。"
+      es: "KIDS € al mes hasta los 16 años, con acceso a todos nuestros espacios. Con el abono del polideportivo Marina-Besòs, 9 €, solo para las clases de ese espacio. El seguro deportivo anual va aparte. Inscripción gratuita y dos clases de prueba."
+      ca: "KIDS € al mes fins als 16 anys, amb accés a tots els nostres espais. Amb l'abonament del poliesportiu Marina-Besòs, 9 €, només per a les classes d'aquell espai. L'assegurança esportiva anual va a part. Inscripció gratuïta i dues classes de prova."
+      en: "KIDS € a month up to age 16, with access to all our spaces. With a Marina-Besòs sports centre membership, 9 €, for that space's classes only. The annual sports insurance is paid separately. Free registration and two trial classes."
+      ja: "16歳までは月額KIDSユーロで、すべての稽古場所に通えます。マリナ・バゾスのスポーツセンター会員は9ユーロで、同施設の稽古のみが対象です。年間のスポーツ保険は別途です。入会金は無料、体験稽古は2回まで。"
     fees:
       members_head:
-        es: "Abonados del polideportivo Marina-Besòs"
-        ca: "Abonats del poliesportiu Marina-Besòs"
-        en: "Marina-Besòs sports centre members"
+        es: "Con abono del polideportivo Marina-Besòs"
+        ca: "Amb abonament del poliesportiu Marina-Besòs"
+        en: "With a Marina-Besòs sports centre membership"
         ja: "マリナ・バゾス施設会員"
       members_short:
-        es: "Abonados del polideportivo"
-        ca: "Abonats del poliesportiu"
+        es: "Con abono del polideportivo"
+        ca: "Amb abonament"
         en: "Sports centre members"
         ja: "施設会員"
       rows:
@@ -626,52 +626,60 @@ venue_pages:
           general: 29
           members: 9
       notes:
-        - es: "<b>Abonados:</b> la cuota reducida es para las familias que ya tienen el abono del polideportivo Marina-Besòs, y hay que acreditarlo al apuntarse."
-          ca: "<b>Abonats:</b> la quota reduïda és per a les famílies que ja tenen l'abonament del poliesportiu Marina-Besòs, i cal acreditar-ho en apuntar-s'hi."
-          en: "<b>Members:</b> the reduced fee is for families who already hold a membership of the Marina-Besòs sports centre, shown when signing up."
-          ja: "<b>施設会員：</b>マリナ・バゾスのスポーツセンターの会員のご家庭が対象です。入会時に会員証をご提示ください。"
-        - es: "<b>Sin coste:</b> la inscripción y las dos clases de prueba. Si os apuntáis por tres meses o más, el keikogi lo pone el dojo."
-          ca: "<b>Sense cost:</b> la inscripció i les dues classes de prova. Si us apunteu per tres mesos o més, el keikogi el posa el dojo."
-          en: "<b>Free:</b> registration and the two trial classes. Sign up for three months or more and the dojo provides the keikogi."
-          ja: "<b>無料：</b>入会金と2回の体験稽古。3か月以上でお申し込みの場合は、稽古着を道場からお渡しします。"
-        - es: "<b>Aparte:</b> el seguro deportivo anual."
-          ca: "<b>A part:</b> l'assegurança esportiva anual."
-          en: "<b>Separately:</b> the annual sports insurance."
-          ja: "<b>別途：</b>年間のスポーツ保険。"
-        - es: "<b>Más de 16 años:</b> la clase es en el <a href='/badalona/'>dojo de Badalona</a>, a diez minutos."
-          ca: "<b>Més de 16 anys:</b> la classe és al <a href='/ca/badalona/'>dojo de Badalona</a>, a deu minuts."
-          en: "<b>Over 16:</b> the class is at the <a href='/en/badalona/'>Badalona dojo</a>, ten minutes away."
-          ja: "<b>16歳を超える方：</b>10分ほどの<a href='/ja/badalona/'>バダロナの道場</a>で稽古します。"
+        - es: "<b>La cuota da acceso a todos nuestros espacios</b>: Badalona, Barcelona y Sant Adrià de Besòs."
+          ca: "<b>La quota dona accés a tots els nostres espais</b>: Badalona, Barcelona i Sant Adrià de Besòs."
+          en: "<b>The fee covers all our spaces</b>: Badalona, Barcelona and Sant Adrià de Besòs."
+          ja: "<b>月謝ですべての稽古場所に通えます</b>：バダロナ、バルセロナ、サント・アドリア・ダ・バゾス。"
+        - es: "<b>Con abono:</b> la cuota reducida es para quien ya tiene el abono del polideportivo Marina-Besòs y cubre solo las clases de este espacio. Hay que acreditarlo al apuntarse."
+          ca: "<b>Amb abonament:</b> la quota reduïda és per a qui ja té l'abonament del poliesportiu Marina-Besòs i cobreix només les classes d'aquest espai. Cal acreditar-ho en apuntar-s'hi."
+          en: "<b>With a membership:</b> the reduced fee is for holders of a Marina-Besòs sports centre membership and covers this space's classes only. Show it when you sign up."
+          ja: "<b>施設会員：</b>マリナ・バゾスのスポーツセンターの会員の方が対象で、この施設での稽古のみ有効です。入会時に会員証をご提示ください。"
+        - es: "<b>Por trimestre o por año</b> sale más a cuenta, y el keikogi lo pone el dojo. <a href='/cuotas/'>Todas las cuotas</a>."
+          ca: "<b>Per trimestre o per any</b> surt més a compte, i el keikogi el posa el dojo. <a href='/ca/quotes/'>Totes les quotes</a>."
+          en: "<b>By the quarter or the year</b> it costs less, and the dojo provides the keikogi. <a href='/en/fees/'>All the fees</a>."
+          ja: "<b>3か月払い・年払い</b>はさらにお得で、稽古着を道場からお渡しします。<a href='/ja/fees/'>月謝の一覧</a>。"
+        - es: "<b>Familias:</b> cada persona más de la misma familia paga 15 € menos al mes."
+          ca: "<b>Famílies:</b> cada persona més de la mateixa família paga 15 € menys al mes."
+          en: "<b>Families:</b> each extra member of the same household pays 15 € less a month."
+          ja: "<b>家族割：</b>同じ世帯の2人目からは、ひとりにつき月15ユーロ引き。"
+        - es: "<b>Sin coste:</b> la inscripción y las dos clases de prueba. <b>Aparte:</b> el seguro deportivo anual."
+          ca: "<b>Sense cost:</b> la inscripció i les dues classes de prova. <b>A part:</b> l'assegurança esportiva anual."
+          en: "<b>Free:</b> registration and the two trial classes. <b>Separately:</b> the annual sports insurance."
+          ja: "<b>無料：</b>入会金と2回の体験稽古。<b>別途：</b>年間のスポーツ保険。"
+        - es: "<b>Con más de 16 años</b>, la clase es en el <a href='/badalona/'>dojo de Badalona</a>, a diez minutos."
+          ca: "<b>Amb més de 16 anys</b>, la classe és al <a href='/ca/badalona/'>dojo de Badalona</a>, a deu minuts."
+          en: "<b>Over 16</b>, the class is at the <a href='/en/badalona/'>Badalona dojo</a>, ten minutes away."
+          ja: "<b>16歳を超える方</b>は、10分ほどの<a href='/ja/badalona/'>バダロナの道場</a>で稽古します。"
     teachers_line:
-      es: "<b>Alberto Sancho</b>, 4.º dan Aikikai, lleva la clase de Marina-Besòs. Tiene experiencia con grupos de niños y, como exige la ley a quien trabaja con menores, el certificado negativo del Registro Central de Delincuentes Sexuales. Se formó en Aikido Musubi y sigue la línea del Aikikai Hombu Dojo de Tokio."
+      es: "<b>Alberto Sancho</b>, 4.º dan Aikikai, lleva la clase de Marina-Besòs. Tiene experiencia con grupos infantiles y, como exige la ley a quien trabaja con menores, el certificado negativo del Registro Central de Delincuentes Sexuales. Se formó en Aikido Musubi y sigue la línea del Aikikai Hombu Dojo de Tokio."
       ca: "<b>Alberto Sancho</b>, 4t dan Aikikai, porta la classe de Marina-Besòs. Té experiència amb grups d'infants i, com exigeix la llei a qui treballa amb menors, el certificat negatiu del Registre Central de Delinqüents Sexuals. S'ha format a Aikido Musubi i segueix la línia de l'Aikikai Hombu Dojo de Tòquio."
       en: "<b>Alberto Sancho</b>, 4th dan Aikikai, leads the class at Marina-Besòs. He has experience with children's groups and, as the law requires of anyone working with minors, holds a clear certificate from Spain's Central Register of Sex Offenders. He trained at Aikido Musubi and follows the line of the Aikikai Hombu Dojo in Tokyo."
       ja: "マリナ・バゾスの稽古は合気会四段の<b>アルベルト・サンチョ</b>が担当します。こどもの指導経験があり、未成年を指導する者に法律で求められているとおり、性犯罪者中央登録の無犯罪証明書を取得しています。合気道産靈で稽古を重ね、東京の合気会本部道場の流れを汲んでいます。"
     faq_list:
-      - q: { es: "¿Desde qué edad pueden venir?", ca: "Des de quina edat poden venir?", en: "From what age can they come?", ja: "何歳から参加できますか。" }
+      - q: { es: "¿Desde qué edad se puede venir?", ca: "Des de quina edat es pot venir?", en: "From what age?", ja: "何歳から参加できますか。" }
         a:
-          es: "Desde los 6 años. El grupo es de 6 a 12, y los adolescentes de hasta 16 también son bienvenidos. A partir de los 16 se entrena en el dojo de Badalona."
-          ca: "Des dels 6 anys. El grup és de 6 a 12, i els adolescents de fins a 16 també hi són benvinguts. A partir dels 16 s'entrena al dojo de Badalona."
-          en: "From 6. The group is 6 to 12, and teenagers up to 16 are welcome too. From 16, training is at the Badalona dojo."
-          ja: "6歳からです。6歳から12歳のグループで、16歳までの青少年も歓迎します。16歳を超えるとバダロナの道場での稽古になります。"
-      - q: { es: "¿Es seguro para los niños?", ca: "És segur per als infants?", en: "Is it safe for children?", ja: "こどもにとって安全ですか。" }
+          es: "Desde los 6 años y hasta los 16. Con más de 16 años se entrena en el dojo de Badalona."
+          ca: "Des dels 6 anys i fins als 16. Amb més de 16 anys s'entrena al dojo de Badalona."
+          en: "From 6 up to 16. Over 16, training is at the Badalona dojo."
+          ja: "6歳から16歳までです。16歳を超えるとバダロナの道場での稽古になります。"
+      - q: { es: "¿Es una actividad segura?", ca: "És una activitat segura?", en: "Is it safe?", ja: "安全ですか。" }
         a:
-          es: "Sí. En aikido no hay golpes ni competición, y lo primero que se aprende es a caer sin hacerse daño, siempre sobre tatami y al ritmo de cada uno."
+          es: "Sí. En aikido no hay golpes ni competición, y lo primero que se aprende es a caer sin hacerse daño, siempre sobre tatami y al ritmo de cada persona."
           ca: "Sí. A l'aikido no hi ha cops ni competició, i el primer que s'aprèn és a caure sense fer-se mal, sempre sobre tatami i al ritme de cadascú."
-          en: "Yes. There is no striking and no competition in aikido, and the first thing learnt is how to fall without getting hurt, always on the mat and at each child's own pace."
+          en: "Yes. There is no striking and no competition in aikido, and the first thing learnt is how to fall without getting hurt, always on the mat and at each person's own pace."
           ja: "はい。合気道には打撃も試合もなく、最初に学ぶのはけがをしない受け身です。いつも畳の上で、一人ひとりのペースに合わせて稽古します。"
-      - q: { es: "¿Tenemos que ser abonados del polideportivo?", ca: "Hem de ser abonats del poliesportiu?", en: "Do we have to be members of the sports centre?", ja: "スポーツセンターの会員である必要はありますか。" }
+      - q: { es: "¿Hace falta el abono del polideportivo?", ca: "Cal l'abonament del poliesportiu?", en: "Do we need a sports centre membership?", ja: "スポーツセンターの会員である必要はありますか。" }
         a:
-          es: "No. Cualquiera puede apuntarse con la cuota general. Si ya sois abonados del polideportivo Marina-Besòs, pagáis la cuota de abonados."
-          ca: "No. Qualsevol s'hi pot apuntar amb la quota general. Si ja sou abonats del poliesportiu Marina-Besòs, pagueu la quota d'abonats."
-          en: "No. Anyone can sign up at the standard fee. If you are already members of the Marina-Besòs sports centre, you pay the members' fee."
-          ja: "いいえ。どなたでも一般の月謝でお申し込みいただけます。マリナ・バゾスの会員の方は会員料金になります。"
+          es: "No. Cualquier persona puede apuntarse con la cuota general, que da acceso a todos los espacios. Con el abono del polideportivo Marina-Besòs se puede pagar la cuota con abono, que cubre solo las clases de este espacio."
+          ca: "No. Qualsevol persona s'hi pot apuntar amb la quota general, que dona accés a tots els espais. Amb l'abonament del poliesportiu Marina-Besòs es pot pagar la quota amb abonament, que cobreix només les classes d'aquest espai."
+          en: "No. Anyone can sign up at the general fee, which covers every space. With a Marina-Besòs sports centre membership you can pay the members' fee instead, which covers this space's classes only."
+          ja: "いいえ。どなたでも、すべての稽古場所に有効な一般の月謝でお申し込みいただけます。マリナ・バゾスの会員の方は、この施設の稽古のみ有効な会員料金もご利用いただけます。"
       - q: { es: "¿Qué necesitan para la primera clase?", ca: "Què necessiten per a la primera classe?", en: "What do they need for the first class?", ja: "最初の稽古には何が必要ですか。" }
         a:
-          es: "Ropa cómoda de manga y pantalón largos. Al apuntarse hace falta un keikogi; si os apuntáis por tres meses o más, lo pone el dojo."
-          ca: "Roba còmoda de màniga i pantalons llargs. En apuntar-s'hi cal un keikogi; si us apunteu per tres mesos o més, el posa el dojo."
-          en: "Comfortable clothes with long sleeves and long trousers. A keikogi is needed on signing up; sign up for three months or more and the dojo provides it."
-          ja: "長袖・長ズボンの動きやすい服装で大丈夫です。入会時には稽古着が必要ですが、3か月以上でお申し込みの場合は道場からお渡しします。"
+          es: "Ropa cómoda de manga y pantalón largos. Al apuntarse hace falta un keikogi; con la cuota trimestral o anual, lo pone el dojo."
+          ca: "Roba còmoda de màniga i pantalons llargs. En apuntar-s'hi cal un keikogi; amb la quota trimestral o anual, el posa el dojo."
+          en: "Comfortable clothes with long sleeves and long trousers. A keikogi is needed on signing up; on the quarterly or annual fee, the dojo provides it."
+          ja: "長袖・長ズボンの動きやすい服装で大丈夫です。入会時には稽古着が必要ですが、3か月払い・年払いの場合は道場からお渡しします。"
       - q: { es: "¿Cómo encontramos la sala?", ca: "Com trobem la sala?", en: "How do we find the room?", ja: "畳の間はどこですか。" }
         a:
           es: "La sala de tatami está dentro del polideportivo y puede costar encontrarla. En la página de acceso tenéis el plano con la entrada marcada; la primera vez, venid con tiempo."
@@ -706,10 +714,10 @@ faq_common:
       en: "Do I have to buy a keikogi to start?"
       ja: "はじめに稽古着を買う必要はありますか。"
     a:
-      es: "No. Para las primeras clases basta con ropa cómoda de manga larga y pantalón largo. Si después te apuntas por tres meses o más, el keikogi lo pone el dojo, en cualquiera de los espacios."
-      ca: "No. Per a les primeres classes n'hi ha prou amb roba còmoda de màniga llarga i pantalons llargs. Si després t'hi apuntes per tres mesos o més, el keikogi el posa el dojo, a qualsevol dels espais."
-      en: "No. Comfortable long-sleeved clothes and long trousers are enough for the first classes. If you then sign up for three months or more, the dojo provides the keikogi, at any of the spaces."
-      ja: "必要ありません。最初の数回は長袖・長ズボンの動きやすい服装で十分です。その後、3か月以上でお申し込みの場合は、どの稽古場所でも稽古着を道場からお渡しします。"
+      es: "No. Para las primeras clases basta con ropa cómoda de manga larga y pantalón largo. Si después te apuntas por trimestre o por año, el keikogi lo pone el dojo, en cualquiera de los espacios."
+      ca: "No. Per a les primeres classes n'hi ha prou amb roba còmoda de màniga llarga i pantalons llargs. Si després t'hi apuntes per trimestre o per any, el keikogi el posa el dojo, a qualsevol dels espais."
+      en: "No. Comfortable long-sleeved clothes and long trousers are enough for the first classes. If you then sign up by the quarter or the year, the dojo provides the keikogi, at any of the spaces."
+      ja: "必要ありません。最初の数回は長袖・長ズボンの動きやすい服装で十分です。その後、3か月払い・年払いでお申し込みの場合は、どの稽古場所でも稽古着を道場からお渡しします。"
   - q:
       es: "¿Puedo probar antes de apuntarme?"
       ca: "Puc provar-ho abans d'apuntar-m'hi?"
@@ -728,10 +736,10 @@ faq_common:
       en: "How much does it cost?"
       ja: "費用はどのくらいですか。"
     a:
-      es: "39 € al mes, con acceso a todos nuestros espacios: Badalona, Barcelona y Sant Adrià de Besòs. La inscripción es gratuita y hay dos clases de prueba. El seguro deportivo anual va aparte."
-      ca: "39 € al mes, amb accés a tots els nostres espais: Badalona, Barcelona i Sant Adrià de Besòs. La inscripció és gratuïta i hi ha dues classes de prova. L'assegurança esportiva anual va a part."
-      en: "39 € a month, with access to all our spaces: Badalona, Barcelona and Sant Adrià de Besòs. Registration is free and there are two trial classes. The annual sports insurance is paid separately."
-      ja: "月額39ユーロで、バダロナ・バルセロナ・サント・アドリア・ダ・バゾスのすべての稽古場所に通えます。入会金は無料で、体験稽古は2回まで受けられます。年間のスポーツ保険は別途です。"
+      es: "PRICE € al mes, o KIDS € hasta los 16 años, con acceso a todos nuestros espacios: Badalona, Barcelona y Sant Adrià de Besòs. Por trimestre o por año sale más a cuenta, y cada persona más de la familia paga FAM € menos al mes. La inscripción es gratuita y hay dos clases de prueba. El seguro deportivo anual va aparte."
+      ca: "PRICE € al mes, o KIDS € fins als 16 anys, amb accés a tots els nostres espais: Badalona, Barcelona i Sant Adrià de Besòs. Per trimestre o per any surt més a compte, i cada persona més de la família paga FAM € menys al mes. La inscripció és gratuïta i hi ha dues classes de prova. L'assegurança esportiva anual va a part."
+      en: "PRICE € a month, or KIDS € up to age 16, with access to all our spaces: Badalona, Barcelona and Sant Adrià de Besòs. Paying by the quarter or the year costs less, and each extra family member pays FAM € less a month. Registration is free and there are two trial classes. The annual sports insurance is paid separately."
+      ja: "月額PRICEユーロ（16歳まではKIDSユーロ）で、バダロナ・バルセロナ・サント・アドリア・ダ・バゾスのすべての稽古場所に通えます。3か月払い・年払いはさらにお得で、ご家族は2人目からひとりにつき月FAMユーロ引きです。入会金は無料で、体験稽古は2回まで受けられます。年間のスポーツ保険は別途です。"
   - q:
       es: "¿En qué idioma se dan las clases?"
       ca: "En quin idioma es fan les classes?"

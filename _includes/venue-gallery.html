@@ -3,7 +3,8 @@
   proposal 1 in docs/mockups/venue-photos.html, with the room-and-practice
   photograph in the large tile and the site's own venue grade.
 
-  Params: venue (an entry of _data/venues.yml with `gallery`), lang.
+  Params: photos (a list of gallery photos; defaults to venue.gallery),
+  venue, lang. A venue with several galleries (the dojo) passes each list.
 
   THE CROP IS CSS, NOT AN EDIT. Each <img> fills its tile; `--x`/`--y` is the
   focal point and `--z` scales around it, so the empty floor of a large room
@@ -21,9 +22,9 @@
   phone never downloads it.
 {%- endcomment -%}
 {%- assign L = include.lang -%}
-{%- assign v = include.venue -%}
+{%- assign photos = include.photos | default: include.venue.gallery -%}
 <div class="lo-gal">
-  {%- for g in v.gallery limit: 5 -%}
+  {%- for g in photos limit: 5 -%}
     {%- assign z = g.zoom | default: 1 -%}
     {%- assign ss = site.data.imgw[g.img] -%}
     {%- assign dim = site.data.imgdim[g.img] -%}

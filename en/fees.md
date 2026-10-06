@@ -2,14 +2,14 @@
 layout: fees
 title: Fees
 seo_title: "How much aikido costs: fees and discounts"
-description: "Aikido from 35 € a month for adults and 25 € for children, with family discounts and lower rates by the quarter, half year or year. Free registration and two trial classes."
+description: "Aikido for 39 € a month, or 29 € up to age 16, with access to all our spaces. Discounts by the quarter, the year and for families. Free registration and two trial classes."
 permalink: /en/fees/
 lang: en
 i18n-ref: fees-UjbuGtGz
-last_modified: 2026-09-13
+last_modified: 2026-10-06
 ---
 
 # Fees
 
-Registration is free. We offer family discounts. And we give you two trial classes with no commitment. For more about the different fees and how to pay, [get in touch](/en/contact/).
+One fee for all our spaces: Badalona, Barcelona and Sant Adrià de Besòs. Registration is free, the first two classes are trials, and there are discounts by the quarter, by the year and for families. For any question about fees or how to pay, [write to us](/en/contact/).
 

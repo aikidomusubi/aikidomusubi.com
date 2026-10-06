@@ -137,6 +137,161 @@ venues:
     # from the street. Absent where there is no photograph, and the templates
     # render nothing rather than a placeholder.
     photo: "access-information-NdxqmVbV-aikido-musubi-room"
+    # THREE GALLERIES, not one: the dojo has a full photographic session
+    # (Galdric Peñarroja, 26 July 2025), so the page can show the room, the
+    # start of a class and the technique, five photographs each, in the same
+    # mosaic as the other venues. `credit` names the photographer under each
+    # section and in the ImageObjects. The originals are 4000px; these are
+    # whole files cropped in CSS, as everywhere else.
+    credit: "Galdric Peñarroja"
+    galleries:
+      - id: dojo
+        lab: { es: "El dojo", ca: "El dojo", en: "The dojo", ja: "道場" }
+        h:   { es: "Un espacio dedicado al aikido", ca: "Un espai dedicat a l'aikido", en: "A space given over to aikido", ja: "合気道のための空間" }
+        photos:
+          - img: "access-information-NdxqmVbV-aikido-musubi-dojo-01"
+            at: [50, 55]
+            zoom: 1.15
+            alt:
+              es: "La clase sentada en seiza frente al kamiza, en el dojo de Aikido Musubi en Badalona."
+              ca: "La classe asseguda en seiza davant del kamiza, al dojo d'Aikido Musubi a Badalona."
+              en: "The class seated in seiza facing the kamiza, at the Aikido Musubi dojo in Badalona."
+              ja: "バダロナの合気道産靈道場で、神座に向かって正座する稽古生。"
+            caption: { es: "La clase, frente al kamiza", ca: "La classe, davant del kamiza", en: "The class, facing the kamiza", ja: "神座に向かって" }
+          - img: "access-information-NdxqmVbV-aikido-musubi-dojo-02"
+            at: [50, 55]
+            zoom: 1.0
+            alt:
+              es: "El tatami del dojo de Aikido Musubi, vacío, con luz natural."
+              ca: "El tatami del dojo d'Aikido Musubi, buit, amb llum natural."
+              en: "The mat at the Aikido Musubi dojo, empty, in daylight."
+              ja: "自然光の入る、合気道産靈道場の畳。"
+            caption: { es: "El tatami", ca: "El tatami", en: "The mat", ja: "畳" }
+          - img: "access-information-NdxqmVbV-aikido-musubi-dojo-03"
+            at: [24, 45]
+            zoom: 1.8
+            alt:
+              es: "El kamiza del dojo, con la caligrafía de aikido y de Musubi."
+              ca: "El kamiza del dojo, amb la cal·ligrafia d'aikido i de Musubi."
+              en: "The dojo's kamiza, with the calligraphy for aikido and Musubi."
+              ja: "「合氣道」と「産靈」の書が掛かる道場の神座。"
+            caption: { es: "El kamiza", ca: "El kamiza", en: "The kamiza", ja: "神座" }
+          - img: "access-information-NdxqmVbV-aikido-musubi-dojo-04"
+            at: [90, 40]
+            zoom: 1.8
+            alt:
+              es: "Las armas de madera colgadas en la pared del dojo."
+              ca: "Les armes de fusta penjades a la paret del dojo."
+              en: "The wooden weapons on the dojo wall."
+              ja: "道場の壁に掛けられた木製の武器。"
+            caption: { es: "Las armas", ca: "Les armes", en: "The weapons", ja: "武器" }
+          - img: "access-information-NdxqmVbV-aikido-musubi-dojo-05"
+            at: [45, 45]
+            zoom: 1.0
+            alt:
+              es: "Práctica en el tatami, con el kamiza al fondo."
+              ca: "Pràctica al tatami, amb el kamiza al fons."
+              en: "Practice on the mat, with the kamiza behind."
+              ja: "神座を背にした畳の上での稽古。"
+            caption: { es: "Al fondo, el kamiza", ca: "Al fons, el kamiza", en: "The kamiza behind", ja: "奥に神座" }
+      - id: start
+        lab: { es: "Antes de la técnica", ca: "Abans de la tècnica", en: "Before the technique", ja: "技の前に" }
+        h:   { es: "El saludo y el calentamiento", ca: "La salutació i l'escalfament", en: "The bow and the warm-up", ja: "礼と準備運動" }
+        photos:
+          - img: "access-information-NdxqmVbV-aikido-musubi-start-01"
+            at: [55, 62]
+            zoom: 1.2
+            alt:
+              es: "La clase calienta junta en el tatami del dojo de Aikido Musubi."
+              ca: "La classe escalfa junta al tatami del dojo d'Aikido Musubi."
+              en: "The class warming up together on the mat at the Aikido Musubi dojo."
+              ja: "合気道産靈道場の畳で、全員で準備運動。"
+            caption: { es: "El calentamiento", ca: "L'escalfament", en: "The warm-up", ja: "準備運動" }
+          - img: "access-information-NdxqmVbV-aikido-musubi-start-02"
+            at: [60, 55]
+            zoom: 1.0
+            alt:
+              es: "Una fila de aikidokas sentados en seiza antes de empezar."
+              ca: "Una fila d'aikidokes asseguts en seiza abans de començar."
+              en: "A row of aikidoka seated in seiza before the class begins."
+              ja: "稽古の前に正座で並ぶ稽古生。"
+            caption: { es: "En seiza, antes de empezar", ca: "En seiza, abans de començar", en: "In seiza, before the start", ja: "稽古の前の正座" }
+          - img: "access-information-NdxqmVbV-aikido-musubi-start-03"
+            at: [50, 40]
+            zoom: 1.0
+            alt:
+              es: "Dos aikidokas en seiza, atentos a la explicación."
+              ca: "Dos aikidokes en seiza, atents a l'explicació."
+              en: "Two aikidoka in seiza, following the explanation."
+              ja: "説明に耳を傾ける正座の二人。"
+            caption: { es: "Atención", ca: "Atenció", en: "Attention", ja: "傾聴" }
+          - img: "access-information-NdxqmVbV-aikido-musubi-start-04"
+            at: [60, 55]
+            zoom: 1.1
+            alt:
+              es: "Estiramientos en el suelo durante el calentamiento."
+              ca: "Estiraments a terra durant l'escalfament."
+              en: "Stretching on the floor during the warm-up."
+              ja: "準備運動の柔軟。"
+            caption: { es: "Los estiramientos", ca: "Els estiraments", en: "Stretching", ja: "柔軟" }
+          - img: "access-information-NdxqmVbV-aikido-musubi-start-05"
+            at: [60, 35]
+            zoom: 1.0
+            alt:
+              es: "Un aikidoka en seiza en la fila de la clase."
+              ca: "Un aikidoka en seiza a la fila de la classe."
+              en: "An aikidoka in seiza in the class line."
+              ja: "列に並んで正座する稽古生。"
+            caption: { es: "La fila", ca: "La fila", en: "The line", ja: "列" }
+      - id: technique
+        lab: { es: "La práctica", ca: "La pràctica", en: "The practice", ja: "稽古" }
+        h:   { es: "La técnica, explicada y practicada", ca: "La tècnica, explicada i practicada", en: "Technique, shown and practised", ja: "技の説明と稽古" }
+        photos:
+          - img: "access-information-NdxqmVbV-aikido-musubi-technique-01"
+            at: [57, 55]
+            zoom: 1.2
+            alt:
+              es: "El instructor muestra una técnica ante la clase, sentada alrededor del tatami."
+              ca: "L'instructor mostra una tècnica davant la classe, asseguda al voltant del tatami."
+              en: "The instructor shows a technique to the class, seated around the mat."
+              ja: "畳のまわりに座る稽古生の前で、指導者が技を示す。"
+            caption: { es: "La demostración", ca: "La demostració", en: "The demonstration", ja: "技の説明" }
+          - img: "access-information-NdxqmVbV-aikido-musubi-technique-02"
+            at: [50, 55]
+            zoom: 1.0
+            alt:
+              es: "Una inmovilización en el suelo, con la clase mirando."
+              ca: "Una immobilització a terra, amb la classe mirant."
+              en: "A pin on the floor, with the class watching."
+              ja: "稽古生が見守るなかでの固め技。"
+            caption: { es: "Una inmovilización", ca: "Una immobilització", en: "A pin", ja: "固め技" }
+          - img: "access-information-NdxqmVbV-aikido-musubi-technique-03"
+            at: [55, 70]
+            zoom: 1.0
+            alt:
+              es: "Detalle de las manos en una inmovilización."
+              ca: "Detall de les mans en una immobilització."
+              en: "Close-up of the hands in a pin."
+              ja: "固め技の手の詳細。"
+            caption: { es: "El detalle", ca: "El detall", en: "The detail", ja: "細部" }
+          - img: "access-information-NdxqmVbV-aikido-musubi-technique-04"
+            at: [50, 60]
+            zoom: 1.0
+            alt:
+              es: "Una proyección durante la demostración del instructor."
+              ca: "Una projecció durant la demostració de l'instructor."
+              en: "A throw during the instructor's demonstration."
+              ja: "指導者による投げ技の説明。"
+            caption: { es: "Una proyección", ca: "Una projecció", en: "A throw", ja: "投げ技" }
+          - img: "access-information-NdxqmVbV-aikido-musubi-technique-05"
+            at: [45, 55]
+            zoom: 1.1
+            alt:
+              es: "La clase observa una técnica desde el borde del tatami."
+              ca: "La classe observa una tècnica des de la vora del tatami."
+              en: "The class watching a technique from the edge of the mat."
+              ja: "畳の端から技を見る稽古生。"
+            caption: { es: "Mirar también es aprender", ca: "Mirar també és aprendre", en: "Watching is learning too", ja: "見ることも稽古" }
     # Overlay shapes, as SVG polygon points in % of the image. Traced from the
     # outlines Juanma drew over the orthophotos, so they follow the actual
     # footprint rather than a bounding box — the Badalona parking is a triangle.

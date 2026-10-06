@@ -73,6 +73,7 @@
   {%- assign beg_who = S.instructors | where: 'id', beg.instructor | first -%}
   {%- assign dojo = V.venues | where: 'id', 'aikido-musubi' | first -%}
   {%- assign fee = site.data.fees.prices.monthly.adults.fee -%}
+  {%- assign kids = site.data.fees.prices.monthly.children.fee -%}
 
   {%- comment -%}
     The hero is the photograph of the tatami, which is the only image on the
@@ -162,10 +163,10 @@
       {%- endcomment -%}
       <dt>{{ site.data.locations.ui.f_price[L] }}</dt>
       <dd>
-        {%- if L == 'ca' -%}Les dues primeres classes no costen res i la inscripció és gratuïta. Després, {{ fee }} € al mes.
-        {%- elsif L == 'en' -%}The first two classes cost nothing and enrolment is free. After that, {{ fee }} € a month.
-        {%- elsif L == 'ja' -%}最初の二回は無料、入会金もかかりません。その後は月{{ fee }}ユーロです。
-        {%- else -%}Las dos primeras clases no cuestan nada y la inscripción es gratuita. Después, {{ fee }} € al mes.
+        {%- if L == 'ca' -%}Les dues primeres classes no costen res i la inscripció és gratuïta. Després, {{ fee }} € al mes, o {{ kids }} € fins als 16 anys, amb accés a tots els espais.
+        {%- elsif L == 'en' -%}The first two classes cost nothing and enrolment is free. After that, {{ fee }} € a month, or {{ kids }} € up to age 16, covering every space.
+        {%- elsif L == 'ja' -%}最初の二回は無料、入会金もかかりません。その後は月{{ fee }}ユーロ（16歳までは{{ kids }}ユーロ）で、すべての稽古場所に通えます。
+        {%- else -%}Las dos primeras clases no cuestan nada y la inscripción es gratuita. Después, {{ fee }} € al mes, o {{ kids }} € hasta los 16 años, con acceso a todos los espacios.
         {%- endif -%}
       </dd>
     </dl>

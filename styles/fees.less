@@ -635,3 +635,27 @@
   .fee-detail-body { display: block !important; padding: 0; }
   .fee-table { break-inside: avoid; }
 }
+
+// ---------------------------------------------------------------------------
+// The family and members' blocks: the offer box, with a table inside.
+//
+// The table's greys are measured on white; inside the 4% tint the usual
+// lighten(@Dark, 18%) lands at 4.56:1, so these use the darker 8% the offer's
+// own small print already uses. The members' block takes the blue, not the
+// green: it is a condition, not a saving on every card.
+// ---------------------------------------------------------------------------
+.page main .fee-offer .fee-table {
+  max-width: 36rem;
+  margin: 1rem 0 0;
+
+  thead th { color: lighten(@Dark, 8%); }
+}
+
+.page main .fee-offer .fee-th-who { color: lighten(@Dark, 8%); }
+
+.fee-members {
+  border-left-color: @Blue;
+  background-color: fadeout(@Blue, 96%);
+}
+
+.page main .fee-members .fee-offer-eyebrow { color: @Blue; }

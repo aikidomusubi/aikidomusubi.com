@@ -558,10 +558,10 @@ topics:
       - q: { es: "¿Cuántos días a la semana hay que ir?", ca: "Quants dies a la setmana cal anar-hi?",
              en: "How many days a week should I come?", ja: "週に何回通えばいいですか。" }
         a:
-          es: ["Con dos ya se avanza. Con uno se mantiene, y con tres o cuatro se nota mucho. No hay un mínimo obligatorio: la cuota da acceso a todas las clases de tu actividad y vas las que puedas."]
-          ca: ["Amb dos ja s'avança. Amb un es manté, i amb tres o quatre es nota molt. No hi ha un mínim obligatori: la quota dóna accés a totes les classes de la teva activitat i hi vas les que puguis."]
-          en: ["Two is enough to make progress. One keeps you where you are; three or four shows quickly. There is no compulsory minimum — the fee covers every class in your activity and you come to the ones you can."]
-          ja: ["週二回でしっかり進みます。一回なら維持、三、四回になるとはっきり変わります。最低回数の決まりはありません。月謝はその活動のすべての稽古に有効で、来られる日に来ていただければ十分です。"]
+          es: ["Con dos ya se avanza. Con uno se mantiene, y con tres o cuatro se nota mucho. No hay un mínimo obligatorio: la cuota da acceso a todas las clases de tu actividad, en todos los espacios, y vas a las que puedas."]
+          ca: ["Amb dos ja s'avança. Amb un es manté, i amb tres o quatre es nota molt. No hi ha un mínim obligatori: la quota dona accés a totes les classes de la teva activitat, a tots els espais, i hi vas a les que puguis."]
+          en: ["Two is enough to make progress. One keeps you where you are; three or four shows quickly. There is no compulsory minimum — the fee covers every class in your activity, at every space, and you come to the ones you can."]
+          ja: ["週二回でしっかり進みます。一回なら維持、三、四回になるとはっきり変わります。最低回数の決まりはありません。月謝はその活動のすべての稽古場所・すべての稽古に有効で、来られる日に来ていただければ十分です。"]
       - q: { es: "Tengo una lesión antigua. ¿Puedo practicar?", ca: "Tinc una lesió antiga. Puc practicar?",
              en: "I have an old injury. Can I practise?", ja: "古い怪我があります。稽古できますか。" }
         a:

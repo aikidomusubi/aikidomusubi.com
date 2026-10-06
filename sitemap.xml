@@ -183,7 +183,12 @@ permalink: /sitemap.xml
       {%- for vid in tloc.venues -%}
         {%- assign slo = site.data.schedule.locations | where: 'id', vid | first -%}
         {%- assign sv = site.data.venues.venues | where: 'id', slo.slug | first -%}
-        {%- for g in sv.gallery %}
+        {%- assign sph = sv.gallery -%}
+        {%- if sv.galleries -%}
+          {%- assign sph = '' | split: '' -%}
+          {%- for gal in sv.galleries %}{% assign sph = sph | concat: gal.photos %}{% endfor -%}
+        {%- endif -%}
+        {%- for g in sph %}
     <image:image>
       <image:loc>{{ site.url }}/images/{{ g.img }}.jpg</image:loc>
       <image:title>{{ g.alt[p.lang] | xml_escape }}</image:title>
