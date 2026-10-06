@@ -7134,3 +7134,39 @@ entries:
     tags: []
     show: false
     seen: true
+  - type: post
+    date_iso: "2026-09-20"
+    name: "🌻"
+    url: "https://www.instagram.com/p/DdhoUiPjOz2/"
+    thumb: "gallery-2026-09-20-post-319686"
+    ref: "17946005916319686"
+    tags: [seminar, travel]
+    show: true
+    seen: true
+  - type: post
+    date_iso: "2026-09-20"
+    name: "The trams in Bucharest arrive before you decide to leave. 🚃"
+    url: "https://www.instagram.com/p/Ddhmnf-jO--/"
+    thumb: "gallery-2026-09-20-the-trams-in-bucharest-arrive-before-you-706958"
+    ref: "18130141603706958"
+    tags: [seminar, travel]
+    show: true
+    seen: true
+  - type: post
+    date_iso: "2026-09-20"
+    name: "Miyamoto Sensei is quietly terrifying. Somebody should tell the intern"
+    url: "https://www.instagram.com/p/Ddhld_ijE4D/"
+    thumb: "gallery-2026-09-20-miyamoto-sensei-is-quietly-terrifying-so-662477"
+    ref: "17866571433662477"
+    tags: [seminar, travel]
+    show: true
+    seen: true
+  - type: post
+    date_iso: "2026-10-02"
+    name: "📣 Arturo Fernández, 4t dan Aikikai, torna a Aikido Musubi!"
+    url: "https://www.instagram.com/p/Dd_F6CAMnPY/"
+    thumb: ""
+    ref: "18072522320485607"
+    tags: []
+    show: false
+    seen: true
