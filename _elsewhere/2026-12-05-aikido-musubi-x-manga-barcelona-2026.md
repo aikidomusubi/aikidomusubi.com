@@ -30,5 +30,11 @@ image_en: "events-hFZ2XXIp-2026-12-05-aikido-musubi-x-manga-barcelona-2026-ca-es
 image_es: "events-hFZ2XXIp-2026-12-05-aikido-musubi-x-manga-barcelona-2026-ca-es-en"
 image_ja: "events-hFZ2XXIp-2026-12-05-aikido-musubi-x-manga-barcelona-2026-ca-es-en"
 
-event_link: "https://www.manga-barcelona.com/"
+# The fair's own site is in our four languages, so each page links to its own.
+# `event_link_<lang>` overrides `event_link`, which stays as the fallback.
+event_link: "https://www.manga-barcelona.com/es/inicio.cfm"
+event_link_es: "https://www.manga-barcelona.com/es/inicio.cfm"
+event_link_ca: "https://www.manga-barcelona.com/ca/inici.cfm"
+event_link_en: "https://www.manga-barcelona.com/en/home.cfm"
+event_link_ja: "https://www.manga-barcelona.com/jp/home.cfm"
 ---

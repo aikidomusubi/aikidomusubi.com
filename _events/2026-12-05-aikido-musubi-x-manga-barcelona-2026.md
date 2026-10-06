@@ -41,6 +41,12 @@ price: 0
 
 date_from: "2026-12-05"
 date_to: "2026-12-08"
-event_link: "https://www.manga-barcelona.com/"
+# The fair's own site is in our four languages, so each page links to its own.
+# `event_link_<lang>` overrides `event_link`, which stays as the fallback.
+event_link: "https://www.manga-barcelona.com/es/inicio.cfm"
+event_link_es: "https://www.manga-barcelona.com/es/inicio.cfm"
+event_link_ca: "https://www.manga-barcelona.com/ca/inici.cfm"
+event_link_en: "https://www.manga-barcelona.com/en/home.cfm"
+event_link_ja: "https://www.manga-barcelona.com/jp/home.cfm"
 registration_link:
 ---
