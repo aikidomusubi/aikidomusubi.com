@@ -7,5 +7,5 @@ title: "Aikido en Barcelona"
 seo_title: "Aikido en Barcelona: lunes y miércoles"
 description: "Aikido en Barcelona los lunes y miércoles, en el Complejo Deportivo Municipal Espronceda y en la Facultad de Derecho de la UB. Horario, direcciones y dos clases de prueba."
 permalink: /barcelona/
-last_modified: 2026-09-17
+last_modified: 2026-10-06
 ---

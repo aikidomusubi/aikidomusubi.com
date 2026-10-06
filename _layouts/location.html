@@ -29,6 +29,23 @@
   {%- assign S = site.data.schedule -%}
   {%- assign V = site.data.venues -%}
   {%- assign loc = LO.locations | where: 'id', page.location | first -%}
+  {%- comment -%}
+    A VENUE PAGE is a location with one room and a `parent` town:
+    /barcelona/cxem-espronceda/, /sant-adria-de-besos/marina-besos/. Same
+    components, same data, rendered by this same layout, so the two kinds of
+    page cannot drift apart. What a venue page adds, and the town page does
+    not carry, is what keeps them from being the same page twice: the fee
+    cards with the sports-centre members' rate, a photograph for a hero, the
+    venue's own figures and the venue's own questions. See `venue_pages` in
+    _data/locations.yml.
+  {%- endcomment -%}
+  {%- unless loc %}{% assign loc = LO.venue_pages | where: 'id', page.location | first %}{% endunless -%}
+  {%- assign parent = nil -%}
+  {%- if loc.parent -%}
+    {%- assign parent = LO.locations | where: 'id', loc.parent | first -%}
+    {%- assign parentPage = site.pages | where: 'i18n-ref', parent.ref | where: 'lang', L | first -%}
+  {%- endif -%}
+  {%- assign accessPage = site.pages | where: 'i18n-ref', 'access-information-NdxqmVbV' | where: 'lang', L | first -%}
 
   {%- comment -%}
     The figures. Counted, never typed — the same rule the calendar and the
@@ -69,6 +86,8 @@
   {%- assign rows = '' -%}
   {%- for vid in loc.venues -%}
     {%- for c in S.classes -%}
+      {%- comment -%} `categories` on a town limits the page to those arts. {%- endcomment -%}
+      {%- if loc.categories -%}{%- unless loc.categories contains c.category %}{% continue %}{% endunless %}{%- endif -%}
       {%- if c.location == vid -%}
         {%- assign lo = S.locations | where: 'id', c.location | first -%}
         {%- assign cat = S.categories | where: 'id', c.category | first -%}
@@ -145,7 +164,23 @@
   {%- endcomment -%}
   {%- assign hero = loc.ref | append: '-map-' | append: LO.hero_style -%}
   {%- capture heroset -%}/images/{{ hero }}-1200.SFX 1200w, /images/{{ hero }}-1920.SFX 1920w, /images/{{ hero }}-2560.SFX 2560w, /images/{{ hero }}-2880.SFX 2880w{%- endcapture -%}
-  <div class="lo-hero">
+  <div class="lo-hero{% if loc.hero_photo %} lo-hero-photo{% endif %}">
+    {%- if loc.hero_photo -%}
+    {%- comment -%}
+      A VENUE PAGE OPENS ON THE ROOM, a photograph rather than a map of the
+      town: that is the hero of proposal B in docs/mockups/venue-espronceda-b.html.
+      The focal point comes from the data, because the town heroes' "top of
+      the frame" rule was made for maps and would crop a photograph's people.
+    {%- endcomment -%}
+    {%- assign hss = site.data.imgw[loc.hero_photo.img] -%}
+    <picture>
+      <source type="image/webp" sizes="100vw"
+              srcset="{% if hss %}{{ hss }}{% else %}/images/{{ loc.hero_photo.img }}.webp{% endif %}">
+      <img src="/images/{{ loc.hero_photo.img }}.jpg" alt="" width="1600" height="1066"
+           fetchpriority="high" decoding="sync"
+           style="object-position: {{ loc.hero_photo.at[0] }}% {{ loc.hero_photo.at[1] }}%">
+    </picture>
+    {%- else %}
     <picture>
       <source type="image/webp" sizes="100vw" srcset="{{ heroset | replace: 'SFX', 'webp' }}">
       <source type="image/jpeg" sizes="100vw" srcset="{{ heroset | replace: 'SFX', 'jpg' }}">
@@ -158,6 +193,7 @@
       <img src="/images/{{ hero }}-1200.jpg" alt="" width="1200" height="900"
            fetchpriority="high" decoding="sync">
     </picture>
+    {%- endif %}
 
     <div class="lo-hero-in">
       <p class="lo-kick">{{ loc.eyebrow[L] }}</p>
@@ -176,15 +212,33 @@
     below already carries the hours and the fee, and having both say it put the
     same four numbers on screen twice within a screen's height.
   {%- endcomment -%}
+  {%- if loc.fees -%}
+  {%- comment -%}
+    A venue page's figures are the venue's: the days, the hour and the two
+    fees, read from the timetable and from `fees` below rather than typed.
+  {%- endcomment -%}
+  {%- assign f0 = rows[0] | split: '¦' -%}
+  {%- assign fr = loc.fees.rows[0] %}
+  <div class="lo-figs">
+    <div><b>{{ f0[1] }}</b><span>{{ U.fig_days[L] }}</span></div>
+    <div><b>{{ f0[8] }}</b><span>{{ U.fig_until[L] | replace: 'END', f0[2] }}</span></div>
+    <div><b>{{ fr.general }} €</b><span>{{ U.fig_general[L] }}</span></div>
+    <div><b>{{ fr.members }} €</b><span>{{ loc.fees.members_short[L] }}</span></div>
+  </div>
+  {%- else %}
   <div class="lo-figs">
     <div><b>{{ founded }}</b><span>{{ U.since[L] }}</span></div>
     <div><b>{{ n_teach }}</b><span>{{ U.teachers_n[L] }}</span></div>
     <div><b>{{ n_events }}</b><span>{{ U.courses_n[L] }}</span></div>
     <div><b>Aikikai</b><span>{{ U.lineage[L] }}</span></div>
   </div>
+  {%- endif %}
 
   <p class="lo-crumb">
     <a href="{% if L == 'es' %}/{% else %}/{{ L }}/{% endif %}">{{ U.home[L] }}</a>
+    {%- if parent %}
+    <span aria-hidden="true">·</span> <a href="{{ parentPage.url }}">{{ parent.title[L] }}</a>
+    {%- endif %}
     <span aria-hidden="true">·</span> {{ loc.title[L] }}
   </p>
 
@@ -219,6 +273,7 @@
       <dd>
         <ul class="lo-when">
         {%- for cat in S.categories -%}
+          {%- if loc.categories -%}{%- unless loc.categories contains cat.id %}{% continue %}{% endunless %}{%- endif -%}
           {%- assign days_on = '' -%}
           {%- for i in (0..6) -%}
             {%- assign j = i | plus: woff -%}
@@ -258,7 +313,8 @@
         y jóvenes desde 12 años · 35 € al mes" printed over it was false twice.
       {%- endcomment -%}
       <dt>{{ U.f_who[L] }}</dt><dd>{% if loc.who_line %}{{ loc.who_line[L] }}{% else %}{{ U.who_line[L] }}{% endif %}</dd>
-      {%- assign fee = site.data.fees.prices.monthly.adults.fee -%}
+      {%- comment -%} LO.fee: see the note on `fee` in _data/locations.yml. {%- endcomment -%}
+      {%- assign fee = LO.fee | default: site.data.fees.prices.monthly.adults.fee -%}
       <dt>{{ U.f_price[L] }}</dt><dd>{% if loc.price_line %}{{ loc.price_line[L] }}{% else %}{{ U.price_line[L] | replace: 'PRICE', fee }}{% endif %}</dd>
       <dt>{{ U.f_bring[L] }}</dt><dd>{{ U.bring_line[L] }}</dd>
       {%- comment -%}
@@ -305,6 +361,37 @@
     </dl>
   </section>
 
+  {%- if loc.fees %}
+  {%- comment -%} ── la cuota, venue pages only ─────────────────────────── {%- endcomment -%}
+  <section class="lo-sec">
+    <p class="lo-lab">{{ U.lab_fees[L] }}</p>
+    <h2>{{ U.h_fees[L] }}</h2>
+    <div class="lo-fees">
+      <div class="lo-fee">
+        <p class="k">{{ U.fee_general[L] }}</p>
+        <dl>
+          {%- for r in loc.fees.rows %}
+          <dt>{{ r.who[L] }}</dt><dd>{{ r.general }} €<small>{{ U.per_month[L] }}</small></dd>
+          {%- endfor %}
+        </dl>
+      </div>
+      <div class="lo-fee lo-fee-m">
+        <p class="k">{{ loc.fees.members_head[L] }}</p>
+        <dl>
+          {%- for r in loc.fees.rows %}
+          <dt>{{ r.who[L] }}</dt><dd>{{ r.members }} €<small>{{ U.per_month[L] }}</small></dd>
+          {%- endfor %}
+        </dl>
+      </div>
+    </div>
+    <ul class="lo-fee-notes">
+      {%- for n in loc.fees.notes %}
+      <li>{{ n[L] }}</li>
+      {%- endfor %}
+    </ul>
+  </section>
+  {%- endif %}
+
   {%- comment -%} ── tu primera clase ──────────────────────────────────── {%- endcomment -%}
   <section class="lo-sec">
     <p class="lo-lab">{{ U.lab_first[L] }}</p>
@@ -324,7 +411,7 @@
   <section class="lo-sec" id="{{ loc.ref }}-horario">
     <p class="lo-lab">{{ U.lab_when[L] }}</p>
     {%- assign town = loc.title[L] | split: ' ' | last -%}
-    <h2>{{ U.h_when[L] | replace: 'TOWN', loc.town_name[L] }}</h2>
+    <h2>{% if loc.h_when %}{{ loc.h_when[L] }}{% else %}{{ U.h_when[L] | replace: 'TOWN', loc.town_name[L] }}{% endif %}</h2>
     {%- comment -%}
       The "where" column only exists where there is a choice to make. Badalona
       and Sant Adrià each have one room, so it printed the same venue name on
@@ -400,11 +487,36 @@
             <a href="{{ v.apple_url }}" target="_blank" rel="noopener">Apple Maps</a>
             {%- endif %}
           </p>
+          {%- comment -%}
+            THE TOWN PAGE LINKS DOWN to the room's own page, and the room's page
+            links to the plan with the entrance marked. The link down is what
+            makes the town page a hub rather than a second copy of the venue.
+          {%- endcomment -%}
+          {%- assign vp = LO.venue_pages | where_exp: 'x', 'x.venues contains vid' | first -%}
+          {%- if vp and vp.id != loc.id -%}
+            {%- assign vpPage = site.pages | where: 'i18n-ref', vp.ref | where: 'lang', L | first %}
+          <p class="lo-note"><a class="lo-more" href="{{ vpPage.url }}">{{ U.venue_more[L] | replace: 'NAME', v.name[L] }}</a></p>
+          {%- elsif loc.parent %}
+          <p class="lo-note"><a class="lo-more" href="{{ accessPage.url }}#{{ v.id }}">{{ U.plan_more[L] }}</a></p>
+          {%- endif %}
         </div>
       </article>
       {%- endfor %}
     </div>
   </section>
+
+  {%- comment -%} ── the room, photographed: one section per venue that has a gallery ── {%- endcomment -%}
+  {%- for vid in loc.venues -%}
+    {%- assign lo3 = S.locations | where: 'id', vid | first -%}
+    {%- assign v3 = site.data.venues.venues | where: 'id', lo3.slug | first -%}
+    {%- if v3.gallery %}
+  <section class="lo-sec">
+    <p class="lo-lab">{{ U.lab_inside[L] }}</p>
+    <h2>{{ U.h_inside[L] | replace: 'NAME', v3.name[L] }}</h2>
+    {% include venue-gallery.html venue=v3 lang=L %}
+  </section>
+    {%- endif -%}
+  {%- endfor %}
 
   {%- comment -%} ── quién enseña ──────────────────────────────────────── {%- endcomment -%}
   <section class="lo-sec">
@@ -425,6 +537,19 @@
       and it costs no JavaScript. Same component as the About pages.
     {%- endcomment -%}
     <div class="ab-faq">
+      {%- if loc.faq_list -%}
+      {%- comment -%}
+        A venue page asks its own questions and not the town's: the shared five
+        are on the town page already, and the same answers on two URLs is the
+        duplication these pages exist to avoid.
+      {%- endcomment -%}
+      {%- for f in loc.faq_list %}
+      <details name="{{ loc.ref }}-faq">
+        <summary>{{ f.q[L] }}</summary>
+        <div class="a"><p>{{ f.a[L] }}</p></div>
+      </details>
+      {%- endfor %}
+      {%- else -%}
       {%- for f in LO.faq_common %}
       {%- if f.id and loc.faq[f.id] %}{% assign fa = loc.faq[f.id][L] %}{% else %}{% assign fa = f.a[L] %}{% endif %}
       <details name="{{ loc.ref }}-faq">
@@ -436,6 +561,7 @@
         <summary>{{ loc.faq_local.q[L] }}</summary>
         <div class="a"><p>{{ loc.faq_local.a[L] }}</p></div>
       </details>
+      {%- endif %}
     </div>
   </section>
 
@@ -445,7 +571,7 @@
     <h2>{{ U.h_also[L] }}</h2>
     <div class="lo-others">
       {%- for o in LO.locations -%}
-        {%- if o.id == loc.id %}{% continue %}{% endif -%}
+        {%- if o.id == loc.id or o.id == loc.parent %}{% continue %}{% endif -%}
         {%- assign otherPage = site.pages | where: 'i18n-ref', o.ref | where: 'lang', L | first -%}
         {%- comment -%}
           That town's own map, in `others_style` — the same rendered files the
@@ -493,6 +619,10 @@
   <p class="lo-credit">{{ U.map_credit[L] }}
     © <a href="https://www.openstreetmap.org/copyright"
          target="_blank" rel="noopener">OpenStreetMap</a> contributors</p>
+  {%- comment -%}
+    Still printed on a venue page with a photograph hero: the "also" cards
+    above are OpenStreetMap maps too.
+  {%- endcomment -%}
 
   {%- comment -%}
     Structured data. A SportsClub per room with its address, coordinates and
@@ -534,6 +664,24 @@
         {%- if v.lat and v.lng %}
         "geo": { "@type": "GeoCoordinates", "latitude": {{ v.lat }}, "longitude": {{ v.lng }} },
         {%- endif %}
+        {%- comment -%}
+          The gallery, as ImageObjects with credit and copyright: what Google
+          Images reads for an image's details. Only for rooms that have one.
+        {%- endcomment -%}
+        {%- if v.gallery %}
+        "photo": [
+          {%- for g in v.gallery %}
+          {
+            "@type": "ImageObject",
+            "contentUrl": "{{ site.url }}/images/{{ g.img }}.jpg",
+            "caption": {{ g.alt[L] | jsonify }},
+            "creditText": {{ site.title | jsonify }},
+            "copyrightNotice": {{ site.title | prepend: '© ' | jsonify }},
+            "creator": { "@type": "Organization", "name": {{ site.title | jsonify }} }
+          }{% unless forloop.last %},{% endunless %}
+          {%- endfor %}
+        ],
+        {%- endif %}
         "openingHoursSpecification": [
           {%- assign first_h = true -%}
           {%- for c in S.classes -%}
@@ -558,6 +706,15 @@
       {
         "@type": "FAQPage",
         "mainEntity": [
+          {%- if loc.faq_list -%}
+          {%- for f in loc.faq_list %}
+          {
+            "@type": "Question",
+            "name": {{ f.q[L] | strip_html | jsonify }},
+            "acceptedAnswer": { "@type": "Answer", "text": {{ f.a[L] | strip_html | jsonify }} }
+          }{% unless forloop.last %},{% endunless %}
+          {%- endfor %}
+          {%- else -%}
           {%- for f in LO.faq_common %}
           {%- if f.id and loc.faq[f.id] %}{% assign fa = loc.faq[f.id][L] %}{% else %}{% assign fa = f.a[L] %}{% endif %}
           {
@@ -571,6 +728,7 @@
             "name": {{ loc.faq_local.q[L] | jsonify }},
             "acceptedAnswer": { "@type": "Answer", "text": {{ loc.faq_local.a[L] | jsonify }} }
           }
+          {%- endif %}
         ]
       },
       {
@@ -578,8 +736,15 @@
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": {{ U.home[L] | jsonify }},
             "item": "{{ site.url }}{% if L == 'es' %}/{% else %}/{{ L }}/{% endif %}" },
+          {%- if parent %}
+          { "@type": "ListItem", "position": 2, "name": {{ parent.title[L] | jsonify }},
+            "item": {{ parentPage.url | prepend: site.url | jsonify }} },
+          { "@type": "ListItem", "position": 3, "name": {{ loc.title[L] | jsonify }},
+            "item": {{ page.url | prepend: site.url | jsonify }} }
+          {%- else %}
           { "@type": "ListItem", "position": 2, "name": {{ loc.title[L] | jsonify }},
             "item": {{ page.url | prepend: site.url | jsonify }} }
+          {%- endif %}
         ]
       }
     ]

@@ -1,0 +1,47 @@
+{%- comment -%}
+  THE MOSAIC: five photographs of one venue, the first large. Approved as
+  proposal 1 in docs/mockups/venue-photos.html, with the room-and-practice
+  photograph in the large tile and the site's own venue grade.
+
+  Params: venue (an entry of _data/venues.yml with `gallery`), lang.
+
+  THE CROP IS CSS, NOT AN EDIT. Each <img> fills its tile; `--x`/`--y` is the
+  focal point and `--z` scales around it, so the empty floor of a large room
+  falls outside the frame and the file stays whole.
+
+  `sizes` IS THE TILE TIMES THE ZOOM. A tile drawn at 470px with a 1.4 zoom
+  shows a 658px-wide piece of the image; a `sizes` that ignored the zoom would
+  fetch one width too small and the crop would go soft. The tile widths are
+  measured on the built page: the large and wide tiles are half the content
+  column (≈470px from 992px up), the three small ones a sixth of it (≈155px);
+  below 768px the first two are the full column and the next two half of it.
+
+  Real <img>s with alt text, never CSS backgrounds: a background is invisible
+  to Google Images. The fifth tile is display:none on a phone, and lazy, so a
+  phone never downloads it.
+{%- endcomment -%}
+{%- assign L = include.lang -%}
+{%- assign v = include.venue -%}
+<div class="lo-gal">
+  {%- for g in v.gallery limit: 5 -%}
+    {%- assign z = g.zoom | default: 1 -%}
+    {%- assign ss = site.data.imgw[g.img] -%}
+    {%- assign dim = site.data.imgdim[g.img] -%}
+    {%- if forloop.index <= 2 -%}
+      {%- assign wd = 470 | times: z | round -%}{%- assign wm = 100 | times: z | round -%}
+    {%- else -%}
+      {%- assign wd = 155 | times: z | round -%}{%- assign wm = 50 | times: z | round -%}
+    {%- endif %}
+  <figure class="lo-gal-t t{{ forloop.index }}" style="--x:{{ g.at[0] }}%;--y:{{ g.at[1] }}%;--z:{{ z }}">
+    <picture>
+      <source type="image/webp"
+              srcset="{% if ss %}{{ ss }}{% else %}/images/{{ g.img }}.webp{% endif %}"
+              {% if ss %}sizes="(min-width: 768px) {{ wd }}px, {{ wm }}vw"{% endif %}>
+      <img src="/images/{{ g.img }}.jpg" loading="lazy" decoding="async"
+           {% if dim %}width="{{ dim[0] }}" height="{{ dim[1] }}"{% endif %}
+           alt="{{ g.alt[L] | escape }}">
+    </picture>
+    <figcaption>{{ g.caption[L] }}</figcaption>
+  </figure>
+  {%- endfor %}
+</div>

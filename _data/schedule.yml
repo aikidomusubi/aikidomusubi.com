@@ -224,10 +224,10 @@ levels:
     name: { es: "Principiantes",     ca: "Principiants",     en: "Beginners",  ja: "初心者" }
   - id: weapons
     name: { es: "Armas",             ca: "Armes",            en: "Weapons",    ja: "武器" }
-  # A class for young people only, from 12. Not `all`: "Todos los niveles"
-  # tells an adult reading the timetable that the class is open to them.
-  - id: youth
-    name: { es: "Jóvenes, desde 12 años", ca: "Joves, des de 12 anys", en: "Young people, 12 and up", ja: "12歳以上の青少年" }
+  # A class for children, 6 to 12, with teenagers up to 16 welcome. Not `all`:
+  # "Todos los niveles" tells an adult reading the timetable it is open to them.
+  - id: children
+    name: { es: "Niños y jóvenes, de 6 a 16 años", ca: "Infants i joves, de 6 a 16 anys", en: "Children and teens, 6 to 16", ja: "こども・青少年（6〜16歳）" }
 
 # Who teaches what.
 #
@@ -336,10 +336,11 @@ classes:
   - { category: karate,   location: musubi,     level: all,       days: [sat],      start: "11:00", end: "13:00", instructor: llorens }
 
   # ---- Sant Adrià de Besòs ----
-  # From October 2026 Marina-Besòs is a class for young people, from 12, and
-  # nothing else: the two adult evening classes (Mon 20:00, Wed 20:15) it
-  # replaced are gone, not moved. Alberto Sancho teaches it.
-  - { category: aikido,   location: sant-adria, level: youth,     days: [mon, wed], start: "18:30", end: "19:30", instructor: sancho }
+  # From October 2026 Marina-Besòs is the children's class, 6 to 12, with
+  # teenagers up to 16 welcome, and nothing else: the two adult evening classes
+  # (Mon 20:00, Wed 20:15) it replaced are gone, not moved. Over-16s are sent
+  # to the Badalona dojo. Alberto Sancho teaches it.
+  - { category: aikido,   location: sant-adria, level: children,     days: [mon, wed], start: "18:30", end: "19:30", instructor: sancho }
 
   # ---- Barcelona · CxEM Espronceda ----
   # In the tatami room of the municipal sports complex, both days the same hour

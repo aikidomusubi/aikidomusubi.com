@@ -289,6 +289,60 @@ venues:
     # from the street. Absent where there is no photograph, and the templates
     # render nothing rather than a placeholder.
     photo: "access-information-NdxqmVbV-sant-adria-de-besos-room"
+    # THE GALLERY on the town page and the venue page: five photographs in the
+    # mosaic's order, the first one large. Taken 5 October 2026.
+    #
+    # The files are whole; `at` and `zoom` crop them in CSS. `at` is the focal
+    # point in per cent of the frame and `zoom` scales around it, so the empty
+    # floor of a large room stays outside the tile. A better photograph later
+    # is a new file and a new line here, never an overwrite (see CLAUDE.md on
+    # images and the year-long browser cache).
+    gallery:
+      - img: "access-information-NdxqmVbV-marina-besos-practice-01"
+        at: [58, 60]
+        zoom: 1.3
+        alt:
+          es: "Una proyección en la sala de tatami del polideportivo Marina-Besòs, en Sant Adrià de Besòs."
+          ca: "Una projecció a la sala de tatami del poliesportiu Marina-Besòs, a Sant Adrià de Besòs."
+          en: "A throw in the tatami room at the Marina-Besòs sports centre, Sant Adrià de Besòs."
+          ja: "サント・アドリア・ダ・バゾスのマリナ・バゾス市立スポーツセンター、畳の間での投げ技。"
+        caption: { es: "La sala de tatami", ca: "La sala de tatami", en: "The tatami room", ja: "畳の間" }
+      - img: "access-information-NdxqmVbV-marina-besos-practice-02"
+        at: [64, 62]
+        zoom: 1.5
+        alt:
+          es: "Una caída, el ukemi, durante la práctica de aikido en Marina-Besòs."
+          ca: "Una caiguda, l'ukemi, durant la pràctica d'aikido a Marina-Besòs."
+          en: "A fall, or ukemi, during aikido practice at Marina-Besòs."
+          ja: "マリナ・バゾスでの合気道の稽古。受け身の瞬間。"
+        caption: { es: "Ukemi, la caída", ca: "Ukemi, la caiguda", en: "Ukemi, the fall", ja: "受け身" }
+      - img: "access-information-NdxqmVbV-marina-besos-practice-03"
+        at: [50, 44]
+        zoom: 1.0
+        alt:
+          es: "Una inmovilización en el tatami de Marina-Besòs."
+          ca: "Una immobilització al tatami de Marina-Besòs."
+          en: "A pin on the mat at Marina-Besòs."
+          ja: "マリナ・バゾスの畳の上での固め技。"
+        caption: { es: "Una inmovilización", ca: "Una immobilització", en: "A pin", ja: "固め技" }
+      - img: "access-information-NdxqmVbV-marina-besos-practice-04"
+        at: [42, 40]
+        zoom: 1.0
+        alt:
+          es: "Una aikidoka practica una técnica en Marina-Besòs."
+          ca: "Una aikidoka practica una tècnica a Marina-Besòs."
+          en: "An aikidoka practising a technique at Marina-Besòs."
+          ja: "マリナ・バゾスで技を稽古する合気道家。"
+        caption: { es: "Práctica por parejas", ca: "Pràctica per parelles", en: "Practice in pairs", ja: "二人一組の稽古" }
+      - img: "access-information-NdxqmVbV-marina-besos-practice-05"
+        at: [55, 45]
+        zoom: 1.05
+        alt:
+          es: "Una técnica vista desde el tatami en Marina-Besòs."
+          ca: "Una tècnica vista des del tatami a Marina-Besòs."
+          en: "A technique seen from the mat at Marina-Besòs."
+          ja: "畳の高さから見たマリナ・バゾスでの技。"
+        caption: { es: "Desde el tatami", ca: "Des del tatami", en: "From the mat", ja: "畳の高さから" }
     # Where facility[L] prints, unhighlighted, over the complex itself.
     site_label_at: [65.0, 44.5]
     areas:
@@ -412,6 +466,60 @@ venues:
     # render nothing rather than a placeholder.
     photo: "access-information-NdxqmVbV-cxem-espronceda-room"
     facade: "access-information-NdxqmVbV-cxem-espronceda-facade"
+    # THE GALLERY on the town page and the venue page: five photographs in the
+    # mosaic's order, the first one large. Taken 5 October 2026.
+    #
+    # The files are whole; `at` and `zoom` crop them in CSS. `at` is the focal
+    # point in per cent of the frame and `zoom` scales around it, so the empty
+    # floor of a large room stays outside the tile. A better photograph later
+    # is a new file and a new line here, never an overwrite (see CLAUDE.md on
+    # images and the year-long browser cache).
+    gallery:
+      - img: "access-information-NdxqmVbV-cxem-espronceda-practice-05"
+        at: [40, 64]
+        zoom: 1.3
+        alt:
+          es: "Una caída, el ukemi, en la sala de tatami del CxEM Espronceda, en Barcelona."
+          ca: "Una caiguda, l'ukemi, a la sala de tatami del CxEM Espronceda, a Barcelona."
+          en: "A fall, or ukemi, in the tatami room at CxEM Espronceda, Barcelona."
+          ja: "バルセロナのエスプロンセダの畳の間での受け身。"
+        caption: { es: "La sala de tatami", ca: "La sala de tatami", en: "The tatami room", ja: "畳の間" }
+      - img: "access-information-NdxqmVbV-cxem-espronceda-practice-02"
+        at: [62, 52]
+        zoom: 1.25
+        alt:
+          es: "Una proyección durante la práctica de aikido en el CxEM Espronceda, Barcelona."
+          ca: "Una projecció durant la pràctica d'aikido al CxEM Espronceda, Barcelona."
+          en: "A throw during aikido practice at CxEM Espronceda, Barcelona."
+          ja: "エスプロンセダでの合気道の稽古。投げ技の瞬間。"
+        caption: { es: "Una proyección", ca: "Una projecció", en: "A throw", ja: "投げ技" }
+      - img: "access-information-NdxqmVbV-cxem-espronceda-practice-03"
+        at: [50, 34]
+        zoom: 1.0
+        alt:
+          es: "Práctica de aikido por parejas en el CxEM Espronceda, Barcelona."
+          ca: "Pràctica d'aikido per parelles al CxEM Espronceda, Barcelona."
+          en: "Aikido practice in pairs at CxEM Espronceda, Barcelona."
+          ja: "エスプロンセダでの二人一組の合気道の稽古。"
+        caption: { es: "Práctica por parejas", ca: "Pràctica per parelles", en: "Practice in pairs", ja: "二人一組の稽古" }
+      - img: "access-information-NdxqmVbV-cxem-espronceda-practice-04"
+        at: [56, 58]
+        zoom: 1.2
+        alt:
+          es: "Una inmovilización en el tatami del CxEM Espronceda."
+          ca: "Una immobilització al tatami del CxEM Espronceda."
+          en: "A pin on the mat at CxEM Espronceda."
+          ja: "エスプロンセダの畳の上での固め技。"
+        caption: { es: "Una inmovilización", ca: "Una immobilització", en: "A pin", ja: "固め技" }
+      - img: "access-information-NdxqmVbV-cxem-espronceda-corridor"
+        at: [50, 58]
+        zoom: 1.0
+        alt:
+          es: "El pasillo que lleva a la sala de tatami del CxEM Espronceda."
+          ca: "El passadís que porta a la sala de tatami del CxEM Espronceda."
+          en: "The corridor leading to the tatami room at CxEM Espronceda."
+          ja: "エスプロンセダの畳の間へ続く廊下。"
+        caption: { es: "El pasillo que lleva a la sala", ca: "El passadís que porta a la sala", en: "The way to the room", ja: "畳の間への廊下" }
     # Traced from the outline Juanma drew over the orthophoto: the corners were
     # read off the yellow polygon and the green pin by sampling the pixels, not
     # estimated by eye.

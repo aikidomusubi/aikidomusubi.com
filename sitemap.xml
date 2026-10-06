@@ -170,6 +170,26 @@ permalink: /sitemap.xml
     </image:image>
         {%- endfor -%}
       {%- endfor -%}
+    {%- elsif p.layout == 'location' -%}
+      {%- comment -%}
+        THE LOCATION PAGES render their photographs from data too: the venue
+        galleries in _data/venues.yml, through _includes/venue-gallery.html.
+        Their files carry the access page's prefix, so the generic branch
+        would never attach them here. Read the data, with the alt text as the
+        title, which is what describes the image.
+      {%- endcomment -%}
+      {%- assign tloc = site.data.locations.locations | where: 'ref', ref | first -%}
+      {%- unless tloc %}{% assign tloc = site.data.locations.venue_pages | where: 'ref', ref | first %}{% endunless -%}
+      {%- for vid in tloc.venues -%}
+        {%- assign slo = site.data.schedule.locations | where: 'id', vid | first -%}
+        {%- assign sv = site.data.venues.venues | where: 'id', slo.slug | first -%}
+        {%- for g in sv.gallery %}
+    <image:image>
+      <image:loc>{{ site.url }}/images/{{ g.img }}.jpg</image:loc>
+      <image:title>{{ g.alt[p.lang] | xml_escape }}</image:title>
+    </image:image>
+        {%- endfor -%}
+      {%- endfor -%}
     {%- else -%}
       {%- assign prefix = ref | append: "-" -%}
       {%- for f in content_images -%}

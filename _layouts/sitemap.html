@@ -129,7 +129,16 @@
       heading is the footer's own venue-column label, so the two cannot end up
       calling the same thing two different things.
     {%- endcomment -%}
-    {%- assign LOC = site.data.locations.locations -%}
+    {%- comment -%}
+      The venue pages join them, each after the town it belongs to: they are
+      reached from their town page, and the map should show that.
+    {%- endcomment -%}
+    {%- assign LOC = '' | split: '' -%}
+    {%- for t in site.data.locations.locations -%}
+      {%- assign LOC = LOC | push: t -%}
+      {%- assign kids = site.data.locations.venue_pages | where: 'parent', t.id -%}
+      {%- for k in kids %}{% assign LOC = LOC | push: k %}{% endfor -%}
+    {%- endfor -%}
     {%- assign gWhere = F.columns | where: 'id', 'where' | first %}
     <section class="sm-row">
       <div class="sm-lab">

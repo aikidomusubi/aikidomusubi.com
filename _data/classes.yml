@@ -137,20 +137,21 @@ disciplines:
           ja: "合気道は剣術から生まれており、体術の動きは武器を手にすると理解しやすくなります。<i>木剣</i>、<i>杖</i>、<i>短刀</i>を用い、組んだ形で稽古します。別の武道ではなく、素手の稽古を明らかにするものです。"
         instructors: [martin, zheng]
       - id: children
-        suspended: true
-        badge: { es: "Suspendidas hasta nuevo aviso", ca: "Suspeses fins a nou avís",
-                 en: "Suspended until further notice", ja: "当面のあいだ休講" }
+        level: children
+        badge: { es: "En Marina-Besòs", ca: "A Marina-Besòs",
+                 en: "At Marina-Besòs", ja: "マリナ・バゾスで" }
         name:  { es: "Niños y niñas", ca: "Nens i nenes",
                  en: "Children",       ja: "子どもクラス" }
         body:
-          es: "De 6 a 12 años. El aikido les da concentración y confianza en un ambiente donde nadie compite contra nadie, y aprenden a defenderse sin hacer daño al otro. <b>El grupo infantil está suspendido por ahora</b>; si te interesa para tu hijo o hija, escríbenos y te avisamos en cuanto vuelva a abrirse."
-          ca: "De 6 a 12 anys. L'aikido els dóna concentració i confiança en un ambient on ningú competeix contra ningú, i aprenen a defensar-se sense fer mal a l'altre. <b>El grup infantil està suspès de moment</b>; si t'interessa per al teu fill o filla, escriu-nos i t'avisem quan torni a obrir-se."
-          en: "Ages 6 to 12. Aikido gives them focus and confidence in a setting where nobody competes against anybody, and they learn to defend themselves without hurting anyone. <b>The children's group is suspended for now</b>; if you would like a place for your child, write to us and we will let you know as soon as it reopens."
-          ja: "6歳から12歳まで。誰とも競わない環境のなかで集中力と自信が育ち、相手を傷つけずに身を守ることを学びます。<b>子どもクラスは現在休講しています。</b>ご希望の方はご連絡ください。再開の際にお知らせします。"
-        note: { es: "Escríbenos para entrar en la lista de aviso",
-                ca: "Escriu-nos per entrar a la llista d'avís",
-                en: "Write to us to join the waiting list",
-                ja: "再開のお知らせをご希望の方はご連絡ください" }
+          es: "De 6 a 12 años, y los adolescentes de 12 a 16 también son bienvenidos. El aikido les da concentración y confianza en un ambiente donde nadie compite contra nadie, y aprenden a caer sin hacerse daño y a defenderse sin hacer daño al otro. Lunes y miércoles por la tarde en el polideportivo Marina-Besòs, en Sant Adrià de Besòs, con un programa de grados propio para niños."
+          ca: "De 6 a 12 anys, i els adolescents de 12 a 16 també hi són benvinguts. L'aikido els dóna concentració i confiança en un ambient on ningú competeix contra ningú, i aprenen a caure sense fer-se mal i a defensar-se sense fer mal a l'altre. Dilluns i dimecres a la tarda al poliesportiu Marina-Besòs, a Sant Adrià de Besòs, amb un programa de graus propi per a infants."
+          en: "Ages 6 to 12, and teenagers from 12 to 16 are welcome too. Aikido gives them focus and confidence in a setting where nobody competes against anybody, and they learn to fall without getting hurt and to defend themselves without hurting anyone. Monday and Wednesday afternoons at the Marina-Besòs sports centre in Sant Adrià de Besòs, with a grading programme of its own for children."
+          ja: "6歳から12歳まで。12歳から16歳の青少年も歓迎します。誰とも競わない環境のなかで集中力と自信が育ち、けがをしない受け身と、相手を傷つけずに身を守ることを学びます。月曜と水曜の夕方、サント・アドリア・ダ・バゾスのマリナ・バゾス市立スポーツセンターで、こども向けの独自の級位制度のもとに稽古します。"
+        note: { es: "<a href='/sant-adria-de-besos/marina-besos/'>Horario, cuota y cómo llegar</a>",
+                ca: "<a href='/ca/sant-adria-de-besos/marina-besos/'>Horari, quota i com arribar-hi</a>",
+                en: "<a href='/en/sant-adria-de-besos/marina-besos/'>Times, fee and how to get there</a>",
+                ja: "<a href='/ja/sant-adria-de-besos/marina-besos/'>稽古時間・月謝・アクセス</a>" }
+        instructors: [sancho]
 
   # ---------------------------------------------------------------------------
   - id: iaijutsu
