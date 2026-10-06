@@ -44,7 +44,18 @@ import re
 import subprocess
 import sys
 
-WIDTHS = (480, 800)
+# 1600 IS FOR THE LARGE SLOTS. A photograph drawn 700px wide and cropped to
+# fill a tall box (the principal block on /clases/, the big gallery tile)
+# needs ~1400px on a 2x screen; with only 480 and 800 below a 2400px base the
+# browser had to choose between a soft 800 and the whole base.
+WIDTHS = (480, 800, 1600)
+
+# WHAT COUNTS AS A VARIANT: only the suffixes this tool and the hero renders
+# actually write. It used to be "any 3 or 4 digits at the end", which also
+# matched a YEAR, so every image named like `…-2021` or `…-2025` was taken for
+# a variant of something else and never got variants of its own: the twelve
+# Budocool `-2021` thumbnails, and two new photographs until they were renamed.
+VARIANT = re.compile(r'-(?:300|480|800|1200|1600|1920|2560|2880|t)$')
 MIN_SOURCE = 560          # below this there is nothing worth saving
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 IMAGES = os.path.join(ROOT, 'images')
@@ -83,7 +94,7 @@ def write_map():
     rows = []
     for src in sorted(glob.glob(os.path.join(IMAGES, '*.webp'))):
         name = os.path.basename(src)[:-5]
-        if re.search(r'-(?:\d{3,4}|t)$', name):
+        if VARIANT.search(name):
             continue
         w = width_of(src)
         if not w:
@@ -120,7 +131,7 @@ def write_dims():
     rows = []
     for src in sorted(glob.glob(os.path.join(IMAGES, '*.webp'))):
         name = os.path.basename(src)[:-5]
-        if re.search(r'-(?:\d{3,4}|t)$', name):
+        if VARIANT.search(name):
             continue
         w, h = size_of(src)
         if not w or not h:
@@ -150,7 +161,7 @@ def main():
     saved = 0
     for name in rendered():
         # never make variants of a variant
-        if re.search(r'-(?:\d{3,4}|t)\.webp$', name):
+        if VARIANT.search(name[:-5]):
             continue
         src = os.path.join(IMAGES, name)
         if not os.path.exists(src):

@@ -184,7 +184,8 @@
     <picture>
       <source type="image/webp" sizes="100vw"
               srcset="{% if hss %}{{ hss }}{% else %}/images/{{ loc.hero_photo.img }}.webp{% endif %}">
-      <img src="/images/{{ loc.hero_photo.img }}.jpg" alt="" width="1600" height="1066"
+      {%- assign hdim = site.data.imgdim[loc.hero_photo.img] %}
+      <img src="/images/{{ loc.hero_photo.img }}.jpg" alt="" width="{{ hdim[0] | default: 2400 }}" height="{{ hdim[1] | default: 1600 }}"
            fetchpriority="high" decoding="sync"
            style="object-position: {{ loc.hero_photo.at[0] }}% {{ loc.hero_photo.at[1] }}%">
     </picture>

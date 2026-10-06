@@ -224,7 +224,7 @@ levels:
     name: { es: "Principiantes",     ca: "Principiants",     en: "Beginners",  ja: "初心者" }
   - id: weapons
     name: { es: "Armas",             ca: "Armes",            en: "Weapons",    ja: "武器" }
-  # The class for ages 6 to 16. Not `all`: "Todos los niveles" tells an adult
+  # The class for up to 16. Not `all`: "Todos los niveles" tells an adult
   # reading the timetable it is open to them. Named by age, which is the clear
   # fact and is gender neutral in Spanish and Catalan.
   - id: children
@@ -337,7 +337,7 @@ classes:
   - { category: karate,   location: musubi,     level: all,       days: [sat],      start: "11:00", end: "13:00", instructor: llorens }
 
   # ---- Sant Adrià de Besòs ----
-  # From October 2026 Marina-Besòs is the class for ages 6 to 16, and nothing
+  # From October 2026 Marina-Besòs is the class for up to 16, and nothing
   # else: the two adult evening classes
   # (Mon 20:00, Wed 20:15) it replaced are gone, not moved. Over-16s are sent
   # to the Badalona dojo. Alberto Sancho teaches it.

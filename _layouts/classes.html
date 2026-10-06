@@ -169,10 +169,19 @@
                aria-labelledby="cl-name-{{ d.id }}">
         <div class="cl-media">
           {%- assign ss = site.data.imgw[d.image] -%}
+          {%- comment -%}
+            THE PRINCIPAL BLOCK DRAWS ITS PHOTOGRAPH WIDER THAN ITS BOX. From
+            992px the image fills the column's full height, ~480px, and a 3:2
+            photograph cropped to that height is ~720px wide, of which the box
+            shows 450. `sizes` said 460, so the browser fetched the 480 file and
+            stretched it 1.5x (3x on a 2x screen): the soft aikido photograph.
+            Measured with getBoundingClientRect at 1440; 760 leaves a margin
+            for a taller block.
+          {%- endcomment -%}
           <picture>
             <source type="image/webp"
                     srcset="{% if ss %}{{ ss }}{% else %}/images/{{ d.image }}.webp{% endif %}"
-                    {% if ss %}sizes="(min-width: 992px) 460px, 92vw"{% endif %}>
+                    {% if ss %}sizes="{% if d.tier == 'principal' %}(min-width: 992px) 760px{% else %}(min-width: 992px) 460px{% endif %}, 92vw"{% endif %}>
             <img src="/images/{{ d.image }}.jpg" width="948" height="632"
                  {% if d.tier == 'principal' %}fetchpriority="high"{% else %}loading="lazy"{% endif %}
                  decoding="async" alt="{{ d.name[L] }} · Aikido Musubi"{% if d.image_at %}

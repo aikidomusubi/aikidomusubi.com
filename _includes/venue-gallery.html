@@ -10,12 +10,16 @@
   focal point and `--z` scales around it, so the empty floor of a large room
   falls outside the frame and the file stays whole.
 
-  `sizes` IS THE TILE TIMES THE ZOOM. A tile drawn at 470px with a 1.4 zoom
-  shows a 658px-wide piece of the image; a `sizes` that ignored the zoom would
-  fetch one width too small and the crop would go soft. The tile widths are
-  measured on the built page: the large and wide tiles are half the content
-  column (≈470px from 992px up), the three small ones a sixth of it (≈155px);
-  below 768px the first two are the full column and the next two half of it.
+  `sizes` IS THE WIDTH THE IMAGE IS DRAWN AT, not the width of the tile. Two
+  things make it wider than the tile: the zoom, and `object-fit: cover`,
+  which scales a landscape photograph in a square tile to the tile's HEIGHT,
+  so a 3:2 photo in a 472px-high tile is drawn 708px wide. Both are applied
+  below, from the photograph's own proportions in _data/imgdim.yml. Ignoring
+  them fetched a file one or two sizes too small and the crops went soft.
+
+  Tile sizes measured on the built page at 1440: the large tile 470x472, the
+  wide one 470x312, the small ones 151x152. At 375 the column is ~311px: the
+  large tile 311x240, the wide one 311x176, the two small ones 151x160.
 
   Real <img>s with alt text, never CSS backgrounds: a background is invisible
   to Google Images. The fifth tile is display:none on a phone, and lazy, so a
@@ -28,11 +32,16 @@
     {%- assign z = g.zoom | default: 1 -%}
     {%- assign ss = site.data.imgw[g.img] -%}
     {%- assign dim = site.data.imgdim[g.img] -%}
-    {%- if forloop.index <= 2 -%}
-      {%- assign wd = 470 | times: z | round -%}{%- assign wm = 100 | times: z | round -%}
-    {%- else -%}
-      {%- assign wd = 155 | times: z | round -%}{%- assign wm = 50 | times: z | round -%}
-    {%- endif %}
+    {%- if dim %}{% assign ar = dim[0] | times: 1.0 | divided_by: dim[1] %}{% else %}{% assign ar = 1.5 %}{% endif -%}
+    {%- case forloop.index -%}
+      {%- when 1 %}{% assign tw = 470 %}{% assign th = 472 %}{% assign mw = 311 %}{% assign mh = 240 %}
+      {%- when 2 %}{% assign tw = 470 %}{% assign th = 312 %}{% assign mw = 311 %}{% assign mh = 176 %}
+      {%- else %}{% assign tw = 151 %}{% assign th = 152 %}{% assign mw = 151 %}{% assign mh = 160 %}
+    {%- endcase -%}
+    {%- assign dw = th | times: ar -%}{%- if dw < tw %}{% assign dw = tw %}{% endif -%}
+    {%- assign wd = dw | times: z | round -%}
+    {%- assign mwd = mh | times: ar -%}{%- if mwd < mw %}{% assign mwd = mw %}{% endif -%}
+    {%- assign wm = mwd | times: z | times: 100 | divided_by: 375 | round -%}
   <figure class="lo-gal-t t{{ forloop.index }}" style="--x:{{ g.at[0] }}%;--y:{{ g.at[1] }}%;--z:{{ z }}">
     <picture>
       <source type="image/webp"

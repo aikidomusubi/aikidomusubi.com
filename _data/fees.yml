@@ -132,7 +132,7 @@ members:
     ja: "エスプロンセダまたはマリナ・バゾスのスポーツセンターの会員の方は、その施設での稽古について、月払いの会員料金をご利用いただけます。各施設との取り決めによるもので、対象はその施設のみです。バダロナなどほかの稽古場所にも通う場合は、すべての稽古場所に有効な一般の月謝となります。"
   rows:
     - { venue: espronceda, adults: 19, children: 9 }
-    # No 17-and-over price at Marina-Besòs: its only class is for ages 6 to 16.
+    # No 17-and-over price at Marina-Besòs: its only class is for up to 16.
     - { venue: sant-adria, children: 9 }
   note:
     es: "Hay que acreditar el abono al apuntarse. Solo mes a mes; no se combina con el descuento familiar."

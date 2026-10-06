@@ -164,10 +164,10 @@ ui:
     en: "PRICE € a month, or KIDS € up to age 16, with access to all our spaces. The annual sports insurance is paid separately. Free registration and two trial classes."
     ja: "月額PRICEユーロ（16歳まではKIDSユーロ）で、すべての稽古場所に通えます。年間のスポーツ保険は別途です。入会金は無料、体験稽古は2回まで。"
   who_line:
-    es: "A partir de 12 años, con o sin experiencia previa. Entre 6 y 11 años, la clase es en <a href='/sant-adria-de-besos/marina-besos/'>Marina-Besòs</a>."
-    ca: "A partir de 12 anys, amb o sense experiència prèvia. Entre 6 i 11 anys, la classe és a <a href='/ca/sant-adria-de-besos/marina-besos/'>Marina-Besòs</a>."
-    en: "From age 12, with or without previous experience. Ages 6 to 11 train at <a href='/en/sant-adria-de-besos/marina-besos/'>Marina-Besòs</a>."
-    ja: "12歳以上。経験の有無は問いません。6歳から11歳は<a href='/ja/sant-adria-de-besos/marina-besos/'>マリナ・バゾス</a>の稽古へどうぞ。"
+    es: "A partir de 12 años, con o sin experiencia previa. Hasta 11 años, la clase es en <a href='/sant-adria-de-besos/marina-besos/'>Marina-Besòs</a>."
+    ca: "A partir de 12 anys, amb o sense experiència prèvia. Fins a 11 anys, la classe és a <a href='/ca/sant-adria-de-besos/marina-besos/'>Marina-Besòs</a>."
+    en: "From age 12, with or without previous experience. Under-12s train at <a href='/en/sant-adria-de-besos/marina-besos/'>Marina-Besòs</a>."
+    ja: "12歳以上。経験の有無は問いません。11歳までは<a href='/ja/sant-adria-de-besos/marina-besos/'>マリナ・バゾス</a>の稽古へどうぞ。"
   bring_line:
     es: "Ropa cómoda de manga y pantalón largos. El keikogi no hace falta para empezar."
     ca: "Roba còmoda de màniga i pantalons llargs. El keikogi no cal per començar."
@@ -398,23 +398,23 @@ locations:
       en: "Sant Adrià de Besòs · Marina-Besòs"
       ja: "サント・アドリア・ダ・バゾス · マリナ・バゾス"
     lede:
-      es: "Entrenamos aikido en el polideportivo municipal Marina-Besòs, en Sant Adrià de Besòs, los lunes y los miércoles por la tarde, en una clase infantil y juvenil de 6 a 16 años. Es la misma asociación que abre cada día el dojo de Badalona."
-      ca: "Entrenem aikido al poliesportiu municipal Marina-Besòs, a Sant Adrià de Besòs, els dilluns i els dimecres a la tarda, en una classe infantil i juvenil de 6 a 16 anys. És la mateixa associació que obre cada dia el dojo de Badalona."
-      en: "We train aikido at the Marina-Besòs municipal sports centre in Sant Adrià de Besòs on Monday and Wednesday afternoons, in a class for ages 6 to 16. It is the same association that opens the Badalona dojo every day."
-      ja: "サント・アドリア・ダ・バゾスのマリナ・バゾス市立スポーツセンターで、月曜と水曜の夕方に、6歳から16歳までを対象とした合気道の稽古を行っています。バダロナの道場を毎日開いているのと同じ協会です。"
+      es: "Entrenamos aikido en el polideportivo municipal Marina-Besòs, en Sant Adrià de Besòs, los lunes y los miércoles por la tarde, en una clase infantil y juvenil, hasta 16 años. Es la misma asociación que abre cada día el dojo de Badalona."
+      ca: "Entrenem aikido al poliesportiu municipal Marina-Besòs, a Sant Adrià de Besòs, els dilluns i els dimecres a la tarda, en una classe infantil i juvenil, fins a 16 anys. És la mateixa associació que obre cada dia el dojo de Badalona."
+      en: "We train aikido at the Marina-Besòs municipal sports centre in Sant Adrià de Besòs on Monday and Wednesday afternoons, in a class for children and teens up to 16. It is the same association that opens the Badalona dojo every day."
+      ja: "サント・アドリア・ダ・バゾスのマリナ・バゾス市立スポーツセンターで、月曜と水曜の夕方に、16歳までを対象とした合気道の稽古を行っています。バダロナの道場を毎日開いているのと同じ協会です。"
     hero_line:
-      es: "Lunes y miércoles por la tarde, de 6 a 16 años. Sin competición y sin comprar nada para empezar."
-      ca: "Dilluns i dimecres a la tarda, de 6 a 16 anys. Sense competició i sense comprar res per començar."
-      en: "Monday and Wednesday afternoons, ages 6 to 16. No competition, and nothing to buy to start."
-      ja: "月曜と水曜の夕方、6歳から16歳まで。試合も、はじめに買うものもありません。"
+      es: "Lunes y miércoles por la tarde, hasta 16 años. Sin competición y sin comprar nada para empezar."
+      ca: "Dilluns i dimecres a la tarda, fins a 16 anys. Sense competició i sense comprar res per començar."
+      en: "Monday and Wednesday afternoons, up to age 16. No competition, and nothing to buy to start."
+      ja: "月曜と水曜の夕方、16歳まで。試合も、はじめに買うものもありません。"
 
     # The class here is for children and teenagers at its own fee, so the
     # shared lines in `ui` would be false on this page. See _layouts/location.html.
     who_line:
-      es: "De 6 a 16 años, con o sin experiencia previa. Con más de 16 años, el sitio es el <a href='/badalona/'>dojo de Badalona</a>, a diez minutos."
-      ca: "De 6 a 16 anys, amb o sense experiència prèvia. Amb més de 16 anys, el lloc és el <a href='/ca/badalona/'>dojo de Badalona</a>, a deu minuts."
-      en: "Ages 6 to 16, with or without previous experience. Over 16, the place to train is the <a href='/en/badalona/'>Badalona dojo</a>, ten minutes away."
-      ja: "6歳から16歳まで。経験の有無は問いません。16歳を超える方は、10分ほどの<a href='/ja/badalona/'>バダロナの道場</a>へどうぞ。"
+      es: "Hasta 16 años, con o sin experiencia previa. Con más de 16 años, el sitio es el <a href='/badalona/'>dojo de Badalona</a>, a diez minutos."
+      ca: "Fins a 16 anys, amb o sense experiència prèvia. Amb més de 16 anys, el lloc és el <a href='/ca/badalona/'>dojo de Badalona</a>, a deu minuts."
+      en: "Up to age 16, with or without previous experience. Over 16, the place to train is the <a href='/en/badalona/'>Badalona dojo</a>, ten minutes away."
+      ja: "16歳まで。経験の有無は問いません。16歳を超える方は、10分ほどの<a href='/ja/badalona/'>バダロナの道場</a>へどうぞ。"
     price_line:
       es: "KIDS € al mes hasta los 16 años, con acceso a todos nuestros espacios. Con el abono del polideportivo Marina-Besòs, 9 €, solo para las clases de ese espacio. El seguro deportivo anual va aparte. Inscripción gratuita y dos clases de prueba."
       ca: "KIDS € al mes fins als 16 anys, amb accés a tots els nostres espais. Amb l'abonament del poliesportiu Marina-Besòs, 9 €, només per a les classes d'aquell espai. L'assegurança esportiva anual va a part. Inscripció gratuïta i dues classes de prova."
@@ -434,10 +434,10 @@ locations:
         en: "How is it different from the classes in Badalona?"
         ja: "バダロナの稽古とどう違いますか。"
       a:
-        es: "Marina-Besòs es nuestra clase infantil y juvenil, de 6 a 16 años. Con más de 16 años se entrena en el dojo de Badalona, a diez minutos, que tiene aikido de martes a sábado."
-        ca: "Marina-Besòs és la nostra classe infantil i juvenil, de 6 a 16 anys. Amb més de 16 anys s'entrena al dojo de Badalona, a deu minuts, que té aikido de dimarts a dissabte."
-        en: "Marina-Besòs is our class for ages 6 to 16. Over 16, training is at the Badalona dojo, ten minutes away, which has aikido Tuesday to Saturday."
-        ja: "マリナ・バゾスは6歳から16歳までの稽古です。16歳を超える方は、10分ほどのバダロナの道場で稽古します。道場では火曜から土曜まで合気道の稽古があります。"
+        es: "Marina-Besòs es nuestra clase infantil y juvenil, hasta 16 años. Con más de 16 años se entrena en el dojo de Badalona, a diez minutos, que tiene aikido de martes a sábado."
+        ca: "Marina-Besòs és la nostra classe infantil i juvenil, fins a 16 anys. Amb més de 16 anys s'entrena al dojo de Badalona, a deu minuts, que té aikido de dimarts a dissabte."
+        en: "Marina-Besòs is our class for children and teens up to 16. Over 16, training is at the Badalona dojo, ten minutes away, which has aikido Tuesday to Saturday."
+        ja: "マリナ・バゾスは16歳までの稽古です。16歳を超える方は、10分ほどのバダロナの道場で稽古します。道場では火曜から土曜まで合気道の稽古があります。"
     teachers_line:
       es: "La clase de Marina-Besòs la lleva el equipo de instructores del dojo, con un programa de grados propio para esta clase y la misma línea que en Badalona. Como exige la ley a quien trabaja con menores, el instructor tiene el certificado negativo del Registro Central de Delincuentes Sexuales. Todos se formaron en Aikido Musubi y siguen la línea del Aikikai Hombu Dojo de Tokio."
       ca: "La classe de Marina-Besòs la porta l'equip d'instructors del dojo, amb un programa de graus propi per a aquesta classe i la mateixa línia que a Badalona. Com exigeix la llei a qui treballa amb menors, l'instructor té el certificat negatiu del Registre Central de Delinqüents Sexuals. Tots s'han format a Aikido Musubi i segueixen la línia de l'Aikikai Hombu Dojo de Tòquio."
@@ -533,10 +533,10 @@ venue_pages:
           ca: "<b>Sense cost:</b> la inscripció i les dues classes de prova. <b>A part:</b> l'assegurança esportiva anual."
           en: "<b>Free:</b> registration and the two trial classes. <b>Separately:</b> the annual sports insurance."
           ja: "<b>無料：</b>入会金と2回の体験稽古。<b>別途：</b>年間のスポーツ保険。"
-        - es: "<b>Entre 6 y 11 años</b>, la clase es en <a href='/sant-adria-de-besos/marina-besos/'>Marina-Besòs</a>."
-          ca: "<b>Entre 6 i 11 anys</b>, la classe és a <a href='/ca/sant-adria-de-besos/marina-besos/'>Marina-Besòs</a>."
-          en: "<b>Ages 6 to 11</b> train at <a href='/en/sant-adria-de-besos/marina-besos/'>Marina-Besòs</a>."
-          ja: "<b>6歳から11歳</b>は<a href='/ja/sant-adria-de-besos/marina-besos/'>マリナ・バゾス</a>の稽古へどうぞ。"
+        - es: "<b>Hasta 11 años</b>, la clase es en <a href='/sant-adria-de-besos/marina-besos/'>Marina-Besòs</a>."
+          ca: "<b>Fins a 11 anys</b>, la classe és a <a href='/ca/sant-adria-de-besos/marina-besos/'>Marina-Besòs</a>."
+          en: "<b>Under 12</b>, the class is at <a href='/en/sant-adria-de-besos/marina-besos/'>Marina-Besòs</a>."
+          ja: "<b>11歳まで</b>は<a href='/ja/sant-adria-de-besos/marina-besos/'>マリナ・バゾス</a>の稽古へどうぞ。"
     teachers_line:
       es: "<b>Daniil Mikhaylov</b>, 3.er dan Aikikai, lleva la clase del CxEM Espronceda. Se formó en Aikido Musubi y sigue la línea del Aikikai Hombu Dojo de Tokio, con el mismo programa y los mismos exámenes que el dojo de Badalona."
       ca: "<b>Daniil Mikhaylov</b>, 3r dan Aikikai, porta la classe del CxEM Espronceda. S'ha format a Aikido Musubi i segueix la línia de l'Aikikai Hombu Dojo de Tòquio, amb el mateix programa i els mateixos exàmens que el dojo de Badalona."
@@ -569,10 +569,10 @@ venue_pages:
           ja: "はい。月謝ですべての稽古場所に通えます。バダロナの道場では火曜から土曜まで、朝と夕方に合気道の稽古があります。"
       - q: { es: "¿Hay clase antes de los 12 años?", ca: "Hi ha classe abans dels 12 anys?", en: "Is there a class for under-12s?", ja: "12歳未満の稽古はありますか。" }
         a:
-          es: "Aquí no: la clase es a partir de 12 años. De 6 a 16 años está la clase infantil y juvenil del polideportivo Marina-Besòs, en Sant Adrià de Besòs, los lunes y los miércoles por la tarde."
-          ca: "Aquí no: la classe és a partir de 12 anys. De 6 a 16 anys hi ha la classe infantil i juvenil del poliesportiu Marina-Besòs, a Sant Adrià de Besòs, els dilluns i els dimecres a la tarda."
-          en: "Not here: this class is from age 12. Ages 6 to 16 have their own class at the Marina-Besòs sports centre in Sant Adrià de Besòs, on Monday and Wednesday afternoons."
-          ja: "ここでは12歳以上が対象です。6歳から16歳は、サント・アドリア・ダ・バゾスのマリナ・バゾス市立スポーツセンターで、月曜と水曜の夕方に稽古しています。"
+          es: "Aquí no: la clase es a partir de 12 años. Hasta 16 años está la clase infantil y juvenil del polideportivo Marina-Besòs, en Sant Adrià de Besòs, los lunes y los miércoles por la tarde."
+          ca: "Aquí no: la classe és a partir de 12 anys. Fins a 16 anys hi ha la classe infantil i juvenil del poliesportiu Marina-Besòs, a Sant Adrià de Besòs, els dilluns i els dimecres a la tarda."
+          en: "Not here: this class is from age 12. Up to age 16 there is a class of its own at the Marina-Besòs sports centre in Sant Adrià de Besòs, on Monday and Wednesday afternoons."
+          ja: "ここでは12歳以上が対象です。16歳までは、サント・アドリア・ダ・バゾスのマリナ・バゾス市立スポーツセンターで、月曜と水曜の夕方に稽古しています。"
 
   - id: marina-besos
     parent: sant-adria-de-besos
@@ -596,15 +596,15 @@ venue_pages:
       en: "Sant Adrià de Besòs · Marina-Besòs Municipal Sports Centre"
       ja: "サント・アドリア・ダ・バゾス · マリナ・バゾス市立スポーツセンター"
     hero_line:
-      es: "Lunes y miércoles por la tarde, de 6 a 16 años. Aprender a caer, a moverse y a respetar a la otra persona, sin competición."
-      ca: "Dilluns i dimecres a la tarda, de 6 a 16 anys. Aprendre a caure, a moure's i a respectar l'altra persona, sense competició."
-      en: "Monday and Wednesday afternoons, ages 6 to 16. Learning to fall, to move and to respect each other, with no competition."
-      ja: "月曜と水曜の夕方、6歳から16歳まで。受け身、体の動かし方、相手を思いやることを、試合なしで学びます。"
+      es: "Lunes y miércoles por la tarde, hasta 16 años. Aprender a caer, a moverse y a respetar a la otra persona, sin competición."
+      ca: "Dilluns i dimecres a la tarda, fins a 16 anys. Aprendre a caure, a moure's i a respectar l'altra persona, sense competició."
+      en: "Monday and Wednesday afternoons, up to age 16. Learning to fall, to move and to respect each other, with no competition."
+      ja: "月曜と水曜の夕方、16歳まで。受け身、体の動かし方、相手を思いやることを、試合なしで学びます。"
     who_line:
-      es: "De 6 a 16 años, con o sin experiencia previa. Con más de 16 años, el sitio es el <a href='/badalona/'>dojo de Badalona</a>, a diez minutos."
-      ca: "De 6 a 16 anys, amb o sense experiència prèvia. Amb més de 16 anys, el lloc és el <a href='/ca/badalona/'>dojo de Badalona</a>, a deu minuts."
-      en: "Ages 6 to 16, with or without previous experience. Over 16, the place to train is the <a href='/en/badalona/'>Badalona dojo</a>, ten minutes away."
-      ja: "6歳から16歳まで。経験の有無は問いません。16歳を超える方は、10分ほどの<a href='/ja/badalona/'>バダロナの道場</a>へどうぞ。"
+      es: "Hasta 16 años, con o sin experiencia previa. Con más de 16 años, el sitio es el <a href='/badalona/'>dojo de Badalona</a>, a diez minutos."
+      ca: "Fins a 16 anys, amb o sense experiència prèvia. Amb més de 16 anys, el lloc és el <a href='/ca/badalona/'>dojo de Badalona</a>, a deu minuts."
+      en: "Up to age 16, with or without previous experience. Over 16, the place to train is the <a href='/en/badalona/'>Badalona dojo</a>, ten minutes away."
+      ja: "16歳まで。経験の有無は問いません。16歳を超える方は、10分ほどの<a href='/ja/badalona/'>バダロナの道場</a>へどうぞ。"
     price_line:
       es: "KIDS € al mes hasta los 16 años, con acceso a todos nuestros espacios. Con el abono del polideportivo Marina-Besòs, 9 €, solo para las clases de ese espacio. El seguro deportivo anual va aparte. Inscripción gratuita y dos clases de prueba."
       ca: "KIDS € al mes fins als 16 anys, amb accés a tots els nostres espais. Amb l'abonament del poliesportiu Marina-Besòs, 9 €, només per a les classes d'aquell espai. L'assegurança esportiva anual va a part. Inscripció gratuïta i dues classes de prova."
