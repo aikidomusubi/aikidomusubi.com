@@ -175,7 +175,8 @@
                     {% if ss %}sizes="(min-width: 992px) 460px, 92vw"{% endif %}>
             <img src="/images/{{ d.image }}.jpg" width="948" height="632"
                  {% if d.tier == 'principal' %}fetchpriority="high"{% else %}loading="lazy"{% endif %}
-                 decoding="async" alt="{{ d.name[L] }} · Aikido Musubi">
+                 decoding="async" alt="{{ d.name[L] }} · Aikido Musubi"{% if d.image_at %}
+                 style="object-position: {{ d.image_at }}"{% endif %}>
           </picture>
         </div>
 

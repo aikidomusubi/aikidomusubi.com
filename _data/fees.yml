@@ -86,20 +86,25 @@ included:
 family:
   amount: 15
   eyebrow: { es: "Familias", ca: "Famílies", en: "Families", ja: "家族割" }
-  title:   { es: "Cada persona más de la familia, 15 € menos al mes",
-             ca: "Cada persona més de la família, 15 € menys al mes",
-             en: "Each extra family member pays 15 € less a month",
+  title:   { es: "Desde la segunda persona de la familia, 15 € menos al mes",
+             ca: "Des de la segona persona de la família, 15 € menys al mes",
+             en: "From the second family member on, 15 € less a month",
              ja: "2人目からは、ひとりにつき月15ユーロ引き" }
+  # WHO PAYS WHAT, said outright. "A partir de la segunda persona, cada una
+  # paga 15 € menos" read as if both of two paid less, and left a family of
+  # three to guess. The first pays the normal fee; every one after that pays
+  # 15 € less; and the three-person example shows it.
   body:
-    es: "A partir de la segunda persona del mismo núcleo familiar, cada una paga 15 € menos al mes, con cualquier modalidad: 45 € menos al trimestre o 180 € menos al año. Vale para todas las edades y todos los espacios."
-    ca: "A partir de la segona persona del mateix nucli familiar, cadascuna paga 15 € menys al mes, amb qualsevol modalitat: 45 € menys al trimestre o 180 € menys a l'any. Val per a totes les edats i tots els espais."
-    en: "From the second person in the same household on, each pays 15 € less a month, on any plan: 45 € less a quarter or 180 € less a year. It applies at every age and at every space."
-    ja: "同じ世帯の2人目からは、どの支払い方法でもひとりにつき月15ユーロ引きです（3か月なら45ユーロ引き、1年なら180ユーロ引き）。年齢や稽古場所を問いません。"
+    es: "La primera persona del mismo núcleo familiar paga la cuota normal. La segunda, y cada una de las siguientes, paga 15 € menos al mes (45 € menos al trimestre, 180 € menos al año). En una familia de tres, por ejemplo, dos de las tres cuotas llevan el descuento. Vale para todas las edades y todos los espacios."
+    ca: "La primera persona del mateix nucli familiar paga la quota normal. La segona, i cadascuna de les següents, paga 15 € menys al mes (45 € menys al trimestre, 180 € menys a l'any). En una família de tres, per exemple, dues de les tres quotes porten el descompte. Val per a totes les edats i tots els espais."
+    en: "The first person in a household pays the normal fee. The second, and each one after that, pays 15 € less a month (45 € less a quarter, 180 € less a year). In a family of three, for example, two of the three fees carry the discount. It applies at every age and at every space."
+    ja: "同じ世帯の1人目は通常の月謝です。2人目以降は、ひとりにつき月15ユーロ引き（3か月なら45ユーロ引き、1年なら180ユーロ引き）になります。たとえば3人家族なら、3人のうち2人分が割引になります。年齢や稽古場所を問いません。"
   # Worked examples, monthly, computed on the page from the prices above.
   examples:
     - { label: { es: "Dos personas de 17 años o más", ca: "Dues persones de 17 anys o més", en: "Two people aged 17 or over", ja: "17歳以上が2人" }, people: [adults, adults] }
     - { label: { es: "Una de 17 o más y una hasta 16", ca: "Una de 17 o més i una fins a 16", en: "One aged 17 or over and one up to 16", ja: "17歳以上と16歳までが1人ずつ" }, people: [adults, children] }
     - { label: { es: "Dos hasta 16 años", ca: "Dues fins a 16 anys", en: "Two up to 16", ja: "16歳までが2人" }, people: [children, children] }
+    - { label: { es: "Dos de 17 o más y una hasta 16", ca: "Dues de 17 o més i una fins a 16", en: "Two aged 17 or over and one up to 16", ja: "17歳以上が2人と16歳までが1人" }, people: [adults, adults, children] }
   note:
     es: "Los ejemplos son mes a mes. El descuento no se suma a la cuota con abono."
     ca: "Els exemples són mes a mes. El descompte no se suma a la quota amb abonament."

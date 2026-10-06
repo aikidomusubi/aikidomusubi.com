@@ -166,7 +166,8 @@ sections:
 
   # ---------------------------------------------------------------------------
   - id: instructor
-    image: index-8oGCaMDs-05_
+    # Galdric Peñarroja, 26 July 2025.
+    image: index-8oGCaMDs-pablo-martin-demo
     label: { es: "Dirección técnica", ca: "Direcció tècnica",
              en: "Technical direction", ja: "指導部" }
     heading: { es: "Pablo Martín", ca: "Pablo Martín", en: "Pablo Martín", ja: "パブロ・マルティン" }

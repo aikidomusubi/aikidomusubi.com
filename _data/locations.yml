@@ -356,10 +356,10 @@ locations:
       ja: "月額PRICEユーロ（16歳まではKIDSユーロ）で、すべての稽古場所に通えます。エスプロンセダの会員は19ユーロ（16歳までは9ユーロ）で、同施設の稽古のみが対象です。年間のスポーツ保険は別途です。入会金は無料、体験稽古は2回まで。"
     faq:
       price:
-        es: "PRICE € al mes, o KIDS € hasta los 16 años, con acceso a todos nuestros espacios: Badalona, Barcelona y Sant Adrià de Besòs. Con el abono del CxEM Espronceda pagas 19 € (9 € hasta los 16), solo por las clases de ese espacio. Por trimestre o por año sale más a cuenta, y cada persona más de la familia paga FAM € menos al mes. La inscripción es gratuita y hay dos clases de prueba. El seguro deportivo anual va aparte."
-        ca: "PRICE € al mes, o KIDS € fins als 16 anys, amb accés a tots els nostres espais: Badalona, Barcelona i Sant Adrià de Besòs. Amb l'abonament del CxEM Espronceda pagues 19 € (9 € fins als 16), només per les classes d'aquell espai. Per trimestre o per any surt més a compte, i cada persona més de la família paga FAM € menys al mes. La inscripció és gratuïta i hi ha dues classes de prova. L'assegurança esportiva anual va a part."
-        en: "PRICE € a month, or KIDS € up to age 16, with access to all our spaces: Badalona, Barcelona and Sant Adrià de Besòs. With a CxEM Espronceda membership you pay 19 € (9 € up to 16), for that space's classes only. Paying by the quarter or the year costs less, and each extra family member pays FAM € less a month. Registration is free and there are two trial classes. The annual sports insurance is paid separately."
-        ja: "月額PRICEユーロ（16歳まではKIDSユーロ）で、バダロナ・バルセロナ・サント・アドリア・ダ・バゾスのすべての稽古場所に通えます。エスプロンセダの会員は19ユーロ（16歳までは9ユーロ）で、同施設の稽古のみが対象です。3か月払い・年払いはさらにお得で、ご家族は2人目からひとりにつき月FAMユーロ引きです。入会金は無料で、体験稽古は2回まで受けられます。年間のスポーツ保険は別途です。"
+        es: "PRICE € al mes, o KIDS € hasta los 16 años, con acceso a todos nuestros espacios: Badalona, Barcelona y Sant Adrià de Besòs. Con el abono del CxEM Espronceda pagas 19 € (9 € hasta los 16), solo por las clases de ese espacio. Por trimestre o por año sale más a cuenta, y en una familia, la primera persona paga la cuota normal y cada una de las siguientes, FAM € menos al mes. La inscripción es gratuita y hay dos clases de prueba. El seguro deportivo anual va aparte."
+        ca: "PRICE € al mes, o KIDS € fins als 16 anys, amb accés a tots els nostres espais: Badalona, Barcelona i Sant Adrià de Besòs. Amb l'abonament del CxEM Espronceda pagues 19 € (9 € fins als 16), només per les classes d'aquell espai. Per trimestre o per any surt més a compte, i en una família, la primera persona paga la quota normal i cadascuna de les següents, FAM € menys al mes. La inscripció és gratuïta i hi ha dues classes de prova. L'assegurança esportiva anual va a part."
+        en: "PRICE € a month, or KIDS € up to age 16, with access to all our spaces: Badalona, Barcelona and Sant Adrià de Besòs. With a CxEM Espronceda membership you pay 19 € (9 € up to 16), for that space's classes only. Paying by the quarter or the year costs less, and in a family, the first person pays the normal fee and each one after that pays FAM € less a month. Registration is free and there are two trial classes. The annual sports insurance is paid separately."
+        ja: "月額PRICEユーロ（16歳まではKIDSユーロ）で、バダロナ・バルセロナ・サント・アドリア・ダ・バゾスのすべての稽古場所に通えます。エスプロンセダの会員は19ユーロ（16歳までは9ユーロ）で、同施設の稽古のみが対象です。3か月払い・年払いはさらにお得で、ご家族は1人目が通常の月謝、2人目以降はひとりにつき月FAMユーロ引きです。入会金は無料で、体験稽古は2回まで受けられます。年間のスポーツ保険は別途です。"
 
     faq_local:
       q:
@@ -422,10 +422,10 @@ locations:
       ja: "16歳までは月額KIDSユーロで、すべての稽古場所に通えます。マリナ・バゾスのスポーツセンター会員は9ユーロで、同施設の稽古のみが対象です。年間のスポーツ保険は別途です。入会金は無料、体験稽古は2回まで。"
     faq:
       price:
-        es: "KIDS € al mes hasta los 16 años, con acceso a todos nuestros espacios. Con el abono del polideportivo Marina-Besòs, 9 € al mes, solo por las clases de ese espacio. Por trimestre o por año sale más a cuenta, y cada persona más de la familia paga FAM € menos al mes. La inscripción es gratuita y hay dos clases de prueba. El seguro deportivo anual va aparte."
-        ca: "KIDS € al mes fins als 16 anys, amb accés a tots els nostres espais. Amb l'abonament del poliesportiu Marina-Besòs, 9 € al mes, només per les classes d'aquell espai. Per trimestre o per any surt més a compte, i cada persona més de la família paga FAM € menys al mes. La inscripció és gratuïta i hi ha dues classes de prova. L'assegurança esportiva anual va a part."
-        en: "KIDS € a month up to age 16, with access to all our spaces. With a Marina-Besòs sports centre membership, 9 € a month, for that space's classes only. Paying by the quarter or the year costs less, and each extra family member pays FAM € less a month. Registration is free and there are two trial classes. The annual sports insurance is paid separately."
-        ja: "16歳までは月額KIDSユーロで、すべての稽古場所に通えます。マリナ・バゾスのスポーツセンター会員は月額9ユーロで、同施設の稽古のみが対象です。3か月払い・年払いはさらにお得で、ご家族は2人目からひとりにつき月FAMユーロ引きです。入会金は無料で、体験稽古は2回まで受けられます。年間のスポーツ保険は別途です。"
+        es: "KIDS € al mes hasta los 16 años, con acceso a todos nuestros espacios. Con el abono del polideportivo Marina-Besòs, 9 € al mes, solo por las clases de ese espacio. Por trimestre o por año sale más a cuenta, y en una familia, la primera persona paga la cuota normal y cada una de las siguientes, FAM € menos al mes. La inscripción es gratuita y hay dos clases de prueba. El seguro deportivo anual va aparte."
+        ca: "KIDS € al mes fins als 16 anys, amb accés a tots els nostres espais. Amb l'abonament del poliesportiu Marina-Besòs, 9 € al mes, només per les classes d'aquell espai. Per trimestre o per any surt més a compte, i en una família, la primera persona paga la quota normal i cadascuna de les següents, FAM € menys al mes. La inscripció és gratuïta i hi ha dues classes de prova. L'assegurança esportiva anual va a part."
+        en: "KIDS € a month up to age 16, with access to all our spaces. With a Marina-Besòs sports centre membership, 9 € a month, for that space's classes only. Paying by the quarter or the year costs less, and in a family, the first person pays the normal fee and each one after that pays FAM € less a month. Registration is free and there are two trial classes. The annual sports insurance is paid separately."
+        ja: "16歳までは月額KIDSユーロで、すべての稽古場所に通えます。マリナ・バゾスのスポーツセンター会員は月額9ユーロで、同施設の稽古のみが対象です。3か月払い・年払いはさらにお得で、ご家族は1人目が通常の月謝、2人目以降はひとりにつき月FAMユーロ引きです。入会金は無料で、体験稽古は2回まで受けられます。年間のスポーツ保険は別途です。"
 
     faq_local:
       q:
@@ -525,10 +525,10 @@ venue_pages:
           ca: "<b>Per trimestre o per any</b> surt més a compte, i el keikogi el posa el dojo. <a href='/ca/quotes/'>Totes les quotes</a>."
           en: "<b>By the quarter or the year</b> it costs less, and the dojo provides the keikogi. <a href='/en/fees/'>All the fees</a>."
           ja: "<b>3か月払い・年払い</b>はさらにお得で、稽古着を道場からお渡しします。<a href='/ja/fees/'>月謝の一覧</a>。"
-        - es: "<b>Familias:</b> cada persona más de la misma familia paga 15 € menos al mes."
-          ca: "<b>Famílies:</b> cada persona més de la mateixa família paga 15 € menys al mes."
-          en: "<b>Families:</b> each extra member of the same household pays 15 € less a month."
-          ja: "<b>家族割：</b>同じ世帯の2人目からは、ひとりにつき月15ユーロ引き。"
+        - es: "<b>Familias:</b> la primera persona paga la cuota normal y cada una de las siguientes, 15 € menos al mes."
+          ca: "<b>Famílies:</b> la primera persona paga la quota normal i cadascuna de les següents, 15 € menys al mes."
+          en: "<b>Families:</b> the first person pays the normal fee and each one after that pays 15 € less a month."
+          ja: "<b>家族割：</b>1人目は通常の月謝、2人目以降はひとりにつき月15ユーロ引き。"
         - es: "<b>Sin coste:</b> la inscripción y las dos clases de prueba. <b>Aparte:</b> el seguro deportivo anual."
           ca: "<b>Sense cost:</b> la inscripció i les dues classes de prova. <b>A part:</b> l'assegurança esportiva anual."
           en: "<b>Free:</b> registration and the two trial classes. <b>Separately:</b> the annual sports insurance."
@@ -638,10 +638,10 @@ venue_pages:
           ca: "<b>Per trimestre o per any</b> surt més a compte, i el keikogi el posa el dojo. <a href='/ca/quotes/'>Totes les quotes</a>."
           en: "<b>By the quarter or the year</b> it costs less, and the dojo provides the keikogi. <a href='/en/fees/'>All the fees</a>."
           ja: "<b>3か月払い・年払い</b>はさらにお得で、稽古着を道場からお渡しします。<a href='/ja/fees/'>月謝の一覧</a>。"
-        - es: "<b>Familias:</b> cada persona más de la misma familia paga 15 € menos al mes."
-          ca: "<b>Famílies:</b> cada persona més de la mateixa família paga 15 € menys al mes."
-          en: "<b>Families:</b> each extra member of the same household pays 15 € less a month."
-          ja: "<b>家族割：</b>同じ世帯の2人目からは、ひとりにつき月15ユーロ引き。"
+        - es: "<b>Familias:</b> la primera persona paga la cuota normal y cada una de las siguientes, 15 € menos al mes."
+          ca: "<b>Famílies:</b> la primera persona paga la quota normal i cadascuna de les següents, 15 € menys al mes."
+          en: "<b>Families:</b> the first person pays the normal fee and each one after that pays 15 € less a month."
+          ja: "<b>家族割：</b>1人目は通常の月謝、2人目以降はひとりにつき月15ユーロ引き。"
         - es: "<b>Sin coste:</b> la inscripción y las dos clases de prueba. <b>Aparte:</b> el seguro deportivo anual."
           ca: "<b>Sense cost:</b> la inscripció i les dues classes de prova. <b>A part:</b> l'assegurança esportiva anual."
           en: "<b>Free:</b> registration and the two trial classes. <b>Separately:</b> the annual sports insurance."
@@ -736,10 +736,10 @@ faq_common:
       en: "How much does it cost?"
       ja: "費用はどのくらいですか。"
     a:
-      es: "PRICE € al mes, o KIDS € hasta los 16 años, con acceso a todos nuestros espacios: Badalona, Barcelona y Sant Adrià de Besòs. Por trimestre o por año sale más a cuenta, y cada persona más de la familia paga FAM € menos al mes. La inscripción es gratuita y hay dos clases de prueba. El seguro deportivo anual va aparte."
-      ca: "PRICE € al mes, o KIDS € fins als 16 anys, amb accés a tots els nostres espais: Badalona, Barcelona i Sant Adrià de Besòs. Per trimestre o per any surt més a compte, i cada persona més de la família paga FAM € menys al mes. La inscripció és gratuïta i hi ha dues classes de prova. L'assegurança esportiva anual va a part."
-      en: "PRICE € a month, or KIDS € up to age 16, with access to all our spaces: Badalona, Barcelona and Sant Adrià de Besòs. Paying by the quarter or the year costs less, and each extra family member pays FAM € less a month. Registration is free and there are two trial classes. The annual sports insurance is paid separately."
-      ja: "月額PRICEユーロ（16歳まではKIDSユーロ）で、バダロナ・バルセロナ・サント・アドリア・ダ・バゾスのすべての稽古場所に通えます。3か月払い・年払いはさらにお得で、ご家族は2人目からひとりにつき月FAMユーロ引きです。入会金は無料で、体験稽古は2回まで受けられます。年間のスポーツ保険は別途です。"
+      es: "PRICE € al mes, o KIDS € hasta los 16 años, con acceso a todos nuestros espacios: Badalona, Barcelona y Sant Adrià de Besòs. Por trimestre o por año sale más a cuenta, y en una familia, la primera persona paga la cuota normal y cada una de las siguientes, FAM € menos al mes. La inscripción es gratuita y hay dos clases de prueba. El seguro deportivo anual va aparte."
+      ca: "PRICE € al mes, o KIDS € fins als 16 anys, amb accés a tots els nostres espais: Badalona, Barcelona i Sant Adrià de Besòs. Per trimestre o per any surt més a compte, i en una família, la primera persona paga la quota normal i cadascuna de les següents, FAM € menys al mes. La inscripció és gratuïta i hi ha dues classes de prova. L'assegurança esportiva anual va a part."
+      en: "PRICE € a month, or KIDS € up to age 16, with access to all our spaces: Badalona, Barcelona and Sant Adrià de Besòs. Paying by the quarter or the year costs less, and in a family, the first person pays the normal fee and each one after that pays FAM € less a month. Registration is free and there are two trial classes. The annual sports insurance is paid separately."
+      ja: "月額PRICEユーロ（16歳まではKIDSユーロ）で、バダロナ・バルセロナ・サント・アドリア・ダ・バゾスのすべての稽古場所に通えます。3か月払い・年払いはさらにお得で、ご家族は1人目が通常の月謝、2人目以降はひとりにつき月FAMユーロ引きです。入会金は無料で、体験稽古は2回まで受けられます。年間のスポーツ保険は別途です。"
   - q:
       es: "¿En qué idioma se dan las clases?"
       ca: "En quin idioma es fan les classes?"

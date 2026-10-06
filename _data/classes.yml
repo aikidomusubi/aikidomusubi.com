@@ -83,7 +83,10 @@ disciplines:
   - id: aikido
     tier: principal
     category: aikido
-    image: classes-CJc2lhFv-27
+    # Galdric Peñarroja, 26 July 2025. `image_at` keeps the pair in frame when
+    # the principal block crops the photograph tall on a wide screen.
+    image: classes-CJc2lhFv-aikido-practice
+    image_at: "38% 50%"
     jp: "合気道 合気会"
     romaji: "Aikido Aikikai"
     name: { es: "Aikido", ca: "Aikido", en: "Aikido", ja: "合気道" }
@@ -143,10 +146,10 @@ disciplines:
         name:  { es: "Infantil y juvenil", ca: "Infantil i juvenil",
                  en: "Children and teens", ja: "こども・青少年クラス" }
         body:
-          es: "De 6 a 16 años. El aikido da concentración y confianza en un ambiente donde nadie compite contra nadie: se aprende a caer sin hacerse daño y a defenderse sin hacer daño a la otra persona. Lunes y miércoles por la tarde en el polideportivo Marina-Besòs, en Sant Adrià de Besòs, con un programa de grados propio."
-          ca: "De 6 a 16 anys. L'aikido dona concentració i confiança en un ambient on ningú competeix contra ningú: s'aprèn a caure sense fer-se mal i a defensar-se sense fer mal a l'altra persona. Dilluns i dimecres a la tarda al poliesportiu Marina-Besòs, a Sant Adrià de Besòs, amb un programa de graus propi."
-          en: "Ages 6 to 16. Aikido builds focus and confidence where nobody competes against anybody: you learn to fall without getting hurt and to defend yourself without hurting the other person. Monday and Wednesday afternoons at the Marina-Besòs sports centre in Sant Adrià de Besòs, with a grading programme of its own."
-          ja: "6歳から16歳まで。誰とも競わない環境で集中力と自信が育ち、けがをしない受け身と、相手を傷つけずに身を守ることを学びます。月曜と水曜の夕方、サント・アドリア・ダ・バゾスのマリナ・バゾス市立スポーツセンターで、独自の級位制度のもとに稽古します。"
+          es: "Hasta 16 años. El aikido da concentración y confianza en un ambiente donde nadie compite contra nadie: se aprende a caer sin hacerse daño y a defenderse sin hacer daño a la otra persona. Lunes y miércoles por la tarde en el polideportivo Marina-Besòs, en Sant Adrià de Besòs, con un programa de grados propio."
+          ca: "Fins a 16 anys. L'aikido dona concentració i confiança en un ambient on ningú competeix contra ningú: s'aprèn a caure sense fer-se mal i a defensar-se sense fer mal a l'altra persona. Dilluns i dimecres a la tarda al poliesportiu Marina-Besòs, a Sant Adrià de Besòs, amb un programa de graus propi."
+          en: "Up to 16. Aikido builds focus and confidence where nobody competes against anybody: you learn to fall without getting hurt and to defend yourself without hurting the other person. Monday and Wednesday afternoons at the Marina-Besòs sports centre in Sant Adrià de Besòs, with a grading programme of its own."
+          ja: "16歳まで。誰とも競わない環境で集中力と自信が育ち、けがをしない受け身と、相手を傷つけずに身を守ることを学びます。月曜と水曜の夕方、サント・アドリア・ダ・バゾスのマリナ・バゾス市立スポーツセンターで、独自の級位制度のもとに稽古します。"
         note: { es: "<a href='/sant-adria-de-besos/marina-besos/'>Horario, cuota y cómo llegar</a>",
                 ca: "<a href='/ca/sant-adria-de-besos/marina-besos/'>Horari, quota i com arribar-hi</a>",
                 en: "<a href='/en/sant-adria-de-besos/marina-besos/'>Times, fee and how to get there</a>",

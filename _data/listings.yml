@@ -55,7 +55,7 @@ listings:
     # parking, and says nothing about either. If the loop is not really there
     # it has to come off: somebody hard of hearing could choose this dojo on
     # the strength of it.
-    reviewed: 2026-09-20
+    reviewed: 2026-10-06
 
   - id: apple
     name: "Apple Business Connect"
@@ -76,7 +76,7 @@ listings:
     # ONE CLAIM TO VERIFY: "Accepts Apple Pay" and "Accepts Contactless
     # Payments". _data/fees.yml documents SEPA direct debit and bank payment
     # and nothing about a card terminal at the door.
-    reviewed: 2026-09-20
+    reviewed: 2026-10-06
 
   - id: bing
     name: "Bing Places"
@@ -101,4 +101,4 @@ listings:
     # 32 actual pages. That is what "Content quality: 266" and "Dead links: 64"
     # in the IndexNow panel are. Turn Crawler Hints off in Cloudflare; the
     # site's own IndexNow key file stays.
-    reviewed: 2026-09-26
+    reviewed: 2026-10-06
