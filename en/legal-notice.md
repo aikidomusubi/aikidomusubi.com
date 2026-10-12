@@ -47,6 +47,7 @@ The user agrees to make appropriate and lawful use of the Website and its conten
 - Not cause damage to the physical or logical systems of the Association, its suppliers or third parties, nor introduce or spread computer viruses or any other systems capable of causing damage.
 
 ## 4. Intellectual and industrial property
+{: #legal-notice-Up6gBHvn-intellectual-property}
 
 All the contents of the Website (texts, photographs, graphics, images, icons, technology, software, logos, trademarks, trade names, graphic design and source code) constitute a work whose ownership belongs to the Association. None of the exploitation rights over them shall be deemed transferred to the user beyond what is strictly necessary for the correct use of the Website.
 

@@ -698,6 +698,16 @@
           {%- for gal in v.galleries %}{% assign allph = allph | concat: gal.photos %}{% endfor -%}
         {%- endif -%}
         {%- if allph != '' and allph.size > 0 %}
+        {%- comment -%}
+          LICENCE AND HOW TO ASK. Search Console's image-metadata report wants
+          both before Google Images will label a photograph "Licensable". The
+          licence is what the site already says, section 4 of the legal notice:
+          the photographs belong to the association and no rights are granted
+          beyond viewing them. Permission is asked for through the contact page.
+        {%- endcomment -%}
+        {%- assign legalPage = site.pages | where: 'i18n-ref', 'legal-notice-Up6gBHvn' | where: 'lang', L | first -%}
+        {%- assign licUrl = legalPage.url | prepend: site.url | append: '#legal-notice-Up6gBHvn-intellectual-property' -%}
+        {%- assign acqUrl = gContact.items[0].url[L] | prepend: site.url %}
         "photo": [
           {%- for g in allph %}
           {
@@ -711,7 +721,9 @@
             "creditText": {{ site.title | jsonify }},
             "creator": { "@type": "Organization", "name": {{ site.title | jsonify }} },
             {%- endif %}
-            "copyrightNotice": {{ site.title | prepend: '© ' | jsonify }}
+            "copyrightNotice": {{ site.title | prepend: '© ' | jsonify }},
+            "license": {{ licUrl | jsonify }},
+            "acquireLicensePage": {{ acqUrl | jsonify }}
           }{% unless forloop.last %},{% endunless %}
           {%- endfor %}
         ],

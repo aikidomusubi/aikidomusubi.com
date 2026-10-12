@@ -45,6 +45,7 @@ El usuario se compromete a hacer un uso adecuado y lícito del Sitio Web y de su
 - No causar daños en los sistemas físicos y lógicos de la Asociación, de sus proveedores o de terceros, ni introducir o difundir virus informáticos o cualesquiera otros sistemas susceptibles de causar daños.
 
 ## 4. Propiedad intelectual e industrial
+{: #legal-notice-Up6gBHvn-intellectual-property}
 
 Todos los contenidos del Sitio Web (textos, fotografías, gráficos, imágenes, iconos, tecnología, software, logotipos, marcas, nombres comerciales, diseño gráfico y códigos fuente) constituyen una obra cuya propiedad pertenece a la Asociación, sin que puedan entenderse cedidos al usuario ninguno de los derechos de explotación sobre los mismos más allá de lo estrictamente necesario para el correcto uso del Sitio Web.
 

@@ -1,8 +1,8 @@
 ---
 layout: classes
 title: Classes
-seo_title: "Aikido, judo, iaijutsu and karate classes in Barcelona"
-description: Aikido, iaijutsu, judo and karate in Badalona, Sant Adrià de Besòs and Barcelona. What each class practises, who it is for and who teaches it.
+seo_title: "Aikido classes in Barcelona and Badalona, all levels"
+description: "Aikido for every level in Barcelona, Badalona and Sant Adrià de Besòs, mornings and evenings, with a class for up to 16. Judo, iaijutsu and karate too. Two free trial classes."
 permalink: /en/classes/
 lang: en
 i18n-ref: classes-CJc2lhFv

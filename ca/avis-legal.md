@@ -45,6 +45,7 @@ L'usuari es compromet a fer un ús adequat i lícit del Lloc Web i dels seus con
 - No causar danys en els sistemes físics i lògics de l'Associació, dels seus proveïdors o de tercers, ni introduir o difondre virus informàtics o qualssevol altres sistemes susceptibles de causar danys.
 
 ## 4. Propietat intel·lectual i industrial
+{: #legal-notice-Up6gBHvn-intellectual-property}
 
 Tots els continguts del Lloc Web (textos, fotografies, gràfics, imatges, icones, tecnologia, programari, logotips, marques, noms comercials, disseny gràfic i codis font) constitueixen una obra la propietat de la qual pertany a l'Associació, sense que es puguin entendre cedits a l'usuari cap dels drets d'explotació sobre aquests més enllà del que sigui estrictament necessari per a l'ús correcte del Lloc Web.
 
