@@ -616,6 +616,43 @@ entries:
       en: "07:30 to 08:30, half an hour shorter than usual, because of the iaijutsu session."
       ja: "居合術の稽古のため、通常より30分短い7:30〜8:30に行います。"
 
+  # 24 October: the next monthly session, the same three entries as the 19th
+  # of September (the grading class's cancellation is in its own run below).
+  - date: "2026-10-24"
+    type: extra
+    location: musubi
+    start: "08:30"
+    end:   "10:30"
+    instructors: [serra]
+    title:
+      es: "Iaijutsu con X. Serra"
+      ca: "Iaijutsu amb X. Serra"
+      en: "Iaijutsu with X. Serra"
+      ja: "居合術（シャビ・セラ）"
+    note:
+      es: "La sesión de Iaijutsu que se hace una vez al mes, de 8:30 a 10:30."
+      ca: "La sessió d'Iaijutsu que es fa un cop al mes, de 8:30 a 10:30."
+      en: "The iaijutsu session held once a month, 08:30 to 10:30."
+      ja: "月に一度の居合術の稽古です。8:30〜10:30。"
+
+  - date: "2026-10-24"
+    type: change
+    location: musubi
+    affects: { category: aikido, start: "07:30" }
+    start: "07:30"
+    end:   "08:30"
+    instructors: [villar]
+    title:
+      es: "Aikido"
+      ca: "Aikido"
+      en: "Aikido"
+      ja: "合気道"
+    note:
+      es: "De 7:30 a 8:30, media hora menos de lo habitual, por la sesión de Iaijutsu."
+      ca: "De 7:30 a 8:30, mitja hora menys de l'habitual, per la sessió d'Iaijutsu."
+      en: "07:30 to 08:30, half an hour shorter than usual, because of the iaijutsu session."
+      ja: "居合術の稽古のため、通常より30分短い7:30〜8:30に行います。"
+
   - date: "2027-01-30"
     type: change
     routine: true
@@ -1383,10 +1420,9 @@ entries:
       en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
       ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
 
+  # 24 October: the iaijutsu session has the morning, as on 19 September.
   - date: "2026-10-24"
-    type: extra
-    routine: true
-    instructors: [perez]
+    type: cancellation
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -1396,10 +1432,10 @@ entries:
     end: "11:00"
     location: musubi
     note:
-      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
-      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
-      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
-      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
+      es: "Hoy no hay clase de preparación de exámenes: la mañana es para el Iaijutsu, de 8:30 a 10:30. Vuelve el sábado 31."
+      ca: "Avui no hi ha classe de preparació d'exàmens: el matí és per a l'Iaijutsu, de 8:30 a 10:30. Torna dissabte 31."
+      en: "No grading preparation class today: the morning is given to iaijutsu, 08:30 to 10:30. It is back on Saturday the 31st."
+      ja: "本日は居合術の稽古（8:30〜10:30）のため、審査準備稽古はお休みです。31日（土）に再開します。"
 
   - date: "2026-10-31"
     type: extra
