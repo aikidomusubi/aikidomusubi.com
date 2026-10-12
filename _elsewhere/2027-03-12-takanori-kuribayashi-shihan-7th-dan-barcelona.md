@@ -19,13 +19,13 @@ place_es: "Escuela Jesuïtes Sarrià - Sant Ignasi, Barcelona"
 place_ja: "ジェズイタス・サリア＝サン・イグナシ校（バルセロナ）"
 
 desc_ca: >-
-  Quarta edició del seminari d'aikido de Barcelona que organitza el Dojo Feilen Meishūkan amb Takanori Kuribayashi Shihan, a l'Escola Jesuïtes Sarrià. Quatre sessions: divendres a la tarda, dissabte al matí i a la tarda i diumenge al migdia. La inscripció es fa al web del seminari, i el pagament s'obre el gener de 2027.
+  Quarta edició del seminari d'aikido de Barcelona que organitza el Dojo Feilen Meishūkan amb Takanori Kuribayashi Shihan, a l'Escola Jesuïtes Sarrià - Sant Ignasi. Quatre sessions: divendres a la tarda, dissabte al matí i a la tarda i diumenge al migdia.
 desc_en: >-
-  The fourth Barcelona aikido seminar hosted by Dojo Feilen Meishūkan with Takanori Kuribayashi Shihan, at the Jesuïtes Sarrià school. Four sessions: Friday evening, Saturday morning and afternoon, and Sunday midday. Registration is on the seminar website, and payment opens in January 2027.
+  The fourth Barcelona aikido seminar hosted by Dojo Feilen Meishūkan with Takanori Kuribayashi Shihan, at the Jesuïtes Sarrià - Sant Ignasi school. Four sessions: Friday evening, Saturday morning and afternoon, and Sunday midday.
 desc_es: >-
-  Cuarta edición del seminario de aikido de Barcelona que organiza el Dojo Feilen Meishūkan con Takanori Kuribayashi Shihan, en la Escola Jesuïtes Sarrià. Cuatro sesiones: el viernes por la tarde, el sábado por la mañana y por la tarde y el domingo al mediodía. La inscripción se hace en la web del seminario, y el pago se abre en enero de 2027.
+  Cuarta edición del seminario de aikido de Barcelona que organiza el Dojo Feilen Meishūkan con Takanori Kuribayashi Shihan, en la Escuela Jesuïtes Sarrià - Sant Ignasi. Cuatro sesiones: el viernes por la tarde, el sábado por la mañana y por la tarde y el domingo al mediodía.
 desc_ja: >-
-  明修館フェイレン道場が主催する第4回バルセロナ合気道講習会。指導は栗林孝典師範、会場はジェズイタス・サリア校。金曜の夕方、土曜の午前と午後、日曜の昼の四回の稽古です。申し込みは講習会のウェブサイトから。支払いは2027年1月に始まります。
+  明修館フェイレン道場が主催する第4回バルセロナ合気道講習会。指導は栗林孝典師範、会場はジェズイタス・サリア＝サン・イグナシ校。金曜の夕方、土曜の午前と午後、日曜の昼の四回の稽古です。
 
 image_ca: "elsewhere-Kp8vR2Qs-2027-03-12-takanori-kuribayashi-shihan-7th-dan-barcelona-es"
 image_en: "elsewhere-Kp8vR2Qs-2027-03-12-takanori-kuribayashi-shihan-7th-dan-barcelona-es"

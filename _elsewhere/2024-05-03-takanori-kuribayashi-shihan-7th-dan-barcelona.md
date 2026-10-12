@@ -17,13 +17,13 @@ place_es: "Escuela Jesuïtes Sarrià - Sant Ignasi, Barcelona"
 place_ja: "ジェズイタス・サリア＝サン・イグナシ校（バルセロナ）"
 
 desc_ca: >-
-  Primera edició del seminari d'aikido de Barcelona que organitza el Dojo Feilen Meishūkan amb Takanori Kuribayashi Shihan: tres dies de pràctica a l'Escola Jesuïtes Sarrià.
+  Primera edició del seminari d'aikido de Barcelona que organitza el Dojo Feilen Meishūkan amb Takanori Kuribayashi Shihan: tres dies de pràctica a l'Escola Jesuïtes Sarrià - Sant Ignasi.
 desc_en: >-
-  The first Barcelona aikido seminar hosted by Dojo Feilen Meishūkan with Takanori Kuribayashi Shihan: three days of practice at the Jesuïtes Sarrià school.
+  The first Barcelona aikido seminar hosted by Dojo Feilen Meishūkan with Takanori Kuribayashi Shihan: three days of practice at the Jesuïtes Sarrià - Sant Ignasi school.
 desc_es: >-
-  Primera edición del seminario de aikido de Barcelona que organiza el Dojo Feilen Meishūkan con Takanori Kuribayashi Shihan: tres días de práctica en la Escola Jesuïtes Sarrià.
+  Primera edición del seminario de aikido de Barcelona que organiza el Dojo Feilen Meishūkan con Takanori Kuribayashi Shihan: tres días de práctica en la Escuela Jesuïtes Sarrià - Sant Ignasi.
 desc_ja: >-
-  明修館フェイレン道場が主催する第1回バルセロナ合気道講習会。指導は栗林孝典師範。ジェズイタス・サリア校で三日間の稽古を行いました。
+  明修館フェイレン道場が主催する第1回バルセロナ合気道講習会。指導は栗林孝典師範。ジェズイタス・サリア＝サン・イグナシ校で三日間の稽古を行いました。
 
 image_ca: "elsewhere-Kp8vR2Qs-2024-05-03-takanori-kuribayashi-shihan-7th-dan-barcelona-en"
 image_en: "elsewhere-Kp8vR2Qs-2024-05-03-takanori-kuribayashi-shihan-7th-dan-barcelona-en"

@@ -18,11 +18,11 @@ place_es: "Escuela Jesuïtes Sarrià - Sant Ignasi, Barcelona"
 place_ja: "ジェズイタス・サリア＝サン・イグナシ校（バルセロナ）"
 
 desc_ca: >-
-  Vintè aniversari de l'Arashi Group, amb Tsuruzo Miyamoto Shihan, a l'escola Jesuïtes Sarrià - Sant Ignasi. El dissabte, classe i embukai; el diumenge, classe. L'embukai és excepcional: es fa per celebrar els vint anys del grup.
+  Vintè aniversari de l'Arashi Group, amb Tsuruzo Miyamoto Shihan, a l'Escola Jesuïtes Sarrià - Sant Ignasi. El dissabte, classe i embukai; el diumenge, classe. L'embukai és excepcional: es fa per celebrar els vint anys del grup.
 desc_en: >-
   The Arashi Group's twentieth anniversary, with Tsuruzo Miyamoto Shihan, at the Jesuïtes Sarrià - Sant Ignasi school. Saturday is a class and an embukai; Sunday is a class. The embukai is a one-off, held to mark the group's twenty years.
 desc_es: >-
-  Vigésimo aniversario del Arashi Group, con Tsuruzo Miyamoto Shihan, en la escuela Jesuïtes Sarrià - Sant Ignasi. El sábado, clase y embukai; el domingo, clase. El embukai es excepcional: se celebra por los veinte años del grupo.
+  Vigésimo aniversario del Arashi Group, con Tsuruzo Miyamoto Shihan, en la Escuela Jesuïtes Sarrià - Sant Ignasi. El sábado, clase y embukai; el domingo, clase. El embukai es excepcional: se celebra por los veinte años del grupo.
 desc_ja: >-
   嵐グループ創立二十周年の記念講習会。指導は宮本鶴蔵師範。会場はジェズイタス・サリア＝サン・イグナシ校。土曜は稽古と演武会、日曜は稽古。演武会は創立二十周年を祝う特別なもので、この機会かぎりです。
 

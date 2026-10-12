@@ -1,9 +1,8 @@
 ---
-# The second edition. THE VENUE IS THE ORGANISER'S OWN RECORD OF IT, their
-# 2025 page, which says CEM Parc de la Ciutadella, Passeig de la
-# Circumval·lació, 1, 08003 Barcelona. Their 2025 poster (the one used here)
-# still names Jesuïtes Sarrià; the page was written after the event and is
-# taken as the true one. Price 100 €.
+# The second edition, at Jesuïtes Sarrià like the first and the fourth.
+# The organiser's 2025 page names CEM Parc de la Ciutadella; the poster and
+# Aikido Musubi (corrected 12 October 2026) say Jesuïtes Sarrià.
+# Price 100 €.
 layout: elsewhere
 category: seminar
 date_from: "2025-03-14"
@@ -14,19 +13,19 @@ title_en: "Takanori Kuribayashi Shihan 7th Dan Aikikai"
 title_es: "Takanori Kuribayashi Shihan 7.º Dan Aikikai"
 title_ja: "栗林 孝典 師範 七段 合気会"
 
-place_ca: "CEM Parc de la Ciutadella, Barcelona"
-place_en: "CEM Parc de la Ciutadella, Barcelona"
-place_es: "CEM Parc de la Ciutadella, Barcelona"
-place_ja: "シウタデリャ公園市立スポーツセンター（バルセロナ）"
+place_ca: "Escola Jesuïtes Sarrià - Sant Ignasi, Barcelona"
+place_en: "Jesuïtes Sarrià - Sant Ignasi school, Barcelona"
+place_es: "Escuela Jesuïtes Sarrià - Sant Ignasi, Barcelona"
+place_ja: "ジェズイタス・サリア＝サン・イグナシ校（バルセロナ）"
 
 desc_ca: >-
-  Segona edició del seminari d'aikido de Barcelona que organitza el Dojo Feilen Meishūkan amb Takanori Kuribayashi Shihan: tres dies de pràctica al CEM Parc de la Ciutadella.
+  Segona edició del seminari d'aikido de Barcelona que organitza el Dojo Feilen Meishūkan amb Takanori Kuribayashi Shihan: tres dies de pràctica a l'Escola Jesuïtes Sarrià - Sant Ignasi.
 desc_en: >-
-  The second Barcelona aikido seminar hosted by Dojo Feilen Meishūkan with Takanori Kuribayashi Shihan: three days of practice at CEM Parc de la Ciutadella.
+  The second Barcelona aikido seminar hosted by Dojo Feilen Meishūkan with Takanori Kuribayashi Shihan: three days of practice at the Jesuïtes Sarrià - Sant Ignasi school.
 desc_es: >-
-  Segunda edición del seminario de aikido de Barcelona que organiza el Dojo Feilen Meishūkan con Takanori Kuribayashi Shihan: tres días de práctica en el CEM Parc de la Ciutadella.
+  Segunda edición del seminario de aikido de Barcelona que organiza el Dojo Feilen Meishūkan con Takanori Kuribayashi Shihan: tres días de práctica en la Escuela Jesuïtes Sarrià - Sant Ignasi.
 desc_ja: >-
-  明修館フェイレン道場が主催する第2回バルセロナ合気道講習会。指導は栗林孝典師範。シウタデリャ公園市立スポーツセンターで三日間の稽古を行いました。
+  明修館フェイレン道場が主催する第2回バルセロナ合気道講習会。指導は栗林孝典師範。ジェズイタス・サリア＝サン・イグナシ校で三日間の稽古を行いました。
 
 image_ca: "elsewhere-Kp8vR2Qs-2025-03-14-takanori-kuribayashi-shihan-7th-dan-barcelona-en"
 image_en: "elsewhere-Kp8vR2Qs-2025-03-14-takanori-kuribayashi-shihan-7th-dan-barcelona-en"
