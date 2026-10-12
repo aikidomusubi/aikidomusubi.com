@@ -45,6 +45,8 @@ __pycache__/
 # `.claude/dev-start.sh` IS tracked on purpose — it is the shared dev-start
 # script and CLAUDE.md documents it.
 .claude/settings.local.json
+# The desktop app's preview-server config: local tooling, not the site.
+.claude/launch.json
 
 # Editors and operating systems
 .vscode/
