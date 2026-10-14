@@ -821,7 +821,7 @@ files are removed; one that only loses glyphs may keep the name.
 | `scripts/pricing.js` | **The** pricing engine, for the signup page and the Worker alike |
 | `services/membership/` | The Worker (`api.aikidomusubi.com`), its tests and its command-line tools |
 | `docs/membership/SETUP.md`, `RUNBOOK.md` | Setting up Stripe, Cloudflare and Brevo; and the dojo's day to day |
-| `tools/make-favicons.py` | **Generates** every favicon and app icon (`icons/musubi-*`, and `/favicon.ico` as a copy) from `tools/favicon-source/logo-15.png`. If the picture changes, change the file names too: favicons are cached hard |
+| `tools/make-favicons.py` | **Generates** every favicon and app icon (`icons/musubi2-*`, and `/favicon.ico` as a copy) from `tools/favicon-source/logo-15.png`: the knot in white on black. If the picture changes, bump `GEN` in the script so every file name changes: favicons are cached hard |
 
 ## Layout: one scale, one column, one measure
 

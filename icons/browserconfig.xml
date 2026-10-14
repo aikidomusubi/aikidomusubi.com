@@ -4,10 +4,10 @@
 <browserconfig>
   <msapplication>
     <tile>
-      <square70x70logo src="/icons/musubi-tile-70.png"/>
-      <square150x150logo src="/icons/musubi-tile-150.png"/>
-      <wide310x150logo src="/icons/musubi-tile-310x150.png"/>
-      <square310x310logo src="/icons/musubi-tile-310.png"/>
+      <square70x70logo src="/icons/musubi2-tile-70.png"/>
+      <square150x150logo src="/icons/musubi2-tile-150.png"/>
+      <wide310x150logo src="/icons/musubi2-tile-310x150.png"/>
+      <square310x310logo src="/icons/musubi2-tile-310.png"/>
       <TileColor>#111314</TileColor>
     </tile>
   </msapplication>

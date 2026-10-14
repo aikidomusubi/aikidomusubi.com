@@ -8,26 +8,31 @@ square. The knot is cut out of it by luminance, so its own antialiasing is
 kept, and every PNG below is rendered DOWN from that: nothing is ever scaled
 up. The SVGs are a potrace tracing of the same cut-out.
 
-COLOURS. The brand pair: the knot in Yellow #FFF200 on Black #111314.
+COLOURS. The knot in White on the brand Black #111314, everywhere. Not a
+transparent icon with a knot that changes colour for light and dark: browsers
+do not reliably report the tab's real colour (Chrome can draw a light tab bar
+under a dark system theme), and a dark knot on a dark bar disappears. The tile
+reads on any background.
 
-WHAT EACH ONE IS FOR, and why they are not all the same picture:
+WHAT EACH ONE IS FOR, and why they are not all the same picture (N is the
+generation number, GEN below):
 
-  musubi-knot.svg            the browser tab, every modern browser. A rounded
+  musubiN-knot.svg            the browser tab, every modern browser. A rounded
                              black tile, the knot zoomed in to fill it
-  musubi-knot-{16..192}.png  the same tile for browsers and crawlers that want
+  musubiN-knot-{16..192}.png  the same tile for browsers and crawlers that want
                              a bitmap; Google's results page takes the 48/96/192
-  musubi-knot.ico            16, 32 and 48 in one file; /favicon.ico is a copy,
+  musubiN-knot.ico            16, 32 and 48 in one file; /favicon.ico is a copy,
                              for anything that asks for that path blindly
-  musubi-apple-touch.png     iOS home screen, 180px. FULL BLEED and square: iOS
+  musubiN-apple-touch.png     iOS home screen, 180px. FULL BLEED and square: iOS
                              rounds the corners itself, and a tile that is
                              already rounded shows a black ring inside the mask
-  musubi-app-{192,512}.png   installed web app ("any"): the rounded tile
-  musubi-maskable-{192,512}  installed web app on Android ("maskable"): full
+  musubiN-app-{192,512}.png   installed web app ("any"): the rounded tile
+  musubiN-maskable-{192,512}  installed web app on Android ("maskable"): full
                              bleed, the knot inside the 80% safe circle, since
                              the launcher may cut the icon to any shape
-  musubi-tile-*.png          Windows Start tiles: the knot alone, transparent,
+  musubiN-tile-*.png          Windows Start tiles: the knot alone, transparent,
                              on the tile colour browserconfig.xml sets
-  musubi-knot-mask.svg       Safari's pinned-tab icon: one colour, no tile
+  musubiN-knot-mask.svg       Safari's pinned-tab icon: one colour, no tile
 
 THE 16PX ONE IS SHARPENED. Scaled down as it is, the knot's band and the gaps
 between them come to about a pixel each at 16px and average into a grey
@@ -63,7 +68,16 @@ SRC = os.path.join(ROOT, "tools", "favicon-source", "logo-15.png")
 OUT = os.path.join(ROOT, "icons")
 
 BLACK = (0x11, 0x13, 0x14)
-YELLOW = (0xFF, 0xF2, 0x00)
+
+# THE GENERATION NUMBER IS IN EVERY FILE NAME. Favicons are cached hard, so a
+# changed picture under an unchanged name would stay in browsers for months.
+# Bump GEN whenever the picture changes, re-run, update _includes/icons.html,
+# icons/musubi*.webmanifest and icons/browserconfig.xml, and `git rm` the old set.
+#   gen 1  October 2026: the knot in Yellow on Black, close to the edges
+#   gen 2  October 2026: the knot in White on Black, with more room around it
+GEN = 2
+PFX = "musubi" if GEN == 1 else f"musubi{GEN}"
+WHITE = (0xFF, 0xFF, 0xFF)
 SS = 8            # supersampling factor for every raster
 
 
@@ -107,7 +121,7 @@ def render(w, h, *, knot_w, tile, radius=0.0, levels=None):
         r = radius * min(W, H) if tile == "rounded" else 0
         ImageDraw.Draw(shape).rounded_rectangle((0, 0, W - 1, H - 1), radius=r, fill=255)
         out.paste(Image.new("RGBA", (w, h), BLACK + (255,)), (0, 0), shape.resize((w, h), Image.LANCZOS))
-    out.alpha_composite(Image.merge("RGBA", (*Image.new("RGB", (w, h), YELLOW).split(), alpha)))
+    out.alpha_composite(Image.merge("RGBA", (*Image.new("RGB", (w, h), WHITE).split(), alpha)))
     return out
 
 
@@ -123,7 +137,7 @@ def save(img, name, opaque=False):
 
 # --- the browser tab ---------------------------------------------------------
 TAB = dict(tile="rounded", radius=0.22)
-TAB_KNOT = {16: 0.94, 32: 0.88, 48: 0.84, 96: 0.80, 192: 0.80}
+TAB_KNOT = {16: 0.86, 32: 0.78, 48: 0.74, 96: 0.70, 192: 0.70}
 TAB_LEVELS = {16: (0.3, 0.7), 32: (0.15, 0.85)}
 
 
@@ -155,15 +169,15 @@ def traced_path(scale, dx, dy):
 
 
 def svg_tile():
-    # 100x100 viewBox: the knot at the 48px tab proportion, which reads at
-    # every size a browser draws an SVG favicon.
-    kw = 84.0
+    # 100x100 viewBox: the knot at about the 48px tab proportion, which reads
+    # at every size a browser draws an SVG favicon.
+    kw = 72.0
     s = kw / KW
     kh = KH * s
     d = traced_path(s, (100 - kw) / 2, (100 - kh) / 2)
     return ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">'
             '<rect width="100" height="100" rx="22" fill="#111314"/>'
-            f'<path fill="#FFF200" fill-rule="evenodd" d="{d}"/></svg>\n')
+            f'<path fill="#FFFFFF" fill-rule="evenodd" d="{d}"/></svg>\n')
 
 
 def svg_mask():
@@ -180,7 +194,7 @@ def main():
     print(f"\nknot {KW}x{KH} from {os.path.relpath(SRC, ROOT)}\n")
 
     for size in (16, 32, 48, 96, 192):
-        save(tab(size), f"musubi-knot-{size}.png")
+        save(tab(size), f"{PFX}-knot-{size}.png")
 
     # /favicon.ico at the site root: the three classic sizes in one file.
     # Written by hand, PNG payload per size: Pillow's ICO writer resamples
@@ -189,7 +203,7 @@ def main():
     # name no browser has cached; /favicon.ico is the same file for anything
     # that asks for that path without reading the page, and it already held
     # the old picture, so it cannot be the one linked.
-    ico = os.path.join(OUT, "musubi-knot.ico")
+    ico = os.path.join(OUT, f"{PFX}-knot.ico")
     with open(ico, "wb") as f:
         imgs = [tab(16), tab(32), tab(48)]
         blobs = []
@@ -207,19 +221,19 @@ def main():
         for blob in blobs:
             f.write(blob)
     shutil.copyfile(ico, os.path.join(ROOT, "favicon.ico"))
-    print(f"  {'musubi-knot.ico + /favicon.ico':<34} 16+32+48  {os.path.getsize(ico) / 1024:5.1f} KB")
+    print(f"  {PFX + '-knot.ico + /favicon.ico':<34} 16+32+48  {os.path.getsize(ico) / 1024:5.1f} KB")
 
-    save(render(180, 180, knot_w=0.70, tile="square"), "musubi-apple-touch.png", opaque=True)
+    save(render(180, 180, knot_w=0.62, tile="square"), f"{PFX}-apple-touch.png", opaque=True)
     for size in (192, 512):
-        save(render(size, size, knot_w=0.78, **TAB), f"musubi-app-{size}.png")
-        save(render(size, size, knot_w=0.60, tile="square"), f"musubi-maskable-{size}.png", opaque=True)
+        save(render(size, size, knot_w=0.68, **TAB), f"{PFX}-app-{size}.png")
+        save(render(size, size, knot_w=0.54, tile="square"), f"{PFX}-maskable-{size}.png", opaque=True)
 
-    save(render(70, 70, knot_w=0.72, tile=None), "musubi-tile-70.png")
-    save(render(150, 150, knot_w=0.52, tile=None), "musubi-tile-150.png")
-    save(render(310, 310, knot_w=0.50, tile=None), "musubi-tile-310.png")
-    save(render(310, 150, knot_w=0.62, tile=None), "musubi-tile-310x150.png")
+    save(render(70, 70, knot_w=0.62, tile=None), f"{PFX}-tile-70.png")
+    save(render(150, 150, knot_w=0.46, tile=None), f"{PFX}-tile-150.png")
+    save(render(310, 310, knot_w=0.44, tile=None), f"{PFX}-tile-310.png")
+    save(render(310, 150, knot_w=0.56, tile=None), f"{PFX}-tile-310x150.png")
 
-    for name, body in (("musubi-knot.svg", svg_tile()), ("musubi-knot-mask.svg", svg_mask())):
+    for name, body in ((f"{PFX}-knot.svg", svg_tile()), (f"{PFX}-knot-mask.svg", svg_mask())):
         with open(os.path.join(OUT, name), "w") as f:
             f.write(body)
         print(f"  {name:<34} vector    {os.path.getsize(os.path.join(OUT, name)) / 1024:5.1f} KB")
