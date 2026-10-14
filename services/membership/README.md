@@ -27,7 +27,7 @@ Stripe is the record, and the household lives in the subscription's metadata.
 ## Commands
 
 ```bash
-npm test                # 73 tests: pricing, validation, routes, emails
+npm test                # 74 tests: pricing, validation, routes, emails
 npm run typecheck
 npm run dev             # a local Worker on :8787; without a Stripe key it ends at the thank-you page
 npm run deploy          # the TEST Worker; live is `npx wrangler deploy --env live`

@@ -77,16 +77,15 @@ export function fromSite(env: Env, req: Request): boolean {
   return ref.startsWith(env.SITE_ORIGIN + '/') || (env.ENVIRONMENT === 'dev' && /^http:\/\/localhost:\d+\//.test(ref));
 }
 
-// Best effort, per IP and per minute. KV is eventually consistent, so this is a
-// brake rather than a wall; together with the honeypot and Stripe's own fraud
-// checks it is what the spec asks for without a third-party CAPTCHA.
-export async function limited(env: Env, req: Request, route: string, perMinute = 10): Promise<boolean> {
+// Per IP: ten posts a minute across the signup and the withdrawal form, plus
+// the honeypot and Stripe's own fraud checks; no third-party CAPTCHA (spec
+// 12.2). The binding counts in Cloudflare's memory, not in KV, so it costs no
+// writes. Without the binding (tests, a bare local run) nothing is limited.
+export async function limited(env: Env, req: Request, route: string): Promise<boolean> {
+  if (!env.RL_FORMS) return false;
   const ip = req.headers.get('cf-connecting-ip') ?? 'unknown';
-  const minute = Math.floor(Date.now() / 60000);
-  const key = `rl:${route}:${ip}:${minute}`;
-  const n = Number((await env.KV.get(key)) ?? '0') + 1;
-  await env.KV.put(key, String(n), { expirationTtl: 120 });
-  return n > perMinute;
+  const { success } = await env.RL_FORMS.limit({ key: `${route}:${ip}` });
+  return !success;
 }
 
 export async function readBody(req: Request): Promise<Record<string, string> | null> {
@@ -119,6 +118,8 @@ export const wantsJson = (req: Request) => (req.headers.get('accept') ?? '').inc
 
 export function log(o: Record<string, unknown>) {
   // Structured, and never with a name, an email, a phone or a request body
-  // (spec 12.4): ids and outcomes only.
-  console.log(JSON.stringify(o));
+  // (spec 12.4): ids and outcomes only. Stripe's error messages can echo a
+  // parameter back, an email among them, so anything shaped like one is
+  // blanked before it is written.
+  console.log(JSON.stringify(o).replace(/[^\s"@<>]+@[^\s"@<>]+\.[a-z]{2,}/gi, '[email]'));
 }

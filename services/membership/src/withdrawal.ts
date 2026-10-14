@@ -21,7 +21,7 @@ const KNOWN = new Set(['lang', 'name', 'email', 'statement', 'website']);
 
 export async function withdrawal(req: Request, env: Env, now = Date.now()): Promise<Response> {
   if (!fromSite(env, req)) return json(env, req, { error: 'origin' }, 403);
-  if (await limited(env, req, 'withdrawal', 5)) return json(env, req, { error: 'rate_limited' }, 429);
+  if (await limited(env, req, 'withdrawal')) return json(env, req, { error: 'rate_limited' }, 429);
   const body = await readBody(req);
   if (!body || Object.keys(body).some((k) => !KNOWN.has(k))) return json(env, req, { error: 'generic' }, 400);
   const lang: Lang = isLang(body.lang) ? body.lang : 'es';

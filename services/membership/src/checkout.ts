@@ -102,7 +102,10 @@ export async function checkout(req: Request, env: Env, now = Date.now()): Promis
     const clock = env.ENVIRONMENT === 'test' && env.TEST_CLOCK ? { test_clock: env.TEST_CLOCK } : {};
     const customer = reuse
       ? await st.customers.update(reuse.id, customerParams)
-      : await st.customers.create({ ...customerParams, ...clock }, { idempotencyKey: `cust-${sid}-${await sha256(s.email)}` });
+      // Keyed on the details as well as the submission, so a retry with a
+      // corrected name is a new request rather than a refused one.
+      : await st.customers.create({ ...customerParams, ...clock },
+          { idempotencyKey: `cust-${sid}-${(await sha256(JSON.stringify(customerParams))).slice(0, 16)}` });
 
     const ids = await priceIds(st, result.lineItems.map((l) => l.lookupKey));
     const meta = metadata(s, result.perMember, sid, now, inviteId);
@@ -160,7 +163,9 @@ function peopleWord(n: number, lang: 'es' | 'en' | 'ja') {
 
 export function metadata(s: Signup, priced: { slot: number; kind: 'full' | 'family' | 'sc' }[], sid: string, now: number, inviteId: string | null): Meta {
   const iso = new Date(now).toISOString();
-  const quarterlyOrAnnual = s.period !== 'monthly';
+  // The keikogi is a gift on a FIRST enrolment: an existing member moving over
+  // by invite has had theirs, so an invited signup carries none.
+  const quarterlyOrAnnual = s.period !== 'monthly' && !inviteId;
   const meta: Meta = {
     catalog_version: CATALOG.version,
     period: s.period,

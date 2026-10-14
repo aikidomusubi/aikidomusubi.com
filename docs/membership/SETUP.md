@@ -23,7 +23,7 @@ npm install
 npm test
 ```
 
-`npm test` should end with `73 passed`.
+`npm test` should end with `74 passed`.
 
 ---
 

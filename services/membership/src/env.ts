@@ -3,6 +3,10 @@
 // Cloudflare (locally, in .dev.vars, which git ignores).
 export interface Env {
   KV: KVNamespace;
+  // Per-IP limits, from Cloudflare's rate-limit binding (wrangler.toml). Not
+  // KV: KV allows a thousand writes a day on the free plan, and a limiter that
+  // writes on every request is a way to use them up.
+  RL_FORMS?: RateLimit;
 
   ENVIRONMENT: 'dev' | 'test' | 'live' | string;
   SITE_ORIGIN: string;

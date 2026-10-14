@@ -122,6 +122,15 @@ describe('metadata', () => {
     expect(meta.holder).toBe('m1');
     expect(meta.guardian_at).toBeTruthy();
   });
+  it('gives no keikogi to an invited member, who is not enrolling for the first time', () => {
+    const r = validate(FAMILY, NOW);
+    if (!r.ok) throw new Error('invalid');
+    const priced = Pricing.price({ period: 'quarterly', members: r.value.members.map((m) => ({ cat: m.cat, rate: m.rate, venue: m.venue })) }, CATALOG);
+    const meta = metadata(r.value, priced.perMember, 'sid_0123456789abcdef', NOW, 'inv_123');
+    expect(meta.keikogi).toBe('');
+    expect(meta.keikogi_due).toBe('');
+    expect(meta.invite_id).toBe('inv_123');
+  });
   it('renumbers people when the form had a gap', () => {
     const gap = { ...FAMILY, p2_given: '', p2_family: '', p2_cat: '', p2_rate: '', holder: 'p3',
       p3_cat: 'adult', p3_by: '', p3_bm: '', guardian: '' };

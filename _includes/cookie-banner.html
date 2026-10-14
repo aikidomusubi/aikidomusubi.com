@@ -148,7 +148,10 @@
   var choice = getChoice();
   if (choice === 'accepted') {
     loadGTM();
-  } else if (choice !== 'rejected') {
+  } else if (choice !== 'rejected' && !NO_ANALYTICS) {
+    // Not on the signup and its pages: they set no cookie whatever is chosen,
+    // and the banner's overlay would sit on top of a form being filled in.
+    // The question waits for the next ordinary page.
     open();
   }
 

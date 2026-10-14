@@ -296,11 +296,15 @@
           per.textContent = fill(U.per_month, { amount: F.money(Math.round(r.total / months * 100) / 100) });
           per.hidden = false;
           if (r.saving > 0) { save.textContent = fill(U.saving, { amount: F.money(r.saving) }); save.hidden = false; }
-          gift.textContent = fill(U.gift, { n: ms.length });
-          gift.hidden = false;
+          // An invite is for somebody already enrolled: no first-enrolment gift.
+          if (!form.elements.invite.value) {
+            gift.textContent = fill(U.gift, { n: ms.length });
+            gift.hidden = false;
+          }
         }
       });
       $('#su-why', root).hidden = !anyOff;
+      $('#su-keikogi', root).hidden = !!form.elements.invite.value;
 
       var period = selectedPeriod() || 'monthly';
       var res = cmp[period] && cmp[period].available ? cmp[period].result : null;

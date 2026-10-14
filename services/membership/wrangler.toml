@@ -47,6 +47,14 @@ TEST_CLOCK = ""
 binding = "KV"
 id = "REPLACE_WITH_TEST_KV_ID"
 
+# Ten posts a minute per IP on /checkout and /withdrawal. Counted in memory by
+# Cloudflare, so it costs no KV writes. namespace_id is any number unique in
+# the account.
+[[ratelimits]]
+name = "RL_FORMS"
+namespace_id = "1001"
+simple = { limit = 10, period = 60 }
+
 [env.live]
 name = "membership"
 routes = [{ pattern = "api.aikidomusubi.com", custom_domain = true }]
@@ -68,3 +76,7 @@ binding = "KV"
 id = "REPLACE_WITH_LIVE_KV_ID"
 [env.live.triggers]
 crons = ["0 8 * * *"]
+[[env.live.ratelimits]]
+name = "RL_FORMS"
+namespace_id = "1002"
+simple = { limit = 10, period = 60 }
