@@ -158,13 +158,21 @@
       </div>
     </section>
 
+    {%- comment -%}
+      The legal strip's pages, then the membership's three standing pages,
+      which live in the footer's first column as `extra` (_data/footer.yml):
+      the members area, the terms and the withdrawal function. Not in the
+      menu, so listed here or nowhere.
+    {%- endcomment -%}
+    {%- assign fcol = F.columns | where: 'from_nav', 'classes' | first -%}
+    {%- assign LEG = F.legal | concat: fcol.extra %}
     <section class="sm-row">
       <div class="sm-lab">
         <h2>{{ site.data.sitemap.legal[L] }}</h2>
-        <p class="n">{{ F.legal | size }}</p>
+        <p class="n">{{ LEG | size }}</p>
       </div>
       <div class="sm-cells">
-        {%- for it in F.legal -%}
+        {%- for it in LEG -%}
           {%- assign target = site.pages | where: 'url', it.url[L] | first %}
         <a class="sm-cell" href="{{ it.url[L] }}">
           <b>{{ it.label[L] }}</b>

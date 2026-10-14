@@ -97,9 +97,12 @@ export async function checkout(req: Request, env: Env, now = Date.now()): Promis
       preferred_locales: [stripeLocale],
       metadata: { source: 'signup', signup_id: sid, lang }
     };
+    // A test clock lets the whole year of a membership be run in minutes
+    // (docs/membership/SETUP.md, step 5). Never in live mode.
+    const clock = env.ENVIRONMENT === 'test' && env.TEST_CLOCK ? { test_clock: env.TEST_CLOCK } : {};
     const customer = reuse
       ? await st.customers.update(reuse.id, customerParams)
-      : await st.customers.create(customerParams, { idempotencyKey: `cust-${sid}-${await sha256(s.email)}` });
+      : await st.customers.create({ ...customerParams, ...clock }, { idempotencyKey: `cust-${sid}-${await sha256(s.email)}` });
 
     const ids = await priceIds(st, result.lineItems.map((l) => l.lookupKey));
     const meta = metadata(s, result.perMember, sid, now, inviteId);

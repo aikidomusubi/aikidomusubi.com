@@ -1,0 +1,19 @@
+# Copy to .dev.vars (test mode) or .live.vars (live mode). Both are gitignored.
+# Never commit them, never paste their values into a chat, an email or a ticket.
+#
+# The command-line tools (stripe:setup, invite, plan, refund, migrate-prices,
+# retention) read this file. The Worker gets the same values through
+# `npx wrangler secret put NAME`, except STRIPE_SECRET_KEY: the scripts need
+# the FULL key (sk_test_...), the Worker gets a RESTRICTED one (rk_test_...).
+#
+# INVITE_SIGNING_KEY and ADMIN_ACTION_KEY: two random strings of at least 32
+# characters. Make each with:   openssl rand -base64 48
+# They must be identical here and in the Worker.
+
+STRIPE_SECRET_KEY="sk_test_..."
+STRIPE_WEBHOOK_SECRET="whsec_..."
+INVITE_SIGNING_KEY="..."
+ADMIN_ACTION_KEY="..."
+BREVO_API_KEY="xkeysib-..."
+# Optional, test mode: every email goes to this address instead of the member.
+EMAIL_OVERRIDE=""

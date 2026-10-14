@@ -16,6 +16,9 @@ export interface Env {
   MEMBER_FAILED_EMAIL_SEPA: string;
   MIGRATION_REMITTANCE_LIST: string;
   EMAIL_OVERRIDE: string;
+  // Test mode only: attach new customers to this Stripe test clock, so that
+  // renewals, the 15-day notice and failed retries can be run in minutes.
+  TEST_CLOCK?: string;
 
   // secrets
   STRIPE_SECRET_KEY: string;       // a RESTRICTED key: see docs/membership/SETUP.md

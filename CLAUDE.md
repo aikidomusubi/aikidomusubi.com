@@ -21,6 +21,12 @@ Jekyll static site for **Aikido Musubi** (aikidomusubi.com), a non-profit martia
 There are **no external CDN dependencies** and **no jQuery**. Every authored
 script is plain vanilla JS.
 
+**Online signup and fee payment** (from January 2027) adds a server the site
+otherwise does not have: a **Cloudflare Worker** in `services/membership/`, in
+TypeScript, in front of **Stripe** (Checkout, subscriptions, the customer
+portal), sending email through **Brevo**. See "Online signup and fee
+collection" below.
+
 ### Nav and footer are data-driven and framework-free
 
 `_includes/navigation.html` and `_includes/footer.html` are loops over
@@ -84,7 +90,10 @@ the script, not to a list somewhere.
    `build` and `qa` were green.
 9. **Accessibility (markup half)** — `alt`, accessible names on links and
    buttons, `aria-*` pointing at real ids, one `<main>`, `lang`, the skip link,
-   positive `tabindex`.
+   positive `tabindex`. **And the rendered half for the membership pages**:
+   axe-core in headless Chrome through every signup step (see "Online signup
+   and fee collection"). It warns rather than fails when
+   `services/membership` has no `node_modules`.
 10. **SEO tags** — `title`, description, canonical, hreflang; duplicates counted
    **within a language only**, because the same title in `ca` and `en` is a
    legitimate hreflang pair, not duplicate content.
@@ -728,6 +737,51 @@ and `courses` was renamed `events`. `photos.md`, `videos.md`, `courses.md` and
 `_layouts/photo.html` no longer exist; the pages are `galeria.md`,
 `prensa-y-tv.md` and `seminars.md`.
 
+## Online signup and fee collection
+
+The spec is a Claude Docs document, "Aikido Musubi — Online Membership Signup &
+Stripe Billing Spec" (14 October 2026). Layout B ("people first") was approved
+from `docs/mockups/inscripcion-*.html`. **It lives on the `membership-signup`
+branch until launch in January 2027**, because the legal pages change on launch
+day and a signup page with no payment system behind it must not go out with an
+ordinary push. Setup: `docs/membership/SETUP.md`. Day to day:
+`docs/membership/RUNBOOK.md`. Code map and departures from the spec:
+`services/membership/README.md`.
+
+**There is no database and no password.** Stripe is the record: the household is
+written in the subscription's metadata, members sign in to Stripe's portal with
+their email and a one-time code, and the Worker keeps only event ids and
+one-use tokens in KV.
+
+**One source, three readers.** `_data/fees.yml` is priced by
+`scripts/pricing.js`, a plain UMD script that the signup page loads AND the
+Worker imports (through `services/membership/scripts/gen-catalog.mjs`, which
+also bundles `_data/membership.yml` and `_data/membership_emails.yml`). The
+browser's totals and the server's are the same function; the server never trusts
+the browser's. Change a price in `fees.yml`, then `npm run stripe:setup` and, for
+existing members, `npm run migrate-prices`; Stripe Prices are never edited.
+
+**The organisation's name is never typed** into the membership copy: strings say
+`{org}` and `{title}` and are filled from `_data/footer.yml` and `_config.yml`, so
+the Aikikai Barcelona rename still touches three files.
+
+**Liquid cannot hold a literal `}` inside `{{ }}`.** Its tokenizer ends an output tag
+at the first `}`, so `{{ s | replace: '{url}', x }}` is a syntax error. The
+layouts assign the placeholders in tags first (`{% assign PH_URL = '{url}' %}`).
+Jekyll's `include` also refuses bracketed parameters (`lede=MM.lede[L]`): assign
+first, then pass the variable.
+
+**What a script builds is checked in a browser, every build.** `tools/qa.py` runs
+`services/membership/scripts/a11y.mjs`: axe-core in headless Chrome walks the signup
+through every step, with an error on the way, in four languages and two widths. On
+its first run it found the second person's name field squeezed to 24px beside a
+floated legend, which no amount of reading the HTML would have shown.
+
+**The Japanese font files carry a generation number** (`-g2`) since the membership
+pages added 18 kanji. Fonts cannot be cache-busted, so a run of
+`tools/subset-ja-fonts.py` that ADDS glyphs bumps `GEN` in the script and the old
+files are removed; one that only loses glyphs may keep the name.
+
 ## Key files
 
 | File | Purpose |
@@ -762,6 +816,11 @@ and `courses` was renamed `events`. `photos.md`, `videos.md`, `courses.md` and
 | `gulpfile.js` | Gulp tasks for CSS/JS compilation |
 | `_includes/fonts-ja.css` | **Generated** `@font-face` set for the Japanese faces, inlined on `/ja/` pages — see below |
 | `tools/subset-ja-fonts.py` | **Regenerates** the Japanese faces and that include — re-run after editing Japanese copy |
+| `_data/membership.yml` | The signup's URLs, terms version, every page string and error message — shared by the page and the Worker |
+| `_data/membership_emails.yml` | Every member and admin email's words, four languages |
+| `scripts/pricing.js` | **The** pricing engine, for the signup page and the Worker alike |
+| `services/membership/` | The Worker (`api.aikidomusubi.com`), its tests and its command-line tools |
+| `docs/membership/SETUP.md`, `RUNBOOK.md` | Setting up Stripe, Cloudflare and Brevo; and the dojo's day to day |
 
 ## Layout: one scale, one column, one measure
 
