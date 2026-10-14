@@ -5,5 +5,5 @@ description: Qué hemos hecho para que este sitio se pueda usar con teclado, con
 permalink: /accesibilidad/
 lang: es
 i18n-ref: accessibility-Yb3wK7Rn
-last_modified: 2026-08-23
+last_modified: 2026-10-14
 ---

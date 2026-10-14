@@ -5,7 +5,7 @@ description: Quines galetes utilitza aquest lloc web, per a què serveixen i com
 permalink: /ca/politica-galetes/
 lang: ca
 i18n-ref: cookie-policy-67RmRt6B
-last_modified: 2026-08-14
+last_modified: 2026-10-14
 ---
 
 # Política de Galetes (Cookies)
@@ -15,7 +15,7 @@ Quines galetes utilitza aquest lloc web, per a què serveixen i com acceptar-les
 {% include legal-summary.html %}
 
 
-**Última actualització: 14 d'agost de 2026**
+**Última actualització: 14 d'octubre de 2026**
 
 Aquest lloc web, **aikidomusubi.com**, titularitat d'Aikido Musubi, utilitza galetes (cookies) i tecnologies similars. Aquesta Política de Galetes s'ha elaborat seguint la *Guia sobre l'ús de les galetes* de l'Agència Espanyola de Protecció de Dades (AEPD).
 
@@ -49,6 +49,9 @@ Ens permeten conèixer, de manera agregada i estadística, com utilitzen els usu
 Si el lloc web incrusta contingut de plataformes externes (per exemple, **vídeos de YouTube** o elements de **Facebook / Instagram**), aquestes plataformes poden instal·lar les seves pròpies galetes quan interactueu amb aquell contingut. Us recomanem consultar-ne les polítiques respectives:
 - [Política de privadesa de Google/YouTube](https://policies.google.com/privacy){:target="_blank" rel="noopener"}
 - [Política de galetes de Meta (Facebook/Instagram)](https://www.facebook.com/policies/cookies/){:target="_blank" rel="noopener"}
+
+### d) La inscripció i el pagament de la quota en línia
+La inscripció en línia no instal·la cap galeta. Mentre passeu per la pàgina de pagament, el formulari desa el que heu escrit a l'**emmagatzematge de sessió** del navegador (`sessionStorage`), perquè en tornar no l'hàgiu d'escriure de nou; s'esborra en acabar la inscripció i, en tot cas, en tancar la pestanya. A les pàgines de la inscripció, de l'àrea de membres i del desistiment **no es carrega Google Analytics**, encara que l'hàgiu acceptat. El pagament es fa en pàgines de **Stripe** (stripe.com), que apliquen la seva pròpia [política de galetes](https://stripe.com/legal/cookies-policy){:target="_blank" rel="noopener"}.
 
 ## 3. Consentiment
 

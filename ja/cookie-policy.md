@@ -5,7 +5,7 @@ description: 本ウェブサイトが使用するクッキーの種類と目的�
 permalink: /ja/cookie-policy/
 lang: ja
 i18n-ref: cookie-policy-67RmRt6B
-last_modified: 2026-08-14
+last_modified: 2026-10-14
 ---
 
 # クッキーポリシー
@@ -15,7 +15,7 @@ last_modified: 2026-08-14
 {% include legal-summary.html %}
 
 
-**最終更新日：2026年8月14日**
+**最終更新日：2026年10月14日**
 
 この日本語版は便宜のために提供されるものです。本ウェブサイトはスペイン法に基づいて運営されているため、内容に相違がある場合はスペイン語版が優先されます。
 
@@ -51,6 +51,9 @@ Aikido Musubi が所有する本ウェブサイト **aikidomusubi.com** は、�
 本ウェブサイトが外部プラットフォームのコンテンツ（例：**YouTube 動画**や **Facebook / Instagram** の要素）を埋め込んでいる場合、これらのプラットフォームは、あなたがそのコンテンツを操作した際に独自のクッキーを設定することがあります。それぞれのポリシーをご確認いただくことをお勧めします。
 - [Google/YouTube プライバシーポリシー](https://policies.google.com/privacy){:target="_blank" rel="noopener"}
 - [Meta（Facebook/Instagram）クッキーポリシー](https://www.facebook.com/policies/cookies/){:target="_blank" rel="noopener"}
+
+### d) オンラインでの入会申し込みと会費のお支払い
+オンラインでの入会申し込みでは、クッキーは一切使用しません。お支払いページに移動している間、入力内容をブラウザの**セッションストレージ**（`sessionStorage`）に保存し、戻ったときに再入力の必要がないようにします。この情報は申し込みの完了時、またはタブを閉じた時点で削除されます。入会申し込み、会員ページ、解約の各ページでは、同意の有無にかかわらず**Google Analyticsを読み込みません**。お支払いは**Stripe**（stripe.com）のページで行われ、同社の[クッキーポリシー](https://stripe.com/legal/cookies-policy){:target="_blank" rel="noopener"}が適用されます。
 
 ## 3. 同意
 

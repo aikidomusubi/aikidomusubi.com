@@ -48,7 +48,9 @@ experience; children and teens up to 16 have their own class at Marina-Besòs. {
 month from age 17, {{ kids }} € up to 16, and the fee covers every space;
 cheaper by the quarter or the year, and less for each extra family member.
 Registration is free and there are two trial classes. Enrolment is open all
-year round.
+year round, and members sign up and pay online at
+{{ site.url }}{{ site.data.membership.urls.signup.en }}: by card or SEPA direct debit, charged on
+the 5th, cancellable at any time.
 
 ## Where we train
 {% for v in V.venues %}

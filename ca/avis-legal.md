@@ -5,7 +5,7 @@ description: Dades identificatives del titular del lloc web, condicions d'ús, p
 permalink: /ca/avis-legal/
 lang: ca
 i18n-ref: legal-notice-Up6gBHvn
-last_modified: 2026-08-28
+last_modified: 2026-10-14
 ---
 
 # Avís Legal
@@ -35,6 +35,8 @@ En compliment del deure d'informació recollit a l'article 10 de la Llei 34/2002
 Aquest Avís Legal regula l'accés, la navegació i l'ús del lloc web **aikidomusubi.com** (d'ara endavant, "el Lloc Web"), titularitat d'Aikido Musubi (d'ara endavant, "l'Associació"). L'accés al Lloc Web és gratuït i la seva finalitat és informar sobre les activitats, classes, horaris i cursos d'aikido que ofereix l'Associació.
 
 La navegació pel Lloc Web atribueix la condició d'usuari i implica l'acceptació plena i sense reserves de totes les disposicions incloses en aquest Avís Legal. Si no esteu d'acord amb aquestes condicions, us preguem que us abstingueu d'utilitzar el Lloc Web.
+
+La inscripció i el pagament de la quota en línia es regeixen, a més, per les [condicions de la quota](/ca/condicions-de-la-quota/).
 
 ## 3. Condicions d'ús
 

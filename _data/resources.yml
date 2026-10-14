@@ -80,10 +80,10 @@ groups:
         title: { es: "Hoja de inscripción", ca: "Full d'inscripció",
                  en: "Enrolment form", ja: "入会申込書" }
         desc:
-          es: "Datos, actividad y cuota. Se entrega firmada en el dojo o por correo."
-          ca: "Dades, activitat i quota. Es lliura signada al dojo o per correu."
-          en: "Details, activity and fee. Hand it in signed at the dojo or by email."
-          ja: "氏名、活動、月謝。記入・署名のうえ道場またはメールで提出します。"
+          es: "Tus datos, una por persona. Se entrega firmada en el dojo o por correo; la cuota se paga en línea."
+          ca: "Les teves dades, un per persona. Es lliura signat al dojo o per correu; la quota es paga en línia."
+          en: "Your details, one per person. Hand it in signed at the dojo or by email; the fee is paid online."
+          ja: "お一人につき1枚。記入・署名のうえ道場またはメールで提出します。会費はオンラインでお支払いいただきます。"
         file: "inscripcion"
         langs: "ES CA EN JA"
       - kind: form
@@ -105,16 +105,6 @@ groups:
           en: "Signed by a parent or guardian. Required under the age of 14."
           ja: "保護者が署名します。14歳未満は必須です。"
         file: "menores"
-        langs: "ES CA"
-      - kind: form
-        title: { es: "Orden de domiciliación SEPA", ca: "Ordre de domiciliació SEPA",
-                 en: "SEPA direct debit mandate", ja: "口座振替依頼書（SEPA）" }
-        desc:
-          es: "Sólo si eliges pagar la cuota por banco."
-          ca: "Només si tries pagar la quota per banc."
-          en: "Only if you choose to pay the fee by bank transfer."
-          ja: "月謝を口座振替で支払う場合のみ。"
-        file: "sepa"
         langs: "ES CA"
 
   - id: examen

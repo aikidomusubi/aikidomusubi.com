@@ -5,7 +5,7 @@ description: Which cookies this website uses, what they do, and how to accept or
 permalink: /en/cookie-policy/
 lang: en
 i18n-ref: cookie-policy-67RmRt6B
-last_modified: 2026-08-14
+last_modified: 2026-10-14
 ---
 
 # Cookie Policy
@@ -15,7 +15,7 @@ Which cookies this website uses, what they do, and how to accept or reject them.
 {% include legal-summary.html %}
 
 
-**Last updated: 14 August 2026**
+**Last updated: 14 October 2026**
 
 This English version is provided for convenience. In the event of any discrepancy, the Spanish version prevails, as this website is operated under Spanish law.
 
@@ -51,6 +51,9 @@ These allow us to understand, in aggregate and statistical form, how users use t
 If the website embeds content from external platforms (for example, **YouTube videos** or **Facebook / Instagram** elements), those platforms may install their own cookies when you interact with that content. We recommend consulting their respective policies:
 - [Google/YouTube Privacy Policy](https://policies.google.com/privacy){:target="_blank" rel="noopener"}
 - [Meta (Facebook/Instagram) Cookie Policy](https://www.facebook.com/policies/cookies/){:target="_blank" rel="noopener"}
+
+### d) Online signup and fee payment
+The online signup sets no cookies. While you are on the payment page, the form keeps what you typed in your browser's **session storage** (`sessionStorage`), so that you do not have to type it again when you come back; it is cleared when the signup is complete, and in any case when the tab is closed. **Google Analytics is not loaded** on the signup, members-area and withdrawal pages, even if you have accepted it. Payment takes place on **Stripe**'s pages (stripe.com), which apply their own [cookie policy](https://stripe.com/legal/cookies-policy){:target="_blank" rel="noopener"}.
 
 ## 3. Consent
 

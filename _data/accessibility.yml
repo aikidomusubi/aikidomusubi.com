@@ -27,10 +27,10 @@ ui:
     ca: "El nostre compromís",
     en: "Our commitment",
     ja: "私たちの姿勢" }
-  commit: { es: "La Associació Cultural Musubi Aikido quiere que cualquiera pueda consultar los horarios, encontrar el dojo y escribirnos, con independencia de cómo navegue. No estamos obligados por ley a publicar esta declaración: no somos un organismo público ni prestamos servicios de comercio electrónico. La publicamos porque hemos hecho el trabajo y porque nos parece que un dojo que dice recibir a todo el mundo debería decirlo también aquí.",
-    ca: "L'Associació Cultural Musubi Aikido vol que qualsevol pugui consultar els horaris, trobar el dojo i escriure'ns, independentment de com navegui. No estem obligats per llei a publicar aquesta declaració: no som un organisme públic ni prestem serveis de comerç electrònic. La publiquem perquè hem fet la feina i perquè ens sembla que un dojo que diu que rep tothom ho hauria de dir també aquí.",
-    en: "Associació Cultural Musubi Aikido wants anyone to be able to read the timetable, find the dojo and write to us, however they browse. We are not required by law to publish this statement: we are not a public body and we do not provide e-commerce services. We publish it because the work has been done, and because a dojo that says it welcomes everyone ought to say so here as well.",
-    ja: "産靈合気道文化協会は、どなたでも稽古時間を確認し、道場の場所を知り、連絡できるようにしたいと考えています。この宣言の公開は法的義務ではありません。私たちは公的機関でもなく、電子商取引サービスも提供していません。それでも公開するのは、実際に手を尽くしてきたからであり、「どなたでもどうぞ」と言う道場なら、ここでもそう言うべきだと考えるからです。" }
+  commit: { es: "La Associació Cultural Musubi Aikido quiere que cualquiera pueda consultar los horarios, encontrar el dojo y escribirnos, con independencia de cómo navegue. Desde que la cuota se puede pagar en línea, el sitio también ofrece un servicio de comercio electrónico. Como microempresa, la asociación está exenta de las obligaciones de accesibilidad de la Ley 11/2023, pero cumplimos la norma igualmente: la publicamos porque hemos hecho el trabajo y porque nos parece que un dojo que dice recibir a todo el mundo debería decirlo también aquí.",
+    ca: "L'Associació Cultural Musubi Aikido vol que qualsevol pugui consultar els horaris, trobar el dojo i escriure'ns, independentment de com navegui. Des que la quota es pot pagar en línia, el lloc també ofereix un servei de comerç electrònic. Com a microempresa, l'associació està exempta de les obligacions d'accessibilitat de la Llei 11/2023, però complim la norma igualment: la publiquem perquè hem fet la feina i perquè ens sembla que un dojo que diu que rep tothom ho hauria de dir també aquí.",
+    en: "Associació Cultural Musubi Aikido wants anyone to be able to read the timetable, find the dojo and write to us, however they browse. Since the fee can be paid online, the site also provides an e-commerce service. As a micro-enterprise the association is exempt from the accessibility obligations of Ley 11/2023, but we meet the standard anyway: we publish this because the work has been done, and because a dojo that says it welcomes everyone ought to say so here as well.",
+    ja: "産靈合気道文化協会は、どなたでも稽古時間を確認し、道場の場所を知り、連絡できるようにしたいと考えています。会費をオンラインでお支払いいただけるようになり、このサイトは電子商取引サービスも提供しています。当協会は零細事業者として法律11/2023のアクセシビリティ義務の適用を受けませんが、それでも基準を守ります。この宣言を公開するのは、実際に手を尽くしてきたからであり、「どなたでもどうぞ」と言う道場なら、ここでもそう言うべきだと考えるからです。" }
   done_h: { es: "Qué hemos hecho",
     ca: "Què hem fet",
     en: "What we have done",
@@ -75,10 +75,10 @@ ui:
     ca: "Contacte",
     en: "Contact",
     ja: "連絡先" }
-  date_v: { es: "23 de agosto de 2026",
-    ca: "23 d’agost de 2026",
-    en: "23 August 2026",
-    ja: "2026年8月23日" }
+  date_v: { es: "14 de octubre de 2026",
+    ca: "14 d’octubre de 2026",
+    en: "14 October 2026",
+    ja: "2026年10月14日" }
 
 done:
   - { es: "Un <strong>enlace para saltar al contenido</strong> como primer elemento de cada página, para no tener que tabular por los veinte enlaces del menú.",
@@ -118,7 +118,15 @@ done:
       en: "Each page declares its language, and Japanese passages are marked as Japanese so a screen reader pronounces them correctly.",
       ja: "各ページの言語を宣言し、日本語の語句には日本語であることを明示しています。スクリーンリーダーが正しく読み上げるためです。" }
 
+  - { es: "La <strong>inscripción en línea</strong> se comprueba en cada compilación con axe-core, paso a paso, en los cuatro idiomas y en móvil y escritorio, sin ningún error permitido (WCAG 2.2 AA). Funciona también sin JavaScript.",
+      ca: "La <strong>inscripció en línia</strong> es comprova a cada compilació amb axe-core, pas a pas, en els quatre idiomes i en mòbil i escriptori, sense cap error permès (WCAG 2.2 AA). Funciona també sense JavaScript.",
+      en: "The <strong>online signup</strong> is checked on every build with axe-core, step by step, in all four languages and on phone and desktop, with no error allowed (WCAG 2.2 AA). It also works without JavaScript.",
+      ja: "<strong>オンライン入会申し込み</strong>は、ビルドのたびに axe-core で全ステップを4言語・スマートフォンとPCの両方で検査し、エラーを一切許容していません（WCAG 2.2 AA）。JavaScript なしでも利用できます。" }
 limits:
+  - { es: "La <strong>página de pago y el área de miembros</strong> son páginas de Stripe: contenido de terceros que no controlamos. Si encuentras una barrera en ellas, avísanos y se la haremos llegar a Stripe.",
+      ca: "La <strong>pàgina de pagament i l'àrea de membres</strong> són pàgines de Stripe: contingut de tercers que no controlem. Si hi trobes una barrera, avisa'ns i la farem arribar a Stripe.",
+      en: "The <strong>payment page and the members area</strong> are Stripe's pages: third-party content outside our control. If you meet a barrier there, tell us and we will pass it on to Stripe.",
+      ja: "<strong>お支払いページと会員ページ</strong>はStripeのページであり、当協会が管理できない第三者のコンテンツです。利用しにくい点があればお知らせください。Stripeに伝えます。" }
   - { es: "Los <strong>PDF de terceros</strong> (programas de seminario, formularios de federaciones) no siempre están etiquetados. Si necesitas uno en otro formato, pídenoslo y te lo pasamos.",
       ca: "Els <strong>PDF de tercers</strong> (programes de seminari, formularis de federacions) no sempre estan etiquetats. Si en necessites un en un altre format, demana'ns-el i te'l passem.",
       en: "<strong>Third-party PDFs</strong> (seminar programmes, federation forms) are not always tagged. If you need one in another format, ask and we will send it.",

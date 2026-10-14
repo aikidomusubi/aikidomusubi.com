@@ -5,7 +5,7 @@ description: Qué datos personales tratamos, con qué finalidad y base legal, du
 permalink: /politica-privacidad/
 lang: es
 i18n-ref: privacy-policy-EgFc1Qem
-last_modified: 2026-08-14
+last_modified: 2026-10-14
 ---
 
 # Política de Privacidad
@@ -15,7 +15,7 @@ Qué datos personales tratamos, con qué finalidad y base legal, durante cuánto
 {% include legal-summary.html %}
 
 
-**Última actualización: 13 de agosto de 2026**
+**Última actualización: 14 de octubre de 2026**
 
 Aikido Musubi se compromete a proteger la privacidad de los usuarios de su sitio web, de sus socios, alumnos y de cualquier persona cuyos datos personales trate. La presente Política de Privacidad se ha redactado de conformidad con el Reglamento (UE) 2016/679 (Reglamento General de Protección de Datos, "RGPD") y la Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales (LOPDGDD).
 
@@ -40,19 +40,28 @@ Tratamos los datos personales según la relación que usted mantenga con la Asoc
 - **Base jurídica:** su consentimiento y/o la aplicación de medidas precontractuales a petición suya (art. 6.1.a y 6.1.b RGPD).
 
 ### b) Inscripción y gestión de socios y alumnos
-- **Datos:** nombre y apellidos, DNI/NIE, fecha de nacimiento, dirección postal, teléfono, correo electrónico, datos bancarios para el cobro de cuotas, grado y datos relativos a la práctica del aikido, y en su caso datos de la licencia federativa.
-- **Finalidad:** gestionar el alta y la relación como socio o alumno, la organización de las clases y cursos, el cobro de cuotas, la tramitación de licencias y seguros deportivos, y el cumplimiento de las obligaciones asociativas.
+- **Datos:** nombre y apellidos, DNI/NIE, fecha de nacimiento, dirección postal, teléfono, correo electrónico, grado y datos relativos a la práctica del aikido, y en su caso datos de la licencia federativa.
+- **Finalidad:** gestionar el alta y la relación como socio o alumno, la organización de las clases y cursos, la tramitación de licencias y seguros deportivos, y el cumplimiento de las obligaciones asociativas.
 - **Base jurídica:** la ejecución de la relación asociativa o del contrato del que usted es parte (art. 6.1.b RGPD), el cumplimiento de obligaciones legales aplicables a la Asociación (art. 6.1.c RGPD) y, en su caso, su consentimiento.
 
-### c) Datos de menores de edad
+### c) Inscripción y pago de la cuota en línea
+- **Datos de la persona titular:** nombre y apellidos, correo electrónico, teléfono (opcional), dirección de facturación y medio de pago (tarjeta o cuenta bancaria). La dirección y el medio de pago los recoge directamente Stripe en su página segura: la Asociación no ve ni guarda los números de tarjeta ni de cuenta.
+- **Datos de quienes entrenan:** nombre y apellidos, grupo de edad, cuota aplicada y, solo para quienes tienen hasta 16 años, el mes y el año de nacimiento.
+- **Datos de la aceptación:** versión de las condiciones aceptadas, fecha y hora de la aceptación, de la petición de empezar antes de que acabe el plazo de desistimiento y de las declaraciones de mayoría de edad y de patria potestad o tutela.
+- **Datos técnicos:** dirección IP y navegador, en los registros del servicio que recibe la inscripción, durante un máximo de 30 días, solo para la seguridad del servicio.
+- **Finalidad:** gestionar la inscripción, cobrar la cuota, enviar los recibos, los avisos de renovación y las confirmaciones, atender las bajas y los desistimientos, y aplicar el cambio de cuota a los 17 años.
+- **Base jurídica:** el contrato de cuota del que usted es parte (art. 6.1.b RGPD); el cumplimiento de obligaciones legales de consumo y fiscales (art. 6.1.c RGPD) para la prueba de la aceptación y la conservación de los recibos; y el interés legítimo en la seguridad del servicio (art. 6.1.f RGPD) para los datos técnicos.
+- **Dónde se guardan:** en Stripe, que procesa los pagos. El mes y el año de nacimiento se borran en cuanto se aplica la cuota de 17 años o más.
+
+### d) Datos de menores de edad
 Para la inscripción de menores de 14 años, es imprescindible el **consentimiento de los padres, madres o tutores legales**, que deberán aportar sus propios datos identificativos y de contacto además de los del menor. La Asociación tratará los datos del menor exclusivamente para la finalidad de gestionar su participación en las actividades. No se tratarán más datos de los estrictamente necesarios.
 
-### d) Imágenes y vídeos
+### e) Imágenes y vídeos
 - **Datos:** imágenes y grabaciones de vídeo de socios, alumnos y asistentes tomadas durante clases, cursos, eventos y exhibiciones.
 - **Finalidad:** difundir las actividades de la Asociación en el sitio web y en las redes sociales (Facebook, Instagram, YouTube).
 - **Base jurídica:** su consentimiento expreso (art. 6.1.a RGPD), que se recaba mediante la correspondiente **cláusula de autorización de uso de imagen**. En el caso de menores, este consentimiento debe ser otorgado por sus padres o tutores legales. Usted puede retirar este consentimiento en cualquier momento.
 
-### e) Navegación y cookies
+### f) Navegación y cookies
 - **Datos:** datos de navegación e identificadores de dispositivo, tratados a través de cookies y tecnologías similares (por ejemplo, Google Analytics a través de Google Tag Manager).
 - **Finalidad:** analizar el uso del sitio web y elaborar estadísticas.
 - **Base jurídica:** su consentimiento, prestado a través del aviso de cookies. Consulte la [Política de Cookies](/politica-cookies/) para más información.
@@ -61,6 +70,7 @@ Para la inscripción de menores de 14 años, es imprescindible el **consentimien
 
 - Los datos de **consultas** se conservarán durante el tiempo necesario para atenderlas y, posteriormente, hasta un máximo de 1 año, salvo que usted solicite su supresión antes.
 - Los datos de **socios y alumnos** se conservarán mientras se mantenga la relación asociativa y, una vez finalizada, durante los plazos legalmente exigidos para atender posibles responsabilidades (con carácter general, hasta 4 años en materia fiscal y otros plazos según la normativa aplicable).
+- Los datos de la **cuota en línea** se conservarán mientras sea miembro y, después, durante los plazos legales (con carácter general, hasta 4 años en materia fiscal). Las solicitudes de desistimiento se conservan como prueba durante el mismo tiempo. Los datos técnicos, 30 días como máximo.
 - Las **imágenes y vídeos** se conservarán mientras no se revoque el consentimiento y se mantenga el interés en la difusión de las actividades.
 
 ## 4. ¿A quién comunicamos sus datos?
@@ -69,13 +79,14 @@ Con carácter general, la Asociación no cede datos a terceros, salvo obligació
 
 - **Administraciones públicas y organismos oficiales**, cuando exista una obligación legal.
 - **Federaciones deportivas y entidades aseguradoras**, para la tramitación de licencias y seguros deportivos, cuando proceda.
-- **Entidades bancarias**, para la gestión de los cobros de cuotas.
+- **Stripe Payments Europe, Ltd.** (Irlanda), que procesa el pago de la cuota en nombre de la Asociación como encargado del tratamiento y, para sus propios fines (prevención del fraude, obligaciones legales y de conocimiento del cliente), como responsable independiente.
+- **Cloudflare, Inc.**, que aloja el servicio que recibe la inscripción y el formulario de desistimiento, y **Sendinblue SAS (Brevo)**, en Francia, que envía los correos de la cuota, ambos como encargados del tratamiento.
 - **Proveedores de servicios que actúan como encargados del tratamiento**, tales como el proveedor de alojamiento web (GitHub, Inc.) y el proveedor de herramientas de analítica (Google). Estos proveedores solo tratan los datos conforme a nuestras instrucciones.
 - **Redes sociales** (Facebook/Meta, Instagram, YouTube/Google), en relación con los contenidos que se publican en dichas plataformas.
 
 ## 5. Transferencias internacionales de datos
 
-Algunos de los proveedores que utilizamos (como **GitHub, Inc.** y **Google LLC**) están ubicados en los Estados Unidos. Dichas transferencias internacionales se amparan en el **Marco de Privacidad de Datos UE-EE. UU. (EU-U.S. Data Privacy Framework)** y/o en las **Cláusulas Contractuales Tipo** aprobadas por la Comisión Europea, que ofrecen garantías adecuadas conforme al RGPD.
+Algunos de los proveedores que utilizamos (como **GitHub, Inc.**, **Google LLC**, **Stripe, LLC** y **Cloudflare, Inc.**) están ubicados en los Estados Unidos. Dichas transferencias internacionales se amparan en el **Marco de Privacidad de Datos UE-EE. UU. (EU-U.S. Data Privacy Framework)** y/o en las **Cláusulas Contractuales Tipo** aprobadas por la Comisión Europea, que ofrecen garantías adecuadas conforme al RGPD.
 
 ## 6. ¿Cuáles son sus derechos?
 
@@ -88,6 +99,8 @@ Usted tiene derecho a:
 - **Oponerse** al tratamiento.
 - Solicitar la **portabilidad** de sus datos.
 - **Retirar el consentimiento** prestado en cualquier momento, sin que ello afecte a la licitud del tratamiento previo a su retirada.
+
+Si tiene una cuota en línea, puede corregir usted mismo su nombre, su dirección, su teléfono y su medio de pago en el [área de miembros](/miembros/).
 
 Puede ejercer estos derechos dirigiéndose por escrito a **info@aikidomusubi.com** o a la dirección postal indicada en el apartado 1, adjuntando una copia de su documento de identidad o documento equivalente que permita verificar su identidad.
 

@@ -50,11 +50,23 @@ SRC = os.path.join(ROOT, "tools", "ja-font-sources")
 OUT = os.path.join(ROOT, "fonts")
 CSS = os.path.join(ROOT, "_includes", "fonts-ja.css")
 
+# THE OUTPUT NAMES CARRY A GENERATION NUMBER, and it goes up whenever a run
+# ADDS glyphs. Fonts cannot be cache-busted (no ?v=, and Cloudflare tells
+# browsers to keep them a year), so a returning reader holding the previous
+# file would draw every new kanji in a fallback face. A subset that only LOSES
+# glyphs may keep its name: the old file is a superset and renders the same.
+# Bump GEN, re-run, `git rm` the previous files.
+#
+#   gen 2  October 2026: the membership pages added 18 kanji
+#          (令却因困域姓寄尾惑桁欄紙翌誕貼零顧 and ←)
+GEN = 2
+SUFFIX = f"-g{GEN}" if GEN > 1 else ""
+
 FACES = [
-    # (source file,               output name,            family,         weight)
-    ("noto-sans-jp-400.woff2", "noto-sans-jp-400.woff2", "Noto Sans JP", 400),
-    ("noto-sans-jp-700.woff2", "noto-sans-jp-700.woff2", "Noto Sans JP", 700),
-    ("m-plus-1p-900.woff2",    "m-plus-1p-900.woff2",    "M PLUS 1p",    900),
+    # (source file,               output name,                        family,         weight)
+    ("noto-sans-jp-400.woff2", f"noto-sans-jp-400{SUFFIX}.woff2", "Noto Sans JP", 400),
+    ("noto-sans-jp-700.woff2", f"noto-sans-jp-700{SUFFIX}.woff2", "Noto Sans JP", 700),
+    ("m-plus-1p-900.woff2",    f"m-plus-1p-900{SUFFIX}.woff2",    "M PLUS 1p",    900),
 ]
 
 

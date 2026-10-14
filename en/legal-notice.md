@@ -5,7 +5,7 @@ description: Identifying details of the website owner, conditions of use, intell
 permalink: /en/legal-notice/
 lang: en
 i18n-ref: legal-notice-Up6gBHvn
-last_modified: 2026-08-28
+last_modified: 2026-10-14
 ---
 
 # Legal Notice
@@ -37,6 +37,8 @@ In compliance with the duty to provide information set out in Article 10 of Span
 This Legal Notice governs access to, browsing of, and use of the website **aikidomusubi.com** (hereinafter, "the Website"), owned by Aikido Musubi (hereinafter, "the Association"). Access to the Website is free of charge and its purpose is to provide information about the aikido activities, classes, schedules and courses offered by the Association.
 
 Browsing the Website confers the status of user and implies full and unreserved acceptance of all the provisions included in this Legal Notice. If you do not agree with these terms, please refrain from using the Website.
+
+Signing up and paying the fee online are also governed by the [membership terms](/en/membership-terms/).
 
 ## 3. Conditions of use
 

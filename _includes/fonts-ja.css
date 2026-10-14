@@ -12,7 +12,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(/fonts/noto-sans-jp-400.woff2) format('woff2');
+  src: url(/fonts/noto-sans-jp-400-g2.woff2) format('woff2');
 }
 
 @font-face {
@@ -20,7 +20,7 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url(/fonts/noto-sans-jp-700.woff2) format('woff2');
+  src: url(/fonts/noto-sans-jp-700-g2.woff2) format('woff2');
 }
 
 @font-face {
@@ -28,5 +28,5 @@
   font-style: normal;
   font-weight: 900;
   font-display: swap;
-  src: url(/fonts/m-plus-1p-900.woff2) format('woff2');
+  src: url(/fonts/m-plus-1p-900-g2.woff2) format('woff2');
 }

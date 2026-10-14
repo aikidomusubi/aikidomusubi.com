@@ -5,5 +5,5 @@ description: Què hem fet perquè aquest lloc es pugui fer servir amb teclat, am
 permalink: /ca/accessibilitat/
 lang: ca
 i18n-ref: accessibility-Yb3wK7Rn
-last_modified: 2026-08-23
+last_modified: 2026-10-14
 ---

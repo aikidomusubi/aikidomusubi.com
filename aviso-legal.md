@@ -5,7 +5,7 @@ description: Datos identificativos del titular del sitio web, condiciones de uso
 permalink: /aviso-legal/
 lang: es
 i18n-ref: legal-notice-Up6gBHvn
-last_modified: 2026-08-28
+last_modified: 2026-10-14
 ---
 
 # Aviso Legal
@@ -35,6 +35,8 @@ En cumplimiento del deber de información recogido en el artículo 10 de la Ley 
 El presente Aviso Legal regula el acceso, la navegación y el uso del sitio web **aikidomusubi.com** (en adelante, "el Sitio Web"), titularidad de Aikido Musubi (en adelante, "la Asociación"). El acceso al Sitio Web es gratuito y su finalidad es informar sobre las actividades, clases, horarios y cursos de aikido que ofrece la Asociación.
 
 La navegación por el Sitio Web atribuye la condición de usuario e implica la aceptación plena y sin reservas de todas las disposiciones incluidas en este Aviso Legal. Si no está de acuerdo con estas condiciones, le rogamos que se abstenga de utilizar el Sitio Web.
+
+La inscripción y el pago de la cuota en línea se rigen, además, por las [condiciones de la cuota](/condiciones-de-la-cuota/).
 
 ## 3. Condiciones de uso
 

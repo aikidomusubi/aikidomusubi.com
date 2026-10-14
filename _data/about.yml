@@ -495,10 +495,31 @@ topics:
       - q: { es: "¿Cuánto cuesta empezar?", ca: "Quant costa començar?",
              en: "What does it cost to start?", ja: "始めるのにいくらかかりますか。" }
         a:
-          es: ["Las dos primeras clases no cuestan nada y la inscripción es gratuita todo el año. A partir de ahí hay una cuota mensual según la actividad: está toda en <a href=\"/cuotas/\">Cuotas</a>."]
-          ca: ["Les dues primeres classes no costen res i la inscripció és gratuïta tot l'any. A partir d'aquí hi ha una quota mensual segons l'activitat: és tota a <a href=\"/ca/quotes/\">Quotes</a>."]
-          en: ["The first two classes are free and enrolment is free all year. After that there is a monthly fee depending on the activity, all of it on the <a href=\"/en/fees/\">Fees</a> page."]
-          ja: ["最初の二回は無料で、入会金は一年を通じてかかりません。その後は活動ごとの月謝があります。詳しくは<a href=\"/ja/fees/\">月謝</a>のページに。"]
+          es: ["Las dos primeras clases no cuestan nada y no hay matrícula. A partir de ahí hay una cuota, mensual, trimestral o anual, que está toda en <a href=\"/cuotas/\">Cuotas</a>. Cuando decidas quedarte, te inscribes <a href=\"/inscripcion/\">en línea</a> en unos minutos."]
+          ca: ["Les dues primeres classes no costen res i no hi ha matrícula. A partir d'aquí hi ha una quota, mensual, trimestral o anual, que és tota a <a href=\"/ca/quotes/\">Quotes</a>. Quan decideixis quedar-t'hi, t'inscrius <a href=\"/ca/inscripcio/\">en línia</a> en uns minuts."]
+          en: ["The first two classes are free and there is no registration fee. After that there is a fee, monthly, quarterly or annual, all of it on the <a href=\"/en/fees/\">Fees</a> page. When you decide to stay, you <a href=\"/en/sign-up/\">sign up online</a> in a few minutes."]
+          ja: ["最初の二回は無料で、入会金はありません。その後は月払い・3か月払い・年払いの会費があり、詳しくは<a href=\"/ja/fees/\">月謝</a>のページにあります。続けると決めたら、<a href=\"/ja/sign-up/\">オンライン</a>で数分でお申し込みいただけます。"]
+      - q: { es: "¿Cómo y cuándo se cobra la cuota?", ca: "Com i quan es cobra la quota?",
+             en: "How and when is the fee charged?", ja: "会費はいつ、どのように支払いますか。" }
+        a:
+          es: ["El día 5 de cada mes, trimestre o año, según el periodo que elijas, con tarjeta o con domiciliación bancaria, a través de Stripe. Al inscribirte pagas solo los días que faltan hasta el siguiente día 5, y te avisamos por correo quince días antes de cada renovación."]
+          ca: ["El dia 5 de cada mes, trimestre o any, segons el període que triïs, amb targeta o amb domiciliació bancària, a través de Stripe. En inscriure't pagues només els dies que falten fins al dia 5 següent, i t'avisem per correu quinze dies abans de cada renovació."]
+          en: ["On the 5th of each month, quarter or year, depending on the period you choose, by card or direct debit, through Stripe. When you sign up you pay only for the days until the next 5th, and we email you fifteen days before every renewal."]
+          ja: ["選んだ支払い期間に応じて、毎月・3か月ごと・毎年の5日に、カードまたは口座振替でStripeを通じてお支払いいただきます。申し込み時には次の5日までの日割り分のみをお支払いいただき、更新の15日前にはメールでお知らせします。"]
+      - q: { es: "¿Cómo cambio la tarjeta o la cuenta del banco?", ca: "Com canvio la targeta o el compte del banc?",
+             en: "How do I change my card or bank account?", ja: "カードや口座を変更するには？" }
+        a:
+          es: ["En tu <a href=\"/miembros/\">área de miembros</a>: entras con tu correo y un código que te llega en ese momento, sin contraseña. Ahí también descargas los recibos."]
+          ca: ["A la teva <a href=\"/ca/membres/\">àrea de membres</a>: hi entres amb el teu correu i un codi que t'arriba en aquell moment, sense contrasenya. També hi descarregues els rebuts."]
+          en: ["In your <a href=\"/en/members/\">members area</a>: you sign in with your email and a code sent to it there and then, with no password. You can download your receipts there too."]
+          ja: ["<a href=\"/ja/members/\">会員ページ</a>で変更できます。メールアドレスと、その場で届く確認コードでログインします（パスワードはありません）。領収書もそこからダウンロードできます。"]
+      - q: { es: "¿Cómo me doy de baja?", ca: "Com em dono de baixa?",
+             en: "How do I cancel?", ja: "退会するには？" }
+        a:
+          es: ["Cuando quieras y sin penalización: en el <a href=\"/miembros/\">área de miembros</a>, por correo, por teléfono o en el dojo. La baja se aplica al final del periodo que ya has pagado, y hasta entonces sigues entrenando. Durante los catorce días siguientes a la inscripción, además, puedes <a href=\"/desistimiento/\">desistir</a> y te devolvemos lo no usado."]
+          ca: ["Quan vulguis i sense penalització: a l'<a href=\"/ca/membres/\">àrea de membres</a>, per correu, per telèfon o al dojo. La baixa s'aplica al final del període que ja has pagat, i fins aleshores continues entrenant. Durant els catorze dies següents a la inscripció, a més, pots <a href=\"/ca/desistiment/\">desistir</a> i et retornem el que no has fet servir."]
+          en: ["Whenever you like, with no penalty: in the <a href=\"/en/members/\">members area</a>, by email, by phone or at the dojo. Cancelling takes effect at the end of the period you have already paid for, and you keep training until then. In the fourteen days after signing up you can also <a href=\"/en/withdrawal/\">withdraw</a> and we refund what you have not used."]
+          ja: ["いつでも違約金なしで、<a href=\"/ja/members/\">会員ページ</a>、メール、お電話、または道場で手続きできます。退会はお支払い済み期間の終わりに適用され、それまでは稽古を続けられます。また、申し込みから14日以内であれば<a href=\"/ja/withdrawal/\">解約</a>でき、未使用分を返金します。"]
       - q: { es: "¿Qué me pongo el primer día?", ca: "Què em poso el primer dia?",
              en: "What do I wear on the first day?", ja: "初日は何を着ていけばいいですか。" }
         a:

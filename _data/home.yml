@@ -156,10 +156,10 @@ sections:
           ja: "無料で、義務もありません。長袖の動きやすい服装で。稽古着はあとからで大丈夫です。"
       - heading: { es: "Únete", ca: "Uneix-t'hi", en: "Join us", ja: "入会する" }
         text:
-          es: "La inscripción es gratuita y está abierta todo el año."
-          ca: "La inscripció és gratuïta i està oberta tot l'any."
-          en: "Enrolment is free and open all year round."
-          ja: "入会金は無料で、一年を通じて受け付けています。"
+          es: "La inscripción es gratuita, está abierta todo el año y se hace en línea en unos minutos."
+          ca: "La inscripció és gratuïta, està oberta tot l'any i es fa en línia en uns minuts."
+          en: "Enrolment is free, open all year round, and done online in a few minutes."
+          ja: "入会金は無料で、一年を通じて受け付けています。お申し込みはオンラインで数分です。"
     more:
       label: { es: "Escríbenos", ca: "Escriu-nos", en: "Write to us", ja: "お問い合わせ" }
       url:   { es: "/contacto/", ca: "/ca/contacte/", en: "/en/contact/", ja: "/ja/contact/" }

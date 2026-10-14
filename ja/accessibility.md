@@ -5,5 +5,5 @@ description: キーボードでも、スクリーンリーダーでも、目が�
 permalink: /ja/accessibility/
 lang: ja
 i18n-ref: accessibility-Yb3wK7Rn
-last_modified: 2026-08-23
+last_modified: 2026-10-14
 ---

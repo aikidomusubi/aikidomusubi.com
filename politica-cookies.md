@@ -5,7 +5,7 @@ description: Qué cookies utiliza este sitio web, para qué sirven y cómo acept
 permalink: /politica-cookies/
 lang: es
 i18n-ref: cookie-policy-67RmRt6B
-last_modified: 2026-08-14
+last_modified: 2026-10-14
 ---
 
 # Política de Cookies
@@ -15,7 +15,7 @@ Qué cookies utiliza este sitio web, para qué sirven y cómo aceptarlas o recha
 {% include legal-summary.html %}
 
 
-**Última actualización: 14 de agosto de 2026**
+**Última actualización: 14 de octubre de 2026**
 
 Este sitio web, **aikidomusubi.com**, titularidad de Aikido Musubi, utiliza cookies y tecnologías similares. Esta Política de Cookies se ha elaborado siguiendo la *Guía sobre el uso de las cookies* de la Agencia Española de Protección de Datos (AEPD).
 
@@ -49,6 +49,9 @@ Nos permiten conocer, de forma agregada y estadística, cómo utilizan los usuar
 Si el sitio web incrusta contenido de plataformas externas (por ejemplo, **vídeos de YouTube** o elementos de **Facebook / Instagram**), dichas plataformas pueden instalar sus propias cookies cuando usted interactúa con ese contenido. Le recomendamos consultar sus respectivas políticas:
 - [Política de privacidad de Google/YouTube](https://policies.google.com/privacy){:target="_blank" rel="noopener"}
 - [Política de cookies de Meta (Facebook/Instagram)](https://www.facebook.com/policies/cookies/){:target="_blank" rel="noopener"}
+
+### d) La inscripción y el pago de la cuota en línea
+La inscripción en línea no instala ninguna cookie. Mientras usted pasa por la página de pago, el formulario guarda lo que ha escrito en el **almacenamiento de sesión** de su navegador (`sessionStorage`), para que al volver no tenga que escribirlo de nuevo; se borra al terminar la inscripción y, en todo caso, al cerrar la pestaña. En las páginas de la inscripción, del área de miembros y del desistimiento **no se carga Google Analytics**, aunque usted lo haya aceptado. El pago se hace en páginas de **Stripe** (stripe.com), que aplican su propia [política de cookies](https://stripe.com/legal/cookies-policy){:target="_blank" rel="noopener"}.
 
 ## 3. Consentimiento
 
