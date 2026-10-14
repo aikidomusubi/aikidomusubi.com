@@ -26,7 +26,7 @@ SITE_ORIGIN = "http://localhost:4000"
 # This test Worker's own address, printed by the first `npm run deploy`
 # (https://membership-test.<your-subdomain>.workers.dev). The buttons in the
 # admin emails point here.
-API_ORIGIN = "https://membership-test.REPLACE.workers.dev"
+API_ORIGIN = "https://membership-test.aikidomusubi.workers.dev"
 ADMIN_EMAIL = "admin@aikidomusubi.com"
 FROM_EMAIL = "no-reply@aikidomusubi.com"
 REPLY_TO = "info@aikidomusubi.com"
@@ -38,10 +38,10 @@ MEMBER_FAILED_EMAIL_SEPA = "true"
 # The list of who to leave out of the bank remittance, on the 1st of each
 # month while existing members move over. Switch off once nobody is left.
 MIGRATION_REMITTANCE_LIST = "true"
-# Test mode only: send every email to this one address instead of the member.
-EMAIL_OVERRIDE = ""
-# Test mode only: a Stripe test clock id (clock_...) to attach new customers to.
-TEST_CLOCK = ""
+# EMAIL_OVERRIDE (send every test email to one address) and TEST_CLOCK (a
+# Stripe test clock id) are test-mode only and set with `wrangler secret put`,
+# NOT here: Cloudflare refuses a secret whose name is also a var, and this file
+# is public, so a personal address must not be written in it.
 
 [[kv_namespaces]]
 binding = "KV"
@@ -70,7 +70,6 @@ RENEWAL_NOTICE_MONTHLY = "true"
 AUTO_AGE_UPGRADE = "false"
 MEMBER_FAILED_EMAIL_SEPA = "true"
 MIGRATION_REMITTANCE_LIST = "true"
-EMAIL_OVERRIDE = ""
 [[env.live.kv_namespaces]]
 binding = "KV"
 id = "REPLACE_WITH_LIVE_KV_ID"

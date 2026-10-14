@@ -9,7 +9,7 @@
     "test": "vitest run",
     "typecheck": "npm run catalog && tsc --noEmit && tsc --noEmit -p tsconfig.scripts.json",
     "dev": "npm run catalog && wrangler dev",
-    "deploy": "npm run catalog && npm test && wrangler deploy",
+    "deploy": "npm run catalog && npm test && wrangler deploy --env=\"\"",
     "stripe:setup": "npm run catalog && node --experimental-strip-types --no-warnings scripts/stripe-setup.ts",
     "invite": "npm run catalog && node --experimental-strip-types --no-warnings scripts/invite.ts",
     "plan": "npm run catalog && node --experimental-strip-types --no-warnings scripts/plan.ts",
