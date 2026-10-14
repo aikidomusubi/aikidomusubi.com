@@ -114,6 +114,10 @@ exclude:
   # Font subsetter and its ~2.5 MB of unsubset source faces. Inputs only —
   # what ships is the subset output in /fonts/.
   - tools/
+  # The membership Worker (on the membership-signup branch until launch). Its
+  # node_modules are gitignored but sit on disk, and unexcluded they were
+  # rendered into the local _site as twenty thousand pages.
+  - services/
   - Gemfile
   - Gemfile.lock
   - gulpfile.js

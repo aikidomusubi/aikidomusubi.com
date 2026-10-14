@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Windows Start tiles. The knot is transparent; the tile colour behind it is
+     the brand black. Generated icons: tools/make-favicons.py -->
+<browserconfig>
+  <msapplication>
+    <tile>
+      <square70x70logo src="/icons/musubi-tile-70.png"/>
+      <square150x150logo src="/icons/musubi-tile-150.png"/>
+      <wide310x150logo src="/icons/musubi-tile-310x150.png"/>
+      <square310x310logo src="/icons/musubi-tile-310.png"/>
+      <TileColor>#111314</TileColor>
+    </tile>
+  </msapplication>
+</browserconfig>
