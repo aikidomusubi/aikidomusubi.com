@@ -16,8 +16,8 @@ WHAT EACH ONE IS FOR, and why they are not all the same picture:
                              black tile, the knot zoomed in to fill it
   musubi-knot-{16..192}.png  the same tile for browsers and crawlers that want
                              a bitmap; Google's results page takes the 48/96/192
-  /favicon.ico               16, 32 and 48 in one file, for anything that asks
-                             for /favicon.ico without reading the page
+  musubi-knot.ico            16, 32 and 48 in one file; /favicon.ico is a copy,
+                             for anything that asks for that path blindly
   musubi-apple-touch.png     iOS home screen, 180px. FULL BLEED and square: iOS
                              rounds the corners itself, and a tile that is
                              already rounded shows a black ring inside the mask
@@ -48,6 +48,7 @@ explains for fontTools.
 """
 import io
 import os
+import shutil
 import sys
 
 try:
@@ -184,7 +185,11 @@ def main():
     # /favicon.ico at the site root: the three classic sizes in one file.
     # Written by hand, PNG payload per size: Pillow's ICO writer resamples
     # every size from one image, which would undo the tuned 16px render.
-    ico = os.path.join(ROOT, "favicon.ico")
+    # Two copies: icons/musubi-knot.ico is the one the pages link, under a
+    # name no browser has cached; /favicon.ico is the same file for anything
+    # that asks for that path without reading the page, and it already held
+    # the old picture, so it cannot be the one linked.
+    ico = os.path.join(OUT, "musubi-knot.ico")
     with open(ico, "wb") as f:
         imgs = [tab(16), tab(32), tab(48)]
         blobs = []
@@ -201,7 +206,8 @@ def main():
             offset += len(blob)
         for blob in blobs:
             f.write(blob)
-    print(f"  {'/favicon.ico':<34} 16+32+48  {os.path.getsize(ico) / 1024:5.1f} KB")
+    shutil.copyfile(ico, os.path.join(ROOT, "favicon.ico"))
+    print(f"  {'musubi-knot.ico + /favicon.ico':<34} 16+32+48  {os.path.getsize(ico) / 1024:5.1f} KB")
 
     save(render(180, 180, knot_w=0.70, tile="square"), "musubi-apple-touch.png", opaque=True)
     for size in (192, 512):
