@@ -475,20 +475,22 @@ topics:
           ca: ["No. Es comença on s'és, i l'escalfament i l'ukemi construeixen la mobilitat que cal. Si tens una lesió o una limitació concreta, digues-ho abans de començar i s'adapta."]
           en: ["No. You start where you are, and the warm-up and the ukemi build the mobility you need. If you have an injury or a specific limitation, say so before you start and it will be adapted."]
           ja: ["必要ありません。今の状態から始めれば大丈夫です。準備運動と受け身が、必要な動きを少しずつつくっていきます。怪我や制限がある場合は、始める前にお知らせください。合わせて稽古します。"]
-      - q: { es: "¿Desde qué edad? ¿Hay clases para niños?", ca: "A partir de quina edat? Hi ha classes per a nens?",
-             en: "From what age? Are there children's classes?", ja: "何歳から始められますか。子ども向けの稽古はありますか。" }
+      - q: { es: "¿Desde qué edad? ¿Hay clases infantiles?", ca: "A partir de quina edat? Hi ha classes infantils?",
+             en: "From what age? Are there classes for children?", ja: "何歳から始められますか。子ども向けの稽古はありますか。" }
         a:
-          es: ["<strong>El grupo infantil, de 6 a 12 años, está suspendido por ahora.</strong> Seguimos anotando a quien pregunta: cuando haya niños suficientes, se reabre, así que escribirnos es lo que hace que vuelva.",
-               "Si tu hijo o hija ronda los 12, puede que ya encaje en la clase de adultos. Depende del niño más que del año que tenga, así que lo miramos contigo antes de nada.",
-               "En adultos no hay edad máxima ni categorías por peso ni por edad: practican todas las edades a la vez, que es una de las cosas buenas de este arte."]
-          ca: ["<strong>El grup infantil, de 6 a 12 anys, està suspès de moment.</strong> Continuem anotant qui ho pregunta: quan hi hagi prou nens, es reobre, així que escriure'ns és el que fa que torni.",
-               "Si el teu fill o filla ronda els 12, pot ser que ja encaixi a la classe d'adults. Depèn més del nen que de l'any que tingui, així que ho mirem amb tu abans de res.",
-               "En adults no hi ha edat màxima ni categories per pes ni per edat: hi practiquen totes les edats alhora, que és una de les coses bones d'aquest art."]
-          en: ["<strong>The children's group, ages 6 to 12, is suspended for now.</strong> We are still noting down everyone who asks: when there are enough children it reopens, so writing to us is what brings it back.",
-               "A child of around 12 may already fit the adult class. That depends on the child rather than the birthday, so we look at it with you first.",
-               "Among adults there is no upper age and no weight or age categories: every age trains together, which is one of the good things about this art."]
-          ja: ["<strong>6歳から12歳までのこどもクラスは、現在休講しています。</strong>お問い合わせはすべて記録しています。人数がそろえば再開しますので、ご連絡いただくことが再開への一歩になります。",
-               "12歳前後のお子さんは、一般クラスに参加できる場合があります。年齢そのものよりお子さん次第ですので、まずはご相談ください。",
+          # The children's group reopened in October 2026 as the Marina-Besòs
+          # class, up to 16. This answer said it was suspended until then.
+          es: ["<strong>Sí: hay una clase infantil y juvenil, desde los 6 años y hasta los 16,</strong> los lunes y los miércoles por la tarde en el <a href=\"/sant-adria-de-besos/marina-besos/\">polideportivo Marina-Besòs</a>, en Sant Adrià de Besòs.",
+               "A partir de los 12 años, una persona joven también puede encajar ya en la clase general, en Badalona o en el <a href=\"/barcelona/cxem-espronceda/\">CxEM Espronceda</a>. Depende más de cada cual que de la edad, así que lo miramos contigo antes de empezar.",
+               "En la clase general no hay edad máxima ni categorías por peso ni por edad: practican todas las edades a la vez, que es una de las cosas buenas de este arte."]
+          ca: ["<strong>Sí: hi ha una classe infantil i juvenil, des dels 6 anys i fins als 16,</strong> els dilluns i els dimecres a la tarda al <a href=\"/ca/sant-adria-de-besos/marina-besos/\">poliesportiu Marina-Besòs</a>, a Sant Adrià de Besòs.",
+               "A partir dels 12 anys, una persona jove també pot encaixar ja a la classe general, a Badalona o al <a href=\"/ca/barcelona/cxem-espronceda/\">CxEM Espronceda</a>. Depèn més de cadascú que de l'edat, així que ho mirem amb tu abans de començar.",
+               "A la classe general no hi ha edat màxima ni categories per pes ni per edat: hi practiquen totes les edats alhora, que és una de les coses bones d'aquest art."]
+          en: ["<strong>Yes: there is a class for children and young people, from 6 up to 16,</strong> on Monday and Wednesday evenings at the <a href=\"/en/sant-adria-de-besos/marina-besos/\">Marina-Besòs sports centre</a> in Sant Adrià de Besòs.",
+               "From 12, a young person may already fit the general class too, in Badalona or at <a href=\"/en/barcelona/cxem-espronceda/\">CxEM Espronceda</a>. That depends on the person more than on the age, so we look at it with you before starting.",
+               "In the general class there is no upper age and no weight or age categories: every age trains together, which is one of the good things about this art."]
+          ja: ["<strong>あります。6歳から16歳までのクラスを、</strong>サント・アドリア・ダ・バゾスの<a href=\"/ja/sant-adria-de-besos/marina-besos/\">マリナ・バゾス市立スポーツセンター</a>で、毎週月曜と水曜の夕方に行っています。",
+               "12歳以上であれば、バダロナや<a href=\"/ja/barcelona/cxem-espronceda/\">エスプロンセダ</a>の一般クラスに参加できる場合もあります。年齢よりもその人次第ですので、始める前にご相談ください。",
                "一般クラスに年齢の上限はなく、体重別も年齢別もありません。さまざまな世代が同じ時間に稽古しています。"]
       - q: { es: "¿Cuánto cuesta empezar?", ca: "Quant costa començar?",
              en: "What does it cost to start?", ja: "始めるのにいくらかかりますか。" }

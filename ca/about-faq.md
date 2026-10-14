@@ -7,5 +7,5 @@ description: "El que es pregunta abans de la primera classe, respost sense embut
 permalink: "/ca/sobre-nosaltres/preguntes-frequents/"
 lang: ca
 i18n-ref: about-faq-Rw4nT8Hs
-last_modified: 2026-09-17
+last_modified: 2026-10-14
 ---

@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Signup A</title>
+<style>
+@font-face{font-family:'Noto Sans';font-weight:400;font-style:normal;
+  src:url(/fonts/noto-sans-400-latin.woff2) format('woff2')}
+@font-face{font-family:'Noto Sans';font-weight:700;font-style:normal;
+  src:url(/fonts/noto-sans-700-latin.woff2) format('woff2')}
+@font-face{font-family:'Noto Sans';font-weight:400;font-style:normal;
+  src:url(/fonts/noto-sans-400-latin-ext.woff2) format('woff2');
+  unicode-range:U+0100-024F}
+:root{
+  --Black:#111314; --White:#fff; --Yellow:#FFF200; --YellowInk:#474400;
+  --Rust:#ae5224; --Green:#1a7444; --Blue:#064F6E; --Slate:#34454C;
+  --Red:#82241f; --Glaucous:#A5C8D1; --Sage:#B7C2A9;
+  --Paper:#FBFAF7; --Mute:#5A686E; --Ink:#3D4A50; --Hair:rgba(17,19,20,.14);
+  --display:Futura,"Century Gothic","Trebuchet MS",sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#F1F1EE;color:var(--Black);
+     font:16px/1.65 "Noto Sans",-apple-system,BlinkMacSystemFont,sans-serif}
+.wrap{max-width:1500px;margin:0 auto;padding:2.5rem 2rem 6rem}
+.pg{font:700 1.8rem/1.2 var(--display);letter-spacing:.04em;text-transform:uppercase;margin:0 0 .6rem}
+.top-lede{max-width:50rem;color:var(--Ink);margin:0 0 1rem;font-size:.95rem}
+.key{max-width:50rem;font-size:.92rem;color:var(--Ink);background:#fff;
+     border-left:3px solid var(--Yellow);padding:.8rem 1.1rem;margin:0 0 1rem}
+.warn{max-width:50rem;font-size:.92rem;color:var(--Ink);background:#fff;
+      border-left:3px solid var(--Rust);padding:.8rem 1.1rem;margin:0 0 2.4rem}
+.key b,.warn b{color:var(--Black)}
+.tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin:0 0 2rem}
+.tabs a{font:700 .78rem/1 var(--display);letter-spacing:.08em;text-transform:uppercase;
+        color:var(--Black);text-decoration:none;padding:.6rem .9rem;border:1px solid var(--Hair);background:#fff}
+.tabs a[aria-current]{background:var(--Black);color:#fff;border-color:var(--Black)}
+.sec-t{font:700 1.05rem/1.3 var(--display);letter-spacing:.07em;text-transform:uppercase;
+       margin:3.2rem 0 1rem;padding-top:1rem;border-top:2px solid var(--Black)}
+.row{display:grid;grid-template-columns:1000px 1fr;gap:2.4rem;align-items:start}
+.row2{display:grid;grid-template-columns:375px 1fr;gap:2.4rem;align-items:start;margin-top:2.4rem}
+@media(max-width:1460px){.row{grid-template-columns:1fr}}
+.note h2{font:700 .95rem/1.3 var(--display);letter-spacing:.07em;text-transform:uppercase;margin:1.5rem 0 .45rem}
+.note h2:first-child{margin-top:0}
+.note p,.note li{max-width:36rem;font-size:.9rem;color:var(--Ink)}
+.note p{margin:0 0 .75rem}
+.note ul,.note ol{padding-left:1.1rem;margin:0 0 .8rem}
+.note li{margin:0 0 .35rem}
+.note b{color:var(--Black)}
+.note code,.warn code,.key code{font:.8rem ui-monospace,Menlo,monospace;background:rgba(17,19,20,.06);padding:0 .2em}
+.tag{display:inline-block;font:700 .66rem/1 var(--display);letter-spacing:.08em;text-transform:uppercase;
+     padding:.3rem .45rem;margin-right:.35rem;vertical-align:.12em}
+.tag-spec{background:var(--Sage);color:var(--Black)}
+.tag-more{background:var(--Yellow);color:var(--Black)}
+.tag-q{background:var(--Rust);color:#fff}
+
+/* ---------------- the mocked site ---------------- */
+.mk{width:1000px;background:#fff;box-shadow:0 1px 2px rgba(17,19,20,.14),0 12px 34px rgba(17,19,20,.11)}
+.ph{width:375px;background:#fff;border:10px solid var(--Black);border-radius:34px;overflow:hidden;
+    box-shadow:0 12px 34px rgba(17,19,20,.16)}
+.nav{background:var(--Black);color:#fff;padding:.85rem 2.2rem;display:flex;align-items:baseline;gap:1.6rem}
+.ph .nav{padding:.8rem 1rem;justify-content:space-between}
+.nav b{font:700 1.05rem/1 var(--display);letter-spacing:.03em}
+.nav span{font-size:.62rem;letter-spacing:.06em;color:rgba(255,255,255,.62)}
+.in{padding:2.2rem 4rem 3rem}
+.ph .in{padding:1.4rem 1rem 2rem}
+.eyb{font:700 .72rem/1 var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--Mute);margin:0 0 .5rem}
+.h1{font:700 2.1rem/1.15 var(--display);letter-spacing:.02em;margin:0 0 .7rem;text-wrap:balance}
+.ph .h1{font-size:1.65rem}
+.lede{font-size:.98rem;color:var(--Ink);max-width:40rem;margin:0 0 1rem}
+.facts{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;margin:0 0 1.2rem;padding:0;list-style:none;font-size:.82rem;color:var(--Ink)}
+.facts li::before{content:"";display:inline-block;width:.45rem;height:.45rem;background:var(--Green);margin-right:.45rem;vertical-align:.08em}
+.member{font-size:.82rem;color:var(--Ink);margin:0 0 1.6rem}
+.member a,.mk a,.ph a{color:var(--Black)}
+.grid{display:grid;grid-template-columns:1fr 290px;gap:2.6rem;align-items:start}
+.h2{font:700 1.2rem/1.25 var(--display);letter-spacing:.03em;margin:0 0 .25rem;display:flex;gap:.6rem;align-items:baseline}
+.h2 i{font-style:normal;font-size:.75rem;color:var(--Mute);letter-spacing:.1em}
+.sub{font-size:.84rem;color:var(--Ink);margin:0 0 .9rem}
+.blk{padding:0 0 1.6rem;margin:0 0 1.6rem;border-bottom:1px solid var(--Hair)}
+.blk:last-child{border-bottom:0}
+fieldset{border:0;margin:0;padding:0;min-width:0}
+legend{padding:0;font-weight:700;font-size:.86rem;margin:0 0 .5rem}
+.req{font-weight:400;color:var(--Mute);font-size:.78rem}
+.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}
+.ph .opts{grid-template-columns:1fr}
+.opt{position:relative;border:1px solid var(--Hair);border-radius:.3rem;padding:.75rem .85rem .7rem 2.3rem;font-size:.84rem;background:#fff}
+.opt::before{content:"";position:absolute;left:.8rem;top:.95rem;width:1rem;height:1rem;border:2px solid var(--Slate);border-radius:50%;background:#fff}
+.opt.on{border-color:var(--Black);box-shadow:inset 0 0 0 1px var(--Black)}
+.opt.on::before{background:radial-gradient(circle,var(--Black) 0 38%,#fff 42%)}
+.opt b{display:block;font-size:.9rem}
+.opt .pr{font:700 1.15rem/1.2 var(--display);display:block;margin:.15rem 0}
+.opt .pr small{font:400 .74rem "Noto Sans",sans-serif;color:var(--Mute)}
+.opt .sv{display:block;font-size:.76rem;color:var(--Green);font-weight:700}
+.opt .gift{display:block;font-size:.74rem;color:var(--Ink)}
+.opt.box::before{border-radius:.2rem}
+.opt.box.on::before{background:var(--Black);box-shadow:inset 0 0 0 2px #fff}
+.cond{font-size:.78rem;color:var(--Ink);background:var(--Paper);border-left:3px solid var(--Glaucous);padding:.55rem .8rem;margin:.6rem 0 0}
+.person{border:1px solid var(--Hair);border-radius:.3rem;padding:.9rem 1rem 1rem;margin:0 0 .7rem;background:#fff}
+.person legend{float:left;width:100%;display:flex;justify-content:space-between;align-items:baseline;margin:0 0 .6rem}
+.person legend + *{clear:both}
+.rm{font-size:.76rem;font-weight:400;text-decoration:underline;color:var(--Black);min-height:24px;display:inline-flex;align-items:center}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:.6rem .8rem}
+.ph .f2{grid-template-columns:1fr}
+.fld label{display:block;font-size:.78rem;font-weight:700;margin:0 0 .2rem}
+.inp{display:block;width:100%;min-height:2.5rem;border:1px solid #7b878c;border-radius:.25rem;padding:.45rem .6rem;font-size:.9rem;background:#fff;color:var(--Black)}
+.inp.ph-t{color:#7b878c}
+.inp.sel{background:#fff linear-gradient(45deg,transparent 50%,var(--Black) 50%) no-repeat right .9rem center/.35rem .35rem}
+.inp.bad{border-color:var(--Red);border-width:2px}
+.err{font-size:.78rem;color:var(--Red);font-weight:700;margin:.25rem 0 0;display:flex;gap:.35rem}
+.err::before{content:"!";display:inline-grid;place-items:center;width:1rem;height:1rem;border-radius:50%;background:var(--Red);color:#fff;font-size:.66rem;flex:none;margin-top:.12rem}
+.chips{display:flex;gap:.4rem;flex-wrap:wrap;margin:0}
+.fld-l{font-size:.78rem;font-weight:700;margin:.7rem 0 .25rem}
+.chip{font-size:.8rem;border:1px solid #7b878c;border-radius:1.2rem;padding:.3rem .8rem;min-height:2rem;display:inline-flex;align-items:center;background:#fff}
+.chip.on{background:var(--Black);color:#fff;border-color:var(--Black)}
+.add{display:inline-flex;align-items:center;gap:.45rem;min-height:2.5rem;padding:.45rem .9rem;border:1px dashed var(--Slate);border-radius:.3rem;font-size:.85rem;font-weight:700;background:#fff}
+.add::before{content:"+";font:700 1.1rem/1 var(--display)}
+.hint{font-size:.76rem;color:var(--Mute);margin:.35rem 0 0}
+.chk{display:grid;grid-template-columns:1.25rem 1fr;gap:.6rem;font-size:.84rem;margin:0 0 .7rem;align-items:start}
+.chk::before{content:"";width:1.15rem;height:1.15rem;border:2px solid var(--Slate);border-radius:.2rem;margin-top:.15rem;background:#fff}
+.chk.on::before{background:var(--Black);box-shadow:inset 0 0 0 2px #fff}
+.chk.bad::before{border-color:var(--Red)}
+.chk small{display:block;color:var(--Mute);font-size:.76rem}
+.priv{font-size:.74rem;color:var(--Ink);border:1px solid var(--Hair);padding:.65rem .8rem;margin:.4rem 0 1rem;background:var(--Paper)}
+.priv b{color:var(--Black)}
+.btn{display:flex;width:100%;justify-content:center;align-items:center;gap:.6rem;min-height:3rem;background:var(--Black);color:#fff;
+     font:700 .95rem/1 var(--display);letter-spacing:.06em;text-transform:uppercase;border-radius:.25rem;padding:.8rem 1rem}
+.btn::after{content:"→"}
+.btn-note{font-size:.76rem;color:var(--Mute);text-align:center;margin:.5rem 0 0}
+.lock{display:inline-block;width:.7rem;height:.55rem;background:var(--Mute);border-radius:.1rem;position:relative;margin-right:.35rem;vertical-align:0}
+.lock::before{content:"";position:absolute;left:.12rem;top:-.32rem;width:.46rem;height:.42rem;border:2px solid var(--Mute);border-bottom:0;border-radius:.3rem .3rem 0 0}
+
+/* the receipt */
+.rc{position:sticky;top:1rem;background:var(--Paper);border:1px solid var(--Hair);border-top:4px solid var(--Black);padding:1.1rem 1.1rem 1.2rem;font-size:.84rem}
+.rc-t{font:700 .78rem/1 var(--display);letter-spacing:.12em;text-transform:uppercase;margin:0 0 .8rem}
+.rc dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:.3rem .8rem;font-variant-numeric:tabular-nums}
+.rc dt{color:var(--Ink)}
+.rc dt small{display:block;font-size:.72rem;color:var(--Mute)}
+.rc dd{margin:0;text-align:right;font-weight:700}
+.rc dd s{font-weight:400;color:var(--Mute);margin-right:.3rem;font-size:.76rem}
+.rc .tot{border-top:2px solid var(--Black);margin-top:.7rem;padding-top:.6rem;display:flex;justify-content:space-between;align-items:baseline}
+.rc .tot b{font:700 1.7rem/1 var(--display)}
+.rc .tot span{font-size:.78rem;color:var(--Ink)}
+.tl{list-style:none;margin:1rem 0 0;padding:0;border-left:2px solid var(--Black)}
+.tl li{position:relative;padding:0 0 .7rem .9rem;font-size:.8rem;color:var(--Ink)}
+.tl li::before{content:"";position:absolute;left:-.4rem;top:.35rem;width:.62rem;height:.62rem;border-radius:50%;background:#fff;border:2px solid var(--Black)}
+.tl li.now::before{background:var(--Yellow)}
+.tl b{color:var(--Black);font-variant-numeric:tabular-nums}
+.rc-x{margin:.6rem 0 0;padding:.6rem 0 0;border-top:1px solid var(--Hair);font-size:.76rem;color:var(--Ink)}
+.rc-x b{color:var(--Black)}
+.gift-l{display:flex;gap:.5rem;align-items:flex-start;font-size:.78rem;margin:.8rem 0 0;padding:.5rem .6rem;background:#fff;border:1px solid var(--Hair)}
+.gift-l::before{content:"";flex:none;width:.85rem;height:.85rem;margin-top:.18rem;background:var(--Yellow);border:1px solid var(--YellowInk)}
+.live{font-size:.7rem;color:var(--Mute);margin:.6rem 0 0}
+
+details.more{border-top:1px solid var(--Hair);font-size:.84rem}
+details.more:last-of-type{border-bottom:1px solid var(--Hair)}
+details.more summary{list-style:none;padding:.6rem 0;font-weight:700;display:flex;justify-content:space-between}
+details.more summary::after{content:"+";font:700 1rem/1 var(--display)}
+
+/* the error summary */
+.esum{border:2px solid var(--Red);border-radius:.3rem;padding:.8rem .9rem;margin:0 0 1.2rem;outline:3px solid var(--Blue);outline-offset:2px}
+.esum p{margin:0 0 .35rem;font-weight:700;font-size:.9rem;color:var(--Red)}
+.esum ul{margin:0;padding-left:1.1rem;font-size:.82rem}
+.esum a{color:var(--Red)}
+
+/* B: the stepper */
+.steps{display:flex;list-style:none;margin:0 0 1.8rem;padding:0;counter-reset:s;border-bottom:1px solid var(--Hair)}
+.steps li{counter-increment:s;flex:1;padding:.55rem 0 .7rem;font-size:.8rem;color:var(--Mute);border-bottom:3px solid transparent;margin-bottom:-1px}
+.steps li::before{content:counter(s);display:inline-grid;place-items:center;width:1.35rem;height:1.35rem;border-radius:50%;border:1.5px solid currentColor;margin-right:.45rem;font:700 .72rem/1 var(--display)}
+.steps li.done{color:var(--Black)}
+.steps li.done::before{content:"✓";background:var(--Black);color:#fff;border-color:var(--Black)}
+.steps li.cur{color:var(--Black);font-weight:700;border-bottom-color:var(--Black)}
+.ph .steps li{font-size:0;flex:none;margin-right:.4rem}
+.ph .steps li.cur{font-size:.78rem;flex:1}
+.ph .steps li::before{font-size:.72rem}
+.done-sum{display:flex;justify-content:space-between;align-items:center;gap:1rem;border:1px solid var(--Hair);border-radius:.3rem;padding:.7rem 1rem;margin:0 0 1.4rem;background:var(--Paper);font-size:.84rem}
+.done-sum b{font-weight:700}
+.done-sum a{font-size:.8rem}
+.who{display:flex;gap:.5rem;flex-wrap:wrap;margin:.3rem 0 0}
+.who span{font-size:.76rem;background:#fff;border:1px solid var(--Hair);padding:.12rem .5rem;border-radius:1rem}
+.opt.big{padding:1rem 1rem 1rem 2.4rem}
+.opt.big .pr{font-size:1.55rem}
+.opt .per{display:block;font-size:.74rem;color:var(--Mute);margin:.1rem 0 .3rem}
+.flag{position:absolute;top:-.6rem;right:.7rem;font:700 .62rem/1 var(--display);letter-spacing:.09em;text-transform:uppercase;background:var(--Yellow);color:var(--Black);padding:.28rem .45rem}
+.nav-b{display:flex;justify-content:space-between;align-items:center;margin:1.4rem 0 0}
+.nav-b .btn{width:auto;padding:.8rem 1.5rem}
+.back{font-size:.84rem}
+.later{border:1px solid var(--Hair);border-radius:.3rem;padding:.7rem 1rem;margin:0 0 .5rem;color:var(--Mute);font-size:.84rem;display:flex;gap:.6rem}
+.later::before{content:attr(data-n);display:inline-grid;place-items:center;width:1.35rem;height:1.35rem;border-radius:50%;border:1.5px solid currentColor;font:700 .72rem/1 var(--display)}
+.rv{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.rv-t{width:100%;border-collapse:collapse;font-size:.84rem;font-variant-numeric:tabular-nums}
+.rv-t th,.rv-t td{text-align:left;padding:.45rem .3rem;border-bottom:1px solid var(--Hair)}
+.rv-t th{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--Mute)}
+.rv-t td:last-child,.rv-t th:last-child{text-align:right}
+.rv-t tfoot td{border-bottom:0;border-top:2px solid var(--Black);font-weight:700;font-size:1rem}
+.rv-edit{font-size:.78rem}
+
+/* admin */
+.mail{width:640px;background:#fff;border:1px solid var(--Hair);box-shadow:0 8px 24px rgba(17,19,20,.08);font-size:.88rem}
+.mail-h{padding:.8rem 1.2rem;border-bottom:1px solid var(--Hair);font-size:.78rem;color:var(--Mute);background:var(--Paper)}
+.mail-h b{color:var(--Black)}
+.mail-b{padding:1.2rem 1.4rem 1.4rem}
+.mail-b h3{font:700 1.2rem/1.25 var(--display);margin:0 0 .3rem}
+.mail-b p{margin:0 0 .8rem;color:var(--Ink)}
+.mail-b table{width:100%;border-collapse:collapse;font-size:.84rem;margin:0 0 1rem;font-variant-numeric:tabular-nums}
+.mail-b td,.mail-b th{padding:.35rem .2rem;border-bottom:1px solid var(--Hair);text-align:left;vertical-align:top}
+.mail-b th{font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--Mute)}
+.todo{list-style:none;margin:0 0 1rem;padding:0}
+.todo li{display:grid;grid-template-columns:1fr auto;gap:.8rem;align-items:center;padding:.55rem .7rem;border:1px solid var(--Hair);border-left:4px solid var(--Rust);margin:0 0 .4rem;font-size:.84rem}
+.todo li small{display:block;color:var(--Mute);font-size:.76rem}
+.todo .act{font:700 .72rem/1 var(--display);letter-spacing:.06em;text-transform:uppercase;padding:.5rem .7rem;border:1.5px solid var(--Black);white-space:nowrap}
+.todo li.prop .act{background:var(--Yellow);border-color:var(--YellowInk)}
+.mbtn{display:inline-block;background:var(--Black);color:#fff;font:700 .78rem/1 var(--display);letter-spacing:.06em;text-transform:uppercase;padding:.7rem 1rem}
+.inv{width:100%;border-collapse:collapse;font-size:.84rem;background:#fff}
+.inv th,.inv td{padding:.6rem .7rem;border-bottom:1px solid var(--Hair);text-align:left;vertical-align:top}
+.inv thead th{font:700 .7rem/1.2 var(--display);letter-spacing:.09em;text-transform:uppercase;background:var(--Black);color:#fff}
+.inv tbody th{font-weight:700;width:21%}
+.inv td:nth-child(3){width:17%;color:var(--Ink)}
+.inv tr.grp th{background:var(--Paper);font:700 .76rem/1.2 var(--display);letter-spacing:.1em;text-transform:uppercase;padding:.8rem .7rem .5rem}
+.cnt{display:inline-block;min-width:1.5rem;text-align:center;font:700 .72rem/1.5 var(--display);background:var(--Black);color:#fff;border-radius:1rem;margin-left:.3rem}
+.risk{color:var(--Rust);font-weight:700}
+.stack{display:grid;grid-template-columns:640px 1fr;gap:2.4rem;align-items:start;margin:0 0 2.4rem}
+@media(max-width:1200px){.stack{grid-template-columns:1fr}}
+</style></head><body><div class="wrap">
+<nav class="tabs"><a href="inscripcion-pasos.html">1 · The steps</a><a href="inscripcion-paginas.html">2 · Members area, withdrawal, site</a><a href="inscripcion-correos.html">3 · Member emails</a><a href="inscripcion-admin.html">4 · Admin</a><a href="inscripcion-a.html" aria-current="page">A · not chosen</a></nav>
+
+<h1 class="pg">A · Plan first (not chosen: B was, on 14 October 2026)</h1>
+<p class="top-lede">The order of <code>/cuotas/</code>, continued: the fee page's buttons
+preselect the period and the age group, so the person lands with the first question already
+answered and carries on down one page. A receipt beside the form totals every line as it
+changes and shows exactly what is charged and when.</p>
+<p class="key"><b>Household shown:</b> two people aged 17 or over and one up to 16, monthly:
+39 + 24 + 14 = <b>77 € a month</b>, the spec's fourth worked example. Signing up on
+20 January 2027, so today's charge is the 16 days to the 5th and the first full fee is on
+5 February.</p>
+<p class="warn"><b>Without JavaScript</b> the page is the same form with no live total:
+the period and the people are submitted, the server prices them, and Stripe's last screen
+states the amount. The six person blocks are <code>&lt;details&gt;</code> elements, so
+"add another person" works with no script at all. The spec allows this; the mockup shows the
+enhanced state.</p>
+
+<div class="row">
+<div class="mk"><div class="nav"><b>MUSUBI</b><span>Clases y horarios · Sobre nosotros · Cuotas · Calendario · Contacto</span></div><div class="in">
+<p class="eyb">Cuotas · Inscripción</p>
+<h1 class="h1">Inscríbete y paga la cuota en línea</h1>
+<p class="lede">Normalmente te inscribes después de las dos clases de prueba.
+La inscripción es gratuita y la cuota se cobra sola el día 5, con tarjeta o
+domiciliación SEPA, en una página segura de Stripe.</p>
+<ul class="facts"><li>Sin matrícula</li><li>Todas las clases, en todos los espacios</li>
+<li>Te das de baja cuando quieras</li><li>14 días de desistimiento</li></ul>
+<p class="member">¿Ya eres miembro? <a href="#">Ve a tu área de miembros</a> para cambiar la tarjeta, descargar recibos o darte de baja.</p>
+
+<div class="grid"><form>
+<section class="blk"><h2 class="h2"><i>1</i>Cómo quieres pagar</h2>
+<p class="sub">Elegido desde <a href="#">/cuotas/</a>: puedes cambiarlo aquí.</p>
+<fieldset><legend>Periodo <span class="req">(obligatorio)</span></legend><div class="opts"><label class="opt on"><b>Mensual</b><span class="pr">39 € <small>al mes · 17+</small></span></label><label class="opt"><b>Trimestral</b><span class="pr">99 € <small>al trimestre · 17+</small></span><span class="sv">Ahorras 18 €</span><span class="gift">+ keikogi de regalo</span></label><label class="opt"><b>Anual</b><span class="pr">360 € <small>al año · 17+</small></span><span class="sv">Ahorras 108 €</span><span class="gift">+ keikogi de regalo</span></label></div></fieldset>
+<fieldset style="margin-top:1.1rem"><legend>Cuota</legend>
+<div class="opts" style="grid-template-columns:1fr 1fr">
+<label class="opt on"><b>General</b>Todas las clases, en todos los espacios</label>
+<label class="opt"><b>Con abono municipal</b>CxEM Espronceda o Marina-Besòs, solo ese espacio, mes a mes</label></div>
+</fieldset></section>
+
+<section class="blk"><h2 class="h2"><i>2</i>Quién entrena</h2>
+<p class="sub">Personas del mismo núcleo familiar, hasta seis. Quien paga no tiene por qué entrenar.</p>
+<fieldset class="person"><legend><span>Persona 1</span></legend><div class="f2"><div class="fld"><label>Nombre</label><span class="inp">Ana</span></div><div class="fld"><label>Apellidos</label><span class="inp">García López</span></div></div><p class="fld-l">Edad</p><div class="chips" role="radiogroup" aria-label="Edad"><span class="chip on">17 años o más</span><span class="chip">Hasta 16 años</span></div></fieldset><fieldset class="person"><legend><span>Persona 2</span><a class="rm" href="#">Quitar a la persona 2: Marc</a></legend><div class="f2"><div class="fld"><label>Nombre</label><span class="inp">Marc</span></div><div class="fld"><label>Apellidos</label><span class="inp">García López</span></div></div><p class="fld-l">Edad</p><div class="chips" role="radiogroup" aria-label="Edad"><span class="chip on">17 años o más</span><span class="chip">Hasta 16 años</span></div></fieldset><fieldset class="person"><legend><span>Persona 3</span><a class="rm" href="#">Quitar a la persona 3: Lía</a></legend><div class="f2"><div class="fld"><label>Nombre</label><span class="inp">Lía</span></div><div class="fld"><label>Apellidos</label><span class="inp">García Ruiz</span></div></div><p class="fld-l">Edad</p><div class="chips" role="radiogroup" aria-label="Edad"><span class="chip">17 años o más</span><span class="chip on">Hasta 16 años</span></div><div class="f2" style="margin-top:.6rem"><div class="fld"><label>Mes de nacimiento</label><span class="inp sel">Marzo</span></div><div class="fld"><label>Año de nacimiento</label><span class="inp sel">2014</span></div></div><p class="hint">Solo el mes y el año, para aplicar la cuota hasta 16 y pasar a la de 17 o más a su tiempo.</p></fieldset>
+<span class="add">Añadir otra persona</span>
+</section>
+
+<section class="blk"><h2 class="h2"><i>3</i>Quién paga</h2>
+<p class="sub">Recibirás aquí los recibos y el código para entrar en tu área de miembros.
+El nombre y la tarjeta o el IBAN los pide Stripe en el paso siguiente.</p>
+<div class="f2"><div class="fld"><label>Correo electrónico <span class="req">(obligatorio)</span></label><span class="inp">ana.garcia@example.com</span></div>
+<div class="fld"><label>Teléfono <span class="req">(opcional)</span></label><span class="inp">+34 600 000 000</span></div></div>
+</section>
+
+<section class="blk"><h2 class="h2"><i>4</i>Antes de pagar</h2>
+<div class="chk on"><span>Soy mayor de edad.</span></div>
+<div class="chk on"><span>Soy madre, padre o tutor legal de las personas menores de 18 que he indicado.
+<small>Aparece solo si hay alguien menor de 18.</small></span></div>
+<div class="chk on"><span>He leído y acepto las <a href="#">condiciones de la cuota</a>.</span></div>
+<div class="chk on"><span>Quiero empezar a entrenar antes de que acaben los 14 días de desistimiento.
+<small>Si desisto, pagaré solo la parte de las clases ya disfrutada.</small></span></div>
+<p class="priv"><b>Protección de datos.</b> Responsable: Associació Cultural Musubi Aikido.
+Finalidad: gestionar tu inscripción y cobrar la cuota. Base: el contrato. Destinatarios:
+Stripe, que procesa el pago (con transferencia a EE. UU. bajo el Data Privacy Framework).
+Puedes ejercer tus derechos en info@aikidomusubi.com. <a href="#">Más información</a>.</p>
+
+<span class="btn">Continuar al pago seguro</span>
+<p class="btn-note"><span class="lock"></span>Confirmarás el pago en Stripe. Hasta entonces no se cobra nada.</p>
+</section>
+<section>
+<details class="more"><summary>Cómo se calcula el primer cobro</summary></details>
+<details class="more"><summary>Descuento familiar, con ejemplos</summary></details>
+<details class="more"><summary>Cuota con abono municipal</summary></details>
+<details class="more"><summary>Tarjeta o domiciliación SEPA</summary></details>
+<details class="more"><summary>Cambiar la tarjeta, darte de baja, desistir</summary></details>
+<details class="more"><summary>Lo que no está en la cuota</summary></details>
+</section>
+</form>
+<aside class="rc" aria-labelledby="rc-t"><p class="rc-t" id="rc-t">Tu cuota</p><dl><dt>Ana García<small>17 o más · cuota completa</small></dt><dd>39 €</dd><dt>Marc García<small>17 o más · familia</small></dt><dd><s>39 €</s>24 €</dd><dt>Lía García<small>hasta 16 · familia</small></dt><dd><s>29 €</s>14 €</dd></dl><div class="tot"><span>Total al mes</span><b>77 €</b></div><ol class="tl"><li class="now"><b>Hoy, 38,70 €</b> · del 20 de enero al 4 de febrero</li><li><b>5 de febrero, 77 €</b> · primera cuota completa</li><li>Después, <b>77 €</b> cada día 5</li></ol><p class="rc-x"><b>No incluido:</b> licencia federativa y seguro, 45 € al año por persona, que se pagan aparte en marzo.</p><p class="live">La zona del total se anuncia al lector de pantalla cuando dejas de escribir.</p></aside>
+</div></div></div>
+
+<div class="note">
+<h2>What it gets right</h2>
+<ul>
+<li><span class="tag tag-spec">spec</span><b>Continuity with /cuotas/.</b> The person chose a plan there; here it is already chosen.</li>
+<li><span class="tag tag-spec">spec</span><b>Everything visible at once.</b> Nothing hides behind a "next", which is the easiest shape for keyboard, screen reader and 200 % zoom.</li>
+<li><span class="tag tag-more">more</span><b>The timeline in the receipt.</b> With proration the first month is two charges: <b>38,70 € today</b>, then <b>77 € on 5 February</b>. A single "77 €" would be the first surprise on a bank statement. The spec asks for "the date and amount of the first charge"; this shows both charges.</li>
+<li><span class="tag tag-more">more</span><b>Struck-through full price</b> beside each discounted line, so the family discount is seen being applied, not just stated.</li>
+</ul>
+<h2>Where it is weak</h2>
+<ul>
+<li><b>The period is chosen before the household is known.</b> The cards can only show the price for one person aged 17 or over. A family of three compares 39 € against 99 € and has to work out the rest itself, or watch the receipt.</li>
+<li><b>The rate is per household.</b> The spec's form asks for it once, which cannot express a household where one person holds a CxEM membership and the others pay the general fee. Its own pricing rule (section 3.2) says that household exists.</li>
+<li><b>The receipt is a second column.</b> On a phone it moves to the end, so the total is out of sight while the form is filled in.</li>
+</ul>
+<h2>Phone, after a failed submit</h2>
+<p>The error summary takes focus and links to each field; every error sits next to its own
+field. The same messages come back from the server when JavaScript is off (spec 5.5).</p>
+</div></div>
+<div class="row2">
+<div class="ph"><div class="nav"><b>MUSUBI</b><span>MENÚ ☰</span></div><div class="in">
+<p class="eyb">Cuotas · Inscripción</p>
+<h1 class="h1">Inscríbete y paga la cuota en línea</h1>
+<p class="lede" style="font-size:.88rem">Después de las dos clases de prueba. Sin matrícula; la cuota se cobra el día 5 con tarjeta o SEPA, en una página segura de Stripe.</p>
+
+<div class="esum" tabindex="-1"><p>Hay 2 cosas que corregir</p>
+<ul><li><a href="#">Persona 3: el año de nacimiento da 17 años. Elige «17 años o más».</a></li>
+<li><a href="#">Marca que eres madre, padre o tutor legal de Lía.</a></li></ul></div>
+<h2 class="h2"><i>2</i>Quién entrena</h2>
+<fieldset class="person"><legend><span>Persona 3</span><a class="rm" href="#">Quitar a la persona 3: Lía</a></legend>
+<div class="f2"><div class="fld"><label>Nombre</label><span class="inp">Lía</span></div></div>
+<div class="chips"><span class="chip">17 años o más</span><span class="chip on">Hasta 16 años</span></div>
+<div class="f2" style="margin-top:.6rem"><div class="fld"><label>Año de nacimiento</label>
+<span class="inp sel bad">2009</span>
+<p class="err">Con este año Lía tiene 17. Elige «17 años o más».</p></div></div>
+</fieldset>
+<div style="height:1rem"></div>
+<h2 class="h2"><i>4</i>Antes de pagar</h2>
+<div class="chk bad"><span>Soy madre, padre o tutor legal de las personas menores de 18 que he indicado.</span></div>
+<p class="err" style="margin-top:-.4rem">Marca esta casilla: Lía es menor de 18.</p>
+<div style="height:1.2rem"></div>
+<aside class="rc" aria-labelledby="rc-t"><p class="rc-t" id="rc-t">Tu cuota</p><dl><dt>Ana García<small>17 o más · cuota completa</small></dt><dd>39 €</dd><dt>Marc García<small>17 o más · familia</small></dt><dd><s>39 €</s>24 €</dd><dt>Lía García<small>hasta 16 · familia</small></dt><dd><s>29 €</s>14 €</dd></dl><div class="tot"><span>Total al mes</span><b>77 €</b></div><ol class="tl"><li class="now"><b>Hoy, 38,70 €</b> · del 20 de enero al 4 de febrero</li><li><b>5 de febrero, 77 €</b> · primera cuota completa</li><li>Después, <b>77 €</b> cada día 5</li></ol><p class="rc-x"><b>No incluido:</b> licencia federativa y seguro, 45 € al año por persona, que se pagan aparte en marzo.</p><p class="live">La zona del total se anuncia al lector de pantalla cuando dejas de escribir.</p></aside>
+<div style="height:1.2rem"></div>
+<span class="btn">Continuar al pago seguro</span>
+</div></div>
+
+<div class="note">
+<h2>On a phone</h2>
+<p>One column. The receipt comes after the people and before the button, so it is read
+at the moment of deciding. It is <b>not</b> sticky: a sticky total on a 667px screen
+covers the field being typed into, which WCAG 2.2 forbids (2.4.11), and the spec says so.</p>
+<p>All targets are at least 24px; the chips and checkboxes are 32 to 40px.</p>
+</div></div>
+
+</div></body></html>

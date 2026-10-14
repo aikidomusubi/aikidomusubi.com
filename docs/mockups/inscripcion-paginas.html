@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Signup pages</title>
+<style>
+@font-face{font-family:'Noto Sans';font-weight:400;font-style:normal;
+  src:url(/fonts/noto-sans-400-latin.woff2) format('woff2')}
+@font-face{font-family:'Noto Sans';font-weight:700;font-style:normal;
+  src:url(/fonts/noto-sans-700-latin.woff2) format('woff2')}
+@font-face{font-family:'Noto Sans';font-weight:400;font-style:normal;
+  src:url(/fonts/noto-sans-400-latin-ext.woff2) format('woff2');
+  unicode-range:U+0100-024F}
+:root{
+  --Black:#111314; --White:#fff; --Yellow:#FFF200; --YellowInk:#474400;
+  --Rust:#ae5224; --Green:#1a7444; --Blue:#064F6E; --Slate:#34454C;
+  --Red:#82241f; --Glaucous:#A5C8D1; --Sage:#B7C2A9;
+  --Paper:#FBFAF7; --Mute:#5A686E; --Ink:#3D4A50; --Hair:rgba(17,19,20,.14);
+  --display:Futura,"Century Gothic","Trebuchet MS",sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#F1F1EE;color:var(--Black);
+     font:16px/1.65 "Noto Sans",-apple-system,BlinkMacSystemFont,sans-serif}
+.wrap{max-width:1500px;margin:0 auto;padding:2.5rem 2rem 6rem}
+.pg{font:700 1.8rem/1.2 var(--display);letter-spacing:.04em;text-transform:uppercase;margin:0 0 .6rem}
+.top-lede{max-width:50rem;color:var(--Ink);margin:0 0 1rem;font-size:.95rem}
+.key{max-width:50rem;font-size:.92rem;color:var(--Ink);background:#fff;
+     border-left:3px solid var(--Yellow);padding:.8rem 1.1rem;margin:0 0 1rem}
+.warn{max-width:50rem;font-size:.92rem;color:var(--Ink);background:#fff;
+      border-left:3px solid var(--Rust);padding:.8rem 1.1rem;margin:0 0 2.4rem}
+.key b,.warn b{color:var(--Black)}
+.tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin:0 0 2rem}
+.tabs a{font:700 .78rem/1 var(--display);letter-spacing:.08em;text-transform:uppercase;
+        color:var(--Black);text-decoration:none;padding:.6rem .9rem;border:1px solid var(--Hair);background:#fff}
+.tabs a[aria-current]{background:var(--Black);color:#fff;border-color:var(--Black)}
+.sec-t{font:700 1.05rem/1.3 var(--display);letter-spacing:.07em;text-transform:uppercase;
+       margin:3.2rem 0 1rem;padding-top:1rem;border-top:2px solid var(--Black)}
+.row{display:grid;grid-template-columns:1000px 1fr;gap:2.4rem;align-items:start}
+.row2{display:grid;grid-template-columns:375px 1fr;gap:2.4rem;align-items:start;margin-top:2.4rem}
+@media(max-width:1460px){.row{grid-template-columns:1fr}}
+.note h2{font:700 .95rem/1.3 var(--display);letter-spacing:.07em;text-transform:uppercase;margin:1.5rem 0 .45rem}
+.note h2:first-child{margin-top:0}
+.note p,.note li{max-width:36rem;font-size:.9rem;color:var(--Ink)}
+.note p{margin:0 0 .75rem}
+.note ul,.note ol{padding-left:1.1rem;margin:0 0 .8rem}
+.note li{margin:0 0 .35rem}
+.note b{color:var(--Black)}
+.note code,.warn code,.key code{font:.8rem ui-monospace,Menlo,monospace;background:rgba(17,19,20,.06);padding:0 .2em}
+.tag{display:inline-block;font:700 .66rem/1 var(--display);letter-spacing:.08em;text-transform:uppercase;
+     padding:.3rem .45rem;margin-right:.35rem;vertical-align:.12em}
+.tag-spec{background:var(--Sage);color:var(--Black)}
+.tag-more{background:var(--Yellow);color:var(--Black)}
+.tag-q{background:var(--Rust);color:#fff}
+
+/* ---------------- the mocked site ---------------- */
+.mk{width:1000px;background:#fff;box-shadow:0 1px 2px rgba(17,19,20,.14),0 12px 34px rgba(17,19,20,.11)}
+.ph{width:375px;background:#fff;border:10px solid var(--Black);border-radius:34px;overflow:hidden;
+    box-shadow:0 12px 34px rgba(17,19,20,.16)}
+.nav{background:var(--Black);color:#fff;padding:.85rem 2.2rem;display:flex;align-items:baseline;gap:1.6rem}
+.ph .nav{padding:.8rem 1rem;justify-content:space-between}
+.nav b{font:700 1.05rem/1 var(--display);letter-spacing:.03em}
+.nav span{font-size:.62rem;letter-spacing:.06em;color:rgba(255,255,255,.62)}
+.in{padding:2.2rem 4rem 3rem}
+.ph .in{padding:1.4rem 1rem 2rem}
+.eyb{font:700 .72rem/1 var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--Mute);margin:0 0 .5rem}
+.h1{font:700 2.1rem/1.15 var(--display);letter-spacing:.02em;margin:0 0 .7rem;text-wrap:balance}
+.ph .h1{font-size:1.65rem}
+.lede{font-size:.98rem;color:var(--Ink);max-width:40rem;margin:0 0 1rem}
+.facts{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;margin:0 0 1.2rem;padding:0;list-style:none;font-size:.82rem;color:var(--Ink)}
+.facts li::before{content:"";display:inline-block;width:.45rem;height:.45rem;background:var(--Green);margin-right:.45rem;vertical-align:.08em}
+.member{font-size:.82rem;color:var(--Ink);margin:0 0 1.6rem}
+.member a,.mk a,.ph a{color:var(--Black)}
+.grid{display:grid;grid-template-columns:1fr 290px;gap:2.6rem;align-items:start}
+.h2{font:700 1.2rem/1.25 var(--display);letter-spacing:.03em;margin:0 0 .25rem;display:flex;gap:.6rem;align-items:baseline}
+.h2 i{font-style:normal;font-size:.75rem;color:var(--Mute);letter-spacing:.1em}
+.sub{font-size:.84rem;color:var(--Ink);margin:0 0 .9rem}
+.blk{padding:0 0 1.6rem;margin:0 0 1.6rem;border-bottom:1px solid var(--Hair)}
+.blk:last-child{border-bottom:0}
+fieldset{border:0;margin:0;padding:0;min-width:0}
+legend{padding:0;font-weight:700;font-size:.86rem;margin:0 0 .5rem}
+.req{font-weight:400;color:var(--Mute);font-size:.78rem}
+.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}
+.ph .opts{grid-template-columns:1fr}
+.opt{position:relative;border:1px solid var(--Hair);border-radius:.3rem;padding:.75rem .85rem .7rem 2.3rem;font-size:.84rem;background:#fff}
+.opt::before{content:"";position:absolute;left:.8rem;top:.95rem;width:1rem;height:1rem;border:2px solid var(--Slate);border-radius:50%;background:#fff}
+.opt.on{border-color:var(--Black);box-shadow:inset 0 0 0 1px var(--Black)}
+.opt.on::before{background:radial-gradient(circle,var(--Black) 0 38%,#fff 42%)}
+.opt b{display:block;font-size:.9rem}
+.opt .pr{font:700 1.15rem/1.2 var(--display);display:block;margin:.15rem 0}
+.opt .pr small{font:400 .74rem "Noto Sans",sans-serif;color:var(--Mute)}
+.opt .sv{display:block;font-size:.76rem;color:var(--Green);font-weight:700}
+.opt .gift{display:block;font-size:.74rem;color:var(--Ink)}
+.opt.box::before{border-radius:.2rem}
+.opt.box.on::before{background:var(--Black);box-shadow:inset 0 0 0 2px #fff}
+.cond{font-size:.78rem;color:var(--Ink);background:var(--Paper);border-left:3px solid var(--Glaucous);padding:.55rem .8rem;margin:.6rem 0 0}
+.person{border:1px solid var(--Hair);border-radius:.3rem;padding:.9rem 1rem 1rem;margin:0 0 .7rem;background:#fff}
+.person legend{float:left;width:100%;display:flex;justify-content:space-between;align-items:baseline;margin:0 0 .6rem}
+.person legend + *{clear:both}
+.rm{font-size:.76rem;font-weight:400;text-decoration:underline;color:var(--Black);min-height:24px;display:inline-flex;align-items:center}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:.6rem .8rem}
+.ph .f2{grid-template-columns:1fr}
+.fld label{display:block;font-size:.78rem;font-weight:700;margin:0 0 .2rem}
+.inp{display:block;width:100%;min-height:2.5rem;border:1px solid #7b878c;border-radius:.25rem;padding:.45rem .6rem;font-size:.9rem;background:#fff;color:var(--Black)}
+.inp.ph-t{color:#7b878c}
+.inp.sel{background:#fff linear-gradient(45deg,transparent 50%,var(--Black) 50%) no-repeat right .9rem center/.35rem .35rem}
+.inp.bad{border-color:var(--Red);border-width:2px}
+.err{font-size:.78rem;color:var(--Red);font-weight:700;margin:.25rem 0 0;display:flex;gap:.35rem}
+.err::before{content:"!";display:inline-grid;place-items:center;width:1rem;height:1rem;border-radius:50%;background:var(--Red);color:#fff;font-size:.66rem;flex:none;margin-top:.12rem}
+.chips{display:flex;gap:.4rem;flex-wrap:wrap;margin:0}
+.fld-l{font-size:.78rem;font-weight:700;margin:.7rem 0 .25rem}
+.chip{font-size:.8rem;border:1px solid #7b878c;border-radius:1.2rem;padding:.3rem .8rem;min-height:2rem;display:inline-flex;align-items:center;background:#fff}
+.chip.on{background:var(--Black);color:#fff;border-color:var(--Black)}
+.add{display:inline-flex;align-items:center;gap:.45rem;min-height:2.5rem;padding:.45rem .9rem;border:1px dashed var(--Slate);border-radius:.3rem;font-size:.85rem;font-weight:700;background:#fff}
+.add::before{content:"+";font:700 1.1rem/1 var(--display)}
+.hint{font-size:.76rem;color:var(--Mute);margin:.35rem 0 0}
+.chk{display:grid;grid-template-columns:1.25rem 1fr;gap:.6rem;font-size:.84rem;margin:0 0 .7rem;align-items:start}
+.chk::before{content:"";width:1.15rem;height:1.15rem;border:2px solid var(--Slate);border-radius:.2rem;margin-top:.15rem;background:#fff}
+.chk.on::before{background:var(--Black);box-shadow:inset 0 0 0 2px #fff}
+.chk.bad::before{border-color:var(--Red)}
+.chk small{display:block;color:var(--Mute);font-size:.76rem}
+.priv{font-size:.74rem;color:var(--Ink);border:1px solid var(--Hair);padding:.65rem .8rem;margin:.4rem 0 1rem;background:var(--Paper)}
+.priv b{color:var(--Black)}
+.btn{display:flex;width:100%;justify-content:center;align-items:center;gap:.6rem;min-height:3rem;background:var(--Black);color:#fff;
+     font:700 .95rem/1 var(--display);letter-spacing:.06em;text-transform:uppercase;border-radius:.25rem;padding:.8rem 1rem}
+.btn::after{content:"→"}
+.btn-note{font-size:.76rem;color:var(--Mute);text-align:center;margin:.5rem 0 0}
+.lock{display:inline-block;width:.7rem;height:.55rem;background:var(--Mute);border-radius:.1rem;position:relative;margin-right:.35rem;vertical-align:0}
+.lock::before{content:"";position:absolute;left:.12rem;top:-.32rem;width:.46rem;height:.42rem;border:2px solid var(--Mute);border-bottom:0;border-radius:.3rem .3rem 0 0}
+
+/* the receipt */
+.rc{position:sticky;top:1rem;background:var(--Paper);border:1px solid var(--Hair);border-top:4px solid var(--Black);padding:1.1rem 1.1rem 1.2rem;font-size:.84rem}
+.rc-t{font:700 .78rem/1 var(--display);letter-spacing:.12em;text-transform:uppercase;margin:0 0 .8rem}
+.rc dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:.3rem .8rem;font-variant-numeric:tabular-nums}
+.rc dt{color:var(--Ink)}
+.rc dt small{display:block;font-size:.72rem;color:var(--Mute)}
+.rc dd{margin:0;text-align:right;font-weight:700}
+.rc dd s{font-weight:400;color:var(--Mute);margin-right:.3rem;font-size:.76rem}
+.rc .tot{border-top:2px solid var(--Black);margin-top:.7rem;padding-top:.6rem;display:flex;justify-content:space-between;align-items:baseline}
+.rc .tot b{font:700 1.7rem/1 var(--display)}
+.rc .tot span{font-size:.78rem;color:var(--Ink)}
+.tl{list-style:none;margin:1rem 0 0;padding:0;border-left:2px solid var(--Black)}
+.tl li{position:relative;padding:0 0 .7rem .9rem;font-size:.8rem;color:var(--Ink)}
+.tl li::before{content:"";position:absolute;left:-.4rem;top:.35rem;width:.62rem;height:.62rem;border-radius:50%;background:#fff;border:2px solid var(--Black)}
+.tl li.now::before{background:var(--Yellow)}
+.tl b{color:var(--Black);font-variant-numeric:tabular-nums}
+.rc-x{margin:.6rem 0 0;padding:.6rem 0 0;border-top:1px solid var(--Hair);font-size:.76rem;color:var(--Ink)}
+.rc-x b{color:var(--Black)}
+.gift-l{display:flex;gap:.5rem;align-items:flex-start;font-size:.78rem;margin:.8rem 0 0;padding:.5rem .6rem;background:#fff;border:1px solid var(--Hair)}
+.gift-l::before{content:"";flex:none;width:.85rem;height:.85rem;margin-top:.18rem;background:var(--Yellow);border:1px solid var(--YellowInk)}
+.live{font-size:.7rem;color:var(--Mute);margin:.6rem 0 0}
+
+details.more{border-top:1px solid var(--Hair);font-size:.84rem}
+details.more:last-of-type{border-bottom:1px solid var(--Hair)}
+details.more summary{list-style:none;padding:.6rem 0;font-weight:700;display:flex;justify-content:space-between}
+details.more summary::after{content:"+";font:700 1rem/1 var(--display)}
+
+/* the error summary */
+.esum{border:2px solid var(--Red);border-radius:.3rem;padding:.8rem .9rem;margin:0 0 1.2rem;outline:3px solid var(--Blue);outline-offset:2px}
+.esum p{margin:0 0 .35rem;font-weight:700;font-size:.9rem;color:var(--Red)}
+.esum ul{margin:0;padding-left:1.1rem;font-size:.82rem}
+.esum a{color:var(--Red)}
+
+/* B: the stepper */
+.steps{display:flex;list-style:none;margin:0 0 1.8rem;padding:0;counter-reset:s;border-bottom:1px solid var(--Hair)}
+.steps li{counter-increment:s;flex:1;padding:.55rem 0 .7rem;font-size:.8rem;color:var(--Mute);border-bottom:3px solid transparent;margin-bottom:-1px}
+.steps li::before{content:counter(s);display:inline-grid;place-items:center;width:1.35rem;height:1.35rem;border-radius:50%;border:1.5px solid currentColor;margin-right:.45rem;font:700 .72rem/1 var(--display)}
+.steps li.done{color:var(--Black)}
+.steps li.done::before{content:"✓";background:var(--Black);color:#fff;border-color:var(--Black)}
+.steps li.cur{color:var(--Black);font-weight:700;border-bottom-color:var(--Black)}
+.ph .steps li{font-size:0;flex:none;margin-right:.4rem}
+.ph .steps li.cur{font-size:.78rem;flex:1}
+.ph .steps li::before{font-size:.72rem}
+.done-sum{display:flex;justify-content:space-between;align-items:center;gap:1rem;border:1px solid var(--Hair);border-radius:.3rem;padding:.7rem 1rem;margin:0 0 1.4rem;background:var(--Paper);font-size:.84rem}
+.done-sum b{font-weight:700}
+.done-sum a{font-size:.8rem}
+.who{display:flex;gap:.5rem;flex-wrap:wrap;margin:.3rem 0 0}
+.who span{font-size:.76rem;background:#fff;border:1px solid var(--Hair);padding:.12rem .5rem;border-radius:1rem}
+.opt.big{padding:1rem 1rem 1rem 2.4rem}
+.opt.big .pr{font-size:1.55rem}
+.opt .per{display:block;font-size:.74rem;color:var(--Mute);margin:.1rem 0 .3rem}
+.flag{position:absolute;top:-.6rem;right:.7rem;font:700 .62rem/1 var(--display);letter-spacing:.09em;text-transform:uppercase;background:var(--Yellow);color:var(--Black);padding:.28rem .45rem}
+.nav-b{display:flex;justify-content:space-between;align-items:center;margin:1.4rem 0 0}
+.nav-b .btn{width:auto;padding:.8rem 1.5rem}
+.back{font-size:.84rem}
+.later{border:1px solid var(--Hair);border-radius:.3rem;padding:.7rem 1rem;margin:0 0 .5rem;color:var(--Mute);font-size:.84rem;display:flex;gap:.6rem}
+.later::before{content:attr(data-n);display:inline-grid;place-items:center;width:1.35rem;height:1.35rem;border-radius:50%;border:1.5px solid currentColor;font:700 .72rem/1 var(--display)}
+.rv{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.rv-t{width:100%;border-collapse:collapse;font-size:.84rem;font-variant-numeric:tabular-nums}
+.rv-t th,.rv-t td{text-align:left;padding:.45rem .3rem;border-bottom:1px solid var(--Hair)}
+.rv-t th{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--Mute)}
+.rv-t td:last-child,.rv-t th:last-child{text-align:right}
+.rv-t tfoot td{border-bottom:0;border-top:2px solid var(--Black);font-weight:700;font-size:1rem}
+.rv-edit{font-size:.78rem}
+
+/* admin */
+.mail{width:640px;background:#fff;border:1px solid var(--Hair);box-shadow:0 8px 24px rgba(17,19,20,.08);font-size:.88rem}
+.mail-h{padding:.8rem 1.2rem;border-bottom:1px solid var(--Hair);font-size:.78rem;color:var(--Mute);background:var(--Paper)}
+.mail-h b{color:var(--Black)}
+.mail-b{padding:1.2rem 1.4rem 1.4rem}
+.mail-b h3{font:700 1.2rem/1.25 var(--display);margin:0 0 .3rem}
+.mail-b p{margin:0 0 .8rem;color:var(--Ink)}
+.mail-b table{width:100%;border-collapse:collapse;font-size:.84rem;margin:0 0 1rem;font-variant-numeric:tabular-nums}
+.mail-b td,.mail-b th{padding:.35rem .2rem;border-bottom:1px solid var(--Hair);text-align:left;vertical-align:top}
+.mail-b th{font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--Mute)}
+.todo{list-style:none;margin:0 0 1rem;padding:0}
+.todo li{display:grid;grid-template-columns:1fr auto;gap:.8rem;align-items:center;padding:.55rem .7rem;border:1px solid var(--Hair);border-left:4px solid var(--Rust);margin:0 0 .4rem;font-size:.84rem}
+.todo li small{display:block;color:var(--Mute);font-size:.76rem}
+.todo .act{font:700 .72rem/1 var(--display);letter-spacing:.06em;text-transform:uppercase;padding:.5rem .7rem;border:1.5px solid var(--Black);white-space:nowrap}
+.todo li.prop .act{background:var(--Yellow);border-color:var(--YellowInk)}
+.mbtn{display:inline-block;background:var(--Black);color:#fff;font:700 .78rem/1 var(--display);letter-spacing:.06em;text-transform:uppercase;padding:.7rem 1rem}
+.inv{width:100%;border-collapse:collapse;font-size:.84rem;background:#fff}
+.inv th,.inv td{padding:.6rem .7rem;border-bottom:1px solid var(--Hair);text-align:left;vertical-align:top}
+.inv thead th{font:700 .7rem/1.2 var(--display);letter-spacing:.09em;text-transform:uppercase;background:var(--Black);color:#fff}
+.inv tbody th{font-weight:700;width:21%}
+.inv td:nth-child(3){width:17%;color:var(--Ink)}
+.inv tr.grp th{background:var(--Paper);font:700 .76rem/1.2 var(--display);letter-spacing:.1em;text-transform:uppercase;padding:.8rem .7rem .5rem}
+.cnt{display:inline-block;min-width:1.5rem;text-align:center;font:700 .72rem/1.5 var(--display);background:var(--Black);color:#fff;border-radius:1rem;margin-left:.3rem}
+.risk{color:var(--Rust);font-weight:700}
+.stack{display:grid;grid-template-columns:640px 1fr;gap:2.4rem;align-items:start;margin:0 0 2.4rem}
+@media(max-width:1200px){.stack{grid-template-columns:1fr}}
+
+.pair{display:grid;grid-template-columns:1000px 375px;gap:2.2rem;align-items:start}
+.pair.one{grid-template-columns:1000px}
+@media(max-width:1460px){.pair{grid-template-columns:1fr}}
+.notes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.6rem;margin:1.4rem 0 0;max-width:1415px}
+@media(max-width:1100px){.notes{grid-template-columns:1fr}}
+.notes .note h2{margin-top:0}
+.lbl{font:700 .7rem/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--Mute);margin:0 0 .5rem}
+.side{background:var(--Paper);border:1px solid var(--Hair);padding:1rem 1.1rem;font-size:.82rem;color:var(--Ink)}
+.side h3{font:700 .78rem/1.2 var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--Black);margin:0 0 .6rem}
+.side ul{margin:0;padding-left:1rem}
+.side li{margin:0 0 .35rem}
+.side p{margin:.7rem 0 0}
+.opt.off{opacity:1;background:repeating-linear-gradient(135deg,#fff 0 6px,#f3f3f0 6px 12px);color:var(--Mute)}
+.opt.off::before{border-color:#b9c1c4}
+.opt.off b,.opt.off .pr{color:var(--Mute)}
+.why{font-size:.78rem;color:var(--Black);background:#fff;border:1px solid var(--Hair);border-left:3px solid var(--Rust);padding:.6rem .8rem;margin:.7rem 0 0}
+.chip.dis{color:#8b9599;border-style:dashed;background:#fafaf8}
+.mini{width:100%;border-collapse:collapse;font-size:.8rem;font-variant-numeric:tabular-nums;margin:.3rem 0 .6rem}
+.mini td{padding:.3rem .2rem;border-bottom:1px solid var(--Hair)}
+.mini td:last-child{text-align:right}
+.mini tr:last-child td{border-bottom:0;font-weight:700}
+details.more[open] summary::after{content:"−"}
+.notice{display:flex;gap:.7rem;border:1px solid var(--Hair);border-left:4px solid var(--Blue);background:#fff;padding:.8rem 1rem;font-size:.86rem;margin:0 0 1.4rem}
+.notice b{display:block}
+.compact{display:flex;justify-content:space-between;align-items:baseline;margin:0 0 .6rem}
+.compact .eyb{margin:0}
+.compact a{font-size:.78rem}
+
+/* Stripe-hosted pages, drawn after Stripe's standard layout */
+.stp{width:1000px;background:#fff;box-shadow:0 1px 2px rgba(17,19,20,.14),0 12px 34px rgba(17,19,20,.11);display:grid;grid-template-columns:1fr 1fr;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:620px}
+.stp-l{background:#fafafa;padding:3rem 3rem 2rem 4rem;border-right:1px solid #ececec}
+.stp-r{padding:3rem 4rem 2rem 3rem}
+.stp-brand{display:flex;align-items:center;gap:.6rem;font-weight:600;font-size:.9rem;margin:0 0 2rem}
+.stp-brand i{width:1.6rem;height:1.6rem;border-radius:50%;background:var(--Black);display:inline-block;position:relative}
+.stp-brand i::after{content:"";position:absolute;inset:.45rem;border-radius:50%;background:var(--Yellow)}
+.stp-k{font-size:.86rem;color:#6b7280;margin:0}
+.stp-big{font-size:2.1rem;font-weight:600;margin:.2rem 0 .1rem;letter-spacing:-.01em}
+.stp-then{font-size:.84rem;color:#6b7280;margin:0 0 1.6rem}
+.stp-li{display:grid;grid-template-columns:1fr auto;gap:.15rem 1rem;font-size:.84rem;padding:.6rem 0;border-bottom:1px solid #ececec}
+.stp-li small{color:#6b7280;grid-column:1}
+.stp-sum{display:flex;justify-content:space-between;font-size:.86rem;font-weight:600;padding:.7rem 0}
+.stp-h{font-size:1.05rem;font-weight:600;margin:0 0 1rem}
+.stp-f{font-size:.78rem;color:#30313d;margin:0 0 .3rem;display:block}
+.stp-i{border:1px solid #e0e0e0;border-radius:.4rem;padding:.6rem .7rem;font-size:.86rem;margin:0 0 .9rem;color:#30313d;box-shadow:0 1px 1px rgba(0,0,0,.03)}
+.stp-i.ro{background:#f6f6f6;color:#6b7280}
+.stp-tabs{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin:0 0 1rem}
+.stp-tabs span{border:1px solid #e0e0e0;border-radius:.4rem;padding:.6rem .7rem;font-size:.82rem}
+.stp-tabs span.on{border:2px solid var(--Black)}
+.stp-cb{display:grid;grid-template-columns:1rem 1fr;gap:.6rem;font-size:.78rem;color:#30313d;margin:.4rem 0 .9rem}
+.stp-cb::before{content:"";width:.95rem;height:.95rem;border:1px solid #c9c9c9;border-radius:.2rem;margin-top:.1rem}
+.stp-msg{font-size:.78rem;color:#30313d;background:#fffde0;border:1px solid #ece58a;border-radius:.4rem;padding:.6rem .7rem;margin:0 0 1rem}
+.stp-btn{background:var(--Black);color:#fff;border-radius:.4rem;text-align:center;padding:.8rem;font-weight:600;font-size:.92rem}
+.stp-legal{font-size:.7rem;color:#8a8f98;margin:.9rem 0 0;line-height:1.5}
+.stp-pw{font-size:.72rem;color:#8a8f98;margin:2.4rem 0 0}
+.stp-badge{display:inline-block;font:700 .66rem/1 var(--display);letter-spacing:.1em;text-transform:uppercase;background:var(--Rust);color:#fff;padding:.35rem .5rem;margin:0 0 .6rem}
+.portal{width:1000px;background:#fff;box-shadow:0 1px 2px rgba(17,19,20,.14),0 12px 34px rgba(17,19,20,.11);display:grid;grid-template-columns:330px 1fr;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:520px}
+.portal-l{background:var(--Black);color:#fff;padding:2.6rem 2.2rem}
+.portal-l p{font-size:.84rem;color:rgba(255,255,255,.72)}
+.portal-l a{color:#fff;font-size:.82rem}
+.portal-r{padding:2.6rem 3rem}
+.portal-r h3{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#6b7280;margin:1.6rem 0 .6rem;font-weight:600}
+.portal-r h3:first-child{margin-top:0}
+.prow{display:flex;justify-content:space-between;align-items:center;gap:1rem;font-size:.86rem;padding:.55rem 0;border-bottom:1px solid #ececec}
+.prow small{display:block;color:#6b7280}
+.pbtn{font-size:.8rem;border:1px solid #d6d6d6;border-radius:.35rem;padding:.35rem .7rem;white-space:nowrap}
+
+/* our own small pages */
+.lead-btn{display:inline-flex;align-items:center;gap:.6rem;min-height:3.1rem;padding:.8rem 1.6rem;background:var(--Black);color:#fff;font:700 .95rem/1 var(--display);letter-spacing:.06em;text-transform:uppercase;border-radius:.25rem}
+.lead-btn::after{content:"↗"}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin:1.6rem 0 0}
+.ph .two{grid-template-columns:1fr;gap:1rem}
+.can li{list-style:none;padding:.35rem 0 .35rem 1.5rem;position:relative;font-size:.86rem;border-bottom:1px solid var(--Hair)}
+.can li::before{content:"✓";position:absolute;left:0;font-weight:700;color:var(--Green)}
+.cant li::before{content:"✉";color:var(--Slate)}
+.can{margin:0;padding:0}
+.howto{counter-reset:h;list-style:none;margin:0;padding:0}
+.howto li{counter-increment:h;display:grid;grid-template-columns:2rem 1fr;gap:.6rem;font-size:.86rem;margin:0 0 .7rem}
+.howto li::before{content:counter(h);display:grid;place-items:center;width:1.7rem;height:1.7rem;border-radius:50%;background:var(--Yellow);font:700 .8rem/1 var(--display)}
+.links{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;font-size:.82rem;margin:1.6rem 0 0;padding:1rem 0 0;border-top:1px solid var(--Hair)}
+.area{display:block;width:100%;min-height:7rem;border:1px solid #7b878c;border-radius:.25rem;padding:.55rem .65rem;font-size:.86rem;color:var(--Black);background:#fff}
+.ok-h{display:flex;gap:.8rem;align-items:center}
+.ok-h::before{content:"✓";display:grid;place-items:center;flex:none;width:2.4rem;height:2.4rem;border-radius:50%;background:var(--Green);color:#fff;font:700 1.2rem/1 var(--display)}
+.stamp{display:inline-block;font:.82rem ui-monospace,Menlo,monospace;background:var(--Paper);border:1px solid var(--Hair);padding:.4rem .7rem;margin:.2rem 0 1rem}
+.toc{columns:2;column-gap:2rem;font-size:.84rem;padding-left:1.2rem;margin:0 0 1.4rem}
+.toc li{margin:0 0 .3rem;break-inside:avoid}
+.draft{display:inline-block;font:700 .66rem/1 var(--display);letter-spacing:.1em;text-transform:uppercase;background:var(--Rust);color:#fff;padding:.35rem .5rem;margin:0 0 .8rem}
+.fee-mini{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem}
+.fee-c{border:1px solid var(--Hair);border-radius:.375rem;padding:1rem;font-size:.8rem;display:flex;flex-direction:column;gap:.3rem}
+.fee-c.deal{border-left:4px solid var(--Green)}
+.fee-c b{font:700 1.4rem/1.1 var(--display)}
+.fee-c .fee-b{margin-top:.5rem;background:var(--Black);color:#fff;text-align:center;padding:.55rem;border-radius:.25rem;font-weight:700;font-size:.8rem}
+.foot{background:var(--Black);color:rgba(255,255,255,.78);padding:1.4rem 2.2rem;font-size:.78rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.foot b{color:#fff;display:block;margin:0 0 .4rem;font:700 .72rem/1 var(--display);letter-spacing:.1em;text-transform:uppercase}
+.foot span{display:block;margin:0 0 .25rem}
+.foot .new{color:var(--Yellow)}
+.qr-card{width:375px;height:264px;background:#fff;box-shadow:0 8px 24px rgba(17,19,20,.12);display:grid;grid-template-columns:1fr 120px;gap:1rem;padding:1.3rem;align-items:center}
+.qr-card h3{font:700 1.35rem/1.15 var(--display);margin:.3rem 0 .6rem}
+.qr-card p{font-size:.78rem;color:var(--Ink);margin:0 0 .5rem}
+.qr-card code{font:700 .82rem ui-monospace,Menlo,monospace}
+.qr{display:grid;grid-template-columns:repeat(21,1fr);width:120px;height:120px;border:8px solid #fff;outline:1px solid var(--Hair)}
+.qr i{background:#fff}
+.qr i.b{background:var(--Black)}
+.chg{width:100%;border-collapse:collapse;font-size:.84rem;background:#fff}
+.chg th,.chg td{padding:.55rem .7rem;border-bottom:1px solid var(--Hair);text-align:left;vertical-align:top}
+.chg thead th{font:700 .7rem/1.2 var(--display);letter-spacing:.09em;text-transform:uppercase;background:var(--Black);color:#fff}
+.chg tbody th{width:22%}
+.chg code{font:.78rem ui-monospace,Menlo,monospace}
+.nw{font:700 .62rem/1 var(--display);letter-spacing:.08em;text-transform:uppercase;background:var(--Yellow);padding:.2rem .35rem;margin-left:.3rem;vertical-align:.1em}
+
+/* emails */
+.em-row{display:grid;grid-template-columns:600px 1fr;gap:2.4rem;align-items:start;margin:0 0 2.6rem}
+@media(max-width:1200px){.em-row{grid-template-columns:1fr}}
+.em{width:600px;background:#fff;box-shadow:0 8px 24px rgba(17,19,20,.09);font-size:.88rem;line-height:1.6}
+.em-meta{font-size:.74rem;color:var(--Mute);background:#ECECE8;padding:.6rem 1rem;border-bottom:1px solid var(--Hair)}
+.em-meta b{color:var(--Black)}
+.em-top{background:var(--Black);color:#fff;padding:1rem 1.6rem;display:flex;justify-content:space-between;align-items:baseline}
+.em-top b{font:700 1rem/1 var(--display);letter-spacing:.04em}
+.em-top span{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.65)}
+.em-bar{height:4px;background:var(--Yellow)}
+.em-b{padding:1.6rem 1.6rem 1.2rem}
+.em-b h3{font:700 1.35rem/1.2 var(--display);margin:0 0 .8rem;text-wrap:balance}
+.em-b p{margin:0 0 .85rem;color:var(--Ink)}
+.em-b p b{color:var(--Black)}
+.em-b h4{font:700 .74rem/1.2 var(--display);letter-spacing:.12em;text-transform:uppercase;margin:1.3rem 0 .5rem}
+.em-t{width:100%;border-collapse:collapse;font-size:.84rem;font-variant-numeric:tabular-nums;margin:0 0 1rem}
+.em-t td{padding:.4rem .2rem;border-bottom:1px solid var(--Hair)}
+.em-t td:last-child{text-align:right}
+.em-t tr.t td{border-top:2px solid var(--Black);border-bottom:0;font-weight:700}
+.em-dates{list-style:none;margin:0 0 1rem;padding:0;border-left:2px solid var(--Black)}
+.em-dates li{padding:0 0 .45rem .8rem;font-size:.84rem;color:var(--Ink)}
+.em-dates b{color:var(--Black)}
+.em-btn{display:inline-block;background:var(--Black);color:#fff;font:700 .8rem/1 var(--display);letter-spacing:.07em;text-transform:uppercase;padding:.8rem 1.2rem;margin:.2rem 0 1rem}
+.em-box{background:var(--Paper);border:1px solid var(--Hair);padding:.8rem 1rem;font-size:.82rem;color:var(--Ink);margin:0 0 1rem}
+.em-box b{color:var(--Black)}
+.em-big{font:700 1.7rem/1.1 var(--display);color:var(--Black);margin:0 0 .2rem}
+.em-att{display:inline-flex;gap:.5rem;align-items:center;font-size:.78rem;border:1px solid var(--Hair);padding:.4rem .7rem;margin:0 .4rem .6rem 0}
+.em-att::before{content:"PDF";font:700 .6rem/1 var(--display);background:var(--Rust);color:#fff;padding:.25rem .3rem}
+.em-foot{border-top:1px solid var(--Hair);padding:1rem 1.6rem 1.3rem;font-size:.7rem;color:var(--Mute);line-height:1.55}
+.em-foot a{color:var(--Mute)}
+.stripe-list{width:100%;border-collapse:collapse;font-size:.84rem;background:#fff;max-width:1100px}
+.stripe-list th,.stripe-list td{padding:.6rem .7rem;border-bottom:1px solid var(--Hair);text-align:left;vertical-align:top}
+.stripe-list thead th{font:700 .7rem/1.2 var(--display);letter-spacing:.09em;text-transform:uppercase;background:var(--Slate);color:#fff}
+</style></head><body><div class="wrap">
+<nav class="tabs"><a href="inscripcion-pasos.html">1 · The steps</a><a href="inscripcion-paginas.html" aria-current="page">2 · Members area, withdrawal, site</a><a href="inscripcion-correos.html">3 · Member emails</a><a href="inscripcion-admin.html">4 · Admin</a><a href="inscripcion-a.html">A · not chosen</a></nav>
+
+<h1 class="pg">Members area, withdrawal, terms, and the rest of the site</h1>
+<p class="top-lede"><b>There is no database and no password.</b> Stripe holds the subscription, the
+payment method and the invoices, and its customer portal is the members area. Our
+<code>/miembros/</code> page explains it and opens it; the member signs in with their email and a
+one-time code that Stripe sends. We store nothing and maintain nothing.</p>
+
+<h2 class="sec-t">/miembros/ · Área de miembros</h2>
+<div class="pair"><div class="mk"><div class="nav"><b>MUSUBI</b><span>Clases y horarios · Sobre nosotros · Cuotas · Calendario · Contacto</span></div><div class="in">
+<p class="eyb">Cuotas</p>
+<h1 class="h1">Área de miembros</h1>
+<p class="lede">Tu cuota se gestiona en una página segura de Stripe. Entras con el correo con el que te
+inscribiste y un código que te llega en ese momento. No hay contraseña que recordar.</p>
+<span class="lead-btn">Ir a mi cuota</span>
+<div class="two"><div><h2 class="h2" style="font-size:1rem">Lo haces tú, al momento</h2>
+<ul class="can"><li>Cambiar la tarjeta o la cuenta bancaria</li><li>Actualizar el nombre, la dirección o el teléfono</li>
+<li>Descargar los recibos</li><li>Darte de baja, al final del periodo pagado</li></ul></div>
+<div><h2 class="h2" style="font-size:1rem">Escríbenos y lo hacemos</h2>
+<ul class="can cant"><li>Añadir o quitar personas</li><li>Pasar de mensual a trimestral o anual</li>
+<li>Cambiar el correo de la cuota</li><li>La cuota con abono municipal</li></ul></div></div>
+<h2 class="h2" style="font-size:1rem;margin-top:1.8rem">Cómo se entra</h2>
+<ol class="howto"><li><span>Pulsa <b>Ir a mi cuota</b> y escribe tu correo.</span></li>
+<li><span>Stripe te envía un código de seis cifras. Cópialo o pégalo.</span></li>
+<li><span>Ya estás dentro. ¿No te llega? Mira el correo no deseado, o escríbenos: puede que te inscribieras con otro correo.</span></li></ol>
+<p class="links"><a href="#">Desistir del contrato</a><a href="#">Condiciones de la cuota</a><a href="#">Cuotas</a><a href="#">Privacidad</a><a href="#">Contacto</a></p>
+</div></div><div class="ph"><div class="nav"><b>MUSUBI</b><span>MENÚ ☰</span></div><div class="in">
+<p class="eyb">Cuotas</p>
+<h1 class="h1">Área de miembros</h1>
+<p class="lede">Tu cuota se gestiona en una página segura de Stripe. Entras con el correo con el que te
+inscribiste y un código que te llega en ese momento. No hay contraseña que recordar.</p>
+<span class="lead-btn">Ir a mi cuota</span>
+<div class="two"><div><h2 class="h2" style="font-size:1rem">Lo haces tú, al momento</h2>
+<ul class="can"><li>Cambiar la tarjeta o la cuenta bancaria</li><li>Actualizar el nombre, la dirección o el teléfono</li>
+<li>Descargar los recibos</li><li>Darte de baja, al final del periodo pagado</li></ul></div>
+<div><h2 class="h2" style="font-size:1rem">Escríbenos y lo hacemos</h2>
+<ul class="can cant"><li>Añadir o quitar personas</li><li>Pasar de mensual a trimestral o anual</li>
+<li>Cambiar el correo de la cuota</li><li>La cuota con abono municipal</li></ul></div></div>
+<h2 class="h2" style="font-size:1rem;margin-top:1.8rem">Cómo se entra</h2>
+<ol class="howto"><li><span>Pulsa <b>Ir a mi cuota</b> y escribe tu correo.</span></li>
+<li><span>Stripe te envía un código de seis cifras. Cópialo o pégalo.</span></li>
+<li><span>Ya estás dentro. ¿No te llega? Mira el correo no deseado, o escríbenos: puede que te inscribieras con otro correo.</span></li></ol>
+<p class="links"><a href="#">Desistir del contrato</a><a href="#">Condiciones de la cuota</a><a href="#">Cuotas</a><a href="#">Privacidad</a><a href="#">Contacto</a></p>
+</div></div></div>
+<div class="notes"><div class="note"><h2>One button</h2><p>"Ir a mi cuota" opens Stripe's no-code portal login link.
+Every email we send links here, never to the portal directly, because a portal session link expires in
+minutes.</p></div><div class="note"><h2>What is not self-service</h2><p>People, period and email changes go through
+the dojo in v1. The spec says so, and it is right: the family price has to be recalculated, and the
+portal's "switch plan" knows nothing about families.</p></div><div class="note"><h2>Indexing</h2><p>Public but
+<code>noindex</code>: it is useful to members and to nobody arriving from a search.</p></div></div>
+
+<h2 class="sec-t">Stripe's customer portal</h2>
+<div class="pair one">
+<p class="stp-badge">Stripe's portal · illustrative, Stripe draws it</p>
+<div class="portal"><div class="portal-l"><div class="stp-brand" style="color:#fff"><i></i>Aikido Musubi</div>
+<p>Gestiona tu cuota de la Associació Cultural Musubi Aikido.</p>
+<p style="margin-top:2rem"><a href="#">← Volver a aikidomusubi.com</a></p>
+<p style="margin-top:6rem;font-size:.72rem">Powered by stripe · Condiciones · Privacidad</p></div>
+<div class="portal-r">
+<h3>Suscripción actual</h3>
+<div class="prow"><span><b>Cuota general</b> · 3 personas<small>183,00 € cada 3 meses · Próximo cobro el 5 de mayo de 2027</small></span><span class="pbtn">Cancelar suscripción</span></div>
+<h3>Métodos de pago</h3>
+<div class="prow"><span>Débito SEPA •••• 3000<small>Predeterminado</small></span><span class="pbtn">Añadir método de pago</span></div>
+<h3>Información de facturación</h3>
+<div class="prow"><span>Ana García López<small>ana.garcia@example.com · +34 600 000 000</small></span><span class="pbtn">Actualizar información</span></div>
+<h3>Historial de facturas</h3>
+<div class="prow"><span>5 feb 2027<small>183,00 € · Pagado</small></span><span class="pbtn">Cuota general ↓</span></div>
+<div class="prow"><span>20 ene 2027<small>30,99 € · Pagado</small></span><span class="pbtn">Cuota general ↓</span></div>
+</div></div></div>
+<div class="notes"><div class="note"><h2>Configured, not built</h2><p>Payment methods, billing details and invoices on;
+cancel at the end of the period, with a reason; switching plan and quantities off. Branding from our tokens.</p></div>
+<div class="note"><h2>Cancelling here</h2><p>Sets the subscription to end at the period's close. Our webhook
+then sends the member a confirmation and tells the admin. Until the end date the portal shows "Renovar",
+so a mistaken cancel can be undone.</p></div><div class="note"><h2>Language</h2><p>Follows the
+<code>preferred_locales</code> we set from the signup page. Catalan readers see Spanish.</p></div></div>
+
+<h2 class="sec-t">/desistimiento/ · the withdrawal function</h2>
+<div class="pair"><div class="mk"><div class="nav"><b>MUSUBI</b><span>Clases y horarios · Sobre nosotros · Cuotas · Calendario · Contacto</span></div><div class="in">
+<p class="eyb">Cuotas</p>
+<h1 class="h1">Desistir del contrato</h1>
+<p class="lede">Durante los 14 días siguientes a tu inscripción puedes desistir sin dar explicaciones.
+Te devolvemos lo pagado en 14 días como máximo, por el mismo medio, menos los días transcurridos hasta hoy si
+pediste empezar a entrenar enseguida.</p>
+<p class="sub">¿Pasados los 14 días? Entonces es una baja: <a href="#">hazla en tu área de miembros</a>.</p>
+<div class="f2"><div class="fld"><label>Nombre y apellidos <span class="req">(obligatorio)</span></label><span class="inp">Ana García López</span></div>
+<div class="fld"><label>Correo con el que te inscribiste <span class="req">(obligatorio)</span></label><span class="inp">ana.garcia@example.com</span></div></div>
+<div class="fld" style="margin-top:.8rem"><label>Tu declaración</label>
+<span class="area">Por la presente comunico que desisto de mi contrato de cuota de entrenamiento con la Associació Cultural Musubi Aikido, celebrado el 20 de enero de 2027.</span>
+<p class="hint">Ya viene escrita; puedes cambiarla o añadir lo que quieras.</p></div>
+<div style="height:1rem"></div>
+<span class="btn" style="width:auto;display:inline-flex;padding:.8rem 1.6rem">Confirmar desistimiento</span>
+<p class="hint">Al confirmar, te enviamos un acuse con el contenido, la fecha y la hora.</p>
+</div></div><div class="ph"><div class="nav"><b>MUSUBI</b><span>MENÚ ☰</span></div><div class="in">
+<p class="eyb">Cuotas</p>
+<h1 class="h1 ok-h">Desistimiento recibido</h1>
+<p class="lede">Lo hemos recibido. Te hemos enviado un acuse a <b>ana.garcia@example.com</b> con esta misma información.</p>
+<span class="stamp">Recibido el 27 de enero de 2027 a las 21:14 (hora peninsular)</span>
+<ol class="howto"><li><span>Cancelamos tu cuota hoy mismo: no habrá más cobros.</span></li>
+<li><span>Te devolvemos lo pagado menos los 7 días transcurridos, antes del <b>10 de febrero</b>, por el mismo medio de pago.</span></li>
+<li><span>¿Ha sido un error? Escríbenos hoy a <a href="#">info@aikidomusubi.com</a>.</span></li></ol>
+</div></div></div>
+<div class="notes"><div class="note"><h2>Why a form and not "email us"</h2><p>EU Directive 2023/2673 makes an online
+withdrawal function mandatory for contracts concluded on a website, from 19 June 2026: a clearly labelled
+link, a short form, and a "confirm withdrawal" button. The consumer then receives an acknowledgement with
+the content, the date and the time.</p></div><div class="note"><h2>What happens behind it</h2><p>The Worker emails
+the acknowledgement and the admin. The dojo cancels the subscription and refunds within 14 days. The refund is
+the one task still worked out by hand; a small command can calculate it (tab 4).</p></div><div class="note">
+<h2>After the 14 days</h2><p>The form points to the members area, because what remains is an ordinary
+cancellation: no refund, effective at the end of the period.</p></div></div>
+
+<h2 class="sec-t">/condiciones-de-la-cuota/ · the membership terms</h2>
+<div class="pair one"><div class="mk"><div class="nav"><b>MUSUBI</b><span>Clases y horarios · Sobre nosotros · Cuotas · Calendario · Contacto</span></div><div class="in">
+<p class="eyb">Cuotas</p>
+<h1 class="h1">Condiciones de la cuota</h1>
+<p class="draft">Text pending the legal advisor's review</p>
+<p class="lede">Versión 2027-01, en vigor desde el 1 de enero de 2027. <a href="#">Versiones anteriores</a>.</p>
+<ol class="toc"><li>Quiénes somos</li><li>Qué cubre la cuota y qué no</li><li>Cuotas, descuento familiar y cuota con abono</li>
+<li>El cobro, el día 5, y el primer cobro</li><li>Medios de pago</li><li>Duración y renovación automática</li>
+<li>Baja</li><li>Devoluciones</li><li>Cambios de personas o de periodo</li><li>El paso a la cuota de 17 años o más</li>
+<li>Cambios de precio</li><li>Derecho de desistimiento y formulario</li><li>Licencia federativa y seguro</li>
+<li>El keikogi de regalo</li><li>Protección de datos</li><li>Reclamaciones y contacto</li><li>Ley aplicable</li></ol>
+<h2 class="h2">6. Duración y renovación automática</h2>
+<p class="sub" style="max-width:40rem">La cuota se renueva sola al final de cada periodo, mes, trimestre o año, y se cobra
+el día 5. Quince días antes de cada renovación te avisamos por correo de la fecha y el importe, y de cómo darte de
+baja si no quieres continuar.</p>
+</div></div></div>
+<div class="notes"><div class="note"><h2>Versioned</h2><p>Each signup records <code>terms_version</code>; old versions
+stay published at their own URLs, because a member is bound by the version they accepted.</p></div>
+<div class="note"><h2>The keikogi is a section</h2><p>The rule decided in step 2 belongs in the terms, so that the
+answer to "and if I cancel?" is written down.</p></div><div class="note"><h2>Advisor first</h2><p>Every legal
+text here is a draft until the advisor has read it. That is the gate before launch.</p></div></div>
+
+<h2 class="sec-t">What changes on pages that exist</h2>
+<div class="pair"><div class="mk"><div class="nav"><b>MUSUBI</b><span>Clases y horarios · Sobre nosotros · Cuotas · Calendario · Contacto</span></div><div class="in">
+<p class="eyb">Cuotas</p><h1 class="h1" style="font-size:1.6rem">17 años o más</h1>
+<div class="fee-mini">
+<div class="fee-c"><span>Mensual</span><b>39 €</b><span>al mes</span><span class="fee-b">Inscribirme</span></div>
+<div class="fee-c deal"><span>Trimestral</span><b>99 €</b><span>al trimestre · ahorras 18 €</span><span class="fee-b">Inscribirme</span></div>
+<div class="fee-c deal"><span>Anual</span><b>360 €</b><span>al año · ahorras 108 €</span><span class="fee-b">Inscribirme</span></div></div>
+<p class="sub" style="margin-top:1rem">La cuota se cobra el día 5, con tarjeta o domiciliación, a través de Stripe.
+¿Ya tienes cuota? <a href="#">Área de miembros</a>.</p></div></div><div><div class="qr-card"><div><p class="eyb" style="margin:0">Después de tus dos clases de prueba</p>
+<h3>Inscríbete en línea</h3><p>Tres minutos. Tarjeta o domiciliación. Sin matrícula.</p>
+<p><code>aikidomusubi.com/inscripcion</code></p></div><div class="qr" aria-hidden="true"><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i></i><i></i><i></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i></i><i class="b"></i><i></i><i></i><i></i><i></i><i></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i></i><i></i><i></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i></i><i></i><i></i><i></i><i></i><i class="b"></i><i></i><i></i><i></i><i></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i></i><i></i><i></i><i></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i></i><i></i><i></i><i></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i></i><i></i><i></i><i></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i></i><i></i><i></i><i></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i></i><i></i><i></i><i></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i></i><i></i><i></i><i></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i></i><i></i><i></i><i></i><i></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i></i><i></i><i></i><i></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i></i><i></i><i></i><i></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i></i><i></i><i></i><i></i><i class="b"></i><i class="b"></i><i></i><i class="b"></i><i class="b"></i></div></div><div style="height:1.4rem"></div><div class="foot"><div><b>Cuotas</b><span>Cuotas</span><span class="new">Inscripción</span><span class="new">Área de miembros</span></div>
+<div><b>Legal</b><span>Aviso legal</span><span>Privacidad</span><span>Cookies</span><span class="new">Condiciones de la cuota</span><span class="new">Desistir del contrato</span></div>
+<div><b>Contacto</b><span>info@aikidomusubi.com</span><span>717 171 177</span></div></div></div></div>
+<div class="notes"><div class="note"><h2>/cuotas/</h2><p>The buttons stop going to Contact. A query string
+preselects the period and the age; it never carries personal data.</p></div><div class="note"><h2>The QR</h2><p>For
+the end of a trial class: a card that points at <code>/inscripcion/</code>, the short Spanish URL. The page has the
+language switcher. Drawn here as an A6 landscape card; the real code is generated from the final URL.</p></div>
+<div class="note"><h2>Shared by email</h2><p>Same URL. For somebody the dojo wants to treat specially, such as a free first
+month, the spec's invite link does that.</p></div></div>
+<div style="height:2rem"></div>
+<table class="chg"><thead><tr><th>Page</th><th>What changes</th></tr></thead><tbody><tr><th>Cuotas <code>/cuotas/</code> ×4</th><td>Each card's button becomes "Inscribirme" and goes to <code>/inscripcion/?periodo=trimestral&amp;edad=17</code>, which starts at step 1 with that period waiting at step 2. Adds the billing line and the members-area link.</td></tr><tr><th>Footer, every page</th><td>Inscripción and Área de miembros under Cuotas; Condiciones de la cuota and Desistir del contrato under Legal. The withdrawal link has to be on every page (spec 11.3).</td></tr><tr><th>Privacidad ×4</th><td>New processing activity "online signup and fee collection": data, legal basis, retention; Stripe as processor and separate controller, with the US transfer; Cloudflare and the email provider as processors; "bank details" now held by Stripe, not the dojo.</td></tr><tr><th>Cookies ×4</th><td>The signup adds no cookies; <code>sessionStorage</code> keeps the form while paying and is cleared after; Stripe's pages follow Stripe's policy.</td></tr><tr><th>Accesibilidad ×4</th><td>It says the association offers no e-commerce. That stops being true. The new pages come into scope, and Stripe's pages are third-party content.</td></tr><tr><th>Aviso legal ×4</th><td>A link to the membership terms.</td></tr><tr><th>Preguntas frecuentes ×4</th><td>Three new questions: how and when the fee is charged, changing card or account, cancelling. "¿Cuánto cuesta empezar?" points at the signup.</td></tr><tr><th>Recursos ×4</th><td>The <b>SEPA mandate form goes</b> at launch, because Stripe takes the mandate. The <b>enrolment form</b> loses anything about choosing the fee or giving bank details. That means editing the PDFs, which I have not seen yet.</td></tr><tr><th>Contacto, Cómo es una clase, the location pages</th><td>Their "how to join" lines point at the signup instead of only at contact.</td></tr><tr><th>llms.txt, mapa del sitio, sitemap.xml</th><td>The new pages, generated as usual. The thank-you and withdrawal-confirmation pages stay out.</td></tr><tr><th>humans.txt</th><td>Stripe, Cloudflare Workers and the email provider, in the commit that adds them.</td></tr><tr><th>New pages ×4 each</th><td><code>/inscripcion/</code> (+ <code>gracias/</code>), <code>/miembros/</code>, <code>/condiciones-de-la-cuota/</code>, <code>/desistimiento/</code> (+ <code>recibido/</code>), in ca, en and ja with their own slugs.</td></tr></tbody></table>
+
+</div></body></html>

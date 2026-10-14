@@ -38,6 +38,7 @@ Run it again after any `npx gulp build`, which wipes `_site`.
 | `names.html` | The six candidate names for the aside. **Ura was chosen.** |
 | `switch.html` | Three ways to open the aside. |
 | `loc-barcelona-f.html` | **The recommendation.** E plus D's un-underlined headings, the venues named in full everywhere, «espacios» for «salas», inclusive wording, and no Arashi Group in the hero. |
+| `inscripcion-pasos/-paginas/-correos/-admin.html`, `inscripcion-a.html` | Online signup and Stripe billing (spec of 14 Oct 2026). **B, people first, was chosen** on 14 Oct 2026: every step on desktop and phone, Stripe's checkout and portal as they will look, the thank-you, members-area, withdrawal and terms pages, the changes to existing pages, all eleven member emails and the admin side. A, plan first, is kept as the alternative that was turned down. Generators `build_signup.py` (shared CSS, A, admin) and `build_signup_b.py`. **Awaiting confirmation.** |
 | `venue-photos.html` | The October 2026 venue photographs on /barcelona/ and /sant-adria-de-besos/: three layouts and four colour grades. Crops are CSS on the whole file. Photos in `venuephotos/`. |
 | `venue-espronceda-a/b/c.html` | A page per venue, drawn for CxEM Espronceda: Twin, Photo first, Arrival guide. Built around the real /barcelona/ shell, so build first. |
 | `loc-barcelona-e.html` | C's structure and order, with the fact block redrawn in the site's own tokens and the steps and timetable taken from D. |
