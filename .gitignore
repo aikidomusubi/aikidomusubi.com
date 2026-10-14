@@ -7,6 +7,10 @@ site_links
 site_links_outdated
 package.json
 package-lock.json
+# ...except the membership Worker's, which pin its own dependencies and must be
+# committed for a reproducible deploy. See services/membership/.
+!services/membership/package.json
+!services/membership/package-lock.json
 
 # Unsubset source faces for tools/subset-ja-fonts.py — ~4.8 MB of input that
 # never ships. Re-fetch per tools/ja-font-sources/README.md when the script

@@ -23,6 +23,13 @@ currency: EUR
 # by itself, so nobody has to remember to delete a sentence in January. The
 # wording is `ui.effective`; if this date ever moves, that sentence moves with it.
 effective_from: "2027-01-01"
+
+# THE PRICE LIST'S VERSION, for online payment. Every Stripe Price is created
+# from this file with this suffix in its lookup key (general_adult_monthly_full_2027),
+# and every subscription records it. A new set of prices is a new version: the
+# old Stripe Prices are never edited, so a member's invoice can always be traced
+# to the list it came from. See services/membership/ and the spec, section 3.4.
+catalog_version: "2027"
 symbol: "€"
 
 # ---------------------------------------------------------------------------
@@ -138,7 +145,10 @@ members:
     en: "If you hold a membership of CxEM Espronceda or of the Marina-Besòs sports centre, you pay a reduced fee, month by month, for the classes at that space. It is part of our arrangement with each centre, which is why it covers that space only: to train in Badalona or at the other spaces as well, the general fee covers them all."
     ja: "エスプロンセダまたはマリナ・バゾスのスポーツセンターの会員の方は、その施設での稽古について、月払いの会員料金をご利用いただけます。各施設との取り決めによるもので、対象はその施設のみです。バダロナなどほかの稽古場所にも通う場合は、すべての稽古場所に有効な一般の月謝となります。"
   rows:
-    - { venue: espronceda, adults: 19, children: 9 }
+    # min_age: the CxEM class is from 12, so the online signup refuses the
+    # members' rate there for anybody younger. Marina-Besòs is from 6, which
+    # is where the up-to-16 class starts anyway.
+    - { venue: espronceda, adults: 19, children: 9, min_age: 12 }
     # No 17-and-over price at Marina-Besòs: its only class is for up to 16.
     - { venue: sant-adria, children: 9 }
   note:

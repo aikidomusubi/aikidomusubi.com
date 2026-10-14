@@ -1,0 +1,30 @@
+{
+  "name": "aikidomusubi-membership",
+  "private": true,
+  "type": "module",
+  "description": "Online signup and fee collection for aikidomusubi.com: a Cloudflare Worker in front of Stripe.",
+  "scripts": {
+    "catalog": "node scripts/gen-catalog.mjs",
+    "pretest": "npm run catalog",
+    "test": "vitest run",
+    "typecheck": "npm run catalog && tsc --noEmit",
+    "dev": "npm run catalog && wrangler dev",
+    "deploy": "npm run catalog && npm test && wrangler deploy",
+    "stripe:setup": "npm run catalog && node --experimental-strip-types --no-warnings scripts/stripe-setup.ts",
+    "invite": "npm run catalog && node --experimental-strip-types --no-warnings scripts/invite.ts",
+    "plan": "npm run catalog && node --experimental-strip-types --no-warnings scripts/plan.ts",
+    "refund": "npm run catalog && node --experimental-strip-types --no-warnings scripts/refund.ts",
+    "migrate-prices": "npm run catalog && node --experimental-strip-types --no-warnings scripts/migrate-prices.ts",
+    "retention": "node --experimental-strip-types --no-warnings scripts/retention.ts"
+  },
+  "dependencies": {
+    "stripe": "23.0.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "5.20261014.1",
+    "typescript": "7.0.2",
+    "vitest": "5.0.4",
+    "wrangler": "4.150.0",
+    "yaml": "2.9.1"
+  }
+}

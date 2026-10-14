@@ -1,0 +1,272 @@
+# The words of every email the membership system sends.
+#
+# Member emails exist in all four languages and go out in the language the
+# person signed up in. Admin emails are in Spanish only: one reader, who writes
+# Spanish. The Worker renders them (services/membership/src/email/); the layout,
+# the tables and the buttons are code, the sentences are here.
+#
+# Placeholders in braces are filled by the renderer. Never translate them.
+# The same mockups that were approved on 14 October 2026 are in
+# docs/mockups/inscripcion-correos.html.
+#
+# The person is addressed in the singular ("tú") whatever the household size:
+# one person reads the email.
+
+common:
+  hello:      { es: "Hola, {name}:", ca: "Hola, {name}:", en: "Hello {name},", ja: "{name}様" }
+  footer:
+    es: "Te escribimos porque tienes una cuota con nosotros. Para responder, contesta a este correo: llega a info@aikidomusubi.com."
+    ca: "T'escrivim perquè tens una quota amb nosaltres. Per respondre, contesta aquest correu: arriba a info@aikidomusubi.com."
+    en: "You are receiving this because you hold a membership with us. To answer, reply to this email: it reaches info@aikidomusubi.com."
+    ja: "会費のご登録があるため、このメールをお送りしています。このメールに返信すると info@aikidomusubi.com に届きます。"
+  link_members:    { es: "Área de miembros", ca: "Àrea de membres", en: "Members area", ja: "会員ページ" }
+  link_terms:      { es: "Condiciones de la cuota", ca: "Condicions de la quota", en: "Membership terms", ja: "会費規約" }
+  link_privacy:    { es: "Privacidad", ca: "Privadesa", en: "Privacy", ja: "プライバシー" }
+  link_withdrawal: { es: "Desistir del contrato", ca: "Desistir del contracte", en: "Withdraw from the contract", ja: "契約の解約" }
+  btn_members:     { es: "Ir al área de miembros", ca: "Anar a l'àrea de membres", en: "Go to the members area", ja: "会員ページへ" }
+  total_per:       { es: "Total {unit}", ca: "Total {unit}", en: "Total {unit}", ja: "合計（{unit}）" }
+  sepa:            { es: "domiciliación SEPA", ca: "domiciliació SEPA", en: "SEPA direct debit", ja: "SEPA口座振替" }
+  card:            { es: "tarjeta", ca: "targeta", en: "card", ja: "カード" }
+  ending:          { es: "acabada en {last4}", ca: "acabada en {last4}", en: "ending {last4}", ja: "末尾{last4}" }
+
+confirmation:
+  kind:    { es: "Confirmación", ca: "Confirmació", en: "Confirmation", ja: "お申し込み確認" }
+  subject: { es: "Inscripción hecha: {people}, {period}", ca: "Inscripció feta: {people}, {period}", en: "You are signed up: {people}, {period}", ja: "お申し込み完了：{people}・{period}" }
+  people_n: { es: "{n} personas", ca: "{n} persones", en: "{n} people", ja: "{n}名" }
+  people_1: { es: "1 persona", ca: "1 persona", en: "1 person", ja: "1名" }
+  heading: { es: "Ya tienes cuota", ca: "Ja tens quota", en: "Your membership is active", ja: "会費のお手続きが完了しました" }
+  intro:
+    es: "Gracias por inscribirte. Esta es tu cuota, y lo que acordamos."
+    ca: "Gràcies per inscriure't. Aquesta és la teva quota, i el que vam acordar."
+    en: "Thank you for signing up. This is your membership, and what we agreed."
+    ja: "お申し込みありがとうございます。会費の内容とお約束事項は次のとおりです。"
+  when_h:  { es: "Cuándo se cobra", ca: "Quan es cobra", en: "When it is charged", ja: "お支払い日" }
+  today:   { es: "<b>{date}, {amount}</b>: los días hasta el {first}", ca: "<b>{date}, {amount}</b>: els dies fins al {first}", en: "<b>{date}, {amount}</b>: the days up to {first}", ja: "<b>{date}　{amount}</b>：{first}までの日割り分" }
+  today_none: { es: "<b>Hoy no se cobra nada.</b>", ca: "<b>Avui no es cobra res.</b>", en: "<b>Nothing is charged today.</b>", ja: "<b>本日のお支払いはありません。</b>" }
+  first:   { es: "<b>{date}, {amount}</b>: la primera cuota completa", ca: "<b>{date}, {amount}</b>: la primera quota completa", en: "<b>{date}, {amount}</b>: the first full fee", ja: "<b>{date}　{amount}</b>：最初の全額のお支払い" }
+  then:    { es: "Después, <b>{amount}</b> cada día 5, hasta que te des de baja", ca: "Després, <b>{amount}</b> cada dia 5, fins que et donis de baixa", en: "Then <b>{amount}</b> on every 5th, until you cancel", ja: "以降、退会まで毎回5日に<b>{amount}</b>" }
+  then_q:  { es: "Después, <b>{amount}</b> cada 5 de {months}, hasta que te des de baja", ca: "Després, <b>{amount}</b> cada 5 de {months}, fins que et donis de baixa", en: "Then <b>{amount}</b> every 5 {months}, until you cancel", ja: "以降、退会まで{months}の5日に<b>{amount}</b>" }
+  method:
+    es: "Pagas con {method}. Stripe te avisará antes de cada cargo, y nosotros 15 días antes de cada renovación."
+    ca: "Pagues amb {method}. Stripe t'avisarà abans de cada càrrec, i nosaltres 15 dies abans de cada renovació."
+    en: "You pay by {method}. Stripe will notify you before each charge, and we will 15 days before every renewal."
+    ja: "お支払い方法：{method}。引き落としの前にはStripeから、更新の15日前には当会からお知らせします。"
+  processing:
+    es: "El primer cargo por domiciliación tarda unos días en confirmarse. Si el banco lo rechaza, te escribimos."
+    ca: "El primer càrrec per domiciliació triga uns dies a confirmar-se. Si el banc el rebutja, t'escrivim."
+    en: "The first direct debit takes a few days to confirm. If the bank turns it down, we will write to you."
+    ja: "口座振替の初回引き落としは確定まで数日かかります。引き落としできなかった場合はご連絡します。"
+  todo_h:  { es: "Lo que queda", ca: "El que queda", en: "What is left", ja: "残りの手続き" }
+  todo:
+    es: "Trae al dojo la <b>hoja de inscripción firmada</b>, una por persona, y la autorización de uso de imagen. Están en <a href=\"{resources}\">Recursos</a>."
+    ca: "Porta al dojo el <b>full d'inscripció signat</b>, un per persona, i l'autorització d'ús d'imatge. Són a <a href=\"{resources}\">Recursos</a>."
+    en: "Bring the <b>signed enrolment form</b> to the dojo, one per person, and the image release. They are on the <a href=\"{resources}\">Resources</a> page."
+    ja: "<b>署名した入会申込書</b>（お一人につき1枚）と肖像使用の同意書を道場にお持ちください。書類は<a href=\"{resources}\">資料</a>ページにあります。"
+  todo_minor:
+    es: "Para menores de 14, también la autorización para menores, firmada por madre, padre, tutora o tutor."
+    ca: "Per a menors de 14, també l'autorització per a menors, signada per la mare, el pare, la tutora o el tutor."
+    en: "For anyone under 14, also the consent for minors, signed by a parent or guardian."
+    ja: "14歳未満の方は、保護者が署名した保護者同意書もお持ちください。"
+  keikogi:
+    es: "Los <b>{n} keikogi</b> de regalo te esperan en el dojo cuando se haya cobrado la primera cuota completa, el {date}, y hayan pasado los 14 días para desistir. Te escribiremos."
+    ca: "Els <b>{n} keikogi</b> de regal t'esperen al dojo quan s'hagi cobrat la primera quota completa, el {date}, i hagin passat els 14 dies per desistir. T'escriurem."
+    en: "Your <b>{n} free keikogi</b> will be waiting at the dojo once the first full fee has been paid, on {date}, and the 14 days to withdraw are over. We will write to you."
+    ja: "進呈する<b>稽古着{n}着</b>は、{date}の初回全額のお支払いが済み、14日間のクーリングオフ期間が過ぎたあと、道場でお渡しします。改めてご連絡します。"
+  sc_note:
+    es: "Recuerda traer el abono de {venue} a la primera clase: la cuota con abono depende de él."
+    ca: "Recorda portar l'abonament de {venue} a la primera classe: la quota amb abonament en depèn."
+    en: "Remember to bring your {venue} membership card to the first class: the members' rate depends on it."
+    ja: "初回の稽古に{venue}の会員証をお持ちください。会員料金の適用に必要です。"
+  terms_h: { es: "Las condiciones", ca: "Les condicions", en: "The terms", ja: "規約" }
+  terms:
+    es: "Las aceptaste al inscribirte, en la versión {version}: están en <a href=\"{url}\">{url_text}</a>. Lo esencial: te das de baja cuando quieras y se aplica al final del periodo pagado; no hay devolución de la parte no usada, salvo si desistes."
+    ca: "Les vas acceptar en inscriure't, en la versió {version}: són a <a href=\"{url}\">{url_text}</a>. L'essencial: et dones de baixa quan vulguis i s'aplica al final del període pagat; no hi ha devolució de la part no utilitzada, tret que desisteixis."
+    en: "You accepted them when you signed up, version {version}: they are at <a href=\"{url}\">{url_text}</a>. In short: cancel whenever you like and it takes effect at the end of the paid period; the unused part is not refunded, except if you withdraw."
+    ja: "お申し込み時にご同意いただいた規約（{version}版）は<a href=\"{url}\">{url_text}</a>にあります。要点：退会はいつでも可能で、お支払い済み期間の終わりに適用されます。クーリングオフの場合を除き、未使用分の返金はありません。"
+  withdraw_box:
+    es: "<b>Puedes desistir hasta el {date}</b>, sin dar explicaciones, en <a href=\"{url}\">{url_text}</a>, respondiendo a este correo o con el formulario de abajo. Como pediste empezar ya, pagarías solo los días transcurridos hasta que nos lo digas."
+    ca: "<b>Pots desistir fins al {date}</b>, sense donar explicacions, a <a href=\"{url}\">{url_text}</a>, responent aquest correu o amb el formulari de sota. Com que vas demanar començar ja, pagaries només els dies transcorreguts fins que ens ho diguis."
+    en: "<b>You can withdraw until {date}</b>, with no reason needed, at <a href=\"{url}\">{url_text}</a>, by replying to this email or with the form below. As you asked to start straight away, you would pay only for the days until you tell us."
+    ja: "<b>{date}まで</b>、理由を問わず解約できます。<a href=\"{url}\">{url_text}</a>から、またはこのメールへの返信、下記の書式でお申し出ください。すぐに稽古を始めることを希望されたため、お申し出までの日数分のみをお支払いいただきます。"
+  model_form:
+    es: "<b>Formulario de desistimiento.</b> A la atención de {org}, {address}, info@aikidomusubi.com: por la presente comunico que desisto de mi contrato de cuota de entrenamiento celebrado el {date}. Nombre, dirección, firma (solo si se envía en papel) y fecha."
+    ca: "<b>Formulari de desistiment.</b> A l'atenció de {org}, {address}, info@aikidomusubi.com: per la present comunico que desisteixo del meu contracte de quota d'entrenament subscrit el {date}. Nom, adreça, signatura (només si s'envia en paper) i data."
+    en: "<b>Model withdrawal form.</b> To {org}, {address}, info@aikidomusubi.com: I hereby give notice that I withdraw from my contract for a training membership concluded on {date}. Name, address, signature (only if sent on paper) and date."
+    ja: "<b>解約通知書式</b>　宛先：{org}, {address}, info@aikidomusubi.com　本文：{date}に締結した会費契約を解約することを通知します。氏名、住所、署名（書面の場合のみ）、日付。"
+
+keikogi:
+  kind:    { es: "Keikogi", ca: "Keikogi", en: "Keikogi", ja: "稽古着" }
+  subject: { es: "Tu keikogi te espera en el dojo", ca: "El teu keikogi t'espera al dojo", en: "Your keikogi is waiting at the dojo", ja: "稽古着を道場でお渡しします" }
+  heading: { es: "Ya puedes recoger los keikogi", ca: "Ja pots recollir els keikogi", en: "Your keikogi are ready", ja: "稽古着をお受け取りいただけます" }
+  body:
+    es: "Se ha cobrado tu primera cuota completa, así que los keikogi de regalo te esperan en el dojo: uno para {names}. Dinos las tallas en la próxima clase o respondiendo a este correo."
+    ca: "S'ha cobrat la teva primera quota completa, així que els keikogi de regal t'esperen al dojo: un per a {names}. Digues-nos les talles a la propera classe o responent aquest correu."
+    en: "Your first full fee has been paid, so your free keikogi are waiting at the dojo: one each for {names}. Tell us the sizes at your next class or by replying to this email."
+    ja: "初回の全額のお支払いが確認できましたので、{names}の方へ稽古着をお渡しします。サイズは次回の稽古の際、またはこのメールへの返信でお知らせください。"
+
+renewal:
+  kind:    { es: "Aviso de renovación", ca: "Avís de renovació", en: "Renewal notice", ja: "更新のお知らせ" }
+  subject: { es: "Tu cuota se renueva el {date}: {amount}", ca: "La teva quota es renova el {date}: {amount}", en: "Your membership renews on {date}: {amount}", ja: "{date}に会費が更新されます：{amount}" }
+  heading: { es: "El {date} se renueva tu cuota", ca: "El {date} es renova la teva quota", en: "Your membership renews on {date}", ja: "{date}に会費が更新されます" }
+  charge:
+    es: "el {date}, por el periodo del {from} al {to}, con {method}."
+    ca: "el {date}, pel període del {from} al {to}, amb {method}."
+    en: "on {date}, for {from} to {to}, by {method}."
+    ja: "{date}にお支払い（対象期間：{from}～{to}、お支払い方法：{method}）"
+  stay:
+    es: "<b>Si quieres seguir, no tienes que hacer nada.</b> La cuota continúa y se cobra ese día."
+    ca: "<b>Si vols continuar, no has de fer res.</b> La quota continua i es cobra aquell dia."
+    en: "<b>If you want to carry on, you need do nothing.</b> The membership continues and is charged that day."
+    ja: "<b>継続される場合、お手続きは不要です。</b>会費は継続され、当日にお支払いとなります。"
+  leave:
+    es: "<b>Si no quieres seguir</b>, date de baja antes del {date}: en el área de miembros, respondiendo a este correo, por teléfono o en el dojo. No hay penalización y no se cobrará nada más."
+    ca: "<b>Si no vols continuar</b>, dona't de baixa abans del {date}: a l'àrea de membres, responent aquest correu, per telèfon o al dojo. No hi ha penalització i no es cobrarà res més."
+    en: "<b>If you do not want to carry on</b>, cancel before {date}: in the members area, by replying to this email, by phone or at the dojo. There is no penalty and nothing more will be charged."
+    ja: "<b>継続されない場合</b>は、{date}より前に退会のお手続きをしてください。会員ページ、このメールへの返信、お電話、または道場で承ります。違約金はなく、以後の請求もありません。"
+
+cancelled:
+  kind:    { es: "Baja", ca: "Baixa", en: "Cancellation", ja: "退会" }
+  subject: { es: "Baja confirmada: tu cuota termina el {date}", ca: "Baixa confirmada: la teva quota acaba el {date}", en: "Cancellation confirmed: your membership ends on {date}", ja: "退会を受け付けました：{date}で会費が終了します" }
+  heading: { es: "Baja confirmada", ca: "Baixa confirmada", en: "Cancellation confirmed", ja: "退会を受け付けました" }
+  body:
+    es: "Hemos recibido tu baja. <b>La cuota termina el {date}</b>, al final del periodo pagado, y no habrá más cobros. Hasta ese día puedes seguir entrenando con normalidad."
+    ca: "Hem rebut la teva baixa. <b>La quota acaba el {date}</b>, al final del període pagat, i no hi haurà més cobraments. Fins aquell dia pots continuar entrenant amb normalitat."
+    en: "We have your cancellation. <b>Your membership ends on {date}</b>, at the end of the paid period, and there will be no further charges. Until then you can keep training as usual."
+    ja: "退会を受け付けました。<b>会費はお支払い済み期間の終わりである{date}に終了</b>し、以後の請求はありません。それまでは通常どおり稽古できます。"
+  undo:
+    es: "¿Ha sido sin querer? Hasta el {date} puedes deshacerla en el área de miembros, con «Renovar»."
+    ca: "Ha estat sense voler? Fins al {date} pots desfer-la a l'àrea de membres, amb «Renovar»."
+    en: "Was it a mistake? Until {date} you can undo it in the members area, with \"Renew\"."
+    ja: "誤って手続きした場合は、{date}まで会員ページの「更新」で取り消せます。"
+  why:
+    es: "Si quieres contarnos por qué te vas, responde a este correo. Lo leemos."
+    ca: "Si vols explicar-nos per què te'n vas, respon aquest correu. El llegim."
+    en: "If you would like to tell us why you are leaving, reply to this email. We read every one."
+    ja: "退会の理由をお聞かせいただける場合は、このメールにご返信ください。"
+
+ended:
+  kind:    { es: "Fin de la cuota", ca: "Fi de la quota", en: "Membership ended", ja: "会費の終了" }
+  subject: { es: "Tu cuota ha terminado", ca: "La teva quota ha acabat", en: "Your membership has ended", ja: "会費が終了しました" }
+  heading: { es: "Gracias por entrenar con nosotros", ca: "Gràcies per entrenar amb nosaltres", en: "Thank you for training with us", ja: "これまでありがとうございました" }
+  body:
+    es: "Tu cuota terminó el {date}. No habrá más cobros. Los recibos siguen en el área de miembros, con el mismo correo, durante el tiempo que la ley obliga a guardarlos."
+    ca: "La teva quota va acabar el {date}. No hi haurà més cobraments. Els rebuts continuen a l'àrea de membres, amb el mateix correu, durant el temps que la llei obliga a guardar-los."
+    en: "Your membership ended on {date}. There will be no further charges. Your receipts stay in the members area, under the same email, for as long as the law requires them to be kept."
+    ja: "会費は{date}に終了しました。以後の請求はありません。領収書は、法律で保管が義務づけられている期間、同じメールアドレスで会員ページから確認できます。"
+  back:
+    es: "Si algún día quieres volver, la inscripción está en <a href=\"{url}\">{url_text}</a> y la puerta del dojo, abierta."
+    ca: "Si algun dia vols tornar, la inscripció és a <a href=\"{url}\">{url_text}</a> i la porta del dojo, oberta."
+    en: "If you ever want to come back, signing up is at <a href=\"{url}\">{url_text}</a> and the dojo door is open."
+    ja: "またいつでもお戻りください。お申し込みは<a href=\"{url}\">{url_text}</a>から。道場の扉はいつでも開いています。"
+  licence:
+    es: "La licencia federativa y el seguro van aparte y no se ven afectados por esta baja."
+    ca: "La llicència federativa i l'assegurança van a part i aquesta baixa no les afecta."
+    en: "The federation licence and insurance are separate and are not affected."
+    ja: "連盟登録と保険は別のお手続きのため、影響はありません。"
+
+withdrawal:
+  kind:    { es: "Acuse de desistimiento", ca: "Justificant de desistiment", en: "Withdrawal acknowledgement", ja: "解約受付" }
+  subject: { es: "Hemos recibido tu desistimiento", ca: "Hem rebut el teu desistiment", en: "We have received your withdrawal", ja: "解約のお申し出を受け付けました" }
+  heading: { es: "Desistimiento recibido", ca: "Desistiment rebut", en: "Withdrawal received", ja: "解約を受け付けました" }
+  at:      { es: "Recibido el {date} a las {time} (hora peninsular)", ca: "Rebut el {date} a les {time} (hora peninsular)", en: "Received on {date} at {time} (Madrid time)", ja: "受付日時：{date} {time}（スペイン本土時間）" }
+  sent:    { es: "Lo que nos enviaste:", ca: "El que ens vas enviar:", en: "What you sent us:", ja: "お申し出の内容：" }
+  next:
+    es: "Cancelamos tu cuota: no habrá más cobros. Te devolveremos lo pagado, menos los días transcurridos, <b>antes del {date}</b>, por el mismo medio de pago. Te escribiremos con el importe."
+    ca: "Cancel·lem la teva quota: no hi haurà més cobraments. Et retornarem el que has pagat, menys els dies transcorreguts, <b>abans del {date}</b>, pel mateix mitjà de pagament. T'escriurem amb l'import."
+    en: "We are cancelling your membership: there will be no further charges. We will refund what you paid, less the days that have passed, <b>before {date}</b>, by the same means. We will write to you with the amount."
+    ja: "会費を解約します。以後の請求はありません。お支払い済みの金額から経過日数分を差し引き、<b>{date}まで</b>に同じ方法で返金します。金額は改めてご連絡します。"
+  mistake: { es: "¿Ha sido un error? Responde hoy a este correo y lo dejamos como estaba.", ca: "Ha estat un error? Respon avui aquest correu i ho deixem com estava.", en: "A mistake? Reply to this email today and we will leave things as they were.", ja: "誤りの場合は、本日中にこのメールにご返信ください。元に戻します。" }
+
+payment_failed:
+  kind:    { es: "Problema con el cobro", ca: "Problema amb el cobrament", en: "Payment problem", ja: "お支払いの問題" }
+  subject: { es: "No hemos podido cobrar la cuota del {date}", ca: "No hem pogut cobrar la quota del {date}", en: "We could not collect the fee due on {date}", ja: "{date}の会費をお支払いいただけませんでした" }
+  heading: { es: "El banco ha devuelto el cargo", ca: "El banc ha retornat el càrrec", en: "The bank returned the debit", ja: "銀行から引き落としが返却されました" }
+  body:
+    es: "El cargo de <b>{amount}</b> del {date}, con {method}, ha sido devuelto por el banco. Suele pasar cuando la cuenta ha cambiado o no tenía saldo ese día."
+    ca: "El càrrec de <b>{amount}</b> del {date}, amb {method}, ha estat retornat pel banc. Sol passar quan el compte ha canviat o no tenia saldo aquell dia."
+    en: "The <b>{amount}</b> debit due on {date}, by {method}, was returned by the bank. This usually happens when the account has changed or was short of funds that day."
+    ja: "{date}の<b>{amount}</b>（{method}）が銀行から返却されました。口座の変更や残高不足が主な原因です。"
+  retry:
+    es: "<b>Lo volveremos a intentar en unos días.</b> Si la cuenta ha cambiado, actualízala antes en el área de miembros, o paga con tarjeta."
+    ca: "<b>Ho tornarem a provar d'aquí a uns dies.</b> Si el compte ha canviat, actualitza'l abans a l'àrea de membres, o paga amb targeta."
+    en: "<b>We will try again in a few days.</b> If your account has changed, update it in the members area first, or pay by card."
+    ja: "<b>数日後に再度お引き落としを試みます。</b>口座を変更された場合は、それまでに会員ページで更新するか、カード払いに変更してください。"
+  btn:     { es: "Actualizar el medio de pago", ca: "Actualitzar el mitjà de pagament", en: "Update your payment method", ja: "お支払い方法を更新" }
+  still:   { es: "Tu cuota sigue activa. Si hay algún problema, responde y lo hablamos.", ca: "La teva quota segueix activa. Si hi ha cap problema, respon i en parlem.", en: "Your membership is still active. If something is wrong, reply and we will sort it out.", ja: "会費は引き続き有効です。お困りのことがあれば、ご返信ください。" }
+
+age_change:
+  kind:    { es: "Cambio de cuota", ca: "Canvi de quota", en: "Fee change", ja: "料金の変更" }
+  subject: { es: "{person} pasa a la cuota de 17 años o más", ca: "{person} passa a la quota de 17 anys o més", en: "{person} moves to the 17-and-over fee", ja: "{person}さんが17歳以上の料金になります" }
+  heading: { es: "{person} cumple 17", ca: "{person} fa 17 anys", en: "{person} turns 17", ja: "{person}さんが17歳になります" }
+  body:
+    es: "Felicidades a {person}. Como dicen las condiciones, desde el primer cobro después de su cumpleaños pasa a la cuota de 17 años o más."
+    ca: "Per molts anys a {person}. Com diuen les condicions, des del primer cobrament després del seu aniversari passa a la quota de 17 anys o més."
+    en: "Happy birthday to {person}. As the terms say, from the first charge after their birthday they move to the 17-and-over fee."
+    ja: "{person}さん、お誕生日おめでとうございます。規約のとおり、誕生日以降の最初のお支払いから17歳以上の料金になります。"
+  row_person: { es: "Cuota de {person}, desde el {date}", ca: "Quota de {person}, des del {date}", en: "{person}'s fee, from {date}", ja: "{person}さんの料金（{date}から）" }
+  row_total:  { es: "Total de tu cuota", ca: "Total de la teva quota", en: "Your total", ja: "会費の合計" }
+  deleted:
+    es: "No tienes que hacer nada. Hemos borrado su fecha de nacimiento, que solo guardábamos para esto."
+    ca: "No has de fer res. Hem esborrat la seva data de naixement, que només guardàvem per a això."
+    en: "You need do nothing. We have deleted their date of birth, which we kept only for this."
+    ja: "お手続きは不要です。この目的のためだけに保存していた生年月は削除しました。"
+
+plan_change:
+  kind:    { es: "Cambio de cuota", ca: "Canvi de quota", en: "Membership change", ja: "会費の変更" }
+  subject: { es: "Cambios en tu cuota, desde el {date}", ca: "Canvis a la teva quota, des del {date}", en: "Changes to your membership, from {date}", ja: "{date}から会費の内容が変わります" }
+  heading: { es: "Tu cuota cambia el {date}", ca: "La teva quota canvia el {date}", en: "Your membership changes on {date}", ja: "{date}に会費の内容が変わります" }
+  body:
+    es: "Como nos pediste, desde el {date} tu cuota queda así:"
+    ca: "Com ens vas demanar, des del {date} la teva quota queda així:"
+    en: "As you asked, from {date} your membership will be:"
+    ja: "ご依頼のとおり、{date}から会費は次のようになります："
+  before: { es: "Hasta ahora", ca: "Fins ara", en: "Until now", ja: "変更前" }
+  after:  { es: "Desde el {date}", ca: "Des del {date}", en: "From {date}", ja: "{date}から" }
+  keikogi_note:
+    es: "El keikogi de regalo es uno por persona, en la primera inscripción: un cambio de periodo no incluye otro."
+    ca: "El keikogi de regal és un per persona, en la primera inscripció: un canvi de període no n'inclou un altre."
+    en: "The free keikogi is one per person, on first enrolment: a change of period does not include another."
+    ja: "稽古着の進呈は初回入会時にお一人1着です。支払い期間の変更による追加はありません。"
+
+price_change:
+  kind:    { es: "Aviso de cambio de precio", ca: "Avís de canvi de preu", en: "Price change notice", ja: "料金改定のお知らせ" }
+  subject: { es: "La cuota cambiará el {date}", ca: "La quota canviarà el {date}", en: "Your fee changes on {date}", ja: "{date}から会費が変わります" }
+  heading: { es: "Cambio de precio desde el {date}", ca: "Canvi de preu des del {date}", en: "New prices from {date}", ja: "{date}からの料金改定" }
+  body:
+    es: "La asamblea de la asociación ha aprobado nuevas cuotas. A ti te afecta así:"
+    ca: "L'assemblea de l'associació ha aprovat noves quotes. A tu t'afecta així:"
+    en: "The association's general assembly has approved new fees. This is how they affect you:"
+    ja: "総会で新しい会費が承認されました。あなたの会費は次のようになります："
+  now:    { es: "Ahora", ca: "Ara", en: "Now", ja: "現在" }
+  from:   { es: "Desde el cobro del {date}", ca: "Des del cobrament del {date}", en: "From the charge on {date}", ja: "{date}のお支払いから" }
+  leave:
+    es: "Te lo decimos con más de un mes de antelación, como dicen las condiciones. <b>Si no estás de acuerdo</b>, puedes darte de baja antes de esa fecha, sin coste, en el área de miembros."
+    ca: "T'ho diem amb més d'un mes d'antelació, com diuen les condicions. <b>Si no hi estàs d'acord</b>, pots donar-te de baixa abans d'aquella data, sense cost, a l'àrea de membres."
+    en: "We are telling you more than a month ahead, as the terms require. <b>If you do not agree</b>, you can cancel before that date at no cost, in the members area."
+    ja: "規約のとおり、1か月以上前にお知らせしています。<b>ご同意いただけない場合</b>は、その日より前に会員ページから無料で退会できます。"
+
+invite:
+  kind:    { es: "Invitación", ca: "Invitació", en: "Invitation", ja: "ご招待" }
+  subject: { es: "Tu cuota pasa a pago en línea: tu enlace personal", ca: "La teva quota passa a pagament en línia: el teu enllaç personal", en: "Your fee moves to online payment: your personal link", ja: "会費のオンライン決済への移行：専用リンク" }
+  heading: { es: "La cuota pasa a pago en línea", ca: "La quota passa a pagament en línia", en: "Your fee is moving to online payment", ja: "会費がオンライン決済に変わります" }
+  body:
+    es: "Desde enero de 2027 las cuotas se cobran a través de Stripe, con tarjeta o domiciliación, en lugar de con el recibo del banco de siempre. Así cada cual puede cambiar su tarjeta, descargar recibos o darse de baja sin tener que escribirnos."
+    ca: "Des del gener de 2027 les quotes es cobren a través de Stripe, amb targeta o domiciliació, en comptes del rebut del banc de sempre. Així cadascú pot canviar la targeta, descarregar rebuts o donar-se de baixa sense haver-nos d'escriure."
+    en: "From January 2027 fees are collected through Stripe, by card or direct debit, instead of the usual bank debit. That way everyone can change their card, download receipts or cancel without having to write to us."
+    ja: "2027年1月から、会費はこれまでの銀行引き落としに代わり、Stripeを通じてカードまたは口座振替でお支払いいただきます。カードの変更、領収書のダウンロード、退会を、ご連絡なしにご自身で行えるようになります。"
+  link:
+    es: "<b>Este enlace es solo tuyo y sirve una vez</b>, hasta el {date}:"
+    ca: "<b>Aquest enllaç és només teu i serveix una vegada</b>, fins al {date}:"
+    en: "<b>This link is yours alone and works once</b>, until {date}:"
+    ja: "<b>このリンクはあなた専用で、1回のみ有効です</b>（有効期限：{date}）："
+  btn:     { es: "Pasar mi cuota a pago en línea", ca: "Passar la meva quota a pagament en línia", en: "Move my fee to online payment", ja: "オンライン決済に移行する" }
+  twice:
+    es: "<b>No pagarás dos veces.</b> El enlace no cobra nada hoy: el primer cobro por Stripe será el día 5 del mes en que dejemos de pasarte el recibo del banco."
+    ca: "<b>No pagaràs dues vegades.</b> L'enllaç no cobra res avui: el primer cobrament per Stripe serà el dia 5 del mes en què deixem de passar-te el rebut del banc."
+    en: "<b>You will not pay twice.</b> The link charges nothing today: the first Stripe charge falls on the 5th of the month in which we stop sending your bank debit."
+    ja: "<b>二重にお支払いいただくことはありません。</b>このリンクで本日お支払いが発生することはなく、Stripeでの初回のお支払いは、銀行引き落としを停止する月の5日となります。"
+  together:
+    es: "¿Prefieres que lo hagamos juntos? Pásate por el dojo y lo hacemos en dos minutos."
+    ca: "Prefereixes que ho fem junts? Passa pel dojo i ho fem en dos minuts."
+    en: "Would you rather do it together? Drop by the dojo and it takes two minutes."
+    ja: "一緒に手続きをご希望の場合は、道場にお立ち寄りください。2分ほどで完了します。"

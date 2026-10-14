@@ -1,0 +1,460 @@
+# Online signup and fee collection: the site's half and the server's half.
+#
+# ONE FILE FOR BOTH. The signup page renders from this, and the Worker in
+# services/membership bundles it through scripts/gen-catalog.mjs, so the page
+# and the server show the SAME error message, link to the SAME terms version and
+# send people to the SAME URLs. Prices are not here: they are in fees.yml, which
+# both sides also read.
+#
+# Placeholders in braces — {n}, {name}, {amount}, {date} — are filled in by
+# whoever renders the string, page script or server. Never translate them.
+#
+# Spec: "Aikido Musubi — Online Membership Signup & Stripe Billing Spec",
+# 14 October 2026, with the decisions of the same day: layout B (people first),
+# the rate chosen per person, the payer picked from the people listed.
+
+# The membership terms in force. Every signup records it; a new version of the
+# terms page is a new value here AND a new page, with the old one kept.
+terms_version: "2027-01"
+
+max_people: 6
+
+# Where the page posts. A local dev session overrides it with
+# `membership_endpoint` in _config.dev.yml.
+endpoint: "https://api.aikidomusubi.com"
+
+# Stripe's no-code customer portal login link, per Stripe mode. Stripe shows it
+# under Settings > Billing > Customer portal once the portal is switched on.
+# The site's own build uses `live`; the Worker uses whichever matches its mode.
+portal_url:
+  test: ""
+  live: ""
+
+# Stripe Checkout has no Catalan. Catalan pages pay in Spanish, and the page
+# says so in one line (ui.ca_note).
+stripe_locale: { es: es, ca: es, en: en, ja: ja }
+
+# What we write on Stripe's own pages. Catalan readers see Stripe in Spanish,
+# so these follow `stripe_locale` rather than the page language.
+stripe:
+  # custom_text.submit.message: the last thing read before "Subscribe" (spec 11.1).
+  submit:
+    es: "Al confirmar te comprometes a pagar una cuota periódica: hoy, la parte proporcional hasta el {first}; desde el {first}, {amount} {unit}, hasta que te des de baja. Puedes desistir hasta el {withdraw}."
+    en: "By confirming you agree to pay a recurring fee: today, the share up to {first}; from {first}, {amount} {unit}, until you cancel. You can withdraw until {withdraw}."
+    ja: "確定すると、定期的な会費のお支払いに同意したことになります。本日は{first}までの日割り分、{first}以降は退会まで{amount}{unit}をお支払いいただきます。{withdraw}までクーリングオフが可能です。"
+  submit_none:
+    es: "Al confirmar te comprometes a pagar una cuota periódica: hoy no se cobra nada; desde el {first}, {amount} {unit}, hasta que te des de baja. Puedes desistir hasta el {withdraw}."
+    en: "By confirming you agree to pay a recurring fee: nothing today; from {first}, {amount} {unit}, until you cancel. You can withdraw until {withdraw}."
+    ja: "確定すると、定期的な会費のお支払いに同意したことになります。本日のお支払いはなく、{first}以降は退会まで{amount}{unit}をお支払いいただきます。{withdraw}までクーリングオフが可能です。"
+  # custom_text.terms_of_service_acceptance.message; Stripe renders the link.
+  terms:
+    es: "Acepto las [condiciones de la cuota]({url})."
+    en: "I accept the [membership terms]({url})."
+    ja: "[会費規約]({url})に同意します。"
+  # The subscription's description, which the member sees in the portal.
+  description:
+    es: "Cuota {period} · {people}"
+    en: "{period} membership · {people}"
+    ja: "会費（{period}）・{people}"
+
+urls:
+  signup:        { es: /inscripcion/,              ca: /ca/inscripcio/,              en: /en/sign-up/,             ja: /ja/sign-up/ }
+  thanks:        { es: /inscripcion/gracias/,      ca: /ca/inscripcio/gracies/,      en: /en/sign-up/thank-you/,   ja: /ja/sign-up/thank-you/ }
+  members:       { es: /miembros/,                 ca: /ca/membres/,                 en: /en/members/,             ja: /ja/members/ }
+  terms:         { es: /condiciones-de-la-cuota/,  ca: /ca/condicions-de-la-quota/,  en: /en/membership-terms/,    ja: /ja/membership-terms/ }
+  withdrawal:    { es: /desistimiento/,            ca: /ca/desistiment/,             en: /en/withdrawal/,          ja: /ja/withdrawal/ }
+  withdrawal_ok: { es: /desistimiento/recibido/,   ca: /ca/desistiment/rebut/,       en: /en/withdrawal/received/, ja: /ja/withdrawal/received/ }
+  fees:          { es: /cuotas/,                   ca: /ca/quotes/,                  en: /en/fees/,                ja: /ja/fees/ }
+  resources:     { es: /recursos/,                 ca: /ca/recursos/,                en: /en/resources/,           ja: /ja/resources/ }
+  contact:       { es: /contacto/,                 ca: /ca/contacte/,                en: /en/contact/,             ja: /ja/contact/ }
+  privacy:       { es: /politica-privacidad/,      ca: /ca/politica-privadesa/,      en: /en/privacy-policy/,      ja: /ja/privacy-policy/ }
+
+# ---------------------------------------------------------------------------
+# The signup page
+#
+# Addressed to the person filling it in, in the singular ("tú"), because that is
+# one person at a keyboard however many people they sign up.
+# ---------------------------------------------------------------------------
+ui:
+  eyebrow:   { es: "Cuotas · Inscripción", ca: "Quotes · Inscripció", en: "Fees · Sign up", ja: "月謝・入会申し込み" }
+  lede:
+    es: "Normalmente te inscribes después de las dos clases de prueba. No hay matrícula, y la cuota se cobra sola el día 5, con tarjeta o domiciliación bancaria, en una página segura de Stripe. Son cuatro pasos y unos tres minutos."
+    ca: "Normalment t'inscrius després de les dues classes de prova. No hi ha matrícula, i la quota es cobra sola el dia 5, amb targeta o domiciliació bancària, en una pàgina segura de Stripe. Són quatre passos i uns tres minuts."
+    en: "People usually sign up after their two trial classes. There is no registration fee, and the fee is charged automatically on the 5th, by card or SEPA direct debit, on a secure Stripe page. Four steps, about three minutes."
+    ja: "通常は2回の体験稽古のあとにお申し込みいただきます。入会金はなく、月謝は毎月5日に、カードまたはSEPA口座振替で、Stripeの安全なページから自動的にお支払いいただきます。4つのステップで、3分ほどです。"
+  member:
+    es: "¿Ya tienes cuota? <a href=\"{url}\">Ve a tu área de miembros</a> para cambiar la tarjeta, descargar recibos o darte de baja."
+    ca: "Ja tens quota? <a href=\"{url}\">Ves a la teva àrea de membres</a> per canviar la targeta, descarregar rebuts o donar-te de baixa."
+    en: "Already a member? <a href=\"{url}\">Go to your members area</a> to change your card, download receipts or cancel."
+    ja: "すでに会員の方は、<a href=\"{url}\">会員ページ</a>からカードの変更、領収書のダウンロード、退会ができます。"
+  steps_label: { es: "Pasos de la inscripción", ca: "Passos de la inscripció", en: "Signup steps", ja: "申し込みの手順" }
+  step_of:     { es: "Paso {n} de 4", ca: "Pas {n} de 4", en: "Step {n} of 4", ja: "ステップ {n}／4" }
+  step_done:   { es: "hecho", ca: "fet", en: "done", ja: "完了" }
+  steps:
+    - { es: "Quién entrena", ca: "Qui entrena", en: "Who trains", ja: "稽古する人" }
+    - { es: "Cómo pagas", ca: "Com pagues", en: "How you pay", ja: "支払い方法" }
+    - { es: "Quién paga", ca: "Qui paga", en: "Who pays", ja: "お支払いをする人" }
+    - { es: "Revisar y pagar", ca: "Revisar i pagar", en: "Review and pay", ja: "確認とお支払い" }
+  required: { es: "(obligatorio)", ca: "(obligatori)", en: "(required)", ja: "（必須）" }
+  optional: { es: "(opcional)", ca: "(opcional)", en: "(optional)", ja: "（任意）" }
+  continue: { es: "Continuar", ca: "Continuar", en: "Continue", ja: "次へ" }
+  back:     { es: "Volver", ca: "Tornar", en: "Back", ja: "戻る" }
+  change:   { es: "Cambiar", ca: "Canviar", en: "Change", ja: "変更" }
+  honeypot: { es: "Deja este campo vacío", ca: "Deixa aquest camp buit", en: "Leave this field empty", ja: "この欄は空のままにしてください" }
+
+  # Step 1
+  s1_sub:
+    es: "Las personas del mismo núcleo familiar que van a entrenar, hasta seis. Quien paga no tiene por qué entrenar: lo dirás en el paso 3."
+    ca: "Les persones del mateix nucli familiar que entrenaran, fins a sis. Qui paga no ha d'entrenar per força: ho diràs al pas 3."
+    en: "The people in one household who will train, up to six. The person who pays need not train: you say who pays in step 3."
+    ja: "同じ世帯で稽古する方を、6人まで入力してください。お支払いをする方は稽古しなくてもかまいません（ステップ3で指定します）。"
+  person:      { es: "Persona {n}", ca: "Persona {n}", en: "Person {n}", ja: "{n}人目" }
+  add_person:  { es: "Añadir otra persona", ca: "Afegir una altra persona", en: "Add another person", ja: "人を追加" }
+  add_person_n: { es: "Añadir a la persona {n}", ca: "Afegir la persona {n}", en: "Add person {n}", ja: "{n}人目を追加" }
+  remove:      { es: "Quitar a la persona {n}", ca: "Treure la persona {n}", en: "Remove person {n}", ja: "{n}人目を削除" }
+  given:       { es: "Nombre", ca: "Nom", en: "Given name", ja: "名" }
+  family:      { es: "Apellidos", ca: "Cognoms", en: "Family name", ja: "姓" }
+  age:         { es: "Edad", ca: "Edat", en: "Age", ja: "年齢" }
+  adult:       { es: "17 años o más", ca: "17 anys o més", en: "17 and over", ja: "17歳以上" }
+  youth:       { es: "Hasta 16 años", ca: "Fins a 16 anys", en: "Up to 16", ja: "16歳まで" }
+  adult_short: { es: "17 o más", ca: "17 o més", en: "17+", ja: "17歳以上" }
+  youth_short: { es: "hasta 16", ca: "fins a 16", en: "up to 16", ja: "16歳まで" }
+  bmonth:      { es: "Mes de nacimiento", ca: "Mes de naixement", en: "Month of birth", ja: "生まれた月" }
+  byear:       { es: "Año de nacimiento", ca: "Any de naixement", en: "Year of birth", ja: "生まれた年" }
+  choose:      { es: "Elige", ca: "Tria", en: "Choose", ja: "選択" }
+  bhint:
+    es: "Solo el mes y el año: sirven para aplicar la cuota hasta 16 y pasar a la de 17 o más a su tiempo."
+    ca: "Només el mes i l'any: serveixen per aplicar la quota fins a 16 i passar a la de 17 o més quan toqui."
+    en: "Only the month and year: they decide the up-to-16 fee and when it becomes the 17-and-over one."
+    ja: "生まれた年と月のみ。16歳までの料金の適用と、17歳以上の料金への切り替えに使います。"
+  months:
+    es: ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
+    ca: ["gener", "febrer", "març", "abril", "maig", "juny", "juliol", "agost", "setembre", "octubre", "novembre", "desembre"]
+    en: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    ja: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"]
+  rate:         { es: "Cuota", ca: "Quota", en: "Fee", ja: "料金" }
+  rate_general: { es: "General · todos los espacios", ca: "General · tots els espais", en: "General · every space", ja: "一般・すべての稽古場所" }
+  rate_sc:      { es: "Con abono municipal", ca: "Amb abonament municipal", en: "Sports-centre member", ja: "市立施設の会員" }
+  venue:        { es: "¿De qué polideportivo?", ca: "De quin poliesportiu?", en: "Which sports centre?", ja: "どの施設の会員ですか" }
+  sc_cond:
+    es: "{amount} al mes, solo las clases de {venue}, y solo mes a mes. Trae el abono a la primera clase. No cuenta para el descuento familiar."
+    ca: "{amount} al mes, només les classes de {venue}, i només mes a mes. Porta l'abonament a la primera classe. No compta per al descompte familiar."
+    en: "{amount} a month, classes at {venue} only, monthly only. Bring your membership card to the first class. It does not count towards the family discount."
+    ja: "月{amount}。{venue}での稽古のみ、月払いのみです。初回の稽古に会員証をお持ちください。家族割の対象にはなりません。"
+  side_h: { es: "Antes de empezar", ca: "Abans de començar", en: "Before you start", ja: "はじめる前に" }
+  side:
+    - { es: "Primero, las dos clases de prueba. Son gratis.", ca: "Primer, les dues classes de prova. Són gratis.", en: "First, the two trial classes. They are free.", ja: "まずは2回の体験稽古から。無料です。" }
+    - { es: "Sin matrícula.", ca: "Sense matrícula.", en: "No registration fee.", ja: "入会金はありません。" }
+    - { es: "En una familia, la primera persona paga la cuota completa y cada una de las siguientes, 15 € menos al mes.", ca: "En una família, la primera persona paga la quota completa i cadascuna de les següents, 15 € menys al mes.", en: "In a household, the first person pays the full fee and each one after that 15 € less a month.", ja: "家族の場合、1人目は通常料金、2人目以降はひとりにつき月15ユーロ引きです。" }
+    - { es: "Pagas en Stripe con tarjeta o domiciliación SEPA. Aquí no se escribe ningún dato bancario.", ca: "Pagues a Stripe amb targeta o domiciliació SEPA. Aquí no s'escriu cap dada bancària.", en: "You pay on Stripe by card or SEPA direct debit. No bank details are typed on this page.", ja: "お支払いはStripeでカードまたはSEPA口座振替。このページで銀行情報を入力することはありません。" }
+    - { es: "Te das de baja cuando quieras, desde tu área de miembros.", ca: "Et dones de baixa quan vulguis, des de la teva àrea de membres.", en: "Cancel whenever you like, from your members area.", ja: "退会はいつでも会員ページからできます。" }
+  side_contact:
+    es: "¿Dudas? <a href=\"mailto:info@aikidomusubi.com\">info@aikidomusubi.com</a> · WhatsApp <a href=\"https://wa.me/34717171177\">717 171 177</a>"
+    ca: "Dubtes? <a href=\"mailto:info@aikidomusubi.com\">info@aikidomusubi.com</a> · WhatsApp <a href=\"https://wa.me/34717171177\">717 171 177</a>"
+    en: "Questions? <a href=\"mailto:info@aikidomusubi.com\">info@aikidomusubi.com</a> · WhatsApp <a href=\"https://wa.me/34717171177\">+34 717 171 177</a>"
+    ja: "ご質問は <a href=\"mailto:info@aikidomusubi.com\">info@aikidomusubi.com</a>・WhatsApp <a href=\"https://wa.me/34717171177\">+34 717 171 177</a> まで"
+
+  # Step 2
+  s2_sub:
+    es: "Precios para las personas que has indicado. Se paga toda junta, en el mismo periodo."
+    ca: "Preus per a les persones que has indicat. Es paga tota junta, en el mateix període."
+    en: "Prices for the people you have listed. The household pays together, on one billing period."
+    ja: "入力した方々の料金です。世帯でまとめて、同じ期間でお支払いいただきます。"
+  period:    { es: "Periodo", ca: "Període", en: "Billing period", ja: "支払い期間" }
+  per_month: { es: "{amount} al mes", ca: "{amount} al mes", en: "{amount} a month", ja: "月あたり{amount}" }
+  saving:    { es: "{amount} menos que mes a mes", ca: "{amount} menys que mes a mes", en: "{amount} less than monthly", ja: "月払いより{amount}お得" }
+  gift:      { es: "+ {n} keikogi de regalo", ca: "+ {n} keikogi de regal", en: "+ {n} free keikogi", ja: "＋稽古着{n}着を進呈" }
+  best:      { es: "El que más ahorra", ca: "El que més estalvia", en: "Best value", ja: "いちばんお得" }
+  unavailable_sc: { es: "No disponible con abono municipal", ca: "No disponible amb abonament municipal", en: "Not available with a sports-centre rate", ja: "市立施設の会員料金では選べません" }
+  why_sc:
+    es: "<b>Por qué solo mensual:</b> alguien tiene la cuota con abono municipal, que es mes a mes, y una familia paga toda junta en el mismo periodo. Para pagar por trimestre o por año, elige la cuota general para todas las personas."
+    ca: "<b>Per què només mensual:</b> algú té la quota amb abonament municipal, que és mes a mes, i una família paga tota junta en el mateix període. Per pagar per trimestre o per any, tria la quota general per a totes les persones."
+    en: "<b>Why monthly only:</b> someone is on a sports-centre rate, which is monthly, and a household pays together on one period. To pay by the quarter or the year, choose the general fee for everyone."
+    ja: "<b>月払いのみの理由：</b>市立施設の会員料金（月払いのみ）の方が含まれており、世帯は同じ期間でまとめて支払うためです。3か月払い・年払いにするには、全員を一般料金にしてください。"
+  keikogi_cond:
+    es: "Con trimestral o anual, cada persona recibe un keikogi en su primera inscripción. Lo damos en el dojo cuando se ha cobrado el primer trimestre o año completo y han pasado los 14 días para desistir."
+    ca: "Amb trimestral o anual, cada persona rep un keikogi en la seva primera inscripció. El donem al dojo quan s'ha cobrat el primer trimestre o any complet i han passat els 14 dies per desistir."
+    en: "On a quarterly or annual plan, each person receives a keikogi on their first enrolment. We hand it over at the dojo once the first full quarter or year has been paid and the 14 days to withdraw are over."
+    ja: "3か月払い・年払いでは、初回入会時にお一人ずつ稽古着を差し上げます。最初の3か月分・1年分のお支払いが済み、14日間のクーリングオフ期間が過ぎたあと、道場でお渡しします。"
+  how_price: { es: "Cómo sale este precio", ca: "Com surt aquest preu", en: "How this price is worked out", ja: "料金の内訳" }
+  kind_full:   { es: "cuota completa", ca: "quota completa", en: "full fee", ja: "通常料金" }
+  kind_family: { es: "familia (−{amount})", ca: "família (−{amount})", en: "family (−{amount})", ja: "家族割（−{amount}）" }
+  kind_sc:     { es: "abono {venue}", ca: "abonament {venue}", en: "{venue} member", ja: "{venue}会員" }
+  total:       { es: "Total", ca: "Total", en: "Total", ja: "合計" }
+  base_line:
+    es: "Pagando mes a mes serían {amount}."
+    ca: "Pagant mes a mes serien {amount}."
+    en: "Paying monthly, it would be {amount}."
+    ja: "月払いの場合は{amount}です。"
+  when_h: { es: "Cuándo se cobra", ca: "Quan es cobra", en: "When it is charged", ja: "お支払いのタイミング" }
+  when_b:
+    es: "Al inscribirte pagas la parte proporcional hasta el día 5, y después la cuota completa cada día 5. Con tarjeta se cobra en el momento; la domiciliación tarda unos días, y Stripe te avisa antes de cada cargo."
+    ca: "En inscriure't pagues la part proporcional fins al dia 5, i després la quota completa cada dia 5. Amb targeta es cobra al moment; la domiciliació triga uns dies, i Stripe t'avisa abans de cada càrrec."
+    en: "When you sign up you pay the share up to the 5th, then the full fee on every 5th. A card is charged at once; a direct debit takes a few days, and Stripe tells you before each one."
+    ja: "申し込み時に次の5日までの日割り分をお支払いいただき、その後は毎回5日に全額をお支払いいただきます。カードはすぐに決済され、口座振替は数日かかります。引き落としの前にStripeからお知らせが届きます。"
+
+  # Step 3
+  s3_sub:
+    es: "La persona titular recibe los recibos y los avisos, y es quien entra en el área de miembros."
+    ca: "La persona titular rep els rebuts i els avisos, i és qui entra a l'àrea de membres."
+    en: "The account holder receives the receipts and notices, and is the one who signs in to the members area."
+    ja: "名義人には領収書やお知らせが届き、会員ページにログインできます。"
+  holder:        { es: "¿Quién es titular de la cuota?", ca: "Qui és titular de la quota?", en: "Who is the account holder?", ja: "名義人はどなたですか" }
+  holder_trains: { es: "Entrena", ca: "Entrena", en: "Trains", ja: "稽古する人" }
+  holder_other:  { es: "Otra persona", ca: "Una altra persona", en: "Someone else", ja: "それ以外の方" }
+  holder_other_sub: { es: "Paga, pero no entrena", ca: "Paga, però no entrena", en: "Pays but does not train", ja: "支払いのみ・稽古はしない" }
+  holder_hint:
+    es: "Solo aparecen las personas de 17 años o más: quien paga tiene que ser mayor de edad."
+    ca: "Només hi apareixen les persones de 17 anys o més: qui paga ha de ser major d'edat."
+    en: "Only people aged 17 or over are offered: the account holder must be an adult."
+    ja: "17歳以上の方のみ表示しています。名義人は成人である必要があります。"
+  email:       { es: "Correo electrónico", ca: "Correu electrònic", en: "Email", ja: "メールアドレス" }
+  email_hint:
+    es: "Con este correo entrarás en tu área de miembros. Sin contraseña."
+    ca: "Amb aquest correu entraràs a la teva àrea de membres. Sense contrasenya."
+    en: "This is how you will sign in to your members area. No password."
+    ja: "会員ページへのログインに使います。パスワードはありません。"
+  phone:       { es: "Teléfono", ca: "Telèfon", en: "Phone", ja: "電話番号" }
+  phone_hint:  { es: "Solo por si hay que avisarte de algo.", ca: "Només per si cal avisar-te d'alguna cosa.", en: "Only in case we need to reach you.", ja: "ご連絡が必要な場合のみ使います。" }
+  declare:     { es: "Lo declara quien rellena este formulario:", ca: "Ho declara qui omple aquest formulari:", en: "Declared by the person filling in this form:", ja: "このフォームに記入している方の申告：" }
+  adult_cb:    { es: "Soy mayor de edad.", ca: "Soc major d'edat.", en: "I am 18 or over.", ja: "私は18歳以上です。" }
+  guardian_cb:
+    es: "Soy madre, padre, tutora o tutor legal de las personas menores de 18 que he indicado."
+    ca: "Soc mare, pare, tutora o tutor legal de les persones menors de 18 anys que he indicat."
+    en: "I am the parent or legal guardian of the people under 18 I have listed."
+    ja: "私は、入力した18歳未満の方の親権者または法定後見人です。"
+  guardian_hint:
+    es: "Aparece porque hay alguna persona hasta 16 años. Si alguien de 17 está en la lista, también te corresponde a ti."
+    ca: "Apareix perquè hi ha alguna persona fins a 16 anys. Si algú de 17 és a la llista, també et correspon a tu."
+    en: "Shown because someone up to 16 is listed. If a 17-year-old is listed, this applies to them too."
+    ja: "16歳までの方が含まれているため表示しています。17歳の方が含まれる場合も同様です。"
+  stripe_name:
+    es: "El nombre de la tarjeta o de la cuenta lo pedirá Stripe en el último paso. Puede ser otro: una cuenta a nombre de otra persona de la familia también vale."
+    ca: "El nom de la targeta o del compte el demanarà Stripe a l'últim pas. Pot ser un altre: un compte a nom d'una altra persona de la família també serveix."
+    en: "Stripe asks for the name on the card or bank account at the last step. It may be a different name: an account held by someone else in the family is fine."
+    ja: "カードや口座の名義は、最後のステップでStripeが確認します。ご家族名義の口座でもかまいません。"
+  ca_note:
+    ca: "Stripe no té català: la pàgina de pagament i els seus rebuts seran en castellà. Els nostres correus, en català."
+
+  # Step 4
+  s4_review:  { es: "Revisa antes de pagar", ca: "Revisa abans de pagar", en: "Check before you pay", ja: "お支払い前の確認" }
+  s4_before:  { es: "Antes de pagar", ca: "Abans de pagar", en: "Before you pay", ja: "お支払いの前に" }
+  th_person:  { es: "Persona", ca: "Persona", en: "Person", ja: "氏名" }
+  th_age:     { es: "Edad", ca: "Edat", en: "Age", ja: "年齢" }
+  th_rate:    { es: "Cuota", ca: "Quota", en: "Fee", ja: "料金区分" }
+  change_people: { es: "Cambiar personas", ca: "Canviar persones", en: "Change people", ja: "人を変更" }
+  change_period: { es: "Cambiar periodo", ca: "Canviar període", en: "Change period", ja: "期間を変更" }
+  holder_line:   { es: "Titular: {name}, {email}", ca: "Titular: {name}, {email}", en: "Account holder: {name}, {email}", ja: "名義人：{name}（{email}）" }
+  tl_today:      { es: "Hoy, unos {amount}", ca: "Avui, uns {amount}", en: "Today, about {amount}", ja: "本日 約{amount}" }
+  tl_today_sub:  { es: "los días hasta el {date}", ca: "els dies fins al {date}", en: "the days up to {date}", ja: "{date}までの日割り分" }
+  tl_nothing:    { es: "Hoy no se cobra nada", ca: "Avui no es cobra res", en: "Nothing is charged today", ja: "本日のお支払いはありません" }
+  tl_withdraw:   { es: "último día para desistir", ca: "últim dia per desistir", en: "last day to withdraw", ja: "クーリングオフ期限" }
+  tl_first:      { es: "primera cuota completa", ca: "primera quota completa", en: "first full fee", ja: "最初の全額のお支払い" }
+  tl_keikogi:    { es: "después, los keikogi", ca: "després, els keikogi", en: "then the keikogi", ja: "その後、稽古着をお渡し" }
+  tl_then:       { es: "Después, {amount} cada día 5", ca: "Després, {amount} cada dia 5", en: "Then {amount} on every 5th", ja: "以降、毎回5日に{amount}" }
+  tl_then_q:     { es: "Después, {amount} cada 5 de {months}", ca: "Després, {amount} cada 5 de {months}", en: "Then {amount} every 5 {months}", ja: "以降、{months}の5日に{amount}" }
+  not_included:
+    es: "<b>No incluido:</b> licencia federativa y seguro, 45 € al año por persona, que se pagan aparte en marzo."
+    ca: "<b>No inclòs:</b> llicència federativa i assegurança, 45 € l'any per persona, que es paguen a part al març."
+    en: "<b>Not included:</b> federation licence and insurance, 45 € a year per person, paid separately in March."
+    ja: "<b>含まれないもの：</b>連盟登録料と保険（お一人につき年45ユーロ、3月に別途お支払い）。"
+  promises:
+    es: "Te avisaremos 15 días antes de cada renovación. Te das de baja cuando quieras y se aplica al final del periodo pagado."
+    ca: "T'avisarem 15 dies abans de cada renovació. Et dones de baixa quan vulguis i s'aplica al final del període pagat."
+    en: "We will remind you 15 days before every renewal. Cancel whenever you like; it takes effect at the end of the paid period."
+    ja: "更新の15日前にお知らせします。退会はいつでも可能で、お支払い済みの期間の終わりに適用されます。"
+  terms_cb:
+    es: "He leído y acepto las <a href=\"{url}\">condiciones de la cuota</a>."
+    ca: "He llegit i accepto les <a href=\"{url}\">condicions de la quota</a>."
+    en: "I have read and accept the <a href=\"{url}\">membership terms</a>."
+    ja: "<a href=\"{url}\">会費規約</a>を読み、同意します。"
+  early_cb:
+    es: "Quiero empezar a entrenar ya, antes de que acaben los 14 días para desistir."
+    ca: "Vull començar a entrenar ja, abans que acabin els 14 dies per desistir."
+    en: "I want to start training now, before the 14 days to withdraw are over."
+    ja: "14日間のクーリングオフ期間の終了を待たずに、すぐに稽古を始めることを希望します。"
+  early_sub:
+    es: "Si desisto en ese plazo, pagaré solo los días transcurridos hasta que lo comunique."
+    ca: "Si desisteixo en aquest termini, pagaré només els dies transcorreguts fins que ho comuniqui."
+    en: "If I withdraw within that period, I pay only for the days up to when I tell you."
+    ja: "期間内に解約する場合は、お申し出の日までの日数分のみをお支払いします。"
+  privacy:
+    es: "<b>Protección de datos.</b> Responsable: {org}. Finalidad: tu inscripción y el cobro de la cuota. Base: el contrato. Destinatarios: Stripe, que procesa el pago, con transferencia a EE. UU. bajo el Data Privacy Framework y cláusulas contractuales tipo. Derechos: info@aikidomusubi.com. <a href=\"{url}\">Más información</a>."
+    ca: "<b>Protecció de dades.</b> Responsable: {org}. Finalitat: la teva inscripció i el cobrament de la quota. Base: el contracte. Destinataris: Stripe, que processa el pagament, amb transferència als EUA sota el Data Privacy Framework i clàusules contractuals tipus. Drets: info@aikidomusubi.com. <a href=\"{url}\">Més informació</a>."
+    en: "<b>Data protection.</b> Controller: {org}. Purpose: your enrolment and collecting the fee. Legal basis: the contract. Recipients: Stripe, which processes the payment, with a transfer to the US under the Data Privacy Framework and standard contractual clauses. Your rights: info@aikidomusubi.com. <a href=\"{url}\">More information</a>."
+    ja: "<b>個人情報の取り扱い</b>　管理者：{org}。目的：入会手続きと月謝の徴収。根拠：契約。提供先：決済を処理するStripe（EU・米国データプライバシーフレームワークおよび標準契約条項に基づく米国への移転を含む）。権利の行使：info@aikidomusubi.com。<a href=\"{url}\">詳細</a>"
+  pay:      { es: "Ir al pago seguro", ca: "Anar al pagament segur", en: "Go to secure payment", ja: "安全なお支払いページへ" }
+  pay_note:
+    es: "En Stripe eliges tarjeta o domiciliación y confirmas. Hasta entonces no se cobra nada."
+    ca: "A Stripe tries targeta o domiciliació i confirmes. Fins aleshores no es cobra res."
+    en: "On Stripe you choose card or direct debit and confirm. Nothing is charged until then."
+    ja: "Stripeのページでカードか口座振替を選び、確定します。それまでお支払いは発生しません。"
+  sending:  { es: "Un momento…", ca: "Un moment…", en: "One moment…", ja: "処理中…" }
+  cancel_h: { es: "No se ha cobrado nada.", ca: "No s'ha cobrat res.", en: "Nothing has been charged.", ja: "お支払いは発生していません。" }
+  cancel_b:
+    es: "Has vuelto de la página de pago sin terminar. Todo sigue como lo dejaste: revísalo y vuelve a intentarlo cuando quieras."
+    ca: "Has tornat de la pàgina de pagament sense acabar. Tot segueix com ho vas deixar: revisa-ho i torna-ho a provar quan vulguis."
+    en: "You came back from the payment page before finishing. Everything is as you left it: check it and try again whenever you like."
+    ja: "お支払いページから途中で戻りました。入力内容はそのままです。確認して、もう一度お試しください。"
+  invite_h: { es: "Vienes con una invitación.", ca: "Véns amb una invitació.", en: "You have an invitation.", ja: "招待リンクからのお申し込みです。" }
+  invite_b:
+    es: "Hoy no se cobra nada: el primer cobro será el día 5 que te indicamos en la invitación."
+    ca: "Avui no es cobra res: el primer cobrament serà el dia 5 que t'indiquem a la invitació."
+    en: "Nothing is charged today: the first charge is on the 5th given in your invitation."
+    ja: "本日のお支払いはありません。初回のお支払いは、招待メールに記載の5日です。"
+  errors_h: { es: "Revisa esto antes de seguir:", ca: "Revisa això abans de continuar:", en: "Please check the following:", ja: "次の項目をご確認ください：" }
+  no_js:
+    es: "Sin JavaScript, los cuatro pasos están en esta misma página y el total lo verás en la página de pago."
+    ca: "Sense JavaScript, els quatre passos són en aquesta mateixa pàgina i el total el veuràs a la pàgina de pagament."
+    en: "Without JavaScript, the four steps are all on this page and you will see the total on the payment page."
+    ja: "JavaScriptが無効な場合、4つのステップはすべてこのページに表示され、合計金額はお支払いページで確認できます。"
+
+# ---------------------------------------------------------------------------
+# Error messages: shown next to the field by the page, and listed by the
+# server when JavaScript is off. Same words either way (spec 5.5).
+# ---------------------------------------------------------------------------
+errors:
+  given_required:   { es: "Escribe el nombre.", ca: "Escriu el nom.", en: "Enter the given name.", ja: "名を入力してください。" }
+  family_required:  { es: "Escribe los apellidos.", ca: "Escriu els cognoms.", en: "Enter the family name.", ja: "姓を入力してください。" }
+  name_invalid:     { es: "Usa solo letras, espacios, apóstrofos y guiones, hasta 80.", ca: "Fes servir només lletres, espais, apòstrofs i guions, fins a 80.", en: "Use only letters, spaces, apostrophes and hyphens, up to 80.", ja: "文字・スペース・アポストロフィ・ハイフンのみ、80文字以内で入力してください。" }
+  cat_required:     { es: "Elige la edad.", ca: "Tria l'edat.", en: "Choose the age group.", ja: "年齢区分を選んでください。" }
+  bym_required:     { es: "Elige el mes y el año de nacimiento.", ca: "Tria el mes i l'any de naixement.", en: "Choose the month and year of birth.", ja: "生まれた年と月を選んでください。" }
+  bym_too_old:      { es: "Con esa fecha tiene 17 años o más: elige «17 años o más».", ca: "Amb aquesta data té 17 anys o més: tria «17 anys o més».", en: "That date makes them 17 or over: choose \"17 and over\".", ja: "その生年月では17歳以上になります。「17歳以上」を選んでください。" }
+  bym_future:       { es: "Esa fecha todavía no ha llegado.", ca: "Aquesta data encara no ha arribat.", en: "That date has not happened yet.", ja: "未来の日付です。" }
+  rate_required:    { es: "Elige la cuota.", ca: "Tria la quota.", en: "Choose the fee.", ja: "料金区分を選んでください。" }
+  venue_required:   { es: "Elige el polideportivo.", ca: "Tria el poliesportiu.", en: "Choose the sports centre.", ja: "施設を選んでください。" }
+  sc_not_offered:   { es: "En ese polideportivo no hay clase para esta edad.", ca: "En aquest poliesportiu no hi ha classe per a aquesta edat.", en: "That sports centre has no class for this age group.", ja: "この施設には、この年齢区分の稽古はありません。" }
+  sc_min_age:       { es: "La clase del CxEM Espronceda es a partir de 12 años.", ca: "La classe del CxEM Espronceda és a partir de 12 anys.", en: "The class at CxEM Espronceda is from age 12.", ja: "エスプロンセダの稽古は12歳からです。" }
+  sc_monthly_only:  { es: "Con abono municipal la cuota es mes a mes: elige «Mensual».", ca: "Amb abonament municipal la quota és mes a mes: tria «Mensual».", en: "The sports-centre rate is monthly: choose \"Monthly\".", ja: "市立施設の会員料金は月払いのみです。「月額」を選んでください。" }
+  period_required:  { es: "Elige cómo pagas.", ca: "Tria com pagues.", en: "Choose a billing period.", ja: "支払い期間を選んでください。" }
+  holder_required:  { es: "Elige quién es titular.", ca: "Tria qui és titular.", en: "Choose the account holder.", ja: "名義人を選んでください。" }
+  holder_minor:     { es: "Quien paga tiene que tener 17 años o más.", ca: "Qui paga ha de tenir 17 anys o més.", en: "The account holder must be 17 or over.", ja: "名義人は17歳以上である必要があります。" }
+  email_required:   { es: "Escribe el correo electrónico.", ca: "Escriu el correu electrònic.", en: "Enter the email address.", ja: "メールアドレスを入力してください。" }
+  email_invalid:    { es: "Ese correo no parece válido: revisa que tenga @ y un dominio.", ca: "Aquest correu no sembla vàlid: revisa que tingui @ i un domini.", en: "That email does not look right: check it has an @ and a domain.", ja: "メールアドレスの形式が正しくありません。" }
+  phone_invalid:    { es: "Ese teléfono no parece válido.", ca: "Aquest telèfon no sembla vàlid.", en: "That phone number does not look right.", ja: "電話番号の形式が正しくありません。" }
+  adult_required:   { es: "Marca que eres mayor de edad.", ca: "Marca que ets major d'edat.", en: "Confirm that you are 18 or over.", ja: "18歳以上であることを確認してください。" }
+  guardian_required: { es: "Marca que eres madre, padre, tutora o tutor legal de las personas menores.", ca: "Marca que ets mare, pare, tutora o tutor legal de les persones menors.", en: "Confirm that you are the parent or guardian of the people under 18.", ja: "18歳未満の方の親権者または法定後見人であることを確認してください。" }
+  terms_required:   { es: "Acepta las condiciones de la cuota.", ca: "Accepta les condicions de la quota.", en: "Accept the membership terms.", ja: "会費規約に同意してください。" }
+  early_required:   { es: "Marca que quieres empezar ya; si prefieres esperar 14 días, escríbenos.", ca: "Marca que vols començar ja; si prefereixes esperar 14 dies, escriu-nos.", en: "Confirm that you want to start now; if you would rather wait 14 days, write to us.", ja: "すぐに始めることを確認してください。14日間待ってから始めたい場合はご連絡ください。" }
+  too_many:         { es: "Como máximo seis personas por cuota.", ca: "Com a màxim sis persones per quota.", en: "At most six people per membership.", ja: "1つの会費につき6人までです。" }
+  existing:
+    es: "Con este correo ya hay una cuota en marcha. Para añadir a alguien, <a href=\"{url}\">escríbenos</a> y lo sumamos a esa cuota, con el descuento familiar: así no pagáis dos cuotas completas."
+    ca: "Amb aquest correu ja hi ha una quota en marxa. Per afegir algú, <a href=\"{url}\">escriu-nos</a> i ho sumem a aquesta quota, amb el descompte familiar: així no pagueu dues quotes completes."
+    en: "There is already an active membership with this email. To add someone, <a href=\"{url}\">write to us</a> and we will add them to it with the family discount, so you do not pay two full fees."
+    ja: "このメールアドレスにはすでに有効な会費があります。ご家族を追加する場合は<a href=\"{url}\">ご連絡ください</a>。家族割を適用して同じ会費に追加します。"
+  invite_invalid:   { es: "Esta invitación no es válida. Escríbenos y te mandamos otra.", ca: "Aquesta invitació no és vàlida. Escriu-nos i te n'enviem una altra.", en: "This invitation is not valid. Write to us and we will send another.", ja: "この招待リンクは無効です。ご連絡いただければ再送します。" }
+  invite_expired:   { es: "Esta invitación ha caducado. Escríbenos y te mandamos otra.", ca: "Aquesta invitació ha caducat. Escriu-nos i te n'enviem una altra.", en: "This invitation has expired. Write to us and we will send another.", ja: "この招待リンクは有効期限切れです。ご連絡いただければ再送します。" }
+  invite_used:      { es: "Esta invitación ya se ha usado.", ca: "Aquesta invitació ja s'ha fet servir.", en: "This invitation has already been used.", ja: "この招待リンクはすでに使用されています。" }
+  invite_email:     { es: "Esta invitación es para otro correo: usa el correo en el que la recibiste.", ca: "Aquesta invitació és per a un altre correu: fes servir el correu on la vas rebre.", en: "This invitation is for another email: use the address it was sent to.", ja: "この招待リンクは別のメールアドレス宛てです。招待を受け取ったアドレスをご使用ください。" }
+  rate_limited:     { es: "Demasiados intentos seguidos. Espera un minuto y vuelve a probar.", ca: "Massa intents seguits. Espera un minut i torna-ho a provar.", en: "Too many attempts in a row. Wait a minute and try again.", ja: "短時間に試行が多すぎます。1分ほど待ってから再度お試しください。" }
+  generic:          { es: "No hemos podido continuar. Inténtalo de nuevo en unos minutos o escríbenos a info@aikidomusubi.com.", ca: "No hem pogut continuar. Torna-ho a provar d'aquí a uns minuts o escriu-nos a info@aikidomusubi.com.", en: "We could not continue. Try again in a few minutes, or write to info@aikidomusubi.com.", ja: "処理を続行できませんでした。数分後に再度お試しいただくか、info@aikidomusubi.com までご連絡ください。" }
+  network:          { es: "No hay conexión. Revisa la red y vuelve a probar: no se ha cobrado nada.", ca: "No hi ha connexió. Revisa la xarxa i torna-ho a provar: no s'ha cobrat res.", en: "No connection. Check your network and try again: nothing has been charged.", ja: "接続できません。ネットワークを確認して再度お試しください（お支払いは発生していません）。" }
+  statement_required: { es: "Escribe tu declaración.", ca: "Escriu la teva declaració.", en: "Write your statement.", ja: "申告内容を入力してください。" }
+  error_page_title: { es: "Hay que corregir algo", ca: "Cal corregir alguna cosa", en: "Something needs correcting", ja: "修正が必要です" }
+  error_page_back:  { es: "Vuelve con el botón «Atrás» del navegador: lo que escribiste sigue en el formulario.", ca: "Torna amb el botó «Enrere» del navegador: el que vas escriure segueix al formulari.", en: "Use your browser's Back button: what you typed is still in the form.", ja: "ブラウザの「戻る」ボタンでフォームに戻ってください。入力内容は残っています。" }
+
+# ---------------------------------------------------------------------------
+# The other pages
+# ---------------------------------------------------------------------------
+thanks:
+  title: { es: "Inscripción hecha", ca: "Inscripció feta", en: "You are signed up", ja: "お申し込みが完了しました" }
+  lede:
+    es: "Gracias. Ya tienes cuota y puedes entrenar desde hoy en todos los espacios que incluye. Esto es lo que queda:"
+    ca: "Gràcies. Ja tens quota i pots entrenar des d'avui a tots els espais que inclou. Això és el que queda:"
+    en: "Thank you. Your membership is active and you can train from today at every space it covers. This is what is left:"
+    ja: "ありがとうございます。会費のお手続きが完了し、本日から対象のすべての稽古場所で稽古できます。残りの手順は次のとおりです："
+  steps:
+    - es: "<b>Mira tu correo.</b> Te llegan dos mensajes: el recibo de Stripe y nuestra confirmación, con las condiciones y las fechas de cobro. Si no los ves en unos minutos, revisa el correo no deseado."
+      ca: "<b>Mira el teu correu.</b> Et-n'arriben dos: el rebut de Stripe i la nostra confirmació, amb les condicions i les dates de cobrament. Si no els veus d'aquí a uns minuts, revisa el correu brossa."
+      en: "<b>Check your email.</b> Two messages are on their way: Stripe's receipt and our confirmation, with the terms and the charge dates. If they have not arrived in a few minutes, look in your spam folder."
+      ja: "<b>メールをご確認ください。</b>Stripeの領収書と、規約とお支払い日を記載した当会からの確認メールの2通が届きます。数分たっても届かない場合は、迷惑メールフォルダをご確認ください。"
+    - es: "<b>Trae al dojo la hoja de inscripción firmada</b>, una por persona, y la autorización de uso de imagen. Para menores de 14, también la autorización para menores. Están en <a href=\"{resources}\">Recursos</a>."
+      ca: "<b>Porta al dojo el full d'inscripció signat</b>, un per persona, i l'autorització d'ús d'imatge. Per a menors de 14, també l'autorització per a menors. Són a <a href=\"{resources}\">Recursos</a>."
+      en: "<b>Bring the signed enrolment form to the dojo</b>, one per person, and the image release. For anyone under 14, the consent for minors too. They are on the <a href=\"{resources}\">Resources</a> page."
+      ja: "<b>署名した入会申込書を道場にお持ちください。</b>お一人につき1枚、肖像使用の同意書も一緒に。14歳未満の方は保護者同意書も必要です。書類は<a href=\"{resources}\">資料</a>ページにあります。"
+    - es: "<b>Si has pagado con domiciliación</b>, el cargo tarda unos días en confirmarse. No tienes que hacer nada: si el banco lo rechaza, te escribimos."
+      ca: "<b>Si has pagat amb domiciliació</b>, el càrrec triga uns dies a confirmar-se. No has de fer res: si el banc el rebutja, t'escrivim."
+      en: "<b>If you paid by direct debit</b>, the charge takes a few days to confirm. You need do nothing: if the bank turns it down, we will write to you."
+      ja: "<b>口座振替でお支払いの場合</b>、引き落としの確定には数日かかります。手続きは不要です。銀行で引き落としができなかった場合はご連絡します。"
+    - es: "<b>Si has elegido trimestre o año</b>, el keikogi te espera en el dojo cuando se cobre el primer periodo completo. Te avisamos por correo."
+      ca: "<b>Si has triat trimestre o any</b>, el keikogi t'espera al dojo quan es cobri el primer període complet. T'avisem per correu."
+      en: "<b>If you chose a quarter or a year</b>, your keikogi will be waiting at the dojo once the first full period has been paid. We will email you."
+      ja: "<b>3か月払い・年払いをお選びの場合</b>、最初の期間のお支払いが済んだら、稽古着を道場でお渡しします。メールでお知らせします。"
+  members_h: { es: "Tu área de miembros", ca: "La teva àrea de membres", en: "Your members area", ja: "会員ページ" }
+  members_b:
+    es: "Para cambiar la tarjeta o la cuenta, descargar recibos o darte de baja. Entras con tu correo y un código."
+    ca: "Per canviar la targeta o el compte, descarregar rebuts o donar-te de baixa. Hi entres amb el teu correu i un codi."
+    en: "To change your card or bank account, download receipts or cancel. You sign in with your email and a code."
+    ja: "カードや口座の変更、領収書のダウンロード、退会ができます。メールアドレスと確認コードでログインします。"
+  members_go: { es: "Ir al área de miembros", ca: "Anar a l'àrea de membres", en: "Go to the members area", ja: "会員ページへ" }
+  withdraw_h: { es: "¿Has cambiado de idea?", ca: "Has canviat d'idea?", en: "Changed your mind?", ja: "お申し込みを取り消したい場合" }
+  withdraw_b:
+    es: "Tienes 14 días para desistir, sin dar explicaciones. Pagas solo los días transcurridos."
+    ca: "Tens 14 dies per desistir, sense donar explicacions. Pagues només els dies transcorreguts."
+    en: "You have 14 days to withdraw, with no reason needed. You pay only for the days that have passed."
+    ja: "14日以内であれば、理由を問わず解約できます。お支払いは経過した日数分のみです。"
+  withdraw_go: { es: "Desistir del contrato", ca: "Desistir del contracte", en: "Withdraw from the contract", ja: "契約を解約する" }
+
+members:
+  lede:
+    es: "Tu cuota se gestiona en una página segura de Stripe. Entras con el correo con el que te inscribiste y un código que te llega en ese momento. No hay contraseña que recordar."
+    ca: "La teva quota es gestiona en una pàgina segura de Stripe. Hi entres amb el correu amb què et vas inscriure i un codi que et arriba en aquell moment. No hi ha cap contrasenya per recordar."
+    en: "Your membership is managed on a secure Stripe page. You sign in with the email you signed up with and a code sent to it there and then. There is no password to remember."
+    ja: "会費の管理はStripeの安全なページで行います。お申し込み時のメールアドレスと、その場で届く確認コードでログインします。パスワードはありません。"
+  go:         { es: "Ir a mi cuota", ca: "Anar a la meva quota", en: "Go to my membership", ja: "会費の管理へ" }
+  soon:
+    es: "El área de miembros se abre con el pago en línea, en enero de 2027."
+    ca: "L'àrea de membres s'obre amb el pagament en línia, el gener de 2027."
+    en: "The members area opens with online payment, in January 2027."
+    ja: "会員ページは、オンライン決済の開始とともに2027年1月に公開します。"
+  self_h:     { es: "Lo haces tú, al momento", ca: "Ho fas tu, al moment", en: "Do it yourself, straight away", ja: "ご自身ですぐにできること" }
+  self:
+    - { es: "Cambiar la tarjeta o la cuenta bancaria", ca: "Canviar la targeta o el compte bancari", en: "Change your card or bank account", ja: "カード・口座の変更" }
+    - { es: "Actualizar el nombre, la dirección o el teléfono", ca: "Actualitzar el nom, l'adreça o el telèfon", en: "Update your name, address or phone", ja: "氏名・住所・電話番号の更新" }
+    - { es: "Descargar los recibos", ca: "Descarregar els rebuts", en: "Download your receipts", ja: "領収書のダウンロード" }
+    - { es: "Darte de baja, al final del periodo pagado", ca: "Donar-te de baixa, al final del període pagat", en: "Cancel, at the end of the paid period", ja: "退会（お支払い済み期間の終わりに適用）" }
+  ask_h:      { es: "Escríbenos y lo hacemos", ca: "Escriu-nos i ho fem", en: "Write to us and we will do it", ja: "ご連絡いただければ対応すること" }
+  ask:
+    - { es: "Añadir o quitar personas", ca: "Afegir o treure persones", en: "Add or remove people", ja: "人の追加・削除" }
+    - { es: "Pasar de mensual a trimestral o anual", ca: "Passar de mensual a trimestral o anual", en: "Switch between monthly, quarterly and annual", ja: "支払い期間の変更" }
+    - { es: "Cambiar el correo de la cuota", ca: "Canviar el correu de la quota", en: "Change the email on the membership", ja: "登録メールアドレスの変更" }
+    - { es: "La cuota con abono municipal", ca: "La quota amb abonament municipal", en: "The sports-centre rate", ja: "市立施設の会員料金" }
+  how_h:      { es: "Cómo se entra", ca: "Com s'hi entra", en: "How to sign in", ja: "ログインの方法" }
+  how:
+    - { es: "Pulsa <b>Ir a mi cuota</b> y escribe tu correo.", ca: "Prem <b>Anar a la meva quota</b> i escriu el teu correu.", en: "Press <b>Go to my membership</b> and type your email.", ja: "<b>会費の管理へ</b>を押し、メールアドレスを入力します。" }
+    - { es: "Stripe te envía un código de seis cifras. Cópialo o pégalo.", ca: "Stripe t'envia un codi de sis xifres. Copia'l o enganxa'l.", en: "Stripe sends you a six-digit code. Type or paste it.", ja: "Stripeから6桁のコードが届きます。入力するか貼り付けてください。" }
+    - { es: "Ya estás dentro. ¿No te llega? Mira el correo no deseado, o escríbenos: puede que te inscribieras con otro correo.", ca: "Ja hi ets. No t'arriba? Mira el correu brossa, o escriu-nos: potser et vas inscriure amb un altre correu.", en: "You are in. No code? Look in your spam folder, or write to us: you may have signed up with another address.", ja: "ログイン完了です。コードが届かない場合は迷惑メールフォルダをご確認いただくか、ご連絡ください。別のアドレスで登録された可能性があります。" }
+
+withdrawal:
+  lede:
+    es: "Durante los 14 días siguientes a tu inscripción puedes desistir sin dar explicaciones. Te devolvemos lo pagado en 14 días como máximo, por el mismo medio, menos los días transcurridos hasta hoy si pediste empezar a entrenar enseguida."
+    ca: "Durant els 14 dies següents a la teva inscripció pots desistir sense donar explicacions. Et retornem el que has pagat en 14 dies com a màxim, pel mateix mitjà, menys els dies transcorreguts fins avui si vas demanar començar a entrenar de seguida."
+    en: "For 14 days after you sign up you can withdraw without giving a reason. We refund what you paid within 14 days, by the same means, less the days up to today if you asked to start training straight away."
+    ja: "お申し込みから14日以内であれば、理由を問わず解約できます。お支払い済みの金額は、同じ方法で14日以内に返金します。すぐに稽古を始めることを希望された場合は、本日までの日数分を差し引きます。"
+  after:
+    es: "¿Pasados los 14 días? Entonces es una baja: <a href=\"{url}\">hazla en tu área de miembros</a>."
+    ca: "Passats els 14 dies? Aleshores és una baixa: <a href=\"{url}\">fes-la a la teva àrea de membres</a>."
+    en: "More than 14 days? Then it is a cancellation: <a href=\"{url}\">do it in your members area</a>."
+    ja: "14日を過ぎている場合は退会のお手続きとなります。<a href=\"{url}\">会員ページ</a>からお手続きください。"
+  name:      { es: "Nombre y apellidos", ca: "Nom i cognoms", en: "Full name", ja: "氏名" }
+  email:     { es: "Correo con el que te inscribiste", ca: "Correu amb què et vas inscriure", en: "The email you signed up with", ja: "お申し込み時のメールアドレス" }
+  statement: { es: "Tu declaración", ca: "La teva declaració", en: "Your statement", ja: "申告内容" }
+  statement_default:
+    es: "Por la presente comunico que desisto de mi contrato de cuota de entrenamiento con la {org}."
+    ca: "Per la present comunico que desisteixo del meu contracte de quota d'entrenament amb {org}."
+    en: "I hereby give notice that I withdraw from my contract for a training membership with the {org}."
+    ja: "{org}との会費契約を解約することを通知します。"
+  statement_hint: { es: "Ya viene escrita; puedes cambiarla o añadir lo que quieras.", ca: "Ja ve escrita; pots canviar-la o afegir-hi el que vulguis.", en: "It is already written; change it or add anything you like.", ja: "あらかじめ記入してあります。必要に応じて変更・追記してください。" }
+  confirm:   { es: "Confirmar desistimiento", ca: "Confirmar el desistiment", en: "Confirm withdrawal", ja: "解約を確定する" }
+  confirm_note: { es: "Al confirmar, te enviamos un acuse con el contenido, la fecha y la hora.", ca: "En confirmar, t'enviem un justificant amb el contingut, la data i l'hora.", en: "When you confirm, we send you an acknowledgement with the content, date and time.", ja: "確定すると、内容と日時を記載した受領通知をお送りします。" }
+  ok_title:  { es: "Desistimiento recibido", ca: "Desistiment rebut", en: "Withdrawal received", ja: "解約を受け付けました" }
+  ok_lede:
+    es: "Lo hemos recibido. Te hemos enviado un acuse por correo con esta misma información, la fecha y la hora."
+    ca: "L'hem rebut. T'hem enviat un justificant per correu amb aquesta mateixa informació, la data i l'hora."
+    en: "We have received it. We have emailed you an acknowledgement with this information, the date and the time."
+    ja: "受け付けました。内容と日時を記載した受領通知をメールでお送りしました。"
+  ok_at:     { es: "Recibido el {date} a las {time} (hora peninsular)", ca: "Rebut el {date} a les {time} (hora peninsular)", en: "Received on {date} at {time} (Madrid time)", ja: "受付日時：{date} {time}（スペイン本土時間）" }
+  ok_steps:
+    - { es: "Cancelamos tu cuota: no habrá más cobros.", ca: "Cancel·lem la teva quota: no hi haurà més cobraments.", en: "We cancel your membership: there will be no further charges.", ja: "会費を解約します。以後の請求はありません。" }
+    - { es: "Te devolvemos lo pagado, menos los días transcurridos, en 14 días como máximo y por el mismo medio de pago. Te escribimos con el importe.", ca: "Et retornem el que has pagat, menys els dies transcorreguts, en 14 dies com a màxim i pel mateix mitjà de pagament. T'escrivim amb l'import.", en: "We refund what you paid, less the days that have passed, within 14 days and by the same means. We will write to you with the amount.", ja: "お支払い済みの金額から経過日数分を差し引き、14日以内に同じ方法で返金します。金額はメールでお知らせします。" }
+    - { es: "¿Ha sido un error? Escríbenos hoy a <a href=\"mailto:info@aikidomusubi.com\">info@aikidomusubi.com</a>.", ca: "Ha estat un error? Escriu-nos avui a <a href=\"mailto:info@aikidomusubi.com\">info@aikidomusubi.com</a>.", en: "A mistake? Write to <a href=\"mailto:info@aikidomusubi.com\">info@aikidomusubi.com</a> today.", ja: "誤りの場合は、本日中に<a href=\"mailto:info@aikidomusubi.com\">info@aikidomusubi.com</a>までご連絡ください。" }

@@ -1,0 +1,63 @@
+# Membership signup and fee collection: the Worker behind api.aikidomusubi.com.
+#
+# Nothing here is secret. The secrets (Stripe key, webhook signing secret, the
+# two signing keys, the Brevo key) are set with `wrangler secret put` and live
+# only in Cloudflare; see docs/membership/SETUP.md. Locally they go in
+# .dev.vars, which is gitignored.
+#
+# `npm run deploy` deploys the TEST environment by default ([env.test] below is
+# not used: the top level IS test). Live is `wrangler deploy --env live`, and
+# only after Juanma has said so.
+
+name = "membership-test"
+main = "src/index.ts"
+compatibility_date = "2026-10-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Daily at 08:00 UTC. The day of the month decides what runs: see src/cron.ts.
+[triggers]
+crons = ["0 8 * * *"]
+
+[vars]
+ENVIRONMENT = "test"
+SITE_ORIGIN = "https://aikidomusubi.com"
+API_ORIGIN = "https://api.aikidomusubi.com"
+ADMIN_EMAIL = "admin@aikidomusubi.com"
+FROM_EMAIL = "no-reply@aikidomusubi.com"
+REPLY_TO = "info@aikidomusubi.com"
+# Spec section 16, as configuration with the decided defaults.
+PUBLIC_PRORATION = "create_prorations"
+RENEWAL_NOTICE_MONTHLY = "true"
+AUTO_AGE_UPGRADE = "false"
+MEMBER_FAILED_EMAIL_SEPA = "true"
+# The list of who to leave out of the bank remittance, on the 1st of each
+# month while existing members move over. Switch off once nobody is left.
+MIGRATION_REMITTANCE_LIST = "true"
+# Test mode only: send every email to this one address instead of the member.
+EMAIL_OVERRIDE = ""
+
+[[kv_namespaces]]
+binding = "KV"
+id = "REPLACE_WITH_TEST_KV_ID"
+
+[env.live]
+name = "membership"
+routes = [{ pattern = "api.aikidomusubi.com", custom_domain = true }]
+[env.live.vars]
+ENVIRONMENT = "live"
+SITE_ORIGIN = "https://aikidomusubi.com"
+API_ORIGIN = "https://api.aikidomusubi.com"
+ADMIN_EMAIL = "admin@aikidomusubi.com"
+FROM_EMAIL = "no-reply@aikidomusubi.com"
+REPLY_TO = "info@aikidomusubi.com"
+PUBLIC_PRORATION = "create_prorations"
+RENEWAL_NOTICE_MONTHLY = "true"
+AUTO_AGE_UPGRADE = "false"
+MEMBER_FAILED_EMAIL_SEPA = "true"
+MIGRATION_REMITTANCE_LIST = "true"
+EMAIL_OVERRIDE = ""
+[[env.live.kv_namespaces]]
+binding = "KV"
+id = "REPLACE_WITH_LIVE_KV_ID"
+[env.live.triggers]
+crons = ["0 8 * * *"]
