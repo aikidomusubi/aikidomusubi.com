@@ -16,6 +16,13 @@
 
 year: 2026
 currency: EUR
+
+# THE DAY THESE PRICES START. They were approved in October 2026 and apply from
+# January, so /cuotas/ says so in a line above the cards — but only while the
+# BUILD date is before this one. The first build on or after it drops the line
+# by itself, so nobody has to remember to delete a sentence in January. The
+# wording is `ui.effective`; if this date ever moves, that sentence moves with it.
+effective_from: "2027-01-01"
 symbol: "€"
 
 # ---------------------------------------------------------------------------
@@ -275,6 +282,8 @@ offer_labels:
 
 ui:
   period:    { es: "Periodo",           ca: "Període",          en: "Billing period",   ja: "支払い方法" }
+  effective: { es: "Cuotas desde el 1 de enero de 2027", ca: "Quotes a partir de l'1 de gener de 2027",
+               en: "Fees from 1 January 2027", ja: "2027年1月1日からの料金" }
   save:      { es: "Ahorras",           ca: "Estalvies",        en: "You save",         ja: "割引" }
   instead:   { es: "en lugar de",       ca: "en lloc de",       en: "instead of",       ja: "通常" }
   signup:    { es: "¡Apúntate!",        ca: "Apunta-t'hi!",     en: "Sign up",          ja: "申し込む" }

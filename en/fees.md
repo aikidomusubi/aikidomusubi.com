@@ -6,7 +6,7 @@ description: "Aikido for 39 € a month, or 29 € up to age 16, with access to 
 permalink: /en/fees/
 lang: en
 i18n-ref: fees-UjbuGtGz
-last_modified: 2026-10-06
+last_modified: 2026-10-14
 ---
 
 # Fees

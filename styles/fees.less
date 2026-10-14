@@ -150,6 +150,21 @@
 
 .page main {
 
+  // "Fees from 1 January 2027". Black on @Yellow, 18.6:1. Left-aligned like the
+  // chips under it, and at the full column, not the prose measure.
+  .fee-effective {
+    .NotoSans; .bold;
+    display: inline-block;
+    max-width: none;
+    margin: 0 0 1.25rem;
+    padding: .35rem .75rem;
+    font-size: .85rem;
+    line-height: 1.4;
+    text-align: left;
+    background: @Yellow;
+    color: @Black;
+  }
+
   // Two lines of name and three of description, reserved whether or not this
   // particular card needs them. em rather than a pixel guess, so the box
   // follows the type if the size ever changes.

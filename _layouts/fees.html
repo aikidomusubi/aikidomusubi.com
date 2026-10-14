@@ -29,6 +29,15 @@
 
   <div class="fees">
 
+    {%- comment -%}
+      Until `effective_from`, the prices below are next year's. Compared as
+      ISO strings, which sort as dates; site.time is the build time.
+    {%- endcomment -%}
+    {%- assign build_day = site.time | date: '%Y-%m-%d' -%}
+    {%- if F.effective_from and build_day < F.effective_from %}
+    <p class="fee-effective">{{ F.ui.effective[L] }}</p>
+    {%- endif %}
+
     <fieldset class="fee-periods">
       <legend>{{ F.ui.period[L] }}</legend>
       <div class="fee-chips">
