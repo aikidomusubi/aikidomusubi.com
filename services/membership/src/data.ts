@@ -1,6 +1,6 @@
 // The site's own data, as bundled by scripts/gen-catalog.mjs, and the small
 // helpers that turn it into words: one string per language, money, dates.
-import data from './generated/data.json';
+import data from './generated/data.json' with { type: 'json' };
 import { Pricing, type Catalog } from './pricing.ts';
 
 export type Lang = 'es' | 'ca' | 'en' | 'ja';
