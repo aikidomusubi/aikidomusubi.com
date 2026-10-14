@@ -1,0 +1,101 @@
+{%- assign PH_N = '{n}' -%}
+{%- comment -%}
+  One person on the signup form (step 1). include.n is the slot, 1 to 6.
+
+  Person 1 is always there. Persons 2 to 6 are closed <details>: without
+  JavaScript "Add person 2" opens one natively, and an empty block is ignored
+  by the server, so the form needs no script to sign up a family. With
+  JavaScript the summary is hidden and the "Add another person" button opens
+  the next one instead (scripts/membership.js).
+
+  Field names are flat (p2_given, p2_cat...) because the same form posts with
+  and without JavaScript, and ids are those names with dashes, which is how an
+  error from the server finds its field.
+{%- endcomment -%}
+{%- assign n = include.n -%}
+{%- assign p = 'p' | append: n -%}
+{%- assign id = 'su-p' | append: n -%}
+{%- capture block -%}
+<fieldset class="su-person" id="{{ id }}" data-slot="{{ n }}">
+  <legend class="su-person-l">
+    <span class="su-person-n" data-label="{{ MU.person[L] }}">{{ MU.person[L] | replace: PH_N, n }}</span>
+  </legend>
+  {%- if n > 1 %}
+  <button type="button" class="su-rm" data-label="{{ MU.remove[L] }}" hidden>{{ MU.remove[L] | replace: PH_N, n }}</button>
+  {%- endif %}
+  <div class="su-row">
+    <div class="su-fld">
+      <label for="{{ id }}-given">{{ MU.given[L] }}</label>
+      <input class="su-in" id="{{ id }}-given" name="{{ p }}_given" type="text" autocomplete="{% if n == 1 %}given-name{% else %}off{% endif %}"
+             maxlength="80" aria-describedby="{{ id }}-given-err">
+      <p class="su-err" id="{{ id }}-given-err" hidden></p>
+    </div>
+    <div class="su-fld">
+      <label for="{{ id }}-family">{{ MU.family[L] }}</label>
+      <input class="su-in" id="{{ id }}-family" name="{{ p }}_family" type="text" autocomplete="{% if n == 1 %}family-name{% else %}off{% endif %}"
+             maxlength="80" aria-describedby="{{ id }}-family-err">
+      <p class="su-err" id="{{ id }}-family-err" hidden></p>
+    </div>
+  </div>
+  <fieldset class="su-chips" aria-describedby="{{ id }}-cat-err">
+    <legend class="su-mini">{{ MU.age[L] }}</legend>
+    <label class="su-chip"><input type="radio" name="{{ p }}_cat" id="{{ id }}-cat" value="adult"><span>{{ MU.adult[L] }}</span></label>
+    <label class="su-chip"><input type="radio" name="{{ p }}_cat" value="youth"><span>{{ MU.youth[L] }}</span></label>
+    <p class="su-err" id="{{ id }}-cat-err" hidden></p>
+  </fieldset>
+  <div class="su-row su-birth" data-when="youth">
+    <div class="su-fld">
+      <label for="{{ id }}-bm">{{ MU.bmonth[L] }}</label>
+      <select class="su-in su-sel" id="{{ id }}-bm" name="{{ p }}_bm" autocomplete="{% if n == 1 %}bday-month{% else %}off{% endif %}">
+        <option value="">{{ MU.choose[L] }}</option>
+        {%- for mo in MU.months[L] %}
+        <option value="{{ forloop.index }}">{{ mo }}</option>
+        {%- endfor %}
+      </select>
+    </div>
+    <div class="su-fld">
+      <label for="{{ id }}-by">{{ MU.byear[L] }}</label>
+      <select class="su-in su-sel" id="{{ id }}-by" name="{{ p }}_by" autocomplete="{% if n == 1 %}bday-year{% else %}off{% endif %}" aria-describedby="{{ id }}-bhint {{ id }}-by-err">
+        <option value="">{{ MU.choose[L] }}</option>
+        {%- assign yr = site.time | date: '%Y' | plus: 0 -%}
+        {%- assign y0 = yr | minus: 3 -%}
+        {%- for i in (0..15) %}
+        {%- assign yy = y0 | minus: i %}
+        <option value="{{ yy }}">{{ yy }}</option>
+        {%- endfor %}
+      </select>
+      <p class="su-err" id="{{ id }}-by-err" hidden></p>
+    </div>
+    <p class="su-hint" id="{{ id }}-bhint">{{ MU.bhint[L] }}</p>
+  </div>
+  <fieldset class="su-chips" aria-describedby="{{ id }}-rate-err">
+    <legend class="su-mini">{{ MU.rate[L] }}</legend>
+    <label class="su-chip"><input type="radio" name="{{ p }}_rate" id="{{ id }}-rate" value="general" checked><span>{{ MU.rate_general[L] }}</span></label>
+    <label class="su-chip"><input type="radio" name="{{ p }}_rate" value="sc"><span>{{ MU.rate_sc[L] }}</span></label>
+    <p class="su-err" id="{{ id }}-rate-err" hidden></p>
+  </fieldset>
+  <div class="su-sc" data-when="sc">
+    <div class="su-fld">
+      <label for="{{ id }}-venue">{{ MU.venue[L] }}</label>
+      <select class="su-in su-sel" id="{{ id }}-venue" name="{{ p }}_venue" aria-describedby="{{ id }}-venue-err {{ id }}-sc-cond">
+        <option value="">{{ MU.choose[L] }}</option>
+        {%- for r in FEES.members.rows -%}
+          {%- assign slo = site.data.schedule.locations | where: 'id', r.venue | first -%}
+          {%- assign mv = site.data.venues.venues | where: 'id', slo.slug | first %}
+        <option value="{{ r.venue }}" data-adult="{{ r.adults }}" data-youth="{{ r.children }}" data-min="{{ r.min_age | default: 0 }}">{{ mv.name[L] }}</option>
+        {%- endfor %}
+      </select>
+      <p class="su-err" id="{{ id }}-venue-err" hidden></p>
+    </div>
+    <p class="su-cond" id="{{ id }}-sc-cond" data-tpl="{{ MU.sc_cond[L] | escape }}">{{ FEES.members.note[L] }}</p>
+  </div>
+</fieldset>
+{%- endcapture -%}
+{%- if n == 1 -%}
+{{ block }}
+{%- else -%}
+<details class="su-more-person" data-slot="{{ n }}">
+  <summary>{{ MU.add_person_n[L] | replace: PH_N, n }}</summary>
+  {{ block }}
+</details>
+{%- endif -%}

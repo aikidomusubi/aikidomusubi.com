@@ -296,7 +296,7 @@ ui:
                en: "Fees from 1 January 2027", ja: "2027年1月1日からの料金" }
   save:      { es: "Ahorras",           ca: "Estalvies",        en: "You save",         ja: "割引" }
   instead:   { es: "en lugar de",       ca: "en lloc de",       en: "instead of",       ja: "通常" }
-  signup:    { es: "¡Apúntate!",        ca: "Apunta-t'hi!",     en: "Sign up",          ja: "申し込む" }
+  signup:    { es: "Inscribirme",       ca: "Inscriure'm",      en: "Sign up",          ja: "申し込む" }
   detail:    { es: "Ver el detalle completo de cuotas y descuentos",
                ca: "Veure el detall complet de quotes i descomptes",
                en: "See the full breakdown of fees and discounts",

@@ -20,6 +20,8 @@ groups:
         url:   { es: "/horarios/", ca: "/ca/horaris/", en: "/en/training-schedule/", ja: "/ja/training-schedule/" }
       - label: { es: "Cuotas", ca: "Quotes", en: "Fees", ja: "月謝" }
         url:   { es: "/cuotas/", ca: "/ca/quotes/", en: "/en/fees/", ja: "/ja/fees/" }
+      - label: { es: "Inscripción", ca: "Inscripció", en: "Sign up", ja: "入会申し込み" }
+        url:   { es: "/inscripcion/", ca: "/ca/inscripcio/", en: "/en/sign-up/", ja: "/ja/sign-up/" }
       - label: { es: "Visitantes", ca: "Visitants", en: "Visitors", ja: "ビジターの方へ" }
         url:   { es: "/visitantes/", ca: "/ca/visitants/", en: "/en/visitors/", ja: "/ja/visitors/" }
       # IN THE NAV RATHER THAN LINKED FROM A PAGE OR TWO, because being in the

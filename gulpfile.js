@@ -48,7 +48,9 @@ var AUTHORED_SCRIPTS = [
   'scripts/ura.js',
   'scripts/notfound.js',
   'scripts/glossary.js',
-  'scripts/resources.js'
+  'scripts/resources.js',
+  'scripts/pricing.js',
+  'scripts/membership.js'
 ];
 
 // Everything in AUTHORED_SCRIPTS except default.js, which is concatenated into

@@ -621,6 +621,33 @@ def check_fee_descriptions(pages):
         print(f'  {"fee descriptions":<34} {seen} pages state {live}, as fees.yml does{note}')
 
 
+def check_a11y_rendered():
+    """axe-core over the membership pages, after their scripts have run.
+
+    check_a11y reads built HTML, which cannot see what a script builds: the
+    signup's steps, its totals, its error summary. CLAUDE.md records the cost
+    of that gap (the calendar's nameless buttons). This drives the signup in
+    headless Chrome through every step, in four languages and two widths, and
+    fails on any WCAG 2.2 AA violation (spec 5.5). It needs the membership
+    package installed; without it this warns rather than fails, like the exam
+    check without PyYAML.
+    """
+    pkg = os.path.join('services', 'membership')
+    if not os.path.isdir(os.path.join(pkg, 'node_modules', 'puppeteer-core')):
+        warn('rendered a11y not checked', 'run `npm install` in services/membership')
+        return
+    try:
+        r = subprocess.run(['node', 'scripts/a11y.mjs', os.path.abspath(SITE)], cwd=pkg,
+                           capture_output=True, text=True, timeout=600)
+    except Exception as e:  # noqa: BLE001 — a tool failure is a warning, not a verdict
+        warn('rendered a11y not checked', str(e))
+        return
+    if r.returncode != 0:
+        lines = [l.strip() for l in (r.stdout + r.stderr).splitlines() if 'FAIL' in l]
+        for l in lines[:10] or [(r.stdout + r.stderr).strip()[-200:]]:
+            fail('a11y (rendered, axe)', l.replace('FAIL ', ''))
+
+
 def check_a11y(pages):
     found = Counter()
     for p, raw in pages:
@@ -915,6 +942,7 @@ def main():
     check_video_sitemap()
     check_fee_descriptions(pages)
     check_a11y(pages)
+    check_a11y_rendered()
     check_seo(pages)
     check_build_output()
     check_redirects()

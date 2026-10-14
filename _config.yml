@@ -106,6 +106,12 @@ exclude:
   - "scripts/notfound.js"
   - "scripts/glossary.js"
   - "scripts/resources.js"
+  - "scripts/pricing.js"
+  - "scripts/membership.js"
+
+  # The membership Worker: its own package, deployed to Cloudflare, never to
+  # GitHub Pages. See services/membership/ and docs/membership/.
+  - services/
 
   # Tooling and repo files
   - _includes/cssrelpreload.js

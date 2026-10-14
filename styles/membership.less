@@ -1,0 +1,829 @@
+// out: false
+//
+// ---------------------------------------------------------------------------
+// Membership: the signup steps and the pages around them.
+//
+// Drawn from docs/mockups/inscripcion-pasos.html and inscripcion-paginas.html,
+// approved on 14 October 2026, in the site's own tokens.
+//
+// SPECIFICITY. Everything here sits under `.page main` so that it beats the
+// prose rules (`.page main a`, `.page main h2`, `.page main > p`), which are
+// (0,1,2): a single class under the prefix is (0,2,1) and wins without
+// `!important`.
+//
+// WITHOUT JAVASCRIPT the four steps are one page and every field is visible;
+// `:has()` still hides the birth date until "up to 16" is chosen and the venue
+// until the sports-centre rate is, and where `:has()` is not supported the
+// rules are dropped and the fields simply show. scripts/membership.js adds
+// `.su-js`, which turns the sections into steps.
+// ---------------------------------------------------------------------------
+
+@su-err:   @VandykeRed;   // 9.45:1 on white
+@su-line:  fadeout(@Black, 86%);
+@su-field: #6E7A7F;       // input borders: 4.6:1 on white, over the 3:1 UI minimum
+@su-paper: #FBFAF7;
+@su-mute:  #4C585D;       // hints: 7.4:1 on white
+@su-focus: @Blue;
+
+.su-focus() {
+  outline: 3px solid @su-focus;
+  outline-offset: 2px;
+}
+
+.page main {
+
+  // ---- the page around the form ------------------------------------------
+  .su-member {
+    font-size: .88rem;
+    margin: -3.5rem 0 2.5rem;
+    text-align: center;
+    color: @su-mute;
+  }
+  .su-nojs {
+    font-size: .85rem;
+    color: @su-mute;
+    border-left: 3px solid @GlaucousBlue;
+    padding: .5rem .9rem;
+    margin: 0 0 2rem;
+    max-width: @measure;
+  }
+  .su-hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  // ---- steps bar -----------------------------------------------------------
+  .su-steps {
+    margin: 0 0 2rem;
+    border-bottom: 1px solid @su-line;
+
+    ol {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: .5rem;
+    }
+    li {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .6rem 0 .75rem;
+      margin-bottom: -1px;
+      font-size: .85rem;
+      color: @su-mute;
+      border-bottom: 3px solid transparent;
+    }
+    .su-step-n {
+      .Futura; .bold;
+      display: inline-grid;
+      place-items: center;
+      flex: none;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      border: 1.5px solid currentColor;
+      font-size: .75rem;
+    }
+    li.is-done { color: @Black; }
+    li.is-done .su-step-n {
+      background: @Black;
+      border-color: @Black;
+      color: @White;
+      font-size: 0;
+      &::before { content: "✓"; font-size: .75rem; }
+    }
+    li.is-current {
+      color: @Black;
+      font-weight: 700;
+      border-bottom-color: @Black;
+    }
+    @media (max-width: (@bp-sm - 1)) {
+      li { flex: none; }
+      li:not(.is-current) .su-step-l { .sr-only; }
+      li.is-current { flex: 1; }
+    }
+  }
+
+  // ---- notices and the error summary -----------------------------------------
+  .su-notice {
+    border: 1px solid @su-line;
+    border-left: 4px solid @Blue;
+    padding: .8rem 1rem;
+    margin: 0 0 1.75rem;
+    p { margin: 0; font-size: .9rem; max-width: none; }
+    .su-notice-h { font-weight: 700; }
+  }
+  .su-errors {
+    border: 2px solid @su-err;
+    border-radius: .3rem;
+    padding: .9rem 1.1rem;
+    margin: 0 0 1.75rem;
+    &:focus { .su-focus; }
+    .su-errors-h {
+      .NotoSans; .bold;
+      font-size: 1rem;
+      color: @su-err;
+      margin: 0 0 .5rem;
+    }
+    ul { margin: 0; padding-left: 1.2rem; font-size: .9rem; }
+    li { margin: 0 0 .25rem; }
+    a { color: @su-err; }
+  }
+
+  // ---- sections ---------------------------------------------------------------
+  .su-step { margin: 0 0 3rem; }
+  .su-js .su-step { margin: 0; }
+  .su-grid {
+    display: grid;
+    gap: 2.5rem;
+    @media (min-width: @bp-lg) { grid-template-columns: minmax(0, 1fr) 17rem; }
+  }
+  .su-h2 {
+    .Futura; .bold;
+    display: flex;
+    align-items: baseline;
+    gap: .6rem;
+    font-size: 1.5rem;
+    line-height: 1.25;
+    letter-spacing: .02em;
+    margin: 0 0 .4rem;
+    // Each step scrolls its heading into view: clear the sticky nav, as every
+    // anchor on the site does.
+    scroll-margin-top: @anchor-clear;
+    &:focus { outline: none; }
+    &:focus-visible { .su-focus; }
+  }
+  .su-js .su-h2-n { display: none; }
+  .su-h2-n {
+    .Futura;
+    font-size: .85rem;
+    color: @su-mute;
+  }
+  .su-h3 {
+    .Futura; .bold;
+    font-size: 1.15rem;
+    margin: 0 0 .8rem;
+  }
+  .su-sub {
+    font-size: .9rem;
+    color: @su-mute;
+    margin: 0 0 1.25rem;
+    max-width: @measure;
+  }
+  .su-legend, .su-mini {
+    .NotoSans; .bold;
+    float: none;
+    width: auto;
+    padding: 0;
+    font-size: .85rem;
+    line-height: 1.4;
+    margin: 0 0 .5rem;
+    color: @Black;
+  }
+  .su-mini { font-size: .8rem; margin: 0 0 .35rem; }
+  // A legend's own top margin does not reliably push a fieldset down, so the
+  // space above "Age" and "Fee" is the fieldset's.
+  .su-person .su-chips { margin-top: .9rem; }
+  .su-req { font-weight: 400; color: @su-mute; font-size: .8rem; }
+  fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+
+  // ---- fields -------------------------------------------------------------------
+  .su-row {
+    display: grid;
+    gap: .75rem 1rem;
+    @media (min-width: @bp-sm) { grid-template-columns: 1fr 1fr; }
+  }
+  .su-fld {
+    min-width: 0;
+    label {
+      display: block;
+      font-size: .8rem;
+      font-weight: 700;
+      margin: 0 0 .25rem;
+    }
+  }
+  .su-in {
+    display: block;
+    width: 100%;
+    min-height: 2.75rem;
+    padding: .5rem .7rem;
+    border: 1px solid @su-field;
+    border-radius: .25rem;
+    background: @White;
+    color: @Black;
+    font: inherit;
+    font-size: 1rem;         // 16px: iOS does not zoom a field this size
+    &:focus { .su-focus; border-color: @Black; }
+    &[aria-invalid="true"] { border: 2px solid @su-err; }
+  }
+  .su-sel {
+    appearance: none;
+    background: @White url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23111314'/%3E%3C/svg%3E") no-repeat right .8rem center / .6rem;
+    padding-right: 2rem;
+  }
+  .su-err {
+    display: flex;
+    gap: .4rem;
+    font-size: .82rem;
+    font-weight: 700;
+    color: @su-err;
+    margin: .3rem 0 0;
+    max-width: none;
+    &::before {
+      content: "!";
+      display: inline-grid;
+      place-items: center;
+      flex: none;
+      width: 1.05rem;
+      height: 1.05rem;
+      margin-top: .1rem;
+      border-radius: 50%;
+      background: @su-err;
+      color: @White;
+      font-size: .7rem;
+    }
+    &[hidden] { display: none; }
+  }
+  .su-hint {
+    font-size: .8rem;
+    line-height: 1.45;
+    color: @su-mute;
+    margin: .3rem 0 0;
+    max-width: @measure;
+  }
+
+  // Chips: a radio inside a label, the label drawn as a pill.
+  .su-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+    margin: 0;
+    > .su-mini { width: 100%; }
+    > .su-err { width: 100%; }
+  }
+  .su-chip {
+    position: relative;
+    display: inline-flex;
+    margin: 0;
+    input {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      margin: 0;
+      cursor: pointer;
+    }
+    span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.5rem;
+      padding: .35rem 1rem;
+      border: 1px solid @su-field;
+      border-radius: 2rem;
+      font-size: .88rem;
+      line-height: 1.2;
+      background: @White;
+    }
+    input:checked + span { background: @Black; border-color: @Black; color: @White; }
+    input:focus-visible + span { .su-focus; }
+    input:disabled + span { border-style: dashed; color: @su-mute; }
+  }
+
+  // ---- step 1: people --------------------------------------------------------------
+  .su-person {
+    border: 1px solid @su-line;
+    border-radius: .375rem;
+    padding: 1rem 1.1rem 1.15rem;
+    margin: 0 0 .8rem;
+    background: @White;
+    position: relative;
+  }
+  // Floated, so that the legend sits inside the card instead of on its
+  // border, which is where a fieldset draws a legend by default.
+  .su-person-l {
+    .NotoSans; .bold;
+    float: left;
+    width: 100%;
+    font-size: .95rem;
+    padding: 0;
+    margin: 0 0 .75rem;
+  }
+  // Everything after the floated legend clears it. `legend + *` was not
+  // enough: on persons 2 to 6 the next sibling is the absolutely positioned
+  // remove button, so the first row of fields sat beside the float and the
+  // name field was squeezed to 24px. axe found it (target-size).
+  .su-person > :not(.su-person-l) { clear: both; }
+  .su-rm {
+    position: absolute;
+    top: .75rem;
+    right: 1rem;
+    min-height: 1.75rem;
+    padding: 0;
+    border: 0;
+    background: none;
+    font-size: .8rem;
+    text-decoration: underline;
+    color: @Black;
+    cursor: pointer;
+    &:focus-visible { .su-focus; }
+    @media (max-width: (@bp-sm - 1)) {
+      position: static;
+      display: block;
+      margin: -.4rem 0 .6rem;
+    }
+  }
+  .su-birth { margin-top: .75rem; }
+  .su-birth .su-hint { grid-column: 1 / -1; margin-top: 0; }
+  .su-sc { margin-top: .75rem; }
+  .su-cond {
+    font-size: .82rem;
+    line-height: 1.45;
+    color: @Black;
+    background: @su-paper;
+    border-left: 3px solid @GlaucousBlue;
+    padding: .55rem .85rem;
+    margin: .6rem 0 0;
+    max-width: none;
+  }
+  .su-person:not(:has(input[value="youth"]:checked)) .su-birth,
+  .su-person:not(:has(input[value="sc"]:checked)) .su-sc { display: none; }
+
+  .su-more-person {
+    margin: 0 0 .8rem;
+    > summary {
+      display: inline-flex;
+      min-height: 2.75rem;
+      align-items: center;
+      padding: .45rem 1rem;
+      border: 1px dashed @Dark;
+      border-radius: .3rem;
+      font-weight: 700;
+      font-size: .9rem;
+      cursor: pointer;
+      list-style: none;
+      &::-webkit-details-marker { display: none; }
+      &::before { content: "+ "; .Futura; }
+      &:focus-visible { .su-focus; }
+    }
+    &[open] > summary { margin-bottom: .6rem; }
+  }
+  .su-js .su-more-person > summary { display: none; }
+
+  .su-add, .su-back, .su-link {
+    font: inherit;
+    cursor: pointer;
+    &:focus-visible { .su-focus; }
+  }
+  .su-add {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    min-height: 2.75rem;
+    padding: .45rem 1rem;
+    border: 1px dashed @Dark;
+    border-radius: .3rem;
+    background: @White;
+    font-weight: 700;
+    font-size: .9rem;
+    &::before { content: "+"; .Futura; .bold; font-size: 1.1rem; }
+    &[hidden] { display: none; }
+  }
+  .su-link {
+    padding: 0;
+    border: 0;
+    background: none;
+    text-decoration: underline;
+    font-size: inherit;
+    color: @Black;
+  }
+
+  .su-side {
+    background: @su-paper;
+    border: 1px solid @su-line;
+    padding: 1.1rem 1.2rem;
+    font-size: .85rem;
+    align-self: start;
+    @media (min-width: @bp-lg) { position: sticky; top: calc(@nv-h-small + 1rem); }
+    .su-side-h {
+      .Futura; .bold;
+      font-size: .8rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin: 0 0 .7rem;
+    }
+    ul { margin: 0; padding-left: 1.1rem; }
+    li { margin: 0 0 .4rem; }
+    p { margin: .8rem 0 0; font-size: .85rem; }
+  }
+
+  // ---- navigation within the steps ----------------------------------------------------
+  .su-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.75rem 0 0;
+  }
+  .su-back {
+    padding: .5rem 0;
+    border: 0;
+    background: none;
+    text-decoration: underline;
+    font-size: .9rem;
+    &[hidden] { display: none; }
+  }
+  .su-btn {
+    .Futura; .bold;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: .6rem;
+    min-height: 3rem;
+    padding: .8rem 1.6rem;
+    border: 0;
+    border-radius: .25rem;
+    background: @Black;
+    color: @White;
+    font-size: .95rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    &::after { content: "→"; }
+    &:hover { background: lighten(@Black, 14%); }
+    &:focus-visible { .su-focus; }
+    &:disabled { opacity: .7; cursor: progress; }
+    &[hidden] { display: none; }
+  }
+
+  // ---- step 2: periods ------------------------------------------------------------------
+  .su-who {
+    border: 1px solid @su-line;
+    border-radius: .3rem;
+    background: @su-paper;
+    padding: .7rem 1rem;
+    margin: 0 0 1.5rem;
+    font-size: .88rem;
+  }
+  .su-who-in {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .5rem 1rem;
+    .su-link { margin-left: auto; font-size: .85rem; }
+  }
+  .su-who-l {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .35rem;
+    span {
+      font-size: .78rem;
+      background: @White;
+      border: 1px solid @su-line;
+      border-radius: 1rem;
+      padding: .1rem .55rem;
+    }
+  }
+  .su-cards {
+    display: grid;
+    gap: .75rem;
+    @media (min-width: @bp-md) { grid-template-columns: repeat(3, 1fr); }
+  }
+  .su-card {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.4rem 1fr;
+    align-content: start;
+    gap: .1rem .5rem;
+    margin: 0;
+    padding: 1rem 1rem 1rem .9rem;
+    border: 1px solid @su-line;
+    border-radius: .375rem;
+    background: @White;
+    font-size: .85rem;
+    cursor: pointer;
+    > input {
+      grid-row: 1 / span 6;
+      width: 1.15rem;
+      height: 1.15rem;
+      margin: .2rem 0 0;
+      accent-color: @Black;
+      &:focus-visible { .su-focus; }
+    }
+    > span { grid-column: 2; }
+    &:has(input:checked) { border-color: @Black; box-shadow: inset 0 0 0 1px @Black; }
+    &.is-off {
+      cursor: not-allowed;
+      color: @su-mute;
+      background: repeating-linear-gradient(135deg, @White 0 6px, #F4F4F1 6px 12px);
+    }
+    &[hidden] { display: none; }
+  }
+  .su-card-name { font-weight: 700; font-size: .95rem; }
+  .su-card-price { display: block; margin: .15rem 0; }
+  .su-card-amount { .Futura; .bold; font-size: 1.6rem; line-height: 1.1; }
+  .su-card-unit { font-size: .78rem; color: @su-mute; }
+  .su-card-static, .su-card-per, .su-card-sub { font-size: .78rem; color: @su-mute; }
+  .su-card-save { font-size: .8rem; font-weight: 700; color: @Green; }
+  .su-card-gift { font-size: .78rem; }
+  .su-card-off { font-size: .8rem; }
+  .su-card-flag {
+    .Futura; .bold;
+    position: absolute;
+    top: -.65rem;
+    right: .75rem;
+    padding: .25rem .45rem;
+    background: @Yellow;
+    color: @Black;
+    font-size: .64rem;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+  }
+  .su-why {
+    font-size: .85rem;
+    border: 1px solid @su-line;
+    border-left: 3px solid @Rust;
+    padding: .6rem .85rem;
+    margin: .8rem 0 0;
+    max-width: none;
+  }
+  .su-periods + .su-why[hidden] + .su-cond,
+  .su-periods ~ .su-cond { margin-top: .9rem; }
+  .su-more {
+    border-top: 1px solid @su-line;
+    font-size: .88rem;
+    margin: 0;
+    &:last-of-type { border-bottom: 1px solid @su-line; }
+    > summary {
+      display: flex;
+      justify-content: space-between;
+      min-height: 2.75rem;
+      align-items: center;
+      font-weight: 700;
+      cursor: pointer;
+      list-style: none;
+      &::-webkit-details-marker { display: none; }
+      &::after { content: "+"; .Futura; .bold; font-size: 1.1rem; }
+      &:focus-visible { .su-focus; }
+    }
+    &[open] > summary::after { content: "−"; }
+    p { font-size: .88rem; max-width: @measure; margin: 0 0 .8rem; }
+    &[hidden] { display: none; }
+  }
+  .su-periods ~ .su-more:first-of-type { margin-top: 1.25rem; }
+  .su-mini-t {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .85rem;
+    font-variant-numeric: tabular-nums;
+    margin: 0 0 .5rem;
+    td { padding: .35rem .2rem; border-bottom: 1px solid @su-line; }
+    td:last-child { text-align: right; white-space: nowrap; }
+    tr:last-child td { font-weight: 700; border-bottom: 0; }
+  }
+
+  // ---- step 3: who pays ------------------------------------------------------------------
+  .su-cards-h { margin-bottom: .25rem; }
+  .su-card-h .su-card-name { font-size: .92rem; }
+  .su-other { margin: 1rem 0 0; }
+  .su-other[hidden] { display: none; }
+  .su-holders + .su-other + .su-row,
+  .su-holders + .su-other[hidden] + .su-row { margin-top: 1.25rem; }
+  .su-declare { margin: 1.5rem 0 .5rem; }
+  .su-check {
+    display: grid;
+    grid-template-columns: 1.4rem 1fr;
+    gap: .55rem;
+    align-items: start;
+    margin: 0 0 .6rem;
+    font-size: .9rem;
+    cursor: pointer;
+    input {
+      width: 1.2rem;
+      height: 1.2rem;
+      margin: .15rem 0 0;
+      accent-color: @Black;
+      &:focus-visible { .su-focus; }
+    }
+    small {
+      display: block;
+      font-size: .8rem;
+      color: @su-mute;
+      margin-top: .15rem;
+    }
+  }
+  .su-guardian[hidden] { display: none; }
+
+  // ---- step 4: review and pay -------------------------------------------------------------
+  .su-review {
+    display: grid;
+    gap: 2.5rem;
+    @media (min-width: @bp-lg) { grid-template-columns: 1fr 1fr; }
+  }
+  .su-review-sum[hidden] { display: none; }
+  .su-rv {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .88rem;
+    font-variant-numeric: tabular-nums;
+    th, td { text-align: left; padding: .5rem .3rem; border-bottom: 1px solid @su-line; }
+    thead th { font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: @su-mute; }
+    td:last-child, th:last-child { text-align: right; white-space: nowrap; }
+    tfoot th, tfoot td { border-top: 2px solid @Black; border-bottom: 0; font-weight: 700; font-size: 1rem; }
+  }
+  .su-rv-edit { font-size: .82rem; margin: .7rem 0 1rem; max-width: none; }
+  .su-tl {
+    list-style: none;
+    margin: 0 0 1rem;
+    padding: 0;
+    border-left: 2px solid @Black;
+    li {
+      position: relative;
+      padding: 0 0 .75rem 1rem;
+      font-size: .86rem;
+      line-height: 1.45;
+      &::before {
+        content: "";
+        position: absolute;
+        left: -.45rem;
+        top: .35rem;
+        width: .7rem;
+        height: .7rem;
+        border-radius: 50%;
+        background: @White;
+        border: 2px solid @Black;
+      }
+      &.is-now::before { background: @Yellow; }
+    }
+  }
+  .su-small { font-size: .84rem; line-height: 1.5; margin: 0 0 .8rem; max-width: none; }
+  .su-priv {
+    font-size: .76rem;
+    line-height: 1.5;
+    border: 1px solid @su-line;
+    background: @su-paper;
+    padding: .7rem .85rem;
+    margin: .6rem 0 1rem;
+    max-width: none;
+  }
+  .su-pay { width: 100%; min-height: 3.25rem; }
+  .su-paynote { font-size: .8rem; color: @su-mute; text-align: center; margin: .6rem 0 0; max-width: none; }
+  .su-err-form { margin: 0 0 .8rem; }
+
+  // ---- the steps, once the script is running ------------------------------------------------
+  .su-js .su-step[hidden] { display: none; }
+}
+
+.js .page main .su-nojs { display: none; }
+
+// A field that takes focus scrolls clear of the sticky nav and of the pinned
+// legal strip (WCAG 2.2, 2.4.11: focus not obscured). The site sets this for
+// fragment links through `scroll-margin-top` on anchors; a form needs it for
+// every field, which is what scroll-padding on the root does.
+html:has(.su), html:has(.mb-form) {
+  scroll-padding-top: @anchor-clear;
+  scroll-padding-bottom: calc(var(--footer-height, 30px) + 1rem);
+}
+
+// ---------------------------------------------------------------------------
+// The other pages: thank-you, members area, withdrawal, received, terms
+// ---------------------------------------------------------------------------
+.page main {
+  .mb-ok {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .8rem;
+    &::before {
+      content: "✓";
+      display: grid;
+      place-items: center;
+      flex: none;
+      width: 2.6rem;
+      height: 2.6rem;
+      border-radius: 50%;
+      background: @Green;
+      color: @White;
+      font-size: 1.3rem;
+    }
+  }
+  .mb-lede {
+    text-align: center;
+    max-width: 40rem;
+    margin: 0 auto 3rem;
+  }
+  .mb-howto {
+    counter-reset: h;
+    list-style: none;
+    margin: 0 0 2.5rem;
+    padding: 0;
+    max-width: @measure;
+    li {
+      counter-increment: h;
+      display: grid;
+      grid-template-columns: 2.2rem 1fr;
+      gap: .7rem;
+      margin: 0 0 1rem;
+      font-size: .92rem;
+      line-height: 1.55;
+      &::before {
+        content: counter(h);
+        .Futura; .bold;
+        display: grid;
+        place-items: center;
+        width: 1.9rem;
+        height: 1.9rem;
+        border-radius: 50%;
+        background: @Yellow;
+        color: @Black;
+        font-size: .85rem;
+      }
+    }
+  }
+  .mb-two {
+    display: grid;
+    gap: 1.5rem 2.5rem;
+    margin: 0 0 2.5rem;
+    @media (min-width: @bp-md) { grid-template-columns: 1fr 1fr; }
+  }
+  .mb-box {
+    background: #FBFAF7;
+    border: 1px solid fadeout(@Black, 86%);
+    padding: 1.1rem 1.25rem;
+    font-size: .9rem;
+    p { margin: 0 0 .8rem; }
+  }
+  .mb-box-h, .mb-h2 {
+    .Futura; .bold;
+    font-size: .85rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin: 0 0 .7rem;
+  }
+  .mb-h2 { font-size: 1.05rem; letter-spacing: .02em; text-transform: none; margin: 0 0 .8rem; }
+  .mb-arrow::after { content: " →"; }
+  .mb-cta { text-align: center; margin: -2.5rem 0 3rem; max-width: none; }
+  a.mb-btn {
+    .Futura; .bold;
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    min-height: 3.2rem;
+    padding: .85rem 1.8rem;
+    background: @Black;
+    color: @White;
+    text-decoration: none;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    border-radius: .25rem;
+    &::after { content: "↗"; }
+    &:hover { background: lighten(@Black, 14%); color: @White; }
+    &:focus-visible { outline: 3px solid @Blue; outline-offset: 2px; }
+  }
+  .mb-soon {
+    text-align: center;
+    font-weight: 700;
+    margin: -2.5rem 0 3rem;
+    max-width: none;
+  }
+  .mb-can {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li {
+      position: relative;
+      padding: .45rem 0 .45rem 1.6rem;
+      border-bottom: 1px solid fadeout(@Black, 88%);
+      font-size: .9rem;
+      &::before { content: "✓"; position: absolute; left: 0; font-weight: 700; color: @Green; }
+    }
+  }
+  .mb-ask li::before { content: "→"; color: @Dark; }
+  .mb-small { font-size: .85rem; margin: .8rem 0 0; }
+  .mb-after { text-align: center; font-size: .9rem; margin: -3.5rem 0 2.5rem; max-width: none; }
+  .mb-form { max-width: 44rem; }
+  .mb-area { min-height: 7rem; resize: vertical; line-height: 1.5; }
+  .mb-confirm { margin: 1.25rem 0 .5rem; }
+  .mb-stamp {
+    display: inline-block;
+    font-family: ui-monospace, Menlo, monospace;
+    font-size: .88rem;
+    background: #FBFAF7;
+    border: 1px solid fadeout(@Black, 86%);
+    padding: .45rem .8rem;
+    margin: 0 0 2rem;
+  }
+  .mb-draft {
+    .Futura; .bold;
+    display: inline-block;
+    background: @Rust;
+    color: @White;
+    font-size: .75rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: .35rem .6rem;
+  }
+}

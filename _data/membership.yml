@@ -76,6 +76,12 @@ urls:
 # one person at a keyboard however many people they sign up.
 # ---------------------------------------------------------------------------
 ui:
+  # The line under the cards on /cuotas/.
+  fees_line:
+    es: "La cuota se cobra el día 5, con tarjeta o domiciliación, a través de Stripe. ¿Ya tienes cuota? <a href=\"{url}\">Área de miembros</a>."
+    ca: "La quota es cobra el dia 5, amb targeta o domiciliació, a través de Stripe. Ja tens quota? <a href=\"{url}\">Àrea de membres</a>."
+    en: "The fee is charged on the 5th, by card or direct debit, through Stripe. Already a member? <a href=\"{url}\">Members area</a>."
+    ja: "会費は毎月5日に、カードまたは口座振替でStripeを通じてお支払いいただきます。会員の方は<a href=\"{url}\">会員ページ</a>へ。"
   eyebrow:   { es: "Cuotas · Inscripción", ca: "Quotes · Inscripció", en: "Fees · Sign up", ja: "月謝・入会申し込み" }
   lede:
     es: "Normalmente te inscribes después de las dos clases de prueba. No hay matrícula, y la cuota se cobra sola el día 5, con tarjeta o domiciliación bancaria, en una página segura de Stripe. Son cuatro pasos y unos tres minutos."
@@ -109,6 +115,8 @@ ui:
     en: "The people in one household who will train, up to six. The person who pays need not train: you say who pays in step 3."
     ja: "同じ世帯で稽古する方を、6人まで入力してください。お支払いをする方は稽古しなくてもかまいません（ステップ3で指定します）。"
   person:      { es: "Persona {n}", ca: "Persona {n}", en: "Person {n}", ja: "{n}人目" }
+  people_1:    { es: "1 persona", ca: "1 persona", en: "1 person", ja: "1名" }
+  people_n:    { es: "{n} personas", ca: "{n} persones", en: "{n} people", ja: "{n}名" }
   add_person:  { es: "Añadir otra persona", ca: "Afegir una altra persona", en: "Add another person", ja: "人を追加" }
   add_person_n: { es: "Añadir a la persona {n}", ca: "Afegir la persona {n}", en: "Add person {n}", ja: "{n}人目を追加" }
   remove:      { es: "Quitar a la persona {n}", ca: "Treure la persona {n}", en: "Remove person {n}", ja: "{n}人目を削除" }
@@ -250,7 +258,7 @@ ui:
   tl_nothing:    { es: "Hoy no se cobra nada", ca: "Avui no es cobra res", en: "Nothing is charged today", ja: "本日のお支払いはありません" }
   tl_withdraw:   { es: "último día para desistir", ca: "últim dia per desistir", en: "last day to withdraw", ja: "クーリングオフ期限" }
   tl_first:      { es: "primera cuota completa", ca: "primera quota completa", en: "first full fee", ja: "最初の全額のお支払い" }
-  tl_keikogi:    { es: "después, los keikogi", ca: "després, els keikogi", en: "then the keikogi", ja: "その後、稽古着をお渡し" }
+  tl_keikogi:    { es: "Después, los keikogi", ca: "Després, els keikogi", en: "Then the keikogi", ja: "その後、稽古着をお渡し" }
   tl_then:       { es: "Después, {amount} cada día 5", ca: "Després, {amount} cada dia 5", en: "Then {amount} on every 5th", ja: "以降、毎回5日に{amount}" }
   tl_then_q:     { es: "Después, {amount} cada 5 de {months}", ca: "Després, {amount} cada 5 de {months}", en: "Then {amount} every 5 {months}", ja: "以降、{months}の5日に{amount}" }
   not_included:

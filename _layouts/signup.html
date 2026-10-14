@@ -1,0 +1,265 @@
+{% include header.html %}
+{%- assign PH_N = '{n}' -%}
+{%- assign PH_ORG = '{org}' -%}
+{%- assign PH_URL = '{url}' -%}
+{%- comment -%}
+  /inscripcion/ — online signup, layout B ("people first"), approved on
+  14 October 2026: docs/mockups/inscripcion-pasos.html.
+
+  ONE FORM, FOUR SECTIONS. Without JavaScript all four are on the page one
+  under another and the form posts to the Worker like any form; the server
+  prices it and Stripe's page shows the total. scripts/membership.js folds the
+  sections into four steps, adds the live totals from scripts/pricing.js (the
+  same engine the server uses), keeps the answers in sessionStorage while
+  somebody is on Stripe's page, and shows errors in place.
+
+  Every string is in _data/membership.yml, every price in _data/fees.yml.
+  Nothing on this page is typed twice.
+
+  No analytics on this page (spec 10.3): `no_analytics: true` in the front
+  matter keeps GTM off even after consent.
+{%- endcomment -%}
+{%- assign L = page.lang -%}
+{%- if L == 'ja' %}{% assign ORGN = site.data.footer.ui.org_ja %}{% else %}{% assign ORGN = site.data.footer.ui.org %}{% endif -%}
+{%- assign MS = site.data.membership -%}
+{%- assign MU = MS.ui -%}
+{%- assign ME = MS.errors -%}
+{%- assign FEES = site.data.fees -%}
+{%- assign endpoint = site.membership_endpoint | default: MS.endpoint -%}
+{%- assign r_members = MS.urls.members[L] -%}
+{%- assign r_terms = MS.urls.terms[L] -%}
+{%- assign r_privacy = MS.urls.privacy[L] -%}
+
+<main id="main" tabindex="-1" class="su-main">
+
+  {% include section-strip.html %}
+
+  {%- assign ph_lede = MU.lede[L] %}
+  {% include page-head.html lede=ph_lede %}
+
+  <p class="su-member">{{ MU.member[L] | replace: PH_URL, r_members }}</p>
+  <p class="su-nojs">{{ MU.no_js[L] }}</p>
+
+  <div class="su" id="su" data-lang="{{ L }}">
+
+    <nav class="su-steps" aria-label="{{ MU.steps_label[L] }}" hidden>
+      <ol>
+        {%- for s in MU.steps %}
+        <li data-step="{{ forloop.index }}"><span class="su-step-n" aria-hidden="true">{{ forloop.index }}</span><span class="su-step-l">{{ s[L] }}</span></li>
+        {%- endfor %}
+      </ol>
+    </nav>
+
+    <div class="su-notice" id="su-notice" role="status" hidden>
+      <p class="su-notice-h" data-cancel="{{ MU.cancel_h[L] }}" data-invite="{{ MU.invite_h[L] }}"></p>
+      <p class="su-notice-b" data-cancel="{{ MU.cancel_b[L] }}" data-invite="{{ MU.invite_b[L] }}"></p>
+    </div>
+
+    <div class="su-errors" id="su-errors" tabindex="-1" role="alert" hidden>
+      <h2 class="su-errors-h">{{ MU.errors_h[L] }}</h2>
+      <ul></ul>
+    </div>
+
+    <form class="su-form" id="su-form" method="post" action="{{ endpoint }}/checkout" novalidate
+          accept-charset="utf-8">
+      <input type="hidden" name="lang" value="{{ L }}">
+      <input type="hidden" name="sid" value="">
+      <input type="hidden" name="invite" value="">
+      {%- comment -%} The honeypot. Hidden from people and from assistive technology. {%- endcomment %}
+      <div class="su-hp" aria-hidden="true">
+        <label for="su-website">{{ MU.honeypot[L] }}</label>
+        <input type="text" id="su-website" name="website" tabindex="-1" autocomplete="off" value="">
+      </div>
+
+      {%- comment -%} ---------------- 1 · Who trains ---------------- {%- endcomment %}
+      <section class="su-step" data-step="1" aria-labelledby="su-h-1">
+        <div class="su-grid">
+          <div class="su-col">
+            <h2 class="su-h2" id="su-h-1" tabindex="-1"><span class="su-h2-n">1</span>{{ MU.steps[0][L] }}</h2>
+            <p class="su-sub">{{ MU.s1_sub[L] }}</p>
+            {%- for n in (1..6) %}
+            {% include su-person.html n=n %}
+            {%- endfor %}
+            <button type="button" class="su-add" id="su-add" hidden>{{ MU.add_person[L] }}</button>
+            <div class="su-nav"><span></span><button type="button" class="su-btn su-next" data-go="2" hidden>{{ MU.continue[L] }}</button></div>
+          </div>
+          <aside class="su-side" aria-labelledby="su-side-h">
+            <h2 class="su-side-h" id="su-side-h">{{ MU.side_h[L] }}</h2>
+            <ul>
+              {%- for s in MU.side %}
+              <li>{{ s[L] }}</li>
+              {%- endfor %}
+            </ul>
+            <p>{{ MU.side_contact[L] }}</p>
+          </aside>
+        </div>
+      </section>
+
+      {%- comment -%} ---------------- 2 · How you pay ---------------- {%- endcomment %}
+      <section class="su-step" data-step="2" aria-labelledby="su-h-2">
+        <h2 class="su-h2" id="su-h-2" tabindex="-1"><span class="su-h2-n">2</span>{{ MU.steps[1][L] }}</h2>
+        <div class="su-who" id="su-who" hidden></div>
+        <p class="su-sub">{{ MU.s2_sub[L] }}</p>
+        <fieldset class="su-periods" aria-describedby="su-period-err">
+          <legend class="su-legend">{{ MU.period[L] }} <span class="su-req">{{ MU.required[L] }}</span></legend>
+          <div class="su-cards">
+            {%- for p in FEES.periods %}
+            {%- assign row_a = FEES.prices[p.id].adults -%}
+            {%- assign row_y = FEES.prices[p.id].children %}
+            <label class="su-card" data-period="{{ p.id }}">
+              <input type="radio" name="period" value="{{ p.id }}"{% if forloop.first %} id="su-period"{% endif %}>
+              <span class="su-card-flag" hidden>{{ MU.best[L] }}</span>
+              <span class="su-card-name">{{ p.name[L] }}</span>
+              <span class="su-card-price"><b class="su-card-amount">{{ row_a.fee }}&nbsp;€</b> <span class="su-card-unit">{{ p.unit[L] }}</span></span>
+              <span class="su-card-static">{{ FEES.categories[0].name[L] }} · {{ row_y.fee }}&nbsp;€ {{ FEES.categories[1].name[L] | downcase }}</span>
+              <span class="su-card-per" hidden></span>
+              <span class="su-card-save" hidden></span>
+              <span class="su-card-gift" hidden></span>
+              <span class="su-card-off" hidden>{{ MU.unavailable_sc[L] }}</span>
+            </label>
+            {%- endfor %}
+          </div>
+          <p class="su-err" id="su-period-err" hidden></p>
+        </fieldset>
+        <p class="su-why" id="su-why" hidden>{{ MU.why_sc[L] }}</p>
+        <p class="su-cond">{{ MU.keikogi_cond[L] }}</p>
+        <details class="su-more" id="su-howprice" hidden>
+          <summary>{{ MU.how_price[L] }}</summary>
+          <table class="su-mini-t"><tbody></tbody></table>
+          <p class="su-hint" id="su-baseline"></p>
+        </details>
+        <details class="su-more">
+          <summary>{{ MU.when_h[L] }}</summary>
+          <p>{{ MU.when_b[L] }}</p>
+        </details>
+        <div class="su-nav"><button type="button" class="su-back" data-go="1" hidden>← {{ MU.steps[0][L] }}</button><button type="button" class="su-btn su-next" data-go="3" hidden>{{ MU.continue[L] }}</button></div>
+      </section>
+
+      {%- comment -%} ---------------- 3 · Who pays ---------------- {%- endcomment %}
+      <section class="su-step" data-step="3" aria-labelledby="su-h-3">
+        <h2 class="su-h2" id="su-h-3" tabindex="-1"><span class="su-h2-n">3</span>{{ MU.steps[2][L] }}</h2>
+        <p class="su-sub">{{ MU.s3_sub[L] }}</p>
+        <fieldset class="su-holders" aria-describedby="su-holder-err su-holder-hint">
+          <legend class="su-legend">{{ MU.holder[L] }} <span class="su-req">{{ MU.required[L] }}</span></legend>
+          <div class="su-cards su-cards-h">
+            {%- for n in (1..6) %}
+            <label class="su-card su-card-h" data-slot="{{ n }}">
+              <input type="radio" name="holder" value="p{{ n }}"{% if n == 1 %} id="su-holder"{% endif %}>
+              <span class="su-card-name">{{ MU.person[L] | replace: PH_N, n }}</span>
+              <span class="su-card-sub">{{ MU.holder_trains[L] }}</span>
+            </label>
+            {%- endfor %}
+            <label class="su-card su-card-h" data-slot="other">
+              <input type="radio" name="holder" value="other">
+              <span class="su-card-name">{{ MU.holder_other[L] }}</span>
+              <span class="su-card-sub">{{ MU.holder_other_sub[L] }}</span>
+            </label>
+          </div>
+          <p class="su-hint" id="su-holder-hint">{{ MU.holder_hint[L] }}</p>
+          <p class="su-err" id="su-holder-err" hidden></p>
+        </fieldset>
+        <div class="su-row su-other" id="su-other">
+          <div class="su-fld">
+            <label for="su-h-given">{{ MU.given[L] }}</label>
+            <input class="su-in" id="su-h-given" name="h_given" type="text" autocomplete="given-name" maxlength="80" aria-describedby="su-h-given-err">
+            <p class="su-err" id="su-h-given-err" hidden></p>
+          </div>
+          <div class="su-fld">
+            <label for="su-h-family">{{ MU.family[L] }}</label>
+            <input class="su-in" id="su-h-family" name="h_family" type="text" autocomplete="family-name" maxlength="80" aria-describedby="su-h-family-err">
+            <p class="su-err" id="su-h-family-err" hidden></p>
+          </div>
+        </div>
+        <div class="su-row">
+          <div class="su-fld">
+            <label for="su-email">{{ MU.email[L] }} <span class="su-req">{{ MU.required[L] }}</span></label>
+            <input class="su-in" id="su-email" name="email" type="email" inputmode="email" autocomplete="email" maxlength="254" aria-describedby="su-email-hint su-email-err">
+            <p class="su-hint" id="su-email-hint">{{ MU.email_hint[L] }}</p>
+            <p class="su-err" id="su-email-err" hidden></p>
+          </div>
+          <div class="su-fld">
+            <label for="su-phone">{{ MU.phone[L] }} <span class="su-req">{{ MU.optional[L] }}</span></label>
+            <input class="su-in" id="su-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="24" aria-describedby="su-phone-hint su-phone-err">
+            <p class="su-hint" id="su-phone-hint">{{ MU.phone_hint[L] }}</p>
+            <p class="su-err" id="su-phone-err" hidden></p>
+          </div>
+        </div>
+        <fieldset class="su-declare">
+          <legend class="su-mini">{{ MU.declare[L] }}</legend>
+          <label class="su-check"><input type="checkbox" name="adult" id="su-adult" aria-describedby="su-adult-err"><span>{{ MU.adult_cb[L] }}</span></label>
+          <p class="su-err" id="su-adult-err" hidden></p>
+          <div class="su-guardian" id="su-guardian-box">
+            <label class="su-check"><input type="checkbox" name="guardian" id="su-guardian" aria-describedby="su-guardian-hint su-guardian-err"><span>{{ MU.guardian_cb[L] }}<small id="su-guardian-hint">{{ MU.guardian_hint[L] }}</small></span></label>
+            <p class="su-err" id="su-guardian-err" hidden></p>
+          </div>
+        </fieldset>
+        <p class="su-hint">{{ MU.stripe_name[L] }}</p>
+        {%- if MU.ca_note[L] %}
+        <p class="su-hint su-ca">{{ MU.ca_note[L] }}</p>
+        {%- endif %}
+        <div class="su-nav"><button type="button" class="su-back" data-go="2" hidden>← {{ MU.steps[1][L] }}</button><button type="button" class="su-btn su-next" data-go="4" hidden>{{ MU.continue[L] }}</button></div>
+      </section>
+
+      {%- comment -%} ---------------- 4 · Review and pay ---------------- {%- endcomment %}
+      <section class="su-step" data-step="4" aria-labelledby="su-h-4">
+        <h2 class="su-h2" id="su-h-4" tabindex="-1"><span class="su-h2-n">4</span>{{ MU.steps[3][L] }}</h2>
+        <div class="su-review">
+          <div class="su-review-sum" id="su-summary" hidden>
+            <h3 class="su-h3">{{ MU.s4_review[L] }}</h3>
+            <table class="su-rv">
+              <thead><tr><th scope="col">{{ MU.th_person[L] }}</th><th scope="col">{{ MU.th_age[L] }}</th><th scope="col">{{ MU.th_rate[L] }}</th><th scope="col" class="su-rv-unit"></th></tr></thead>
+              <tbody></tbody>
+              <tfoot><tr><th scope="row" colspan="3">{{ MU.total[L] }}</th><td class="su-rv-total"></td></tr></tfoot>
+            </table>
+            <p class="su-rv-edit"><button type="button" class="su-link" data-go="1">{{ MU.change_people[L] }}</button> · <button type="button" class="su-link" data-go="2">{{ MU.change_period[L] }}</button> · <span id="su-holder-line"></span> · <button type="button" class="su-link" data-go="3">{{ MU.change[L] }}</button></p>
+            <ol class="su-tl" id="su-tl"></ol>
+          </div>
+          <div class="su-review-legal">
+            <h3 class="su-h3">{{ MU.s4_before[L] }}</h3>
+            <p class="su-small">{{ MU.not_included[L] }}</p>
+            <p class="su-small">{{ MU.promises[L] }}</p>
+            <label class="su-check"><input type="checkbox" name="terms" id="su-terms" aria-describedby="su-terms-err"><span>{{ MU.terms_cb[L] | replace: PH_URL, r_terms }}</span></label>
+            <p class="su-err" id="su-terms-err" hidden></p>
+            <label class="su-check"><input type="checkbox" name="early" id="su-early" aria-describedby="su-early-sub su-early-err"><span>{{ MU.early_cb[L] }}<small id="su-early-sub">{{ MU.early_sub[L] }}</small></span></label>
+            <p class="su-err" id="su-early-err" hidden></p>
+            <p class="su-priv">{{ MU.privacy[L] | replace: PH_URL, r_privacy | replace: PH_ORG, ORGN }}</p>
+            <p class="su-err su-err-form" id="su-form-err" hidden></p>
+            <button type="submit" class="su-btn su-pay" data-sending="{{ MU.sending[L] }}">{{ MU.pay[L] }}</button>
+            <p class="su-paynote">{{ MU.pay_note[L] }}</p>
+          </div>
+        </div>
+        <div class="su-nav"><button type="button" class="su-back" data-go="3" hidden>← {{ MU.steps[2][L] }}</button><span></span></div>
+      </section>
+
+      <p class="sr-only" id="su-live" aria-live="polite"></p>
+    </form>
+  </div>
+
+  {%- comment -%}
+    What the script needs, in this page's language only: the price list, the
+    venue names and the strings. Ordinary JSON, read with JSON.parse.
+  {%- endcomment %}
+  <script type="application/json" id="su-data">
+  {
+    "lang": {{ L | jsonify }},
+    "endpoint": {{ endpoint | jsonify }},
+    "maxPeople": {{ MS.max_people | jsonify }},
+    "urls": { "contact": {{ MS.urls.contact[L] | jsonify }}, "thanks": {{ MS.urls.thanks[L] | jsonify }} },
+    "fees": {
+      "catalog_version": {{ FEES.catalog_version | jsonify }},
+      "year": {{ FEES.year | jsonify }},
+      "effective_from": {{ FEES.effective_from | jsonify }},
+      "periods": [{% for p in FEES.periods %}{ "id": {{ p.id | jsonify }}, "months": {{ p.months }}, "name": {{ p.name[L] | jsonify }}, "unit": {{ p.unit[L] | jsonify }} }{% unless forloop.last %},{% endunless %}{% endfor %}],
+      "prices": {{ FEES.prices | jsonify }},
+      "family": { "amount": {{ FEES.family.amount }} },
+      "members": { "rows": {{ FEES.members.rows | jsonify }} }
+    },
+    "venues": { {% for r in FEES.members.rows %}{%- assign slo = site.data.schedule.locations | where: 'id', r.venue | first -%}{%- assign mv = site.data.venues.venues | where: 'id', slo.slug | first -%}{{ r.venue | jsonify }}: {{ mv.name[L] | jsonify }}{% unless forloop.last %},{% endunless %}{% endfor %} },
+    "ui": { {% for kv in MU %}{%- if kv[0] == 'steps' or kv[0] == 'side' -%}{{ kv[0] | jsonify }}: {{ kv[1] | map: L | jsonify }}{%- elsif kv[0] == 'months' -%}"months": {{ kv[1][L] | jsonify }}{%- else -%}{{ kv[0] | jsonify }}: {{ kv[1][L] | jsonify }}{%- endif -%}{% unless forloop.last %}, {% endunless %}{% endfor %} },
+    "errors": { {% for kv in ME %}{{ kv[0] | jsonify }}: {{ kv[1][L] | default: kv[1].es | jsonify }}{% unless forloop.last %}, {% endunless %}{% endfor %} }
+  }
+  </script>
+
+</main>
+
+{% include footer.html %}

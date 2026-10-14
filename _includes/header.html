@@ -280,6 +280,21 @@
       <link href="/styles/press.min.css?v={{ site.data.assets["press.min.css"] }}" rel="stylesheet">
       <script src="/scripts/press.min.js?v={{ site.data.assets["press.min.js"] }}" defer></script>
     {% endif %}
+    {%- comment -%}
+      Membership: the signup and the pages around it. GitHub Pages cannot send
+      headers, so the Content-Security-Policy is a meta tag (spec 12.3): the
+      forms may post only to this site and to the Worker, and scripts may only
+      fetch from them. pricing.min.js is the engine the Worker prices with.
+    {%- endcomment %}
+    {% if page.layout == 'signup' or page.layout == 'membership' %}
+      {%- assign su_ep = site.membership_endpoint | default: site.data.membership.endpoint %}
+      <meta http-equiv="Content-Security-Policy" content="form-action 'self' {{ su_ep }}; connect-src 'self' {{ su_ep }}">
+      <link href="/styles/membership.min.css?v={{ site.data.assets["membership.min.css"] }}" rel="stylesheet">
+      {%- if page.layout == 'signup' %}
+      <script src="/scripts/pricing.min.js?v={{ site.data.assets["pricing.min.js"] }}" defer></script>
+      {%- endif %}
+      <script src="/scripts/membership.min.js?v={{ site.data.assets["membership.min.js"] }}" defer></script>
+    {% endif %}
     {% if page.i18n-ref == 'fees-UjbuGtGz' %}
       <link href="/styles/fees.min.css?v={{ site.data.assets["fees.min.css"] }}" rel="stylesheet">
       <script src="/scripts/fees.min.js?v={{ site.data.assets["fees.min.js"] }}" defer></script>

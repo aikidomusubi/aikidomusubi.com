@@ -51,6 +51,17 @@ band:
 columns:
   - from_nav: classes
     label: { es: "Practicar", ca: "Practicar", en: "Training", ja: "稽古" }
+    # `extra` follows the nav's items in this column only. The membership's
+    # three standing links: the members area, the terms, and the withdrawal
+    # function, which the EU wants reachable from every page of the site
+    # (Directive 2023/2673, from 19 June 2026). The footer is on every page.
+    extra:
+      - label: { es: "Área de miembros", ca: "Àrea de membres", en: "Members area", ja: "会員ページ" }
+        url:   { es: "/miembros/", ca: "/ca/membres/", en: "/en/members/", ja: "/ja/members/" }
+      - label: { es: "Condiciones de la cuota", ca: "Condicions de la quota", en: "Membership terms", ja: "会費規約" }
+        url:   { es: "/condiciones-de-la-cuota/", ca: "/ca/condicions-de-la-quota/", en: "/en/membership-terms/", ja: "/ja/membership-terms/" }
+      - label: { es: "Desistir del contrato", ca: "Desistir del contracte", en: "Withdraw from the contract", ja: "契約の解約" }
+        url:   { es: "/desistimiento/", ca: "/ca/desistiment/", en: "/en/withdrawal/", ja: "/ja/withdrawal/" }
 
   - from_nav: about
     label: { es: "Sobre nosotros", ca: "Sobre nosaltres", en: "About us", ja: "私たちについて" }

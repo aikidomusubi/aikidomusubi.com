@@ -1,0 +1,137 @@
+{% include header.html %}
+{%- assign PH_ORG = '{org}' -%}
+{%- assign PH_RESOURCES = '{resources}' -%}
+{%- assign PH_URL = '{url}' -%}
+{%- comment -%}
+  The pages around the signup, as approved in
+  docs/mockups/inscripcion-pasos.html and inscripcion-paginas.html.
+  `kind` in the front matter picks one:
+
+    thanks         /inscripcion/gracias/ — where Stripe sends people back. The
+                   address carries no session id and no personal data (spec
+                   6.5), so the page cannot know who arrived: it says what is
+                   true for everybody, with "if" where it has to.
+    members        /miembros/ — what the members area is and the one button
+                   to Stripe's customer portal. No database, no password.
+    withdrawal     /desistimiento/ — the withdrawal function the EU requires
+                   from 19 June 2026 (Directive 2023/2673).
+    withdrawal_ok  its confirmation.
+    terms          /condiciones-de-la-cuota/ — the text is the page's content.
+
+  Strings: _data/membership.yml. No analytics on any of these.
+{%- endcomment -%}
+{%- assign L = page.lang -%}
+{%- if L == 'ja' %}{% assign ORGN = site.data.footer.ui.org_ja %}{% else %}{% assign ORGN = site.data.footer.ui.org %}{% endif -%}
+{%- assign MS = site.data.membership -%}
+{%- assign MT = MS.thanks -%}
+{%- assign MM = MS.members -%}
+{%- assign MW = MS.withdrawal -%}
+{%- assign endpoint = site.membership_endpoint | default: MS.endpoint -%}
+{%- assign portal = MS.portal_url[site.membership_mode] | default: MS.portal_url.live -%}
+
+<main id="main" tabindex="-1" class="mb-main mb-{{ page.kind }}">
+
+  {% include section-strip.html %}
+
+  {%- if page.kind == 'thanks' %}
+  <h1 class="mb-ok">{{ MT.title[L] }}</h1>
+  <p class="mb-lede">{{ MT.lede[L] }}</p>
+  <ol class="mb-howto">
+    {%- for s in MT.steps %}
+    <li><span>{{ s[L] | replace: PH_RESOURCES, MS.urls.resources[L] }}</span></li>
+    {%- endfor %}
+  </ol>
+  <div class="mb-two">
+    <section class="mb-box" aria-labelledby="mb-members-h">
+      <h2 class="mb-box-h" id="mb-members-h">{{ MT.members_h[L] }}</h2>
+      <p>{{ MT.members_b[L] }}</p>
+      <a class="mb-arrow" href="{{ MS.urls.members[L] }}">{{ MT.members_go[L] }}</a>
+    </section>
+    <section class="mb-box" aria-labelledby="mb-withdraw-h">
+      <h2 class="mb-box-h" id="mb-withdraw-h">{{ MT.withdraw_h[L] }}</h2>
+      <p>{{ MT.withdraw_b[L] }}</p>
+      <a class="mb-arrow" href="{{ MS.urls.withdrawal[L] }}">{{ MT.withdraw_go[L] }}</a>
+    </section>
+  </div>
+
+  {%- elsif page.kind == 'members' %}
+  {%- assign ph_lede = MM.lede[L] %}
+  {% include page-head.html lede=ph_lede %}
+  {%- if portal and portal != '' %}
+  <p class="mb-cta"><a class="mb-btn" href="{{ portal }}" rel="noopener">{{ MM.go[L] }}</a></p>
+  {%- else %}
+  <p class="mb-soon">{{ MM.soon[L] }}</p>
+  {%- endif %}
+  <div class="mb-two">
+    <section aria-labelledby="mb-self-h">
+      <h2 class="mb-h2" id="mb-self-h">{{ MM.self_h[L] }}</h2>
+      <ul class="mb-can">
+        {%- for s in MM.self %}<li>{{ s[L] }}</li>{% endfor %}
+      </ul>
+    </section>
+    <section aria-labelledby="mb-ask-h">
+      <h2 class="mb-h2" id="mb-ask-h">{{ MM.ask_h[L] }}</h2>
+      <ul class="mb-can mb-ask">
+        {%- for s in MM.ask %}<li>{{ s[L] }}</li>{% endfor %}
+      </ul>
+      <p class="mb-small"><a href="{{ MS.urls.contact[L] }}">{{ site.data.footer.ui.email[L] }}: info@aikidomusubi.com</a></p>
+    </section>
+  </div>
+  <h2 class="mb-h2">{{ MM.how_h[L] }}</h2>
+  <ol class="mb-howto">
+    {%- for s in MM.how %}<li><span>{{ s[L] }}</span></li>{% endfor %}
+  </ol>
+
+  {%- elsif page.kind == 'withdrawal' %}
+  {%- assign ph_lede = MW.lede[L] %}
+  {% include page-head.html lede=ph_lede %}
+  <p class="mb-after">{{ MW.after[L] | replace: PH_URL, MS.urls.members[L] }}</p>
+  <div class="su-errors" id="wd-errors" tabindex="-1" role="alert" hidden>
+    <h2 class="su-errors-h">{{ MS.ui.errors_h[L] }}</h2>
+    <ul></ul>
+  </div>
+  <form class="mb-form" id="wd-form" method="post" action="{{ endpoint }}/withdrawal" novalidate accept-charset="utf-8"
+        data-ok="{{ MS.urls.withdrawal_ok[L] }}" data-generic="{{ MS.errors.generic[L] | escape }}" data-network="{{ MS.errors.network[L] | escape }}">
+    <input type="hidden" name="lang" value="{{ L }}">
+    <div class="su-hp" aria-hidden="true">
+      <label for="wd-website">{{ MS.ui.honeypot[L] }}</label>
+      <input type="text" id="wd-website" name="website" tabindex="-1" autocomplete="off" value="">
+    </div>
+    <div class="su-row">
+      <div class="su-fld">
+        <label for="wd-name">{{ MW.name[L] }} <span class="su-req">{{ MS.ui.required[L] }}</span></label>
+        <input class="su-in" id="wd-name" name="name" type="text" autocomplete="name" maxlength="160" aria-describedby="wd-name-err">
+        <p class="su-err" id="wd-name-err" hidden></p>
+      </div>
+      <div class="su-fld">
+        <label for="wd-email">{{ MW.email[L] }} <span class="su-req">{{ MS.ui.required[L] }}</span></label>
+        <input class="su-in" id="wd-email" name="email" type="email" inputmode="email" autocomplete="email" maxlength="254" aria-describedby="wd-email-err">
+        <p class="su-err" id="wd-email-err" hidden></p>
+      </div>
+    </div>
+    <div class="su-fld">
+      <label for="wd-statement">{{ MW.statement[L] }}</label>
+      <textarea class="su-in mb-area" id="wd-statement" name="statement" rows="4" maxlength="1500" aria-describedby="wd-statement-hint wd-statement-err">{{ MW.statement_default[L] | replace: PH_ORG, ORGN }}</textarea>
+      <p class="su-hint" id="wd-statement-hint">{{ MW.statement_hint[L] }}</p>
+      <p class="su-err" id="wd-statement-err" hidden></p>
+    </div>
+    <p class="su-err su-err-form" id="wd-form-err" hidden></p>
+    <button type="submit" class="su-btn mb-confirm" data-sending="{{ MS.ui.sending[L] }}">{{ MW.confirm[L] }}</button>
+    <p class="su-hint">{{ MW.confirm_note[L] }}</p>
+  </form>
+
+  {%- elsif page.kind == 'withdrawal_ok' %}
+  <h1 class="mb-ok">{{ MW.ok_title[L] }}</h1>
+  <p class="mb-lede">{{ MW.ok_lede[L] }}</p>
+  <p class="mb-stamp" id="wd-stamp" data-tpl="{{ MW.ok_at[L] }}" hidden></p>
+  <ol class="mb-howto">
+    {%- for s in MW.ok_steps %}<li><span>{{ s[L] }}</span></li>{% endfor %}
+  </ol>
+
+  {%- else %}
+  {{ content }}
+  {%- endif %}
+
+</main>
+
+{% include footer.html %}

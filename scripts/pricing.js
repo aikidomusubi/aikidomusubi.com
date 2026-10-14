@@ -1,4 +1,4 @@
-/* global module */
+/* global module, self */
 /* Membership pricing — ONE engine for the signup page and for the server.
  *
  * The signup page loads this file to show a live total; the Cloudflare Worker

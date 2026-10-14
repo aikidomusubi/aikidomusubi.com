@@ -88,8 +88,13 @@
     });
   }
 
+  // Pages that hold a form with personal data (the signup and the pages
+  // around it) never load analytics, whatever was consented to: spec 10.3
+  // wants form values and Stripe session ids kept out of it entirely.
+  var NO_ANALYTICS = {{ page.no_analytics | default: false }};
+
   function loadGTM() {
-    if (window.__amGtmLoaded) return;
+    if (NO_ANALYTICS || window.__amGtmLoaded) return;
     window.__amGtmLoaded = true;
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });

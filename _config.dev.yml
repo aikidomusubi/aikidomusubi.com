@@ -14,3 +14,8 @@
 # `.git` and `.svn` are Jekyll's own defaults, restated because setting the
 # key replaces them.
 keep_files: [.git, .svn, mockups]
+
+# Membership: the dev server talks to a local Worker (`npm run dev` in
+# services/membership, port 8787) in Stripe test mode, never to the live API.
+membership_endpoint: "http://localhost:8787"
+membership_mode: test
