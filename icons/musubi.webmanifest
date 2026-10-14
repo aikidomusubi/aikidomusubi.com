@@ -17,9 +17,9 @@ sitemap: false
   "theme_color": "#111314",
   "background_color": "#111314",
   "icons": [
-    { "src": "/icons/musubi-app-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "/icons/musubi-app-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "/icons/musubi-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
-    { "src": "/icons/musubi-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    { "src": "/icons/musubi2-app-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/musubi2-app-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/musubi2-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "/icons/musubi2-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ]
 }
