@@ -45,7 +45,7 @@ TEST_CLOCK = ""
 
 [[kv_namespaces]]
 binding = "KV"
-id = "REPLACE_WITH_TEST_KV_ID"
+id = "1c3d9420d3a641ceba848d1ff5e99479"
 
 # Ten posts a minute per IP on /checkout and /withdrawal. Counted in memory by
 # Cloudflare, so it costs no KV writes. namespace_id is any number unique in
