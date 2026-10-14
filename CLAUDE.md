@@ -762,7 +762,7 @@ and `courses` was renamed `events`. `photos.md`, `videos.md`, `courses.md` and
 | `gulpfile.js` | Gulp tasks for CSS/JS compilation |
 | `_includes/fonts-ja.css` | **Generated** `@font-face` set for the Japanese faces, inlined on `/ja/` pages — see below |
 | `tools/subset-ja-fonts.py` | **Regenerates** the Japanese faces and that include — re-run after editing Japanese copy |
-| `tools/make-favicons.py` | **Generates** every favicon and app icon (`/favicon.ico`, `icons/musubi-*`) from `tools/favicon-source/logo-15.png`. If the picture changes, change the file names too: favicons are cached hard |
+| `tools/make-favicons.py` | **Generates** every favicon and app icon (`icons/musubi-*`, and `/favicon.ico` as a copy) from `tools/favicon-source/logo-15.png`. If the picture changes, change the file names too: favicons are cached hard |
 
 ## Layout: one scale, one column, one measure
 
