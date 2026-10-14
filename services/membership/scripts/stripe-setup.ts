@@ -179,7 +179,7 @@ async function webhook(endpoint: string) {
   });
   say(`  + webhook ${endpoint} (API ${Stripe.API_VERSION})`);
   // Straight into Cloudflare, never onto the screen.
-  const r = spawnSync('npx', ['wrangler', 'secret', 'put', 'STRIPE_WEBHOOK_SECRET', ...(m === 'live' ? ['--env', 'live'] : [])],
+  const r = spawnSync('npx', ['wrangler', 'secret', 'put', 'STRIPE_WEBHOOK_SECRET', '--env', m === 'live' ? 'live' : ''],
     { cwd: pkg, input: created.secret, stdio: ['pipe', 'inherit', 'inherit'] });
   if (r.status !== 0) {
     say('  could not store the signing secret with wrangler. Roll it in the Dashboard (Developers > Webhooks) and run:');

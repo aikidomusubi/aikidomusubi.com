@@ -63,7 +63,7 @@ export function stripeFor(m: 'test' | 'live', key: string | undefined): Stripe {
 // KV through wrangler, against the deployed namespace of that mode.
 export function kv(m: 'test' | 'live'): KVNamespace {
   const base = ['wrangler', 'kv', 'key'];
-  const tail = ['--binding', 'KV', '--remote', ...(m === 'live' ? ['--env', 'live'] : [])];
+  const tail = ['--binding', 'KV', '--remote', '--env', m === 'live' ? 'live' : ''];
   const run = (a: string[]) => execFileSync('npx', [...base, ...a, ...tail], { cwd: pkg, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] });
   return {
     get: async (k: string) => { try { return run(['get', k]).trim() || null; } catch { return null; } },

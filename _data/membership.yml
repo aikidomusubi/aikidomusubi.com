@@ -27,7 +27,7 @@ endpoint: "https://api.aikidomusubi.com"
 # under Settings > Billing > Customer portal once the portal is switched on.
 # The site's own build uses `live`; the Worker uses whichever matches its mode.
 portal_url:
-  test: ""
+  test: "https://billing.stripe.com/p/login/test_cNieVc4S8eNR9Bv9Rq7AI01"
   live: ""
 
 # Stripe Checkout has no Catalan. Catalan pages pay in Spanish, and the page

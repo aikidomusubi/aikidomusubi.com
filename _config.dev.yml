@@ -15,7 +15,8 @@
 # key replaces them.
 keep_files: [.git, .svn, mockups]
 
-# Membership: the dev server talks to a local Worker (`npm run dev` in
-# services/membership, port 8787) in Stripe test mode, never to the live API.
-membership_endpoint: "http://localhost:8787"
+# Membership: the dev server talks to the deployed TEST Worker (Stripe sandbox
+# "Cuotas pruebas"), never to the live API. For a Worker on this machine
+# (`npm run dev` in services/membership) use http://localhost:8787 instead.
+membership_endpoint: "https://membership-test.aikidomusubi.workers.dev"
 membership_mode: test
