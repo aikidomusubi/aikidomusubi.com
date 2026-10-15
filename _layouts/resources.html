@@ -141,9 +141,20 @@
             {%- assign want = '/files/resources-uStNjtHz-' | append: it.file | append: '-es.pdf' -%}
             {%- assign got = site.static_files | where: 'path', want | first -%}
           {%- endunless -%}
+          {%- comment -%}
+            A document that exists in one language only (the statutes, in
+            Catalan) falls back to that language, the first one `langs` names.
+          {%- endcomment -%}
+          {%- unless got -%}
+            {%- assign only = it.langs | split: ' ' | first | downcase -%}
+            {%- assign want = '/files/resources-uStNjtHz-' | append: it.file | append: '-' | append: only | append: '.pdf' -%}
+            {%- assign got = site.static_files | where: 'path', want | first -%}
+          {%- endunless -%}
           {%- if got %}{% assign href = want %}{% endif -%}
         {%- elsif it.ref -%}
           {%- assign tgt = site.pages | where: 'i18n-ref', it.ref | where: 'lang', L | first -%}
+          {%- comment -%} A page in one language only is still the page. {%- endcomment -%}
+          {%- unless tgt %}{% assign tgt = site.pages | where: 'i18n-ref', it.ref | first %}{% endunless -%}
           {%- if tgt %}{% assign href = tgt.url | append: it.anchor %}{% endif -%}
         {%- elsif it.panel -%}
           {%- comment -%}
