@@ -7,7 +7,7 @@ description: "The terms of the training membership: what it covers, how and when
 permalink: /en/membership-terms/
 lang: en
 i18n-ref: membership-terms-Rb9vF6sJ
-last_modified: 2026-10-14
+last_modified: 2026-10-15
 no_analytics: true
 review_pending: true
 ---
@@ -23,9 +23,13 @@ Version {{ MS.terms_version }}, in force from 1 January 2027. These are the term
 
 {% if page.review_pending %}<p class="mb-draft">Draft awaiting the legal advisor's review.</p>{% endif %}
 
-## 1. Who we are
+## 1. Who we are, and what being a member means
 
-{{ FT.org }}, a non-profit association with tax number (CIF) {{ FT.cif }}, registered at {{ FT.address | replace: '<br>', ', ' }}, Spain. Email: [info@aikidomusubi.com](mailto:info@aikidomusubi.com). Phone and WhatsApp: +34 717 171 177.
+{{ FT.org }}, a non-profit association with tax number (CIF) {{ FT.cif }}, entered in the Generalitat de Catalunya's Register of Associations (section 1, Barcelona) under number {{ FT.registry }}, registered at {{ FT.address | replace: '<br>', ', ' }}, Spain. Email: [info@aikidomusubi.com](mailto:info@aikidomusubi.com). Phone and WhatsApp: +34 717 171 177.
+
+When you sign up you **apply to become a member** of the association, for yourself and for each person you sign up. Membership carries the rights and duties set out in the association's statutes, which you can ask us for at any time: among them, a voice and a vote at the general assembly, and supporting the association through the fee. The fees are approved by the general assembly, on the board's proposal.
+
+The board admits new members. If at its first meeting it did not admit someone, we would refund in full whatever you had paid for that person.
 
 ## 2. What the fee covers, and what it does not
 
@@ -59,11 +63,18 @@ The membership has no end date: it renews automatically at the end of each perio
 
 ## 7. Cancelling
 
-You can cancel whenever you like, with no penalty, in your [members area]({{ MS.urls.members.en }}), by email, by phone or at the dojo. Cancellation takes effect at the end of the period already paid: until then you can keep training, and nothing more is charged. We confirm it by email.
+You can cancel whenever you like, **with no penalty and at no cost**: in your [members area]({{ MS.urls.members.en }}), by emailing [info@aikidomusubi.com](mailto:info@aikidomusubi.com), or by asking at the dojo, where we record it in writing. Cancellation takes effect at the end of the period already paid: until then you can keep training, and nothing more is charged. We confirm it by email.
+
+On a quarterly or annual plan you can also ask us to refund the months you have not started (section 8).
+
+As the statutes provide, not paying the fee once we have told you about it is also a cause for membership to end (section 5).
 
 ## 8. Refunds
 
-The unused part of a paid period, monthly, quarterly or annual, is not refunded, except when you exercise the right of withdrawal (section 12).
+- **Monthly plan.** There is nothing to refund when you cancel: cancellation takes effect at the end of the month already paid.
+- **Quarterly or annual plan.** If you cancel before the quarter or the year is over, you can ask us to refund the months you have not yet started, without giving a reason. We work it out as if you had paid month by month: from what you paid for that period we take off the current monthly fee for each month already started, with the family discount if you have it. For example, on an annual plan for 17 and over, if you cancel in the fourth month of the year we refund €360 − 4 × €39 = €204. If the result is zero or less, there is no refund. The membership ends on the day you ask, and we refund the amount within 14 days, by the same means of payment. The free keikogi (section 14) is not deducted.
+- **If the association ends your membership** for any reason other than non-payment, or stops holding the classes your fee covers, we refund the part of the paid period you could not use.
+- **Withdrawal**, in the 14 days after signing up: section 12.
 
 ## 9. Changing people or period
 
@@ -79,11 +90,29 @@ If the general assembly approves new fees, we tell you in writing **at least one
 
 ## 12. Right of withdrawal
 
-You may withdraw from the membership within **14 calendar days** of the day you sign up, without giving a reason. The simplest way is the [withdrawal form]({{ MS.urls.withdrawal.en }}), which sends you an acknowledgement with the date and time; any clear statement by email, phone or at the dojo also counts.
+You have the right to withdraw from the membership within **14 calendar days** of the day you sign up, without giving any reason.
 
-When you sign up you expressly ask to start training straight away, before those 14 days are over. So if you withdraw, you pay only the share for the days up to when you tell us, and we refund the rest **within 14 days**, by the same means of payment.
+To exercise it, tell us of your decision by an unequivocal statement. The simplest way is the [withdrawal form]({{ MS.urls.withdrawal.en }}), which sends you an acknowledgement with the date and time; an email to [info@aikidomusubi.com](mailto:info@aikidomusubi.com), a letter to our address or telling us at the dojo also counts. You may use the model form below, but it is not obligatory. To meet the deadline, it is enough for you to tell us before the 14 days are over.
 
-**Model withdrawal form.** To {{ FT.org }}, {{ FT.address | replace: '<br>', ', ' }}, Spain, info@aikidomusubi.com: I hereby give notice that I withdraw from my contract for a training membership concluded on [date]. Name, address, signature (only if sent on paper) and date.
+When you sign up you expressly ask to start training straight away, before that period is over. So if you withdraw, you pay us an amount in proportion to what has been provided up to the moment you tell us, worked out by days, and we refund the rest without undue delay and **within 14 calendar days** of that moment. We use the same means of payment you used, unless you expressly ask for another, and the refund costs you nothing. The membership ends at that moment and nothing more is charged.
+
+**Model withdrawal form** (complete and return this form only if you wish to withdraw from the contract):
+
+> To {{ FT.org }}, {{ FT.address | replace: '<br>', ', ' }}, Spain, info@aikidomusubi.com:
+>
+> I/We (\*) hereby give notice that I/We (\*) withdraw from my/our (\*) contract for the provision of the following service: training membership.
+>
+> Concluded on (\*):
+>
+> Name of consumer(s):
+>
+> Address of consumer(s):
+>
+> Signature of consumer(s) (only if this form is notified on paper):
+>
+> Date:
+>
+> (\*) Delete as appropriate.
 
 ## 13. Federation licence and insurance
 
@@ -93,9 +122,11 @@ Sports insurance is compulsory for training, and it comes with the federation li
 
 On a quarterly or annual plan, each person receives a keikogi on their first enrolment. We hand it over at the dojo once the first full quarter or year has been paid and the 14 days to withdraw are over. It is one per person: a change of period or a new enrolment does not include another, and it cannot be exchanged for money.
 
-## 15. Minors
+## 15. Minors, and pictures
 
-The account holder must be an adult. If the membership includes anyone under 18, the account holder declares that they are that person's parent or legal guardian. The paper enrolment form, signed by whoever holds parental authority or guardianship, is still required.
+The account holder must be an adult. If the membership includes anyone under 18, the account holder declares that they are that person's parent or legal guardian, and consents to their being a member, as the statutes require; for anyone under 14, that consent also covers the processing of their data. The paper enrolment form, signed by whoever holds parental authority or guardianship, is still required.
+
+**Photos and videos.** We take photos and videos at classes, courses and events. Publishing on the website or on social media any picture in which you can be recognised needs your written consent, or a parent's or guardian's for a minor, on a separate authorisation we give you at the dojo. It is voluntary: not giving it changes nothing about your membership, and you can withdraw it at any time by email.
 
 ## 16. Data protection
 
@@ -103,7 +134,7 @@ How we handle your data is set out in the [privacy policy]({{ MS.urls.privacy.en
 
 ## 17. Complaints and contact
 
-For any question or complaint, write to [info@aikidomusubi.com](mailto:info@aikidomusubi.com) or call +34 717 171 177. Official complaint forms are available at the dojo.
+For any question, complaint or claim, write to [info@aikidomusubi.com](mailto:info@aikidomusubi.com) or call +34 717 171 177; we reply within one month at most. Official complaint forms (fulls oficials de queixa, reclamació i denúncia) are available at the dojo. You can also contact the Agència Catalana del Consum or your town hall's consumer information office. The association is not part of the consumer arbitration system.
 
 ## 18. Governing law
 

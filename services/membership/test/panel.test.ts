@@ -8,6 +8,7 @@ import { sign } from '../src/crypto.ts';
 import { demoSubscriptions } from '../src/panel/demo.ts';
 import { family, tasks } from '../src/panel/model.ts';
 import { greeting } from '../src/panel/views.ts';
+import { leaveMath } from '../src/leave.ts';
 import type { Env } from '../src/env.ts';
 
 const API = 'https://api.aikidomusubi.com';
@@ -185,6 +186,28 @@ describe('leaving and coming back', () => {
     const cookie = await signIn(env);
     const carla = await (await worker.fetch(get('/panel/miembros?id=sub_demoVidal001', cookie), env)).text();
     expect(carla).toMatch(/class="banner info">.*Baja: la cuota termina el/s);
+  });
+});
+
+describe('leaving a quarterly or annual plan early', () => {
+  it('keeps the monthly fee for every month started, and refunds the rest', () => {
+    const start = Date.UTC(2027, 0, 5, 8);
+    // Annual, 17 and over, cancelled in the fourth month: 360 − 4 × 39 = 204.
+    expect(leaveMath({ paid: 360, start, months: 12, monthly: 39, now: Date.UTC(2027, 3, 20) })).toEqual({ started: 4, keep: 156, refund: 204 });
+    // Quarterly, on the first day: one month started.
+    expect(leaveMath({ paid: 99, start, months: 3, monthly: 39, now: start })).toEqual({ started: 1, keep: 39, refund: 60 });
+    // Never more kept than was paid.
+    expect(leaveMath({ paid: 99, start, months: 3, monthly: 39, now: Date.UTC(2027, 2, 20) })).toEqual({ started: 3, keep: 99, refund: 0 });
+  });
+  it('is offered, and worked out, only for quarterly and annual families', async () => {
+    const env = testEnv();
+    const cookie = await signIn(env);
+    const garcia = await (await worker.fetch(get('/panel/miembros?id=sub_demoGarcia01', cookie), env)).text();
+    expect(garcia).toContain('devolviendo los meses no empezados');
+    const carla = await (await worker.fetch(get('/panel/miembros?id=sub_demoVidal001', cookie), env)).text();
+    expect(carla).not.toContain('devolviendo los meses no empezados');
+    const ask = await (await worker.fetch(get('/panel/confirmar?a=leave&s=sub_demoGarcia01&back=m', cookie), env)).text();
+    expect(ask).toMatch(/meses? empezados? × 77\s€ al mes/);
   });
 });
 

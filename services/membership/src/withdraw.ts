@@ -33,7 +33,7 @@ export function pendingPayment(sub: Stripe.Subscription): boolean {
   return Boolean(inv && inv.status === 'open' && inv.amount_due > 0);
 }
 
-async function paymentOf(st: Stripe, invoice: string): Promise<{ payment_intent: string } | { charge: string }> {
+export async function paymentOf(st: Stripe, invoice: string): Promise<{ payment_intent: string } | { charge: string }> {
   const pays = await st.invoicePayments.list({ invoice, status: 'paid', limit: 5 });
   for (const ip of pays.data) {
     const p = ip.payment;

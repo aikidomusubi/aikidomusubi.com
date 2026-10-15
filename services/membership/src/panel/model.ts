@@ -43,7 +43,8 @@ export interface Family {
   withdrawalInWindow: boolean;        // within the 14 days; after them it is a cancellation
   ended: number | null;               // a former membership: when it ended, and why
   endReason: EndReason | null;
-  refunded: number | null;            // what a settled withdrawal gave back
+  refunded: number | null;            // what a withdrawal or an early leave gave back
+  canLeaveEarly: boolean;             // quarterly or annual: months not started can be refunded
   before: { from: number; to: number }[];  // earlier memberships of the same customer
   people: Person[];
 }
@@ -128,7 +129,8 @@ export function family(sub: Stripe.Subscription): Family {
     withdrawalInWindow: wd != null && inWindow(sub, wd),
     ended,
     endReason,
-    refunded: meta.withdrawal_refund ? Number(meta.withdrawal_refund) : null,
+    refunded: meta.withdrawal_refund ? Number(meta.withdrawal_refund) : meta.early_leave_refund ? Number(meta.early_leave_refund) : null,
+    canLeaveEarly: !ended && (meta.period === 'quarterly' || meta.period === 'annual'),
     before: [],
     people
   };

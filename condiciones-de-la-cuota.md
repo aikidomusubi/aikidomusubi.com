@@ -7,7 +7,7 @@ description: "Las condiciones de la cuota de entrenamiento: qué cubre, cómo y 
 permalink: /condiciones-de-la-cuota/
 lang: es
 i18n-ref: membership-terms-Rb9vF6sJ
-last_modified: 2026-10-14
+last_modified: 2026-10-15
 no_analytics: true
 review_pending: true
 ---
@@ -23,9 +23,13 @@ Versión {{ MS.terms_version }}, en vigor desde el 1 de enero de 2027. Son las c
 
 {% if page.review_pending %}<p class="mb-draft">Borrador pendiente de la revisión del asesor legal.</p>{% endif %}
 
-## 1. Quiénes somos
+## 1. Quiénes somos, y qué es ser socio o socia
 
-{{ FT.org }}, asociación sin ánimo de lucro con CIF {{ FT.cif }} y domicilio en {{ FT.address | replace: '<br>', ', ' }}. Correo: [info@aikidomusubi.com](mailto:info@aikidomusubi.com). Teléfono y WhatsApp: +34 717 171 177.
+{{ FT.org }}, asociación sin ánimo de lucro con CIF {{ FT.cif }}, inscrita en el Registro de Asociaciones de la Generalitat de Catalunya (sección 1.ª, Barcelona) con el número {{ FT.registry }}, y con domicilio en {{ FT.address | replace: '<br>', ', ' }}. Correo: [info@aikidomusubi.com](mailto:info@aikidomusubi.com). Teléfono y WhatsApp: +34 717 171 177.
+
+Al inscribirte **solicitas ser socio o socia** de la asociación, por ti y por cada persona que inscribes. Ser socio da los derechos y los deberes que fijan los estatutos, que puedes pedirnos cuando quieras: entre ellos, participar con voz y voto en la asamblea general, y contribuir a sostener la asociación con la cuota. Las cuotas las aprueba la asamblea general, a propuesta de la junta directiva.
+
+La junta directiva admite las inscripciones. Si en su primera reunión no admitiera a alguna persona, te devolveríamos íntegro lo que hubieras pagado por ella.
 
 ## 2. Qué cubre la cuota, y qué no
 
@@ -59,11 +63,18 @@ La cuota no tiene fecha de fin: se renueva sola al acabar cada periodo y se cobr
 
 ## 7. Baja
 
-Puedes darte de baja cuando quieras, sin penalización, en tu [área de miembros]({{ MS.urls.members.es }}), por correo, por teléfono o en el dojo. La baja se aplica al final del periodo ya pagado: hasta entonces puedes seguir entrenando, y no habrá más cobros. Te confirmamos la baja por correo.
+Puedes darte de baja cuando quieras, **sin penalización ni coste**: en tu [área de miembros]({{ MS.urls.members.es }}), con un correo a [info@aikidomusubi.com](mailto:info@aikidomusubi.com) o pidiéndolo en el dojo, donde la dejamos registrada por escrito. La baja se aplica al final del periodo ya pagado: hasta entonces puedes seguir entrenando, y no habrá más cobros. Te la confirmamos por correo.
+
+Con una cuota trimestral o anual, puedes pedir además que te devolvamos los meses que no hayas empezado (apartado 8).
+
+Como prevén los estatutos, también es causa de baja no pagar la cuota una vez que te hemos avisado (apartado 5).
 
 ## 8. Devoluciones
 
-No se devuelve la parte no usada de un periodo pagado, sea mensual, trimestral o anual, salvo cuando ejerces el derecho de desistimiento (apartado 12).
+- **Cuota mensual.** Al darte de baja no hay nada que devolver: la baja se aplica al final del mes ya pagado.
+- **Cuota trimestral o anual.** Si te das de baja antes de que acabe el trimestre o el año, puedes pedirnos que te devolvamos los meses que aún no hayas empezado, sin dar explicaciones. Lo calculamos como si hubieras pagado mes a mes: a lo que pagaste por ese periodo le restamos la cuota mensual vigente de cada mes ya empezado, con el descuento familiar si lo tienes. Por ejemplo, con una cuota anual de 17 años o más, si te das de baja en el cuarto mes del año te devolvemos 360 € − 4 × 39 € = 204 €. Si el resultado es cero o menos, no hay devolución. La cuota termina el día en que lo pides, y te devolvemos el importe en 14 días como máximo, por el mismo medio de pago. El keikogi de regalo (apartado 14) no se descuenta.
+- **Si es la asociación quien termina tu cuota**, por una causa que no sea el impago, o si deja de dar las clases que tu cuota cubre, te devolvemos la parte del periodo pagado que no hayas podido usar.
+- **Desistimiento**, durante los 14 días siguientes a la inscripción: apartado 12.
 
 ## 9. Cambios de personas o de periodo
 
@@ -79,11 +90,29 @@ Si la asamblea aprueba nuevas cuotas, te avisamos por escrito **con al menos un 
 
 ## 12. Derecho de desistimiento
 
-Puedes desistir de la cuota durante los **14 días naturales** siguientes al día en que te inscribes, sin dar explicaciones. La forma más sencilla es el formulario de [desistimiento]({{ MS.urls.withdrawal.es }}), que te devuelve un acuse con la fecha y la hora; también vale cualquier declaración clara por correo, por teléfono o en el dojo.
+Tienes derecho a desistir de la cuota en un plazo de **14 días naturales** desde el día en que te inscribes, sin necesidad de justificación.
 
-Al inscribirte nos pides expresamente empezar a entrenar enseguida, antes de que acaben esos 14 días. Por eso, si desistes, pagas solo la parte proporcional a los días transcurridos hasta que nos lo comunicas, y te devolvemos el resto **en 14 días como máximo**, por el mismo medio de pago.
+Para ejercerlo, comunícanoslo con una declaración inequívoca. La forma más sencilla es el formulario de [desistimiento]({{ MS.urls.withdrawal.es }}), que te envía un acuse con la fecha y la hora; también vale un correo a [info@aikidomusubi.com](mailto:info@aikidomusubi.com), una carta a nuestro domicilio o decírnoslo en el dojo. Puedes usar el modelo de formulario de abajo, aunque no es obligatorio. Para cumplir el plazo, basta con que nos lo comuniques antes de que acaben los 14 días.
 
-**Modelo de formulario de desistimiento.** A la atención de {{ FT.org }}, {{ FT.address | replace: '<br>', ', ' }}, info@aikidomusubi.com: por la presente comunico que desisto de mi contrato de cuota de entrenamiento celebrado el [fecha]. Nombre, dirección, firma (solo si se envía en papel) y fecha.
+Al inscribirte nos pides expresamente empezar a entrenar enseguida, antes de que acabe ese plazo. Por eso, si desistes, nos abonas un importe proporcional a la parte ya prestada hasta el momento en que nos lo comunicas, calculado por días, y te devolvemos el resto sin demora y **en 14 días naturales como máximo** desde ese momento. Lo hacemos por el mismo medio de pago que usaste, salvo que nos pidas expresamente otro, y la devolución no te supone ningún gasto. La cuota termina en ese momento y no habrá más cobros.
+
+**Modelo de formulario de desistimiento** (solo tienes que rellenarlo y enviarlo si quieres desistir del contrato):
+
+> A la atención de {{ FT.org }}, {{ FT.address | replace: '<br>', ', ' }}, info@aikidomusubi.com:
+>
+> Por la presente le comunico/comunicamos (\*) que desisto de mi/desistimos de nuestro (\*) contrato de prestación del siguiente servicio: cuota de entrenamiento.
+>
+> Contratado el (\*):
+>
+> Nombre del consumidor o de los consumidores:
+>
+> Domicilio del consumidor o de los consumidores:
+>
+> Firma del consumidor o de los consumidores (solo si el presente formulario se presenta en papel):
+>
+> Fecha:
+>
+> (\*) Táchese lo que no proceda.
 
 ## 13. Licencia federativa y seguro
 
@@ -93,9 +122,11 @@ Para entrenar es obligatorio el seguro deportivo, que va con la licencia federat
 
 Con una cuota trimestral o anual, cada persona recibe un keikogi en su primera inscripción. Lo entregamos en el dojo cuando se ha cobrado el primer trimestre o año completo y han pasado los 14 días de desistimiento. Es uno por persona: un cambio de periodo o una nueva inscripción no incluye otro, y no se cambia por dinero.
 
-## 15. Personas menores de edad
+## 15. Personas menores de edad, e imágenes
 
-Quien paga tiene que ser mayor de edad. Si en la cuota hay personas menores de 18 años, quien paga declara ser su madre, padre, tutora o tutor legal. La hoja de inscripción en papel, firmada por quien tiene la patria potestad o la tutela, sigue siendo necesaria.
+Quien paga tiene que ser mayor de edad. Si en la cuota hay personas menores de 18 años, quien paga declara ser su madre, padre, tutora o tutor legal, y da su consentimiento para que sean socias, como piden los estatutos; para menores de 14 años, ese consentimiento cubre también el tratamiento de sus datos. La hoja de inscripción en papel, firmada por quien tiene la patria potestad o la tutela, sigue siendo necesaria.
+
+**Fotos y vídeos.** En clases, cursos y eventos hacemos fotos y vídeos. Publicar en la web o en redes sociales imágenes en las que se te reconozca requiere tu consentimiento por escrito, o el de madre, padre o tutor si eres menor, en una autorización aparte que te damos en el dojo. Es voluntaria: no darla no cambia nada de tu cuota, y puedes retirarla cuando quieras con un correo.
 
 ## 16. Protección de datos
 
@@ -103,7 +134,7 @@ Cómo tratamos tus datos está en la [política de privacidad]({{ MS.urls.privac
 
 ## 17. Reclamaciones y contacto
 
-Para cualquier duda o queja, escríbenos a [info@aikidomusubi.com](mailto:info@aikidomusubi.com) o llámanos al +34 717 171 177. Tienes a tu disposición hojas oficiales de queja, reclamación y denuncia en el dojo.
+Para cualquier duda, queja o reclamación, escríbenos a [info@aikidomusubi.com](mailto:info@aikidomusubi.com) o llámanos al +34 717 171 177; te contestamos en un mes como máximo. En el dojo tienes a tu disposición hojas oficiales de queja, reclamación y denuncia. También puedes dirigirte a la Agència Catalana del Consum o a la oficina de información al consumidor de tu ayuntamiento. La asociación no está adherida al sistema arbitral de consumo.
 
 ## 18. Ley aplicable
 

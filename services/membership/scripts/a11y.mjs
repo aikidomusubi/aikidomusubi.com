@@ -165,6 +165,9 @@ async function panel(page, width) {
   await page.goto(`${PANEL}/panel/confirmar?a=withdraw&s=sub_demoFont0001&back=p`, { waitUntil: 'networkidle0' });
   await expectText(page, 'h1', 'desistimiento', 'the withdrawal confirmation');
   await stop(page, 'desistimiento', width);
+  await page.goto(`${PANEL}/panel/confirmar?a=leave&s=sub_demoGarcia01&back=m`, { waitUntil: 'networkidle0' });
+  await expectText(page, 'h1', 'meses no empezados', 'the early-leave confirmation');
+  await stop(page, 'baja-devolucion', width);
   await page.goto(`${PANEL}/panel/miembros?f=antiguos`, { waitUntil: 'networkidle0' });
   await stop(page, 'antiguos', width);
   await submit(page, '.fam a.open');

@@ -7,7 +7,7 @@ description: "Les condicions de la quota d'entrenament: què cobreix, com i quan
 permalink: /ca/condicions-de-la-quota/
 lang: ca
 i18n-ref: membership-terms-Rb9vF6sJ
-last_modified: 2026-10-14
+last_modified: 2026-10-15
 no_analytics: true
 review_pending: true
 ---
@@ -23,9 +23,13 @@ Versió {{ MS.terms_version }}, en vigor des de l'1 de gener de 2027. Són les c
 
 {% if page.review_pending %}<p class="mb-draft">Esborrany pendent de la revisió de l'assessor legal.</p>{% endif %}
 
-## 1. Qui som
+## 1. Qui som, i què és ser soci o sòcia
 
-{{ FT.org }}, associació sense ànim de lucre amb CIF {{ FT.cif }} i domicili a {{ FT.address | replace: '<br>', ', ' }}. Correu: [info@aikidomusubi.com](mailto:info@aikidomusubi.com). Telèfon i WhatsApp: +34 717 171 177.
+{{ FT.org }}, associació sense ànim de lucre amb CIF {{ FT.cif }}, inscrita al Registre d'associacions de la Generalitat de Catalunya (secció 1a, Barcelona) amb el número {{ FT.registry }}, i amb domicili a {{ FT.address | replace: '<br>', ', ' }}. Correu: [info@aikidomusubi.com](mailto:info@aikidomusubi.com). Telèfon i WhatsApp: +34 717 171 177.
+
+En inscriure't **sol·licites ser soci o sòcia** de l'associació, per tu i per cada persona que inscrius. Ser soci dona els drets i els deures que fixen els estatuts, que ens pots demanar quan vulguis: entre d'altres, participar amb veu i vot a l'assemblea general, i contribuir a sostenir l'associació amb la quota. Les quotes les aprova l'assemblea general, a proposta de la junta directiva.
+
+La junta directiva admet les inscripcions. Si en la seva primera reunió no admetés alguna persona, et retornaríem íntegre el que haguessis pagat per ella.
 
 ## 2. Què cobreix la quota, i què no
 
@@ -59,11 +63,18 @@ La quota no té data de fi: es renova sola en acabar cada període i es cobra el
 
 ## 7. Baixa
 
-Et pots donar de baixa quan vulguis, sense penalització, a la teva [àrea de membres]({{ MS.urls.members.ca }}), per correu, per telèfon o al dojo. La baixa s'aplica al final del període ja pagat: fins aleshores pots continuar entrenant, i no hi haurà més cobraments. Et confirmem la baixa per correu.
+Et pots donar de baixa quan vulguis, **sense penalització ni cost**: a la teva [àrea de membres]({{ MS.urls.members.ca }}), amb un correu a [info@aikidomusubi.com](mailto:info@aikidomusubi.com) o demanant-ho al dojo, on la deixem registrada per escrit. La baixa s'aplica al final del període ja pagat: fins aleshores pots continuar entrenant, i no hi haurà més cobraments. Te la confirmem per correu.
+
+Amb una quota trimestral o anual, pots demanar a més que et retornem els mesos que no hagis començat (apartat 8).
+
+Com preveuen els estatuts, també és causa de baixa no pagar la quota un cop t'hem avisat (apartat 5).
 
 ## 8. Devolucions
 
-No es retorna la part no utilitzada d'un període pagat, sigui mensual, trimestral o anual, tret que exerceixis el dret de desistiment (apartat 12).
+- **Quota mensual.** En donar-te de baixa no hi ha res a retornar: la baixa s'aplica al final del mes ja pagat.
+- **Quota trimestral o anual.** Si et dones de baixa abans que acabi el trimestre o l'any, ens pots demanar que et retornem els mesos que encara no hagis començat, sense donar explicacions. Ho calculem com si haguessis pagat mes a mes: al que vas pagar per aquell període li restem la quota mensual vigent de cada mes ja començat, amb el descompte familiar si el tens. Per exemple, amb una quota anual de 17 anys o més, si et dones de baixa el quart mes de l'any et retornem 360 € − 4 × 39 € = 204 €. Si el resultat és zero o menys, no hi ha devolució. La quota acaba el dia que ho demanes, i et retornem l'import en 14 dies com a màxim, pel mateix mitjà de pagament. El keikogi de regal (apartat 14) no es descompta.
+- **Si és l'associació qui acaba la teva quota**, per una causa que no sigui l'impagament, o si deixa de fer les classes que la teva quota cobreix, et retornem la part del període pagat que no hagis pogut fer servir.
+- **Desistiment**, durant els 14 dies següents a la inscripció: apartat 12.
 
 ## 9. Canvis de persones o de període
 
@@ -79,11 +90,29 @@ Si l'assemblea aprova noves quotes, t'avisem per escrit **amb almenys un mes d'a
 
 ## 12. Dret de desistiment
 
-Pots desistir de la quota durant els **14 dies naturals** següents al dia que t'inscrius, sense donar explicacions. La manera més senzilla és el formulari de [desistiment]({{ MS.urls.withdrawal.ca }}), que et retorna un justificant amb la data i l'hora; també serveix qualsevol declaració clara per correu, per telèfon o al dojo.
+Tens dret a desistir de la quota en un termini de **14 dies naturals** des del dia que t'inscrius, sense necessitat de justificació.
 
-En inscriure't ens demanes expressament començar a entrenar de seguida, abans que acabin aquests 14 dies. Per això, si desisteixes, pagues només la part proporcional als dies transcorreguts fins que ens ho comuniques, i et retornem la resta **en 14 dies com a màxim**, pel mateix mitjà de pagament.
+Per exercir-lo, comunica-ho amb una declaració inequívoca. La manera més senzilla és el formulari de [desistiment]({{ MS.urls.withdrawal.ca }}), que t'envia un justificant amb la data i l'hora; també serveix un correu a [info@aikidomusubi.com](mailto:info@aikidomusubi.com), una carta al nostre domicili o dir-nos-ho al dojo. Pots fer servir el model de formulari de sota, tot i que no és obligatori. Per complir el termini, n'hi ha prou que ens ho comuniquis abans que acabin els 14 dies.
 
-**Model de formulari de desistiment.** A l'atenció de {{ FT.org }}, {{ FT.address | replace: '<br>', ', ' }}, info@aikidomusubi.com: per la present comunico que desisteixo del meu contracte de quota d'entrenament subscrit el [data]. Nom, adreça, signatura (només si s'envia en paper) i data.
+En inscriure't ens demanes expressament començar a entrenar de seguida, abans que acabi aquest termini. Per això, si desisteixes, ens abones un import proporcional a la part ja prestada fins al moment en què ens ho comuniques, calculat per dies, i et retornem la resta sense demora i **en 14 dies naturals com a màxim** des d'aquell moment. Ho fem pel mateix mitjà de pagament que vas fer servir, tret que ens en demanis expressament un altre, i la devolució no et suposa cap despesa. La quota acaba en aquell moment i no hi haurà més cobraments.
+
+**Model de formulari de desistiment** (només l'has d'emplenar i enviar si vols desistir del contracte):
+
+> A l'atenció de {{ FT.org }}, {{ FT.address | replace: '<br>', ', ' }}, info@aikidomusubi.com:
+>
+> Per la present li comunico/comuniquem (\*) que desisteixo del meu/desistim del nostre (\*) contracte de prestació del servei següent: quota d'entrenament.
+>
+> Contractat el (\*):
+>
+> Nom del consumidor o dels consumidors:
+>
+> Domicili del consumidor o dels consumidors:
+>
+> Signatura del consumidor o dels consumidors (només si aquest formulari es presenta en paper):
+>
+> Data:
+>
+> (\*) Ratlleu el que no correspongui.
 
 ## 13. Llicència federativa i assegurança
 
@@ -93,9 +122,11 @@ Per entrenar és obligatòria l'assegurança esportiva, que va amb la llicència
 
 Amb una quota trimestral o anual, cada persona rep un keikogi en la seva primera inscripció. El lliurem al dojo quan s'ha cobrat el primer trimestre o any complet i han passat els 14 dies de desistiment. És un per persona: un canvi de període o una nova inscripció no n'inclou un altre, i no es canvia per diners.
 
-## 15. Persones menors d'edat
+## 15. Persones menors d'edat, i imatges
 
-Qui paga ha de ser major d'edat. Si a la quota hi ha persones menors de 18 anys, qui paga declara ser-ne la mare, el pare, la tutora o el tutor legal. Continua sent necessari el full d'inscripció en paper, signat per qui té la pàtria potestat o la tutela.
+Qui paga ha de ser major d'edat. Si a la quota hi ha persones menors de 18 anys, qui paga declara ser-ne la mare, el pare, la tutora o el tutor legal, i dona el seu consentiment perquè siguin sòcies, com demanen els estatuts; per als menors de 14 anys, aquest consentiment cobreix també el tractament de les seves dades. Continua sent necessari el full d'inscripció en paper, signat per qui té la pàtria potestat o la tutela.
+
+**Fotos i vídeos.** A les classes, els cursos i els esdeveniments fem fotos i vídeos. Publicar al web o a les xarxes socials imatges en què se't reconegui requereix el teu consentiment per escrit, o el de la mare, el pare o el tutor si ets menor, en una autorització a part que et donem al dojo. És voluntària: no donar-la no canvia res de la teva quota, i la pots retirar quan vulguis amb un correu.
 
 ## 16. Protecció de dades
 
@@ -103,7 +134,7 @@ Com tractem les teves dades és a la [política de privadesa]({{ MS.urls.privacy
 
 ## 17. Reclamacions i contacte
 
-Per a qualsevol dubte o queixa, escriu-nos a [info@aikidomusubi.com](mailto:info@aikidomusubi.com) o truca'ns al +34 717 171 177. Tens a la teva disposició fulls oficials de queixa, reclamació i denúncia al dojo.
+Per a qualsevol dubte, queixa o reclamació, escriu-nos a [info@aikidomusubi.com](mailto:info@aikidomusubi.com) o truca'ns al +34 717 171 177; et responem en un mes com a màxim. Al dojo tens a la teva disposició fulls oficials de queixa, reclamació i denúncia. També et pots adreçar a l'Agència Catalana del Consum o a l'oficina d'informació al consumidor del teu ajuntament. L'associació no està adherida al sistema arbitral de consum.
 
 ## 18. Llei aplicable
 

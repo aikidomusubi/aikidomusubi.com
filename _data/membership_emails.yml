@@ -79,10 +79,10 @@ confirmation:
     ja: "初回の稽古に{venue}の会員証をお持ちください。会員料金の適用に必要です。"
   terms_h: { es: "Las condiciones", ca: "Les condicions", en: "The terms", ja: "規約" }
   terms:
-    es: "Las aceptaste al inscribirte, en la versión {version}: están en <a href=\"{url}\">{url_text}</a>. Lo esencial: te das de baja cuando quieras y se aplica al final del periodo pagado; no hay devolución de la parte no usada, salvo si desistes."
-    ca: "Les vas acceptar en inscriure't, en la versió {version}: són a <a href=\"{url}\">{url_text}</a>. L'essencial: et dones de baixa quan vulguis i s'aplica al final del període pagat; no hi ha devolució de la part no utilitzada, tret que desisteixis."
-    en: "You accepted them when you signed up, version {version}: they are at <a href=\"{url}\">{url_text}</a>. In short: cancel whenever you like and it takes effect at the end of the paid period; the unused part is not refunded, except if you withdraw."
-    ja: "お申し込み時にご同意いただいた規約（{version}版）は<a href=\"{url}\">{url_text}</a>にあります。要点：退会はいつでも可能で、お支払い済み期間の終わりに適用されます。クーリングオフの場合を除き、未使用分の返金はありません。"
+    es: "Las aceptaste al inscribirte, en la versión {version}: están en <a href=\"{url}\">{url_text}</a>. Lo esencial: te das de baja cuando quieras y se aplica al final del periodo pagado. Con una cuota trimestral o anual puedes pedir que te devolvamos los meses que no hayas empezado; y durante 14 días puedes desistir."
+    ca: "Les vas acceptar en inscriure't, en la versió {version}: són a <a href=\"{url}\">{url_text}</a>. L'essencial: et dones de baixa quan vulguis i s'aplica al final del període pagat. Amb una quota trimestral o anual pots demanar que et retornem els mesos que no hagis començat; i durant 14 dies pots desistir."
+    en: "You accepted them when you signed up, version {version}: they are at <a href=\"{url}\">{url_text}</a>. In short: cancel whenever you like and it takes effect at the end of the paid period. On a quarterly or annual plan you can ask us to refund the months you have not started; and for 14 days you can withdraw."
+    ja: "お申し込み時にご同意いただいた規約（{version}版）は<a href=\"{url}\">{url_text}</a>にあります。要点：退会はいつでも可能で、お支払い済み期間の終わりに適用されます。3か月払い・年払いの場合は、まだ始まっていない月の分の返金をご請求いただけます。また、14日以内であればクーリングオフができます。"
   withdraw_box:
     es: "<b>Puedes desistir hasta el {date}</b>, sin dar explicaciones, en <a href=\"{url}\">{url_text}</a>, respondiendo a este correo o con el formulario de abajo. Como pediste empezar ya, pagarías solo los días transcurridos hasta que nos lo digas."
     ca: "<b>Pots desistir fins al {date}</b>, sense donar explicacions, a <a href=\"{url}\">{url_text}</a>, responent aquest correu o amb el formulari de sota. Com que vas demanar començar ja, pagaries només els dies transcorreguts fins que ens ho diguis."
@@ -194,6 +194,24 @@ withdrawal_done:
     ca: "La teva quota ha acabat i no hi haurà més cobraments. No hi havia res a retornar: no s'havia cobrat res més enllà dels dies fins al teu desistiment del {date}."
     en: "Your membership has ended and there will be no further charges. There was nothing to refund: nothing had been charged beyond the days up to your withdrawal on {date}."
     ja: "会費は解約され、今後の請求はありません。{date}の解約のお申し出までの日数分を超える請求はなかったため、返金はありません。"
+
+# Leaving a quarterly or annual plan early, with the months not started
+# refunded (terms, section 8). Sent by the panel's "Baja con devolución".
+early_leave:
+  kind:    { es: "Baja con devolución", ca: "Baixa amb devolució", en: "Cancellation with refund", ja: "退会と返金" }
+  subject: { es: "Tu cuota ha terminado: te devolvemos {amount}", ca: "La teva quota ha acabat: et retornem {amount}", en: "Your membership has ended: we are refunding {amount}", ja: "会費の退会手続きが完了しました（返金額 {amount}）" }
+  subject_none: { es: "Tu cuota ha terminado", ca: "La teva quota ha acabat", en: "Your membership has ended", ja: "会費の退会手続きが完了しました" }
+  heading: { es: "Baja hecha", ca: "Baixa feta", en: "Membership ended", ja: "退会手続き完了" }
+  body:
+    es: "Como nos pediste, tu cuota ha terminado hoy y no habrá más cobros. Te hemos devuelto <b>{amount}</b>: los {paid} que pagaste por este periodo, menos {started} × {monthly} de los meses ya empezados, al precio mensual. Llega por el mismo medio de pago; con domiciliación bancaria puede tardar unos días en verse en la cuenta."
+    ca: "Com ens vas demanar, la teva quota ha acabat avui i no hi haurà més cobraments. T'hem retornat <b>{amount}</b>: els {paid} que vas pagar per aquest període, menys {started} × {monthly} dels mesos ja començats, al preu mensual. Arriba pel mateix mitjà de pagament; amb domiciliació bancària pot trigar uns dies a veure's al compte."
+    en: "As you asked, your membership ended today and there will be no further charges. We have refunded <b>{amount}</b>: the {paid} you paid for this period, less {started} × {monthly} for the months already started, at the monthly price. It goes back by the same means of payment; a bank debit can take a few days to show in your account."
+    ja: "ご依頼のとおり、会費は本日終了し、今後の請求はありません。この期間にお支払いいただいた{paid}から、すでに始まった月の分（月額{monthly} × {started}か月）を差し引いた<b>{amount}</b>を返金しました。お支払いと同じ方法で返金されます。口座振替の場合、口座に反映されるまで数日かかることがあります。"
+  body_none:
+    es: "Como nos pediste, tu cuota ha terminado hoy y no habrá más cobros. No queda nada que devolver: los meses ya empezados, al precio mensual, suman lo que pagaste por este periodo."
+    ca: "Com ens vas demanar, la teva quota ha acabat avui i no hi haurà més cobraments. No queda res a retornar: els mesos ja començats, al preu mensual, sumen el que vas pagar per aquest període."
+    en: "As you asked, your membership ended today and there will be no further charges. There is nothing left to refund: the months already started, at the monthly price, add up to what you paid for this period."
+    ja: "ご依頼のとおり、会費は本日終了し、今後の請求はありません。すでに始まった月の分を月額で計算すると、この期間のお支払い額に達するため、返金はありません。"
 
 payment_failed:
   kind:    { es: "Problema con el cobro", ca: "Problema amb el cobrament", en: "Payment problem", ja: "お支払いの問題" }

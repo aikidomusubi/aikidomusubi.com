@@ -249,11 +249,13 @@ async function deleted(env: Env, st: Stripe, sub: Stripe.Subscription) {
   const end = (sub.ended_at ?? Math.floor(Date.now() / 1000)) * 1000;
   // A settled withdrawal has already told the family, with the amount.
   const withdrawn = Boolean(sub.metadata.withdrawal_done);
+  const leftEarly = Boolean(sub.metadata.early_leave);
   const ctx = ctxFor(env, full);
-  if (ctx && !withdrawn) await member.ended(ctx, end);
+  if (ctx && !withdrawn && !leftEarly) await member.ended(ctx, end);
   await admin(env, `Cuota terminada${withdrawn ? ' por desistimiento' : ''}: ${name}`, 'Fin', [
     B.h(withdrawn ? 'Desistimiento resuelto' : 'Cuota terminada'),
     ...(withdrawn ? [B.p(`Devueltos ${money(Number(sub.metadata.withdrawal_refund ?? 0), 'es')}. La familia ya tiene el correo con el importe.`)] : []),
+    ...(leftEarly ? [B.p(`Baja con devolución de los meses no empezados: ${money(Number(sub.metadata.early_leave_refund ?? 0), 'es')}. La familia ya tiene el correo con el importe.`)] : []),
     B.p(`La cuota de ${esc(name)} ha terminado el ${date(end, 'es')}. ${sub.status === 'canceled' && sub.cancellation_details?.reason === 'payment_failed' ? 'Ha terminado por impago.' : ''}`),
     B.button('Abrir en Stripe', dashboard(env, `subscriptions/${sub.id}`))
   ], 'ended');

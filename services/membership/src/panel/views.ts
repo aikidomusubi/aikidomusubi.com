@@ -128,7 +128,8 @@ export function toast(f: Flash | null, c: Ctx): string {
     cancel: `Baja hecha${fam?.endsAt ? `: la cuota termina el ${short(fam.endsAt)}` : ''}. La familia recibe un correo de confirmación.`,
     resume: 'Baja anulada: la cuota sigue como antes.',
     withdraw: `Desistimiento resuelto${fam?.refunded != null ? `: devueltos ${m(fam.refunded)}` : ''}. La cuota ha terminado y la familia tiene el correo con el importe.`,
-    withdraw_dismiss: 'Desistimiento quitado de la lista. La cuota sigue.'
+    withdraw_dismiss: 'Desistimiento quitado de la lista. La cuota sigue.',
+    leave: `Baja hecha${fam?.refunded != null ? `: devueltos ${m(fam.refunded)}` : ''}. La cuota ha terminado y la familia tiene el correo con el importe.`
   };
   if (!(f.a in text)) return '';
   const undo = UNDO[f.a as ActionKind];
@@ -361,7 +362,8 @@ const ACT_TEXT: Record<ActionKind, (who: string) => string> = {
   cancel: () => 'Baja pedida',
   resume: () => 'Baja anulada',
   withdraw: () => 'Desistimiento resuelto: dinero devuelto y cuota terminada',
-  withdraw_dismiss: () => 'Desistimiento quitado de la lista'
+  withdraw_dismiss: () => 'Desistimiento quitado de la lista',
+  leave: () => 'Baja con devolución de los meses no empezados'
 };
 
 interface Event { t: number; html: string; cls: string }
@@ -405,8 +407,9 @@ function detailPanel(d: Detail, c: Ctx, filter: Filter, q: string): string {
   ];
   const leave = f.ended ? ''
     : f.withdrawalAt && f.withdrawalInWindow ? askBtn(c, 'withdraw', f.id, null, 'Resolver el desistimiento…', 'warn', 'withdrawal')
-    : f.endsAt ? askBtn(c, 'resume', f.id, null, 'Anular la baja…', 'alt', 'door')
-    : askBtn(c, 'cancel', f.id, null, `Dar de baja al final del ${periodWordOf(f)}…`, 'warn', 'door');
+    : (f.endsAt ? askBtn(c, 'resume', f.id, null, 'Anular la baja…', 'alt', 'door')
+      : askBtn(c, 'cancel', f.id, null, `Dar de baja al final del ${periodWordOf(f)}…`, 'warn', 'door'))
+      + (f.canLeaveEarly ? askBtn(c, 'leave', f.id, null, 'Baja ahora, devolviendo los meses no empezados…', 'warn', 'money') : '');
   return `<section class="panel" aria-labelledby="fam-h">
 <div class="ph"><a class="back" href="/panel/miembros${backQs ? '?' + esc(backQs) : ''}">${icon('left')}Volver a la lista</a>
 <h2 id="fam-h">${esc(f.name)}</h2><p>${contact}</p></div>
@@ -426,7 +429,7 @@ function banner(f: Family): string {
     items.push(['done', f.endReason === 'withdrawal'
       ? `Esta cuota terminó el ${short(f.ended)} por desistimiento${f.refunded != null ? `: se devolvieron ${m(f.refunded)}` : ''}.`
       : f.endReason === 'impago' ? `Esta cuota terminó el ${short(f.ended)} por impago.`
-      : `Esta cuota terminó el ${short(f.ended)}: se dieron de baja.`]);
+      : `Esta cuota terminó el ${short(f.ended)}: se dieron de baja${f.refunded != null ? `, y se devolvieron ${m(f.refunded)} de los meses no empezados` : ''}.`]);
   } else if (f.withdrawalAt) {
     items.push(['bad', f.withdrawalInWindow
       ? `Desistimiento recibido el ${short(f.withdrawalAt)}. Resuélvelo antes del ${short(f.withdrawalAt + 14 * 86400000)}: devolver el dinero y terminar la cuota es un solo botón, abajo.`
@@ -443,7 +446,8 @@ const periodWordOf = (f: Family) => ({ monthly: 'mes', quarterly: 'trimestre', a
 
 // ---------------------------------------------------------------------------
 export interface RefundView { lines: { start: number; end: number; paid: number; keep: number; refund: number }[]; total: number; pending: boolean }
-export interface Confirm { a: ActionKind; fam: Family; person: Person | null; before?: number; after?: number; totalBefore?: number; totalAfter?: number; refund?: RefundView }
+export interface LeaveView { applies: boolean; paid: number; start: number; end: number; months: number; started: number; monthly: number; keep: number; refund: number }
+export interface Confirm { a: ActionKind; fam: Family; person: Person | null; before?: number; after?: number; totalBefore?: number; totalAfter?: number; refund?: RefundView; leave?: LeaveView }
 
 export function confirmPage(c: Ctx, x: Confirm): string {
   const f = x.fam;
@@ -468,6 +472,23 @@ ${f.people.length > 1 ? `<div><span>Total de la familia</span><b>${esc(m(x.total
 <div class="tot"><span>Se devuelve</span><b>${esc(m(r.total))}</b></div></div>
 <p class="note">Se devuelve por el mismo medio de pago. Con domiciliación bancaria tarda unos días en verse en su cuenta.</p>`;
       yes = r.total > 0 ? `Sí, devolver ${m(r.total)} y terminar` : 'Sí, terminar la cuota'; cls = 'warn';
+      break;
+    }
+    case 'leave': {
+      const q = x.leave!;
+      const backHref = c.back === 'm' ? `/panel/miembros?id=${esc(f.id)}` : '/panel/';
+      if (!q.applies) {
+        return `<div class="sheet" role="group" aria-labelledby="ask-h"><h1 id="ask-h">No hay nada que devolver ahora</h1>
+<p>No hay un cobro de este ${periodWordOf(f)} ya confirmado que se pueda devolver: o el periodo en curso aún no se ha cobrado, o el cobro se está confirmando. Si quieren irse, dales de baja al final del periodo.</p>
+<a class="btn alt big" href="${backHref}">Volver</a></div>`;
+      }
+      title = `¿Dar de baja a ${f.name} ahora y devolver los meses no empezados?`;
+      text = `Hazlo solo si la familia lo ha pedido. Se calcula como si hubieran pagado mes a mes: de lo pagado por este ${periodWordOf(f)} se queda la cuota mensual de cada mes ya empezado. La cuota termina ahora, no habrá más cobros, y la familia recibe un correo con el importe.`;
+      extra = `<div class="sum"><div><span>Pagado por el ${periodWordOf(f)}, del ${esc(short(q.start))} al ${esc(short(q.end - 86400000))}</span><b>${esc(m(q.paid))}</b></div>
+<div><span>${q.started} ${q.started === 1 ? 'mes empezado' : 'meses empezados'} × ${esc(m(q.monthly))} al mes</span><b>− ${esc(m(q.keep))}</b></div>
+<div class="tot"><span>Se devuelve</span><b>${esc(m(q.refund))}</b></div></div>
+<p class="note">Se devuelve por el mismo medio de pago. El keikogi de regalo no se descuenta.</p>`;
+      yes = q.refund > 0 ? `Sí, dar de baja y devolver ${m(q.refund)}` : 'Sí, dar de baja ahora'; cls = 'warn';
       break;
     }
     case 'withdraw_dismiss':
@@ -542,6 +563,7 @@ const FAQ: [string, string][] = [
 <p>Los botones que cambian lo que paga una familia (abono no válido, 17 o más, baja) siempre piden confirmación antes, con los importes.</p>`],
   ['Una familia quiere darse de baja',
     `<p>Pueden hacerlo ellos mismos desde <b>Mi cuota</b>; el enlace está en todos sus correos. Si te lo piden a ti, abre la familia en <b>Miembros</b> y pulsa <b>Dar de baja al final del periodo</b>. Siguen entrenando hasta esa fecha y no se cobra nada más.</p>
+<p>Si tienen cuota <b>trimestral o anual</b> y piden que les devolvamos los meses que no han empezado, pulsa en cambio <b>Baja ahora, devolviendo los meses no empezados</b>. El panel lo calcula como si hubieran pagado mes a mes, te enseña el importe antes de confirmar, devuelve el dinero y les escribe. No hace falta que den explicaciones.</p>
 <p>Si quieren <b>desistir</b> dentro de los 14 días y recuperar el dinero, es otra cosa: que usen el formulario de desistimiento de la web.</p>`],
   ['Ha llegado un desistimiento',
     `<p>Aparece el primero en <b>Pendiente</b>. Pulsa <b>Resolver…</b>: verás lo que se devuelve, ya calculado. Al confirmar se devuelve el dinero por el mismo medio de pago, la cuota termina y la familia recibe un correo con el importe. No hace falta entrar en Stripe.</p>

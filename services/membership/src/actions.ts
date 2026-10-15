@@ -26,6 +26,7 @@ import { Pricing } from './pricing.ts';
 import { periodEnd, priceIds, stripe, subscription } from './stripe.ts';
 import { ctxFor } from './context.ts';
 import { settle } from './withdraw.ts';
+import { settleLeave } from './leave.ts';
 import * as member from './email/member.ts';
 import { admin, B } from './email/admin.ts';
 
@@ -33,12 +34,13 @@ export type ActionKind =
   | 'paper' | 'keikogi' | 'sc_ok' | 'sc_no' | 'age'          // the email buttons and the panel
   | 'paper_undo' | 'keikogi_undo' | 'sc_undo'                 // the panel's Deshacer
   | 'cancel' | 'resume'                                       // the panel only; no person
-  | 'withdraw' | 'withdraw_dismiss';                          // settle a withdrawal, or drop it
-export const ACTIONS: ActionKind[] = ['paper', 'keikogi', 'sc_ok', 'sc_no', 'age', 'paper_undo', 'keikogi_undo', 'sc_undo', 'cancel', 'resume', 'withdraw', 'withdraw_dismiss'];
+  | 'withdraw' | 'withdraw_dismiss'                           // settle a withdrawal, or drop it
+  | 'leave';                                                  // end now, months not started refunded
+export const ACTIONS: ActionKind[] = ['paper', 'keikogi', 'sc_ok', 'sc_no', 'age', 'paper_undo', 'keikogi_undo', 'sc_undo', 'cancel', 'resume', 'withdraw', 'withdraw_dismiss', 'leave'];
 // The ones that change what a family pays, or whether it stays: the panel asks
 // before doing them, and they cannot be undone with one press.
-export const ASKS_FIRST: ActionKind[] = ['sc_no', 'age', 'cancel', 'resume', 'withdraw', 'withdraw_dismiss'];
-export const WHOLE: ActionKind[] = ['cancel', 'resume', 'withdraw', 'withdraw_dismiss'];
+export const ASKS_FIRST: ActionKind[] = ['sc_no', 'age', 'cancel', 'resume', 'withdraw', 'withdraw_dismiss', 'leave'];
+export const WHOLE: ActionKind[] = ['cancel', 'resume', 'withdraw', 'withdraw_dismiss', 'leave'];
 interface ActionPayload { a: ActionKind; s: string; n: number; x: number; id: string }
 
 const LABEL: Partial<Record<ActionKind, string>> = {
@@ -131,6 +133,10 @@ async function change(env: Env, st: Stripe, sub: Stripe.Subscription, who: MetaM
   if (a === 'withdraw') {
     const r = await settle(env, st, sub);
     return `Desistimiento resuelto: devueltos ${money(r.total, 'es')}.`;
+  }
+  if (a === 'leave') {
+    const q = await settleLeave(env, st, sub);
+    return `Baja hecha: devueltos ${money(q.refund, 'es')}.`;
   }
   if (a === 'withdraw_dismiss') {
     await st.subscriptions.update(sub.id, { metadata: { withdrawal_at: '' } });

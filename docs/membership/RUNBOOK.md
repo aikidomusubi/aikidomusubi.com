@@ -83,7 +83,14 @@ npm run plan -- --people adult,adult,youth
 **Change the email on a membership:** Dashboard → Customers → the customer → Edit.
 The portal cannot.
 
-**Cancel by email, phone or in person:** in the panel, open the family →
+**Leaving a quarterly or annual plan early, with a refund** (terms, section 8): in the
+panel, open the family → **Baja ahora, devolviendo los meses no empezados**. It keeps the
+current monthly fee of the household for each month of the period already started and
+refunds the rest (annual, 17 and over, leaving in the fourth month: 360 − 4 × 39 = 204 €),
+ends the membership at once and emails the family the amount. No reason is needed, and
+no health or other evidence should be asked for. A monthly plan has nothing to refund.
+
+**Cancel by email or in person:** in the panel, open the family →
 **Dar de baja al final del periodo**. (Or Dashboard → Subscriptions → Cancel → **At the
 end of the period**.) The family gets the confirmation email by itself either way, and
 **Anular la baja** in the panel undoes it before the date.

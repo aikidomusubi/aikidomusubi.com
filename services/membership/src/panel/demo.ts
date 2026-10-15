@@ -5,6 +5,7 @@ import type Stripe from 'stripe';
 import { CATALOG } from '../data.ts';
 import { encodeMember, type Meta, type MetaMember } from '../meta.ts';
 import { Pricing, type Cat, type PeriodId } from '../pricing.ts';
+import { leaveMath, monthlyFee, type Leave } from '../leave.ts';
 
 interface P { name: string; cat: Cat; sc?: 'pending' | 'verified'; venue?: string; bym?: string }
 interface F {
@@ -83,4 +84,15 @@ export function demoRefund(sub: Stripe.Subscription, at: number) {
   const keep = Math.round(paid * Math.min(Math.max((at - start) / (end - start), 0), 1) * 100) / 100;
   const refund = Math.round((paid - keep) * 100) / 100;
   return { lines: [{ invoice: 'in_demo', paid, start, end, keep, refund }], total: refund };
+}
+
+// Leaving early, for the demo families: the current period started a whole
+// period before the next 5th, and its invoice is the latest one.
+export function demoLeave(sub: Stripe.Subscription, now: number): Leave {
+  const months = CATALOG.periods[sub.metadata.period]?.months ?? 1;
+  const end = (sub.items.data[0] as unknown as { current_period_end: number }).current_period_end * 1000;
+  const start = Pricing.addMonths(end, -months);
+  const paid = (sub.latest_invoice as unknown as { amount_due: number }).amount_due / 100;
+  const monthly = monthlyFee(sub);
+  return { applies: months > 1, invoice: 'in_demo', paid, start, end, months, monthly, ...leaveMath({ paid, start, months, monthly, now }) };
 }

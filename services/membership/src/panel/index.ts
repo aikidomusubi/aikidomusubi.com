@@ -25,7 +25,8 @@ import { checkCode, endSession, sameOrigin, sendCode, session, startSession, use
 import { family, isCurrent, isFormer, linkReturning, tasks, type Family } from './model.ts';
 import { refundFor } from '../refund.ts';
 import { pendingPayment, withdrawalAt } from '../withdraw.ts';
-import { demoRefund } from './demo.ts';
+import { demoLeave, demoRefund } from './demo.ts';
+import { leaveQuote } from '../leave.ts';
 import { APP_JS, FILTERS, confirmPage, helpPage, loginPage, membersPage, messagePage, pendingPage, setStripeBase, shell, type Filter, type Flash } from './views.ts';
 import { demoSubscriptions } from './demo.ts';
 
@@ -177,6 +178,10 @@ export async function panel(req: Request, env: Env): Promise<Response> {
         const r = demo(env) ? demoRefund(sub, at) : await refundFor(stripe(env), sub.id, at);
         amounts = { refund: { ...r, pending: pendingPayment(sub) } };
       }
+    }
+    if (a === 'leave') {
+      const sub = subs.find((s) => s.id === fam.id)!;
+      amounts = { leave: demo(env) ? demoLeave(sub, Date.now()) : await leaveQuote(stripe(env), sub) };
     }
     if (person && (a === 'age' || a === 'sc_no')) {
       const sub = subs.find((s) => s.id === fam.id)!;
