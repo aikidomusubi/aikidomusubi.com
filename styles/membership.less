@@ -827,3 +827,21 @@ html:has(.su), html:has(.mb-form) {
     padding: .35rem .6rem;
   }
 }
+
+// The model withdrawal form in the terms (section 12) is a blockquote in the
+// Markdown, so the four languages can keep it as text. The prose rule draws a
+// blockquote as a large pull quote; this one is a form to copy, so it is set
+// in the body size, in a box, like a document.
+.page main.mb-terms blockquote {
+  font-size: .95rem;
+  font-style: normal;
+  line-height: 1.55;
+  max-width: 43.25rem;
+  background: #FBFAF7;
+  border: 1px solid fadeout(@Black, 80%);
+  border-left: 4px solid @Black;
+  padding: 1rem 1.25rem;
+  margin: 0 0 1.75rem;
+  p { margin: 0 0 .5rem; font-size: inherit; }
+  p:last-child { margin: 0; font-size: .9rem; }
+}
