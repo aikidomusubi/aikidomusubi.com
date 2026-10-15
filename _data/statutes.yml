@@ -1,0 +1,30 @@
+# ---------------------------------------------------------------------------
+# The statutes, in the Resources panel (?r=estatuts)
+#
+# The text itself is Catalan only and lives in _includes/statutes-ca.md. These
+# are the words AROUND it, in the reader's language: what it is, that it is in
+# Catalan, and where the legally valid copy is.
+#
+# THE PDF is the Register's certified copy with the two digital-signature
+# stamps on its signature page redacted, because they print the signatories'
+# DNI numbers. That edit means it is no longer the authentic copy itself; the
+# Generalitat's verification code is how anyone fetches that.
+# ---------------------------------------------------------------------------
+eyebrow: { es: "La asociación", ca: "L'associació", en: "The association", ja: "協会" }
+title:   { es: "Estatutos", ca: "Estatuts", en: "Statutes", ja: "定款" }
+intro:
+  es: "Los estatutos de la asociación, aprobados por la asamblea general el 12 de diciembre de 2022 e inscritos en el Registro de Asociaciones de la Generalitat de Catalunya el 7 de marzo de 2023. Están en catalán, la lengua en la que se inscribieron. El documento con valor legal es la copia auténtica del Registro."
+  ca: "Els estatuts de l'associació, aprovats per l'assemblea general el 12 de desembre de 2022 i inscrits al Registre d'associacions de la Generalitat de Catalunya el 7 de març de 2023. El document que té valor legal és la còpia autèntica del Registre."
+  en: "The association's statutes, approved by the general assembly on 12 December 2022 and entered in the Generalitat de Catalunya's Register of Associations on 7 March 2023. They are in Catalan, the language they were registered in. The legally valid document is the Register's authentic copy."
+  ja: "2022年12月12日の総会で承認され、2023年3月7日にカタルーニャ州政府の団体登録簿に登録された当会の定款です。登録された言語であるカタルーニャ語で掲載しています。法的に有効な文書は登録簿の正本の写しです。"
+pdf:
+  es: "Descargar la copia del Registro en PDF, con los DNI de las firmas ocultos"
+  ca: "Descarregar la còpia del Registre en PDF, amb els DNI de les signatures ocults"
+  en: "Download the Register's copy as a PDF, with the signatories' ID numbers hidden"
+  ja: "登録簿の写しをPDFでダウンロード（署名者のID番号は非表示）"
+verify:
+  es: "Verificar la copia auténtica en la Generalitat con el código"
+  ca: "Verificar la còpia autèntica a la Generalitat amb el codi"
+  en: "Verify the authentic copy with the Generalitat using the code"
+  ja: "カタルーニャ州政府で正本を確認（照合コード）"
+code: "T1349o88701871V"

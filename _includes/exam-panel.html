@@ -152,5 +152,24 @@
       </div>
     </section>
     {%- endfor -%}
+
+    {%- comment -%}
+      ---- the statutes ------------------------------------------------------
+      Same panel again, for the same reason: a document you open, read and
+      close. The text is the registered one, in Catalan whatever the page's
+      language, so it says so (`lang="ca"`, for screen readers and for
+      hyphenation); the words around it are the reader's.
+    {%- endcomment -%}
+    {%- assign SG = site.data.statutes -%}
+    <section class="ex-sheet ex-doc ex-statutes" data-ex-sheet="estatuts" hidden
+             data-eyebrow="{{ SG.eyebrow[L] }}" data-name="{{ SG.title[L] }}">
+      <p class="ex-intro">{{ SG.intro[L] }}</p>
+      <ul class="ex-statutes-links">
+        <li><a href="/files/resources-uStNjtHz-estatuts-ca.pdf" download>{{ SG.pdf[L] }}</a></li>
+        <li><a href="https://www.gencat.cat/justicia/entitatsjuridiques/consulta" target="_blank" rel="noopener">{{ SG.verify[L] }}</a> <b>{{ SG.code }}</b></li>
+      </ul>
+      {%- capture statutes %}{% include statutes-ca.md %}{% endcapture %}
+      <div class="ex-statutes-text" lang="ca">{{ statutes | markdownify }}</div>
+    </section>
   </div>
 </div>

@@ -645,7 +645,11 @@ PDFs. **The PDFs are not published.** There is one copy, the page renders it,
 and the browser's own print-to-PDF cannot go stale the way a second file on a
 shelf can — the reasoning `_data/resources.yml` already gives for `kind: page`.
 
-It is read in a panel over `/recursos/`, deep-linked as `?r=kyu3`. The links in
+It is read in a panel over `/recursos/`, deep-linked as `?r=kyu3`. The same panel holds the four etiquette documents
+(`_data/etiquette.yml`) and the association's **statutes** (`?r=estatuts`): the
+registered text, Catalan only, in `_includes/statutes-ca.md`, with the words around
+it in `_data/statutes.yml` and the Register's PDF, its DNI-bearing signature stamps
+redacted, in `/files/`. There is no statutes page: a document you look up is a panel. The links in
 the list are real URLs, so without JavaScript that address loads the page with
 the sheet open; the script turns the click into a slide. Ura links to the same
 addresses, so a sheet opens on arrival instead of leaving somebody on the list.

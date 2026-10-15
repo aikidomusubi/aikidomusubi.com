@@ -1,50 +1,25 @@
----
-layout: page
-title: "Estatuts de l'associació"
-seo_title: "Estatuts de l'associació"
-description: "Els estatuts de l'associació, tal com estan inscrits al Registre d'associacions de la Generalitat de Catalunya (núm. 36696): socis, assemblea, junta directiva, quotes i règim econòmic."
-permalink: /ca/estatuts/
-lang: ca
-i18n-ref: statutes-Qh7tWm3K
-last_modified: 2026-10-15
----
 {%- comment -%}
-  ONLY IN CATALAN, on purpose. This is the registered text, and a translation
-  would be an unofficial second version that could disagree with it. The
-  Resources page in the other three languages links here and says so.
+  THE STATUTES, as registered: Catalan only, read in the Resources panel at
+  ?r=estatuts (_includes/exam-panel.html). A translation would be an
+  unofficial second version that could disagree with the registered text.
 
-  A TRANSCRIPTION, kept faithful to the registered text, including what looks
-  like a slip ("d'acord amb el estableix", the two "Modificar els estatuts" in
-  article 9, "la llei els estatus"): a statute is quoted, not corrected. The one
-  liberty is typographic: the original's two parenthetical dashes (articles
-  21 and 26) are commas here, as the site sets no dashes. When
-  the assembly amends them, this page is replaced with the new registered text.
+  A TRANSCRIPTION, faithful to the registered text, slips included ("d'acord
+  amb el estableix", the two "Modificar els estatuts" in article 9, "la llei
+  els estatus"): a statute is quoted, not corrected. The one liberty is
+  typographic: the original's two parenthetical dashes (articles 21 and 26)
+  are commas here, as the site sets no dashes.
 
-  THE PDF is the certified copy with the two digital-signature stamps on its
-  signature page redacted, because they print the signatories' DNI numbers.
-  That alteration means it is no longer the authentic copy itself; the
-  Generalitat's verification code is what lets anyone fetch that.
+  Headings start at h3: the panel's own h2 is the document's title. When the
+  assembly amends the statutes, replace this with the new registered text, and
+  the PDF beside it (files/resources-uStNjtHz-estatuts-ca.pdf).
 {%- endcomment -%}
-{%- assign FT = site.data.footer.ui -%}
+### Capítol I. La denominació, els fins i el domicili
 
-# Estatuts de l'associació
-
-Els estatuts de l'{{ FT.org }}, aprovats per l'assemblea general el 12 de desembre de 2022 i inscrits al Registre d'associacions de la Generalitat de Catalunya (secció 1a, Barcelona, núm. {{ FT.registry }}) el 7 de març de 2023.
-
-Aquesta pàgina en reprodueix el text per poder-lo llegir còmodament. El document que té valor legal és la còpia autèntica emesa pel Registre:
-
-- [**Descarregar la còpia en PDF**](/files/resources-uStNjtHz-estatuts-ca.pdf), en què s'han ocultat els números de DNI de les signatures digitals.
-- [**Verificar-la a la Generalitat**](https://www.gencat.cat/justicia/entitatsjuridiques/consulta){:target="_blank" rel="noopener"} amb el codi segur de verificació **T1349o88701871V**.
-
----
-
-## Capítol I. La denominació, els fins i el domicili
-
-### Art. 1
+#### Art. 1
 
 L'Associació AIKIDO MUSUBI regula les seves activitats d'acord amb el estableix la Llei 4/2008, de 24 d'abril, del llibre tercer del Codi civil de Catalunya, relatiu a les persones jurídiques; la Llei orgànica 1/2002, de 22 de març, reguladora del dret d'associació, i els estatuts.
 
-### Art. 2
+#### Art. 2
 
 Els fins de l'Associació són impulsar, promocionar i difondre la cultura de l'AIKIDO. Per aconseguir les seves finalitats, l'associació realitza les activitats següents:
 
@@ -56,13 +31,13 @@ Aquests objectius o funcions no són limitatius, i poden desenvolupar-se'n molts
 
 En queda exclòs tot ànim de lucre.
 
-### Art. 3
+#### Art. 3
 
 El domicili social de l'Associació s'estableix a Badalona 08912, i radica al carrer Avinguda Alfons XIII, nº 351.
 
-## Capítol II. Els membres de l'associació, els seus drets i les seves obligacions
+### Capítol II. Els membres de l'associació, els seus drets i les seves obligacions
 
-### Art. 4[^1]
+#### Art. 4[^1]
 
 Poden formar part de l'associació totes les persones físiques i jurídiques que, de manera lliure i voluntària, tinguin interès en les seves finalitats.
 
@@ -80,7 +55,7 @@ Pel que fa a les persones jurídiques:
 
 Per integrar-se a una associació cal presentar una sol·licitud per escrit a la Junta Directiva, la qual prendrà una decisió sobre la petició en la primera reunió que tingui lloc i la comunicarà a l'Assemblea General més immediata.
 
-### Art. 5
+#### Art. 5
 
 Són drets dels membres de l'associació:
 
@@ -97,7 +72,7 @@ Són drets dels membres de l'associació:
 11. Posseir un exemplar dels estatuts, quant es sol·liciti. La sol·licitud s'haurà de presentar per escrit a la Junta Directiva.
 12. Consultar els llibres de l'associació, quant es sol·liciti. La sol·licitud s'haurà de presentar per escrit a la Junta Directiva.
 
-### Art. 6
+#### Art. 6
 
 Són deures dels membres de l'associació:
 
@@ -106,7 +81,7 @@ Són deures dels membres de l'associació:
 3. Complir la resta d'obligacions que resultin de les disposicions estatuàries.
 4. Acatar i complir els acords vàlidament adoptats pels òrgans de govern de l'associació.
 
-### Art. 7
+#### Art. 7
 
 Són causes per ser donat de baixa de l'associació:
 
@@ -115,15 +90,15 @@ Són causes per ser donat de baixa de l'associació:
 3. No complir les obligacions estatutàries.
 4. Comprometre el bon funcionament de l'associació.
 
-## Capítol III. L'Assemblea General
+### Capítol III. L'Assemblea General
 
-### Art. 8
+#### Art. 8
 
 1. L'Assemblea General és l'òrgan sobirà de l'associació; els seus membres en formen part per dret propi i irrenunciable.
 2. Els membres de l'associació, reunits en Assemblea General legalment constituïda, decideixen per majoria els assumptes que són competència de l'Assemblea.
 3. Tots els membres queden subjectes als acords de l'Assemblea General, incloent-hi els absents, els qui en discrepen i els presents que s'hagin abstingut de votar.
 
-### Art. 9
+#### Art. 9
 
 L'Assemblea General té les facultats següents:
 
@@ -141,12 +116,12 @@ L'Assemblea General té les facultats següents:
 12. Resoldre sobre les qüestions que no estiguin directament atribuïdes a cap altre òrgan de l'associació.
 {: type="a"}
 
-### Art. 10
+#### Art. 10
 
 1. L'assemblea General es reuneix en sessió ordinària com a mínim un cop l'any, dins dels mesos següents a la data de tancament de l'exercici econòmic.
 2. L'òrgan de govern pot convocar l'assemblea general amb caràcter extraordinari sempre que ho consideri convenient, i ho ha de fer quan ho sol·liciti un nombre d'associats no inferior al 10% del associats; en aquest cas, l'assemblea ha de tenir lloc dins el termini de trenta dies a comptar de la sol·licitud.
 
-### Art. 11
+#### Art. 11
 
 1. L'assemblea és convocada per l'òrgan de govern mitjançant una convocatòria, que ha de contenir, com a mínim, l'ordre del dia, el lloc, la data i l'hora de la reunió.
 2. La convocatòria s'ha de comunicar quinze dies abans de la data de la reunió, individualment i mitjançant un escrit adreçat al domicili que consti en la relació actualitzada d'associats i associades que ha de tenir l'associació.
@@ -155,28 +130,28 @@ L'Assemblea General té les facultats següents:
 
 Al començament de cada reunió de l'Assemblea General es llegeix l'acta de la sessió anterior a fi que s'aprovi o s'esmeni. Cinc dies abans, de tota manera, l'acta i qualsevol altra documentació ha d'estar a disposició dels socis i sòcies al local social.
 
-### Art. 12
+#### Art. 12
 
 1. L'assemblea general es constitueix vàlidament sigui quin sigui el nombre de persones associades presents o representades.
 2. El 10% dels associats/ades poden sol·licitar a l'òrgan de govern la inclusió en l'ordre del dia d'un o més assumptes per tractar. En el cas que ja s'hagi convocat l'Assemblea, poden fer-ho dins el primer terç del període comprès entre la recepció de la convocatòria i la data en què aquest òrgan s'ha de reunir. L'assemblea únicament pot adoptar acords respecte als punts inclosos en l'ordre del dia, llevat que s'hagi constituït amb caràcter universal o que els acords es refereixen a la convocatòria d'una nova assemblea general.
 
-### Art. 13
+#### Art. 13
 
 1. En les reunions de l'Assemblea General, correspon un vot a cada membre de l'associació.
 2. Els acords es prenen per majoria simple de vots dels socis i sòcies presents o representats.
 3. Per adoptar acords sobre la modificació dels estatuts, la dissolució de l'associació, la constitució d'una federació amb associacions similars o la integració en una de ja existent, i la disposició o alienació dels bens, es requereix una majoria qualificada dels associats/ades presents o representats (els vots afirmatius superen la meitat dels emesos). En qualsevol cas, l'elecció de la Junta Directiva, si es pressenten diverses candidatures, es fa per acord de la majoria simple o relativa dels socis i sòcies presents o representats (més vots a favor que en contra).
 4. Les candidatures que es presentin formalment tenen dret a una còpia de la llista dels socis i sòcies i dels seus domicilis i adreces de correu electrònic, sempre que els associats ho autoritzin expressament.
 
-## Capítol IV. La Junta Directiva
+### Capítol IV. La Junta Directiva
 
-### Art. 14
+#### Art. 14
 
 1. La Junta Directiva regeix, administra i representa l'associació. Componen aquest òrgan el president/a, el vicepresident/a, els secretari/ària, el tresorer/a i els/les vocals[^2], càrrecs han de ser exercits per persones diferents.
 2. L'elecció dels membres de la Junta Directiva, que han de ser associats i majors d'edat, es fa per votació de l'Assemblea General. Les persones elegides entren en funcions després d'haver acceptat el càrrec.
 3. El nomenament i el cessament dels càrrecs s'han de comunicar al Registre d'Associacions mitjançant un certificat, emès pel secretari/ària sortint amb el vistiplau del president/a sortint, que ha d'incloure també l'acceptació del nou president/a i del nou secretari/ària.
 4. Els membres de la Junta Directiva exerceixen el càrrec gratuïtament.
 
-### Art. 15
+#### Art. 15
 
 1. Els membres de la Junta Directiva exerceixen el càrrec durant un període[^3] de cinc anys, sense perjudici que puguin ser reelegits.
 2. El cessament dels càrrecs abans d'extingir-se el termini reglamentari del seu mandat pot esdevenir-se per:
@@ -188,7 +163,7 @@ Al començament de cada reunió de l'Assemblea General es llegeix l'acta de la s
    {: type="a"}
 3. Les vacants que es produeixin en la Junta Directiva s'han de cobrir en la primera reunió de l'Assemblea General que tingui lloc. Mentrestant, un membre de l'associació pot ocupar provisionalment el càrrec vacant.
 
-### Art. 16
+#### Art. 16
 
 La Junta Directiva té les facultats següents:
 
@@ -210,30 +185,30 @@ La Junta Directiva té les facultats següents:
 14. Qualsevol altra facultat que no estigui atribuïda d'una manera especifica a algun altre òrgan de govern de l'associació o que li hagi estat delegada expressament.
 {: type="a"}
 
-### Art. 17
+#### Art. 17
 
 1. La Junta Directiva, convocada prèviament pel president/a o per la persona que el/la substitueixi, s'ha de reunir en sessió ordinària amb la periodicitat que els seus membres decideixin, i que en cap cas no pot ser inferior a una vegada cada trimestre[^4].
 2. S'ha de reunir en sessió extraordinària quan la convoqui amb aquest caràcter el president/a o bé si ho sol·licita un terç dels membres que la componen[^5].
 
-### Art. 18
+#### Art. 18
 
 1. La Junta Directiva queda constituïda vàlidament si ha estat convocada amb antelació i hi ha un quòrum de la meitat més un dels seus membres.
 2. Els membres de la Junta Directiva estan obligats assistir a totes les reunions que es convoquin, encara que, per causes justificades, poden excusar-se'n. L'assistència del president/a o del secretari/ària o de les persones que les substitueixin hi és necessària sempre.
 3. La Junta Directiva pren els acords per majoria simple de vots dels assistents.
 
-### Art. 19
+#### Art. 19
 
 1. La Junta Directiva pot delegar alguna de les seves facultats en una o diverses comissions o grups de treball si compta, per fer-ho, amb el vot favorable de dos terços dels seus membres.
 2. També pot nomenar, amb el mateix quòrum, un o uns quants mandataris per exercir la funció que els confiï amb les facultats que cregui oportú conferir-los en cada cas.
 3. No són delegables la formulació dels comptes ni els actes que hagin de ser autoritzats o aprovats per l'Assemblea General.
 
-### Art. 20
+#### Art. 20
 
 Els acords de la Junta Directiva s'han de fer constar en el llibre d'actes i han de ser signats pel secretari/ària i el president/a. En iniciar-se cada reunió de la Junta Directiva, s'ha de llegir l'acta de la sessió anterior perquè s'aprovi o es rectifiqui, si és procedent.
 
-## Capítol V. La presidència i la vicepresidència
+### Capítol V. La presidència i la vicepresidència
 
-### Art. 21
+#### Art. 21
 
 1. Són pròpies del president les funcions següents:
    1. Dirigir i representar legalment l'associació, per delegació de l'Assemblea General i de la Junta Directiva.
@@ -245,27 +220,27 @@ Els acords de la Junta Directiva s'han de fer constar en el llibre d'actes i han
    {: type="a"}
 2. El president/a és substituït, en cas d'absència o malaltia, pel vicepresident/a, si n'hi ha, o el/la vocal de més edat de la Junta, per aquest ordre.
 
-## Capítol VI. La tresoreria i la secretaria
+### Capítol VI. La tresoreria i la secretaria
 
-### Art. 22
+#### Art. 22
 
 El tresorer/a té com a funció la custòdia i el control dels recursos de l'associació, així com també l'elaboració del pressupost, el balanç i la liquidació de comptes. Porta un llibre de caixa. Signa els rebuts de quotes i altres documents de tresoreria. Paga les factures aprovades per la Junta Directiva, les quals han de ser visades prèviament pel president/a, i ingressa el que sobra en dipòsits obert en establiments de crèdit o d'estalvi.
 
-### Art. 23
+#### Art. 23
 
 El secretari/ària ha de custodiar la documentació de l'associació, aixecar, redactar i signar les actes de les reunions de l'Assemblea General i la Junta Directiva, redactar i autoritzar els certificats que calgui lliurar, i també portar el llibre de registre de socis i sòcies.
 
-## Capítol VII. Les comissions o grups de treball
+### Capítol VII. Les comissions o grups de treball
 
-### Art. 24
+#### Art. 24
 
 La creació i constitució de qualsevol comissió o grup de treball, l'han de plantejar els membres de l'associació que vulguin formar-los, que n'han d'assabentar la Junta Directiva i explicar les activitats que es proposen dur a terme.
 
 La Junta Directiva s'ha de preocupar d'analitzar les diferents comissions o grups de treball, els encarregats dels quals li han de presentar un cop al mes un informe detallat de les seves actuacions.
 
-## Capítol VIII. El règim econòmic
+### Capítol VIII. El règim econòmic
 
-### Art. 25
+#### Art. 25
 
 Els recursos econòmics de l'associació es nodreixen de:
 
@@ -275,25 +250,25 @@ Els recursos econòmics de l'associació es nodreixen de:
 4. les rendes del patrimoni mateix o bé d'altres ingressos que puguin obtenir-se.
 {: type="a"}
 
-### Art. 26
+#### Art. 26
 
 Tots els membres de l'associació tenen l'obligació de sostenir-la econòmicament, mitjançant quotes, de la manera i en la proporció que determini l'Assemblea General, a proposta de la Junta Directiva.
 
 L'Assemblea General pot establir quotes d'ingrés, quotes periòdiques mensuals, que s'abonaran per mesos, trimestres o semestres, segons el que disposi la Junta Directiva, i quotes extraordinàries.
 
-### Art. 27
+#### Art. 27
 
 L'exercici econòmic coincideix amb l'any natural i queda tancat el 31 de desembre[^6].
 
-### Art. 28
+#### Art. 28
 
 En els comptes corrents o llibretes d'estalvis obertes en establiments de crèdit o d'estalvi, hi han de figurar les signatures del president/a, el tresorer/a i el secretari/ària.
 
 Per poder disposar dels fons n'hi ha prou amb un firma, que pot ser la del tresorer/a o bé la del president/a.
 
-## Capítol IX. El règim disciplinari
+### Capítol IX. El règim disciplinari
 
-### Art. 29
+#### Art. 29
 
 L'òrgan de govern (la Junta Directiva) pot sancionar les infraccions comeses pels socis i sòcies.
 
@@ -301,13 +276,13 @@ Aquestes infraccions es poden qualificar de lleus, greus i molt greus, i les san
 
 El procediment sancionador s'inicia d'ofici o bé com a conseqüència d'una denúncia o comunicació. En el termini de 2 dies, la Junta Directiva nomena un instructor, que tramita l'expedient sancionador i proposa la resolució en el termini de 5 dies, amb audiència prèvia del presumpte infractor. La resolució final, que ha de ser aprovada per dues terceres parts dels membres de la Junta Directiva, l'adopta aquest òrgan de govern també dins d'un període de 5 dies.
 
-## Capítol X. La dissolució
+### Capítol X. La dissolució
 
-### Art. 30
+#### Art. 30
 
 L'associació pot ser dissolta si ho acorda l'Assemblea General, convocada amb caràcter extraordinari expressament per a aquest fi.
 
-### Art. 31
+#### Art. 31
 
 1. Un cop acordada la dissolució. L'Assemblea General ha de prendre les mesures oportunes tant pel que fa a la destinació dels béns i drets de l'associació, com a la finalitat, l'extinció i la liquidació de qualsevol operació pendent.
 2. L'Assemblea està facultada per elegir una comissió liquidadora sempre que ho cregui necessari.
