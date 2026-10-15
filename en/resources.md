@@ -6,5 +6,5 @@ description: Training materials, examination guidelines, application forms, and 
 permalink: /en/resources/
 lang: en
 i18n-ref: resources-uStNjtHz
-last_modified: 2026-10-14
+last_modified: 2026-10-15
 ---

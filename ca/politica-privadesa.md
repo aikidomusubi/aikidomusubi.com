@@ -40,8 +40,8 @@ Tractem les dades personals segons la relació que mantingueu amb l'Associació:
 - **Base jurídica:** el vostre consentiment i/o l'aplicació de mesures precontractuals a petició vostra (art. 6.1.a i 6.1.b RGPD).
 
 ### b) Inscripció i gestió de socis i alumnes
-- **Dades:** nom i cognoms, DNI/NIE, data de naixement, adreça postal, telèfon, correu electrònic, grau i dades relatives a la pràctica de l'aikido, i si escau dades de la llicència federativa.
-- **Finalitat:** gestionar l'alta i la relació com a soci o alumne, l'organització de les classes i cursos, la tramitació de llicències i assegurances esportives, i el compliment de les obligacions associatives.
+- **Dades:** nom i cognoms, DNI, NIE o passaport, nacionalitat, data de naixement, adreça postal, telèfon, correu electrònic, grau i dades relatives a la pràctica de l'aikido, si escau dades de la llicència federativa, i una persona de contacte per a urgències.
+- **Finalitat:** gestionar l'alta i la relació com a soci o alumne, l'organització de les classes i cursos, la tramitació de llicències i assegurances esportives, el registre de graus davant la Fundació Aikikai (Japó), que demana la nacionalitat, i el compliment de les obligacions associatives.
 - **Base jurídica:** l'execució de la relació associativa o del contracte del qual sou part (art. 6.1.b RGPD), el compliment d'obligacions legals aplicables a l'Associació (art. 6.1.c RGPD) i, si escau, el vostre consentiment.
 
 ### c) Inscripció i pagament de la quota en línia
@@ -81,6 +81,7 @@ Amb caràcter general, l'Associació no cedeix dades a tercers, llevat d'obligac
 - **Federacions esportives i entitats asseguradores**, per a la tramitació de llicències i assegurances esportives, quan escaigui.
 - **Stripe Payments Europe, Ltd.** (Irlanda), que processa el pagament de la quota en nom de l'Associació com a encarregat del tractament i, per a les seves pròpies finalitats (prevenció del frau, obligacions legals i de coneixement del client), com a responsable independent.
 - **Cloudflare, Inc.**, que allotja el servei que rep la inscripció i el formulari de desistiment, i **Sendinblue SAS (Brevo)**, a França, que envia els correus de la quota, tots dos com a encarregats del tractament.
+- **La Fundació Aikikai** (Aikikai Hombu Dojo, Tòquio, Japó), per registrar els graus: nom, data de naixement, nacionalitat i grau. El Japó té una decisió d'adequació de la Comissió Europea.
 - **Proveïdors de serveis que actuen com a encarregats del tractament**, com ara el proveïdor d'allotjament web (GitHub, Inc.) i el proveïdor d'eines d'analítica (Google). Aquests proveïdors només tracten les dades conforme a les nostres instruccions.
 - **Xarxes socials** (Facebook/Meta, Instagram, YouTube/Google), en relació amb els continguts que es publiquen en aquestes plataformes.
 

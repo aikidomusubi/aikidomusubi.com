@@ -6,5 +6,5 @@ description: Materiales de entrenamiento, pautas de examen, formularios y otros 
 permalink: /recursos/
 lang: es
 i18n-ref: resources-uStNjtHz
-last_modified: 2026-10-14
+last_modified: 2026-10-15
 ---

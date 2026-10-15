@@ -80,32 +80,32 @@ groups:
         title: { es: "Hoja de inscripción", ca: "Full d'inscripció",
                  en: "Enrolment form", ja: "入会申込書" }
         desc:
-          es: "Tus datos, una por persona. Se entrega firmada en el dojo o por correo; la cuota se paga en línea."
-          ca: "Les teves dades, un per persona. Es lliura signat al dojo o per correu; la quota es paga en línia."
-          en: "Your details, one per person. Hand it in signed at the dojo or by email; the fee is paid online."
-          ja: "お一人につき1枚。記入・署名のうえ道場またはメールで提出します。会費はオンラインでお支払いいただきます。"
+          es: "Tus datos, una por persona. Se puede rellenar en el móvil; se entrega firmada en el dojo."
+          ca: "Les teves dades, un per persona. Es pot omplir al mòbil; es lliura signat al dojo."
+          en: "Your details, one per person. It can be filled in on your phone; hand it in signed at the dojo."
+          ja: "お一人につき1枚。スマートフォンで記入でき、署名のうえ道場に提出します。"
         file: "inscripcion"
-        langs: "ES CA EN JA"
+        langs: "ES CA EN"
       - kind: form
         title: { es: "Autorización de uso de imagen", ca: "Autorització d'ús d'imatge",
                  en: "Image release", ja: "肖像使用の同意書" }
         desc:
-          es: "Para aparecer en fotos y vídeos del dojo. Se puede retirar cuando quieras."
-          ca: "Per aparèixer a fotos i vídeos del dojo. Es pot retirar quan vulguis."
-          en: "To appear in the dojo's photographs and videos. Withdrawable at any time."
-          ja: "道場の写真・動画への掲載について。同意はいつでも撤回できます。"
+          es: "Para aparecer en fotos y vídeos del dojo. Voluntaria, y se puede retirar cuando quieras."
+          ca: "Per aparèixer a fotos i vídeos del dojo. Voluntària, i es pot retirar quan vulguis."
+          en: "To appear in the dojo's photographs and videos. Voluntary, and withdrawable at any time."
+          ja: "道場の写真・動画への掲載について。任意で、いつでも撤回できます。"
         file: "imagen"
-        langs: "ES CA EN JA"
+        langs: "ES CA EN"
       - kind: form
         title: { es: "Autorización para menores", ca: "Autorització per a menors",
                  en: "Consent for minors", ja: "未成年者の保護者同意書" }
         desc:
-          es: "La firman padres, madres o tutores. Obligatoria por debajo de 14 años."
-          ca: "La signen pares, mares o tutors. Obligatòria per sota dels 14 anys."
-          en: "Signed by a parent or guardian. Required under the age of 14."
-          ja: "保護者が署名します。14歳未満は必須です。"
+          es: "La firman la madre, el padre o quien tenga la tutela. Para cada socio o socia menor de 18 años."
+          ca: "La signen la mare, el pare o qui en tingui la tutela. Per a cada soci o sòcia menor de 18 anys."
+          en: "Signed by a parent or guardian. For every member under 18."
+          ja: "保護者が署名します。18歳未満の会員は必須です。"
         file: "menores"
-        langs: "ES CA"
+        langs: "ES CA EN"
 
   - id: examen
     name: { es: "Programa de examen", ca: "Programa d'examen",

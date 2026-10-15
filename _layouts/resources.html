@@ -129,6 +129,14 @@
             forever, fall back to the Spanish file — `langs:` beside the button
             already says what language it is in.
           {%- endcomment -%}
+          {%- comment -%}
+            Japanese readers get the English file before the Spanish one: the
+            forms exist in Spanish, Catalan and English only.
+          {%- endcomment -%}
+          {%- if L == 'ja' -%}{%- unless got -%}
+            {%- assign want = '/files/resources-uStNjtHz-' | append: it.file | append: '-en.pdf' -%}
+            {%- assign got = site.static_files | where: 'path', want | first -%}
+          {%- endunless -%}{%- endif -%}
           {%- unless got -%}
             {%- assign want = '/files/resources-uStNjtHz-' | append: it.file | append: '-es.pdf' -%}
             {%- assign got = site.static_files | where: 'path', want | first -%}
