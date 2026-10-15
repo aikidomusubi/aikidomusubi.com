@@ -1,7 +1,7 @@
 // Validation (spec 6.2) and the metadata it produces (6.6).
 import { describe, expect, it } from 'vitest';
 import { validate, unknownFields } from '../src/validate.ts';
-import { metadata } from '../src/checkout.ts';
+import { keikogiGiven, metadata } from '../src/checkout.ts';
 import { members } from '../src/meta.ts';
 import { CATALOG } from '../src/data.ts';
 import { Pricing } from '../src/pricing.ts';
@@ -130,6 +130,27 @@ describe('metadata', () => {
     expect(meta.keikogi).toBe('');
     expect(meta.keikogi_due).toBe('');
     expect(meta.invite_id).toBe('inv_123');
+  });
+  it('asks a paper form of everyone, except an invited member', () => {
+    const r = validate(FAMILY, NOW);
+    if (!r.ok) throw new Error('invalid');
+    const priced = Pricing.price({ period: 'quarterly', members: r.value.members.map((m) => ({ cat: m.cat, rate: m.rate, venue: m.venue })) }, CATALOG);
+    expect(metadata(r.value, priced.perMember, 'sid_0123456789abcdef', NOW, null).paper_due).toBe('m1,m2,m3');
+    expect(metadata(r.value, priced.perMember, 'sid_0123456789abcdef', NOW, 'inv_123').paper_due).toBe('');
+  });
+  it('gives a returning member no second keikogi, matching names without accents or case', () => {
+    const r = validate(FAMILY, NOW);
+    if (!r.ok) throw new Error('invalid');
+    const priced = Pricing.price({ period: 'quarterly', members: r.value.members.map((m) => ({ cat: m.cat, rate: m.rate, venue: m.venue })) }, CATALOG);
+    // Ana had hers in an earlier membership; Marc was still waiting for his when it ended.
+    const before = { keikogi: 'delivered', keikogi_due: 'm2', m1: 'cat=adult;rate=general;kind=full', m1_name: 'ANA GARCIA LÓPEZ',
+      m2: 'cat=adult;rate=general;kind=family', m2_name: 'Marc García López' };
+    const had = new Set(keikogiGiven(before));
+    expect([...had]).toEqual(['ana garcia lopez']);
+    const meta = metadata(r.value, priced.perMember, 'sid_0123456789abcdef', NOW, null, had);
+    expect(meta.keikogi_due).toBe('m2,m3');
+    expect(meta.keikogi).toBe('due');
+    expect(keikogiGiven({ ...before, keikogi: 'due' })).toEqual([]);
   });
   it('renumbers people when the form had a gap', () => {
     const gap = { ...FAMILY, p2_given: '', p2_family: '', p2_cat: '', p2_rate: '', holder: 'p3',

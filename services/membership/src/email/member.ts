@@ -133,6 +133,18 @@ export async function withdrawalAck(ctx: Ctx, o: { atMs: number; name: string; e
   ]);
 }
 
+// The withdrawal settled from the panel: the amount the acknowledgement
+// promised to write with.
+export async function withdrawalDone(ctx: Ctx, o: { amount: number; atMs: number }) {
+  const L = ctx.lang;
+  const w = E.withdrawal_done;
+  const vars = { amount: money(o.amount, L), date: date(o.atMs, L) };
+  await deliver(ctx, 'withdrawal_done', t(w.kind, L), t(o.amount > 0 ? w.subject : w.subject_none, L, vars), [
+    hello(ctx), B.h(t(w.heading, L)), B.p(t(o.amount > 0 ? w.body : w.body_none, L, vars)),
+    B.p(t(E.ended.back, L, link(ctx, 'signup'))), B.small(esc(t(E.ended.licence, L)))
+  ]);
+}
+
 export async function paymentFailed(ctx: Ctx, o: { amount: number; dueMs: number; method: Method | null }) {
   const L = ctx.lang;
   const f = E.payment_failed;

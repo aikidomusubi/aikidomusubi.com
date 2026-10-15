@@ -7,7 +7,7 @@ import type Stripe from 'stripe';
 import type { Env } from './env.ts';
 import { CATALOG, M, date, esc, money, periodName, periodUnit, t, url, type Lang } from './data.ts';
 import { randomId, sha256 } from './crypto.ts';
-import { encodeMember, type Meta } from './meta.ts';
+import { encodeMember, members, slots, type Meta } from './meta.ts';
 import { Pricing } from './pricing.ts';
 import { checkInvite } from './invite.ts';
 import { errorPage, fromSite, json, limited, log, readBody, redirect, wantsJson } from './http.ts';
@@ -77,14 +77,19 @@ export async function checkout(req: Request, env: Env, now = Date.now()): Promis
 
     // One active membership per email: a second signup would be a second
     // subscription at full price and the family discount would be lost.
+    // A former member coming back is the same Customer again, so their whole
+    // history stays in one place, and whoever had a keikogi already is not
+    // promised another (the terms, section 14: one per person).
     const customers = await st.customers.list({ email: s.email, limit: 10 });
     let reuse: Stripe.Customer | null = null;
+    const hadKeikogi = new Set<string>();
     for (const c of customers.data) {
       const subs = await st.subscriptions.list({ customer: c.id, status: 'all', limit: 20 });
       if (subs.data.some((x) => LIVE_STATUSES.has(x.status))) {
         log({ route: 'checkout', sid, outcome: 'existing_subscription' });
         return fail(env, req, lang, [{ field: 'email', code: 'existing' }]);
       }
+      for (const old of subs.data) keikogiGiven(old.metadata ?? {}).forEach((n) => hadKeikogi.add(n));
       reuse ??= c;
     }
 
@@ -108,7 +113,7 @@ export async function checkout(req: Request, env: Env, now = Date.now()): Promis
           { idempotencyKey: `cust-${sid}-${(await sha256(JSON.stringify(customerParams))).slice(0, 16)}` });
 
     const ids = await priceIds(st, result.lineItems.map((l) => l.lookupKey));
-    const meta = metadata(s, result.perMember, sid, now, inviteId);
+    const meta = metadata(s, result.perMember, sid, now, inviteId, hadKeikogi);
     const total = result.total;
     const unit = periodUnit(s.period, stripeLocale);
     const withdrawBy = Pricing.withdrawalDeadline(now);
@@ -150,7 +155,10 @@ export async function checkout(req: Request, env: Env, now = Date.now()): Promis
     log({ route: 'checkout', sid, outcome: 'session', session: session.id });
     return wantsJson(req) ? json(env, req, { url: session.url }) : redirect(session.url!);
   } catch (e) {
-    log({ route: 'checkout', sid, outcome: 'error', error: (e as Error).message?.slice(0, 200) });
+    const msg = (e as Error).message ?? '';
+    // The usual cause in test mode is a TEST_CLOCK that does not exist in this
+    // Stripe account, or one that already has its three customers.
+    log({ route: 'checkout', sid, outcome: /test.?clock/i.test(msg) ? 'test_clock_problem' : 'error', error: msg.slice(0, 200) });
     return fail(env, req, lang, [{ field: 'form', code: 'generic' }], 502);
   }
 }
@@ -161,7 +169,18 @@ function peopleWord(n: number, lang: 'es' | 'en' | 'ja') {
   return n === 1 ? '1 persona' : `${n} personas`;
 }
 
-export function metadata(s: Signup, priced: { slot: number; kind: 'full' | 'family' | 'sc' }[], sid: string, now: number, inviteId: string | null): Meta {
+// Whose keikogi a past membership handed over: everyone in it once the dojo
+// marked them ready, except those still listed as due. Names, folded, are the
+// only thing that links a person across two memberships.
+export const foldName = (s: string) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/\s+/g, ' ').trim();
+export function keikogiGiven(meta: Meta): string[] {
+  if (meta.keikogi !== 'ready' && meta.keikogi !== 'delivered') return [];
+  const due = slots(meta.keikogi_due);
+  return members(meta).filter((m) => !due.includes(`m${m.slot}`)).map((m) => foldName(m.name));
+}
+
+export function metadata(s: Signup, priced: { slot: number; kind: 'full' | 'family' | 'sc' }[], sid: string, now: number, inviteId: string | null,
+  hadKeikogi: Set<string> = new Set()): Meta {
   const iso = new Date(now).toISOString();
   // The keikogi is a gift on a FIRST enrolment: an existing member moving over
   // by invite has had theirs, so an invited signup carries none.
@@ -186,7 +205,7 @@ export function metadata(s: Signup, priced: { slot: number; kind: 'full' | 'fami
   };
   if (s.minors) meta.guardian_at = iso;
   if (inviteId) meta.invite_id = inviteId;
-  const slots: string[] = [];
+  const keikogiSlots: string[] = [];
   // Members are renumbered 1..n in the order given: the form's slot numbers
   // can have gaps (person 2 removed, person 3 kept), the metadata does not.
   s.members.forEach((p, i) => {
@@ -197,10 +216,11 @@ export function metadata(s: Signup, priced: { slot: number; kind: 'full' | 'fami
       sc: p.rate === 'sc' ? 'pending' : null,
       bym: p.birth ? `${p.birth.y}-${String(p.birth.m).padStart(2, '0')}` : null
     }));
-    if (quarterlyOrAnnual) slots.push(`m${n}`);
+    if (quarterlyOrAnnual && !hadKeikogi.has(foldName(`${p.given} ${p.family}`))) keikogiSlots.push(`m${n}`);
     if (s.holder.slot === p.slot) meta.holder = `m${n}`;
   });
-  meta.keikogi_due = slots.join(',');
+  meta.keikogi_due = keikogiSlots.join(',');
+  if (!keikogiSlots.length) meta.keikogi = '';
   if (!inviteId) meta.paper_due = s.members.map((_, i) => `m${i + 1}`).join(',');
   return meta;
 }

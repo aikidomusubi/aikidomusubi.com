@@ -7,6 +7,7 @@ import { members as metaMembers, slots, type MetaMember } from '../meta.ts';
 import { itemAmounts, priced, total } from '../household.ts';
 import { Pricing, type PeriodId } from '../pricing.ts';
 import { customerOf, method, periodEnd } from '../stripe.ts';
+import { inWindow, withdrawalAt } from '../withdraw.ts';
 
 export type Keikogi = 'none' | 'later' | 'ready' | 'delivered';
 
@@ -18,10 +19,12 @@ export interface Person extends MetaMember {
   ageFrom: number | null;             // the charge from which the 17+ fee applies, when it is due now
 }
 
-export type Status = 'ok' | 'failed' | 'ending';
+export type Status = 'ok' | 'failed' | 'ending' | 'ended';
+export type EndReason = 'withdrawal' | 'baja' | 'impago';
 
 export interface Family {
   id: string;
+  customerId: string;
   name: string;                       // "Familia García", or the one person's name
   holder: string;
   email: string;
@@ -36,14 +39,23 @@ export interface Family {
   created: number;
   invited: boolean;
   keikogiFrom: number | null;         // when the keikogi becomes due, while it is not yet
+  withdrawalAt: number | null;        // a withdrawal request waiting to be settled
+  withdrawalInWindow: boolean;        // within the 14 days; after them it is a cancellation
+  ended: number | null;               // a former membership: when it ended, and why
+  endReason: EndReason | null;
+  refunded: number | null;            // what a settled withdrawal gave back
+  before: { from: number; to: number }[];  // earlier memberships of the same customer
   people: Person[];
 }
 
-export type TaskKind = 'paper' | 'keikogi' | 'sc' | 'age' | 'money';
+export type TaskKind = 'withdrawal' | 'paper' | 'keikogi' | 'sc' | 'age' | 'money';
 export interface Task { kind: TaskKind; fam: Family; person: Person | null; since: number }
 
 const LIVE: Stripe.Subscription.Status[] = ['active', 'trialing', 'past_due', 'unpaid', 'incomplete'];
 export const isCurrent = (s: Stripe.Subscription) => Boolean(s.metadata?.signup_id) && LIVE.includes(s.status);
+// A membership that was running and has ended. Not incomplete_expired: that is
+// a first payment that never went through, which was never a membership.
+export const isFormer = (s: Stripe.Subscription) => Boolean(s.metadata?.signup_id) && s.status === 'canceled';
 
 export function familyName(people: MetaMember[], hello: string, customer: string): string {
   if (people.length < 2) return people[0]?.name || customer;
@@ -55,7 +67,7 @@ export function familyName(people: MetaMember[], hello: string, customer: string
   return surname ? `Familia ${surname}` : customer || holder.name;
 }
 
-export function family(sub: Stripe.Subscription, now = Date.now()): Family {
+export function family(sub: Stripe.Subscription): Family {
   const meta = sub.metadata;
   const cust = customerOf(sub);
   const amounts = priced(meta, itemAmounts(sub));
@@ -90,8 +102,14 @@ export function family(sub: Stripe.Subscription, now = Date.now()): Family {
   // The keikogi becomes due with the first full charge (the anchor) once the
   // 14 days to withdraw are over too.
   const withdrawEnd = meta.withdraw_by ? Date.parse(meta.withdraw_by + 'T12:00:00Z') + 86400000 : 0;
+  const wd = sub.status === 'canceled' || meta.withdrawal_done ? null : withdrawalAt(sub);
+  const ended = sub.status === 'canceled' ? (sub.ended_at ?? sub.canceled_at ?? sub.created) * 1000 : null;
+  const endReason: EndReason | null = !ended ? null
+    : meta.withdrawal_done ? 'withdrawal'
+    : sub.cancellation_details?.reason === 'payment_failed' ? 'impago' : 'baja';
   return {
     id: sub.id,
+    customerId: cust?.id ?? (typeof sub.customer === 'string' ? sub.customer : ''),
     name: familyName(metaMembers(meta), meta.hello ?? '', cust?.name ?? ''),
     holder: cust?.name ?? '',
     email: cust?.email ?? '',
@@ -100,22 +118,40 @@ export function family(sub: Stripe.Subscription, now = Date.now()): Family {
     total: total(amounts),
     next,
     method: pm?.type === 'sepa_debit' ? 'Domiciliación SEPA' : pm?.type === 'card' ? 'Tarjeta' : '',
-    status: failed ? 'failed' : endsAt ? 'ending' : 'ok',
+    status: ended ? 'ended' : failed ? 'failed' : endsAt ? 'ending' : 'ok',
     failedAmount: failed && inv ? inv.amount_due / 100 : null,
     endsAt,
     created: sub.created * 1000,
     invited: Boolean(meta.invite_id),
-    keikogiFrom: k === 'due' || k === 'paid' ? Math.max(sub.billing_cycle_anchor * 1000, withdrawEnd) : null,
+    keikogiFrom: !ended && (k === 'due' || k === 'paid') ? Math.max(sub.billing_cycle_anchor * 1000, withdrawEnd) : null,
+    withdrawalAt: wd,
+    withdrawalInWindow: wd != null && inWindow(sub, wd),
+    ended,
+    endReason,
+    refunded: meta.withdrawal_refund ? Number(meta.withdrawal_refund) : null,
+    before: [],
     people
   };
-  void now;
+}
+
+// Who has been a member before: each current membership learns the earlier
+// ones of the same Stripe customer (a returning member signs up with the same
+// email, and checkout.ts reuses the customer).
+export function linkReturning(current: Family[], former: Family[]) {
+  for (const f of current) {
+    f.before = former.filter((x) => x.customerId && x.customerId === f.customerId)
+      .map((x) => ({ from: x.created, to: x.ended! })).sort((a, b) => a.from - b.from);
+  }
 }
 
 // The to-do list, in the order the page shows it.
 export function tasks(fams: Family[]): Task[] {
   const out: Task[] = [];
   for (const f of fams) {
-    for (const p of f.people) {
+    if (f.withdrawalAt) out.push({ kind: 'withdrawal', fam: f, person: null, since: f.withdrawalAt });
+    // A family that is withdrawing needs no forms collected or keikogi handed over.
+    const leaving = f.withdrawalAt != null && f.withdrawalInWindow;
+    for (const p of leaving ? [] : f.people) {
       if (p.paper === 'due') out.push({ kind: 'paper', fam: f, person: p, since: f.created });
       if (p.keikogi === 'ready') out.push({ kind: 'keikogi', fam: f, person: p, since: f.created });
       if (p.sc === 'pending') out.push({ kind: 'sc', fam: f, person: p, since: f.created });

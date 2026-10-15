@@ -29,7 +29,8 @@ const PATHS: Record<string, string> = {
   door: '<path d="M5 21V4h10v17M15 12h.01M15 4l4 1v16"/>',
   info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/>',
   alert: '<path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17h.01"/>',
-  left: '<path d="M15 5l-7 7 7 7"/>'
+  left: '<path d="M15 5l-7 7 7 7"/>',
+  withdrawal: '<path d="M9 14L4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 0 12h-3"/>'
 };
 export const icon = (n: string) =>
   `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${PATHS[n]}</svg>`;
@@ -125,7 +126,9 @@ export function toast(f: Flash | null, c: Ctx): string {
     sc_no: `${who} pasa a la cuota general desde el próximo cobro. La familia ya tiene el correo.`,
     age: `${who} pasa a la cuota de 17 o más desde el próximo cobro. La familia ya tiene el correo.`,
     cancel: `Baja hecha${fam?.endsAt ? `: la cuota termina el ${short(fam.endsAt)}` : ''}. La familia recibe un correo de confirmación.`,
-    resume: 'Baja anulada: la cuota sigue como antes.'
+    resume: 'Baja anulada: la cuota sigue como antes.',
+    withdraw: `Desistimiento resuelto${fam?.refunded != null ? `: devueltos ${m(fam.refunded)}` : ''}. La cuota ha terminado y la familia tiene el correo con el importe.`,
+    withdraw_dismiss: 'Desistimiento quitado de la lista. La cuota sigue.'
   };
   if (!(f.a in text)) return '';
   const undo = UNDO[f.a as ActionKind];
@@ -146,13 +149,14 @@ export function greeting(now: number, name: string): string {
 
 interface GroupDef { title: string; sub: string }
 export const GROUPS: Record<TaskKind, GroupDef> = {
+  withdrawal: { title: 'Desistimientos', sub: 'Hay que resolverlos antes de 14 días desde la solicitud. El importe ya está calculado: un botón devuelve el dinero, termina la cuota y escribe a la familia.' },
   paper: { title: 'Hojas de inscripción por recoger', sub: 'En papel y firmadas, una por persona. Las de menores, con la firma de madre, padre o tutor.' },
   keikogi: { title: 'Keikogi para entregar', sub: 'Ya se ha cobrado el primer trimestre o año completo y han pasado los 14 días para desistir.' },
   sc: { title: 'Abonos municipales por comprobar', sub: 'Pide el carné del polideportivo en su primera clase allí.' },
   age: { title: 'Cumplen 17', sub: 'Pasan a la cuota de 17 años o más desde el próximo cobro. La familia recibe un correo.' },
   money: { title: 'Cobros que no han pasado', sub: 'Stripe lo reintenta solo y la familia ya tiene un correo. Si no se resuelve, habla con ella.' }
 };
-const ORDER: TaskKind[] = ['paper', 'keikogi', 'sc', 'age', 'money'];
+const ORDER: TaskKind[] = ['withdrawal', 'paper', 'keikogi', 'sc', 'age', 'money'];
 
 const famLink = (f: Family, text: string) => `<a href="/panel/miembros?id=${esc(f.id)}">${esc(text)}</a>`;
 const inFamily = (f: Family) => (f.people.length > 1 ? `${f.name} · ` : '');
@@ -180,6 +184,17 @@ function taskRow(t: Task, c: Ctx): string {
     case 'age':
       what = `${inFamily(f)}nueva cuota desde el cobro del ${short(p!.ageFrom!)}`;
       btns = askBtn(c, 'age', f.id, p!.slot, 'Aplicar y avisar…', 'alt', '', `la cuota de 17 o más a ${p!.name}`);
+      break;
+    case 'withdrawal':
+      who = f.name;
+      if (f.withdrawalInWindow) {
+        what = `Recibido el ${short(f.withdrawalAt!)} · resolver antes del ${short(f.withdrawalAt! + 14 * 86400000)}`;
+        btns = askBtn(c, 'withdraw', f.id, null, 'Resolver…', '', '', `el desistimiento de ${f.name}`);
+      } else {
+        what = `Recibido el ${short(f.withdrawalAt!)}, pasados los 14 días: es una baja, no un desistimiento`;
+        btns = askBtn(c, 'cancel', f.id, null, 'Dar de baja…', 'alt', '', f.name)
+          + askBtn(c, 'withdraw_dismiss', f.id, null, 'Quitar de la lista…', 'alt', '', `el desistimiento de ${f.name}`);
+      }
       break;
     case 'money':
       who = f.name;
@@ -216,28 +231,35 @@ export function pendingPage(user: Session, fams: Family[], list: Task[], now: nu
   return `${toast(flash, c)}<h1 class="hello">${esc(greeting(now, user.name))}</h1>
 <p class="sub">${n ? `Hay <b>${n} ${n === 1 ? 'cosa' : 'cosas'}</b> por hacer.` : 'Nada por hacer ahora mismo.'}</p>
 <ul class="stats" aria-label="Resumen">
-<li class="stat"><b>${fams.length}</b><span>cuotas activas</span></li>
-<li class="stat"><b>${people}</b><span>personas entrenando</span></li>
+<li class="stat"><a href="/panel/miembros"><b>${fams.length}</b><span>cuotas activas</span></a></li>
+<li class="stat"><a href="/panel/miembros"><b>${people}</b><span>personas entrenando</span></a></li>
 <li class="stat"><b>${thisMonth}</b><span>${thisMonth === 1 ? 'inscripción' : 'inscripciones'} este mes</span></li>
-<li class="stat"><b>${ending}</b><span>${ending === 1 ? 'baja en curso' : 'bajas en curso'}</span></li></ul>
+<li class="stat"><a href="/panel/miembros?f=bajas"><b>${ending}</b><span>${ending === 1 ? 'baja en curso' : 'bajas en curso'}</span></a></li></ul>
 ${body}`;
 }
 
 // ---------------------------------------------------------------------------
-export type Filter = 'todos' | 'pendiente' | 'cobros' | 'bajas' | 'abono';
+export type Filter = 'todos' | 'pendiente' | 'cobros' | 'bajas' | 'abono' | 'antiguos';
 export const FILTERS: [Filter, string, (f: Family, t: Task[]) => boolean][] = [
   ['todos', 'Todos', () => true],
   ['pendiente', 'Con algo pendiente', (f, t) => t.some((x) => x.fam.id === f.id)],
   ['cobros', 'Cobros pendientes', (f) => f.status === 'failed'],
   ['bajas', 'Bajas en curso', (f) => Boolean(f.endsAt)],
-  ['abono', 'Con abono municipal', (f) => f.people.some((p) => p.rate === 'sc')]
+  ['abono', 'Con abono municipal', (f) => f.people.some((p) => p.rate === 'sc')],
+  // Read from the former memberships, not the current ones: see membersPage.
+  ['antiguos', 'Antiguos miembros', () => true]
 ];
 
 export const fold = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 const searchText = (f: Family) => fold([f.name, f.holder, f.email, ...f.people.map((p) => p.name)].join(' '));
 
+const REASON: Record<string, string> = { withdrawal: 'desistimiento', baja: 'baja', impago: 'impago' };
+
 function famChips(f: Family): string {
-  const out: string[] = [];
+  if (f.status === 'ended') return `<ul class="chips">${statusChip(f, 'li')}</ul>`;
+  const out: string[] = [statusChip(f, 'li')];
+  if (f.withdrawalAt) out.unshift('<li class="chip bad">Desistimiento por resolver</li>');
+  if (f.before.length) out.push('<li class="chip info">Vuelve</li>');
   const count = (pred: (p: Person) => boolean) => f.people.filter(pred).length;
   const paper = count((p) => p.paper === 'due');
   const kei = count((p) => p.keikogi === 'ready');
@@ -247,11 +269,11 @@ function famChips(f: Family): string {
   if (kei) out.push(`<li class="chip todo">${kei} keikogi por entregar</li>`);
   if (sc) out.push(`<li class="chip todo">Abono por comprobar</li>`);
   if (age) out.push(`<li class="chip todo">Cumple 17</li>`);
-  out.push(statusChip(f, 'li'));
   return `<ul class="chips">${out.join('')}</ul>`;
 }
 
 function statusChip(f: Family, tag = 'span') {
+  if (f.status === 'ended') return `<${tag} class="chip wait">Terminó el ${esc(short(f.ended!))} · ${REASON[f.endReason ?? 'baja']}</${tag}>`;
   if (f.status === 'failed') return `<${tag} class="chip bad">Cobro pendiente</${tag}>`;
   if (f.endsAt) return `<${tag} class="chip info">Baja el ${esc(short(f.endsAt))}</${tag}>`;
   return `<${tag} class="chip ok">Al día</${tag}>`;
@@ -259,20 +281,22 @@ function statusChip(f: Family, tag = 'span') {
 
 function famMeta(f: Family) {
   const ppl = `${f.people.length} ${f.people.length === 1 ? 'persona' : 'personas'}`;
+  if (f.ended) return `${PERIOD[f.period]} · ${ppl} · de ${short(f.created)} a ${short(f.ended)}`;
   const when = f.endsAt ? `termina el ${short(f.endsAt)}` : `próximo cobro ${short(f.next)}`;
   return `${PERIOD[f.period]} · ${m(f.total)} · ${ppl} · ${when}`;
 }
 
 export interface Detail { fam: Family; log: LogEntry[]; invoices: Stripe.Invoice[]; names: Map<string, string> }
 
-export function membersPage(user: Session, fams: Family[], list: Task[], q: string, filter: Filter, detail: Detail | null, flash: Flash | null): string {
+export function membersPage(user: Session, fams: Family[], former: Family[], list: Task[], q: string, filter: Filter, detail: Detail | null, flash: Flash | null): string {
   const c: Ctx = { csrf: user.csrf, back: 'm' };
   const test = FILTERS.find(([k]) => k === filter)?.[2] ?? (() => true);
   const qf = fold(q.trim());
-  const shown = fams.filter((f) => test(f, list) && (!qf || searchText(f).includes(qf)))
-    .sort((a, b) => a.name.localeCompare(b.name, 'es'));
+  const pool = filter === 'antiguos' ? former : fams;
+  const shown = pool.filter((f) => test(f, list) && (!qf || searchText(f).includes(qf)))
+    .sort((a, b) => filter === 'antiguos' ? b.ended! - a.ended! : a.name.localeCompare(b.name, 'es'));
   const chips = FILTERS.map(([k, label, fn]) => {
-    const n = fams.filter((f) => fn(f, list)).length;
+    const n = k === 'antiguos' ? former.length : fams.filter((f) => fn(f, list)).length;
     const qs = new URLSearchParams({ ...(k !== 'todos' ? { f: k } : {}), ...(q ? { q } : {}) }).toString();
     return `<li><a href="/panel/miembros${qs ? '?' + esc(qs) : ''}"${k === filter ? ' aria-current="true"' : ''}>${esc(label)} · ${n}</a></li>`;
   }).join('');
@@ -290,13 +314,18 @@ ${filter !== 'todos' ? `<input type="hidden" name="f" value="${filter}">` : ''}<
 <ul class="filters" aria-label="Filtros">${chips}</ul>
 <p class="sr" id="shown" aria-live="polite">${shown.length} ${shown.length === 1 ? 'cuota' : 'cuotas'}</p>
 <ul class="fams">${cards}</ul>
-<p class="none"${shown.length ? ' hidden' : ''}>Ninguna cuota coincide.${q || filter !== 'todos' ? ' <a href="/panel/miembros">Ver todas</a>' : ''}</p></div>`;
+<p class="none"${shown.length ? ' hidden' : ''}>${filter === 'antiguos' && !qf ? 'Todavía no ha terminado ninguna cuota.' : 'Ninguna cuota coincide.'}${q || filter !== 'todos' ? ' <a href="/panel/miembros">Ver todas</a>' : ''}</p></div>`;
   return `${toast(flash, c)}<div class="split${detail ? ' detail' : ' solo'}">${listHtml}${detail ? detailPanel(detail, c, filter, q) : ''}</div>`;
 }
 
 function personRow(f: Family, p: Person, c: Ctx): string {
   const chips: string[] = [];
   const btns: string[] = [];
+  if (f.status === 'ended') {
+    return `<li class="person"><span class="av" aria-hidden="true">${esc(initials(p.name))}</span><b>${esc(p.name)}</b>
+<span class="fee">${esc(feeLabel(p))}</span></li>`;
+  }
+  if (f.endsAt) chips.push(`<li class="chip info">Baja el ${esc(short(f.endsAt))}</li>`);
   if (p.paper === 'due') {
     chips.push('<li class="chip todo">Hoja por recoger</li>');
     btns.push(actBtn(c, 'paper', f.id, p.slot, 'Hoja recibida', 'alt', 'paper', `de ${p.name}`));
@@ -330,7 +359,9 @@ const ACT_TEXT: Record<ActionKind, (who: string) => string> = {
   sc_no: (w) => `Abono de ${w} no válido: pasa a la cuota general`,
   age: (w) => `${w} pasa a la cuota de 17 o más`,
   cancel: () => 'Baja pedida',
-  resume: () => 'Baja anulada'
+  resume: () => 'Baja anulada',
+  withdraw: () => 'Desistimiento resuelto: dinero devuelto y cuota terminada',
+  withdraw_dismiss: () => 'Desistimiento quitado de la lista'
 };
 
 interface Event { t: number; html: string; cls: string }
@@ -363,29 +394,56 @@ function detailPanel(d: Detail, c: Ctx, filter: Filter, q: string): string {
   const contact = [f.holder && `Titular: ${esc(f.holder)}`, f.email && `<a href="mailto:${esc(f.email)}">${esc(f.email)}</a>`,
     f.phone && `<a class="tel" href="tel:${esc(f.phone.replace(/\s/g, ''))}">${esc(f.phone)}</a>`].filter(Boolean).join(' · ');
   const hist = historyOf(d).map((e) => `<li class="${e.cls}"><time datetime="${new Date(e.t).toISOString().slice(0, 10)}">${esc(short(e.t))}</time>${e.html}</li>`).join('');
-  const rows: [string, string][] = [
+  const rows: [string, string][] = f.ended ? [
+    ['Periodo', `${PERIOD[f.period]} · ${m(f.total)}`],
+    ['Desde', short(f.created)], ['Hasta', short(f.ended)],
+    ...(f.refunded != null ? [['Devuelto', m(f.refunded)] as [string, string]] : [])
+  ] : [
     ['Periodo', `${PERIOD[f.period]} · ${m(f.total)}`],
     [f.endsAt ? 'Termina' : 'Próximo cobro', short(f.endsAt ?? f.next)],
     ...(f.method ? [['Pago', f.method] as [string, string]] : []),
   ];
-  const leave = f.endsAt
-    ? askBtn(c, 'resume', f.id, null, 'Anular la baja…', 'alt', 'door')
+  const leave = f.ended ? ''
+    : f.withdrawalAt && f.withdrawalInWindow ? askBtn(c, 'withdraw', f.id, null, 'Resolver el desistimiento…', 'warn', 'withdrawal')
+    : f.endsAt ? askBtn(c, 'resume', f.id, null, 'Anular la baja…', 'alt', 'door')
     : askBtn(c, 'cancel', f.id, null, `Dar de baja al final del ${periodWordOf(f)}…`, 'warn', 'door');
   return `<section class="panel" aria-labelledby="fam-h">
 <div class="ph"><a class="back" href="/panel/miembros${backQs ? '?' + esc(backQs) : ''}">${icon('left')}Volver a la lista</a>
 <h2 id="fam-h">${esc(f.name)}</h2><p>${contact}</p></div>
-<div class="pb"><h3>Quién entrena</h3><ul class="people">${f.people.map((p) => personRow(f, p, c)).join('')}</ul>
+${banner(f)}<div class="pb"><h3>${f.ended ? 'Quién entrenaba' : 'Quién entrena'}</h3><ul class="people">${f.people.map((p) => personRow(f, p, c)).join('')}</ul>
 <h3>Cuota</h3><dl class="kv">${rows.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}<dt>Estado</dt><dd>${statusChip(f)}</dd></dl>
 <h3>Historia, lo último arriba</h3><ul class="tl">${hist}</ul></div>
-<div class="actions">${stripeLink(stripeUrl(f.id), 'Pagos y recibos en Stripe')}${leave}
-<p>Añadir o quitar personas, o cambiar de periodo, recalcula la cuota de toda la familia: de momento lo hace quien mantiene la web. Pásale el nombre de la familia y lo que piden.</p></div>
+<div class="actions">${leave}${stripeLink(stripeUrl(f.id), 'Pagos y recibos en Stripe')}
+${f.ended ? '<p>Si vuelve, se inscribe en la web con el mismo correo, y su historia sigue en Stripe.</p>' : '<p>Añadir o quitar personas, o cambiar de periodo, recalcula la cuota de toda la familia: de momento lo hace quien mantiene la web. Pásale el nombre de la familia y lo que piden.</p>'}</div>
 </section>`;
+}
+
+// The one thing to know about a family before anything else, said at the top.
+function banner(f: Family): string {
+  const span = (b: { from: number; to: number }) => `de ${short(b.from)} a ${short(b.to)}`;
+  const items: [string, string][] = [];
+  if (f.ended) {
+    items.push(['done', f.endReason === 'withdrawal'
+      ? `Esta cuota terminó el ${short(f.ended)} por desistimiento${f.refunded != null ? `: se devolvieron ${m(f.refunded)}` : ''}.`
+      : f.endReason === 'impago' ? `Esta cuota terminó el ${short(f.ended)} por impago.`
+      : `Esta cuota terminó el ${short(f.ended)}: se dieron de baja.`]);
+  } else if (f.withdrawalAt) {
+    items.push(['bad', f.withdrawalInWindow
+      ? `Desistimiento recibido el ${short(f.withdrawalAt)}. Resuélvelo antes del ${short(f.withdrawalAt + 14 * 86400000)}: devolver el dinero y terminar la cuota es un solo botón, abajo.`
+      : `Pidieron desistir el ${short(f.withdrawalAt)}, pasados los 14 días: es una baja. Dales de baja al final del periodo, abajo, o quítalo de Pendiente.`]);
+  } else if (f.endsAt) {
+    items.push(['info', `Baja: la cuota termina el ${short(f.endsAt)}. Hasta entonces pueden seguir entrenando, y después no se cobra nada más.`]);
+  }
+  if (f.status === 'failed') items.push(['bad', `Cobro pendiente${f.failedAmount != null ? ` de ${m(f.failedAmount)}` : ''}. Stripe lo reintenta; si no pasa, habla con la familia.`]);
+  if (f.before.length) items.push(['info', `Ya fue miembro ${f.before.map(span).join(' y ')}. No recibe otro keikogi: es uno por persona.`]);
+  return items.map(([k, t]) => `<p class="banner ${k}">${icon(k === 'bad' ? 'alert' : 'info')}<span>${esc(t)}</span></p>`).join('');
 }
 
 const periodWordOf = (f: Family) => ({ monthly: 'mes', quarterly: 'trimestre', annual: 'año' }[f.period] ?? 'periodo');
 
 // ---------------------------------------------------------------------------
-export interface Confirm { a: ActionKind; fam: Family; person: Person | null; before?: number; after?: number; totalBefore?: number; totalAfter?: number }
+export interface RefundView { lines: { start: number; end: number; paid: number; keep: number; refund: number }[]; total: number; pending: boolean }
+export interface Confirm { a: ActionKind; fam: Family; person: Person | null; before?: number; after?: number; totalBefore?: number; totalAfter?: number; refund?: RefundView }
 
 export function confirmPage(c: Ctx, x: Confirm): string {
   const f = x.fam;
@@ -394,7 +452,29 @@ export function confirmPage(c: Ctx, x: Confirm): string {
   const sum = x.before != null ? `<div class="sum"><div><span>${esc(p!.first)}</span><b>${esc(m(x.before))} → ${esc(m(x.after!))} ${unit}</b></div>
 ${f.people.length > 1 ? `<div><span>Total de la familia</span><b>${esc(m(x.totalBefore!))} → ${esc(m(x.totalAfter!))} ${unit}</b></div>` : ''}</div>` : '';
   let title = '', text = '', yes = '', cls = '';
+  let extra = '';
   switch (x.a) {
+    case 'withdraw': {
+      const r = x.refund!;
+      title = `¿Resolver el desistimiento de ${f.name}?`;
+      if (r.pending) {
+        const backHref = c.back === 'm' ? `/panel/miembros?id=${esc(f.id)}` : '/panel/';
+        return `<div class="sheet" role="group" aria-labelledby="ask-h"><h1 id="ask-h">Todavía no se puede</h1>
+<p>Hay un cobro de esta familia que el banco aún está confirmando (una domiciliación tarda unos días). Hasta que se confirme no se puede devolver, y si terminaras la cuota ahora se cobraría igualmente. Vuelve en unos días: seguirá aquí, y el importe no cambia.</p>
+<a class="btn alt big" href="${backHref}">Volver</a></div>`;
+      }
+      text = `Pidieron desistir el <b>${esc(short(f.withdrawalAt!))}</b>. Pagan los días hasta esa fecha y se les devuelve el resto, ya calculado; aunque lo resuelvas otro día, el importe es el mismo. La cuota termina ahora, no habrá más cobros, y la familia recibe un correo con el importe.`;
+      extra = `<div class="sum">${r.lines.map((l) => `<div><span>Cobro del ${esc(short(l.start))}: ${esc(m(l.paid))}, se quedan ${esc(m(l.keep))}</span><b>${esc(m(l.refund))}</b></div>`).join('')}
+<div class="tot"><span>Se devuelve</span><b>${esc(m(r.total))}</b></div></div>
+<p class="note">Se devuelve por el mismo medio de pago. Con domiciliación bancaria tarda unos días en verse en su cuenta.</p>`;
+      yes = r.total > 0 ? `Sí, devolver ${m(r.total)} y terminar` : 'Sí, terminar la cuota'; cls = 'warn';
+      break;
+    }
+    case 'withdraw_dismiss':
+      title = '¿Quitar el desistimiento de Pendiente?';
+      text = 'Hazlo solo si la familia ha dicho que fue un error, o si ya lo habéis resuelto de otra forma. La cuota sigue como estaba y no se devuelve nada.';
+      yes = 'Sí, quitarlo';
+      break;
     case 'age':
       title = `¿Pasar a ${p!.first} a la cuota de 17 o más?`;
       text = `Desde el próximo cobro, el <b>${esc(short(f.next))}</b>. La familia recibe un correo que se lo explica, y se borra la fecha de nacimiento, que ya no hace falta.`;
@@ -419,7 +499,7 @@ ${f.people.length > 1 ? `<div><span>Total de la familia</span><b>${esc(m(x.total
       return '';
   }
   const backHref = c.back === 'm' ? `/panel/miembros?id=${esc(f.id)}` : '/panel/';
-  return `<div class="sheet" role="group" aria-labelledby="ask-h"><h1 id="ask-h">${esc(title)}</h1><p>${text}</p>${sum}
+  return `<div class="sheet" role="group" aria-labelledby="ask-h"><h1 id="ask-h">${esc(title)}</h1><p>${text}</p>${sum}${extra}
 ${actBtn(c, x.a, f.id, p ? p.slot : null, yes, `big ${cls}`, '')}
 <a class="btn alt big" href="${backHref}">No, volver</a></div>`;
 }
@@ -462,7 +542,13 @@ const FAQ: [string, string][] = [
 <p>Los botones que cambian lo que paga una familia (abono no válido, 17 o más, baja) siempre piden confirmación antes, con los importes.</p>`],
   ['Una familia quiere darse de baja',
     `<p>Pueden hacerlo ellos mismos desde <b>Mi cuota</b>; el enlace está en todos sus correos. Si te lo piden a ti, abre la familia en <b>Miembros</b> y pulsa <b>Dar de baja al final del periodo</b>. Siguen entrenando hasta esa fecha y no se cobra nada más.</p>
-<p>Si quieren <b>desistir</b> dentro de los 14 días y recuperar el dinero, eso es otra cosa: tienen el formulario de desistimiento en la web, y la devolución se hace en Stripe.</p>`],
+<p>Si quieren <b>desistir</b> dentro de los 14 días y recuperar el dinero, es otra cosa: que usen el formulario de desistimiento de la web.</p>`],
+  ['Ha llegado un desistimiento',
+    `<p>Aparece el primero en <b>Pendiente</b>. Pulsa <b>Resolver…</b>: verás lo que se devuelve, ya calculado. Al confirmar se devuelve el dinero por el mismo medio de pago, la cuota termina y la familia recibe un correo con el importe. No hace falta entrar en Stripe.</p>
+<p>El importe se calcula a la hora en que lo pidieron, así que no cambia aunque lo resuelvas otro día. Eso sí, hay que hacerlo antes de 14 días desde la solicitud.</p>
+<p>Si llega pasados los 14 días, ya no es un desistimiento sino una baja: el panel te lo dice y te ofrece darles de baja al final del periodo.</p>`],
+  ['Alguien que se dio de baja quiere volver',
+    `<p>Que se inscriba otra vez en la web, con el mismo correo. Su historia sigue junta, y en su ficha verás «Ya fue miembro». No recibe otro keikogi si ya tuvo uno. Las cuotas que terminaron están en <b>Miembros → Antiguos miembros</b>.</p>`],
   ['Alguien dice que ha pagado dos veces, o pide una devolución',
     `<p>Los pagos y las devoluciones se miran en Stripe: abre la familia y pulsa <b>Pagos y recibos en Stripe</b>. Si no lo ves claro, no toques nada y pregunta.</p>`],
   ['Quieren añadir o quitar a alguien, o cambiar a trimestral o anual',

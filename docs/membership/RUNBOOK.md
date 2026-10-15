@@ -90,18 +90,42 @@ end of the period**.) The family gets the confirmation email by itself either wa
 
 ## A withdrawal (within 14 days)
 
-The email says whether the address has a membership and suggests a refund. Then:
+The email says whether the address has a membership. If it has, the request is first
+under **Pendiente → Desistimientos** in the panel. Press **Resolver…**: it shows each
+payment, what is kept and what goes back, and one button does the rest, within 14 days
+of the request:
+
+- refunds each payment by the same means it was paid,
+- ends the membership at once (no more charges),
+- emails the family the amount, which the acknowledgement promised.
+
+**The amount does not change with the day you do it.** The law has the member pay for
+the days until they told us, so it is worked out at the moment of the request, which
+the form stamped on the membership. Settling it a week later gives the same figure.
+
+**After the 14 days** it is a cancellation, not a withdrawal: the panel says so and
+offers **Dar de baja…** (end of the paid period, no refund) or **Quitar de la lista…**.
+
+**A first SEPA payment still being confirmed** cannot be refunded yet; the panel says
+so and the request waits. Come back in a few days.
+
+Without the panel, the same figure from the command line, then refund and cancel
+**Immediately** in the Dashboard:
 
 ```bash
 npm run refund -- --mode live --sub sub_123 --at 2027-01-27T21:14
 ```
 
-Use the date and time from the acknowledgement. Then, within 14 days of the request:
+## Former members, and coming back
 
-1. Dashboard → Payments → each payment listed → Refund the amount printed.
-2. Dashboard → Subscriptions → Cancel → **Immediately**.
+**Miembros → Antiguos miembros** lists every membership that has ended, newest first,
+with how it ended (baja, desistimiento, impago). Nothing can be pressed there.
 
-Write to the family with the amount (the acknowledgement promised it).
+Coming back is just signing up again **with the same email**. Stripe keeps one customer,
+so the history is together, and the new membership says "Ya fue miembro de … a …".
+Under the terms (section 14) the keikogi is one per person: whoever had theirs handed
+over the first time is not promised another. A paper form is asked again, as for any
+signup. A different email is a new person as far as Stripe knows.
 
 ## Editing the metadata by hand
 

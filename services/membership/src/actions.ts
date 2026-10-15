@@ -25,17 +25,20 @@ import { asMembers, itemAmounts, priced, total } from './household.ts';
 import { Pricing } from './pricing.ts';
 import { periodEnd, priceIds, stripe, subscription } from './stripe.ts';
 import { ctxFor } from './context.ts';
+import { settle } from './withdraw.ts';
 import * as member from './email/member.ts';
 import { admin, B } from './email/admin.ts';
 
 export type ActionKind =
   | 'paper' | 'keikogi' | 'sc_ok' | 'sc_no' | 'age'          // the email buttons and the panel
   | 'paper_undo' | 'keikogi_undo' | 'sc_undo'                 // the panel's Deshacer
-  | 'cancel' | 'resume';                                      // the panel only; no person
-export const ACTIONS: ActionKind[] = ['paper', 'keikogi', 'sc_ok', 'sc_no', 'age', 'paper_undo', 'keikogi_undo', 'sc_undo', 'cancel', 'resume'];
+  | 'cancel' | 'resume'                                       // the panel only; no person
+  | 'withdraw' | 'withdraw_dismiss';                          // settle a withdrawal, or drop it
+export const ACTIONS: ActionKind[] = ['paper', 'keikogi', 'sc_ok', 'sc_no', 'age', 'paper_undo', 'keikogi_undo', 'sc_undo', 'cancel', 'resume', 'withdraw', 'withdraw_dismiss'];
 // The ones that change what a family pays, or whether it stays: the panel asks
 // before doing them, and they cannot be undone with one press.
-export const ASKS_FIRST: ActionKind[] = ['sc_no', 'age', 'cancel', 'resume'];
+export const ASKS_FIRST: ActionKind[] = ['sc_no', 'age', 'cancel', 'resume', 'withdraw', 'withdraw_dismiss'];
+export const WHOLE: ActionKind[] = ['cancel', 'resume', 'withdraw', 'withdraw_dismiss'];
 interface ActionPayload { a: ActionKind; s: string; n: number; x: number; id: string }
 
 const LABEL: Partial<Record<ActionKind, string>> = {
@@ -125,6 +128,14 @@ export async function apply(env: Env, st: Stripe, sub: Stripe.Subscription, who:
 
 async function change(env: Env, st: Stripe, sub: Stripe.Subscription, who: MetaMember | null, a: ActionKind): Promise<string> {
   const meta: Meta = { ...sub.metadata };
+  if (a === 'withdraw') {
+    const r = await settle(env, st, sub);
+    return `Desistimiento resuelto: devueltos ${money(r.total, 'es')}.`;
+  }
+  if (a === 'withdraw_dismiss') {
+    await st.subscriptions.update(sub.id, { metadata: { withdrawal_at: '' } });
+    return 'Desistimiento quitado de la lista.';
+  }
   if (a === 'cancel' || a === 'resume') {
     // The family's own email comes from the webhook (customer.subscription
     // .updated), the same one a cancellation in Stripe's portal sends.

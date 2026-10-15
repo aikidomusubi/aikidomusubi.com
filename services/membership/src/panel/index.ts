@@ -18,11 +18,14 @@ import type { Env } from '../env.ts';
 import { isLive } from '../env.ts';
 import { log, readBody } from '../http.ts';
 import { members as metaMembers } from '../meta.ts';
-import { ACTIONS, ASKS_FIRST, apply, history, preview, type ActionKind } from '../actions.ts';
+import { ACTIONS, ASKS_FIRST, WHOLE, apply, history, preview, type ActionKind } from '../actions.ts';
 import { total } from '../household.ts';
 import { stripe, subscription } from '../stripe.ts';
 import { checkCode, endSession, sameOrigin, sendCode, session, startSession, users, type Session } from './auth.ts';
-import { family, isCurrent, tasks, type Family } from './model.ts';
+import { family, isCurrent, isFormer, linkReturning, tasks, type Family } from './model.ts';
+import { refundFor } from '../refund.ts';
+import { pendingPayment, withdrawalAt } from '../withdraw.ts';
+import { demoRefund } from './demo.ts';
 import { APP_JS, FILTERS, confirmPage, helpPage, loginPage, membersPage, messagePage, pendingPage, setStripeBase, shell, type Filter, type Flash } from './views.ts';
 import { demoSubscriptions } from './demo.ts';
 
@@ -54,7 +57,7 @@ async function load(env: Env): Promise<Stripe.Subscription[]> {
   const st = stripe(env);
   const out: Stripe.Subscription[] = [];
   for await (const s of st.subscriptions.list({ status: 'all', limit: 100, expand: ['data.customer', 'data.default_payment_method', 'data.latest_invoice'] })) {
-    if (isCurrent(s)) out.push(s);
+    if (isCurrent(s) || isFormer(s)) out.push(s);
   }
   return out;
 }
@@ -132,13 +135,16 @@ export async function panel(req: Request, env: Env): Promise<Response> {
     return html(shell({ title: 'Aviso', tab: null, user, test,
       body: messagePage('Stripe no contesta', 'No se han podido leer las cuotas. Vuelve a cargar la página en un momento.') }), 502);
   }
-  const fams = subs.map((s) => family(s));
+  const fams = subs.filter(isCurrent).map((s) => family(s));
+  const former = subs.filter(isFormer).map((s) => family(s));
+  linkReturning(fams, former);
+  const all = [...fams, ...former];
   const list = tasks(fams);
   const counts = { pending: list.length, members: fams.length };
   const page = (title: string, tab: 'p' | 'm' | 'h' | null, body: string, script = false) =>
     html(shell({ title, tab, user, test, counts, body, script }));
 
-  if (path === '/panel') return page('Pendiente', 'p', pendingPage(user, fams, list, Date.now(), flashFrom(u, fams)));
+  if (path === '/panel') return page('Pendiente', 'p', pendingPage(user, fams, list, Date.now(), flashFrom(u, all)));
   if (path === '/panel/ayuda') return page('Ayuda', 'h', helpPage());
   if (path === '/panel/miembros') {
     const f = (u.searchParams.get('f') ?? 'todos') as Filter;
@@ -146,12 +152,14 @@ export async function panel(req: Request, env: Env): Promise<Response> {
     const q = (u.searchParams.get('q') ?? '').slice(0, 100);
     const id = u.searchParams.get('id');
     let detail = null;
-    const fam = id ? fams.find((x) => x.id === id) : null;
+    const fam = id ? all.find((x) => x.id === id) : null;
     if (fam) {
       const invoices = demo(env) ? [] : (await stripe(env).invoices.list({ subscription: fam.id, limit: 24 }).catch(() => ({ data: [] }))).data;
       detail = { fam, log: await history(env, fam.id), invoices, names: users(env) };
     }
-    return page(fam ? fam.name : 'Miembros', 'm', membersPage(user, fams, list, q, filter, detail, flashFrom(u, fams)), true);
+    // A former membership opened from a link lists among the former ones.
+    const shownFilter: Filter = fam?.ended && filter === 'todos' ? 'antiguos' : filter;
+    return page(fam ? fam.name : 'Miembros', 'm', membersPage(user, fams, former, list, q, shownFilter, detail, flashFrom(u, all)), true);
   }
   if (path === '/panel/confirmar') {
     const a = u.searchParams.get('a') as ActionKind;
@@ -161,6 +169,15 @@ export async function panel(req: Request, env: Env): Promise<Response> {
     const person = fam.people.find((p) => p.slot === Number(u.searchParams.get('n'))) ?? null;
     if ((a === 'age' || a === 'sc_no') && !person) return page('Aviso', null, messagePage('No encontrado', 'Esa persona ya no está en la cuota.'));
     let amounts = {};
+    if (a === 'withdraw' || a === 'withdraw_dismiss') {
+      const sub = subs.find((s) => s.id === fam.id)!;
+      const at = withdrawalAt(sub);
+      if (at == null || sub.metadata.withdrawal_done) return page('Aviso', null, messagePage('Nada que resolver', 'Esta cuota no tiene ningún desistimiento pendiente.'));
+      if (a === 'withdraw') {
+        const r = demo(env) ? demoRefund(sub, at) : await refundFor(stripe(env), sub.id, at);
+        amounts = { refund: { ...r, pending: pendingPayment(sub) } };
+      }
+    }
     if (person && (a === 'age' || a === 'sc_no')) {
       const sub = subs.find((s) => s.id === fam.id)!;
       const who = metaMembers(sub.metadata).find((x) => x.slot === person.slot)!;
@@ -189,7 +206,7 @@ async function act(req: Request, env: Env, user: Session): Promise<Response> {
   const sub = await one(env, id);
   if (!sub) return where({ error: '1' });
   const who = body.n ? metaMembers(sub.metadata).find((x) => x.slot === Number(body.n)) ?? null : null;
-  if (a !== 'cancel' && a !== 'resume' && !who) return where({ error: '1' });
+  if (!WHOLE.includes(a) && !who) return where({ error: '1' });
   try {
     await apply(env, stripe(env), sub, who, a, user.email);
     log({ route: 'panel/accion', action: a, sub: sub.id, outcome: 'done' });

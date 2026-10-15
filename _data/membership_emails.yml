@@ -177,6 +177,24 @@ withdrawal:
     ja: "会費を解約します。以後の請求はありません。お支払い済みの金額から経過日数分を差し引き、<b>{date}まで</b>に同じ方法で返金します。金額は改めてご連絡します。"
   mistake: { es: "¿Ha sido un error? Responde hoy a este correo y lo dejamos como estaba.", ca: "Ha estat un error? Respon avui aquest correu i ho deixem com estava.", en: "A mistake? Reply to this email today and we will leave things as they were.", ja: "誤りの場合は、本日中にこのメールにご返信ください。元に戻します。" }
 
+# Sent when the dojo settles a withdrawal in the panel: the amount the
+# acknowledgement promised to write with.
+withdrawal_done:
+  kind:    { es: "Desistimiento resuelto", ca: "Desistiment resolt", en: "Withdrawal settled", ja: "解約手続き完了" }
+  subject: { es: "Tu cuota ha terminado: te devolvemos {amount}", ca: "La teva quota ha acabat: et retornem {amount}", en: "Your membership has ended: we are refunding {amount}", ja: "会費の解約が完了しました（返金額 {amount}）" }
+  subject_none: { es: "Tu cuota ha terminado", ca: "La teva quota ha acabat", en: "Your membership has ended", ja: "会費の解約が完了しました" }
+  heading: { es: "Desistimiento resuelto", ca: "Desistiment resolt", en: "Withdrawal settled", ja: "解約手続きが完了しました" }
+  body:
+    es: "Tu cuota ha terminado y no habrá más cobros. Te hemos devuelto <b>{amount}</b>: lo que pagaste, menos los días desde el inicio hasta tu desistimiento del {date}. Llega por el mismo medio de pago; con domiciliación bancaria puede tardar unos días en verse en la cuenta."
+    ca: "La teva quota ha acabat i no hi haurà més cobraments. T'hem retornat <b>{amount}</b>: el que vas pagar, menys els dies des de l'inici fins al teu desistiment del {date}. Arriba pel mateix mitjà de pagament; amb domiciliació bancària pot trigar uns dies a veure's al compte."
+    en: "Your membership has ended and there will be no further charges. We have refunded <b>{amount}</b>: what you paid, less the days from the start until your withdrawal on {date}. It goes back by the same means of payment; a bank debit can take a few days to show in your account."
+    ja: "会費は解約され、今後の請求はありません。お支払い額から、開始日から{date}の解約のお申し出までの日数分を差し引いた<b>{amount}</b>を返金しました。お支払いと同じ方法で返金されます。口座振替の場合、口座に反映されるまで数日かかることがあります。"
+  body_none:
+    es: "Tu cuota ha terminado y no habrá más cobros. No había nada que devolver: no se había cobrado nada más allá de los días hasta tu desistimiento del {date}."
+    ca: "La teva quota ha acabat i no hi haurà més cobraments. No hi havia res a retornar: no s'havia cobrat res més enllà dels dies fins al teu desistiment del {date}."
+    en: "Your membership has ended and there will be no further charges. There was nothing to refund: nothing had been charged beyond the days up to your withdrawal on {date}."
+    ja: "会費は解約され、今後の請求はありません。{date}の解約のお申し出までの日数分を超える請求はなかったため、返金はありません。"
+
 payment_failed:
   kind:    { es: "Problema con el cobro", ca: "Problema amb el cobrament", en: "Payment problem", ja: "お支払いの問題" }
   subject: { es: "No hemos podido cobrar la cuota del {date}", ca: "No hem pogut cobrar la quota del {date}", en: "We could not collect the fee due on {date}", ja: "{date}の会費をお支払いいただけませんでした" }

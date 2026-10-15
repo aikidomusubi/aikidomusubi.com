@@ -92,6 +92,16 @@ h1.hello{font:700 1.6rem/1.2 var(--display);margin:0 0 .25rem}
 .empty .okc svg{width:30px;height:30px}
 .empty h2{font:700 1.3rem/1.2 var(--display);margin:0 0 .3rem}
 .empty p{color:var(--mute);font-size:.95rem;margin:0 auto;max-width:28rem}
+.banner{display:flex;gap:.6rem;align-items:flex-start;margin:0;padding:.75rem 1.3rem;font-size:.92rem;border-bottom:1px solid var(--line2)}
+.banner svg{flex:none;width:18px;height:18px;margin-top:.15rem}
+.banner.info{background:var(--bluebg);color:var(--blue)}
+.banner.bad{background:var(--redbg);color:var(--red);font-weight:700}
+.banner.done{background:var(--greybg);color:var(--grey)}
+.ic.withdrawal{background:var(--redbg);color:var(--red)}
+.stat a{display:block;text-decoration:none;color:inherit;margin:-.8rem -1rem;padding:.8rem 1rem;border-radius:10px}
+.stat a:hover{background:#FCFBF8}
+.sheet .sum .tot{border-top:1px solid var(--line);margin-top:.3rem;padding-top:.45rem;font-weight:700}
+.sheet .note{font-size:.88rem;color:var(--mute)}
 .help{display:flex;gap:.6rem;align-items:flex-start;background:var(--bluebg);color:var(--blue);border-radius:10px;padding:.75rem .95rem;font-size:.88rem;margin:0 0 1rem}
 .help svg{flex:none;width:18px;height:18px;margin-top:.15rem}
 

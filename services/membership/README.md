@@ -27,7 +27,7 @@ Stripe is the record, and the household lives in the subscription's metadata.
 ## Commands
 
 ```bash
-npm test                # 89 tests: pricing, validation, routes, emails, the panel
+npm test                # 98 tests: pricing, validation, routes, emails, the panel
 npm run typecheck
 npm run dev             # a local Worker on :8787; without a Stripe key it ends at the thank-you page
 npm run deploy          # the TEST Worker; live is `npx wrangler deploy --env live`
@@ -53,6 +53,7 @@ src/panel/          /panel/, the dojo's back office: sign-in by emailed code (au
 src/cron.ts         the daily job: keikogi, orphans, the 1st and the 20th
 src/withdrawal.ts   /withdrawal
 src/refund.ts       what a withdrawal gives back
+src/withdraw.ts     settling it: refunds, cancel, the email with the amount
 src/invite.ts       invite tokens (signed, single use, no email inside)
 src/meta.ts         the subscription metadata format
 src/email/          layout, member emails, admin emails, the Brevo adapter

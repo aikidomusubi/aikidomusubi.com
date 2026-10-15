@@ -47,6 +47,13 @@ PANEL_USERS = "admin@aikidomusubi.com:Alberto,info@aikidomusubi.com"
 # NOT here: Cloudflare refuses a secret whose name is also a var, and this file
 # is public, so a personal address must not be written in it.
 
+# Keep the Worker's log lines, so a failure can be read afterwards in the
+# Cloudflare dashboard (Workers > membership-test > Logs) instead of only
+# while `wrangler tail` happens to be running. The lines carry ids and
+# outcomes, never a name or an email (src/http.ts, log()).
+[observability]
+enabled = true
+
 [[kv_namespaces]]
 binding = "KV"
 id = "1c3d9420d3a641ceba848d1ff5e99479"
@@ -75,6 +82,8 @@ AUTO_AGE_UPGRADE = "false"
 MEMBER_FAILED_EMAIL_SEPA = "true"
 MIGRATION_REMITTANCE_LIST = "true"
 PANEL_USERS = "admin@aikidomusubi.com:Alberto,info@aikidomusubi.com"
+[env.live.observability]
+enabled = true
 [[env.live.kv_namespaces]]
 binding = "KV"
 id = "REPLACE_WITH_LIVE_KV_ID"

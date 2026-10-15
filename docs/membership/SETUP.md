@@ -88,6 +88,12 @@ Change nothing else. The setup script configures it.
    | Products | Read |
    | PaymentMethods | Read |
    | Payment Method Configurations | Read |
+   | Refunds | Write |
+
+   Refunds is for the panel's **Resolver el desistimiento**, which gives the money back
+   without anybody opening Stripe. A key made before 15 October 2026 lacks it: edit the
+   key (Developers → API keys → the key → ⋯ → Edit) and set Refunds to Write. The
+   key's value does not change, so nothing has to be put in Cloudflare again.
 
    Copy it (`rk_test_...`). It goes to Cloudflare in step 3, and nowhere else.
 
@@ -244,13 +250,25 @@ at docs.stripe.com/testing. The ones you need:
 5. Sign up again with the same email: step 4 says there is already a membership.
 6. `/miembros/` now shows "Ir a mi cuota". Sign in with the code; change the card;
    download a receipt; cancel. The cancellation email arrives, and so does the admin's.
-7. `/desistimiento/`: send one. You and the admin both get an email, with date and time.
+7. `/desistimiento/`: send one for a test family signed up today. You and the admin both
+   get an email, with date and time. In the panel it is first under **Pendiente**:
+   **Resolver…** shows the refund, worked out at the moment you sent the form; confirm
+   it. In Stripe the payment shows a partial refund and the subscription is cancelled;
+   the family gets one email with the amount, not the ordinary "your membership has
+   ended". The family is then under **Miembros → Antiguos miembros**.
 8. **Time travel**, for renewals: Stripe → Billing → Test clocks → create one, copy
    its id (`clock_...`), then:
 
    ```bash
    npx wrangler secret put TEST_CLOCK
    ```
+
+   Create the clock **in the same sandbox as the key** ("Cuotas pruebas"): a clock id
+   from anywhere else makes every signup stop at step 4 with "No hemos podido
+   continuar", and the Worker's log says `test_clock_problem`. A clock holds at most
+   **three customers**, and only a **new** email lands on it: an email that has signed
+   up before reuses its old customer, which is not on the clock. Use
+   `you+clock1@…`, `you+clock2@…` and so on.
 
    New signups are then on that clock. Sign up quarterly, then advance the clock
    past the 5th (first full charge: the keikogi emails), then to 15 days before the
@@ -266,6 +284,11 @@ at docs.stripe.com/testing. The ones you need:
     history; try **Dar de baja…** then **Anular la baja…** on a test family. Then the
     same on a phone. The panel needs no new Stripe permission and no new secret: only a
     deploy, so the Worker has `PANEL_USERS`.
+12. **Leaving and coming back**: **Dar de baja…** on a test family: the family's page says
+    so in a blue band at the top, every person carries "Baja el …", and the count under
+    **Pendiente** links to them. Then cancel one immediately in Stripe and sign up again
+    with the same email: the new membership says "Ya fue miembro de … a …", and anyone
+    whose keikogi was handed over the first time is not promised a second.
 
 Write down anything odd. Bring it back here and I will fix it.
 

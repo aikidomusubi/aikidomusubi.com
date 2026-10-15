@@ -147,9 +147,50 @@ describe('changes', () => {
   });
 });
 
+describe('leaving and coming back', () => {
+  it('puts a withdrawal first, with the refund worked out at the moment it was asked', async () => {
+    const env = testEnv();
+    const cookie = await signIn(env);
+    const home = await (await worker.fetch(get('/panel/', cookie), env)).text();
+    expect(home.indexOf('g-withdrawal')).toBeGreaterThan(-1);
+    expect(home.indexOf('g-withdrawal')).toBeLessThan(home.indexOf('g-paper'));
+    const ask = await (await worker.fetch(get('/panel/confirmar?a=withdraw&s=sub_demoFont0001&back=p', cookie), env)).text();
+    expect(ask).toContain('¿Resolver el desistimiento de Laura Font Riera?');
+    expect(ask).toMatch(/Sí, devolver \d+(,\d+)?\s€ y terminar/);
+  });
+  it('does not ask a withdrawing member for forms or keikogi', () => {
+    const fams = demoSubscriptions(Date.now()).map((s) => family(s));
+    const laura = tasks(fams).filter((t) => t.fam.id === 'sub_demoFont0001').map((t) => t.kind);
+    expect(laura).toEqual(['withdrawal']);
+  });
+  it('lists former members apart, with why they left, and nothing to press', async () => {
+    const env = testEnv();
+    const cookie = await signIn(env);
+    const list = await (await worker.fetch(get('/panel/miembros?f=antiguos', cookie), env)).text();
+    expect(list).toContain('Familia Costa');
+    expect(list).toContain('· desistimiento');
+    expect(list).not.toContain('Familia García');
+    const one = await (await worker.fetch(get('/panel/miembros?id=sub_demoRibas001', cookie), env)).text();
+    expect(one).toContain('por desistimiento: se devolvieron 81,40');
+    expect(one).not.toContain('Dar de baja');
+  });
+  it('says when somebody has been a member before', async () => {
+    const env = testEnv();
+    const cookie = await signIn(env);
+    const joan = await (await worker.fetch(get('/panel/miembros?id=sub_demoPuig0001', cookie), env)).text();
+    expect(joan).toContain('Ya fue miembro de');
+  });
+  it('makes a membership that is ending plain at the top', async () => {
+    const env = testEnv();
+    const cookie = await signIn(env);
+    const carla = await (await worker.fetch(get('/panel/miembros?id=sub_demoVidal001', cookie), env)).text();
+    expect(carla).toMatch(/class="banner info">.*Baja: la cuota termina el/s);
+  });
+});
+
 describe('the to-do list', () => {
   const now = Date.now();
-  const fams = demoSubscriptions(now).map((s) => family(s, now));
+  const fams = demoSubscriptions(now).map((s) => family(s));
   const list = tasks(fams);
   const count = (k: string) => list.filter((t) => t.kind === k).length;
   it('finds what each demo family needs', () => {

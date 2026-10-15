@@ -151,6 +151,14 @@ async function panel(page, width) {
   await stop(page, 'confirmar', width);
   await submit(page, '.sheet form button[type=submit]');
   await expectText(page, '.toast', 'Pol pasa', 'confirming');
+  await page.goto(`${PANEL}/panel/confirmar?a=withdraw&s=sub_demoFont0001&back=p`, { waitUntil: 'networkidle0' });
+  await expectText(page, 'h1', 'desistimiento', 'the withdrawal confirmation');
+  await stop(page, 'desistimiento', width);
+  await page.goto(`${PANEL}/panel/miembros?f=antiguos`, { waitUntil: 'networkidle0' });
+  await stop(page, 'antiguos', width);
+  await submit(page, '.fam a.open');
+  await expectText(page, '.banner', 'terminó', 'a former membership');
+  await stop(page, 'antiguo', width);
   await page.goto(`${PANEL}/panel/ayuda`, { waitUntil: 'networkidle0' });
   await stop(page, 'ayuda', width);
   await page.goto(`${PANEL}/__empty`, { waitUntil: 'networkidle0' });

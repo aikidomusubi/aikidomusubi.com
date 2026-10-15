@@ -3,8 +3,11 @@
 //
 // The person states their name, the email they signed up with and a sentence;
 // they get an acknowledgement with the content, the date and the time; the
-// dojo gets the request with a suggested refund. The dojo then cancels and
-// refunds within 14 days. Nothing is cancelled automatically: a withdrawal
+// dojo gets the request with a suggested refund. The dojo then settles it in
+// the panel within 14 days (src/withdraw.ts): the moment of the request is
+// stamped on the subscription as `withdrawal_at`, so the refund is always
+// worked out at that moment, however late it is settled. Nothing is
+// cancelled automatically: a withdrawal
 // from an address that matches no membership still reaches the dojo, which
 // is where a person who typed the wrong email needs it to go.
 import type { Env } from './env.ts';
@@ -54,7 +57,10 @@ export async function withdrawal(req: Request, env: Env, now = Date.now()): Prom
       sub = subs.data.find((s) => ['active', 'trialing', 'past_due', 'incomplete'].includes(s.status)) ?? null;
       if (sub) break;
     }
-    if (sub) refund = await refundFor(st, sub.id, now);
+    if (sub) {
+      refund = await refundFor(st, sub.id, now);
+      await st.subscriptions.update(sub.id, { metadata: { withdrawal_at: new Date(now).toISOString() } });
+    }
   } catch (e) {
     log({ route: 'withdrawal', outcome: 'lookup_error', error: (e as Error).message?.slice(0, 120) });
   }
@@ -71,9 +77,10 @@ export async function withdrawal(req: Request, env: Env, now = Date.now()): Prom
     B.h('Solicitud de desistimiento'),
     B.box(`${date(now, 'es')}, ${time(now)}<br>${esc(name)} · ${esc(email)}<br>«${esc(statement)}»`),
     B.p(sub
-      ? `Cuota encontrada, creada hace ${withinDays} días${withinDays !== null && withinDays > 14 ? ' — <b>fuera del plazo de 14 días</b>: es una baja, no un desistimiento' : ''}. Devolución sugerida: <b>${money(refund?.total ?? 0, 'es')}</b> (lo pagado menos los días transcurridos). Hay que cancelarla y devolver antes del ${date(refundBy, 'es')}.`
+      ? `Cuota encontrada, creada hace ${withinDays} días${withinDays !== null && withinDays > 14 ? ' — <b>fuera del plazo de 14 días</b>: es una baja, no un desistimiento' : ''}. Devolución: <b>${money(refund?.total ?? 0, 'es')}</b> (lo pagado menos los días hasta hoy; no cambia aunque se resuelva otro día). Resuélvelo en el panel antes del ${date(refundBy, 'es')}: un botón devuelve el dinero, termina la cuota y escribe a la familia.`
       : 'No hay ninguna cuota activa con ese correo. Puede que se inscribiera con otro: contesta a esta persona.'),
-    ...(sub ? [B.button('Abrir en Stripe', dashboard(env, `subscriptions/${sub.id}`))] : [])
+    ...(sub ? [B.button('Resolver en el panel', `${env.API_ORIGIN}/panel/miembros?id=${sub.id}`),
+      B.small(`O <a href="${dashboard(env, `subscriptions/${sub.id}`)}">en Stripe</a>.`)] : [])
   ], 'withdrawal');
   log({ route: 'withdrawal', outcome: sub ? 'matched' : 'unmatched' });
 
