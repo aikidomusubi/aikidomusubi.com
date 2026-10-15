@@ -39,6 +39,7 @@ python3 docs/mockups/src/build_venuephotos.py
 # reads the built /barcelona/ page for its shell, so it needs a build first
 python3 docs/mockups/src/build_signup.py
 python3 docs/mockups/src/build_signup_b.py
+python3 docs/mockups/src/build_panel.py
 [[ -f _site/barcelona/index.html ]] && python3 docs/mockups/src/build_venuepage.py
 for d in "${DESTS[@]}"; do
   mkdir -p "$d/mockups"
