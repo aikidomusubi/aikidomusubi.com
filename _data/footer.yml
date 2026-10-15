@@ -52,22 +52,6 @@ columns:
   - from_nav: classes
     label: { es: "Practicar", ca: "Practicar", en: "Training", ja: "稽古" }
 
-  # THE MEMBERSHIP'S OWN COLUMN (option A of docs/mockups/footer-cuotas-*.html,
-  # chosen 15 October 2026). The members area, the terms, and the withdrawal
-  # function, which the EU wants reachable from every page of the site
-  # (Directive 2023/2673, from 19 June 2026): the footer is on every page.
-  # Signing up is not repeated here: "Practicar" carries it from the nav.
-  # Not the pinned strip below: it has no room left on a phone (CLAUDE.md).
-  - id: cuota
-    label: { es: "Tu cuota", ca: "La teva quota", en: "Your membership", ja: "会費" }
-    items:
-      - label: { es: "Área de miembros", ca: "Àrea de membres", en: "Members area", ja: "会員ページ" }
-        url:   { es: "/miembros/", ca: "/ca/membres/", en: "/en/members/", ja: "/ja/members/" }
-      - label: { es: "Condiciones de la cuota", ca: "Condicions de la quota", en: "Membership terms", ja: "会費規約" }
-        url:   { es: "/condiciones-de-la-cuota/", ca: "/ca/condicions-de-la-quota/", en: "/en/membership-terms/", ja: "/ja/membership-terms/" }
-      - label: { es: "Desistir del contrato", ca: "Desistir del contracte", en: "Withdraw from the contract", ja: "契約の解約" }
-        url:   { es: "/desistimiento/", ca: "/ca/desistiment/", en: "/en/withdrawal/", ja: "/ja/withdrawal/" }
-
   - from_nav: about
     label: { es: "Sobre nosotros", ca: "Sobre nosaltres", en: "About us", ja: "私たちについて" }
 
@@ -128,6 +112,26 @@ columns:
 # band stays pinned to the viewport while the rest of the footer sits at the
 # end of the page like a normal footer.
 # ---------------------------------------------------------------------------
+
+  # THE MEMBERSHIP'S OWN COLUMN (option A of docs/mockups/footer-cuotas-*.html,
+  # chosen 15 October 2026). The members area, the terms, and the withdrawal
+  # function, which the EU wants reachable from every page of the site
+  # (Directive 2023/2673, from 19 June 2026): the footer is on every page.
+  # Signing up is not repeated here: "Practicar" carries it from the nav.
+  # LAST of the four (Juanma, 15 October 2026): Practicar, Sobre nosotros,
+  # Dónde entrenamos, Tu cuota.
+  # Not the pinned strip below: it has no room left on a phone (CLAUDE.md).
+  - id: cuota
+    label: { es: "Tu cuota", ca: "La teva quota", en: "Your membership", ja: "会費" }
+    items:
+      - label: { es: "Área de miembros", ca: "Àrea de membres", en: "Members area", ja: "会員ページ" }
+        url:   { es: "/miembros/", ca: "/ca/membres/", en: "/en/members/", ja: "/ja/members/" }
+      - label: { es: "Condiciones de la cuota", ca: "Condicions de la quota", en: "Membership terms", ja: "会費規約" }
+        url:   { es: "/condiciones-de-la-cuota/", ca: "/ca/condicions-de-la-quota/", en: "/en/membership-terms/", ja: "/ja/membership-terms/" }
+      - label: { es: "Desistir del contrato", ca: "Desistir del contracte", en: "Withdraw from the contract", ja: "契約の解約" }
+        url:   { es: "/desistimiento/", ca: "/ca/desistiment/", en: "/en/withdrawal/", ja: "/ja/withdrawal/" }
+
+
 legal:
   - label: { es: "Aviso legal", ca: "Avís legal", en: "Legal notice", ja: "法的通知" }
     url:   { es: "/aviso-legal/", ca: "/ca/avis-legal/",
