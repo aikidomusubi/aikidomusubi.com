@@ -117,37 +117,6 @@ groups:
         file: "sepa"
         langs: "ES CA"
 
-  # THE STATUTES, in Catalan only: the registered text, and a translation would
-  # be an unofficial second version. The page and the PDF say so in their
-  # `langs`, and the layout falls back to the Catalan one in every language.
-  - id: asociacion
-    name: { es: "La asociación", ca: "L'associació", en: "The association", ja: "協会" }
-    sub:
-      es: "Las normas que nos rigen"
-      ca: "Les normes que ens regeixen"
-      en: "The rules we run by"
-      ja: "当会の規則"
-    items:
-      - kind: page
-        title: { es: "Estatutos", ca: "Estatuts", en: "Statutes", ja: "定款" }
-        desc:
-          es: "Los estatutos de la asociación, en catalán: el texto inscrito en el Registro de Asociaciones, para leer en la web."
-          ca: "Els estatuts de l'associació: el text inscrit al Registre d'associacions, per llegir al web."
-          en: "The association's statutes, in Catalan: the text entered in the Register of Associations, to read on the site."
-          ja: "当会の定款（カタルーニャ語）。団体登録簿に登録された本文をウェブでお読みいただけます。"
-        ref: statutes-Qh7tWm3K
-        langs: "CA"
-      - kind: doc
-        title: { es: "Estatutos: copia del Registro", ca: "Estatuts: còpia del Registre",
-                 en: "Statutes: the Register's copy", ja: "定款（登録簿の写し）" }
-        desc:
-          es: "La copia emitida por la Generalitat, en catalán, con los DNI de las firmas ocultos. Verificable con el código T1349o88701871V."
-          ca: "La còpia emesa per la Generalitat, amb els DNI de les signatures ocults. Verificable amb el codi T1349o88701871V."
-          en: "The copy issued by the Generalitat, in Catalan, with the signatories' ID numbers hidden. Verifiable with the code T1349o88701871V."
-          ja: "カタルーニャ州政府発行の写し（カタルーニャ語）。署名者のID番号は非表示。照合コード T1349o88701871V で確認できます。"
-        file: "estatuts"
-        langs: "CA"
-
   - id: examen
     name: { es: "Programa de examen", ca: "Programa d'examen",
             en: "Grading programme", ja: "審査要項" }
@@ -895,3 +864,37 @@ groups:
           ja: "千葉先生の著書はないが、講話と随筆が美蘭会の会報にまとめられている。"
         url: "https://biran.birankai.org/?cat=13"
         langs: "EN"
+
+  # THE STATUTES, in Catalan only: the registered text, and a translation would
+  # be an unofficial second version. Read in the same panel as the grading
+  # programme and the dojo rules (?r=estatuts; text in _includes/statutes-ca.md,
+  # the words around it in _data/statutes.yml), and as the Register's PDF, which
+  # the layout falls back to in every language. Last on the page: it is looked
+  # up rarely, and the practice material is what most visitors come for.
+  - id: asociacion
+    name: { es: "La asociación", ca: "L'associació", en: "The association", ja: "協会" }
+    sub:
+      es: "Las normas que nos rigen"
+      ca: "Les normes que ens regeixen"
+      en: "The rules we run by"
+      ja: "当会の規則"
+    items:
+      - kind: page
+        title: { es: "Estatutos", ca: "Estatuts", en: "Statutes", ja: "定款" }
+        desc:
+          es: "Los estatutos de la asociación, en catalán: el texto inscrito en el Registro de Asociaciones, para leer en la web."
+          ca: "Els estatuts de l'associació: el text inscrit al Registre d'associacions, per llegir al web."
+          en: "The association's statutes, in Catalan: the text entered in the Register of Associations, to read on the site."
+          ja: "当会の定款（カタルーニャ語）。団体登録簿に登録された本文をウェブでお読みいただけます。"
+        panel: estatuts
+        langs: "CA"
+      - kind: doc
+        title: { es: "Estatutos: copia del Registro", ca: "Estatuts: còpia del Registre",
+                 en: "Statutes: the Register's copy", ja: "定款（登録簿の写し）" }
+        desc:
+          es: "La copia emitida por la Generalitat, en catalán, con los DNI de las firmas ocultos. Verificable con el código T1349o88701871V."
+          ca: "La còpia emesa per la Generalitat, amb els DNI de les signatures ocults. Verificable amb el codi T1349o88701871V."
+          en: "The copy issued by the Generalitat, in Catalan, with the signatories' ID numbers hidden. Verifiable with the code T1349o88701871V."
+          ja: "カタルーニャ州政府発行の写し（カタルーニャ語）。署名者のID番号は非表示。照合コード T1349o88701871V で確認できます。"
+        file: "estatuts"
+        langs: "CA"

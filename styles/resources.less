@@ -890,6 +890,68 @@ li[data-was] { display: none; }
 }
 
 // ---------------------------------------------------------------------------
+// The statutes, in the same panel (?r=estatuts)
+//
+// A legal text of thirty-one articles: chapters headed like a document's
+// parts, articles in bold, body text at reading size and measure, and the
+// statute's own lettered and roman lists kept as letters and numerals, since
+// articles cite them ("l'article 16, lletra l").
+// ---------------------------------------------------------------------------
+.ex-statutes-links {
+  margin: 0 0 2rem;
+  padding: 0;
+  list-style: none;
+
+  li { .NotoSans; margin: 0 0 .35rem; font-size: .88rem; color: @Black; }
+  a  { font-weight: 700; color: @Black; text-decoration: underline; text-underline-offset: .15em; }
+  a:hover { text-decoration-thickness: 2px; }
+}
+
+.ex-statutes-text {
+  max-width: @measure;
+
+  h3 {
+    .Futura;
+    margin: 2.2rem 0 .9rem;
+    padding-bottom: .3rem;
+    border-bottom: 2px solid @Black;
+    font-size: .72rem;
+    font-weight: 400;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: @Black;
+  }
+  h3:first-child { margin-top: 0; }
+
+  h4 {
+    .NotoSans;
+    margin: 1.3rem 0 .4rem;
+    font-size: .92rem;
+    font-weight: 700;
+    color: @Black;
+  }
+
+  p, li { .NotoSans; font-size: .92rem; line-height: 1.6; color: @Black; }
+  p     { margin: 0 0 .7rem; }
+
+  ol, ul { margin: 0 0 .8rem; padding-left: 1.5rem; }
+  ol     { list-style: decimal; }
+  ul     { list-style: disc; }
+  ol[type="a"] { list-style: lower-alpha; }
+  ol[type="i"] { list-style: lower-roman; }
+  li > ol, li > ul { margin: .3rem 0 .3rem; }
+
+  hr { border: 0; border-top: 1px solid fade(@Black, 20%); margin: 2rem 0 1rem; }
+
+  a     { color: @Black; text-decoration: underline; }
+  sup a { text-decoration: none; font-weight: 700; }
+  .footnotes {
+    margin-top: 1.4rem;
+    ol, li, p { font-size: .8rem; }
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Etiquette documents, in the same panel as the grading sheets
 //
 // A sheet is a dense index; a document is read. So this sets prose measure and
