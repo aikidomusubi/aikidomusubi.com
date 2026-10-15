@@ -83,7 +83,7 @@ sections:
       en:
         - "Beyond the dojo itself, <strong>Aikido Musubi</strong> teaches in other spaces around Barcelona. We currently run classes at the Marina-Besòs Municipal Sports Centre, at the Espronceda Municipal Sports Complex and at the Faculty of Law of the University of Barcelona, bringing aikido to new places and communities."
       ja:
-        - "道場での活動に加え、<strong>産靈合気道文化協会</strong>はバルセロナ周辺の他の施設でも稽古を行っています。現在はマリナ・バゾス市立スポーツセンター、エスプロンセダ市立スポーツ複合施設、そしてバルセロナ大学法学部で稽古を開いており、合気道を新しい場所と人びとに届けています。"
+        - "道場での活動に加え、<strong>合気道産靈</strong>はバルセロナ周辺の他の施設でも稽古を行っています。現在はマリナ・バゾス市立スポーツセンター、エスプロンセダ市立スポーツ複合施設、そしてバルセロナ大学法学部で稽古を開いており、合気道を新しい場所と人びとに届けています。"
     # THE CARD IS THE PLACE OVER THE ROOM: the heading is where you go, the line
     # under it is what it is called once you are there. Four of them now, which
     # the grid wraps 3 + 1.
@@ -211,8 +211,8 @@ sections:
         - "<strong>合気道産靈</strong>は、年齢、民族的出自、性別、国籍、障害、人種、宗教、性的指向、社会経済的背景に基づく違法な差別を、支持も容認も実践もしません。"
     facts:
       - label: { es: "Denominación", ca: "Denominació", en: "Registered name", ja: "名称" }
-        value: { es: "Associació Cultural Musubi Aikido", ca: "Associació Cultural Musubi Aikido",
-                 en: "Associació Cultural Musubi Aikido", ja: "産靈合気道文化協会" }
+        value: { es: "{org}", ca: "{org}",
+                 en: "{org}", ja: "{org_ja}" }
       - label: { es: "CIF", ca: "CIF", en: "Tax ID", ja: "登録番号" }
         value: { es: "G-64799554", ca: "G-64799554", en: "G-64799554", ja: "G-64799554" }
       - label: { es: "Fundación", ca: "Fundació", en: "Founded", ja: "設立" }

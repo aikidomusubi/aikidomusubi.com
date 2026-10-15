@@ -12,8 +12,10 @@
 {%- assign L = page.lang | default: 'es' -%}
 {%- assign LG = site.data.legal -%}
 {%- assign body = LG.pages[page.i18n-ref] -%}
+{%- comment -%} The name is never typed in legal.yml: it says {org}. {%- endcomment -%}
+{%- assign PH_ORG = '{org}' -%}
 {%- if body %}
 <div class="a11y-flag">
-  <p><b>{{ LG.head[L] }}</b>{{ body[L] }}</p>
+  <p><b>{{ LG.head[L] }}</b>{{ body[L] | replace: PH_ORG, site.data.footer.ui.org }}</p>
 </div>
 {%- endif -%}

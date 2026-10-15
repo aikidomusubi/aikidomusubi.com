@@ -22,7 +22,7 @@
     </div>
 
     <h2>{{ A.ui.commit_h[L] }}</h2>
-    <p>{{ A.ui.commit[L] }}</p>
+    {%- assign PH_ORG = '{org}' -%}{%- assign PH_ORGJA = '{org_ja}' -%}<p>{{ A.ui.commit[L] | replace: PH_ORGJA, site.data.footer.ui.org_ja | replace: PH_ORG, site.data.footer.ui.org }}</p>
 
     <h2>{{ A.ui.done_h[L] }}</h2>
     <ul>

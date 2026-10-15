@@ -130,8 +130,8 @@
 
     {%- if s.facts %}
     <dl class="hm-facts">
-      {%- for f in s.facts %}
-      <dt>{{ f.label[L] }}</dt><dd>{{ f.value[L] }}</dd>
+      {%- assign PH_ORG = '{org}' -%}{%- assign PH_ORGJA = '{org_ja}' -%}{%- for f in s.facts %}
+      <dt>{{ f.label[L] }}</dt><dd>{{ f.value[L] | replace: PH_ORGJA, site.data.footer.ui.org_ja | replace: PH_ORG, site.data.footer.ui.org }}</dd>
       {%- endfor %}
     </dl>
     {%- endif %}

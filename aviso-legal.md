@@ -5,7 +5,7 @@ description: Datos identificativos del titular del sitio web, condiciones de uso
 permalink: /aviso-legal/
 lang: es
 i18n-ref: legal-notice-Up6gBHvn
-last_modified: 2026-10-14
+last_modified: 2026-10-15
 ---
 
 # Aviso Legal
@@ -15,14 +15,14 @@ Datos identificativos del titular del sitio web, condiciones de uso, propiedad i
 {% include legal-summary.html %}
 
 
-**Última actualización: 13 de agosto de 2026**
+**Última actualización: 15 de octubre de 2026**
 
 
 ## 1. Datos identificativos del titular
 
 En cumplimiento del deber de información recogido en el artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se facilitan a continuación los datos identificativos del titular de este sitio web:
 
-- **Titular:** Associació Cultural Musubi Aikido *(asociación cultural sin ánimo de lucro)*
+- **Titular:** {{ site.data.footer.ui.org }} *(asociación sin ánimo de lucro)*
 - **CIF:** G-64799554
 - **Domicilio:** Av. d'Alfons XIII, 351, 08918 Badalona (Barcelona), España
 - **Correo electrónico:** info@aikidomusubi.com

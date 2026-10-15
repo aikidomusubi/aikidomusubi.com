@@ -5,7 +5,7 @@ description: What personal data we process, for what purpose and legal basis, fo
 permalink: /en/privacy-policy/
 lang: en
 i18n-ref: privacy-policy-EgFc1Qem
-last_modified: 2026-10-14
+last_modified: 2026-10-15
 ---
 
 # Privacy Policy
@@ -15,7 +15,7 @@ What personal data we process, for what purpose and legal basis, for how long, a
 {% include legal-summary.html %}
 
 
-**Last updated: 14 October 2026**
+**Last updated: 15 October 2026**
 
 This English version is provided for convenience. In the event of any discrepancy, the Spanish version prevails, as this website is operated under Spanish law.
 
@@ -24,7 +24,7 @@ Aikido Musubi is committed to protecting the privacy of the users of its website
 
 ## 1. Data controller
 
-- **Controller:** Associació Cultural Musubi Aikido *(non-profit cultural association)*
+- **Controller:** {{ site.data.footer.ui.org }} *(non-profit association)*
 - **Tax ID (CIF):** G-64799554
 - **Registered address:** Av. d'Alfons XIII, 351, 08918 Badalona (Barcelona), Spain
 - **Email:** info@aikidomusubi.com

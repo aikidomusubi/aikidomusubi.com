@@ -5,7 +5,7 @@ description: Qué datos personales tratamos, con qué finalidad y base legal, du
 permalink: /politica-privacidad/
 lang: es
 i18n-ref: privacy-policy-EgFc1Qem
-last_modified: 2026-10-14
+last_modified: 2026-10-15
 ---
 
 # Política de Privacidad
@@ -15,14 +15,14 @@ Qué datos personales tratamos, con qué finalidad y base legal, durante cuánto
 {% include legal-summary.html %}
 
 
-**Última actualización: 14 de octubre de 2026**
+**Última actualización: 15 de octubre de 2026**
 
 Aikido Musubi se compromete a proteger la privacidad de los usuarios de su sitio web, de sus socios, alumnos y de cualquier persona cuyos datos personales trate. La presente Política de Privacidad se ha redactado de conformidad con el Reglamento (UE) 2016/679 (Reglamento General de Protección de Datos, "RGPD") y la Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales (LOPDGDD).
 
 
 ## 1. Responsable del tratamiento
 
-- **Responsable:** Associació Cultural Musubi Aikido *(asociación cultural sin ánimo de lucro)*
+- **Responsable:** {{ site.data.footer.ui.org }} *(asociación sin ánimo de lucro)*
 - **CIF:** G-64799554
 - **Domicilio:** Av. d'Alfons XIII, 351, 08918 Badalona (Barcelona), España
 - **Correo electrónico:** info@aikidomusubi.com
