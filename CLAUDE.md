@@ -762,6 +762,7 @@ and `courses` was renamed `events`. `photos.md`, `videos.md`, `courses.md` and
 | `gulpfile.js` | Gulp tasks for CSS/JS compilation |
 | `_includes/fonts-ja.css` | **Generated** `@font-face` set for the Japanese faces, inlined on `/ja/` pages — see below |
 | `tools/subset-ja-fonts.py` | **Regenerates** the Japanese faces and that include — re-run after editing Japanese copy |
+| `tools/make-forms.py` | **Generates** the three fillable PDF forms on /recursos/ (enrolment, image release, consent for minors) in es/ca/en, from `_data/footer.yml` and `_data/venues.yml`. Re-run after changing the association's details or a form's wording |
 | `tools/make-favicons.py` | **Generates** every favicon and app icon (`icons/musubi2-*`, and `/favicon.ico` as a copy) from `tools/favicon-source/logo-15.png`: the knot in white on black. If the picture changes, bump `GEN` in the script so every file name changes: favicons are cached hard |
 
 ## Layout: one scale, one column, one measure

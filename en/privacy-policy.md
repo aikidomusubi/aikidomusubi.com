@@ -42,8 +42,8 @@ We process personal data according to your relationship with the Association:
 - **Legal basis:** your consent and/or the taking of pre-contractual steps at your request (Art. 6(1)(a) and 6(1)(b) GDPR).
 
 ### b) Registration and management of members and students
-- **Data:** full name, ID/passport number, date of birth, postal address, phone, email, bank details for the collection of fees, grade and data relating to aikido practice, and where applicable federation licence data.
-- **Purpose:** to manage registration and the relationship as a member or student, organise classes and courses, collect fees, process sports licences and insurance, and comply with the Association's obligations.
+- **Data:** full name, DNI, NIE or passport number, nationality, date of birth, postal address, phone, email, bank details for the collection of fees, grade and data relating to aikido practice, where applicable federation licence data, and an emergency contact.
+- **Purpose:** to manage registration and the relationship as a member or student, organise classes and courses, collect fees, process sports licences and insurance, register grades with the Aikikai Foundation (Japan), which asks for nationality, and comply with the Association's obligations.
 - **Legal basis:** performance of the membership relationship or contract to which you are a party (Art. 6(1)(b) GDPR), compliance with legal obligations applicable to the Association (Art. 6(1)(c) GDPR) and, where applicable, your consent.
 
 ### c) Data of minors
@@ -71,6 +71,7 @@ As a general rule, the Association does not transfer data to third parties, exce
 
 - **Public administrations and official bodies**, where there is a legal obligation.
 - **Sports federations and insurance entities**, for the processing of sports licences and insurance, where applicable.
+- **The Aikikai Foundation** (Aikikai Hombu Dojo, Tokyo, Japan), to register grades: name, date of birth, nationality and grade. Japan has an adequacy decision from the European Commission.
 - **Banking institutions**, for the management of fee collection.
 - **Service providers acting as data processors**, such as the web hosting provider (GitHub, Inc.) and the analytics tools provider (Google). These providers only process the data in accordance with our instructions.
 - **Social networks** (Facebook/Meta, Instagram, YouTube/Google), in relation to the content published on those platforms.

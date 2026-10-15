@@ -40,8 +40,8 @@ Tractem les dades personals segons la relació que mantingueu amb l'Associació:
 - **Base jurídica:** el vostre consentiment i/o l'aplicació de mesures precontractuals a petició vostra (art. 6.1.a i 6.1.b RGPD).
 
 ### b) Inscripció i gestió de socis i alumnes
-- **Dades:** nom i cognoms, DNI/NIE, data de naixement, adreça postal, telèfon, correu electrònic, dades bancàries per al cobrament de quotes, grau i dades relatives a la pràctica de l'aikido, i si escau dades de la llicència federativa.
-- **Finalitat:** gestionar l'alta i la relació com a soci o alumne, l'organització de les classes i cursos, el cobrament de quotes, la tramitació de llicències i assegurances esportives, i el compliment de les obligacions associatives.
+- **Dades:** nom i cognoms, DNI, NIE o passaport, nacionalitat, data de naixement, adreça postal, telèfon, correu electrònic, dades bancàries per al cobrament de quotes, grau i dades relatives a la pràctica de l'aikido, si escau dades de la llicència federativa, i una persona de contacte per a urgències.
+- **Finalitat:** gestionar l'alta i la relació com a soci o alumne, l'organització de les classes i cursos, el cobrament de quotes, la tramitació de llicències i assegurances esportives, el registre de graus davant la Fundació Aikikai (Japó), que demana la nacionalitat, i el compliment de les obligacions associatives.
 - **Base jurídica:** l'execució de la relació associativa o del contracte del qual sou part (art. 6.1.b RGPD), el compliment d'obligacions legals aplicables a l'Associació (art. 6.1.c RGPD) i, si escau, el vostre consentiment.
 
 ### c) Dades de menors d'edat
@@ -69,6 +69,7 @@ Amb caràcter general, l'Associació no cedeix dades a tercers, llevat d'obligac
 
 - **Administracions públiques i organismes oficials**, quan hi hagi una obligació legal.
 - **Federacions esportives i entitats asseguradores**, per a la tramitació de llicències i assegurances esportives, quan escaigui.
+- **La Fundació Aikikai** (Aikikai Hombu Dojo, Tòquio, Japó), per registrar els graus: nom, data de naixement, nacionalitat i grau. El Japó té una decisió d'adequació de la Comissió Europea.
 - **Entitats bancàries**, per a la gestió dels cobraments de quotes.
 - **Proveïdors de serveis que actuen com a encarregats del tractament**, com ara el proveïdor d'allotjament web (GitHub, Inc.) i el proveïdor d'eines d'analítica (Google). Aquests proveïdors només tracten les dades conforme a les nostres instruccions.
 - **Xarxes socials** (Facebook/Meta, Instagram, YouTube/Google), en relació amb els continguts que es publiquen en aquestes plataformes.

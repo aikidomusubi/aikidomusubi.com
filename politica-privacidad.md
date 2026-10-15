@@ -40,8 +40,8 @@ Tratamos los datos personales según la relación que usted mantenga con la Asoc
 - **Base jurídica:** su consentimiento y/o la aplicación de medidas precontractuales a petición suya (art. 6.1.a y 6.1.b RGPD).
 
 ### b) Inscripción y gestión de socios y alumnos
-- **Datos:** nombre y apellidos, DNI/NIE, fecha de nacimiento, dirección postal, teléfono, correo electrónico, datos bancarios para el cobro de cuotas, grado y datos relativos a la práctica del aikido, y en su caso datos de la licencia federativa.
-- **Finalidad:** gestionar el alta y la relación como socio o alumno, la organización de las clases y cursos, el cobro de cuotas, la tramitación de licencias y seguros deportivos, y el cumplimiento de las obligaciones asociativas.
+- **Datos:** nombre y apellidos, DNI, NIE o pasaporte, nacionalidad, fecha de nacimiento, dirección postal, teléfono, correo electrónico, datos bancarios para el cobro de cuotas, grado y datos relativos a la práctica del aikido, en su caso datos de la licencia federativa, y una persona de contacto para urgencias.
+- **Finalidad:** gestionar el alta y la relación como socio o alumno, la organización de las clases y cursos, el cobro de cuotas, la tramitación de licencias y seguros deportivos, el registro de grados ante la Fundación Aikikai (Japón), que pide la nacionalidad, y el cumplimiento de las obligaciones asociativas.
 - **Base jurídica:** la ejecución de la relación asociativa o del contrato del que usted es parte (art. 6.1.b RGPD), el cumplimiento de obligaciones legales aplicables a la Asociación (art. 6.1.c RGPD) y, en su caso, su consentimiento.
 
 ### c) Datos de menores de edad
@@ -69,6 +69,7 @@ Con carácter general, la Asociación no cede datos a terceros, salvo obligació
 
 - **Administraciones públicas y organismos oficiales**, cuando exista una obligación legal.
 - **Federaciones deportivas y entidades aseguradoras**, para la tramitación de licencias y seguros deportivos, cuando proceda.
+- **La Fundación Aikikai** (Aikikai Hombu Dojo, Tokio, Japón), para registrar los grados: nombre, fecha de nacimiento, nacionalidad y grado. Japón cuenta con una decisión de adecuación de la Comisión Europea.
 - **Entidades bancarias**, para la gestión de los cobros de cuotas.
 - **Proveedores de servicios que actúan como encargados del tratamiento**, tales como el proveedor de alojamiento web (GitHub, Inc.) y el proveedor de herramientas de analítica (Google). Estos proveedores solo tratan los datos conforme a nuestras instrucciones.
 - **Redes sociales** (Facebook/Meta, Instagram, YouTube/Google), en relación con los contenidos que se publican en dichas plataformas.

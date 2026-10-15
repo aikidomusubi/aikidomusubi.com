@@ -6,5 +6,5 @@ description: Material didàctic, directrius d'examen, formularis i altres recurs
 permalink: /ca/recursos/
 lang: ca
 i18n-ref: resources-uStNjtHz
-last_modified: 2026-09-17
+last_modified: 2026-10-15
 ---
