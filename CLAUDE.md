@@ -782,10 +782,17 @@ call the same `apply()` in `src/actions.ts`, so a change is made one way.
 
 **What a script builds is checked in a browser, every build.** `tools/qa.py` runs
 `services/membership/scripts/a11y.mjs`: axe-core in headless Chrome walks the signup
-through every step, with an error on the way, in four languages and two widths, and
-the panel's ten pages, rendered by the Worker with invented families. On
+through every step, with an error on the way, in four languages and two widths. On
 its first run it found the second person's name field squeezed to 24px beside a
 floated legend, which no amount of reading the HTML would have shown.
+
+**The panel is USED in that browser, not just loaded**: `scripts/panel-serve.ts` runs
+the Worker locally with invented families, and Chrome signs in with the emailed code,
+presses Recibida, Deshacer, opens a family, confirms a change and signs out. It exists
+because the panel shipped with a sign-in form that refused itself: under
+`Referrer-Policy: no-referrer` a browser posts `Origin: null`, the same-origin check
+said no, and all 89 unit tests passed because they wrote the Origin header by hand.
+**A test that sets the headers a browser would set is not testing the browser.**
 
 **The Japanese font files carry a generation number** (`-g2`) since the membership
 pages added 18 kanji. Fonts cannot be cache-busted, so a run of

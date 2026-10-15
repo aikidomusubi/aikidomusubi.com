@@ -57,9 +57,16 @@ export const csrfFor = async (env: Env, id: string) => (await sha256(`csrf:${id}
 
 // Every POST must come from a page of this panel: same origin, and carrying the
 // session's own token. SameSite=Lax on the cookie is the third lock.
+//
+// A browser that sends `Origin: null` is not refused for that alone: under a
+// no-referrer policy, the Fetch standard has a form's own POST say "null",
+// and that is what locked the panel's first users out on 15 October 2026.
+// The panel's pages now say `same-origin`, and Sec-Fetch-Site, which every
+// current browser sends and a page cannot set, answers the same question.
 export function sameOrigin(req: Request): boolean {
   const origin = req.headers.get('origin');
-  return origin === new URL(req.url).origin;
+  if (origin && origin !== 'null') return origin === new URL(req.url).origin;
+  return req.headers.get('sec-fetch-site') === 'same-origin';
 }
 
 function cookie(value: string, maxAge: number) {

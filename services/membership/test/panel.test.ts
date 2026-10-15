@@ -71,6 +71,25 @@ describe('signing in', () => {
     for (let i = 0; i < 5; i++) await worker.fetch(form('/panel/codigo', { email: 'admin@aikidomusubi.com', code: wrong }), env);
     expect((await worker.fetch(form('/panel/codigo', { email: 'admin@aikidomusubi.com', code }), env)).status).toBe(401);
   });
+  it('accepts the browser’s own form when it says Origin: null', async () => {
+    // What a real browser sends under a no-referrer policy (the bug of 15 October).
+    const req = new Request(API + '/panel/entrar', {
+      method: 'POST', body: 'email=admin%40aikidomusubi.com',
+      headers: { origin: 'null', 'sec-fetch-site': 'same-origin', 'content-type': 'application/x-www-form-urlencoded' }
+    });
+    expect((await worker.fetch(req, testEnv())).status).toBe(200);
+    expect(outbox).toHaveLength(1);
+  });
+  it('refuses Origin: null from anywhere else', async () => {
+    const req = new Request(API + '/panel/entrar', {
+      method: 'POST', body: 'email=admin%40aikidomusubi.com',
+      headers: { origin: 'null', 'sec-fetch-site': 'cross-site', 'content-type': 'application/x-www-form-urlencoded' }
+    });
+    const res = await worker.fetch(req, testEnv());
+    expect(res.status).toBe(403);
+    expect(await res.text()).toContain('No se ha podido hacer');
+    expect(outbox).toHaveLength(0);
+  });
   it('refuses a sign-in posted from another site', async () => {
     const res = await worker.fetch(form('/panel/entrar', { email: 'admin@aikidomusubi.com' }, '', 'https://evil.example'), testEnv());
     expect(res.status).toBe(403);

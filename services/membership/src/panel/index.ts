@@ -28,7 +28,8 @@ import { demoSubscriptions } from './demo.ts';
 
 const HEADERS = {
   'x-content-type-options': 'nosniff',
-  'referrer-policy': 'no-referrer',
+  // same-origin, not no-referrer: see sameOrigin() in auth.ts.
+  'referrer-policy': 'same-origin',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'cache-control': 'no-store',
   'x-robots-tag': 'noindex, nofollow',
@@ -38,6 +39,9 @@ const HEADERS = {
 
 const html = (body: string, status = 200, extra: Record<string, string> = {}) =>
   new Response(body, { status, headers: { 'content-type': 'text/html; charset=utf-8', ...HEADERS, ...extra } });
+// What a refused POST shows: never a bare "Forbidden" to a volunteer.
+const refused = (test: boolean) => html(shell({ title: 'Aviso', tab: null, user: null, test,
+  body: messagePage('No se ha podido hacer', 'La página había caducado, o el envío no venía del panel. Vuelve a empezar desde el panel.') }), 403);
 const go = (to: string, extra: Record<string, string> = {}) =>
   new Response(null, { status: 303, headers: { location: to, ...HEADERS, ...extra } });
 
@@ -86,7 +90,7 @@ export async function panel(req: Request, env: Env): Promise<Response> {
   // ---- signing in ---------------------------------------------------------
   if (path === '/panel/entrar') {
     if (req.method === 'POST') {
-      if (!sameOrigin(req)) return html('Forbidden', 403);
+      if (!sameOrigin(req)) return refused(test);
       const body = await readBody(req);
       const email = (body?.email ?? '').trim();
       if (!email.includes('@')) return html(shell({ title: 'Entrar', tab: null, user: null, test, body: loginPage('email', { email, error: 'Escribe un correo completo.' }) }), 422);
@@ -97,7 +101,7 @@ export async function panel(req: Request, env: Env): Promise<Response> {
     return html(shell({ title: 'Entrar', tab: null, user: null, test, body: loginPage('email') }));
   }
   if (path === '/panel/codigo' && req.method === 'POST') {
-    if (!sameOrigin(req)) return html('Forbidden', 403);
+    if (!sameOrigin(req)) return refused(test);
     const body = await readBody(req);
     const email = body?.email ?? '';
     if (await checkCode(env, email, body?.code ?? '')) {
@@ -111,7 +115,7 @@ export async function panel(req: Request, env: Env): Promise<Response> {
 
   const user = await session(req, env);
   if (path === '/panel/salir' && req.method === 'POST') {
-    if (!sameOrigin(req)) return html('Forbidden', 403);
+    if (!sameOrigin(req)) return refused(test);
     return go('/panel/entrar', { 'set-cookie': await endSession(env, user) });
   }
   if (!user) return go('/panel/entrar');
@@ -170,8 +174,9 @@ export async function panel(req: Request, env: Env): Promise<Response> {
 }
 
 async function act(req: Request, env: Env, user: Session): Promise<Response> {
+  const test = !isLive(env);
   const body = await readBody(req);
-  if (!sameOrigin(req) || !body || body.csrf !== user.csrf) return html('Forbidden', 403);
+  if (!sameOrigin(req) || !body || body.csrf !== user.csrf) return refused(test);
   const a = body.a as ActionKind;
   const back = body.back === 'm' ? 'm' : 'p';
   const id = body.s ?? '';

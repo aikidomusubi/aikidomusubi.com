@@ -8,11 +8,14 @@
 // (WCAG 2.0, 2.1 and 2.2, A and AA) at every stop. Zero violations allowed
 // (spec 5.5).
 //
-// The dojo's panel (/panel/) is rendered by the Worker, not by Jekyll, so
-// scripts/panel-pages.ts renders it first, with the demo families, and its
-// pages are checked the same way at the same two widths.
+// The dojo's panel (/panel/) is the Worker's, not Jekyll's, so
+// scripts/panel-serve.ts runs the Worker locally with the demo families, and
+// the panel is USED here in Chrome, not just loaded: sign in with the emailed
+// code, press Recibida, Deshacer, open a family, a confirmation, sign out.
+// Each stop is audited, at the same two widths. A button that does nothing in
+// a real browser fails here even when every unit test passes.
 //
-// A11Y_SHOTS=<dir> also saves a screenshot of every panel page at each width.
+// A11Y_SHOTS=<dir> also saves a screenshot of every panel stop at each width.
 //
 //   node scripts/a11y.mjs [path/to/_site]       exit 1 on any violation
 //
@@ -22,9 +25,9 @@ import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { extname, join, normalize } from 'node:path';
-import { mkdtempSync, mkdirSync } from 'node:fs';
-import { tmpdir } from 'node:os';
-import { execFileSync } from 'node:child_process';
+import { mkdirSync } from 'node:fs';
+import { spawn } from 'node:child_process';
+import { createInterface } from 'node:readline';
 import { createRequire } from 'node:module';
 import puppeteer from 'puppeteer-core';
 
@@ -40,14 +43,18 @@ if (!existsSync(SITE)) { console.log(`a11y: ${SITE} does not exist — build fir
 
 const TYPES = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml',
   '.woff2': 'font/woff2', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.png': 'image/png', '.json': 'application/json' };
-const PANEL = mkdtempSync(join(tmpdir(), 'panel-pages-'));
-execFileSync('node', ['--experimental-strip-types', '--no-warnings', join(import.meta.dirname, 'panel-pages.ts'), PANEL],
-  { cwd: join(import.meta.dirname, '..'), stdio: ['ignore', 'ignore', 'inherit'] });
-const PANEL_PAGES = ['entrar', 'codigo', 'pendiente', 'pendiente-hecho', 'miembros', 'familia', 'confirmar-17', 'confirmar-baja', 'ayuda', 'vacio'];
+const panelProc = spawn('node', ['--experimental-strip-types', '--no-warnings', join(import.meta.dirname, 'panel-serve.ts')],
+  { cwd: join(import.meta.dirname, '..'), stdio: ['ignore', 'pipe', 'inherit'] });
+const PANEL = await new Promise((resolve, reject) => {
+  const rl = createInterface({ input: panelProc.stdout });
+  rl.once('line', (l) => resolve(`http://localhost:${JSON.parse(l).port}`));
+  panelProc.once('exit', (c) => reject(new Error(`panel-serve exited ${c}`)));
+});
+panelProc.stdout.resume();
 
 const server = createServer(async (req, res) => {
   let p = normalize(decodeURIComponent(new URL(req.url, 'http://x').pathname)).replace(/^(\.\.[/\\])+/, '');
-  let file = join(p.startsWith('/panel/') ? PANEL : SITE, p);
+  let file = join(SITE, p);
   try { if ((await stat(file)).isDirectory()) file = join(file, 'index.html'); } catch { /* 404 below */ }
   try {
     res.writeHead(200, { 'content-type': TYPES[extname(file)] ?? 'application/octet-stream' });
@@ -92,6 +99,65 @@ async function audit(page, label) {
     failures++;
     console.log(`  FAIL ${label}: ${v.id} (${v.impact}) — ${v.help}\n       ${v.nodes.join('\n       ')}`);
   }
+}
+
+// One stop in the panel: audited, checked for sideways scroll, photographed.
+async function stop(page, name, width) {
+  await audit(page, `/panel/${name} @${width}`);
+  if (await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth)) {
+    failures++; console.log(`  FAIL /panel/${name} @${width}: the page scrolls sideways`);
+  }
+  if (process.env.A11Y_SHOTS) {
+    mkdirSync(process.env.A11Y_SHOTS, { recursive: true });
+    await page.screenshot({ path: join(process.env.A11Y_SHOTS, `${name}-${width}.png`), fullPage: true });
+  }
+}
+
+async function expectText(page, sel, text, what) {
+  const got = await page.$eval(sel, (el) => el.textContent).catch(() => '');
+  if (!got.includes(text)) throw new Error(`${what}: expected "${text}" in ${sel}, got "${got.trim().slice(0, 80)}"`);
+}
+
+const submit = (page, sel) => Promise.all([page.waitForNavigation({ waitUntil: 'networkidle0' }), page.click(sel)]);
+
+async function panel(page, width) {
+  const client = await page.createCDPSession();
+  await client.send('Network.clearBrowserCookies');
+  await page.goto(`${PANEL}/panel/`, { waitUntil: 'networkidle0' });
+  await expectText(page, 'h1', 'Entrar en el panel', 'not signed in goes to the sign-in page');
+  await stop(page, 'entrar', width);
+  await page.type('#email', 'admin@aikidomusubi.com');
+  await submit(page, 'form button[type=submit]');
+  await expectText(page, 'h1', 'Escribe el código', 'the email form');
+  await stop(page, 'codigo', width);
+  const code = await (await fetch(`${PANEL}/__code`)).text();
+  if (!/^\d{6}$/.test(code)) throw new Error('no code was emailed');
+  await page.type('#code', code);
+  await submit(page, 'form button[type=submit]');
+  await expectText(page, 'h1', 'Alberto', 'the code form');
+  await stop(page, 'pendiente', width);
+  await submit(page, '.task form button[type=submit]');
+  await expectText(page, '.toast', 'recibida', 'pressing Recibida');
+  await stop(page, 'pendiente-hecho', width);
+  await submit(page, '.toast form button');
+  await expectText(page, '.toast', 'Deshecho', 'pressing Deshacer');
+  await page.goto(`${PANEL}/panel/miembros`, { waitUntil: 'networkidle0' });
+  await stop(page, 'miembros', width);
+  await submit(page, '.fam a.open');
+  await expectText(page, '#fam-h', '', 'opening a family');
+  await stop(page, 'familia', width);
+  await page.goto(`${PANEL}/panel/confirmar?a=age&s=sub_demoSerra001&n=2&back=p`, { waitUntil: 'networkidle0' });
+  await expectText(page, 'h1', '17 o más', 'the confirmation');
+  await stop(page, 'confirmar', width);
+  await submit(page, '.sheet form button[type=submit]');
+  await expectText(page, '.toast', 'Pol pasa', 'confirming');
+  await page.goto(`${PANEL}/panel/ayuda`, { waitUntil: 'networkidle0' });
+  await stop(page, 'ayuda', width);
+  await page.goto(`${PANEL}/__empty`, { waitUntil: 'networkidle0' });
+  await stop(page, 'vacio', width);
+  await page.goto(`${PANEL}/panel/`, { waitUntil: 'networkidle0' });
+  await submit(page, '.top .out');
+  await expectText(page, 'h1', 'Entrar en el panel', 'signing out');
 }
 
 async function state(page) {
@@ -147,20 +213,17 @@ for (const width of [1280, 375]) {
       await audit(page, `${o} @${width}`);
     }
   }
-  for (const name of PANEL_PAGES) {
-    await page.goto(`${ORIGIN}/panel/${name}.html`, { waitUntil: 'networkidle0' });
-    await audit(page, `/panel/${name} @${width}`);
-    const wide = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth);
-    if (wide) { failures++; console.log(`  FAIL /panel/${name} @${width}: the page scrolls sideways`); }
-    if (process.env.A11Y_SHOTS) {
-      mkdirSync(process.env.A11Y_SHOTS, { recursive: true });
-      await page.screenshot({ path: join(process.env.A11Y_SHOTS, `${name}-${width}.png`), fullPage: true });
-    }
+  try {
+    await panel(page, width);
+  } catch (e) {
+    failures++;
+    console.log(`  FAIL /panel/ @${width}: could not use the panel (${e.message}) at ${page.url()}`);
   }
   await page.close();
 }
 
 await browser.close();
 server.close();
-console.log(failures ? `\n  a11y: ${failures} violation(s)` : '  a11y: 0 violations on the membership pages (4 languages, 2 widths, every step) and the panel (10 pages)');
+panelProc.kill();
+console.log(failures ? `\n  a11y: ${failures} violation(s)` : '  a11y: 0 violations on the membership pages (4 languages, 2 widths, every step) and the panel (signed in, used and signed out in Chrome)');
 process.exit(failures ? 1 : 0);
