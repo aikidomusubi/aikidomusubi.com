@@ -81,11 +81,22 @@ async function audit(page, label) {
   // nobody sees, so wait for every animation to finish.
   await page.evaluate(async () => {
     document.getElementById('cookieBanner')?.remove();
-    await Promise.all(document.getAnimations().map((a) => a.finished.catch(() => null)));
     // From the top: once scrolled, the site's sticky nav sits over whatever
     // passes under it, and axe reports those as crowded targets. That is a
     // property of a scroll position, not of the page.
     window.scrollTo({ top: 0, behavior: 'instant' });
+    // Scrolling back is itself a change, so the wait comes after it. A step
+    // change scrolls the page and shrinks the nav; returning to the top
+    // un-shrinks it, a 0.28s transition nav.js starts from a rAF. About 100ms
+    // in, the utility strip is half open and clips the language links, and axe
+    // reported them as undersized targets (1 run in 3, 2026-10-15) — at rest
+    // and fully shrunk they pass. So: two frames for nav.js to apply its state,
+    // then wait out every running animation and transition, and look again in
+    // case one finishing started another.
+    await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+    for (let run; (run = document.getAnimations().filter((a) => a.playState === 'running')).length;) {
+      await Promise.all(run.map((a) => a.finished.catch(() => null)));
+    }
   });
   if (!(await page.evaluate(() => typeof window.axe !== 'undefined'))) await page.evaluate(AXE);
   const r = await page.evaluate(async () => {
@@ -175,34 +186,62 @@ async function state(page) {
   }));
 }
 
+// A real mouse click, aimed where a person would aim: at a control in the
+// middle of the screen. page.click and Locator.click both treat a control as
+// "in view" once any of it intersects the viewport and then fire at its centre
+// — and at 375px the bottom 52px of the viewport is the pinned legal strip.
+// A chip or a "next" button resting at the foot of the screen took the click
+// on .ft-strip instead: on 2026-10-15, one run in six lost a chip on
+// /ja/sign-up/, the walk carried on, and the failure surfaced two steps later
+// as "Node is either not clickable" on a step-2 radio still hidden. (Focus is
+// not the problem: membership.less's scroll-padding keeps a focused field
+// clear of the strip; this is only about where a synthetic pointer lands.)
+//
+// So centre it first; the Locator then waits for it to be enabled and hold
+// the same box for two frames. A radio or checkbox must then BE checked, and
+// `next` must reach the next step — a lost click is named where it happens,
+// not two steps later.
+async function click(page, sel) {
+  await page.$eval(sel, (el) => el.scrollIntoView({ block: 'center', behavior: 'instant' }));
+  await page.locator(sel).click();
+  const checked = await page.$eval(sel, (el) => (el.type === 'radio' || el.type === 'checkbox') ? el.checked : null);
+  if (checked === false) throw new Error(`clicked ${sel} and it is not checked`);
+}
+
+async function next(page, n) {
+  await click(page, `.su-step[data-step="${n}"] .su-next`);
+  const s = await state(page);
+  if (s.step !== String(n + 1)) throw new Error(`step ${n} did not advance: ${s.errors.join(' / ')}`);
+}
+
 async function signup(page, lang, path) {
   await page.goto(ORIGIN + path, { waitUntil: 'networkidle0' });
   await audit(page, `${path} step 1`);
   // Continue with nothing filled in: the error summary and inline errors.
-  await page.click('.su-step[data-step="1"] .su-next');
+  await click(page, '.su-step[data-step="1"] .su-next');
   await audit(page, `${path} step 1 errors`);
   await page.type('#su-p1-given', lang === 'ja' ? '花子' : 'Ana');
   await page.type('#su-p1-family', lang === 'ja' ? '山田' : 'García');
-  await page.click('#su-p1 input[name="p1_cat"][value="adult"]');
-  await page.click('#su-add');
+  await click(page, '#su-p1 input[name="p1_cat"][value="adult"]');
+  await click(page, '#su-add');
   await page.type('#su-p2-given', lang === 'ja' ? '花' : 'Lía');
   await page.type('#su-p2-family', lang === 'ja' ? '山田' : 'García');
-  await page.click('#su-p2 input[name="p2_cat"][value="youth"]');
+  await click(page, '#su-p2 input[name="p2_cat"][value="youth"]');
   await page.select('#su-p2-bm', '3');
   await page.select('#su-p2-by', '2014');
-  await page.click('#su-p2 input[name="p2_rate"][value="sc"]');
+  await click(page, '#su-p2 input[name="p2_rate"][value="sc"]');
   await page.select('#su-p2-venue', 'sant-adria');
   await audit(page, `${path} step 1 filled`);
-  await page.click('.su-step[data-step="1"] .su-next');
+  await next(page, 1);
   await audit(page, `${path} step 2`);
-  await page.click('input[name="period"][value="monthly"]');
-  await page.click('.su-step[data-step="2"] .su-next');
+  await click(page, 'input[name="period"][value="monthly"]');
+  await next(page, 2);
   await audit(page, `${path} step 3`);
-  await page.click('input[name="holder"][value="p1"]');
+  await click(page, 'input[name="holder"][value="p1"]');
   await page.type('#su-email', 'ana@example.com');
-  await page.click('#su-adult');
-  await page.click('#su-guardian');
-  await page.click('.su-step[data-step="3"] .su-next');
+  await click(page, '#su-adult');
+  await click(page, '#su-guardian');
+  await next(page, 3);
   await audit(page, `${path} step 4`);
 }
 
