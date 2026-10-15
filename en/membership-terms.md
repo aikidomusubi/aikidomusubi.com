@@ -28,7 +28,7 @@ Version {{ MS.terms_version }}, in force from 1 January 2027. These are the term
 
 {{ FT.org }}, a non-profit association with tax number (CIF) {{ FT.cif }}, entered in the Generalitat de Catalunya's Register of Associations (section 1, Barcelona) under number {{ FT.registry }}, registered at {{ FT.address | replace: '<br>', ', ' }}, Spain. Email: [info@aikidomusubi.com](mailto:info@aikidomusubi.com). Phone and WhatsApp: +34 717 171 177.
 
-When you sign up you **apply to become a member** of the association, for yourself and for each person you sign up. Membership carries the rights and duties set out in the association's statutes, which you can ask us for at any time: among them, a voice and a vote at the general assembly, and supporting the association through the fee. The fees are approved by the general assembly, on the board's proposal.
+When you sign up you **apply to become a member** of the association, for yourself and for each person you sign up. Membership carries the rights and duties set out in the association's [statutes](/ca/estatuts/), which are in Catalan: among them, a voice and a vote at the general assembly, and supporting the association through the fee. The fees are approved by the general assembly, on the board's proposal.
 
 The board admits new members. If at its first meeting it did not admit someone, we would refund in full whatever you had paid for that person.
 

@@ -150,31 +150,43 @@ html[lang="ja"] .ft-band-h { text-transform: none; letter-spacing: .04em; }
   grid-template-columns: 1fr;
   gap: 2rem;
 
-  // Between 576 and 992 the identity block takes a row of its own, two columns
-  // wide with the third left empty, and the three link columns sit underneath.
-  // Squeezing all four into two columns put the wordmark and "Practicar" on the
-  // same line, which read as though the address were a fourth list.
+  // FOUR LINK COLUMNS since "Tu cuota" (15 October 2026): Practicar, Tu cuota,
+  // Sobre nosotros, Dónde entrenamos. Between 576 and 1200 the identity block
+  // takes a row of its own and the lists sit underneath: two by two up to 992,
+  // and four across from there to 1200. Four across at 768 left each list
+  // about 147px, and a heading ("Dónde entrenamos", "Sobre nosaltres") broke
+  // onto two lines and pushed its list below its neighbours'; measured at
+  // every 16px from 320 to 1440 in the four languages, not eyeballed.
+  // Squeezing the identity block in beside a list put the wordmark and
+  // "Practicar" on the same line, which read as though the address were a list.
   @media (min-width: 576px) {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 2.4rem 2.2rem;
 
-    // Row one is the identity block over two columns with the third left
-    // empty; row two is the three link columns. Spanning .ft-id alone is not
-    // enough — auto-placement happily drops the first list into the empty cell
-    // beside the address, which is the arrangement this is meant to avoid.
-    > .ft-id  { grid-column: 1 / span 2; grid-row: 1; }
+    // Row one is the identity block alone. Spanning .ft-id alone is not enough
+    // with a free cell beside it — auto-placement happily drops the first list
+    // there — so it spans the whole row.
+    > .ft-id  { grid-column: 1 / -1; grid-row: 1; }
+  }
+
+  @media (min-width: 992px) {
+    grid-template-columns: repeat(4, 1fr);
     > .ft-col { grid-row: 2; }
 
     // ONE COLUMN, always. The identity block used to split into two between
     // 576 and 992 — wordmark and address on the left, email and social on the
     // right — which read as two unrelated lists rather than one identity. It
     // is a single stack at every width now, so nothing here rearranges its
-    // insides; it only spans two of the three columns.
+    // insides; it only spans the row above the lists.
   }
 
-  @media (min-width: 992px) {
-    grid-template-columns: 1.5fr 1fr 1.05fr 1.2fr;
-    gap: 2.6rem;
+  // FIVE ACROSS ONLY FROM 1200. At 992 the four lists were 119-137px wide and
+  // "Sobre nosotros" and "Dónde entrenamos" broke onto two lines, so the four
+  // lists began at three different heights. Until 1200 the identity block
+  // keeps its own row, above four lists that each have room for a heading.
+  @media (min-width: 1200px) {
+    grid-template-columns: 1.35fr 1fr 1fr 1.05fr 1.15fr;
+    gap: 2.2rem;
     align-items: start;
 
     > .ft-id  { grid-column: auto; grid-row: auto; display: block; }
@@ -262,7 +274,7 @@ html[lang="ja"] .ft-band-h { text-transform: none; letter-spacing: .04em; }
 
 .ft-col {
 
-  @media (min-width: 992px) { padding-top: @ft-mark-h + @ft-mark-gap + @ft-baseline-fix; }
+  @media (min-width: 1200px) { padding-top: @ft-mark-h + @ft-mark-gap + @ft-baseline-fix; }
 
   > ul > li > a {
     display: inline-block;

@@ -160,12 +160,12 @@
 
     {%- comment -%}
       The legal strip's pages, then the membership's three standing pages,
-      which live in the footer's first column as `extra` (_data/footer.yml):
+      which are the footer's "Tu cuota" column (_data/footer.yml, id cuota):
       the members area, the terms and the withdrawal function. Not in the
       menu, so listed here or nowhere.
     {%- endcomment -%}
-    {%- assign fcol = F.columns | where: 'from_nav', 'classes' | first -%}
-    {%- assign LEG = F.legal | concat: fcol.extra %}
+    {%- assign fcol = F.columns | where: 'id', 'cuota' | first -%}
+    {%- assign LEG = F.legal | concat: fcol.items %}
     <section class="sm-row">
       <div class="sm-lab">
         <h2>{{ site.data.sitemap.legal[L] }}</h2>

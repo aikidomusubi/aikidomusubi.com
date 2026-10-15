@@ -51,11 +51,16 @@ band:
 columns:
   - from_nav: classes
     label: { es: "Practicar", ca: "Practicar", en: "Training", ja: "稽古" }
-    # `extra` follows the nav's items in this column only. The membership's
-    # three standing links: the members area, the terms, and the withdrawal
-    # function, which the EU wants reachable from every page of the site
-    # (Directive 2023/2673, from 19 June 2026). The footer is on every page.
-    extra:
+
+  # THE MEMBERSHIP'S OWN COLUMN (option A of docs/mockups/footer-cuotas-*.html,
+  # chosen 15 October 2026). The members area, the terms, and the withdrawal
+  # function, which the EU wants reachable from every page of the site
+  # (Directive 2023/2673, from 19 June 2026): the footer is on every page.
+  # Signing up is not repeated here: "Practicar" carries it from the nav.
+  # Not the pinned strip below: it has no room left on a phone (CLAUDE.md).
+  - id: cuota
+    label: { es: "Tu cuota", ca: "La teva quota", en: "Your membership", ja: "会費" }
+    items:
       - label: { es: "Área de miembros", ca: "Àrea de membres", en: "Members area", ja: "会員ページ" }
         url:   { es: "/miembros/", ca: "/ca/membres/", en: "/en/members/", ja: "/ja/members/" }
       - label: { es: "Condiciones de la cuota", ca: "Condicions de la quota", en: "Membership terms", ja: "会費規約" }

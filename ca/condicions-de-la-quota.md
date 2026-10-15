@@ -28,7 +28,7 @@ Versió {{ MS.terms_version }}, en vigor des de l'1 de gener de 2027. Són les c
 
 {{ FT.org }}, associació sense ànim de lucre amb CIF {{ FT.cif }}, inscrita al Registre d'associacions de la Generalitat de Catalunya (secció 1a, Barcelona) amb el número {{ FT.registry }}, i amb domicili a {{ FT.address | replace: '<br>', ', ' }}. Correu: [info@aikidomusubi.com](mailto:info@aikidomusubi.com). Telèfon i WhatsApp: +34 717 171 177.
 
-En inscriure't **sol·licites ser soci o sòcia** de l'associació, per tu i per cada persona que inscrius. Ser soci dona els drets i els deures que fixen els estatuts, que ens pots demanar quan vulguis: entre d'altres, participar amb veu i vot a l'assemblea general, i contribuir a sostenir l'associació amb la quota. Les quotes les aprova l'assemblea general, a proposta de la junta directiva.
+En inscriure't **sol·licites ser soci o sòcia** de l'associació, per tu i per cada persona que inscrius. Ser soci dona els drets i els deures que fixen els [estatuts](/ca/estatuts/): entre d'altres, participar amb veu i vot a l'assemblea general, i contribuir a sostenir l'associació amb la quota. Les quotes les aprova l'assemblea general, a proposta de la junta directiva.
 
 La junta directiva admet les inscripcions. Si en la seva primera reunió no admetés alguna persona, et retornaríem íntegre el que haguessis pagat per ella.
 

@@ -323,7 +323,7 @@ def enrolment(lang):
             h4="4. Declaración y solicitud",
             health="Declaro que no conozco ningún motivo de salud que me impida practicar aikido, y que avisaré a quien imparte la "
                    "clase de cualquier lesión o circunstancia que deba tener en cuenta.",
-            apply=f"Solicito ser socio o socia de la {ORG}, y conozco y acepto sus estatutos, que puedo pedir cuando quiera, "
+            apply=f"Solicito ser socio o socia de la {ORG}, y conozco y acepto sus estatutos (aikidomusubi.com/ca/estatuts) "
                   "y las condiciones de la cuota.",
             sign=("Firma de la persona socia", "Firma de madre, padre o tutor/a (si es menor de 18)"),
             place="Lugar", date="Fecha",
@@ -348,7 +348,7 @@ def enrolment(lang):
             h4="4. Declaració i sol·licitud",
             health="Declaro que no conec cap motiu de salut que m'impedeixi practicar aikido, i que avisaré qui fa la classe de "
                    "qualsevol lesió o circumstància que hagi de tenir en compte.",
-            apply=f"Sol·licito ser soci o sòcia de l'{ORG}, i conec i accepto els seus estatuts, que puc demanar quan vulgui, "
+            apply=f"Sol·licito ser soci o sòcia de l'{ORG}, i conec i accepto els seus estatuts (aikidomusubi.com/ca/estatuts) "
                   "i les condicions de la quota.",
             sign=("Signatura de la persona sòcia", "Signatura de la mare, el pare o el tutor/a (si és menor de 18)"),
             place="Lloc", date="Data",
@@ -373,7 +373,7 @@ def enrolment(lang):
             h4="4. Declaration and application",
             health="I declare that I know of no health reason that prevents me from practising aikido, and that I will tell the "
                    "instructor of any injury or circumstance they should take into account.",
-            apply=f"I apply to become a member of the {ORG}, and I know and accept its statutes, which I can ask for at any time, "
+            apply=f"I apply to become a member of the {ORG}, and I know and accept its statutes (aikidomusubi.com/ca/estatuts, in Catalan) "
                   "and the membership terms.",
             sign=("Signature of the member", "Signature of a parent or guardian (if under 18)"),
             place="Place", date="Date",
