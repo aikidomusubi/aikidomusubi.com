@@ -146,12 +146,13 @@ export async function withdrawalDone(ctx: Ctx, o: { amount: number; atMs: number
 }
 
 // Leaving a quarterly or annual plan early, months not started refunded.
-export async function earlyLeaveDone(ctx: Ctx, o: { amount: number; paid: number; started: number; monthly: number }) {
+export async function earlyLeaveDone(ctx: Ctx, o: { amount: number; paid: number; started: number; monthly: number; keikogi: number }) {
   const L = ctx.lang;
   const w = E.early_leave;
-  const vars = { amount: money(o.amount, L), paid: money(o.paid, L), started: o.started, monthly: money(o.monthly, L) };
+  const vars = { amount: money(o.amount, L), paid: money(o.paid, L), started: o.started, monthly: money(o.monthly, L), keikogi: money(o.keikogi, L) };
   await deliver(ctx, 'early_leave', t(w.kind, L), t(o.amount > 0 ? w.subject : w.subject_none, L, vars), [
     hello(ctx), B.h(t(w.heading, L)), B.p(t(o.amount > 0 ? w.body : w.body_none, L, vars)),
+    ...(o.keikogi > 0 ? [B.p(t(w.keikogi, L, vars))] : []),
     B.p(t(E.ended.back, L, link(ctx, 'signup'))), B.small(esc(t(E.ended.licence, L)))
   ]);
 }

@@ -5,7 +5,7 @@ import type Stripe from 'stripe';
 import { CATALOG } from '../data.ts';
 import { encodeMember, type Meta, type MetaMember } from '../meta.ts';
 import { Pricing, type Cat, type PeriodId } from '../pricing.ts';
-import { leaveMath, monthlyFee, type Leave } from '../leave.ts';
+import { keikogiGiven, leaveMath, monthlyFee, type Leave } from '../leave.ts';
 
 interface P { name: string; cat: Cat; sc?: 'pending' | 'verified'; venue?: string; bym?: string }
 interface F {
@@ -23,7 +23,7 @@ export function demoSubscriptions(now: number): Stripe.Subscription[] {
   const fams: F[] = [
     { id: 'sub_demoGarcia01', holder: 'Ana García López', email: 'ana.garcia@example.com', period: 'quarterly', days: 20, sepa: true,
       people: [{ name: 'Ana García López', cat: 'adult' }, { name: 'Marc García López', cat: 'adult' }, { name: 'Lía García Ruiz', cat: 'youth', bym: '2014-03' }],
-      meta: { hello: 'Ana', paper_due: 'm2,m3', keikogi: 'ready', keikogi_due: 'm1' } },
+      meta: { hello: 'Ana', paper_due: 'm2,m3', keikogi: 'ready', keikogi_due: 'm1', keikogi_for: 'm1,m2,m3' } },
     { id: 'sub_demoPuig0001', holder: 'Joan Puig Ferrer', email: 'joan.puig@example.com', period: 'monthly', days: 13,
       people: [{ name: 'Joan Puig Ferrer', cat: 'adult', sc: 'pending', venue: 'espronceda' }], meta: { hello: 'Joan', paper_due: 'm1' } },
     { id: 'sub_demoRoca0001', holder: 'Pere Roca Serra', email: 'pere.roca@example.com', period: 'monthly', days: 70, failed: true, sepa: true,
@@ -94,5 +94,7 @@ export function demoLeave(sub: Stripe.Subscription, now: number): Leave {
   const start = Pricing.addMonths(end, -months);
   const paid = (sub.latest_invoice as unknown as { amount_due: number }).amount_due / 100;
   const monthly = monthlyFee(sub);
-  return { applies: months > 1, invoice: 'in_demo', paid, start, end, months, monthly, ...leaveMath({ paid, start, months, monthly, now }) };
+  const k = keikogiGiven(sub.metadata);
+  return { applies: months > 1, invoice: 'in_demo', paid, start, end, months, monthly, keikogi: k.cost, keikogiCount: k.count,
+    ...leaveMath({ paid, start, months, monthly, now, keikogi: k.cost }) };
 }

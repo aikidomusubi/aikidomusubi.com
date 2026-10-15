@@ -170,6 +170,11 @@ offer:
     ca: "Si t'apuntes per trimestre o per any en comptes de mes a mes, el keikogi el posa el dojo. Val per a totes les quotes i a tots els espais."
     en: "Sign up by the quarter or the year instead of month by month, and the dojo provides the keikogi. It applies to every fee, at every space."
     ja: "月払いではなく3か月払い・年払いでお申し込みの方には、道場から稽古着を一式お渡しします。すべての区分・すべての稽古場所が対象です。"
+  # What one keikogi costs the dojo to buy. When a quarterly or annual member
+  # leaves early and asks for the months not started back (the terms, section
+  # 8), a keikogi already handed over is deducted: it was bought for them and
+  # cannot be returned. By category, as the fees are. Juanma, 15 October 2026.
+  cost: { adults: 50, children: 30 }
   note:
     es: "Un equipo por persona, en la primera matrícula."
     ca: "Un equip per persona, en la primera matrícula."

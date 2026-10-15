@@ -14,6 +14,7 @@ review_pending: true
 {%- assign MS = site.data.membership -%}
 {%- assign FT = site.data.footer.ui -%}
 {%- assign fam = site.data.fees.family.amount -%}
+{%- assign kc = site.data.fees.offer.cost -%}
 {%- assign fam_q = fam | times: 3 -%}
 {%- assign fam_y = fam | times: 12 -%}
 
@@ -63,7 +64,7 @@ La cuota no tiene fecha de fin: se renueva sola al acabar cada periodo y se cobr
 
 ## 7. Baja
 
-Puedes darte de baja cuando quieras, **sin penalización ni coste**: en tu [área de miembros]({{ MS.urls.members.es }}), con un correo a [info@aikidomusubi.com](mailto:info@aikidomusubi.com) o pidiéndolo en el dojo, donde la dejamos registrada por escrito. La baja se aplica al final del periodo ya pagado: hasta entonces puedes seguir entrenando, y no habrá más cobros. Te la confirmamos por correo.
+Puedes darte de baja cuando quieras, **sin penalización ni coste**. Lo más sencillo es hacerlo tú, en tu [área de miembros]({{ MS.urls.members.es }}): entras con tu correo y un código, pulsas «Cancelar» y lo confirmas, y queda registrado al momento. También puedes escribirnos a [info@aikidomusubi.com](mailto:info@aikidomusubi.com) o pedirlo en el dojo, donde lo dejamos registrado por escrito. La baja se aplica al final del periodo ya pagado: hasta entonces puedes seguir entrenando, y no habrá más cobros. Te la confirmamos por correo.
 
 Con una cuota trimestral o anual, puedes pedir además que te devolvamos los meses que no hayas empezado (apartado 8).
 
@@ -72,7 +73,7 @@ Como prevén los estatutos, también es causa de baja no pagar la cuota una vez 
 ## 8. Devoluciones
 
 - **Cuota mensual.** Al darte de baja no hay nada que devolver: la baja se aplica al final del mes ya pagado.
-- **Cuota trimestral o anual.** Si te das de baja antes de que acabe el trimestre o el año, puedes pedirnos que te devolvamos los meses que aún no hayas empezado, sin dar explicaciones. Lo calculamos como si hubieras pagado mes a mes: a lo que pagaste por ese periodo le restamos la cuota mensual vigente de cada mes ya empezado, con el descuento familiar si lo tienes. Por ejemplo, con una cuota anual de 17 años o más, si te das de baja en el cuarto mes del año te devolvemos 360 € − 4 × 39 € = 204 €. Si el resultado es cero o menos, no hay devolución. La cuota termina el día en que lo pides, y te devolvemos el importe en 14 días como máximo, por el mismo medio de pago. El keikogi de regalo (apartado 14) no se descuenta.
+- **Cuota trimestral o anual.** Si te das de baja antes de que acabe el trimestre o el año, puedes pedirnos que te devolvamos los meses que aún no hayas empezado, sin dar explicaciones. Lo calculamos como si hubieras pagado mes a mes: a lo que pagaste por ese periodo le restamos la cuota mensual vigente de cada mes ya empezado, con el descuento familiar si lo tienes. Por ejemplo, con una cuota anual de 17 años o más, si te das de baja en el cuarto mes del año te devolvemos 360 € − 4 × 39 € = 204 €. Si el resultado es cero o menos, no hay devolución. La cuota termina el día en que lo pides, y te devolvemos el importe en 14 días como máximo, por el mismo medio de pago. Si ya te hemos entregado el keikogi de regalo (apartado 14), descontamos también lo que nos costó, {{ kc.adults }} € el de adulto y {{ kc.children }} € el infantil: lo compramos para ti y no se puede devolver, así que te lo quedas.
 - **Si es la asociación quien termina tu cuota**, por una causa que no sea el impago, o si deja de dar las clases que tu cuota cubre, te devolvemos la parte del periodo pagado que no hayas podido usar.
 - **Desistimiento**, durante los 14 días siguientes a la inscripción: apartado 12.
 
@@ -120,7 +121,7 @@ Para entrenar es obligatorio el seguro deportivo, que va con la licencia federat
 
 ## 14. El keikogi de regalo
 
-Con una cuota trimestral o anual, cada persona recibe un keikogi en su primera inscripción. Lo entregamos en el dojo cuando se ha cobrado el primer trimestre o año completo y han pasado los 14 días de desistimiento. Es uno por persona: un cambio de periodo o una nueva inscripción no incluye otro, y no se cambia por dinero.
+Con una cuota trimestral o anual, cada persona recibe un keikogi en su primera inscripción. Lo entregamos en el dojo cuando se ha cobrado el primer trimestre o año completo y han pasado los 14 días de desistimiento. Es uno por persona: un cambio de periodo o una nueva inscripción no incluye otro, y no se cambia por dinero. Si dejas la cuota antes de tiempo y pides la devolución de los meses no empezados, se descuenta lo que costó (apartado 8).
 
 ## 15. Personas menores de edad, e imágenes
 

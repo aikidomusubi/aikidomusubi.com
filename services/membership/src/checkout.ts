@@ -220,6 +220,10 @@ export function metadata(s: Signup, priced: { slot: number; kind: 'full' | 'fami
     if (s.holder.slot === p.slot) meta.holder = `m${n}`;
   });
   meta.keikogi_due = keikogiSlots.join(',');
+  // Who this membership gives a keikogi to, fixed at signup. keikogi_due
+  // shrinks as they are handed over; the difference is what has been given,
+  // which a refund for leaving early has to know (src/leave.ts).
+  meta.keikogi_for = keikogiSlots.join(',');
   if (!keikogiSlots.length) meta.keikogi = '';
   if (!inviteId) meta.paper_due = s.members.map((_, i) => `m${i + 1}`).join(',');
   return meta;

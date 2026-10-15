@@ -16,6 +16,7 @@
 //   early_start_at adult_at guardian_at invite_id withdraw_by
 //   keikogi        ""|due|paid|ready|delivered — see src/keikogi.ts
 //   keikogi_due    "m1,m2,m3": who has not had theirs yet
+//   keikogi_for    who this membership gives one to at all (fixed at signup)
 //   first_full     the day the first full period was paid (YYYY-MM-DD)
 //
 // Nothing here is payment data, an ID number, health data or free text the

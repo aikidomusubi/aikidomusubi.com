@@ -446,7 +446,7 @@ const periodWordOf = (f: Family) => ({ monthly: 'mes', quarterly: 'trimestre', a
 
 // ---------------------------------------------------------------------------
 export interface RefundView { lines: { start: number; end: number; paid: number; keep: number; refund: number }[]; total: number; pending: boolean }
-export interface LeaveView { applies: boolean; paid: number; start: number; end: number; months: number; started: number; monthly: number; keep: number; refund: number }
+export interface LeaveView { applies: boolean; paid: number; start: number; end: number; months: number; started: number; monthly: number; keikogi: number; keikogiCount: number; keep: number; refund: number }
 export interface Confirm { a: ActionKind; fam: Family; person: Person | null; before?: number; after?: number; totalBefore?: number; totalAfter?: number; refund?: RefundView; leave?: LeaveView }
 
 export function confirmPage(c: Ctx, x: Confirm): string {
@@ -485,9 +485,10 @@ ${f.people.length > 1 ? `<div><span>Total de la familia</span><b>${esc(m(x.total
       title = `¿Dar de baja a ${f.name} ahora y devolver los meses no empezados?`;
       text = `Hazlo solo si la familia lo ha pedido. Se calcula como si hubieran pagado mes a mes: de lo pagado por este ${periodWordOf(f)} se queda la cuota mensual de cada mes ya empezado. La cuota termina ahora, no habrá más cobros, y la familia recibe un correo con el importe.`;
       extra = `<div class="sum"><div><span>Pagado por el ${periodWordOf(f)}, del ${esc(short(q.start))} al ${esc(short(q.end - 86400000))}</span><b>${esc(m(q.paid))}</b></div>
-<div><span>${q.started} ${q.started === 1 ? 'mes empezado' : 'meses empezados'} × ${esc(m(q.monthly))} al mes</span><b>− ${esc(m(q.keep))}</b></div>
+<div><span>${q.started} ${q.started === 1 ? 'mes empezado' : 'meses empezados'} × ${esc(m(q.monthly))} al mes</span><b>− ${esc(m(Math.min(q.paid, q.started * q.monthly)))}</b></div>
+${q.keikogi > 0 ? `<div><span>${q.keikogiCount} ${q.keikogiCount === 1 ? 'keikogi ya entregado' : 'keikogi ya entregados'}</span><b>− ${esc(m(q.keikogi))}</b></div>` : ''}
 <div class="tot"><span>Se devuelve</span><b>${esc(m(q.refund))}</b></div></div>
-<p class="note">Se devuelve por el mismo medio de pago. El keikogi de regalo no se descuenta.</p>`;
+<p class="note">Se devuelve por el mismo medio de pago. ${q.keikogi > 0 ? 'Los keikogi entregados se descuentan a lo que costaron, porque no se pueden devolver; se los quedan.' : 'Si se hubiera entregado algún keikogi, se descontaría lo que costó.'}</p>`;
       yes = q.refund > 0 ? `Sí, dar de baja y devolver ${m(q.refund)}` : 'Sí, dar de baja ahora'; cls = 'warn';
       break;
     }
@@ -563,7 +564,7 @@ const FAQ: [string, string][] = [
 <p>Los botones que cambian lo que paga una familia (abono no válido, 17 o más, baja) siempre piden confirmación antes, con los importes.</p>`],
   ['Una familia quiere darse de baja',
     `<p>Pueden hacerlo ellos mismos desde <b>Mi cuota</b>; el enlace está en todos sus correos. Si te lo piden a ti, abre la familia en <b>Miembros</b> y pulsa <b>Dar de baja al final del periodo</b>. Siguen entrenando hasta esa fecha y no se cobra nada más.</p>
-<p>Si tienen cuota <b>trimestral o anual</b> y piden que les devolvamos los meses que no han empezado, pulsa en cambio <b>Baja ahora, devolviendo los meses no empezados</b>. El panel lo calcula como si hubieran pagado mes a mes, te enseña el importe antes de confirmar, devuelve el dinero y les escribe. No hace falta que den explicaciones.</p>
+<p>Si tienen cuota <b>trimestral o anual</b> y piden que les devolvamos los meses que no han empezado, pulsa en cambio <b>Baja ahora, devolviendo los meses no empezados</b>. El panel lo calcula como si hubieran pagado mes a mes, descuenta los keikogi que ya se les entregaron (a lo que costaron), te enseña el importe antes de confirmar, devuelve el dinero y les escribe. No hace falta que den explicaciones.</p>
 <p>Si quieren <b>desistir</b> dentro de los 14 días y recuperar el dinero, es otra cosa: que usen el formulario de desistimiento de la web.</p>`],
   ['Ha llegado un desistimiento',
     `<p>Aparece el primero en <b>Pendiente</b>. Pulsa <b>Resolver…</b>: verás lo que se devuelve, ya calculado. Al confirmar se devuelve el dinero por el mismo medio de pago, la cuota termina y la familia recibe un correo con el importe. No hace falta entrar en Stripe.</p>

@@ -16,6 +16,9 @@ export const M = data.membership as any;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const E = data.emails as any;
 export const VENUES = data.venues as Record<string, I18n>;
+// What one keikogi costs the dojo, by fee category (fees.yml, offer.cost).
+export const KEIKOGI_COST = FEES.keikogi_cost as { adults: number; children: number };
+export const keikogiCost = (cat: 'adult' | 'youth') => (cat === 'adult' ? KEIKOGI_COST.adults : KEIKOGI_COST.children);
 export const KNOT = (data as { knot?: string }).knot ?? '';
 export const SITE = data.site as { title: string; org: string; org_ja: string; cif: string; address: string };
 export const CATALOG: Catalog = Pricing.catalog(FEES);

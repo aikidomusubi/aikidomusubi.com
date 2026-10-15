@@ -87,6 +87,8 @@ The portal cannot.
 panel, open the family → **Baja ahora, devolviendo los meses no empezados**. It keeps the
 current monthly fee of the household for each month of the period already started and
 refunds the rest (annual, 17 and over, leaving in the fourth month: 360 − 4 × 39 = 204 €),
+less what any keikogi already handed over cost (`offer.cost` in `_data/fees.yml`: 50 € adult,
+30 € child; bought for them and not returnable, so they keep it),
 ends the membership at once and emails the family the amount. No reason is needed, and
 no health or other evidence should be asked for. A monthly plan has nothing to refund.
 

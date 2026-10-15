@@ -134,7 +134,7 @@ describe('emails', () => {
     expect(m.html).toContain('&lt;b&gt;Ana&lt;/b&gt;');
     expect(m.html).not.toContain('<b>Ana</b>');
     for (const s of ['30,99', '5 de febrero de 2027', '183', 'mayo, agosto, noviembre y febrero', '3 de febrero de 2027',
-      'Formulario de desistimiento', 'Associació Cultural Musubi Aikido', 'domiciliación SEPA acabada en 3000', '3 keikogi']) {
+      'Formulario de desistimiento', 'Associació Aikido Musubi', 'domiciliación SEPA acabada en 3000', '3 keikogi']) {
       expect(m.html).toContain(s);
     }
     expect(m.text).toContain('Formulario de desistimiento');

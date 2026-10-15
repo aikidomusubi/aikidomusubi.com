@@ -81,6 +81,12 @@
   <ol class="mb-howto">
     {%- for s in MM.how %}<li><span>{{ s[L] }}</span></li>{% endfor %}
   </ol>
+  <h2 class="mb-h2" id="baja">{{ MM.leave_h[L] }}</h2>
+  <ol class="mb-howto">
+    {%- for s in MM.leave %}<li><span>{{ s[L] }}</span></li>{% endfor %}
+  </ol>
+  {%- assign PH_TERMS = '{terms}' %}
+  <p class="mb-small">{{ MM.leave_refund[L] | replace: PH_TERMS, MS.urls.terms[L] }}</p>
 
   {%- elsif page.kind == 'withdrawal' %}
   {%- assign ph_lede = MW.lede[L] %}

@@ -58,7 +58,8 @@ const out = {
     categories: fees.categories.map((c) => ({ id: c.id, name: c.name })),
     prices: fees.prices,
     family: { amount: fees.family.amount },
-    members: { rows: fees.members.rows }
+    members: { rows: fees.members.rows },
+    keikogi_cost: fees.offer.cost
   },
   site,
   venues: venueNames,

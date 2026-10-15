@@ -8,7 +8,7 @@ import { sign } from '../src/crypto.ts';
 import { demoSubscriptions } from '../src/panel/demo.ts';
 import { family, tasks } from '../src/panel/model.ts';
 import { greeting } from '../src/panel/views.ts';
-import { leaveMath } from '../src/leave.ts';
+import { keikogiGiven, leaveMath } from '../src/leave.ts';
 import type { Env } from '../src/env.ts';
 
 const API = 'https://api.aikidomusubi.com';
@@ -196,8 +196,17 @@ describe('leaving a quarterly or annual plan early', () => {
     expect(leaveMath({ paid: 360, start, months: 12, monthly: 39, now: Date.UTC(2027, 3, 20) })).toEqual({ started: 4, keep: 156, refund: 204 });
     // Quarterly, on the first day: one month started.
     expect(leaveMath({ paid: 99, start, months: 3, monthly: 39, now: start })).toEqual({ started: 1, keep: 39, refund: 60 });
+    // With the keikogi already handed over: an adult's costs 50 €.
+    expect(leaveMath({ paid: 360, start, months: 12, monthly: 39, now: Date.UTC(2027, 3, 20), keikogi: 50 })).toEqual({ started: 4, keep: 206, refund: 154 });
     // Never more kept than was paid.
     expect(leaveMath({ paid: 99, start, months: 3, monthly: 39, now: Date.UTC(2027, 2, 20) })).toEqual({ started: 3, keep: 99, refund: 0 });
+  });
+  it('counts only the keikogi this membership handed over', () => {
+    const meta = { keikogi: 'ready', keikogi_due: 'm1', keikogi_for: 'm1,m2', m1: 'cat=adult;rate=general;kind=full', m1_name: 'A B',
+      m2: 'cat=youth;rate=general;kind=family', m2_name: 'C B', m3: 'cat=adult;rate=general;kind=family', m3_name: 'D B' };
+    // m3 had one in an earlier membership, so this one was never for them.
+    expect(keikogiGiven(meta)).toEqual({ count: 1, cost: 30 });
+    expect(keikogiGiven({ ...meta, keikogi: 'paid' })).toEqual({ count: 0, cost: 0 });
   });
   it('is offered, and worked out, only for quarterly and annual families', async () => {
     const env = testEnv();
@@ -208,6 +217,8 @@ describe('leaving a quarterly or annual plan early', () => {
     expect(carla).not.toContain('devolviendo los meses no empezados');
     const ask = await (await worker.fetch(get('/panel/confirmar?a=leave&s=sub_demoGarcia01&back=m', cookie), env)).text();
     expect(ask).toMatch(/meses? empezados? × 77\s€ al mes/);
+    // Marc's and Lía's keikogi are handed over: 50 € + 30 €.
+    expect(ask).toMatch(/2 keikogi ya entregados<\/span><b>− 80\s€/);
   });
 });
 

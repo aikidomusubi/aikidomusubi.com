@@ -14,6 +14,7 @@ review_pending: true
 {%- assign MS = site.data.membership -%}
 {%- assign FT = site.data.footer.ui -%}
 {%- assign fam = site.data.fees.family.amount -%}
+{%- assign kc = site.data.fees.offer.cost -%}
 {%- assign fam_q = fam | times: 3 -%}
 {%- assign fam_y = fam | times: 12 -%}
 
@@ -63,7 +64,7 @@ The membership has no end date: it renews automatically at the end of each perio
 
 ## 7. Cancelling
 
-You can cancel whenever you like, **with no penalty and at no cost**: in your [members area]({{ MS.urls.members.en }}), by emailing [info@aikidomusubi.com](mailto:info@aikidomusubi.com), or by asking at the dojo, where we record it in writing. Cancellation takes effect at the end of the period already paid: until then you can keep training, and nothing more is charged. We confirm it by email.
+You can cancel whenever you like, **with no penalty and at no cost**. The simplest way is to do it yourself in your [members area]({{ MS.urls.members.en }}): sign in with your email and a code, press "Cancel" and confirm, and it is recorded at once. You can also email [info@aikidomusubi.com](mailto:info@aikidomusubi.com) or ask at the dojo, where we record it in writing. Cancellation takes effect at the end of the period already paid: until then you can keep training, and nothing more is charged. We confirm it by email.
 
 On a quarterly or annual plan you can also ask us to refund the months you have not started (section 8).
 
@@ -72,7 +73,7 @@ As the statutes provide, not paying the fee once we have told you about it is al
 ## 8. Refunds
 
 - **Monthly plan.** There is nothing to refund when you cancel: cancellation takes effect at the end of the month already paid.
-- **Quarterly or annual plan.** If you cancel before the quarter or the year is over, you can ask us to refund the months you have not yet started, without giving a reason. We work it out as if you had paid month by month: from what you paid for that period we take off the current monthly fee for each month already started, with the family discount if you have it. For example, on an annual plan for 17 and over, if you cancel in the fourth month of the year we refund €360 − 4 × €39 = €204. If the result is zero or less, there is no refund. The membership ends on the day you ask, and we refund the amount within 14 days, by the same means of payment. The free keikogi (section 14) is not deducted.
+- **Quarterly or annual plan.** If you cancel before the quarter or the year is over, you can ask us to refund the months you have not yet started, without giving a reason. We work it out as if you had paid month by month: from what you paid for that period we take off the current monthly fee for each month already started, with the family discount if you have it. For example, on an annual plan for 17 and over, if you cancel in the fourth month of the year we refund €360 − 4 × €39 = €204. If the result is zero or less, there is no refund. The membership ends on the day you ask, and we refund the amount within 14 days, by the same means of payment. If we have already given you the free keikogi (section 14), we also deduct what it cost us, €{{ kc.adults }} for an adult's and €{{ kc.children }} for a child's: it was bought for you and cannot be returned, so it is yours to keep.
 - **If the association ends your membership** for any reason other than non-payment, or stops holding the classes your fee covers, we refund the part of the paid period you could not use.
 - **Withdrawal**, in the 14 days after signing up: section 12.
 
@@ -120,7 +121,7 @@ Sports insurance is compulsory for training, and it comes with the federation li
 
 ## 14. The free keikogi
 
-On a quarterly or annual plan, each person receives a keikogi on their first enrolment. We hand it over at the dojo once the first full quarter or year has been paid and the 14 days to withdraw are over. It is one per person: a change of period or a new enrolment does not include another, and it cannot be exchanged for money.
+On a quarterly or annual plan, each person receives a keikogi on their first enrolment. We hand it over at the dojo once the first full quarter or year has been paid and the 14 days to withdraw are over. It is one per person: a change of period or a new enrolment does not include another, and it cannot be exchanged for money. If you leave the plan early and ask for the months not started back, what it cost is deducted (section 8).
 
 ## 15. Minors, and pictures
 

@@ -427,6 +427,18 @@ members:
     - { es: "Pasar de mensual a trimestral o anual", ca: "Passar de mensual a trimestral o anual", en: "Switch between monthly, quarterly and annual", ja: "支払い期間の変更" }
     - { es: "Cambiar el correo de la cuota", ca: "Canviar el correu de la quota", en: "Change the email on the membership", ja: "登録メールアドレスの変更" }
     - { es: "La cuota con abono municipal", ca: "La quota amb abonament municipal", en: "The sports-centre rate", ja: "市立施設の会員料金" }
+  # Cancelling is self-service, and said so plainly (Juanma, 15 October 2026):
+  # the members area is the first way, not a footnote under "write to us".
+  leave_h:    { es: "Darte de baja", ca: "Donar-te de baixa", en: "Cancelling", ja: "退会するには" }
+  leave:
+    - { es: "Pulsa <b>Ir a mi cuota</b> y entra con tu correo y el código.", ca: "Prem <b>Anar a la meva quota</b> i entra amb el teu correu i el codi.", en: "Press <b>Go to my membership</b> and sign in with your email and the code.", ja: "<b>会費の管理へ</b>を押し、メールアドレスと確認コードでログインします。" }
+    - { es: "Pulsa <b>Cancelar</b> junto a tu cuota y confírmalo. Si quieres, nos dices por qué.", ca: "Prem <b>Cancel·lar</b> al costat de la teva quota i confirma-ho. Si vols, ens dius per què.", en: "Press <b>Cancel</b> beside your membership and confirm. Tell us why, if you like.", ja: "会費の横の<b>キャンセル</b>を押して確定します。よろしければ理由もお聞かせください。" }
+    - { es: "Te llega un correo de confirmación. Sigues entrenando hasta el final del periodo pagado, y no se cobra nada más.", ca: "T'arriba un correu de confirmació. Continues entrenant fins al final del període pagat, i no es cobra res més.", en: "A confirmation email arrives. You keep training until the end of the paid period, and nothing more is charged.", ja: "確認のメールが届きます。お支払い済み期間の終わりまで稽古を続けられ、以後の請求はありません。" }
+  leave_refund:
+    es: "¿Cuota trimestral o anual? Además puedes pedirnos que te devolvamos los meses que aún no has empezado: <a href=\"mailto:info@aikidomusubi.com?subject=Baja%20con%20devoluci%C3%B3n\">escríbenos</a> y te contestamos con el importe (<a href=\"{terms}\">condiciones</a>, apartado 8)."
+    ca: "Quota trimestral o anual? A més ens pots demanar que et retornem els mesos que encara no has començat: <a href=\"mailto:info@aikidomusubi.com?subject=Baixa%20amb%20devoluci%C3%B3\">escriu-nos</a> i et responem amb l'import (<a href=\"{terms}\">condicions</a>, apartat 8)."
+    en: "On a quarterly or annual plan? You can also ask us to refund the months you have not started yet: <a href=\"mailto:info@aikidomusubi.com?subject=Cancellation%20with%20refund\">write to us</a> and we will reply with the amount (<a href=\"{terms}\">terms</a>, section 8)."
+    ja: "3か月払い・年払いの方は、まだ始まっていない月の分の返金もご請求いただけます。<a href=\"mailto:info@aikidomusubi.com?subject=Cancellation%20with%20refund\">メールでご連絡ください</a>。金額をお知らせします（<a href=\"{terms}\">規約</a>第8条）。"
   how_h:      { es: "Cómo se entra", ca: "Com s'hi entra", en: "How to sign in", ja: "ログインの方法" }
   how:
     - { es: "Pulsa <b>Ir a mi cuota</b> y escribe tu correo.", ca: "Prem <b>Anar a la meva quota</b> i escriu el teu correu.", en: "Press <b>Go to my membership</b> and type your email.", ja: "<b>会費の管理へ</b>を押し、メールアドレスを入力します。" }

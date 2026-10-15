@@ -14,6 +14,7 @@ review_pending: true
 {%- assign MS = site.data.membership -%}
 {%- assign FT = site.data.footer.ui -%}
 {%- assign fam = site.data.fees.family.amount -%}
+{%- assign kc = site.data.fees.offer.cost -%}
 {%- assign fam_q = fam | times: 3 -%}
 {%- assign fam_y = fam | times: 12 -%}
 
@@ -63,7 +64,7 @@ La quota no té data de fi: es renova sola en acabar cada període i es cobra el
 
 ## 7. Baixa
 
-Et pots donar de baixa quan vulguis, **sense penalització ni cost**: a la teva [àrea de membres]({{ MS.urls.members.ca }}), amb un correu a [info@aikidomusubi.com](mailto:info@aikidomusubi.com) o demanant-ho al dojo, on la deixem registrada per escrit. La baixa s'aplica al final del període ja pagat: fins aleshores pots continuar entrenant, i no hi haurà més cobraments. Te la confirmem per correu.
+Et pots donar de baixa quan vulguis, **sense penalització ni cost**. El més senzill és fer-ho tu, a la teva [àrea de membres]({{ MS.urls.members.ca }}): hi entres amb el teu correu i un codi, prems «Cancel·lar» i ho confirmes, i queda registrat al moment. També ens pots escriure a [info@aikidomusubi.com](mailto:info@aikidomusubi.com) o demanar-ho al dojo, on ho deixem registrat per escrit. La baixa s'aplica al final del període ja pagat: fins aleshores pots continuar entrenant, i no hi haurà més cobraments. Te la confirmem per correu.
 
 Amb una quota trimestral o anual, pots demanar a més que et retornem els mesos que no hagis començat (apartat 8).
 
@@ -72,7 +73,7 @@ Com preveuen els estatuts, també és causa de baixa no pagar la quota un cop t'
 ## 8. Devolucions
 
 - **Quota mensual.** En donar-te de baixa no hi ha res a retornar: la baixa s'aplica al final del mes ja pagat.
-- **Quota trimestral o anual.** Si et dones de baixa abans que acabi el trimestre o l'any, ens pots demanar que et retornem els mesos que encara no hagis començat, sense donar explicacions. Ho calculem com si haguessis pagat mes a mes: al que vas pagar per aquell període li restem la quota mensual vigent de cada mes ja començat, amb el descompte familiar si el tens. Per exemple, amb una quota anual de 17 anys o més, si et dones de baixa el quart mes de l'any et retornem 360 € − 4 × 39 € = 204 €. Si el resultat és zero o menys, no hi ha devolució. La quota acaba el dia que ho demanes, i et retornem l'import en 14 dies com a màxim, pel mateix mitjà de pagament. El keikogi de regal (apartat 14) no es descompta.
+- **Quota trimestral o anual.** Si et dones de baixa abans que acabi el trimestre o l'any, ens pots demanar que et retornem els mesos que encara no hagis començat, sense donar explicacions. Ho calculem com si haguessis pagat mes a mes: al que vas pagar per aquell període li restem la quota mensual vigent de cada mes ja començat, amb el descompte familiar si el tens. Per exemple, amb una quota anual de 17 anys o més, si et dones de baixa el quart mes de l'any et retornem 360 € − 4 × 39 € = 204 €. Si el resultat és zero o menys, no hi ha devolució. La quota acaba el dia que ho demanes, i et retornem l'import en 14 dies com a màxim, pel mateix mitjà de pagament. Si ja t'hem lliurat el keikogi de regal (apartat 14), també descomptem el que ens va costar, {{ kc.adults }} € el d'adult i {{ kc.children }} € l'infantil: el vam comprar per a tu i no es pot retornar, així que te'l quedes.
 - **Si és l'associació qui acaba la teva quota**, per una causa que no sigui l'impagament, o si deixa de fer les classes que la teva quota cobreix, et retornem la part del període pagat que no hagis pogut fer servir.
 - **Desistiment**, durant els 14 dies següents a la inscripció: apartat 12.
 
@@ -120,7 +121,7 @@ Per entrenar és obligatòria l'assegurança esportiva, que va amb la llicència
 
 ## 14. El keikogi de regal
 
-Amb una quota trimestral o anual, cada persona rep un keikogi en la seva primera inscripció. El lliurem al dojo quan s'ha cobrat el primer trimestre o any complet i han passat els 14 dies de desistiment. És un per persona: un canvi de període o una nova inscripció no n'inclou un altre, i no es canvia per diners.
+Amb una quota trimestral o anual, cada persona rep un keikogi en la seva primera inscripció. El lliurem al dojo quan s'ha cobrat el primer trimestre o any complet i han passat els 14 dies de desistiment. És un per persona: un canvi de període o una nova inscripció no n'inclou un altre, i no es canvia per diners. Si deixes la quota abans d'hora i demanes la devolució dels mesos no començats, es descompta el que va costar (apartat 8).
 
 ## 15. Persones menors d'edat, i imatges
 

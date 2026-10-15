@@ -207,6 +207,11 @@ early_leave:
     ca: "Com ens vas demanar, la teva quota ha acabat avui i no hi haurà més cobraments. T'hem retornat <b>{amount}</b>: els {paid} que vas pagar per aquest període, menys {started} × {monthly} dels mesos ja començats, al preu mensual. Arriba pel mateix mitjà de pagament; amb domiciliació bancària pot trigar uns dies a veure's al compte."
     en: "As you asked, your membership ended today and there will be no further charges. We have refunded <b>{amount}</b>: the {paid} you paid for this period, less {started} × {monthly} for the months already started, at the monthly price. It goes back by the same means of payment; a bank debit can take a few days to show in your account."
     ja: "ご依頼のとおり、会費は本日終了し、今後の請求はありません。この期間にお支払いいただいた{paid}から、すでに始まった月の分（月額{monthly} × {started}か月）を差し引いた<b>{amount}</b>を返金しました。お支払いと同じ方法で返金されます。口座振替の場合、口座に反映されるまで数日かかることがあります。"
+  keikogi:
+    es: "Del importe también hemos descontado {keikogi} del keikogi que te entregamos: lo compramos para ti y no se puede devolver. Es tuyo."
+    ca: "De l'import també hem descomptat {keikogi} del keikogi que et vam lliurar: el vam comprar per a tu i no es pot retornar. És teu."
+    en: "We have also deducted {keikogi} for the keikogi we gave you: it was bought for you and cannot be returned. It is yours to keep."
+    ja: "お渡しした稽古着の代金{keikogi}も差し引いています。稽古着はお客様のために購入したもので、返品できません。そのままお使いください。"
   body_none:
     es: "Como nos pediste, tu cuota ha terminado hoy y no habrá más cobros. No queda nada que devolver: los meses ya empezados, al precio mensual, suman lo que pagaste por este periodo."
     ca: "Com ens vas demanar, la teva quota ha acabat avui i no hi haurà més cobraments. No queda res a retornar: els mesos ja començats, al preu mensual, sumen el que vas pagar per aquest període."
