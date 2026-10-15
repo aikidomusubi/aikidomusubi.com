@@ -40,6 +40,7 @@ python3 docs/mockups/src/build_venuephotos.py
 python3 docs/mockups/src/build_signup.py
 python3 docs/mockups/src/build_signup_b.py
 python3 docs/mockups/src/build_panel.py
+[ -f _dev/cuotas/index.html ] && python3 docs/mockups/src/build_footer_cuotas.py
 [[ -f _site/barcelona/index.html ]] && python3 docs/mockups/src/build_venuepage.py
 for d in "${DESTS[@]}"; do
   mkdir -p "$d/mockups"
