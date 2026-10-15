@@ -102,11 +102,12 @@
         {%- comment -%}
           The pinned part: copyright, CIF and the legal links.
 
-          Below 576px the two cannot share a line — the copyright alone is about
-          300px of the 311px available — so the strip becomes two rows and
-          --footer-height grows to match. The association's name drops out at
-          that width rather than wrapping; it is the first line of the identity
-          block above, so nothing is lost.
+          Below 768px the two cannot share a line, so the strip becomes two
+          rows (links, then copyright), and below 460px the links themselves
+          wrap onto a second row; --footer-height grows to match each time
+          (styles/footer.less). Between 768 and 991 it is one row without the
+          association's name, which is the first line of the identity block
+          above, so nothing is lost.
         {%- endcomment -%}
       {%- endunless %}
 

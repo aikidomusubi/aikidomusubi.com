@@ -844,9 +844,18 @@ the association's details, three columns of internal links. `.ft-strip` is a
 links reachable from anywhere, and it carries the copyright, the CIF and those
 links and nothing else.
 
-`--footer-height` is **the strip's height, not the footer's**. It is 30px, and
-52px below 576px where the strip wraps to two rows — redefined in
-`footer.less`, which must stay in step with `@ft-strip-h` beside it. Two things
+`--footer-height` is **the strip's height, not the footer's**. It is 30px; 52px
+below 768px, where the strip is two rows (links, then copyright); and 77px below
+460px, where the five links themselves wrap onto a second row. Each is redefined
+in `footer.less` beside `@ft-strip-h`, `@ft-strip-h-narrow` and
+`@ft-strip-h-narrower`, and must stay in step with them. Between 768 and 991 the
+association's name drops out of the copyright so the one row fits.
+
+**The strip cannot take another link on a phone.** Until 2026-10-15 it was two
+rows from 576px down and one row above, and the links overflowed at both: 372px
+of links in a 311px row at 375, so "Mapa del sitio" was cut off on every phone,
+and 9px past the edge at 768. Anything that must be reachable from every page
+belongs in the footer's columns, not here. Two things
 consume it: the room reserved for the strip, and the cookie banner's offset so
 it sits above rather than over it.
 

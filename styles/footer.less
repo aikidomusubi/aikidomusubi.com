@@ -29,6 +29,7 @@
 @ft-rule:  mix(@White, @Black, 12%);
 @ft-strip-h: 30px;
 @ft-strip-h-narrow: 52px;   // two rows; must match the --footer-height override below
+@ft-strip-h-narrower: 77px; // three rows: the links wrap once, below 460px
 
 // The bottom padding is the room the pinned strip sits in. It used to be on
 // `.page`, which is white, so anything that lifted the strip — a rubber-band
@@ -314,7 +315,12 @@ html[lang="ja"] .ft-band-h { text-transform: none; letter-spacing: .04em; }
   white-space: nowrap;
 }
 
-@media (max-width: 575.98px) {
+// TWO ROWS UP TO 768px, not 576. Side by side, the copyright (about 305px)
+// and the five legal links (388px) need about 715px of content width, and
+// between 576 and 991 the column is narrower than that: the links ran off the
+// right edge, by 9px at 768. Measured 2026-10-15, with "Mapa del sitio" cut
+// off on every phone, where the links alone (372px) overflowed the 311px row.
+@media (max-width: 767.98px) {
   // Two rows: links first, then the copyright. The association's name comes out
   // of the line rather than wrapping it — it is the first line of the identity
   // block a few centimetres above.
@@ -328,12 +334,29 @@ html[lang="ja"] .ft-band-h { text-transform: none; letter-spacing: .04em; }
 
   .ft-legal {
     margin-left: 0 !important;
-    gap: 1rem;
+    flex-wrap: wrap;
+    gap: 0 1rem;
 
     > li > a { height: 1.55rem; }
   }
 
   .ft-cr { font-size: .68rem; line-height: 1.4; }
+}
+
+// Below 460px the five links no longer fit one row of the content column, so
+// they wrap onto a second (flex-wrap above) and the strip, and the room kept
+// for it, grow by one row. Wrapping beats shrinking: at a size that fitted
+// them all on one line they would be under the 24px target size.
+@media (max-width: 459.98px) {
+  :root { --footer-height: @ft-strip-h-narrower; }
+  .ft-strip-in { height: @ft-strip-h-narrower; }
+}
+
+// Between 768 and 991 the strip is one row again, and there is room for the
+// copyright and the links only without the association's name, which is the
+// first line of the identity block just above.
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .ft-org { display: none; }
 }
 
 // At 400px the content column is 336px and the copyright is about 285px, so it
