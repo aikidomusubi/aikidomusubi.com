@@ -16,6 +16,7 @@ export const M = data.membership as any;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const E = data.emails as any;
 export const VENUES = data.venues as Record<string, I18n>;
+export const KNOT = (data as { knot?: string }).knot ?? '';
 export const SITE = data.site as { title: string; org: string; org_ja: string; cif: string; address: string };
 export const CATALOG: Catalog = Pricing.catalog(FEES);
 

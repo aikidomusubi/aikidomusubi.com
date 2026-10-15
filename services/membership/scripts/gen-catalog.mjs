@@ -63,7 +63,9 @@ const out = {
   site,
   venues: venueNames,
   membership,
-  emails
+  emails,
+  // The panel's mark is the site's own favicon, not a redrawing of it.
+  knot: readFileSync(join(root, 'icons', 'musubi2-knot.svg'), 'utf8').trim()
 };
 
 mkdirSync(join(here, '..', 'src', 'generated'), { recursive: true });

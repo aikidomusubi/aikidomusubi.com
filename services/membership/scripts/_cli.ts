@@ -89,6 +89,7 @@ export function env(m: 'test' | 'live', v: Record<string, string>, withKv = fals
     AUTO_AGE_UPGRADE: 'false',
     MEMBER_FAILED_EMAIL_SEPA: 'true',
     MIGRATION_REMITTANCE_LIST: 'true',
+    PANEL_USERS: '',
     EMAIL_OVERRIDE: v.EMAIL_OVERRIDE ?? '',
     STRIPE_SECRET_KEY: v.STRIPE_SECRET_KEY ?? '',
     STRIPE_WEBHOOK_SECRET: v.STRIPE_WEBHOOK_SECRET ?? '',

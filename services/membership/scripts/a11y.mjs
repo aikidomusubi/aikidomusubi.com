@@ -8,6 +8,12 @@
 // (WCAG 2.0, 2.1 and 2.2, A and AA) at every stop. Zero violations allowed
 // (spec 5.5).
 //
+// The dojo's panel (/panel/) is rendered by the Worker, not by Jekyll, so
+// scripts/panel-pages.ts renders it first, with the demo families, and its
+// pages are checked the same way at the same two widths.
+//
+// A11Y_SHOTS=<dir> also saves a screenshot of every panel page at each width.
+//
 //   node scripts/a11y.mjs [path/to/_site]       exit 1 on any violation
 //
 // Uses the Chrome already installed (puppeteer-core), and a tiny static
@@ -16,6 +22,9 @@ import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { extname, join, normalize } from 'node:path';
+import { mkdtempSync, mkdirSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { execFileSync } from 'node:child_process';
 import { createRequire } from 'node:module';
 import puppeteer from 'puppeteer-core';
 
@@ -31,9 +40,14 @@ if (!existsSync(SITE)) { console.log(`a11y: ${SITE} does not exist — build fir
 
 const TYPES = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml',
   '.woff2': 'font/woff2', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.png': 'image/png', '.json': 'application/json' };
+const PANEL = mkdtempSync(join(tmpdir(), 'panel-pages-'));
+execFileSync('node', ['--experimental-strip-types', '--no-warnings', join(import.meta.dirname, 'panel-pages.ts'), PANEL],
+  { cwd: join(import.meta.dirname, '..'), stdio: ['ignore', 'ignore', 'inherit'] });
+const PANEL_PAGES = ['entrar', 'codigo', 'pendiente', 'pendiente-hecho', 'miembros', 'familia', 'confirmar-17', 'confirmar-baja', 'ayuda', 'vacio'];
+
 const server = createServer(async (req, res) => {
   let p = normalize(decodeURIComponent(new URL(req.url, 'http://x').pathname)).replace(/^(\.\.[/\\])+/, '');
-  let file = join(SITE, p);
+  let file = join(p.startsWith('/panel/') ? PANEL : SITE, p);
   try { if ((await stat(file)).isDirectory()) file = join(file, 'index.html'); } catch { /* 404 below */ }
   try {
     res.writeHead(200, { 'content-type': TYPES[extname(file)] ?? 'application/octet-stream' });
@@ -133,10 +147,20 @@ for (const width of [1280, 375]) {
       await audit(page, `${o} @${width}`);
     }
   }
+  for (const name of PANEL_PAGES) {
+    await page.goto(`${ORIGIN}/panel/${name}.html`, { waitUntil: 'networkidle0' });
+    await audit(page, `/panel/${name} @${width}`);
+    const wide = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth);
+    if (wide) { failures++; console.log(`  FAIL /panel/${name} @${width}: the page scrolls sideways`); }
+    if (process.env.A11Y_SHOTS) {
+      mkdirSync(process.env.A11Y_SHOTS, { recursive: true });
+      await page.screenshot({ path: join(process.env.A11Y_SHOTS, `${name}-${width}.png`), fullPage: true });
+    }
+  }
   await page.close();
 }
 
 await browser.close();
 server.close();
-console.log(failures ? `\n  a11y: ${failures} violation(s)` : '  a11y: 0 violations on the membership pages (4 languages, 2 widths, every step)');
+console.log(failures ? `\n  a11y: ${failures} violation(s)` : '  a11y: 0 violations on the membership pages (4 languages, 2 widths, every step) and the panel (10 pages)');
 process.exit(failures ? 1 : 0);

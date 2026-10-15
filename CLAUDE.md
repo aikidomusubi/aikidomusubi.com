@@ -771,9 +771,19 @@ layouts assign the placeholders in tags first (`{% assign PH_URL = '{url}' %}`).
 Jekyll's `include` also refuses bracketed parameters (`lede=MM.lede[L]`): assign
 first, then pass the variable.
 
+**The dojo's back office is `/panel/` on the Worker**, approved from
+`docs/mockups/panel-cuotas.html`. It is for a volunteer, not for whoever maintains
+this repository: Spanish, plain words, one button per thing to do, Deshacer on the
+everyday marks and a confirmation with the amounts on anything that changes what a
+family pays. Sign-in is a six-digit code emailed to the addresses in `PANEL_USERS`
+(`wrangler.toml`) and nobody else. It reads Stripe on every page and stores only
+sessions, codes and a short who-did-what history in KV. The email buttons and the panel
+call the same `apply()` in `src/actions.ts`, so a change is made one way.
+
 **What a script builds is checked in a browser, every build.** `tools/qa.py` runs
 `services/membership/scripts/a11y.mjs`: axe-core in headless Chrome walks the signup
-through every step, with an error on the way, in four languages and two widths. On
+through every step, with an error on the way, in four languages and two widths, and
+the panel's ten pages, rendered by the Worker with invented families. On
 its first run it found the second person's name field squeezed to 24px beside a
 floated legend, which no amount of reading the HTML would have shown.
 

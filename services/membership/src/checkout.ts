@@ -179,7 +179,10 @@ export function metadata(s: Signup, priced: { slot: number; kind: 'full' | 'fami
     adult_at: iso,
     withdraw_by: new Date(Pricing.withdrawalDeadline(now)).toISOString().slice(0, 10),
     keikogi: quarterlyOrAnnual ? 'due' : '',
-    keikogi_due: ''
+    keikogi_due: '',
+    // The paper enrolment form, one per person, signed. Not for an existing
+    // member moving over by invite: the dojo has theirs.
+    paper_due: ''
   };
   if (s.minors) meta.guardian_at = iso;
   if (inviteId) meta.invite_id = inviteId;
@@ -198,5 +201,6 @@ export function metadata(s: Signup, priced: { slot: number; kind: 'full' | 'fami
     if (s.holder.slot === p.slot) meta.holder = `m${n}`;
   });
   meta.keikogi_due = slots.join(',');
+  if (!inviteId) meta.paper_due = s.members.map((_, i) => `m${i + 1}`).join(',');
   return meta;
 }

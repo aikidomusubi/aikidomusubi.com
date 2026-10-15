@@ -19,6 +19,10 @@ export interface Env {
   AUTO_AGE_UPGRADE: string;
   MEMBER_FAILED_EMAIL_SEPA: string;
   MIGRATION_REMITTANCE_LIST: string;
+  // Who may sign in to the panel, and the name it greets them by:
+  // "admin@aikidomusubi.com:Alberto,info@aikidomusubi.com". An address with
+  // no name is greeted without one.
+  PANEL_USERS: string;
   // Test mode only, set as a secret: every email goes to this address.
   EMAIL_OVERRIDE?: string;
   // Test mode only: attach new customers to this Stripe test clock, so that

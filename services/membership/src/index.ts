@@ -3,7 +3,8 @@
 // The site is static on GitHub Pages and cannot run code, so this Worker holds
 // the four things that need a server: pricing a signup and handing it to
 // Stripe Checkout, hearing back from Stripe, the withdrawal form, and a daily
-// job. It stores no personal data of its own; Stripe is the record.
+// job; and the dojo's back office at /panel/. It stores no personal data of
+// its own; Stripe is the record.
 //
 // Spec: "Aikido Musubi — Online Membership Signup & Stripe Billing Spec",
 // 14 October 2026. Setup: docs/membership/SETUP.md. Day-to-day: RUNBOOK.md.
@@ -13,6 +14,7 @@ import { webhook } from './webhook.ts';
 import { withdrawal } from './withdrawal.ts';
 import { actionPage } from './actions.ts';
 import { daily } from './cron.ts';
+import { panel } from './panel/index.ts';
 import { cors, json, log } from './http.ts';
 
 export default {
@@ -30,6 +32,7 @@ export default {
       if (pathname === '/stripe/webhook' && req.method === 'POST') return await webhook(req, env);
       if (pathname === '/withdrawal' && req.method === 'POST') return await withdrawal(req, env);
       if (pathname === '/admin/a' && (req.method === 'GET' || req.method === 'POST')) return await actionPage(req, env);
+      if (pathname === '/panel' || pathname.startsWith('/panel/')) return await panel(req, env);
       if (pathname === '/health') return json(env, req, { ok: true, env: env.ENVIRONMENT });
       return new Response('not found', { status: 404, headers: { 'x-content-type-options': 'nosniff' } });
     } catch (e) {

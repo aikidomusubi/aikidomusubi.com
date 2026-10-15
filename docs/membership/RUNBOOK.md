@@ -4,12 +4,35 @@ What the dojo does by hand, and how. Most of it starts from an email in
 `admin@aikidomusubi.com`. Commands run from `services/membership/`; add
 `--mode live` for the real thing (and `--mode test` when practising).
 
+## The panel: start here
+
+**`https://api.aikidomusubi.com/panel/`** (in test mode,
+`https://membership-test.aikidomusubi.workers.dev/panel/`). Everything below that
+has a button in an email also has one there, and the panel is the easier way.
+
+- **Signing in:** type `admin@` or `info@aikidomusubi.com` and a six-digit code arrives
+  at that address. No password. Nobody else can get a code; who can is `PANEL_USERS` in
+  `wrangler.toml` (after the colon, the name the panel greets them by).
+- **Pendiente** is the to-do list: paper forms to collect, keikogi to hand over,
+  sports-centre cards to check, people turning 17, payments that failed.
+- **Miembros**: search by name or email, filter, open a family: each person's status,
+  the plan, a short history (with who pressed what), and the actions.
+- Everyday buttons work at once and offer **Deshacer** right after. The ones that change
+  what a family pays, or end a membership, ask first and show the amounts.
+- **Ayuda** answers the usual questions in the volunteer's own words.
+
+Money (payments, refunds, the card or account) stays in Stripe: every family has a
+**Pagos y recibos en Stripe** button. Adding or removing a person or changing the period
+is still `npm run plan` (below), because the whole family is re-priced.
+
 ## Every new signup
 
 The notice says who, which plan, the first charge, and what is left:
 
 - **The paper enrolment form**, one per person, with the guardian's signature for a
-  minor and the image release. Nothing to record online.
+  minor and the image release. Press **Recibida** for each, in the email or the panel.
+  The digest on the 20th lists any still missing after two weeks. An invited member
+  (moving over from the bank) has one on file already and is not asked.
 - **Sports-centre card** (CxEM Espronceda or Marina-Besòs rate): check it at the first
   class, then press **Comprobado** in the email. If it is not valid, press **No válido**:
   that person moves to the general fee from the next charge, the family discount is
@@ -35,6 +58,7 @@ bank remittance. When nobody is left on the bank, set `MIGRATION_REMITTANCE_LIST
 - **Turning 17**: press **Aplicar y avisar**. The person moves to the 17-and-over fee
   from the next charge, after the month of their birthday, never before.
 - **Unchecked sports-centre cards** older than 30 days.
+- **Paper forms** still missing two weeks after signing up.
 - **Overdue payments**: the subscription stays active and past due; talk to the family.
 
 ## Changes people ask for
@@ -59,8 +83,10 @@ npm run plan -- --people adult,adult,youth
 **Change the email on a membership:** Dashboard → Customers → the customer → Edit.
 The portal cannot.
 
-**Cancel by email, phone or in person:** Dashboard → Subscriptions → the subscription →
-Cancel → **At the end of the period**. The family gets the confirmation email by itself.
+**Cancel by email, phone or in person:** in the panel, open the family →
+**Dar de baja al final del periodo**. (Or Dashboard → Subscriptions → Cancel → **At the
+end of the period**.) The family gets the confirmation email by itself either way, and
+**Anular la baja** in the panel undoes it before the date.
 
 ## A withdrawal (within 14 days)
 
@@ -87,10 +113,12 @@ When a button has expired. Dashboard → Subscriptions → the subscription → 
 | `m1_name` … | the person's name |
 | `keikogi` | `due` → `paid` → `ready` → `delivered` |
 | `keikogi_due` | who has not had theirs yet: `m1,m3` |
+| `paper_due` | whose paper form is still to collect: `m2,m3`. Absent for an invited member |
 | `period`, `catalog_version`, `terms_version` | the plan, the price list, the terms accepted |
 
 Change `sc=pending` to `sc=verified` to mark a card checked; remove `mN` from
-`keikogi_due` when one is handed over.
+`keikogi_due` when one is handed over, or from `paper_due` when a form arrives. The
+panel does all three; this is for when it cannot be reached.
 
 ## Invites
 

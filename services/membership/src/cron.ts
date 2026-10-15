@@ -7,13 +7,14 @@
 //   the 1st     while members are moving over: who to leave out of this
 //               month's bank remittance (decided 14 October 2026, fix 4)
 //   the 20th    the digest: who turns 17 before their next charge, sports-
-//               centre cards still unchecked after 30 days, payments overdue
+//               centre cards still unchecked after 30 days, paper forms still
+//               missing after 14, payments overdue
 import type Stripe from 'stripe';
 import type { Env } from './env.ts';
 import { flag } from './env.ts';
 import { date, esc, isoDay, madrid, money, venueName } from './data.ts';
 import { log } from './http.ts';
-import { members as metaMembers, type MetaMember } from './meta.ts';
+import { members as metaMembers, slots, type MetaMember } from './meta.ts';
 import { Pricing } from './pricing.ts';
 import { customerOf, periodEnd, stripe } from './stripe.ts';
 import { actionUrl, apply, autoAge, notifyKeikogiReady } from './actions.ts';
@@ -118,13 +119,17 @@ async function digest(env: Env, st: Stripe, now: number) {
           const key = `age:${s.id}:${m.slot}`;
           if (await env.KV.get(key)) continue;
           if (autoAge(env)) {
-            done.push(await apply(env, st, s, m, 'age'));
+            done.push(await apply(env, st, s, m, 'age', 'automático'));
             await env.KV.put(key, '1', { expirationTtl: 400 * 86400 });
           } else {
             items.push(await ageItem(env, s, m, next));
             await env.KV.put(key, '1', { expirationTtl: 45 * 86400 });
           }
         }
+      }
+      if (slots(s.metadata.paper_due).includes(`m${m.slot}`) && now - s.created * 1000 > 14 * 86400000) {
+        items.push({ title: `${m.name}: falta la hoja de inscripción en papel`, sub: `Inscripción del ${date(s.created * 1000, 'es')}.`,
+          action: { label: 'Recibida', href: await actionUrl(env, 'paper', s.id, m.slot) } });
       }
       if (m.sc === 'pending' && now - s.created * 1000 > 30 * 86400000) {
         items.push({ title: `${m.name}: abono de ${venueName(m.venue, 'es')} sin comprobar`, sub: `Desde el ${date(s.created * 1000, 'es')}.`,
@@ -135,6 +140,7 @@ async function digest(env: Env, st: Stripe, now: number) {
   if (!items.length && !pastDue.length && !done.length) return;
   await admin(env, `Cuotas: ${items.length + pastDue.length + done.length} cosas antes del próximo cobro`, 'Resumen del día 20', [
     B.h('Antes del cobro del día 5'),
+    B.p(`Todo esto está también en el panel de cuotas: <a href="${env.API_ORIGIN}/panel/">${env.API_ORIGIN.replace(/^https?:\/\//, '')}/panel</a>.`),
     ...(items.length ? [B.h4('Para decidir'), todo(items)] : []),
     ...(done.length ? [B.h4('Hecho automáticamente'), B.box(done.map(esc).join('<br>'))] : []),
     ...(pastDue.length ? [B.h4('Cobros pendientes'), todo(pastDue)] : [])

@@ -9,10 +9,15 @@
 //
 // The link is signed (ADMIN_ACTION_KEY), expires, and works once. It carries a
 // subscription id and a slot, nothing about the person.
+//
+// The panel (src/panel/) calls the same apply() for the same changes, plus the
+// ones only it offers: undo for the three everyday marks, and a cancellation
+// at the end of the paid period. Every change is written to a short history
+// in KV, with which mailbox made it, so the panel can say who did what.
 import type Stripe from 'stripe';
 import type { Env } from './env.ts';
 import { flag } from './env.ts';
-import { CATALOG, esc, money, periodUnit, venueName } from './data.ts';
+import { CATALOG, date, esc, money, periodUnit, venueName } from './data.ts';
 import { randomId, sign, verify } from './crypto.ts';
 import { page } from './http.ts';
 import { members as metaMembers, encodeMember, slots, type MetaMember, type Meta } from './meta.ts';
@@ -23,10 +28,18 @@ import { ctxFor } from './context.ts';
 import * as member from './email/member.ts';
 import { admin, B } from './email/admin.ts';
 
-export type ActionKind = 'keikogi' | 'sc_ok' | 'sc_no' | 'age';
+export type ActionKind =
+  | 'paper' | 'keikogi' | 'sc_ok' | 'sc_no' | 'age'          // the email buttons and the panel
+  | 'paper_undo' | 'keikogi_undo' | 'sc_undo'                 // the panel's Deshacer
+  | 'cancel' | 'resume';                                      // the panel only; no person
+export const ACTIONS: ActionKind[] = ['paper', 'keikogi', 'sc_ok', 'sc_no', 'age', 'paper_undo', 'keikogi_undo', 'sc_undo', 'cancel', 'resume'];
+// The ones that change what a family pays, or whether it stays: the panel asks
+// before doing them, and they cannot be undone with one press.
+export const ASKS_FIRST: ActionKind[] = ['sc_no', 'age', 'cancel', 'resume'];
 interface ActionPayload { a: ActionKind; s: string; n: number; x: number; id: string }
 
-const LABEL: Record<ActionKind, string> = {
+const LABEL: Partial<Record<ActionKind, string>> = {
+  paper: 'Hoja de inscripción recibida',
   keikogi: 'Keikogi entregado',
   sc_ok: 'Abono comprobado',
   sc_no: 'Abono no válido: pasar a la cuota general',
@@ -57,29 +70,81 @@ export async function actionPage(req: Request, env: Env): Promise<Response> {
   const who = metaMembers(sub.metadata).find((m) => m.slot === p.n);
   if (!who) return page('es', 'Aviso', '<h1>Aviso</h1><p>Esa persona ya no está en la cuota.</p>', 404);
 
+  const label = LABEL[p.a];
+  if (!label) return page('es', 'Aviso', '<h1>Aviso</h1><p>Este enlace no es válido.</p>', 400);
   if (req.method !== 'POST') {
-    return page('es', LABEL[p.a], `<h1>${esc(LABEL[p.a])}</h1>
+    return page('es', label, `<h1>${esc(label)}</h1>
 <p><b>${esc(who.name)}</b>${who.venue ? ` · ${esc(venueName(who.venue, 'es'))}` : ''}</p>
 <p>${esc(explain(p.a))}</p>
 <form method="post"><input type="hidden" name="t" value="${esc(token)}"><button type="submit">Confirmar</button></form>`);
   }
 
   await env.KV.put(`act:${p.id}`, '1', { expirationTtl: 50 * 86400 });
-  const done = await apply(env, st, sub, who, p.a);
+  const done = await apply(env, st, sub, who, p.a, 'email');
   return page('es', 'Hecho', `<h1>Hecho</h1><p class="ok">${esc(done)}</p>`);
 }
 
 function explain(a: ActionKind): string {
   switch (a) {
+    case 'paper': return 'Marca la hoja de inscripción en papel de esta persona como recibida y firmada.';
     case 'keikogi': return 'Marca el keikogi de esta persona como entregado.';
     case 'sc_ok': return 'Marca el abono municipal como comprobado. La cuota no cambia.';
     case 'sc_no': return 'Pasa a esta persona a la cuota general desde el próximo cobro, recalcula el descuento familiar y avisa a la familia por correo.';
     case 'age': return 'Pasa a esta persona a la cuota de 17 años o más desde el próximo cobro, recalcula el descuento familiar, borra su fecha de nacimiento y avisa a la familia por correo.';
+    default: return '';
   }
 }
 
-export async function apply(env: Env, st: Stripe, sub: Stripe.Subscription, who: MetaMember, a: ActionKind): Promise<string> {
+// The history the panel shows beside Stripe's own payments. Slots and dates
+// only: names are resolved when it is read, so nothing personal is kept here.
+export interface LogEntry { t: number; a: ActionKind; n?: number; by: string }
+const LOG_TTL = 730 * 86400;
+
+export async function history(env: Env, subId: string): Promise<LogEntry[]> {
+  try { return JSON.parse((await env.KV.get(`log:${subId}`)) ?? '[]') as LogEntry[]; } catch { return []; }
+}
+
+async function record(env: Env, subId: string, e: LogEntry) {
+  const all = (await history(env, subId)).slice(-49);
+  all.push(e);
+  await env.KV.put(`log:${subId}`, JSON.stringify(all), { expirationTtl: LOG_TTL });
+}
+
+const addSlot = (list: string | undefined, slot: number) =>
+  [...new Set([...slots(list), `m${slot}`])].sort().join(',');
+const dropSlot = (list: string | undefined, slot: number) =>
+  slots(list).filter((s) => s !== `m${slot}`).join(',');
+
+// `who` is the person the change is about; null for the two that are about
+// the whole membership. `by` is the mailbox that made it, for the history.
+export async function apply(env: Env, st: Stripe, sub: Stripe.Subscription, who: MetaMember | null, a: ActionKind, by = 'email'): Promise<string> {
+  const done = await change(env, st, sub, who, a);
+  await record(env, sub.id, { t: Date.now(), a, ...(who ? { n: who.slot } : {}), by });
+  return done;
+}
+
+async function change(env: Env, st: Stripe, sub: Stripe.Subscription, who: MetaMember | null, a: ActionKind): Promise<string> {
   const meta: Meta = { ...sub.metadata };
+  if (a === 'cancel' || a === 'resume') {
+    // The family's own email comes from the webhook (customer.subscription
+    // .updated), the same one a cancellation in Stripe's portal sends.
+    await st.subscriptions.update(sub.id, { cancel_at_period_end: a === 'cancel' });
+    return a === 'cancel' ? `Baja hecha: la cuota termina el ${date(periodEnd(sub), 'es')}.` : 'Baja anulada: la cuota sigue.';
+  }
+  if (!who) throw new Error(`${a} needs a person`);
+  if (a === 'paper' || a === 'paper_undo') {
+    const list = a === 'paper' ? dropSlot(meta.paper_due, who.slot) : addSlot(meta.paper_due, who.slot);
+    await st.subscriptions.update(sub.id, { metadata: { paper_due: list } });
+    return a === 'paper' ? `Hoja de ${who.name}: recibida.` : `Hoja de ${who.name}: otra vez por recoger.`;
+  }
+  if (a === 'keikogi_undo') {
+    await st.subscriptions.update(sub.id, { metadata: { keikogi_due: addSlot(meta.keikogi_due, who.slot), keikogi: 'ready' } });
+    return `Keikogi de ${who.name}: otra vez por entregar.`;
+  }
+  if (a === 'sc_undo') {
+    await st.subscriptions.update(sub.id, { metadata: encodeMember({ ...who, sc: 'pending' }) });
+    return `Abono de ${who.name}: otra vez por comprobar.`;
+  }
   if (a === 'keikogi') {
     const left = slots(meta.keikogi_due).filter((s) => s !== `m${who.slot}`);
     await st.subscriptions.update(sub.id, { metadata: { keikogi_due: left.join(','), keikogi: left.length ? meta.keikogi : 'delivered' } });
@@ -95,6 +160,11 @@ export async function apply(env: Env, st: Stripe, sub: Stripe.Subscription, who:
     : a === 'age' ? { ...m, cat: 'adult' as const, bym: null }
     : { ...m, rate: 'general' as const, venue: null, sc: null }));
   const { before, after } = await rehouse(env, st, sub, people);
+  return told(env, sub, meta, who, a, before, after);
+}
+
+async function told(env: Env, sub: Stripe.Subscription, meta: Meta, who: MetaMember, a: ActionKind,
+  before: ReturnType<typeof priced>, after: ReturnType<typeof priced>): Promise<string> {
   const ctx = ctxFor(env, sub);
   if (ctx) {
     if (a === 'age') {
@@ -113,6 +183,19 @@ export async function apply(env: Env, st: Stripe, sub: Stripe.Subscription, who:
   }
   const unit = periodUnit(meta.period, 'es');
   return `${who.name}: ${a === 'age' ? 'cuota de 17 o más' : 'cuota general'} desde el próximo cobro. Total ${money(total(before), 'es')} → ${money(total(after), 'es')} ${unit}. La familia ya tiene el correo.`;
+}
+
+// What a price change would do, without doing it: for the panel's
+// confirmation, which shows the amounts before anybody presses anything.
+export function preview(sub: Stripe.Subscription, who: MetaMember, a: 'age' | 'sc_no') {
+  const meta = sub.metadata;
+  const before = priced(meta, itemAmounts(sub));
+  const people = metaMembers(meta).map((m) => (m.slot !== who.slot ? m
+    : a === 'age' ? { ...m, cat: 'adult' as const, bym: null }
+    : { ...m, rate: 'general' as const, venue: null, sc: null }));
+  const res = Pricing.price({ period: meta.period, members: asMembers(people) }, CATALOG);
+  const after = people.map((p, i) => ({ ...p, kind: res.perMember[i].kind, amount: res.perMember[i].amount }));
+  return { before, after };
 }
 
 // Re-price a household on the same billing period and replace the

@@ -29,6 +29,7 @@ export function testEnv(over: Partial<Env> = {}): Env {
     AUTO_AGE_UPGRADE: 'false',
     MEMBER_FAILED_EMAIL_SEPA: 'true',
     MIGRATION_REMITTANCE_LIST: 'true',
+    PANEL_USERS: 'admin@aikidomusubi.com:Alberto,info@aikidomusubi.com',
     EMAIL_OVERRIDE: '',
     STRIPE_SECRET_KEY: '',
     STRIPE_WEBHOOK_SECRET: 'whsec_test_secret_for_unit_tests_only',

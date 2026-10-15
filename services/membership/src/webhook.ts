@@ -107,12 +107,13 @@ async function completed(env: Env, st: Stripe, session: Stripe.Checkout.Session)
   }
 
   // The dojo's notice: who, what, when, and what is still to do by hand.
-  const items: Todo[] = [{
-    title: 'Recoger la hoja de inscripción en papel, una por persona',
-    sub: metaMembers(meta).some((m) => m.cat === 'youth')
-      ? 'Hay menores: con la firma de madre, padre o tutor, y la autorización de imagen.'
-      : 'Con la autorización de uso de imagen.'
-  }];
+  const items: Todo[] = [];
+  const paper = slots(meta.paper_due);
+  for (const m of metaMembers(meta).filter((x) => paper.includes(`m${x.slot}`))) {
+    items.push({ title: `Recoger la hoja de inscripción de ${m.name}`,
+      sub: m.cat === 'youth' ? 'Firmada por madre, padre o tutor, con la autorización de imagen.' : 'Firmada, con la autorización de uso de imagen.',
+      action: { label: 'Recibida', href: await actionUrl(env, 'paper', sub.id, m.slot) } });
+  }
   for (const m of metaMembers(meta).filter((x) => x.sc === 'pending')) {
     items.push({ title: `Comprobar el abono de ${m.name}`, sub: venueName(m.venue, 'es'),
       action: { label: 'Comprobado', href: await actionUrl(env, 'sc_ok', sub.id, m.slot) } });
@@ -135,8 +136,9 @@ async function completed(env: Env, st: Stripe, session: Stripe.Checkout.Session)
       B.p(`${date(signupMs, 'es')}. ${esc(method(sub)?.type === 'sepa_debit' ? 'Domiciliación SEPA' : 'Tarjeta')}${processing ? ', pendiente de confirmar' : ''}.${meta.invite_id ? ' Con invitación.' : ''} Hoy: ${todayAmount != null ? money(todayAmount, 'es') : '—'}.`),
       B.table(rows, true),
       B.h4('Pendiente'),
-      todo(items),
-      B.button('Abrir en Stripe', dashboard(env, `subscriptions/${sub.id}`))
+      ...(items.length ? [todo(items)] : [B.p('Nada por hacer a mano.')]),
+      B.button('Abrir en el panel', `${env.API_ORIGIN}/panel/miembros?id=${sub.id}`),
+      B.small(`O <a href="${dashboard(env, `subscriptions/${sub.id}`)}">en Stripe</a>, para los pagos.`)
     ], 'signup');
 }
 

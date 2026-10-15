@@ -38,6 +38,10 @@ MEMBER_FAILED_EMAIL_SEPA = "true"
 # The list of who to leave out of the bank remittance, on the 1st of each
 # month while existing members move over. Switch off once nobody is left.
 MIGRATION_REMITTANCE_LIST = "true"
+# The dojo's back office at /panel/. Only these addresses can sign in (a
+# six-digit code by email, no password); after the colon, the name it greets
+# them by. The dojo's own mailboxes, never a personal one: this file is public.
+PANEL_USERS = "admin@aikidomusubi.com:Alberto,info@aikidomusubi.com"
 # EMAIL_OVERRIDE (send every test email to one address) and TEST_CLOCK (a
 # Stripe test clock id) are test-mode only and set with `wrangler secret put`,
 # NOT here: Cloudflare refuses a secret whose name is also a var, and this file
@@ -70,6 +74,7 @@ RENEWAL_NOTICE_MONTHLY = "true"
 AUTO_AGE_UPGRADE = "false"
 MEMBER_FAILED_EMAIL_SEPA = "true"
 MIGRATION_REMITTANCE_LIST = "true"
+PANEL_USERS = "admin@aikidomusubi.com:Alberto,info@aikidomusubi.com"
 [[env.live.kv_namespaces]]
 binding = "KV"
 id = "REPLACE_WITH_LIVE_KV_ID"

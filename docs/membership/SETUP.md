@@ -258,6 +258,14 @@ at docs.stripe.com/testing. The ones you need:
    `npx wrangler secret delete TEST_CLOCK`.
 9. With JavaScript switched off in the browser: the form still signs up.
 10. Keyboard only, then VoiceOver: the four steps, an error, Stripe's page and the portal.
+11. **The panel**: open `https://membership-test.aikidomusubi.workers.dev/panel/` and sign
+    in as `admin@aikidomusubi.com`. In test mode the code goes to `EMAIL_OVERRIDE`, your
+    own inbox, like every other test email. It greets you as Alberto. Your test families
+    are under Miembros; signups from before the panel existed ask for no paper form.
+    Press **Recibida** on a form, then **Deshacer**; open a family and look at its
+    history; try **Dar de baja…** then **Anular la baja…** on a test family. Then the
+    same on a phone. The panel needs no new Stripe permission and no new secret: only a
+    deploy, so the Worker has `PANEL_USERS`.
 
 Write down anything odd. Bring it back here and I will fix it.
 
