@@ -5,7 +5,7 @@ description: 取り扱う個人データ、利用目的と法的根拠、保存�
 permalink: /ja/privacy-policy/
 lang: ja
 i18n-ref: privacy-policy-EgFc1Qem
-last_modified: 2026-08-14
+last_modified: 2026-10-15
 ---
 
 # プライバシーポリシー
@@ -15,7 +15,7 @@ last_modified: 2026-08-14
 {% include legal-summary.html %}
 
 
-**最終更新日：2026年8月13日**
+**最終更新日：2026年10月15日**
 
 この日本語版は便宜のために提供されるものです。本ウェブサイトはスペイン法に基づいて運営されているため、内容に相違がある場合はスペイン語版が優先されます。
 
@@ -24,7 +24,7 @@ Aikido Musubi は、ウェブサイトの利用者、会員、生徒、および
 
 ## 1. データ管理者
 
-- **管理者：** 産靈合気道文化協会（Associació Cultural Musubi Aikido）*（非営利の文化協会）*
+- **管理者：** {{ site.data.footer.ui.org_ja }}（{{ site.data.footer.ui.org }}）*（非営利団体）*
 - **納税者番号（CIF）：** G-64799554
 - **登録住所：** Av. d'Alfons XIII, 351, 08918 Badalona (Barcelona), スペイン
 - **メール：** info@aikidomusubi.com

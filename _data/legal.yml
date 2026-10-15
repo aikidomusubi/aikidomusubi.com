@@ -21,10 +21,10 @@ head:
 
 pages:
   legal-notice-Up6gBHvn:
-    es: "Este sitio lo publica la <strong>Associació Cultural Musubi Aikido</strong>, una asociación cultural sin ánimo de lucro con CIF G-64799554 y domicilio en Badalona. Aquí no se vende nada ni se contrata en línea. Esta página dice quién responde del sitio, qué puedes hacer con lo que hay en él y qué ley se aplica."
-    ca: "Aquest lloc el publica l'<strong>Associació Cultural Musubi Aikido</strong>, una associació cultural sense ànim de lucre amb CIF G-64799554 i domicili a Badalona. Aquí no s'hi ven res ni s'hi contracta en línia. Aquesta pàgina diu qui respon del lloc, què pots fer amb el que hi ha i quina llei s'hi aplica."
-    en: "This site is published by the <strong>Associació Cultural Musubi Aikido</strong>, a non-profit cultural association, tax ID G-64799554, registered in Badalona. Nothing is sold here and nothing is contracted online. This page says who is answerable for the site, what you may do with what is on it, and which law applies."
-    ja: "本サイトは、非営利の文化協会である<strong>Associació Cultural Musubi Aikido</strong>（登録番号 G-64799554、バダロナ）が公開しています。物品の販売もオンライン契約も行っていません。このページでは、サイトの責任者、掲載物の利用範囲、適用される法律を示します。"
+    es: "Este sitio lo publica la <strong>{org}</strong>, una asociación sin ánimo de lucro con CIF G-64799554 y domicilio en Badalona. Aquí no se vende nada ni se contrata en línea. Esta página dice quién responde del sitio, qué puedes hacer con lo que hay en él y qué ley se aplica."
+    ca: "Aquest lloc el publica l'<strong>{org}</strong>, una associació sense ànim de lucre amb CIF G-64799554 i domicili a Badalona. Aquí no s'hi ven res ni s'hi contracta en línia. Aquesta pàgina diu qui respon del lloc, què pots fer amb el que hi ha i quina llei s'hi aplica."
+    en: "This site is published by the <strong>{org}</strong>, a non-profit association, tax ID G-64799554, registered in Badalona. Nothing is sold here and nothing is contracted online. This page says who is answerable for the site, what you may do with what is on it, and which law applies."
+    ja: "本サイトは、非営利団体である<strong>{org}</strong>（登録番号 G-64799554、バダロナ）が公開しています。物品の販売もオンライン契約も行っていません。このページでは、サイトの責任者、掲載物の利用範囲、適用される法律を示します。"
 
   privacy-policy-EgFc1Qem:
     es: "Para leer el sitio no hace falta darnos ningún dato. Si nos escribes, usamos tu correo para contestarte; si te apuntas, tratamos lo necesario para gestionar la actividad; y las fotos del tatami solo se publican con tu autorización, que puedes retirar cuando quieras. Las analíticas no se activan hasta que las aceptas. Tienes derecho a acceder, rectificar y suprimir tus datos, y abajo se explica cómo."

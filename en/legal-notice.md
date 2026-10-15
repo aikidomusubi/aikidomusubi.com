@@ -5,7 +5,7 @@ description: Identifying details of the website owner, conditions of use, intell
 permalink: /en/legal-notice/
 lang: en
 i18n-ref: legal-notice-Up6gBHvn
-last_modified: 2026-08-28
+last_modified: 2026-10-15
 ---
 
 # Legal Notice
@@ -15,7 +15,7 @@ Identifying details of the website owner, conditions of use, intellectual proper
 {% include legal-summary.html %}
 
 
-**Last updated: 13 August 2026**
+**Last updated: 15 October 2026**
 
 This English version is provided for convenience. In the event of any discrepancy, the Spanish version prevails, as this website is operated under Spanish law.
 
@@ -24,7 +24,7 @@ This English version is provided for convenience. In the event of any discrepanc
 
 In compliance with the duty to provide information set out in Article 10 of Spanish Law 34/2002, of 11 July, on Information Society Services and Electronic Commerce (LSSI-CE), the identification details of the owner of this website are provided below:
 
-- **Owner:** Associació Cultural Musubi Aikido *(non-profit cultural association)*
+- **Owner:** {{ site.data.footer.ui.org }} *(non-profit association)*
 - **Tax ID (CIF):** G-64799554
 - **Registered address:** Av. d'Alfons XIII, 351, 08918 Badalona (Barcelona), Spain
 - **Email:** info@aikidomusubi.com

@@ -132,11 +132,16 @@ legal:
              en: "/en/site-map/", ja: "/ja/site-map/" }
 
 ui:
-  # Verbatim from aviso-legal.md §1, except on /ja/, where the association's
-  # own Japanese name is what a Japanese reader should see. The CIF beside it
-  # is what identifies the entity, and it does not change.
-  org:     "Associació Cultural Musubi Aikido"
-  org_ja:  "産靈合気道文化協会"
+  # THE LEGAL NAME, as registered: "Associació Aikido Musubi" since the
+  # statutes of 12 December 2022, entered in the Registre d'associacions on
+  # 7 March 2023 (núm. 36696, secció 1a, Barcelona). It was "Associació
+  # Cultural Musubi Aikido" before, and the site went on printing that until
+  # 15 October 2026. Every page that names the association reads it from here
+  # (as {org} in data files); it is one of the three places the Aikikai
+  # Barcelona rename touches. org_ja is what a Japanese reader sees on /ja/.
+  org:     "Associació Aikido Musubi"
+  org_ja:  "合気道産靈協会"
+  registry: "36696"
   cif:     "G-64799554"
   address: "Av. d'Alfons XIII, 351<br>08918 Badalona, Barcelona"
 

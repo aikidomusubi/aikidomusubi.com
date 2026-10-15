@@ -27,10 +27,10 @@ ui:
     ca: "El nostre compromís",
     en: "Our commitment",
     ja: "私たちの姿勢" }
-  commit: { es: "La Associació Cultural Musubi Aikido quiere que cualquiera pueda consultar los horarios, encontrar el dojo y escribirnos, con independencia de cómo navegue. No estamos obligados por ley a publicar esta declaración: no somos un organismo público ni prestamos servicios de comercio electrónico. La publicamos porque hemos hecho el trabajo y porque nos parece que un dojo que dice recibir a todo el mundo debería decirlo también aquí.",
-    ca: "L'Associació Cultural Musubi Aikido vol que qualsevol pugui consultar els horaris, trobar el dojo i escriure'ns, independentment de com navegui. No estem obligats per llei a publicar aquesta declaració: no som un organisme públic ni prestem serveis de comerç electrònic. La publiquem perquè hem fet la feina i perquè ens sembla que un dojo que diu que rep tothom ho hauria de dir també aquí.",
-    en: "Associació Cultural Musubi Aikido wants anyone to be able to read the timetable, find the dojo and write to us, however they browse. We are not required by law to publish this statement: we are not a public body and we do not provide e-commerce services. We publish it because the work has been done, and because a dojo that says it welcomes everyone ought to say so here as well.",
-    ja: "産靈合気道文化協会は、どなたでも稽古時間を確認し、道場の場所を知り、連絡できるようにしたいと考えています。この宣言の公開は法的義務ではありません。私たちは公的機関でもなく、電子商取引サービスも提供していません。それでも公開するのは、実際に手を尽くしてきたからであり、「どなたでもどうぞ」と言う道場なら、ここでもそう言うべきだと考えるからです。" }
+  commit: { es: "La {org} quiere que cualquiera pueda consultar los horarios, encontrar el dojo y escribirnos, con independencia de cómo navegue. No estamos obligados por ley a publicar esta declaración: no somos un organismo público ni prestamos servicios de comercio electrónico. La publicamos porque hemos hecho el trabajo y porque nos parece que un dojo que dice recibir a todo el mundo debería decirlo también aquí.",
+    ca: "L'{org} vol que qualsevol pugui consultar els horaris, trobar el dojo i escriure'ns, independentment de com navegui. No estem obligats per llei a publicar aquesta declaració: no som un organisme públic ni prestem serveis de comerç electrònic. La publiquem perquè hem fet la feina i perquè ens sembla que un dojo que diu que rep tothom ho hauria de dir també aquí.",
+    en: "{org} wants anyone to be able to read the timetable, find the dojo and write to us, however they browse. We are not required by law to publish this statement: we are not a public body and we do not provide e-commerce services. We publish it because the work has been done, and because a dojo that says it welcomes everyone ought to say so here as well.",
+    ja: "{org_ja}は、どなたでも稽古時間を確認し、道場の場所を知り、連絡できるようにしたいと考えています。この宣言の公開は法的義務ではありません。私たちは公的機関でもなく、電子商取引サービスも提供していません。それでも公開するのは、実際に手を尽くしてきたからであり、「どなたでもどうぞ」と言う道場なら、ここでもそう言うべきだと考えるからです。" }
   done_h: { es: "Qué hemos hecho",
     ca: "Què hem fet",
     en: "What we have done",
