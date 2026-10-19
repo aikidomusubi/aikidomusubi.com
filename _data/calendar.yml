@@ -351,6 +351,37 @@ entries:
       ja: "渡辺幸治による特別稽古（19:30〜21:00）のため。"
     location: musubi
 
+  # Iaijutsu gives Monday 16 November to the Manolo García masterclass and
+  # takes Friday 20 November instead, 17:30 to 19:00, ahead of the 19:00
+  # aikido class. Two entries because they are two facts on two days: the
+  # Monday class is off, and the Friday one is an extra.
+  - date: "2026-11-16"
+    type: cancellation
+    affects: { category: iaijutsu, start: "20:00" }
+    note:
+      es: "Masterclass con Manolo García Shihan de 20:00 a 21:30. La clase pasa al viernes 20 de noviembre, de 17:30 a 19:00."
+      ca: "Masterclass amb Manolo García Shihan de 20:00 a 21:30. La classe passa al divendres 20 de novembre, de 17:30 a 19:00."
+      en: "Masterclass with Manolo García Shihan, 20:00–21:30. The class moves to Friday 20 November, 17:30–19:00."
+      ja: "マノロ・ガルシア師範によるマスタークラス（20:00〜21:30）のため。稽古は１１月２０日（金）17:30〜19:00に移ります。"
+    location: musubi
+
+  - date: "2026-11-20"
+    type: extra
+    location: musubi
+    start: "17:30"
+    end:   "19:00"
+    instructors: [zafra]
+    title:
+      es: "Iaijutsu con J. L. Zafra"
+      ca: "Iaijutsu amb J. L. Zafra"
+      en: "Iaijutsu with J. L. Zafra"
+      ja: "居合術（ホセ・ルイス　サフラ）"
+    note:
+      es: "La clase del lunes 16 de noviembre, que pasa a este viernes por la masterclass de Manolo García Shihan."
+      ca: "La classe del dilluns 16 de novembre, que passa a aquest divendres per la masterclass de Manolo García Shihan."
+      en: "The Monday 16 November class, moved to this Friday because of the Manolo García Shihan masterclass."
+      ja: "マノロ・ガルシア師範のマスタークラスのため、１１月１６日（月）の稽古をこの日に行います。"
+
   # Friday session of the Emilio Cardia seminar.
   - date: "2026-04-24"
     type: cancellation
@@ -363,12 +394,15 @@ entries:
     location: musubi
 
   # -------------------------------------------------------------------------
-  # One Wednesday a month is a weapons class
+  # Wednesdays with Guanlong Zheng
   #
-  # The second Wednesday of September, October, November and December, taught
-  # by Guanlong Zheng instead of the regular class. Four dates and not
-  # a rule in _data/schedule.yml, because the weekly grid answers "what happens
-  # every week" and this happens four times.
+  # Two kinds, and the title says which. A weapons class on 16 September and
+  # 9 December; the regular Wednesday class, taught by him instead of
+  # J. M. Pérez, on 28 October and 4, 11 and 18 November. 14 October was
+  # announced as a weapons class and did not happen, so it is not here: the
+  # calendar records what the dojo runs, not what it once planned. Dated
+  # entries and not a rule in _data/schedule.yml, because the weekly grid
+  # answers "what happens every week" and none of this does.
   #
   # `change` WITH `affects`, which substitutes the one class it names: judo at
   # 18:30, the UB at 19:00, CxEM Espronceda at 20:00 and Marina-Besòs at 20:15
@@ -399,7 +433,7 @@ entries:
       en: "In place of the regular Wednesday class."
       ja: "水曜日の通常稽古に代えて行います。"
 
-  - date: "2026-10-14"
+  - date: "2026-10-28"
     type: change
     routine: true
     location: musubi
@@ -408,15 +442,34 @@ entries:
     end:   "21:30"
     instructors: [zheng]
     title:
-      es: "Clase de armas con G. Zheng"
-      ca: "Classe d'armes amb G. Zheng"
-      en: "Weapons class with G. Zheng"
-      ja: "武器稽古（グアンロン　ジェン）"
+      es: "Clase con G. Zheng"
+      ca: "Classe amb G. Zheng"
+      en: "Class with G. Zheng"
+      ja: "稽古（グアンロン　ジェン）"
     note:
-      es: "En lugar de la clase regular del miércoles."
-      ca: "En lloc de la classe regular del dimecres."
-      en: "In place of the regular Wednesday class."
-      ja: "水曜日の通常稽古に代えて行います。"
+      es: "La clase regular del miércoles, a cargo de G. Zheng."
+      ca: "La classe regular del dimecres, a càrrec de G. Zheng."
+      en: "The regular Wednesday class, taught by G. Zheng."
+      ja: "水曜日の通常稽古を、グアンロン　ジェンが指導します。"
+
+  - date: "2026-11-04"
+    type: change
+    routine: true
+    location: musubi
+    affects: { category: aikido, start: "20:00" }
+    start: "20:00"
+    end:   "21:30"
+    instructors: [zheng]
+    title:
+      es: "Clase con G. Zheng"
+      ca: "Classe amb G. Zheng"
+      en: "Class with G. Zheng"
+      ja: "稽古（グアンロン　ジェン）"
+    note:
+      es: "La clase regular del miércoles, a cargo de G. Zheng."
+      ca: "La classe regular del dimecres, a càrrec de G. Zheng."
+      en: "The regular Wednesday class, taught by G. Zheng."
+      ja: "水曜日の通常稽古を、グアンロン　ジェンが指導します。"
 
   - date: "2026-11-11"
     type: change
@@ -427,15 +480,34 @@ entries:
     end:   "21:30"
     instructors: [zheng]
     title:
-      es: "Clase de armas con G. Zheng"
-      ca: "Classe d'armes amb G. Zheng"
-      en: "Weapons class with G. Zheng"
-      ja: "武器稽古（グアンロン　ジェン）"
+      es: "Clase con G. Zheng"
+      ca: "Classe amb G. Zheng"
+      en: "Class with G. Zheng"
+      ja: "稽古（グアンロン　ジェン）"
     note:
-      es: "En lugar de la clase regular del miércoles."
-      ca: "En lloc de la classe regular del dimecres."
-      en: "In place of the regular Wednesday class."
-      ja: "水曜日の通常稽古に代えて行います。"
+      es: "La clase regular del miércoles, a cargo de G. Zheng."
+      ca: "La classe regular del dimecres, a càrrec de G. Zheng."
+      en: "The regular Wednesday class, taught by G. Zheng."
+      ja: "水曜日の通常稽古を、グアンロン　ジェンが指導します。"
+
+  - date: "2026-11-18"
+    type: change
+    routine: true
+    location: musubi
+    affects: { category: aikido, start: "20:00" }
+    start: "20:00"
+    end:   "21:30"
+    instructors: [zheng]
+    title:
+      es: "Clase con G. Zheng"
+      ca: "Classe amb G. Zheng"
+      en: "Class with G. Zheng"
+      ja: "稽古（グアンロン　ジェン）"
+    note:
+      es: "La clase regular del miércoles, a cargo de G. Zheng."
+      ca: "La classe regular del dimecres, a càrrec de G. Zheng."
+      en: "The regular Wednesday class, taught by G. Zheng."
+      ja: "水曜日の通常稽古を、グアンロン　ジェンが指導します。"
 
   - date: "2026-12-09"
     type: change
