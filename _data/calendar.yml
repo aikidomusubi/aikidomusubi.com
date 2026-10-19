@@ -359,10 +359,10 @@ entries:
     type: cancellation
     affects: { category: iaijutsu, start: "20:00" }
     note:
-      es: "Masterclass con Manolo García Shihan de 20:00 a 21:30. La clase pasa al viernes 20 de noviembre, de 17:30 a 19:00."
-      ca: "Masterclass amb Manolo García Shihan de 20:00 a 21:30. La classe passa al divendres 20 de novembre, de 17:30 a 19:00."
-      en: "Masterclass with Manolo García Shihan, 20:00–21:30. The class moves to Friday 20 November, 17:30–19:00."
-      ja: "マノロ・ガルシア師範によるマスタークラス（20:00〜21:30）のため。稽古は１１月２０日（金）17:30〜19:00に移ります。"
+      es: "Masterclass con Manolo García Shihan de 19:30 a 21:00. La clase pasa al viernes 20 de noviembre, de 17:30 a 19:00."
+      ca: "Masterclass amb Manolo García Shihan de 19:30 a 21:00. La classe passa al divendres 20 de novembre, de 17:30 a 19:00."
+      en: "Masterclass with Manolo García Shihan, 19:30–21:00. The class moves to Friday 20 November, 17:30–19:00."
+      ja: "マノロ・ガルシア師範によるマスタークラス（19:30〜21:00）のため。稽古は１１月２０日（金）17:30〜19:00に移ります。"
     location: musubi
 
   - date: "2026-11-20"
@@ -1252,8 +1252,11 @@ entries:
   # -------------------------------------------------------------------------
   # Grading preparation — Saturdays, 1 August to 5 December 2026
   #
-  # A temporary class with J. M. Pérez, not part of the regular week. One entry
-  # per Saturday it runs, for the same reason as the August timetable above.
+  # A temporary class, not part of the regular week. One entry per Saturday it
+  # runs, for the same reason as the August timetable above.
+  #
+  # NO TEACHER IS NAMED, by the dojo's choice (19 October 2026): no
+  # `instructors` and no name in the note. Not an omission to fill in.
   #
   # Public holidays need no handling here — a closure suppresses everything
   # else on its day automatically.
@@ -1266,7 +1269,6 @@ entries:
   - date: "2026-08-01"
     type: extra
     routine: true
-    instructors: [perez]
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -1276,15 +1278,14 @@ entries:
     end: "11:00"
     location: musubi
     note:
-      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
-      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
-      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
-      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
+      es: "Clase temporal para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
+      ca: "Classe temporal per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
+      en: "A temporary class preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
+      ja: "昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
 
   - date: "2026-08-08"
     type: extra
     routine: true
-    instructors: [perez]
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -1294,15 +1295,14 @@ entries:
     end: "11:00"
     location: musubi
     note:
-      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
-      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
-      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
-      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
+      es: "Clase temporal para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
+      ca: "Classe temporal per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
+      en: "A temporary class preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
+      ja: "昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
 
   - date: "2026-08-15"
     type: extra
     routine: true
-    instructors: [perez]
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -1312,15 +1312,14 @@ entries:
     end: "11:00"
     location: musubi
     note:
-      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
-      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
-      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
-      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
+      es: "Clase temporal para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
+      ca: "Classe temporal per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
+      en: "A temporary class preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
+      ja: "昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
 
   - date: "2026-08-22"
     type: extra
     routine: true
-    instructors: [perez]
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -1330,15 +1329,14 @@ entries:
     end: "11:00"
     location: musubi
     note:
-      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
-      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
-      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
-      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
+      es: "Clase temporal para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
+      ca: "Classe temporal per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
+      en: "A temporary class preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
+      ja: "昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
 
   - date: "2026-08-29"
     type: extra
     routine: true
-    instructors: [perez]
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -1348,15 +1346,14 @@ entries:
     end: "11:00"
     location: musubi
     note:
-      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
-      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
-      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
-      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
+      es: "Clase temporal para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
+      ca: "Classe temporal per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
+      en: "A temporary class preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
+      ja: "昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
 
   - date: "2026-09-05"
     type: extra
     routine: true
-    instructors: [perez]
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -1366,15 +1363,14 @@ entries:
     end: "11:00"
     location: musubi
     note:
-      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
-      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
-      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
-      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
+      es: "Clase temporal para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
+      ca: "Classe temporal per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
+      en: "A temporary class preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
+      ja: "昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
 
   - date: "2026-09-12"
     type: extra
     routine: true
-    instructors: [perez]
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -1384,10 +1380,10 @@ entries:
     end: "10:00"
     location: musubi
     note:
-      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual. Hoy, de 9:00 a 10:00: la mañana se adelanta una hora por la masterclass."
-      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual. Avui, de 9:00 a 10:00: el matí s'avança una hora per la masterclass."
-      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable. Today 09:00–10:00: the morning runs an hour early for the masterclass."
-      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。本日はマスタークラスのため9:00〜10:00に繰り上げます。"
+      es: "Clase temporal para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual. Hoy, de 9:00 a 10:00: la mañana se adelanta una hora por la masterclass."
+      ca: "Classe temporal per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual. Avui, de 9:00 a 10:00: el matí s'avança una hora per la masterclass."
+      en: "A temporary class preparing for the grading examinations. Until 5 December. Not part of the regular timetable. Today 09:00–10:00: the morning runs an hour early for the masterclass."
+      ja: "昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。本日はマスタークラスのため9:00〜10:00に繰り上げます。"
 
   # 19 September is the one Saturday of the run that does not run. The
   # iaijutsu session has the mat from 08:30 to 10:30 and karate follows at
@@ -1423,7 +1419,6 @@ entries:
   - date: "2026-09-26"
     type: extra
     routine: true
-    instructors: [perez]
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -1433,15 +1428,14 @@ entries:
     end: "11:00"
     location: musubi
     note:
-      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
-      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
-      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
-      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
+      es: "Clase temporal para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
+      ca: "Classe temporal per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
+      en: "A temporary class preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
+      ja: "昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
 
   - date: "2026-10-03"
     type: extra
     routine: true
-    instructors: [perez]
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -1451,15 +1445,14 @@ entries:
     end: "11:00"
     location: musubi
     note:
-      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
-      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
-      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
-      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
+      es: "Clase temporal para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
+      ca: "Classe temporal per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
+      en: "A temporary class preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
+      ja: "昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
 
   - date: "2026-10-10"
     type: extra
     routine: true
-    instructors: [perez]
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -1469,15 +1462,14 @@ entries:
     end: "10:00"
     location: musubi
     note:
-      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual. Hoy, de 9:00 a 10:00: la mañana se adelanta una hora por la masterclass."
-      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual. Avui, de 9:00 a 10:00: el matí s'avança una hora per la masterclass."
-      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable. Today 09:00–10:00: the morning runs an hour early for the masterclass."
-      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。本日はマスタークラスのため9:00〜10:00に繰り上げます。"
+      es: "Clase temporal para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual. Hoy, de 9:00 a 10:00: la mañana se adelanta una hora por la masterclass."
+      ca: "Classe temporal per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual. Avui, de 9:00 a 10:00: el matí s'avança una hora per la masterclass."
+      en: "A temporary class preparing for the grading examinations. Until 5 December. Not part of the regular timetable. Today 09:00–10:00: the morning runs an hour early for the masterclass."
+      ja: "昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。本日はマスタークラスのため9:00〜10:00に繰り上げます。"
 
   - date: "2026-10-17"
     type: extra
     routine: true
-    instructors: [perez]
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -1487,10 +1479,10 @@ entries:
     end: "11:00"
     location: musubi
     note:
-      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
-      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
-      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
-      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
+      es: "Clase temporal para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
+      ca: "Classe temporal per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
+      en: "A temporary class preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
+      ja: "昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
 
   # 24 October: the iaijutsu session has the morning, as on 19 September.
   - date: "2026-10-24"
@@ -1512,7 +1504,6 @@ entries:
   - date: "2026-10-31"
     type: extra
     routine: true
-    instructors: [perez]
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -1522,15 +1513,14 @@ entries:
     end: "11:00"
     location: musubi
     note:
-      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
-      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
-      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
-      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
+      es: "Clase temporal para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
+      ca: "Classe temporal per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
+      en: "A temporary class preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
+      ja: "昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
 
   - date: "2026-11-07"
     type: extra
     routine: true
-    instructors: [perez]
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -1540,15 +1530,14 @@ entries:
     end: "11:00"
     location: musubi
     note:
-      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
-      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
-      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
-      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
+      es: "Clase temporal para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
+      ca: "Classe temporal per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
+      en: "A temporary class preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
+      ja: "昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
 
   - date: "2026-11-14"
     type: extra
     routine: true
-    instructors: [perez]
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -1558,15 +1547,14 @@ entries:
     end: "11:00"
     location: musubi
     note:
-      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
-      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
-      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
-      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
+      es: "Clase temporal para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
+      ca: "Classe temporal per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
+      en: "A temporary class preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
+      ja: "昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
 
   - date: "2026-11-21"
     type: extra
     routine: true
-    instructors: [perez]
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -1576,15 +1564,14 @@ entries:
     end: "10:00"
     location: musubi
     note:
-      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual. Hoy, de 9:00 a 10:00: la mañana se adelanta una hora por la masterclass."
-      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual. Avui, de 9:00 a 10:00: el matí s'avança una hora per la masterclass."
-      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable. Today 09:00–10:00: the morning runs an hour early for the masterclass."
-      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。本日はマスタークラスのため9:00〜10:00に繰り上げます。"
+      es: "Clase temporal para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual. Hoy, de 9:00 a 10:00: la mañana se adelanta una hora por la masterclass."
+      ca: "Classe temporal per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual. Avui, de 9:00 a 10:00: el matí s'avança una hora per la masterclass."
+      en: "A temporary class preparing for the grading examinations. Until 5 December. Not part of the regular timetable. Today 09:00–10:00: the morning runs an hour early for the masterclass."
+      ja: "昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。本日はマスタークラスのため9:00〜10:00に繰り上げます。"
 
   - date: "2026-11-28"
     type: extra
     routine: true
-    instructors: [perez]
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -1594,15 +1581,14 @@ entries:
     end: "11:00"
     location: musubi
     note:
-      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
-      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
-      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
-      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
+      es: "Clase temporal para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
+      ca: "Classe temporal per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
+      en: "A temporary class preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
+      ja: "昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
 
   - date: "2026-12-05"
     type: extra
     routine: true
-    instructors: [perez]
     title:
       es: "Preparación de exámenes"
       ca: "Preparació d'exàmens"
@@ -1612,8 +1598,8 @@ entries:
     end: "11:00"
     location: musubi
     note:
-      es: "Clase temporal con J. M. Pérez para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
-      ca: "Classe temporal amb J. M. Pérez per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
-      en: "A temporary class with J. M. Pérez preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
-      ja: "J. M. ペレス指導による昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
+      es: "Clase temporal para preparar los exámenes de grado. Hasta el 5 de diciembre. No forma parte del horario habitual."
+      ca: "Classe temporal per preparar els exàmens de grau. Fins al 5 de desembre. No forma part de l'horari habitual."
+      en: "A temporary class preparing for the grading examinations. Until 5 December. Not part of the regular timetable."
+      ja: "昇級・昇段審査に向けた臨時の稽古です。12月5日まで。通常の稽古時間には含まれません。"
 
