@@ -3,8 +3,8 @@
 # and it is absent on the entries that page never carried — those keep the Latin
 # name rather than acquire a guess.
 #
-# The links. Exactly the eighteen dojos, three organisations, three venues and
-# two shops that the home page used to carry, no more and no fewer. They live
+# The links. The eighteen dojos, three organisations, three venues and two shops
+# that the home page used to carry, plus Aikikai Sansuikai Spain (October 2026). They live
 # here now because Ura carries them, and _includes/links.html — which wrote each
 # one out with a 1.5 KB inline SVG icon — is gone.
 #
@@ -34,6 +34,7 @@ orgs:
   - { name: "Aikikai Foundation", name_ja: "公益財団法人 合気会", host: "aikikai.or.jp", url: "http://www.aikikai.or.jp/" }
   - { name: "International Aikido Federation", name_ja: "国際合気道連盟", host: "aikido-international.org", url: "http://www.aikido-international.org/" }
   - { name: "Arashi Group", name_ja: "嵐グループ", host: "aikidoarashigroup.com", url: "http://aikidoarashigroup.com/" }
+  - { name: "Aikikai Sansuikai Spain", name_ja: "合気会 山水会 スペイン", host: "sansuikaispain.com", url: "https://sansuikaispain.com/" }
 
 dojos:
   - name: "Aikido Aikikai Tarragona"
