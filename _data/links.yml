@@ -4,7 +4,8 @@
 # name rather than acquire a guess.
 #
 # The links. The eighteen dojos, three organisations, three venues and two shops
-# that the home page used to carry, plus Aikikai Sansuikai Spain (October 2026). They live
+# that the home page used to carry, plus Aikikai Sansuikai Spain (October 2026),
+# which is an organisation of dojos but sits with the dojos by the dojo's choice. They live
 # here now because Ura carries them, and _includes/links.html — which wrote each
 # one out with a 1.5 KB inline SVG icon — is gone.
 #
@@ -27,6 +28,7 @@ places:
   de:   { es: "Alemania", ca: "Alemanya", en: "Germany", ja: "ドイツ" }
   ro:   { es: "Rumanía", ca: "Romania", en: "Romania", ja: "ルーマニア" }
   ca_:  { es: "Canadá", ca: "Canadà", en: "Canada", ja: "カナダ" }
+  es_:  { es: "España", ca: "Espanya", en: "Spain", ja: "スペイン" }
   bcn:  { es: "Barcelona", ca: "Barcelona", en: "Barcelona", ja: "バルセロナ" }
   tgn:  { es: "Tarragona", ca: "Tarragona", en: "Tarragona", ja: "タラゴナ" }
 
@@ -34,7 +36,6 @@ orgs:
   - { name: "Aikikai Foundation", name_ja: "公益財団法人 合気会", host: "aikikai.or.jp", url: "http://www.aikikai.or.jp/" }
   - { name: "International Aikido Federation", name_ja: "国際合気道連盟", host: "aikido-international.org", url: "http://www.aikido-international.org/" }
   - { name: "Arashi Group", name_ja: "嵐グループ", host: "aikidoarashigroup.com", url: "http://aikidoarashigroup.com/" }
-  - { name: "Aikikai Sansuikai Spain", name_ja: "合気会 山水会 スペイン", host: "sansuikaispain.com", url: "https://sansuikaispain.com/" }
 
 dojos:
   - name: "Aikido Aikikai Tarragona"
@@ -43,13 +44,14 @@ dojos:
     url: { es: "https://aikidotarragona.com/es/", ca: "https://aikidotarragona.com/",
            en: "https://aikidotarragona.com/en/", ja: "https://aikidotarragona.com/ja/" }
   - { name: "Aikido Harukaze", name_ja: "春風 合気道会", host: "aikido-harukaze.com", url: "https://aikido-harukaze.com/", place: jp }
-  - { name: "Aikido of London", host: "aikidooflondon.com", url: "https://aikidooflondon.com/", place: uk }
+  - { name: "Aikido of London", name_ja: "合気道 オブ ロンドン", host: "aikidooflondon.com", url: "https://aikidooflondon.com/", place: uk }
   - { name: "Aikido Palestra Fujiyama Pietrasanta", name_ja: "合気道 富士山ジム ピエトラサンタ", host: "aikido.palestrafujiyama.com", url: "https://aikido.palestrafujiyama.com/", place: it }
   - { name: "Aikido Sanshinkai", name_ja: "合気道 三心会", host: "aikidosanshin.wixsite.com", url: "https://aikidosanshin.wixsite.com/sanshinkai", place: jp }
   - { name: "Aikido Verona", name_ja: "合気道 ヴェローナ", host: "veronaikido.it", url: "https://www.veronaikido.it/", place: it }
   - { name: "Aikido Watanabe Dojo", name_ja: "合気道渡邉道場", host: "aikidowatanabedojo.it", url: "https://aikidowatanabedojo.it/", place: it }
   - { name: "Aikikai Corsico", name_ja: "合気会 コルシコ", host: "aikikaicorsico.it", url: "https://aikikaicorsico.it/", place: it }
   - { name: "Aikikai Milano", name_ja: "合気会 ミラノ", host: "aikikaimilano.it", url: "http://www.aikikaimilano.it/", place: it }
+  - { name: "Aikikai Sansuikai Spain", name_ja: "合気会 山水会 スペイン", host: "sansuikaispain.com", url: "https://sansuikaispain.com/", place: es_ }
   - { name: "Aioikai / Aikido Kobe Sanda Dojo", name_ja: "相生會 合気道神戸三田道場", host: "lares.dti.ne.jp", url: "http://www.lares.dti.ne.jp/~horii", place: jp }
   - { name: "Dojo Feilen Meishūkan", name_ja: "道場 フェイレン 明修館", host: "aikifeilen.org", url: "https://www.aikifeilen.org/", place: bcn }
   - { name: "Hakken Dojo", name_ja: "発見 道場", host: "aikido-aikikai.ro", url: "https://www.aikido-aikikai.ro/", place: ro }
