@@ -610,7 +610,7 @@
       {%- endcomment -%}
       "eventStatus": "https://schema.org/EventScheduled",
       "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-      "organizer": { "@type": "SportsClub", "name": "Aikido Musubi", "url": "{{ site.url }}" },
+      "organizer": { "@type": "SportsClub", "name": {{ site.title | jsonify }}, "url": "{{ site.url }}" },
       {%- comment -%}
         WHO TEACHES IT, where the dojo knows. `instructors:` on the entry is a
         list of ids into _data/schedule.yml, so the name is written once and

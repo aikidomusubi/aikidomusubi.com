@@ -286,7 +286,7 @@
     "@type": "Service",
     "name": {{ page.title | jsonify }},
     "serviceType": "Aikido classes",
-    "provider": { "@type": "SportsClub", "name": "Aikido Musubi", "url": "{{ site.url }}/" },
+    "provider": { "@type": "SportsClub", "name": {{ site.title | jsonify }}, "url": "{{ site.url }}/" },
     "areaServed": "Barcelona, Badalona, Sant Adrià de Besòs",
     "offers": [
       {%- assign first = true -%}

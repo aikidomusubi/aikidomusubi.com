@@ -412,7 +412,7 @@
       "@type": "Course",
       "name": {{ cat.name[L] | append: " — " | append: lvl.name[L] | jsonify }},
       "description": {{ daylist | strip | append: ", " | append: c.start | append: "–" | append: c.end | append: ". " | append: loc.name[L] | append: "." | jsonify }},
-      "provider": { "@type": "SportsClub", "name": "Aikido Musubi", "url": "{{ site.url }}" },
+      "provider": { "@type": "SportsClub", "name": {{ site.title | jsonify }}, "url": "{{ site.url }}" },
       "hasCourseInstance": {
         "@type": "CourseInstance",
         "courseMode": "Onsite",

@@ -669,7 +669,7 @@
         "@type": ["SportsClub", "SportsOrganization"],
         "name": {{ v.name[L] | jsonify }},
         "url": {{ page.url | prepend: site.url | jsonify }},
-        "parentOrganization": { "@type": "SportsClub", "name": "Aikido Musubi", "url": "{{ site.url }}/" },
+        "parentOrganization": { "@type": "SportsClub", "name": {{ site.title | jsonify }}, "url": "{{ site.url }}/" },
         "sport": "Aikido",
         "address": {
           "@type": "PostalAddress",
