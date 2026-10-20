@@ -20,7 +20,7 @@ grade_ja: "六段 合気会"
 # "La Organización" and "Miembros" pages, October 2026): 6th dan Aikikai,
 # Shihan, president of Aikikai Sansuikai Spain, teaching at Mallorca Aikido
 # Club. That site is the "more information" link, and it is also on Ura's
-# list of organisations.
+# list of friendly dojos.
 desc_ca: >-
   Dilluns 16 de novembre, de 19:30 a 21:00, masterclass amb Manolo García Shihan, 6è dan Aikikai i president d'Aikikai Sansuikai Spain, a Aikido Musubi. Entrada lliure: t'hi esperem!
 desc_en: >-
