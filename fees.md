@@ -6,7 +6,7 @@ description: "Aikido por 39 € al mes, o 29 € hasta los 16 años, con acceso 
 permalink: /cuotas/
 lang: es
 i18n-ref: fees-UjbuGtGz
-last_modified: 2026-10-14
+last_modified: 2026-10-24
 ---
 
 # Cuotas

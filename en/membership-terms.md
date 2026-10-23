@@ -7,7 +7,7 @@ description: "The terms of the training membership: what it covers, how and when
 permalink: /en/membership-terms/
 lang: en
 i18n-ref: membership-terms-Rb9vF6sJ
-last_modified: 2026-10-15
+last_modified: 2026-10-24
 no_analytics: true
 review_pending: true
 ---
@@ -52,9 +52,13 @@ The fee is charged on the 5th of each month, quarter or year, depending on the p
 
 You pay exactly the published amount: there is no surcharge for the payment method.
 
+**If you pay in cash**, your membership renews on the 1st and you pay at the dojo from the 1st to the 5th of each month, quarter or year. When you sign up, the share up to the next 1st is paid within 5 days of signing up.
+
 ## 5. Payment methods
 
 You pay by card or SEPA direct debit on a secure Stripe page; Stripe processes payments on the association's behalf. The association neither sees nor stores your card or account details. With direct debit, Stripe notifies you before each debit.
+
+You can also pay **in cash**, at the dojo, to a board member. Every payment is recorded and we email you the receipt; the invoices for all your payments, cash ones included, are in your members area. If the 5th goes by unpaid, we send you a reminder. You can move from cash to card or direct debit, or the other way round, by asking at the dojo: the change applies from the next period.
 
 If a charge fails, we try again over the following days and let you know. Your membership remains active while we sort it out with you. If it remained unpaid after we had told you, we could end it.
 
@@ -75,6 +79,7 @@ As the statutes provide, not paying the fee once we have told you about it is al
 - **Monthly plan.** There is nothing to refund when you cancel: cancellation takes effect at the end of the month already paid.
 - **Quarterly or annual plan.** If you cancel before the quarter or the year is over, you can ask us to refund the months you have not yet started, without giving a reason. We work it out as if you had paid month by month: from what you paid for that period we take off the current monthly fee for each month already started, with the family discount if you have it. For example, on an annual plan for 17 and over, if you cancel in the fourth month of the year we refund €360 − 4 × €39 = €204. If the result is zero or less, there is no refund. The membership ends on the day you ask, and we refund the amount within 14 days, by the same means of payment. If we have already given you the free keikogi (section 14), we also deduct what it cost us, €{{ kc.adults }} for an adult's and €{{ kc.children }} for a child's: it was bought for you and cannot be returned, so it is yours to keep.
 - **If the association ends your membership** for any reason other than non-payment, or stops holding the classes your fee covers, we refund the part of the paid period you could not use.
+- **If you pay in cash**, refunds are made in cash at the dojo, within the same time limits.
 - **Withdrawal**, in the 14 days after signing up: section 12.
 
 ## 9. Changing people or period

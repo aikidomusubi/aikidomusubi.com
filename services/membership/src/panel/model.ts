@@ -8,6 +8,7 @@ import { itemAmounts, priced, total } from '../household.ts';
 import { Pricing, type PeriodId } from '../pricing.ts';
 import { customerOf, method, periodEnd } from '../stripe.ts';
 import { inWindow, withdrawalAt } from '../withdraw.ts';
+import { isCash, isLate, payByMs } from '../cash.ts';
 
 export type Keikogi = 'none' | 'later' | 'ready' | 'delivered';
 
@@ -47,9 +48,15 @@ export interface Family {
   canLeaveEarly: boolean;             // quarterly or annual: months not started can be refunded
   before: { from: number; to: number }[];  // earlier memberships of the same customer
   people: Person[];
+  cash: boolean;                      // pays in cash at the dojo (src/cash.ts)
+  // What a cash family owes now: the newest open invoice, the last day to pay
+  // it by the dojo's rule, and whether that day has gone. Null when nothing
+  // is owed. Older unpaid invoices are paid along with it (Cobrado pays all).
+  cashDue: { amount: number; by: number; late: boolean; first: boolean } | null;
+  methodNext: 'cash' | 'card' | null; // a change of method waiting for its day
 }
 
-export type TaskKind = 'withdrawal' | 'paper' | 'keikogi' | 'sc' | 'age' | 'money';
+export type TaskKind = 'withdrawal' | 'cash' | 'paper' | 'keikogi' | 'sc' | 'age' | 'money';
 export interface Task { kind: TaskKind; fam: Family; person: Person | null; since: number }
 
 const LIVE: Stripe.Subscription.Status[] = ['active', 'trialing', 'past_due', 'unpaid', 'incomplete'];
@@ -68,7 +75,7 @@ export function familyName(people: MetaMember[], hello: string, customer: string
   return surname ? `Familia ${surname}` : customer || holder.name;
 }
 
-export function family(sub: Stripe.Subscription): Family {
+export function family(sub: Stripe.Subscription, now = Date.now()): Family {
   const meta = sub.metadata;
   const cust = customerOf(sub);
   const amounts = priced(meta, itemAmounts(sub));
@@ -96,8 +103,12 @@ export function family(sub: Stripe.Subscription): Family {
     };
   });
   const inv = sub.latest_invoice && typeof sub.latest_invoice !== 'string' ? sub.latest_invoice : null;
-  const failed = ['past_due', 'unpaid', 'incomplete'].includes(sub.status)
-    || Boolean(inv && inv.status === 'open' && (inv.attempt_count ?? 0) > 0);
+  const cash = isCash(sub);
+  // A cash invoice waiting to be paid is not a failed payment: it is the
+  // ordinary state between the 1st and the 5th, and it has its own group.
+  const failed = !cash && (['past_due', 'unpaid', 'incomplete'].includes(sub.status)
+    || Boolean(inv && inv.status === 'open' && (inv.attempt_count ?? 0) > 0));
+  const owes = cash && sub.status !== 'canceled' && inv && inv.status === 'open' && inv.amount_remaining > 0 ? inv : null;
   const endsAt = sub.cancel_at ? sub.cancel_at * 1000 : sub.cancel_at_period_end ? next : null;
   const pm = method(sub);
   // The keikogi becomes due with the first full charge (the anchor) once the
@@ -118,7 +129,7 @@ export function family(sub: Stripe.Subscription): Family {
     period: (meta.period as PeriodId) || 'monthly',
     total: total(amounts),
     next,
-    method: pm?.type === 'sepa_debit' ? 'Domiciliación SEPA' : pm?.type === 'card' ? 'Tarjeta' : '',
+    method: cash ? 'En efectivo, en el dojo' : pm?.type === 'sepa_debit' ? 'Domiciliación SEPA' : pm?.type === 'card' ? 'Tarjeta' : '',
     status: ended ? 'ended' : failed ? 'failed' : endsAt ? 'ending' : 'ok',
     failedAmount: failed && inv ? inv.amount_due / 100 : null,
     endsAt,
@@ -132,7 +143,10 @@ export function family(sub: Stripe.Subscription): Family {
     refunded: meta.withdrawal_refund ? Number(meta.withdrawal_refund) : meta.early_leave_refund ? Number(meta.early_leave_refund) : null,
     canLeaveEarly: !ended && (meta.period === 'quarterly' || meta.period === 'annual'),
     before: [],
-    people
+    people,
+    cash,
+    cashDue: owes ? { amount: owes.amount_remaining / 100, by: payByMs(owes), late: isLate(owes, now), first: owes.billing_reason === 'subscription_create' } : null,
+    methodNext: meta.method_next === 'cash' || meta.method_next === 'card' ? meta.method_next : null
   };
 }
 
@@ -151,6 +165,8 @@ export function tasks(fams: Family[]): Task[] {
   const out: Task[] = [];
   for (const f of fams) {
     if (f.withdrawalAt) out.push({ kind: 'withdrawal', fam: f, person: null, since: f.withdrawalAt });
+    // Oldest deadline first, so whoever is late heads the cash group.
+    if (f.cashDue) out.push({ kind: 'cash', fam: f, person: null, since: f.cashDue.by });
     // A family that is withdrawing needs no forms collected or keikogi handed over.
     const leaving = f.withdrawalAt != null && f.withdrawalInWindow;
     for (const p of leaving ? [] : f.people) {

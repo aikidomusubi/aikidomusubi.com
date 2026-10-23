@@ -13,8 +13,9 @@ has a button in an email also has one there, and the panel is the easier way.
 - **Signing in:** type `admin@` or `info@aikidomusubi.com` and a six-digit code arrives
   at that address. No password. Nobody else can get a code; who can is `PANEL_USERS` in
   `wrangler.toml` (after the colon, the name the panel greets them by).
-- **Pendiente** is the to-do list: paper forms to collect, keikogi to hand over,
-  sports-centre cards to check, people turning 17, payments that failed.
+- **Pendiente** is the to-do list: cash fees to collect, paper forms to collect,
+  keikogi to hand over, sports-centre cards to check, people turning 17, payments
+  that failed.
 - **Miembros**: search by name or email, filter, open a family: each person's status,
   the plan, a short history (with who pressed what), and the actions.
 - Everyday buttons work at once and offer **Deshacer** right after. The ones that change
@@ -44,6 +45,43 @@ The notice says who, which plan, the first charge, and what is left:
 
 The buttons open a page that asks you to confirm; nothing changes until you do.
 Each button works once and lasts 45 days. After that, do it in the Dashboard (below).
+
+## Cash (from the 1st to the 5th)
+
+Some families pay in cash at the dojo instead of by card or direct debit (decided 23
+October 2026). In Stripe their membership is the same as anyone's, except that it
+sends an invoice on the **1st** instead of charging on the 5th, and waits to be told
+it was paid.
+
+- **When they pay**: from the 1st to the 5th of each month (or quarter, or year); the
+  first time, within 5 days of signing up, for the days up to the next 1st. The signup
+  notice says how much and by when.
+- **When someone pays you**: count it with them, then in the panel press **Cobrado…**
+  (Pendiente, group "Cuotas en efectivo por cobrar", or on the family). The confirmation
+  shows the amount from Stripe; nothing is typed. Confirming marks every unpaid invoice
+  of that family as paid outside Stripe, notes who did it, and emails the family the
+  receipt with the invoice number and a link to the invoice PDF. **It cannot be undone
+  from the panel**: if you press it by mistake, tell info@.
+- **Paid early, before the 1st?** The invoice does not exist yet. Keep the money and
+  press Cobrado from the 1st.
+- **Late**: on the 6th the family gets a reminder email, once, and the row says
+  **Con retraso**. Nothing is cancelled: talk to them at their next class. The digest on
+  the 20th lists any still unpaid.
+- **The receipt again**: open the family, **Reenviar el último recibo**.
+- **Changing method**, when a family asks: open the family.
+  - *To cash*: **Pasar a pago en efectivo…**. From the next 1st Stripe stops charging
+    and sends the invoice instead; the days already paid by card are deducted from it.
+  - *To card or direct debit*: **Pasar a tarjeta o domiciliación…** emails them a link
+    (valid 14 days) to give the card or account on Stripe's page. From the next 5th it is
+    charged automatically, less the days already paid in cash. If they still owe cash,
+    the change waits until you mark it. **Anular el cambio** undoes either while it waits.
+- **Refunds to a cash family** (a withdrawal, or leaving a quarter or year early): the
+  panel works out the amount as for anyone, records it in Stripe as a credit note, and
+  the family's email says it is handed back **in cash at the dojo**. Give it to them
+  and keep a note of the date. Any invoice they still owed is cancelled.
+- **The cash box**: in Stripe, Invoices, filter *Paid* and look for "Paid out of band"
+  for a month's total, or open each family in the panel: every cash payment is in its
+  history with the receipt number and who took it.
 
 ## The 1st of the month (while members are moving over)
 

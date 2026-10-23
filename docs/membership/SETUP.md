@@ -48,23 +48,46 @@ asks for extra verification of the account before it can be used live; start it
 now, it takes days. Do not switch anything else on or off here: the setup script
 makes its own configuration, with card and SEPA only, and uses that.
 
-**Customer emails** (Settings → Billing → search "Customer emails"), switch on:
+**Customer emails** (Settings → Business → Customer emails; Stripe also lists them
+under Settings → Billing → search "emails"). Every member gets a proper invoice, and
+these settings decide who sends it:
 
-- Successful payments (receipts)
-- Failed card payments
-- Expiring cards
-- SEPA Direct Debit pre-debit notifications (Settings → Payment methods → SEPA)
+| Setting | | Why |
+|---|---|---|
+| Successful payments | **On** | The receipt for every card or direct-debit payment, with links to the invoice PDF and the receipt PDF. |
+| Failed card payments | **On** | |
+| Expiring cards | **On** | |
+| SEPA Direct Debit pre-debit notifications (Settings → Payment methods → SEPA) | **On** | |
+| Finalized invoices (wording varies: "Send finalized invoices and credit notes to customers", "Email invoices") | **Off** | It only applies to invoices that are *sent* rather than charged, which here means only cash. Left on, a cash family would get Stripe's invoice with a "Pay online" button on the 1st. Card and direct-debit members are not affected: their receipt comes from "Successful payments", above. |
+| Reminders for unpaid invoices (one-off and subscription) | **Off** | For cash the Worker sends its own reminder on the 6th, in the family's language. |
+| Refunds | **On** | |
+
+Cash families get their receipt from the panel's **Cobrado** button (our email, in their
+language, with Stripe's invoice number and a link to Stripe's invoice PDF). So **every
+member, whatever the method, can download every invoice** from the members area (the
+portal's invoice history, which the setup script turns on), and cash payments are in
+Stripe like any other: paid invoices, marked "paid outside of Stripe".
 
 **Subscriptions** (Settings → Billing → Subscriptions and emails):
 
-- **Upcoming renewal events: 15 days.** This is what sends our legal renewal notice.
+- **Upcoming renewal events: 15 days.** This is what sends our legal renewal notice,
+  for cash families too.
 - **Smart Retries: on.** If all retries fail: **leave the subscription past due**
   (do not cancel it). The dojo follows up in person.
+- **Manage invoices sent to customers** (the section for invoices that are sent, not
+  charged: cash): if an invoice is past due, **leave the subscription past due**. Do
+  not cancel it and do not mark the invoice uncollectible: the treasurer marks it paid
+  when the family pays, however late.
 
-**Invoices** (Settings → Billing → Invoices): footer with
-`Associació Cultural Musubi Aikido · CIF G-64799554 · Av. d'Alfons XIII, 351, 08918 Badalona`
-and the VAT exemption sentence the tax advisor gives you. Until then, leave the
-exemption line out rather than guess it.
+**Invoices** (Settings → Billing → Invoices):
+
+- **Invoice numbering: sequential across the account** ("Account level"), not per
+  customer. One series, numbered in order, is what an invoice book is expected to be,
+  and the cash receipts quote the same numbers. Ask the gestoría whether a series per
+  year is wanted (preguntas-gestoria.md, Verifactu).
+- Footer: `Associació Aikido Musubi · CIF G-64799554 · Av. d'Alfons XIII, 351, 08918 Badalona`,
+  and the VAT exemption sentence the tax advisor gives you. Until then, leave the
+  exemption line out rather than guess it.
 
 **Customer portal** (Settings → Billing → Customer portal): press **Activate**.
 Change nothing else. The setup script configures it.
@@ -83,17 +106,23 @@ Change nothing else. The setup script configures it.
    | Checkout Sessions | Write |
    | Customers | Write |
    | Subscriptions | Write |
-   | Invoices | Read |
+   | Invoices | Write |
    | Prices | Read |
    | Products | Read |
    | PaymentMethods | Read |
    | Payment Method Configurations | Read |
    | Refunds | Write |
+   | Credit Notes | Write |
+   | SetupIntents | Read |
 
    Refunds is for the panel's **Resolver el desistimiento**, which gives the money back
-   without anybody opening Stripe. A key made before 15 October 2026 lacks it: edit the
-   key (Developers → API keys → the key → ⋯ → Edit) and set Refunds to Write. The
-   key's value does not change, so nothing has to be put in Cloudflare again.
+   without anybody opening Stripe. Three are for cash (23 October 2026): **Cobrado**
+   marks an invoice paid outside Stripe and writes on it who did it (Invoices: Write); a
+   refund to a cash family is recorded as a credit note (Credit Notes: Write); and
+   "Pasar a tarjeta o domiciliación" reads the card or account the family gave
+   (SetupIntents: Read). A key made before those dates lacks them: edit the key
+   (Developers → API keys → the key → ⋯ → Edit) and set them as above. The key's value
+   does not change, so nothing has to be put in Cloudflare again.
 
    Copy it (`rk_test_...`). It goes to Cloudflare in step 3, and nowhere else.
 

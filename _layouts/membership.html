@@ -34,13 +34,31 @@
   {% include section-strip.html %}
 
   {%- if page.kind == 'thanks' %}
+  {%- comment -%}
+    Two versions of the same page. A cash signup arrives at #efectivo, which
+    shows the second and hides the first with :target and :has(), so it works
+    without JavaScript: the address alone says which signup this was. The two
+    steps both share (the paper form, the keikogi) are repeated in the second.
+  {%- endcomment %}
   <h1 class="mb-ok">{{ MT.title[L] }}</h1>
+  <div class="mb-stripe">
   <p class="mb-lede">{{ MT.lede[L] }}</p>
   <ol class="mb-howto">
     {%- for s in MT.steps %}
     <li><span>{{ s[L] | replace: PH_RESOURCES, MS.urls.resources[L] }}</span></li>
     {%- endfor %}
   </ol>
+  </div>
+  <div class="mb-cash" id="efectivo">
+  <p class="mb-lede">{{ MT.cash_lede[L] }}</p>
+  <ol class="mb-howto">
+    {%- for s in MT.cash_steps %}
+    <li><span>{{ s[L] }}</span></li>
+    {%- endfor %}
+    <li><span>{{ MT.steps[1][L] | replace: PH_RESOURCES, MS.urls.resources[L] }}</span></li>
+    <li><span>{{ MT.steps[3][L] }}</span></li>
+  </ol>
+  </div>
   <div class="mb-two">
     <section class="mb-box" aria-labelledby="mb-members-h">
       <h2 class="mb-box-h" id="mb-members-h">{{ MT.members_h[L] }}</h2>
@@ -57,6 +75,8 @@
   {%- elsif page.kind == 'members' %}
   {%- assign ph_lede = MM.lede[L] %}
   {% include page-head.html lede=ph_lede %}
+  {%- comment -%} Where Stripe brings a cash family back after giving a card (src/cardlink.ts). {%- endcomment %}
+  <p class="mb-card-ok" id="tarjeta">{{ MM.card_ok[L] }}</p>
   {%- if portal and portal != '' %}
   <p class="mb-cta"><a class="mb-btn" href="{{ portal }}" rel="noopener">{{ MM.go[L] }}</a></p>
   {%- else %}

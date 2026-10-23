@@ -15,6 +15,7 @@ import { withdrawal } from './withdrawal.ts';
 import { actionPage } from './actions.ts';
 import { daily } from './cron.ts';
 import { panel } from './panel/index.ts';
+import { cardPage } from './cardlink.ts';
 import { cors, json, log } from './http.ts';
 
 export default {
@@ -33,6 +34,7 @@ export default {
       if (pathname === '/withdrawal' && req.method === 'POST') return await withdrawal(req, env);
       if (pathname === '/admin/a' && (req.method === 'GET' || req.method === 'POST')) return await actionPage(req, env);
       if (pathname === '/panel' || pathname.startsWith('/panel/')) return await panel(req, env);
+      if (pathname === '/pago/tarjeta' && req.method === 'GET') return await cardPage(req, env);
       if (pathname === '/health') return json(env, req, { ok: true, env: env.ENVIRONMENT });
       return new Response('not found', { status: 404, headers: { 'x-content-type-options': 'nosniff' } });
     } catch (e) {

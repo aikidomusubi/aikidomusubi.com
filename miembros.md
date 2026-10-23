@@ -6,7 +6,7 @@ description: "Cambia la tarjeta o la cuenta, descarga los recibos o date de baja
 permalink: /miembros/
 lang: es
 i18n-ref: members-Wt5nK2cD
-last_modified: 2026-10-14
+last_modified: 2026-10-24
 no_analytics: true
 sitemap: false
 ---

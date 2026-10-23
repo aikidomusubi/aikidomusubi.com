@@ -291,10 +291,10 @@ invite:
   subject: { es: "Tu cuota pasa a pago en línea: tu enlace personal", ca: "La teva quota passa a pagament en línia: el teu enllaç personal", en: "Your fee moves to online payment: your personal link", ja: "会費のオンライン決済への移行：専用リンク" }
   heading: { es: "La cuota pasa a pago en línea", ca: "La quota passa a pagament en línia", en: "Your fee is moving to online payment", ja: "会費がオンライン決済に変わります" }
   body:
-    es: "Desde enero de 2027 las cuotas se cobran a través de Stripe, con tarjeta o domiciliación, en lugar de con el recibo del banco de siempre. Así cada cual puede cambiar su tarjeta, descargar recibos o darse de baja sin tener que escribirnos."
-    ca: "Des del gener de 2027 les quotes es cobren a través de Stripe, amb targeta o domiciliació, en comptes del rebut del banc de sempre. Així cadascú pot canviar la targeta, descarregar rebuts o donar-se de baixa sense haver-nos d'escriure."
-    en: "From January 2027 fees are collected through Stripe, by card or direct debit, instead of the usual bank debit. That way everyone can change their card, download receipts or cancel without having to write to us."
-    ja: "2027年1月から、会費はこれまでの銀行引き落としに代わり、Stripeを通じてカードまたは口座振替でお支払いいただきます。カードの変更、領収書のダウンロード、退会を、ご連絡なしにご自身で行えるようになります。"
+    es: "Desde enero de 2027 las cuotas se cobran a través de Stripe, con tarjeta o domiciliación, o se pagan en efectivo en el dojo, en lugar de con el recibo del banco de siempre. Así cada cual puede cambiar su tarjeta, descargar recibos o darse de baja sin tener que escribirnos."
+    ca: "Des del gener de 2027 les quotes es cobren a través de Stripe, amb targeta o domiciliació, o es paguen en efectiu al dojo, en comptes del rebut del banc de sempre. Així cadascú pot canviar la targeta, descarregar rebuts o donar-se de baixa sense haver-nos d'escriure."
+    en: "From January 2027 fees are collected through Stripe, by card or direct debit, or paid in cash at the dojo, instead of the usual bank debit. That way everyone can change their card, download receipts or cancel without having to write to us."
+    ja: "2027年1月から、会費はこれまでの銀行引き落としに代わり、Stripeを通じてカードまたは口座振替で、あるいは道場で現金でお支払いいただきます。カードの変更、領収書のダウンロード、退会を、ご連絡なしにご自身で行えるようになります。"
   link:
     es: "<b>Este enlace es solo tuyo y sirve una vez</b>, hasta el {date}:"
     ca: "<b>Aquest enllaç és només teu i serveix una vegada</b>, fins al {date}:"
@@ -311,3 +311,127 @@ invite:
     ca: "Prefereixes que ho fem junts? Passa pel dojo i ho fem en dos minuts."
     en: "Would you rather do it together? Drop by the dojo and it takes two minutes."
     ja: "一緒に手続きをご希望の場合は、道場にお立ち寄りください。2分ほどで完了します。"
+
+# ---------------------------------------------------------------------------
+# Paying in cash (decided 23 October 2026). The family pays at the dojo from
+# the 1st to the 5th, the first time within five days of signing up, and the
+# treasurer's Cobrado in the panel sends `receipt`. The invoice numbers are
+# Stripe's, so the receipt and the PDF in the members area say the same.
+cash:
+  method:  { es: "efectivo, en el dojo", ca: "efectiu, al dojo", en: "cash, at the dojo", ja: "道場での現金払い" }
+  # The confirmation, for a cash signup: what to pay, by when, and where.
+  first:
+    es: "<b>Antes del {by}, {amount} en efectivo</b>: los días hasta el {first}. En el dojo, a la persona de la junta que esté."
+    ca: "<b>Abans del {by}, {amount} en efectiu</b>: els dies fins al {first}. Al dojo, a la persona de la junta que hi sigui."
+    en: "<b>By {by}, {amount} in cash</b>: the days up to {first}. At the dojo, to whichever board member is there."
+    ja: "<b>{by}までに現金で{amount}</b>：{first}までの日割り分。道場にいる役員にお支払いください。"
+  full:
+    es: "<b>Del {from} al {by}, {amount} en efectivo</b>: la primera cuota completa"
+    ca: "<b>Del {from} al {by}, {amount} en efectiu</b>: la primera quota completa"
+    en: "<b>From {from} to {by}, {amount} in cash</b>: the first full fee"
+    ja: "<b>{from}～{by}に現金で{amount}</b>：最初の全額のお支払い"
+  then:
+    es: "Después, <b>{amount}</b> del día 1 al 5 de cada mes, en el dojo, hasta que te des de baja"
+    ca: "Després, <b>{amount}</b> del dia 1 al 5 de cada mes, al dojo, fins que et donis de baixa"
+    en: "Then <b>{amount}</b> from the 1st to the 5th of every month, at the dojo, until you cancel"
+    ja: "以降、退会まで毎月1日～5日に道場で<b>{amount}</b>"
+  then_q:
+    es: "Después, <b>{amount}</b> del día 1 al 5 de {months}, en el dojo, hasta que te des de baja"
+    ca: "Després, <b>{amount}</b> del dia 1 al 5 de {months}, al dojo, fins que et donis de baixa"
+    en: "Then <b>{amount}</b> from the 1st to the 5th of {months}, at the dojo, until you cancel"
+    ja: "以降、退会まで{months}の1日～5日に道場で<b>{amount}</b>"
+  how:
+    es: "Pagas en efectivo en el dojo. Cada vez que pagues te llegará el recibo por correo, y todas las facturas están en el área de miembros. Si se pasa el día 5, te enviamos un recordatorio. Para pasar a tarjeta o domiciliación, pídelo en el dojo."
+    ca: "Pagues en efectiu al dojo. Cada vegada que paguis et arribarà el rebut per correu, i totes les factures són a l'àrea de membres. Si passa el dia 5, t'enviem un recordatori. Per passar a targeta o domiciliació, demana-ho al dojo."
+    en: "You pay in cash at the dojo. Every time you pay, the receipt comes to you by email, and all the invoices are in the members area. If the 5th goes by, we send you a reminder. To move to card or direct debit, ask at the dojo."
+    ja: "道場で現金でお支払いいただきます。お支払いのたびに領収書をメールでお送りし、すべての請求書は会員ページにあります。5日を過ぎた場合はお知らせします。カードや口座振替への変更は道場でお申し出ください。"
+  # The renewal notice, 15 days before, for cash.
+  renewal:
+    es: "del {date} al {by}, en efectivo en el dojo, por el periodo del {from} al {to}."
+    ca: "del {date} al {by}, en efectiu al dojo, pel període del {from} al {to}."
+    en: "from {date} to {by}, in cash at the dojo, for {from} to {to}."
+    ja: "{date}～{by}に道場で現金でお支払い（対象期間：{from}～{to}）"
+  stay:
+    es: "<b>Si quieres seguir</b>, paga en el dojo esos días y te llegará el recibo."
+    ca: "<b>Si vols continuar</b>, paga al dojo aquells dies i et arribarà el rebut."
+    en: "<b>If you want to carry on</b>, pay at the dojo on those days and the receipt will come to you."
+    ja: "<b>継続される場合</b>は、期間内に道場でお支払いください。領収書をお送りします。"
+  # The receipt, sent when the treasurer marks the payment.
+  receipt:
+    kind:    { es: "Recibo", ca: "Rebut", en: "Receipt", ja: "領収書" }
+    subject: { es: "Recibo de tu cuota: {amount}", ca: "Rebut de la teva quota: {amount}", en: "Receipt for your membership fee: {amount}", ja: "会費の領収書：{amount}" }
+    heading: { es: "Recibo de tu cuota", ca: "Rebut de la teva quota", en: "Receipt for your fee", ja: "会費の領収書" }
+    intro:
+      es: "Hemos recibido el pago de tu cuota en efectivo. Este correo es tu recibo: guárdalo."
+      ca: "Hem rebut el pagament de la teva quota en efectiu. Aquest correu és el teu rebut: guarda'l."
+      en: "We have received your membership fee in cash. This email is your receipt: please keep it."
+      ja: "会費の現金でのお支払いを受け取りました。このメールが領収書です。保管してください。"
+    number:  { es: "Recibo n.º", ca: "Rebut núm.", en: "Receipt no.", ja: "領収書番号" }
+    paid_on: { es: "Fecha de pago", ca: "Data de pagament", en: "Date paid", ja: "お支払い日" }
+    via:     { es: "Forma de pago", ca: "Forma de pagament", en: "Payment method", ja: "お支払い方法" }
+    via_cash: { es: "Efectivo, en el dojo", ca: "Efectiu, al dojo", en: "Cash, at the dojo", ja: "道場での現金払い" }
+    period:  { es: "Del {from} al {to}", ca: "Del {from} al {to}", en: "{from} to {to}", ja: "{from}～{to}" }
+    total:   { es: "Total pagado", ca: "Total pagat", en: "Total paid", ja: "お支払い合計" }
+    pdf:
+      es: "Cada número abre su factura en PDF. También las tienes todas en el área de miembros."
+      ca: "Cada número obre la seva factura en PDF. També les tens totes a l'àrea de membres."
+      en: "Each number opens its invoice as a PDF. They are all in the members area too."
+      ja: "各番号から請求書のPDFを開けます。すべての請求書は会員ページにもあります。"
+    org:
+      es: "Cuota de socio de {org}, CIF {cif}, {address}."
+      ca: "Quota de soci de {org}, CIF {cif}, {address}."
+      en: "Membership fee of {org}, tax ID {cif}, {address}."
+      ja: "{org}の会費（CIF {cif}、{address}）"
+    next:
+      es: "La próxima cuota, {amount}, se paga en el dojo del {from} al {by}."
+      ca: "La propera quota, {amount}, es paga al dojo del {from} al {by}."
+      en: "The next fee, {amount}, is paid at the dojo from {from} to {by}."
+      ja: "次回の会費{amount}は、{from}～{by}に道場でお支払いください。"
+  # The reminder, the day after the last day to pay.
+  late:
+    kind:    { es: "Recordatorio", ca: "Recordatori", en: "Reminder", ja: "お知らせ" }
+    subject: { es: "Tu cuota está pendiente de pago: {amount}", ca: "La teva quota està pendent de pagament: {amount}", en: "Your membership fee is still to be paid: {amount}", ja: "会費のお支払いが確認できていません：{amount}" }
+    heading: { es: "Falta pagar la cuota", ca: "Falta pagar la quota", en: "Your fee is still to be paid", ja: "会費のお支払いのお願い" }
+    body:
+      es: "No nos consta el pago en efectivo de <b>{amount}</b>, que tocaba hasta el {by}. Puedes pagarlo en el dojo en tu próxima clase, y te llegará el recibo. Si ya lo has pagado, responde a este correo y lo miramos."
+      ca: "No ens consta el pagament en efectiu de <b>{amount}</b>, que tocava fins al {by}. Pots pagar-lo al dojo a la teva propera classe, i et arribarà el rebut. Si ja l'has pagat, respon aquest correu i ho mirem."
+      en: "We have no record of the cash payment of <b>{amount}</b>, which was due by {by}. You can pay it at the dojo at your next class, and the receipt will come to you. If you have already paid, reply to this email and we will look into it."
+      ja: "{by}までのお支払い分<b>{amount}</b>の現金でのお支払いが確認できていません。次回の稽古の際に道場でお支払いください。領収書をお送りします。すでにお支払い済みの場合は、このメールにご返信ください。"
+    still:
+      es: "Tu cuota sigue activa. Si te va mejor pagar con tarjeta o domiciliación, pídelo en el dojo."
+      ca: "La teva quota segueix activa. Si et va millor pagar amb targeta o domiciliació, demana-ho al dojo."
+      en: "Your membership is still active. If paying by card or direct debit suits you better, ask at the dojo."
+      ja: "会費は引き続き有効です。カードや口座振替でのお支払いをご希望の場合は、道場でお申し出ください。"
+  # From the panel's "Pasar a tarjeta o domiciliación": the family gives the
+  # card or account on Stripe's own page.
+  card:
+    kind:    { es: "Forma de pago", ca: "Forma de pagament", en: "Payment method", ja: "お支払い方法" }
+    subject: { es: "Pasa tu cuota a tarjeta o domiciliación", ca: "Passa la teva quota a targeta o domiciliació", en: "Move your fee to card or direct debit", ja: "会費のカード・口座振替への変更" }
+    heading: { es: "Pasar a tarjeta o domiciliación", ca: "Passar a targeta o domiciliació", en: "Moving to card or direct debit", ja: "カード・口座振替への変更" }
+    body:
+      es: "Como nos pediste, tu cuota pasa de efectivo a tarjeta o domiciliación. Pulsa el botón y escribe los datos en la página segura de Stripe: nosotros no los vemos. Hoy no se cobra nada."
+      ca: "Com ens vas demanar, la teva quota passa d'efectiu a targeta o domiciliació. Prem el botó i escriu les dades a la pàgina segura de Stripe: nosaltres no les veiem. Avui no es cobra res."
+      en: "As you asked, your fee is moving from cash to card or direct debit. Press the button and enter the details on Stripe's secure page: we never see them. Nothing is charged today."
+      ja: "ご依頼により、会費のお支払いを現金からカードまたは口座振替に変更します。ボタンを押し、Stripeの安全なページで情報を入力してください。当会がその情報を見ることはありません。本日のお支払いはありません。"
+    btn:     { es: "Dar la tarjeta o la cuenta", ca: "Donar la targeta o el compte", en: "Enter card or bank details", ja: "カード・口座情報を入力" }
+    when:
+      es: "Desde el día 5 siguiente, la cuota se cobra sola ese día. Ese primer cobro descuenta lo que ya pagaste en efectivo por los días que quedan. El enlace sirve hasta el {date}."
+      ca: "Des del dia 5 següent, la quota es cobra sola aquell dia. Aquest primer cobrament descompta el que ja vas pagar en efectiu pels dies que queden. L'enllaç serveix fins al {date}."
+      en: "From the next 5th, the fee is collected automatically on that day. That first charge deducts what you already paid in cash for the days left. The link works until {date}."
+      ja: "次の5日から、会費はその日に自動でお支払いとなります。初回のお支払いでは、現金ですでにお支払いいただいた残りの日数分を差し引きます。リンクの有効期限は{date}です。"
+  # A refund to a cash family is handed back at the dojo.
+  refund:
+    es: "Te lo devolvemos <b>en efectivo en el dojo</b>: pásate cuando te vaya bien, o responde a este correo y quedamos."
+    ca: "T'ho retornem <b>en efectiu al dojo</b>: passa-hi quan et vagi bé, o respon aquest correu i quedem."
+    en: "We will hand it back <b>in cash at the dojo</b>: drop by whenever suits you, or reply to this email to arrange it."
+    ja: "返金は<b>道場で現金</b>でお渡しします。ご都合のよいときにお立ち寄りいただくか、このメールにご返信ください。"
+  withdrawal_body:
+    es: "Tu cuota ha terminado y no habrá más cobros. Te corresponden <b>{amount}</b>: lo que pagaste, menos los días desde el inicio hasta tu desistimiento del {date}."
+    ca: "La teva quota ha acabat i no hi haurà més cobraments. Et corresponen <b>{amount}</b>: el que vas pagar, menys els dies des de l'inici fins al teu desistiment del {date}."
+    en: "Your membership has ended and there will be no further charges. You are owed <b>{amount}</b>: what you paid, less the days from the start until your withdrawal on {date}."
+    ja: "会費は解約され、今後の請求はありません。お支払い額から、開始日から{date}の解約のお申し出までの日数分を差し引いた<b>{amount}</b>を返金します。"
+  leave_body:
+    es: "Como nos pediste, tu cuota ha terminado hoy y no habrá más cobros. Te corresponden <b>{amount}</b>: los {paid} que pagaste por este periodo, menos {started} × {monthly} de los meses ya empezados, al precio mensual."
+    ca: "Com ens vas demanar, la teva quota ha acabat avui i no hi haurà més cobraments. Et corresponen <b>{amount}</b>: els {paid} que vas pagar per aquest període, menys {started} × {monthly} dels mesos ja començats, al preu mensual."
+    en: "As you asked, your membership ended today and there will be no further charges. You are owed <b>{amount}</b>: the {paid} you paid for this period, less {started} × {monthly} for the months already started, at the monthly price."
+    ja: "ご依頼のとおり、会費は本日終了し、今後の請求はありません。この期間にお支払いいただいた{paid}から、すでに始まった月の分（月額{monthly} × {started}か月）を差し引いた<b>{amount}</b>を返金します。"

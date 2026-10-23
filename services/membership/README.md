@@ -54,6 +54,8 @@ src/cron.ts         the daily job: keikogi, orphans, the 1st and the 20th
 src/withdrawal.ts   /withdrawal
 src/refund.ts       what a withdrawal gives back
 src/withdraw.ts     settling it: refunds, cancel, the email with the amount
+src/cash.ts         paying in cash: the dojo's 1st-to-5th rule, Cobrado (paid outside Stripe) and the receipt, cash refunds as credit notes, switching method
+src/cardlink.ts     /pago/tarjeta: a cash family gives a card or account on Stripe's page to move off cash
 src/invite.ts       invite tokens (signed, single use, no email inside)
 src/meta.ts         the subscription metadata format
 src/email/          layout, member emails, admin emails, the Brevo adapter

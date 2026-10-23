@@ -7,7 +7,7 @@ description: "Les condicions de la quota d'entrenament: què cobreix, com i quan
 permalink: /ca/condicions-de-la-quota/
 lang: ca
 i18n-ref: membership-terms-Rb9vF6sJ
-last_modified: 2026-10-15
+last_modified: 2026-10-24
 no_analytics: true
 review_pending: true
 ---
@@ -52,9 +52,13 @@ La quota es cobra el dia 5 de cada mes, de cada trimestre o de cada any, segons 
 
 Pagues exactament l'import publicat: no hi ha recàrrec pel mitjà de pagament.
 
+**Si pagues en efectiu**, la quota es renova el dia 1 i la pagues al dojo del dia 1 al 5 de cada mes, trimestre o any. En inscriure't, la part proporcional fins al dia 1 següent la pagues en els 5 dies posteriors a la inscripció.
+
 ## 5. Mitjans de pagament
 
 Pagues amb targeta o amb domiciliació bancària SEPA, en una pàgina segura de Stripe, que processa els pagaments per compte de l'associació. L'associació no veu ni guarda les dades de la teva targeta ni del teu compte. Amb domiciliació, Stripe t'avisa abans de cada càrrec.
+
+També pots pagar **en efectiu**, al dojo, a una persona de la junta. Cada pagament queda registrat i t'enviem el rebut per correu; les factures de tots els teus pagaments, també dels fets en efectiu, són a la teva àrea de membres. Si passa el dia 5 sense pagar, t'enviem un recordatori. Pots passar d'efectiu a targeta o domiciliació, o al revés, demanant-ho al dojo: el canvi s'aplica des del període següent.
 
 Si un cobrament no es pot fer, el tornem a intentar els dies següents i t'avisem. La quota segueix activa mentre ho resolem amb tu. Si quedés impagada després d'avisar-te, la podríem donar per acabada.
 
@@ -75,6 +79,7 @@ Com preveuen els estatuts, també és causa de baixa no pagar la quota un cop t'
 - **Quota mensual.** En donar-te de baixa no hi ha res a retornar: la baixa s'aplica al final del mes ja pagat.
 - **Quota trimestral o anual.** Si et dones de baixa abans que acabi el trimestre o l'any, ens pots demanar que et retornem els mesos que encara no hagis començat, sense donar explicacions. Ho calculem com si haguessis pagat mes a mes: al que vas pagar per aquell període li restem la quota mensual vigent de cada mes ja començat, amb el descompte familiar si el tens. Per exemple, amb una quota anual de 17 anys o més, si et dones de baixa el quart mes de l'any et retornem 360 € − 4 × 39 € = 204 €. Si el resultat és zero o menys, no hi ha devolució. La quota acaba el dia que ho demanes, i et retornem l'import en 14 dies com a màxim, pel mateix mitjà de pagament. Si ja t'hem lliurat el keikogi de regal (apartat 14), també descomptem el que ens va costar, {{ kc.adults }} € el d'adult i {{ kc.children }} € l'infantil: el vam comprar per a tu i no es pot retornar, així que te'l quedes.
 - **Si és l'associació qui acaba la teva quota**, per una causa que no sigui l'impagament, o si deixa de fer les classes que la teva quota cobreix, et retornem la part del període pagat que no hagis pogut fer servir.
+- **Si pagues en efectiu**, les devolucions te les fem en efectiu al dojo, en els mateixos terminis.
 - **Desistiment**, durant els 14 dies següents a la inscripció: apartat 12.
 
 ## 9. Canvis de persones o de període

@@ -7,7 +7,7 @@ description: "Las condiciones de la cuota de entrenamiento: qué cubre, cómo y 
 permalink: /condiciones-de-la-cuota/
 lang: es
 i18n-ref: membership-terms-Rb9vF6sJ
-last_modified: 2026-10-15
+last_modified: 2026-10-24
 no_analytics: true
 review_pending: true
 ---
@@ -52,9 +52,13 @@ La cuota se cobra el día 5 de cada mes, de cada trimestre o de cada año, segú
 
 Pagas exactamente el importe publicado: no hay recargo por el medio de pago.
 
+**Si pagas en efectivo**, la cuota se renueva el día 1 y la pagas en el dojo del día 1 al 5 de cada mes, trimestre o año. Al inscribirte, la parte proporcional hasta el día 1 siguiente la pagas en los 5 días posteriores a la inscripción.
+
 ## 5. Medios de pago
 
 Pagas con tarjeta o con domiciliación bancaria SEPA, en una página segura de Stripe, que procesa los pagos por cuenta de la asociación. La asociación no ve ni guarda los datos de tu tarjeta ni de tu cuenta. Con domiciliación, Stripe te avisa antes de cada cargo.
+
+También puedes pagar **en efectivo**, en el dojo, a una persona de la junta. Cada pago queda registrado y te enviamos el recibo por correo; las facturas de todos tus pagos, también de los hechos en efectivo, están en tu área de miembros. Si se pasa el día 5 sin pagar, te enviamos un recordatorio. Puedes pasar de efectivo a tarjeta o domiciliación, o al revés, pidiéndolo en el dojo: el cambio se aplica desde el periodo siguiente.
 
 Si un cobro no puede hacerse, lo reintentamos en los días siguientes y te avisamos. La cuota sigue activa mientras lo resolvemos contigo. Si quedara impagada después de avisarte, podríamos darla por terminada.
 
@@ -75,6 +79,7 @@ Como prevén los estatutos, también es causa de baja no pagar la cuota una vez 
 - **Cuota mensual.** Al darte de baja no hay nada que devolver: la baja se aplica al final del mes ya pagado.
 - **Cuota trimestral o anual.** Si te das de baja antes de que acabe el trimestre o el año, puedes pedirnos que te devolvamos los meses que aún no hayas empezado, sin dar explicaciones. Lo calculamos como si hubieras pagado mes a mes: a lo que pagaste por ese periodo le restamos la cuota mensual vigente de cada mes ya empezado, con el descuento familiar si lo tienes. Por ejemplo, con una cuota anual de 17 años o más, si te das de baja en el cuarto mes del año te devolvemos 360 € − 4 × 39 € = 204 €. Si el resultado es cero o menos, no hay devolución. La cuota termina el día en que lo pides, y te devolvemos el importe en 14 días como máximo, por el mismo medio de pago. Si ya te hemos entregado el keikogi de regalo (apartado 14), descontamos también lo que nos costó, {{ kc.adults }} € el de adulto y {{ kc.children }} € el infantil: lo compramos para ti y no se puede devolver, así que te lo quedas.
 - **Si es la asociación quien termina tu cuota**, por una causa que no sea el impago, o si deja de dar las clases que tu cuota cubre, te devolvemos la parte del periodo pagado que no hayas podido usar.
+- **Si pagas en efectivo**, las devoluciones te las hacemos en efectivo en el dojo, en los mismos plazos.
 - **Desistimiento**, durante los 14 días siguientes a la inscripción: apartado 12.
 
 ## 9. Cambios de personas o de periodo

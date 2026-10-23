@@ -28,6 +28,8 @@ import { ctxFor } from './context.ts';
 import { settle } from './withdraw.ts';
 import { settleLeave } from './leave.ts';
 import * as member from './email/member.ts';
+import { collect, resend } from './cash.ts';
+import { sendCardLink } from './cardlink.ts';
 import { admin, B } from './email/admin.ts';
 
 export type ActionKind =
@@ -35,12 +37,16 @@ export type ActionKind =
   | 'paper_undo' | 'keikogi_undo' | 'sc_undo'                 // the panel's Deshacer
   | 'cancel' | 'resume'                                       // the panel only; no person
   | 'withdraw' | 'withdraw_dismiss'                           // settle a withdrawal, or drop it
-  | 'leave';                                                  // end now, months not started refunded
-export const ACTIONS: ActionKind[] = ['paper', 'keikogi', 'sc_ok', 'sc_no', 'age', 'paper_undo', 'keikogi_undo', 'sc_undo', 'cancel', 'resume', 'withdraw', 'withdraw_dismiss', 'leave'];
-// The ones that change what a family pays, or whether it stays: the panel asks
-// before doing them, and they cannot be undone with one press.
-export const ASKS_FIRST: ActionKind[] = ['sc_no', 'age', 'cancel', 'resume', 'withdraw', 'withdraw_dismiss', 'leave'];
-export const WHOLE: ActionKind[] = ['cancel', 'resume', 'withdraw', 'withdraw_dismiss', 'leave'];
+  | 'leave'                                                   // end now, months not started refunded
+  | 'cash_paid' | 'cash_receipt'                              // cash: Cobrado, and the receipt again
+  | 'to_cash' | 'to_card' | 'method_keep';                    // change how a family pays, or not
+export const ACTIONS: ActionKind[] = ['paper', 'keikogi', 'sc_ok', 'sc_no', 'age', 'paper_undo', 'keikogi_undo', 'sc_undo', 'cancel', 'resume', 'withdraw', 'withdraw_dismiss', 'leave',
+  'cash_paid', 'cash_receipt', 'to_cash', 'to_card', 'method_keep'];
+// The ones that change what a family pays, or whether it stays, or record
+// money: the panel asks before doing them, and they cannot be undone with one
+// press. A cash payment marked in Stripe cannot be unmarked at all.
+export const ASKS_FIRST: ActionKind[] = ['sc_no', 'age', 'cancel', 'resume', 'withdraw', 'withdraw_dismiss', 'leave', 'cash_paid', 'to_cash', 'to_card'];
+export const WHOLE: ActionKind[] = ['cancel', 'resume', 'withdraw', 'withdraw_dismiss', 'leave', 'cash_paid', 'cash_receipt', 'to_cash', 'to_card', 'method_keep'];
 interface ActionPayload { a: ActionKind; s: string; n: number; x: number; id: string }
 
 const LABEL: Partial<Record<ActionKind, string>> = {
@@ -102,7 +108,7 @@ function explain(a: ActionKind): string {
 
 // The history the panel shows beside Stripe's own payments. Slots and dates
 // only: names are resolved when it is read, so nothing personal is kept here.
-export interface LogEntry { t: number; a: ActionKind; n?: number; by: string }
+export interface LogEntry { t: number; a: ActionKind; n?: number; by: string; amt?: number }
 const LOG_TTL = 730 * 86400;
 
 export async function history(env: Env, subId: string): Promise<LogEntry[]> {
@@ -123,6 +129,11 @@ const dropSlot = (list: string | undefined, slot: number) =>
 // `who` is the person the change is about; null for the two that are about
 // the whole membership. `by` is the mailbox that made it, for the history.
 export async function apply(env: Env, st: Stripe, sub: Stripe.Subscription, who: MetaMember | null, a: ActionKind, by = 'email'): Promise<string> {
+  if (a === 'cash_paid') {
+    const r = await collect(env, st, sub, by);
+    await record(env, sub.id, { t: Date.now(), a, by, amt: r.total });
+    return `Cobro en efectivo apuntado: ${money(r.total, 'es')}. La familia tiene el recibo.`;
+  }
   const done = await change(env, st, sub, who, a);
   await record(env, sub.id, { t: Date.now(), a, ...(who ? { n: who.slot } : {}), by });
   return done;
@@ -130,6 +141,25 @@ export async function apply(env: Env, st: Stripe, sub: Stripe.Subscription, who:
 
 async function change(env: Env, st: Stripe, sub: Stripe.Subscription, who: MetaMember | null, a: ActionKind): Promise<string> {
   const meta: Meta = { ...sub.metadata };
+  if (a === 'cash_receipt') {
+    await resend(env, st, sub);
+    return 'Recibo enviado otra vez.';
+  }
+  // Changing how a family pays takes effect on the day that method's month
+  // starts, and the daily job does it (src/cron.ts): to cash on the 1st; to
+  // card on the 5th, once the family has given the card on Stripe's page.
+  if (a === 'to_cash') {
+    await st.subscriptions.update(sub.id, { metadata: { method_next: 'cash' } });
+    return 'Pasa a efectivo desde el próximo día 1.';
+  }
+  if (a === 'to_card') {
+    await sendCardLink(env, sub);
+    return 'Enlace enviado a la familia para dar la tarjeta o la cuenta.';
+  }
+  if (a === 'method_keep') {
+    await st.subscriptions.update(sub.id, { metadata: { method_next: '' } });
+    return 'Cambio de forma de pago anulado.';
+  }
   if (a === 'withdraw') {
     const r = await settle(env, st, sub);
     return `Desistimiento resuelto: devueltos ${money(r.total, 'es')}.`;

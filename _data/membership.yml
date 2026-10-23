@@ -78,16 +78,16 @@ urls:
 ui:
   # The line under the cards on /cuotas/.
   fees_line:
-    es: "La cuota se cobra el día 5, con tarjeta o domiciliación, a través de Stripe. ¿Ya tienes cuota? <a href=\"{url}\">Área de miembros</a>."
-    ca: "La quota es cobra el dia 5, amb targeta o domiciliació, a través de Stripe. Ja tens quota? <a href=\"{url}\">Àrea de membres</a>."
-    en: "The fee is charged on the 5th, by card or direct debit, through Stripe. Already a member? <a href=\"{url}\">Members area</a>."
-    ja: "会費は毎月5日に、カードまたは口座振替でStripeを通じてお支払いいただきます。会員の方は<a href=\"{url}\">会員ページ</a>へ。"
+    es: "La cuota se cobra el día 5, con tarjeta o domiciliación, a través de Stripe, o se paga en efectivo en el dojo del 1 al 5. ¿Ya tienes cuota? <a href=\"{url}\">Área de miembros</a>."
+    ca: "La quota es cobra el dia 5, amb targeta o domiciliació, a través de Stripe, o es paga en efectiu al dojo de l'1 al 5. Ja tens quota? <a href=\"{url}\">Àrea de membres</a>."
+    en: "The fee is charged on the 5th, by card or direct debit, through Stripe, or paid in cash at the dojo from the 1st to the 5th. Already a member? <a href=\"{url}\">Members area</a>."
+    ja: "会費は毎月5日に、カードまたは口座振替でStripeを通じてお支払いいただくか、1日～5日に道場で現金でお支払いいただきます。会員の方は<a href=\"{url}\">会員ページ</a>へ。"
   eyebrow:   { es: "Cuotas · Inscripción", ca: "Quotes · Inscripció", en: "Fees · Sign up", ja: "月謝・入会申し込み" }
   lede:
-    es: "Normalmente te inscribes después de las dos clases de prueba. No hay matrícula, y la cuota se cobra sola el día 5, con tarjeta o domiciliación bancaria, en una página segura de Stripe. Son cuatro pasos y unos tres minutos."
-    ca: "Normalment t'inscrius després de les dues classes de prova. No hi ha matrícula, i la quota es cobra sola el dia 5, amb targeta o domiciliació bancària, en una pàgina segura de Stripe. Són quatre passos i uns tres minuts."
-    en: "People usually sign up after their two trial classes. There is no registration fee, and the fee is charged automatically on the 5th, by card or SEPA direct debit, on a secure Stripe page. Four steps, about three minutes."
-    ja: "通常は2回の体験稽古のあとにお申し込みいただきます。入会金はなく、月謝は毎月5日に、カードまたはSEPA口座振替で、Stripeの安全なページから自動的にお支払いいただきます。4つのステップで、3分ほどです。"
+    es: "Normalmente te inscribes después de las dos clases de prueba. No hay matrícula, y la cuota se cobra sola el día 5, con tarjeta o domiciliación bancaria, en una página segura de Stripe; o la pagas en efectivo en el dojo, del 1 al 5. Son cuatro pasos y unos tres minutos."
+    ca: "Normalment t'inscrius després de les dues classes de prova. No hi ha matrícula, i la quota es cobra sola el dia 5, amb targeta o domiciliació bancària, en una pàgina segura de Stripe; o la pagues en efectiu al dojo, de l'1 al 5. Són quatre passos i uns tres minuts."
+    en: "People usually sign up after their two trial classes. There is no registration fee, and the fee is charged automatically on the 5th, by card or SEPA direct debit, on a secure Stripe page; or you pay it in cash at the dojo, from the 1st to the 5th. Four steps, about three minutes."
+    ja: "通常は2回の体験稽古のあとにお申し込みいただきます。入会金はなく、月謝は毎月5日に、カードまたはSEPA口座振替で、Stripeの安全なページから自動的にお支払いいただくか、1日～5日に道場で現金でお支払いいただきます。4つのステップで、3分ほどです。"
   member:
     es: "¿Ya tienes cuota? <a href=\"{url}\">Ve a tu área de miembros</a> para cambiar la tarjeta, descargar recibos o darte de baja."
     ca: "Ja tens quota? <a href=\"{url}\">Ves a la teva àrea de membres</a> per canviar la targeta, descarregar rebuts o donar-te de baixa."
@@ -154,7 +154,7 @@ ui:
     - { es: "Primero, las dos clases de prueba. Son gratis.", ca: "Primer, les dues classes de prova. Són gratis.", en: "First, the two trial classes. They are free.", ja: "まずは2回の体験稽古から。無料です。" }
     - { es: "Sin matrícula.", ca: "Sense matrícula.", en: "No registration fee.", ja: "入会金はありません。" }
     - { es: "En una familia, la primera persona paga la cuota completa y cada una de las siguientes, 15 € menos al mes.", ca: "En una família, la primera persona paga la quota completa i cadascuna de les següents, 15 € menys al mes.", en: "In a household, the first person pays the full fee and each one after that 15 € less a month.", ja: "家族の場合、1人目は通常料金、2人目以降はひとりにつき月15ユーロ引きです。" }
-    - { es: "Pagas en Stripe con tarjeta o domiciliación SEPA. Aquí no se escribe ningún dato bancario.", ca: "Pagues a Stripe amb targeta o domiciliació SEPA. Aquí no s'escriu cap dada bancària.", en: "You pay on Stripe by card or SEPA direct debit. No bank details are typed on this page.", ja: "お支払いはStripeでカードまたはSEPA口座振替。このページで銀行情報を入力することはありません。" }
+    - { es: "Pagas en Stripe con tarjeta o domiciliación SEPA, o en efectivo en el dojo. Aquí no se escribe ningún dato bancario.", ca: "Pagues a Stripe amb targeta o domiciliació SEPA, o en efectiu al dojo. Aquí no s'escriu cap dada bancària.", en: "You pay on Stripe by card or SEPA direct debit, or in cash at the dojo. No bank details are typed on this page.", ja: "お支払いはStripeでカードまたはSEPA口座振替、または道場で現金。このページで銀行情報を入力することはありません。" }
     - { es: "Te das de baja cuando quieras, desde tu área de miembros.", ca: "Et dones de baixa quan vulguis, des de la teva àrea de membres.", en: "Cancel whenever you like, from your members area.", ja: "退会はいつでも会員ページからできます。" }
   side_contact:
     es: "¿Dudas? <a href=\"mailto:info@aikidomusubi.com\">info@aikidomusubi.com</a> · WhatsApp <a href=\"https://wa.me/34717171177\">717 171 177</a>"
@@ -196,11 +196,23 @@ ui:
     ja: "月払いの場合は{amount}です。"
   when_h: { es: "Cuándo se cobra", ca: "Quan es cobra", en: "When it is charged", ja: "お支払いのタイミング" }
   when_b:
-    es: "Al inscribirte pagas la parte proporcional hasta el día 5, y después la cuota completa cada día 5. Con tarjeta se cobra en el momento; la domiciliación tarda unos días, y Stripe te avisa antes de cada cargo."
-    ca: "En inscriure't pagues la part proporcional fins al dia 5, i després la quota completa cada dia 5. Amb targeta es cobra al moment; la domiciliació triga uns dies, i Stripe t'avisa abans de cada càrrec."
-    en: "When you sign up you pay the share up to the 5th, then the full fee on every 5th. A card is charged at once; a direct debit takes a few days, and Stripe tells you before each one."
-    ja: "申し込み時に次の5日までの日割り分をお支払いいただき、その後は毎回5日に全額をお支払いいただきます。カードはすぐに決済され、口座振替は数日かかります。引き落としの前にStripeからお知らせが届きます。"
+    es: "Al inscribirte pagas la parte proporcional hasta el día 5, y después la cuota completa cada día 5. Con tarjeta se cobra en el momento; la domiciliación tarda unos días, y Stripe te avisa antes de cada cargo. En efectivo, la primera cuota se paga en el dojo en los 5 días siguientes y después del día 1 al 5."
+    ca: "En inscriure't pagues la part proporcional fins al dia 5, i després la quota completa cada dia 5. Amb targeta es cobra al moment; la domiciliació triga uns dies, i Stripe t'avisa abans de cada càrrec. En efectiu, la primera quota es paga al dojo en els 5 dies següents i després del dia 1 al 5."
+    en: "When you sign up you pay the share up to the 5th, then the full fee on every 5th. A card is charged at once; a direct debit takes a few days, and Stripe tells you before each one. In cash, the first payment is made at the dojo within 5 days, then from the 1st to the 5th."
+    ja: "申し込み時に次の5日までの日割り分をお支払いいただき、その後は毎回5日に全額をお支払いいただきます。カードはすぐに決済され、口座振替は数日かかります。引き落としの前にStripeからお知らせが届きます。現金の場合は、最初の分を5日以内に、その後は毎月1日～5日に道場でお支払いいただきます。"
 
+  # How the fee is paid, under the period (decided 23 October 2026).
+  method:          { es: "Forma de pago", ca: "Forma de pagament", en: "Payment method", ja: "お支払い方法" }
+  method_stripe:   { es: "Tarjeta o domiciliación", ca: "Targeta o domiciliació", en: "Card or direct debit", ja: "カード・口座振替" }
+  method_stripe_sub: { es: "Se cobra sola el día 5, a través de Stripe.", ca: "Es cobra sola el dia 5, a través de Stripe.", en: "Collected automatically on the 5th, through Stripe.", ja: "毎月5日にStripeで自動でお支払い。" }
+  method_cash:     { es: "En efectivo, en el dojo", ca: "En efectiu, al dojo", en: "Cash, at the dojo", ja: "道場で現金払い" }
+  method_cash_sub: { es: "Pagas en mano del día 1 al 5 y te enviamos el recibo por correo.", ca: "Pagues en mà del dia 1 al 5 i t'enviem el rebut per correu.", en: "You pay in person from the 1st to the 5th and we email you the receipt.", ja: "毎月1日～5日に直接お支払いいただき、領収書をメールでお送りします。" }
+  cash_h:          { es: "Cómo funciona el pago en efectivo", ca: "Com funciona el pagament en efectiu", en: "How paying in cash works", ja: "現金払いのしくみ" }
+  cash_rules:
+    - { es: "La primera cuota se paga en el dojo en los 5 días siguientes a la inscripción.", ca: "La primera quota es paga al dojo en els 5 dies següents a la inscripció.", en: "The first payment is made at the dojo within 5 days of signing up.", ja: "最初のお支払いは、お申し込みから5日以内に道場で。" }
+    - { es: "Después, del día 1 al 5 de cada periodo, a la persona de la junta que esté en el dojo.", ca: "Després, del dia 1 al 5 de cada període, a la persona de la junta que hi hagi al dojo.", en: "After that, from the 1st to the 5th of each period, to whichever board member is at the dojo.", ja: "その後は各期間の1日～5日に、道場にいる役員にお支払いください。" }
+    - { es: "Cuando lo apunta, te llega el recibo a tu correo, y la factura queda en tu área de miembros.", ca: "Quan ho apunta, et arriba el rebut al correu, i la factura queda a la teva àrea de membres.", en: "Once it is recorded, the receipt comes to your email and the invoice is in your members area.", ja: "記録されると領収書がメールで届き、請求書は会員ページに残ります。" }
+    - { es: "Si se pasa el día 5, te enviamos un recordatorio. Para cambiar a tarjeta o domiciliación, pídelo en el dojo.", ca: "Si passa el dia 5, t'enviem un recordatori. Per canviar a targeta o domiciliació, demana-ho al dojo.", en: "If the 5th goes by, we send you a reminder. To move to card or direct debit, ask at the dojo.", ja: "5日を過ぎた場合はお知らせします。カード・口座振替への変更は道場でお申し出ください。" }
   # Step 3
   s3_sub:
     es: "La persona titular recibe los recibos y los avisos, y es quien entra en el área de miembros."
@@ -257,6 +269,13 @@ ui:
   tl_today_sub:  { es: "los días hasta el {date}", ca: "els dies fins al {date}", en: "the days up to {date}", ja: "{date}までの日割り分" }
   tl_nothing:    { es: "Hoy no se cobra nada", ca: "Avui no es cobra res", en: "Nothing is charged today", ja: "本日のお支払いはありません" }
   tl_withdraw:   { es: "último día para desistir", ca: "últim dia per desistir", en: "last day to withdraw", ja: "クーリングオフ期限" }
+  tl_cash_now:   { es: "Hoy no se cobra nada", ca: "Avui no es cobra res", en: "Nothing is charged today", ja: "本日のお支払いはありません" }
+  tl_cash_now_sub: { es: "pagas en el dojo", ca: "pagues al dojo", en: "you pay at the dojo", ja: "道場でお支払い" }
+  tl_cash_first: { es: "Antes del {by}, unos {amount} en efectivo", ca: "Abans del {by}, uns {amount} en efectiu", en: "By {by}, about {amount} in cash", ja: "{by}までに現金で約{amount}" }
+  tl_cash_full:  { es: "Del {from} al {by}, {amount} en efectivo", ca: "Del {from} al {by}, {amount} en efectiu", en: "{from} to {by}, {amount} in cash", ja: "{from}～{by}に現金で{amount}" }
+  tl_cash_then:  { es: "Después, {amount} del 1 al 5 de cada mes, en el dojo", ca: "Després, {amount} de l'1 al 5 de cada mes, al dojo", en: "Then {amount} from the 1st to the 5th of every month, at the dojo", ja: "以降、毎月1日～5日に道場で{amount}" }
+  tl_cash_then_q: { es: "Después, {amount} del 1 al 5 de {months}, en el dojo", ca: "Després, {amount} de l'1 al 5 de {months}, al dojo", en: "Then {amount} from the 1st to the 5th of {months}, at the dojo", ja: "以降、{months}の1日～5日に道場で{amount}" }
+  method_line:   { es: "Pago: {method}", ca: "Pagament: {method}", en: "Payment: {method}", ja: "お支払い：{method}" }
   tl_first:      { es: "primera cuota completa", ca: "primera quota completa", en: "first full fee", ja: "最初の全額のお支払い" }
   tl_keikogi:    { es: "Después, los keikogi", ca: "Després, els keikogi", en: "Then the keikogi", ja: "その後、稽古着をお渡し" }
   tl_then:       { es: "Después, {amount} cada día 5", ca: "Després, {amount} cada dia 5", en: "Then {amount} on every 5th", ja: "以降、毎回5日に{amount}" }
@@ -292,6 +311,12 @@ ui:
     en: "<b>Data protection.</b> Controller: {org}. Purpose: your enrolment and collecting the fee. Legal basis: the contract. Recipients: Stripe, which processes the payment, with a transfer to the US under the Data Privacy Framework and standard contractual clauses. Your rights: info@aikidomusubi.com. <a href=\"{url}\">More information</a>."
     ja: "<b>個人情報の取り扱い</b>　管理者：{org}。目的：入会手続きと月謝の徴収。根拠：契約。提供先：決済を処理するStripe（EU・米国データプライバシーフレームワークおよび標準契約条項に基づく米国への移転を含む）。権利の行使：info@aikidomusubi.com。<a href=\"{url}\">詳細</a>"
   pay:      { es: "Ir al pago seguro", ca: "Anar al pagament segur", en: "Go to secure payment", ja: "安全なお支払いページへ" }
+  pay_cash: { es: "Confirmar la inscripción", ca: "Confirmar la inscripció", en: "Confirm my signup", ja: "申し込みを確定する" }
+  pay_note_cash:
+    es: "No se cobra nada en línea. Te llega un correo con lo que pagas, cuándo y dónde."
+    ca: "No es cobra res en línia. T'arriba un correu amb el que pagues, quan i on."
+    en: "Nothing is charged online. An email tells you what to pay, when and where."
+    ja: "オンラインでのお支払いはありません。お支払い額・期日・場所をメールでお知らせします。"
   pay_note:
     es: "En Stripe eliges tarjeta o domiciliación y confirmas. Hasta entonces no se cobra nada."
     ca: "A Stripe tries targeta o domiciliació i confirmes. Fins aleshores no es cobra res."
@@ -335,6 +360,7 @@ errors:
   sc_min_age:       { es: "La clase del CxEM Espronceda es a partir de 12 años.", ca: "La classe del CxEM Espronceda és a partir de 12 anys.", en: "The class at CxEM Espronceda is from age 12.", ja: "エスプロンセダの稽古は12歳からです。" }
   sc_monthly_only:  { es: "Con abono municipal la cuota es mes a mes: elige «Mensual».", ca: "Amb abonament municipal la quota és mes a mes: tria «Mensual».", en: "The sports-centre rate is monthly: choose \"Monthly\".", ja: "市立施設の会員料金は月払いのみです。「月額」を選んでください。" }
   period_required:  { es: "Elige cómo pagas.", ca: "Tria com pagues.", en: "Choose a billing period.", ja: "支払い期間を選んでください。" }
+  method_required:  { es: "Elige la forma de pago.", ca: "Tria la forma de pagament.", en: "Choose how you will pay.", ja: "お支払い方法を選んでください。" }
   holder_required:  { es: "Elige quién es titular.", ca: "Tria qui és titular.", en: "Choose the account holder.", ja: "名義人を選んでください。" }
   holder_minor:     { es: "Quien paga tiene que tener 17 años o más.", ca: "Qui paga ha de tenir 17 anys o més.", en: "The account holder must be 17 or over.", ja: "名義人は17歳以上である必要があります。" }
   email_required:   { es: "Escribe el correo electrónico.", ca: "Escriu el correu electrònic.", en: "Enter the email address.", ja: "メールアドレスを入力してください。" }
@@ -388,6 +414,23 @@ thanks:
       ca: "<b>Si has triat trimestre o any</b>, el keikogi t'espera al dojo quan es cobri el primer període complet. T'avisem per correu."
       en: "<b>If you chose a quarter or a year</b>, your keikogi will be waiting at the dojo once the first full period has been paid. We will email you."
       ja: "<b>3か月払い・年払いをお選びの場合</b>、最初の期間のお支払いが済んだら、稽古着を道場でお渡しします。メールでお知らせします。"
+  # After a cash signup (/checkout sends people to #efectivo): no Stripe
+  # receipt, and the first payment to make at the dojo. The other two steps
+  # (the paper form, the keikogi) are the same as above.
+  cash_lede:
+    es: "Gracias. Ya tienes cuota y puedes entrenar desde hoy en todos los espacios que incluye. La primera cuota la pagas en el dojo. Esto es lo que queda:"
+    ca: "Gràcies. Ja tens quota i pots entrenar des d'avui a tots els espais que inclou. La primera quota la pagues al dojo. Això és el que queda:"
+    en: "Thank you. Your membership is active and you can train from today at every space it covers. You pay the first fee at the dojo. This is what is left:"
+    ja: "ありがとうございます。会費のお手続きが完了し、本日から対象のすべての稽古場所で稽古できます。最初の会費は道場でお支払いください。残りの手順は次のとおりです："
+  cash_steps:
+    - es: "<b>Paga la primera cuota en el dojo en los próximos 5 días</b>, en efectivo. El importe y la fecha exacta están en el correo de confirmación. Después, del día 1 al 5 de cada periodo."
+      ca: "<b>Paga la primera quota al dojo en els propers 5 dies</b>, en efectiu. L'import i la data exacta són al correu de confirmació. Després, del dia 1 al 5 de cada període."
+      en: "<b>Pay the first fee at the dojo within the next 5 days</b>, in cash. The amount and the exact date are in the confirmation email. After that, from the 1st to the 5th of each period."
+      ja: "<b>最初の会費は5日以内に道場で現金でお支払いください。</b>金額と期日は確認メールに記載しています。その後は各期間の1日～5日にお支払いください。"
+    - es: "<b>Mira tu correo.</b> Te llega nuestra confirmación, con las condiciones y las fechas, y cada vez que pagues te llegará el recibo. Si no lo ves en unos minutos, revisa el correo no deseado."
+      ca: "<b>Mira el teu correu.</b> T'arriba la nostra confirmació, amb les condicions i les dates, i cada vegada que paguis et arribarà el rebut. Si no el veus d'aquí a uns minuts, revisa el correu brossa."
+      en: "<b>Check your email.</b> Our confirmation is on its way, with the terms and the dates, and every time you pay a receipt will follow. If it has not arrived in a few minutes, look in your spam folder."
+      ja: "<b>メールをご確認ください。</b>規約と日程を記載した確認メールが届きます。お支払いのたびに領収書もお送りします。数分たっても届かない場合は、迷惑メールフォルダをご確認ください。"
   members_h: { es: "Tu área de miembros", ca: "La teva àrea de membres", en: "Your members area", ja: "会員ページ" }
   members_b:
     es: "Para cambiar la tarjeta o la cuenta, descargar recibos o darte de baja. Entras con tu correo y un código."
@@ -419,7 +462,7 @@ members:
   self:
     - { es: "Cambiar la tarjeta o la cuenta bancaria", ca: "Canviar la targeta o el compte bancari", en: "Change your card or bank account", ja: "カード・口座の変更" }
     - { es: "Actualizar el nombre, la dirección o el teléfono", ca: "Actualitzar el nom, l'adreça o el telèfon", en: "Update your name, address or phone", ja: "氏名・住所・電話番号の更新" }
-    - { es: "Descargar los recibos", ca: "Descarregar els rebuts", en: "Download your receipts", ja: "領収書のダウンロード" }
+    - { es: "Descargar las facturas y los recibos, también los de los pagos en efectivo", ca: "Descarregar les factures i els rebuts, també els dels pagaments en efectiu", en: "Download your invoices and receipts, cash payments included", ja: "請求書・領収書のダウンロード（現金払いの分も）" }
     - { es: "Darte de baja, al final del periodo pagado", ca: "Donar-te de baixa, al final del període pagat", en: "Cancel, at the end of the paid period", ja: "退会（お支払い済み期間の終わりに適用）" }
   ask_h:      { es: "Escríbenos y lo hacemos", ca: "Escriu-nos i ho fem", en: "Write to us and we will do it", ja: "ご連絡いただければ対応すること" }
   ask:
@@ -427,6 +470,13 @@ members:
     - { es: "Pasar de mensual a trimestral o anual", ca: "Passar de mensual a trimestral o anual", en: "Switch between monthly, quarterly and annual", ja: "支払い期間の変更" }
     - { es: "Cambiar el correo de la cuota", ca: "Canviar el correu de la quota", en: "Change the email on the membership", ja: "登録メールアドレスの変更" }
     - { es: "La cuota con abono municipal", ca: "La quota amb abonament municipal", en: "The sports-centre rate", ja: "市立施設の会員料金" }
+    - { es: "Pasar de efectivo a tarjeta o domiciliación, o al revés", ca: "Passar d'efectiu a targeta o domiciliació, o al revés", en: "Move from cash to card or direct debit, or the other way round", ja: "現金とカード・口座振替の切り替え" }
+  # Where Stripe sends a cash family after giving a card (src/cardlink.ts).
+  card_ok:
+    es: "<b>Datos guardados.</b> Desde el próximo día 5 la cuota se cobra sola. Ese primer cobro descuenta lo que ya pagaste en efectivo por los días que quedan."
+    ca: "<b>Dades desades.</b> Des del proper dia 5 la quota es cobra sola. Aquest primer cobrament descompta el que ja vas pagar en efectiu pels dies que queden."
+    en: "<b>Details saved.</b> From the next 5th the fee is collected automatically. That first charge deducts what you already paid in cash for the days left."
+    ja: "<b>情報を保存しました。</b>次の5日から会費は自動でお支払いとなります。初回は、現金でお支払い済みの残りの日数分を差し引きます。"
   # Cancelling is self-service, and said so plainly (Juanma, 15 October 2026):
   # the members area is the first way, not a footnote under "write to us".
   leave_h:    { es: "Darte de baja", ca: "Donar-te de baixa", en: "Cancelling", ja: "退会するには" }
@@ -478,3 +528,10 @@ withdrawal:
     - { es: "Cancelamos tu cuota: no habrá más cobros.", ca: "Cancel·lem la teva quota: no hi haurà més cobraments.", en: "We cancel your membership: there will be no further charges.", ja: "会費を解約します。以後の請求はありません。" }
     - { es: "Te devolvemos lo pagado, menos los días transcurridos, en 14 días como máximo y por el mismo medio de pago. Te escribimos con el importe.", ca: "Et retornem el que has pagat, menys els dies transcorreguts, en 14 dies com a màxim i pel mateix mitjà de pagament. T'escrivim amb l'import.", en: "We refund what you paid, less the days that have passed, within 14 days and by the same means. We will write to you with the amount.", ja: "お支払い済みの金額から経過日数分を差し引き、14日以内に同じ方法で返金します。金額はメールでお知らせします。" }
     - { es: "¿Ha sido un error? Escríbenos hoy a <a href=\"mailto:info@aikidomusubi.com\">info@aikidomusubi.com</a>.", ca: "Ha estat un error? Escriu-nos avui a <a href=\"mailto:info@aikidomusubi.com\">info@aikidomusubi.com</a>.", en: "A mistake? Write to <a href=\"mailto:info@aikidomusubi.com\">info@aikidomusubi.com</a> today.", ja: "誤りの場合は、本日中に<a href=\"mailto:info@aikidomusubi.com\">info@aikidomusubi.com</a>までご連絡ください。" }
+
+# /pago/tarjeta on the Worker, when the link cannot be used (src/cardlink.ts).
+card_link:
+  title:   { es: "Pasar a tarjeta o domiciliación", ca: "Passar a targeta o domiciliació", en: "Moving to card or direct debit", ja: "カード・口座振替への変更" }
+  invalid: { es: "Este enlace no es válido. Pide uno nuevo en el dojo.", ca: "Aquest enllaç no és vàlid. Demana'n un de nou al dojo.", en: "This link is not valid. Ask at the dojo for a new one.", ja: "このリンクは無効です。道場で新しいリンクをお申し出ください。" }
+  expired: { es: "Este enlace ha caducado. Pide uno nuevo en el dojo.", ca: "Aquest enllaç ha caducat. Demana'n un de nou al dojo.", en: "This link has expired. Ask at the dojo for a new one.", ja: "このリンクの有効期限が切れています。道場で新しいリンクをお申し出ください。" }
+  done:    { es: "Ya está hecho: tu cuota pasa a tarjeta o domiciliación el próximo día 5.", ca: "Ja està fet: la teva quota passa a targeta o domiciliació el proper dia 5.", en: "This is already done: your fee moves to card or direct debit on the next 5th.", ja: "手続きは完了しています。次の5日からカード・口座振替でのお支払いになります。" }

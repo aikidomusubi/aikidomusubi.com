@@ -16,6 +16,7 @@ import { isoDay } from './data.ts';
 import { refundFor, type RefundLine } from './refund.ts';
 import { ctxFor } from './context.ts';
 import * as member from './email/member.ts';
+import { creditCash, isCash, voidOpen } from './cash.ts';
 
 export const withdrawalAt = (sub: Stripe.Subscription) => {
   const at = Date.parse(sub.metadata?.withdrawal_at ?? '');
@@ -28,7 +29,11 @@ export const inWindow = (sub: Stripe.Subscription, at: number) =>
 
 // A payment still being confirmed (a first SEPA debit takes days) cannot be
 // refunded yet, and would be collected after the cancellation: wait for it.
+//
+// Not for cash: an unpaid cash invoice is not on its way, it is simply owed,
+// and ending the membership voids it (src/cash.ts).
 export function pendingPayment(sub: Stripe.Subscription): boolean {
+  if (isCash(sub)) return false;
   const inv = sub.latest_invoice && typeof sub.latest_invoice !== 'string' ? sub.latest_invoice : null;
   return Boolean(inv && inv.status === 'open' && inv.amount_due > 0);
 }
@@ -50,8 +55,14 @@ export async function settle(env: Env, st: Stripe, sub: Stripe.Subscription): Pr
   if (at == null) throw new Error('no withdrawal on this membership');
   if (pendingPayment(sub)) throw new Error('a payment is still being confirmed');
   const r = await refundFor(st, sub.id, at);
+  const cash = isCash(sub);
   for (const l of r.lines) {
     if (l.refund <= 0) continue;
+    // Cash goes back at the dojo; Stripe keeps the record as a credit note.
+    if (cash) {
+      await creditCash(st, l.invoice, l.refund, 'Desistimiento: se devuelve en efectivo en el dojo', `wd-${sub.id}-${l.invoice}`);
+      continue;
+    }
     await st.refunds.create({
       ...(await paymentOf(st, l.invoice)),
       amount: Math.round(l.refund * 100),
@@ -60,8 +71,9 @@ export async function settle(env: Env, st: Stripe, sub: Stripe.Subscription): Pr
     }, { idempotencyKey: `wd-${sub.id}-${l.invoice}` });
   }
   await st.subscriptions.update(sub.id, { metadata: { withdrawal_done: isoDay(Date.now()), withdrawal_refund: r.total.toFixed(2) } });
+  if (cash) await voidOpen(st, sub.id);
   await st.subscriptions.cancel(sub.id, { prorate: false, invoice_now: false, cancellation_details: { comment: 'Desistimiento' } });
   const ctx = ctxFor(env, sub);
-  if (ctx) await member.withdrawalDone(ctx, { amount: r.total, atMs: at });
+  if (ctx) await member.withdrawalDone(ctx, { amount: r.total, atMs: at, cash });
   return r;
 }

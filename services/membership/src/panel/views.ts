@@ -11,6 +11,7 @@ import type { ActionKind, LogEntry } from '../actions.ts';
 import { CSS } from './style.ts';
 import { PERIOD, UNIT, ago, feeLabel, short, type Family, type Person, type Task, type TaskKind } from './model.ts';
 import type { Session } from './auth.ts';
+import { cashBy as cashByMs } from '../email/member.ts';
 
 // ---------------------------------------------------------------------------
 // Icons: simple strokes, drawn here so the panel loads nothing from elsewhere.
@@ -30,7 +31,10 @@ const PATHS: Record<string, string> = {
   info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/>',
   alert: '<path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17h.01"/>',
   left: '<path d="M15 5l-7 7 7 7"/>',
-  withdrawal: '<path d="M9 14L4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 0 12h-3"/>'
+  withdrawal: '<path d="M9 14L4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 0 12h-3"/>',
+  cash: '<rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6.5 9.5v.01M17.5 14.5v.01"/>',
+  swap: '<path d="M4 7h13l-3-3M20 17H7l3 3"/>',
+  mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>'
 };
 export const icon = (n: string) =>
   `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${PATHS[n]}</svg>`;
@@ -129,7 +133,12 @@ export function toast(f: Flash | null, c: Ctx): string {
     resume: 'Baja anulada: la cuota sigue como antes.',
     withdraw: `Desistimiento resuelto${fam?.refunded != null ? `: devueltos ${m(fam.refunded)}` : ''}. La cuota ha terminado y la familia tiene el correo con el importe.`,
     withdraw_dismiss: 'Desistimiento quitado de la lista. La cuota sigue.',
-    leave: `Baja hecha${fam?.refunded != null ? `: devueltos ${m(fam.refunded)}` : ''}. La cuota ha terminado y la familia tiene el correo con el importe.`
+    leave: `Baja hecha${fam?.refunded != null ? `: devueltos ${m(fam.refunded)}` : ''}. La cuota ha terminado y la familia tiene el correo con el importe.`,
+    cash_paid: `Cobro en efectivo apuntado${fam ? ` para ${fam.name}` : ''}. La familia tiene el recibo en su correo.`,
+    cash_receipt: 'Recibo enviado otra vez a la familia.',
+    to_cash: 'Hecho: pasa a pagar en efectivo desde el próximo día 1. La familia recibirá el aviso de renovación con las fechas.',
+    to_card: 'Enlace enviado. Cuando la familia dé la tarjeta o la cuenta en Stripe, pasa a cobro automático el día 5 siguiente.',
+    method_keep: 'Cambio de forma de pago anulado: sigue como estaba.'
   };
   if (!(f.a in text)) return '';
   const undo = UNDO[f.a as ActionKind];
@@ -150,6 +159,7 @@ export function greeting(now: number, name: string): string {
 
 interface GroupDef { title: string; sub: string }
 export const GROUPS: Record<TaskKind, GroupDef> = {
+  cash: { title: 'Cuotas en efectivo por cobrar', sub: 'Se pagan en el dojo del día 1 al 5; la primera, en los 5 días después de inscribirse. Cuando te paguen, pulsa Cobrado: queda apuntado en Stripe y la familia recibe el recibo por correo.' },
   withdrawal: { title: 'Desistimientos', sub: 'Hay que resolverlos antes de 14 días desde la solicitud. El importe ya está calculado: un botón devuelve el dinero, termina la cuota y escribe a la familia.' },
   paper: { title: 'Hojas de inscripción por recoger', sub: 'En papel y firmadas, una por persona. Las de menores, con la firma de madre, padre o tutor.' },
   keikogi: { title: 'Keikogi para entregar', sub: 'Ya se ha cobrado el primer trimestre o año completo y han pasado los 14 días para desistir.' },
@@ -157,7 +167,7 @@ export const GROUPS: Record<TaskKind, GroupDef> = {
   age: { title: 'Cumplen 17', sub: 'Pasan a la cuota de 17 años o más desde el próximo cobro. La familia recibe un correo.' },
   money: { title: 'Cobros que no han pasado', sub: 'Stripe lo reintenta solo y la familia ya tiene un correo. Si no se resuelve, habla con ella.' }
 };
-const ORDER: TaskKind[] = ['withdrawal', 'paper', 'keikogi', 'sc', 'age', 'money'];
+const ORDER: TaskKind[] = ['withdrawal', 'cash', 'paper', 'keikogi', 'sc', 'age', 'money'];
 
 const famLink = (f: Family, text: string) => `<a href="/panel/miembros?id=${esc(f.id)}">${esc(text)}</a>`;
 const inFamily = (f: Family) => (f.people.length > 1 ? `${f.name} · ` : '');
@@ -168,6 +178,7 @@ function taskRow(t: Task, c: Ctx): string {
   let who = p ? p.name : f.name;
   let what = '';
   let btns = '';
+  let late = false;
   switch (t.kind) {
     case 'paper':
       what = `${inFamily(f)}${p!.cat === 'youth' ? 'menor de edad · ' : ''}inscripción ${ago(f.created)}`;
@@ -197,6 +208,14 @@ function taskRow(t: Task, c: Ctx): string {
           + askBtn(c, 'withdraw_dismiss', f.id, null, 'Quitar de la lista…', 'alt', '', `el desistimiento de ${f.name}`);
       }
       break;
+    case 'cash': {
+      const d = f.cashDue!;
+      who = f.name;
+      what = `${d.first ? 'Primera cuota' : PERIOD[f.period]} · ${m(d.amount)} · ${d.late ? `tocaba hasta el ${short(d.by)}` : d.first ? `antes del ${short(d.by + 86400000)} · inscripción ${ago(f.created)}` : `hasta el ${short(d.by)}`}`;
+      late = d.late;
+      btns = askBtn(c, 'cash_paid', f.id, null, 'Cobrado…', '', 'cash', f.name);
+      break;
+    }
     case 'money':
       who = f.name;
       what = `${f.failedAmount != null ? m(f.failedAmount) : ''}${f.method ? ` · ${f.method}` : ''}`;
@@ -204,7 +223,7 @@ function taskRow(t: Task, c: Ctx): string {
       break;
   }
   return `<li class="task"><span class="av" aria-hidden="true">${esc(initials(p ? p.name : f.name))}</span>
-<div class="tx"><b>${famLink(f, who)}</b><span>${esc(what)}</span></div><div class="btns">${btns}</div></li>`;
+<div class="tx"><b>${famLink(f, who)}</b>${late ? '<span class="late">Con retraso</span>' : ''}<span>${esc(what)}</span></div><div class="btns">${btns}</div></li>`;
 }
 
 let STRIPE_BASE = 'https://dashboard.stripe.com/test/';
@@ -240,11 +259,12 @@ ${body}`;
 }
 
 // ---------------------------------------------------------------------------
-export type Filter = 'todos' | 'pendiente' | 'cobros' | 'bajas' | 'abono' | 'antiguos';
+export type Filter = 'todos' | 'pendiente' | 'cobros' | 'efectivo' | 'bajas' | 'abono' | 'antiguos';
 export const FILTERS: [Filter, string, (f: Family, t: Task[]) => boolean][] = [
   ['todos', 'Todos', () => true],
   ['pendiente', 'Con algo pendiente', (f, t) => t.some((x) => x.fam.id === f.id)],
-  ['cobros', 'Cobros pendientes', (f) => f.status === 'failed'],
+  ['cobros', 'Cobros pendientes', (f) => f.status === 'failed' || Boolean(f.cashDue?.late)],
+  ['efectivo', 'Pagan en efectivo', (f) => f.cash],
   ['bajas', 'Bajas en curso', (f) => Boolean(f.endsAt)],
   ['abono', 'Con abono municipal', (f) => f.people.some((p) => p.rate === 'sc')],
   // Read from the former memberships, not the current ones: see membersPage.
@@ -261,6 +281,7 @@ function famChips(f: Family): string {
   const out: string[] = [statusChip(f, 'li')];
   if (f.withdrawalAt) out.unshift('<li class="chip bad">Desistimiento por resolver</li>');
   if (f.before.length) out.push('<li class="chip info">Vuelve</li>');
+  if (f.cash) out.push(f.cashDue ? `<li class="chip ${f.cashDue.late ? 'bad' : 'todo'}">Efectivo: ${f.cashDue.late ? 'con retraso' : 'por cobrar'}</li>` : '<li class="chip info">Efectivo</li>');
   const count = (pred: (p: Person) => boolean) => f.people.filter(pred).length;
   const paper = count((p) => p.paper === 'due');
   const kei = count((p) => p.keikogi === 'ready');
@@ -283,7 +304,7 @@ function statusChip(f: Family, tag = 'span') {
 function famMeta(f: Family) {
   const ppl = `${f.people.length} ${f.people.length === 1 ? 'persona' : 'personas'}`;
   if (f.ended) return `${PERIOD[f.period]} · ${ppl} · de ${short(f.created)} a ${short(f.ended)}`;
-  const when = f.endsAt ? `termina el ${short(f.endsAt)}` : `próximo cobro ${short(f.next)}`;
+  const when = f.endsAt ? `termina el ${short(f.endsAt)}` : f.cash ? `próxima cuota del ${short(f.next)} al ${short(cashByMs(f.next))}` : `próximo cobro ${short(f.next)}`;
   return `${PERIOD[f.period]} · ${m(f.total)} · ${ppl} · ${when}`;
 }
 
@@ -363,7 +384,12 @@ const ACT_TEXT: Record<ActionKind, (who: string) => string> = {
   resume: () => 'Baja anulada',
   withdraw: () => 'Desistimiento resuelto: dinero devuelto y cuota terminada',
   withdraw_dismiss: () => 'Desistimiento quitado de la lista',
-  leave: () => 'Baja con devolución de los meses no empezados'
+  leave: () => 'Baja con devolución de los meses no empezados',
+  cash_paid: () => 'Cobrado en efectivo',
+  cash_receipt: () => 'Recibo reenviado',
+  to_cash: () => 'Pasará a efectivo el día 1',
+  to_card: () => 'Enlace enviado para pasar a tarjeta o domiciliación',
+  method_keep: () => 'Cambio de forma de pago anulado'
 };
 
 interface Event { t: number; html: string; cls: string }
@@ -375,13 +401,22 @@ export function historyOf(d: Detail): Event[] {
     const amt = inv.amount_due / 100;
     if (!amt) continue;
     const paidAt = inv.status_transitions?.paid_at;
-    if (inv.status === 'paid' && paidAt) {
-      ev.push({ t: paidAt * 1000, cls: 'g', html: `${inv.billing_reason === 'subscription_create' ? 'Primer cobro, hasta el primer día 5' : 'Cobrado'} · ${esc(m(amt))}` });
+    if (inv.status === 'paid' && inv.metadata?.cash === 'true') {
+      const by = inv.metadata.cash_by ?? '';
+      const who = by ? (d.names.get(by) || by.split('@')[0] + '@') : '';
+      ev.push({ t: Date.parse(inv.metadata.cash_at ?? '') || (paidAt ?? 0) * 1000, cls: 'g',
+        html: `<b>Cobrado en efectivo</b> · ${esc(m(amt))}${inv.number ? ` · recibo ${esc(inv.number)}` : ''}${who ? `<small> · ${esc(who)}</small>` : ''}` });
+    } else if (inv.status === 'paid' && paidAt) {
+      ev.push({ t: paidAt * 1000, cls: 'g', html: `${inv.billing_reason === 'subscription_create' ? (f.cash ? 'Primera cuota' : 'Primer cobro, hasta el primer día 5') : 'Cobrado'} · ${esc(m(amt))}` });
+    } else if (inv.status === 'open' && f.cash) {
+      ev.push({ t: (inv.created ?? 0) * 1000, cls: '', html: `Cuota en efectivo por cobrar · ${esc(m(amt))}` });
     } else if (inv.status === 'open' && (inv.attempt_count ?? 0) > 0) {
       ev.push({ t: (inv.created ?? 0) * 1000, cls: 'r', html: `<b>Cobro no pasado</b> · ${esc(m(amt))} · ${inv.attempt_count} ${inv.attempt_count === 1 ? 'intento' : 'intentos'}` });
     }
   }
   for (const e of d.log) {
+    // A cash payment is already in the list, from its invoice, with the number.
+    if (e.a === 'cash_paid') continue;
     const p = e.n ? f.people.find((x) => x.slot === e.n) : null;
     const by = e.by === 'email' ? 'desde el correo' : e.by === 'automático' ? 'automático' : (d.names.get(e.by) || e.by.split('@')[0] + '@');
     const text = ACT_TEXT[e.a]?.(p?.first ?? 'una persona') ?? e.a;
@@ -402,21 +437,33 @@ function detailPanel(d: Detail, c: Ctx, filter: Filter, q: string): string {
     ...(f.refunded != null ? [['Devuelto', m(f.refunded)] as [string, string]] : [])
   ] : [
     ['Periodo', `${PERIOD[f.period]} · ${m(f.total)}`],
-    [f.endsAt ? 'Termina' : 'Próximo cobro', short(f.endsAt ?? f.next)],
+    f.endsAt ? ['Termina', short(f.endsAt)]
+      : f.cash ? ['Próxima cuota', `del ${short(f.next)} al ${short(cashByMs(f.next))}`] : ['Próximo cobro', short(f.next)],
     ...(f.method ? [['Pago', f.method] as [string, string]] : []),
+    ...(f.methodNext ? [['Cambio', f.methodNext === 'cash' ? `Pasa a efectivo el día 1` : 'Pasa a tarjeta o domiciliación el día 5'] as [string, string]] : []),
   ];
   const leave = f.ended ? ''
     : f.withdrawalAt && f.withdrawalInWindow ? askBtn(c, 'withdraw', f.id, null, 'Resolver el desistimiento…', 'warn', 'withdrawal')
     : (f.endsAt ? askBtn(c, 'resume', f.id, null, 'Anular la baja…', 'alt', 'door')
       : askBtn(c, 'cancel', f.id, null, `Dar de baja al final del ${periodWordOf(f)}…`, 'warn', 'door'))
       + (f.canLeaveEarly ? askBtn(c, 'leave', f.id, null, 'Baja ahora, devolviendo los meses no empezados…', 'warn', 'money') : '');
+  // How the family pays: Cobrado and the receipt for cash, and changing
+  // method, which waits for that method's day (see src/cash.ts).
+  const hasCashPaid = d.invoices.some((i) => i.status === 'paid' && i.metadata?.cash === 'true');
+  const pay = f.ended ? '' : [
+    f.cashDue ? askBtn(c, 'cash_paid', f.id, null, `Cobrado: ${m(f.cashDue.amount)}…`, '', 'cash') : '',
+    hasCashPaid ? actBtn(c, 'cash_receipt', f.id, null, 'Reenviar el último recibo', 'alt', 'mail') : '',
+    f.methodNext ? actBtn(c, 'method_keep', f.id, null, 'Anular el cambio de forma de pago', 'alt', 'swap')
+      : f.cash ? askBtn(c, 'to_card', f.id, null, 'Pasar a tarjeta o domiciliación…', 'alt', 'swap')
+      : askBtn(c, 'to_cash', f.id, null, 'Pasar a pago en efectivo…', 'alt', 'swap')
+  ].join('');
   return `<section class="panel" aria-labelledby="fam-h">
 <div class="ph"><a class="back" href="/panel/miembros${backQs ? '?' + esc(backQs) : ''}">${icon('left')}Volver a la lista</a>
 <h2 id="fam-h">${esc(f.name)}</h2><p>${contact}</p></div>
 ${banner(f)}<div class="pb"><h3>${f.ended ? 'Quién entrenaba' : 'Quién entrena'}</h3><ul class="people">${f.people.map((p) => personRow(f, p, c)).join('')}</ul>
 <h3>Cuota</h3><dl class="kv">${rows.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}<dt>Estado</dt><dd>${statusChip(f)}</dd></dl>
 <h3>Historia, lo último arriba</h3><ul class="tl">${hist}</ul></div>
-<div class="actions">${leave}${stripeLink(stripeUrl(f.id), 'Pagos y recibos en Stripe')}
+<div class="actions">${pay}${leave}${stripeLink(stripeUrl(f.id), 'Pagos y recibos en Stripe')}
 ${f.ended ? '<p>Si vuelve, se inscribe en la web con el mismo correo, y su historia sigue en Stripe.</p>' : '<p>Añadir o quitar personas, o cambiar de periodo, recalcula la cuota de toda la familia: de momento lo hace quien mantiene la web. Pásale el nombre de la familia y lo que piden.</p>'}</div>
 </section>`;
 }
@@ -437,6 +484,9 @@ function banner(f: Family): string {
   } else if (f.endsAt) {
     items.push(['info', `Baja: la cuota termina el ${short(f.endsAt)}. Hasta entonces pueden seguir entrenando, y después no se cobra nada más.`]);
   }
+  if (f.cashDue) items.push([f.cashDue.late ? 'bad' : 'info', f.cashDue.late
+    ? `Paga en efectivo y tiene ${m(f.cashDue.amount)} por pagar desde el ${short(f.cashDue.by)}. Ya ha recibido un recordatorio; habla con la familia en su próxima clase.`
+    : `Paga en efectivo: ${m(f.cashDue.amount)} por cobrar, hasta el ${short(f.cashDue.by)}. Cuando te paguen, pulsa Cobrado, abajo.`]);
   if (f.status === 'failed') items.push(['bad', `Cobro pendiente${f.failedAmount != null ? ` de ${m(f.failedAmount)}` : ''}. Stripe lo reintenta; si no pasa, habla con la familia.`]);
   if (f.before.length) items.push(['info', `Ya fue miembro ${f.before.map(span).join(' y ')}. No recibe otro keikogi: es uno por persona.`]);
   return items.map(([k, t]) => `<p class="banner ${k}">${icon(k === 'bad' ? 'alert' : 'info')}<span>${esc(t)}</span></p>`).join('');
@@ -447,7 +497,8 @@ const periodWordOf = (f: Family) => ({ monthly: 'mes', quarterly: 'trimestre', a
 // ---------------------------------------------------------------------------
 export interface RefundView { lines: { start: number; end: number; paid: number; keep: number; refund: number }[]; total: number; pending: boolean }
 export interface LeaveView { applies: boolean; paid: number; start: number; end: number; months: number; started: number; monthly: number; keikogi: number; keikogiCount: number; keep: number; refund: number }
-export interface Confirm { a: ActionKind; fam: Family; person: Person | null; before?: number; after?: number; totalBefore?: number; totalAfter?: number; refund?: RefundView; leave?: LeaveView }
+export interface CashView { lines: { number: string | null; amount: number; start: number; end: number; first: boolean }[]; total: number }
+export interface Confirm { a: ActionKind; fam: Family; person: Person | null; before?: number; after?: number; totalBefore?: number; totalAfter?: number; refund?: RefundView; leave?: LeaveView; cash?: CashView }
 
 export function confirmPage(c: Ctx, x: Confirm): string {
   const f = x.fam;
@@ -470,7 +521,7 @@ ${f.people.length > 1 ? `<div><span>Total de la familia</span><b>${esc(m(x.total
       text = `Pidieron desistir el <b>${esc(short(f.withdrawalAt!))}</b>. Pagan los días hasta esa fecha y se les devuelve el resto, ya calculado; aunque lo resuelvas otro día, el importe es el mismo. La cuota termina ahora, no habrá más cobros, y la familia recibe un correo con el importe.`;
       extra = `<div class="sum">${r.lines.map((l) => `<div><span>Cobro del ${esc(short(l.start))}: ${esc(m(l.paid))}, se quedan ${esc(m(l.keep))}</span><b>${esc(m(l.refund))}</b></div>`).join('')}
 <div class="tot"><span>Se devuelve</span><b>${esc(m(r.total))}</b></div></div>
-<p class="note">Se devuelve por el mismo medio de pago. Con domiciliación bancaria tarda unos días en verse en su cuenta.</p>`;
+<p class="note">${f.cash ? 'Paga en efectivo: el dinero se le devuelve <b>en efectivo en el dojo</b>, y en Stripe queda apuntada la devolución. Si debía alguna cuota, se anula.' : 'Se devuelve por el mismo medio de pago. Con domiciliación bancaria tarda unos días en verse en su cuenta.'}</p>`;
       yes = r.total > 0 ? `Sí, devolver ${m(r.total)} y terminar` : 'Sí, terminar la cuota'; cls = 'warn';
       break;
     }
@@ -488,10 +539,36 @@ ${f.people.length > 1 ? `<div><span>Total de la familia</span><b>${esc(m(x.total
 <div><span>${q.started} ${q.started === 1 ? 'mes empezado' : 'meses empezados'} × ${esc(m(q.monthly))} al mes</span><b>− ${esc(m(Math.min(q.paid, q.started * q.monthly)))}</b></div>
 ${q.keikogi > 0 ? `<div><span>${q.keikogiCount} ${q.keikogiCount === 1 ? 'keikogi ya entregado' : 'keikogi ya entregados'}</span><b>− ${esc(m(q.keikogi))}</b></div>` : ''}
 <div class="tot"><span>Se devuelve</span><b>${esc(m(q.refund))}</b></div></div>
-<p class="note">Se devuelve por el mismo medio de pago. ${q.keikogi > 0 ? 'Los keikogi entregados se descuentan a lo que costaron, porque no se pueden devolver; se los quedan.' : 'Si se hubiera entregado algún keikogi, se descontaría lo que costó.'}</p>`;
+<p class="note">${f.cash ? 'Paga en efectivo: se le devuelve <b>en efectivo en el dojo</b>, y en Stripe queda apuntada la devolución.' : 'Se devuelve por el mismo medio de pago.'} ${q.keikogi > 0 ? 'Los keikogi entregados se descuentan a lo que costaron, porque no se pueden devolver; se los quedan.' : 'Si se hubiera entregado algún keikogi, se descontaría lo que costó.'}</p>`;
       yes = q.refund > 0 ? `Sí, dar de baja y devolver ${m(q.refund)}` : 'Sí, dar de baja ahora'; cls = 'warn';
       break;
     }
+    case 'cash_paid': {
+      const v = x.cash!;
+      const backHref = c.back === 'm' ? `/panel/miembros?id=${esc(f.id)}` : '/panel/';
+      if (!v.lines.length) {
+        return `<div class="sheet" role="group" aria-labelledby="ask-h"><h1 id="ask-h">No hay nada por cobrar</h1>
+<p>Esta familia no tiene ninguna cuota en efectivo pendiente: o ya está apuntada, o todavía no ha empezado el mes. Si te han pagado por adelantado, apúntalo a partir del día 1, cuando la cuota ya exista.</p>
+<a class="btn alt big" href="${backHref}">Volver</a></div>`;
+      }
+      title = `¿Has cobrado ${m(v.total)} en efectivo de ${f.name}?`;
+      text = `${v.lines.length > 1 ? `Son <b>${v.lines.length} cuotas</b> pendientes, y se apuntan todas.` : v.lines[0].first ? 'Es la <b>primera cuota</b>, por los días hasta el primer día 1.' : `Cuota ${esc(PERIOD[f.period].toLowerCase())}.`} Al confirmar queda apuntada como pagada en Stripe y ${esc(f.holder.split(' ')[0] || 'la familia')} recibe el recibo en <b>${esc(f.email)}</b>.`;
+      extra = `<div class="sum">${v.lines.map((l) => `<div><span>${l.first ? 'Primera cuota' : 'Cuota'}, del ${esc(short(l.start))} al ${esc(short(l.end - 86400000))}</span><b>${esc(m(l.amount))}</b></div>`).join('')}
+<div class="tot"><span>Total en efectivo</span><b>${esc(m(v.total))}</b></div></div>
+<p class="note">Cuenta el dinero con la persona delante antes de confirmar. Un cobro apuntado no se borra desde aquí: si te equivocas, avisa a quien mantiene la web.</p>`;
+      yes = 'Sí, cobrado: enviar el recibo';
+      break;
+    }
+    case 'to_cash':
+      title = `¿Pasar a ${f.name} a pago en efectivo?`;
+      text = `Desde el próximo <b>día 1</b> la cuota ya no se cobra sola: la familia la paga en el dojo del 1 al 5 de cada ${periodWordOf(f)} y recibe el recibo cuando la apuntes. Lo que ya pagaron con ${esc(f.method.toLowerCase() || 'tarjeta')} por los días que quedan se descuenta de esa primera cuota en efectivo.`;
+      yes = 'Sí, pasar a efectivo';
+      break;
+    case 'to_card':
+      title = `¿Pasar a ${f.name} a tarjeta o domiciliación?`;
+      text = `La familia recibe en <b>${esc(f.email)}</b> un enlace para dar la tarjeta o la cuenta en la página de Stripe; tú no ves los datos. Desde el <b>día 5</b> siguiente la cuota se cobra sola ese día, descontando lo ya pagado en efectivo. Si aún deben algo en efectivo, el cambio espera a que lo apuntes.`;
+      yes = 'Sí, enviar el enlace';
+      break;
     case 'withdraw_dismiss':
       title = '¿Quitar el desistimiento de Pendiente?';
       text = 'Hazlo solo si la familia ha dicho que fue un error, o si ya lo habéis resuelto de otra forma. La cuota sigue como estaba y no se devuelve nada.';
@@ -553,8 +630,15 @@ export function messagePage(title: string, text: string, link = '/panel/'): stri
 
 // ---------------------------------------------------------------------------
 const FAQ: [string, string][] = [
+  ['¿Cómo funciona el pago en efectivo?',
+    `<p>Hay familias que pagan la cuota en mano, en el dojo, en lugar de con tarjeta o domiciliación. Pagan <b>del día 1 al 5</b> de cada mes (o trimestre, o año); la primera vez, en los 5 días después de inscribirse.</p>
+<p>Cuando alguien te pague, cuenta el dinero con la persona delante y pulsa <b>Cobrado…</b>: en «Pendiente», grupo «Cuotas en efectivo por cobrar», o en su ficha. Te enseña el importe, que sale de Stripe. Al confirmar queda apuntado y la familia recibe el recibo por correo. <b>No se puede deshacer desde aquí</b>: si te equivocas, avisa a info@.</p>
+<p>Si alguien te paga <b>antes del día 1</b>, guarda el dinero y apúntalo a partir del día 1, cuando la cuota ya exista.</p>
+<p>Si pasa el día 5 sin pagar, la familia recibe un recordatorio el día 6 y sale como <b>Con retraso</b>. No se da de baja a nadie sola: habla con la familia.</p>
+<p>Para cambiar de efectivo a tarjeta o domiciliación, o al revés, abre la familia y usa el botón de abajo. El cambio se aplica el día 1 (a efectivo) o el día 5 (a tarjeta), y lo ya pagado se descuenta.</p>`],
   ['¿Qué significa cada grupo de «Pendiente»?',
-    `<p><b>Hojas de inscripción:</b> cada persona que se inscribe en línea tiene que entregar además la hoja en papel, firmada. Cuando la tengas, pulsa <b>Recibida</b>.</p>
+    `<p><b>Cuotas en efectivo:</b> familias que pagan en mano y tienen la cuota por pagar. Cuando te paguen, <b>Cobrado</b>.</p>
+<p><b>Hojas de inscripción:</b> cada persona que se inscribe en línea tiene que entregar además la hoja en papel, firmada. Cuando la tengas, pulsa <b>Recibida</b>.</p>
 <p><b>Keikogi:</b> quien se inscribe por trimestre o por año tiene keikogi, una vez cobrado el primer periodo completo y pasados los 14 días para desistir. La familia ya ha recibido un correo que le pide las tallas. Cuando se lo des, pulsa <b>Entregado</b>.</p>
 <p><b>Abonos municipales:</b> quien paga la cuota con abono del polideportivo tiene que enseñar el carné. Si es válido, <b>Comprobado</b>; si no, <b>No es válido</b>, y pasa a la cuota general.</p>
 <p><b>Cumplen 17:</b> aparece antes del cobro en que cambia la cuota. <b>Aplicar y avisar</b> la cambia y avisa a la familia.</p>

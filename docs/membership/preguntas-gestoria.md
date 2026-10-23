@@ -10,7 +10,7 @@
 
 ## Qué cambia
 
-Desde el 1 de enero de 2027 los socios pagarán la cuota en línea, con tarjeta o domiciliación SEPA, a través de **Stripe** (Stripe Payments Europe Ltd., Irlanda). Hasta ahora se cobraba por remesa bancaria.
+Desde el 1 de enero de 2027 los socios pagarán la cuota en línea, con tarjeta o domiciliación SEPA, a través de **Stripe** (Stripe Payments Europe Ltd., Irlanda), o en efectivo en el dojo (ver «Pago en efectivo», abajo). Hasta ahora se cobraba por remesa bancaria.
 
 - **Cuotas:** mensual de 39 € (17 años o más) o 29 € (hasta 16). También hay cuota trimestral y anual con descuento, descuento familiar, y una cuota reducida para quien tiene abono de un polideportivo municipal.
 - **Documentos de Stripe:** por cada cobro, Stripe genera automáticamente un documento que llama "factura" (*invoice*) y un recibo.
@@ -56,4 +56,14 @@ Desde el 1 de enero de 2027 los socios pagarán la cuota en línea, con tarjeta 
 16. Si en algún momento compensamos a instructores o colaboradores, ¿qué obligaciones tendríamos (retenciones, modelos 111 y 190)?
 17. **Cambio de nombre:** los estatutos de 2022, inscritos el 7 de marzo de 2023, cambiaron la denominación de "Associació Cultural Musubi Aikido" a "**Associació Aikido Musubi**". ¿Está actualizado el nombre en el censo de la AEAT (modelo 036)? ¿Hay que comunicarlo a algún otro organismo?
 
-Gracias. Lo que más nos urge, por la fecha de inicio: **las preguntas 1, 6, 8, 9 y 10**.
+### Pago en efectivo
+
+Además de tarjeta y domiciliación, aceptaremos el pago de la cuota **en efectivo**, en el dojo, del día 1 al 5 de cada mes, trimestre o año. Cada pago en efectivo queda registrado en Stripe como factura pagada "fuera de Stripe", con su número, y el socio recibe un recibo por correo con ese número y el enlace a la factura en PDF. Las devoluciones a quien paga en efectivo se hacen en efectivo y quedan registradas como nota de crédito.
+
+18. ¿Estamos **obligados a aceptar efectivo** por las cuotas? Lo vamos a aceptar igualmente, pero queremos saber si alguna norma nos lo exige y en qué condiciones.
+19. **Límite de pagos en efectivo** (art. 7 de la Ley 7/2012, 1.000 € desde la Ley 11/2021): ¿se aplica a las cuotas que cobra una asociación sin ánimo de lucro a sus socios? Una cuota anual familiar podría superar los 1.000 €. Si se aplica, ¿qué debemos hacer: no aceptar efectivo por encima de esa cantidad, o fraccionarlo?
+20. ¿El **recibo por correo** con el número de la factura de Stripe es justificante suficiente del pago en efectivo, o necesitamos un recibo firmado o un talonario?
+21. ¿Cómo debemos llevar la **caja**: un libro de caja, ingresar el efectivo en el banco con alguna periodicidad, algún documento interno de la tesorería?
+22. Para **Verifactu** (pregunta 10), ¿cambia algo que unas facturas se cobren por Stripe y otras en efectivo, si todas las genera Stripe?
+
+Gracias. Lo que más nos urge, por la fecha de inicio: **las preguntas 1, 6, 8, 9, 10 y 19**.

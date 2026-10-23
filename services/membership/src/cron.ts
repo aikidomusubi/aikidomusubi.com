@@ -9,6 +9,9 @@
 //   the 20th    the digest: who turns 17 before their next charge, sports-
 //               centre cards still unchecked after 30 days, paper forms still
 //               missing after 14, payments overdue
+//   every day   cash: a reminder to each family whose last day to pay has
+//               gone (once per invoice); on the 1st, the families moving to
+//               cash; on the 5th, those moving to card (src/cash.ts)
 import type Stripe from 'stripe';
 import type { Env } from './env.ts';
 import { flag } from './env.ts';
@@ -20,19 +23,23 @@ import { customerOf, periodEnd, stripe } from './stripe.ts';
 import { actionUrl, apply, autoAge, notifyKeikogiReady } from './actions.ts';
 import { admin, todo, dashboard, B, type Todo } from './email/admin.ts';
 import type { InviteRecord } from './invite.ts';
+import { isCash, isLate, openInvoices, payByMs, switchToCard, switchToCash } from './cash.ts';
+import { ctxFor } from './context.ts';
+import * as member from './email/member.ts';
 
 export async function daily(env: Env, now = Date.now()) {
   const st = stripe(env);
   const day = madrid(now).d;
   await keikogi(env, st, now);
   await orphans(st, now);
+  await cash(env, st, now, day);
   if (day === 1 && flag(env.MIGRATION_REMITTANCE_LIST)) await remittance(env, st, now);
   if (day === 20) await digest(env, st, now);
 }
 
 async function allOurs(st: Stripe, status: Stripe.SubscriptionListParams.Status | 'all' = 'all') {
   const out: Stripe.Subscription[] = [];
-  for await (const s of st.subscriptions.list({ status, limit: 100, expand: ['data.customer'] })) {
+  for await (const s of st.subscriptions.list({ status, limit: 100, expand: ['data.customer', 'data.latest_invoice'] })) {
     if (s.metadata?.signup_id) out.push(s);
   }
   return out;
@@ -46,6 +53,42 @@ async function keikogi(env: Env, st: Stripe, now: number) {
     if (today > sub.metadata.withdraw_by) {
       const full = await st.subscriptions.retrieve(sub.id, { expand: ['customer'] });
       await notifyKeikogiReady(env, st, full);
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+async function cash(env: Env, st: Stripe, now: number, day: number) {
+  const res = await st.subscriptions.search({ query: "metadata['method']:'cash' OR metadata['method_next']:'cash' OR metadata['method_next']:'card'", limit: 100 });
+  for (const sub of res.data) {
+    if (!sub.metadata?.signup_id || !['active', 'past_due', 'unpaid'].includes(sub.status)) continue;
+    try {
+      if (day === 1 && sub.metadata.method_next === 'cash' && !isCash(sub)) {
+        await switchToCash(st, sub);
+        log({ job: 'cash', sub: sub.id, outcome: 'to_cash' });
+        continue;
+      }
+      if (!isCash(sub)) continue;
+      const open = await openInvoices(st, sub.id);
+      // To card on the 5th, once nothing is owed in cash: otherwise Stripe
+      // would credit days that were never paid. It waits a month.
+      if (day === 5 && sub.metadata.method_next === 'card' && !open.length) {
+        await switchToCard(st, sub);
+        log({ job: 'cash', sub: sub.id, outcome: 'to_card' });
+        continue;
+      }
+      const late = open.filter((i) => isLate(i, now));
+      if (!late.length) continue;
+      const newest = late[late.length - 1];
+      const key = `late:${newest.id}`;
+      if (await env.KV.get(key)) continue;
+      const full = await st.subscriptions.retrieve(sub.id, { expand: ['customer'] });
+      const ctx = ctxFor(env, full);
+      if (ctx) await member.cashLate(ctx, { amount: late.reduce((s, i) => s + i.amount_remaining, 0) / 100, byMs: payByMs(late[0]) });
+      await env.KV.put(key, '1', { expirationTtl: 120 * 86400 });
+      log({ job: 'cash', sub: sub.id, outcome: 'late_reminder' });
+    } catch (e) {
+      log({ job: 'cash', sub: sub.id, outcome: 'error', error: (e as Error).message?.slice(0, 200) });
     }
   }
 }
@@ -104,7 +147,14 @@ async function digest(env: Env, st: Stripe, now: number) {
   const done: string[] = [];
   const pastDue: Todo[] = [];
   for (const s of await allOurs(st)) {
-    if (s.status === 'past_due' || s.status === 'unpaid') {
+    if (isCash(s)) {
+      const inv = s.latest_invoice && typeof s.latest_invoice !== 'string' ? s.latest_invoice : null;
+      if (inv && inv.status === 'open' && isLate(inv, now)) {
+        pastDue.push({ title: `${customerOf(s)?.name ?? s.id}: cuota en efectivo sin pagar, ${money(inv.amount_remaining / 100, 'es')}`,
+          sub: `Tocaba hasta el ${date(payByMs(inv), 'es')}. Ya tiene el recordatorio; habla con la familia en su próxima clase.`,
+          action: { label: 'Abrir en el panel', href: `${env.API_ORIGIN}/panel/miembros?id=${s.id}` } });
+      }
+    } else if (s.status === 'past_due' || s.status === 'unpaid') {
       pastDue.push({ title: `${customerOf(s)?.name ?? s.id}: cobro pendiente`, sub: 'Stripe ya lo ha reintentado. La cuota sigue activa, pendiente de pago.',
         action: { label: 'Abrir', href: dashboard(env, `subscriptions/${s.id}`) } });
     }

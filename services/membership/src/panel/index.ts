@@ -27,6 +27,7 @@ import { refundFor } from '../refund.ts';
 import { pendingPayment, withdrawalAt } from '../withdraw.ts';
 import { demoLeave, demoRefund } from './demo.ts';
 import { leaveQuote } from '../leave.ts';
+import { invoicePeriod, openInvoices } from '../cash.ts';
 import { APP_JS, FILTERS, confirmPage, helpPage, loginPage, membersPage, messagePage, pendingPage, setStripeBase, shell, type Filter, type Flash } from './views.ts';
 import { demoSubscriptions } from './demo.ts';
 
@@ -178,6 +179,16 @@ export async function panel(req: Request, env: Env): Promise<Response> {
         const r = demo(env) ? demoRefund(sub, at) : await refundFor(stripe(env), sub.id, at);
         amounts = { refund: { ...r, pending: pendingPayment(sub) } };
       }
+    }
+    if (a === 'cash_paid') {
+      const sub = subs.find((s) => s.id === fam.id)!;
+      // What Cobrado will mark: every open invoice of the membership. The
+      // demo has only the one its family carries.
+      const open = demo(env)
+        ? (fam.cashDue ? [sub.latest_invoice as Stripe.Invoice] : [])
+        : await openInvoices(stripe(env), sub.id);
+      const lines = open.map((i) => ({ number: i.number ?? null, amount: i.amount_remaining / 100, ...invoicePeriod(i), first: i.billing_reason === 'subscription_create' }));
+      amounts = { cash: { lines, total: Math.round(lines.reduce((s, l) => s + l.amount, 0) * 100) / 100 } };
     }
     if (a === 'leave') {
       const sub = subs.find((s) => s.id === fam.id)!;

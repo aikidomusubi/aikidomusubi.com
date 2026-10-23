@@ -12,6 +12,9 @@ interface F {
   id: string; holder: string; email: string; period: PeriodId; people: P[]; days: number;
   meta?: Meta; status?: Stripe.Subscription.Status; failed?: boolean; ending?: boolean; sepa?: boolean;
   cus?: string; endedDaysAgo?: number; endedBy?: 'cancellation_requested' | 'payment_failed';
+  // Pays in cash: `owes` is the open invoice, the first payment after
+  // signing up, this month's, or last month's (late whatever the day).
+  cash?: { owes?: 'first' | 'this' | 'last' };
 }
 
 export function demoSubscriptions(now: number): Stripe.Subscription[] {
@@ -33,8 +36,15 @@ export function demoSubscriptions(now: number): Stripe.Subscription[] {
       people: [{ name: 'Nil Soler Vidal', cat: 'adult' }], meta: { hello: 'Nil', paper_due: '', keikogi: 'ready', keikogi_due: 'm1' } },
     { id: 'sub_demoVidal001', holder: 'Carla Vidal Puig', email: 'carla.vidal@example.com', period: 'monthly', days: 200, ending: true,
       people: [{ name: 'Carla Vidal Puig', cat: 'adult' }], meta: { hello: 'Carla', paper_due: '' } },
-    { id: 'sub_demoSerra001', holder: 'Marta Serra Mas', email: 'marta.serra@example.com', period: 'monthly', days: 300,
+    { id: 'sub_demoSerra001', holder: 'Marta Serra Mas', email: 'marta.serra@example.com', period: 'monthly', days: 300, cash: {},
       people: [{ name: 'Marta Serra Mas', cat: 'adult' }, { name: 'Pol Serra Mas', cat: 'youth', bym: pol }], meta: { hello: 'Marta', paper_due: '' } },
+    // Cash: one late from last month, one owing this month, one just signed up.
+    { id: 'sub_demoFerrer01', holder: 'Montse Ferrer Gil', email: 'montse.ferrer@example.com', period: 'monthly', days: 120, cash: { owes: 'last' },
+      people: [{ name: 'Montse Ferrer Gil', cat: 'adult' }], meta: { hello: 'Montse', paper_due: '' } },
+    { id: 'sub_demoVila0001', holder: 'Núria Vila Bosch', email: 'nuria.vila@example.com', period: 'quarterly', days: 95, cash: { owes: 'this' },
+      people: [{ name: 'Núria Vila Bosch', cat: 'adult' }], meta: { hello: 'Núria', paper_due: '', keikogi: 'delivered' } },
+    { id: 'sub_demoSoler002', holder: 'Laia Puig Soler', email: 'laia.puig@example.com', period: 'monthly', days: 2, cash: { owes: 'first' },
+      people: [{ name: 'Laia Puig Soler', cat: 'adult' }], meta: { hello: 'Laia', paper_due: 'm1' } },
     { id: 'sub_demoMas00001', holder: 'Jordi Mas Puig', email: 'jordi.mas@example.com', period: 'monthly', days: 6,
       people: [{ name: 'Jordi Mas Puig', cat: 'adult' }], meta: { hello: 'Jordi', invite_id: 'demo' } },
     // Asked to withdraw yesterday, within the 14 days.
@@ -50,11 +60,15 @@ export function demoSubscriptions(now: number): Stripe.Subscription[] {
     { id: 'sub_demoPuigOld1', holder: 'Joan Puig Ferrer', email: 'joan.puig@example.com', period: 'monthly', days: 500, endedDaysAgo: 200, cus: 'cus_demoPuig0001',
       people: [{ name: 'Joan Puig Ferrer', cat: 'adult' }], meta: { hello: 'Joan', keikogi: 'delivered' } }
   ];
-  const next = Pricing.nextAnchor(now);
+  const next5 = Pricing.nextAnchor(now);
+  const next1 = Pricing.nextAnchor(now, Pricing.CASH.day);
+  const d0 = new Date(now);
+  const first = (dm: number) => Math.floor(Date.UTC(d0.getUTCFullYear(), d0.getUTCMonth() + dm, 1, 8) / 1000);
   return fams.map((f) => {
+    const next = f.cash ? next1 : next5;
     const members = f.people.map((p) => ({ cat: p.cat, rate: p.sc ? 'sc' as const : 'general' as const, venue: p.venue ?? null }));
     const res = Pricing.price({ period: f.period, members }, CATALOG);
-    const meta: Meta = { catalog_version: CATALOG.version, period: f.period, lang: 'es', signup_id: `demo-${f.id}`, withdraw_by: '2026-01-01', ...f.meta };
+    const meta: Meta = { catalog_version: CATALOG.version, period: f.period, lang: 'es', signup_id: `demo-${f.id}`, withdraw_by: '2026-01-01', ...(f.cash ? { method: 'cash' } : {}), ...f.meta };
     f.people.forEach((p, i) => Object.assign(meta, encodeMember({
       slot: i + 1, name: p.name, cat: p.cat, rate: members[i].rate, kind: res.perMember[i].kind,
       venue: p.venue ?? null, sc: p.sc ?? null, bym: p.bym ?? null
@@ -67,11 +81,29 @@ export function demoSubscriptions(now: number): Stripe.Subscription[] {
       billing_cycle_anchor: Math.floor(next / 1000) - 86400 * 30,
       cancel_at: null, cancel_at_period_end: Boolean(f.ending), metadata: meta,
       customer: { id: f.cus ?? `cus_${f.id.slice(4)}`, object: 'customer', name: f.holder, email: f.email, phone: '600 000 000' },
-      default_payment_method: f.sepa ? { type: 'sepa_debit', sepa_debit: { last4: '1234' } } : { type: 'card', card: { last4: '4242' } },
-      latest_invoice: f.failed ? { status: 'open', attempt_count: 2, amount_due: Math.round(res.total * 100) } : { status: 'paid', attempt_count: 1, amount_due: Math.round(res.total * 100) },
+      default_payment_method: f.cash ? null : f.sepa ? { type: 'sepa_debit', sepa_debit: { last4: '1234' } } : { type: 'card', card: { last4: '4242' } },
+      latest_invoice: f.cash?.owes ? cashInvoice(f.id, f.cash.owes, res.total, created, first, now)
+        : f.failed ? { status: 'open', attempt_count: 2, amount_due: Math.round(res.total * 100) } : { status: 'paid', attempt_count: 1, amount_due: Math.round(res.total * 100) },
+      collection_method: f.cash ? 'send_invoice' : 'charge_automatically',
       items: { data: res.lineItems.map((l) => ({ price: { lookup_key: l.lookupKey, unit_amount: Math.round(l.unitAmount * 100) }, quantity: l.quantity, current_period_end: Math.floor(next / 1000) })) }
     } as unknown as Stripe.Subscription;
   });
+}
+
+// The open invoice of a demo cash family. The first one runs from the signup
+// to the 1st and is a few days' worth; the others are a whole period.
+function cashInvoice(id: string, owes: 'first' | 'this' | 'last', total: number, created: number, first: (dm: number) => number, now: number) {
+  const DAY = 86400;
+  const start = owes === 'first' ? created : first(owes === 'this' ? 0 : -1);
+  const end = owes === 'first' ? first(1) : first(owes === 'this' ? 1 : 0);
+  const cents = Math.round((owes === 'first' ? Pricing.prorated(total, created * 1000, end * 1000, 1) : total) * 100);
+  return {
+    id: `in_demo_${id.slice(4)}`, object: 'invoice', number: `DEMO-${id.slice(8, 12).toUpperCase()}-0007`,
+    status: 'open', attempt_count: 0, amount_due: cents, amount_remaining: cents, amount_paid: 0,
+    billing_reason: owes === 'first' ? 'subscription_create' : 'subscription_cycle',
+    created: Math.min(start, Math.floor(now / 1000)), due_date: start + 6 * DAY, metadata: {},
+    lines: { data: [{ period: { start, end } }] }
+  };
 }
 
 // What a withdrawal would give back, for the demo families: one payment, from

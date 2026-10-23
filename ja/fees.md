@@ -6,7 +6,7 @@ description: "合気道は月額39ユーロ、16歳までは29ユーロ。すべ
 permalink: /ja/fees/
 lang: ja
 i18n-ref: fees-UjbuGtGz
-last_modified: 2026-10-14
+last_modified: 2026-10-24
 ---
 
 # 料金

@@ -798,6 +798,18 @@ because the panel shipped with a sign-in form that refused itself: under
 said no, and all 89 unit tests passed because they wrote the Origin header by hand.
 **A test that sets the headers a browser would set is not testing the browser.**
 
+**Cash is a fourth way to pay, and Stripe is still the record** (decided 23 October
+2026). A cash membership is an ordinary subscription with `metadata.method = cash` and
+`collection_method: send_invoice`, renewing on the **1st** instead of the 5th so its
+invoice exists while the family pays at the dojo, from the 1st to the 5th (the first
+time within 5 days of signing up). The treasurer's **Cobrado** in the panel marks every
+open invoice paid outside Stripe and emails the receipt; refunds are credit notes
+"outside Stripe". The dojo's due rule lives in `src/cash.ts` (`payBy`), not in Stripe's
+due date, which is a day later on purpose. Stripe must NOT email sent invoices
+(docs/membership/SETUP.md), or cash families get a "pay online" button. The signup's
+thank-you page shows its cash version by its address, `#efectivo`, with `:target`: no
+script, and nothing in the query string.
+
 **The Japanese font files carry a generation number** (`-g2`) since the membership
 pages added 18 kanji. Fonts cannot be cache-busted, so a run of
 `tools/subset-ja-fonts.py` that ADDS glyphs bumps `GEN` in the script and the old

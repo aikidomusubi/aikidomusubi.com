@@ -6,7 +6,7 @@ description: "Change your card or bank account, download receipts or cancel. Sig
 permalink: /en/members/
 lang: en
 i18n-ref: members-Wt5nK2cD
-last_modified: 2026-10-14
+last_modified: 2026-10-24
 no_analytics: true
 sitemap: false
 ---

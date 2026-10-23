@@ -10,6 +10,10 @@ import { family, tasks } from '../src/panel/model.ts';
 import { greeting } from '../src/panel/views.ts';
 import { keikogiGiven, leaveMath } from '../src/leave.ts';
 import type { Env } from '../src/env.ts';
+import { isLate, payBy } from '../src/cash.ts';
+import { cashParams } from '../src/checkout.ts';
+import { Pricing } from '../src/pricing.ts';
+import * as member from '../src/email/member.ts';
 
 const API = 'https://api.aikidomusubi.com';
 beforeEach(() => { outbox.length = 0; });
@@ -228,11 +232,12 @@ describe('the to-do list', () => {
   const list = tasks(fams);
   const count = (k: string) => list.filter((t) => t.kind === k).length;
   it('finds what each demo family needs', () => {
-    expect(count('paper')).toBe(3);
+    expect(count('paper')).toBe(4);
     expect(count('keikogi')).toBe(2);
     expect(count('sc')).toBe(1);
     expect(count('age')).toBe(1);
     expect(count('money')).toBe(1);
+    expect(count('cash')).toBe(3);
   });
   it('asks no paper form of a member who moved over by invite', () => {
     const jordi = fams.find((f) => f.id === 'sub_demoMas00001')!;
@@ -246,5 +251,66 @@ describe('the to-do list', () => {
     expect(greeting(Date.UTC(2027, 0, 15, 8), 'Alberto')).toBe('Buenos días, Alberto');
     expect(greeting(Date.UTC(2027, 0, 15, 16), '')).toBe('Buenas tardes');
     expect(greeting(Date.UTC(2027, 0, 15, 22), '')).toBe('Buenas noches');
+  });
+});
+
+describe('cash', () => {
+  const now = Date.now();
+  const fams = demoSubscriptions(now).map((s) => family(s, now));
+  const by = (id: string) => fams.find((f) => f.id === id)!;
+  it('reads a cash family, what it owes and whether it is late', () => {
+    expect(by('sub_demoFerrer01').cash).toBe(true);
+    expect(by('sub_demoFerrer01').cashDue?.late).toBe(true);
+    expect(by('sub_demoSoler002').cashDue).toMatchObject({ first: true, late: false });
+    expect(by('sub_demoSerra001').cashDue).toBeNull();
+    expect(by('sub_demoSerra001').method).toBe('En efectivo, en el dojo');
+    // An open cash invoice is not a failed payment.
+    expect(by('sub_demoFerrer01').status).not.toBe('failed');
+  });
+  it('puts the late ones first in their group', () => {
+    const cash = tasks(fams).filter((t) => t.kind === 'cash');
+    expect(cash[0].fam.id).toBe('sub_demoFerrer01');
+  });
+  it('the dojo\'s rule: five days for the first payment, then the 1st to the 5th', () => {
+    const first = { billing_reason: 'subscription_create', created: Date.parse('2026-11-23T10:00:00Z') / 1000 } as never;
+    expect(payBy(first)).toBe('2026-11-28');
+    const cycle = { billing_reason: 'subscription_cycle', created: Date.parse('2026-12-01T08:00:00Z') / 1000,
+      lines: { data: [{ period: { start: Date.parse('2026-12-01T08:00:00Z') / 1000, end: Date.parse('2027-01-01T08:00:00Z') / 1000 } }] } } as never;
+    expect(payBy(cycle)).toBe('2026-12-05');
+    expect(isLate(cycle, Date.parse('2026-12-05T21:00:00Z'))).toBe(false);
+    expect(isLate(cycle, Date.parse('2026-12-06T08:00:00Z'))).toBe(true);
+  });
+  it('a cash subscription sends invoices, renews on the 1st and is due a day after the dojo\'s rule', () => {
+    const anchor = Pricing.nextAnchor(Date.parse('2026-11-23T10:00:00Z'), Pricing.CASH.day);
+    expect(new Date(anchor).toISOString()).toBe('2026-12-01T08:00:00.000Z');
+    const p = cashParams({ customer: 'cus_x', items: [{ price: 'price_x', quantity: 1 }], anchorMs: anchor, proration: 'create_prorations', description: 'x', metadata: { method: 'cash' } });
+    expect(p).toMatchObject({ collection_method: 'send_invoice', days_until_due: 6, billing_cycle_anchor: anchor / 1000 });
+  });
+  it('the panel shows the cash group, and asks before Cobrado with the amount', async () => {
+    const env = testEnv();
+    const cookie = await signIn(env);
+    const home = await (await worker.fetch(get('/panel/', cookie), env)).text();
+    expect(home).toContain('Cuotas en efectivo por cobrar');
+    expect(home).toContain('Con retraso');
+    const ask = await (await worker.fetch(get('/panel/confirmar?a=cash_paid&s=sub_demoFerrer01&back=p', cookie), env)).text();
+    expect(ask).toMatch(/¿Has cobrado 39\s€ en efectivo de Montse Ferrer Gil\?/);
+    expect(ask).toContain('Cuenta el dinero');
+    const serra = await (await worker.fetch(get('/panel/miembros?id=sub_demoSerra001', cookie), env)).text();
+    expect(serra).toContain('Pasar a tarjeta o domiciliación');
+    const garcia = await (await worker.fetch(get('/panel/miembros?id=sub_demoGarcia01', cookie), env)).text();
+    expect(garcia).toContain('Pasar a pago en efectivo');
+  });
+  it('the receipt carries the number, the period, the total and the association', async () => {
+    const env = testEnv();
+    await member.cashReceipt({ env, lang: 'es', to: 'm@example.com', toName: 'Marta', hello: 'Marta' }, {
+      paidMs: Date.parse('2026-12-03T10:00:00Z'),
+      invoices: [{ number: '7F3A21C9-0012', amount: 53, start: Date.parse('2026-12-01T08:00:00Z'), end: Date.parse('2027-01-01T08:00:00Z'), pdf: 'https://pay.stripe.com/invoice/x/pdf' }],
+      people: null, period: 'monthly', next: { ms: Date.parse('2027-01-01T08:00:00Z'), amount: 53 }
+    });
+    const m = outbox[0];
+    expect(m.subject).toBe('Recibo de tu cuota: 53\u00a0€');
+    for (const s of ['7F3A21C9-0012', '3 de diciembre de 2026', 'Efectivo, en el dojo', 'G-64799554', 'del 1 de enero al 5 de enero de 2027', 'https://pay.stripe.com/invoice/x/pdf']) {
+      expect(m.html).toContain(s);
+    }
   });
 });

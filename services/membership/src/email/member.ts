@@ -2,7 +2,7 @@
 // docs/mockups/inscripcion-correos.html. Words from _data/membership_emails.yml;
 // every value that came from a person is escaped before it reaches a template.
 import type { Env } from '../env.ts';
-import { CATALOG, E, M, date, esc, list, money, monthNames, periodName, periodUnit, t, time, url, venueName, type Lang } from '../data.ts';
+import { CATALOG, E, M, SITE, date, esc, list, money, monthNames, periodName, periodUnit, t, time, url, venueName, type Lang } from '../data.ts';
 import { peopleRows, total, type Priced } from '../household.ts';
 import { Pricing, type PeriodId } from '../pricing.ts';
 import { B, render, type Block } from './layout.ts';
@@ -13,6 +13,7 @@ export interface Method { type: 'card' | 'sepa_debit' | string; last4?: string |
 
 function methodText(m: Method | null, lang: Lang) {
   if (!m) return '';
+  if (m.type === 'cash') return t(E.cash.method, lang);
   const c = E.common;
   const name = t(m.type === 'sepa_debit' ? c.sepa : c.card, lang);
   return m.last4 ? `${name} ${t(c.ending, lang, { last4: m.last4 })}` : name;
@@ -35,9 +36,13 @@ export async function confirmation(ctx: Ctx, o: {
   people: Priced[]; period: PeriodId; signupMs: number; anchorMs: number; todayAmount: number | null;
   method: Method | null; processing: boolean; under14: boolean; keikogi: number; scVenues: string[];
   withdrawBy: number; termsVersion: string;
+  // A cash signup: the last day for the first payment. Its dates read "pay
+  // by" rather than "charged on", and the method line says how cash works.
+  cashFirstBy?: number;
 }) {
   const L = ctx.lang;
   const c = E.confirmation;
+  const cash = o.cashFirstBy != null;
   const n = o.people.length;
   const amount = money(total(o.people), L);
   const months = CATALOG.periods[o.period].months;
@@ -47,7 +52,15 @@ export async function confirmation(ctx: Ctx, o: {
     B.p(esc(t(c.intro, L))),
     B.table(peopleRows(o.people, o.period, L, t(E.common.total_per, L, { unit: periodUnit(o.period, L) })), true),
     B.h4(t(c.when_h, L)),
-    B.dates([
+    B.dates(cash ? [
+      o.todayAmount && o.todayAmount > 0
+        ? t(E.cash.first, L, { by: date(o.cashFirstBy!, L, false), amount: money(o.todayAmount, L), first: date(o.anchorMs, L, false) })
+        : t(c.today_none, L),
+      t(E.cash.full, L, { from: date(o.anchorMs, L, false), by: date(cashBy(o.anchorMs), L), amount }),
+      months === 1
+        ? t(E.cash.then, L, { amount })
+        : t(E.cash.then_q, L, { amount, months: monthNames(Pricing.chargeMonths(o.anchorMs, months), L) })
+    ] : [
       o.todayAmount && o.todayAmount > 0
         ? t(c.today, L, { date: date(o.signupMs, L, false), amount: money(o.todayAmount, L), first: date(o.anchorMs, L, false) })
         : t(c.today_none, L),
@@ -56,7 +69,7 @@ export async function confirmation(ctx: Ctx, o: {
         ? t(c.then, L, { amount })
         : t(c.then_q, L, { amount, months: monthNames(Pricing.chargeMonths(o.anchorMs, months), L) })
     ]),
-    B.p(esc(t(c.method, L, { method: methodText(o.method, L) }))),
+    B.p(esc(cash ? t(E.cash.how, L) : t(c.method, L, { method: methodText(o.method, L) }))),
     ...(o.processing ? [B.p(esc(t(c.processing, L)))] : []),
     B.h4(t(c.todo_h, L)),
     B.p(t(c.todo, L, { resources: esc(url('resources', L, true, ctx.env.SITE_ORIGIN)) })),
@@ -88,12 +101,15 @@ export async function renewal(ctx: Ctx, o: {
   const r = E.renewal;
   const amount = money(total(o.people), L);
   const d = date(o.chargeMs, L);
+  const cash = o.method?.type === 'cash';
   await deliver(ctx, 'renewal', t(r.kind, L), t(r.subject, L, { date: date(o.chargeMs, L, false), amount }), [
     hello(ctx),
     B.h(t(r.heading, L, { date: date(o.chargeMs, L, false) })),
     B.big(amount),
-    B.p(esc(t(r.charge, L, { date: d, from: date(o.fromMs, L, false), to: date(o.toMs, L), method: methodText(o.method, L) }))),
-    B.p(t(r.stay, L)),
+    B.p(esc(cash
+      ? t(E.cash.renewal, L, { date: date(o.chargeMs, L, false), by: date(cashBy(o.chargeMs), L), from: date(o.fromMs, L, false), to: date(o.toMs, L) })
+      : t(r.charge, L, { date: d, from: date(o.fromMs, L, false), to: date(o.toMs, L), method: methodText(o.method, L) }))),
+    B.p(cash ? t(E.cash.stay, L) : t(r.stay, L)),
     B.p(t(r.leave, L, { date: d })),
     membersBtn(ctx),
     B.table(peopleRows(o.people, o.period, L, t(E.common.total_per, L, { unit: periodUnit(o.period, L) })), true)
@@ -135,24 +151,28 @@ export async function withdrawalAck(ctx: Ctx, o: { atMs: number; name: string; e
 
 // The withdrawal settled from the panel: the amount the acknowledgement
 // promised to write with.
-export async function withdrawalDone(ctx: Ctx, o: { amount: number; atMs: number }) {
+export async function withdrawalDone(ctx: Ctx, o: { amount: number; atMs: number; cash?: boolean }) {
   const L = ctx.lang;
   const w = E.withdrawal_done;
   const vars = { amount: money(o.amount, L), date: date(o.atMs, L) };
+  const cashRefund = o.cash && o.amount > 0;
   await deliver(ctx, 'withdrawal_done', t(w.kind, L), t(o.amount > 0 ? w.subject : w.subject_none, L, vars), [
-    hello(ctx), B.h(t(w.heading, L)), B.p(t(o.amount > 0 ? w.body : w.body_none, L, vars)),
+    hello(ctx), B.h(t(w.heading, L)), B.p(t(cashRefund ? E.cash.withdrawal_body : o.amount > 0 ? w.body : w.body_none, L, vars)),
+    ...(cashRefund ? [B.p(t(E.cash.refund, L))] : []),
     B.p(t(E.ended.back, L, link(ctx, 'signup'))), B.small(esc(t(E.ended.licence, L)))
   ]);
 }
 
 // Leaving a quarterly or annual plan early, months not started refunded.
-export async function earlyLeaveDone(ctx: Ctx, o: { amount: number; paid: number; started: number; monthly: number; keikogi: number }) {
+export async function earlyLeaveDone(ctx: Ctx, o: { amount: number; paid: number; started: number; monthly: number; keikogi: number; cash?: boolean }) {
   const L = ctx.lang;
   const w = E.early_leave;
   const vars = { amount: money(o.amount, L), paid: money(o.paid, L), started: o.started, monthly: money(o.monthly, L), keikogi: money(o.keikogi, L) };
+  const cashRefund = o.cash && o.amount > 0;
   await deliver(ctx, 'early_leave', t(w.kind, L), t(o.amount > 0 ? w.subject : w.subject_none, L, vars), [
-    hello(ctx), B.h(t(w.heading, L)), B.p(t(o.amount > 0 ? w.body : w.body_none, L, vars)),
+    hello(ctx), B.h(t(w.heading, L)), B.p(t(cashRefund ? E.cash.leave_body : o.amount > 0 ? w.body : w.body_none, L, vars)),
     ...(o.keikogi > 0 ? [B.p(t(w.keikogi, L, vars))] : []),
+    ...(cashRefund ? [B.p(t(E.cash.refund, L))] : []),
     B.p(t(E.ended.back, L, link(ctx, 'signup'))), B.small(esc(t(E.ended.licence, L)))
   ]);
 }
@@ -213,6 +233,57 @@ export async function priceChange(ctx: Ctx, o: { fromMs: number; now: number; th
       [esc(t(p.from, L, { date: date(o.fromMs, L) })), `${money(o.then, L)} ${esc(unit)}`]
     ], true),
     B.p(t(p.leave, L)), membersBtn(ctx)
+  ]);
+}
+
+// ---------------------------------------------------------------------------
+// Cash (src/cash.ts). The last day to pay in a period that starts on `ms`.
+export const cashBy = (ms: number) => { const d = Pricing.madridDate(ms); return Date.UTC(d.y, d.m - 1, Pricing.CASH.by, 12); };
+
+export interface ReceiptLine { number: string; amount: number; start: number; end: number; pdf: string | null }
+
+export async function cashReceipt(ctx: Ctx, o: {
+  paidMs: number; invoices: ReceiptLine[]; people: Priced[] | null; period: PeriodId; next: { ms: number; amount: number } | null;
+}) {
+  const L = ctx.lang;
+  const r = E.cash.receipt;
+  const sum = o.invoices.reduce((s, i) => s + i.amount, 0);
+  const amount = money(sum, L);
+  const num = (i: ReceiptLine) => (i.pdf ? `<a href="${esc(i.pdf)}">${esc(i.number)}</a>` : esc(i.number));
+  const span = (i: ReceiptLine) => t(r.period, L, { from: date(i.start, L, false), to: date(i.end - 86400000, L) });
+  const rows: [string, string][] = [
+    [esc(t(r.paid_on, L)), esc(date(o.paidMs, L))],
+    [esc(t(r.via, L)), esc(t(r.via_cash, L))],
+    ...o.invoices.map((i): [string, string] => [`${esc(t(r.number, L))} ${num(i)}<br><small>${esc(span(i))}</small>`, esc(money(i.amount, L))]),
+    [esc(t(r.total, L)), esc(amount)]
+  ];
+  await deliver(ctx, 'cash_receipt', t(r.kind, L), t(r.subject, L, { amount }), [
+    hello(ctx), B.h(t(r.heading, L)), B.p(esc(t(r.intro, L))),
+    B.table(rows, true),
+    ...(o.people ? [B.table(peopleRows(o.people, o.period, L, t(E.common.total_per, L, { unit: periodUnit(o.period, L) })), true)] : []),
+    B.small(esc(t(r.pdf, L))),
+    B.small(esc(t(r.org, L, { org: L === 'ja' ? SITE.org_ja || SITE.org : SITE.org, cif: SITE.cif, address: SITE.address.replace(/<br\s*\/?>/g, ', ') }))),
+    ...(o.next ? [B.p(esc(t(r.next, L, { amount: money(o.next.amount, L), from: date(o.next.ms, L, false), by: date(cashBy(o.next.ms), L) })))] : []),
+    membersBtn(ctx)
+  ]);
+}
+
+export async function cashLate(ctx: Ctx, o: { amount: number; byMs: number }) {
+  const L = ctx.lang;
+  const w = E.cash.late;
+  const amount = money(o.amount, L);
+  await deliver(ctx, 'cash_late', t(w.kind, L), t(w.subject, L, { amount }), [
+    hello(ctx), B.h(t(w.heading, L)), B.p(t(w.body, L, { amount: esc(amount), by: esc(date(o.byMs, L)) })), B.p(esc(t(w.still, L)))
+  ]);
+}
+
+export async function cardLink(ctx: Ctx, o: { link: string; expiresMs: number }) {
+  const L = ctx.lang;
+  const w = E.cash.card;
+  await deliver(ctx, 'card_link', t(w.kind, L), t(w.subject, L), [
+    hello(ctx), B.h(t(w.heading, L)), B.p(esc(t(w.body, L))),
+    B.button(t(w.btn, L), o.link),
+    B.p(esc(t(w.when, L, { date: date(o.expiresMs, L) })))
   ]);
 }
 

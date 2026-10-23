@@ -502,10 +502,10 @@ topics:
       - q: { es: "¿Cómo y cuándo se cobra la cuota?", ca: "Com i quan es cobra la quota?",
              en: "How and when is the fee charged?", ja: "会費はいつ、どのように支払いますか。" }
         a:
-          es: ["El día 5 de cada mes, trimestre o año, según el periodo que elijas, con tarjeta o con domiciliación bancaria, a través de Stripe. Al inscribirte pagas solo los días que faltan hasta el siguiente día 5, y te avisamos por correo quince días antes de cada renovación."]
-          ca: ["El dia 5 de cada mes, trimestre o any, segons el període que triïs, amb targeta o amb domiciliació bancària, a través de Stripe. En inscriure't pagues només els dies que falten fins al dia 5 següent, i t'avisem per correu quinze dies abans de cada renovació."]
-          en: ["On the 5th of each month, quarter or year, depending on the period you choose, by card or direct debit, through Stripe. When you sign up you pay only for the days until the next 5th, and we email you fifteen days before every renewal."]
-          ja: ["選んだ支払い期間に応じて、毎月・3か月ごと・毎年の5日に、カードまたは口座振替でStripeを通じてお支払いいただきます。申し込み時には次の5日までの日割り分のみをお支払いいただき、更新の15日前にはメールでお知らせします。"]
+          es: ["El día 5 de cada mes, trimestre o año, según el periodo que elijas, con tarjeta o con domiciliación bancaria, a través de Stripe. Al inscribirte pagas solo los días que faltan hasta el siguiente día 5, y te avisamos por correo quince días antes de cada renovación. También puedes pagar en efectivo en el dojo, del día 1 al 5, y te enviamos el recibo por correo."]
+          ca: ["El dia 5 de cada mes, trimestre o any, segons el període que triïs, amb targeta o amb domiciliació bancària, a través de Stripe. En inscriure't pagues només els dies que falten fins al dia 5 següent, i t'avisem per correu quinze dies abans de cada renovació. També pots pagar en efectiu al dojo, del dia 1 al 5, i t'enviem el rebut per correu."]
+          en: ["On the 5th of each month, quarter or year, depending on the period you choose, by card or direct debit, through Stripe. When you sign up you pay only for the days until the next 5th, and we email you fifteen days before every renewal. You can also pay in cash at the dojo, from the 1st to the 5th, and we email you the receipt."]
+          ja: ["選んだ支払い期間に応じて、毎月・3か月ごと・毎年の5日に、カードまたは口座振替でStripeを通じてお支払いいただきます。申し込み時には次の5日までの日割り分のみをお支払いいただき、更新の15日前にはメールでお知らせします。1日～5日に道場で現金でお支払いいただくこともでき、領収書をメールでお送りします。"]
       - q: { es: "¿Cómo cambio la tarjeta o la cuenta del banco?", ca: "Com canvio la targeta o el compte del banc?",
              en: "How do I change my card or bank account?", ja: "カードや口座を変更するには？" }
         a:

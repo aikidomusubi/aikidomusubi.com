@@ -13,6 +13,7 @@ import { checkInvite } from './invite.ts';
 import { errorPage, fromSite, json, limited, log, readBody, redirect, wantsJson } from './http.ts';
 import { stripe, priceIds, paymentConfig } from './stripe.ts';
 import { toMember, unknownFields, validate, type FieldError, type Signup } from './validate.ts';
+import { welcome } from './webhook.ts';
 
 const LIVE_STATUSES = new Set(['active', 'trialing', 'past_due', 'unpaid', 'incomplete']);
 
@@ -122,6 +123,31 @@ export async function checkout(req: Request, env: Env, now = Date.now()): Promis
       withdraw: date(withdrawBy, stripeLocale), url: url('terms', lang, true, env.SITE_ORIGIN)
     };
 
+    // Cash: no Checkout page. The subscription is made here, sending its
+    // invoices instead of charging them, renewing on the 1st; the family pays
+    // at the dojo and the panel marks each invoice paid (src/cash.ts). The
+    // terms were accepted on our own form, recorded in `terms_at`.
+    if (s.method === 'cash') {
+      meta.method = 'cash';
+      const cashAnchor = inviteId && firstOfMonth(anchor) > now + 3600000 ? firstOfMonth(anchor) : Pricing.nextAnchor(now, Pricing.CASH.day);
+      const params = cashParams({
+        customer: customer.id,
+        items: result.lineItems.map((l) => ({ price: ids[l.lookupKey], quantity: l.quantity })),
+        anchorMs: cashAnchor, proration,
+        description: t(M.stripe.description, stripeLocale, { period: periodName(s.period, stripeLocale), people: peopleWord(s.members.length, stripeLocale) }).slice(0, 500),
+        metadata: meta
+      });
+      const key = `cash-${sid}-${(await sha256(JSON.stringify(params))).slice(0, 16)}`;
+      const sub = await st.subscriptions.create(params, { idempotencyKey: key });
+      log({ route: 'checkout', sid, outcome: 'cash', sub: sub.id });
+      // What checkout.session.completed does for a card: the confirmation to
+      // the family and the notice to the dojo. A failure here must not lose
+      // the signup, which exists.
+      await welcome(env, st, sub.id, false).catch((e) => log({ route: 'checkout', sid, outcome: 'welcome_error', error: (e as Error).message?.slice(0, 200) }));
+      const to = url('thanks', lang, true, env.SITE_ORIGIN) + '#efectivo';
+      return wantsJson(req) ? json(env, req, { url: to }) : redirect(to);
+    }
+
     const params: Stripe.Checkout.SessionCreateParams = {
       mode: 'subscription',
       customer: customer.id,
@@ -162,6 +188,31 @@ export async function checkout(req: Request, env: Env, now = Date.now()): Promis
     return fail(env, req, lang, [{ field: 'form', code: 'generic' }], 502);
   }
 }
+
+// The subscription a cash signup creates. Exported for the tests: it is the
+// whole of what makes a membership "cash" in Stripe.
+export function cashParams(o: {
+  customer: string; items: { price: string; quantity: number }[]; anchorMs: number;
+  proration: 'none' | 'create_prorations'; description: string; metadata: Meta;
+}): Stripe.SubscriptionCreateParams {
+  return {
+    customer: o.customer,
+    items: o.items,
+    collection_method: 'send_invoice',
+    // Stripe's own due date, a little after ours, so a payment made on the
+    // 5th is never "overdue" in Stripe. The panel and the reminders use the
+    // dojo's rule (src/cash.ts), not this.
+    days_until_due: Pricing.CASH.firstDays + 1,
+    billing_cycle_anchor: Math.floor(o.anchorMs / 1000),
+    proration_behavior: o.proration,
+    description: o.description,
+    metadata: o.metadata
+  };
+}
+
+// An invite's first charge is a 5th; a cash membership renews on the 1st of
+// the same month instead.
+const firstOfMonth = (ms: number) => { const d = new Date(ms); return Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), Pricing.CASH.day, 8, 0, 0); };
 
 function peopleWord(n: number, lang: 'es' | 'en' | 'ja') {
   if (lang === 'ja') return `${n}名`;

@@ -163,3 +163,15 @@ describe('metadata', () => {
     expect(meta.holder).toBe('m2');
   });
 });
+
+describe('payment method', () => {
+  it('is Stripe when the form says nothing, and cash when it says so', () => {
+    const a = validate(FAMILY, NOW);
+    const b = validate({ ...FAMILY, method: 'cash' }, NOW);
+    expect(a.ok && a.value.method).toBe('stripe');
+    expect(b.ok && b.value.method).toBe('cash');
+  });
+  it('refuses anything else', () => {
+    expect(codes({ ...FAMILY, method: 'bitcoin' })).toContain('method:method_required');
+  });
+});

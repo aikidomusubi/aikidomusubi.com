@@ -65,10 +65,10 @@ await new Promise((r) => server.listen(0, r));
 const ORIGIN = `http://localhost:${server.address().port}`;
 
 const PAGES = {
-  es: { signup: '/inscripcion/', others: ['/inscripcion/gracias/', '/miembros/', '/desistimiento/', '/desistimiento/recibido/', '/condiciones-de-la-cuota/', '/cuotas/'] },
-  ca: { signup: '/ca/inscripcio/', others: ['/ca/inscripcio/gracies/', '/ca/membres/', '/ca/desistiment/', '/ca/condicions-de-la-quota/'] },
-  en: { signup: '/en/sign-up/', others: ['/en/sign-up/thank-you/', '/en/members/', '/en/withdrawal/', '/en/membership-terms/'] },
-  ja: { signup: '/ja/sign-up/', others: ['/ja/sign-up/thank-you/', '/ja/members/', '/ja/withdrawal/', '/ja/membership-terms/'] }
+  es: { signup: '/inscripcion/', others: ['/inscripcion/gracias/', '/inscripcion/gracias/#efectivo', '/miembros/', '/desistimiento/', '/desistimiento/recibido/', '/condiciones-de-la-cuota/', '/cuotas/'] },
+  ca: { signup: '/ca/inscripcio/', others: ['/ca/inscripcio/gracies/', '/ca/inscripcio/gracies/#efectivo', '/ca/membres/', '/ca/desistiment/', '/ca/condicions-de-la-quota/'] },
+  en: { signup: '/en/sign-up/', others: ['/en/sign-up/thank-you/', '/en/sign-up/thank-you/#efectivo', '/en/members/', '/en/withdrawal/', '/en/membership-terms/'] },
+  ja: { signup: '/ja/sign-up/', others: ['/ja/sign-up/thank-you/', '/ja/sign-up/thank-you/#efectivo', '/ja/members/', '/ja/withdrawal/', '/ja/membership-terms/'] }
 };
 
 const browser = await puppeteer.launch({ executablePath: CHROME, headless: true, args: ['--no-first-run'] });
@@ -162,6 +162,15 @@ async function panel(page, width) {
   await stop(page, 'confirmar', width);
   await submit(page, '.sheet form button[type=submit]');
   await expectText(page, '.toast', 'Pol pasa', 'confirming');
+  // Cash: the group on Pendiente, Cobrado with its amount, and a cash family.
+  await page.goto(`${PANEL}/panel/confirmar?a=cash_paid&s=sub_demoFerrer01&back=p`, { waitUntil: 'networkidle0' });
+  await expectText(page, 'h1', 'en efectivo', 'the Cobrado confirmation');
+  await stop(page, 'cobrado', width);
+  await submit(page, '.sheet form button[type=submit]');
+  await expectText(page, '.toast', 'Cobro en efectivo', 'confirming Cobrado');
+  await page.goto(`${PANEL}/panel/miembros?id=sub_demoSerra001`, { waitUntil: 'networkidle0' });
+  await expectText(page, '.actions', 'Pasar a tarjeta', 'a cash family');
+  await stop(page, 'familia-efectivo', width);
   await page.goto(`${PANEL}/panel/confirmar?a=withdraw&s=sub_demoFont0001&back=p`, { waitUntil: 'networkidle0' });
   await expectText(page, 'h1', 'desistimiento', 'the withdrawal confirmation');
   await stop(page, 'desistimiento', width);
@@ -246,6 +255,19 @@ async function signup(page, lang, path) {
   await click(page, '#su-guardian');
   await next(page, 3);
   await audit(page, `${path} step 4`);
+  // Cash: back to step 2, choose it, and the rules appear; step 4 then says
+  // "confirm" instead of sending people to Stripe.
+  await click(page, '.su-rv-edit [data-go="2"]');
+  await click(page, 'input[name="method"][value="cash"]');
+  if (await page.$eval('#su-cashbox', (e) => e.hidden)) throw new Error('the cash rules did not appear');
+  await audit(page, `${path} step 2 cash`);
+  await next(page, 2);
+  await next(page, 3);
+  await audit(page, `${path} step 4 cash`);
+  const btn = await page.$eval('.su-pay', (b) => [b.textContent, b.getAttribute('data-cash')]);
+  if (btn[0] !== btn[1]) throw new Error(`step 4 with cash still says "${btn[0]}"`);
+  await click(page, '.su-rv-edit [data-go="2"]');
+  await click(page, 'input[name="method"][value="stripe"]');
 }
 
 for (const width of [1280, 375]) {

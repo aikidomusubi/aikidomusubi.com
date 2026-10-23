@@ -349,6 +349,26 @@
     }
 
     // ---- step 4: the review --------------------------------------------------
+    // ---- how the fee is paid -----------------------------------------------
+    function isCash() {
+      var r = $('input[name=method]:checked', form);
+      return !!r && r.value === 'cash';
+    }
+    // The cash rules show under the cards only when cash is chosen; without
+    // JavaScript they are always there. Step 4's button and note follow.
+    function syncMethod() {
+      var cash = isCash();
+      var cb = $('#su-cashbox', root);
+      if (cb) cb.hidden = !cash;
+      // "Stripe will ask for the card holder's name" means nothing for cash.
+      var sn = $('#su-stripe-name', root);
+      if (sn) sn.hidden = cash;
+      var btn = $('.su-pay', form);
+      var note = $('.su-paynote', form);
+      if (btn && !btn.disabled) btn.textContent = btn.getAttribute(cash ? 'data-cash' : 'data-stripe');
+      if (note) note.textContent = note.getAttribute(cash ? 'data-cash' : 'data-stripe');
+    }
+
     function renderReview() {
       var ps = people();
       var period = selectedPeriod();
@@ -384,16 +404,30 @@
       var tl = $('#su-tl', box);
       tl.innerHTML = '';
       var invited = !!form.elements.invite.value;
-      var anchor = P.nextAnchor(NOW);
+      var cash = isCash();
+      var anchor = P.nextAnchor(NOW, cash ? P.CASH.day : 5);
       var items = [];
-      if (invited) {
+      $('#su-method-line', box).textContent = fill(U.method_line, { method: cash ? U.method_cash : U.method_stripe });
+      if (cash) {
+        // Cash: nothing online. The first payment within CASH.firstDays, then
+        // from the 1st to the 5th (CASH.by) of each period.
+        var by = function (ms) { var d = P.madridDate(ms); return Date.UTC(d.y, d.m - 1, P.CASH.by, 12); };
+        items.push(['now', '<b>' + U.tl_cash_now + '</b> · ' + U.tl_cash_now_sub]);
+        if (!invited) {
+          items.push(['now', '<b>' + fill(U.tl_cash_first, { by: F.date(NOW + P.CASH.firstDays * 86400000, false), amount: F.money(P.prorated(res.total, NOW, anchor, months)) }) + '</b> · ' + fill(U.tl_today_sub, { date: F.date(anchor, false) })]);
+          items.push(['', '<b>' + F.date(P.withdrawalDeadline(NOW), false) + '</b> · ' + U.tl_withdraw]);
+        }
+        items.push(['', '<b>' + fill(U.tl_cash_full, { from: F.date(anchor, false), by: F.date(by(anchor), false), amount: F.money(res.total) }) + '</b> · ' + U.tl_first + (months > 1 && !invited ? '. ' + U.tl_keikogi : '')]);
+        items.push(['', months === 1 ? fill(U.tl_cash_then, { amount: '<b>' + F.money(res.total) + '</b>' })
+          : fill(U.tl_cash_then_q, { amount: '<b>' + F.money(res.total) + '</b>', months: F.list(P.chargeMonths(anchor, months).map(function (m) { return U.months[m]; })) })]);
+      } else if (invited) {
         items.push(['now', '<b>' + U.tl_nothing + '</b>']);
       } else {
         var today = P.prorated(res.total, NOW, anchor, months);
         items.push(['now', '<b>' + fill(U.tl_today, { amount: F.money(today) }) + '</b> · ' + fill(U.tl_today_sub, { date: F.date(anchor, false) })]);
         items.push(['', '<b>' + F.date(P.withdrawalDeadline(NOW), false) + '</b> · ' + U.tl_withdraw]);
       }
-      if (!invited) {
+      if (!invited && !cash) {
         items.push(['', '<b>' + F.date(anchor, false) + ', ' + F.money(res.total) + '</b> · ' + U.tl_first + (months > 1 ? '. ' + U.tl_keikogi : '')]);
         var then = months === 1 ? fill(U.tl_then, { amount: '<b>' + F.money(res.total) + '</b>' })
           : fill(U.tl_then_q, { amount: '<b>' + F.money(res.total) + '</b>', months: F.list(P.chargeMonths(anchor, months).map(function (m) { return U.months[m]; })) });
@@ -562,6 +596,7 @@
         if (m) updateVenue(+m[1]);
       }
       relabel();
+      syncMethod();
       if (current === 2) renderPeriods();
       if (current === 3) renderHolders();
       if (current === 4) renderReview();
@@ -603,6 +638,7 @@
     }
     for (var s = 1; s <= data.maxPeople; s++) updateVenue(s);
     relabel();
+    syncMethod();
 
     var start = 1;
     if (location.hash === '#volver' && saved) { say('cancel'); start = 4; }

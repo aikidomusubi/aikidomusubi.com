@@ -98,6 +98,8 @@ h1.hello{font:700 1.6rem/1.2 var(--display);margin:0 0 .25rem}
 .banner.bad{background:var(--redbg);color:var(--red);font-weight:700}
 .banner.done{background:var(--greybg);color:var(--grey)}
 .ic.withdrawal{background:var(--redbg);color:var(--red)}
+.ic.cash{background:var(--greenbg);color:var(--green)}
+.tx span.late{display:inline-block;margin:.15rem 0 .1rem;font-size:.74rem;font-weight:700;color:var(--red);background:var(--redbg);border-radius:1rem;padding:.05rem .5rem}
 .stat a{display:block;text-decoration:none;color:inherit;margin:-.8rem -1rem;padding:.8rem 1rem;border-radius:10px}
 .stat a:hover{background:#FCFBF8}
 .sheet .sum .tot{border-top:1px solid var(--line);margin-top:.3rem;padding-top:.45rem;font-weight:700}

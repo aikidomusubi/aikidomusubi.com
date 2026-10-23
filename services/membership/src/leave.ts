@@ -18,6 +18,7 @@ import { periodEnd, periodStart } from './stripe.ts';
 import { paymentOf, pendingPayment } from './withdraw.ts';
 import { ctxFor } from './context.ts';
 import * as member from './email/member.ts';
+import { creditCash, isCash, voidOpen } from './cash.ts';
 
 export interface Leave {
   applies: boolean;          // a quarterly or annual period, paid, that has not ended
@@ -81,7 +82,10 @@ export async function leaveQuote(st: Stripe, sub: Stripe.Subscription, now = Dat
 export async function settleLeave(env: Env, st: Stripe, sub: Stripe.Subscription): Promise<Leave> {
   const q = await leaveQuote(st, sub);
   if (!q.applies) throw new Error('nothing to refund early on this membership');
-  if (q.refund > 0) {
+  const cash = isCash(sub);
+  if (q.refund > 0 && cash) {
+    await creditCash(st, q.invoice!, q.refund, 'Baja: meses no empezados, se devuelven en efectivo en el dojo', `leave-${sub.id}-${q.invoice}`);
+  } else if (q.refund > 0) {
     await st.refunds.create({
       ...(await paymentOf(st, q.invoice!)),
       amount: Math.round(q.refund * 100),
@@ -92,8 +96,9 @@ export async function settleLeave(env: Env, st: Stripe, sub: Stripe.Subscription
   // Written before the cancellation, so the webhook sends this email rather
   // than the ordinary "your membership has ended" (as for a withdrawal).
   await st.subscriptions.update(sub.id, { metadata: { early_leave: isoDay(Date.now()), early_leave_refund: q.refund.toFixed(2) } });
+  if (cash) await voidOpen(st, sub.id);
   await st.subscriptions.cancel(sub.id, { prorate: false, invoice_now: false, cancellation_details: { comment: 'Baja con devolución de meses no empezados' } });
   const ctx = ctxFor(env, sub);
-  if (ctx) await member.earlyLeaveDone(ctx, { amount: q.refund, paid: q.paid, started: q.started, monthly: q.monthly, keikogi: q.keikogi });
+  if (ctx) await member.earlyLeaveDone(ctx, { amount: q.refund, paid: q.paid, started: q.started, monthly: q.monthly, keikogi: q.keikogi, cash });
   return q;
 }

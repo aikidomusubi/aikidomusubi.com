@@ -121,6 +121,34 @@
           </div>
           <p class="su-err" id="su-period-err" hidden></p>
         </fieldset>
+        {%- comment -%}
+          How the fee is paid (decided 23 October 2026). Card or direct debit
+          goes on to Stripe's page; cash ends here, and the family pays at the
+          dojo from the 1st to the 5th. Card is chosen to begin with: it is
+          what most people do, and the choice is right under the periods.
+        {%- endcomment %}
+        <fieldset class="su-periods su-method" aria-describedby="su-method-err">
+          <legend class="su-legend">{{ MU.method[L] }} <span class="su-req">{{ MU.required[L] }}</span></legend>
+          <div class="su-cards su-cards-m">
+            <label class="su-card" data-method="stripe">
+              <input type="radio" name="method" value="stripe" id="su-method" checked>
+              <span class="su-card-name">{{ MU.method_stripe[L] }}</span>
+              <span class="su-card-sub">{{ MU.method_stripe_sub[L] }}</span>
+            </label>
+            <label class="su-card" data-method="cash">
+              <input type="radio" name="method" value="cash">
+              <span class="su-card-name">{{ MU.method_cash[L] }}</span>
+              <span class="su-card-sub">{{ MU.method_cash_sub[L] }}</span>
+            </label>
+          </div>
+          <div class="su-cashbox" id="su-cashbox">
+            <p class="su-cashbox-h">{{ MU.cash_h[L] }}</p>
+            <ul>
+              {%- for r in MU.cash_rules %}<li>{{ r[L] }}</li>{% endfor %}
+            </ul>
+          </div>
+          <p class="su-err" id="su-method-err" hidden></p>
+        </fieldset>
         <p class="su-why" id="su-why" hidden>{{ MU.why_sc[L] }}</p>
         <p class="su-cond" id="su-keikogi">{{ MU.keikogi_cond[L] }}</p>
         <details class="su-more" id="su-howprice" hidden>
@@ -193,7 +221,7 @@
             <p class="su-err" id="su-guardian-err" hidden></p>
           </div>
         </fieldset>
-        <p class="su-hint">{{ MU.stripe_name[L] }}</p>
+        <p class="su-hint" id="su-stripe-name">{{ MU.stripe_name[L] }}</p>
         {%- if MU.ca_note[L] %}
         <p class="su-hint su-ca">{{ MU.ca_note[L] }}</p>
         {%- endif %}
@@ -211,7 +239,7 @@
               <tbody></tbody>
               <tfoot><tr><th scope="row" colspan="3">{{ MU.total[L] }}</th><td class="su-rv-total"></td></tr></tfoot>
             </table>
-            <p class="su-rv-edit"><button type="button" class="su-link" data-go="1">{{ MU.change_people[L] }}</button> · <button type="button" class="su-link" data-go="2">{{ MU.change_period[L] }}</button> · <span id="su-holder-line"></span> · <button type="button" class="su-link" data-go="3">{{ MU.change[L] }}</button></p>
+            <p class="su-rv-edit"><button type="button" class="su-link" data-go="1">{{ MU.change_people[L] }}</button> · <button type="button" class="su-link" data-go="2">{{ MU.change_period[L] }}</button> · <span id="su-holder-line"></span> · <button type="button" class="su-link" data-go="3">{{ MU.change[L] }}</button> · <span id="su-method-line"></span></p>
             <ol class="su-tl" id="su-tl"></ol>
           </div>
           <div class="su-review-legal">
@@ -224,8 +252,8 @@
             <p class="su-err" id="su-early-err" hidden></p>
             <p class="su-priv">{{ MU.privacy[L] | replace: PH_URL, r_privacy | replace: PH_ORG, ORGN }}</p>
             <p class="su-err su-err-form" id="su-form-err" hidden></p>
-            <button type="submit" class="su-btn su-pay" data-sending="{{ MU.sending[L] }}">{{ MU.pay[L] }}</button>
-            <p class="su-paynote">{{ MU.pay_note[L] }}</p>
+            <button type="submit" class="su-btn su-pay" data-sending="{{ MU.sending[L] }}" data-stripe="{{ MU.pay[L] }}" data-cash="{{ MU.pay_cash[L] }}">{{ MU.pay[L] }}</button>
+            <p class="su-paynote" data-stripe="{{ MU.pay_note[L] | escape }}" data-cash="{{ MU.pay_note_cash[L] | escape }}">{{ MU.pay_note[L] }}</p>
           </div>
         </div>
         <div class="su-nav"><button type="button" class="su-back" data-go="3" hidden>← {{ MU.steps[2][L] }}</button><span></span></div>
@@ -255,7 +283,7 @@
       "members": { "rows": {{ FEES.members.rows | jsonify }} }
     },
     "venues": { {% for r in FEES.members.rows %}{%- assign slo = site.data.schedule.locations | where: 'id', r.venue | first -%}{%- assign mv = site.data.venues.venues | where: 'id', slo.slug | first -%}{{ r.venue | jsonify }}: {{ mv.name[L] | jsonify }}{% unless forloop.last %},{% endunless %}{% endfor %} },
-    "ui": { {% for kv in MU %}{%- if kv[0] == 'steps' or kv[0] == 'side' -%}{{ kv[0] | jsonify }}: {{ kv[1] | map: L | jsonify }}{%- elsif kv[0] == 'months' -%}"months": {{ kv[1][L] | jsonify }}{%- else -%}{{ kv[0] | jsonify }}: {{ kv[1][L] | jsonify }}{%- endif -%}{% unless forloop.last %}, {% endunless %}{% endfor %} },
+    "ui": { {% for kv in MU %}{%- if kv[0] == 'steps' or kv[0] == 'side' or kv[0] == 'cash_rules' -%}{{ kv[0] | jsonify }}: {{ kv[1] | map: L | jsonify }}{%- elsif kv[0] == 'months' -%}"months": {{ kv[1][L] | jsonify }}{%- else -%}{{ kv[0] | jsonify }}: {{ kv[1][L] | jsonify }}{%- endif -%}{% unless forloop.last %}, {% endunless %}{% endfor %} },
     "errors": { {% for kv in ME %}{{ kv[0] | jsonify }}: {{ kv[1][L] | default: kv[1].es | jsonify }}{% unless forloop.last %}, {% endunless %}{% endfor %} }
   }
   </script>

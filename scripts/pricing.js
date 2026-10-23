@@ -197,19 +197,27 @@
   }
 
   // -------------------------------------------------------------------------
-  // Billing on the 5th
+  // Billing on the 5th, or on the 1st for cash
   //
   // The next 5th of a month at 08:00 UTC that is at least an hour away. 08:00
   // UTC is 09:00 or 10:00 in Madrid, so the charge lands on the 5th locally in
   // both halves of the year. Stripe wants the anchor inside the first billing
   // period, which a next-5th always is.
+  //
+  // A membership paid in cash renews on the 1st instead (`day` = CASH.day):
+  // its invoice has to exist when the family comes to pay, and the dojo takes
+  // cash from the 1st to the 5th (CASH.by). The first payment is due within
+  // CASH.firstDays of signing up.
   // -------------------------------------------------------------------------
-  function nextAnchor(nowMs) {
+  var CASH = { day: 1, by: 5, firstDays: 5 };
+
+  function nextAnchor(nowMs, day) {
+    var dd = day || 5;
     var d = new Date(nowMs);
     var y = d.getUTCFullYear();
     var m = d.getUTCMonth();
-    var a = Date.UTC(y, m, 5, 8, 0, 0);
-    if (a < nowMs + 3600000) a = Date.UTC(y, m + 1, 5, 8, 0, 0);
+    var a = Date.UTC(y, m, dd, 8, 0, 0);
+    if (a < nowMs + 3600000) a = Date.UTC(y, m + 1, dd, 8, 0, 0);
     return a;
   }
 
@@ -291,6 +299,7 @@
     compare: compare,
     lookupKey: lookupKey,
     nextAnchor: nextAnchor,
+    CASH: CASH,
     addMonths: addMonths,
     prorated: prorated,
     chargeMonths: chargeMonths,

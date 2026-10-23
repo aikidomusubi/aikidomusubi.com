@@ -6,7 +6,7 @@ description: "カード・口座の変更、領収書のダウンロード、退
 permalink: /ja/members/
 lang: ja
 i18n-ref: members-Wt5nK2cD
-last_modified: 2026-10-14
+last_modified: 2026-10-24
 no_analytics: true
 sitemap: false
 ---

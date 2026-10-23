@@ -28,6 +28,9 @@ export interface Signup {
   minors: boolean;
   invite: string | null;
   sid: string;
+  // How the fee is paid: through Stripe (card or direct debit, on the 5th) or
+  // in cash at the dojo (from the 1st to the 5th, with an emailed receipt).
+  method: 'stripe' | 'cash';
 }
 
 export interface FieldError { field: string; code: string }
@@ -35,7 +38,7 @@ export interface FieldError { field: string; code: string }
 const MAX = Number(M.max_people) || 6;
 const PERSON_KEYS = ['given', 'family', 'cat', 'bm', 'by', 'rate', 'venue'];
 const TOP_KEYS = ['lang', 'period', 'holder', 'h_given', 'h_family', 'email', 'phone',
-  'adult', 'guardian', 'terms', 'early', 'website', 'invite', 'sid', 'step'];
+  'adult', 'guardian', 'terms', 'early', 'website', 'invite', 'sid', 'step', 'method'];
 
 export const KNOWN = new Set<string>([
   ...TOP_KEYS,
@@ -153,6 +156,9 @@ export function validate(body: Record<string, string>, nowMs: number):
   if (minors && !on(body.guardian)) err('guardian', 'guardian_required');
   if (!on(body.terms)) err('terms', 'terms_required');
   if (!on(body.early)) err('early', 'early_required');
+  // Absent means Stripe: the form sent nothing else before cash existed.
+  const method = (body.method ?? 'stripe') || 'stripe';
+  if (method !== 'stripe' && method !== 'cash') err('method', 'method_required');
 
   // The household as a whole: what the pricing engine refuses, said in the
   // place the person can fix it.
@@ -173,7 +179,7 @@ export function validate(body: Record<string, string>, nowMs: number):
   const invite = clean(body.invite) || null;
   return {
     ok: true,
-    value: { lang, period, members, holder, email, phone, minors, invite, sid }
+    value: { lang, period, members, holder, email, phone, minors, invite, sid, method: method as 'stripe' | 'cash' }
   };
 }
 

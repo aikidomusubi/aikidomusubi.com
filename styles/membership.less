@@ -845,3 +845,42 @@ html:has(.su), html:has(.mb-form) {
   p { margin: 0 0 .5rem; font-size: inherit; }
   p:last-child { margin: 0; font-size: .9rem; }
 }
+
+// ---------------------------------------------------------------------------
+// Paying in cash (decided 23 October 2026)
+//
+// The method is a second row of cards under the periods, two of them, with
+// the cash rules underneath while cash is chosen (approved in
+// docs/mockups/efectivo-inscripcion.html). The thank-you page has a version
+// for cash, shown by its address, #efectivo, with no script at all.
+// ---------------------------------------------------------------------------
+.page main {
+  .su-method { margin-top: 1.4rem; }
+  .su-cards-m {
+    @media (min-width: @bp-md) { grid-template-columns: repeat(2, 1fr); }
+  }
+  .su-cashbox {
+    margin: .9rem 0 0;
+    padding: .8rem 1rem;
+    border-left: 3px solid @Green;
+    background: @su-paper;
+    font-size: .88rem;
+    max-width: none;
+    &[hidden] { display: none; }
+    ul { margin: .35rem 0 0; padding-left: 1.1rem; max-width: none; }
+    li { margin: .2rem 0; }
+  }
+  .su-cashbox-h { font-weight: 700; margin: 0; max-width: none; }
+
+  .mb-cash { display: none; }
+  .mb-cash:target { display: block; }
+  &.mb-thanks:has(.mb-cash:target) .mb-stripe { display: none; }
+
+  .mb-card-ok {
+    display: none;
+    border-left: 3px solid @Green;
+    background: @su-paper;
+    padding: .8rem 1rem;
+    &:target { display: block; }
+  }
+}

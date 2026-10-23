@@ -37,7 +37,8 @@ interface PricingApi {
   price(sel: { period: string; members: Member[] }, cat: Catalog): PriceResult;
   compare(members: Member[], cat: Catalog): Compare;
   lookupKey(cat: Catalog, member: Member & { cat: Cat }, period: string, kind: Kind): string;
-  nextAnchor(nowMs: number): number;
+  nextAnchor(nowMs: number, day?: number): number;
+  CASH: { day: number; by: number; firstDays: number };
   addMonths(ms: number, n: number): number;
   prorated(total: number, nowMs: number, anchorMs: number, months: number): number;
   chargeMonths(anchorMs: number, months: number): number[];

@@ -17,6 +17,8 @@ import { markUsed } from './invite.ts';
 import { ctxFor } from './context.ts';
 import { actionUrl, notifyKeikogiReady } from './actions.ts';
 import * as member from './email/member.ts';
+import { isCash, payByMs } from './cash.ts';
+import { cardGiven } from './cardlink.ts';
 import { admin, todo, dashboard, B, type Todo } from './email/admin.ts';
 
 export async function webhook(req: Request, env: Env): Promise<Response> {
@@ -74,12 +76,22 @@ const ours = (sub: Stripe.Subscription) => Boolean(sub.metadata?.signup_id);
 
 // ---------------------------------------------------------------------------
 async function completed(env: Env, st: Stripe, session: Stripe.Checkout.Session) {
+  // A cash family giving a card or account to move off cash (src/cardlink.ts).
+  if (session.mode === 'setup') return cardGiven(env, st, session);
   if (session.mode !== 'subscription') return;          // seminar payments and the like
   const id = subId(session.subscription as string | Stripe.Subscription | null);
   if (!id) return;
+  await welcome(env, st, id, session.payment_status === 'unpaid');
+}
+
+// The confirmation to the family and the notice to the dojo. After Checkout
+// for a card or direct debit; straight from /checkout for cash, which has no
+// Checkout and so no checkout.session.completed.
+export async function welcome(env: Env, st: Stripe, id: string, processing: boolean) {
   const sub = await st.subscriptions.retrieve(id, { expand: ['default_payment_method', 'customer', 'latest_invoice'] });
   if (!ours(sub)) return;
   const meta = sub.metadata;
+  const cash = isCash(sub);
   if (meta.invite_id) await markUsed(env, meta.invite_id, sub.id);
 
   const people = priced(meta, itemAmounts(sub));
@@ -88,7 +100,6 @@ async function completed(env: Env, st: Stripe, session: Stripe.Checkout.Session)
   const signupMs = sub.created * 1000;
   const inv = sub.latest_invoice && typeof sub.latest_invoice !== 'string' ? sub.latest_invoice : null;
   const todayAmount = inv ? inv.amount_due / 100 : null;
-  const processing = session.payment_status === 'unpaid';
   const now = Date.now();
   const under14 = metaMembers(meta).some((m) => {
     if (!m.bym) return false;
@@ -102,7 +113,8 @@ async function completed(env: Env, st: Stripe, session: Stripe.Checkout.Session)
   if (ctx) {
     await member.confirmation(ctx, {
       people, period, signupMs, anchorMs: anchor, todayAmount, method: method(sub), processing,
-      under14, keikogi, scVenues, withdrawBy: Date.parse(meta.withdraw_by + 'T12:00:00Z'), termsVersion: meta.terms_version
+      under14, keikogi, scVenues, withdrawBy: Date.parse(meta.withdraw_by + 'T12:00:00Z'), termsVersion: meta.terms_version,
+      ...(cash && inv ? { cashFirstBy: payByMs(inv) } : {})
     });
   }
 
@@ -130,10 +142,12 @@ async function completed(env: Env, st: Stripe, session: Stripe.Checkout.Session)
   const rows: [string, string][] = people.map((p) => [personLabel(p, 'es', CATALOG.family * (CATALOG.periods[period]?.months ?? 1)), money(p.amount, 'es')]);
   rows.push([`Total ${periodName(period, 'es')}`, money(total(people), 'es')]);
   await admin(env,
-    `Nueva inscripción · ${people.length} ${people.length === 1 ? 'persona' : 'personas'} · ${periodName(period, 'es')} · primer cobro ${date(anchor, 'es', false)}`,
+    `Nueva inscripción${cash ? ' en efectivo' : ''} · ${people.length} ${people.length === 1 ? 'persona' : 'personas'} · ${periodName(period, 'es')} · primer cobro ${date(anchor, 'es', false)}`,
     'Inscripción', [
       B.h('Nueva inscripción'),
-      B.p(`${date(signupMs, 'es')}. ${esc(method(sub)?.type === 'sepa_debit' ? 'Domiciliación SEPA' : 'Tarjeta')}${processing ? ', pendiente de confirmar' : ''}.${meta.invite_id ? ' Con invitación.' : ''} Hoy: ${todayAmount != null ? money(todayAmount, 'es') : '—'}.`),
+      B.p(cash
+        ? `${date(signupMs, 'es')}. <b>En efectivo.</b>${meta.invite_id ? ' Con invitación.' : ''} Primer pago en el dojo: ${todayAmount != null ? money(todayAmount, 'es') : '—'}${inv ? `, antes del ${date(payByMs(inv), 'es')}` : ''}. Cuando lo traigan, márcalo como cobrado en el panel.`
+        : `${date(signupMs, 'es')}. ${esc(method(sub)?.type === 'sepa_debit' ? 'Domiciliación SEPA' : 'Tarjeta')}${processing ? ', pendiente de confirmar' : ''}.${meta.invite_id ? ' Con invitación.' : ''} Hoy: ${todayAmount != null ? money(todayAmount, 'es') : '—'}.`),
       B.table(rows, true),
       B.h4('Pendiente'),
       ...(items.length ? [todo(items)] : [B.p('Nada por hacer a mano.')]),
@@ -211,7 +225,7 @@ async function upcoming(env: Env, st: Stripe, inv: Stripe.Invoice) {
   const months = CATALOG.periods[period]?.months ?? 1;
   await member.renewal(ctx, {
     chargeMs: charge, fromMs: charge, toMs: Pricing.addMonths(charge, months) - 86400000,
-    method: method(sub), people: priced(sub.metadata, itemAmounts(sub)), period
+    method: isCash(sub) ? { type: 'cash' } : method(sub), people: priced(sub.metadata, itemAmounts(sub)), period
   });
 }
 

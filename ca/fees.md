@@ -6,7 +6,7 @@ description: "Aikido per 39 € al mes, o 29 € fins als 16 anys, amb accés a 
 permalink: /ca/quotes/
 lang: ca
 i18n-ref: fees-UjbuGtGz
-last_modified: 2026-10-14
+last_modified: 2026-10-24
 ---
 
 # Quotes
