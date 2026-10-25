@@ -6,7 +6,7 @@ description: "Aikido classes Monday to Saturday in Badalona, Barcelona and Sant 
 permalink: /en/training-schedule/
 lang: en
 i18n-ref: training-schedule-IFMn5oCc
-last_modified: 2026-10-06
+last_modified: 2026-10-26
 ---
 
 # Training Schedule

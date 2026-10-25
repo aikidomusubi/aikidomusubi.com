@@ -533,9 +533,9 @@ entries:
   # P. Martín in Japan, November 2026
   #
   # His three classes on 3, 5, 10 and 12 November go to others: Tuesday's
-  # 19:30 beginners to J. Fernández; on Thursday, 19:30 to C. Lucas and the
-  # weapons class moves to 20:30 with G. Zheng. Each is a `change` with
-  # `affects`, so the rest of the evening runs as printed.
+  # 19:30 beginners to J. Fernández; on Thursday, the 19:30 all-levels class
+  # to C. Lucas and the 20:30 weapons class to G. Zheng. Each is a `change`
+  # with `affects`, so the rest of the evening runs as printed.
   # -------------------------------------------------------------------------
   - date: "2026-11-03"
     type: change
@@ -570,10 +570,10 @@ entries:
       en: "Class with C. Lucas"
       ja: "稽古（カルレス　ルカス）"
     note:
-      es: "A cargo de C. Lucas mientras P. Martín está en Japón. Esta semana la clase de armas es a las 20:30, con G. Zheng."
-      ca: "A càrrec de C. Lucas mentre P. Martín és al Japó. Aquesta setmana la classe d'armes és a les 20:30, amb G. Zheng."
-      en: "Taught by C. Lucas while P. Martín is in Japan. This week the weapons class is at 20:30, with G. Zheng."
-      ja: "パブロ　マルティンの日本滞在中、カルレス　ルカスが指導します。今週の武器稽古は20:30から、グアンロン　ジェンが担当します。"
+      es: "La clase de todos los niveles del jueves, a cargo de C. Lucas mientras P. Martín está en Japón."
+      ca: "La classe de tots els nivells del dijous, a càrrec de C. Lucas mentre P. Martín és al Japó."
+      en: "The Thursday all-levels class, taught by C. Lucas while P. Martín is in Japan."
+      ja: "パブロ　マルティンの日本滞在中、木曜日の一般稽古をカルレス　ルカスが指導します。"
 
   - date: "2026-11-05"
     type: change
@@ -589,10 +589,10 @@ entries:
       en: "Weapons class with G. Zheng"
       ja: "武器稽古（グアンロン　ジェン）"
     note:
-      es: "Esta semana la clase de armas del jueves es a esta hora, en lugar de la de las 19:30."
-      ca: "Aquesta setmana la classe d'armes del dijous és a aquesta hora, en lloc de la de les 19:30."
-      en: "This week the Thursday weapons class is at this hour, instead of at 19:30."
-      ja: "今週の木曜日の武器稽古は、19:30ではなくこの時間に行います。"
+      es: "La clase de armas del jueves, a cargo de G. Zheng mientras P. Martín está en Japón."
+      ca: "La classe d'armes del dijous, a càrrec de G. Zheng mentre P. Martín és al Japó."
+      en: "The Thursday weapons class, taught by G. Zheng while P. Martín is in Japan."
+      ja: "パブロ　マルティンの日本滞在中、木曜日の武器稽古をグアンロン　ジェンが指導します。"
 
   - date: "2026-11-10"
     type: change
@@ -627,10 +627,10 @@ entries:
       en: "Class with C. Lucas"
       ja: "稽古（カルレス　ルカス）"
     note:
-      es: "A cargo de C. Lucas mientras P. Martín está en Japón. Esta semana la clase de armas es a las 20:30, con G. Zheng."
-      ca: "A càrrec de C. Lucas mentre P. Martín és al Japó. Aquesta setmana la classe d'armes és a les 20:30, amb G. Zheng."
-      en: "Taught by C. Lucas while P. Martín is in Japan. This week the weapons class is at 20:30, with G. Zheng."
-      ja: "パブロ　マルティンの日本滞在中、カルレス　ルカスが指導します。今週の武器稽古は20:30から、グアンロン　ジェンが担当します。"
+      es: "La clase de todos los niveles del jueves, a cargo de C. Lucas mientras P. Martín está en Japón."
+      ca: "La classe de tots els nivells del dijous, a càrrec de C. Lucas mentre P. Martín és al Japó."
+      en: "The Thursday all-levels class, taught by C. Lucas while P. Martín is in Japan."
+      ja: "パブロ　マルティンの日本滞在中、木曜日の一般稽古をカルレス　ルカスが指導します。"
 
   - date: "2026-11-12"
     type: change
@@ -646,10 +646,10 @@ entries:
       en: "Weapons class with G. Zheng"
       ja: "武器稽古（グアンロン　ジェン）"
     note:
-      es: "Esta semana la clase de armas del jueves es a esta hora, en lugar de la de las 19:30."
-      ca: "Aquesta setmana la classe d'armes del dijous és a aquesta hora, en lloc de la de les 19:30."
-      en: "This week the Thursday weapons class is at this hour, instead of at 19:30."
-      ja: "今週の木曜日の武器稽古は、19:30ではなくこの時間に行います。"
+      es: "La clase de armas del jueves, a cargo de G. Zheng mientras P. Martín está en Japón."
+      ca: "La classe d'armes del dijous, a càrrec de G. Zheng mentre P. Martín és al Japó."
+      en: "The Thursday weapons class, taught by G. Zheng while P. Martín is in Japan."
+      ja: "パブロ　マルティンの日本滞在中、木曜日の武器稽古をグアンロン　ジェンが指導します。"
 
   # -------------------------------------------------------------------------
   # Saturday karate, on the Saturdays the dojo is given over to something else
