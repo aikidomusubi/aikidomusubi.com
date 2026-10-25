@@ -270,6 +270,10 @@ instructors:
   - { id: molina-jm,  name: "J. M. Molina", ja: "ジョアン・マネル　モリナ", person: "Joan Manel Molina" }
   - { id: zheng,      name: "G. Zheng",   ja: "グアンロン　ジェン",         rank: 8, person: "Guanlong Zheng" }
   - { id: mikhaylov,  name: "D. Mikhaylov", ja: "ダニール　ミハイロフ",     rank: 9, person: "Daniil Mikhaylov" }
+  # Substitutes with no class of their own, so no `rank`, like Joan Manel:
+  # named in _data/calendar.yml when they take a class (November 2026).
+  - { id: fernandez-j, name: "J. Fernández", ja: "フリオ　フェルナンデス" }
+  - { id: lucas,      name: "C. Lucas",   ja: "カルレス　ルカス" }
   # `grade` ON AN INSTRUCTOR, AND WHY IT IS HERE RATHER THAN IN about.yml.
   #
   # The aikido instructors carry their grade in _data/about.yml, because they
