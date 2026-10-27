@@ -30,19 +30,18 @@ desc_es: >-
 desc_ja: >-
   １１月１６日（月）19:30～21:00に、合気道産靈でマノロ・ガルシア師範（六段 合気会、合気会 山水会 スペイン会長）によるマスタークラスを開催します。参加無料、どなたでもご参加いただけます！
 
-# The poster is on its way: empty renders "Cartel en preparación" in the
-# poster's own shape, so nothing reflows the day it lands. The first version
-# (27 October 2026) said "Dissabte 16"; 16 November 2026 is a Monday, so it
-# was not published. It goes in as ..-ca when the corrected one arrives.
-image_ca: ""
-image_en: ""
-image_es: ""
-image_ja: ""
+# One poster, in Catalan, shown in all four languages, as for the other
+# masterclasses. The first version said "Dissabte 16"; 16 November 2026 is a
+# Monday, and this one, of 27 October, says "Dilluns".
+image_ca: "events-hFZ2XXIp-2026-11-16-manolo-garcia-shihan-6th-dan-ca"
+image_en: "events-hFZ2XXIp-2026-11-16-manolo-garcia-shihan-6th-dan-ca"
+image_es: "events-hFZ2XXIp-2026-11-16-manolo-garcia-shihan-6th-dan-ca"
+image_ja: "events-hFZ2XXIp-2026-11-16-manolo-garcia-shihan-6th-dan-ca"
 
-file_ca: ""
-file_en: ""
-file_es: ""
-file_ja: ""
+file_ca: "events-hFZ2XXIp-2026-11-16-manolo-garcia-shihan-6th-dan-ca.pdf"
+file_en: "events-hFZ2XXIp-2026-11-16-manolo-garcia-shihan-6th-dan-ca.pdf"
+file_es: "events-hFZ2XXIp-2026-11-16-manolo-garcia-shihan-6th-dan-ca.pdf"
+file_ja: "events-hFZ2XXIp-2026-11-16-manolo-garcia-shihan-6th-dan-ca.pdf"
 
 # Free entry, confirmed by the dojo; the copy says so in all four languages.
 price: 0
