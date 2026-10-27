@@ -107,7 +107,7 @@ listings:
 # Where the SEMINARS are listed besides /seminarios/ (asked 2026-10-27).
 #
 # Every seminar or masterclass added to or changed in _events/ has to be copied
-# by hand to these too. tools/qa.py compares each `reviewed:` with the last
+# by hand to these too: Aikido Travel, Google Maps and Linktree. tools/qa.py compares each `reviewed:` with the last
 # commit to _events/ and warns when the folder is newer: after updating a
 # listing, set its `reviewed:` to that day. Items are `- site:`, not `- id:`,
 # so the map-listing check above does not read them as map listings.
@@ -128,3 +128,12 @@ seminar_listings:
     # An Event post per seminar, with the poster, the date and the time, and
     # "Más información" linking to /seminarios/.
     reviewed: 2026-10-26
+  - site: linktree
+    name: "Linktree"
+    url: "https://linktr.ee/aikidomusubi"
+    admin: "https://linktr.ee/admin"
+    # 2026-10-27: "Próximamente" carries one link per upcoming masterclass, to
+    # its card on /seminarios/ (García, Castellanos 6th dan, Martín 12 Dec,
+    # Feilen), all correct. The fees and Barcelona links lack the trailing
+    # slash (/cuotas, /barcelona), which costs a redirect each.
+    reviewed: 2026-10-27

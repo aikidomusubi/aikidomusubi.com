@@ -1589,8 +1589,9 @@ done.
 ## Every seminar is also listed elsewhere, by hand
 
 Adding or changing anything in `_events/` means updating **Aikido Travel**
-(https://aikidotravel.com/aikidomusubi/timeline, compare against it) and an event
-post on the **Google Business Profile**. `seminar_listings:` in
+(https://aikidotravel.com/aikidomusubi/timeline, compare against it), an event
+post on the **Google Business Profile**, and the "Próximamente" links on
+**Linktree** (https://linktr.ee/aikidomusubi). `seminar_listings:` in
 `_data/listings.yml` records when each was last brought up to date, and `qa.py`
 warns while `_events/` is newer. Remind Juanma in the same reply that changes a
 seminar; after he has done it, set `reviewed:`.
