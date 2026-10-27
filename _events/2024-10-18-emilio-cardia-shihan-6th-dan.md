@@ -1,5 +1,5 @@
 ---
-category: seminar
+category: masterclass
 title_ca: "Emilio Cardia Shihan 6è Dan Aikikai"
 title_en: "Emilio Cardia Shihan 6th Dan Aikikai"
 title_es: "Emilio Cardia Shihan 6.º Dan Aikikai"
