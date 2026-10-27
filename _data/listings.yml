@@ -102,3 +102,29 @@ listings:
     # in the IndexNow panel are. Turn Crawler Hints off in Cloudflare; the
     # site's own IndexNow key file stays.
     reviewed: 2026-10-06
+
+# ---------------------------------------------------------------------------
+# Where the SEMINARS are listed besides /seminarios/ (asked 2026-10-27).
+#
+# Every seminar or masterclass added to or changed in _events/ has to be copied
+# by hand to these too. tools/qa.py compares each `reviewed:` with the last
+# commit to _events/ and warns when the folder is newer: after updating a
+# listing, set its `reviewed:` to that day. Items are `- site:`, not `- id:`,
+# so the map-listing check above does not read them as map listings.
+seminar_listings:
+  - site: aikidotravel
+    name: "Aikido Travel"
+    url: "https://aikidotravel.com/aikidomusubi/timeline"
+    admin: "https://aikidotravel.com"
+    # 2026-10-27: the timeline had Manolo García (16 Nov), Francesc Castellanos
+    # (21 Nov), Michelle Feilen (30 Jan) and Pablo Martín dated 21 November,
+    # which is Castellanos's day; Pablo's is 12 December. Michelle's location
+    # read "Michele Feilen Rigol". Posters added on the site the same day.
+    reviewed: 2026-10-26
+  - site: google-events
+    name: "Google Maps (Business Profile: events and updates)"
+    url: "https://maps.app.goo.gl/zxNCWtsXshA3CHLAA"
+    admin: "https://business.google.com"
+    # An Event post per seminar, with the poster, the date and the time, and
+    # "Más información" linking to /seminarios/.
+    reviewed: 2026-10-26

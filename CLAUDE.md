@@ -1574,6 +1574,27 @@ and `/files/courses-hFZ2XXIp-*.pdf` now 404s — twenty-one of them with
 impressions. Jekyll cannot redirect a static file, and GitHub Pages has no
 server config, so that one belongs in Cloudflare as a redirect rule.
 
+## Temp/ is the shared folder, and it is kept tidy
+
+`Temp/` at the root (the same folder as `temp/`: macOS is case-insensitive, and
+`temp/` is gitignored) is where Juanma hands over posters, photos and exports. Its
+`README.md` describes the layout. **Every time something arrives there, deal with it
+completely**: rename it to say what it is, move it into its folder (`photos/`,
+`documents/`, `brand/`, `setup/`, `search-console/<date>/` with short names such as
+`coverage/` and `performance/`), and send to the macOS Trash (never `rm`) whatever
+the repo now holds, such as a poster once it is on the site. Zips are unpacked and
+the zip trashed. New files go in `_inbox/`, which should be empty when the work is
+done.
+
+## Every seminar is also listed elsewhere, by hand
+
+Adding or changing anything in `_events/` means updating **Aikido Travel**
+(https://aikidotravel.com/aikidomusubi/timeline, compare against it) and an event
+post on the **Google Business Profile**. `seminar_listings:` in
+`_data/listings.yml` records when each was last brought up to date, and `qa.py`
+warns while `_events/` is newer. Remind Juanma in the same reply that changes a
+seminar; after he has done it, set `reviewed:`.
+
 ## The map listings go stale silently, so a check watches them
 
 Google Business Profile, Apple Business Connect and Bing Places carry the same

@@ -478,6 +478,43 @@ def check_listings():
         print(f'  {"map listings":<34} {n} listings, none older than their data')
 
 
+def check_seminar_listings():
+    """The seminars are copied by hand to other sites, and nothing syncs them.
+
+    Aikido Travel's timeline and the Google Business Profile's event posts list
+    the same seminars as /seminarios/ (asked 2026-10-27). `seminar_listings:` in
+    _data/listings.yml names them; any listing whose `reviewed:` is older than
+    the last commit to _events/ is reported. WARN, never FAIL, like the map
+    listings: a reminder to visit a dashboard must not block a build.
+    """
+    f = os.path.join('_data', 'listings.yml')
+    if not os.path.exists(f):
+        return
+    src = read(f)
+    if 'seminar_listings:' not in src:
+        return
+    block = src[src.index('seminar_listings:'):]
+    r = subprocess.run(['git', 'log', '-1', '--format=%ad', '--date=short', '--', '_events'],
+                       capture_output=True, text=True)
+    changed = r.stdout.strip()
+    if not changed:
+        return
+    late = []
+    items = re.split(r'(?=^  - site: )', block, flags=re.M)[1:]
+    for it in items:
+        name = re.search(r'name: "([^"]+)"', it)
+        url = re.search(r'url: "([^"]*)"', it)
+        rev = re.search(r'^\s+reviewed: (\d{4}-\d{2}-\d{2})', it, re.M)
+        if name and rev and changed > rev.group(1):
+            late.append((name.group(1), rev.group(1), url.group(1) if url else ''))
+    for nm, rev, url in late:
+        warn('seminar listing may be out of date',
+             '%s last updated %s; _events/ changed %s. Add or correct the seminars there%s, then set its reviewed: in _data/listings.yml'
+             % (nm, rev, changed, f' ({url})' if url else ''))
+    if not late:
+        print(f'  {"seminar listings":<34} {len(items)} listings, none older than _events/')
+
+
 def check_retired_urls(pages):
     """No internal link may point at a URL that only exists as a redirect.
 
@@ -912,6 +949,7 @@ def main():
     check_jsonld(pages)
     check_retired_urls(pages)
     check_listings()
+    check_seminar_listings()
     check_video_sitemap()
     check_fee_descriptions(pages)
     check_a11y(pages)
