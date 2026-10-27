@@ -31,7 +31,9 @@ desc_ja: >-
   １１月１６日（月）19:30～21:00に、合気道産靈でマノロ・ガルシア師範（六段 合気会、合気会 山水会 スペイン会長）によるマスタークラスを開催します。参加無料、どなたでもご参加いただけます！
 
 # The poster is on its way: empty renders "Cartel en preparación" in the
-# poster's own shape, so nothing reflows the day it lands.
+# poster's own shape, so nothing reflows the day it lands. The first version
+# (27 October 2026) said "Dissabte 16"; 16 November 2026 is a Monday, so it
+# was not published. It goes in as ..-ca when the corrected one arrives.
 image_ca: ""
 image_en: ""
 image_es: ""

@@ -2,19 +2,19 @@
 time_from: "12:00"
 time_to: "13:00"
 category: masterclass
-title_ca: "Francesc Castellanos 5è Dan Aikikai"
-title_en: "Francesc Castellanos 5th Dan Aikikai"
-title_es: "Francesc Castellanos 5.º Dan Aikikai"
-title_ja: "フランセスク・カステヤノス 五段 合気会"
+title_ca: "Francesc Castellanos 6è Dan Aikikai"
+title_en: "Francesc Castellanos 6th Dan Aikikai"
+title_es: "Francesc Castellanos 6.º Dan Aikikai"
+title_ja: "フランセスク・カステヤノス 六段 合気会"
 
 instructor_ca: "Francesc Castellanos"
-grade_ca: "5è dan Aikikai"
+grade_ca: "6è dan Aikikai"
 instructor_en: "Francesc Castellanos"
-grade_en: "5th dan Aikikai"
+grade_en: "6th dan Aikikai"
 instructor_es: "Francesc Castellanos"
-grade_es: "5.º dan Aikikai"
+grade_es: "6.º dan Aikikai"
 instructor_ja: "フランセスク・カステヤノス"
-grade_ja: "五段 合気会"
+grade_ja: "六段 合気会"
 
 desc_ca: >-
   Dissabte 21 de novembre, de 12:00 a 13:00, masterclass amb Francesc Castellanos a Aikido Musubi. Entrada lliure: t'hi esperem!
@@ -28,15 +28,15 @@ desc_ja: >-
 # One poster, in Catalan, shown in all four languages — same as Pedro
 # Fortes and Pablo Martín. A per-language set exists only where one
 # was actually drawn.
-image_ca: "events-hFZ2XXIp-2026-11-21-francesc-castellanos-5th-dan-ca"
-image_en: "events-hFZ2XXIp-2026-11-21-francesc-castellanos-5th-dan-ca"
-image_es: "events-hFZ2XXIp-2026-11-21-francesc-castellanos-5th-dan-ca"
-image_ja: "events-hFZ2XXIp-2026-11-21-francesc-castellanos-5th-dan-ca"
+image_ca: "events-hFZ2XXIp-2026-11-21-francesc-castellanos-6th-dan-ca"
+image_en: "events-hFZ2XXIp-2026-11-21-francesc-castellanos-6th-dan-ca"
+image_es: "events-hFZ2XXIp-2026-11-21-francesc-castellanos-6th-dan-ca"
+image_ja: "events-hFZ2XXIp-2026-11-21-francesc-castellanos-6th-dan-ca"
 
-file_ca: "events-hFZ2XXIp-2026-11-21-francesc-castellanos-5th-dan-ca.pdf"
-file_en: "events-hFZ2XXIp-2026-11-21-francesc-castellanos-5th-dan-ca.pdf"
-file_es: "events-hFZ2XXIp-2026-11-21-francesc-castellanos-5th-dan-ca.pdf"
-file_ja: "events-hFZ2XXIp-2026-11-21-francesc-castellanos-5th-dan-ca.pdf"
+file_ca: "events-hFZ2XXIp-2026-11-21-francesc-castellanos-6th-dan-ca.pdf"
+file_en: "events-hFZ2XXIp-2026-11-21-francesc-castellanos-6th-dan-ca.pdf"
+file_es: "events-hFZ2XXIp-2026-11-21-francesc-castellanos-6th-dan-ca.pdf"
+file_ja: "events-hFZ2XXIp-2026-11-21-francesc-castellanos-6th-dan-ca.pdf"
 
 # The page's own copy says "Entrada libre" in all four languages, and this is
 # that same statement in machine form: it fills schema.org's `offers`, which
